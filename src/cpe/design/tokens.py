@@ -262,10 +262,18 @@ def load_profile(name: str) -> dict:
     return base
 
 
+# roles the composition engine may enlarge on sparse slides (never chrome / sources)
+SCALABLE_ROLES = {"body", "body_strong", "section", "kpi_value", "kpi_label", "table_header", "table_body"}  # charts keep their geometry
+SCALE_CAP = {"body": 17, "body_strong": 18, "table_body": 15, "table_header": 15, "chart": 13, "chart_axis": 12, "annotation": 12, "kpi_value": 44}
+
+
 def type_style(role: str, profile: dict | None = None) -> dict:
     s = dict(TYPE_SCALE[role])
     if profile:
         s["size"] = round(s["size"] * profile.get("font_scale", 1.0) * 2) / 2
+        bs = profile.get("body_scale", 1.0)
+        if bs != 1.0 and role in SCALABLE_ROLES:
+            s["size"] = min(round(s["size"] * bs * 2) / 2, max(s["size"], SCALE_CAP.get(role, s["size"] * bs)))
         s["size"] = max(s["size"], FONT_FLOOR.get(role, FONT_FLOOR["default"]))
     return s
 

@@ -218,21 +218,21 @@
   },
   {
     "slide_id": "g05",
-    "layout": "exhibit_commentary_right",
+    "layout": "exhibit_takeaways_below",
     "zones": {
       "exhibit": {
         "role": "exhibit",
         "x": 0.55,
         "y": 1.62,
-        "w": 8.082,
-        "h": 5.16
+        "w": 12.233,
+        "h": 4.445
       },
       "commentary": {
         "role": "commentary",
-        "x": 8.852,
-        "y": 1.62,
-        "w": 3.931,
-        "h": 5.16
+        "x": 0.55,
+        "y": 6.285,
+        "w": 12.233,
+        "h": 0.495
       }
     },
     "fits": [
@@ -272,12 +272,23 @@
       {
         "zone": "commentary",
         "role": "body",
-        "what": "commentary",
+        "what": "takeaway column",
         "base_pt": 12.0,
         "chosen_pt": 12.0,
-        "need_h": 0.743,
-        "box_h": 5.16,
-        "lines": 3,
+        "need_h": 0.195,
+        "box_h": 0.345,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "commentary",
+        "role": "body",
+        "what": "takeaway column",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.195,
+        "box_h": 0.345,
+        "lines": 1,
         "overflow": false
       }
     ],
@@ -298,20 +309,20 @@
   },
   {
     "slide_id": "g06",
-    "layout": "framework_commentary",
+    "layout": "exhibit_commentary_left",
     "zones": {
-      "exhibit": {
-        "role": "exhibit",
-        "x": 0.55,
-        "y": 1.62,
-        "w": 8.082,
-        "h": 5.16
-      },
       "commentary": {
         "role": "commentary",
-        "x": 8.852,
+        "x": 0.55,
         "y": 1.62,
         "w": 3.931,
+        "h": 5.16
+      },
+      "exhibit": {
+        "role": "exhibit",
+        "x": 4.701,
+        "y": 1.62,
+        "w": 8.082,
         "h": 5.16
       }
     },
@@ -339,12 +350,23 @@
         "overflow": false
       },
       {
+        "zone": "commentary",
+        "role": "body",
+        "what": "commentary",
+        "base_pt": 14.0,
+        "chosen_pt": 14.0,
+        "need_h": 1.696,
+        "box_h": 5.16,
+        "lines": 6,
+        "overflow": false
+      },
+      {
         "zone": "exhibit",
         "role": "body",
         "what": "node Gap to peer median",
-        "base_pt": 12.0,
-        "chosen_pt": 12.0,
-        "need_h": 0.39,
+        "base_pt": 14.0,
+        "chosen_pt": 14.0,
+        "need_h": 0.455,
         "box_h": 0.631,
         "lines": 2,
         "overflow": false
@@ -353,9 +375,9 @@
         "zone": "exhibit",
         "role": "body",
         "what": "node Network",
-        "base_pt": 12.0,
-        "chosen_pt": 12.0,
-        "need_h": 0.39,
+        "base_pt": 14.0,
+        "chosen_pt": 14.0,
+        "need_h": 0.455,
         "box_h": 0.631,
         "lines": 2,
         "overflow": false
@@ -364,9 +386,9 @@
         "zone": "exhibit",
         "role": "body",
         "what": "node Too many depots",
-        "base_pt": 12.0,
-        "chosen_pt": 12.0,
-        "need_h": 0.39,
+        "base_pt": 14.0,
+        "chosen_pt": 14.0,
+        "need_h": 0.455,
         "box_h": 0.631,
         "lines": 2,
         "overflow": false
@@ -375,9 +397,9 @@
         "zone": "exhibit",
         "role": "body",
         "what": "node Low truck fill",
-        "base_pt": 12.0,
-        "chosen_pt": 12.0,
-        "need_h": 0.39,
+        "base_pt": 14.0,
+        "chosen_pt": 14.0,
+        "need_h": 0.455,
         "box_h": 0.631,
         "lines": 2,
         "overflow": false
@@ -386,9 +408,9 @@
         "zone": "exhibit",
         "role": "body",
         "what": "node Warehousing",
-        "base_pt": 12.0,
-        "chosen_pt": 12.0,
-        "need_h": 0.39,
+        "base_pt": 14.0,
+        "chosen_pt": 14.0,
+        "need_h": 0.455,
         "box_h": 0.631,
         "lines": 2,
         "overflow": false
@@ -397,9 +419,9 @@
         "zone": "exhibit",
         "role": "body",
         "what": "node Manual picking",
-        "base_pt": 12.0,
-        "chosen_pt": 12.0,
-        "need_h": 0.39,
+        "base_pt": 14.0,
+        "chosen_pt": 14.0,
+        "need_h": 0.455,
         "box_h": 0.631,
         "lines": 2,
         "overflow": false
@@ -408,9 +430,9 @@
         "zone": "exhibit",
         "role": "body",
         "what": "node Overtime",
-        "base_pt": 12.0,
-        "chosen_pt": 12.0,
-        "need_h": 0.39,
+        "base_pt": 14.0,
+        "chosen_pt": 14.0,
+        "need_h": 0.455,
         "box_h": 0.631,
         "lines": 2,
         "overflow": false
@@ -419,9 +441,9 @@
         "zone": "exhibit",
         "role": "body",
         "what": "node Customer terms",
-        "base_pt": 12.0,
-        "chosen_pt": 12.0,
-        "need_h": 0.39,
+        "base_pt": 14.0,
+        "chosen_pt": 14.0,
+        "need_h": 0.455,
         "box_h": 0.631,
         "lines": 2,
         "overflow": false
@@ -430,9 +452,9 @@
         "zone": "exhibit",
         "role": "body",
         "what": "node Small drops",
-        "base_pt": 12.0,
-        "chosen_pt": 12.0,
-        "need_h": 0.39,
+        "base_pt": 14.0,
+        "chosen_pt": 14.0,
+        "need_h": 0.455,
         "box_h": 0.631,
         "lines": 2,
         "overflow": false
@@ -441,22 +463,11 @@
         "zone": "exhibit",
         "role": "body",
         "what": "node Free returns",
-        "base_pt": 12.0,
-        "chosen_pt": 12.0,
-        "need_h": 0.39,
+        "base_pt": 14.0,
+        "chosen_pt": 14.0,
+        "need_h": 0.455,
         "box_h": 0.631,
         "lines": 2,
-        "overflow": false
-      },
-      {
-        "zone": "commentary",
-        "role": "body",
-        "what": "commentary",
-        "base_pt": 12.0,
-        "chosen_pt": 12.0,
-        "need_h": 1.486,
-        "box_h": 5.16,
-        "lines": 6,
         "overflow": false
       }
     ],
@@ -681,21 +692,21 @@
   },
   {
     "slide_id": "g09",
-    "layout": "map_commentary",
+    "layout": "exhibit_takeaways_below",
     "zones": {
       "exhibit": {
         "role": "exhibit",
         "x": 0.55,
         "y": 1.62,
-        "w": 8.082,
-        "h": 5.16
+        "w": 12.233,
+        "h": 4.445
       },
       "commentary": {
         "role": "commentary",
-        "x": 8.852,
-        "y": 1.62,
-        "w": 3.931,
-        "h": 5.16
+        "x": 0.55,
+        "y": 6.285,
+        "w": 12.233,
+        "h": 0.495
       }
     },
     "fits": [
@@ -735,12 +746,23 @@
       {
         "zone": "commentary",
         "role": "body",
-        "what": "commentary",
+        "what": "takeaway column",
         "base_pt": 12.0,
         "chosen_pt": 12.0,
-        "need_h": 0.954,
-        "box_h": 5.16,
-        "lines": 4,
+        "need_h": 0.195,
+        "box_h": 0.345,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "commentary",
+        "role": "body",
+        "what": "takeaway column",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.195,
+        "box_h": 0.345,
+        "lines": 1,
         "overflow": false
       }
     ],
@@ -835,21 +857,21 @@
   },
   {
     "slide_id": "g11",
-    "layout": "exhibit_takeaways_below",
+    "layout": "exhibit_commentary_left",
     "zones": {
-      "exhibit": {
-        "role": "exhibit",
-        "x": 0.55,
-        "y": 1.62,
-        "w": 12.233,
-        "h": 4.445
-      },
       "commentary": {
         "role": "commentary",
         "x": 0.55,
-        "y": 6.285,
-        "w": 12.233,
-        "h": 0.495
+        "y": 1.62,
+        "w": 3.931,
+        "h": 5.16
+      },
+      "exhibit": {
+        "role": "exhibit",
+        "x": 4.701,
+        "y": 1.62,
+        "w": 8.082,
+        "h": 5.16
       }
     },
     "fits": [
@@ -876,6 +898,17 @@
         "overflow": false
       },
       {
+        "zone": "commentary",
+        "role": "body",
+        "what": "commentary",
+        "base_pt": 14.0,
+        "chosen_pt": 14.0,
+        "need_h": 1.094,
+        "box_h": 5.16,
+        "lines": 4,
+        "overflow": false
+      },
+      {
         "zone": "exhibit",
         "role": "exhibit_unit",
         "what": "exhibit title",
@@ -883,28 +916,6 @@
         "chosen_pt": 11.0,
         "need_h": 0.179,
         "box_h": 0.3,
-        "lines": 1,
-        "overflow": false
-      },
-      {
-        "zone": "commentary",
-        "role": "body",
-        "what": "takeaway column",
-        "base_pt": 12.0,
-        "chosen_pt": 12.0,
-        "need_h": 0.195,
-        "box_h": 0.345,
-        "lines": 1,
-        "overflow": false
-      },
-      {
-        "zone": "commentary",
-        "role": "body",
-        "what": "takeaway column",
-        "base_pt": 12.0,
-        "chosen_pt": 12.0,
-        "need_h": 0.195,
-        "box_h": 0.345,
         "lines": 1,
         "overflow": false
       }
@@ -995,9 +1006,9 @@
         "zone": "exhibit",
         "role": "table",
         "what": "Initiative assessment",
-        "base_pt": 11.0,
-        "chosen_pt": 11.0,
-        "need_h": 2.444,
+        "base_pt": 13.0,
+        "chosen_pt": 13.0,
+        "need_h": 3.43,
         "box_h": 3.43,
         "lines": 5,
         "overflow": false
@@ -1021,7 +1032,7 @@
         "type": "harvey_table",
         "rows": 4,
         "cols": 6,
-        "font_pt": 11.0,
+        "font_pt": 13.0,
         "overflow": false
       }
     ]
@@ -2068,9 +2079,9 @@
         "zone": "exhibit",
         "role": "table",
         "what": "Initiative status, September 2026",
-        "base_pt": 11.0,
-        "chosen_pt": 11.0,
-        "need_h": 3.151,
+        "base_pt": 13.0,
+        "chosen_pt": 13.0,
+        "need_h": 4.7,
         "box_h": 4.7,
         "lines": 6,
         "overflow": false
@@ -2083,7 +2094,7 @@
         "type": "scorecard",
         "rows": 5,
         "cols": 6,
-        "font_pt": 11.0,
+        "font_pt": 13.0,
         "overflow": false
       }
     ]
@@ -2457,20 +2468,20 @@
   },
   {
     "slide_id": "g25",
-    "layout": "exhibit_commentary_right",
+    "layout": "exhibit_commentary_left",
     "zones": {
-      "exhibit": {
-        "role": "exhibit",
-        "x": 0.55,
-        "y": 1.62,
-        "w": 8.082,
-        "h": 5.16
-      },
       "commentary": {
         "role": "commentary",
-        "x": 8.852,
+        "x": 0.55,
         "y": 1.62,
         "w": 3.931,
+        "h": 5.16
+      },
+      "exhibit": {
+        "role": "exhibit",
+        "x": 4.701,
+        "y": 1.62,
+        "w": 8.082,
         "h": 5.16
       }
     },
@@ -2495,6 +2506,17 @@
         "need_h": 0.13,
         "box_h": 0.44,
         "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "commentary",
+        "role": "body",
+        "what": "commentary",
+        "base_pt": 14.0,
+        "chosen_pt": 14.0,
+        "need_h": 0.848,
+        "box_h": 5.16,
+        "lines": 3,
         "overflow": false
       },
       {
@@ -2550,17 +2572,6 @@
         "need_h": 0.179,
         "box_h": 0.42,
         "lines": 1,
-        "overflow": false
-      },
-      {
-        "zone": "commentary",
-        "role": "body",
-        "what": "commentary",
-        "base_pt": 12.0,
-        "chosen_pt": 12.0,
-        "need_h": 0.532,
-        "box_h": 5.16,
-        "lines": 2,
         "overflow": false
       }
     ],

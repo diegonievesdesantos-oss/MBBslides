@@ -145,7 +145,7 @@ def cmd_run(a):
     from .pipeline import run
     from .spec import load_spec
 
-    r = run(load_spec(a.spec), a.out, max_iter=a.max_iter, do_render=not a.no_render, dpi=a.dpi, name=a.name)
+    r = run(load_spec(a.spec), a.out, max_iter=a.max_iter, do_render=not a.no_render, dpi=a.dpi, name=a.name, compose=not a.no_compose)
     _p(f"\n{'PASSED' if r['passed'] else 'FAILED'} · score {r['deck_score']} · errors {r['counts']['error']} · warnings {r['counts']['warning']}")
     if r.get("pending_actions"):
         _p("Pending author actions:")
@@ -209,6 +209,23 @@ def cmd_brand(a):
     _p(f"report: {a.out}/compatibility.md")
 
 
+def cmd_measure(a):
+    """Composition metrics of an existing run directory (any engine version)."""
+    from .design.tokens import theme_for
+    from .qa.composition import measure_deck
+
+    d = Path(a.run_dir)
+    resolved = json.loads((d / "resolved.json").read_text())
+    manifests = json.loads((d / "build_manifest.json").read_text())
+    pngs = sorted(str(p) for p in (d / "renders").glob("slide-*.png"))
+    comps = measure_deck(str(d / f"{a.name}.pdf"), pngs, resolved, manifests, theme_for(resolved.get("meta", {})))
+    out = {"deck_score": round(sum(c.score for c in comps) / len(comps), 1) if comps else None, "slides": [c.to_dict() for c in comps]}
+    (d / "composition_measure.json").write_text(json.dumps(out, indent=2))
+    for c in comps:
+        _p(f"{c.slide_id:8} {c.score:5.1f} {', '.join(c.flags)}")
+    _p(f"deck composition {out['deck_score']}")
+
+
 def cmd_catalog(a):
     from .layout.engine import catalog_markdown
 
@@ -236,12 +253,13 @@ def main(argv=None) -> int:
     s = sub.add_parser("build"); s.add_argument("spec"); s.add_argument("-o", "--out", default="out/deck.pptx"); s.set_defaults(f=cmd_build)
     s = sub.add_parser("render"); s.add_argument("pptx"); s.add_argument("-o", "--out"); s.add_argument("--dpi", type=int, default=110); s.set_defaults(f=cmd_render)
     s = sub.add_parser("qa"); s.add_argument("pptx"); s.add_argument("--manifest"); s.add_argument("--theme", default="meridian"); s.add_argument("--profile", default="standard"); s.add_argument("-o", "--out"); s.add_argument("--no-render", action="store_true"); s.add_argument("--dpi", type=int, default=110); s.set_defaults(f=cmd_qa)
-    s = sub.add_parser("run"); s.add_argument("spec"); s.add_argument("-o", "--out", default="out"); s.add_argument("--max-iter", type=int, default=3); s.add_argument("--no-render", action="store_true"); s.add_argument("--dpi", type=int, default=110); s.add_argument("--name", default="deck"); s.set_defaults(f=cmd_run)
+    s = sub.add_parser("run"); s.add_argument("spec"); s.add_argument("-o", "--out", default="out"); s.add_argument("--max-iter", type=int, default=3); s.add_argument("--no-render", action="store_true"); s.add_argument("--dpi", type=int, default=110); s.add_argument("--name", default="deck"); s.add_argument("--no-compose", action="store_true", help="skip the composition engine"); s.set_defaults(f=cmd_run)
     s = sub.add_parser("patch"); s.add_argument("spec"); s.add_argument("patches"); s.add_argument("-o", "--out"); s.set_defaults(f=cmd_patch)
     s = sub.add_parser("review"); s.add_argument("review"); s.set_defaults(f=cmd_review)
     s = sub.add_parser("eval"); s.add_argument("cases", nargs="?", default="evals/cases"); s.add_argument("-o", "--out", default="out/evals"); s.add_argument("--baseline", default="evals/baseline.json"); s.add_argument("--update-baseline", action="store_true"); s.add_argument("--no-compose", action="store_true"); s.add_argument("--tolerance", type=float, default=2.0); s.set_defaults(f=cmd_eval)
     s = sub.add_parser("brand"); bs = s.add_subparsers(dest="brand_cmd", required=True)
     s2 = bs.add_parser("ingest"); s2.add_argument("template"); s2.add_argument("-o", "--out", required=True); s2.add_argument("--name"); s2.add_argument("--base-theme", default="meridian"); s2.set_defaults(f=cmd_brand)
+    s = sub.add_parser("measure"); s.add_argument("run_dir"); s.add_argument("--name", default="deck"); s.set_defaults(f=cmd_measure)
     s = sub.add_parser("catalog"); s.add_argument("-o", "--out"); s.set_defaults(f=cmd_catalog)
     s = sub.add_parser("themes"); s.set_defaults(f=cmd_themes)
     a = ap.parse_args(argv)

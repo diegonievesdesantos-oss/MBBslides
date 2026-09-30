@@ -71,7 +71,8 @@
               "text": "Three waves over 24 months; the board is asked to approve the banner pilot and the €85M programme budget."
             }
           ]
-        }
+        },
+        "_headline": "Alvora can restore EBITDA to €1,067M by 2028 if it repositions towards discount now"
       },
       "source": "Alvora management accounts; market model (illustrative)",
       "_plan": {
@@ -200,7 +201,8 @@
         "highlight": [
           "Discount",
           "Online"
-        ]
+        ],
+        "_headline": "Discount and online captured 75% of Iberian grocery growth since 2021"
       },
       "commentary": {
         "title": "What moves the market",
@@ -213,6 +215,8 @@
         ]
       },
       "source": "National statistics; retailer reports; team market model (illustrative)",
+      "layout": "exhibit_commentary_right",
+      "_composed": true,
       "kind": "content",
       "_plan": {
         "visuals": [
@@ -223,12 +227,7 @@
         ],
         "layout": {
           "id": "exhibit_commentary_right",
-          "why": "commentary (112 words/5 bullets) exceeds capacity {'bullets': 5, 'words': 80}",
-          "score": 25.0,
-          "alternatives": [
-            "exhibit_takeaways_below",
-            "exhibit_commentary_left"
-          ]
+          "why": "explicit in spec"
         },
         "fit": {
           "commentary": {
@@ -343,9 +342,12 @@
         "line_format": {
           "decimals": 1,
           "suffix": "%"
-        }
+        },
+        "_headline": "Alvora's growth slowed to 3.0% in 2025, below the market (4.1%) for the second year"
       },
       "source": "Alvora management accounts; market model (illustrative)",
+      "layout": "kpi_strip_exhibit",
+      "_composed": true,
       "kind": "content",
       "_plan": {
         "visuals": [
@@ -356,11 +358,7 @@
         ],
         "layout": {
           "id": "kpi_strip_exhibit",
-          "why": "best available fit",
-          "score": 50.0,
-          "alternatives": [
-            "kpi_strip_exhibit_commentary"
-          ]
+          "why": "explicit in spec"
         },
         "fit": {
           "words": 15
@@ -462,7 +460,8 @@
         },
         "format": {
           "decimals": 0
-        }
+        },
+        "_headline": "Alvora holds 14% of supermarkets but only 5% of discount, the segment driving growth"
       },
       "commentary": {
         "points": [
@@ -472,6 +471,8 @@
         ]
       },
       "source": "Retailer reports; consumer panel; team estimates (illustrative)",
+      "layout": "exhibit_takeaways_below",
+      "_composed": true,
       "kind": "content",
       "_plan": {
         "visuals": [
@@ -482,13 +483,7 @@
         ],
         "layout": {
           "id": "exhibit_takeaways_below",
-          "why": "exhibit needs the full width",
-          "score": 70.0,
-          "alternatives": [
-            "segmentation_commentary",
-            "exhibit_commentary_right",
-            "exhibit_commentary_left"
-          ]
+          "why": "explicit in spec"
         },
         "fit": {
           "commentary": {
@@ -566,7 +561,8 @@
             }
           ]
         },
-        "delta_colors": "neutral"
+        "delta_colors": "neutral",
+        "_headline": "Margin erosion in grocery and convenience (€119M) pushed EBITDA down to €857M"
       },
       "commentary": {
         "title": "Two categories explain the decline",
@@ -577,6 +573,8 @@
         ]
       },
       "source": "Alvora management accounts (illustrative)",
+      "layout": "waterfall_drivers",
+      "_composed": true,
       "kind": "content",
       "_plan": {
         "visuals": [
@@ -587,13 +585,7 @@
         ],
         "layout": {
           "id": "waterfall_drivers",
-          "why": "family 09_waterfall matches waterfall",
-          "score": 75.0,
-          "alternatives": [
-            "exhibit_commentary_right",
-            "exhibit_commentary_left",
-            "exhibit_takeaways_below"
-          ]
+          "why": "explicit in spec"
         },
         "fit": {
           "commentary": {
@@ -747,10 +739,13 @@
             -3.5,
             3.5
           ]
-        }
+        },
+        "_headline": "Gross margin change by category and region"
       },
       "takeaway": "Fixing fresh and food-to-go in two regions addresses about two thirds of the margin gap",
       "source": "Alvora category P&L (illustrative)",
+      "layout": "table_full",
+      "_composed": true,
       "kind": "content",
       "_plan": {
         "visuals": [
@@ -761,13 +756,7 @@
         ],
         "layout": {
           "id": "table_full",
-          "why": "family 10_table matches heatmap; exhibit needs the full width",
-          "score": 85.0,
-          "alternatives": [
-            "exhibit_full",
-            "comparison_table",
-            "segmentation_full"
-          ]
+          "why": "explicit in spec"
         },
         "fit": {
           "words": 22
@@ -836,7 +825,8 @@
               "size": 6.0
             }
           ]
-        }
+        },
+        "_headline": "Alvora is stuck in the middle: priced above discounters without a clear experience edge"
       },
       "commentary": {
         "points": [
@@ -846,6 +836,8 @@
         ]
       },
       "source": "Customer survey 2025, n=4,000 (illustrative)",
+      "layout": "exhibit_takeaways_below",
+      "_composed": true,
       "kind": "content",
       "_plan": {
         "visuals": [
@@ -855,22 +847,13 @@
           }
         ],
         "layout": {
-          "id": "matrix_commentary",
-          "why": "family 06_matrix matches portfolio",
-          "score": 75.0,
-          "alternatives": [
-            "exhibit_commentary_right",
-            "exhibit_takeaways_below",
-            "exhibit_commentary_left"
-          ]
+          "id": "exhibit_takeaways_below",
+          "why": "explicit in spec"
         },
         "fit": {
           "commentary": {
             "fits_base": true,
             "fits_floor": true,
-            "need_base": 1.28,
-            "need_floor": 0.99,
-            "avail": 5.16,
             "excess_words": 0
           },
           "words": 48
@@ -956,7 +939,8 @@
               "label": "Transformation office"
             }
           ]
-        }
+        },
+        "_headline": "The target model adds a discount banner and central pricing to fund the growth moves"
       },
       "commentary": {
         "points": [
@@ -966,6 +950,8 @@
         ]
       },
       "source": "Team analysis (illustrative)",
+      "layout": "exhibit_takeaways_below",
+      "_composed": true,
       "kind": "content",
       "_plan": {
         "visuals": [
@@ -976,13 +962,7 @@
         ],
         "layout": {
           "id": "exhibit_takeaways_below",
-          "why": "exhibit needs the full width",
-          "score": 70.0,
-          "alternatives": [
-            "architecture_commentary",
-            "exhibit_commentary_right",
-            "exhibit_commentary_left"
-          ]
+          "why": "explicit in spec"
         },
         "fit": {
           "commentary": {
@@ -1112,9 +1092,12 @@
               ]
             }
           ]
-        }
+        },
+        "_headline": "A plan in three waves over 24 months secures quick margin wins in pricing, fresh and costs before we scale the discount banner, the private label range and the online fulfilment hubs"
       },
       "source": "Programme plan (illustrative)",
+      "layout": "roadmap_full",
+      "_composed": true,
       "kind": "content",
       "_plan": {
         "visuals": [
@@ -1125,12 +1108,7 @@
         ],
         "layout": {
           "id": "roadmap_full",
-          "why": "family 15_roadmap matches gantt; exhibit needs the full width",
-          "score": 85.0,
-          "alternatives": [
-            "exhibit_full",
-            "timeline_full"
-          ]
+          "why": "explicit in spec"
         },
         "fit": {
           "words": 32
@@ -1198,10 +1176,13 @@
               "type": "total"
             }
           ]
-        }
+        },
+        "_headline": "Five initiatives adding €250M lift EBITDA to €1,067M by 2028, net of €40M market headwinds"
       },
       "takeaway": "Cost and pricing levers deliver €130M of the uplift and are largely within management control",
       "source": "Initiative business cases (illustrative)",
+      "layout": "waterfall_full",
+      "_composed": true,
       "kind": "content",
       "_plan": {
         "visuals": [
@@ -1212,11 +1193,7 @@
         ],
         "layout": {
           "id": "waterfall_full",
-          "why": "family 09_waterfall matches waterfall",
-          "score": 70.0,
-          "alternatives": [
-            "exhibit_full"
-          ]
+          "why": "explicit in spec"
         },
         "fit": {
           "words": 30
@@ -1281,13 +1258,20 @@
             135,
             "G"
           ]
-        ]
+        ],
+        "_headline": "The board is asked to approve three decisions to start Wave 1 in January"
       },
       "commentary": {
         "points": [
           "Wave 1 is self-funding by Q4 2026",
           "The go / no-go on the banner comes back to the board in Q2 2027"
         ]
+      },
+      "layout": "exhibit_takeaways_below",
+      "_composed": true,
+      "_compose": {
+        "scale": 1.2,
+        "table_stretch": 0.6
       },
       "kind": "content",
       "_plan": {
@@ -1298,22 +1282,13 @@
           }
         ],
         "layout": {
-          "id": "table_commentary",
-          "why": "family 10_table matches table",
-          "score": 75.0,
-          "alternatives": [
-            "exhibit_commentary_right",
-            "exhibit_takeaways_below",
-            "segmentation_commentary"
-          ]
+          "id": "exhibit_takeaways_below",
+          "why": "explicit in spec"
         },
         "fit": {
           "commentary": {
             "fits_base": true,
             "fits_floor": true,
-            "need_base": 0.74,
-            "need_floor": 0.69,
-            "avail": 5.16,
             "excess_words": 0
           },
           "words": 35

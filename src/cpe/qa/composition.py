@@ -10,8 +10,9 @@ All scores are in [0, 1] (1 = good); the composite is 0–100.
   balance           how close the visual centre of mass is to the body centre
                     (horizontal weighted more than vertical: top-heavy is normal).
   density           ink coverage inside a comfortable band (not empty, not a wall).
-  emphasis          share of the ink in the focus colours (primary / highlight):
-                    nothing stands out (too low) vs everything shouts (too high).
+  emphasis          focal-point strength: some ink is in the focus colours
+                    (primary / highlight) AND it forms few regions — one clear
+                    focal point, not many things shouting.
   evidence          the headline's numbers and highlighted items are visible in
                     the exhibit (the proof is on the slide, not only in the title).
   hierarchy         headline clearly dominates the body type; few body sizes.
@@ -76,6 +77,7 @@ def _ink_grid(png_path: str, band: Box, focus_rgbs: list[tuple[int, int, int]]):
     nx, ny = max(1, round(band.w / CELL)), max(1, round(band.h / CELL))
     px = crop.load()
     grid = [[0] * nx for _ in range(ny)]
+    egrid = [[0] * nx for _ in range(ny)]
     ink = focus = total = dark = 0
     wx = wy = wsum = 0.0
     step = 2
@@ -83,7 +85,7 @@ def _ink_grid(png_path: str, band: Box, focus_rgbs: list[tuple[int, int, int]]):
         y0, y1 = int(j * ch / ny), int((j + 1) * ch / ny)
         for i in range(nx):
             x0, x1 = int(i * cw / nx), int((i + 1) * cw / nx)
-            c_ink = n = 0
+            c_ink = n = c_focus = 0
             for y in range(y0, y1, step):
                 for x in range(x0, x1, step):
                     r, g, b = px[x, y]
@@ -94,8 +96,11 @@ def _ink_grid(png_path: str, band: Box, focus_rgbs: list[tuple[int, int, int]]):
                             dark += 1
                         if any(abs(r - fr) + abs(g - fg) + abs(b - fb) < 60 for fr, fg, fb in focus_rgbs):
                             focus += 1
+                            c_focus += 1
             total += n
             ink += c_ink
+            if n and c_focus / n > 0.55:  # solid focus-coloured mass (fills, hero numbers), not text strokes
+                egrid[j][i] = 1
             if n and c_ink / n > 0.02:
                 grid[j][i] = 1
                 w = c_ink / n
@@ -103,7 +108,31 @@ def _ink_grid(png_path: str, band: Box, focus_rgbs: list[tuple[int, int, int]]):
                 wy += (j + 0.5) / ny * w
                 wsum += w
     com = (wx / wsum, wy / wsum) if wsum else (0.5, 0.5)
-    return grid, dark / max(1, total), focus / max(1, ink), com
+    return grid, dark / max(1, total), focus / max(1, ink), com, _components(egrid)
+
+
+def _components(g) -> int:
+    """Connected regions (8-neighbourhood) of focus-coloured cells; tiny specks ignored."""
+    ny, nx = len(g), len(g[0]) if g else 0
+    seen = [[False] * nx for _ in range(ny)]
+    count = 0
+    for j in range(ny):
+        for i in range(nx):
+            if g[j][i] and not seen[j][i]:
+                size, stack = 0, [(j, i)]
+                seen[j][i] = True
+                while stack:
+                    y, x = stack.pop()
+                    size += 1
+                    for dy in (-1, 0, 1):
+                        for dx in (-1, 0, 1):
+                            yy, xx = y + dy, x + dx
+                            if 0 <= yy < ny and 0 <= xx < nx and g[yy][xx] and not seen[yy][xx]:
+                                seen[yy][xx] = True
+                                stack.append((yy, xx))
+                if size >= 3:
+                    count += 1
+    return count
 
 
 def _largest_empty_rect(grid) -> int:
@@ -149,7 +178,7 @@ def measure(png_path: str, spans: list[dict], slide: dict, manifest: dict, theme
     sid = manifest.get("slide_id") or slide.get("id", "?")
     band = Box(GRID.margin_l, GRID.body_y, GRID.content_w, GRID.body_bottom - GRID.body_y)
     focus_cols = [hex_to_rgb(theme.c("primary")), hex_to_rgb(theme.c("highlight"))]
-    grid, coverage, emph_share, (cx, cy) = _ink_grid(png_path, band, focus_cols)
+    grid, coverage, emph_share, (cx, cy), regions = _ink_grid(png_path, band, focus_cols)
     ny, nx = len(grid), len(grid[0])
     sc = SlideComposition(sid)
     # dead space
@@ -168,8 +197,12 @@ def measure(png_path: str, spans: list[dict], slide: dict, manifest: dict, theme
     sc.raw["ink_coverage"] = round(coverage, 3)
     sc.metrics["density"] = _band(0.06, 0.30, coverage, 0.12)
     # emphasis
+    # focal-point strength: something must stand out (share) and it must be ONE thing, not many (regions)
     sc.raw["emphasis_share"] = round(emph_share, 3)
-    sc.metrics["emphasis"] = _band(0.08, 0.55, emph_share, 0.12)
+    sc.raw["focus_regions"] = regions
+    presence = _band(0.05, 1.0, emph_share, 0.05)
+    singularity = 1.0 if regions <= 3 else max(0.0, 1 - (regions - 3) * 0.12) if emph_share > 0.35 else max(0.3, 1 - (regions - 3) * 0.05)
+    sc.metrics["emphasis"] = presence * singularity
     # evidence: headline numbers / highlighted labels visible in the body
     head = slide.get("headline") or ""
     body_text = " ".join(s["text"] for s in spans if s["box"].y >= GRID.body_y - 0.05)
@@ -221,7 +254,7 @@ def measure(png_path: str, spans: list[dict], slide: dict, manifest: dict, theme
         "utilization": "UNDERUSED_CANVAS",
         "balance": "OFF_BALANCE",
         "density": "SPARSE" if coverage < 0.06 else "OVERDENSE",
-        "emphasis": "NO_FOCAL_POINT" if emph_share < 0.08 else "NOISY_EMPHASIS",
+        "emphasis": "NO_FOCAL_POINT" if emph_share < 0.05 else "NOISY_EMPHASIS",
         "evidence": "PROOF_NOT_VISIBLE",
         "hierarchy": "WEAK_HIERARCHY",
         "alignment": "RAGGED_ALIGNMENT",
@@ -230,6 +263,26 @@ def measure(png_path: str, spans: list[dict], slide: dict, manifest: dict, theme
         if sc.metrics[k] < t:
             sc.flags.append(names[k])
     return sc
+
+
+REMEDIES = {
+    "DEAD_SPACE": "Even the best composition leaves a large empty area: the content is too thin for a full slide — add the proof (numbers, comparison) or merge it into a neighbouring slide.",
+    "UNDERUSED_CANVAS": "The exhibit uses little of the slide: give it more data/proof or merge the slide.",
+    "PROOF_NOT_VISIBLE": "The headline's number or highlighted item is not visible in the exhibit: label it or highlight it.",
+    "NO_FOCAL_POINT": "Nothing stands out: highlight the one element that proves the headline.",
+    "NOISY_EMPHASIS": "Too much in the focus colour: keep one highlight and grey the context.",
+    "OVERDENSE": "Very dense slide: cut or split.",
+}
+
+
+def issues_from(comps: list["SlideComposition"]) -> list[dict]:
+    """Composition flags the engine could not fix → warnings with a remedy for the author."""
+    out = []
+    for c in comps:
+        for f in c.flags:
+            if f in REMEDIES:
+                out.append({"level": "warning", "code": f"COMPOSITION_{f}", "message": f"{REMEDIES[f]} (composition score {c.score:.0f})", "slide": c.slide_id})
+    return out
 
 
 def spans_with_line_starts(page) -> list[dict]:

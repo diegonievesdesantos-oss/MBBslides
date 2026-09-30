@@ -36,6 +36,13 @@ def run(spec: dict, out_dir: str | Path, max_iter: int = 3, do_render: bool = Tr
     tried: dict = {}
     current = spec
     applied_any = False
+    decisions: dict = {}
+    if compose and do_render:
+        from .compose import compose as run_compose
+        from .compose import summarize as compose_summary
+
+        current, decisions = run_compose(spec, out / "compose", verbose=verbose)
+        (out / "composition.md").write_text(compose_summary(decisions))
     final = None
     for it in range(1, max_iter + 1):
         t0 = time.time()
@@ -58,6 +65,7 @@ def run(spec: dict, out_dir: str | Path, max_iter: int = 3, do_render: bool = Tr
                 # the render is the ground truth for line breaks: drop the model-based duplicates
                 issues = [i for i in issues if i["code"] not in ("HEADLINE_WIDOW", "HEADLINE_LINES")] + r_issues
                 comp = composition.measure_deck(render_info["pdf"], render_info["pngs"], resolved, manifests, theme)
+                issues += composition.issues_from(comp)
             except renderer.RenderError as e:
                 issues.append({"level": "warning", "code": "RENDER_UNAVAILABLE", "message": str(e)})
         issues, exempted = rep.apply_exemptions(issues, current)
@@ -78,11 +86,11 @@ def run(spec: dict, out_dir: str | Path, max_iter: int = 3, do_render: bool = Tr
     comp_d = [c.to_dict() for c in comp]
     report = rep.summarize(issues, [s.get("id") for s in resolved["slides"]], exempted, metrics, history,
                            {"pending_actions": pending, "artifacts": {"pptx": str(out / f"{name}.pptx"), **render_info},
-                            "composition": {"deck_score": round(sum(c["score"] for c in comp_d) / len(comp_d), 1) if comp_d else None, "slides": comp_d}})
+                            "composition": {"deck_score": round(sum(c["score"] for c in comp_d) / len(comp_d), 1) if comp_d else None, "slides": comp_d, "decisions": decisions}})
     rep.write(report, out)
     (out / "ghost_deck.md").write_text(ghost_deck(current))
     if render_info.get("pngs"):
         rep.review_packet(resolved, report, render_info["pngs"], out)
-    if applied_any:
+    if applied_any or decisions:
         save_spec(current, out / f"{name}.autofixed.json")
     return report

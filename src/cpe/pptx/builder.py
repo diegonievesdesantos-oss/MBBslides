@@ -134,7 +134,9 @@ def build(resolved: dict, out_path: str | Path) -> list[dict]:
         kind = s.get("kind", "content")
         lay_id = (s.get("_plan") or {}).get("layout", {}).get("id", kind) if s.get("_plan") and s["_plan"].get("layout") else kind
         m = Manifest(slide_id=s.get("id", ""), layout=lay_id)
-        p = Painter(slide, theme, profile, m)
+        comp = s.get("_compose") or {}
+        prof = {**profile, **({"body_scale": comp["scale"]} if comp.get("scale") else {}), **({"table_stretch": comp["table_stretch"]} if comp.get("table_stretch") else {})}
+        p = Painter(slide, theme, prof, m)
         if kind == "cover":
             tc.cover(p, s, meta)
         elif kind in ("divider", "appendix_divider"):

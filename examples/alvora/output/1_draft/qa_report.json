@@ -134,7 +134,7 @@
       "ink_coverage": 0.274
     },
     "s04": {
-      "ink_coverage": 0.171
+      "ink_coverage": 0.128
     },
     "s05": {
       "ink_coverage": 0.466
@@ -158,7 +158,7 @@
       "ink_coverage": 0.111
     },
     "s12": {
-      "ink_coverage": 0.027
+      "ink_coverage": 0.048
     }
   },
   "iterations": [
@@ -170,7 +170,7 @@
       "patches": [
         "VIS_TIME_VERTICAL"
       ],
-      "seconds": 3.5
+      "seconds": 4.8
     },
     {
       "iteration": 2,
@@ -178,7 +178,7 @@
       "warnings": 3,
       "score": 90.4,
       "patches": [],
-      "seconds": 3.4
+      "seconds": 4.6
     }
   ],
   "pending_actions": [
@@ -215,7 +215,7 @@
   ],
   "artifacts": {
     "pptx": "examples/alvora/output/1_draft/deck.pptx",
-    "pdf": "/home/user/Finea/consulting-presentation-engine/examples/alvora/output/1_draft/deck.pdf",
+    "pdf": "/home/user/mbbslides/examples/alvora/output/1_draft/deck.pdf",
     "pngs": [
       "examples/alvora/output/1_draft/renders/slide-01.png",
       "examples/alvora/output/1_draft/renders/slide-02.png",
@@ -231,5 +231,1058 @@
       "examples/alvora/output/1_draft/renders/slide-12.png"
     ],
     "contact_sheet": "examples/alvora/output/1_draft/contact_sheet.png"
+  },
+  "composition": {
+    "deck_score": 94.3,
+    "slides": [
+      {
+        "slide_id": "s02",
+        "score": 97.9,
+        "metrics": {
+          "dead_space": 1.0,
+          "utilization": 1.0,
+          "balance": 0.952,
+          "density": 0.889,
+          "emphasis": 1.0,
+          "evidence": 1.0,
+          "hierarchy": 0.951,
+          "alignment": 1.0
+        },
+        "raw": {
+          "largest_empty_share": 0.156,
+          "utilization": 0.865,
+          "center_of_mass": [
+            0.401,
+            0.442
+          ],
+          "ink_coverage": 0.047,
+          "emphasis_share": 0.402,
+          "focus_regions": 0,
+          "proof_checks": "0/1",
+          "headline_body_ratio": 1.57,
+          "body_font_sizes": [
+            12,
+            14,
+            18
+          ],
+          "left_edges": 3
+        },
+        "flags": []
+      },
+      {
+        "slide_id": "s03",
+        "score": 90.0,
+        "metrics": {
+          "dead_space": 1.0,
+          "utilization": 1.0,
+          "balance": 0.883,
+          "density": 1.0,
+          "emphasis": 0.65,
+          "evidence": 0.667,
+          "hierarchy": 1.0,
+          "alignment": 1.0
+        },
+        "raw": {
+          "largest_empty_share": 0.08,
+          "utilization": 1.0,
+          "center_of_mass": [
+            0.381,
+            0.594
+          ],
+          "ink_coverage": 0.139,
+          "emphasis_share": 0.317,
+          "focus_regions": 10,
+          "proof_checks": "2/3",
+          "headline_body_ratio": 1.83,
+          "body_font_sizes": [
+            10,
+            11,
+            12
+          ],
+          "left_edges": 2
+        },
+        "flags": []
+      },
+      {
+        "slide_id": "s04",
+        "score": 97.2,
+        "metrics": {
+          "dead_space": 1.0,
+          "utilization": 1.0,
+          "balance": 0.715,
+          "density": 1.0,
+          "emphasis": 1.0,
+          "evidence": 1.0,
+          "hierarchy": 1.0,
+          "alignment": 1.0
+        },
+        "raw": {
+          "largest_empty_share": 0.127,
+          "utilization": 0.91,
+          "center_of_mass": [
+            0.462,
+            0.709
+          ],
+          "ink_coverage": 0.12,
+          "emphasis_share": 0.288,
+          "focus_regions": 1,
+          "proof_checks": "2/2",
+          "headline_body_ratio": 2.0,
+          "body_font_sizes": [
+            10,
+            11,
+            30
+          ],
+          "left_edges": 4
+        },
+        "flags": []
+      },
+      {
+        "slide_id": "s05",
+        "score": 99.1,
+        "metrics": {
+          "dead_space": 1.0,
+          "utilization": 1.0,
+          "balance": 0.963,
+          "density": 1.0,
+          "emphasis": 0.95,
+          "evidence": 1.0,
+          "hierarchy": 1.0,
+          "alignment": 1.0
+        },
+        "raw": {
+          "largest_empty_share": 0.115,
+          "utilization": 0.981,
+          "center_of_mass": [
+            0.413,
+            0.437
+          ],
+          "ink_coverage": 0.061,
+          "emphasis_share": 0.095,
+          "focus_regions": 4,
+          "proof_checks": "3/3",
+          "headline_body_ratio": 1.83,
+          "body_font_sizes": [
+            10,
+            11,
+            12
+          ],
+          "left_edges": 3
+        },
+        "flags": []
+      },
+      {
+        "slide_id": "s06",
+        "score": 89.9,
+        "metrics": {
+          "dead_space": 0.917,
+          "utilization": 1.0,
+          "balance": 0.911,
+          "density": 1.0,
+          "emphasis": 0.64,
+          "evidence": 0.75,
+          "hierarchy": 1.0,
+          "alignment": 1.0
+        },
+        "raw": {
+          "largest_empty_share": 0.213,
+          "utilization": 0.992,
+          "center_of_mass": [
+            0.365,
+            0.538
+          ],
+          "ink_coverage": 0.084,
+          "emphasis_share": 0.595,
+          "focus_regions": 6,
+          "proof_checks": "3/4",
+          "headline_body_ratio": 1.83,
+          "body_font_sizes": [
+            10,
+            11,
+            12
+          ],
+          "left_edges": 2
+        },
+        "flags": []
+      },
+      {
+        "slide_id": "s07",
+        "score": 93.8,
+        "metrics": {
+          "dead_space": 1.0,
+          "utilization": 1.0,
+          "balance": 0.972,
+          "density": 1.0,
+          "emphasis": 0.726,
+          "evidence": 0.8,
+          "hierarchy": 1.0,
+          "alignment": 1.0
+        },
+        "raw": {
+          "largest_empty_share": 0.134,
+          "utilization": 1.0,
+          "center_of_mass": [
+            0.575,
+            0.372
+          ],
+          "ink_coverage": 0.098,
+          "emphasis_share": 0.036,
+          "focus_regions": 0,
+          "proof_checks": "0/0",
+          "headline_body_ratio": 1.69,
+          "body_font_sizes": [
+            11,
+            13
+          ],
+          "left_edges": 1
+        },
+        "flags": []
+      },
+      {
+        "slide_id": "s08",
+        "score": 95.0,
+        "metrics": {
+          "dead_space": 1.0,
+          "utilization": 1.0,
+          "balance": 0.972,
+          "density": 0.764,
+          "emphasis": 0.76,
+          "evidence": 1.0,
+          "hierarchy": 1.0,
+          "alignment": 1.0
+        },
+        "raw": {
+          "largest_empty_share": 0.103,
+          "utilization": 0.981,
+          "center_of_mass": [
+            0.476,
+            0.582
+          ],
+          "ink_coverage": 0.032,
+          "emphasis_share": 0.353,
+          "focus_regions": 5,
+          "proof_checks": "1/1",
+          "headline_body_ratio": 1.83,
+          "body_font_sizes": [
+            10,
+            11,
+            12
+          ],
+          "left_edges": 3
+        },
+        "flags": []
+      },
+      {
+        "slide_id": "s09",
+        "score": 93.1,
+        "metrics": {
+          "dead_space": 1.0,
+          "utilization": 1.0,
+          "balance": 0.627,
+          "density": 1.0,
+          "emphasis": 1.0,
+          "evidence": 0.8,
+          "hierarchy": 1.0,
+          "alignment": 1.0
+        },
+        "raw": {
+          "largest_empty_share": 0.058,
+          "utilization": 0.981,
+          "center_of_mass": [
+            0.224,
+            0.391
+          ],
+          "ink_coverage": 0.212,
+          "emphasis_share": 0.377,
+          "focus_regions": 2,
+          "proof_checks": "0/0",
+          "headline_body_ratio": 1.83,
+          "body_font_sizes": [
+            12
+          ],
+          "left_edges": 3
+        },
+        "flags": []
+      },
+      {
+        "slide_id": "s10",
+        "score": 95.6,
+        "metrics": {
+          "dead_space": 1.0,
+          "utilization": 1.0,
+          "balance": 0.928,
+          "density": 1.0,
+          "emphasis": 0.95,
+          "evidence": 0.8,
+          "hierarchy": 1.0,
+          "alignment": 1.0
+        },
+        "raw": {
+          "largest_empty_share": 0.106,
+          "utilization": 0.904,
+          "center_of_mass": [
+            0.622,
+            0.412
+          ],
+          "ink_coverage": 0.216,
+          "emphasis_share": 0.231,
+          "focus_regions": 4,
+          "proof_checks": "0/0",
+          "headline_body_ratio": 1.74,
+          "body_font_sizes": [
+            9,
+            10,
+            12
+          ],
+          "left_edges": 0
+        },
+        "flags": []
+      },
+      {
+        "slide_id": "s11",
+        "score": 92.6,
+        "metrics": {
+          "dead_space": 0.963,
+          "utilization": 1.0,
+          "balance": 0.984,
+          "density": 1.0,
+          "emphasis": 0.88,
+          "evidence": 0.667,
+          "hierarchy": 1.0,
+          "alignment": 1.0
+        },
+        "raw": {
+          "largest_empty_share": 0.195,
+          "utilization": 1.0,
+          "center_of_mass": [
+            0.557,
+            0.566
+          ],
+          "ink_coverage": 0.102,
+          "emphasis_share": 0.549,
+          "focus_regions": 4,
+          "proof_checks": "2/3",
+          "headline_body_ratio": 1.69,
+          "body_font_sizes": [
+            10,
+            11,
+            13
+          ],
+          "left_edges": 1
+        },
+        "flags": []
+      },
+      {
+        "slide_id": "s12",
+        "score": 92.9,
+        "metrics": {
+          "dead_space": 1.0,
+          "utilization": 1.0,
+          "balance": 0.987,
+          "density": 0.768,
+          "emphasis": 1.0,
+          "evidence": 0.8,
+          "hierarchy": 0.859,
+          "alignment": 1.0
+        },
+        "raw": {
+          "largest_empty_share": 0.135,
+          "utilization": 0.981,
+          "center_of_mass": [
+            0.448,
+            0.554
+          ],
+          "ink_coverage": 0.032,
+          "emphasis_share": 0.327,
+          "focus_regions": 0,
+          "proof_checks": "0/0",
+          "headline_body_ratio": 1.52,
+          "body_font_sizes": [
+            11,
+            13,
+            15
+          ],
+          "left_edges": 2
+        },
+        "flags": []
+      }
+    ],
+    "decisions": {
+      "s03": {
+        "chosen": {
+          "layout": "exhibit_commentary_right",
+          "variant": {},
+          "score": 90.3
+        },
+        "default_score": 90.3,
+        "candidates": [
+          {
+            "k": 0,
+            "layout": "exhibit_commentary_right",
+            "variant": {},
+            "default": true,
+            "score": 90.3,
+            "flags": [],
+            "errors": 0,
+            "verdict": "chosen",
+            "adjusted": 90.3
+          },
+          {
+            "k": 1,
+            "layout": "exhibit_takeaways_below",
+            "variant": {},
+            "default": false,
+            "score": 90.4,
+            "flags": [],
+            "errors": 0,
+            "verdict": "ok",
+            "adjusted": 90.4
+          },
+          {
+            "k": 2,
+            "layout": "exhibit_commentary_left",
+            "variant": {},
+            "default": false,
+            "score": 91.2,
+            "flags": [],
+            "errors": 0,
+            "verdict": "ok",
+            "adjusted": 91.2
+          }
+        ]
+      },
+      "s04": {
+        "chosen": {
+          "layout": "kpi_strip_exhibit",
+          "variant": {},
+          "score": 97.4
+        },
+        "default_score": 97.4,
+        "candidates": [
+          {
+            "k": 0,
+            "layout": "kpi_strip_exhibit",
+            "variant": {},
+            "default": true,
+            "score": 97.4,
+            "flags": [],
+            "errors": 0,
+            "verdict": "chosen",
+            "adjusted": 97.4
+          },
+          {
+            "k": 1,
+            "layout": "kpi_strip_exhibit_commentary",
+            "variant": {},
+            "default": false,
+            "score": 89.8,
+            "flags": [],
+            "errors": 0,
+            "verdict": "ok",
+            "adjusted": 89.8
+          }
+        ]
+      },
+      "s05": {
+        "chosen": {
+          "layout": "exhibit_takeaways_below",
+          "variant": {},
+          "score": 98.4
+        },
+        "default_score": 98.4,
+        "candidates": [
+          {
+            "k": 0,
+            "layout": "exhibit_takeaways_below",
+            "variant": {},
+            "default": true,
+            "score": 98.4,
+            "flags": [],
+            "errors": 0,
+            "verdict": "chosen",
+            "adjusted": 98.4
+          },
+          {
+            "k": 1,
+            "layout": "segmentation_commentary",
+            "variant": {},
+            "default": false,
+            "score": 89.1,
+            "flags": [],
+            "errors": 0,
+            "verdict": "ok",
+            "adjusted": 89.1
+          },
+          {
+            "k": 2,
+            "layout": "exhibit_commentary_right",
+            "variant": {},
+            "default": false,
+            "score": 89.1,
+            "flags": [],
+            "errors": 0,
+            "verdict": "ok",
+            "adjusted": 89.1
+          }
+        ]
+      },
+      "s06": {
+        "chosen": {
+          "layout": "waterfall_drivers",
+          "variant": {},
+          "score": 89.9
+        },
+        "default_score": 89.9,
+        "candidates": [
+          {
+            "k": 0,
+            "layout": "waterfall_drivers",
+            "variant": {},
+            "default": true,
+            "score": 89.9,
+            "flags": [],
+            "errors": 0,
+            "verdict": "chosen",
+            "adjusted": 89.9
+          },
+          {
+            "k": 1,
+            "layout": "waterfall_drivers",
+            "variant": {
+              "scale": 1.15
+            },
+            "default": false,
+            "score": 90.6,
+            "flags": [],
+            "errors": 0,
+            "verdict": "ok",
+            "adjusted": 90.6
+          },
+          {
+            "k": 2,
+            "layout": "exhibit_commentary_right",
+            "variant": {},
+            "default": false,
+            "score": 89.9,
+            "flags": [],
+            "errors": 0,
+            "verdict": "ok",
+            "adjusted": 89.9
+          },
+          {
+            "k": 3,
+            "layout": "exhibit_commentary_right",
+            "variant": {
+              "scale": 1.15
+            },
+            "default": false,
+            "score": 90.6,
+            "flags": [],
+            "errors": 0,
+            "verdict": "ok",
+            "adjusted": 90.6
+          },
+          {
+            "k": 4,
+            "layout": "exhibit_commentary_left",
+            "variant": {},
+            "default": false,
+            "score": 91.2,
+            "flags": [],
+            "errors": 0,
+            "verdict": "ok",
+            "adjusted": 91.2
+          },
+          {
+            "k": 5,
+            "layout": "exhibit_commentary_left",
+            "variant": {
+              "scale": 1.15
+            },
+            "default": false,
+            "score": 91.7,
+            "flags": [],
+            "errors": 0,
+            "verdict": "ok",
+            "adjusted": 91.7
+          }
+        ]
+      },
+      "s07": {
+        "chosen": {
+          "layout": "table_full",
+          "variant": {},
+          "score": 91.3
+        },
+        "default_score": 91.3,
+        "candidates": [
+          {
+            "k": 0,
+            "layout": "table_full",
+            "variant": {},
+            "default": true,
+            "score": 91.3,
+            "flags": [
+              "NO_FOCAL_POINT"
+            ],
+            "errors": 0,
+            "verdict": "chosen",
+            "adjusted": 91.3
+          },
+          {
+            "k": 1,
+            "layout": "table_full",
+            "variant": {
+              "scale": 1.2,
+              "table_stretch": 0.6
+            },
+            "default": false,
+            "score": 92.0,
+            "flags": [],
+            "errors": 0,
+            "verdict": "ok",
+            "adjusted": 92.0
+          },
+          {
+            "k": 2,
+            "layout": "table_full",
+            "variant": {
+              "scale": 1.35,
+              "table_stretch": 0.9
+            },
+            "default": false,
+            "score": 92.0,
+            "flags": [],
+            "errors": 0,
+            "verdict": "ok",
+            "adjusted": 92.0
+          },
+          {
+            "k": 3,
+            "layout": "exhibit_full",
+            "variant": {},
+            "default": false,
+            "score": 91.3,
+            "flags": [
+              "NO_FOCAL_POINT"
+            ],
+            "errors": 0,
+            "verdict": "ok",
+            "adjusted": 91.3
+          },
+          {
+            "k": 4,
+            "layout": "exhibit_full",
+            "variant": {
+              "scale": 1.2,
+              "table_stretch": 0.6
+            },
+            "default": false,
+            "score": 92.0,
+            "flags": [],
+            "errors": 0,
+            "verdict": "ok",
+            "adjusted": 92.0
+          },
+          {
+            "k": 5,
+            "layout": "exhibit_full",
+            "variant": {
+              "scale": 1.35,
+              "table_stretch": 0.9
+            },
+            "default": false,
+            "score": 92.0,
+            "flags": [],
+            "errors": 0,
+            "verdict": "ok",
+            "adjusted": 92.0
+          },
+          {
+            "k": 6,
+            "layout": "comparison_table",
+            "variant": {},
+            "default": false,
+            "score": 91.3,
+            "flags": [
+              "NO_FOCAL_POINT"
+            ],
+            "errors": 0,
+            "verdict": "ok",
+            "adjusted": 91.3
+          },
+          {
+            "k": 7,
+            "layout": "comparison_table",
+            "variant": {
+              "scale": 1.2,
+              "table_stretch": 0.6
+            },
+            "default": false,
+            "score": 92.0,
+            "flags": [],
+            "errors": 0,
+            "verdict": "ok",
+            "adjusted": 92.0
+          },
+          {
+            "k": 8,
+            "layout": "comparison_table",
+            "variant": {
+              "scale": 1.35,
+              "table_stretch": 0.9
+            },
+            "default": false,
+            "score": 92.0,
+            "flags": [],
+            "errors": 0,
+            "verdict": "ok",
+            "adjusted": 92.0
+          }
+        ]
+      },
+      "s08": {
+        "chosen": {
+          "layout": "exhibit_takeaways_below",
+          "variant": {},
+          "score": 96.6
+        },
+        "default_score": 90.8,
+        "candidates": [
+          {
+            "k": 0,
+            "layout": "matrix_commentary",
+            "variant": {},
+            "default": true,
+            "score": 90.8,
+            "flags": [],
+            "errors": 0,
+            "verdict": "ok",
+            "adjusted": 90.8
+          },
+          {
+            "k": 1,
+            "layout": "exhibit_commentary_right",
+            "variant": {},
+            "default": false,
+            "score": 94.1,
+            "flags": [],
+            "errors": 0,
+            "verdict": "ok",
+            "adjusted": 94.1
+          },
+          {
+            "k": 2,
+            "layout": "exhibit_takeaways_below",
+            "variant": {},
+            "default": false,
+            "score": 96.6,
+            "flags": [],
+            "errors": 0,
+            "verdict": "chosen",
+            "adjusted": 96.6
+          }
+        ]
+      },
+      "s09": {
+        "chosen": {
+          "layout": "exhibit_takeaways_below",
+          "variant": {},
+          "score": 93.6
+        },
+        "default_score": 93.6,
+        "candidates": [
+          {
+            "k": 0,
+            "layout": "exhibit_takeaways_below",
+            "variant": {},
+            "default": true,
+            "score": 93.6,
+            "flags": [],
+            "errors": 0,
+            "verdict": "chosen",
+            "adjusted": 91.1
+          },
+          {
+            "k": 1,
+            "layout": "exhibit_takeaways_below",
+            "variant": {
+              "scale": 1.15
+            },
+            "default": false,
+            "score": 93.2,
+            "flags": [],
+            "errors": 0,
+            "verdict": "ok",
+            "adjusted": 90.7
+          },
+          {
+            "k": 2,
+            "layout": "architecture_commentary",
+            "variant": {},
+            "default": false,
+            "score": 88.0,
+            "flags": [
+              "OFF_BALANCE"
+            ],
+            "errors": 0,
+            "verdict": "ok",
+            "adjusted": 88.0
+          },
+          {
+            "k": 3,
+            "layout": "architecture_commentary",
+            "variant": {
+              "scale": 1.15
+            },
+            "default": false,
+            "score": 89.3,
+            "flags": [],
+            "errors": 0,
+            "verdict": "ok",
+            "adjusted": 89.3
+          },
+          {
+            "k": 4,
+            "layout": "exhibit_commentary_right",
+            "variant": {},
+            "default": false,
+            "score": 88.0,
+            "flags": [
+              "OFF_BALANCE"
+            ],
+            "errors": 0,
+            "verdict": "ok",
+            "adjusted": 88.0
+          },
+          {
+            "k": 5,
+            "layout": "exhibit_commentary_right",
+            "variant": {
+              "scale": 1.15
+            },
+            "default": false,
+            "score": 89.3,
+            "flags": [],
+            "errors": 0,
+            "verdict": "ok",
+            "adjusted": 89.3
+          }
+        ]
+      },
+      "s10": {
+        "chosen": {
+          "layout": "roadmap_full",
+          "variant": {},
+          "score": 95.6
+        },
+        "default_score": 95.6,
+        "candidates": [
+          {
+            "k": 0,
+            "layout": "roadmap_full",
+            "variant": {},
+            "default": true,
+            "score": 95.6,
+            "flags": [],
+            "errors": 4,
+            "verdict": "chosen",
+            "adjusted": 95.6
+          },
+          {
+            "k": 1,
+            "layout": "exhibit_full",
+            "variant": {},
+            "default": false,
+            "score": 95.6,
+            "flags": [],
+            "errors": 4,
+            "verdict": "rejected: QA errors (HEADLINE_LINES, RENDER_HEADLINE_LINES, RENDER_TEXT_SPILL, TEXT_OVERFLOW)",
+            "adjusted": 95.6
+          },
+          {
+            "k": 2,
+            "layout": "timeline_full",
+            "variant": {},
+            "default": false,
+            "score": 95.6,
+            "flags": [],
+            "errors": 4,
+            "verdict": "rejected: QA errors (HEADLINE_LINES, RENDER_HEADLINE_LINES, RENDER_TEXT_SPILL, TEXT_OVERFLOW)",
+            "adjusted": 95.6
+          }
+        ]
+      },
+      "s11": {
+        "chosen": {
+          "layout": "waterfall_full",
+          "variant": {},
+          "score": 92.6
+        },
+        "default_score": 92.6,
+        "candidates": [
+          {
+            "k": 0,
+            "layout": "waterfall_full",
+            "variant": {},
+            "default": true,
+            "score": 92.6,
+            "flags": [],
+            "errors": 0,
+            "verdict": "chosen",
+            "adjusted": 92.6
+          },
+          {
+            "k": 1,
+            "layout": "exhibit_full",
+            "variant": {},
+            "default": false,
+            "score": 92.6,
+            "flags": [],
+            "errors": 0,
+            "verdict": "ok",
+            "adjusted": 92.6
+          }
+        ]
+      },
+      "s12": {
+        "chosen": {
+          "layout": "exhibit_takeaways_below",
+          "variant": {
+            "scale": 1.2,
+            "table_stretch": 0.6
+          },
+          "score": 92.5
+        },
+        "default_score": 70.1,
+        "candidates": [
+          {
+            "k": 0,
+            "layout": "table_commentary",
+            "variant": {},
+            "default": true,
+            "score": 70.1,
+            "flags": [
+              "DEAD_SPACE",
+              "UNDERUSED_CANVAS"
+            ],
+            "errors": 0,
+            "verdict": "ok",
+            "adjusted": 70.1
+          },
+          {
+            "k": 1,
+            "layout": "table_commentary",
+            "variant": {
+              "scale": 1.2,
+              "table_stretch": 0.6
+            },
+            "default": false,
+            "score": 88.4,
+            "flags": [],
+            "errors": 0,
+            "verdict": "ok",
+            "adjusted": 88.4
+          },
+          {
+            "k": 2,
+            "layout": "table_commentary",
+            "variant": {
+              "scale": 1.35,
+              "table_stretch": 0.9
+            },
+            "default": false,
+            "score": 86.8,
+            "flags": [],
+            "errors": 0,
+            "verdict": "ok",
+            "adjusted": 86.8
+          },
+          {
+            "k": 3,
+            "layout": "exhibit_commentary_right",
+            "variant": {},
+            "default": false,
+            "score": 70.1,
+            "flags": [
+              "DEAD_SPACE",
+              "UNDERUSED_CANVAS"
+            ],
+            "errors": 0,
+            "verdict": "ok",
+            "adjusted": 70.1
+          },
+          {
+            "k": 4,
+            "layout": "exhibit_commentary_right",
+            "variant": {
+              "scale": 1.2,
+              "table_stretch": 0.6
+            },
+            "default": false,
+            "score": 88.4,
+            "flags": [],
+            "errors": 0,
+            "verdict": "ok",
+            "adjusted": 88.4
+          },
+          {
+            "k": 5,
+            "layout": "exhibit_commentary_right",
+            "variant": {
+              "scale": 1.35,
+              "table_stretch": 0.9
+            },
+            "default": false,
+            "score": 86.8,
+            "flags": [],
+            "errors": 0,
+            "verdict": "ok",
+            "adjusted": 86.8
+          },
+          {
+            "k": 6,
+            "layout": "exhibit_takeaways_below",
+            "variant": {},
+            "default": false,
+            "score": 81.8,
+            "flags": [
+              "DEAD_SPACE"
+            ],
+            "errors": 0,
+            "verdict": "ok",
+            "adjusted": 81.8
+          },
+          {
+            "k": 7,
+            "layout": "exhibit_takeaways_below",
+            "variant": {
+              "scale": 1.2,
+              "table_stretch": 0.6
+            },
+            "default": false,
+            "score": 92.5,
+            "flags": [],
+            "errors": 0,
+            "verdict": "chosen",
+            "adjusted": 92.5
+          },
+          {
+            "k": 8,
+            "layout": "exhibit_takeaways_below",
+            "variant": {
+              "scale": 1.35,
+              "table_stretch": 0.9
+            },
+            "default": false,
+            "score": 91.3,
+            "flags": [],
+            "errors": 0,
+            "verdict": "ok",
+            "adjusted": 91.3
+          }
+        ]
+      }
+    }
   }
 }

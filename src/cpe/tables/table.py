@@ -178,7 +178,7 @@ def render(p: Painter, box: Box, ex: dict) -> dict:
     # distribute spare height (tables should not float in a sea of white)
     spare = plot.h - sum(hs)
     if spare > 0 and ex.get("stretch", True):
-        per = min(spare / len(rows), 0.22)
+        per = min(spare / len(rows), p.profile.get("table_stretch", 0.22))
         hs = [hs[0]] + [h + per for h in hs[1:]]
     p.manifest.fits.append({"zone": p.zone, "role": "table", "what": ex.get("title", "table"), "base_pt": base_size, "chosen_pt": size, "need_h": round(sum(hs), 3), "box_h": round(plot.h, 3), "lines": nrows, "overflow": overflow})
 

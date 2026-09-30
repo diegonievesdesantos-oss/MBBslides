@@ -105,8 +105,26 @@ Every issue has `level` (error blocks the gate · warning · info), `code`, `mes
 | `RENDER_HEADLINE_LINES` | error | render | headline renders on more than 2 lines |
 | `RENDER_HEADLINE_WIDOW` | warn | render | one short word alone on the last headline line |
 | `RENDER_SMALL_TEXT` | error | render | rendered text below 7.5 pt |
+| `RENDER_LABEL_TRUNCATED` | error | render | chart axis labels cut with an ellipsis by the renderer |
+| `RENDER_LABEL_ROTATED` | error | render | chart axis labels rotated because they do not fit |
 | `RENDER_TOO_EMPTY` | warning | render | body ink coverage very low |
 | `RENDER_UNBALANCED` | info | render | large empty region next to dense content |
+| `BRAND_RESERVED_OVERLAP` | error | geometry | content covers template artwork (logo, bars) of a brand theme |
+
+## Layer 1d — composition (v1.1, measured on the render)
+
+Flags the composition engine could not fix become warnings with a remedy for the author:
+
+| code | remedy |
+|---|---|
+| `COMPOSITION_DEAD_SPACE` | Even the best composition leaves a large empty area: the content is too thin for a full slide — add the proof (numbers, comparison) or merge it into a neighbouring slide. |
+| `COMPOSITION_UNDERUSED_CANVAS` | The exhibit uses little of the slide: give it more data/proof or merge the slide. |
+| `COMPOSITION_PROOF_NOT_VISIBLE` | The headline's number or highlighted item is not visible in the exhibit: label it or highlight it. |
+| `COMPOSITION_NO_FOCAL_POINT` | Nothing stands out: highlight the one element that proves the headline. |
+| `COMPOSITION_NOISY_EMPHASIS` | Too much in the focus colour: keep one highlight and grey the context. |
+| `COMPOSITION_OVERDENSE` | Very dense slide: cut or split. |
+
+Metric definitions and thresholds: `src/cpe/qa/composition.py`. Other composition flags (`OFF_BALANCE`, `WEAK_HIERARCHY`, `RAGGED_ALIGNMENT`, `SPARSE`) are reported in `qa_report.json → composition` and tracked by `cpe eval`.
 
 ## Layer 2 — semantic visual review (agent)
 
@@ -114,4 +132,4 @@ Eight questions per slide scored 0/1/2 in `review.json` (pass ≥13/16, no 0): o
 
 ## Autofix scope
 
-The loop may change: visual type / sort (when the reasoning engine attached a `fix`), layout (next eligible alternative when body text or an exhibit does not fit), table split. It never rewrites text; those issues become *Actions for the author*.
+The loop may change: visual type / sort (when the reasoning engine attached a `fix`), layout (next eligible alternative when body text or an exhibit does not fit), table split, and — before the loop — the composition (layout + content scale + table stretch) chosen by the composition engine. It never rewrites text; those issues become *Actions for the author*.

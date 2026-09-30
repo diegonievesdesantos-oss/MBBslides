@@ -159,21 +159,21 @@
   },
   {
     "slide_id": "s03",
-    "layout": "exhibit_commentary_right",
+    "layout": "exhibit_takeaways_below",
     "zones": {
       "exhibit": {
         "role": "exhibit",
         "x": 0.55,
         "y": 1.62,
-        "w": 8.082,
-        "h": 5.16
+        "w": 12.233,
+        "h": 4.25
       },
       "commentary": {
         "role": "commentary",
-        "x": 8.852,
-        "y": 1.62,
-        "w": 3.931,
-        "h": 5.16
+        "x": 0.55,
+        "y": 6.09,
+        "w": 12.233,
+        "h": 0.69
       }
     },
     "fits": [
@@ -212,24 +212,46 @@
       },
       {
         "zone": "commentary",
-        "role": "exhibit_title",
-        "what": "commentary title",
+        "role": "body",
+        "what": "takeaway column",
         "base_pt": 12.0,
         "chosen_pt": 12.0,
-        "need_h": 0.195,
-        "box_h": 0.215,
-        "lines": 1,
+        "need_h": 0.39,
+        "box_h": 0.54,
+        "lines": 2,
         "overflow": false
       },
       {
         "zone": "commentary",
         "role": "body",
-        "what": "commentary",
+        "what": "takeaway column",
         "base_pt": 12.0,
         "chosen_pt": 12.0,
-        "need_h": 1.597,
-        "box_h": 4.815,
-        "lines": 6,
+        "need_h": 0.39,
+        "box_h": 0.54,
+        "lines": 2,
+        "overflow": false
+      },
+      {
+        "zone": "commentary",
+        "role": "body",
+        "what": "takeaway column",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.39,
+        "box_h": 0.54,
+        "lines": 2,
+        "overflow": false
+      },
+      {
+        "zone": "commentary",
+        "role": "body",
+        "what": "takeaway column",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.39,
+        "box_h": 0.54,
+        "lines": 2,
         "overflow": false
       }
     ],
@@ -242,7 +264,7 @@
         "series": 5,
         "scale": [
           0,
-          175.0,
+          187.5,
           50
         ]
       }
@@ -727,21 +749,21 @@
   },
   {
     "slide_id": "s08",
-    "layout": "matrix_commentary",
+    "layout": "exhibit_takeaways_below",
     "zones": {
       "exhibit": {
         "role": "exhibit",
         "x": 0.55,
         "y": 1.62,
-        "w": 7.0442,
-        "h": 5.16
+        "w": 12.233,
+        "h": 4.25
       },
       "commentary": {
         "role": "commentary",
-        "x": 7.8142,
-        "y": 1.62,
-        "w": 4.9687,
-        "h": 5.16
+        "x": 0.55,
+        "y": 6.09,
+        "w": 12.233,
+        "h": 0.69
       }
     },
     "fits": [
@@ -825,12 +847,34 @@
       {
         "zone": "commentary",
         "role": "body",
-        "what": "commentary",
+        "what": "takeaway column",
         "base_pt": 12.0,
         "chosen_pt": 12.0,
-        "need_h": 1.275,
-        "box_h": 5.16,
-        "lines": 5,
+        "need_h": 0.39,
+        "box_h": 0.54,
+        "lines": 2,
+        "overflow": false
+      },
+      {
+        "zone": "commentary",
+        "role": "body",
+        "what": "takeaway column",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.39,
+        "box_h": 0.54,
+        "lines": 2,
+        "overflow": false
+      },
+      {
+        "zone": "commentary",
+        "role": "body",
+        "what": "takeaway column",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.39,
+        "box_h": 0.54,
+        "lines": 2,
         "overflow": false
       }
     ],
@@ -1316,21 +1360,21 @@
   },
   {
     "slide_id": "s12",
-    "layout": "table_commentary",
+    "layout": "exhibit_takeaways_below",
     "zones": {
       "exhibit": {
         "role": "exhibit",
         "x": 0.55,
         "y": 1.62,
-        "w": 8.082,
-        "h": 5.16
+        "w": 12.233,
+        "h": 4.4044
       },
       "commentary": {
         "role": "commentary",
-        "x": 8.852,
-        "y": 1.62,
-        "w": 3.931,
-        "h": 5.16
+        "x": 0.55,
+        "y": 6.2444,
+        "w": 12.233,
+        "h": 0.5356
       }
     },
     "fits": [
@@ -1371,22 +1415,33 @@
         "zone": "exhibit",
         "role": "table",
         "what": "Decisions requested today",
-        "base_pt": 11.0,
-        "chosen_pt": 11.0,
-        "need_h": 2.094,
-        "box_h": 4.7,
+        "base_pt": 13.0,
+        "chosen_pt": 13.0,
+        "need_h": 3.819,
+        "box_h": 3.944,
         "lines": 4,
         "overflow": false
       },
       {
         "zone": "commentary",
         "role": "body",
-        "what": "commentary",
-        "base_pt": 12.0,
-        "chosen_pt": 12.0,
-        "need_h": 0.743,
-        "box_h": 5.16,
-        "lines": 3,
+        "what": "takeaway column",
+        "base_pt": 14.5,
+        "chosen_pt": 14.5,
+        "need_h": 0.236,
+        "box_h": 0.386,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "commentary",
+        "role": "body",
+        "what": "takeaway column",
+        "base_pt": 14.5,
+        "chosen_pt": 14.5,
+        "need_h": 0.236,
+        "box_h": 0.386,
+        "lines": 1,
         "overflow": false
       }
     ],
@@ -1397,7 +1452,7 @@
         "type": "table",
         "rows": 3,
         "cols": 5,
-        "font_pt": 11.0,
+        "font_pt": 13.0,
         "overflow": false
       }
     ]

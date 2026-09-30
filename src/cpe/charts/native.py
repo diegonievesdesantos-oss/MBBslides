@@ -655,7 +655,7 @@ def waterfall(p: Painter, box: Box, ex: dict) -> dict:
     # proof: the headline quotes the total change → print it above the end total
     from ..core.headline import numbers_in
 
-    first_total = next((t for t, k in zip(tot, kinds) if k == "total"), None)
+    first_total = tot[0] if kinds and kinds[0] == "total" else None  # a start→end bridge only
     wf_delta = (ends[-1] - first_total) if first_total is not None and kinds[-1] == "total" else None
     proof = wf_delta is not None and any(abs(abs(wf_delta) - v) <= max(0.51, 0.01 * v) and abs(v - abs(ends[-1])) > 0.5 for v, _ in numbers_in(ex.get("_headline") or ""))
     hi += step * (0.4 if not proof else 1.0)

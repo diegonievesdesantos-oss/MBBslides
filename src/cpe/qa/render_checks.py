@@ -13,6 +13,8 @@ Codes:
   RENDER_HEADLINE_LINES (error)  headline renders on more than 2 lines
   RENDER_HEADLINE_WIDOW (warn)   one short word alone on the last headline line
   RENDER_SMALL_TEXT (error)      rendered text below 7.5 pt
+  RENDER_LABEL_TRUNCATED (error) chart axis labels cut with an ellipsis by the renderer
+  RENDER_LABEL_ROTATED (error)   chart axis labels rotated because they do not fit
   RENDER_TOO_EMPTY (warning)     body ink coverage very low
   RENDER_UNBALANCED (info)       large empty region next to dense content
 """
@@ -109,6 +111,11 @@ def check(pdf_path: str, pptx_path: str, manifests: list[dict], pngs: list[str] 
                 out.append(issue("error", "RENDER_TEXT_SPILL", f"'{sp['text'][:40]}' is rendered outside its box (overflow)", sid))
             if sp["size"] and sp["size"] < 7.5:
                 out.append(issue("error", "RENDER_SMALL_TEXT", f"'{sp['text'][:30]}' rendered at {sp['size']:.1f} pt", sid))
+            in_chart = any(k == "chart" and c.contains(core, 0.05) for c, k, _ in conts)
+            if in_chart and sp["text"].rstrip().endswith(("...", "…")):
+                out.append(issue("error", "RENDER_LABEL_TRUNCATED", f"Chart label truncated by the renderer: '{sp['text'][:30]}'", sid))
+            if in_chart and abs(sp["dir"][1]) > 0.05:
+                out.append(issue("error", "RENDER_LABEL_ROTATED", f"Chart label rotated by the renderer (not enough room): '{sp['text'][:30]}'", sid))
         # collisions between spans on different lines
         seen = set()
         for i in range(len(spans)):

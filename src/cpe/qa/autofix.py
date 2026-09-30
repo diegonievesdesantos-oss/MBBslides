@@ -37,6 +37,11 @@ AGENT_ACTIONS = {
     "RENDER_TEXT_COLLISION": "Shorten the colliding labels or reduce the number of labelled items.",
     "TEXT_COLLISION": "Shorten the colliding texts or change the layout.",
     "LABEL_COLLISION": "Label only the items that matter (or shorten the labels).",
+    "COMPOSITION_DEAD_SPACE": "Content too thin for a full slide: add the proof or merge into a neighbouring slide.",
+    "COMPOSITION_UNDERUSED_CANVAS": "Give the exhibit more data/proof or merge the slide.",
+    "COMPOSITION_PROOF_NOT_VISIBLE": "Make the headline's number / item visible in the exhibit (label or highlight it).",
+    "COMPOSITION_NO_FOCAL_POINT": "Highlight the one element that proves the headline.",
+    "COMPOSITION_NOISY_EMPHASIS": "Keep one highlight; grey the context.",
 }
 
 
@@ -73,7 +78,7 @@ def propose(spec: dict, resolved: dict, issues: list[dict], tried: dict) -> tupl
         # 2. layout alternatives when something does not fit
         in_body = i.get("zone") not in (None, "chrome") or i["code"] == "CONTENT_OVER_CAPACITY"
         if i["code"] in FIT_CODES and i["level"] == "error" and in_body and base_id not in done_slides:
-            if src.get("layout") and src.get("layout") != "auto" and not src.get("_autofix_layout"):
+            if src.get("layout") and src.get("layout") != "auto" and not src.get("_autofix_layout") and not src.get("_composed"):
                 pending.append({"slide": base_id, "code": i["code"], "action": "Fixed layout in spec does not fit; " + AGENT_ACTIONS.get(i["code"], "revise content")})
                 done_slides.add(base_id)
                 continue

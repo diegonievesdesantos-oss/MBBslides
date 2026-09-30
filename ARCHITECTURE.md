@@ -66,14 +66,21 @@ MBBslides/
 │   ├── qa/
 │   │   ├── geometry.py      ~20 checks on the PPTX
 │   │   ├── render_checks.py checks on what LibreOffice drew (PDF spans + ink)
+│   │   ├── composition.py   composition metrics on the render (v1.1)
 │   │   ├── autofix.py       issues → form patches / author actions
 │   │   └── report.py        score, `passed` gate, scoped exemptions, report, review packet
-│   ├── pipeline.py          generate → render → inspect → patch → render loop
+│   ├── compose.py           composition engine: candidates → one render pass → scoring → best (v1.1)
+│   ├── evals.py             visual-quality benchmark vs baseline (v1.1)
+│   ├── brand/ingest.py      corporate template → brand theme + compatibility report (v1.1)
+│   ├── pipeline.py          compose → generate → render → inspect → patch → render loop
 │   └── cli.py               `cpe` (ingest, scaffold, outline, lint, recommend, plan, build,
 │                            render, qa, run, patch, review, catalog, themes)
 ├── examples/alvora/         demo deck (draft → QA → patches → final), PPTX and renders
 ├── examples/gallery/        every exhibit type (26 slides), PPTX and renders
-├── tests/                   44 tests (unit, QA stress, render, loop)
+├── examples/brand/          the demo deck on a fictitious corporate template (v1.1)
+├── evals/                   stress decks, baseline, results per version (v1.1)
+├── .github/workflows/ci.yml lint · tests · regression decks · eval gate
+├── tests/                   50 tests (unit, QA stress, render, loop, brand, composition, evals)
 └── docs/                    detailed audit, layout catalogue, visual guide, spec, QA codes
 ```
 
@@ -121,7 +128,46 @@ vague-word lexicons, the duration/identifier words ignored by the number check, 
 stopwords and the ingestion number parser include English and Spanish forms (`crece`,
 `representa`, `resumen`, `mes`, `fase`, `€1.234,5`…). Decks can be written in either language.
 
-## 4. Data flow and artefacts
+## 4. v1.1 — visual intelligence
+
+**Composition as a measured decision.** The layout selector only decides compatibility (roles,
+visual family, capacity). `compose.py` then turns each content slide into candidates, from its
+compatible layouts × variants (content scale for sparse text/tables/KPIs, table rows stretched to
+the zone). It builds all candidates of the deck into one scratch PPTX, renders it once, runs
+geometry + render QA per candidate and scores the survivors with `qa/composition.py`. The default
+wins ties (by 1.5 points for a variant, 3 points for a different layout, minus 2.5 for repeating
+the previous slide's layout), so decks stay consistent. Candidates below 70 are labelled
+"compatible but editorially weak". The choice is written back to the spec (`layout`, `_compose`,
+`_composed`) and explained in `composition.md`.
+
+**Metrics.** They are computed on a 0.1-inch grid of the body band of the rendered PNG plus the
+PDF text spans:
+- dead space: largest empty rectangle;
+- utilization: ink bounding box;
+- balance: ink centre of mass;
+- density: dark-ink coverage;
+- focal-point strength: focus-colour share × number of solid focus regions;
+- visible proof: headline numbers and highlighted items present in the rendered body text;
+- hierarchy: headline vs body sizes;
+- alignment rhythm: distinct left edges in text zones.
+
+They are heuristics, calibrated on the engine's own output; the eval suite keeps them honest.
+
+**Evals as a gate.** `evals/cases` are decks designed to break the engine. `cpe eval` compares
+each case with `evals/baseline.json` (crash, render failure, more QA errors, composition drop,
+new flags → exit 1), and CI runs it on every push and pull request. `cpe measure` scores any
+existing run, which is how v1.0's renders were compared with v1.1's using the same metrics.
+
+**Brand ingestion.** `brand/ingest.py` reads the theme part (colour scheme, major/minor fonts), the
+masters and layouts (placeholders, artwork, backgrounds) and the slide size. It maps colours to
+engine roles: dark brand colour → primary, the most saturated non-signal accent → highlight,
+reds/greens → negative/positive, derived greys with contrast guarantees. It then picks the
+emptiest layout that still shows the master artwork as the base layout, derives margins from the
+title placeholder, and turns logos and bars into reserved areas protected by QA. Fonts are
+measured with their metric twin when one exists, otherwise with the font fontconfig will render
+with; the report states which measurements are exact.
+
+## 5. Data flow and artefacts
 
 | Step | Input | Output |
 |---|---|---|
@@ -135,7 +181,7 @@ stopwords and the ingestion number parser include English and Spanish forms (`cr
 | run | `deck.json` | all of the above + iterations + `review.md` + `deck.autofixed.json` |
 | patch / review | patches / `review.json` | corrected spec / semantic verdict |
 
-## 5. Extending the engine
+## 6. Extending the engine
 
 - **New layout:** add a JSON file in `layouts/<family>/` (zones by columns and fractions,
   `accepts`, `compatible_visuals`, `capacity`, `when_to_use`). The library test checks that no
@@ -148,5 +194,7 @@ stopwords and the ingestion number parser include English and Spanish forms (`cr
 - **New check:** return `issue(level, CODE, message, slide)` from `qa/`; document the code in
   `docs/QA_CODES.md` and, if it can be fixed without touching the message, add the rule to
   `qa/autofix.py`.
+- **New eval case:** add a deck to `evals/cases/` with `"eval": {"purpose": …}`, run
+  `cpe eval --update-baseline` and commit the baseline with the case.
 - **New language:** extend the lexicons in `core/headline.py` (`VERBS`, `GENERIC_NOUNS`,
   `VAGUE`, `DURATION_RE`) and the stopwords in `core/storyline.py`.

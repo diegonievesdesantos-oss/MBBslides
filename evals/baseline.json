@@ -1,0 +1,202 @@
+{
+  "suite_composition": 83.8,
+  "cases": [
+    {
+      "case": "01_sparse_content",
+      "ok": true,
+      "qa_errors": 0,
+      "composition": 67.8,
+      "slides": {
+        "a1": {
+          "score": 84.1,
+          "flags": []
+        },
+        "a2": {
+          "score": 85.3,
+          "flags": []
+        },
+        "a3": {
+          "score": 55.2,
+          "flags": [
+            "DEAD_SPACE",
+            "UNDERUSED_CANVAS",
+            "OFF_BALANCE"
+          ]
+        },
+        "a4": {
+          "score": 46.8,
+          "flags": [
+            "DEAD_SPACE",
+            "UNDERUSED_CANVAS",
+            "WEAK_HIERARCHY"
+          ]
+        }
+      }
+    },
+    {
+      "case": "02_text_overload",
+      "ok": true,
+      "qa_errors": 0,
+      "composition": 94.1,
+      "slides": {
+        "b1": {
+          "score": 98.9,
+          "flags": []
+        },
+        "b2": {
+          "score": 83.9,
+          "flags": [
+            "UNDERUSED_CANVAS"
+          ]
+        },
+        "b3": {
+          "score": 99.4,
+          "flags": []
+        }
+      }
+    },
+    {
+      "case": "03_tables",
+      "ok": true,
+      "qa_errors": 0,
+      "composition": 79.0,
+      "slides": {
+        "c1": {
+          "score": 73.2,
+          "flags": [
+            "DEAD_SPACE"
+          ]
+        },
+        "c1_2": {
+          "score": 78.4,
+          "flags": [
+            "DEAD_SPACE"
+          ]
+        },
+        "c2": {
+          "score": 85.3,
+          "flags": [
+            "NO_FOCAL_POINT"
+          ]
+        }
+      }
+    },
+    {
+      "case": "04_charts_stress",
+      "ok": true,
+      "qa_errors": 0,
+      "composition": 86.0,
+      "slides": {
+        "d1": {
+          "score": 92.0,
+          "flags": []
+        },
+        "d2": {
+          "score": 91.3,
+          "flags": [
+            "OVERDENSE"
+          ]
+        },
+        "d3": {
+          "score": 91.3,
+          "flags": []
+        },
+        "d4": {
+          "score": 69.2,
+          "flags": [
+            "DEAD_SPACE",
+            "PROOF_NOT_VISIBLE"
+          ]
+        }
+      }
+    },
+    {
+      "case": "05_spanish",
+      "ok": true,
+      "qa_errors": 0,
+      "composition": 91.9,
+      "slides": {
+        "e1": {
+          "score": 86.8,
+          "flags": []
+        },
+        "e2": {
+          "score": 97.8,
+          "flags": []
+        },
+        "e3": {
+          "score": 91.0,
+          "flags": []
+        }
+      }
+    },
+    {
+      "case": "06_diagrams_dense",
+      "ok": true,
+      "qa_errors": 0,
+      "composition": 88.8,
+      "slides": {
+        "f1": {
+          "score": 87.4,
+          "flags": [
+            "OFF_BALANCE"
+          ]
+        },
+        "f2": {
+          "score": 89.0,
+          "flags": [
+            "NO_FOCAL_POINT"
+          ]
+        },
+        "f3": {
+          "score": 93.2,
+          "flags": []
+        },
+        "f4": {
+          "score": 85.5,
+          "flags": []
+        }
+      }
+    },
+    {
+      "case": "07_waterfalls",
+      "ok": true,
+      "qa_errors": 0,
+      "composition": 86.6,
+      "slides": {
+        "g1": {
+          "score": 93.2,
+          "flags": []
+        },
+        "g2": {
+          "score": 80.0,
+          "flags": [
+            "PROOF_NOT_VISIBLE"
+          ]
+        }
+      }
+    },
+    {
+      "case": "08_headlines_structure",
+      "ok": true,
+      "qa_errors": 0,
+      "composition": 76.5,
+      "slides": {
+        "h1": {
+          "score": 92.1,
+          "flags": [
+            "OVERDENSE"
+          ]
+        },
+        "h2": {
+          "score": 60.9,
+          "flags": [
+            "DEAD_SPACE",
+            "UNDERUSED_CANVAS",
+            "OFF_BALANCE"
+          ]
+        }
+      }
+    }
+  ]
+}

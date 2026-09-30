@@ -176,7 +176,9 @@
           "**Convenience** keeps growing at 5% thanks to food-to-go, although margins are under pressure from waste"
         ]
       },
-      "source": "National statistics; retailer reports; team market model (illustrative)"
+      "source": "National statistics; retailer reports; team market model (illustrative)",
+      "layout": "exhibit_commentary_right",
+      "_composed": true
     },
     {
       "id": "s04",
@@ -279,7 +281,9 @@
           "suffix": "%"
         }
       },
-      "source": "Alvora management accounts; market model (illustrative)"
+      "source": "Alvora management accounts; market model (illustrative)",
+      "layout": "kpi_strip_exhibit",
+      "_composed": true
     },
     {
       "id": "s05",
@@ -384,7 +388,9 @@
           "**Online** share of 4% trails B and C, whose hub networks are in place"
         ]
       },
-      "source": "Retailer reports; consumer panel; team estimates (illustrative)"
+      "source": "Retailer reports; consumer panel; team estimates (illustrative)",
+      "layout": "exhibit_takeaways_below",
+      "_composed": true
     },
     {
       "id": "s06",
@@ -461,7 +467,9 @@
           "Volume and price added €83M, not enough to offset cost inflation"
         ]
       },
-      "source": "Alvora management accounts (illustrative)"
+      "source": "Alvora management accounts (illustrative)",
+      "layout": "waterfall_drivers",
+      "_composed": true
     },
     {
       "id": "s07",
@@ -604,7 +612,9 @@
         }
       },
       "takeaway": "Fixing fresh and food-to-go in two regions addresses about two thirds of the margin gap",
-      "source": "Alvora category P&L (illustrative)"
+      "source": "Alvora category P&L (illustrative)",
+      "layout": "table_full",
+      "_composed": true
     },
     {
       "id": "s08",
@@ -676,7 +686,9 @@
           "Winning back price perception needs a separate low-cost format, not deeper promotions"
         ]
       },
-      "source": "Customer survey 2025, n=4,000 (illustrative)"
+      "source": "Customer survey 2025, n=4,000 (illustrative)",
+      "layout": "exhibit_takeaways_below",
+      "_composed": true
     },
     {
       "id": "s09",
@@ -765,7 +777,9 @@
           "A transformation office steers the programme"
         ]
       },
-      "source": "Team analysis (illustrative)"
+      "source": "Team analysis (illustrative)",
+      "layout": "exhibit_takeaways_below",
+      "_composed": true
     },
     {
       "id": "s10",
@@ -886,7 +900,9 @@
           ]
         }
       },
-      "source": "Programme plan (illustrative)"
+      "source": "Programme plan (illustrative)",
+      "layout": "roadmap_full",
+      "_composed": true
     },
     {
       "id": "s11",
@@ -951,7 +967,9 @@
         }
       },
       "takeaway": "Cost and pricing levers deliver €130M of the uplift and are largely within management control",
-      "source": "Initiative business cases (illustrative)"
+      "source": "Initiative business cases (illustrative)",
+      "layout": "waterfall_full",
+      "_composed": true
     },
     {
       "id": "s12",
@@ -1017,6 +1035,12 @@
           "Wave 1 is self-funding by Q4 2026",
           "The go / no-go on the banner comes back to the board in Q2 2027"
         ]
+      },
+      "layout": "exhibit_takeaways_below",
+      "_composed": true,
+      "_compose": {
+        "scale": 1.2,
+        "table_stretch": 0.6
       }
     }
   ]

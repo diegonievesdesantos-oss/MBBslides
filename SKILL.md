@@ -19,8 +19,9 @@ complete **slide intent**; the engine turns it into a native `.pptx`, renders it
 inspects it and tells you exactly what to fix.
 
 ```
-INPUT → UNDERSTAND → STORYLINE → SLIDE INTENT → SO-WHAT → EVIDENCE → VISUAL → LAYOUT
-      → SPEC → PPTX → RENDER → QA (content · geometry · render) → PATCH → … → FINAL PPTX
+INPUT → UNDERSTAND → STORYLINE → SLIDE INTENT → SO-WHAT → EVIDENCE → VISUAL → LAYOUT CANDIDATES
+      → COMPOSITION CANDIDATES → RENDER → COMPOSITION SCORING → BEST → PPTX → RENDER
+      → QA (content · geometry · render · composition) → PATCH → … → FINAL PPTX
 ```
 
 All commands: `scripts/cpe <command>` from the skill folder (or `python -m cpe` with `src/` on the path).
@@ -167,7 +168,17 @@ exhibit title (`title` + `unit`), truncated waterfall axes marked with breaks.
 Use `annotations`: `cagr` {from, to}, `reference` {value, label}, `callout` {at, text},
 `forecast` {from}. Data shapes per visual: `docs/VISUAL_GUIDE.md`.
 
-## 6. Layout (Step 6)
+## 6. Layout and composition (Step 6)
+
+Composition (v1.1): `cpe run` does not just take the first compatible layout. For each content
+slide it renders the compatible layouts × composition variants (content scale on sparse slides,
+table rows stretched to the zone), scores them on the render (dead space, canvas use, balance,
+density, focal point, visible proof, hierarchy, alignment) and keeps the best. A different layout
+must win clearly, for deck consistency. `out/composition.md` lists every choice and every rejected
+or "compatible but editorially weak" alternative. When even the best composition is weak
+(`COMPOSITION_DEAD_SPACE`, `COMPOSITION_UNDERUSED_CANVAS`), the fix is content, not layout: add
+the proof or merge the slide.
+
 
 Leave `layout: "auto"`. The selector matches the slide's content roles (exhibit, commentary,
 kpis, columns, statements, statement, takeaway) and visual family against 43 layouts in 16
@@ -175,6 +186,15 @@ families (`scripts/cpe catalog`, `docs/LAYOUT_CATALOG.md`), checks capacity with
 metrics, and avoids repeating the previous slide's layout. Fix a layout only for a reason
 (e.g. `exhibit_commentary_left` when the argument must be read before the chart,
 `roadmap_phases` for phase columns). A fixed layout that does not fit becomes an author action.
+
+### Corporate identity
+
+If the user supplies a corporate template, run `scripts/cpe brand ingest template.pptx -o brands/<name>`
+**before** building and read `brands/<name>/compatibility.md`. Tell the user, in one line each:
+fonts that are missing or only approximated (and the substitute used), slide-size limitations,
+and unsupported elements. Then set `"meta": {"brand": "brands/<name>"}`. The deck is generated
+on the template's masters (logo and artwork kept); QA protects the artwork (`BRAND_RESERVED_OVERLAP`),
+and light brand accents used as text are darkened automatically to stay legible.
 
 ## 7. Density (Step 7)
 
@@ -191,7 +211,7 @@ summary table — top rows + "Other" — whenever possible). Text shrinks toward
 
 ```bash
 scripts/cpe lint deck.json            # fix every error before building
-scripts/cpe run deck.json -o out/     # plan → build → render → QA → autofix (≤3 iterations)
+scripts/cpe run deck.json -o out/     # compose → build → render → QA → autofix (≤3 iterations)
 ```
 
 `out/` contains `deck.pptx`, `renders/slide-NN.png`, `contact_sheet.png`, `qa_report.md|json`,
@@ -206,6 +226,12 @@ LibreOffice actually drew: text spilling out of boxes, rendered collisions, text
 headline line count, tiny rendered text, empty/unbalanced slides). Codes: `docs/QA_CODES.md`.
 The autofix only changes **form** (visual encoding with a concrete fix, layout alternatives,
 table splits). Everything that needs rewording is listed under *Actions for the author*.
+
+**Layer 1d — composition.** Every slide gets a composition score in
+`qa_report.json → composition`; flags the engine could not fix become `COMPOSITION_*` warnings
+with a remedy. The exhibit shows the headline's proof automatically when it can (change, CAGR,
+last period, waterfall total, top-k share); `PROOF_NOT_VISIBLE` means you must label or
+highlight it yourself.
 
 **Layer 2 — your visual review (mandatory before delivery).** Open `contact_sheet.png` and every
 `renders/slide-NN.png`. For each slide answer the 8 questions in `review.md` (0/1/2):
@@ -260,6 +286,13 @@ summary: governing thought, number of slides, QA verdict/score and anything the 
 
 Themes: `meridian` (navy + teal, default), `graphite` (charcoal + green, finance/PE),
 `harbor` (blue + amber, programmes). Set `meta.theme`. Override profile with `meta.profile`.
+
+## Changing the engine itself
+
+Run `scripts/cpe eval` before and after any change to renderers, layouts, tokens or QA. It fails
+on crashes, new QA errors, composition drops or new flags against `evals/baseline.json`. Improve
+the engine, not the baseline. Update the baseline (`--update-baseline`) only for an intended
+change, and say so in the commit.
 
 ## Troubleshooting
 

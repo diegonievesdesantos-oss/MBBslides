@@ -175,6 +175,14 @@ def commentary(p: Painter, box: Box, data: dict, style: str | None = None) -> No
         p.text(Box(inner.x, y, inner.w, th + 0.02), data["title"], role="exhibit_title", color="primary", record="commentary title")
         y += th + SPACING["S"]
     body = Box(inner.x, y, inner.w, inner.b - y)
+    if style in (None, "plain") and len(points) == 1 and body.h > 2.5:
+        from ..core.headline import words
+
+        txt = points[0] if isinstance(points[0], str) else points[0].get("text", "")
+        if len(words(txt)) <= 35:  # one argument on a full slide: set it as a statement, not a lonely bullet
+            p.rect(Box(body.x, body.y + body.h * 0.12, 0.9, 0.07), fill="highlight")
+            p.text(Box(body.x, body.y + body.h * 0.12 + 0.25, body.w * 0.9, body.h * 0.6), txt, role="headline", size=28, bold=False, color="primary", record="statement point")
+            return
     bullet = data.get("bullet", "•")
     p.text(body, _points_to_paras(points, bullet), role="body", space_after=data.get("space_after", 8), record="commentary")
 
@@ -214,6 +222,8 @@ def statements(p: Painter, box: Box, data: dict) -> None:
 def kpis(p: Painter, box: Box, data: dict) -> None:
     items = data.get("items") if isinstance(data, dict) else data
     items = items or []
+    if len(items) == 1 and box.h > 2.5:
+        return kpi_hero(p, box, items[0])
     grid_mode = isinstance(data, dict) and data.get("style") == "grid"
     if grid_mode:
         n = len(items)
@@ -233,6 +243,26 @@ def kpis(p: Painter, box: Box, data: dict) -> None:
             xl = c.x - GRID.gutter
             p.line(xl, c.y + 0.05, xl, c.b - 0.05, color="gridline", width=LINES["rule"])
         _kpi(p, c, it)
+
+
+def kpi_hero(p: Painter, box: Box, it: dict) -> None:
+    """One number IS the message: a hero figure, not a small tile floating in white."""
+    val = str(it.get("value", ""))
+    top = box.y + box.h * 0.12
+    p.rect(Box(box.x, top, 0.9, 0.07), fill="highlight")
+    p.text(Box(box.x, top + 0.2, box.w * 0.55, 1.5), val, role="kpi_value", size=80, max_lines=1, color=it.get("color", "primary"), record="kpi hero")
+    y = top + 1.8
+    if it.get("delta"):
+        d = str(it["delta"])
+        trend = it.get("trend") or ("up" if d.strip().startswith("+") else "down" if d.strip().startswith(("-", "−")) else "flat")
+        col = "neutral" if trend == "flat" else ("positive" if trend == it.get("good", "up") else "negative")
+        p.text(Box(box.x, y, box.w * 0.55, 0.45), {"up": "▲ ", "down": "▼ ", "flat": ""}[trend] + d, role="kpi_label", size=20, bold=True, color=col, max_lines=1)
+        y += 0.55
+    p.text(Box(box.x, y, box.w * 0.55, 0.9), it.get("label", ""), role="body", size=18, color="text_muted", record="kpi hero label")
+    if it.get("note"):
+        nx = box.x + box.w * 0.6
+        p.line(nx - 0.3, top, nx - 0.3, top + 3.0, color="rule")
+        p.text(Box(nx, top + 0.2, box.r - nx, 2.8), it["note"], role="body", size=16, record="kpi hero note")
 
 
 def _kpi(p: Painter, c: Box, it: dict, big: bool = False) -> None:

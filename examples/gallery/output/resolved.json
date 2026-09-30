@@ -99,7 +99,8 @@
               "text": "Keeps the €48M run-rate target for 2027; payback in 19 months."
             }
           ]
-        }
+        },
+        "_headline": "Wave 1 is delivering; releasing wave 2 funding keeps the €48M target on track"
       },
       "source": "Programme office (illustrative)",
       "_plan": {
@@ -202,7 +203,8 @@
             "value": 100,
             "label": "Median 100"
           }
-        ]
+        ],
+        "_headline": "Helix's cost-to-serve is 18% above the peer median, the highest of the panel"
       },
       "commentary": {
         "points": [
@@ -211,6 +213,8 @@
         ]
       },
       "source": "Benchmark consortium 2025 (illustrative)",
+      "layout": "exhibit_takeaways_below",
+      "_composed": true,
       "kind": "content",
       "_plan": {
         "visuals": [
@@ -220,22 +224,13 @@
           }
         ],
         "layout": {
-          "id": "exhibit_commentary_right",
-          "why": "best available fit",
-          "score": 55.0,
-          "alternatives": [
-            "exhibit_takeaways_below",
-            "map_commentary",
-            "exhibit_commentary_left"
-          ]
+          "id": "exhibit_takeaways_below",
+          "why": "explicit in spec"
         },
         "fit": {
           "commentary": {
             "fits_base": true,
             "fits_floor": true,
-            "need_base": 0.74,
-            "need_floor": 0.69,
-            "avail": 5.16,
             "excess_words": 0
           },
           "words": 35
@@ -321,7 +316,8 @@
               }
             ]
           }
-        }
+        },
+        "_headline": "Network and warehousing explain €31M of the €44M gap to peers"
       },
       "commentary": {
         "points": [
@@ -331,6 +327,11 @@
         ]
       },
       "source": "Cost model (illustrative)",
+      "layout": "exhibit_commentary_left",
+      "_composed": true,
+      "_compose": {
+        "scale": 1.15
+      },
       "kind": "content",
       "_plan": {
         "visuals": [
@@ -340,14 +341,8 @@
           }
         ],
         "layout": {
-          "id": "framework_commentary",
-          "why": "family 13_framework matches driver_tree",
-          "score": 75.0,
-          "alternatives": [
-            "exhibit_takeaways_below",
-            "exhibit_commentary_left",
-            "exhibit_commentary_right"
-          ]
+          "id": "exhibit_commentary_left",
+          "why": "explicit in spec"
         },
         "fit": {
           "commentary": {
@@ -431,7 +426,8 @@
             "from": "2026",
             "label": "Forecast"
           }
-        ]
+        ],
+        "_headline": "Cost per drop rose 21% since 2021 while peers held it flat"
       },
       "takeaway": "The gap is structural: it grew every year until wave 1 started",
       "source": "Benchmark consortium (illustrative)",
@@ -502,7 +498,8 @@
               "highlight": true
             }
           ]
-        }
+        },
+        "_headline": "Only 61% of orders arrive in full and on time, with picking causing the largest loss"
       },
       "commentary": {
         "points": [
@@ -511,6 +508,8 @@
         ]
       },
       "source": "WMS extract (illustrative)",
+      "layout": "process_commentary",
+      "_composed": true,
       "kind": "content",
       "_plan": {
         "visuals": [
@@ -521,13 +520,7 @@
         ],
         "layout": {
           "id": "process_commentary",
-          "why": "family 07_process matches funnel",
-          "score": 75.0,
-          "alternatives": [
-            "exhibit_commentary_right",
-            "exhibit_takeaways_below",
-            "framework_commentary"
-          ]
+          "why": "explicit in spec"
         },
         "fit": {
           "commentary": {
@@ -587,7 +580,8 @@
             "MC": 5.2,
             "CN": 7.0
           }
-        }
+        },
+        "_headline": "Cost-to-serve is highest in the north-west, where depot density is lowest"
       },
       "commentary": {
         "points": [
@@ -596,6 +590,8 @@
         ]
       },
       "source": "Transport management system (illustrative)",
+      "layout": "exhibit_takeaways_below",
+      "_composed": true,
       "kind": "content",
       "_plan": {
         "visuals": [
@@ -605,22 +601,13 @@
           }
         ],
         "layout": {
-          "id": "map_commentary",
-          "why": "family 11_market_map matches tile_map",
-          "score": 75.0,
-          "alternatives": [
-            "exhibit_commentary_right",
-            "exhibit_takeaways_below",
-            "exhibit_commentary_left"
-          ]
+          "id": "exhibit_takeaways_below",
+          "why": "explicit in spec"
         },
         "fit": {
           "commentary": {
             "fits_base": true,
             "fits_floor": true,
-            "need_base": 0.95,
-            "need_floor": 0.69,
-            "avail": 5.16,
             "excess_words": 0
           },
           "words": 28
@@ -676,7 +663,8 @@
               ]
             }
           ]
-        }
+        },
+        "_headline": "Small customers are 38% of drops but only 12% of revenue"
       },
       "commentary": {
         "points": [
@@ -685,6 +673,8 @@
         ]
       },
       "source": "Billing data (illustrative)",
+      "layout": "exhibit_commentary_right",
+      "_composed": true,
       "kind": "content",
       "_plan": {
         "visuals": [
@@ -695,13 +685,7 @@
         ],
         "layout": {
           "id": "exhibit_commentary_right",
-          "why": "best available fit",
-          "score": 55.0,
-          "alternatives": [
-            "exhibit_takeaways_below",
-            "segmentation_commentary",
-            "exhibit_commentary_left"
-          ]
+          "why": "explicit in spec"
         },
         "fit": {
           "commentary": {
@@ -791,7 +775,8 @@
         },
         "y_format": {
           "decimals": 1
-        }
+        },
+        "_headline": "Depots with fewer than 400 drops a day cost up to 40% more per drop"
       },
       "commentary": {
         "points": [
@@ -800,6 +785,11 @@
         ]
       },
       "source": "Depot P&L (illustrative)",
+      "layout": "exhibit_commentary_left",
+      "_composed": true,
+      "_compose": {
+        "scale": 1.15
+      },
       "kind": "content",
       "_plan": {
         "visuals": [
@@ -809,19 +799,16 @@
           }
         ],
         "layout": {
-          "id": "exhibit_takeaways_below",
-          "why": "best available fit",
-          "score": 55.0,
-          "alternatives": [
-            "matrix_commentary",
-            "exhibit_commentary_left",
-            "exhibit_commentary_right"
-          ]
+          "id": "exhibit_commentary_left",
+          "why": "explicit in spec"
         },
         "fit": {
           "commentary": {
             "fits_base": true,
             "fits_floor": true,
+            "need_base": 0.74,
+            "need_floor": 0.5,
+            "avail": 5.16,
             "excess_words": 0
           },
           "words": 30
@@ -916,10 +903,17 @@
         ],
         "highlight_columns": [
           1
-        ]
+        ],
+        "_headline": "Network redesign and hub automation offer the best value for effort"
       },
       "takeaway": "Launch terms and procurement first for speed; network and automation carry the value",
       "source": "Initiative assessment workshop (illustrative)",
+      "layout": "comparison_table",
+      "_composed": true,
+      "_compose": {
+        "scale": 1.2,
+        "table_stretch": 0.6
+      },
       "kind": "content",
       "_plan": {
         "visuals": [
@@ -930,12 +924,7 @@
         ],
         "layout": {
           "id": "comparison_table",
-          "why": "family 05_comparison matches harvey_table",
-          "score": 70.0,
-          "alternatives": [
-            "exhibit_full",
-            "table_full"
-          ]
+          "why": "explicit in spec"
         },
         "fit": {
           "words": 24
@@ -1008,9 +997,12 @@
               ]
             }
           ]
-        }
+        },
+        "_headline": "The new order-to-delivery process removes two hand-offs and the manual picking step"
       },
       "source": "Process design (illustrative)",
+      "layout": "process_full",
+      "_composed": true,
       "kind": "content",
       "_plan": {
         "visuals": [
@@ -1021,11 +1013,7 @@
         ],
         "layout": {
           "id": "process_full",
-          "why": "family 07_process matches process",
-          "score": 70.0,
-          "alternatives": [
-            "exhibit_full"
-          ]
+          "why": "explicit in spec"
         },
         "fit": {
           "words": 12
@@ -1092,9 +1080,12 @@
               ]
             }
           ]
-        }
+        },
+        "_headline": "Customers lose most time at order confirmation and delivery booking"
       },
       "source": "Customer interviews, n=40 (illustrative)",
+      "layout": "process_full",
+      "_composed": true,
       "kind": "content",
       "_plan": {
         "visuals": [
@@ -1105,11 +1096,7 @@
         ],
         "layout": {
           "id": "process_full",
-          "why": "family 07_process matches journey; exhibit needs the full width; same layout as previous slide",
-          "score": 70.0,
-          "alternatives": [
-            "exhibit_full"
-          ]
+          "why": "explicit in spec"
         },
         "fit": {
           "words": 10
@@ -1161,9 +1148,12 @@
               }
             ]
           }
-        }
+        },
+        "_headline": "A lean transformation office with four initiative owners runs the programme"
       },
       "source": "Governance charter (illustrative)",
+      "layout": "architecture_full",
+      "_composed": true,
       "kind": "content",
       "_plan": {
         "visuals": [
@@ -1174,12 +1164,7 @@
         ],
         "layout": {
           "id": "architecture_full",
-          "why": "family 14_architecture matches org_chart",
-          "score": 70.0,
-          "alternatives": [
-            "exhibit_full",
-            "framework_full"
-          ]
+          "why": "explicit in spec"
         },
         "fit": {
           "words": 11
@@ -1254,9 +1239,12 @@
               "label": "Security"
             }
           ]
-        }
+        },
+        "_headline": "The target architecture adds a WMS and a routing engine on a common data layer"
       },
       "source": "IT design (illustrative)",
+      "layout": "architecture_full",
+      "_composed": true,
       "kind": "content",
       "_plan": {
         "visuals": [
@@ -1267,11 +1255,7 @@
         ],
         "layout": {
           "id": "architecture_full",
-          "why": "family 14_architecture matches architecture; exhibit needs the full width; same layout as previous slide",
-          "score": 70.0,
-          "alternatives": [
-            "exhibit_full"
-          ]
+          "why": "explicit in spec"
         },
         "fit": {
           "words": 15
@@ -1379,9 +1363,12 @@
               "text": "Network: 5 depots closed"
             }
           ]
-        }
+        },
+        "_headline": "Five milestones gate the programme; the WMS go-live in Q2 2027 is the critical one"
       },
       "source": "Programme plan (illustrative)",
+      "layout": "timeline_full",
+      "_composed": true,
       "kind": "content",
       "_plan": {
         "visuals": [
@@ -1392,12 +1379,7 @@
         ],
         "layout": {
           "id": "timeline_full",
-          "why": "family 08_timeline matches timeline; exhibit needs the full width",
-          "score": 85.0,
-          "alternatives": [
-            "exhibit_full",
-            "roadmap_full"
-          ]
+          "why": "explicit in spec"
         },
         "fit": {
           "words": 15
@@ -1506,9 +1488,16 @@
             ],
             "style": "total"
           }
-        ]
+        ],
+        "_headline": "Three of four initiatives are on track; automation is amber on supplier lead times"
       },
       "source": "Programme tracker (illustrative)",
+      "layout": "table_full",
+      "_composed": true,
+      "_compose": {
+        "scale": 1.2,
+        "table_stretch": 0.6
+      },
       "kind": "content",
       "_plan": {
         "visuals": [
@@ -1519,12 +1508,7 @@
         ],
         "layout": {
           "id": "table_full",
-          "why": "family 10_table matches scorecard",
-          "score": 70.0,
-          "alternatives": [
-            "exhibit_full",
-            "comparison_table"
-          ]
+          "why": "explicit in spec"
         },
         "fit": {
           "words": 14
@@ -1578,9 +1562,12 @@
               "note": "New shift patterns in 3 hubs"
             }
           ]
-        }
+        },
+        "_headline": "Wave 1 already cut cost per drop by 3% and overtime by a fifth"
       },
       "source": "KPI tracker (illustrative)",
+      "layout": "kpi_grid",
+      "_composed": true,
       "kind": "content",
       "_plan": {
         "visuals": [
@@ -1591,9 +1578,7 @@
         ],
         "layout": {
           "id": "kpi_grid",
-          "why": "best available fit",
-          "score": 50.0,
-          "alternatives": []
+          "why": "explicit in spec"
         },
         "fit": {
           "words": 14
@@ -1652,7 +1637,8 @@
               "type": "total"
             }
           ]
-        }
+        },
+        "_headline": "€48M run-rate savings by 2027, with €24M secured by wave 1 and 2"
       },
       "commentary": {
         "points": [
@@ -1661,6 +1647,8 @@
         ]
       },
       "source": "Business cases (illustrative)",
+      "layout": "waterfall_drivers",
+      "_composed": true,
       "kind": "content",
       "_plan": {
         "visuals": [
@@ -1671,13 +1659,7 @@
         ],
         "layout": {
           "id": "waterfall_drivers",
-          "why": "family 09_waterfall matches bridge",
-          "score": 75.0,
-          "alternatives": [
-            "exhibit_commentary_right",
-            "exhibit_takeaways_below",
-            "exhibit_commentary_left"
-          ]
+          "why": "explicit in spec"
         },
         "fit": {
           "commentary": {
@@ -1729,7 +1711,8 @@
                 ]
               }
             ]
-          }
+          },
+          "_headline": "Savings ramp up in every initiative, with automation back-loaded to 2027"
         },
         {
           "type": "column",
@@ -1754,7 +1737,8 @@
                 ]
               }
             ]
-          }
+          },
+          "_headline": "Savings ramp up in every initiative, with automation back-loaded to 2027"
         },
         {
           "type": "column",
@@ -1779,7 +1763,8 @@
                 ]
               }
             ]
-          }
+          },
+          "_headline": "Savings ramp up in every initiative, with automation back-loaded to 2027"
         }
       ],
       "source": "Savings plan (illustrative)",
@@ -1856,7 +1841,8 @@
               ]
             }
           ]
-        }
+        },
+        "_headline": "Network and automation deliver 63% of the savings"
       },
       "commentary": {
         "points": [
@@ -1865,6 +1851,11 @@
         ]
       },
       "source": "Business cases (illustrative)",
+      "layout": "exhibit_commentary_left",
+      "_composed": true,
+      "_compose": {
+        "scale": 1.15
+      },
       "kind": "content",
       "_plan": {
         "visuals": [
@@ -1874,13 +1865,8 @@
           }
         ],
         "layout": {
-          "id": "exhibit_commentary_right",
-          "why": "best available fit",
-          "score": 55.0,
-          "alternatives": [
-            "exhibit_takeaways_below",
-            "exhibit_commentary_left"
-          ]
+          "id": "exhibit_commentary_left",
+          "why": "explicit in spec"
         },
         "fit": {
           "commentary": {

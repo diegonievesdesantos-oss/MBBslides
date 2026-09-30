@@ -41,7 +41,7 @@ Open each PNG, answer the questions (0 = no, 1 = partly, 2 = yes), and write
 
 - **Headline:** Discount and online captured 75% of Iberian grocery growth since 2021
 - **Purpose:** Show where market growth is coming from
-- **Layout:** `exhibit_commentary_right` — commentary (112 words/5 bullets) exceeds capacity {'bullets': 5, 'words': 80}
+- **Layout:** `exhibit_commentary_right` — explicit in spec
 - **Visual:** `stacked_column` — explicit in spec
 - **Automated flags:** `DENSITY_WORDS`
 
@@ -59,7 +59,7 @@ Open each PNG, answer the questions (0 = no, 1 = partly, 2 = yes), and write
 
 - **Headline:** Alvora's growth slowed to 3.0% in 2025, below the market (4.1%) for the second year
 - **Purpose:** Show that Alvora's growth has fallen below the market
-- **Layout:** `kpi_strip_exhibit` — best available fit
+- **Layout:** `kpi_strip_exhibit` — explicit in spec
 - **Visual:** `combo` — explicit in spec
 
   - [ ] Does the slide communicate ONE clear idea?
@@ -76,7 +76,7 @@ Open each PNG, answer the questions (0 = no, 1 = partly, 2 = yes), and write
 
 - **Headline:** Alvora holds 14% of supermarkets but only 5% of discount, the segment driving growth
 - **Purpose:** Show that Alvora is weakest where the market grows
-- **Layout:** `exhibit_takeaways_below` — exhibit needs the full width
+- **Layout:** `exhibit_takeaways_below` — explicit in spec
 - **Visual:** `mekko` — explicit in spec
 
   - [ ] Does the slide communicate ONE clear idea?
@@ -93,7 +93,7 @@ Open each PNG, answer the questions (0 = no, 1 = partly, 2 = yes), and write
 
 - **Headline:** Margin erosion in grocery and convenience (€119M) pushed EBITDA down to €857M
 - **Purpose:** Explain what drove the EBITDA decline
-- **Layout:** `waterfall_drivers` — family 09_waterfall matches waterfall
+- **Layout:** `waterfall_drivers` — explicit in spec
 - **Visual:** `waterfall` — explicit in spec
 
   - [ ] Does the slide communicate ONE clear idea?
@@ -110,7 +110,7 @@ Open each PNG, answer the questions (0 = no, 1 = partly, 2 = yes), and write
 
 - **Headline:** Gross margin change by category and region
 - **Purpose:** Locate the margin erosion by category and region
-- **Layout:** `table_full` — family 10_table matches heatmap; exhibit needs the full width
+- **Layout:** `table_full` — explicit in spec
 - **Visual:** `heatmap` — explicit in spec
 - **Automated flags:** `HEADLINE_TOPIC`
 
@@ -128,7 +128,7 @@ Open each PNG, answer the questions (0 = no, 1 = partly, 2 = yes), and write
 
 - **Headline:** Alvora is stuck in the middle: priced above discounters without a clear experience edge
 - **Purpose:** Show Alvora's competitive position
-- **Layout:** `matrix_commentary` — family 06_matrix matches portfolio
+- **Layout:** `exhibit_takeaways_below` — explicit in spec
 - **Visual:** `portfolio` — explicit in spec
 
   - [ ] Does the slide communicate ONE clear idea?
@@ -145,7 +145,7 @@ Open each PNG, answer the questions (0 = no, 1 = partly, 2 = yes), and write
 
 - **Headline:** The target model adds a discount banner and central pricing to fund the growth moves
 - **Purpose:** Describe the target operating model and what changes
-- **Layout:** `exhibit_takeaways_below` — exhibit needs the full width
+- **Layout:** `exhibit_takeaways_below` — explicit in spec
 - **Visual:** `operating_model` — explicit in spec
 
   - [ ] Does the slide communicate ONE clear idea?
@@ -162,7 +162,7 @@ Open each PNG, answer the questions (0 = no, 1 = partly, 2 = yes), and write
 
 - **Headline:** A plan in three waves over 24 months secures quick margin wins in pricing, fresh and costs before we scale the discount banner, the private label range and the online fulfilment hubs
 - **Purpose:** Show the implementation plan and its sequencing
-- **Layout:** `roadmap_full` — family 15_roadmap matches gantt; exhibit needs the full width
+- **Layout:** `roadmap_full` — explicit in spec
 - **Visual:** `gantt` — explicit in spec
 - **Automated flags:** `HEADLINE_LONG`, `HEADLINE_TWO_MESSAGES`, `TEXT_OVERFLOW`, `RENDER_TEXT_SPILL`, `RENDER_HEADLINE_LINES`
 
@@ -180,7 +180,7 @@ Open each PNG, answer the questions (0 = no, 1 = partly, 2 = yes), and write
 
 - **Headline:** Five initiatives adding €250M lift EBITDA to €1,067M by 2028, net of €40M market headwinds
 - **Purpose:** Quantify the EBITDA impact of the plan
-- **Layout:** `waterfall_full` — family 09_waterfall matches waterfall
+- **Layout:** `waterfall_full` — explicit in spec
 - **Visual:** `waterfall` — explicit in spec
 
   - [ ] Does the slide communicate ONE clear idea?
@@ -197,7 +197,7 @@ Open each PNG, answer the questions (0 = no, 1 = partly, 2 = yes), and write
 
 - **Headline:** The board is asked to approve three decisions to start Wave 1 in January
 - **Purpose:** Make the ask explicit
-- **Layout:** `table_commentary` — family 10_table matches table
+- **Layout:** `exhibit_takeaways_below` — explicit in spec
 - **Visual:** `table` — explicit in spec
 - **Automated flags:** `SOURCE_MISSING`
 

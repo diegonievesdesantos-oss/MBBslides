@@ -1,0 +1,1331 @@
+{
+  "meta": {
+    "title": "Repositioning Alvora for profitable growth",
+    "subtitle": "Same deck spec, generated on the Kestrel Capital corporate template",
+    "client": "Alvora Retail (fictitious)",
+    "date": "October 2026",
+    "deck_type": "strategy_deck",
+    "theme": "meridian",
+    "confidentiality": "Illustrative data",
+    "brand": "/home/user/mbbslides/examples/brand/kestrel"
+  },
+  "storyline": {
+    "framework": "SCR",
+    "audience": "Board of directors",
+    "decision_sought": "Approve the discount banner pilot and the 2026-28 margin programme",
+    "governing_thought": "Alvora should reposition towards discount and fix category margins now to return EBITDA above €1bn by 2028",
+    "key_line": [
+      {
+        "id": "K1",
+        "role": "situation",
+        "message": "The Iberian grocery market keeps growing, but growth has moved to discount and online"
+      },
+      {
+        "id": "K2",
+        "role": "complication",
+        "message": "Alvora is losing momentum and margin because its portfolio is tilted to slow segments"
+      },
+      {
+        "id": "K3",
+        "role": "resolution",
+        "message": "A discount banner, a pricing reset and a cost programme restore EBITDA above €1bn by 2028"
+      }
+    ]
+  },
+  "slides": [
+    {
+      "id": "s01",
+      "kind": "cover",
+      "_plan": {
+        "visuals": [],
+        "layout": {
+          "id": "cover",
+          "why": "structural slide"
+        }
+      },
+      "_page": 1
+    },
+    {
+      "id": "s02",
+      "kind": "exec_summary",
+      "tracker": "Executive summary",
+      "purpose": "Give the board the whole answer on one page",
+      "headline": "Alvora can restore EBITDA to €1,067M by 2028 if it repositions towards discount now",
+      "visual": {
+        "type": "statements",
+        "data": {
+          "items": [
+            {
+              "title": "The market grows 4% a year, but discount and online capture 75% of it",
+              "text": "Iberian grocery reached €142bn in 2025; discount (+7.8% CAGR) and online (+14.0%) outgrow supermarkets (+2.0%)."
+            },
+            {
+              "title": "Alvora is falling behind: growth of 3.0% is below the market for a second year",
+              "text": "Its mix is 54% supermarkets and only 14% discount; share slipped to 9.6%."
+            },
+            {
+              "title": "Margin erosion in grocery and convenience cut EBITDA by €67M in 2025",
+              "text": "EBITDA fell to €857M (6.3% margin); fresh and food-to-go in Madrid and Catalonia explain most of the loss."
+            },
+            {
+              "title": "A discount banner, a pricing reset and a cost programme add €250M by 2028",
+              "text": "Three waves over 24 months; the board is asked to approve the banner pilot and the €85M programme budget."
+            }
+          ]
+        },
+        "_headline": "Alvora can restore EBITDA to €1,067M by 2028 if it repositions towards discount now"
+      },
+      "source": "Alvora management accounts; market model (illustrative)",
+      "_plan": {
+        "visuals": [
+          {
+            "chosen": "statements",
+            "why": "explicit in spec"
+          }
+        ],
+        "layout": {
+          "id": "exec_summary_statements",
+          "why": "best available fit",
+          "score": 50.0,
+          "alternatives": [
+            "exec_summary_scr"
+          ]
+        },
+        "fit": {
+          "statements": {
+            "need_base": 0.4914,
+            "need_floor": 0.4914,
+            "avail": 1.0975,
+            "fits_base": true,
+            "fits_floor": true,
+            "excess_words": 0
+          },
+          "words": 135
+        }
+      },
+      "_page": 2
+    },
+    {
+      "id": "s03",
+      "section": "K1",
+      "tracker": "Market",
+      "purpose": "Show where market growth is coming from",
+      "headline": "Discount and online captured 75% of Iberian grocery growth since 2021",
+      "supporting_message": "The market added €20.7bn in four years; €15.5bn went to discount and online",
+      "message_type": "composition_change",
+      "evidence": [
+        {
+          "claim": "Market grew from €121.3bn (2021) to €142.0bn (2025)",
+          "value": 142.0
+        },
+        {
+          "claim": "Discount + online added €15.5bn of the €20.7bn growth",
+          "value": 75
+        }
+      ],
+      "visual": {
+        "type": "stacked_column",
+        "title": "Iberian grocery market by channel",
+        "unit": "€bn",
+        "data": {
+          "categories": [
+            "2021",
+            "2022",
+            "2023",
+            "2024",
+            "2025"
+          ],
+          "series": [
+            {
+              "name": "Discount",
+              "values": [
+                28.2,
+                30.4,
+                32.8,
+                35.3,
+                38.0
+              ]
+            },
+            {
+              "name": "Supermarkets",
+              "values": [
+                48.1,
+                49.0,
+                50.1,
+                51.1,
+                52.0
+              ]
+            },
+            {
+              "name": "Hypermarkets",
+              "values": [
+                25.2,
+                24.9,
+                24.6,
+                24.3,
+                24.0
+              ]
+            },
+            {
+              "name": "Convenience",
+              "values": [
+                11.5,
+                12.1,
+                12.7,
+                13.3,
+                14.0
+              ]
+            },
+            {
+              "name": "Online",
+              "values": [
+                8.3,
+                9.5,
+                10.9,
+                12.4,
+                14.0
+              ]
+            }
+          ]
+        },
+        "format": {
+          "decimals": 1
+        },
+        "annotations": [
+          {
+            "type": "cagr",
+            "from": "2021",
+            "to": "2025",
+            "label": "CAGR +4.0%"
+          }
+        ],
+        "highlight": [
+          "Discount",
+          "Online"
+        ],
+        "_headline": "Discount and online captured 75% of Iberian grocery growth since 2021"
+      },
+      "commentary": {
+        "title": "What moves the market",
+        "points": [
+          "**Discount** grows 7.8% a year on price-sensitive households",
+          "**Online** is small but compounding at 14% a year",
+          "**Supermarkets** grow at 2%, below food inflation",
+          "**Hypermarkets** shrink as trips move to proximity formats"
+        ]
+      },
+      "source": "National statistics; retailer reports; team market model (illustrative)",
+      "layout": "exhibit_commentary_right",
+      "_composed": true,
+      "kind": "content",
+      "_plan": {
+        "visuals": [
+          {
+            "chosen": "stacked_column",
+            "why": "explicit in spec"
+          }
+        ],
+        "layout": {
+          "id": "exhibit_commentary_right",
+          "why": "explicit in spec"
+        },
+        "fit": {
+          "commentary": {
+            "fits_base": true,
+            "fits_floor": true,
+            "need_base": 1.6,
+            "need_floor": 1.49,
+            "avail": 4.66,
+            "excess_words": 0
+          },
+          "words": 43
+        }
+      },
+      "_page": 3
+    },
+    {
+      "id": "s04",
+      "section": "K2",
+      "tracker": "Performance",
+      "purpose": "Show that Alvora's growth has fallen below the market",
+      "headline": "Alvora's growth slowed to 3.0% in 2025, below the market (4.1%) for the second year",
+      "message_type": "trend",
+      "evidence": [
+        {
+          "claim": "Revenue growth 2022-2025",
+          "values": [
+            6.3,
+            6.7,
+            3.9,
+            3.0
+          ]
+        },
+        {
+          "claim": "Market growth 2025",
+          "value": 4.1
+        }
+      ],
+      "kpis": {
+        "items": [
+          {
+            "value": "€13.6bn",
+            "label": "Revenue 2025",
+            "delta": "+3.0% YoY"
+          },
+          {
+            "value": "6.3%",
+            "label": "EBITDA margin 2025",
+            "delta": "−0.7pp",
+            "trend": "down"
+          },
+          {
+            "value": "9.6%",
+            "label": "Market share 2025",
+            "delta": "−0.1pp",
+            "trend": "down"
+          },
+          {
+            "value": "+1.2%",
+            "label": "Like-for-like sales 2025",
+            "delta": "−1.8pp vs 2024",
+            "trend": "down"
+          }
+        ]
+      },
+      "visual": {
+        "type": "combo",
+        "title": "Alvora revenue and growth vs market",
+        "unit": "€bn, % YoY",
+        "data": {
+          "categories": [
+            "2022",
+            "2023",
+            "2024",
+            "2025"
+          ],
+          "series": [
+            {
+              "name": "Alvora revenue (€bn)",
+              "values": [
+                11.9,
+                12.7,
+                13.2,
+                13.6
+              ]
+            },
+            {
+              "name": "Alvora growth",
+              "axis": "secondary",
+              "values": [
+                6.3,
+                6.7,
+                3.9,
+                3.0
+              ]
+            },
+            {
+              "name": "Market growth",
+              "axis": "secondary",
+              "color": "neutral",
+              "values": [
+                3.8,
+                4.1,
+                4.0,
+                4.1
+              ]
+            }
+          ]
+        },
+        "format": {
+          "decimals": 1
+        },
+        "line_format": {
+          "decimals": 1,
+          "suffix": "%"
+        },
+        "_headline": "Alvora's growth slowed to 3.0% in 2025, below the market (4.1%) for the second year"
+      },
+      "source": "Alvora management accounts; market model (illustrative)",
+      "layout": "kpi_strip_exhibit",
+      "_composed": true,
+      "kind": "content",
+      "_plan": {
+        "visuals": [
+          {
+            "chosen": "combo",
+            "why": "explicit in spec"
+          }
+        ],
+        "layout": {
+          "id": "kpi_strip_exhibit",
+          "why": "explicit in spec"
+        },
+        "fit": {
+          "words": 15
+        }
+      },
+      "_page": 4
+    },
+    {
+      "id": "s05",
+      "section": "K2",
+      "tracker": "Portfolio",
+      "purpose": "Show that Alvora is weakest where the market grows",
+      "headline": "Alvora holds 14% of supermarkets but only 5% of discount, the segment driving growth",
+      "message_type": "segmentation",
+      "evidence": [
+        {
+          "claim": "Alvora share by channel 2025",
+          "values": [
+            5,
+            14,
+            9,
+            12,
+            4
+          ]
+        }
+      ],
+      "visual": {
+        "type": "mekko",
+        "title": "Market share by channel, 2025",
+        "unit": "% of channel sales; width = channel size (€bn)",
+        "highlight": [
+          "Alvora"
+        ],
+        "data": {
+          "order": [
+            "Alvora",
+            "Competitor A",
+            "Competitor B",
+            "Competitor C",
+            "Others"
+          ],
+          "columns": [
+            {
+              "label": "Discount",
+              "total": 38.0,
+              "parts": {
+                "Alvora": 5,
+                "Competitor A": 41,
+                "Competitor B": 12,
+                "Competitor C": 0,
+                "Others": 42
+              }
+            },
+            {
+              "label": "Supermarkets",
+              "total": 52.0,
+              "parts": {
+                "Alvora": 14,
+                "Competitor A": 4,
+                "Competitor B": 22,
+                "Competitor C": 18,
+                "Others": 42
+              }
+            },
+            {
+              "label": "Hypermarkets",
+              "total": 24.0,
+              "parts": {
+                "Alvora": 9,
+                "Competitor A": 0,
+                "Competitor B": 15,
+                "Competitor C": 31,
+                "Others": 45
+              }
+            },
+            {
+              "label": "Convenience",
+              "total": 14.0,
+              "parts": {
+                "Alvora": 12,
+                "Competitor A": 0,
+                "Competitor B": 6,
+                "Competitor C": 7,
+                "Others": 75
+              }
+            },
+            {
+              "label": "Online",
+              "total": 14.0,
+              "parts": {
+                "Alvora": 4,
+                "Competitor A": 0,
+                "Competitor B": 9,
+                "Competitor C": 12,
+                "Others": 75
+              }
+            }
+          ]
+        },
+        "format": {
+          "decimals": 0
+        },
+        "_headline": "Alvora holds 14% of supermarkets but only 5% of discount, the segment driving growth"
+      },
+      "commentary": {
+        "points": [
+          "54% of Alvora sales come from **supermarkets**, a channel growing 2% a year",
+          "In **discount**, Competitor A holds 41% with a lower cost-to-serve",
+          "**Online** share of 4% trails B and C, whose hub networks are in place"
+        ]
+      },
+      "source": "Retailer reports; consumer panel; team estimates (illustrative)",
+      "layout": "exhibit_takeaways_below",
+      "_composed": true,
+      "kind": "content",
+      "_plan": {
+        "visuals": [
+          {
+            "chosen": "mekko",
+            "why": "explicit in spec"
+          }
+        ],
+        "layout": {
+          "id": "exhibit_takeaways_below",
+          "why": "explicit in spec"
+        },
+        "fit": {
+          "commentary": {
+            "fits_base": true,
+            "fits_floor": true,
+            "excess_words": 0
+          },
+          "words": 53
+        }
+      },
+      "_page": 5
+    },
+    {
+      "id": "s06",
+      "section": "K2",
+      "tracker": "Profitability",
+      "purpose": "Explain what drove the EBITDA decline",
+      "headline": "Margin erosion in grocery and convenience (€119M) pushed EBITDA down to €857M",
+      "message_type": "change_bridge",
+      "evidence": [
+        {
+          "claim": "EBITDA 2024 €924M to 2025 €857M",
+          "values": [
+            924,
+            857
+          ]
+        }
+      ],
+      "visual": {
+        "type": "waterfall",
+        "title": "EBITDA bridge 2024 to 2025",
+        "unit": "€M",
+        "highlight": [
+          "Grocery margin",
+          "Convenience margin"
+        ],
+        "data": {
+          "steps": [
+            {
+              "label": "EBITDA 2024",
+              "value": 924,
+              "type": "total"
+            },
+            {
+              "label": "Volume",
+              "value": 52
+            },
+            {
+              "label": "Price / mix",
+              "value": 31
+            },
+            {
+              "label": "Grocery margin",
+              "value": -78
+            },
+            {
+              "label": "Convenience margin",
+              "value": -41
+            },
+            {
+              "label": "Labour cost",
+              "value": -22
+            },
+            {
+              "label": "Energy",
+              "value": -14
+            },
+            {
+              "label": "Other",
+              "value": 5
+            },
+            {
+              "label": "EBITDA 2025",
+              "type": "total"
+            }
+          ]
+        },
+        "delta_colors": "neutral",
+        "_headline": "Margin erosion in grocery and convenience (€119M) pushed EBITDA down to €857M"
+      },
+      "commentary": {
+        "title": "Two categories explain the decline",
+        "points": [
+          "**Grocery (−€78M):** promo intensity up 3pp to match discounters",
+          "**Convenience (−€41M):** food-to-go waste doubled after the range extension",
+          "Volume and price added €83M, not enough to offset cost inflation"
+        ]
+      },
+      "source": "Alvora management accounts (illustrative)",
+      "layout": "waterfall_drivers",
+      "_composed": true,
+      "kind": "content",
+      "_plan": {
+        "visuals": [
+          {
+            "chosen": "waterfall",
+            "why": "explicit in spec"
+          }
+        ],
+        "layout": {
+          "id": "waterfall_drivers",
+          "why": "explicit in spec"
+        },
+        "fit": {
+          "commentary": {
+            "fits_base": true,
+            "fits_floor": true,
+            "need_base": 1.49,
+            "need_floor": 1.38,
+            "avail": 4.66,
+            "excess_words": 0
+          },
+          "words": 41
+        }
+      },
+      "_page": 6
+    },
+    {
+      "id": "s07",
+      "section": "K2",
+      "tracker": "Profitability",
+      "purpose": "Locate the margin erosion by category and region",
+      "headline": "The erosion concentrates in fresh and food-to-go, above all in Madrid and Catalonia",
+      "message_type": "comparison",
+      "evidence": [
+        {
+          "claim": "Gross margin change 2025 vs 2024 by category and region, pp"
+        }
+      ],
+      "visual": {
+        "type": "heatmap",
+        "title": "Gross margin change by category and region, 2025 vs 2024",
+        "unit": "pp",
+        "columns": [
+          {
+            "label": "Category",
+            "width": 2.6
+          },
+          {
+            "label": "Madrid",
+            "kind": "number",
+            "format": {
+              "decimals": 1,
+              "plus": true
+            }
+          },
+          {
+            "label": "Catalonia",
+            "kind": "number",
+            "format": {
+              "decimals": 1
+            }
+          },
+          {
+            "label": "Andalusia",
+            "kind": "number",
+            "format": {
+              "decimals": 1
+            }
+          },
+          {
+            "label": "Valencia",
+            "kind": "number",
+            "format": {
+              "decimals": 1
+            }
+          },
+          {
+            "label": "North",
+            "kind": "number",
+            "format": {
+              "decimals": 1
+            }
+          },
+          {
+            "label": "Portugal",
+            "kind": "number",
+            "format": {
+              "decimals": 1
+            }
+          }
+        ],
+        "rows": [
+          [
+            "Fresh",
+            -2.9,
+            -2.6,
+            -1.1,
+            -1.0,
+            -0.6,
+            -0.4
+          ],
+          [
+            "Food-to-go",
+            -3.4,
+            -3.1,
+            -1.4,
+            -1.2,
+            -0.9,
+            -0.7
+          ],
+          [
+            "Ambient grocery",
+            -0.8,
+            -0.7,
+            -0.5,
+            -0.4,
+            -0.3,
+            -0.2
+          ],
+          [
+            "Drinks",
+            -0.3,
+            -0.2,
+            0.1,
+            0.0,
+            0.2,
+            0.1
+          ],
+          [
+            "Household & personal care",
+            0.2,
+            0.1,
+            0.3,
+            0.2,
+            0.4,
+            0.3
+          ],
+          {
+            "cells": [
+              "Total",
+              -1.6,
+              -1.4,
+              -0.6,
+              -0.5,
+              -0.3,
+              -0.2
+            ],
+            "style": "total"
+          }
+        ],
+        "heatmap": {
+          "columns": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "mode": "diverging",
+          "domain": [
+            -3.5,
+            3.5
+          ]
+        },
+        "_headline": "The erosion concentrates in fresh and food-to-go, above all in Madrid and Catalonia"
+      },
+      "takeaway": "Fixing fresh and food-to-go in two regions addresses about two thirds of the margin gap",
+      "source": "Alvora category P&L (illustrative)",
+      "layout": "table_full",
+      "_composed": true,
+      "kind": "content",
+      "_plan": {
+        "visuals": [
+          {
+            "chosen": "heatmap",
+            "why": "explicit in spec"
+          }
+        ],
+        "layout": {
+          "id": "table_full",
+          "why": "explicit in spec"
+        },
+        "fit": {
+          "words": 28
+        }
+      },
+      "_page": 7
+    },
+    {
+      "id": "s08",
+      "section": "K2",
+      "tracker": "Competition",
+      "purpose": "Show Alvora's competitive position",
+      "headline": "Alvora is stuck in the middle: priced above discounters without a clear experience edge",
+      "message_type": "positioning",
+      "evidence": [
+        {
+          "claim": "Customer survey 2025 (n=4,000): price perception and store experience indices"
+        }
+      ],
+      "visual": {
+        "type": "portfolio",
+        "title": "Customer perception, 2025",
+        "unit": "index 0-1; bubble = revenue",
+        "highlight": [
+          "Alvora"
+        ],
+        "data": {
+          "x_label": "Price perception (cheaper →)",
+          "y_label": "Store experience",
+          "quadrants": [
+            "Experience-led",
+            "Value leaders",
+            "Stuck in the middle",
+            "Price-led"
+          ],
+          "focus": "BL",
+          "items": [
+            {
+              "label": "Alvora",
+              "x": 0.4,
+              "y": 0.44,
+              "size": 13.6
+            },
+            {
+              "label": "Competitor A",
+              "x": 0.86,
+              "y": 0.34,
+              "size": 16.1
+            },
+            {
+              "label": "Competitor B",
+              "x": 0.58,
+              "y": 0.63,
+              "size": 17.9
+            },
+            {
+              "label": "Competitor C",
+              "x": 0.3,
+              "y": 0.74,
+              "size": 15.2
+            },
+            {
+              "label": "Online pure-players",
+              "x": 0.66,
+              "y": 0.82,
+              "size": 6.0
+            }
+          ]
+        },
+        "_headline": "Alvora is stuck in the middle: priced above discounters without a clear experience edge"
+      },
+      "commentary": {
+        "points": [
+          "Alvora's prices sit **8% above** Competitor A on a comparable basket",
+          "Its experience score trails B and C on freshness and queues",
+          "Winning back price perception needs a separate low-cost format, not deeper promotions"
+        ]
+      },
+      "source": "Customer survey 2025, n=4,000 (illustrative)",
+      "layout": "exhibit_takeaways_below",
+      "_composed": true,
+      "kind": "content",
+      "_plan": {
+        "visuals": [
+          {
+            "chosen": "portfolio",
+            "why": "explicit in spec"
+          }
+        ],
+        "layout": {
+          "id": "exhibit_takeaways_below",
+          "why": "explicit in spec"
+        },
+        "fit": {
+          "commentary": {
+            "fits_base": true,
+            "fits_floor": true,
+            "excess_words": 0
+          },
+          "words": 48
+        }
+      },
+      "_page": 8
+    },
+    {
+      "id": "s09",
+      "section": "K3",
+      "tracker": "Operating model",
+      "purpose": "Describe the target operating model and what changes",
+      "headline": "The target model adds a discount banner and central pricing to fund the growth moves",
+      "message_type": "structure",
+      "evidence": [
+        {
+          "claim": "Design principles agreed with the executive committee"
+        }
+      ],
+      "visual": {
+        "type": "operating_model",
+        "data": {
+          "layers": [
+            {
+              "label": "Propositions",
+              "emphasis": true,
+              "items": [
+                {
+                  "label": "Discount banner",
+                  "change": "new",
+                  "emphasis": true
+                },
+                "Supermarkets",
+                "Convenience",
+                {
+                  "label": "Online",
+                  "change": "changed"
+                }
+              ]
+            },
+            {
+              "label": "Commercial",
+              "items": [
+                {
+                  "label": "Central pricing & promo",
+                  "change": "changed"
+                },
+                {
+                  "label": "Category management",
+                  "change": "changed"
+                },
+                {
+                  "label": "Private label",
+                  "change": "new"
+                }
+              ]
+            },
+            {
+              "label": "Operations",
+              "items": [
+                "Stores",
+                "Supply chain",
+                {
+                  "label": "Fulfilment hubs",
+                  "change": "new"
+                }
+              ]
+            },
+            {
+              "label": "Enablers",
+              "items": [
+                {
+                  "label": "Data & analytics",
+                  "change": "changed"
+                },
+                "Technology",
+                "People & capabilities"
+              ]
+            }
+          ],
+          "pillars": [
+            {
+              "label": "Transformation office"
+            }
+          ]
+        },
+        "_headline": "The target model adds a discount banner and central pricing to fund the growth moves"
+      },
+      "commentary": {
+        "points": [
+          "**New:** discount banner, private label, fulfilment hubs",
+          "**Changed:** pricing moves to the centre; category teams own margin",
+          "A transformation office steers the programme"
+        ]
+      },
+      "source": "Team analysis (illustrative)",
+      "layout": "exhibit_takeaways_below",
+      "_composed": true,
+      "kind": "content",
+      "_plan": {
+        "visuals": [
+          {
+            "chosen": "operating_model",
+            "why": "explicit in spec"
+          }
+        ],
+        "layout": {
+          "id": "exhibit_takeaways_below",
+          "why": "explicit in spec"
+        },
+        "fit": {
+          "commentary": {
+            "fits_base": true,
+            "fits_floor": true,
+            "excess_words": 0
+          },
+          "words": 38
+        }
+      },
+      "_page": 9
+    },
+    {
+      "id": "s10",
+      "section": "K3",
+      "tracker": "Roadmap",
+      "purpose": "Show the implementation plan and its sequencing",
+      "headline": "A plan in three waves over 24 months secures quick margin wins before scaling the banner",
+      "message_type": "plan",
+      "evidence": [
+        {
+          "claim": "Plan agreed with workstream leads"
+        }
+      ],
+      "visual": {
+        "type": "gantt",
+        "data": {
+          "periods": [
+            "Q1 26",
+            "Q2 26",
+            "Q3 26",
+            "Q4 26",
+            "Q1 27",
+            "Q2 27",
+            "Q3 27",
+            "Q4 27"
+          ],
+          "phases": [
+            {
+              "label": "Wave 1: Fix margins",
+              "start": 0,
+              "end": 3
+            },
+            {
+              "label": "Wave 2: Pilot",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "label": "Wave 3: Scale",
+              "start": 5,
+              "end": 8
+            }
+          ],
+          "today": 0.5,
+          "rows": [
+            {
+              "label": "Pricing & promo reset",
+              "bars": [
+                {
+                  "start": 0,
+                  "end": 3,
+                  "label": "Reset 1,200 SKUs"
+                }
+              ]
+            },
+            {
+              "label": "Fresh & food-to-go margins",
+              "bars": [
+                {
+                  "start": 0,
+                  "end": 4,
+                  "label": "Waste & range"
+                }
+              ]
+            },
+            {
+              "label": "Cost programme",
+              "bars": [
+                {
+                  "start": 1,
+                  "end": 7,
+                  "label": "Labour scheduling, energy"
+                }
+              ]
+            },
+            {
+              "label": "Private label",
+              "bars": [
+                {
+                  "start": 2,
+                  "end": 8,
+                  "label": "25% → 35% of sales"
+                }
+              ]
+            },
+            {
+              "label": "Discount banner",
+              "bars": [
+                {
+                  "start": 3,
+                  "end": 5,
+                  "label": "Pilot 20 stores",
+                  "highlight": true
+                },
+                {
+                  "start": 5,
+                  "end": 8,
+                  "label": "Roll out 150 stores"
+                }
+              ],
+              "milestones": [
+                {
+                  "at": 5,
+                  "label": "Go / no-go"
+                }
+              ]
+            },
+            {
+              "label": "Online fulfilment hubs",
+              "bars": [
+                {
+                  "start": 4,
+                  "end": 8,
+                  "label": "2 hubs"
+                }
+              ]
+            }
+          ]
+        },
+        "_headline": "A plan in three waves over 24 months secures quick margin wins before scaling the banner"
+      },
+      "source": "Programme plan (illustrative)",
+      "layout": "roadmap_full",
+      "_composed": true,
+      "kind": "content",
+      "_plan": {
+        "visuals": [
+          {
+            "chosen": "gantt",
+            "why": "explicit in spec"
+          }
+        ],
+        "layout": {
+          "id": "roadmap_full",
+          "why": "explicit in spec"
+        },
+        "fit": {
+          "words": 16
+        }
+      },
+      "_page": 10
+    },
+    {
+      "id": "s11",
+      "section": "K3",
+      "tracker": "Value at stake",
+      "purpose": "Quantify the EBITDA impact of the plan",
+      "headline": "Five initiatives adding €250M lift EBITDA to €1,067M by 2028, net of €40M market headwinds",
+      "message_type": "change_bridge",
+      "evidence": [
+        {
+          "claim": "Initiative business cases",
+          "values": [
+            60,
+            45,
+            70,
+            55,
+            20,
+            -40
+          ]
+        }
+      ],
+      "visual": {
+        "type": "waterfall",
+        "title": "EBITDA 2025 to 2028",
+        "unit": "€M",
+        "data": {
+          "steps": [
+            {
+              "label": "EBITDA 2025",
+              "value": 857,
+              "type": "total"
+            },
+            {
+              "label": "Pricing & promo",
+              "value": 60
+            },
+            {
+              "label": "Private label",
+              "value": 45
+            },
+            {
+              "label": "Cost programme",
+              "value": 70
+            },
+            {
+              "label": "Discount banner",
+              "value": 55
+            },
+            {
+              "label": "Online hubs",
+              "value": 20
+            },
+            {
+              "label": "Market headwinds",
+              "value": -40
+            },
+            {
+              "label": "EBITDA 2028",
+              "type": "total"
+            }
+          ]
+        },
+        "_headline": "Five initiatives adding €250M lift EBITDA to €1,067M by 2028, net of €40M market headwinds"
+      },
+      "takeaway": "Cost and pricing levers deliver €130M of the uplift and are largely within management control",
+      "source": "Initiative business cases (illustrative)",
+      "layout": "waterfall_full",
+      "_composed": true,
+      "kind": "content",
+      "_plan": {
+        "visuals": [
+          {
+            "chosen": "waterfall",
+            "why": "explicit in spec"
+          }
+        ],
+        "layout": {
+          "id": "waterfall_full",
+          "why": "explicit in spec"
+        },
+        "fit": {
+          "words": 30
+        }
+      },
+      "_page": 11
+    },
+    {
+      "id": "s12",
+      "section": "K3",
+      "tracker": "Decisions",
+      "purpose": "Make the ask explicit",
+      "headline": "The board is asked to approve three decisions to start Wave 1 in January",
+      "message_type": "recommendation",
+      "evidence": [
+        {
+          "claim": "Programme budget €85M over 2026-27"
+        }
+      ],
+      "visual": {
+        "type": "table",
+        "title": "Decisions requested today",
+        "columns": [
+          {
+            "label": "Decision",
+            "width": 4.6
+          },
+          {
+            "label": "Owner"
+          },
+          {
+            "label": "Timing"
+          },
+          {
+            "label": "EBITDA 2028 (€M)",
+            "kind": "number"
+          },
+          {
+            "label": "Status",
+            "kind": "rag"
+          }
+        ],
+        "rows": [
+          [
+            "Approve pricing & promo reset across 1,200 SKUs",
+            "CCO",
+            "Jan 2026",
+            60,
+            "G"
+          ],
+          [
+            "Approve discount banner pilot in 20 stores (€18M capex)",
+            "CEO",
+            "Q4 2026",
+            55,
+            "A"
+          ],
+          [
+            "Approve €85M programme budget and transformation office",
+            "CFO",
+            "Jan 2026",
+            135,
+            "G"
+          ]
+        ],
+        "_headline": "The board is asked to approve three decisions to start Wave 1 in January"
+      },
+      "commentary": {
+        "points": [
+          "Wave 1 is self-funding by Q4 2026",
+          "The go / no-go on the banner comes back to the board in Q2 2027"
+        ]
+      },
+      "source": "Programme plan (illustrative)",
+      "layout": "exhibit_takeaways_below",
+      "_composed": true,
+      "_compose": {
+        "scale": 1.2,
+        "table_stretch": 0.6
+      },
+      "kind": "content",
+      "_plan": {
+        "visuals": [
+          {
+            "chosen": "table",
+            "why": "explicit in spec"
+          }
+        ],
+        "layout": {
+          "id": "exhibit_takeaways_below",
+          "why": "explicit in spec"
+        },
+        "fit": {
+          "commentary": {
+            "fits_base": true,
+            "fits_floor": true,
+            "excess_words": 0
+          },
+          "words": 35
+        }
+      },
+      "_page": 12
+    }
+  ],
+  "_headline_scores": {
+    "s02": 100,
+    "s03": 100,
+    "s04": 100,
+    "s05": 100,
+    "s06": 100,
+    "s07": 95,
+    "s08": 100,
+    "s09": 100,
+    "s10": 100,
+    "s11": 100,
+    "s12": 95
+  },
+  "_profile": {
+    "name": "standard",
+    "font_scale": 1.0,
+    "max_words_per_slide": 110,
+    "max_bullets_per_zone": 5,
+    "max_words_per_bullet": 22,
+    "max_table_rows": 10,
+    "max_table_cols": 7,
+    "max_chart_categories": 12,
+    "max_chart_series": 4,
+    "max_shapes_per_slide": 70,
+    "min_whitespace_ratio": 0.35,
+    "headline_max_words": 20,
+    "headline_max_lines": 2,
+    "show_tracker": true,
+    "deck_type": "strategy_deck"
+  }
+}
