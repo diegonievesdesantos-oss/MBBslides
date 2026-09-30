@@ -38,11 +38,11 @@ def run(spec: dict, out_dir: str | Path, max_iter: int = 3, do_render: bool = Tr
     applied_any = False
     decisions: dict = {}
     if compose and do_render:
-        from .compose import compose as run_compose
-        from .compose import summarize as compose_summary
-
         import shutil
         import tempfile
+
+        from .compose import compose as run_compose
+        from .compose import summarize as compose_summary
 
         scratch = Path(tempfile.mkdtemp(prefix="cpe_compose_"))  # candidate renders are scratch, not artefacts
         try:
