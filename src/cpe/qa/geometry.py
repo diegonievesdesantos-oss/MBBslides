@@ -97,16 +97,17 @@ def measure_text_frame(sh) -> tuple[float, int, float, list[str]]:
         size = max(sizes)
         bold_chars = sum(len(r.text) for r in runs if r.font.bold)
         bold = bold_chars > len(text) / 2 if text else False
+        fam = tm.family_for(next((r.font.name for r in runs if r.font.name), None))
         pPr = p._p.pPr
         indent = 0.0
         if pPr is not None and pPr.get("marL"):
             indent = int(pPr.get("marL")) / EMU
         spacing = p.line_spacing if isinstance(p.line_spacing, float) else 1.0
-        lines = tm.wrap_lines(text, max(0.05, width - indent), size, bold) if text else [""]
+        lines = tm.wrap_lines(text, max(0.05, width - indent), size, bold, fam) if text else [""]
         all_lines += lines
         nlines += len(lines)
         total_h += len(lines) * tm.line_height_in(size, spacing)
-        widest = max([widest] + [tm.text_width_in(l, size, bold) + indent for l in lines])
+        widest = max([widest] + [tm.text_width_in(l, size, bold, fam) + indent for l in lines])
         if i < len(paras) - 1 and p.space_after is not None:
             total_h += p.space_after.pt / 72
     return total_h, nlines, widest, all_lines
@@ -170,9 +171,21 @@ def check_slide(slide, idx: int, manifest: dict | None, theme: Theme, profile: d
     zones = {n: Box(z["x"], z["y"], z["w"], z["h"]) for n, z in ((manifest or {}).get("zones") or {}).items()}
     safe_l, safe_r = GRID.margin_l - TOL, SLIDE_W - GRID.margin_r + TOL
     safe_t, safe_b = GRID.tracker_y - TOL, GRID.footer_y + GRID.footer_h + TOL
+    from ..design.tokens import interpolate
+
     palette = theme.palette() | {"FFFFFF", "000000"}
+    for tok in ("highlight", "secondary", "positive", "negative", "warning", "neutral"):  # legibility-darkened accents
+        if tok in theme.colors:
+            palette |= {interpolate(theme.c(tok), theme.c("text"), k / 10) for k in range(1, 11)}
     used_zones = set()
     texts = [s for s in shapes if s.ink is not None]
+    reserved = [(r.get("name", "artwork"), Box(r["x"], r["y"], r["w"], r["h"])) for r in theme.extras.get("reserved") or []]
+    for s in shapes:
+        test = s.ink if s.ink is not None else s.box
+        for rname, rb in reserved:
+            if s.kind != "bleed" and test.intersection(rb.inset(0.02, 0.02, 0.02, 0.02)) > 0.001:
+                out.append(issue("error", "BRAND_RESERVED_OVERLAP", f"{s.name} covers template artwork '{rname}'", sid, shape=s.name))
+                break
     for s in shapes:
         b = s.box
         used_zones.add(s.zone)
@@ -208,7 +221,7 @@ def check_slide(slide, idx: int, manifest: dict | None, theme: Theme, profile: d
                     if pt < 9 - 1e-6 and not in_footer:
                         out.append(issue("warning", "FONT_TOO_SMALL", f"{pt:g} pt text outside the footer: '{r.text[:30]}'", sid, shape=s.name))
                         break
-                if r.font.name and r.font.name != theme.font_latin:
+                if r.font.name and r.font.name not in theme.fonts():
                     out.append(issue("warning", "FONT_FAMILY", f"Font '{r.font.name}' is not the theme font", sid, shape=s.name))
                     break
                 try:
@@ -300,6 +313,9 @@ def _background_at(shapes: list[ShapeInfo], s: ShapeInfo, theme: Theme) -> str:
 
 
 def check(pptx_path: str, manifests: list[dict], theme: Theme, profile: dict) -> list[dict]:
+    from ..design.tokens import activate
+
+    activate(theme)
     prs = Presentation(pptx_path)
     out: list[dict] = []
     for i, slide in enumerate(prs.slides, start=1):

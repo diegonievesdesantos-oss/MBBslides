@@ -26,8 +26,11 @@ def profile_for(spec: dict) -> dict:
 
 
 def plan(spec: dict, auto_split: bool | None = None) -> tuple[dict, list[dict]]:
+    from ..design.tokens import activate, theme_for
+
     spec = copy.deepcopy(spec)
     meta = spec.setdefault("meta", {})
+    activate(theme_for(meta))  # measurement fonts + brand grid before any fitting decision
     profile = profile_for(spec)
     auto_split = meta.get("auto_split", True) if auto_split is None else auto_split
     issues: list[dict] = []

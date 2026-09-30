@@ -127,7 +127,13 @@ CONTENT_KINDS = {"content", "exec_summary"}
 
 
 def load_spec(path: str | Path) -> dict:
-    return json.loads(Path(path).read_text(encoding="utf-8"))
+    spec = json.loads(Path(path).read_text(encoding="utf-8"))
+    brand = (spec.get("meta") or {}).get("brand")
+    if brand and not Path(brand).is_absolute():
+        cand = (Path(path).parent / brand).resolve()
+        if cand.exists():
+            spec["meta"]["brand"] = str(cand)  # brand paths are relative to the spec file
+    return spec
 
 
 def save_spec(spec: dict, path: str | Path) -> None:

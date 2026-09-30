@@ -14,6 +14,7 @@ Rendering commands:
   run        the full loop: plan → build → render → QA → autofix → … (exit 1 if not passed)
   patch      deck.json + patches.json → patched deck.json
   review     score an agent-filled review.json (semantic visual QA)
+  brand      `brand ingest template.pptx -o brands/acme` → brand theme + compatibility report
   eval       visual-quality benchmark over evals/cases vs evals/baseline.json (exit 1 on regression)
 Reference:
   catalog    layout library (markdown)        themes    available themes
@@ -123,7 +124,7 @@ def cmd_qa(a):
     pptx = Path(a.pptx)
     out = Path(a.out or pptx.parent)
     manifests = json.loads(Path(a.manifest).read_text()) if a.manifest else []
-    theme = load_theme(a.theme)
+    theme = load_theme(a.theme)  # a built-in name, a theme JSON or a brand directory
     profile = load_profile(a.profile)
     issues = geometry.check(str(pptx), manifests, theme, profile)
     metrics = {}
@@ -193,6 +194,21 @@ def cmd_eval(a):
     return 0 if r["passed"] else 1
 
 
+def cmd_brand(a):
+    from .brand.ingest import ingest
+
+    r = ingest(a.template, a.out, name=a.name, base_theme=a.base_theme)
+    f = r["fonts"]
+    _p(f"brand '{r['brand']}' → {a.out}/theme.json  (use it with \"meta\": {{\"brand\": \"{a.out}\"}})")
+    _p(f"slide size {r['slide_size']['width_in']}×{r['slide_size']['height_in']} in · masters used: {r['masters_used']} · base layout: {r['base_layout']}")
+    for role, x in f.items():
+        if x.get("font"):
+            _p(f"font {role:7} {x['font']:24} {x['status']:28} measured with {x['measure_family']} ({x['measurement']})")
+    for u in r["unsupported"]:
+        _p(f"unsupported: {u}")
+    _p(f"report: {a.out}/compatibility.md")
+
+
 def cmd_catalog(a):
     from .layout.engine import catalog_markdown
 
@@ -224,6 +240,8 @@ def main(argv=None) -> int:
     s = sub.add_parser("patch"); s.add_argument("spec"); s.add_argument("patches"); s.add_argument("-o", "--out"); s.set_defaults(f=cmd_patch)
     s = sub.add_parser("review"); s.add_argument("review"); s.set_defaults(f=cmd_review)
     s = sub.add_parser("eval"); s.add_argument("cases", nargs="?", default="evals/cases"); s.add_argument("-o", "--out", default="out/evals"); s.add_argument("--baseline", default="evals/baseline.json"); s.add_argument("--update-baseline", action="store_true"); s.add_argument("--no-compose", action="store_true"); s.add_argument("--tolerance", type=float, default=2.0); s.set_defaults(f=cmd_eval)
+    s = sub.add_parser("brand"); bs = s.add_subparsers(dest="brand_cmd", required=True)
+    s2 = bs.add_parser("ingest"); s2.add_argument("template"); s2.add_argument("-o", "--out", required=True); s2.add_argument("--name"); s2.add_argument("--base-theme", default="meridian"); s2.set_defaults(f=cmd_brand)
     s = sub.add_parser("catalog"); s.add_argument("-o", "--out"); s.set_defaults(f=cmd_catalog)
     s = sub.add_parser("themes"); s.set_defaults(f=cmd_themes)
     a = ap.parse_args(argv)

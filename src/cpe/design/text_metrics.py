@@ -19,6 +19,8 @@ from PIL import ImageFont
 
 FONT_DIRS = [
     "/usr/share/fonts/truetype/liberation",
+    "/usr/share/fonts/truetype/crosextra",
+    "/usr/share/fonts/truetype/dejavu",
     "/usr/share/fonts/truetype/liberation2",
     "/usr/share/fonts/liberation",
     "/Library/Fonts",
@@ -26,10 +28,56 @@ FONT_DIRS = [
     str(Path(__file__).parent / "fonts"),
 ]
 
-# family -> (regular, bold) candidate file names
+# measurement family -> (regular, bold) candidate file names
 FONT_FILES = {
     "LiberationSans": (["LiberationSans-Regular.ttf", "Arial.ttf", "arial.ttf"], ["LiberationSans-Bold.ttf", "Arial Bold.ttf", "arialbd.ttf"]),
+    "LiberationSerif": (["LiberationSerif-Regular.ttf", "Times New Roman.ttf", "times.ttf"], ["LiberationSerif-Bold.ttf", "Times New Roman Bold.ttf", "timesbd.ttf"]),
+    "LiberationMono": (["LiberationMono-Regular.ttf", "cour.ttf"], ["LiberationMono-Bold.ttf", "courbd.ttf"]),
+    "Carlito": (["Carlito-Regular.ttf", "calibri.ttf", "Calibri.ttf"], ["Carlito-Bold.ttf", "calibrib.ttf", "Calibri Bold.ttf"]),
+    "Caladea": (["Caladea-Regular.ttf", "cambria.ttc", "Cambria.ttf"], ["Caladea-Bold.ttf", "cambriab.ttf", "Cambria Bold.ttf"]),
+    "DejaVuSans": (["DejaVuSans.ttf", "Verdana.ttf"], ["DejaVuSans-Bold.ttf", "Verdana Bold.ttf"]),
+    "DejaVuSerif": (["DejaVuSerif.ttf"], ["DejaVuSerif-Bold.ttf"]),
 }
+
+# Font names used in decks -> measurement family (metric-compatible where one exists).
+FONT_ALIASES = {
+    "arial": "LiberationSans", "helvetica": "LiberationSans", "helvetica neue": "LiberationSans", "liberation sans": "LiberationSans", "arimo": "LiberationSans",
+    "times new roman": "LiberationSerif", "times": "LiberationSerif", "liberation serif": "LiberationSerif", "tinos": "LiberationSerif",
+    "courier new": "LiberationMono", "cousine": "LiberationMono",
+    "calibri": "Carlito", "carlito": "Carlito",
+    "cambria": "Caladea", "caladea": "Caladea",
+    "verdana": "DejaVuSans", "dejavu sans": "DejaVuSans", "dejavu serif": "DejaVuSerif",
+    # no metric twin: closest shape, measurement flagged as approximate
+    "georgia": "DejaVuSerif", "garamond": "LiberationSerif", "palatino": "LiberationSerif", "book antiqua": "LiberationSerif",
+    "segoe ui": "LiberationSans", "roboto": "LiberationSans", "open sans": "DejaVuSans", "lato": "LiberationSans", "montserrat": "DejaVuSans",
+    "frutiger": "LiberationSans", "gill sans": "LiberationSans", "futura": "DejaVuSans", "univers": "LiberationSans",
+}
+METRIC_COMPATIBLE = {"arial", "helvetica", "liberation sans", "arimo", "times new roman", "times", "liberation serif", "tinos",
+                     "courier new", "cousine", "calibri", "carlito", "cambria", "caladea"}
+
+DEFAULT_FAMILY = "LiberationSans"
+_REGISTERED: dict[str, str] = {}
+
+
+def register_font(font_name: str, family: str) -> None:
+    """Map a deck font name to a measurement family (used by brand themes)."""
+    _REGISTERED[font_name.lower()] = family
+
+
+def set_default_family(family: str) -> None:
+    global DEFAULT_FAMILY
+    DEFAULT_FAMILY = family
+
+
+def family_for(font_name: str | None) -> str:
+    if not font_name:
+        return DEFAULT_FAMILY
+    key = font_name.lower()
+    return _REGISTERED.get(key) or FONT_ALIASES.get(key) or DEFAULT_FAMILY
+
+
+def family_available(family: str) -> bool:
+    return _font_path(family, False) is not None
 
 LINE_HEIGHT_FACTOR = 1.17  # Arial ascent+descent ≈ 1.149 em; renderers add a little
 
@@ -37,6 +85,8 @@ LINE_HEIGHT_FACTOR = 1.17  # Arial ascent+descent ≈ 1.149 em; renderers add a 
 @functools.lru_cache(maxsize=None)
 def _font_path(family: str, bold: bool) -> str | None:
     regular, boldf = FONT_FILES.get(family, FONT_FILES["LiberationSans"])
+    if family not in FONT_FILES:
+        return None
     for name in boldf if bold else regular:
         for d in FONT_DIRS:
             p = os.path.join(d, name)
@@ -45,8 +95,15 @@ def _font_path(family: str, bold: bool) -> str | None:
     return None
 
 
-@functools.lru_cache(maxsize=256)
-def _font(size_pt: float, bold: bool, family: str = "LiberationSans"):
+def _font(size_pt: float, bold: bool, family: str | None = None):
+    fam = family or DEFAULT_FAMILY
+    if _font_path(fam, bold) is None:
+        fam = "LiberationSans"
+    return _font_cached(size_pt, bold, fam)
+
+
+@functools.lru_cache(maxsize=512)
+def _font_cached(size_pt: float, bold: bool, family: str):
     path = _font_path(family, bold)
     # Measure at 10x resolution for sub-point precision: 1pt == 10 units.
     px = max(1, int(round(size_pt * 10)))
@@ -55,7 +112,7 @@ def _font(size_pt: float, bold: bool, family: str = "LiberationSans"):
     return ImageFont.truetype(path, px)
 
 
-def text_width_in(text: str, size_pt: float, bold: bool = False, family: str = "LiberationSans") -> float:
+def text_width_in(text: str, size_pt: float, bold: bool = False, family: str | None = None) -> float:
     """Advance width of a single line, in inches."""
     if not text:
         return 0.0
@@ -66,7 +123,7 @@ def text_width_in(text: str, size_pt: float, bold: bool = False, family: str = "
     return units / 10 / 72
 
 
-def wrap_lines(text: str, width_in: float, size_pt: float, bold: bool = False, family: str = "LiberationSans") -> list[str]:
+def wrap_lines(text: str, width_in: float, size_pt: float, bold: bool = False, family: str | None = None) -> list[str]:
     """Greedy word wrap. Honours explicit newlines."""
     out: list[str] = []
     for para in str(text).split("\n"):

@@ -8,7 +8,7 @@ from pptx import Presentation
 from pptx.util import Emu
 
 from ..charts import native as charts
-from ..design.tokens import GRID, SLIDE_H, SLIDE_W, load_theme
+from ..design.tokens import GRID, SLIDE_H, SLIDE_W, activate, theme_for
 from ..diagrams import diagrams
 from ..layout.engine import Box, get_layout, resolve_zones
 from ..spec import VISUAL_TYPES, slide_exhibits
@@ -100,17 +100,37 @@ def _adapt_columns_zone(p: Painter, zones: dict, roles: dict) -> None:
         ez.box = Box(ez.box.x, ez.box.y, ez.box.w, ez.box.h + shift)
 
 
-def build(resolved: dict, out_path: str | Path) -> list[dict]:
-    meta = resolved.get("meta", {})
-    theme = load_theme(meta.get("theme", "meridian"))
-    profile = resolved.get("_profile") or {}
+def _base_presentation(theme):
+    """Default: python-pptx blank template. Brand theme: the corporate template's masters."""
+    tpl = theme.extras.get("template")
+    if tpl:
+        path = Path(theme.source_dir or ".") / tpl
+        prs = Presentation(str(path))
+        sldIdLst = prs.slides._sldIdLst
+        for sldId in list(sldIdLst):  # drop the template's sample slides
+            prs.part.drop_rel(sldId.rId)
+            sldIdLst.remove(sldId)
+        name = theme.extras.get("base_layout")
+        layouts = [l for m in prs.slide_masters for l in m.slide_layouts]
+        blank = next((l for l in layouts if l.name == name), layouts[-1] if layouts else None)
+        return prs, blank
     prs = Presentation()
     prs.slide_width = Emu(int(SLIDE_W * 914400))
     prs.slide_height = Emu(int(SLIDE_H * 914400))
-    blank = prs.slide_layouts[6]
+    return prs, prs.slide_layouts[6]
+
+
+def build(resolved: dict, out_path: str | Path) -> list[dict]:
+    meta = resolved.get("meta", {})
+    theme = theme_for(meta)
+    activate(theme)
+    profile = resolved.get("_profile") or {}
+    prs, blank = _base_presentation(theme)
     manifests: list[dict] = []
     for s in resolved["slides"]:
         slide = prs.slides.add_slide(blank)
+        for ph in list(slide.placeholders):  # the engine draws its own content; no empty "Click to add…" boxes
+            ph._element.getparent().remove(ph._element)
         kind = s.get("kind", "content")
         lay_id = (s.get("_plan") or {}).get("layout", {}).get("id", kind) if s.get("_plan") and s["_plan"].get("layout") else kind
         m = Manifest(slide_id=s.get("id", ""), layout=lay_id)

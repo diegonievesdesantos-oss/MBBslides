@@ -1,0 +1,284 @@
+{
+  "brand": "Kestrel Capital",
+  "template": "kestrel_template.pptx",
+  "slide_size": {
+    "width_in": 13.333,
+    "height_in": 7.5,
+    "supported": true
+  },
+  "fonts": {
+    "heading": {
+      "font": "Georgia",
+      "installed": false,
+      "status": "missing",
+      "measure_family": "DejaVuSerif",
+      "measurement": "approximate",
+      "render_fallback": "DejaVu Serif"
+    },
+    "body": {
+      "font": "Calibri",
+      "installed": false,
+      "status": "metric-compatible substitute",
+      "measure_family": "Carlito",
+      "measurement": "exact",
+      "render_fallback": "Carlito"
+    }
+  },
+  "theme_colors": {
+    "dk1": "222222",
+    "lt1": "FFFFFF",
+    "dk2": "1B3A2F",
+    "lt2": "EEF2EE",
+    "accent1": "2E6B4F",
+    "accent2": "C8A24A",
+    "accent3": "7FA88F",
+    "accent4": "5B6770",
+    "accent5": "A33A2B",
+    "accent6": "3F8F5F",
+    "hlink": "2E6B4F",
+    "folHlink": "5B6770"
+  },
+  "color_mapping": {
+    "primary": "1B3A2F",
+    "secondary": "2E6B4F",
+    "highlight": "C8A24A",
+    "text": "222222",
+    "text_muted": "6F6F6F",
+    "background": "FFFFFF",
+    "positive": "2E6B4F",
+    "negative": "A33A2B"
+  },
+  "master": {
+    "placeholders": [
+      {
+        "type": "TITLE",
+        "name": "Title Placeholder 1",
+        "x": 0.7,
+        "y": 0.3,
+        "w": 11.933,
+        "h": 1.25
+      },
+      {
+        "type": "BODY",
+        "name": "Text Placeholder 2",
+        "x": 0.7,
+        "y": 1.75,
+        "w": 11.933,
+        "h": 4.95
+      },
+      {
+        "type": "DATE",
+        "name": "Date Placeholder 3",
+        "x": 0.5,
+        "y": 6.951,
+        "w": 2.333,
+        "h": 0.399
+      },
+      {
+        "type": "FOOTER",
+        "name": "Footer Placeholder 4",
+        "x": 3.417,
+        "y": 6.951,
+        "w": 3.167,
+        "h": 0.399
+      },
+      {
+        "type": "SLIDE_NUMBER",
+        "name": "Slide Number Placeholder 5",
+        "x": 7.167,
+        "y": 6.951,
+        "w": 2.333,
+        "h": 0.399
+      }
+    ],
+    "artwork": [
+      {
+        "kind": "picture",
+        "name": "Kestrel logo",
+        "x": 11.2,
+        "y": 0.26,
+        "w": 1.45,
+        "h": 0.35
+      },
+      {
+        "kind": "shape",
+        "name": "Brand bar",
+        "x": 0.0,
+        "y": 7.4,
+        "w": 13.333,
+        "h": 0.1
+      }
+    ],
+    "background": "solid background"
+  },
+  "layouts": [
+    {
+      "name": "Title Slide",
+      "placeholders": [
+        "cover title",
+        "cover subtitle",
+        "date",
+        "footer",
+        "slide number"
+      ],
+      "artwork": 0,
+      "background": "gradient background"
+    },
+    {
+      "name": "Title and Content",
+      "placeholders": [
+        "headline",
+        "content",
+        "date",
+        "footer",
+        "slide number"
+      ],
+      "artwork": 0,
+      "background": null
+    },
+    {
+      "name": "Section Header",
+      "placeholders": [
+        "headline",
+        "body text",
+        "date",
+        "footer",
+        "slide number"
+      ],
+      "artwork": 0,
+      "background": null
+    },
+    {
+      "name": "Two Content",
+      "placeholders": [
+        "headline",
+        "content",
+        "content",
+        "date",
+        "footer",
+        "slide number"
+      ],
+      "artwork": 0,
+      "background": null
+    },
+    {
+      "name": "Comparison",
+      "placeholders": [
+        "headline",
+        "body text",
+        "content",
+        "body text",
+        "content",
+        "date",
+        "footer",
+        "slide number"
+      ],
+      "artwork": 0,
+      "background": null
+    },
+    {
+      "name": "Title Only",
+      "placeholders": [
+        "headline",
+        "date",
+        "footer",
+        "slide number"
+      ],
+      "artwork": 0,
+      "background": null
+    },
+    {
+      "name": "Blank",
+      "placeholders": [
+        "date",
+        "footer",
+        "slide number"
+      ],
+      "artwork": 0,
+      "background": null
+    },
+    {
+      "name": "Content with Caption",
+      "placeholders": [
+        "headline",
+        "content",
+        "body text",
+        "date",
+        "footer",
+        "slide number"
+      ],
+      "artwork": 0,
+      "background": null
+    },
+    {
+      "name": "Picture with Caption",
+      "placeholders": [
+        "headline",
+        "picture",
+        "body text",
+        "date",
+        "footer",
+        "slide number"
+      ],
+      "artwork": 0,
+      "background": null
+    },
+    {
+      "name": "Title and Vertical Text",
+      "placeholders": [
+        "headline",
+        "body text",
+        "date",
+        "footer",
+        "slide number"
+      ],
+      "artwork": 0,
+      "background": null
+    },
+    {
+      "name": "Vertical Title and Text",
+      "placeholders": [
+        "headline",
+        "body text",
+        "date",
+        "footer",
+        "slide number"
+      ],
+      "artwork": 0,
+      "background": null
+    }
+  ],
+  "base_layout": "Blank",
+  "reserved_areas": [
+    {
+      "name": "Kestrel logo",
+      "kind": "picture",
+      "x": 11.2,
+      "y": 0.26,
+      "w": 1.45,
+      "h": 0.35
+    },
+    {
+      "name": "Brand bar",
+      "kind": "shape",
+      "x": 0.0,
+      "y": 7.4,
+      "w": 13.333,
+      "h": 0.1
+    }
+  ],
+  "grid_overrides": {
+    "margin_l": 0.7,
+    "margin_r": 0.7,
+    "headline_right_limit": 11.05
+  },
+  "unsupported": [
+    "Layout 'Title Slide' has a gradient background (not used as the base layout)."
+  ],
+  "notes": [
+    "Highlight #C8A24A has contrast 2.4:1 — used for fills only; text in it may be flagged by QA.",
+    "Margins taken from the title placeholder: left 0.70 in, right 0.70 in.",
+    "Headline width limited to end at 11.05 in to keep clear of master artwork."
+  ],
+  "masters_used": true
+}

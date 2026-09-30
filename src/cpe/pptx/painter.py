@@ -114,6 +114,22 @@ class Painter:
     def color(self, token: str) -> str:
         return self.theme.c(token)
 
+    def legible(self, token: str, size: float, bold: bool, bg: str | None = None) -> str:
+        """Accent colours used as TEXT are darkened just enough to meet WCAG
+        (3:1 for large text, 4.5:1 otherwise) — brand accents are often light."""
+        from ..design.tokens import contrast_ratio, interpolate
+
+        c = self.color(token)
+        if token not in ("highlight", "secondary", "positive", "negative", "warning", "neutral"):
+            return c
+        bg = bg or self.color("background")
+        need = 3.0 if (size >= 18 or (size >= 14 and bold)) else 4.5
+        k = 0
+        while contrast_ratio(c, bg) < need and k < 10:
+            k += 1
+            c = interpolate(self.color(token), self.color("text"), k / 10)
+        return c
+
     # -- primitives --------------------------------------------------------
     def rect(self, box: Box, fill: str | None = None, line: str | None = None, line_w: float = LINES["rule"], kind: str = "fill", shape=MSO_SHAPE.RECTANGLE, dash: bool = False):
         sp = self.slide.shapes.add_shape(shape, E(box.x), E(box.y), E(box.w), E(box.h))
@@ -214,6 +230,8 @@ class Painter:
             inner_w, inner_h = inner_h, inner_w
             kind = "vtext"
         indent = 0.17 if any(p.bullet for p in paras) else 0.0
+        font = self.theme.font_for(role)
+        fam = tm.family_for(font)
 
         def measure(sz: float) -> tuple[float, int]:
             h = 0.0
@@ -222,7 +240,7 @@ class Painter:
                 psz = p.size * sz / base if p.size else sz
                 b = is_bold if p.bold is None else p.bold
                 ind = indent * (1 + p.level) if p.bullet else 0.0
-                n = len(tm.wrap_lines(plain(p.text), max(0.05, inner_w - ind), psz, b))
+                n = len(tm.wrap_lines(plain(p.text), max(0.05, inner_w - ind), psz, b, fam))
                 lines += n
                 h += n * tm.line_height_in(psz, spacing)
                 if i < len(paras) - 1:
@@ -272,7 +290,7 @@ class Painter:
         if fill:
             tb.fill.solid()
             tb.fill.fore_color.rgb = rgb(self.color(fill))
-        col = self.color(color or st["color"])
+        col = self.legible(color or st["color"], base, is_bold)
         for i, p in enumerate(paras):
             para = tf.paragraphs[0] if i == 0 else tf.add_paragraph()
             para.alignment = ALIGN[p.align or align]
@@ -290,7 +308,7 @@ class Painter:
                 run = para.add_run()
                 run.text = seg[2:-2] if strong else seg
                 f = run.font
-                f.name = self.theme.font_latin
+                f.name = font
                 f.size = Pt(psz)
                 f.bold = True if strong else (is_bold if p.bold is None else p.bold)
                 f.color.rgb = rgb(self.color(p.color) if p.color else col)
@@ -314,12 +332,12 @@ class Painter:
         st = self.style(role)
         sz = size or st["size"]
         b = st["bold"] if bold is None else bold
-        lines = tm.wrap_lines(plain(text), width, sz, b)
+        lines = tm.wrap_lines(plain(text), width, sz, b, tm.family_for(self.theme.font_for(role)))
         return len(lines) * tm.line_height_in(sz), len(lines)
 
     def text_w(self, text: str, role: str, size: float | None = None, bold: bool | None = None) -> float:
         st = self.style(role)
-        return tm.text_width_in(plain(text), size or st["size"], st["bold"] if bold is None else bold)
+        return tm.text_width_in(plain(text), size or st["size"], st["bold"] if bold is None else bold, tm.family_for(self.theme.font_for(role)))
 
     def warn(self, code: str, msg: str):
         self.manifest.warnings.append({"zone": self.zone, "code": code, "message": msg})

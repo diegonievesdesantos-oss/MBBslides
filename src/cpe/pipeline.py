@@ -21,7 +21,7 @@ from pathlib import Path
 
 from .core.planner import plan
 from .core.storyline import ghost_deck
-from .design.tokens import load_theme
+from .design.tokens import theme_for
 from .pptx.builder import build, save_manifest
 from .qa import autofix, composition, geometry, render_checks
 from .qa import report as rep
@@ -44,7 +44,7 @@ def run(spec: dict, out_dir: str | Path, max_iter: int = 3, do_render: bool = Tr
         pptx_path = out / f"{name}.pptx"
         manifests = build(resolved, pptx_path)
         save_manifest(manifests, out / "build_manifest.json")
-        theme = load_theme(resolved.get("meta", {}).get("theme", "meridian"))
+        theme = theme_for(resolved.get("meta", {}))
         profile = resolved.get("_profile") or {}
         issues = list(content_issues)
         issues += geometry.check(str(pptx_path), manifests, theme, profile)

@@ -33,7 +33,7 @@ SPACING = {  # spacing scale — the only distances layouts may use
 }
 
 
-@dataclass(frozen=True)
+@dataclass
 class Grid:
     """12-column grid with fixed vertical bands.
 
@@ -83,6 +83,19 @@ class Grid:
 
 
 GRID = Grid()
+_GRID_DEFAULTS = dict(GRID.__dict__)
+GRID_EXTRA_DEFAULTS = {"headline_right_limit": None, "footer_right_limit": None}
+for _k, _v in GRID_EXTRA_DEFAULTS.items():
+    setattr(GRID, _k, _v)
+
+
+def apply_grid(overrides: dict | None) -> None:
+    """Reset the shared grid to defaults, then apply brand overrides (margins, limits)."""
+    for k, v in {**_GRID_DEFAULTS, **GRID_EXTRA_DEFAULTS}.items():
+        setattr(GRID, k, v)
+    for k, v in (overrides or {}).items():
+        if k in _GRID_DEFAULTS or k in GRID_EXTRA_DEFAULTS:
+            setattr(GRID, k, v)
 
 # ---------------------------------------------------------------------------
 # Typography
@@ -147,6 +160,9 @@ ARROW_HEAD = "triangle"
 # ---------------------------------------------------------------------------
 # Theme (colours + fonts) — loaded from JSON so decks can be re-skinned
 # ---------------------------------------------------------------------------
+HEADING_ROLES = {"headline", "cover_title", "divider_title"}
+
+
 @dataclass
 class Theme:
     name: str
@@ -157,6 +173,14 @@ class Theme:
     sequential: list[str]
     diverging: list[str]
     extras: dict = field(default_factory=dict)
+    font_heading: str | None = None
+    source_dir: str | None = None
+
+    def font_for(self, role: str) -> str:
+        return self.font_heading if (self.font_heading and role in HEADING_ROLES) else self.font_latin
+
+    def fonts(self) -> set[str]:
+        return {self.font_latin} | ({self.font_heading} if self.font_heading else set())
 
     def c(self, token: str) -> str:
         """Resolve a colour token (or pass through a literal hex)."""
@@ -174,9 +198,16 @@ class Theme:
 
 
 def load_theme(name: str = "meridian") -> Theme:
-    path = THEMES_DIR / f"{name}.json"
+    """A built-in theme name, a theme JSON file, or a brand directory (from `cpe brand ingest`)."""
+    p = Path(name)
+    if p.is_dir() and (p / "theme.json").exists():
+        path = p / "theme.json"
+    elif p.suffix == ".json" and p.exists():
+        path = p
+    else:
+        path = THEMES_DIR / f"{name}.json"
     if not path.exists():
-        raise FileNotFoundError(f"Theme '{name}' not found in {THEMES_DIR}")
+        raise FileNotFoundError(f"Theme '{name}' not found (built-ins: {', '.join(available_themes())})")
     data = json.loads(path.read_text())
     return Theme(
         name=data["name"],
@@ -187,7 +218,24 @@ def load_theme(name: str = "meridian") -> Theme:
         sequential=[s.upper() for s in data["sequential"]],
         diverging=[s.upper() for s in data["diverging"]],
         extras=data.get("extras", {}),
+        font_heading=data.get("font_heading"),
+        source_dir=str(path.parent),
     )
+
+
+def theme_for(meta: dict) -> Theme:
+    """Theme of a deck: `meta.brand` (a brand directory) wins over `meta.theme`."""
+    return load_theme(meta.get("brand") or meta.get("theme") or "meridian")
+
+
+def activate(theme: Theme) -> None:
+    """Point the shared measurement and grid state at this theme (fonts, brand margins)."""
+    from . import text_metrics as tm
+
+    for font, fam in (theme.extras.get("measure_fonts") or {}).items():
+        tm.register_font(font, fam)
+    tm.set_default_family(tm.family_for(theme.font_latin))
+    apply_grid(theme.extras.get("grid"))
 
 
 def available_themes() -> list[str]:

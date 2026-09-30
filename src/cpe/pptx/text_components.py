@@ -24,7 +24,8 @@ def chrome(p: Painter, slide: dict, page_no: int, meta: dict) -> dict:
         b = Box(g.margin_l, g.tracker_y, g.content_w * 0.7, g.tracker_h)
         pc.text(b, slide["tracker"], role="tracker", fit=False, kind="text")
         used["tracker"] = b.to_dict()
-    hb = Box(g.margin_l, g.headline_y, balanced_width(pc, slide.get("headline", ""), g.content_w), g.headline_h)
+    head_w = min(g.content_w, (g.headline_right_limit or SLIDE_W) - g.margin_l)
+    hb = Box(g.margin_l, g.headline_y, balanced_width(pc, slide.get("headline", ""), head_w), g.headline_h)
     pc.text(hb, slide.get("headline", ""), role="headline", max_lines=p.profile.get("headline_max_lines", 2), record="headline", kind="text")
     used["headline"] = hb.to_dict()
     if slide.get("subheadline"):
@@ -41,14 +42,15 @@ def balanced_width(p: Painter, text: str, full_w: float, role: str = "headline")
     from ..design import text_metrics as tm
 
     st = p.style(role)
-    lines = tm.wrap_lines(plain(text), full_w, st["size"], st["bold"])
+    fam = tm.family_for(p.theme.font_for(role))
+    lines = tm.wrap_lines(plain(text), full_w, st["size"], st["bold"], fam)
     if len(lines) < 2:
         return full_w
     n = len(lines)
     lo, hi = full_w * 0.55, full_w
     for _ in range(18):
         mid = (lo + hi) / 2
-        if len(tm.wrap_lines(plain(text), mid, st["size"], st["bold"])) > n:
+        if len(tm.wrap_lines(plain(text), mid, st["size"], st["bold"], fam)) > n:
             lo = mid
         else:
             hi = mid
@@ -66,15 +68,16 @@ def footer(pc: Painter, slide: dict, page_no: int, meta: dict) -> None:
         if not src.lower().startswith(("source", "sources", "note")):
             src = "Source: " + src
         lines.append(Para(src, space_after=0))
+    right = min(SLIDE_W - g.margin_r, g.footer_right_limit or SLIDE_W)
     if lines:
-        fb = Box(g.margin_l, g.footer_y, g.content_w - 1.2, g.footer_h)
+        fb = Box(g.margin_l, g.footer_y, right - g.margin_l - 1.2 - (0.0 if not meta.get("confidentiality") else 1.4), g.footer_h)
         pc.text(fb, lines, role="source", anchor="bottom", spacing=1.0, space_after=0, record="footer")
-    nb = Box(SLIDE_W - g.margin_r - 1.0, g.footer_y, 1.0, g.footer_h)
-    right = str(page_no)
+    label = str(page_no)
+    nb = Box(right - 1.0, g.footer_y, 1.0, g.footer_h)
     if meta.get("confidentiality"):
-        right = f"{meta['confidentiality']}   {page_no}"
-        nb = Box(SLIDE_W - g.margin_r - 2.4, g.footer_y, 2.4, g.footer_h)
-    pc.text(nb, right, role="page_number", align="right", anchor="bottom", fit=False)
+        label = f"{meta['confidentiality']}   {page_no}"
+        nb = Box(right - 2.4, g.footer_y, 2.4, g.footer_h)
+    pc.text(nb, label, role="page_number", align="right", anchor="bottom", fit=False)
 
 
 # ---------------------------------------------------------------------------

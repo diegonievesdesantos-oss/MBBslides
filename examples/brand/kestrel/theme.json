@@ -1,0 +1,77 @@
+{
+  "name": "Kestrel Capital",
+  "description": "Brand theme ingested from kestrel_template.pptx",
+  "font_latin": "Calibri",
+  "font_heading": "Georgia",
+  "font_fallback_file": "Carlito",
+  "colors": {
+    "primary": "1B3A2F",
+    "secondary": "2E6B4F",
+    "highlight": "C8A24A",
+    "positive": "2E6B4F",
+    "negative": "A33A2B",
+    "warning": "D98E04",
+    "neutral": "909090",
+    "muted": "CECECE",
+    "faint": "F0F0F0",
+    "background": "FFFFFF",
+    "surface": "F4F4F4",
+    "text": "222222",
+    "text_muted": "6F6F6F",
+    "rule": "B8B8B8",
+    "gridline": "E4E4E4"
+  },
+  "series": [
+    "1B3A2F",
+    "2E6B4F",
+    "98A6A1",
+    "CECECE",
+    "C8A24A",
+    "909090"
+  ],
+  "sequential": [
+    "EDEFEE",
+    "BBC4C1",
+    "82938D",
+    "496159",
+    "1B3A2F"
+  ],
+  "diverging": [
+    "A33A2B",
+    "D6A6A0",
+    "F4F4F4",
+    "A1BCB0",
+    "2E6B4F"
+  ],
+  "extras": {
+    "template": "template.pptx",
+    "base_layout": "Blank",
+    "grid": {
+      "margin_l": 0.7,
+      "margin_r": 0.7,
+      "headline_right_limit": 11.05
+    },
+    "reserved": [
+      {
+        "name": "Kestrel logo",
+        "kind": "picture",
+        "x": 11.2,
+        "y": 0.26,
+        "w": 1.45,
+        "h": 0.35
+      },
+      {
+        "name": "Brand bar",
+        "kind": "shape",
+        "x": 0.0,
+        "y": 7.4,
+        "w": 13.333,
+        "h": 0.1
+      }
+    ],
+    "measure_fonts": {
+      "Georgia": "DejaVuSerif",
+      "Calibri": "Carlito"
+    }
+  }
+}
