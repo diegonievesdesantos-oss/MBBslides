@@ -1,0 +1,34 @@
+{
+  "eval": {"purpose": "Holdout: utility strategy — exec summary, forecast line, EBITDA waterfall, 2x2 portfolio, roadmap"},
+  "meta": {"title": "Utility transition plan", "deck_type": "strategy_deck", "theme": "graphite"},
+  "storyline": {"framework": "SCR", "governing_thought": "Shift capital to grids and storage to hold EBITDA through the coal exit",
+    "key_line": [{"id": "K1", "role": "situation", "message": "Coal exits"}, {"id": "K2", "role": "complication", "message": "EBITDA gap"}, {"id": "K3", "role": "resolution", "message": "Grids and storage"}]},
+  "slides": [
+    {"id": "q1", "kind": "exec_summary", "purpose": "Summarise", "headline": "Grids and storage can replace the coal EBITDA by 2030",
+     "visual": {"type": "statements", "items": [
+       {"title": "Coal exits in 2028", "text": "Regulation closes the last two plants and removes 410 MW of baseload."},
+       {"title": "EBITDA falls by €180M", "text": "Coal contributed a third of group EBITDA in 2025."},
+       {"title": "Grids and storage close the gap", "text": "Regulated grid returns and battery arbitrage add €205M by 2030."}]}},
+    {"id": "q2", "section": "K1", "purpose": "Show demand", "headline": "Electricity demand grows 2.1% a year to 2030 as heat pumps scale",
+     "message_type": "trend", "visual": {"type": "line", "title": "Electricity demand", "unit": "TWh", "data": {"categories": ["2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030"],
+       "series": [{"name": "Demand", "values": [52.0, 52.4, 53.1, 54.0, 55.1, 56.3, 57.4, 58.6, 59.7]}]},
+       "annotations": [{"type": "forecast", "from": "2026", "label": "Forecast"}, {"type": "cagr", "from": "2025", "to": "2030"}]},
+     "evidence": [{"claim": "cagr", "value": 2.1}], "source": "Grid operator outlook (synthetic)"},
+    {"id": "q3", "section": "K2", "purpose": "Size the gap", "headline": "Losing coal cuts EBITDA from €540M to €385M before new businesses",
+     "message_type": "change_bridge", "visual": {"type": "waterfall", "title": "Group EBITDA bridge", "unit": "€M", "data": {"steps": [
+       {"label": "EBITDA 2025", "value": 540, "type": "total"}, {"label": "Coal exit", "value": -180}, {"label": "Retail margin", "value": 15}, {"label": "Wind repowering", "value": 22},
+       {"label": "Cost programme", "value": 18}, {"label": "Network tariffs", "value": -30}, {"label": "EBITDA 2028", "type": "total"}]}, "highlight": ["Coal exit"]},
+     "source": "Company plan (synthetic)"},
+    {"id": "q4", "section": "K3", "purpose": "Prioritise", "headline": "Grid upgrades and batteries combine high returns with low regulatory risk",
+     "message_type": "positioning", "visual": {"type": "matrix_2x2", "x_label": "Regulatory risk (low → high)", "y_label": "Return on capital", "quadrants": ["Invest selectively", "Priority", "Avoid", "Harvest"], "focus": "TR",
+       "items": [{"label": "Grid upgrades", "x": 0.78, "y": 0.8}, {"label": "Batteries", "x": 0.7, "y": 0.72}, {"label": "Offshore wind", "x": 0.3, "y": 0.68}, {"label": "Hydrogen", "x": 0.2, "y": 0.3},
+                 {"label": "Solar PPAs", "x": 0.62, "y": 0.42}, {"label": "EV charging", "x": 0.4, "y": 0.35}, {"label": "Gas peakers", "x": 0.15, "y": 0.55}, {"label": "Heat networks", "x": 0.55, "y": 0.22}]},
+     "source": "Team assessment (synthetic)"},
+    {"id": "q5", "section": "K3", "purpose": "Plan", "headline": "The programme runs in three waves and reaches full run-rate in 2030",
+     "message_type": "plan", "visual": {"type": "gantt", "periods": ["2026", "2027", "2028", "2029", "2030"], "rows": [
+       {"label": "Grid upgrades", "bars": [{"start": 0, "end": 4, "label": "Wave 1–2"}]}, {"label": "Battery fleet", "bars": [{"start": 1, "end": 5, "label": "600 MW", "highlight": true}]},
+       {"label": "Coal closure", "bars": [{"start": 0, "end": 3, "label": "Decommissioning"}], "milestones": [{"at": 2.9, "label": "Last unit off"}]},
+       {"label": "Wind repowering", "bars": [{"start": 2, "end": 5, "label": "Wave 3"}]}], "today": 0.5},
+     "source": "Company plan (synthetic)"}
+  ]
+}

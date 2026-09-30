@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+# Run any cpe command inside the reproducible visual environment (docker/Dockerfile).
+# The same image is used by CI, so local and CI renders come from the same renderer and fonts.
+#
+#   scripts/cpe-docker eval --suite regression
+#   scripts/cpe-docker run examples/alvora/deck.json -o out/alvora
+#   scripts/cpe-docker --exec python3 -m pytest -q          # any command, same environment
+#   CPE_IMAGE=my-registry/mbbslides-visual:1.2 scripts/cpe-docker ...   # use a prebuilt image
+#   CPE_DOCKER_BUILD_ARGS="--secret id=extra_ca,src=ca.pem" scripts/cpe-docker ...  # behind a TLS proxy
+set -euo pipefail
+HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+IMAGE="${CPE_IMAGE:-mbbslides-visual:$(cat "$HERE/docker/IMAGE_TAG")}"
+if ! docker image inspect "$IMAGE" >/dev/null 2>&1; then
+  echo "[cpe-docker] building $IMAGE (once)…" >&2
+  # shellcheck disable=SC2086
+  docker build ${CPE_DOCKER_BUILD_ARGS:-} -t "$IMAGE" -f "$HERE/docker/Dockerfile" "$HERE" >&2
+fi
+DIGEST="$(docker image inspect --format '{{.Id}}' "$IMAGE")"
+TTY=""; [ -t 1 ] && TTY="-t"
+ENTRY=()
+if [ "${1:-}" = "--exec" ]; then shift; ENTRY=(--entrypoint "$1"); shift; fi
+exec docker run --rm $TTY \
+  --user "$(id -u):$(id -g)" -e HOME=/tmp \
+  -e CPE_CONTAINER_IMAGE="$IMAGE" -e CPE_CONTAINER_DIGEST="$DIGEST" \
+  -v "$HERE":/work -w /work \
+  "${ENTRY[@]}" "$IMAGE" "$@"

@@ -1,0 +1,29 @@
+{
+  "eval": {"purpose": "Holdout: public-sector digital programme — architecture layers, org chart, heatmap, donut, statement quote"},
+  "meta": {"title": "Digital services programme", "deck_type": "transformation_program", "theme": "graphite"},
+  "storyline": {"framework": "SCR", "governing_thought": "A shared identity and payments platform halves the cost of each new digital service",
+    "key_line": [{"id": "K1", "role": "situation", "message": "Services duplicated"}, {"id": "K2", "role": "complication", "message": "Costs rise"}, {"id": "K3", "role": "resolution", "message": "Shared platform"}]},
+  "slides": [
+    {"id": "t1", "section": "K1", "purpose": "Show the duplication", "headline": "Each of the 38 digital services rebuilds identity and payments on its own",
+     "message_type": "structure", "visual": {"type": "architecture", "layers": [
+       {"label": "Channels", "items": ["Web portal", "Mobile app", "Contact centre"]},
+       {"label": "Services", "items": ["Licences", "Benefits", "Taxes", "Permits", "Registrations"]},
+       {"label": "Shared capabilities", "emphasis": true, "items": [{"label": "Identity", "change": "new"}, {"label": "Payments", "change": "new"}, {"label": "Notifications", "change": "changed"}]},
+       {"label": "Data", "items": ["Citizen register", "Case records", "Payments ledger"]}]},
+     "evidence": [{"claim": "services", "value": 38}], "source": "Programme inventory (synthetic)"},
+    {"id": "t2", "section": "K2", "purpose": "Show spend mix", "headline": "Identity and payments absorb 41% of every new service's build budget",
+     "message_type": "composition", "visual": {"type": "donut", "title": "Build budget per service", "unit": "%", "data": {"categories": ["Identity", "Payments", "Front end", "Case logic", "Other"], "series": [{"name": "Share", "values": [23, 18, 27, 22, 10]}]}, "highlight": ["Identity", "Payments"]},
+     "evidence": [{"claim": "share", "values": [23, 18], "value": 41}], "source": "Programme cost reports (synthetic)"},
+    {"id": "t3", "section": "K2", "purpose": "Show readiness", "headline": "Only two of six ministries are ready to adopt a shared platform this year",
+     "message_type": "comparison", "visual": {"type": "heatmap", "title": "Adoption readiness (0–5)", "columns": [{"label": "Ministry"}, {"label": "Skills", "kind": "number"}, {"label": "Budget", "kind": "number"}, {"label": "Legacy fit", "kind": "number"}, {"label": "Sponsor", "kind": "number"}],
+       "rows": [["Finance", 4, 5, 4, 5], ["Interior", 4, 4, 3, 4], ["Health", 2, 3, 2, 3], ["Education", 2, 2, 3, 2], ["Transport", 3, 2, 1, 2], ["Justice", 1, 2, 2, 3]],
+       "heatmap": {"columns": [1, 2, 3, 4], "mode": "sequential", "domain": [0, 5]}},
+     "source": "Readiness survey (synthetic)"},
+    {"id": "t4", "section": "K3", "purpose": "Governance", "headline": "A platform office under the digital ministry owns the shared components",
+     "message_type": "hierarchy", "visual": {"type": "org_chart", "root": {"label": "Digital ministry", "children": [
+       {"label": "Platform office", "sub": "Identity, payments, notifications", "children": [{"label": "Identity team"}, {"label": "Payments team"}, {"label": "Service design"}]},
+       {"label": "Service owners", "sub": "One per ministry", "children": [{"label": "Finance"}, {"label": "Interior"}]}]}},
+     "source": "Programme design (synthetic)"},
+    {"id": "t5", "kind": "statement", "style": "quote", "text": "We stopped building the same login screen for the fortieth time.", "attribution": "Chief digital officer, pilot ministry (synthetic)"}
+  ]
+}

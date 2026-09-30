@@ -29,6 +29,8 @@ from dataclasses import dataclass, field
 from ..design.tokens import GRID, SLIDE_H, SLIDE_W, hex_to_rgb
 from ..layout.engine import Box
 
+SCORE_NAME = "universal composition score (v1.1 metrics)"
+
 WEIGHTS = {
     "dead_space": 20,
     "utilization": 12,

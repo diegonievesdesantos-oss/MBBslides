@@ -1,5 +1,13 @@
 name: CI
 
+# Every job runs on a pinned runner image (never ubuntu-latest), with actions on the Node 24
+# runtime pinned to commit SHAs. Everything that renders runs INSIDE the reproducible visual
+# environment (docker/Dockerfile: pinned base digest, Ubuntu archive snapshot, exact LibreOffice /
+# fontconfig / FreeType / HarfBuzz / FriBiDi / font versions, locked Python packages), the same
+# image contributors use locally through scripts/cpe-docker. See docs/REPRODUCIBILITY.md.
+#
+# Private corporate holdouts (.private/) never run here: they are not in the repository.
+
 on:
   push:
     branches: [main]
@@ -9,61 +17,107 @@ concurrency:
   group: ci-${{ github.ref }}
   cancel-in-progress: true
 
+permissions:
+  contents: read
+
+env:
+  IMAGE: mbbslides-visual:ci
+
 jobs:
   lint:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
-          python-version: "3.11"
-      - run: pip install ruff
-      - run: ruff check src tests
+          python-version: "3.12"
+      - run: pip install "$(grep '^ruff==' requirements.lock)"
+      - run: ruff check src tests scripts
+      - name: README numbers match evals/results/latest.json (single source of truth)
+        run: PYTHONPATH=src python -m cpe results readme --check
 
-  test:
-    runs-on: ubuntu-latest
+  package:
+    runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
-          python-version: "3.11"
-          cache: pip
-      - name: System dependencies (LibreOffice Impress + metric-compatible fonts)
+          python-version: "3.12"
+      - name: Build sdist + wheel
+        run: pip install build==1.6.1 && python -m build
+      - name: Installed package works outside the checkout (layouts, themes, profiles packaged)
         run: |
-          sudo apt-get update
-          sudo apt-get install -y --no-install-recommends libreoffice-impress fonts-liberation fonts-crosextra-carlito fonts-crosextra-caladea
-      - run: pip install -r requirements.txt pytest
-      - name: Unit, QA-stress and render tests
-        run: python -m pytest -q
+          python -m venv /tmp/venv && /tmp/venv/bin/pip install dist/*.whl
+          cd /tmp && /tmp/venv/bin/cpe catalog > /dev/null && /tmp/venv/bin/cpe themes && /tmp/venv/bin/cpe --help > /dev/null
+
+  tests:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: docker/setup-buildx-action@f87e5991a6d7451dcb8d9637bfbc97413f497069 # v4.4.1
+      - name: Build the visual environment
+        uses: docker/build-push-action@c3c9e263c25d99ce0380d002d59b67737d91b0dc # v7.4.0
+        with:
+          context: .
+          file: docker/Dockerfile
+          tags: ${{ env.IMAGE }}
+          load: true
+          cache-from: type=gha,scope=visual
+          cache-to: type=gha,scope=visual,mode=max
+      - name: Unit, QA-stress, render and reproducibility tests (inside the image)
+        run: CPE_IMAGE=$IMAGE scripts/cpe-docker --exec python3 -m pytest -q
 
   regression:
-    # Blocks the merge if the regression decks cannot be generated / rendered or fail the QA gate,
-    # or if the visual-quality evals regress against the committed baseline.
-    runs-on: ubuntu-latest
+    # Blocks the merge if the regression suite or the example decks regress.
+    needs: tests
+    runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: docker/setup-buildx-action@f87e5991a6d7451dcb8d9637bfbc97413f497069 # v4.4.1
+      - uses: docker/build-push-action@c3c9e263c25d99ce0380d002d59b67737d91b0dc # v7.4.0
         with:
-          python-version: "3.11"
-          cache: pip
-      - name: System dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y --no-install-recommends libreoffice-impress fonts-liberation fonts-crosextra-carlito fonts-crosextra-caladea
-      - run: pip install -r requirements.txt
-      - name: Demo and gallery decks pass the QA gate
-        run: |
-          scripts/cpe run examples/alvora/deck.json -o ci_out/alvora --max-iter 2
-          scripts/cpe run examples/gallery/deck.json -o ci_out/gallery --max-iter 2
-      - name: Visual-quality evals vs baseline
-        run: scripts/cpe eval evals/cases -o ci_out/evals --baseline evals/baseline.json
+          context: .
+          file: docker/Dockerfile
+          tags: ${{ env.IMAGE }}
+          load: true
+          cache-from: type=gha,scope=visual
+      - name: Public regression suite vs baseline
+        run: CPE_IMAGE=$IMAGE scripts/cpe-docker eval --suite regression -o ci_out/regression
+      - name: Example decks pass the QA gate
+        run: CPE_IMAGE=$IMAGE scripts/cpe-docker eval --suite examples -o ci_out/examples
       - name: Upload renders and reports
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: regression-output
           path: |
             ci_out/**/contact_sheet.png
             ci_out/**/qa_report.md
-            ci_out/evals/eval_report.md
-            ci_out/evals/eval_report.json
+            ci_out/**/composition.md
+            ci_out/*/eval_report.md
+            ci_out/*/eval_report.json
+
+  reproducibility:
+    needs: tests
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: docker/setup-buildx-action@f87e5991a6d7451dcb8d9637bfbc97413f497069 # v4.4.1
+      - uses: docker/build-push-action@c3c9e263c25d99ce0380d002d59b67737d91b0dc # v7.4.0
+        with:
+          context: .
+          file: docker/Dockerfile
+          tags: ${{ env.IMAGE }}
+          load: true
+          cache-from: type=gha,scope=visual
+      - name: Same input, same environment, same engine → identical renders
+        run: |
+          CPE_IMAGE=$IMAGE scripts/cpe-docker repro examples/alvora/deck.json -o ci_out/repro_alvora
+          CPE_IMAGE=$IMAGE scripts/cpe-docker repro examples/gallery/deck.json -o ci_out/repro_gallery
+      - name: The environment is the one the baseline was recorded in
+        run: CPE_IMAGE=$IMAGE scripts/cpe-docker --exec python3 scripts/check_environment.py
+      - if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: reproducibility
+          path: ci_out/**/repro_report.json

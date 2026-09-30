@@ -4,3 +4,10 @@ __pycache__/
 /out/
 /tmp/
 compose/
+
+# private corporate material (never commit)
+/.private/
+/private_results/
+build/
+dist/
+*.egg-info/

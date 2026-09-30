@@ -1,0 +1,184 @@
+{
+  "note": "v1.1.1 engine measured in the pinned v1.2 environment (docker/Dockerfile) before any v1.2 metric change: the 'before' point for v1.2.",
+  "suite": "examples",
+  "suite_composition": 93.4,
+  "cases": {
+    "alvora": {
+      "composition": 94.4,
+      "qa_errors": 0,
+      "qa_score": 99.8,
+      "slides": {
+        "s02": 97.9,
+        "s03": 91.1,
+        "s04": 97.2,
+        "s05": 99.1,
+        "s06": 89.9,
+        "s07": 93.8,
+        "s08": 95.0,
+        "s09": 93.1,
+        "s10": 95.6,
+        "s11": 92.6,
+        "s12": 92.9
+      }
+    },
+    "gallery": {
+      "composition": 92.1,
+      "qa_errors": 0,
+      "qa_score": 99.8,
+      "slides": {
+        "g03": 90.5,
+        "g05": 99.5,
+        "g06": 89.9,
+        "g07": 95.0,
+        "g08": 91.5,
+        "g09": 95.0,
+        "g10": 89.0,
+        "g11": 88.0,
+        "g13": 94.2,
+        "g14": 91.0,
+        "g15": 90.0,
+        "g16": 83.9,
+        "g17": 92.6,
+        "g18": 91.1,
+        "g19": 92.1,
+        "g21": 94.6,
+        "g22": 94.1,
+        "g23": 93.9,
+        "g24": 95.5,
+        "g25": 89.9
+      }
+    },
+    "alvora_on_kestrel": {
+      "composition": 93.8,
+      "qa_errors": 0,
+      "qa_score": 99.8,
+      "slides": {
+        "s02": 97.3,
+        "s03": 88.4,
+        "s04": 96.8,
+        "s05": 98.9,
+        "s06": 90.3,
+        "s07": 92.9,
+        "s08": 94.6,
+        "s09": 92.9,
+        "s10": 96.0,
+        "s11": 91.1,
+        "s12": 92.9
+      }
+    }
+  },
+  "environment": {
+    "os": "Ubuntu 24.04.5 LTS (x86_64)",
+    "python": "3.12.3",
+    "libreoffice": "LibreOffice 24.2.7.2 420(Build:2)",
+    "fontconfig": "2.15.0",
+    "packages": {
+      "python-pptx": "1.0.2",
+      "pillow": "12.3.0",
+      "lxml": "6.1.3",
+      "pymupdf": "1.28.2",
+      "openpyxl": "3.1.5"
+    },
+    "text_layout_engine": "raqm 0.10.5",
+    "fonts": [
+      {
+        "family": "Caladea",
+        "bold": false,
+        "file": "Caladea-Regular.ttf",
+        "sha256": "f1e899278b7b4491"
+      },
+      {
+        "family": "Caladea",
+        "bold": true,
+        "file": "Caladea-Bold.ttf",
+        "sha256": "ae3cb2dcbc925809"
+      },
+      {
+        "family": "Carlito",
+        "bold": false,
+        "file": "Carlito-Regular.ttf",
+        "sha256": "f6418f708baede97"
+      },
+      {
+        "family": "Carlito",
+        "bold": true,
+        "file": "Carlito-Bold.ttf",
+        "sha256": "bb5d20f79b82599e"
+      },
+      {
+        "family": "DejaVuSans",
+        "bold": false,
+        "file": "DejaVuSans.ttf",
+        "sha256": "ae7b7855e115a596"
+      },
+      {
+        "family": "DejaVuSans",
+        "bold": true,
+        "file": "DejaVuSans-Bold.ttf",
+        "sha256": "5c1247acef7f2b85"
+      },
+      {
+        "family": "DejaVuSerif",
+        "bold": false,
+        "file": "DejaVuSerif.ttf",
+        "sha256": "8f2c103bfa3fd5de"
+      },
+      {
+        "family": "DejaVuSerif",
+        "bold": true,
+        "file": "DejaVuSerif-Bold.ttf",
+        "sha256": "847b33e13925f19f"
+      },
+      {
+        "family": "LiberationMono",
+        "bold": false,
+        "file": "LiberationMono-Regular.ttf",
+        "sha256": "395fa5ab8d40c8eb"
+      },
+      {
+        "family": "LiberationMono",
+        "bold": true,
+        "file": "LiberationMono-Bold.ttf",
+        "sha256": "626655e94dd82f3f"
+      },
+      {
+        "family": "LiberationSans",
+        "bold": false,
+        "file": "LiberationSans-Regular.ttf",
+        "sha256": "4659bc0c58c5028d"
+      },
+      {
+        "family": "LiberationSans",
+        "bold": true,
+        "file": "LiberationSans-Bold.ttf",
+        "sha256": "3973aa5054fb467d"
+      },
+      {
+        "family": "LiberationSerif",
+        "bold": false,
+        "file": "LiberationSerif-Regular.ttf",
+        "sha256": "705903ae1382f015"
+      },
+      {
+        "family": "LiberationSerif",
+        "bold": true,
+        "file": "LiberationSerif-Bold.ttf",
+        "sha256": "9e66c25e20868756"
+      }
+    ],
+    "font_matching": {
+      "Arial": "Liberation Sans|/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf",
+      "Calibri": "Carlito|/usr/share/fonts/truetype/crosextra/Carlito-Regular.ttf",
+      "Cambria": "Caladea|/usr/share/fonts/truetype/crosextra/Caladea-Regular.ttf",
+      "Georgia": "DejaVu Serif|/usr/share/fonts/truetype/dejavu/DejaVuSerif.ttf",
+      "Times New Roman": "Liberation Serif|/usr/share/fonts/truetype/liberation/LiberationSerif-Regular.ttf",
+      "Helvetica": "Liberation Sans|/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf",
+      "Inter": "DejaVu Sans|/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
+      "Segoe UI": "DejaVu Sans|/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
+    },
+    "cpe_version": "1.2.0.dev0",
+    "container_image": "mbbslides-visual:1.2@sha256:f883eeb28a0a267cc316071dd5cd3dd1c3220443775de5f9bdaac937e7e0800d",
+    "commit": "2b58c840b69fb5f7de73477520c7a691dbca4ef0-dirty",
+    "fingerprint": "6b5b1872486a594a"
+  }
+}

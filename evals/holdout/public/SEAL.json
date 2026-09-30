@@ -1,0 +1,16 @@
+{
+  "sealed_at": "2026-09-30T22:04Z",
+  "sealed_before": "v1.2 phase 2 (archetype profiles and composition fitness were calibrated AFTER these cases were written and sealed, without running them)",
+  "protocol": "docs/EVALS.md#holdout-protocol",
+  "authoring_notes": [
+    "Cases were linted (plan only, no render, no composition score) while authoring.",
+    "Authoring lint crashed the planner on H02 (gantt rows without 'cells' in headline number collection): fixed as a correctness bug, not a tuning change (src/cpe/core/headline.py)."
+  ],
+  "files": {
+    "H01_hospital_operations.json": "79678f9ab73509e6fb82c69b51c8bab2da1e07ea4cb8084a8c5a490eaf8677b6",
+    "H02_energy_transition.json": "15f82a8b9f1fc63827aef61d8e0d754396ae0aaf4c3527306be1d3c4d33d8d83",
+    "H03_retail_es.json": "8ba52648ca1b5b6a892f161ea953721e6c802912b5ccca11dfd5dce2311d057c",
+    "H04_saas_board.json": "94b648ff0b5c5e161827ebb7889c3d15067bc9bd460734b040522aab01d00073",
+    "H05_public_sector.json": "607d20cc9393c0300733f57d9075fa155d9a883b95b62598ec4ac156e13c9b56"
+  }
+}

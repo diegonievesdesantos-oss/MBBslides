@@ -1,0 +1,174 @@
+"""Environment manifest: everything that can change a render, recorded with every eval.
+
+A render-based benchmark only means something if the renderer is known. Every
+`cpe eval` writes this manifest next to its results so that any future score
+difference can be explained (engine change vs renderer / font / library change).
+
+`fingerprint` hashes the render-relevant part (renderer, fonts, font-matching,
+imaging libraries) — two runs with the same fingerprint and the same engine
+commit are expected to produce pixel-identical PNGs (tests/test_reproducibility.py).
+"""
+from __future__ import annotations
+
+import hashlib
+import json
+import os
+import platform
+import re
+import subprocess
+import sys
+from functools import lru_cache
+from pathlib import Path
+
+from . import __version__
+
+ROOT = Path(__file__).resolve().parents[2]
+
+# font names whose resolution changes renders of the public fixtures
+PROBE_FONTS = ["Arial", "Calibri", "Cambria", "Georgia", "Times New Roman", "Helvetica", "Inter", "Segoe UI"]
+PY_PACKAGES = ["python-pptx", "pillow", "lxml", "pymupdf", "openpyxl"]
+
+
+def _run(cmd: list[str], timeout: int = 60) -> str:
+    try:
+        r = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout)
+        return (r.stdout or r.stderr).strip()
+    except (FileNotFoundError, subprocess.TimeoutExpired, OSError):
+        return ""
+
+
+def _os() -> str:
+    try:
+        rel = Path("/etc/os-release").read_text()
+        m = re.search(r'^PRETTY_NAME="?([^"\n]+)', rel, re.M)
+        if m:
+            return f"{m.group(1)} ({platform.machine()})"
+    except OSError:
+        pass
+    return f"{platform.system()} {platform.release()} ({platform.machine()})"
+
+
+@lru_cache(maxsize=1)
+def libreoffice_version() -> str:
+    from .render.renderer import find_soffice
+
+    so = find_soffice()
+    return _run([so, "--version"]) if so else "not installed"
+
+
+def fontconfig_version() -> str:
+    out = _run(["fc-match", "--version"])
+    m = re.search(r"version\s+([\d.]+)", out)
+    return m.group(1) if m else (out or "not installed")
+
+
+def _pkg_versions() -> dict:
+    from importlib import metadata
+
+    out = {}
+    for p in PY_PACKAGES:
+        try:
+            out[p] = metadata.version(p)
+        except metadata.PackageNotFoundError:
+            out[p] = None
+    return out
+
+
+def _file_sha(path: str) -> str:
+    h = hashlib.sha256()
+    with open(path, "rb") as f:
+        for chunk in iter(lambda: f.read(1 << 16), b""):
+            h.update(chunk)
+    return h.hexdigest()[:16]
+
+
+def text_layout_engine() -> str:
+    """Pillow's text layout engine: 'raqm' (HarfBuzz shaping + kerning, like LibreOffice) or 'basic'.
+    It silently depends on FriBiDi being installed and changes every measured width."""
+    from PIL import features
+
+    return f"raqm {features.version('raqm')}" if features.check("raqm") else "basic (no kerning: install libfribidi0)"
+
+
+def fonts() -> list[dict]:
+    """Font files the measurement layer uses (family → file + content hash)."""
+    from .design import text_metrics as tm
+
+    out = []
+    for fam in sorted(tm.FONT_FILES):
+        for bold in (False, True):
+            p = tm._font_path(fam, bold)
+            out.append({"family": fam, "bold": bold, "file": os.path.basename(p) if p else None, "sha256": _file_sha(p) if p else None})
+    return out
+
+
+def font_matching() -> dict:
+    """What fontconfig (hence LibreOffice) draws for each probe name."""
+    return {f: _run(["fc-match", "-f", "%{family[0]}|%{file}", f]) or None for f in PROBE_FONTS}
+
+
+def installed_font_families() -> list[str]:
+    out = _run(["fc-list", ":", "family"])
+    return sorted({line.split(",")[0].strip() for line in out.splitlines() if line.strip()})
+
+
+def git_commit() -> str | None:
+    c = _run(["git", "-C", str(ROOT), "rev-parse", "HEAD"])
+    if not re.fullmatch(r"[0-9a-f]{40}", c or ""):
+        return None
+    dirty = _run(["git", "-C", str(ROOT), "status", "--porcelain", "--untracked-files=no"])
+    return c + ("-dirty" if dirty else "")
+
+
+def container_image() -> str | None:
+    img = os.environ.get("CPE_CONTAINER_IMAGE")
+    if not img:
+        return None
+    digest = os.environ.get("CPE_CONTAINER_DIGEST")
+    return f"{img}@{digest}" if digest else img
+
+
+def manifest() -> dict:
+    env = {
+        "os": _os(),
+        "python": sys.version.split()[0],
+        "libreoffice": libreoffice_version(),
+        "fontconfig": fontconfig_version(),
+        "packages": _pkg_versions(),
+        "text_layout_engine": text_layout_engine(),
+        "fonts": fonts(),
+        "font_matching": font_matching(),
+        "installed_font_families": installed_font_families(),
+        "cpe_version": __version__,
+        "container_image": container_image(),
+        "commit": git_commit(),
+    }
+    env["fingerprint"] = fingerprint(env)
+    return env
+
+
+def fingerprint(env: dict) -> str:
+    """Hash of the render-relevant environment (not the engine commit)."""
+    keep = {k: env.get(k) for k in ("libreoffice", "fontconfig", "packages", "text_layout_engine", "fonts", "font_matching", "installed_font_families")}
+    return hashlib.sha256(json.dumps(keep, sort_keys=True).encode()).hexdigest()[:16]
+
+
+def diff(a: dict, b: dict) -> list[str]:
+    """Human-readable differences between two manifests (why scores may differ)."""
+    out = []
+    for k in ("os", "python", "libreoffice", "fontconfig", "text_layout_engine", "container_image", "cpe_version", "commit"):
+        if a.get(k) != b.get(k):
+            out.append(f"{k}: {a.get(k)} → {b.get(k)}")
+    for k in ("packages", "font_matching"):
+        for n in sorted(set(a.get(k) or {}) | set(b.get(k) or {})):
+            if (a.get(k) or {}).get(n) != (b.get(k) or {}).get(n):
+                out.append(f"{k}.{n}: {(a.get(k) or {}).get(n)} → {(b.get(k) or {}).get(n)}")
+    fa = {(f["family"], f["bold"]): f["sha256"] for f in a.get("fonts") or []}
+    fb = {(f["family"], f["bold"]): f["sha256"] for f in b.get("fonts") or []}
+    for key in sorted(set(fa) | set(fb)):
+        if fa.get(key) != fb.get(key):
+            out.append(f"font file {key[0]}{' bold' if key[1] else ''}: {fa.get(key)} → {fb.get(key)}")
+    ia, ib = set(a.get("installed_font_families") or []), set(b.get("installed_font_families") or [])
+    if ia != ib:
+        out.append(f"installed font families: +{sorted(ib - ia)} −{sorted(ia - ib)}")
+    return out

@@ -1,0 +1,34 @@
+{
+  "eval": {"purpose": "Holdout: Spanish retail — resumen ejecutivo, columnas apiladas, línea temporal, columnas de comparación, scorecard"},
+  "meta": {"title": "Revisión de la red de tiendas", "deck_type": "business_review", "theme": "harbor"},
+  "storyline": {"framework": "SCR", "governing_thought": "Cerrar 40 tiendas pequeñas y reformar las grandes eleva el margen 2,3 puntos",
+    "key_line": [{"id": "K1", "role": "situation", "message": "Red dispersa"}, {"id": "K2", "role": "complication", "message": "Tiendas pequeñas pierden"}, {"id": "K3", "role": "resolution", "message": "Concentrar"}]},
+  "slides": [
+    {"id": "r1", "kind": "exec_summary", "purpose": "Resumir", "headline": "Concentrar la red eleva el margen operativo 2,3 puntos en dos años",
+     "visual": {"type": "statements", "items": [
+       {"title": "La red creció sin criterio", "text": "Se abrieron 120 tiendas en cinco años, la mitad de menos de 400 m²."},
+       {"title": "Las tiendas pequeñas destruyen valor", "text": "El 32% de las tiendas genera margen negativo tras costes de estructura."},
+       {"title": "Cerrar y reformar", "text": "Cerrar 40 tiendas y reformar 25 grandes eleva el margen de 4,1% a 6,4%."}]}},
+    {"id": "r2", "section": "K1", "purpose": "Mostrar mezcla", "headline": "Las tiendas de menos de 400 m² ya son el 48% de la red",
+     "message_type": "composition", "visual": {"type": "stacked_column", "title": "Tiendas por tamaño", "unit": "número de tiendas", "data": {"categories": ["2021", "2022", "2023", "2024", "2025"],
+       "series": [{"name": "< 400 m²", "values": [70, 88, 104, 118, 130]}, {"name": "400–1.000 m²", "values": [95, 98, 100, 102, 104]}, {"name": "> 1.000 m²", "values": [36, 36, 37, 37, 37]}]}, "highlight": ["< 400 m²"]},
+     "evidence": [{"claim": "share", "values": [130, 271], "value": 48}], "source": "Registro de tiendas (sintético)"},
+    {"id": "r3", "section": "K2", "purpose": "Contar la historia", "headline": "El margen cayó cada año desde que empezó la expansión en 2021",
+     "message_type": "sequence", "visual": {"type": "timeline", "events": [
+       {"date": "2021", "text": "Plan de expansión", "detail": "Margen 6,9%"}, {"date": "2022", "text": "35 aperturas", "detail": "Margen 6,1%"},
+       {"date": "2023", "text": "Inflación de alquileres", "detail": "Margen 5,2%"}, {"date": "2024", "text": "Guerra de precios", "detail": "Margen 4,6%"},
+       {"date": "2025", "text": "Revisión de la red", "detail": "Margen 4,1%"}], "highlight": [4]},
+     "source": "Cuentas anuales (sintético)"},
+    {"id": "r4", "section": "K3", "purpose": "Comparar opciones", "headline": "Solo la opción de concentrar supera el coste de capital",
+     "message_type": "comparison", "columns": [
+       {"title": "Mantener", "metric": "4,1%", "metric_label": "margen 2027", "points": ["Sin inversión", "El margen sigue cayendo"]},
+       {"title": "Reformar todo", "metric": "5,0%", "metric_label": "margen 2027", "points": ["Inversión de 210 M€", "Retorno por debajo del coste de capital"]},
+       {"title": "Concentrar", "metric": "6,4%", "metric_label": "margen 2027", "emphasis": true, "points": ["Cierre de 40 tiendas", "Reforma de 25 grandes", "Inversión de 85 M€"]}],
+     "source": "Análisis del equipo (sintético)"},
+    {"id": "r5", "section": "K3", "purpose": "Seguimiento", "headline": "Dos de los cinco hitos del plan están en riesgo por los permisos",
+     "message_type": "status", "visual": {"type": "scorecard", "title": "Estado del plan", "columns": [{"label": "Hito"}, {"label": "Responsable"}, {"label": "Fecha"}, {"label": "Estado", "kind": "rag"}],
+       "rows": [["Cierre de la primera ola", "Operaciones", "Mar 2026", "G"], ["Negociación de alquileres", "Inmobiliario", "Abr 2026", "A"], ["Permisos de obra", "Legal", "May 2026", "R"],
+                ["Reforma de tiendas piloto", "Operaciones", "Jul 2026", "R"], ["Recolocación de plantilla", "Personas", "Sep 2026", "G"]]},
+     "source": "Oficina del programa (sintético)"}
+  ]
+}

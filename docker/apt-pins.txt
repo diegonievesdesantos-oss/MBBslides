@@ -1,0 +1,23 @@
+# Render-relevant packages at exact versions, resolved from the snapshot in docker/Dockerfile.
+# Transitive dependencies are fixed by the snapshot itself.
+python3=3.12.3-0ubuntu2.1
+python3-venv=3.12.3-0ubuntu2.1
+python3.12=3.12.3-1ubuntu0.17
+python3.12-venv=3.12.3-1ubuntu0.17
+libreoffice-core=4:24.2.7-0ubuntu0.24.04.6
+libreoffice-impress=4:24.2.7-0ubuntu0.24.04.6
+fontconfig=2.15.0-1.1ubuntu2
+fontconfig-config=2.15.0-1.1ubuntu2
+libfreetype6=2.13.2+dfsg-1ubuntu0.1
+libharfbuzz0b=8.3.0-2build2
+libcairo2=1.18.0-3build1
+# Pillow bundles libraqm but loads FriBiDi at run time; without it Pillow silently falls back to
+# BASIC layout (no kerning) and every text measurement shifts by ~0.2%.
+libfribidi0=1.0.13-3build1
+fonts-liberation=1:2.1.5-3
+fonts-crosextra-carlito=20230309-2
+fonts-crosextra-caladea=20200211-2
+fonts-dejavu-core=2.37-8
+fonts-dejavu-mono=2.37-8
+fonts-opensymbol=4:102.12+LibO24.2.7-0ubuntu0.24.04.6
+git

@@ -209,7 +209,7 @@ def _collect_values(slide: dict) -> tuple[list[float], list[str]]:
                 if isinstance(q.get(k), (int, float)):
                     vals.append(float(q[k]))
         for r in ex.get("rows") or []:
-            cells = r.get("cells") if isinstance(r, dict) else r
+            cells = (r.get("cells") or []) if isinstance(r, dict) else r  # gantt rows are dicts without cells
             vals += [float(c) for c in cells if isinstance(c, (int, float))]
         for c in data.get("columns") or []:
             if isinstance(c, dict):

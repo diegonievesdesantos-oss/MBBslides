@@ -15,7 +15,10 @@ Rendering commands:
   patch      deck.json + patches.json → patched deck.json
   review     score an agent-filled review.json (semantic visual QA)
   brand      `brand ingest template.pptx -o brands/acme` → brand theme + compatibility report
-  eval       visual-quality benchmark over evals/cases vs evals/baseline.json (exit 1 on regression)
+  eval       visual-quality evals: --suite regression (gate vs baseline) | holdout (report only) | examples;
+             --docker runs inside the pinned visual environment; --record writes evals/results/latest.json
+  repro      render a spec twice and compare (slides, dimensions, PNG hashes, pixels, spans, metrics, QA)
+  results    `results readme [--check]`: regenerate the README metrics block from evals/results/latest.json
 Reference:
   catalog    layout library (markdown)        themes    available themes
 """
@@ -182,16 +185,62 @@ def cmd_review(a):
     return 0 if r["passed"] else 1
 
 
+def _in_docker(argv: list[str]) -> int:
+    """Re-run this command inside the reproducible visual environment (scripts/cpe-docker)."""
+    import os
+    import subprocess
+
+    wrapper = Path(__file__).resolve().parents[2] / "scripts" / "cpe-docker"
+    if os.environ.get("CPE_CONTAINER_IMAGE"):
+        return -1  # already inside the container
+    return subprocess.call([str(wrapper), *[x for x in argv if x != "--docker"]])
+
+
 def cmd_eval(a):
+    if a.docker:
+        rc = _in_docker(sys.argv[1:])
+        if rc >= 0:
+            return rc
     from .evals import run_suite
 
-    r = run_suite(a.cases, a.out, a.baseline, update_baseline=a.update_baseline, compose=not a.no_compose, tolerance=a.tolerance)
+    out = a.out or f"out/evals/{a.suite}"
+    r = run_suite(a.cases, out, a.baseline, update_baseline=a.update_baseline, compose=not a.no_compose, tolerance=a.tolerance, suite=a.suite, record=a.record)
+    for x in r["environment_notes"]:
+        _p(f"NOTE        {x}")
     for x in r["regressions"]:
-        _p(f"REGRESSION  {x}")
+        _p(f"{'REGRESSION' if a.suite != 'holdout' else 'weak      '}  {x}")
     for x in r["improvements"]:
         _p(f"improved    {x}")
-    _p(f"\n{'PASSED' if r['passed'] else 'FAILED'} · suite composition {r['suite_composition']} · report {a.out}/eval_report.md")
+    _p(f"\n{'PASSED' if r['passed'] else 'FAILED'} · {a.suite} · composition (archetype fitness) {r['suite_composition']} · "
+       f"env {r['environment']['fingerprint']} · report {out}/eval_report.md{' · recorded in evals/results/latest.json' if a.record else ''}")
     return 0 if r["passed"] else 1
+
+
+def cmd_repro(a):
+    if a.docker:
+        rc = _in_docker(sys.argv[1:])
+        if rc >= 0:
+            return rc
+    from .reproducibility import check
+    from .spec import load_spec
+
+    r = check(load_spec(a.spec), a.out, dpi=a.dpi)
+    for k, v in r["checks"].items():
+        _p(f"{'ok  ' if v else 'FAIL'} {k}")
+    _p(f"worst pixel difference {r['worst_pixel_diff_share']:.6f} (tolerance {r['tolerances']['pixel_diff_share']}) · env {r['environment_fingerprint']}")
+    _p("REPRODUCIBLE" if r["passed"] else "NOT REPRODUCIBLE")
+    return 0 if r["passed"] else 1
+
+
+def cmd_results(a):
+    from .results_report import update_readme
+
+    changed = update_readme(check=a.check)
+    if a.check and changed:
+        _p("README metrics block is stale: run `scripts/cpe results readme` and commit (numbers come from evals/results/latest.json)")
+        return 1
+    _p("README metrics block " + ("updated" if changed else "up to date"))
+    return 0
 
 
 def cmd_brand(a):
@@ -256,7 +305,11 @@ def main(argv=None) -> int:
     s = sub.add_parser("run"); s.add_argument("spec"); s.add_argument("-o", "--out", default="out"); s.add_argument("--max-iter", type=int, default=3); s.add_argument("--no-render", action="store_true"); s.add_argument("--dpi", type=int, default=110); s.add_argument("--name", default="deck"); s.add_argument("--no-compose", action="store_true", help="skip the composition engine"); s.set_defaults(f=cmd_run)
     s = sub.add_parser("patch"); s.add_argument("spec"); s.add_argument("patches"); s.add_argument("-o", "--out"); s.set_defaults(f=cmd_patch)
     s = sub.add_parser("review"); s.add_argument("review"); s.set_defaults(f=cmd_review)
-    s = sub.add_parser("eval"); s.add_argument("cases", nargs="?", default="evals/cases"); s.add_argument("-o", "--out", default="out/evals"); s.add_argument("--baseline", default="evals/baseline.json"); s.add_argument("--update-baseline", action="store_true"); s.add_argument("--no-compose", action="store_true"); s.add_argument("--tolerance", type=float, default=2.0); s.set_defaults(f=cmd_eval)
+    s = sub.add_parser("eval"); s.add_argument("cases", nargs="?", default=None, help="case directory (default: the suite's)"); s.add_argument("--suite", default="regression", choices=["regression", "holdout", "examples"])
+    s.add_argument("-o", "--out"); s.add_argument("--baseline", default=None); s.add_argument("--update-baseline", action="store_true"); s.add_argument("--no-compose", action="store_true"); s.add_argument("--tolerance", type=float, default=2.0)
+    s.add_argument("--docker", action="store_true", help="run inside the pinned visual environment (scripts/cpe-docker)"); s.add_argument("--record", action="store_true", help="write the result into evals/results/latest.json"); s.set_defaults(f=cmd_eval)
+    s = sub.add_parser("repro"); s.add_argument("spec"); s.add_argument("-o", "--out"); s.add_argument("--dpi", type=int, default=80); s.add_argument("--docker", action="store_true"); s.set_defaults(f=cmd_repro)
+    s = sub.add_parser("results"); s.add_argument("what", choices=["readme"]); s.add_argument("--check", action="store_true"); s.set_defaults(f=cmd_results)
     s = sub.add_parser("brand"); bs = s.add_subparsers(dest="brand_cmd", required=True)
     s2 = bs.add_parser("ingest"); s2.add_argument("template"); s2.add_argument("-o", "--out", required=True); s2.add_argument("--name"); s2.add_argument("--base-theme", default="meridian"); s2.set_defaults(f=cmd_brand)
     s = sub.add_parser("measure"); s.add_argument("run_dir"); s.add_argument("--name", default="deck"); s.set_defaults(f=cmd_measure)

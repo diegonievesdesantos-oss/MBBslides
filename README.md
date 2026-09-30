@@ -15,12 +15,25 @@ measures its visual quality, and corrects what it can. The pass/fail verdict is 
 > **v1.1** makes visual quality *testable rather than subjective*, adapts the composition to the
 > amount of content, and can inherit the visual identity of an existing corporate PowerPoint.
 
-| | Demo deck above (fictitious data) |
-|---|---|
-| QA gate | **PASSED** · 0 errors · 0 warnings · 99.8/100 |
-| Composition score (v1.1 metrics) | **94.4** (v1.0 engine: 91.3) |
-| Visual review | 12/12 slides approved |
-| Editability | native charts (data editable), native tables, shapes — no slide is an image |
+<!-- metrics:start (generated from evals/results/latest.json by `cpe results readme`; do not edit) -->
+
+Three independent signals, never combined into one number ([why](docs/EVALS.md)):
+
+| signal | what it measures | current |
+|---|---|---|
+| **Regression** | universal composition score (v1.1 metrics) over the development suite (8 decks, 25 slides); gates CI | **84.0**/100 · QA errors 0 |
+| **Holdout** | same metric on unseen public cases; reported, never tuned on | not run yet |
+| **Human preference** | blind A/B votes (`cpe human`) | no votes imported yet |
+
+| example deck | QA gate | QA score | universal composition score (v1.1 metrics) |
+|---|---|---|---|
+| `alvora` | PASSED · 0 errors · 0 warnings | 99.8 | 94.4 |
+| `gallery` | PASSED · 0 errors · 0 warnings | 99.8 | 92.1 |
+| `alvora_on_kestrel` | PASSED · 0 errors · 0 warnings | 99.8 | 93.8 |
+
+<sub>engine 1.2.0.dev0 · LibreOffice 24.2.7.2 420(Build:2) · fontconfig 2.15.0 · container `mbbslides-visual:1.2@sha256:f883eeb28a0a267cc316071dd5cd3dd1c3220443775de5f9bdaac937e7e0800d` · render fingerprint `6b5b1872486a594a`</sub>
+
+<!-- metrics:end -->
 
 ## What's new in v1.1
 

@@ -1,0 +1,29 @@
+{
+  "eval": {"purpose": "Holdout: healthcare operations — statement, KPI hero, process with impact row, small table with commentary, ranking bars"},
+  "meta": {"title": "Hospital operations review", "deck_type": "operating_model", "theme": "meridian"},
+  "storyline": {"framework": "SCR", "governing_thought": "Theatre scheduling, not bed capacity, limits elective throughput",
+    "key_line": [{"id": "K1", "role": "situation", "message": "Waiting lists grow"}, {"id": "K2", "role": "complication", "message": "Theatres idle"}, {"id": "K3", "role": "resolution", "message": "Fix scheduling"}]},
+  "slides": [
+    {"id": "p1", "kind": "statement", "text": "Elective throughput is limited by theatre scheduling, not by the number of beds", "support": "Four hospitals, 18 months of activity data"},
+    {"id": "p2", "section": "K1", "purpose": "Size the problem", "headline": "The waiting list reached 41,200 patients, its highest level in a decade",
+     "message_type": "single_number", "visual": {"type": "kpi", "items": [{"value": "41,200", "label": "patients waiting for elective surgery", "delta": "+18% vs 2024", "trend": "up", "good": "down"}]},
+     "source": "Regional health authority, waiting-list register (synthetic)"},
+    {"id": "p3", "section": "K2", "purpose": "Show where time is lost", "headline": "Late starts and early finishes lose 94 theatre minutes per list",
+     "message_type": "process", "visual": {"type": "process", "steps": [
+       {"title": "Patient arrival", "text": "Admission at 07:30 for an 08:00 start", "metric": "12 min", "metric_label": "lost"},
+       {"title": "Anaesthesia", "text": "Induction waits for the consultant sign-off", "metric": "21 min", "metric_label": "lost"},
+       {"title": "Surgery", "text": "Procedure time in line with benchmarks", "metric": "0 min", "metric_label": "lost"},
+       {"title": "Turnaround", "text": "Cleaning and set-up between cases", "metric": "33 min", "metric_label": "lost"},
+       {"title": "List close", "text": "Last case cancelled to avoid overruns", "metric": "28 min", "metric_label": "lost"}], "highlight": [3]},
+     "evidence": [{"claim": "minutes lost", "values": [12, 21, 0, 33, 28], "value": 94}],
+     "source": "Theatre management system, 2,340 lists (synthetic)"},
+    {"id": "p4", "section": "K2", "purpose": "Compare sites", "headline": "Site C runs its theatres at 71% utilisation, 14 points below site A",
+     "message_type": "comparison", "visual": {"type": "table", "title": "Theatre utilisation by site", "columns": [{"label": "Site"}, {"label": "Theatres", "kind": "number"}, {"label": "Utilisation (%)", "kind": "number"}, {"label": "Cancellations (%)", "kind": "number"}],
+       "rows": [["Site A", 12, 85, 4], ["Site B", 9, 79, 6], ["Site C", 14, 71, 11], ["Site D", 6, 77, 7]], "highlight": ["Site C"]},
+     "commentary": {"points": ["Site C has the most theatres and the lowest use", "Cancellations track the late starts"]},
+     "evidence": [{"claim": "gap", "values": [85, 71], "value": 14}], "source": "Theatre management system (synthetic)"},
+    {"id": "p5", "section": "K3", "purpose": "Rank levers", "headline": "Fixing turnaround recovers more capacity than any other lever",
+     "message_type": "ranking", "visual": {"type": "bar", "title": "Capacity recovered", "unit": "lists per week", "data": {"categories": ["Turnaround", "List close", "Anaesthesia", "Arrival", "Surgery"], "series": [{"name": "Lists", "values": [38, 31, 24, 13, 0]}]}, "highlight": ["Turnaround"]},
+     "source": "Team analysis (synthetic)"}
+  ]
+}

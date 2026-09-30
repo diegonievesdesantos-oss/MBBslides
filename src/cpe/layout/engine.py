@@ -31,7 +31,7 @@ from pathlib import Path
 
 from ..design.tokens import GRID, SPACING, Grid
 
-LAYOUTS_DIR = Path(__file__).resolve().parents[3] / "layouts"
+LAYOUTS_DIR = Path(__file__).resolve().parents[1] / "layouts"
 
 TAKEAWAY_H = 0.62  # "so-what" bar at the bottom of the body band
 EXHIBIT_HEADER_H = 0.46  # exhibit title + unit line reserved on top of an exhibit zone

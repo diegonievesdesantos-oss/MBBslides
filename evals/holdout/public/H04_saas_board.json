@@ -1,0 +1,349 @@
+{
+  "eval": {
+    "purpose": "Holdout: SaaS board pack — KPI grid, funnel, driver tree, long table, sparse single-point slide"
+  },
+  "meta": {
+    "title": "Q3 board pack",
+    "deck_type": "board_presentation",
+    "theme": "meridian"
+  },
+  "storyline": {
+    "framework": "SCR",
+    "governing_thought": "Net revenue retention, not new logos, will carry growth in 2027",
+    "key_line": [
+      {
+        "id": "K1",
+        "role": "situation",
+        "message": "Growth slows"
+      },
+      {
+        "id": "K2",
+        "role": "complication",
+        "message": "Funnel leaks"
+      },
+      {
+        "id": "K3",
+        "role": "resolution",
+        "message": "Expand accounts"
+      }
+    ]
+  },
+  "slides": [
+    {
+      "id": "s0",
+      "kind": "exec_summary",
+      "purpose": "Summarise",
+      "headline": "Expansion of existing accounts will carry growth in 2027",
+      "visual": {
+        "type": "statements",
+        "items": [
+          {
+            "title": "Growth is slowing at the top of the funnel",
+            "text": "New-logo growth fell to 9% while ARR still grew 27%."
+          },
+          {
+            "title": "The funnel leaks at the demo stage",
+            "text": "Only 11% of qualified pipeline converts."
+          },
+          {
+            "title": "Accounts hold the growth",
+            "text": "Expansion can deliver $31M of the $46M planned ARR growth."
+          }
+        ]
+      }
+    },
+    {
+      "id": "s1",
+      "section": "K1",
+      "purpose": "Quarter at a glance",
+      "headline": "ARR reached $148M in Q3 while new-logo growth slowed to 9%",
+      "message_type": "kpi_dashboard",
+      "visual": {
+        "type": "kpi",
+        "style": "grid",
+        "items": [
+          {
+            "value": "$148M",
+            "label": "ARR",
+            "delta": "+27% YoY",
+            "trend": "up",
+            "good": "up"
+          },
+          {
+            "value": "9%",
+            "label": "new-logo growth",
+            "delta": "−6 pts",
+            "trend": "down",
+            "good": "up"
+          },
+          {
+            "value": "118%",
+            "label": "net revenue retention",
+            "delta": "+3 pts",
+            "trend": "up",
+            "good": "up"
+          },
+          {
+            "value": "14 mo",
+            "label": "CAC payback",
+            "delta": "+2 mo",
+            "trend": "up",
+            "good": "down"
+          }
+        ]
+      },
+      "source": "Finance, Q3 close (synthetic)"
+    },
+    {
+      "id": "s2",
+      "section": "K2",
+      "purpose": "Find the leak",
+      "headline": "Only 11% of qualified pipeline converts, and the demo stage loses the most",
+      "message_type": "funnel",
+      "visual": {
+        "type": "funnel",
+        "stages": [
+          {
+            "label": "Marketing leads",
+            "value": 12400
+          },
+          {
+            "label": "Qualified",
+            "value": 3100
+          },
+          {
+            "label": "Demo",
+            "value": 1150,
+            "highlight": true
+          },
+          {
+            "label": "Proposal",
+            "value": 520
+          },
+          {
+            "label": "Won",
+            "value": 341
+          }
+        ]
+      },
+      "evidence": [
+        {
+          "claim": "conversion",
+          "values": [
+            341,
+            3100
+          ],
+          "value": 11
+        }
+      ],
+      "source": "CRM, trailing 12 months (synthetic)"
+    },
+    {
+      "id": "s3",
+      "section": "K3",
+      "purpose": "Decompose growth",
+      "headline": "Expansion revenue will contribute $31M of the $46M ARR growth planned for 2027",
+      "message_type": "decomposition",
+      "visual": {
+        "type": "driver_tree",
+        "root": {
+          "label": "ARR growth 2027",
+          "value": "$46M",
+          "children": [
+            {
+              "label": "New logos",
+              "value": "$15M",
+              "children": [
+                {
+                  "label": "Enterprise",
+                  "value": "$9M"
+                },
+                {
+                  "label": "Mid-market",
+                  "value": "$6M"
+                }
+              ]
+            },
+            {
+              "label": "Expansion",
+              "value": "$31M",
+              "highlight": true,
+              "children": [
+                {
+                  "label": "Seat growth",
+                  "value": "$18M"
+                },
+                {
+                  "label": "New modules",
+                  "value": "$13M"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "evidence": [
+        {
+          "claim": "expansion",
+          "values": [
+            31,
+            46
+          ]
+        }
+      ],
+      "source": "FP&A plan (synthetic)"
+    },
+    {
+      "id": "s4",
+      "section": "K3",
+      "purpose": "Show accounts",
+      "headline": "The top 12 accounts hold $19M of whitespace across the two new modules",
+      "message_type": "ranking",
+      "visual": {
+        "type": "table",
+        "title": "Top accounts by whitespace",
+        "columns": [
+          {
+            "label": "Account"
+          },
+          {
+            "label": "Industry"
+          },
+          {
+            "label": "ARR ($K)",
+            "kind": "number"
+          },
+          {
+            "label": "Whitespace ($K)",
+            "kind": "number"
+          },
+          {
+            "label": "Modules owned",
+            "kind": "number"
+          }
+        ],
+        "rows": [
+          [
+            "Northwind Freight",
+            "Logistics",
+            2150,
+            2400,
+            1
+          ],
+          [
+            "Contoso Health",
+            "Healthcare",
+            1980,
+            2200,
+            1
+          ],
+          [
+            "Fabrikam Energy",
+            "Utilities",
+            1720,
+            1900,
+            2
+          ],
+          [
+            "Tailspin Air",
+            "Aviation",
+            1650,
+            1850,
+            1
+          ],
+          [
+            "Litware Bank",
+            "Financial services",
+            1600,
+            1700,
+            2
+          ],
+          [
+            "Adatum Retail",
+            "Retail",
+            1480,
+            1600,
+            1
+          ],
+          [
+            "Proseware Media",
+            "Media",
+            1350,
+            1500,
+            1
+          ],
+          [
+            "Wingtip Foods",
+            "Consumer",
+            1210,
+            1400,
+            2
+          ],
+          [
+            "Lucerne Insurance",
+            "Financial services",
+            1150,
+            1300,
+            1
+          ],
+          [
+            "Coho Wineries",
+            "Consumer",
+            980,
+            1100,
+            1
+          ],
+          [
+            "Humongous Games",
+            "Media",
+            940,
+            1050,
+            2
+          ],
+          [
+            "Blue Yonder Travel",
+            "Travel",
+            900,
+            1000,
+            1
+          ]
+        ]
+      },
+      "evidence": [
+        {
+          "claim": "whitespace",
+          "values": [
+            2400,
+            2200,
+            1900,
+            1850,
+            1700,
+            1600,
+            1500,
+            1400,
+            1300,
+            1100,
+            1050,
+            1000
+          ],
+          "value": 19
+        }
+      ],
+      "source": "CRM and product telemetry (synthetic)"
+    },
+    {
+      "id": "s5",
+      "section": "K3",
+      "purpose": "Ask",
+      "headline": "The board is asked to fund a 20-person expansion team from January",
+      "message_type": "recommendation",
+      "visual": {
+        "type": "bullets",
+        "points": [
+          "Funding of $6M in 2027, paid back within 11 months"
+        ]
+      },
+      "source": "Management proposal (synthetic)"
+    }
+  ]
+}
