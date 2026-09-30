@@ -21,7 +21,8 @@ permissions:
   contents: read
 
 env:
-  IMAGE: mbbslides-visual:ci
+  # built once per commit by the `image` job, pulled by every job that renders
+  IMAGE: ghcr.io/${{ github.repository_owner }}/mbbslides-visual:${{ github.sha }}
 
 jobs:
   lint:
@@ -50,37 +51,63 @@ jobs:
           python -m venv /tmp/venv && /tmp/venv/bin/pip install dist/*.whl
           cd /tmp && /tmp/venv/bin/cpe catalog > /dev/null && /tmp/venv/bin/cpe themes && /tmp/venv/bin/cpe --help > /dev/null
 
-  tests:
+  image:
+    # Builds the reproducible visual environment ONCE and publishes it to GHCR, so the base image is
+    # pulled from the upstream mirror once per commit (anonymous mirrors rate-limit parallel pulls).
     runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+      packages: write
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: docker/setup-buildx-action@f87e5991a6d7451dcb8d9637bfbc97413f497069 # v4.4.1
-      - name: Build the visual environment
+      - uses: docker/login-action@dbcb813823bdd20940b903addbd779551569679f # v4.6.0
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build and publish the visual environment
         uses: docker/build-push-action@c3c9e263c25d99ce0380d002d59b67737d91b0dc # v7.4.0
         with:
           context: .
           file: docker/Dockerfile
           tags: ${{ env.IMAGE }}
-          load: true
+          push: true
           cache-from: type=gha,scope=visual
           cache-to: type=gha,scope=visual,mode=max
+
+  tests:
+    needs: image
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+      packages: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: docker/login-action@dbcb813823bdd20940b903addbd779551569679f # v4.6.0
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - run: docker pull "$IMAGE"
       - name: Unit, QA-stress, render and reproducibility tests (inside the image)
         run: CPE_IMAGE=$IMAGE scripts/cpe-docker --exec python3 -m pytest -q
 
   regression:
     # Blocks the merge if the regression suite or the example decks regress.
-    needs: tests
+    needs: image
     runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+      packages: read
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-      - uses: docker/setup-buildx-action@f87e5991a6d7451dcb8d9637bfbc97413f497069 # v4.4.1
-      - uses: docker/build-push-action@c3c9e263c25d99ce0380d002d59b67737d91b0dc # v7.4.0
+      - uses: docker/login-action@dbcb813823bdd20940b903addbd779551569679f # v4.6.0
         with:
-          context: .
-          file: docker/Dockerfile
-          tags: ${{ env.IMAGE }}
-          load: true
-          cache-from: type=gha,scope=visual
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - run: docker pull "$IMAGE"
       - name: Public regression suite vs baseline
         run: CPE_IMAGE=$IMAGE scripts/cpe-docker eval --suite regression -o ci_out/regression
       - name: Example decks pass the QA gate
@@ -98,23 +125,24 @@ jobs:
             ci_out/*/eval_report.json
 
   reproducibility:
-    needs: tests
+    needs: image
     runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+      packages: read
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-      - uses: docker/setup-buildx-action@f87e5991a6d7451dcb8d9637bfbc97413f497069 # v4.4.1
-      - uses: docker/build-push-action@c3c9e263c25d99ce0380d002d59b67737d91b0dc # v7.4.0
+      - uses: docker/login-action@dbcb813823bdd20940b903addbd779551569679f # v4.6.0
         with:
-          context: .
-          file: docker/Dockerfile
-          tags: ${{ env.IMAGE }}
-          load: true
-          cache-from: type=gha,scope=visual
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - run: docker pull "$IMAGE"
       - name: Same input, same environment, same engine → identical renders
         run: |
           CPE_IMAGE=$IMAGE scripts/cpe-docker repro examples/alvora/deck.json -o ci_out/repro_alvora
           CPE_IMAGE=$IMAGE scripts/cpe-docker repro examples/gallery/deck.json -o ci_out/repro_gallery
-      - name: The environment is the one the baseline was recorded in
+      - name: The environment is the one the recorded results were produced in
         run: CPE_IMAGE=$IMAGE scripts/cpe-docker --exec python3 scripts/check_environment.py
       - if: always()
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1

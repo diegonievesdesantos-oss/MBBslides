@@ -35,8 +35,12 @@ def test_composition_metrics_flag_dead_space(tmp_path):
                            commentary={"points": ["Both are reversible"]}, layout="table_commentary")
     rep = run(mini_spec([sparse]), tmp_path, max_iter=1, compose=False)
     sl = rep["composition"]["slides"][0]
+    assert sl["archetype"] == "table"
     assert "DEAD_SPACE" in sl["flags"] and sl["score"] < 75
-    assert any(i["code"] == "COMPOSITION_DEAD_SPACE" for i in rep["issues"])  # reported as an author action
+    # composition is editorial advice, never a hard-QA issue: the verdict and QA score are untouched
+    assert any(a["code"] == "COMPOSITION_DEAD_SPACE" for a in rep["editorial_advice"])
+    assert not any(i["code"].startswith("COMPOSITION_") for i in rep["issues"])
+    assert rep["passed"]
 
 
 @needs_render
@@ -48,7 +52,8 @@ def test_composition_engine_beats_the_default_on_sparse_content(tmp_path):
     rep = run(mini_spec([sparse]), tmp_path, max_iter=1, compose=True)
     d = rep["composition"]["decisions"]["t1"]
     assert d["chosen"]["score"] > d["default_score"] + 5  # measurably better than the compatible default
-    assert any(c["verdict"].startswith("compatible but editorially weak") for c in d["candidates"])
+    assert d["archetype"] == "table"
+    assert any(c["verdict"].startswith("technically compatible with the content, but the composition is inappropriate") for c in d["candidates"])
     assert (tmp_path / "composition.md").exists()
     fixed = json.loads((tmp_path / "deck.autofixed.json").read_text())
     assert fixed["slides"][0]["_composed"] is True

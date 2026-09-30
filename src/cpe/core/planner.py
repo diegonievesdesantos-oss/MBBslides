@@ -15,7 +15,7 @@ import copy
 
 from ..design.tokens import load_profile
 from ..layout.engine import get_layout, load_library
-from ..spec import CONTENT_KINDS, issue, slide_exhibits, validate_structure
+from ..spec import CONTENT_KINDS, issue, normalize_exhibit, slide_exhibits, validate_structure
 from . import density, layout_selector, storyline, visual_reasoning
 from .headline import lint_headline
 
@@ -34,6 +34,11 @@ def plan(spec: dict, auto_split: bool | None = None) -> tuple[dict, list[dict]]:
     profile = profile_for(spec)
     auto_split = meta.get("auto_split", True) if auto_split is None else auto_split
     issues: list[dict] = []
+    for sl in spec.get("slides", []):
+        for ex in slide_exhibits(sl):
+            moved = normalize_exhibit(ex)
+            if moved:
+                issues.append(issue("warning", "SPEC_DATA_SHAPE", f"Exhibit '{ex.get('type')}' fields {moved} belong under `data`: normalised (docs/VISUAL_GUIDE.md)", sl.get("id")))
     issues += validate_structure(spec)
     issues += storyline.lint_storyline(spec)
     headline_scores = {}

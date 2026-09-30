@@ -21,6 +21,6 @@ ENTRY=()
 if [ "${1:-}" = "--exec" ]; then shift; ENTRY=(--entrypoint "$1"); shift; fi
 exec docker run --rm $TTY \
   --user "$(id -u):$(id -g)" -e HOME=/tmp \
-  -e CPE_CONTAINER_IMAGE="$IMAGE" -e CPE_CONTAINER_DIGEST="$DIGEST" \
+  -e CPE_COMPOSE_SCORE="${CPE_COMPOSE_SCORE:-fitness}" -e CPE_CONTAINER_IMAGE="$IMAGE" -e CPE_CONTAINER_DIGEST="$DIGEST" \
   -v "$HERE":/work -w /work \
   "${ENTRY[@]}" "$IMAGE" "$@"

@@ -42,6 +42,12 @@ AGENT_ACTIONS = {
     "COMPOSITION_PROOF_NOT_VISIBLE": "Make the headline's number / item visible in the exhibit (label or highlight it).",
     "COMPOSITION_NO_FOCAL_POINT": "Highlight the one element that proves the headline.",
     "COMPOSITION_NOISY_EMPHASIS": "Keep one highlight; grey the context.",
+    "COMPOSITION_OVERFILLED": "Cut or split: the content crowds the slide for its type.",
+    "COMPOSITION_OVERDENSE": "Cut or split the content.",
+    "COMPOSITION_SPARSE": "Add the proof or merge the slide.",
+    "COMPOSITION_OFF_BALANCE": "Rebalance: try another layout or add the missing counterpart.",
+    "COMPOSITION_WEAK_HIERARCHY": "Make the headline dominate: shorten body text or turn the slide into a statement.",
+    "COMPOSITION_RAGGED_ALIGNMENT": "Align the text blocks to fewer left edges.",
 }
 
 

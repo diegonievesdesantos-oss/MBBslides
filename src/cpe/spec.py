@@ -141,6 +141,34 @@ def save_spec(spec: dict, path: str | Path) -> None:
     Path(path).write_text(json.dumps(spec, indent=2, ensure_ascii=False), encoding="utf-8")
 
 
+# data fields per exhibit family (docs/VISUAL_GUIDE.md): they belong under `data`
+DATA_KEYS = {"categories", "series", "steps", "points", "stages", "events", "items", "root", "layers", "pillars", "periods", "phases",
+             "today", "quadrants", "x_label", "y_label", "focus", "lanes", "pain", "preset", "values", "tiles", "nodes", "edges", "levels", "order", "style"}
+TABLE_TYPES = {"table", "heatmap", "harvey_table", "scorecard"}
+
+
+def normalize_exhibit(ex: dict) -> list[str]:
+    """Move data fields given at the exhibit's top level into `data` (the documented shape).
+
+    Authors (and agents) often write `{"type": "process", "steps": [...]}`; the renderers read
+    `ex["data"]["steps"]`. Normalising here turns a crash at build time into a lint warning.
+    Tables keep `columns` / `rows` at the top level; gantt `rows` and mekko `columns` are data.
+    """
+    if not isinstance(ex, dict) or ex.get("type") in TABLE_TYPES:
+        return []
+    keys = set(DATA_KEYS)
+    if ex.get("type") in ("gantt", "roadmap"):
+        keys.add("rows")
+    if ex.get("type") in ("mekko", "segmentation"):
+        keys.add("columns")
+    moved = [k for k in keys if k in ex and k not in (ex.get("data") or {})]
+    if moved:
+        data = ex.setdefault("data", {})
+        for k in moved:
+            data[k] = ex.pop(k)
+    return sorted(moved)
+
+
 def slide_exhibits(slide: dict) -> list[dict]:
     """All exhibits of a slide, whether given as `visual` or `exhibits`."""
     ex = []

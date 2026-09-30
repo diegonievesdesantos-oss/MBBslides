@@ -65,6 +65,7 @@ def run(spec: dict, out_dir: str | Path, max_iter: int = 3, do_render: bool = Tr
         metrics = {}
         render_info = {}
         comp = []
+        advice = []
         if do_render:
             try:
                 render_info = renderer.render(pptx_path, out, dpi=dpi)
@@ -72,7 +73,7 @@ def run(spec: dict, out_dir: str | Path, max_iter: int = 3, do_render: bool = Tr
                 # the render is the ground truth for line breaks: drop the model-based duplicates
                 issues = [i for i in issues if i["code"] not in ("HEADLINE_WIDOW", "HEADLINE_LINES")] + r_issues
                 comp = composition.measure_deck(render_info["pdf"], render_info["pngs"], resolved, manifests, theme)
-                issues += composition.issues_from(comp)
+                advice = composition.advice_from(comp)  # editorial preference: never part of hard QA
             except renderer.RenderError as e:
                 issues.append({"level": "warning", "code": "RENDER_UNAVAILABLE", "message": str(e)})
         issues, exempted = rep.apply_exemptions(issues, current)
@@ -82,18 +83,23 @@ def run(spec: dict, out_dir: str | Path, max_iter: int = 3, do_render: bool = Tr
         history.append({"iteration": it, "errors": summary["counts"]["error"], "warnings": summary["counts"]["warning"], "score": summary["deck_score"], "patches": [p.get("reason", p["op"]) for p in patches if p.get("path") != "_autofix_layout"], "seconds": round(time.time() - t0, 1)})
         if verbose:
             print(f"[iter {it}] errors={summary['counts']['error']} warnings={summary['counts']['warning']} score={summary['deck_score']} patches={len([p for p in patches if p.get('path') != '_autofix_layout'])}")
-        final = (resolved, issues, exempted, metrics, render_info, pending, comp)
+        final = (resolved, issues, exempted, metrics, render_info, pending, comp, advice)
         if not patches or it == max_iter:
             if patches and it == max_iter:
                 history[-1]["patches"] = ["(not applied: iteration budget exhausted) " + x for x in history[-1]["patches"]]
             break
         current, log = apply_patches(current, patches)
         applied_any = True
-    resolved, issues, exempted, metrics, render_info, pending, comp = final
+    resolved, issues, exempted, metrics, render_info, pending, comp, advice = final
     comp_d = [c.to_dict() for c in comp]
+    editorial = [{"slide": a["slide"], "code": a["code"], "action": autofix.AGENT_ACTIONS.get(a["code"], a["message"]), "why": a["message"]} for a in advice]
     report = rep.summarize(issues, [s.get("id") for s in resolved["slides"]], exempted, metrics, history,
                            {"pending_actions": pending, "artifacts": {"pptx": str(out / f"{name}.pptx"), **render_info},
-                            "composition": {"deck_score": round(sum(c["score"] for c in comp_d) / len(comp_d), 1) if comp_d else None, "slides": comp_d, "decisions": decisions}})
+                            "editorial_advice": editorial,
+                            "composition": {"metric": composition.SCORE_NAME,
+                                            "deck_score": round(sum(c["score"] for c in comp_d) / len(comp_d), 1) if comp_d else None,
+                                            "deck_score_v1": round(sum(c["score_v1"] for c in comp_d) / len(comp_d), 1) if comp_d else None,
+                                            "slides": comp_d, "decisions": decisions}})
     rep.write(report, out)
     (out / "ghost_deck.md").write_text(ghost_deck(current))
     if render_info.get("pngs"):

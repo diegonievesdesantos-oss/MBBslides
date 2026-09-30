@@ -191,12 +191,25 @@ def split_table_slide(slide: dict, split_at: int) -> list[dict]:
     if not tbl:
         return [slide]
     rows = tbl["rows"]
-    chunks = [rows[i : i + split_at] for i in range(0, len(rows), split_at)]
+    # balanced pieces (12 rows, 10 per slide → 6 + 6, not 10 + 2): no near-empty continuation slide
+    n = -(-len(rows) // split_at)
+    size = -(-len(rows) // n)
+    chunks = [rows[i : i + size] for i in range(0, len(rows), size)]
+    # pin number formats on the full data so every piece prints the same decimals
+    from ..tables.table import data_decimals
+
+    for j, c in enumerate(tbl.get("columns") or []):
+        if isinstance(c, dict) and c.get("kind", "number") in ("number", "delta") and "decimals" not in (c.get("format") or {}):
+            vals = [(r.get("cells") if isinstance(r, dict) else r)[j] for r in rows if j < len((r.get("cells") if isinstance(r, dict) else r) or [])]
+            if any(isinstance(v, (int, float)) for v in vals) and all(isinstance(v, (int, float)) or v is None for v in vals):
+                c["format"] = {**(c.get("format") or {}), "decimals": data_decimals(vals)}
     out = []
     for k, ch in enumerate(chunks):
         s = copy.deepcopy(slide)
         target = s["visual"] if isinstance(s.get("visual"), dict) and s["visual"].get("rows") else next(e for e in s.get("exhibits", []) if e.get("rows"))
         target["rows"] = ch
+        if len(chunks) > 1:
+            target["_rows_total"] = len(rows)
         if k > 0:
             s["id"] = f"{slide.get('id')}_{k + 1}"
             s["headline"] = slide.get("headline", "") + f" ({k + 1}/{len(chunks)})"

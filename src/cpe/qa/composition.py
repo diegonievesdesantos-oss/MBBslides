@@ -1,5 +1,12 @@
 """Composition metrics: visual quality made measurable.
 
+v1.2: the SCORE is archetype fitness (qa/archetypes.py): the observed visual profile
+of the render compared with the profile expected for what the slide is (a statement,
+a KPI hero, a table, a roadmap…). The v1.1 universal score is still computed
+(`score_v1`) for continuity and comparison, but no longer drives decisions.
+Composition is editorial PREFERENCE, reported as advice — it never enters the hard QA
+verdict or the QA score (see `advice_from`).
+
 Every metric is computed on what was actually rendered (PNG ink + PDF text
 spans) inside the body band, plus the slide spec for intent-related metrics.
 All scores are in [0, 1] (1 = good); the composite is 0–100.
@@ -28,8 +35,11 @@ from dataclasses import dataclass, field
 
 from ..design.tokens import GRID, SLIDE_H, SLIDE_W, hex_to_rgb
 from ..layout.engine import Box
+from .archetypes import classify, fitness
 
-SCORE_NAME = "universal composition score (v1.1 metrics)"
+FLAG_BELOW = 0.6  # a metric whose fitness to the archetype falls below this is named as a critique
+
+SCORE_NAME = "archetype-fitness composition score"
 
 WEIGHTS = {
     "dead_space": 20,
@@ -63,9 +73,19 @@ class SlideComposition:
     raw: dict = field(default_factory=dict)
     flags: list = field(default_factory=list)
     score: float = 0.0
+    archetype: str = "chart"
+    archetype_why: str = ""
+    observed: dict = field(default_factory=dict)
+    fitness: dict = field(default_factory=dict)
+    deviations: list = field(default_factory=list)
+    score_v1: float = 0.0
+    flags_v1: list = field(default_factory=list)
 
     def to_dict(self) -> dict:
-        return {"slide_id": self.slide_id, "score": round(self.score, 1), "metrics": {k: round(v, 3) for k, v in self.metrics.items()}, "raw": self.raw, "flags": self.flags}
+        return {"slide_id": self.slide_id, "archetype": self.archetype, "archetype_why": self.archetype_why, "score": round(self.score, 1),
+                "observed": {k: round(v, 3) for k, v in self.observed.items()}, "fitness": self.fitness, "deviations": self.deviations, "flags": self.flags,
+                "score_v1": round(self.score_v1, 1), "flags_v1": self.flags_v1,
+                "metrics": {k: round(v, 3) for k, v in self.metrics.items()}, "raw": self.raw}
 
 
 def _ink_grid(png_path: str, band: Box, focus_rgbs: list[tuple[int, int, int]]):
@@ -80,6 +100,8 @@ def _ink_grid(png_path: str, band: Box, focus_rgbs: list[tuple[int, int, int]]):
     px = crop.load()
     grid = [[0] * nx for _ in range(ny)]
     egrid = [[0] * nx for _ in range(ny)]
+    agrid = [[0] * nx for _ in range(ny)]  # accent (highlight colour) only: the deliberate emphasis
+    ar, ag, ab = focus_rgbs[-1]
     ink = focus = total = dark = 0
     wx = wy = wsum = 0.0
     step = 2
@@ -87,7 +109,7 @@ def _ink_grid(png_path: str, band: Box, focus_rgbs: list[tuple[int, int, int]]):
         y0, y1 = int(j * ch / ny), int((j + 1) * ch / ny)
         for i in range(nx):
             x0, x1 = int(i * cw / nx), int((i + 1) * cw / nx)
-            c_ink = n = c_focus = 0
+            c_ink = n = c_focus = c_acc = 0
             for y in range(y0, y1, step):
                 for x in range(x0, x1, step):
                     r, g, b = px[x, y]
@@ -99,10 +121,14 @@ def _ink_grid(png_path: str, band: Box, focus_rgbs: list[tuple[int, int, int]]):
                         if any(abs(r - fr) + abs(g - fg) + abs(b - fb) < 60 for fr, fg, fb in focus_rgbs):
                             focus += 1
                             c_focus += 1
+                            if abs(r - ar) + abs(g - ag) + abs(b - ab) < 60:
+                                c_acc += 1
             total += n
             ink += c_ink
             if n and c_focus / n > 0.55:  # solid focus-coloured mass (fills, hero numbers), not text strokes
                 egrid[j][i] = 1
+            if n and c_acc / n > 0.55:
+                agrid[j][i] = 1
             if n and c_ink / n > 0.02:
                 grid[j][i] = 1
                 w = c_ink / n
@@ -110,7 +136,30 @@ def _ink_grid(png_path: str, band: Box, focus_rgbs: list[tuple[int, int, int]]):
                 wy += (j + 0.5) / ny * w
                 wsum += w
     com = (wx / wsum, wy / wsum) if wsum else (0.5, 0.5)
-    return grid, dark / max(1, total), focus / max(1, ink), com, _components(egrid)
+    _mark_rules(crop, grid)
+    return grid, dark / max(1, total), focus / max(1, ink), com, _components(egrid), _components(agrid)
+
+
+def _mark_rules(crop, grid) -> None:
+    """Hairline rules (table rows, dividers) are 1 px: the 2-px sampling above can miss them.
+    A pixel row whose faint ink spans ≥ 40% of the band is a rule — it structures the space
+    it crosses, so the cells it runs through are not empty (for dead space / utilization)."""
+    from PIL import Image
+
+    g = crop.convert("L").point(lambda v: 255 if v < 245 else 0)
+    cw, ch = g.size
+    ny, nx = len(grid), len(grid[0])
+    col = g.resize((1, ch), Image.BOX)
+    means = [col.getpixel((0, y)) for y in range(ch)]
+    for y, m in enumerate(means):
+        if m < 0.4 * 255:
+            continue
+        bb = g.crop((0, y, cw, y + 1)).getbbox()
+        if not bb:
+            continue
+        j = min(ny - 1, int(y * ny / ch))
+        for i in range(int(bb[0] * nx / cw), min(nx, int((bb[2] - 1) * nx / cw) + 1)):
+            grid[j][i] = 1
 
 
 def _components(g) -> int:
@@ -180,7 +229,7 @@ def measure(png_path: str, spans: list[dict], slide: dict, manifest: dict, theme
     sid = manifest.get("slide_id") or slide.get("id", "?")
     band = Box(GRID.margin_l, GRID.body_y, GRID.content_w, GRID.body_bottom - GRID.body_y)
     focus_cols = [hex_to_rgb(theme.c("primary")), hex_to_rgb(theme.c("highlight"))]
-    grid, coverage, emph_share, (cx, cy), regions = _ink_grid(png_path, band, focus_cols)
+    grid, coverage, emph_share, (cx, cy), regions, accent_regions = _ink_grid(png_path, band, focus_cols)
     ny, nx = len(grid), len(grid[0])
     sc = SlideComposition(sid)
     # dead space
@@ -202,17 +251,30 @@ def measure(png_path: str, spans: list[dict], slide: dict, manifest: dict, theme
     # focal-point strength: something must stand out (share) and it must be ONE thing, not many (regions)
     sc.raw["emphasis_share"] = round(emph_share, 3)
     sc.raw["focus_regions"] = regions
+    sc.raw["accent_regions"] = accent_regions
     presence = _band(0.05, 1.0, emph_share, 0.05)
     singularity = 1.0 if regions <= 3 else max(0.0, 1 - (regions - 3) * 0.12) if emph_share > 0.35 else max(0.3, 1 - (regions - 3) * 0.05)
     sc.metrics["emphasis"] = presence * singularity
     # evidence: headline numbers / highlighted labels visible in the body
-    head = slide.get("headline") or ""
+    import re
+
+    head = re.sub(r"\s*\(\d+/\d+\)\s*$", "", slide.get("headline") or "")  # "(1/2)" continuation marker is not a claim
     body_text = " ".join(s["text"] for s in spans if s["box"].y >= GRID.body_y - 0.05)
     body_nums = {abs(v) for v, _ in numbers_in(body_text)}
     hnums = [abs(v) for v, _ in numbers_in(head)]
+    # counts are proven by the exhibit's structure ("twelve plants" = twelve rows), not by a printed number
+    counts = set()
+    for ex in [slide.get("visual")] + list(slide.get("exhibits") or []):
+        if isinstance(ex, dict):
+            data = ex.get("data") or {}
+            for coll in (ex.get("rows"), data.get("categories"), data.get("steps"), data.get("events"), data.get("items"), data.get("stages"), data.get("rows"), data.get("points")):
+                if coll:
+                    counts.add(float(len(coll)))
+            if ex.get("_rows_total"):
+                counts.add(float(ex["_rows_total"]))
     checks = []
     for v in hnums:
-        checks.append(any(abs(v - b) <= max(0.051, 0.01 * v) for b in body_nums))
+        checks.append(any(abs(v - b) <= max(0.051, 0.01 * v) for b in body_nums) or v in counts)
     hls = []
     for ex in [slide.get("visual")] + list(slide.get("exhibits") or []):
         if isinstance(ex, dict):
@@ -252,8 +314,8 @@ def measure(png_path: str, spans: list[dict], slide: dict, manifest: dict, theme
     singles = len(clusters) - len(big)
     sc.raw["left_edges"] = len(clusters)
     sc.metrics["alignment"] = 1.0 if not lefts else max(0.0, min(1.0, 1 - max(0, singles - 4) * 0.08 - max(0, len(big) - 10) * 0.05))
-    # composite + flags
-    sc.score = sum(WEIGHTS[k] * sc.metrics[k] for k in WEIGHTS) / sum(WEIGHTS.values()) * 100
+    # v1.1 universal composite (kept for continuity; not used for decisions)
+    sc.score_v1 = sum(WEIGHTS[k] * sc.metrics[k] for k in WEIGHTS) / sum(WEIGHTS.values()) * 100
     names = {
         "dead_space": "DEAD_SPACE",
         "utilization": "UNDERUSED_CANVAS",
@@ -266,28 +328,59 @@ def measure(png_path: str, spans: list[dict], slide: dict, manifest: dict, theme
     }
     for k, t in THRESHOLDS.items():
         if sc.metrics[k] < t:
-            sc.flags.append(names[k])
+            sc.flags_v1.append(names[k])
+    # v1.2: fitness of the observed profile to the archetype's expected profile
+    sc.archetype, sc.archetype_why = classify(slide)
+    sc.observed = {
+        "utilization": util, "empty": empty, "ink": coverage,
+        "offcentre": (abs(cx - 0.5) ** 2 + max(0.0, abs(cy - 0.45) - 0.1) ** 2) ** 0.5,
+        "emphasis": emph_share, "regions": float(accent_regions), "ratio": ratio, "edges": float(len(clusters)),
+    }
+    if checks and slide.get("kind") not in ("exec_summary", "statement"):
+        sc.observed["proof"] = sum(checks) / len(checks)
+    f = fitness(sc.archetype, sc.observed)
+    sc.score = f["score"] if f["score"] is not None else sc.score_v1
+    sc.fitness, sc.deviations = f["per_metric"], f["deviations"]
+    for d in sc.deviations:
+        if d["flag"] and d["fitness"] < FLAG_BELOW and d["flag"] not in sc.flags:
+            sc.flags.append(d["flag"])
     return sc
 
 
 REMEDIES = {
-    "DEAD_SPACE": "Even the best composition leaves a large empty area: the content is too thin for a full slide — add the proof (numbers, comparison) or merge it into a neighbouring slide.",
-    "UNDERUSED_CANVAS": "The exhibit uses little of the slide: give it more data/proof or merge the slide.",
+    "DEAD_SPACE": "Even the best composition leaves a large empty area: the content is too thin for this kind of slide — add the proof (numbers, comparison) or merge it into a neighbouring slide.",
+    "UNDERUSED_CANVAS": "The content uses little of the slide for what it is: give it more data/proof, or turn it into a different slide type (statement, KPI).",
+    "OVERFILLED": "The content crowds the canvas for this kind of slide: cut or split.",
     "PROOF_NOT_VISIBLE": "The headline's number or highlighted item is not visible in the exhibit: label it or highlight it.",
     "NO_FOCAL_POINT": "Nothing stands out: highlight the one element that proves the headline.",
     "NOISY_EMPHASIS": "Too much in the focus colour: keep one highlight and grey the context.",
-    "OVERDENSE": "Very dense slide: cut or split.",
+    "OVERDENSE": "Very dense for this kind of slide: cut or split.",
+    "SPARSE": "Very little ink for this kind of slide: add the proof or merge the slide.",
+    "OFF_BALANCE": "The visual weight sits on one side: check the layout choice.",
+    "WEAK_HIERARCHY": "The body text competes with the headline: reduce it or reword as a statement slide.",
+    "RAGGED_ALIGNMENT": "Many unrelated left edges: align the text blocks.",
 }
 
 
-def issues_from(comps: list["SlideComposition"]) -> list[dict]:
-    """Composition flags the engine could not fix → warnings with a remedy for the author."""
+def advice_from(comps: list["SlideComposition"]) -> list[dict]:
+    """Composition flags → EDITORIAL ADVICE (level "advice").
+
+    Advice is a preference, not a defect: it never enters the hard-QA issue list, the QA
+    score or the pass/fail verdict. A slide with a mediocre composition is still valid;
+    a slide with clipping is not.
+    """
     out = []
     for c in comps:
+        why = {d["flag"]: d for d in c.deviations if d.get("flag")}
         for f in c.flags:
-            if f in REMEDIES:
-                out.append({"level": "warning", "code": f"COMPOSITION_{f}", "message": f"{REMEDIES[f]} (composition score {c.score:.0f})", "slide": c.slide_id})
+            d = why.get(f)
+            detail = f" — {c.archetype}: {d['meaning']} ({d['metric']} {d['value']} vs expected {d['expected'][0]}–{d['expected'][1]})" if d else f" — {c.archetype}"
+            out.append({"level": "advice", "code": f"COMPOSITION_{f}", "message": f"{REMEDIES.get(f, f)}{detail} · fitness {c.score:.0f}", "slide": c.slide_id,
+                        "archetype": c.archetype})
     return out
+
+
+MEASURED_KINDS = ("content", "exec_summary", "statement")
 
 
 def spans_with_line_starts(page) -> list[dict]:
@@ -315,7 +408,7 @@ def measure_deck(pdf_path: str, pngs: list[str], resolved: dict, manifests: list
     for i, (page, png) in enumerate(zip(doc, pngs)):
         slide = resolved["slides"][i] if i < len(resolved["slides"]) else {}
         man = manifests[i] if i < len(manifests) else {}
-        if slide.get("kind", "content") not in ("content", "exec_summary"):
+        if slide.get("kind", "content") not in MEASURED_KINDS:
             continue
         out.append(measure(png, spans_with_line_starts(page), slide, man, theme))
     doc.close()

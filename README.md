@@ -21,15 +21,15 @@ Three independent signals, never combined into one number ([why](docs/EVALS.md))
 
 | signal | what it measures | current |
 |---|---|---|
-| **Regression** | universal composition score (v1.1 metrics) over the development suite (8 decks, 25 slides); gates CI | **84.0**/100 · QA errors 0 |
+| **Regression** | archetype-fitness composition score over the development suite (10 decks, 39 slides); gates CI | **87.3**/100 · QA errors 0 |
 | **Holdout** | same metric on unseen public cases; reported, never tuned on | not run yet |
 | **Human preference** | blind A/B votes (`cpe human`) | no votes imported yet |
 
-| example deck | QA gate | QA score | universal composition score (v1.1 metrics) |
+| example deck | QA gate | QA score | archetype-fitness composition score |
 |---|---|---|---|
-| `alvora` | PASSED · 0 errors · 0 warnings | 99.8 | 94.4 |
-| `gallery` | PASSED · 0 errors · 0 warnings | 99.8 | 92.1 |
-| `alvora_on_kestrel` | PASSED · 0 errors · 0 warnings | 99.8 | 93.8 |
+| `alvora` | PASSED · 0 errors · 0 warnings | 99.8 | 99.8 |
+| `gallery` | PASSED · 0 errors · 0 warnings | 99.8 | 98.8 |
+| `alvora_on_kestrel` | PASSED · 0 errors · 0 warnings | 99.8 | 99.5 |
 
 <sub>engine 1.2.0.dev0 · LibreOffice 24.2.7.2 420(Build:2) · fontconfig 2.15.0 · container `mbbslides-visual:1.2@sha256:f883eeb28a0a267cc316071dd5cd3dd1c3220443775de5f9bdaac937e7e0800d` · render fingerprint `6b5b1872486a594a`</sub>
 

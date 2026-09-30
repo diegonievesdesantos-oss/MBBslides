@@ -102,6 +102,12 @@ def to_markdown(r: dict) -> str:
         for a in r["pending_actions"]:
             L.append(f"- **{a['slide']}** `{a['code']}` — {a['action']}")
         L.append("")
+    if r.get("editorial_advice"):
+        L.append("## Editorial advice (composition fitness — a preference, not a QA defect; does not affect the verdict or score)")
+        L.append("")
+        for a in r["editorial_advice"]:
+            L.append(f"- **{a['slide']}** `{a['code']}` — {a['why']}")
+        L.append("")
     L.append("## Slide scores")
     L.append("")
     L.append("| slide | score | errors | warnings |")

@@ -11,11 +11,15 @@ content?". For every content slide whose layout is not fixed it:
   2. crosses them with composition variants (content scale for sparse slides,
      table rows stretched to the zone),
   3. renders ALL candidates of the deck in one LibreOffice pass,
-  4. rejects candidates with QA errors (overflow, collisions, …),
-  5. scores the rest with the composition metrics (qa/composition.py) —
-     dead space, utilization, balance, density, emphasis, proof, hierarchy,
-     alignment — and flags "compatible but editorially weak" ones,
-  6. keeps the best (the default wins ties, for stability and variety).
+  4. HARD QA FILTER: rejects candidates with QA errors (overflow, collisions, …),
+  5. scores the rest by ARCHETYPE FITNESS (qa/archetypes.py, qa/composition.py):
+     the slide's archetype comes from its content, so every candidate is judged
+     against the same expected visual profile, and candidates below the editorial
+     floor are named "technically compatible but editorially inappropriate",
+     with the deviations that make them so,
+  6. keeps the best — a different layout must beat the default by a clear margin
+     (LAYOUT_SWITCH_MARGIN), a variant by TIE_MARGIN, so the deck does not
+     oscillate between layouts on insignificant differences.
 
 The decision and every rejected alternative are recorded in `_plan.composition`
 so the choice is explainable, and the chosen layout / variant is written back
@@ -24,6 +28,7 @@ into the spec (marked `_composed`) before the normal QA/patch loop runs.
 from __future__ import annotations
 
 import copy
+import os
 import tempfile
 from pathlib import Path
 
@@ -40,6 +45,9 @@ TIE_MARGIN = 1.5  # the default must be beaten by more than this
 LAYOUT_SWITCH_MARGIN = 3.0  # a different layout must beat the default by more than this
 REPEAT_PENALTY = 2.5  # same layout as the previous slide: monotony
 MAX_LAYOUTS = 3
+# Experiment switch for human A/B rounds only: CPE_COMPOSE_SCORE=v1 selects candidates with the
+# v1.1 universal score instead of archetype fitness (docs/EVALS.md). Never set in normal runs.
+SELECTION_SCORE = os.environ.get("CPE_COMPOSE_SCORE", "fitness")
 
 
 def _variants(slide: dict, layout_id: str) -> list[dict]:
@@ -120,14 +128,15 @@ def compose(spec: dict, work_dir: str | Path | None = None, dpi: int = 70, verbo
         cid = f"{sid}~{k}"
         errs = [i for i in issues if i.get("slide") == cid and i["level"] == "error"]
         comp = comps.get(cid)
-        score = comp.score if comp else 0.0
+        score = (comp.score_v1 if SELECTION_SCORE == "v1" else comp.score) if comp else 0.0
         verdict = "ok"
         if errs:
             verdict = "rejected: QA errors (" + ", ".join(sorted({e["code"] for e in errs})) + ")"
         elif score < EDITORIAL_FLOOR:
-            verdict = "compatible but editorially weak (" + ", ".join(comp.flags if comp else []) + ")"
+            verdict = inappropriate(comp)
         by_slide.setdefault(sid, []).append({"k": k, "layout": c["layout"], "variant": c["variant"], "default": c["default"], "score": round(score, 1),
-                                             "flags": comp.flags if comp else [], "errors": len(errs), "verdict": verdict})
+                                             "archetype": comp.archetype if comp else None, "flags": comp.flags if comp else [], "errors": len(errs),
+                                             "verdict": verdict})
     new = copy.deepcopy(spec)
     prev_layout = None
     for s in new["slides"]:
@@ -159,7 +168,7 @@ def compose(spec: dict, work_dir: str | Path | None = None, dpi: int = 70, verbo
             s["_compose"] = best["variant"]
         else:
             s.pop("_compose", None)
-        decisions[s["id"]] = {"chosen": {"layout": best["layout"], "variant": best["variant"], "score": best["score"]},
+        decisions[s["id"]] = {"archetype": best.get("archetype"), "chosen": {"layout": best["layout"], "variant": best["variant"], "score": best["score"]},
                               "default_score": default["score"], "candidates": cands}
         if verbose:
             gain = best["score"] - default["score"]
@@ -167,12 +176,22 @@ def compose(spec: dict, work_dir: str | Path | None = None, dpi: int = 70, verbo
     return new, decisions
 
 
+def inappropriate(comp) -> str:
+    """The explicit editorial verdict for a candidate that passes hard QA but scores below the floor."""
+    if comp is None:
+        return "not measured"
+    why = "; ".join(f"{d['meaning']} ({d['metric']} {d['value']} vs {d['expected'][0]}–{d['expected'][1]})" for d in comp.deviations[:3] if d["fitness"] < 0.8)
+    return (f"technically compatible with the content, but the composition is inappropriate for this content volume / "
+            f"{comp.archetype} archetype: {why or ', '.join(comp.flags)}")
+
+
 def summarize(decisions: dict) -> str:
-    L = ["# Composition decisions", "", "| slide | chosen | variant | score | vs default | rejected / weak alternatives |", "|---|---|---|---|---|---|"]
+    L = ["# Composition decisions", "", "Scores are archetype fitness (qa/archetypes.py). Candidates with QA errors are rejected before scoring.", "",
+         "| slide | archetype | chosen | variant | score | vs default | rejected / inappropriate alternatives |", "|---|---|---|---|---|---|---|"]
     for sid, d in decisions.items():
         ch = d["chosen"]
         alts = "; ".join(f"`{c['layout']}` {c['variant'] or ''} {c['score']} — {c['verdict']}" for c in d["candidates"] if c["verdict"] != "chosen" and c["verdict"] != "ok")
-        L.append(f"| {sid} | `{ch['layout']}` | {ch['variant'] or '—'} | {ch['score']} | {ch['score'] - d['default_score']:+.1f} | {alts or '—'} |")
+        L.append(f"| {sid} | {d.get('archetype') or '—'} | `{ch['layout']}` | {ch['variant'] or '—'} | {ch['score']} | {ch['score'] - d['default_score']:+.1f} | {alts or '—'} |")
     return "\n".join(L) + "\n"
 
 

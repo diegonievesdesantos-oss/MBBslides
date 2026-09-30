@@ -1,0 +1,22 @@
+{
+  "eval": {"purpose": "currencies ($, €, £, ¥), negative values, long numbers, several sources on one slide"},
+  "meta": {"title": "Numbers and currencies", "deck_type": "financial_analysis", "theme": "meridian"},
+  "storyline": {"framework": "SCR", "governing_thought": "Eval decks stress the engine so visual quality stays measurable",
+    "key_line": [{"id": "K1", "role": "situation", "message": "Context"}, {"id": "K2", "role": "resolution", "message": "Answer"}]},
+  "slides": [
+    {"id": "n1", "section": "K1", "purpose": "Eval case", "headline": "Three of five regions lost money in 2025, led by LatAm at −$42M",
+     "message_type": "ranking", "visual": {"type": "bar", "title": "Operating profit by region", "unit": "$M", "data": {"categories": ["North America", "Europe", "Asia-Pacific", "Middle East", "LatAm"],
+       "series": [{"name": "Operating profit", "values": [118, 36, -9, -17, -42]}]}, "highlight": ["LatAm"]},
+     "source": "Segment reporting (synthetic); FX at 2025 average rates (synthetic)"},
+    {"id": "n2", "section": "K1", "purpose": "Eval case", "headline": "Reported revenue of ¥1,248,600M hides a 6.4% decline at constant currency",
+     "message_type": "comparison", "visual": {"type": "table", "title": "Revenue by currency view", "columns": [{"label": "View"}, {"label": "2024", "kind": "number"}, {"label": "2025", "kind": "number"}, {"label": "Change (%)", "kind": "delta"}],
+       "rows": [["Reported (¥M)", 1201400, 1248600, 3.9], ["Constant currency (¥M)", 1201400, 1124500, -6.4], ["Reported (€M)", 7412, 7688, 3.7], ["Reported (£M)", 6356, 6480, 2.0]]},
+     "commentary": {"points": ["The yen weakened 11% against the dollar", "Volumes fell in every market except Japan"]},
+     "evidence": [{"claim": "decline", "value": -6.4}], "source": "Group accounts (synthetic); central bank FX series (synthetic)"},
+    {"id": "n3", "section": "K2", "purpose": "Eval case", "headline": "Cost actions of €310M offset a €275M input-cost shock and lift margin to €1,035M",
+     "message_type": "change_bridge", "visual": {"type": "waterfall", "title": "Operating profit bridge", "unit": "€M", "data": {"steps": [
+       {"label": "2024", "value": 1000, "type": "total"}, {"label": "Input costs", "value": -275}, {"label": "Pricing", "value": 60}, {"label": "Procurement", "value": 140},
+       {"label": "Footprint", "value": 110}, {"label": "Overheads", "value": 60}, {"label": "2025", "type": "total"}]}},
+     "evidence": [{"claim": "cost actions", "values": [140, 110, 60], "value": 310}], "source": "Controlling (synthetic)"}
+  ]
+}

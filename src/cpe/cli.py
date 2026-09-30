@@ -18,6 +18,7 @@ Rendering commands:
   eval       visual-quality evals: --suite regression (gate vs baseline) | holdout (report only) | examples;
              --docker runs inside the pinned visual environment; --record writes evals/results/latest.json
   repro      render a spec twice and compare (slides, dimensions, PNG hashes, pixels, spans, metrics, QA)
+  human      blind A/B preference rounds: build | serve | import | report (docs/EVALS.md)
   results    `results readme [--check]`: regenerate the README metrics block from evals/results/latest.json
 Reference:
   catalog    layout library (markdown)        themes    available themes
@@ -232,6 +233,35 @@ def cmd_repro(a):
     return 0 if r["passed"] else 1
 
 
+def cmd_human(a):
+    from . import human
+
+    if a.human_cmd == "build":
+        specs = []
+        for pr in a.pair:
+            name, _, rest = pr.partition("=")
+            base, _, chal = rest.partition(",")
+            if not (name and base and chal):
+                raise SystemExit("--pair NAME=BASELINE_ROOT,CHALLENGER_ROOT")
+            specs.append((name, base, chal))
+        r = human.build_round(a.out, specs, n=a.n, repeats=a.repeats, seed=a.seed)
+        _p(f"round {a.out}: {r['pairs']} pairs {r['by_comparison']} · serve it with `cpe human serve {a.out}`")
+    elif a.human_cmd == "serve":
+        human.serve(a.round, port=a.port, host=a.host)
+    elif a.human_cmd == "import":
+        _p(f"imported {human.import_votes(a.round, a.votes)} votes")
+    elif a.human_cmd == "report":
+        r = human.report(a.round)
+        md = human.to_markdown(r)
+        Path(a.round, "report.md").write_text(md)
+        Path(a.round, "report.json").write_text(json.dumps(r, indent=2))
+        _p(md)
+        if a.record:
+            human.record(r)
+            _p("recorded in evals/results/latest.json (human_reference) — an independent signal, not part of the automatic score")
+    return 0
+
+
 def cmd_results(a):
     from .results_report import update_readme
 
@@ -309,6 +339,12 @@ def main(argv=None) -> int:
     s.add_argument("-o", "--out"); s.add_argument("--baseline", default=None); s.add_argument("--update-baseline", action="store_true"); s.add_argument("--no-compose", action="store_true"); s.add_argument("--tolerance", type=float, default=2.0)
     s.add_argument("--docker", action="store_true", help="run inside the pinned visual environment (scripts/cpe-docker)"); s.add_argument("--record", action="store_true", help="write the result into evals/results/latest.json"); s.set_defaults(f=cmd_eval)
     s = sub.add_parser("repro"); s.add_argument("spec"); s.add_argument("-o", "--out"); s.add_argument("--dpi", type=int, default=80); s.add_argument("--docker", action="store_true"); s.set_defaults(f=cmd_repro)
+    s = sub.add_parser("human"); hs = s.add_subparsers(dest="human_cmd", required=True)
+    h = hs.add_parser("build"); h.add_argument("-o", "--out", required=True); h.add_argument("--pair", action="append", required=True, help="NAME=BASELINE_ROOT,CHALLENGER_ROOT (run dirs matched by deck + slide id)")
+    h.add_argument("--n", type=int, default=40); h.add_argument("--repeats", type=int, default=2); h.add_argument("--seed", type=int, default=7); h.set_defaults(f=cmd_human)
+    h = hs.add_parser("serve"); h.add_argument("round"); h.add_argument("--port", type=int, default=8765); h.add_argument("--host", default="127.0.0.1"); h.set_defaults(f=cmd_human)
+    h = hs.add_parser("import"); h.add_argument("round"); h.add_argument("votes"); h.set_defaults(f=cmd_human)
+    h = hs.add_parser("report"); h.add_argument("round"); h.add_argument("--record", action="store_true"); h.set_defaults(f=cmd_human)
     s = sub.add_parser("results"); s.add_argument("what", choices=["readme"]); s.add_argument("--check", action="store_true"); s.set_defaults(f=cmd_results)
     s = sub.add_parser("brand"); bs = s.add_subparsers(dest="brand_cmd", required=True)
     s2 = bs.add_parser("ingest"); s2.add_argument("template"); s2.add_argument("-o", "--out", required=True); s2.add_argument("--name"); s2.add_argument("--base-theme", default="meridian"); s2.set_defaults(f=cmd_brand)

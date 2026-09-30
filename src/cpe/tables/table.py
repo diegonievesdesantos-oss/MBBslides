@@ -64,7 +64,20 @@ def _norm_cols(ex: dict, rows: list[dict]) -> list[dict]:
             numeric = all(isinstance(v, (int, float)) or v is None for v in vals) and any(isinstance(v, (int, float)) for v in vals)
             c["kind"] = "harvey" if (ex_kind == "harvey_table" and numeric and j > 0) else ("number" if numeric else "text")
         c.setdefault("align", "left" if c["kind"] == "text" else ("center" if c["kind"] in ("harvey", "rag") else "right"))
+        if c["kind"] in ("number", "delta") and "decimals" not in (c.get("format") or {}):
+            vals = [r["cells"][j] for r in rows if j < len(r["cells"])]
+            c["format"] = {**(c.get("format") or {}), "decimals": data_decimals(vals)}
     return cols
+
+
+def data_decimals(vals) -> int:
+    """Decimals the data actually carries (max 2): 1.9 must not print as "2"."""
+    d = 0
+    for v in vals:
+        if isinstance(v, float) and not v.is_integer():
+            txt = repr(v)
+            d = max(d, len(txt.split(".")[1]) if "." in txt and "e" not in txt else 2)
+    return min(d, 2)
 
 
 def _cell_text(v, col: dict) -> str:
