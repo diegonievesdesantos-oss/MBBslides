@@ -1,5 +1,5 @@
 {
-  "version": "1.2.0.dev0",
+  "version": "1.2.0",
   "regression": {
     "metric": "archetype-fitness composition score",
     "suite_composition": 87.3,
@@ -153,7 +153,11 @@
         "qa_passed": true
       }
     },
-    "environment_fingerprint": "6b5b1872486a594a"
+    "environment_fingerprint": "6b5b1872486a594a",
+    "engine": {
+      "version": "1.2.0",
+      "commit": "02efb0d33e8fd035664b85c224946e5f323c7034"
+    }
   },
   "environment": {
     "os": "Ubuntu 24.04.5 LTS (x86_64)",
@@ -264,9 +268,9 @@
       "Inter": "DejaVu Sans|/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
       "Segoe UI": "DejaVu Sans|/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
     },
-    "cpe_version": "1.2.0.dev0",
+    "cpe_version": "1.2.0",
     "container_image": "mbbslides-visual:1.2@sha256:f883eeb28a0a267cc316071dd5cd3dd1c3220443775de5f9bdaac937e7e0800d",
-    "commit": "e3b63e16b4520ab4b45c3cd33ff83f3ec0c4d1fc-dirty",
+    "commit": "02efb0d33e8fd035664b85c224946e5f323c7034-dirty",
     "fingerprint": "6b5b1872486a594a"
   },
   "holdout": {
@@ -387,7 +391,12 @@
           "qa_passed": true
         }
       },
-      "environment_fingerprint": "6b5b1872486a594a"
+      "environment_fingerprint": "6b5b1872486a594a",
+      "engine": {
+        "version": "1.2.0.dev0",
+        "commit": "e3b63e16b4520ab4b45c3cd33ff83f3ec0c4d1fc-dirty"
+      },
+      "note": "run once with the rules frozen at e3b63e1 (not re-run after the correctness fixes made afterwards)"
     },
     "private": {
       "summary": "1 master(s), 54 layouts, 32% classified with confidence ≥ 0.5; font conflict none; test deck QA failed; agreement with the human brand spec 13/22",
@@ -417,7 +426,9 @@
     }
   },
   "human_reference": {
-    "status": "no votes imported yet"
+    "status": "round r1 built (40 blind pairs, 3 comparisons) — awaiting votes",
+    "round": "r1",
+    "pairs": 40
   },
   "examples": {
     "metric": "archetype-fitness composition score",
@@ -515,6 +526,10 @@
         "qa_passed": true
       }
     },
-    "environment_fingerprint": "6b5b1872486a594a"
+    "environment_fingerprint": "6b5b1872486a594a",
+    "engine": {
+      "version": "1.2.0",
+      "commit": "02efb0d33e8fd035664b85c224946e5f323c7034-dirty"
+    }
   }
 }

@@ -22,16 +22,17 @@ Three independent signals, never combined into one number ([why](docs/EVALS.md))
 | signal | what it measures | current |
 |---|---|---|
 | **Regression** | archetype-fitness composition score over the development suite (10 decks, 39 slides); gates CI | **87.3**/100 · QA errors 0 |
-| **Holdout** | same metric on unseen public cases; reported, never tuned on | not run yet |
-| **Human preference** | blind A/B votes (`cpe human`) | no votes imported yet |
+| **Holdout** | archetype-fitness composition score on unseen public cases (5 decks, 27 slides); reported, never tuned on | **81.0**/100 · QA errors 1 |
+| **Human preference** | blind A/B votes (`cpe human`) | round r1 built (40 blind pairs, 3 comparisons) — awaiting votes |
+| Private corporate holdout | brand-ingest understanding of a real corporate template (sanitized) | 1 master(s), 54 layouts, 32% classified with confidence ≥ 0.5; font conflict none; test deck QA failed; agreement with the human brand spec 13/22 |
 
 | example deck | QA gate | QA score | archetype-fitness composition score |
 |---|---|---|---|
 | `alvora` | PASSED · 0 errors · 0 warnings | 99.8 | 99.8 |
 | `gallery` | PASSED · 0 errors · 0 warnings | 99.8 | 98.8 |
-| `alvora_on_kestrel` | PASSED · 0 errors · 0 warnings | 99.8 | 99.5 |
+| `alvora_on_kestrel` | PASSED · 0 errors · 0 warnings | 99.7 | 99.5 |
 
-<sub>engine 1.2.0.dev0 · LibreOffice 24.2.7.2 420(Build:2) · fontconfig 2.15.0 · container `mbbslides-visual:1.2@sha256:f883eeb28a0a267cc316071dd5cd3dd1c3220443775de5f9bdaac937e7e0800d` · render fingerprint `6b5b1872486a594a`</sub>
+<sub>engine 1.2.0 · LibreOffice 24.2.7.2 420(Build:2) · fontconfig 2.15.0 · container `mbbslides-visual:1.2@sha256:f883eeb28a0a267cc316071dd5cd3dd1c3220443775de5f9bdaac937e7e0800d` · render fingerprint `6b5b1872486a594a`</sub>
 
 <!-- metrics:end -->
 

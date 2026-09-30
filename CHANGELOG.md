@@ -53,10 +53,10 @@ score should correspond more closely to a genuinely better composition on unseen
 - Synthetic three-master fixture for tests (`brand/fixtures.py`).
 
 ### Results (frozen for this release; current numbers live in `evals/results/latest.json`)
-- Regression (archetype fitness): 87.3 over 10 decks / 35 slides, 0 QA errors. Not comparable to
+- Regression (archetype fitness): 87.3 over 10 decks / 39 slides, 0 QA errors. Not comparable to
   v1.1's 84.0 (a different metric); the v1.1 universal score of the v1.1.1 engine in the pinned
   environment reproduced 84.0 exactly (`evals/results/history/v1.1.1_pinned_env_*.json`).
-- Holdout, public (rules frozen at e3b63e1): 81.0 over 5 decks / 26 slides, 1 QA error —
+- Holdout, public (rules frozen at e3b63e1): 81.0 over 5 decks / 27 slides, 1 QA error —
   a generalisation gap of 6.3 points.
 - Holdout, private corporate template (sanitized): 1 master, 54 layouts, 32% of layouts classified
   with confidence ≥ 0.5; 13/22 claims of the human-written brand spec confirmed; the test deck
