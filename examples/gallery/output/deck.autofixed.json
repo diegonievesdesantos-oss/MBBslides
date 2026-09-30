@@ -692,7 +692,18 @@
       "message_type": "sequence",
       "evidence": [
         {
-          "claim": "Process redesign"
+          "claim": "OTIF today vs target",
+          "values": [
+            61,
+            85
+          ]
+        },
+        {
+          "claim": "Order-to-delivery hours",
+          "values": [
+            31,
+            24
+          ]
         }
       ],
       "visual": {
@@ -709,7 +720,9 @@
               "points": [
                 "EDI for top 200 customers",
                 "Minimum order value"
-              ]
+              ],
+              "metric": "0.3%",
+              "metric_label": "order errors (from 2.1%)"
             },
             {
               "title": "Allocation",
@@ -718,7 +731,9 @@
               "points": [
                 "Automated slotting",
                 "Daily wave plan"
-              ]
+              ],
+              "metric": "2h",
+              "metric_label": "planning time (from 3h)"
             },
             {
               "title": "Automated picking",
@@ -727,7 +742,9 @@
               "points": [
                 "Goods-to-person in 2 hubs",
                 "Error rate < 0.3%"
-              ]
+              ],
+              "metric": "99.7%",
+              "metric_label": "pick accuracy (from 97.9%)"
             },
             {
               "title": "Dispatch",
@@ -736,7 +753,9 @@
               "points": [
                 "Dynamic routing",
                 "Fill ≥ 85%"
-              ]
+              ],
+              "metric": "85%",
+              "metric_label": "truck fill (from 77%)"
             },
             {
               "title": "Delivery",
@@ -745,12 +764,15 @@
               "points": [
                 "Proof of delivery",
                 "Returns in 48h"
-              ]
+              ],
+              "metric": "85%",
+              "metric_label": "in full, on time (from 61%)"
             }
           ]
         }
       },
       "source": "Process design (illustrative)",
+      "takeaway": "Order-to-delivery falls from 31 to 24 hours and in-full-on-time deliveries rise from 61% to 85%",
       "layout": "process_full",
       "_composed": true
     },
@@ -816,8 +838,11 @@
         }
       },
       "source": "Customer interviews, n=40 (illustrative)",
-      "layout": "process_full",
-      "_composed": true
+      "layout": "exhibit_full",
+      "_composed": true,
+      "_compose": {
+        "scale": 1.15
+      }
     },
     {
       "id": "g16",
@@ -962,8 +987,10 @@
           "points": [
             "Customer terms reset",
             "Transport tender",
-            "Overtime controls"
-          ]
+            "Overtime controls",
+            "Self-funding by Q4 2026"
+          ],
+          "subtitle": "Fund the programme"
         },
         {
           "title": "Phase 2 · Automation",
@@ -973,8 +1000,10 @@
           "points": [
             "Goods-to-person in 2 hubs",
             "WMS go-live",
-            "Pick accuracy > 99.7%"
-          ]
+            "Pick accuracy > 99.7%",
+            "Capex €22M, payback 19 months"
+          ],
+          "subtitle": "Fix the hubs"
         },
         {
           "title": "Phase 3 · Network",
@@ -983,12 +1012,15 @@
           "points": [
             "Close 5 depots",
             "Two new cross-docks",
-            "Dynamic routing"
-          ]
+            "Dynamic routing",
+            "Needs works-council agreement"
+          ],
+          "subtitle": "Redesign the network"
         }
       ],
       "layout": "roadmap_phases",
-      "source": "Programme plan (illustrative)"
+      "source": "Programme plan (illustrative)",
+      "takeaway": "Phase 1 savings fund phase 2, and phases 1-2 de-risk the network redesign before any depot closes"
     },
     {
       "id": "g19",
@@ -1011,29 +1043,42 @@
           "events": [
             {
               "date": "Oct 2026",
-              "text": "New customer terms live"
+              "text": "New customer terms live",
+              "detail": "Owner: Sales director · unlocks €3M of savings in 2026"
             },
             {
               "date": "Dec 2026",
-              "text": "Transport tender awarded"
+              "text": "Transport tender awarded",
+              "detail": "Owner: CPO · rates fixed for 2027-28"
             },
             {
               "date": "Mar 2027",
-              "text": "Hub 1 automation commissioned"
+              "text": "Hub 1 automation commissioned",
+              "detail": "Owner: Head of hubs · first goods-to-person hub"
             },
             {
               "date": "Jun 2027",
-              "text": "WMS go-live (critical path)"
+              "text": "WMS go-live (critical path)",
+              "detail": "Owner: CIO · gates hub 2 and €13M of savings"
             },
             {
               "date": "Dec 2027",
-              "text": "Network: 5 depots closed"
+              "text": "Network: 5 depots closed",
+              "detail": "Owner: Head of logistics · €17M run-rate"
             }
           ]
         }
       },
       "source": "Programme plan (illustrative)",
-      "layout": "timeline_full",
+      "commentary": {
+        "title": "Why June 2027 matters",
+        "points": [
+          "The **WMS go-live** gates hub automation and €13M of savings",
+          "A one-quarter slip defers **€3.5M** of run-rate savings",
+          "Mitigation: parallel data migration and a frozen scope from Q4 2026"
+        ]
+      },
+      "layout": "exhibit_takeaways_below",
       "_composed": true
     },
     {

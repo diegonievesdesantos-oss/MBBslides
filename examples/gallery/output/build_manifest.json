@@ -555,7 +555,7 @@
         "series": 2,
         "scale": [
           4.375,
-          6.125,
+          6.375,
           0.25
         ]
       }
@@ -1041,12 +1041,19 @@
     "slide_id": "g14",
     "layout": "process_full",
     "zones": {
+      "takeaway": {
+        "role": "takeaway",
+        "x": 0.55,
+        "y": 6.16,
+        "w": 12.233,
+        "h": 0.62
+      },
       "exhibit": {
         "role": "exhibit",
         "x": 0.55,
         "y": 1.62,
         "w": 12.233,
-        "h": 5.16
+        "h": 4.29
       }
     },
     "fits": [
@@ -1085,6 +1092,28 @@
       },
       {
         "zone": "exhibit",
+        "role": "kpi_value",
+        "what": "step 1 metric",
+        "base_pt": 22,
+        "chosen_pt": 22,
+        "need_h": 0.357,
+        "box_h": 0.5,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "kpi_label",
+        "what": "step 1 metric label",
+        "base_pt": 11.0,
+        "chosen_pt": 11.0,
+        "need_h": 0.179,
+        "box_h": 0.38,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
         "role": "annotation",
         "what": "step meta",
         "base_pt": 10.0,
@@ -1101,7 +1130,7 @@
         "base_pt": 11.0,
         "chosen_pt": 11.0,
         "need_h": 0.456,
-        "box_h": 3.85,
+        "box_h": 1.83,
         "lines": 2,
         "overflow": false
       },
@@ -1113,6 +1142,28 @@
         "chosen_pt": 12.0,
         "need_h": 0.195,
         "box_h": 0.72,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "kpi_value",
+        "what": "step 2 metric",
+        "base_pt": 22,
+        "chosen_pt": 22,
+        "need_h": 0.357,
+        "box_h": 0.5,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "kpi_label",
+        "what": "step 2 metric label",
+        "base_pt": 11.0,
+        "chosen_pt": 11.0,
+        "need_h": 0.179,
+        "box_h": 0.38,
         "lines": 1,
         "overflow": false
       },
@@ -1134,7 +1185,7 @@
         "base_pt": 11.0,
         "chosen_pt": 11.0,
         "need_h": 0.456,
-        "box_h": 3.85,
+        "box_h": 1.83,
         "lines": 2,
         "overflow": false
       },
@@ -1146,6 +1197,28 @@
         "chosen_pt": 12.0,
         "need_h": 0.195,
         "box_h": 0.72,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "kpi_value",
+        "what": "step 3 metric",
+        "base_pt": 22,
+        "chosen_pt": 22,
+        "need_h": 0.357,
+        "box_h": 0.5,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "kpi_label",
+        "what": "step 3 metric label",
+        "base_pt": 11.0,
+        "chosen_pt": 11.0,
+        "need_h": 0.179,
+        "box_h": 0.38,
         "lines": 1,
         "overflow": false
       },
@@ -1167,7 +1240,7 @@
         "base_pt": 11.0,
         "chosen_pt": 11.0,
         "need_h": 0.456,
-        "box_h": 3.85,
+        "box_h": 1.83,
         "lines": 2,
         "overflow": false
       },
@@ -1179,6 +1252,28 @@
         "chosen_pt": 12.0,
         "need_h": 0.195,
         "box_h": 0.72,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "kpi_value",
+        "what": "step 4 metric",
+        "base_pt": 22,
+        "chosen_pt": 22,
+        "need_h": 0.357,
+        "box_h": 0.5,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "kpi_label",
+        "what": "step 4 metric label",
+        "base_pt": 11.0,
+        "chosen_pt": 11.0,
+        "need_h": 0.179,
+        "box_h": 0.38,
         "lines": 1,
         "overflow": false
       },
@@ -1200,7 +1295,7 @@
         "base_pt": 11.0,
         "chosen_pt": 11.0,
         "need_h": 0.456,
-        "box_h": 3.85,
+        "box_h": 1.83,
         "lines": 2,
         "overflow": false
       },
@@ -1212,6 +1307,28 @@
         "chosen_pt": 12.0,
         "need_h": 0.195,
         "box_h": 0.72,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "kpi_value",
+        "what": "step 5 metric",
+        "base_pt": 22,
+        "chosen_pt": 22,
+        "need_h": 0.357,
+        "box_h": 0.5,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "kpi_label",
+        "what": "step 5 metric label",
+        "base_pt": 11.0,
+        "chosen_pt": 11.0,
+        "need_h": 0.179,
+        "box_h": 0.38,
         "lines": 1,
         "overflow": false
       },
@@ -1233,8 +1350,19 @@
         "base_pt": 11.0,
         "chosen_pt": 11.0,
         "need_h": 0.456,
-        "box_h": 3.85,
+        "box_h": 1.83,
         "lines": 2,
+        "overflow": false
+      },
+      {
+        "zone": "takeaway",
+        "role": "body_strong",
+        "what": "takeaway",
+        "base_pt": 13,
+        "chosen_pt": 13,
+        "need_h": 0.211,
+        "box_h": 0.62,
+        "lines": 1,
         "overflow": false
       }
     ],
@@ -1249,7 +1377,7 @@
   },
   {
     "slide_id": "g15",
-    "layout": "process_full",
+    "layout": "exhibit_full",
     "zones": {
       "exhibit": {
         "role": "exhibit",
@@ -1286,9 +1414,9 @@
         "zone": "exhibit",
         "role": "body",
         "what": "journey 0",
-        "base_pt": 11.0,
-        "chosen_pt": 11.0,
-        "need_h": 0.357,
+        "base_pt": 13.0,
+        "chosen_pt": 13.0,
+        "need_h": 0.422,
         "box_h": 1.42,
         "lines": 2,
         "overflow": false
@@ -1297,9 +1425,9 @@
         "zone": "exhibit",
         "role": "body",
         "what": "journey 1",
-        "base_pt": 11.0,
-        "chosen_pt": 11.0,
-        "need_h": 0.179,
+        "base_pt": 13.0,
+        "chosen_pt": 13.0,
+        "need_h": 0.211,
         "box_h": 1.42,
         "lines": 1,
         "overflow": false
@@ -1308,9 +1436,9 @@
         "zone": "exhibit",
         "role": "body",
         "what": "journey 2",
-        "base_pt": 11.0,
-        "chosen_pt": 11.0,
-        "need_h": 0.179,
+        "base_pt": 13.0,
+        "chosen_pt": 13.0,
+        "need_h": 0.211,
         "box_h": 1.42,
         "lines": 1,
         "overflow": false
@@ -1319,9 +1447,9 @@
         "zone": "exhibit",
         "role": "body",
         "what": "journey 3",
-        "base_pt": 11.0,
-        "chosen_pt": 11.0,
-        "need_h": 0.179,
+        "base_pt": 13.0,
+        "chosen_pt": 13.0,
+        "need_h": 0.211,
         "box_h": 1.42,
         "lines": 1,
         "overflow": false
@@ -1330,9 +1458,9 @@
         "zone": "exhibit",
         "role": "body",
         "what": "journey 4",
-        "base_pt": 11.0,
-        "chosen_pt": 11.0,
-        "need_h": 0.179,
+        "base_pt": 13.0,
+        "chosen_pt": 13.0,
+        "need_h": 0.211,
         "box_h": 1.42,
         "lines": 1,
         "overflow": false
@@ -1341,20 +1469,20 @@
         "zone": "exhibit",
         "role": "body",
         "what": "journey 0",
-        "base_pt": 11.0,
-        "chosen_pt": 11.0,
-        "need_h": 0.179,
+        "base_pt": 13.0,
+        "chosen_pt": 13.0,
+        "need_h": 0.422,
         "box_h": 1.42,
-        "lines": 1,
+        "lines": 2,
         "overflow": false
       },
       {
         "zone": "exhibit",
         "role": "body",
         "what": "journey 1",
-        "base_pt": 11.0,
-        "chosen_pt": 11.0,
-        "need_h": 0.179,
+        "base_pt": 13.0,
+        "chosen_pt": 13.0,
+        "need_h": 0.211,
         "box_h": 1.42,
         "lines": 1,
         "overflow": false
@@ -1363,9 +1491,9 @@
         "zone": "exhibit",
         "role": "body",
         "what": "journey 2",
-        "base_pt": 11.0,
-        "chosen_pt": 11.0,
-        "need_h": 0.179,
+        "base_pt": 13.0,
+        "chosen_pt": 13.0,
+        "need_h": 0.211,
         "box_h": 1.42,
         "lines": 1,
         "overflow": false
@@ -1374,9 +1502,9 @@
         "zone": "exhibit",
         "role": "body",
         "what": "journey 3",
-        "base_pt": 11.0,
-        "chosen_pt": 11.0,
-        "need_h": 0.179,
+        "base_pt": 13.0,
+        "chosen_pt": 13.0,
+        "need_h": 0.211,
         "box_h": 1.42,
         "lines": 1,
         "overflow": false
@@ -1385,9 +1513,9 @@
         "zone": "exhibit",
         "role": "body",
         "what": "journey 4",
-        "base_pt": 11.0,
-        "chosen_pt": 11.0,
-        "need_h": 0.179,
+        "base_pt": 13.0,
+        "chosen_pt": 13.0,
+        "need_h": 0.211,
         "box_h": 1.42,
         "lines": 1,
         "overflow": false
@@ -1396,9 +1524,9 @@
         "zone": "exhibit",
         "role": "body",
         "what": "journey 0",
-        "base_pt": 11.0,
-        "chosen_pt": 11.0,
-        "need_h": 0.179,
+        "base_pt": 13.0,
+        "chosen_pt": 13.0,
+        "need_h": 0.211,
         "box_h": 1.42,
         "lines": 1,
         "overflow": false
@@ -1407,9 +1535,9 @@
         "zone": "exhibit",
         "role": "body",
         "what": "journey 1",
-        "base_pt": 11.0,
-        "chosen_pt": 11.0,
-        "need_h": 0.179,
+        "base_pt": 13.0,
+        "chosen_pt": 13.0,
+        "need_h": 0.211,
         "box_h": 1.42,
         "lines": 1,
         "overflow": false
@@ -1418,9 +1546,9 @@
         "zone": "exhibit",
         "role": "body",
         "what": "journey 2",
-        "base_pt": 11.0,
-        "chosen_pt": 11.0,
-        "need_h": 0.179,
+        "base_pt": 13.0,
+        "chosen_pt": 13.0,
+        "need_h": 0.211,
         "box_h": 1.42,
         "lines": 1,
         "overflow": false
@@ -1429,9 +1557,9 @@
         "zone": "exhibit",
         "role": "body",
         "what": "journey 3",
-        "base_pt": 11.0,
-        "chosen_pt": 11.0,
-        "need_h": 0.179,
+        "base_pt": 13.0,
+        "chosen_pt": 13.0,
+        "need_h": 0.211,
         "box_h": 1.42,
         "lines": 1,
         "overflow": false
@@ -1440,9 +1568,9 @@
         "zone": "exhibit",
         "role": "body",
         "what": "journey 4",
-        "base_pt": 11.0,
-        "chosen_pt": 11.0,
-        "need_h": 0.179,
+        "base_pt": 13.0,
+        "chosen_pt": 13.0,
+        "need_h": 0.211,
         "box_h": 1.42,
         "lines": 1,
         "overflow": false
@@ -1794,26 +1922,33 @@
     "slide_id": "g18",
     "layout": "roadmap_phases",
     "zones": {
+      "takeaway": {
+        "role": "takeaway",
+        "x": 0.55,
+        "y": 6.16,
+        "w": 12.233,
+        "h": 0.62
+      },
       "col_1": {
         "role": "column",
         "x": 0.55,
         "y": 1.62,
         "w": 3.931,
-        "h": 5.16
+        "h": 4.29
       },
       "col_2": {
         "role": "column",
         "x": 4.701,
         "y": 1.62,
         "w": 3.931,
-        "h": 5.16
+        "h": 4.29
       },
       "col_3": {
         "role": "column",
         "x": 8.852,
         "y": 1.62,
         "w": 3.931,
-        "h": 5.16
+        "h": 4.29
       }
     },
     "fits": [
@@ -1852,13 +1987,24 @@
       },
       {
         "zone": "col_1",
+        "role": "body_strong",
+        "what": "column subtitle",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.195,
+        "box_h": 0.235,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "col_1",
         "role": "body",
         "what": "column points",
         "base_pt": 12.0,
         "chosen_pt": 12.0,
-        "need_h": 0.798,
-        "box_h": 3.34,
-        "lines": 3,
+        "need_h": 1.092,
+        "box_h": 2.125,
+        "lines": 4,
         "overflow": false
       },
       {
@@ -1874,13 +2020,24 @@
       },
       {
         "zone": "col_2",
+        "role": "body_strong",
+        "what": "column subtitle",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.195,
+        "box_h": 0.235,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "col_2",
         "role": "body",
         "what": "column points",
         "base_pt": 12.0,
         "chosen_pt": 12.0,
-        "need_h": 0.798,
-        "box_h": 3.34,
-        "lines": 3,
+        "need_h": 1.092,
+        "box_h": 2.125,
+        "lines": 4,
         "overflow": false
       },
       {
@@ -1896,13 +2053,35 @@
       },
       {
         "zone": "col_3",
+        "role": "body_strong",
+        "what": "column subtitle",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.195,
+        "box_h": 0.235,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "col_3",
         "role": "body",
         "what": "column points",
         "base_pt": 12.0,
         "chosen_pt": 12.0,
-        "need_h": 0.798,
-        "box_h": 3.34,
-        "lines": 3,
+        "need_h": 1.092,
+        "box_h": 2.125,
+        "lines": 4,
+        "overflow": false
+      },
+      {
+        "zone": "takeaway",
+        "role": "body_strong",
+        "what": "takeaway",
+        "base_pt": 13,
+        "chosen_pt": 13,
+        "need_h": 0.211,
+        "box_h": 0.62,
+        "lines": 1,
         "overflow": false
       }
     ],
@@ -1911,14 +2090,21 @@
   },
   {
     "slide_id": "g19",
-    "layout": "timeline_full",
+    "layout": "exhibit_takeaways_below",
     "zones": {
       "exhibit": {
         "role": "exhibit",
         "x": 0.55,
         "y": 1.62,
         "w": 12.233,
-        "h": 5.16
+        "h": 3.975
+      },
+      "commentary": {
+        "role": "commentary",
+        "x": 0.55,
+        "y": 5.815,
+        "w": 12.233,
+        "h": 0.965
       }
     },
     "fits": [
@@ -1950,9 +2136,9 @@
         "what": "event 1",
         "base_pt": 11.0,
         "chosen_pt": 11.0,
-        "need_h": 0.179,
-        "box_h": 1.824,
-        "lines": 1,
+        "need_h": 0.586,
+        "box_h": 1.278,
+        "lines": 3,
         "overflow": false
       },
       {
@@ -1961,9 +2147,9 @@
         "what": "event 2",
         "base_pt": 11.0,
         "chosen_pt": 11.0,
-        "need_h": 0.179,
-        "box_h": 1.824,
-        "lines": 1,
+        "need_h": 0.41,
+        "box_h": 1.278,
+        "lines": 2,
         "overflow": false
       },
       {
@@ -1972,9 +2158,9 @@
         "what": "event 3",
         "base_pt": 11.0,
         "chosen_pt": 11.0,
-        "need_h": 0.179,
-        "box_h": 1.824,
-        "lines": 1,
+        "need_h": 0.586,
+        "box_h": 1.278,
+        "lines": 3,
         "overflow": false
       },
       {
@@ -1983,9 +2169,9 @@
         "what": "event 4",
         "base_pt": 11.0,
         "chosen_pt": 11.0,
-        "need_h": 0.179,
-        "box_h": 1.824,
-        "lines": 1,
+        "need_h": 0.586,
+        "box_h": 1.278,
+        "lines": 3,
         "overflow": false
       },
       {
@@ -1994,9 +2180,53 @@
         "what": "event 5",
         "base_pt": 11.0,
         "chosen_pt": 11.0,
-        "need_h": 0.179,
-        "box_h": 1.824,
+        "need_h": 0.586,
+        "box_h": 1.278,
+        "lines": 3,
+        "overflow": false
+      },
+      {
+        "zone": "commentary",
+        "role": "exhibit_title",
+        "what": "takeaways title",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.195,
+        "box_h": 0.215,
         "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "commentary",
+        "role": "body",
+        "what": "takeaway column",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.39,
+        "box_h": 0.54,
+        "lines": 2,
+        "overflow": false
+      },
+      {
+        "zone": "commentary",
+        "role": "body",
+        "what": "takeaway column",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.195,
+        "box_h": 0.54,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "commentary",
+        "role": "body",
+        "what": "takeaway column",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.39,
+        "box_h": 0.54,
+        "lines": 2,
         "overflow": false
       }
     ],

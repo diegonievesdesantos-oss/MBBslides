@@ -1166,11 +1166,11 @@
         "role": "headline",
         "what": "headline",
         "base_pt": 22.0,
-        "chosen_pt": 20,
-        "need_h": 0.975,
+        "chosen_pt": 20.0,
+        "need_h": 0.65,
         "box_h": 0.86,
-        "lines": 3,
-        "overflow": true
+        "lines": 2,
+        "overflow": false
       },
       {
         "zone": "chrome",

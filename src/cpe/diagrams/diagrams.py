@@ -59,6 +59,17 @@ def process(p: Painter, box: Box, ex: dict) -> dict:
             ax = c.r + 0.02
             p.line(ax, c.y + head_h / 2, ax + G - 0.04, c.y + head_h / 2, color="neutral", width=LINES["strong"], arrow_end=True, kind="connector")
         y = c.y + head_h + SPACING["M"]
+        bottom = c.b
+        if any(s_.get("metric") for s_ in steps):
+            # impact row aligned with the steps: what each step changes, as a number
+            mh = 1.0
+            bottom = c.b - mh - SPACING["S"]
+            p.line(c.x, c.b - mh, c.r, c.b - mh, color="rule", width=LINES["rule"])
+            if st.get("metric"):
+                p.text(Box(c.x, c.b - mh + 0.1, c.w, 0.5), str(st["metric"]), role="kpi_value", size=22, max_lines=1,
+                       color="primary" if i in hl else "text", record=f"step {i + 1} metric")
+                if st.get("metric_label"):
+                    p.text(Box(c.x, c.b - mh + 0.6, c.w, 0.38), st["metric_label"], role="kpi_label", max_lines=2, record=f"step {i + 1} metric label")
         meta = " · ".join(x for x in (st.get("owner"), st.get("duration")) if x)
         if meta:
             p.text(Box(c.x, y, c.w, 0.28), meta, role="annotation", color="text_muted", max_lines=1, record="step meta")
@@ -66,7 +77,7 @@ def process(p: Painter, box: Box, ex: dict) -> dict:
         body = st.get("points") or ([st["text"]] if st.get("text") else [])
         if body:
             paras = [Para(t, bullet="•" if len(body) > 1 else None) for t in body]
-            p.text(Box(c.x, y, c.w, c.b - y), paras, role="body", size=p.style("body")["size"] - (1 if n >= 5 else 0), record=f"step {i + 1} body")
+            p.text(Box(c.x, y, c.w, bottom - y), paras, role="body", size=p.style("body")["size"] - (1 if n >= 5 else 0), record=f"step {i + 1} body")
         if i in hl and st.get("callout"):
             p.text(Box(c.x, c.b - 0.55, c.w, 0.55), st["callout"], role="annotation", bold=True, color="highlight", record="step callout")
     return {"type": "process", "steps": n}
@@ -112,14 +123,17 @@ def timeline(p: Painter, box: Box, ex: dict) -> dict:
         x = min(max(cx - w / 2, box.x), box.r - w)
         date_h = 0.3
         text_h = box.h * 0.46 - date_h - 0.25
+        paras = [Para(ev.get("text", ""), bold=i in hl)]
+        if ev.get("detail"):  # what the milestone unlocks / who owns it
+            paras.append(Para(ev["detail"], color="text_muted", size=p.style("body")["size"] - 2))
         if up:
             p.line(cx, axis_y - d / 2, cx, axis_y - 0.22, color="rule", width=LINES["hairline"])
             p.text(Box(x, axis_y - 0.25 - date_h, w, date_h), ev.get("date", ""), role="body_strong", color="primary", align="center", anchor="bottom", max_lines=1)
-            p.text(Box(x, box.y, w, text_h), ev.get("text", ""), role="body", size=p.style("body")["size"] - 1, align="center", anchor="bottom", record=f"event {i + 1}")
+            p.text(Box(x, box.y, w, text_h), paras, role="body", size=p.style("body")["size"] - 1, align="center", anchor="bottom", space_after=3, record=f"event {i + 1}")
         else:
             p.line(cx, axis_y + d / 2, cx, axis_y + 0.22, color="rule", width=LINES["hairline"])
             p.text(Box(x, axis_y + 0.25, w, date_h), ev.get("date", ""), role="body_strong", color="primary", align="center", max_lines=1)
-            p.text(Box(x, axis_y + 0.25 + date_h, w, text_h), ev.get("text", ""), role="body", size=p.style("body")["size"] - 1, align="center", record=f"event {i + 1}")
+            p.text(Box(x, axis_y + 0.25 + date_h, w, text_h), paras, role="body", size=p.style("body")["size"] - 1, align="center", space_after=3, record=f"event {i + 1}")
     return {"type": "timeline", "events": n}
 
 

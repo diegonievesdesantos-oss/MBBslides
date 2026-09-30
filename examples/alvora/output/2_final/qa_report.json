@@ -41,7 +41,7 @@
       "ink_coverage": 0.054
     },
     "s03": {
-      "ink_coverage": 0.284
+      "ink_coverage": 0.263
     },
     "s04": {
       "ink_coverage": 0.128
@@ -155,11 +155,11 @@
           "largest_empty_share": 0.117,
           "utilization": 0.981,
           "center_of_mass": [
-            0.47,
-            0.548
+            0.467,
+            0.521
           ],
-          "ink_coverage": 0.132,
-          "emphasis_share": 0.319,
+          "ink_coverage": 0.124,
+          "emphasis_share": 0.314,
           "focus_regions": 10,
           "proof_checks": "2/3",
           "headline_body_ratio": 1.83,

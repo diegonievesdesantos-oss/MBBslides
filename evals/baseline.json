@@ -1,5 +1,5 @@
 {
-  "suite_composition": 83.8,
+  "suite_composition": 84.0,
   "cases": [
     {
       "case": "01_sparse_content",
@@ -134,10 +134,10 @@
       "case": "06_diagrams_dense",
       "ok": true,
       "qa_errors": 0,
-      "composition": 88.8,
+      "composition": 89.8,
       "slides": {
         "f1": {
-          "score": 87.4,
+          "score": 91.4,
           "flags": [
             "OFF_BALANCE"
           ]

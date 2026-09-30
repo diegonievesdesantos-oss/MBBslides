@@ -1,13 +1,13 @@
 # QA report
 
-**Verdict:** ❌ FAILED · **Deck score:** 90.4/100 · errors 5 · warnings 3 · info 3
+**Verdict:** ❌ FAILED · **Deck score:** 95.8/100 · errors 2 · warnings 3 · info 4
 
 ## Iterations (generate → render → inspect → patch)
 
 | # | errors | warnings | score | patches applied |
 |---|---|---|---|---|
-| 1 | 5 | 4 | 90.0 | VIS_TIME_VERTICAL |
-| 2 | 5 | 3 | 90.4 | — |
+| 1 | 2 | 4 | 95.3 | VIS_TIME_VERTICAL |
+| 2 | 2 | 3 | 95.8 | — |
 
 ## Actions for the author (cannot be auto-fixed without changing the message)
 
@@ -16,7 +16,6 @@
 - **s10** `HEADLINE_LONG` — Cut the headline to the claim.
 - **s10** `HEADLINE_TWO_MESSAGES` — Keep one claim in the headline; move the other to the commentary or its own slide.
 - **s12** `SOURCE_MISSING` — Add the source line (data slides must cite their source).
-- **s10** `RENDER_HEADLINE_LINES` — Shorten the headline to ≤2 lines.
 
 ## Slide scores
 
@@ -31,7 +30,7 @@
 | s07 | 79 | 1 | 0 |
 | s08 | 100 | 0 | 0 |
 | s09 | 100 | 0 | 0 |
-| s10 | 27 | 3 | 2 |
+| s10 | 91 | 0 | 2 |
 | s11 | 100 | 0 | 0 |
 | s12 | 84 | 1 | 0 |
 
@@ -46,11 +45,9 @@
 - **info** `HEADLINE_UNQUANTIFIED` — Data slide without a number in the headline; the strongest action titles quantify
 
 ### s10
-- **error** `TEXT_OVERFLOW` — Text needs 0.97 in but box is 0.86 in: 'A plan in three waves over 24 months secures quick'
-- **error** `RENDER_TEXT_SPILL` — 'private label range and the online fulfi' is rendered outside its box (overflow)
-- **error** `RENDER_HEADLINE_LINES` — Headline renders on 3 lines
 - **warning** `HEADLINE_LONG` — Headline has 32 words (budget 20); cut to the claim
 - **warning** `HEADLINE_TWO_MESSAGES` — Headline joins two claims; one slide = one message (split the slide or subordinate one claim)
+- **info** `FIT_SHRUNK` — 'headline' shrunk 22.0→20.0 pt to fit
 
 ### s12
 - **error** `SOURCE_MISSING` — Data slide without a source line

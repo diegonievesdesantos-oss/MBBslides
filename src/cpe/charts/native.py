@@ -562,11 +562,18 @@ def _auto_proof(ex: dict, cats: list, series: list, stacked: bool, is_line: bool
     else:
         focus = next((s_ for s_ in series if s_.get("role") == "focus"), series[0])
         vals = focus["values"]
+    # forecasts are not evidence: prove the claim on actuals only
+    fc = next((a for a in ex.get("annotations") or [] if a.get("type") == "forecast"), None)
+    end = len(cats) - 1
+    if fc is not None:
+        fi = cats.index(str(fc["from"])) if str(fc.get("from")) in cats else int(fc.get("from", end))
+        end = max(1, fi - 1)
+    vals = vals[: end + 1]
     v0, v1 = vals[0], vals[-1]
     if not v0 or v0 <= 0 or v1 is None or v1 <= 0:
         return []
     change = (v1 / v0 - 1) * 100
-    g = cagr(v0, v1, len(cats) - 1) * 100
+    g = cagr(v0, v1, end) * 100
 
     def label(v, prefix=""):
         txt = f"{v:g}"
@@ -577,11 +584,11 @@ def _auto_proof(ex: dict, cats: list, series: list, stacked: bool, is_line: bool
     last = (vals[-1] / vals[-2] - 1) * 100 if len(vals) > 2 and vals[-2] and vals[-2] > 0 else None
     for v in pcts:
         if last is not None and abs(abs(last) - v) <= 0.06 and abs(abs(change) - v) > 0.6:
-            return [{"type": "cagr", "from": len(cats) - 2, "to": len(cats) - 1, "label": label(v).replace("+" if change >= 0 else "−", "+" if last >= 0 else "−", 1), "series": series.index(focus) if not stacked else 0}]
+            return [{"type": "cagr", "from": end - 1, "to": end, "label": label(v).replace("+" if change >= 0 else "−", "+" if last >= 0 else "−", 1), "series": series.index(focus) if not stacked else 0}]
         if abs(abs(change) - v) <= 0.6:
-            return [{"type": "cagr", "from": 0, "to": len(cats) - 1, "label": label(v), "series": series.index(focus) if not stacked else 0}]
-        if len(cats) > 2 and abs(abs(g) - v) <= 0.3:
-            return [{"type": "cagr", "from": 0, "to": len(cats) - 1, "label": label(v, "CAGR "), "series": series.index(focus) if not stacked else 0}]
+            return [{"type": "cagr", "from": 0, "to": end, "label": label(v), "series": series.index(focus) if not stacked else 0}]
+        if end > 1 and abs(abs(g) - v) <= 0.3:
+            return [{"type": "cagr", "from": 0, "to": end, "label": label(v, "CAGR "), "series": series.index(focus) if not stacked else 0}]
     return []
 
 

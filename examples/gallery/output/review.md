@@ -106,7 +106,6 @@ Open each PNG, answer the questions (0 = no, 1 = partly, 2 = yes), and write
 - **Purpose:** Show the trend
 - **Layout:** `exhibit_full` — best available fit
 - **Visual:** `line` — explicit in spec
-- **Automated flags:** `COMPOSITION_PROOF_NOT_VISIBLE`
 
   - [ ] Does the slide communicate ONE clear idea?
   - [ ] Is the insight understood in ~5 seconds (headline + the one highlighted element)?
@@ -206,7 +205,6 @@ Open each PNG, answer the questions (0 = no, 1 = partly, 2 = yes), and write
 - **Purpose:** Compare initiatives
 - **Layout:** `comparison_table` — explicit in spec
 - **Visual:** `harvey_table` — explicit in spec
-- **Automated flags:** `COMPOSITION_NOISY_EMPHASIS`
 
   - [ ] Does the slide communicate ONE clear idea?
   - [ ] Is the insight understood in ~5 seconds (headline + the one highlighted element)?
@@ -224,7 +222,6 @@ Open each PNG, answer the questions (0 = no, 1 = partly, 2 = yes), and write
 - **Purpose:** Show the operating process
 - **Layout:** `process_full` — explicit in spec
 - **Visual:** `process` — explicit in spec
-- **Automated flags:** `COMPOSITION_DEAD_SPACE`, `COMPOSITION_UNDERUSED_CANVAS`
 
   - [ ] Does the slide communicate ONE clear idea?
   - [ ] Is the insight understood in ~5 seconds (headline + the one highlighted element)?
@@ -240,7 +237,7 @@ Open each PNG, answer the questions (0 = no, 1 = partly, 2 = yes), and write
 
 - **Headline:** Customers lose most time at order confirmation and delivery booking
 - **Purpose:** Show the customer journey
-- **Layout:** `process_full` — explicit in spec
+- **Layout:** `exhibit_full` — explicit in spec
 - **Visual:** `journey` — explicit in spec
 
   - [ ] Does the slide communicate ONE clear idea?
@@ -292,7 +289,6 @@ Open each PNG, answer the questions (0 = no, 1 = partly, 2 = yes), and write
 - **Headline:** Three phases move from quick wins to structural change within 24 months
 - **Purpose:** Show the phases
 - **Layout:** `roadmap_phases` — explicit in spec
-- **Automated flags:** `COMPOSITION_DEAD_SPACE`, `COMPOSITION_UNDERUSED_CANVAS`
 
   - [ ] Does the slide communicate ONE clear idea?
   - [ ] Is the insight understood in ~5 seconds (headline + the one highlighted element)?
@@ -308,9 +304,8 @@ Open each PNG, answer the questions (0 = no, 1 = partly, 2 = yes), and write
 
 - **Headline:** Five milestones gate the programme; the WMS go-live in Q2 2027 is the critical one
 - **Purpose:** Show milestones
-- **Layout:** `timeline_full` — explicit in spec
+- **Layout:** `exhibit_takeaways_below` — explicit in spec
 - **Visual:** `timeline` — explicit in spec
-- **Automated flags:** `COMPOSITION_DEAD_SPACE`, `COMPOSITION_UNDERUSED_CANVAS`
 
   - [ ] Does the slide communicate ONE clear idea?
   - [ ] Is the insight understood in ~5 seconds (headline + the one highlighted element)?

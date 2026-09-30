@@ -37,24 +37,36 @@ def chrome(p: Painter, slide: dict, page_no: int, meta: dict) -> dict:
 
 
 def balanced_width(p: Painter, text: str, full_w: float, role: str = "headline") -> float:
-    """Narrowest width that keeps the same line count → balanced lines, no widows.
-    (Typographic fix only: the words never change.)"""
+    """Headlines run to the right margin (full width). The only exception is a widow
+    (a single word on the last line): then the box narrows by the minimum needed to
+    carry one more word down (never below 85% of the width). Words never change.
+
+    Renderers wrap within about ±1% of our metrics, so a width is accepted only if it
+    is widow-free for every width in that tolerance band."""
     from ..design import text_metrics as tm
 
     st = p.style(role)
     fam = tm.family_for(p.theme.font_for(role))
-    lines = tm.wrap_lines(plain(text), full_w, st["size"], st["bold"], fam)
-    if len(lines) < 2:
+    tol = 0.012
+
+    def widow_or_extra(w, max_lines):
+        for f in (1 - tol, 1.0, 1 + tol):
+            ls = tm.wrap_lines(plain(text), w * f, st["size"], st["bold"], fam)
+            if len(ls) >= 2 and len(ls[-1].split()) == 1:
+                return True
+            if max_lines and len(ls) > max_lines:
+                return True
+        return False
+
+    base_lines = len(tm.wrap_lines(plain(text), full_w, st["size"], st["bold"], fam))
+    if base_lines < 2 or not widow_or_extra(full_w, None):
         return full_w
-    n = len(lines)
-    lo, hi = full_w * 0.55, full_w
-    for _ in range(18):
-        mid = (lo + hi) / 2
-        if len(tm.wrap_lines(plain(text), mid, st["size"], st["bold"], fam)) > n:
-            lo = mid
-        else:
-            hi = mid
-    return min(full_w, hi * 1.03 + 0.05)  # safety margin for renderer differences
+    w = full_w
+    while w > full_w * 0.85:
+        w -= 0.03
+        if not widow_or_extra(w, max(2, base_lines)):
+            return w
+    return full_w
 
 
 def footer(pc: Painter, slide: dict, page_no: int, meta: dict) -> None:
@@ -190,6 +202,10 @@ def commentary(p: Painter, box: Box, data: dict, style: str | None = None) -> No
 def commentary_columns(p: Painter, box: Box, data: dict) -> None:
     points = data.get("points") or []
     n = max(1, len(points))
+    if data.get("title"):
+        th, _ = p.measure(data["title"], "exhibit_title", box.w)
+        p.text(Box(box.x, box.y, box.w, th + 0.02), data["title"], role="exhibit_title", color="primary", max_lines=1, record="takeaways title")
+        box = Box(box.x, box.y + th + SPACING["XS"], box.w, box.h - th - SPACING["XS"])
     cols = box.columns(n, GRID.gutter)
     p.line(box.x, box.y, box.r, box.y, color="rule", width=LINES["rule"])
     for c, pt in zip(cols, points):

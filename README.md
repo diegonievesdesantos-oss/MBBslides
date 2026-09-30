@@ -115,8 +115,8 @@ Other commands: `plan`, `build`, `render`, `qa`, `recommend <message_type>`, `ca
 
 - **[`examples/alvora/`](examples/alvora/)**: the end-to-end test deck. `deck_draft.json` is a
   first draft with real problems (bars with time on the vertical axis, commentary that is too
-  long, a topic headline, a three-line headline, a missing source). `output/1_draft/` shows the
-  loop: the engine fixes form on its own and returns 6 author actions that require rewriting.
+  long, a topic headline, an over-long double-message headline, a missing source). `output/1_draft/`
+  shows the loop: the engine fixes form on its own and returns 5 author actions that require rewriting.
   `agent_patches.json` holds the agent's corrections; applied to `deck.autofixed.json` they
   reproduce `deck.json` (plus the engine's recorded composition choices). The final result is in
   `output/2_final/`: PPTX, PDF, one PNG per slide, QA report, composition decisions and visual

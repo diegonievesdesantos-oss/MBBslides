@@ -1,10 +1,10 @@
 {
   "passed": false,
-  "deck_score": 90.4,
+  "deck_score": 95.8,
   "counts": {
-    "error": 5,
+    "error": 2,
     "warning": 3,
-    "info": 3
+    "info": 4
   },
   "blocking": [
     {
@@ -18,26 +18,6 @@
       "code": "SOURCE_MISSING",
       "message": "Data slide without a source line",
       "slide": "s12"
-    },
-    {
-      "level": "error",
-      "code": "TEXT_OVERFLOW",
-      "message": "Text needs 0.97 in but box is 0.86 in: 'A plan in three waves over 24 months secures quick'",
-      "slide": "s10",
-      "shape": "cpe|chrome|text|2",
-      "zone": "chrome"
-    },
-    {
-      "level": "error",
-      "code": "RENDER_TEXT_SPILL",
-      "message": "'private label range and the online fulfi' is rendered outside its box (overflow)",
-      "slide": "s10"
-    },
-    {
-      "level": "error",
-      "code": "RENDER_HEADLINE_LINES",
-      "message": "Headline renders on 3 lines",
-      "slide": "s10"
     }
   ],
   "slide_scores": {
@@ -50,7 +30,7 @@
     "s07": 79,
     "s08": 100,
     "s09": 100,
-    "s10": 27,
+    "s10": 91,
     "s11": 100,
     "s12": 84
   },
@@ -105,24 +85,11 @@
       "slide": "s12"
     },
     {
-      "level": "error",
-      "code": "TEXT_OVERFLOW",
-      "message": "Text needs 0.97 in but box is 0.86 in: 'A plan in three waves over 24 months secures quick'",
+      "level": "info",
+      "code": "FIT_SHRUNK",
+      "message": "'headline' shrunk 22.0→20.0 pt to fit",
       "slide": "s10",
-      "shape": "cpe|chrome|text|2",
       "zone": "chrome"
-    },
-    {
-      "level": "error",
-      "code": "RENDER_TEXT_SPILL",
-      "message": "'private label range and the online fulfi' is rendered outside its box (overflow)",
-      "slide": "s10"
-    },
-    {
-      "level": "error",
-      "code": "RENDER_HEADLINE_LINES",
-      "message": "Headline renders on 3 lines",
-      "slide": "s10"
     }
   ],
   "exempted": [],
@@ -164,21 +131,21 @@
   "iterations": [
     {
       "iteration": 1,
-      "errors": 5,
+      "errors": 2,
       "warnings": 4,
-      "score": 90.0,
+      "score": 95.3,
       "patches": [
         "VIS_TIME_VERTICAL"
       ],
-      "seconds": 4.8
+      "seconds": 4.7
     },
     {
       "iteration": 2,
-      "errors": 5,
+      "errors": 2,
       "warnings": 3,
-      "score": 90.4,
+      "score": 95.8,
       "patches": [],
-      "seconds": 4.6
+      "seconds": 4.9
     }
   ],
   "pending_actions": [
@@ -206,11 +173,6 @@
       "slide": "s12",
       "code": "SOURCE_MISSING",
       "action": "Add the source line (data slides must cite their source)."
-    },
-    {
-      "slide": "s10",
-      "code": "RENDER_HEADLINE_LINES",
-      "action": "Shorten the headline to ≤2 lines."
     }
   ],
   "artifacts": {
@@ -634,8 +596,8 @@
             "default": false,
             "score": 90.4,
             "flags": [],
-            "errors": 0,
-            "verdict": "ok",
+            "errors": 5,
+            "verdict": "rejected: QA errors (OUTSIDE_ZONE, RENDER_TEXT_SPILL, TEXT_OVERFLOW)",
             "adjusted": 90.4
           },
           {
@@ -1085,7 +1047,7 @@
             "default": true,
             "score": 95.6,
             "flags": [],
-            "errors": 4,
+            "errors": 0,
             "verdict": "chosen",
             "adjusted": 95.6
           },
@@ -1096,8 +1058,8 @@
             "default": false,
             "score": 95.6,
             "flags": [],
-            "errors": 4,
-            "verdict": "rejected: QA errors (HEADLINE_LINES, RENDER_HEADLINE_LINES, RENDER_TEXT_SPILL, TEXT_OVERFLOW)",
+            "errors": 0,
+            "verdict": "ok",
             "adjusted": 95.6
           },
           {
@@ -1107,8 +1069,8 @@
             "default": false,
             "score": 95.6,
             "flags": [],
-            "errors": 4,
-            "verdict": "rejected: QA errors (HEADLINE_LINES, RENDER_HEADLINE_LINES, RENDER_TEXT_SPILL, TEXT_OVERFLOW)",
+            "errors": 0,
+            "verdict": "ok",
             "adjusted": 95.6
           }
         ]

@@ -1,5 +1,5 @@
 {
-  "suite_composition": 83.8,
+  "suite_composition": 84.0,
   "cases": [
     {
       "case": "01_sparse_content",
@@ -37,7 +37,7 @@
         }
       },
       "pending": 5,
-      "seconds": 6.0
+      "seconds": 6.2
     },
     {
       "case": "02_text_overload",
@@ -65,7 +65,7 @@
         }
       },
       "pending": 6,
-      "seconds": 4.3
+      "seconds": 4.4
     },
     {
       "case": "03_tables",
@@ -97,7 +97,7 @@
         }
       },
       "pending": 3,
-      "seconds": 6.0
+      "seconds": 6.1
     },
     {
       "case": "04_charts_stress",
@@ -158,7 +158,7 @@
         }
       },
       "pending": 0,
-      "seconds": 5.0
+      "seconds": 5.4
     },
     {
       "case": "06_diagrams_dense",
@@ -168,10 +168,10 @@
       "qa_errors": 0,
       "qa_warnings": 9,
       "qa_score": 91.8,
-      "composition": 88.8,
+      "composition": 89.8,
       "slides": {
         "f1": {
-          "score": 87.4,
+          "score": 91.4,
           "flags": [
             "OFF_BALANCE"
           ]
@@ -192,7 +192,7 @@
         }
       },
       "pending": 1,
-      "seconds": 6.0
+      "seconds": 8.0
     },
     {
       "case": "07_waterfalls",
@@ -216,7 +216,7 @@
         }
       },
       "pending": 1,
-      "seconds": 4.6
+      "seconds": 4.7
     },
     {
       "case": "08_headlines_structure",
@@ -244,7 +244,7 @@
         }
       },
       "pending": 3,
-      "seconds": 4.1
+      "seconds": 4.0
     }
   ],
   "flag_counts": {

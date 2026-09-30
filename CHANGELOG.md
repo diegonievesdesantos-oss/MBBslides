@@ -1,5 +1,29 @@
 # Changelog
 
+## 1.1.1 — Full-width headlines and sparse-slide fixes
+
+### Changed
+- **Headlines run to the right margin.** The old "balanced" headline narrowed two-line titles to as
+  little as 55% of the width, which pushed them to the left. Headlines now use the full width (or
+  stop before a template logo). A single-word last line is fixed by the smallest possible
+  narrowing (at most 15%), which is validated against a ±1.2% renderer tolerance so LibreOffice
+  and PowerPoint cannot reintroduce it.
+- Harvey balls use the secondary colour; the primary colour is kept for the highlighted column.
+- The hierarchy metric ignores big figures ("€13M", "85%"): they are deliberate emphasis, not text
+  competing with the headline.
+
+### Added
+- Process diagrams: an optional per-step `metric` / `metric_label` impact row, aligned with the steps.
+- Timelines: an optional per-event `detail` line (owner / what the milestone unlocks).
+- Takeaway columns under an exhibit show the commentary `title`.
+- Composition variants (content scale) for text-bearing diagrams.
+- Automatic proof ignores forecast periods: the claim is proven on actuals.
+
+### Gallery
+- g07, g13, g14, g18 and g19 no longer carry composition warnings: 0 warnings, composition
+  87.0 → 92.1. g14, g18 and g19 got richer content (the impact per step, the goal of each
+  phase, the critical-path read-out) rather than padding.
+
 ## 1.1.0 — Visual intelligence, corporate templates, quality evals
 
 **Goal:** make visual quality testable rather than subjective, adapt composition to content, and

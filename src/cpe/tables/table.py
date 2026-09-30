@@ -267,30 +267,31 @@ def render(p: Painter, box: Box, ex: dict) -> dict:
             _tc_borders(cell, top=top, bottom=bottom, fill=fill)
             set_text(cell, _cell_text(v, c), bold_row or (j == 0 and st is None and ex.get("bold_first_column", False)), color, c["align"], indent=0.18 * r["indent"] if j == 0 else 0.0)
             if c["kind"] in ("harvey", "rag") and v is not None:
-                shapes_after.append((c["kind"], v, sum(widths[:j]) + plot.x, y, widths[j], hs[i]))
+                shapes_after.append((c["kind"], v, sum(widths[:j]) + plot.x, y, widths[j], hs[i], j))
         y += hs[i]
     # overlays: Harvey balls / RAG dots (editable shapes centred on cells)
-    for kind, v, cx, cy, cw, ch in shapes_after:
+    for kind, v, cx, cy, cw, ch, j in shapes_after:
         d = min(0.26, ch - 0.08)
         bx = Box(cx + cw / 2 - d / 2, cy + ch / 2 - d / 2, d, d)
         if kind == "rag":
             p.oval(bx, fill=RAG.get(str(v), "neutral"), kind="marker")
         else:
-            _harvey(p, bx, float(v))
+            _harvey(p, bx, float(v), "primary" if j in hl_cols else "secondary")
     if ex.get("type") == "harvey_table":
         _harvey_legend(p, Box(plot.x, plot.y + sum(hs) + 0.1, plot.w, 0.28))
     return {"type": ex.get("type", "table"), "rows": len(rows), "cols": ncols, "font_pt": size, "overflow": overflow}
 
 
-def _harvey(p: Painter, bx: Box, v: float) -> None:
+def _harvey(p: Painter, bx: Box, v: float, color: str = "secondary") -> None:
+    """Harvey ball in the secondary colour: the focus colour stays free for the highlighted column."""
     q = max(0, min(4, int(round(v))))
-    p.oval(bx, fill="background", line="primary", line_w=LINES["rule"], kind="marker")
+    p.oval(bx, fill="background", line=color, line_w=LINES["rule"], kind="marker")
     if q == 0:
         return
     if q == 4:
-        p.oval(bx, fill="primary", line="primary", kind="marker")
+        p.oval(bx, fill=color, line=color, kind="marker")
         return
-    sp = p.shape(MSO_SHAPE.PIE, bx, fill="primary", kind="marker")
+    sp = p.shape(MSO_SHAPE.PIE, bx, fill=color, kind="marker")
     # adj1 = start angle, adj2 = end angle (60000ths of a degree), clockwise from 12 o'clock
     start = 270.0
     end = (start + 90.0 * q) % 360
@@ -305,6 +306,6 @@ def _harvey(p: Painter, bx: Box, v: float) -> None:
 def _harvey_legend(p: Painter, box: Box) -> None:
     x = box.x
     for q, lab in ((0, "None"), (2, "Partial"), (4, "Full")):
-        _harvey(p, Box(x, box.y + 0.04, 0.18, 0.18), q)
+        _harvey(p, Box(x, box.y + 0.04, 0.18, 0.18), q, "secondary")
         p.text(Box(x + 0.24, box.y, 0.8, 0.26), lab, role="chart_axis", fit=False, kind="label", anchor="middle")
         x += 1.0

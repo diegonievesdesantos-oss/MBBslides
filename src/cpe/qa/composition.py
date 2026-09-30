@@ -228,7 +228,10 @@ def measure(png_path: str, spans: list[dict], slide: dict, manifest: dict, theme
     hmax = max(head_sizes) if head_sizes else 22
     zones = {n: (z.get("role"), Box(z["x"], z["y"], z["w"], z["h"])) for n, z in (manifest.get("zones") or {}).items()}
     kpi_boxes = [b for r, b in zones.values() if r == "kpis"]
-    bmax = max([s["size"] for s in spans if s["box"].y >= GRID.body_y - 0.05 and s["box"].b <= GRID.body_bottom + 0.05 and len(s["text"]) > 3
+    def wordy(t):  # big figures ("€13M", "85%") are a deliberate emphasis device, not competing text
+        return sum(ch.isalpha() for ch in t) >= max(4, 0.5 * len(t.strip()))
+
+    bmax = max([s["size"] for s in spans if s["box"].y >= GRID.body_y - 0.05 and s["box"].b <= GRID.body_bottom + 0.05 and wordy(s["text"])
                 and not any(k.contains(s["box"], 0.05) for k in kpi_boxes)] or [12])
     ratio = hmax / max(1, bmax)
     sc.raw["headline_body_ratio"] = round(ratio, 2)

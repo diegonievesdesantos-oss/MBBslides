@@ -93,6 +93,8 @@ def _adapt_columns_zone(p: Painter, zones: dict, roles: dict) -> None:
     n = max(1, len(pts))
     cw = (cz.box.w - GRID.gutter * (n - 1)) / n
     need = max((p.measure(pt if isinstance(pt, str) else pt.get("text", ""), "body", cw)[0] for pt in pts), default=0) + SPACING["S"] + 0.1
+    if roles["commentary"].get("title"):
+        need += p.measure(roles["commentary"]["title"], "exhibit_title", cz.box.w)[0] + SPACING["XS"]
     spare = cz.box.h - need
     if spare > 0.2:
         shift = spare - 0.05

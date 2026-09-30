@@ -166,14 +166,14 @@
         "x": 0.55,
         "y": 1.62,
         "w": 12.233,
-        "h": 4.25
+        "h": 3.975
       },
       "commentary": {
         "role": "commentary",
         "x": 0.55,
-        "y": 6.09,
+        "y": 5.815,
         "w": 12.233,
-        "h": 0.69
+        "h": 0.965
       }
     },
     "fits": [
@@ -207,6 +207,17 @@
         "chosen_pt": 11.0,
         "need_h": 0.179,
         "box_h": 0.3,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "commentary",
+        "role": "exhibit_title",
+        "what": "takeaways title",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.195,
+        "box_h": 0.215,
         "lines": 1,
         "overflow": false
       },

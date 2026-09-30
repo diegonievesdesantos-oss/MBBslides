@@ -40,8 +40,8 @@ Annotations (category charts): `{"type": "cagr", "from": "2021", "to": "2025", "
 
 | type | data |
 |---|---|
-| `process`, `value_chain` | `{steps: [{title, text|points, owner?, duration?, callout?}]}`, `highlight: [i]`, `orientation: vertical`, `numbered` |
-| `timeline` | `{events: [{date, text}]}`, `highlight: [i]` |
+| `process`, `value_chain` | `{steps: [{title, text|points, owner?, duration?, callout?, metric?, metric_label?}]}` (metric = impact row aligned with the steps), `highlight: [i]`, `orientation: vertical`, `numbered` |
+| `timeline` | `{events: [{date, text, detail?}]}`, `highlight: [i]` |
 | `gantt`, `roadmap` | `{periods: [...], phases?: [{label, start, end}], today?: 2.5, rows: [{label, bars: [{start, end, label, status?, highlight?}], milestones?: [{at, label}]}]}` (period indices, end exclusive) |
 | `matrix_2x2`, `portfolio` | `{x_label, y_label, quadrants: [TL, TR, BL, BR], focus: "TR", items: [{label, x, y, size?}]}` (x, y in 0–1) |
 | `tree`, `driver_tree` | `{root: {label, value?, highlight?, operator?, children: [...]}}` left→right |

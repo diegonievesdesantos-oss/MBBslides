@@ -164,7 +164,7 @@ Open each PNG, answer the questions (0 = no, 1 = partly, 2 = yes), and write
 - **Purpose:** Show the implementation plan and its sequencing
 - **Layout:** `roadmap_full` — explicit in spec
 - **Visual:** `gantt` — explicit in spec
-- **Automated flags:** `HEADLINE_LONG`, `HEADLINE_TWO_MESSAGES`, `TEXT_OVERFLOW`, `RENDER_TEXT_SPILL`, `RENDER_HEADLINE_LINES`
+- **Automated flags:** `HEADLINE_LONG`, `HEADLINE_TWO_MESSAGES`
 
   - [ ] Does the slide communicate ONE clear idea?
   - [ ] Is the insight understood in ~5 seconds (headline + the one highlighted element)?
