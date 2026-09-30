@@ -1,0 +1,7 @@
+python-pptx>=1.0
+Pillow>=10
+lxml>=4.9
+PyMuPDF>=1.24
+openpyxl>=3.1
+# system: LibreOffice with the Impress component (libreoffice-impress) for rendering
+# system fonts: Liberation Sans (metric-compatible with Arial) for text measurement

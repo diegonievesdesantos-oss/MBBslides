@@ -1,0 +1,26 @@
+{
+  "name": "meridian",
+  "description": "Default. Deep navy + one teal highlight on white. Restrained, board-ready.",
+  "font_latin": "Arial",
+  "font_fallback_file": "LiberationSans",
+  "colors": {
+    "primary": "0B1F3A",
+    "secondary": "3D6399",
+    "highlight": "00A3AD",
+    "positive": "2E7D4F",
+    "negative": "C0392B",
+    "warning": "D98E04",
+    "neutral": "8A95A1",
+    "muted": "C9D0D8",
+    "faint": "EEF1F4",
+    "background": "FFFFFF",
+    "surface": "F4F6F8",
+    "text": "1E252D",
+    "text_muted": "5E6A77",
+    "rule": "B7BFC8",
+    "gridline": "E3E7EB"
+  },
+  "series": ["0B1F3A", "3D6399", "8FA9CC", "C9D0D8", "00A3AD", "5E6A77"],
+  "sequential": ["EEF3F9", "C5D5EA", "8FA9CC", "3D6399", "0B1F3A"],
+  "diverging": ["C0392B", "E8A89F", "F4F6F8", "8FC1A6", "2E7D4F"]
+}

@@ -1,0 +1,38 @@
+{
+  "id": "kpi_grid",
+  "family": "02_kpi",
+  "name": "KPI grid",
+  "description": "2x2 / 2x3 grid of KPIs, each with a one-line interpretation.",
+  "when_to_use": "When 4-6 metrics are the message and no single chart dominates.",
+  "zones": [
+    {
+      "name": "kpis",
+      "role": "kpis",
+      "cols": [
+        1,
+        12
+      ],
+      "top": 0,
+      "bottom": 1
+    }
+  ],
+  "accepts": {
+    "kpis": [
+      1,
+      1
+    ]
+  },
+  "takeaway": "optional",
+  "compatible_visuals": [
+    "kpi"
+  ],
+  "capacity": {
+    "kpis": {
+      "items": 6
+    }
+  },
+  "hierarchy": [
+    "kpis"
+  ],
+  "body_band": "body"
+}

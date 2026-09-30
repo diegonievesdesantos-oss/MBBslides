@@ -1,0 +1,59 @@
+{
+  "id": "process_commentary",
+  "family": "07_process",
+  "name": "Process + commentary",
+  "description": "Process on 8 cols (vertical or compact) + commentary.",
+  "when_to_use": "Process with a diagnosis of where it breaks.",
+  "zones": [
+    {
+      "name": "exhibit",
+      "role": "exhibit",
+      "cols": [
+        1,
+        8
+      ],
+      "top": 0,
+      "bottom": 1
+    },
+    {
+      "name": "commentary",
+      "role": "commentary",
+      "cols": [
+        9,
+        12
+      ],
+      "top": 0,
+      "bottom": 1,
+      "style": "rule_left"
+    }
+  ],
+  "accepts": {
+    "exhibit": [
+      1,
+      1
+    ],
+    "commentary": [
+      1,
+      1
+    ]
+  },
+  "takeaway": "optional",
+  "compatible_visuals": [
+    "process",
+    "value_chain",
+    "flow",
+    "funnel",
+    "journey"
+  ],
+  "capacity": {
+    "commentary": {
+      "bullets": 4,
+      "words": 70
+    }
+  },
+  "hierarchy": [
+    "exhibit",
+    "commentary"
+  ],
+  "body_band": "body"
+}

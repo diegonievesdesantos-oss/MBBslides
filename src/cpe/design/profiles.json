@@ -1,0 +1,69 @@
+{
+  "_comment": "Density profiles. font_scale multiplies TYPE_SCALE (clamped to floors). Limits are per slide unless stated.",
+  "_default": {
+    "name": "standard",
+    "font_scale": 1.0,
+    "max_words_per_slide": 110,
+    "max_bullets_per_zone": 5,
+    "max_words_per_bullet": 22,
+    "max_table_rows": 10,
+    "max_table_cols": 7,
+    "max_chart_categories": 12,
+    "max_chart_series": 4,
+    "max_shapes_per_slide": 70,
+    "min_whitespace_ratio": 0.35,
+    "headline_max_words": 20,
+    "headline_max_lines": 2,
+    "show_tracker": true
+  },
+  "board": {
+    "name": "board",
+    "font_scale": 1.05,
+    "max_words_per_slide": 80,
+    "max_bullets_per_zone": 4,
+    "max_words_per_bullet": 18,
+    "max_table_rows": 8,
+    "max_table_cols": 6,
+    "max_chart_categories": 10,
+    "max_chart_series": 3,
+    "min_whitespace_ratio": 0.40,
+    "headline_max_words": 18
+  },
+  "analytical": {
+    "name": "analytical",
+    "font_scale": 0.95,
+    "max_words_per_slide": 150,
+    "max_bullets_per_zone": 6,
+    "max_words_per_bullet": 26,
+    "max_table_rows": 14,
+    "max_table_cols": 8,
+    "max_chart_categories": 16,
+    "max_chart_series": 5,
+    "min_whitespace_ratio": 0.28,
+    "headline_max_words": 22
+  },
+  "status": {
+    "name": "status",
+    "font_scale": 1.0,
+    "max_words_per_slide": 120,
+    "max_bullets_per_zone": 5,
+    "max_table_rows": 12,
+    "min_whitespace_ratio": 0.30
+  },
+  "_deck_type_map": {
+    "board_presentation": "board",
+    "executive_update": "board",
+    "investment_memo": "analytical",
+    "commercial_due_diligence": "analytical",
+    "financial_analysis": "analytical",
+    "market_analysis": "analytical",
+    "project_steering_committee": "status",
+    "implementation_roadmap": "status",
+    "transformation_program": "status",
+    "strategy_deck": "standard",
+    "business_review": "standard",
+    "operating_model": "standard",
+    "product_strategy": "standard",
+    "sales_strategy": "standard"
+  }
+}

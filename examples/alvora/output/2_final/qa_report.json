@@ -1,0 +1,104 @@
+{
+  "passed": true,
+  "deck_score": 99.8,
+  "counts": {
+    "error": 0,
+    "warning": 0,
+    "info": 2
+  },
+  "blocking": [],
+  "slide_scores": {
+    "s01": 100,
+    "s02": 100,
+    "s03": 100,
+    "s04": 100,
+    "s05": 100,
+    "s06": 100,
+    "s07": 99,
+    "s08": 100,
+    "s09": 100,
+    "s10": 100,
+    "s11": 100,
+    "s12": 99
+  },
+  "issues": [
+    {
+      "level": "info",
+      "code": "HEADLINE_UNQUANTIFIED",
+      "message": "Data slide without a number in the headline; the strongest action titles quantify",
+      "slide": "s07"
+    },
+    {
+      "level": "info",
+      "code": "HEADLINE_UNQUANTIFIED",
+      "message": "Data slide without a number in the headline; the strongest action titles quantify",
+      "slide": "s12"
+    }
+  ],
+  "exempted": [],
+  "render_metrics": {
+    "s02": {
+      "ink_coverage": 0.054
+    },
+    "s03": {
+      "ink_coverage": 0.244
+    },
+    "s04": {
+      "ink_coverage": 0.171
+    },
+    "s05": {
+      "ink_coverage": 0.466
+    },
+    "s06": {
+      "ink_coverage": 0.092
+    },
+    "s07": {
+      "ink_coverage": 0.285
+    },
+    "s08": {
+      "ink_coverage": 0.052
+    },
+    "s09": {
+      "ink_coverage": 0.229
+    },
+    "s10": {
+      "ink_coverage": 0.219
+    },
+    "s11": {
+      "ink_coverage": 0.111
+    },
+    "s12": {
+      "ink_coverage": 0.027
+    }
+  },
+  "iterations": [
+    {
+      "iteration": 1,
+      "errors": 0,
+      "warnings": 0,
+      "score": 99.8,
+      "patches": [],
+      "seconds": 3.5
+    }
+  ],
+  "pending_actions": [],
+  "artifacts": {
+    "pptx": "examples/alvora/output/2_final/deck.pptx",
+    "pdf": "/home/user/Finea/consulting-presentation-engine/examples/alvora/output/2_final/deck.pdf",
+    "pngs": [
+      "examples/alvora/output/2_final/renders/slide-01.png",
+      "examples/alvora/output/2_final/renders/slide-02.png",
+      "examples/alvora/output/2_final/renders/slide-03.png",
+      "examples/alvora/output/2_final/renders/slide-04.png",
+      "examples/alvora/output/2_final/renders/slide-05.png",
+      "examples/alvora/output/2_final/renders/slide-06.png",
+      "examples/alvora/output/2_final/renders/slide-07.png",
+      "examples/alvora/output/2_final/renders/slide-08.png",
+      "examples/alvora/output/2_final/renders/slide-09.png",
+      "examples/alvora/output/2_final/renders/slide-10.png",
+      "examples/alvora/output/2_final/renders/slide-11.png",
+      "examples/alvora/output/2_final/renders/slide-12.png"
+    ],
+    "contact_sheet": "examples/alvora/output/2_final/contact_sheet.png"
+  }
+}

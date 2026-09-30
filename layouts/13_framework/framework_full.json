@@ -1,0 +1,39 @@
+{
+  "id": "framework_full",
+  "family": "13_framework",
+  "name": "Framework / tree",
+  "description": "Issue tree, driver tree, pyramid or funnel full-width.",
+  "when_to_use": "Structuring a problem or showing a decomposition.",
+  "zones": [
+    {
+      "name": "exhibit",
+      "role": "exhibit",
+      "cols": [
+        1,
+        12
+      ],
+      "top": 0,
+      "bottom": 1
+    }
+  ],
+  "accepts": {
+    "exhibit": [
+      1,
+      1
+    ]
+  },
+  "takeaway": "optional",
+  "compatible_visuals": [
+    "tree",
+    "driver_tree",
+    "org_chart",
+    "pyramid",
+    "funnel",
+    "flow"
+  ],
+  "capacity": {},
+  "hierarchy": [
+    "exhibit"
+  ],
+  "body_band": "body"
+}

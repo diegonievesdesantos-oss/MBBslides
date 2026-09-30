@@ -1,0 +1,162 @@
+{
+  "s01": {
+    "scores": {
+      "one_idea": 2,
+      "five_seconds": 2,
+      "hierarchy": 2,
+      "no_decoration": 2,
+      "chart_supports_headline": 2,
+      "focus": 2,
+      "layout_fit": 2,
+      "professional": 2
+    },
+    "issues": []
+  },
+  "s02": {
+    "scores": {
+      "one_idea": 2,
+      "five_seconds": 2,
+      "hierarchy": 2,
+      "no_decoration": 2,
+      "chart_supports_headline": 2,
+      "focus": 2,
+      "layout_fit": 2,
+      "professional": 2
+    },
+    "issues": []
+  },
+  "s03": {
+    "scores": {
+      "one_idea": 2,
+      "five_seconds": 2,
+      "hierarchy": 2,
+      "no_decoration": 2,
+      "chart_supports_headline": 2,
+      "focus": 1,
+      "layout_fit": 2,
+      "professional": 2
+    },
+    "issues": [
+      "All five channels carry equal colour weight; the headline is about discount + online. Acceptable because both are the darkest/accent series, but a grey-out of the other three would sharpen it."
+    ]
+  },
+  "s04": {
+    "scores": {
+      "one_idea": 2,
+      "five_seconds": 2,
+      "hierarchy": 2,
+      "no_decoration": 2,
+      "chart_supports_headline": 2,
+      "focus": 2,
+      "layout_fit": 2,
+      "professional": 2
+    },
+    "issues": []
+  },
+  "s05": {
+    "scores": {
+      "one_idea": 2,
+      "five_seconds": 2,
+      "hierarchy": 2,
+      "no_decoration": 2,
+      "chart_supports_headline": 2,
+      "focus": 2,
+      "layout_fit": 2,
+      "professional": 2
+    },
+    "issues": []
+  },
+  "s06": {
+    "scores": {
+      "one_idea": 2,
+      "five_seconds": 2,
+      "hierarchy": 2,
+      "no_decoration": 2,
+      "chart_supports_headline": 2,
+      "focus": 2,
+      "layout_fit": 2,
+      "professional": 2
+    },
+    "issues": []
+  },
+  "s07": {
+    "scores": {
+      "one_idea": 2,
+      "five_seconds": 2,
+      "hierarchy": 2,
+      "no_decoration": 2,
+      "chart_supports_headline": 2,
+      "focus": 2,
+      "layout_fit": 2,
+      "professional": 2
+    },
+    "issues": []
+  },
+  "s08": {
+    "scores": {
+      "one_idea": 2,
+      "five_seconds": 2,
+      "hierarchy": 2,
+      "no_decoration": 2,
+      "chart_supports_headline": 2,
+      "focus": 2,
+      "layout_fit": 2,
+      "professional": 2
+    },
+    "issues": []
+  },
+  "s09": {
+    "scores": {
+      "one_idea": 2,
+      "five_seconds": 2,
+      "hierarchy": 2,
+      "no_decoration": 2,
+      "chart_supports_headline": 2,
+      "focus": 2,
+      "layout_fit": 2,
+      "professional": 2
+    },
+    "issues": []
+  },
+  "s10": {
+    "scores": {
+      "one_idea": 2,
+      "five_seconds": 2,
+      "hierarchy": 2,
+      "no_decoration": 2,
+      "chart_supports_headline": 2,
+      "focus": 2,
+      "layout_fit": 2,
+      "professional": 2
+    },
+    "issues": []
+  },
+  "s11": {
+    "scores": {
+      "one_idea": 2,
+      "five_seconds": 2,
+      "hierarchy": 2,
+      "no_decoration": 2,
+      "chart_supports_headline": 2,
+      "focus": 2,
+      "layout_fit": 2,
+      "professional": 2
+    },
+    "issues": []
+  },
+  "s12": {
+    "scores": {
+      "one_idea": 2,
+      "five_seconds": 2,
+      "hierarchy": 2,
+      "no_decoration": 2,
+      "chart_supports_headline": 2,
+      "focus": 2,
+      "layout_fit": 1,
+      "professional": 2
+    },
+    "issues": [
+      "Three-row table leaves the lower half empty; acceptable for a decision slide, a table_full + takeaway would balance it."
+    ]
+  }
+}

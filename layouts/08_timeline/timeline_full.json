@@ -1,0 +1,36 @@
+{
+  "id": "timeline_full",
+  "family": "08_timeline",
+  "name": "Timeline",
+  "description": "Milestones along a horizontal axis.",
+  "when_to_use": "History or plan milestones (5-10 events).",
+  "zones": [
+    {
+      "name": "exhibit",
+      "role": "exhibit",
+      "cols": [
+        1,
+        12
+      ],
+      "top": 0,
+      "bottom": 1
+    }
+  ],
+  "accepts": {
+    "exhibit": [
+      1,
+      1
+    ]
+  },
+  "takeaway": "optional",
+  "compatible_visuals": [
+    "timeline",
+    "gantt",
+    "roadmap"
+  ],
+  "capacity": {},
+  "hierarchy": [
+    "exhibit"
+  ],
+  "body_band": "body"
+}

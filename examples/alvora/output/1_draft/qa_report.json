@@ -1,0 +1,235 @@
+{
+  "passed": false,
+  "deck_score": 90.4,
+  "counts": {
+    "error": 5,
+    "warning": 3,
+    "info": 3
+  },
+  "blocking": [
+    {
+      "level": "error",
+      "code": "HEADLINE_TOPIC",
+      "message": "'Gross margin change by category and region' reads as a topic, not a conclusion. State what the data shows (subject + verb + so-what)",
+      "slide": "s07"
+    },
+    {
+      "level": "error",
+      "code": "SOURCE_MISSING",
+      "message": "Data slide without a source line",
+      "slide": "s12"
+    },
+    {
+      "level": "error",
+      "code": "TEXT_OVERFLOW",
+      "message": "Text needs 0.97 in but box is 0.86 in: 'A plan in three waves over 24 months secures quick'",
+      "slide": "s10",
+      "shape": "cpe|chrome|text|2",
+      "zone": "chrome"
+    },
+    {
+      "level": "error",
+      "code": "RENDER_TEXT_SPILL",
+      "message": "'private label range and the online fulfi' is rendered outside its box (overflow)",
+      "slide": "s10"
+    },
+    {
+      "level": "error",
+      "code": "RENDER_HEADLINE_LINES",
+      "message": "Headline renders on 3 lines",
+      "slide": "s10"
+    }
+  ],
+  "slide_scores": {
+    "s01": 100,
+    "s02": 100,
+    "s03": 95,
+    "s04": 100,
+    "s05": 100,
+    "s06": 100,
+    "s07": 79,
+    "s08": 100,
+    "s09": 100,
+    "s10": 27,
+    "s11": 100,
+    "s12": 84
+  },
+  "issues": [
+    {
+      "level": "info",
+      "code": "DENSITY_LONG_BULLET",
+      "message": "Bullet of 32 words: lead with the point, cut the rest ('**Discount** grows 7.8% a year on price-sensitive …')",
+      "slide": "s03"
+    },
+    {
+      "level": "warning",
+      "code": "DENSITY_WORDS",
+      "message": "123 words on the slide (budget 110 for this deck profile)",
+      "slide": "s03",
+      "words": 123
+    },
+    {
+      "level": "error",
+      "code": "HEADLINE_TOPIC",
+      "message": "'Gross margin change by category and region' reads as a topic, not a conclusion. State what the data shows (subject + verb + so-what)",
+      "slide": "s07"
+    },
+    {
+      "level": "info",
+      "code": "HEADLINE_UNQUANTIFIED",
+      "message": "Data slide without a number in the headline; the strongest action titles quantify",
+      "slide": "s07"
+    },
+    {
+      "level": "warning",
+      "code": "HEADLINE_LONG",
+      "message": "Headline has 32 words (budget 20); cut to the claim",
+      "slide": "s10"
+    },
+    {
+      "level": "warning",
+      "code": "HEADLINE_TWO_MESSAGES",
+      "message": "Headline joins two claims; one slide = one message (split the slide or subordinate one claim)",
+      "slide": "s10"
+    },
+    {
+      "level": "info",
+      "code": "HEADLINE_UNQUANTIFIED",
+      "message": "Data slide without a number in the headline; the strongest action titles quantify",
+      "slide": "s12"
+    },
+    {
+      "level": "error",
+      "code": "SOURCE_MISSING",
+      "message": "Data slide without a source line",
+      "slide": "s12"
+    },
+    {
+      "level": "error",
+      "code": "TEXT_OVERFLOW",
+      "message": "Text needs 0.97 in but box is 0.86 in: 'A plan in three waves over 24 months secures quick'",
+      "slide": "s10",
+      "shape": "cpe|chrome|text|2",
+      "zone": "chrome"
+    },
+    {
+      "level": "error",
+      "code": "RENDER_TEXT_SPILL",
+      "message": "'private label range and the online fulfi' is rendered outside its box (overflow)",
+      "slide": "s10"
+    },
+    {
+      "level": "error",
+      "code": "RENDER_HEADLINE_LINES",
+      "message": "Headline renders on 3 lines",
+      "slide": "s10"
+    }
+  ],
+  "exempted": [],
+  "render_metrics": {
+    "s02": {
+      "ink_coverage": 0.054
+    },
+    "s03": {
+      "ink_coverage": 0.274
+    },
+    "s04": {
+      "ink_coverage": 0.171
+    },
+    "s05": {
+      "ink_coverage": 0.466
+    },
+    "s06": {
+      "ink_coverage": 0.092
+    },
+    "s07": {
+      "ink_coverage": 0.285
+    },
+    "s08": {
+      "ink_coverage": 0.052
+    },
+    "s09": {
+      "ink_coverage": 0.229
+    },
+    "s10": {
+      "ink_coverage": 0.219
+    },
+    "s11": {
+      "ink_coverage": 0.111
+    },
+    "s12": {
+      "ink_coverage": 0.027
+    }
+  },
+  "iterations": [
+    {
+      "iteration": 1,
+      "errors": 5,
+      "warnings": 4,
+      "score": 90.0,
+      "patches": [
+        "VIS_TIME_VERTICAL"
+      ],
+      "seconds": 3.5
+    },
+    {
+      "iteration": 2,
+      "errors": 5,
+      "warnings": 3,
+      "score": 90.4,
+      "patches": [],
+      "seconds": 3.4
+    }
+  ],
+  "pending_actions": [
+    {
+      "slide": "s03",
+      "code": "DENSITY_WORDS",
+      "action": "Cut words: keep only what proves the headline."
+    },
+    {
+      "slide": "s07",
+      "code": "HEADLINE_TOPIC",
+      "action": "Replace the topic label with a conclusion: what does the data show, and so what?"
+    },
+    {
+      "slide": "s10",
+      "code": "HEADLINE_LONG",
+      "action": "Cut the headline to the claim."
+    },
+    {
+      "slide": "s10",
+      "code": "HEADLINE_TWO_MESSAGES",
+      "action": "Keep one claim in the headline; move the other to the commentary or its own slide."
+    },
+    {
+      "slide": "s12",
+      "code": "SOURCE_MISSING",
+      "action": "Add the source line (data slides must cite their source)."
+    },
+    {
+      "slide": "s10",
+      "code": "RENDER_HEADLINE_LINES",
+      "action": "Shorten the headline to ≤2 lines."
+    }
+  ],
+  "artifacts": {
+    "pptx": "examples/alvora/output/1_draft/deck.pptx",
+    "pdf": "/home/user/Finea/consulting-presentation-engine/examples/alvora/output/1_draft/deck.pdf",
+    "pngs": [
+      "examples/alvora/output/1_draft/renders/slide-01.png",
+      "examples/alvora/output/1_draft/renders/slide-02.png",
+      "examples/alvora/output/1_draft/renders/slide-03.png",
+      "examples/alvora/output/1_draft/renders/slide-04.png",
+      "examples/alvora/output/1_draft/renders/slide-05.png",
+      "examples/alvora/output/1_draft/renders/slide-06.png",
+      "examples/alvora/output/1_draft/renders/slide-07.png",
+      "examples/alvora/output/1_draft/renders/slide-08.png",
+      "examples/alvora/output/1_draft/renders/slide-09.png",
+      "examples/alvora/output/1_draft/renders/slide-10.png",
+      "examples/alvora/output/1_draft/renders/slide-11.png",
+      "examples/alvora/output/1_draft/renders/slide-12.png"
+    ],
+    "contact_sheet": "examples/alvora/output/1_draft/contact_sheet.png"
+  }
+}

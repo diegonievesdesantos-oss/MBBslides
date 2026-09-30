@@ -1,0 +1,59 @@
+{
+  "id": "framework_commentary",
+  "family": "13_framework",
+  "name": "Framework + commentary",
+  "description": "Framework (8 cols) + commentary.",
+  "when_to_use": "Framework that needs interpretation.",
+  "zones": [
+    {
+      "name": "exhibit",
+      "role": "exhibit",
+      "cols": [
+        1,
+        8
+      ],
+      "top": 0,
+      "bottom": 1
+    },
+    {
+      "name": "commentary",
+      "role": "commentary",
+      "cols": [
+        9,
+        12
+      ],
+      "top": 0,
+      "bottom": 1,
+      "style": "rule_left"
+    }
+  ],
+  "accepts": {
+    "exhibit": [
+      1,
+      1
+    ],
+    "commentary": [
+      1,
+      1
+    ]
+  },
+  "takeaway": "optional",
+  "compatible_visuals": [
+    "tree",
+    "driver_tree",
+    "pyramid",
+    "funnel",
+    "org_chart"
+  ],
+  "capacity": {
+    "commentary": {
+      "bullets": 4,
+      "words": 70
+    }
+  },
+  "hierarchy": [
+    "exhibit",
+    "commentary"
+  ],
+  "body_band": "body"
+}

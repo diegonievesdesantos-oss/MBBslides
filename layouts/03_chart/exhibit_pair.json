@@ -1,0 +1,84 @@
+{
+  "id": "exhibit_pair",
+  "family": "03_chart",
+  "name": "Two exhibits side by side",
+  "description": "Two equal exhibits.",
+  "when_to_use": "Two views that together prove one point (e.g. size and growth).",
+  "zones": [
+    {
+      "name": "exhibit",
+      "role": "exhibit",
+      "cols": [
+        1,
+        6
+      ],
+      "top": 0,
+      "bottom": 1
+    },
+    {
+      "name": "exhibit_2",
+      "role": "exhibit",
+      "cols": [
+        7,
+        12
+      ],
+      "top": 0,
+      "bottom": 1
+    }
+  ],
+  "accepts": {
+    "exhibit": [
+      2,
+      2
+    ]
+  },
+  "takeaway": "optional",
+  "compatible_visuals": [
+    "bar",
+    "column",
+    "stacked_bar",
+    "stacked_column",
+    "stacked_100",
+    "line",
+    "area",
+    "scatter",
+    "bubble",
+    "pie",
+    "donut",
+    "combo",
+    "waterfall",
+    "bridge",
+    "histogram",
+    "slope",
+    "mekko",
+    "heatmap",
+    "table",
+    "harvey_table",
+    "scorecard",
+    "matrix_2x2",
+    "portfolio",
+    "process",
+    "value_chain",
+    "timeline",
+    "gantt",
+    "roadmap",
+    "tree",
+    "driver_tree",
+    "org_chart",
+    "funnel",
+    "pyramid",
+    "tile_map",
+    "flow",
+    "journey",
+    "layers",
+    "operating_model",
+    "architecture",
+    "segmentation"
+  ],
+  "capacity": {},
+  "hierarchy": [
+    "exhibit",
+    "exhibit_2"
+  ],
+  "body_band": "body"
+}

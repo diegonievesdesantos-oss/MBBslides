@@ -1,0 +1,32 @@
+{
+  "id": "cover",
+  "family": "16_full_visual",
+  "name": "Cover",
+  "description": "Title, subtitle, client/date.",
+  "when_to_use": "First slide.",
+  "zones": [
+    {
+      "name": "text",
+      "role": "cover",
+      "cols": [
+        1,
+        10
+      ],
+      "top": 0.25,
+      "bottom": 0.9
+    }
+  ],
+  "accepts": {
+    "cover": [
+      1,
+      1
+    ]
+  },
+  "takeaway": "none",
+  "compatible_visuals": [],
+  "capacity": {},
+  "hierarchy": [
+    "text"
+  ],
+  "body_band": "full"
+}

@@ -1,0 +1,57 @@
+{
+  "id": "map_commentary",
+  "family": "11_market_map",
+  "name": "Map + commentary",
+  "description": "Tile map (8 cols) + commentary.",
+  "when_to_use": "Values that vary by geography.",
+  "zones": [
+    {
+      "name": "exhibit",
+      "role": "exhibit",
+      "cols": [
+        1,
+        8
+      ],
+      "top": 0,
+      "bottom": 1
+    },
+    {
+      "name": "commentary",
+      "role": "commentary",
+      "cols": [
+        9,
+        12
+      ],
+      "top": 0,
+      "bottom": 1,
+      "style": "rule_left"
+    }
+  ],
+  "accepts": {
+    "exhibit": [
+      1,
+      1
+    ],
+    "commentary": [
+      1,
+      1
+    ]
+  },
+  "takeaway": "optional",
+  "compatible_visuals": [
+    "tile_map",
+    "heatmap",
+    "bar"
+  ],
+  "capacity": {
+    "commentary": {
+      "bullets": 4,
+      "words": 70
+    }
+  },
+  "hierarchy": [
+    "exhibit",
+    "commentary"
+  ],
+  "body_band": "body"
+}

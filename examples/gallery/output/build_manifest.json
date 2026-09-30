@@ -1,0 +1,2615 @@
+[
+  {
+    "slide_id": "g01",
+    "layout": "cover",
+    "zones": {},
+    "fits": [
+      {
+        "zone": "text",
+        "role": "cover_title",
+        "what": "cover_title",
+        "base_pt": 36.0,
+        "chosen_pt": 36.0,
+        "need_h": 1.17,
+        "box_h": 1.9,
+        "lines": 2,
+        "overflow": false
+      },
+      {
+        "zone": "text",
+        "role": "cover_subtitle",
+        "what": "cover_subtitle",
+        "base_pt": 16.0,
+        "chosen_pt": 16.0,
+        "need_h": 0.26,
+        "box_h": 0.9,
+        "lines": 1,
+        "overflow": false
+      }
+    ],
+    "warnings": [],
+    "exhibits": []
+  },
+  {
+    "slide_id": "g02",
+    "layout": "agenda",
+    "zones": {
+      "text": {
+        "role": "agenda",
+        "x": 1.5877,
+        "y": 1.62,
+        "w": 9.1197,
+        "h": 5.16
+      }
+    },
+    "fits": [
+      {
+        "zone": "chrome",
+        "role": "headline",
+        "what": "headline",
+        "base_pt": 22.0,
+        "chosen_pt": 22.0,
+        "need_h": 0.357,
+        "box_h": 0.86,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "text",
+        "role": "body",
+        "what": "agenda 1",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.519,
+        "box_h": 0.66,
+        "lines": 2,
+        "overflow": false
+      },
+      {
+        "zone": "text",
+        "role": "body",
+        "what": "agenda 2",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.519,
+        "box_h": 0.66,
+        "lines": 2,
+        "overflow": false
+      },
+      {
+        "zone": "text",
+        "role": "body",
+        "what": "agenda 3",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.519,
+        "box_h": 0.66,
+        "lines": 2,
+        "overflow": false
+      }
+    ],
+    "warnings": [],
+    "exhibits": []
+  },
+  {
+    "slide_id": "g03",
+    "layout": "exec_summary_scr",
+    "zones": {
+      "statements": {
+        "role": "statements",
+        "x": 0.55,
+        "y": 1.62,
+        "w": 12.233,
+        "h": 5.16
+      }
+    },
+    "fits": [
+      {
+        "zone": "chrome",
+        "role": "headline",
+        "what": "headline",
+        "base_pt": 22.0,
+        "chosen_pt": 22.0,
+        "need_h": 0.357,
+        "box_h": 0.86,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "chrome",
+        "role": "source",
+        "what": "footer",
+        "base_pt": 8.0,
+        "chosen_pt": 8.0,
+        "need_h": 0.13,
+        "box_h": 0.44,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "statements",
+        "role": "body_strong",
+        "what": "statement 1 claim",
+        "base_pt": 14,
+        "chosen_pt": 14,
+        "need_h": 0.227,
+        "box_h": 1.54,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "statements",
+        "role": "body",
+        "what": "statement 1 support",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.195,
+        "box_h": 1.54,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "statements",
+        "role": "body_strong",
+        "what": "statement 2 claim",
+        "base_pt": 14,
+        "chosen_pt": 14,
+        "need_h": 0.455,
+        "box_h": 1.54,
+        "lines": 2,
+        "overflow": false
+      },
+      {
+        "zone": "statements",
+        "role": "body",
+        "what": "statement 2 support",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.39,
+        "box_h": 1.54,
+        "lines": 2,
+        "overflow": false
+      },
+      {
+        "zone": "statements",
+        "role": "body_strong",
+        "what": "statement 3 claim",
+        "base_pt": 14,
+        "chosen_pt": 14,
+        "need_h": 0.227,
+        "box_h": 1.54,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "statements",
+        "role": "body",
+        "what": "statement 3 support",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.195,
+        "box_h": 1.54,
+        "lines": 1,
+        "overflow": false
+      }
+    ],
+    "warnings": [],
+    "exhibits": []
+  },
+  {
+    "slide_id": "g04",
+    "layout": "divider",
+    "zones": {},
+    "fits": [
+      {
+        "zone": "text",
+        "role": "divider_title",
+        "what": "divider_title",
+        "base_pt": 32.0,
+        "chosen_pt": 32.0,
+        "need_h": 0.52,
+        "box_h": 1.6,
+        "lines": 1,
+        "overflow": false
+      }
+    ],
+    "warnings": [],
+    "exhibits": []
+  },
+  {
+    "slide_id": "g05",
+    "layout": "exhibit_commentary_right",
+    "zones": {
+      "exhibit": {
+        "role": "exhibit",
+        "x": 0.55,
+        "y": 1.62,
+        "w": 8.082,
+        "h": 5.16
+      },
+      "commentary": {
+        "role": "commentary",
+        "x": 8.852,
+        "y": 1.62,
+        "w": 3.931,
+        "h": 5.16
+      }
+    },
+    "fits": [
+      {
+        "zone": "chrome",
+        "role": "headline",
+        "what": "headline",
+        "base_pt": 22.0,
+        "chosen_pt": 22.0,
+        "need_h": 0.357,
+        "box_h": 0.86,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "chrome",
+        "role": "source",
+        "what": "footer",
+        "base_pt": 8.0,
+        "chosen_pt": 8.0,
+        "need_h": 0.13,
+        "box_h": 0.44,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "exhibit_unit",
+        "what": "exhibit title",
+        "base_pt": 11.0,
+        "chosen_pt": 11.0,
+        "need_h": 0.179,
+        "box_h": 0.3,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "commentary",
+        "role": "body",
+        "what": "commentary",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.743,
+        "box_h": 5.16,
+        "lines": 3,
+        "overflow": false
+      }
+    ],
+    "warnings": [],
+    "exhibits": [
+      {
+        "zone": "exhibit",
+        "type": "bar",
+        "categories": 6,
+        "series": 1,
+        "scale": [
+          0.0,
+          140.0,
+          25.0
+        ]
+      }
+    ]
+  },
+  {
+    "slide_id": "g06",
+    "layout": "framework_commentary",
+    "zones": {
+      "exhibit": {
+        "role": "exhibit",
+        "x": 0.55,
+        "y": 1.62,
+        "w": 8.082,
+        "h": 5.16
+      },
+      "commentary": {
+        "role": "commentary",
+        "x": 8.852,
+        "y": 1.62,
+        "w": 3.931,
+        "h": 5.16
+      }
+    },
+    "fits": [
+      {
+        "zone": "chrome",
+        "role": "headline",
+        "what": "headline",
+        "base_pt": 22.0,
+        "chosen_pt": 22.0,
+        "need_h": 0.357,
+        "box_h": 0.86,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "chrome",
+        "role": "source",
+        "what": "footer",
+        "base_pt": 8.0,
+        "chosen_pt": 8.0,
+        "need_h": 0.13,
+        "box_h": 0.44,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body",
+        "what": "node Gap to peer median",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.39,
+        "box_h": 0.631,
+        "lines": 2,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body",
+        "what": "node Network",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.39,
+        "box_h": 0.631,
+        "lines": 2,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body",
+        "what": "node Too many depots",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.39,
+        "box_h": 0.631,
+        "lines": 2,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body",
+        "what": "node Low truck fill",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.39,
+        "box_h": 0.631,
+        "lines": 2,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body",
+        "what": "node Warehousing",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.39,
+        "box_h": 0.631,
+        "lines": 2,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body",
+        "what": "node Manual picking",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.39,
+        "box_h": 0.631,
+        "lines": 2,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body",
+        "what": "node Overtime",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.39,
+        "box_h": 0.631,
+        "lines": 2,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body",
+        "what": "node Customer terms",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.39,
+        "box_h": 0.631,
+        "lines": 2,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body",
+        "what": "node Small drops",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.39,
+        "box_h": 0.631,
+        "lines": 2,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body",
+        "what": "node Free returns",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.39,
+        "box_h": 0.631,
+        "lines": 2,
+        "overflow": false
+      },
+      {
+        "zone": "commentary",
+        "role": "body",
+        "what": "commentary",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 1.486,
+        "box_h": 5.16,
+        "lines": 6,
+        "overflow": false
+      }
+    ],
+    "warnings": [],
+    "exhibits": [
+      {
+        "zone": "exhibit",
+        "type": "driver_tree",
+        "depth": 3,
+        "leaves": 6
+      }
+    ]
+  },
+  {
+    "slide_id": "g07",
+    "layout": "exhibit_full",
+    "zones": {
+      "takeaway": {
+        "role": "takeaway",
+        "x": 0.55,
+        "y": 6.16,
+        "w": 12.233,
+        "h": 0.62
+      },
+      "exhibit": {
+        "role": "exhibit",
+        "x": 0.55,
+        "y": 1.62,
+        "w": 12.233,
+        "h": 4.29
+      }
+    },
+    "fits": [
+      {
+        "zone": "chrome",
+        "role": "headline",
+        "what": "headline",
+        "base_pt": 22.0,
+        "chosen_pt": 22.0,
+        "need_h": 0.357,
+        "box_h": 0.86,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "chrome",
+        "role": "source",
+        "what": "footer",
+        "base_pt": 8.0,
+        "chosen_pt": 8.0,
+        "need_h": 0.13,
+        "box_h": 0.44,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "exhibit_unit",
+        "what": "exhibit title",
+        "base_pt": 11.0,
+        "chosen_pt": 11.0,
+        "need_h": 0.179,
+        "box_h": 0.3,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "takeaway",
+        "role": "body_strong",
+        "what": "takeaway",
+        "base_pt": 13,
+        "chosen_pt": 13,
+        "need_h": 0.211,
+        "box_h": 0.62,
+        "lines": 1,
+        "overflow": false
+      }
+    ],
+    "warnings": [],
+    "exhibits": [
+      {
+        "zone": "exhibit",
+        "type": "line",
+        "categories": 6,
+        "series": 2,
+        "scale": [
+          4.375,
+          6.125,
+          0.25
+        ]
+      }
+    ]
+  },
+  {
+    "slide_id": "g08",
+    "layout": "process_commentary",
+    "zones": {
+      "exhibit": {
+        "role": "exhibit",
+        "x": 0.55,
+        "y": 1.62,
+        "w": 8.082,
+        "h": 5.16
+      },
+      "commentary": {
+        "role": "commentary",
+        "x": 8.852,
+        "y": 1.62,
+        "w": 3.931,
+        "h": 5.16
+      }
+    },
+    "fits": [
+      {
+        "zone": "chrome",
+        "role": "headline",
+        "what": "headline",
+        "base_pt": 22.0,
+        "chosen_pt": 22.0,
+        "need_h": 0.357,
+        "box_h": 0.86,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "chrome",
+        "role": "source",
+        "what": "footer",
+        "base_pt": 8.0,
+        "chosen_pt": 8.0,
+        "need_h": 0.13,
+        "box_h": 0.44,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "exhibit_unit",
+        "what": "exhibit title",
+        "base_pt": 11.0,
+        "chosen_pt": 11.0,
+        "need_h": 0.179,
+        "box_h": 0.3,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body",
+        "what": "stage 1",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.195,
+        "box_h": 0.82,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body",
+        "what": "stage 2",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.195,
+        "box_h": 0.82,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body",
+        "what": "stage 3",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.195,
+        "box_h": 0.82,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body",
+        "what": "stage 4",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.195,
+        "box_h": 0.82,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body",
+        "what": "stage 5",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.195,
+        "box_h": 0.82,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "commentary",
+        "role": "body",
+        "what": "commentary",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.743,
+        "box_h": 5.16,
+        "lines": 3,
+        "overflow": false
+      }
+    ],
+    "warnings": [],
+    "exhibits": [
+      {
+        "zone": "exhibit",
+        "type": "funnel",
+        "stages": 5
+      }
+    ]
+  },
+  {
+    "slide_id": "g09",
+    "layout": "map_commentary",
+    "zones": {
+      "exhibit": {
+        "role": "exhibit",
+        "x": 0.55,
+        "y": 1.62,
+        "w": 8.082,
+        "h": 5.16
+      },
+      "commentary": {
+        "role": "commentary",
+        "x": 8.852,
+        "y": 1.62,
+        "w": 3.931,
+        "h": 5.16
+      }
+    },
+    "fits": [
+      {
+        "zone": "chrome",
+        "role": "headline",
+        "what": "headline",
+        "base_pt": 22.0,
+        "chosen_pt": 22.0,
+        "need_h": 0.357,
+        "box_h": 0.86,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "chrome",
+        "role": "source",
+        "what": "footer",
+        "base_pt": 8.0,
+        "chosen_pt": 8.0,
+        "need_h": 0.13,
+        "box_h": 0.44,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "exhibit_unit",
+        "what": "exhibit title",
+        "base_pt": 11.0,
+        "chosen_pt": 11.0,
+        "need_h": 0.179,
+        "box_h": 0.3,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "commentary",
+        "role": "body",
+        "what": "commentary",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.954,
+        "box_h": 5.16,
+        "lines": 4,
+        "overflow": false
+      }
+    ],
+    "warnings": [],
+    "exhibits": [
+      {
+        "zone": "exhibit",
+        "type": "tile_map",
+        "tiles": 19
+      }
+    ]
+  },
+  {
+    "slide_id": "g10",
+    "layout": "exhibit_commentary_right",
+    "zones": {
+      "exhibit": {
+        "role": "exhibit",
+        "x": 0.55,
+        "y": 1.62,
+        "w": 8.082,
+        "h": 5.16
+      },
+      "commentary": {
+        "role": "commentary",
+        "x": 8.852,
+        "y": 1.62,
+        "w": 3.931,
+        "h": 5.16
+      }
+    },
+    "fits": [
+      {
+        "zone": "chrome",
+        "role": "headline",
+        "what": "headline",
+        "base_pt": 22.0,
+        "chosen_pt": 22.0,
+        "need_h": 0.357,
+        "box_h": 0.86,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "chrome",
+        "role": "source",
+        "what": "footer",
+        "base_pt": 8.0,
+        "chosen_pt": 8.0,
+        "need_h": 0.13,
+        "box_h": 0.44,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "exhibit_unit",
+        "what": "exhibit title",
+        "base_pt": 11.0,
+        "chosen_pt": 11.0,
+        "need_h": 0.179,
+        "box_h": 0.3,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "commentary",
+        "role": "body",
+        "what": "commentary",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.743,
+        "box_h": 5.16,
+        "lines": 3,
+        "overflow": false
+      }
+    ],
+    "warnings": [],
+    "exhibits": [
+      {
+        "zone": "exhibit",
+        "type": "stacked_100",
+        "categories": 2,
+        "series": 3,
+        "scale": [
+          0.0,
+          1.0,
+          0.25
+        ]
+      }
+    ]
+  },
+  {
+    "slide_id": "g11",
+    "layout": "exhibit_takeaways_below",
+    "zones": {
+      "exhibit": {
+        "role": "exhibit",
+        "x": 0.55,
+        "y": 1.62,
+        "w": 12.233,
+        "h": 4.445
+      },
+      "commentary": {
+        "role": "commentary",
+        "x": 0.55,
+        "y": 6.285,
+        "w": 12.233,
+        "h": 0.495
+      }
+    },
+    "fits": [
+      {
+        "zone": "chrome",
+        "role": "headline",
+        "what": "headline",
+        "base_pt": 22.0,
+        "chosen_pt": 22.0,
+        "need_h": 0.357,
+        "box_h": 0.86,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "chrome",
+        "role": "source",
+        "what": "footer",
+        "base_pt": 8.0,
+        "chosen_pt": 8.0,
+        "need_h": 0.13,
+        "box_h": 0.44,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "exhibit_unit",
+        "what": "exhibit title",
+        "base_pt": 11.0,
+        "chosen_pt": 11.0,
+        "need_h": 0.179,
+        "box_h": 0.3,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "commentary",
+        "role": "body",
+        "what": "takeaway column",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.195,
+        "box_h": 0.345,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "commentary",
+        "role": "body",
+        "what": "takeaway column",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.195,
+        "box_h": 0.345,
+        "lines": 1,
+        "overflow": false
+      }
+    ],
+    "warnings": [],
+    "exhibits": [
+      {
+        "zone": "exhibit",
+        "type": "scatter",
+        "points": 9
+      }
+    ]
+  },
+  {
+    "slide_id": "g12",
+    "layout": "divider",
+    "zones": {},
+    "fits": [
+      {
+        "zone": "text",
+        "role": "divider_title",
+        "what": "divider_title",
+        "base_pt": 32.0,
+        "chosen_pt": 32.0,
+        "need_h": 0.52,
+        "box_h": 1.6,
+        "lines": 1,
+        "overflow": false
+      }
+    ],
+    "warnings": [],
+    "exhibits": []
+  },
+  {
+    "slide_id": "g13",
+    "layout": "comparison_table",
+    "zones": {
+      "takeaway": {
+        "role": "takeaway",
+        "x": 0.55,
+        "y": 6.16,
+        "w": 12.233,
+        "h": 0.62
+      },
+      "exhibit": {
+        "role": "exhibit",
+        "x": 0.55,
+        "y": 1.62,
+        "w": 12.233,
+        "h": 4.29
+      }
+    },
+    "fits": [
+      {
+        "zone": "chrome",
+        "role": "headline",
+        "what": "headline",
+        "base_pt": 22.0,
+        "chosen_pt": 22.0,
+        "need_h": 0.357,
+        "box_h": 0.86,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "chrome",
+        "role": "source",
+        "what": "footer",
+        "base_pt": 8.0,
+        "chosen_pt": 8.0,
+        "need_h": 0.13,
+        "box_h": 0.44,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "exhibit_unit",
+        "what": "exhibit title",
+        "base_pt": 11.0,
+        "chosen_pt": 11.0,
+        "need_h": 0.179,
+        "box_h": 0.3,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "table",
+        "what": "Initiative assessment",
+        "base_pt": 11.0,
+        "chosen_pt": 11.0,
+        "need_h": 2.444,
+        "box_h": 3.43,
+        "lines": 5,
+        "overflow": false
+      },
+      {
+        "zone": "takeaway",
+        "role": "body_strong",
+        "what": "takeaway",
+        "base_pt": 13,
+        "chosen_pt": 13,
+        "need_h": 0.211,
+        "box_h": 0.62,
+        "lines": 1,
+        "overflow": false
+      }
+    ],
+    "warnings": [],
+    "exhibits": [
+      {
+        "zone": "exhibit",
+        "type": "harvey_table",
+        "rows": 4,
+        "cols": 6,
+        "font_pt": 11.0,
+        "overflow": false
+      }
+    ]
+  },
+  {
+    "slide_id": "g14",
+    "layout": "process_full",
+    "zones": {
+      "exhibit": {
+        "role": "exhibit",
+        "x": 0.55,
+        "y": 1.62,
+        "w": 12.233,
+        "h": 5.16
+      }
+    },
+    "fits": [
+      {
+        "zone": "chrome",
+        "role": "headline",
+        "what": "headline",
+        "base_pt": 22.0,
+        "chosen_pt": 22.0,
+        "need_h": 0.715,
+        "box_h": 0.86,
+        "lines": 2,
+        "overflow": false
+      },
+      {
+        "zone": "chrome",
+        "role": "source",
+        "what": "footer",
+        "base_pt": 8.0,
+        "chosen_pt": 8.0,
+        "need_h": 0.13,
+        "box_h": 0.44,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body_strong",
+        "what": "step 1",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.195,
+        "box_h": 0.72,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "annotation",
+        "what": "step meta",
+        "base_pt": 10.0,
+        "chosen_pt": 10.0,
+        "need_h": 0.162,
+        "box_h": 0.28,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body",
+        "what": "step 1 body",
+        "base_pt": 11.0,
+        "chosen_pt": 11.0,
+        "need_h": 0.456,
+        "box_h": 3.85,
+        "lines": 2,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body_strong",
+        "what": "step 2",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.195,
+        "box_h": 0.72,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "annotation",
+        "what": "step meta",
+        "base_pt": 10.0,
+        "chosen_pt": 10.0,
+        "need_h": 0.162,
+        "box_h": 0.28,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body",
+        "what": "step 2 body",
+        "base_pt": 11.0,
+        "chosen_pt": 11.0,
+        "need_h": 0.456,
+        "box_h": 3.85,
+        "lines": 2,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body_strong",
+        "what": "step 3",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.195,
+        "box_h": 0.72,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "annotation",
+        "what": "step meta",
+        "base_pt": 10.0,
+        "chosen_pt": 10.0,
+        "need_h": 0.162,
+        "box_h": 0.28,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body",
+        "what": "step 3 body",
+        "base_pt": 11.0,
+        "chosen_pt": 11.0,
+        "need_h": 0.456,
+        "box_h": 3.85,
+        "lines": 2,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body_strong",
+        "what": "step 4",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.195,
+        "box_h": 0.72,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "annotation",
+        "what": "step meta",
+        "base_pt": 10.0,
+        "chosen_pt": 10.0,
+        "need_h": 0.162,
+        "box_h": 0.28,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body",
+        "what": "step 4 body",
+        "base_pt": 11.0,
+        "chosen_pt": 11.0,
+        "need_h": 0.456,
+        "box_h": 3.85,
+        "lines": 2,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body_strong",
+        "what": "step 5",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.195,
+        "box_h": 0.72,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "annotation",
+        "what": "step meta",
+        "base_pt": 10.0,
+        "chosen_pt": 10.0,
+        "need_h": 0.162,
+        "box_h": 0.28,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body",
+        "what": "step 5 body",
+        "base_pt": 11.0,
+        "chosen_pt": 11.0,
+        "need_h": 0.456,
+        "box_h": 3.85,
+        "lines": 2,
+        "overflow": false
+      }
+    ],
+    "warnings": [],
+    "exhibits": [
+      {
+        "zone": "exhibit",
+        "type": "process",
+        "steps": 5
+      }
+    ]
+  },
+  {
+    "slide_id": "g15",
+    "layout": "process_full",
+    "zones": {
+      "exhibit": {
+        "role": "exhibit",
+        "x": 0.55,
+        "y": 1.62,
+        "w": 12.233,
+        "h": 5.16
+      }
+    },
+    "fits": [
+      {
+        "zone": "chrome",
+        "role": "headline",
+        "what": "headline",
+        "base_pt": 22.0,
+        "chosen_pt": 22.0,
+        "need_h": 0.357,
+        "box_h": 0.86,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "chrome",
+        "role": "source",
+        "what": "footer",
+        "base_pt": 8.0,
+        "chosen_pt": 8.0,
+        "need_h": 0.13,
+        "box_h": 0.44,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body",
+        "what": "journey 0",
+        "base_pt": 11.0,
+        "chosen_pt": 11.0,
+        "need_h": 0.357,
+        "box_h": 1.42,
+        "lines": 2,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body",
+        "what": "journey 1",
+        "base_pt": 11.0,
+        "chosen_pt": 11.0,
+        "need_h": 0.179,
+        "box_h": 1.42,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body",
+        "what": "journey 2",
+        "base_pt": 11.0,
+        "chosen_pt": 11.0,
+        "need_h": 0.179,
+        "box_h": 1.42,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body",
+        "what": "journey 3",
+        "base_pt": 11.0,
+        "chosen_pt": 11.0,
+        "need_h": 0.179,
+        "box_h": 1.42,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body",
+        "what": "journey 4",
+        "base_pt": 11.0,
+        "chosen_pt": 11.0,
+        "need_h": 0.179,
+        "box_h": 1.42,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body",
+        "what": "journey 0",
+        "base_pt": 11.0,
+        "chosen_pt": 11.0,
+        "need_h": 0.179,
+        "box_h": 1.42,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body",
+        "what": "journey 1",
+        "base_pt": 11.0,
+        "chosen_pt": 11.0,
+        "need_h": 0.179,
+        "box_h": 1.42,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body",
+        "what": "journey 2",
+        "base_pt": 11.0,
+        "chosen_pt": 11.0,
+        "need_h": 0.179,
+        "box_h": 1.42,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body",
+        "what": "journey 3",
+        "base_pt": 11.0,
+        "chosen_pt": 11.0,
+        "need_h": 0.179,
+        "box_h": 1.42,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body",
+        "what": "journey 4",
+        "base_pt": 11.0,
+        "chosen_pt": 11.0,
+        "need_h": 0.179,
+        "box_h": 1.42,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body",
+        "what": "journey 0",
+        "base_pt": 11.0,
+        "chosen_pt": 11.0,
+        "need_h": 0.179,
+        "box_h": 1.42,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body",
+        "what": "journey 1",
+        "base_pt": 11.0,
+        "chosen_pt": 11.0,
+        "need_h": 0.179,
+        "box_h": 1.42,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body",
+        "what": "journey 2",
+        "base_pt": 11.0,
+        "chosen_pt": 11.0,
+        "need_h": 0.179,
+        "box_h": 1.42,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body",
+        "what": "journey 3",
+        "base_pt": 11.0,
+        "chosen_pt": 11.0,
+        "need_h": 0.179,
+        "box_h": 1.42,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body",
+        "what": "journey 4",
+        "base_pt": 11.0,
+        "chosen_pt": 11.0,
+        "need_h": 0.179,
+        "box_h": 1.42,
+        "lines": 1,
+        "overflow": false
+      }
+    ],
+    "warnings": [],
+    "exhibits": [
+      {
+        "zone": "exhibit",
+        "type": "journey",
+        "stages": 5
+      }
+    ]
+  },
+  {
+    "slide_id": "g16",
+    "layout": "architecture_full",
+    "zones": {
+      "exhibit": {
+        "role": "exhibit",
+        "x": 0.55,
+        "y": 1.62,
+        "w": 12.233,
+        "h": 5.16
+      }
+    },
+    "fits": [
+      {
+        "zone": "chrome",
+        "role": "headline",
+        "what": "headline",
+        "base_pt": 22.0,
+        "chosen_pt": 22.0,
+        "need_h": 0.357,
+        "box_h": 0.86,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "chrome",
+        "role": "source",
+        "what": "footer",
+        "base_pt": 8.0,
+        "chosen_pt": 8.0,
+        "need_h": 0.13,
+        "box_h": 0.44,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body",
+        "what": "org Steering committee",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.418,
+        "box_h": 0.95,
+        "lines": 2,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body",
+        "what": "org Transformation offic",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.418,
+        "box_h": 0.95,
+        "lines": 2,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body",
+        "what": "org Network",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.418,
+        "box_h": 0.95,
+        "lines": 2,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body",
+        "what": "org Automation",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.418,
+        "box_h": 0.95,
+        "lines": 2,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body",
+        "what": "org Customer terms",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.418,
+        "box_h": 0.95,
+        "lines": 2,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body",
+        "what": "org Procurement",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.418,
+        "box_h": 0.95,
+        "lines": 2,
+        "overflow": false
+      }
+    ],
+    "warnings": [],
+    "exhibits": [
+      {
+        "zone": "exhibit",
+        "type": "org_chart",
+        "depth": 3,
+        "leaves": 4
+      }
+    ]
+  },
+  {
+    "slide_id": "g17",
+    "layout": "architecture_full",
+    "zones": {
+      "exhibit": {
+        "role": "exhibit",
+        "x": 0.55,
+        "y": 1.62,
+        "w": 12.233,
+        "h": 5.16
+      }
+    },
+    "fits": [
+      {
+        "zone": "chrome",
+        "role": "headline",
+        "what": "headline",
+        "base_pt": 22.0,
+        "chosen_pt": 22.0,
+        "need_h": 0.357,
+        "box_h": 0.86,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "chrome",
+        "role": "source",
+        "what": "footer",
+        "base_pt": 8.0,
+        "chosen_pt": 8.0,
+        "need_h": 0.13,
+        "box_h": 0.44,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body_strong",
+        "what": "layer 1",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.195,
+        "box_h": 1.215,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body",
+        "what": "cell EDI",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.195,
+        "box_h": 1.215,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body",
+        "what": "cell Customer portal",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.195,
+        "box_h": 1.215,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body",
+        "what": "cell Call centre",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.195,
+        "box_h": 1.215,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body_strong",
+        "what": "layer 2",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.195,
+        "box_h": 1.215,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body",
+        "what": "cell ERP",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.195,
+        "box_h": 1.215,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body",
+        "what": "cell WMS",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.195,
+        "box_h": 1.215,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body",
+        "what": "cell Routing engine",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.195,
+        "box_h": 1.215,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body",
+        "what": "cell TMS",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.195,
+        "box_h": 1.215,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body_strong",
+        "what": "layer 3",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.195,
+        "box_h": 1.215,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body",
+        "what": "cell Common data layer",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.195,
+        "box_h": 1.215,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body",
+        "what": "cell Reporting",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.195,
+        "box_h": 1.215,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body_strong",
+        "what": "layer 4",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.195,
+        "box_h": 1.215,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body",
+        "what": "cell Cloud",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.195,
+        "box_h": 1.215,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body",
+        "what": "cell Hub automation con",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.195,
+        "box_h": 1.215,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body_strong",
+        "what": "pillar 0",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.195,
+        "box_h": 0.62,
+        "lines": 1,
+        "overflow": false
+      }
+    ],
+    "warnings": [],
+    "exhibits": [
+      {
+        "zone": "exhibit",
+        "type": "architecture",
+        "layers": 4
+      }
+    ]
+  },
+  {
+    "slide_id": "g18",
+    "layout": "roadmap_phases",
+    "zones": {
+      "col_1": {
+        "role": "column",
+        "x": 0.55,
+        "y": 1.62,
+        "w": 3.931,
+        "h": 5.16
+      },
+      "col_2": {
+        "role": "column",
+        "x": 4.701,
+        "y": 1.62,
+        "w": 3.931,
+        "h": 5.16
+      },
+      "col_3": {
+        "role": "column",
+        "x": 8.852,
+        "y": 1.62,
+        "w": 3.931,
+        "h": 5.16
+      }
+    },
+    "fits": [
+      {
+        "zone": "chrome",
+        "role": "headline",
+        "what": "headline",
+        "base_pt": 22.0,
+        "chosen_pt": 22.0,
+        "need_h": 0.357,
+        "box_h": 0.86,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "chrome",
+        "role": "source",
+        "what": "footer",
+        "base_pt": 8.0,
+        "chosen_pt": 8.0,
+        "need_h": 0.13,
+        "box_h": 0.44,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "col_1",
+        "role": "section",
+        "what": "column header",
+        "base_pt": 14.0,
+        "chosen_pt": 14.0,
+        "need_h": 0.227,
+        "box_h": 0.54,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "col_1",
+        "role": "body",
+        "what": "column points",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.798,
+        "box_h": 3.34,
+        "lines": 3,
+        "overflow": false
+      },
+      {
+        "zone": "col_2",
+        "role": "section",
+        "what": "column header",
+        "base_pt": 14.0,
+        "chosen_pt": 14.0,
+        "need_h": 0.227,
+        "box_h": 0.62,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "col_2",
+        "role": "body",
+        "what": "column points",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.798,
+        "box_h": 3.34,
+        "lines": 3,
+        "overflow": false
+      },
+      {
+        "zone": "col_3",
+        "role": "section",
+        "what": "column header",
+        "base_pt": 14.0,
+        "chosen_pt": 14.0,
+        "need_h": 0.227,
+        "box_h": 0.54,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "col_3",
+        "role": "body",
+        "what": "column points",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.798,
+        "box_h": 3.34,
+        "lines": 3,
+        "overflow": false
+      }
+    ],
+    "warnings": [],
+    "exhibits": []
+  },
+  {
+    "slide_id": "g19",
+    "layout": "timeline_full",
+    "zones": {
+      "exhibit": {
+        "role": "exhibit",
+        "x": 0.55,
+        "y": 1.62,
+        "w": 12.233,
+        "h": 5.16
+      }
+    },
+    "fits": [
+      {
+        "zone": "chrome",
+        "role": "headline",
+        "what": "headline",
+        "base_pt": 22.0,
+        "chosen_pt": 22.0,
+        "need_h": 0.357,
+        "box_h": 0.86,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "chrome",
+        "role": "source",
+        "what": "footer",
+        "base_pt": 8.0,
+        "chosen_pt": 8.0,
+        "need_h": 0.13,
+        "box_h": 0.44,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body",
+        "what": "event 1",
+        "base_pt": 11.0,
+        "chosen_pt": 11.0,
+        "need_h": 0.179,
+        "box_h": 1.824,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body",
+        "what": "event 2",
+        "base_pt": 11.0,
+        "chosen_pt": 11.0,
+        "need_h": 0.179,
+        "box_h": 1.824,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body",
+        "what": "event 3",
+        "base_pt": 11.0,
+        "chosen_pt": 11.0,
+        "need_h": 0.179,
+        "box_h": 1.824,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body",
+        "what": "event 4",
+        "base_pt": 11.0,
+        "chosen_pt": 11.0,
+        "need_h": 0.179,
+        "box_h": 1.824,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body",
+        "what": "event 5",
+        "base_pt": 11.0,
+        "chosen_pt": 11.0,
+        "need_h": 0.179,
+        "box_h": 1.824,
+        "lines": 1,
+        "overflow": false
+      }
+    ],
+    "warnings": [],
+    "exhibits": [
+      {
+        "zone": "exhibit",
+        "type": "timeline",
+        "events": 5
+      }
+    ]
+  },
+  {
+    "slide_id": "g20",
+    "layout": "divider",
+    "zones": {},
+    "fits": [
+      {
+        "zone": "text",
+        "role": "divider_title",
+        "what": "divider_title",
+        "base_pt": 32.0,
+        "chosen_pt": 32.0,
+        "need_h": 0.52,
+        "box_h": 1.6,
+        "lines": 1,
+        "overflow": false
+      }
+    ],
+    "warnings": [],
+    "exhibits": []
+  },
+  {
+    "slide_id": "g21",
+    "layout": "table_full",
+    "zones": {
+      "exhibit": {
+        "role": "exhibit",
+        "x": 0.55,
+        "y": 1.62,
+        "w": 12.233,
+        "h": 5.16
+      }
+    },
+    "fits": [
+      {
+        "zone": "chrome",
+        "role": "headline",
+        "what": "headline",
+        "base_pt": 22.0,
+        "chosen_pt": 22.0,
+        "need_h": 0.357,
+        "box_h": 0.86,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "chrome",
+        "role": "source",
+        "what": "footer",
+        "base_pt": 8.0,
+        "chosen_pt": 8.0,
+        "need_h": 0.13,
+        "box_h": 0.44,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "exhibit_unit",
+        "what": "exhibit title",
+        "base_pt": 11.0,
+        "chosen_pt": 11.0,
+        "need_h": 0.179,
+        "box_h": 0.3,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "table",
+        "what": "Initiative status, September 2026",
+        "base_pt": 11.0,
+        "chosen_pt": 11.0,
+        "need_h": 3.151,
+        "box_h": 4.7,
+        "lines": 6,
+        "overflow": false
+      }
+    ],
+    "warnings": [],
+    "exhibits": [
+      {
+        "zone": "exhibit",
+        "type": "scorecard",
+        "rows": 5,
+        "cols": 6,
+        "font_pt": 11.0,
+        "overflow": false
+      }
+    ]
+  },
+  {
+    "slide_id": "g22",
+    "layout": "kpi_grid",
+    "zones": {
+      "kpis": {
+        "role": "kpis",
+        "x": 0.55,
+        "y": 1.62,
+        "w": 12.233,
+        "h": 5.16
+      }
+    },
+    "fits": [
+      {
+        "zone": "chrome",
+        "role": "headline",
+        "what": "headline",
+        "base_pt": 22.0,
+        "chosen_pt": 22.0,
+        "need_h": 0.357,
+        "box_h": 0.86,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "chrome",
+        "role": "source",
+        "what": "footer",
+        "base_pt": 8.0,
+        "chosen_pt": 8.0,
+        "need_h": 0.13,
+        "box_h": 0.44,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "kpis",
+        "role": "kpi_value",
+        "what": "kpi €5.7M",
+        "base_pt": 34,
+        "chosen_pt": 34,
+        "need_h": 0.552,
+        "box_h": 0.75,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "kpis",
+        "role": "kpi_label",
+        "what": "kpi label",
+        "base_pt": 11.0,
+        "chosen_pt": 11.0,
+        "need_h": 0.179,
+        "box_h": 0.229,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "kpis",
+        "role": "body",
+        "what": "kpi note",
+        "base_pt": 11,
+        "chosen_pt": 11,
+        "need_h": 0.179,
+        "box_h": 0.941,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "kpis",
+        "role": "kpi_value",
+        "what": "kpi €5.63",
+        "base_pt": 34,
+        "chosen_pt": 34,
+        "need_h": 0.552,
+        "box_h": 0.75,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "kpis",
+        "role": "kpi_label",
+        "what": "kpi label",
+        "base_pt": 11.0,
+        "chosen_pt": 11.0,
+        "need_h": 0.179,
+        "box_h": 0.229,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "kpis",
+        "role": "body",
+        "what": "kpi note",
+        "base_pt": 11,
+        "chosen_pt": 11,
+        "need_h": 0.179,
+        "box_h": 0.941,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "kpis",
+        "role": "kpi_value",
+        "what": "kpi 81%",
+        "base_pt": 34,
+        "chosen_pt": 34,
+        "need_h": 0.552,
+        "box_h": 0.75,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "kpis",
+        "role": "kpi_label",
+        "what": "kpi label",
+        "base_pt": 11.0,
+        "chosen_pt": 11.0,
+        "need_h": 0.179,
+        "box_h": 0.229,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "kpis",
+        "role": "body",
+        "what": "kpi note",
+        "base_pt": 11,
+        "chosen_pt": 11,
+        "need_h": 0.179,
+        "box_h": 0.941,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "kpis",
+        "role": "kpi_value",
+        "what": "kpi −21%",
+        "base_pt": 34,
+        "chosen_pt": 34,
+        "need_h": 0.552,
+        "box_h": 0.75,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "kpis",
+        "role": "kpi_label",
+        "what": "kpi label",
+        "base_pt": 11.0,
+        "chosen_pt": 11.0,
+        "need_h": 0.179,
+        "box_h": 0.229,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "kpis",
+        "role": "body",
+        "what": "kpi note",
+        "base_pt": 11,
+        "chosen_pt": 11,
+        "need_h": 0.179,
+        "box_h": 0.941,
+        "lines": 1,
+        "overflow": false
+      }
+    ],
+    "warnings": [],
+    "exhibits": []
+  },
+  {
+    "slide_id": "g23",
+    "layout": "waterfall_drivers",
+    "zones": {
+      "exhibit": {
+        "role": "exhibit",
+        "x": 0.55,
+        "y": 1.62,
+        "w": 8.082,
+        "h": 5.16
+      },
+      "commentary": {
+        "role": "commentary",
+        "x": 8.852,
+        "y": 1.62,
+        "w": 3.931,
+        "h": 5.16
+      }
+    },
+    "fits": [
+      {
+        "zone": "chrome",
+        "role": "headline",
+        "what": "headline",
+        "base_pt": 22.0,
+        "chosen_pt": 22.0,
+        "need_h": 0.357,
+        "box_h": 0.86,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "chrome",
+        "role": "source",
+        "what": "footer",
+        "base_pt": 8.0,
+        "chosen_pt": 8.0,
+        "need_h": 0.13,
+        "box_h": 0.44,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "exhibit_unit",
+        "what": "exhibit title",
+        "base_pt": 11.0,
+        "chosen_pt": 11.0,
+        "need_h": 0.179,
+        "box_h": 0.3,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "commentary",
+        "role": "body",
+        "what": "commentary",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.743,
+        "box_h": 5.16,
+        "lines": 3,
+        "overflow": false
+      }
+    ],
+    "warnings": [],
+    "exhibits": [
+      {
+        "zone": "exhibit",
+        "type": "waterfall",
+        "steps": 6,
+        "end": 48.0,
+        "axis_truncated": false
+      }
+    ]
+  },
+  {
+    "slide_id": "g24",
+    "layout": "exhibit_trio",
+    "zones": {
+      "exhibit": {
+        "role": "exhibit",
+        "x": 0.55,
+        "y": 1.62,
+        "w": 3.931,
+        "h": 5.16
+      },
+      "exhibit_2": {
+        "role": "exhibit",
+        "x": 4.701,
+        "y": 1.62,
+        "w": 3.931,
+        "h": 5.16
+      },
+      "exhibit_3": {
+        "role": "exhibit",
+        "x": 8.852,
+        "y": 1.62,
+        "w": 3.931,
+        "h": 5.16
+      }
+    },
+    "fits": [
+      {
+        "zone": "chrome",
+        "role": "headline",
+        "what": "headline",
+        "base_pt": 22.0,
+        "chosen_pt": 22.0,
+        "need_h": 0.357,
+        "box_h": 0.86,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "chrome",
+        "role": "source",
+        "what": "footer",
+        "base_pt": 8.0,
+        "chosen_pt": 8.0,
+        "need_h": 0.13,
+        "box_h": 0.44,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "exhibit_unit",
+        "what": "exhibit title",
+        "base_pt": 11.0,
+        "chosen_pt": 11.0,
+        "need_h": 0.179,
+        "box_h": 0.3,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit_2",
+        "role": "exhibit_unit",
+        "what": "exhibit title",
+        "base_pt": 11.0,
+        "chosen_pt": 11.0,
+        "need_h": 0.179,
+        "box_h": 0.3,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit_3",
+        "role": "exhibit_unit",
+        "what": "exhibit title",
+        "base_pt": 11.0,
+        "chosen_pt": 11.0,
+        "need_h": 0.179,
+        "box_h": 0.3,
+        "lines": 1,
+        "overflow": false
+      }
+    ],
+    "warnings": [],
+    "exhibits": [
+      {
+        "zone": "exhibit",
+        "type": "column",
+        "categories": 3,
+        "series": 1,
+        "scale": [
+          0.0,
+          3.25,
+          1.0
+        ]
+      },
+      {
+        "zone": "exhibit_2",
+        "type": "column",
+        "categories": 3,
+        "series": 1,
+        "scale": [
+          0.0,
+          3.75,
+          1.0
+        ]
+      },
+      {
+        "zone": "exhibit_3",
+        "type": "column",
+        "categories": 3,
+        "series": 1,
+        "scale": [
+          0.0,
+          4.75,
+          1.0
+        ]
+      }
+    ]
+  },
+  {
+    "slide_id": "g25",
+    "layout": "exhibit_commentary_right",
+    "zones": {
+      "exhibit": {
+        "role": "exhibit",
+        "x": 0.55,
+        "y": 1.62,
+        "w": 8.082,
+        "h": 5.16
+      },
+      "commentary": {
+        "role": "commentary",
+        "x": 8.852,
+        "y": 1.62,
+        "w": 3.931,
+        "h": 5.16
+      }
+    },
+    "fits": [
+      {
+        "zone": "chrome",
+        "role": "headline",
+        "what": "headline",
+        "base_pt": 22.0,
+        "chosen_pt": 22.0,
+        "need_h": 0.357,
+        "box_h": 0.86,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "chrome",
+        "role": "source",
+        "what": "footer",
+        "base_pt": 8.0,
+        "chosen_pt": 8.0,
+        "need_h": 0.13,
+        "box_h": 0.44,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "exhibit_unit",
+        "what": "exhibit title",
+        "base_pt": 11.0,
+        "chosen_pt": 11.0,
+        "need_h": 0.179,
+        "box_h": 0.3,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "chart",
+        "what": "pie label",
+        "base_pt": 11.0,
+        "chosen_pt": 11.0,
+        "need_h": 0.179,
+        "box_h": 0.42,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "chart",
+        "what": "pie label",
+        "base_pt": 11.0,
+        "chosen_pt": 11.0,
+        "need_h": 0.179,
+        "box_h": 0.42,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "chart",
+        "what": "pie label",
+        "base_pt": 11.0,
+        "chosen_pt": 11.0,
+        "need_h": 0.179,
+        "box_h": 0.42,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "chart",
+        "what": "pie label",
+        "base_pt": 11.0,
+        "chosen_pt": 11.0,
+        "need_h": 0.179,
+        "box_h": 0.42,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "commentary",
+        "role": "body",
+        "what": "commentary",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.532,
+        "box_h": 5.16,
+        "lines": 2,
+        "overflow": false
+      }
+    ],
+    "warnings": [],
+    "exhibits": [
+      {
+        "zone": "exhibit",
+        "type": "donut",
+        "slices": 4
+      }
+    ]
+  },
+  {
+    "slide_id": "g26",
+    "layout": "statement",
+    "zones": {
+      "text": {
+        "role": "statement",
+        "x": 0.55,
+        "y": 2.504,
+        "w": 10.1575,
+        "h": 3.392
+      }
+    },
+    "fits": [
+      {
+        "zone": "chrome",
+        "role": "headline",
+        "what": "headline",
+        "base_pt": 22.0,
+        "chosen_pt": 22.0,
+        "need_h": 0.357,
+        "box_h": 0.86,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "text",
+        "role": "headline",
+        "what": "statement",
+        "base_pt": 30,
+        "chosen_pt": 30,
+        "need_h": 0.975,
+        "box_h": 1.696,
+        "lines": 2,
+        "overflow": false
+      }
+    ],
+    "warnings": [],
+    "exhibits": []
+  }
+]

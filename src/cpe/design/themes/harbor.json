@@ -1,0 +1,26 @@
+{
+  "name": "harbor",
+  "description": "Blue-black + amber highlight. Suits transformation programmes and steering committees.",
+  "font_latin": "Arial",
+  "font_fallback_file": "LiberationSans",
+  "colors": {
+    "primary": "13294B",
+    "secondary": "2F5F8A",
+    "highlight": "E08A00",
+    "positive": "2E7D4F",
+    "negative": "C0392B",
+    "warning": "E08A00",
+    "neutral": "8A95A1",
+    "muted": "CAD2DB",
+    "faint": "EEF2F6",
+    "background": "FFFFFF",
+    "surface": "F4F6F9",
+    "text": "1C2530",
+    "text_muted": "5B6776",
+    "rule": "B6C0CB",
+    "gridline": "E3E8ED"
+  },
+  "series": ["13294B", "2F5F8A", "86A6C6", "CAD2DB", "E08A00", "5B6776"],
+  "sequential": ["EEF3F8", "C3D3E4", "86A6C6", "2F5F8A", "13294B"],
+  "diverging": ["C0392B", "E8A89F", "F4F6F9", "8FC1A6", "2E7D4F"]
+}

@@ -1,0 +1,35 @@
+{
+  "id": "statement",
+  "family": "16_full_visual",
+  "name": "Statement",
+  "description": "One big message, optional supporting line. For pivotal moments only.",
+  "when_to_use": "Governing thought, key recommendation, or a quote.",
+  "zones": [
+    {
+      "name": "text",
+      "role": "statement",
+      "cols": [
+        1,
+        10
+      ],
+      "top": 0.15,
+      "bottom": 0.85
+    }
+  ],
+  "accepts": {
+    "statement": [
+      1,
+      1
+    ]
+  },
+  "takeaway": "none",
+  "compatible_visuals": [
+    "statement",
+    "quote"
+  ],
+  "capacity": {},
+  "hierarchy": [
+    "text"
+  ],
+  "body_band": "body"
+}

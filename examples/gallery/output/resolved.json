@@ -1,0 +1,1956 @@
+{
+  "meta": {
+    "title": "Helix Logistics transformation: steering committee",
+    "subtitle": "Every exhibit type of the engine on one fictitious programme",
+    "client": "Helix Logistics (fictitious)",
+    "date": "Q3 2026",
+    "deck_type": "project_steering_committee",
+    "theme": "harbor",
+    "confidentiality": "Illustrative data"
+  },
+  "storyline": {
+    "framework": "DRI",
+    "audience": "Steering committee",
+    "decision_sought": "Release wave 2 funding",
+    "governing_thought": "The programme is on track to deliver €48M run-rate savings; releasing wave 2 funding now keeps the 2027 target",
+    "key_line": [
+      {
+        "id": "K1",
+        "role": "diagnosis",
+        "message": "Cost-to-serve is 18% above peers because of network and warehouse inefficiencies"
+      },
+      {
+        "id": "K2",
+        "role": "recommendation",
+        "message": "Four initiatives redesign the network, automate two hubs and reset customer terms"
+      },
+      {
+        "id": "K3",
+        "role": "impact",
+        "message": "€48M run-rate savings by 2027, with wave 1 already delivering"
+      }
+    ]
+  },
+  "slides": [
+    {
+      "id": "g01",
+      "kind": "cover",
+      "_plan": {
+        "visuals": [],
+        "layout": {
+          "id": "cover",
+          "why": "structural slide"
+        }
+      },
+      "_page": 1
+    },
+    {
+      "id": "g02",
+      "kind": "agenda",
+      "title": "Agenda",
+      "headline": "Today we review diagnosis, plan and value, and ask for one decision",
+      "items": [
+        {
+          "title": "Diagnosis",
+          "description": "Where cost-to-serve comes from"
+        },
+        {
+          "title": "Programme",
+          "description": "Initiatives, plan and organisation"
+        },
+        {
+          "title": "Value and decision",
+          "description": "Savings to date and wave 2 funding"
+        }
+      ],
+      "_plan": {
+        "visuals": [],
+        "layout": {
+          "id": "agenda",
+          "why": "structural slide"
+        }
+      },
+      "_page": 2
+    },
+    {
+      "id": "g03",
+      "kind": "exec_summary",
+      "tracker": "Executive summary",
+      "purpose": "Frame the decision",
+      "headline": "Wave 1 is delivering; releasing wave 2 funding keeps the €48M target on track",
+      "visual": {
+        "type": "statements",
+        "data": {
+          "style": "scr",
+          "items": [
+            {
+              "label": "Situation",
+              "title": "Cost-to-serve is 18% above peers",
+              "text": "Network and warehouse inefficiencies explain 70% of the gap."
+            },
+            {
+              "label": "Complication",
+              "title": "Wave 1 savings arrive, but automation needs capex now",
+              "text": "Hub automation lead times are 9 months; delaying funding pushes €14M of savings into 2028."
+            },
+            {
+              "label": "Resolution",
+              "title": "Release €22M for wave 2 today",
+              "text": "Keeps the €48M run-rate target for 2027; payback in 19 months."
+            }
+          ]
+        }
+      },
+      "source": "Programme office (illustrative)",
+      "_plan": {
+        "visuals": [
+          {
+            "chosen": "statements",
+            "why": "explicit in spec"
+          }
+        ],
+        "layout": {
+          "id": "exec_summary_scr",
+          "why": "best available fit",
+          "score": 70.0,
+          "alternatives": [
+            "exec_summary_statements"
+          ]
+        },
+        "fit": {
+          "statements": {
+            "need_base": 0.4914,
+            "need_floor": 0.4914,
+            "avail": 1.54,
+            "fits_base": true,
+            "fits_floor": true,
+            "excess_words": 0
+          },
+          "words": 69
+        }
+      },
+      "_page": 3
+    },
+    {
+      "id": "g04",
+      "kind": "divider",
+      "number": 1,
+      "title": "Diagnosis",
+      "_plan": {
+        "visuals": [],
+        "layout": {
+          "id": "divider",
+          "why": "structural slide"
+        }
+      },
+      "_page": 4
+    },
+    {
+      "id": "g05",
+      "section": "K1",
+      "tracker": "Diagnosis",
+      "purpose": "Size the gap",
+      "headline": "Helix's cost-to-serve is 18% above the peer median, the highest of the panel",
+      "message_type": "ranking",
+      "evidence": [
+        {
+          "claim": "Cost-to-serve index, peer median = 100",
+          "values": [
+            118,
+            109,
+            103,
+            100,
+            96,
+            91
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "title": "Cost-to-serve, 2025",
+        "unit": "index, peer median = 100",
+        "highlight": [
+          "Helix"
+        ],
+        "sort": "desc",
+        "data": {
+          "categories": [
+            "Peer B",
+            "Helix",
+            "Peer A",
+            "Peer median",
+            "Peer C",
+            "Peer D"
+          ],
+          "series": [
+            {
+              "name": "Index",
+              "values": [
+                109,
+                118,
+                103,
+                100,
+                96,
+                91
+              ]
+            }
+          ]
+        },
+        "annotations": [
+          {
+            "type": "reference",
+            "value": 100,
+            "label": "Median 100"
+          }
+        ]
+      },
+      "commentary": {
+        "points": [
+          "Helix is **18 points** above the median and 9 above the next worst peer",
+          "The gap widened by 5 points since 2022"
+        ]
+      },
+      "source": "Benchmark consortium 2025 (illustrative)",
+      "kind": "content",
+      "_plan": {
+        "visuals": [
+          {
+            "chosen": "bar",
+            "why": "explicit in spec"
+          }
+        ],
+        "layout": {
+          "id": "exhibit_commentary_right",
+          "why": "best available fit",
+          "score": 55.0,
+          "alternatives": [
+            "exhibit_takeaways_below",
+            "map_commentary",
+            "exhibit_commentary_left"
+          ]
+        },
+        "fit": {
+          "commentary": {
+            "fits_base": true,
+            "fits_floor": true,
+            "need_base": 0.74,
+            "need_floor": 0.69,
+            "avail": 5.16,
+            "excess_words": 0
+          },
+          "words": 35
+        }
+      },
+      "_page": 5
+    },
+    {
+      "id": "g06",
+      "section": "K1",
+      "tracker": "Diagnosis",
+      "purpose": "Decompose cost-to-serve",
+      "headline": "Network and warehousing explain €31M of the €44M gap to peers",
+      "message_type": "hierarchy",
+      "evidence": [
+        {
+          "claim": "Gap decomposition",
+          "values": [
+            44,
+            31,
+            19,
+            12,
+            13,
+            8,
+            5
+          ]
+        }
+      ],
+      "visual": {
+        "type": "driver_tree",
+        "format": {
+          "prefix": "€",
+          "suffix": "M"
+        },
+        "data": {
+          "root": {
+            "label": "Gap to peer median",
+            "value": 44,
+            "children": [
+              {
+                "label": "Network",
+                "value": 19,
+                "highlight": true,
+                "children": [
+                  {
+                    "label": "Too many depots",
+                    "value": 11
+                  },
+                  {
+                    "label": "Low truck fill",
+                    "value": 8
+                  }
+                ]
+              },
+              {
+                "label": "Warehousing",
+                "value": 12,
+                "highlight": true,
+                "children": [
+                  {
+                    "label": "Manual picking",
+                    "value": 9
+                  },
+                  {
+                    "label": "Overtime",
+                    "value": 3
+                  }
+                ]
+              },
+              {
+                "label": "Customer terms",
+                "value": 13,
+                "children": [
+                  {
+                    "label": "Small drops",
+                    "value": 8
+                  },
+                  {
+                    "label": "Free returns",
+                    "value": 5
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "commentary": {
+        "points": [
+          "**Network** is the largest driver: 14 depots vs 9 at peers",
+          "**Warehousing** is fixable with automation of two hubs",
+          "Customer terms need commercial, not operational, action"
+        ]
+      },
+      "source": "Cost model (illustrative)",
+      "kind": "content",
+      "_plan": {
+        "visuals": [
+          {
+            "chosen": "driver_tree",
+            "why": "explicit in spec"
+          }
+        ],
+        "layout": {
+          "id": "framework_commentary",
+          "why": "family 13_framework matches driver_tree",
+          "score": 75.0,
+          "alternatives": [
+            "exhibit_takeaways_below",
+            "exhibit_commentary_left",
+            "exhibit_commentary_right"
+          ]
+        },
+        "fit": {
+          "commentary": {
+            "fits_base": true,
+            "fits_floor": true,
+            "need_base": 1.49,
+            "need_floor": 1.19,
+            "avail": 5.16,
+            "excess_words": 0
+          },
+          "words": 37
+        }
+      },
+      "_page": 6
+    },
+    {
+      "id": "g07",
+      "section": "K1",
+      "tracker": "Diagnosis",
+      "purpose": "Show the trend",
+      "headline": "Cost per drop rose 21% since 2021 while peers held it flat",
+      "message_type": "trend",
+      "evidence": [
+        {
+          "claim": "Cost per drop",
+          "values": [
+            4.8,
+            5.1,
+            5.4,
+            5.6,
+            5.8
+          ]
+        }
+      ],
+      "visual": {
+        "type": "line",
+        "title": "Cost per drop",
+        "unit": "€",
+        "format": {
+          "decimals": 1
+        },
+        "data": {
+          "categories": [
+            "2021",
+            "2022",
+            "2023",
+            "2024",
+            "2025",
+            "2026"
+          ],
+          "series": [
+            {
+              "name": "Helix",
+              "values": [
+                4.8,
+                5.1,
+                5.4,
+                5.6,
+                5.8,
+                5.6
+              ],
+              "role": "focus"
+            },
+            {
+              "name": "Peer median",
+              "values": [
+                4.7,
+                4.8,
+                4.8,
+                4.7,
+                4.8,
+                4.8
+              ],
+              "role": "context"
+            }
+          ]
+        },
+        "annotations": [
+          {
+            "type": "forecast",
+            "from": "2026",
+            "label": "Forecast"
+          }
+        ]
+      },
+      "takeaway": "The gap is structural: it grew every year until wave 1 started",
+      "source": "Benchmark consortium (illustrative)",
+      "kind": "content",
+      "_plan": {
+        "visuals": [
+          {
+            "chosen": "line",
+            "why": "explicit in spec"
+          }
+        ],
+        "layout": {
+          "id": "exhibit_full",
+          "why": "best available fit",
+          "score": 50.0,
+          "alternatives": []
+        },
+        "fit": {
+          "words": 24
+        }
+      },
+      "_page": 7
+    },
+    {
+      "id": "g08",
+      "section": "K1",
+      "tracker": "Diagnosis",
+      "purpose": "Show where volume goes",
+      "headline": "Only 61% of orders arrive in full and on time, with picking causing the largest loss",
+      "message_type": "flow",
+      "evidence": [
+        {
+          "claim": "Order funnel",
+          "values": [
+            100,
+            92,
+            78,
+            64,
+            61
+          ]
+        }
+      ],
+      "visual": {
+        "type": "funnel",
+        "title": "Order fulfilment, Q2 2026",
+        "unit": "% of orders",
+        "data": {
+          "stages": [
+            {
+              "label": "Orders received",
+              "value": 100
+            },
+            {
+              "label": "Stock available",
+              "value": 92
+            },
+            {
+              "label": "Picked correctly",
+              "value": 78
+            },
+            {
+              "label": "Shipped on time",
+              "value": 64
+            },
+            {
+              "label": "Delivered in full, on time",
+              "value": 61,
+              "highlight": true
+            }
+          ]
+        }
+      },
+      "commentary": {
+        "points": [
+          "Picking errors lose **14 points**, the largest single drop",
+          "Stock availability is at peer level (92%)"
+        ]
+      },
+      "source": "WMS extract (illustrative)",
+      "kind": "content",
+      "_plan": {
+        "visuals": [
+          {
+            "chosen": "funnel",
+            "why": "explicit in spec"
+          }
+        ],
+        "layout": {
+          "id": "process_commentary",
+          "why": "family 07_process matches funnel",
+          "score": 75.0,
+          "alternatives": [
+            "exhibit_commentary_right",
+            "exhibit_takeaways_below",
+            "framework_commentary"
+          ]
+        },
+        "fit": {
+          "commentary": {
+            "fits_base": true,
+            "fits_floor": true,
+            "need_base": 0.74,
+            "need_floor": 0.5,
+            "avail": 5.16,
+            "excess_words": 0
+          },
+          "words": 33
+        }
+      },
+      "_page": 8
+    },
+    {
+      "id": "g09",
+      "section": "K1",
+      "tracker": "Diagnosis",
+      "purpose": "Show the geography",
+      "headline": "Cost-to-serve is highest in the north-west, where depot density is lowest",
+      "message_type": "geography",
+      "evidence": [
+        {
+          "claim": "Cost per drop by region"
+        }
+      ],
+      "visual": {
+        "type": "tile_map",
+        "title": "Cost per drop by region, 2025",
+        "unit": "€",
+        "format": {
+          "decimals": 1
+        },
+        "highlight": [
+          "GA",
+          "AS"
+        ],
+        "data": {
+          "preset": "spain",
+          "values": {
+            "GA": 7.4,
+            "AS": 7.1,
+            "CB": 6.2,
+            "PV": 5.5,
+            "NA": 5.6,
+            "CL": 6.8,
+            "RI": 5.9,
+            "AR": 6.0,
+            "CT": 5.1,
+            "MD": 4.6,
+            "EX": 6.9,
+            "CM": 6.1,
+            "VC": 5.0,
+            "IB": 6.6,
+            "AN": 5.4,
+            "MC": 5.2,
+            "CN": 7.0
+          }
+        }
+      },
+      "commentary": {
+        "points": [
+          "Galicia and Asturias cost **€7+ per drop**, 55% above Madrid",
+          "Consolidating three north-west depots saves €6M"
+        ]
+      },
+      "source": "Transport management system (illustrative)",
+      "kind": "content",
+      "_plan": {
+        "visuals": [
+          {
+            "chosen": "tile_map",
+            "why": "explicit in spec"
+          }
+        ],
+        "layout": {
+          "id": "map_commentary",
+          "why": "family 11_market_map matches tile_map",
+          "score": 75.0,
+          "alternatives": [
+            "exhibit_commentary_right",
+            "exhibit_takeaways_below",
+            "exhibit_commentary_left"
+          ]
+        },
+        "fit": {
+          "commentary": {
+            "fits_base": true,
+            "fits_floor": true,
+            "need_base": 0.95,
+            "need_floor": 0.69,
+            "avail": 5.16,
+            "excess_words": 0
+          },
+          "words": 28
+        }
+      },
+      "_page": 9
+    },
+    {
+      "id": "g10",
+      "section": "K1",
+      "tracker": "Diagnosis",
+      "purpose": "Show customer mix",
+      "headline": "Small customers are 38% of drops but only 12% of revenue",
+      "message_type": "composition",
+      "evidence": [
+        {
+          "claim": "Share of drops and revenue by customer size",
+          "values": [
+            38,
+            12
+          ]
+        }
+      ],
+      "visual": {
+        "type": "stacked_100",
+        "title": "Mix by customer size, 2025",
+        "unit": "% of total",
+        "data": {
+          "categories": [
+            "Drops",
+            "Revenue"
+          ],
+          "series": [
+            {
+              "name": "Small",
+              "values": [
+                38,
+                12
+              ]
+            },
+            {
+              "name": "Medium",
+              "values": [
+                35,
+                30
+              ]
+            },
+            {
+              "name": "Large",
+              "values": [
+                27,
+                58
+              ]
+            }
+          ]
+        }
+      },
+      "commentary": {
+        "points": [
+          "Minimum order values would remove 20% of drops",
+          "Large accounts subsidise the small ones today"
+        ]
+      },
+      "source": "Billing data (illustrative)",
+      "kind": "content",
+      "_plan": {
+        "visuals": [
+          {
+            "chosen": "stacked_100",
+            "why": "explicit in spec"
+          }
+        ],
+        "layout": {
+          "id": "exhibit_commentary_right",
+          "why": "best available fit",
+          "score": 55.0,
+          "alternatives": [
+            "exhibit_takeaways_below",
+            "segmentation_commentary",
+            "exhibit_commentary_left"
+          ]
+        },
+        "fit": {
+          "commentary": {
+            "fits_base": true,
+            "fits_floor": true,
+            "need_base": 0.74,
+            "need_floor": 0.5,
+            "avail": 5.16,
+            "excess_words": 0
+          },
+          "words": 26
+        }
+      },
+      "_page": 10
+    },
+    {
+      "id": "g11",
+      "section": "K1",
+      "tracker": "Diagnosis",
+      "purpose": "Show relationship",
+      "headline": "Depots with fewer than 400 drops a day cost up to 40% more per drop",
+      "message_type": "correlation",
+      "evidence": [
+        {
+          "claim": "Depot volume vs cost per drop"
+        }
+      ],
+      "visual": {
+        "type": "scatter",
+        "title": "Depot volume vs cost per drop, 2025",
+        "x_title": "Drops per day",
+        "y_title": "Cost per drop (€)",
+        "highlight": [
+          "Lugo",
+          "Oviedo"
+        ],
+        "data": {
+          "points": [
+            {
+              "label": "Madrid",
+              "x": 1450,
+              "y": 4.4
+            },
+            {
+              "label": "Barcelona",
+              "x": 1210,
+              "y": 4.7
+            },
+            {
+              "label": "Valencia",
+              "x": 820,
+              "y": 5.0
+            },
+            {
+              "label": "Sevilla",
+              "x": 760,
+              "y": 5.3
+            },
+            {
+              "label": "Bilbao",
+              "x": 560,
+              "y": 5.6
+            },
+            {
+              "label": "Zaragoza",
+              "x": 480,
+              "y": 5.8
+            },
+            {
+              "label": "Lugo",
+              "x": 290,
+              "y": 7.3
+            },
+            {
+              "label": "Oviedo",
+              "x": 330,
+              "y": 7.0
+            },
+            {
+              "x": 350,
+              "y": 6.8
+            }
+          ]
+        },
+        "x_format": {
+          "decimals": 0
+        },
+        "y_format": {
+          "decimals": 1
+        }
+      },
+      "commentary": {
+        "points": [
+          "Below **400 drops a day** fixed costs dominate",
+          "Lugo and Oviedo are candidates for consolidation"
+        ]
+      },
+      "source": "Depot P&L (illustrative)",
+      "kind": "content",
+      "_plan": {
+        "visuals": [
+          {
+            "chosen": "scatter",
+            "why": "explicit in spec"
+          }
+        ],
+        "layout": {
+          "id": "exhibit_takeaways_below",
+          "why": "best available fit",
+          "score": 55.0,
+          "alternatives": [
+            "matrix_commentary",
+            "exhibit_commentary_left",
+            "exhibit_commentary_right"
+          ]
+        },
+        "fit": {
+          "commentary": {
+            "fits_base": true,
+            "fits_floor": true,
+            "excess_words": 0
+          },
+          "words": 30
+        }
+      },
+      "_page": 11
+    },
+    {
+      "id": "g12",
+      "kind": "divider",
+      "number": 2,
+      "title": "Programme",
+      "_plan": {
+        "visuals": [],
+        "layout": {
+          "id": "divider",
+          "why": "structural slide"
+        }
+      },
+      "_page": 12
+    },
+    {
+      "id": "g13",
+      "section": "K2",
+      "tracker": "Programme",
+      "purpose": "Compare initiatives",
+      "headline": "Network redesign and hub automation offer the best value for effort",
+      "message_type": "comparison",
+      "evidence": [
+        {
+          "claim": "Initiative assessment workshop"
+        }
+      ],
+      "visual": {
+        "type": "harvey_table",
+        "title": "Initiative assessment",
+        "columns": [
+          {
+            "label": "Initiative",
+            "width": 3.4
+          },
+          {
+            "label": "Value"
+          },
+          {
+            "label": "Speed"
+          },
+          {
+            "label": "Feasibility"
+          },
+          {
+            "label": "Risk (low = full)"
+          },
+          {
+            "label": "Savings (€M)",
+            "kind": "number"
+          }
+        ],
+        "rows": [
+          [
+            "Network redesign",
+            4,
+            2,
+            3,
+            3,
+            17
+          ],
+          [
+            "Hub automation",
+            4,
+            1,
+            3,
+            2,
+            13
+          ],
+          [
+            "Customer terms reset",
+            3,
+            4,
+            2,
+            2,
+            11
+          ],
+          [
+            "Transport procurement",
+            2,
+            4,
+            4,
+            4,
+            7
+          ]
+        ],
+        "highlight_columns": [
+          1
+        ]
+      },
+      "takeaway": "Launch terms and procurement first for speed; network and automation carry the value",
+      "source": "Initiative assessment workshop (illustrative)",
+      "kind": "content",
+      "_plan": {
+        "visuals": [
+          {
+            "chosen": "harvey_table",
+            "why": "explicit in spec"
+          }
+        ],
+        "layout": {
+          "id": "comparison_table",
+          "why": "family 05_comparison matches harvey_table",
+          "score": 70.0,
+          "alternatives": [
+            "exhibit_full",
+            "table_full"
+          ]
+        },
+        "fit": {
+          "words": 24
+        }
+      },
+      "_page": 13
+    },
+    {
+      "id": "g14",
+      "section": "K2",
+      "tracker": "Programme",
+      "purpose": "Show the operating process",
+      "headline": "The new order-to-delivery process removes two hand-offs and the manual picking step",
+      "message_type": "sequence",
+      "evidence": [
+        {
+          "claim": "Process redesign"
+        }
+      ],
+      "visual": {
+        "type": "process",
+        "highlight": [
+          2
+        ],
+        "data": {
+          "steps": [
+            {
+              "title": "Order capture",
+              "owner": "Sales ops",
+              "duration": "<1h",
+              "points": [
+                "EDI for top 200 customers",
+                "Minimum order value"
+              ]
+            },
+            {
+              "title": "Allocation",
+              "owner": "Planning",
+              "duration": "2h",
+              "points": [
+                "Automated slotting",
+                "Daily wave plan"
+              ]
+            },
+            {
+              "title": "Automated picking",
+              "owner": "Hub ops",
+              "duration": "4h",
+              "points": [
+                "Goods-to-person in 2 hubs",
+                "Error rate < 0.3%"
+              ]
+            },
+            {
+              "title": "Dispatch",
+              "owner": "Transport",
+              "duration": "1h",
+              "points": [
+                "Dynamic routing",
+                "Fill ≥ 85%"
+              ]
+            },
+            {
+              "title": "Delivery",
+              "owner": "Carriers",
+              "duration": "24h",
+              "points": [
+                "Proof of delivery",
+                "Returns in 48h"
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Process design (illustrative)",
+      "kind": "content",
+      "_plan": {
+        "visuals": [
+          {
+            "chosen": "process",
+            "why": "explicit in spec"
+          }
+        ],
+        "layout": {
+          "id": "process_full",
+          "why": "family 07_process matches process",
+          "score": 70.0,
+          "alternatives": [
+            "exhibit_full"
+          ]
+        },
+        "fit": {
+          "words": 12
+        }
+      },
+      "_page": 14
+    },
+    {
+      "id": "g15",
+      "section": "K2",
+      "tracker": "Programme",
+      "purpose": "Show the customer journey",
+      "headline": "Customers lose most time at order confirmation and delivery booking",
+      "message_type": "flow",
+      "evidence": [
+        {
+          "claim": "Customer interviews n=40"
+        }
+      ],
+      "visual": {
+        "type": "journey",
+        "data": {
+          "stages": [
+            "Order",
+            "Confirmation",
+            "Booking",
+            "Delivery",
+            "Invoice"
+          ],
+          "pain": [
+            1,
+            2
+          ],
+          "lanes": [
+            {
+              "label": "Customer action",
+              "cells": [
+                "Places order by EDI or phone",
+                "Waits for confirmation",
+                "Calls to book a slot",
+                "Receives goods",
+                "Checks invoice"
+              ]
+            },
+            {
+              "label": "Pain points",
+              "pain_lane": true,
+              "cells": [
+                "Phone orders error-prone",
+                "Up to 24h wait",
+                "3 calls on average",
+                "Partial deliveries",
+                "Disputes on 6%"
+              ]
+            },
+            {
+              "label": "Fix",
+              "cells": [
+                "EDI + portal",
+                "Instant confirmation",
+                "Self-service slots",
+                "Pick accuracy",
+                "E-invoice"
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Customer interviews, n=40 (illustrative)",
+      "kind": "content",
+      "_plan": {
+        "visuals": [
+          {
+            "chosen": "journey",
+            "why": "explicit in spec"
+          }
+        ],
+        "layout": {
+          "id": "process_full",
+          "why": "family 07_process matches journey; exhibit needs the full width; same layout as previous slide",
+          "score": 70.0,
+          "alternatives": [
+            "exhibit_full"
+          ]
+        },
+        "fit": {
+          "words": 10
+        }
+      },
+      "_page": 15
+    },
+    {
+      "id": "g16",
+      "section": "K2",
+      "tracker": "Programme",
+      "purpose": "Show organisation",
+      "headline": "A lean transformation office with four initiative owners runs the programme",
+      "message_type": "hierarchy",
+      "evidence": [
+        {
+          "claim": "Governance charter"
+        }
+      ],
+      "visual": {
+        "type": "org_chart",
+        "data": {
+          "root": {
+            "label": "Steering committee",
+            "sub": "CEO (chair), CFO, COO",
+            "children": [
+              {
+                "label": "Transformation office",
+                "sub": "Programme director + 3 FTE",
+                "highlight": true,
+                "children": [
+                  {
+                    "label": "Network",
+                    "sub": "Head of logistics"
+                  },
+                  {
+                    "label": "Automation",
+                    "sub": "Head of hubs"
+                  },
+                  {
+                    "label": "Customer terms",
+                    "sub": "Sales director"
+                  },
+                  {
+                    "label": "Procurement",
+                    "sub": "CPO"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "source": "Governance charter (illustrative)",
+      "kind": "content",
+      "_plan": {
+        "visuals": [
+          {
+            "chosen": "org_chart",
+            "why": "explicit in spec"
+          }
+        ],
+        "layout": {
+          "id": "architecture_full",
+          "why": "family 14_architecture matches org_chart",
+          "score": 70.0,
+          "alternatives": [
+            "exhibit_full",
+            "framework_full"
+          ]
+        },
+        "fit": {
+          "words": 11
+        }
+      },
+      "_page": 16
+    },
+    {
+      "id": "g17",
+      "section": "K2",
+      "tracker": "Programme",
+      "purpose": "Show the target architecture",
+      "headline": "The target architecture adds a WMS and a routing engine on a common data layer",
+      "message_type": "structure",
+      "evidence": [
+        {
+          "claim": "IT design"
+        }
+      ],
+      "visual": {
+        "type": "architecture",
+        "data": {
+          "layers": [
+            {
+              "label": "Channels",
+              "items": [
+                "EDI",
+                {
+                  "label": "Customer portal",
+                  "change": "new"
+                },
+                "Call centre"
+              ]
+            },
+            {
+              "label": "Applications",
+              "emphasis": true,
+              "items": [
+                "ERP",
+                {
+                  "label": "WMS",
+                  "change": "new",
+                  "emphasis": true
+                },
+                {
+                  "label": "Routing engine",
+                  "change": "new"
+                },
+                "TMS"
+              ]
+            },
+            {
+              "label": "Data",
+              "items": [
+                {
+                  "label": "Common data layer",
+                  "change": "changed"
+                },
+                "Reporting"
+              ]
+            },
+            {
+              "label": "Infrastructure",
+              "items": [
+                "Cloud",
+                "Hub automation controls"
+              ]
+            }
+          ],
+          "pillars": [
+            {
+              "label": "Security"
+            }
+          ]
+        }
+      },
+      "source": "IT design (illustrative)",
+      "kind": "content",
+      "_plan": {
+        "visuals": [
+          {
+            "chosen": "architecture",
+            "why": "explicit in spec"
+          }
+        ],
+        "layout": {
+          "id": "architecture_full",
+          "why": "family 14_architecture matches architecture; exhibit needs the full width; same layout as previous slide",
+          "score": 70.0,
+          "alternatives": [
+            "exhibit_full"
+          ]
+        },
+        "fit": {
+          "words": 15
+        }
+      },
+      "_page": 17
+    },
+    {
+      "id": "g18",
+      "section": "K2",
+      "tracker": "Programme",
+      "purpose": "Show the phases",
+      "headline": "Three phases move from quick wins to structural change within 24 months",
+      "message_type": "plan",
+      "evidence": [
+        {
+          "claim": "Programme plan"
+        }
+      ],
+      "columns": [
+        {
+          "title": "Phase 1 · Quick wins",
+          "metric": "€11M",
+          "metric_label": "run-rate by Q4 2026",
+          "points": [
+            "Customer terms reset",
+            "Transport tender",
+            "Overtime controls"
+          ]
+        },
+        {
+          "title": "Phase 2 · Automation",
+          "metric": "€13M",
+          "metric_label": "run-rate by Q3 2027",
+          "emphasis": true,
+          "points": [
+            "Goods-to-person in 2 hubs",
+            "WMS go-live",
+            "Pick accuracy > 99.7%"
+          ]
+        },
+        {
+          "title": "Phase 3 · Network",
+          "metric": "€17M",
+          "metric_label": "run-rate by Q4 2027",
+          "points": [
+            "Close 5 depots",
+            "Two new cross-docks",
+            "Dynamic routing"
+          ]
+        }
+      ],
+      "layout": "roadmap_phases",
+      "source": "Programme plan (illustrative)",
+      "kind": "content",
+      "_plan": {
+        "visuals": [],
+        "layout": {
+          "id": "roadmap_phases",
+          "why": "explicit in spec"
+        },
+        "fit": {
+          "words": 36
+        }
+      },
+      "_page": 18
+    },
+    {
+      "id": "g19",
+      "section": "K2",
+      "tracker": "Programme",
+      "purpose": "Show milestones",
+      "headline": "Five milestones gate the programme; the WMS go-live in Q2 2027 is the critical one",
+      "message_type": "plan",
+      "evidence": [
+        {
+          "claim": "Programme plan"
+        }
+      ],
+      "visual": {
+        "type": "timeline",
+        "highlight": [
+          3
+        ],
+        "data": {
+          "events": [
+            {
+              "date": "Oct 2026",
+              "text": "New customer terms live"
+            },
+            {
+              "date": "Dec 2026",
+              "text": "Transport tender awarded"
+            },
+            {
+              "date": "Mar 2027",
+              "text": "Hub 1 automation commissioned"
+            },
+            {
+              "date": "Jun 2027",
+              "text": "WMS go-live (critical path)"
+            },
+            {
+              "date": "Dec 2027",
+              "text": "Network: 5 depots closed"
+            }
+          ]
+        }
+      },
+      "source": "Programme plan (illustrative)",
+      "kind": "content",
+      "_plan": {
+        "visuals": [
+          {
+            "chosen": "timeline",
+            "why": "explicit in spec"
+          }
+        ],
+        "layout": {
+          "id": "timeline_full",
+          "why": "family 08_timeline matches timeline; exhibit needs the full width",
+          "score": 85.0,
+          "alternatives": [
+            "exhibit_full",
+            "roadmap_full"
+          ]
+        },
+        "fit": {
+          "words": 15
+        }
+      },
+      "_page": 19
+    },
+    {
+      "id": "g20",
+      "kind": "divider",
+      "number": 3,
+      "title": "Value and decision",
+      "_plan": {
+        "visuals": [],
+        "layout": {
+          "id": "divider",
+          "why": "structural slide"
+        }
+      },
+      "_page": 20
+    },
+    {
+      "id": "g21",
+      "section": "K3",
+      "tracker": "Value",
+      "purpose": "Show status of initiatives",
+      "headline": "Three of four initiatives are on track; automation is amber on supplier lead times",
+      "message_type": "status",
+      "evidence": [
+        {
+          "claim": "Programme tracker"
+        }
+      ],
+      "visual": {
+        "type": "scorecard",
+        "title": "Initiative status, September 2026",
+        "columns": [
+          {
+            "label": "Initiative",
+            "width": 3.0
+          },
+          {
+            "label": "Owner"
+          },
+          {
+            "label": "Savings to date (€M)",
+            "kind": "number",
+            "format": {
+              "decimals": 1
+            }
+          },
+          {
+            "label": "Target 2027 (€M)",
+            "kind": "number"
+          },
+          {
+            "label": "Status",
+            "kind": "rag"
+          },
+          {
+            "label": "Comment",
+            "width": 3.6
+          }
+        ],
+        "rows": [
+          [
+            "Customer terms reset",
+            "Sales director",
+            3.2,
+            11,
+            "G",
+            "Signed with 60% of accounts"
+          ],
+          [
+            "Transport procurement",
+            "CPO",
+            2.1,
+            7,
+            "G",
+            "Tender closes in December"
+          ],
+          [
+            "Hub automation",
+            "Head of hubs",
+            0.0,
+            13,
+            "A",
+            "Supplier lead time +6 weeks"
+          ],
+          [
+            "Network redesign",
+            "Head of logistics",
+            0.4,
+            17,
+            "G",
+            "Works council consulted"
+          ],
+          {
+            "cells": [
+              "Total",
+              "",
+              5.7,
+              48,
+              "",
+              ""
+            ],
+            "style": "total"
+          }
+        ]
+      },
+      "source": "Programme tracker (illustrative)",
+      "kind": "content",
+      "_plan": {
+        "visuals": [
+          {
+            "chosen": "scorecard",
+            "why": "explicit in spec"
+          }
+        ],
+        "layout": {
+          "id": "table_full",
+          "why": "family 10_table matches scorecard",
+          "score": 70.0,
+          "alternatives": [
+            "exhibit_full",
+            "comparison_table"
+          ]
+        },
+        "fit": {
+          "words": 14
+        }
+      },
+      "_page": 21
+    },
+    {
+      "id": "g22",
+      "section": "K3",
+      "tracker": "Value",
+      "purpose": "Show KPIs",
+      "headline": "Wave 1 already cut cost per drop by 3% and overtime by a fifth",
+      "message_type": "single_number",
+      "evidence": [
+        {
+          "claim": "KPI tracker"
+        }
+      ],
+      "visual": {
+        "type": "kpi",
+        "data": {
+          "style": "grid",
+          "items": [
+            {
+              "value": "€5.7M",
+              "label": "Savings delivered to date",
+              "delta": "+€2.3M vs plan",
+              "note": "Mostly customer terms and transport rates"
+            },
+            {
+              "value": "€5.63",
+              "label": "Cost per drop, August",
+              "delta": "−3.0% vs 2025",
+              "trend": "down",
+              "good": "down",
+              "note": "First decline in five years"
+            },
+            {
+              "value": "81%",
+              "label": "Truck fill",
+              "delta": "+4pp",
+              "note": "Dynamic routing pilot in Madrid"
+            },
+            {
+              "value": "−21%",
+              "label": "Overtime hours",
+              "delta": "−21% YoY",
+              "trend": "down",
+              "good": "down",
+              "note": "New shift patterns in 3 hubs"
+            }
+          ]
+        }
+      },
+      "source": "KPI tracker (illustrative)",
+      "kind": "content",
+      "_plan": {
+        "visuals": [
+          {
+            "chosen": "kpi",
+            "why": "explicit in spec"
+          }
+        ],
+        "layout": {
+          "id": "kpi_grid",
+          "why": "best available fit",
+          "score": 50.0,
+          "alternatives": []
+        },
+        "fit": {
+          "words": 14
+        }
+      },
+      "_page": 22
+    },
+    {
+      "id": "g23",
+      "section": "K3",
+      "tracker": "Value",
+      "purpose": "Bridge savings",
+      "headline": "€48M run-rate savings by 2027, with €24M secured by wave 1 and 2",
+      "message_type": "change_bridge",
+      "evidence": [
+        {
+          "claim": "Business cases",
+          "values": [
+            11,
+            13,
+            24,
+            17,
+            7,
+            48
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bridge",
+        "title": "Run-rate savings build-up",
+        "unit": "€M",
+        "data": {
+          "steps": [
+            {
+              "label": "Customer terms",
+              "value": 11
+            },
+            {
+              "label": "Hub automation",
+              "value": 13
+            },
+            {
+              "label": "Waves 1-2",
+              "type": "subtotal"
+            },
+            {
+              "label": "Network",
+              "value": 17
+            },
+            {
+              "label": "Procurement",
+              "value": 7
+            },
+            {
+              "label": "Run-rate 2027",
+              "type": "total"
+            }
+          ]
+        }
+      },
+      "commentary": {
+        "points": [
+          "Waves 1-2 secure **half** of the target",
+          "Network carries the largest single block and the most execution risk"
+        ]
+      },
+      "source": "Business cases (illustrative)",
+      "kind": "content",
+      "_plan": {
+        "visuals": [
+          {
+            "chosen": "bridge",
+            "why": "explicit in spec"
+          }
+        ],
+        "layout": {
+          "id": "waterfall_drivers",
+          "why": "family 09_waterfall matches bridge",
+          "score": 75.0,
+          "alternatives": [
+            "exhibit_commentary_right",
+            "exhibit_takeaways_below",
+            "exhibit_commentary_left"
+          ]
+        },
+        "fit": {
+          "commentary": {
+            "fits_base": true,
+            "fits_floor": true,
+            "need_base": 0.74,
+            "need_floor": 0.69,
+            "avail": 5.16,
+            "excess_words": 0
+          },
+          "words": 31
+        }
+      },
+      "_page": 23
+    },
+    {
+      "id": "g24",
+      "section": "K3",
+      "tracker": "Value",
+      "purpose": "Small multiples of savings by quarter",
+      "headline": "Savings ramp up in every initiative, with automation back-loaded to 2027",
+      "message_type": "trend",
+      "evidence": [
+        {
+          "claim": "Savings plan by quarter"
+        }
+      ],
+      "exhibits": [
+        {
+          "type": "column",
+          "title": "Customer terms",
+          "unit": "€M",
+          "format": {
+            "decimals": 1
+          },
+          "data": {
+            "categories": [
+              "Q4 26",
+              "Q2 27",
+              "Q4 27"
+            ],
+            "series": [
+              {
+                "name": "Savings",
+                "values": [
+                  1.5,
+                  2.4,
+                  2.8
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "column",
+          "title": "Hub automation",
+          "unit": "€M",
+          "format": {
+            "decimals": 1
+          },
+          "data": {
+            "categories": [
+              "Q4 26",
+              "Q2 27",
+              "Q4 27"
+            ],
+            "series": [
+              {
+                "name": "Savings",
+                "values": [
+                  0.0,
+                  1.1,
+                  3.3
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "column",
+          "title": "Network",
+          "unit": "€M",
+          "format": {
+            "decimals": 1
+          },
+          "data": {
+            "categories": [
+              "Q4 26",
+              "Q2 27",
+              "Q4 27"
+            ],
+            "series": [
+              {
+                "name": "Savings",
+                "values": [
+                  0.2,
+                  1.8,
+                  4.2
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "source": "Savings plan (illustrative)",
+      "kind": "content",
+      "_plan": {
+        "visuals": [
+          {
+            "chosen": "column",
+            "why": "explicit in spec"
+          },
+          {
+            "chosen": "column",
+            "why": "explicit in spec"
+          },
+          {
+            "chosen": "column",
+            "why": "explicit in spec"
+          }
+        ],
+        "layout": {
+          "id": "exhibit_trio",
+          "why": "best available fit",
+          "score": 50.0,
+          "alternatives": []
+        },
+        "fit": {
+          "words": 11
+        }
+      },
+      "_page": 24
+    },
+    {
+      "id": "g25",
+      "section": "K3",
+      "tracker": "Value",
+      "purpose": "Share of savings",
+      "headline": "Network and automation deliver 63% of the savings",
+      "message_type": "composition",
+      "evidence": [
+        {
+          "claim": "Savings by initiative",
+          "values": [
+            17,
+            13,
+            11,
+            7
+          ]
+        }
+      ],
+      "visual": {
+        "type": "donut",
+        "title": "Run-rate savings by initiative, 2027",
+        "unit": "€M",
+        "highlight": [
+          "Network",
+          "Hub automation"
+        ],
+        "show_values": true,
+        "data": {
+          "categories": [
+            "Network",
+            "Hub automation",
+            "Customer terms",
+            "Procurement"
+          ],
+          "series": [
+            {
+              "name": "Savings",
+              "values": [
+                17,
+                13,
+                11,
+                7
+              ]
+            }
+          ]
+        }
+      },
+      "commentary": {
+        "points": [
+          "Two initiatives carry two thirds of the value",
+          "Both depend on capex released today"
+        ]
+      },
+      "source": "Business cases (illustrative)",
+      "kind": "content",
+      "_plan": {
+        "visuals": [
+          {
+            "chosen": "donut",
+            "why": "explicit in spec"
+          }
+        ],
+        "layout": {
+          "id": "exhibit_commentary_right",
+          "why": "best available fit",
+          "score": 55.0,
+          "alternatives": [
+            "exhibit_takeaways_below",
+            "exhibit_commentary_left"
+          ]
+        },
+        "fit": {
+          "commentary": {
+            "fits_base": true,
+            "fits_floor": true,
+            "need_base": 0.53,
+            "need_floor": 0.5,
+            "avail": 5.16,
+            "excess_words": 0
+          },
+          "words": 22
+        }
+      },
+      "_page": 25
+    },
+    {
+      "id": "g26",
+      "section": "K3",
+      "tracker": "Decision",
+      "kind": "statement",
+      "headline": "Decision requested",
+      "text": "Release €22M of wave 2 funding today to keep the €48M run-rate target for 2027",
+      "support": "Payback in 19 months; each quarter of delay defers about €3.5M of savings.",
+      "_plan": {
+        "visuals": [],
+        "layout": {
+          "id": "statement",
+          "why": "statement slide"
+        }
+      },
+      "_page": 26
+    }
+  ],
+  "_headline_scores": {
+    "g03": 100,
+    "g05": 100,
+    "g06": 100,
+    "g07": 100,
+    "g08": 100,
+    "g09": 100,
+    "g10": 100,
+    "g11": 100,
+    "g13": 95,
+    "g14": 100,
+    "g15": 100,
+    "g16": 100,
+    "g17": 100,
+    "g18": 100,
+    "g19": 100,
+    "g21": 95,
+    "g22": 100,
+    "g23": 100,
+    "g24": 95,
+    "g25": 100
+  },
+  "_profile": {
+    "name": "status",
+    "font_scale": 1.0,
+    "max_words_per_slide": 120,
+    "max_bullets_per_zone": 5,
+    "max_words_per_bullet": 22,
+    "max_table_rows": 12,
+    "max_table_cols": 7,
+    "max_chart_categories": 12,
+    "max_chart_series": 4,
+    "max_shapes_per_slide": 70,
+    "min_whitespace_ratio": 0.3,
+    "headline_max_words": 20,
+    "headline_max_lines": 2,
+    "show_tracker": true,
+    "deck_type": "project_steering_committee"
+  }
+}

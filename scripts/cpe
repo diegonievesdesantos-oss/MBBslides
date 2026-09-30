@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Wrapper: run the engine from a checkout without installing it.
+HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+PYTHONPATH="$HERE/src${PYTHONPATH:+:$PYTHONPATH}" exec python3 -m cpe "$@"

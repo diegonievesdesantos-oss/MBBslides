@@ -1,0 +1,93 @@
+{
+  "id": "kpi_strip_exhibit_commentary",
+  "family": "02_kpi",
+  "name": "KPI strip + exhibit + commentary",
+  "description": "Row of KPIs, exhibit bottom-left, commentary bottom-right.",
+  "when_to_use": "Performance slides: numbers, trend, and why.",
+  "zones": [
+    {
+      "name": "kpis",
+      "role": "kpis",
+      "cols": [
+        1,
+        12
+      ],
+      "top": 0,
+      "bottom": 0.26
+    },
+    {
+      "name": "exhibit",
+      "role": "exhibit",
+      "cols": [
+        1,
+        8
+      ],
+      "top": 0.26,
+      "bottom": 1
+    },
+    {
+      "name": "commentary",
+      "role": "commentary",
+      "cols": [
+        9,
+        12
+      ],
+      "top": 0.26,
+      "bottom": 1,
+      "style": "rule_left"
+    }
+  ],
+  "accepts": {
+    "kpis": [
+      1,
+      1
+    ],
+    "exhibit": [
+      1,
+      1
+    ],
+    "commentary": [
+      0,
+      1
+    ]
+  },
+  "takeaway": "none",
+  "compatible_visuals": [
+    "bar",
+    "column",
+    "stacked_bar",
+    "stacked_column",
+    "stacked_100",
+    "line",
+    "area",
+    "scatter",
+    "bubble",
+    "pie",
+    "donut",
+    "combo",
+    "waterfall",
+    "bridge",
+    "histogram",
+    "slope",
+    "mekko",
+    "heatmap",
+    "table",
+    "harvey_table",
+    "scorecard"
+  ],
+  "capacity": {
+    "kpis": {
+      "items": 5
+    },
+    "commentary": {
+      "bullets": 4,
+      "words": 55
+    }
+  },
+  "hierarchy": [
+    "kpis",
+    "exhibit",
+    "commentary"
+  ],
+  "body_band": "body"
+}

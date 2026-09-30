@@ -1,0 +1,35 @@
+{
+  "id": "waterfall_full",
+  "family": "09_waterfall",
+  "name": "Waterfall full-width",
+  "description": "Waterfall across the full body for many steps.",
+  "when_to_use": "Bridges with 7+ steps.",
+  "zones": [
+    {
+      "name": "exhibit",
+      "role": "exhibit",
+      "cols": [
+        1,
+        12
+      ],
+      "top": 0,
+      "bottom": 1
+    }
+  ],
+  "accepts": {
+    "exhibit": [
+      1,
+      1
+    ]
+  },
+  "takeaway": "optional",
+  "compatible_visuals": [
+    "waterfall",
+    "bridge"
+  ],
+  "capacity": {},
+  "hierarchy": [
+    "exhibit"
+  ],
+  "body_band": "body"
+}

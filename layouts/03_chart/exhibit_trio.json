@@ -1,0 +1,76 @@
+{
+  "id": "exhibit_trio",
+  "family": "03_chart",
+  "name": "Three small multiples",
+  "description": "Three equal exhibits of the same type.",
+  "when_to_use": "Same metric across three entities/segments (small multiples).",
+  "zones": [
+    {
+      "name": "exhibit",
+      "role": "exhibit",
+      "cols": [
+        1,
+        4
+      ],
+      "top": 0,
+      "bottom": 1
+    },
+    {
+      "name": "exhibit_2",
+      "role": "exhibit",
+      "cols": [
+        5,
+        8
+      ],
+      "top": 0,
+      "bottom": 1
+    },
+    {
+      "name": "exhibit_3",
+      "role": "exhibit",
+      "cols": [
+        9,
+        12
+      ],
+      "top": 0,
+      "bottom": 1
+    }
+  ],
+  "accepts": {
+    "exhibit": [
+      3,
+      3
+    ]
+  },
+  "takeaway": "optional",
+  "compatible_visuals": [
+    "bar",
+    "column",
+    "stacked_bar",
+    "stacked_column",
+    "stacked_100",
+    "line",
+    "area",
+    "scatter",
+    "bubble",
+    "pie",
+    "donut",
+    "combo",
+    "waterfall",
+    "bridge",
+    "histogram",
+    "slope",
+    "mekko",
+    "heatmap",
+    "table",
+    "harvey_table",
+    "scorecard"
+  ],
+  "capacity": {},
+  "hierarchy": [
+    "exhibit",
+    "exhibit_2",
+    "exhibit_3"
+  ],
+  "body_band": "body"
+}

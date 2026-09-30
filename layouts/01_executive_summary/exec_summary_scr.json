@@ -1,0 +1,39 @@
+{
+  "id": "exec_summary_scr",
+  "family": "01_executive_summary",
+  "name": "Executive summary \u2014 situation / complication / resolution",
+  "description": "Three labelled horizontal bands carrying the SCR logic of the deck.",
+  "when_to_use": "When the audience needs the problem framed before the answer (board, steering).",
+  "zones": [
+    {
+      "name": "statements",
+      "role": "statements",
+      "cols": [
+        1,
+        12
+      ],
+      "top": 0,
+      "bottom": 1
+    }
+  ],
+  "accepts": {
+    "statements": [
+      1,
+      1
+    ]
+  },
+  "takeaway": "none",
+  "compatible_visuals": [
+    "statements"
+  ],
+  "capacity": {
+    "statements": {
+      "items": 3,
+      "words": 130
+    }
+  },
+  "hierarchy": [
+    "statements"
+  ],
+  "body_band": "body"
+}

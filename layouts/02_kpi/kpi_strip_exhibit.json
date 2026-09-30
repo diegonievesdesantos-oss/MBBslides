@@ -1,0 +1,73 @@
+{
+  "id": "kpi_strip_exhibit",
+  "family": "02_kpi",
+  "name": "KPI strip + exhibit",
+  "description": "Row of 3-5 KPIs above one full-width exhibit.",
+  "when_to_use": "A few numbers set context and one chart carries the proof.",
+  "zones": [
+    {
+      "name": "kpis",
+      "role": "kpis",
+      "cols": [
+        1,
+        12
+      ],
+      "top": 0,
+      "bottom": 0.26
+    },
+    {
+      "name": "exhibit",
+      "role": "exhibit",
+      "cols": [
+        1,
+        12
+      ],
+      "top": 0.26,
+      "bottom": 1
+    }
+  ],
+  "accepts": {
+    "kpis": [
+      1,
+      1
+    ],
+    "exhibit": [
+      1,
+      1
+    ]
+  },
+  "takeaway": "optional",
+  "compatible_visuals": [
+    "bar",
+    "column",
+    "stacked_bar",
+    "stacked_column",
+    "stacked_100",
+    "line",
+    "area",
+    "scatter",
+    "bubble",
+    "pie",
+    "donut",
+    "combo",
+    "waterfall",
+    "bridge",
+    "histogram",
+    "slope",
+    "mekko",
+    "heatmap",
+    "table",
+    "harvey_table",
+    "scorecard"
+  ],
+  "capacity": {
+    "kpis": {
+      "items": 5
+    }
+  },
+  "hierarchy": [
+    "kpis",
+    "exhibit"
+  ],
+  "body_band": "body"
+}

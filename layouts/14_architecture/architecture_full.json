@@ -1,0 +1,37 @@
+{
+  "id": "architecture_full",
+  "family": "14_architecture",
+  "name": "Operating model / architecture",
+  "description": "Layered or grid model across the full body.",
+  "when_to_use": "Target operating model, capability map, system architecture.",
+  "zones": [
+    {
+      "name": "exhibit",
+      "role": "exhibit",
+      "cols": [
+        1,
+        12
+      ],
+      "top": 0,
+      "bottom": 1
+    }
+  ],
+  "accepts": {
+    "exhibit": [
+      1,
+      1
+    ]
+  },
+  "takeaway": "optional",
+  "compatible_visuals": [
+    "layers",
+    "operating_model",
+    "architecture",
+    "org_chart"
+  ],
+  "capacity": {},
+  "hierarchy": [
+    "exhibit"
+  ],
+  "body_band": "body"
+}

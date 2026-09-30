@@ -1,0 +1,61 @@
+{
+  "id": "roadmap_phases",
+  "family": "15_roadmap",
+  "name": "Phased plan",
+  "description": "Phases as columns with objectives/activities.",
+  "when_to_use": "Phased programmes where phases matter more than dates.",
+  "zones": [
+    {
+      "name": "col_1",
+      "role": "column",
+      "cols": [
+        1,
+        4
+      ],
+      "top": 0,
+      "bottom": 1
+    },
+    {
+      "name": "col_2",
+      "role": "column",
+      "cols": [
+        5,
+        8
+      ],
+      "top": 0,
+      "bottom": 1
+    },
+    {
+      "name": "col_3",
+      "role": "column",
+      "cols": [
+        9,
+        12
+      ],
+      "top": 0,
+      "bottom": 1
+    }
+  ],
+  "accepts": {
+    "column": [
+      3,
+      3
+    ]
+  },
+  "takeaway": "optional",
+  "compatible_visuals": [
+    "text_columns"
+  ],
+  "capacity": {
+    "column": {
+      "bullets": 4,
+      "words": 50
+    }
+  },
+  "hierarchy": [
+    "col_1",
+    "col_2",
+    "col_3"
+  ],
+  "body_band": "body"
+}

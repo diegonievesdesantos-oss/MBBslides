@@ -1,0 +1,39 @@
+{
+  "id": "exec_summary_statements",
+  "family": "01_executive_summary",
+  "name": "Executive summary \u2014 numbered statements",
+  "description": "Rows of bold conclusion + supporting evidence, numbered. The deck in one page.",
+  "when_to_use": "Default executive summary: 3-5 key-line messages, each with 1-2 lines of proof.",
+  "zones": [
+    {
+      "name": "statements",
+      "role": "statements",
+      "cols": [
+        1,
+        12
+      ],
+      "top": 0,
+      "bottom": 1
+    }
+  ],
+  "accepts": {
+    "statements": [
+      1,
+      1
+    ]
+  },
+  "takeaway": "none",
+  "compatible_visuals": [
+    "statements"
+  ],
+  "capacity": {
+    "statements": {
+      "items": 5,
+      "words": 150
+    }
+  },
+  "hierarchy": [
+    "statements"
+  ],
+  "body_band": "body"
+}

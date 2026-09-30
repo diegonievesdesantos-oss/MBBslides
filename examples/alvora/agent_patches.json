@@ -1,0 +1,35 @@
+[
+  {
+    "op": "set",
+    "slide": "s03",
+    "path": "commentary.points",
+    "value": [
+      "**Discount** grows 7.8% a year on price-sensitive households",
+      "**Online** is small but compounding at 14% a year",
+      "**Supermarkets** grow at 2%, below food inflation",
+      "**Hypermarkets** shrink as trips move to proximity formats"
+    ],
+    "reason": "CONTENT_OVER_CAPACITY: keep one line per channel"
+  },
+  {
+    "op": "set",
+    "slide": "s07",
+    "path": "headline",
+    "value": "The erosion concentrates in fresh and food-to-go, above all in Madrid and Catalonia",
+    "reason": "HEADLINE_TOPIC: state the conclusion"
+  },
+  {
+    "op": "set",
+    "slide": "s10",
+    "path": "headline",
+    "value": "A plan in three waves over 24 months secures quick margin wins before scaling the banner",
+    "reason": "RENDER_HEADLINE_LINES: cut to the claim"
+  },
+  {
+    "op": "set",
+    "slide": "s12",
+    "path": "source",
+    "value": "Programme plan (illustrative)",
+    "reason": "SOURCE_MISSING"
+  }
+]

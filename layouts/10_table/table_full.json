@@ -1,0 +1,37 @@
+{
+  "id": "table_full",
+  "family": "10_table",
+  "name": "Table exhibit",
+  "description": "Full-width formatted table (not an Excel dump).",
+  "when_to_use": "Precise values matter; \u226410 rows, \u22647 columns.",
+  "zones": [
+    {
+      "name": "exhibit",
+      "role": "exhibit",
+      "cols": [
+        1,
+        12
+      ],
+      "top": 0,
+      "bottom": 1
+    }
+  ],
+  "accepts": {
+    "exhibit": [
+      1,
+      1
+    ]
+  },
+  "takeaway": "optional",
+  "compatible_visuals": [
+    "table",
+    "heatmap",
+    "harvey_table",
+    "scorecard"
+  ],
+  "capacity": {},
+  "hierarchy": [
+    "exhibit"
+  ],
+  "body_band": "body"
+}

@@ -1,0 +1,39 @@
+{
+  "id": "text_bullets",
+  "family": "16_full_visual",
+  "name": "Text slide",
+  "description": "Structured text (bold lead-ins + support). Use rarely.",
+  "when_to_use": "Qualitative argument with no data; keep \u22645 points.",
+  "zones": [
+    {
+      "name": "text",
+      "role": "commentary",
+      "cols": [
+        1,
+        9
+      ],
+      "top": 0,
+      "bottom": 1
+    }
+  ],
+  "accepts": {
+    "commentary": [
+      1,
+      1
+    ]
+  },
+  "takeaway": "optional",
+  "compatible_visuals": [
+    "bullets"
+  ],
+  "capacity": {
+    "commentary": {
+      "bullets": 5,
+      "words": 110
+    }
+  },
+  "hierarchy": [
+    "text"
+  ],
+  "body_band": "body"
+}

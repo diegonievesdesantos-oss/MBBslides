@@ -1,0 +1,191 @@
+{
+  "passed": true,
+  "deck_score": 99.7,
+  "counts": {
+    "error": 0,
+    "warning": 0,
+    "info": 7
+  },
+  "blocking": [],
+  "slide_scores": {
+    "g01": 100,
+    "g02": 100,
+    "g03": 100,
+    "g04": 100,
+    "g05": 100,
+    "g06": 100,
+    "g07": 100,
+    "g08": 100,
+    "g09": 100,
+    "g10": 99,
+    "g11": 100,
+    "g12": 100,
+    "g13": 99,
+    "g14": 99,
+    "g15": 100,
+    "g16": 99,
+    "g17": 100,
+    "g18": 100,
+    "g19": 100,
+    "g20": 100,
+    "g21": 99,
+    "g22": 100,
+    "g23": 100,
+    "g24": 99,
+    "g25": 99,
+    "g26": 100
+  },
+  "issues": [
+    {
+      "level": "info",
+      "code": "VIS_OFF_MESSAGE",
+      "message": "'stacked_100' is not a usual encoding for a composition message; consider 'bar' (sorted bars compare parts more precisely than angles)",
+      "slide": "g10",
+      "exhibit_path": "visual"
+    },
+    {
+      "level": "info",
+      "code": "HEADLINE_UNQUANTIFIED",
+      "message": "Data slide without a number in the headline; the strongest action titles quantify",
+      "slide": "g13"
+    },
+    {
+      "level": "info",
+      "code": "HEADLINE_UNQUANTIFIED",
+      "message": "Data slide without a number in the headline; the strongest action titles quantify",
+      "slide": "g21"
+    },
+    {
+      "level": "info",
+      "code": "HEADLINE_UNQUANTIFIED",
+      "message": "Data slide without a number in the headline; the strongest action titles quantify",
+      "slide": "g24"
+    },
+    {
+      "level": "info",
+      "code": "VIS_BETTER_OPTION",
+      "message": "'bar' fits a composition message better than 'donut' (sorted bars compare parts more precisely than angles)",
+      "slide": "g25",
+      "exhibit_path": "visual"
+    },
+    {
+      "level": "info",
+      "code": "RENDER_UNBALANCED",
+      "message": "16/32 body cells empty next to dense content: check balance",
+      "slide": "g14"
+    },
+    {
+      "level": "info",
+      "code": "RENDER_UNBALANCED",
+      "message": "20/32 body cells empty next to dense content: check balance",
+      "slide": "g16"
+    }
+  ],
+  "exempted": [],
+  "render_metrics": {
+    "g03": {
+      "ink_coverage": 0.026
+    },
+    "g05": {
+      "ink_coverage": 0.243
+    },
+    "g06": {
+      "ink_coverage": 0.099
+    },
+    "g07": {
+      "ink_coverage": 0.025
+    },
+    "g08": {
+      "ink_coverage": 0.248
+    },
+    "g09": {
+      "ink_coverage": 0.191
+    },
+    "g10": {
+      "ink_coverage": 0.319
+    },
+    "g11": {
+      "ink_coverage": 0.021
+    },
+    "g13": {
+      "ink_coverage": 0.044
+    },
+    "g14": {
+      "ink_coverage": 0.042
+    },
+    "g15": {
+      "ink_coverage": 0.09
+    },
+    "g16": {
+      "ink_coverage": 0.079
+    },
+    "g17": {
+      "ink_coverage": 0.243
+    },
+    "g18": {
+      "ink_coverage": 0.064
+    },
+    "g19": {
+      "ink_coverage": 0.018
+    },
+    "g21": {
+      "ink_coverage": 0.031
+    },
+    "g22": {
+      "ink_coverage": 0.029
+    },
+    "g23": {
+      "ink_coverage": 0.161
+    },
+    "g24": {
+      "ink_coverage": 0.262
+    },
+    "g25": {
+      "ink_coverage": 0.172
+    }
+  },
+  "iterations": [
+    {
+      "iteration": 1,
+      "errors": 0,
+      "warnings": 0,
+      "score": 99.7,
+      "patches": [],
+      "seconds": 5.0
+    }
+  ],
+  "pending_actions": [],
+  "artifacts": {
+    "pptx": "examples/gallery/output/deck.pptx",
+    "pdf": "/home/user/Finea/consulting-presentation-engine/examples/gallery/output/deck.pdf",
+    "pngs": [
+      "examples/gallery/output/renders/slide-01.png",
+      "examples/gallery/output/renders/slide-02.png",
+      "examples/gallery/output/renders/slide-03.png",
+      "examples/gallery/output/renders/slide-04.png",
+      "examples/gallery/output/renders/slide-05.png",
+      "examples/gallery/output/renders/slide-06.png",
+      "examples/gallery/output/renders/slide-07.png",
+      "examples/gallery/output/renders/slide-08.png",
+      "examples/gallery/output/renders/slide-09.png",
+      "examples/gallery/output/renders/slide-10.png",
+      "examples/gallery/output/renders/slide-11.png",
+      "examples/gallery/output/renders/slide-12.png",
+      "examples/gallery/output/renders/slide-13.png",
+      "examples/gallery/output/renders/slide-14.png",
+      "examples/gallery/output/renders/slide-15.png",
+      "examples/gallery/output/renders/slide-16.png",
+      "examples/gallery/output/renders/slide-17.png",
+      "examples/gallery/output/renders/slide-18.png",
+      "examples/gallery/output/renders/slide-19.png",
+      "examples/gallery/output/renders/slide-20.png",
+      "examples/gallery/output/renders/slide-21.png",
+      "examples/gallery/output/renders/slide-22.png",
+      "examples/gallery/output/renders/slide-23.png",
+      "examples/gallery/output/renders/slide-24.png",
+      "examples/gallery/output/renders/slide-25.png",
+      "examples/gallery/output/renders/slide-26.png"
+    ],
+    "contact_sheet": "examples/gallery/output/contact_sheet.png"
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "id": "exhibit_pair_commentary",
+  "family": "04_chart_commentary",
+  "name": "Two exhibits + commentary",
+  "description": "Two exhibits (4+4 cols) and a commentary column.",
+  "when_to_use": "Two related views plus the synthesis.",
+  "zones": [
+    {
+      "name": "exhibit",
+      "role": "exhibit",
+      "cols": [
+        1,
+        4
+      ],
+      "top": 0,
+      "bottom": 1
+    },
+    {
+      "name": "exhibit_2",
+      "role": "exhibit",
+      "cols": [
+        5,
+        8
+      ],
+      "top": 0,
+      "bottom": 1
+    },
+    {
+      "name": "commentary",
+      "role": "commentary",
+      "cols": [
+        9,
+        12
+      ],
+      "top": 0,
+      "bottom": 1,
+      "style": "rule_left"
+    }
+  ],
+  "accepts": {
+    "exhibit": [
+      2,
+      2
+    ],
+    "commentary": [
+      1,
+      1
+    ]
+  },
+  "takeaway": "optional",
+  "compatible_visuals": [
+    "bar",
+    "column",
+    "stacked_bar",
+    "stacked_column",
+    "stacked_100",
+    "line",
+    "area",
+    "scatter",
+    "bubble",
+    "pie",
+    "donut",
+    "combo",
+    "waterfall",
+    "bridge",
+    "histogram",
+    "slope",
+    "mekko",
+    "heatmap",
+    "table",
+    "harvey_table",
+    "scorecard"
+  ],
+  "capacity": {
+    "commentary": {
+      "bullets": 4,
+      "words": 65
+    }
+  },
+  "hierarchy": [
+    "exhibit",
+    "exhibit_2",
+    "commentary"
+  ],
+  "body_band": "body"
+}

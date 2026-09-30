@@ -1,0 +1,62 @@
+{
+  "id": "columns_3",
+  "family": "05_comparison",
+  "name": "Three-column comparison",
+  "description": "Three parallel columns with headers.",
+  "when_to_use": "Three options / pillars / segments described on the same dimensions.",
+  "zones": [
+    {
+      "name": "col_1",
+      "role": "column",
+      "cols": [
+        1,
+        4
+      ],
+      "top": 0,
+      "bottom": 1
+    },
+    {
+      "name": "col_2",
+      "role": "column",
+      "cols": [
+        5,
+        8
+      ],
+      "top": 0,
+      "bottom": 1
+    },
+    {
+      "name": "col_3",
+      "role": "column",
+      "cols": [
+        9,
+        12
+      ],
+      "top": 0,
+      "bottom": 1
+    }
+  ],
+  "accepts": {
+    "column": [
+      3,
+      3
+    ]
+  },
+  "takeaway": "optional",
+  "compatible_visuals": [
+    "text_columns",
+    "comparison"
+  ],
+  "capacity": {
+    "column": {
+      "bullets": 4,
+      "words": 50
+    }
+  },
+  "hierarchy": [
+    "col_1",
+    "col_2",
+    "col_3"
+  ],
+  "body_band": "body"
+}

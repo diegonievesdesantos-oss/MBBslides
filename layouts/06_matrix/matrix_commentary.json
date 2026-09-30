@@ -1,0 +1,58 @@
+{
+  "id": "matrix_commentary",
+  "family": "06_matrix",
+  "name": "2x2 matrix + commentary",
+  "description": "Square-ish matrix (7 cols) with quadrant labels, commentary right.",
+  "when_to_use": "Positioning items on two strategic dimensions (attractiveness \u00d7 ability to win).",
+  "zones": [
+    {
+      "name": "exhibit",
+      "role": "exhibit",
+      "cols": [
+        1,
+        7
+      ],
+      "top": 0,
+      "bottom": 1
+    },
+    {
+      "name": "commentary",
+      "role": "commentary",
+      "cols": [
+        8,
+        12
+      ],
+      "top": 0,
+      "bottom": 1,
+      "style": "rule_left"
+    }
+  ],
+  "accepts": {
+    "exhibit": [
+      1,
+      1
+    ],
+    "commentary": [
+      1,
+      1
+    ]
+  },
+  "takeaway": "optional",
+  "compatible_visuals": [
+    "matrix_2x2",
+    "portfolio",
+    "scatter",
+    "bubble"
+  ],
+  "capacity": {
+    "commentary": {
+      "bullets": 5,
+      "words": 90
+    }
+  },
+  "hierarchy": [
+    "exhibit",
+    "commentary"
+  ],
+  "body_band": "body"
+}

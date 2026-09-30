@@ -1,0 +1,32 @@
+{
+  "id": "divider",
+  "family": "16_full_visual",
+  "name": "Section divider",
+  "description": "Section number and title.",
+  "when_to_use": "Opens a section of the storyline.",
+  "zones": [
+    {
+      "name": "text",
+      "role": "divider",
+      "cols": [
+        1,
+        10
+      ],
+      "top": 0.3,
+      "bottom": 0.8
+    }
+  ],
+  "accepts": {
+    "divider": [
+      1,
+      1
+    ]
+  },
+  "takeaway": "none",
+  "compatible_visuals": [],
+  "capacity": {},
+  "hierarchy": [
+    "text"
+  ],
+  "body_band": "full"
+}

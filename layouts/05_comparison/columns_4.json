@@ -1,0 +1,72 @@
+{
+  "id": "columns_4",
+  "family": "05_comparison",
+  "name": "Four-column comparison",
+  "description": "Four parallel columns.",
+  "when_to_use": "Four pillars / levers. Keep each to 3 short bullets.",
+  "zones": [
+    {
+      "name": "col_1",
+      "role": "column",
+      "cols": [
+        1,
+        3
+      ],
+      "top": 0,
+      "bottom": 1
+    },
+    {
+      "name": "col_2",
+      "role": "column",
+      "cols": [
+        4,
+        6
+      ],
+      "top": 0,
+      "bottom": 1
+    },
+    {
+      "name": "col_3",
+      "role": "column",
+      "cols": [
+        7,
+        9
+      ],
+      "top": 0,
+      "bottom": 1
+    },
+    {
+      "name": "col_4",
+      "role": "column",
+      "cols": [
+        10,
+        12
+      ],
+      "top": 0,
+      "bottom": 1
+    }
+  ],
+  "accepts": {
+    "column": [
+      4,
+      4
+    ]
+  },
+  "takeaway": "optional",
+  "compatible_visuals": [
+    "text_columns"
+  ],
+  "capacity": {
+    "column": {
+      "bullets": 3,
+      "words": 35
+    }
+  },
+  "hierarchy": [
+    "col_1",
+    "col_2",
+    "col_3",
+    "col_4"
+  ],
+  "body_band": "body"
+}

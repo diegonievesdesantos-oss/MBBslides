@@ -1,0 +1,58 @@
+{
+  "id": "exec_summary_kpi",
+  "family": "01_executive_summary",
+  "name": "Executive summary with KPI strip",
+  "description": "3-4 headline numbers on top, numbered statements below.",
+  "when_to_use": "Business reviews / updates where 3-4 numbers frame the story.",
+  "zones": [
+    {
+      "name": "kpis",
+      "role": "kpis",
+      "cols": [
+        1,
+        12
+      ],
+      "top": 0,
+      "bottom": 0.24
+    },
+    {
+      "name": "statements",
+      "role": "statements",
+      "cols": [
+        1,
+        12
+      ],
+      "top": 0.24,
+      "bottom": 1
+    }
+  ],
+  "accepts": {
+    "kpis": [
+      1,
+      1
+    ],
+    "statements": [
+      1,
+      1
+    ]
+  },
+  "takeaway": "none",
+  "compatible_visuals": [
+    "kpi",
+    "statements"
+  ],
+  "capacity": {
+    "kpis": {
+      "items": 4
+    },
+    "statements": {
+      "items": 4,
+      "words": 110
+    }
+  },
+  "hierarchy": [
+    "kpis",
+    "statements"
+  ],
+  "body_band": "body"
+}

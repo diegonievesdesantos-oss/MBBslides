@@ -1,0 +1,32 @@
+{
+  "id": "agenda",
+  "family": "16_full_visual",
+  "name": "Agenda",
+  "description": "Numbered sections; current section highlighted when used as tracker.",
+  "when_to_use": "After the exec summary in decks with \u22653 sections.",
+  "zones": [
+    {
+      "name": "text",
+      "role": "agenda",
+      "cols": [
+        2,
+        10
+      ],
+      "top": 0,
+      "bottom": 1
+    }
+  ],
+  "accepts": {
+    "agenda": [
+      1,
+      1
+    ]
+  },
+  "takeaway": "none",
+  "compatible_visuals": [],
+  "capacity": {},
+  "hierarchy": [
+    "text"
+  ],
+  "body_band": "body"
+}

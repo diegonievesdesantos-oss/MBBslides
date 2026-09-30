@@ -1,0 +1,60 @@
+{
+  "id": "segmentation_commentary",
+  "family": "12_segmentation",
+  "name": "Segmentation + commentary",
+  "description": "Mekko / segment chart (8 cols) + commentary.",
+  "when_to_use": "Segments that need a verdict (where to play).",
+  "zones": [
+    {
+      "name": "exhibit",
+      "role": "exhibit",
+      "cols": [
+        1,
+        8
+      ],
+      "top": 0,
+      "bottom": 1
+    },
+    {
+      "name": "commentary",
+      "role": "commentary",
+      "cols": [
+        9,
+        12
+      ],
+      "top": 0,
+      "bottom": 1,
+      "style": "rule_left"
+    }
+  ],
+  "accepts": {
+    "exhibit": [
+      1,
+      1
+    ],
+    "commentary": [
+      1,
+      1
+    ]
+  },
+  "takeaway": "optional",
+  "compatible_visuals": [
+    "mekko",
+    "segmentation",
+    "stacked_100",
+    "heatmap",
+    "table",
+    "bubble"
+  ],
+  "capacity": {
+    "commentary": {
+      "bullets": 4,
+      "words": 70
+    }
+  },
+  "hierarchy": [
+    "exhibit",
+    "commentary"
+  ],
+  "body_band": "body"
+}

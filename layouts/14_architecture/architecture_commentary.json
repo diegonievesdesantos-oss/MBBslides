@@ -1,0 +1,58 @@
+{
+  "id": "architecture_commentary",
+  "family": "14_architecture",
+  "name": "Operating model + commentary",
+  "description": "Model (8 cols) + design principles/changes.",
+  "when_to_use": "When the model needs 'what changes' commentary.",
+  "zones": [
+    {
+      "name": "exhibit",
+      "role": "exhibit",
+      "cols": [
+        1,
+        8
+      ],
+      "top": 0,
+      "bottom": 1
+    },
+    {
+      "name": "commentary",
+      "role": "commentary",
+      "cols": [
+        9,
+        12
+      ],
+      "top": 0,
+      "bottom": 1,
+      "style": "rule_left"
+    }
+  ],
+  "accepts": {
+    "exhibit": [
+      1,
+      1
+    ],
+    "commentary": [
+      1,
+      1
+    ]
+  },
+  "takeaway": "optional",
+  "compatible_visuals": [
+    "layers",
+    "operating_model",
+    "architecture",
+    "org_chart"
+  ],
+  "capacity": {
+    "commentary": {
+      "bullets": 4,
+      "words": 70
+    }
+  },
+  "hierarchy": [
+    "exhibit",
+    "commentary"
+  ],
+  "body_band": "body"
+}

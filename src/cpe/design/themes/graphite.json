@@ -1,0 +1,26 @@
+{
+  "name": "graphite",
+  "description": "Charcoal + green highlight. Suits PE / investment memos and financial analysis.",
+  "font_latin": "Arial",
+  "font_fallback_file": "LiberationSans",
+  "colors": {
+    "primary": "1F2A30",
+    "secondary": "4A6572",
+    "highlight": "1B8A5A",
+    "positive": "1B8A5A",
+    "negative": "B03A2E",
+    "warning": "C98A0B",
+    "neutral": "8E989E",
+    "muted": "CDD3D6",
+    "faint": "EFF2F3",
+    "background": "FFFFFF",
+    "surface": "F3F5F6",
+    "text": "1F2A30",
+    "text_muted": "5F6B71",
+    "rule": "B9C0C4",
+    "gridline": "E4E8EA"
+  },
+  "series": ["1F2A30", "4A6572", "93A7B1", "CDD3D6", "1B8A5A", "5F6B71"],
+  "sequential": ["EEF4F1", "C4DDD0", "86BBA0", "3E9A6E", "0F5C3A"],
+  "diverging": ["B03A2E", "E3A59E", "F3F5F6", "93C9AE", "1B8A5A"]
+}

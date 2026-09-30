@@ -1,0 +1,51 @@
+{
+  "id": "columns_2",
+  "family": "05_comparison",
+  "name": "Two-column comparison",
+  "description": "Two parallel columns with headers (options, before/after, us vs them).",
+  "when_to_use": "Contrasting two options or states on the same dimensions.",
+  "zones": [
+    {
+      "name": "col_1",
+      "role": "column",
+      "cols": [
+        1,
+        6
+      ],
+      "top": 0,
+      "bottom": 1
+    },
+    {
+      "name": "col_2",
+      "role": "column",
+      "cols": [
+        7,
+        12
+      ],
+      "top": 0,
+      "bottom": 1
+    }
+  ],
+  "accepts": {
+    "column": [
+      2,
+      2
+    ]
+  },
+  "takeaway": "optional",
+  "compatible_visuals": [
+    "text_columns",
+    "comparison"
+  ],
+  "capacity": {
+    "column": {
+      "bullets": 5,
+      "words": 70
+    }
+  },
+  "hierarchy": [
+    "col_1",
+    "col_2"
+  ],
+  "body_band": "body"
+}

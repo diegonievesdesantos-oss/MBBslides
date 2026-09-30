@@ -1,0 +1,94 @@
+{
+  "id": "exhibit_takeaways_below",
+  "family": "04_chart_commentary",
+  "name": "Exhibit + takeaways below",
+  "description": "Full-width exhibit, 2-4 takeaway columns underneath.",
+  "when_to_use": "Wide charts (long time series, many categories) that need the width.",
+  "zones": [
+    {
+      "name": "exhibit",
+      "role": "exhibit",
+      "cols": [
+        1,
+        12
+      ],
+      "top": 0,
+      "bottom": 0.7
+    },
+    {
+      "name": "commentary",
+      "role": "commentary",
+      "cols": [
+        1,
+        12
+      ],
+      "top": 0.7,
+      "bottom": 1,
+      "style": "columns"
+    }
+  ],
+  "accepts": {
+    "exhibit": [
+      1,
+      1
+    ],
+    "commentary": [
+      1,
+      1
+    ]
+  },
+  "takeaway": "none",
+  "compatible_visuals": [
+    "bar",
+    "column",
+    "stacked_bar",
+    "stacked_column",
+    "stacked_100",
+    "line",
+    "area",
+    "scatter",
+    "bubble",
+    "pie",
+    "donut",
+    "combo",
+    "waterfall",
+    "bridge",
+    "histogram",
+    "slope",
+    "mekko",
+    "heatmap",
+    "table",
+    "harvey_table",
+    "scorecard",
+    "matrix_2x2",
+    "portfolio",
+    "process",
+    "value_chain",
+    "timeline",
+    "gantt",
+    "roadmap",
+    "tree",
+    "driver_tree",
+    "org_chart",
+    "funnel",
+    "pyramid",
+    "tile_map",
+    "flow",
+    "journey",
+    "layers",
+    "operating_model",
+    "architecture",
+    "segmentation"
+  ],
+  "capacity": {
+    "commentary": {
+      "bullets": 4,
+      "words": 60
+    }
+  },
+  "hierarchy": [
+    "exhibit",
+    "commentary"
+  ],
+  "body_band": "body"
+}

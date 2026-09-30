@@ -1,0 +1,1394 @@
+[
+  {
+    "slide_id": "s01",
+    "layout": "cover",
+    "zones": {},
+    "fits": [
+      {
+        "zone": "text",
+        "role": "cover_title",
+        "what": "cover_title",
+        "base_pt": 36.0,
+        "chosen_pt": 36.0,
+        "need_h": 0.585,
+        "box_h": 1.9,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "text",
+        "role": "cover_subtitle",
+        "what": "cover_subtitle",
+        "base_pt": 16.0,
+        "chosen_pt": 16.0,
+        "need_h": 0.26,
+        "box_h": 0.9,
+        "lines": 1,
+        "overflow": false
+      }
+    ],
+    "warnings": [],
+    "exhibits": []
+  },
+  {
+    "slide_id": "s02",
+    "layout": "exec_summary_statements",
+    "zones": {
+      "statements": {
+        "role": "statements",
+        "x": 0.55,
+        "y": 1.62,
+        "w": 12.233,
+        "h": 5.16
+      }
+    },
+    "fits": [
+      {
+        "zone": "chrome",
+        "role": "headline",
+        "what": "headline",
+        "base_pt": 22.0,
+        "chosen_pt": 22.0,
+        "need_h": 0.715,
+        "box_h": 0.86,
+        "lines": 2,
+        "overflow": false
+      },
+      {
+        "zone": "chrome",
+        "role": "source",
+        "what": "footer",
+        "base_pt": 8.0,
+        "chosen_pt": 8.0,
+        "need_h": 0.13,
+        "box_h": 0.44,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "statements",
+        "role": "body_strong",
+        "what": "statement 1 claim",
+        "base_pt": 14,
+        "chosen_pt": 14,
+        "need_h": 0.455,
+        "box_h": 1.097,
+        "lines": 2,
+        "overflow": false
+      },
+      {
+        "zone": "statements",
+        "role": "body",
+        "what": "statement 1 support",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.39,
+        "box_h": 1.097,
+        "lines": 2,
+        "overflow": false
+      },
+      {
+        "zone": "statements",
+        "role": "body_strong",
+        "what": "statement 2 claim",
+        "base_pt": 14,
+        "chosen_pt": 14,
+        "need_h": 0.455,
+        "box_h": 1.097,
+        "lines": 2,
+        "overflow": false
+      },
+      {
+        "zone": "statements",
+        "role": "body",
+        "what": "statement 2 support",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.195,
+        "box_h": 1.097,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "statements",
+        "role": "body_strong",
+        "what": "statement 3 claim",
+        "base_pt": 14,
+        "chosen_pt": 14,
+        "need_h": 0.455,
+        "box_h": 1.097,
+        "lines": 2,
+        "overflow": false
+      },
+      {
+        "zone": "statements",
+        "role": "body",
+        "what": "statement 3 support",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.39,
+        "box_h": 1.097,
+        "lines": 2,
+        "overflow": false
+      },
+      {
+        "zone": "statements",
+        "role": "body_strong",
+        "what": "statement 4 claim",
+        "base_pt": 14,
+        "chosen_pt": 14,
+        "need_h": 0.455,
+        "box_h": 1.097,
+        "lines": 2,
+        "overflow": false
+      },
+      {
+        "zone": "statements",
+        "role": "body",
+        "what": "statement 4 support",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.39,
+        "box_h": 1.097,
+        "lines": 2,
+        "overflow": false
+      }
+    ],
+    "warnings": [],
+    "exhibits": []
+  },
+  {
+    "slide_id": "s03",
+    "layout": "exhibit_commentary_right",
+    "zones": {
+      "exhibit": {
+        "role": "exhibit",
+        "x": 0.55,
+        "y": 1.62,
+        "w": 8.082,
+        "h": 5.16
+      },
+      "commentary": {
+        "role": "commentary",
+        "x": 8.852,
+        "y": 1.62,
+        "w": 3.931,
+        "h": 5.16
+      }
+    },
+    "fits": [
+      {
+        "zone": "chrome",
+        "role": "headline",
+        "what": "headline",
+        "base_pt": 22.0,
+        "chosen_pt": 22.0,
+        "need_h": 0.357,
+        "box_h": 0.86,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "chrome",
+        "role": "source",
+        "what": "footer",
+        "base_pt": 8.0,
+        "chosen_pt": 8.0,
+        "need_h": 0.13,
+        "box_h": 0.44,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "exhibit_unit",
+        "what": "exhibit title",
+        "base_pt": 11.0,
+        "chosen_pt": 11.0,
+        "need_h": 0.179,
+        "box_h": 0.3,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "commentary",
+        "role": "exhibit_title",
+        "what": "commentary title",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.195,
+        "box_h": 0.215,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "commentary",
+        "role": "body",
+        "what": "commentary",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 4.235,
+        "box_h": 4.815,
+        "lines": 18,
+        "overflow": false
+      }
+    ],
+    "warnings": [],
+    "exhibits": [
+      {
+        "zone": "exhibit",
+        "type": "stacked_column",
+        "categories": 5,
+        "series": 5,
+        "scale": [
+          0,
+          175.0,
+          50
+        ]
+      }
+    ]
+  },
+  {
+    "slide_id": "s04",
+    "layout": "kpi_strip_exhibit",
+    "zones": {
+      "kpis": {
+        "role": "kpis",
+        "x": 0.55,
+        "y": 1.62,
+        "w": 12.233,
+        "h": 1.2316
+      },
+      "exhibit": {
+        "role": "exhibit",
+        "x": 0.55,
+        "y": 3.0716,
+        "w": 12.233,
+        "h": 3.7084
+      }
+    },
+    "fits": [
+      {
+        "zone": "chrome",
+        "role": "headline",
+        "what": "headline",
+        "base_pt": 22.0,
+        "chosen_pt": 22.0,
+        "need_h": 0.715,
+        "box_h": 0.86,
+        "lines": 2,
+        "overflow": false
+      },
+      {
+        "zone": "chrome",
+        "role": "source",
+        "what": "footer",
+        "base_pt": 8.0,
+        "chosen_pt": 8.0,
+        "need_h": 0.13,
+        "box_h": 0.44,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "kpis",
+        "role": "kpi_value",
+        "what": "kpi €13.6bn",
+        "base_pt": 30.0,
+        "chosen_pt": 30.0,
+        "need_h": 0.487,
+        "box_h": 0.62,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "kpis",
+        "role": "kpi_label",
+        "what": "kpi label",
+        "base_pt": 11.0,
+        "chosen_pt": 11.0,
+        "need_h": 0.179,
+        "box_h": 0.229,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "kpis",
+        "role": "kpi_value",
+        "what": "kpi 6.3%",
+        "base_pt": 30.0,
+        "chosen_pt": 30.0,
+        "need_h": 0.487,
+        "box_h": 0.62,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "kpis",
+        "role": "kpi_label",
+        "what": "kpi label",
+        "base_pt": 11.0,
+        "chosen_pt": 11.0,
+        "need_h": 0.179,
+        "box_h": 0.229,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "kpis",
+        "role": "kpi_value",
+        "what": "kpi 9.6%",
+        "base_pt": 30.0,
+        "chosen_pt": 30.0,
+        "need_h": 0.487,
+        "box_h": 0.62,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "kpis",
+        "role": "kpi_label",
+        "what": "kpi label",
+        "base_pt": 11.0,
+        "chosen_pt": 11.0,
+        "need_h": 0.179,
+        "box_h": 0.229,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "kpis",
+        "role": "kpi_value",
+        "what": "kpi +1.2%",
+        "base_pt": 30.0,
+        "chosen_pt": 30.0,
+        "need_h": 0.487,
+        "box_h": 0.62,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "kpis",
+        "role": "kpi_label",
+        "what": "kpi label",
+        "base_pt": 11.0,
+        "chosen_pt": 11.0,
+        "need_h": 0.179,
+        "box_h": 0.229,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "exhibit_unit",
+        "what": "exhibit title",
+        "base_pt": 11.0,
+        "chosen_pt": 11.0,
+        "need_h": 0.179,
+        "box_h": 0.3,
+        "lines": 1,
+        "overflow": false
+      }
+    ],
+    "warnings": [],
+    "exhibits": [
+      {
+        "zone": "exhibit",
+        "type": "combo",
+        "categories": 4
+      }
+    ]
+  },
+  {
+    "slide_id": "s05",
+    "layout": "exhibit_takeaways_below",
+    "zones": {
+      "exhibit": {
+        "role": "exhibit",
+        "x": 0.55,
+        "y": 1.62,
+        "w": 12.233,
+        "h": 4.25
+      },
+      "commentary": {
+        "role": "commentary",
+        "x": 0.55,
+        "y": 6.09,
+        "w": 12.233,
+        "h": 0.69
+      }
+    },
+    "fits": [
+      {
+        "zone": "chrome",
+        "role": "headline",
+        "what": "headline",
+        "base_pt": 22.0,
+        "chosen_pt": 22.0,
+        "need_h": 0.715,
+        "box_h": 0.86,
+        "lines": 2,
+        "overflow": false
+      },
+      {
+        "zone": "chrome",
+        "role": "source",
+        "what": "footer",
+        "base_pt": 8.0,
+        "chosen_pt": 8.0,
+        "need_h": 0.13,
+        "box_h": 0.44,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "exhibit_unit",
+        "what": "exhibit title",
+        "base_pt": 11.0,
+        "chosen_pt": 11.0,
+        "need_h": 0.179,
+        "box_h": 0.3,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "chart_axis",
+        "what": "mekko Discount",
+        "base_pt": 10.0,
+        "chosen_pt": 10.0,
+        "need_h": 0.162,
+        "box_h": 0.56,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "chart_axis",
+        "what": "mekko Supermarkets",
+        "base_pt": 10.0,
+        "chosen_pt": 10.0,
+        "need_h": 0.162,
+        "box_h": 0.56,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "chart_axis",
+        "what": "mekko Hypermarkets",
+        "base_pt": 10.0,
+        "chosen_pt": 10.0,
+        "need_h": 0.162,
+        "box_h": 0.56,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "chart_axis",
+        "what": "mekko Convenience",
+        "base_pt": 10.0,
+        "chosen_pt": 10.0,
+        "need_h": 0.162,
+        "box_h": 0.56,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "chart_axis",
+        "what": "mekko Online",
+        "base_pt": 10.0,
+        "chosen_pt": 10.0,
+        "need_h": 0.162,
+        "box_h": 0.56,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "commentary",
+        "role": "body",
+        "what": "takeaway column",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.39,
+        "box_h": 0.54,
+        "lines": 2,
+        "overflow": false
+      },
+      {
+        "zone": "commentary",
+        "role": "body",
+        "what": "takeaway column",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.39,
+        "box_h": 0.54,
+        "lines": 2,
+        "overflow": false
+      },
+      {
+        "zone": "commentary",
+        "role": "body",
+        "what": "takeaway column",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.39,
+        "box_h": 0.54,
+        "lines": 2,
+        "overflow": false
+      }
+    ],
+    "warnings": [],
+    "exhibits": [
+      {
+        "zone": "exhibit",
+        "type": "mekko",
+        "columns": 5
+      }
+    ]
+  },
+  {
+    "slide_id": "s06",
+    "layout": "waterfall_drivers",
+    "zones": {
+      "exhibit": {
+        "role": "exhibit",
+        "x": 0.55,
+        "y": 1.62,
+        "w": 8.082,
+        "h": 5.16
+      },
+      "commentary": {
+        "role": "commentary",
+        "x": 8.852,
+        "y": 1.62,
+        "w": 3.931,
+        "h": 5.16
+      }
+    },
+    "fits": [
+      {
+        "zone": "chrome",
+        "role": "headline",
+        "what": "headline",
+        "base_pt": 22.0,
+        "chosen_pt": 22.0,
+        "need_h": 0.357,
+        "box_h": 0.86,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "chrome",
+        "role": "source",
+        "what": "footer",
+        "base_pt": 8.0,
+        "chosen_pt": 8.0,
+        "need_h": 0.13,
+        "box_h": 0.44,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "exhibit_unit",
+        "what": "exhibit title",
+        "base_pt": 11.0,
+        "chosen_pt": 11.0,
+        "need_h": 0.179,
+        "box_h": 0.3,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "commentary",
+        "role": "exhibit_title",
+        "what": "commentary title",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.195,
+        "box_h": 0.215,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "commentary",
+        "role": "body",
+        "what": "commentary",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 1.486,
+        "box_h": 4.815,
+        "lines": 6,
+        "overflow": false
+      }
+    ],
+    "warnings": [],
+    "exhibits": [
+      {
+        "zone": "exhibit",
+        "type": "waterfall",
+        "steps": 9,
+        "end": 857.0,
+        "axis_truncated": true
+      }
+    ]
+  },
+  {
+    "slide_id": "s07",
+    "layout": "table_full",
+    "zones": {
+      "takeaway": {
+        "role": "takeaway",
+        "x": 0.55,
+        "y": 6.16,
+        "w": 12.233,
+        "h": 0.62
+      },
+      "exhibit": {
+        "role": "exhibit",
+        "x": 0.55,
+        "y": 1.62,
+        "w": 12.233,
+        "h": 4.29
+      }
+    },
+    "fits": [
+      {
+        "zone": "chrome",
+        "role": "headline",
+        "what": "headline",
+        "base_pt": 22.0,
+        "chosen_pt": 22.0,
+        "need_h": 0.357,
+        "box_h": 0.86,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "chrome",
+        "role": "source",
+        "what": "footer",
+        "base_pt": 8.0,
+        "chosen_pt": 8.0,
+        "need_h": 0.13,
+        "box_h": 0.44,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "exhibit_unit",
+        "what": "exhibit title",
+        "base_pt": 11.0,
+        "chosen_pt": 11.0,
+        "need_h": 0.179,
+        "box_h": 0.3,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "table",
+        "what": "Gross margin change by category and region, 2025 vs 2024",
+        "base_pt": 11.0,
+        "chosen_pt": 11.0,
+        "need_h": 3.501,
+        "box_h": 3.83,
+        "lines": 7,
+        "overflow": false
+      },
+      {
+        "zone": "takeaway",
+        "role": "body_strong",
+        "what": "takeaway",
+        "base_pt": 13,
+        "chosen_pt": 13,
+        "need_h": 0.211,
+        "box_h": 0.62,
+        "lines": 1,
+        "overflow": false
+      }
+    ],
+    "warnings": [],
+    "exhibits": [
+      {
+        "zone": "exhibit",
+        "type": "heatmap",
+        "rows": 6,
+        "cols": 7,
+        "font_pt": 11.0,
+        "overflow": false
+      }
+    ]
+  },
+  {
+    "slide_id": "s08",
+    "layout": "matrix_commentary",
+    "zones": {
+      "exhibit": {
+        "role": "exhibit",
+        "x": 0.55,
+        "y": 1.62,
+        "w": 7.0442,
+        "h": 5.16
+      },
+      "commentary": {
+        "role": "commentary",
+        "x": 7.8142,
+        "y": 1.62,
+        "w": 4.9687,
+        "h": 5.16
+      }
+    },
+    "fits": [
+      {
+        "zone": "chrome",
+        "role": "headline",
+        "what": "headline",
+        "base_pt": 22.0,
+        "chosen_pt": 22.0,
+        "need_h": 0.715,
+        "box_h": 0.86,
+        "lines": 2,
+        "overflow": false
+      },
+      {
+        "zone": "chrome",
+        "role": "source",
+        "what": "footer",
+        "base_pt": 8.0,
+        "chosen_pt": 8.0,
+        "need_h": 0.13,
+        "box_h": 0.44,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "exhibit_unit",
+        "what": "exhibit title",
+        "base_pt": 11.0,
+        "chosen_pt": 11.0,
+        "need_h": 0.179,
+        "box_h": 0.3,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "annotation",
+        "what": "quadrant title",
+        "base_pt": 10.0,
+        "chosen_pt": 10.0,
+        "need_h": 0.162,
+        "box_h": 0.26,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "annotation",
+        "what": "quadrant title",
+        "base_pt": 10.0,
+        "chosen_pt": 10.0,
+        "need_h": 0.162,
+        "box_h": 0.26,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "annotation",
+        "what": "quadrant title",
+        "base_pt": 10.0,
+        "chosen_pt": 10.0,
+        "need_h": 0.162,
+        "box_h": 0.26,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "annotation",
+        "what": "quadrant title",
+        "base_pt": 10.0,
+        "chosen_pt": 10.0,
+        "need_h": 0.162,
+        "box_h": 0.26,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "commentary",
+        "role": "body",
+        "what": "commentary",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 1.275,
+        "box_h": 5.16,
+        "lines": 5,
+        "overflow": false
+      }
+    ],
+    "warnings": [],
+    "exhibits": [
+      {
+        "zone": "exhibit",
+        "type": "matrix_2x2",
+        "items": 5
+      }
+    ]
+  },
+  {
+    "slide_id": "s09",
+    "layout": "exhibit_takeaways_below",
+    "zones": {
+      "exhibit": {
+        "role": "exhibit",
+        "x": 0.55,
+        "y": 1.62,
+        "w": 12.233,
+        "h": 4.25
+      },
+      "commentary": {
+        "role": "commentary",
+        "x": 0.55,
+        "y": 6.09,
+        "w": 12.233,
+        "h": 0.69
+      }
+    },
+    "fits": [
+      {
+        "zone": "chrome",
+        "role": "headline",
+        "what": "headline",
+        "base_pt": 22.0,
+        "chosen_pt": 22.0,
+        "need_h": 0.715,
+        "box_h": 0.86,
+        "lines": 2,
+        "overflow": false
+      },
+      {
+        "zone": "chrome",
+        "role": "source",
+        "what": "footer",
+        "base_pt": 8.0,
+        "chosen_pt": 8.0,
+        "need_h": 0.13,
+        "box_h": 0.44,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body_strong",
+        "what": "layer 1",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.195,
+        "box_h": 0.988,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body",
+        "what": "cell Discount banner",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.195,
+        "box_h": 0.988,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body",
+        "what": "cell Supermarkets",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.195,
+        "box_h": 0.988,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body",
+        "what": "cell Convenience",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.195,
+        "box_h": 0.988,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body",
+        "what": "cell Online",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.195,
+        "box_h": 0.988,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body_strong",
+        "what": "layer 2",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.195,
+        "box_h": 0.988,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body",
+        "what": "cell Central pricing & ",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.195,
+        "box_h": 0.988,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body",
+        "what": "cell Category managemen",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.195,
+        "box_h": 0.988,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body",
+        "what": "cell Private label",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.195,
+        "box_h": 0.988,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body_strong",
+        "what": "layer 3",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.195,
+        "box_h": 0.988,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body",
+        "what": "cell Stores",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.195,
+        "box_h": 0.988,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body",
+        "what": "cell Supply chain",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.195,
+        "box_h": 0.988,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body",
+        "what": "cell Fulfilment hubs",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.195,
+        "box_h": 0.988,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body_strong",
+        "what": "layer 4",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.195,
+        "box_h": 0.988,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body",
+        "what": "cell Data & analytics",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.195,
+        "box_h": 0.988,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body",
+        "what": "cell Technology",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.195,
+        "box_h": 0.988,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body",
+        "what": "cell People & capabilit",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.195,
+        "box_h": 0.988,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body_strong",
+        "what": "pillar 0",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.195,
+        "box_h": 0.62,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "commentary",
+        "role": "body",
+        "what": "takeaway column",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.195,
+        "box_h": 0.54,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "commentary",
+        "role": "body",
+        "what": "takeaway column",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.39,
+        "box_h": 0.54,
+        "lines": 2,
+        "overflow": false
+      },
+      {
+        "zone": "commentary",
+        "role": "body",
+        "what": "takeaway column",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.195,
+        "box_h": 0.54,
+        "lines": 1,
+        "overflow": false
+      }
+    ],
+    "warnings": [],
+    "exhibits": [
+      {
+        "zone": "exhibit",
+        "type": "operating_model",
+        "layers": 4
+      }
+    ]
+  },
+  {
+    "slide_id": "s10",
+    "layout": "roadmap_full",
+    "zones": {
+      "exhibit": {
+        "role": "exhibit",
+        "x": 0.55,
+        "y": 1.62,
+        "w": 12.233,
+        "h": 5.16
+      }
+    },
+    "fits": [
+      {
+        "zone": "chrome",
+        "role": "headline",
+        "what": "headline",
+        "base_pt": 22.0,
+        "chosen_pt": 20,
+        "need_h": 0.975,
+        "box_h": 0.86,
+        "lines": 3,
+        "overflow": true
+      },
+      {
+        "zone": "chrome",
+        "role": "source",
+        "what": "footer",
+        "base_pt": 8.0,
+        "chosen_pt": 8.0,
+        "need_h": 0.13,
+        "box_h": 0.44,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body",
+        "what": "row Pricing & promo reset",
+        "base_pt": 11.5,
+        "chosen_pt": 11.5,
+        "need_h": 0.187,
+        "box_h": 0.62,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body",
+        "what": "row Fresh & food-to-go margins",
+        "base_pt": 11.5,
+        "chosen_pt": 11.5,
+        "need_h": 0.187,
+        "box_h": 0.62,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body",
+        "what": "row Cost programme",
+        "base_pt": 11.5,
+        "chosen_pt": 11.5,
+        "need_h": 0.187,
+        "box_h": 0.62,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body",
+        "what": "row Private label",
+        "base_pt": 11.5,
+        "chosen_pt": 11.5,
+        "need_h": 0.187,
+        "box_h": 0.62,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body",
+        "what": "row Discount banner",
+        "base_pt": 11.5,
+        "chosen_pt": 11.5,
+        "need_h": 0.187,
+        "box_h": 0.62,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "body",
+        "what": "row Online fulfilment hubs",
+        "base_pt": 11.5,
+        "chosen_pt": 11.5,
+        "need_h": 0.187,
+        "box_h": 0.62,
+        "lines": 1,
+        "overflow": false
+      }
+    ],
+    "warnings": [],
+    "exhibits": [
+      {
+        "zone": "exhibit",
+        "type": "gantt",
+        "rows": 6,
+        "periods": 8
+      }
+    ]
+  },
+  {
+    "slide_id": "s11",
+    "layout": "waterfall_full",
+    "zones": {
+      "takeaway": {
+        "role": "takeaway",
+        "x": 0.55,
+        "y": 6.16,
+        "w": 12.233,
+        "h": 0.62
+      },
+      "exhibit": {
+        "role": "exhibit",
+        "x": 0.55,
+        "y": 1.62,
+        "w": 12.233,
+        "h": 4.29
+      }
+    },
+    "fits": [
+      {
+        "zone": "chrome",
+        "role": "headline",
+        "what": "headline",
+        "base_pt": 22.0,
+        "chosen_pt": 22.0,
+        "need_h": 0.715,
+        "box_h": 0.86,
+        "lines": 2,
+        "overflow": false
+      },
+      {
+        "zone": "chrome",
+        "role": "source",
+        "what": "footer",
+        "base_pt": 8.0,
+        "chosen_pt": 8.0,
+        "need_h": 0.13,
+        "box_h": 0.44,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "exhibit_unit",
+        "what": "exhibit title",
+        "base_pt": 11.0,
+        "chosen_pt": 11.0,
+        "need_h": 0.179,
+        "box_h": 0.3,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "takeaway",
+        "role": "body_strong",
+        "what": "takeaway",
+        "base_pt": 13,
+        "chosen_pt": 13,
+        "need_h": 0.211,
+        "box_h": 0.62,
+        "lines": 1,
+        "overflow": false
+      }
+    ],
+    "warnings": [],
+    "exhibits": [
+      {
+        "zone": "exhibit",
+        "type": "waterfall",
+        "steps": 8,
+        "end": 1067.0,
+        "axis_truncated": true
+      }
+    ]
+  },
+  {
+    "slide_id": "s12",
+    "layout": "table_commentary",
+    "zones": {
+      "exhibit": {
+        "role": "exhibit",
+        "x": 0.55,
+        "y": 1.62,
+        "w": 8.082,
+        "h": 5.16
+      },
+      "commentary": {
+        "role": "commentary",
+        "x": 8.852,
+        "y": 1.62,
+        "w": 3.931,
+        "h": 5.16
+      }
+    },
+    "fits": [
+      {
+        "zone": "chrome",
+        "role": "headline",
+        "what": "headline",
+        "base_pt": 22.0,
+        "chosen_pt": 22.0,
+        "need_h": 0.357,
+        "box_h": 0.86,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "exhibit_unit",
+        "what": "exhibit title",
+        "base_pt": 11.0,
+        "chosen_pt": 11.0,
+        "need_h": 0.179,
+        "box_h": 0.3,
+        "lines": 1,
+        "overflow": false
+      },
+      {
+        "zone": "exhibit",
+        "role": "table",
+        "what": "Decisions requested today",
+        "base_pt": 11.0,
+        "chosen_pt": 11.0,
+        "need_h": 2.094,
+        "box_h": 4.7,
+        "lines": 4,
+        "overflow": false
+      },
+      {
+        "zone": "commentary",
+        "role": "body",
+        "what": "commentary",
+        "base_pt": 12.0,
+        "chosen_pt": 12.0,
+        "need_h": 0.743,
+        "box_h": 5.16,
+        "lines": 3,
+        "overflow": false
+      }
+    ],
+    "warnings": [],
+    "exhibits": [
+      {
+        "zone": "exhibit",
+        "type": "table",
+        "rows": 3,
+        "cols": 5,
+        "font_pt": 11.0,
+        "overflow": false
+      }
+    ]
+  }
+]

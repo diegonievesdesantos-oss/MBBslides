@@ -1,0 +1,73 @@
+{
+  "id": "exhibit_full",
+  "family": "03_chart",
+  "name": "Full-width exhibit",
+  "description": "One exhibit uses the full body.",
+  "when_to_use": "The chart is self-explanatory; annotations carry the so-what.",
+  "zones": [
+    {
+      "name": "exhibit",
+      "role": "exhibit",
+      "cols": [
+        1,
+        12
+      ],
+      "top": 0,
+      "bottom": 1
+    }
+  ],
+  "accepts": {
+    "exhibit": [
+      1,
+      1
+    ]
+  },
+  "takeaway": "optional",
+  "compatible_visuals": [
+    "bar",
+    "column",
+    "stacked_bar",
+    "stacked_column",
+    "stacked_100",
+    "line",
+    "area",
+    "scatter",
+    "bubble",
+    "pie",
+    "donut",
+    "combo",
+    "waterfall",
+    "bridge",
+    "histogram",
+    "slope",
+    "mekko",
+    "heatmap",
+    "table",
+    "harvey_table",
+    "scorecard",
+    "matrix_2x2",
+    "portfolio",
+    "process",
+    "value_chain",
+    "timeline",
+    "gantt",
+    "roadmap",
+    "tree",
+    "driver_tree",
+    "org_chart",
+    "funnel",
+    "pyramid",
+    "tile_map",
+    "flow",
+    "journey",
+    "layers",
+    "operating_model",
+    "architecture",
+    "segmentation"
+  ],
+  "capacity": {},
+  "hierarchy": [
+    "exhibit"
+  ],
+  "body_band": "body"
+}

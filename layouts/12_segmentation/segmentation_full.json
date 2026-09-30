@@ -1,0 +1,38 @@
+{
+  "id": "segmentation_full",
+  "family": "12_segmentation",
+  "name": "Segmentation exhibit",
+  "description": "Mekko or segment chart full width.",
+  "when_to_use": "Market split by two dimensions (size \u00d7 share).",
+  "zones": [
+    {
+      "name": "exhibit",
+      "role": "exhibit",
+      "cols": [
+        1,
+        12
+      ],
+      "top": 0,
+      "bottom": 1
+    }
+  ],
+  "accepts": {
+    "exhibit": [
+      1,
+      1
+    ]
+  },
+  "takeaway": "optional",
+  "compatible_visuals": [
+    "mekko",
+    "segmentation",
+    "stacked_100",
+    "heatmap",
+    "table"
+  ],
+  "capacity": {},
+  "hierarchy": [
+    "exhibit"
+  ],
+  "body_band": "body"
+}

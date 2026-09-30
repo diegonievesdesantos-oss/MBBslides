@@ -1,0 +1,36 @@
+{
+  "id": "roadmap_full",
+  "family": "15_roadmap",
+  "name": "Roadmap / Gantt",
+  "description": "Workstreams \u00d7 time with bars and milestones.",
+  "when_to_use": "Implementation plans; 3-8 workstreams.",
+  "zones": [
+    {
+      "name": "exhibit",
+      "role": "exhibit",
+      "cols": [
+        1,
+        12
+      ],
+      "top": 0,
+      "bottom": 1
+    }
+  ],
+  "accepts": {
+    "exhibit": [
+      1,
+      1
+    ]
+  },
+  "takeaway": "optional",
+  "compatible_visuals": [
+    "gantt",
+    "roadmap",
+    "timeline"
+  ],
+  "capacity": {},
+  "hierarchy": [
+    "exhibit"
+  ],
+  "body_band": "body"
+}
