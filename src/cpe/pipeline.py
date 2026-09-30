@@ -41,7 +41,14 @@ def run(spec: dict, out_dir: str | Path, max_iter: int = 3, do_render: bool = Tr
         from .compose import compose as run_compose
         from .compose import summarize as compose_summary
 
-        current, decisions = run_compose(spec, out / "compose", verbose=verbose)
+        import shutil
+        import tempfile
+
+        scratch = Path(tempfile.mkdtemp(prefix="cpe_compose_"))  # candidate renders are scratch, not artefacts
+        try:
+            current, decisions = run_compose(spec, scratch, verbose=verbose)
+        finally:
+            shutil.rmtree(scratch, ignore_errors=True)
         (out / "composition.md").write_text(compose_summary(decisions))
     final = None
     for it in range(1, max_iter + 1):
