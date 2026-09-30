@@ -1,0 +1,138 @@
+{
+  "meta": {
+    "title": "Text overload",
+    "deck_type": "strategy_deck",
+    "theme": "meridian"
+  },
+  "storyline": {
+    "framework": "SCR",
+    "governing_thought": "Eval decks stress the engine so visual quality stays measurable",
+    "key_line": [
+      {
+        "id": "K1",
+        "role": "situation",
+        "message": "Context"
+      },
+      {
+        "id": "K2",
+        "role": "resolution",
+        "message": "Answer"
+      }
+    ]
+  },
+  "slides": [
+    {
+      "id": "b1",
+      "headline": "Revenue grew 12% in 2025 as volume rose in every region",
+      "message_type": "trend",
+      "evidence": [
+        {
+          "claim": "rev",
+          "values": [
+            100,
+            112
+          ]
+        }
+      ],
+      "visual": {
+        "type": "column",
+        "title": "Revenue",
+        "unit": "€M",
+        "data": {
+          "categories": [
+            "2024",
+            "2025"
+          ],
+          "series": [
+            {
+              "name": "Revenue",
+              "values": [
+                100,
+                112
+              ]
+            }
+          ]
+        }
+      },
+      "commentary": {
+        "points": [
+          "This bullet carries far more words than an executive will read on a slide because it repeats context, adds caveats and mixes two arguments",
+          "This bullet carries far more words than an executive will read on a slide because it repeats context, adds caveats and mixes two arguments",
+          "This bullet carries far more words than an executive will read on a slide because it repeats context, adds caveats and mixes two arguments",
+          "This bullet carries far more words than an executive will read on a slide because it repeats context, adds caveats and mixes two arguments",
+          "This bullet carries far more words than an executive will read on a slide because it repeats context, adds caveats and mixes two arguments",
+          "This bullet carries far more words than an executive will read on a slide because it repeats context, adds caveats and mixes two arguments"
+        ]
+      },
+      "kind": "content",
+      "section": "K1",
+      "purpose": "Eval case",
+      "source": "Eval fixture (synthetic)"
+    },
+    {
+      "id": "b2",
+      "headline": "Six long reasons explain why the programme is late",
+      "message_type": "argument",
+      "visual": {
+        "type": "bullets",
+        "data": {
+          "points": [
+            "This bullet carries far more words than an executive will read on a slide because it repeats context, adds caveats and mixes two arguments",
+            "This bullet carries far more words than an executive will read on a slide because it repeats context, adds caveats and mixes two arguments",
+            "This bullet carries far more words than an executive will read on a slide because it repeats context, adds caveats and mixes two arguments",
+            "This bullet carries far more words than an executive will read on a slide because it repeats context, adds caveats and mixes two arguments",
+            "This bullet carries far more words than an executive will read on a slide because it repeats context, adds caveats and mixes two arguments",
+            "This bullet carries far more words than an executive will read on a slide because it repeats context, adds caveats and mixes two arguments",
+            "This bullet carries far more words than an executive will read on a slide because it repeats context, adds caveats and mixes two arguments"
+          ]
+        }
+      },
+      "kind": "content",
+      "section": "K1",
+      "purpose": "Eval case",
+      "source": "Eval fixture (synthetic)"
+    },
+    {
+      "id": "b3",
+      "kind": "exec_summary",
+      "headline": "The summary has six long points, one more than the budget",
+      "visual": {
+        "type": "statements",
+        "data": {
+          "items": [
+            {
+              "title": "Point number 1 states a claim in a long sentence that keeps going",
+              "text": "This bullet carries far more words than an executive will read on a slide because it repeats context, adds caveats and mixes two arguments"
+            },
+            {
+              "title": "Point number 2 states a claim in a long sentence that keeps going",
+              "text": "This bullet carries far more words than an executive will read on a slide because it repeats context, adds caveats and mixes two arguments"
+            },
+            {
+              "title": "Point number 3 states a claim in a long sentence that keeps going",
+              "text": "This bullet carries far more words than an executive will read on a slide because it repeats context, adds caveats and mixes two arguments"
+            },
+            {
+              "title": "Point number 4 states a claim in a long sentence that keeps going",
+              "text": "This bullet carries far more words than an executive will read on a slide because it repeats context, adds caveats and mixes two arguments"
+            },
+            {
+              "title": "Point number 5 states a claim in a long sentence that keeps going",
+              "text": "This bullet carries far more words than an executive will read on a slide because it repeats context, adds caveats and mixes two arguments"
+            },
+            {
+              "title": "Point number 6 states a claim in a long sentence that keeps going",
+              "text": "This bullet carries far more words than an executive will read on a slide because it repeats context, adds caveats and mixes two arguments"
+            }
+          ]
+        }
+      },
+      "section": "K1",
+      "purpose": "Eval case",
+      "source": "Eval fixture (synthetic)"
+    }
+  ],
+  "eval": {
+    "purpose": "Density engine: shrink to floor, switch layout, report excess words — never overflow"
+  }
+}

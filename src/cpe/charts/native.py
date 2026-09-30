@@ -13,7 +13,6 @@ Principles implemented here (not left to the user):
 """
 from __future__ import annotations
 
-import copy
 import math
 
 from lxml import etree
@@ -23,7 +22,7 @@ from pptx.oxml.ns import qn
 from pptx.util import Pt
 
 from ..design import text_metrics as tm
-from ..design.tokens import LINES, SPACING, best_text_on
+from ..design.tokens import LINES, best_text_on
 from ..layout.engine import Box
 from ..pptx.painter import E, Painter, rgb
 from ..pptx.text_components import exhibit_header, legend
@@ -235,6 +234,7 @@ def category_chart(p: Painter, box: Box, ex: dict) -> dict:
     is_line = vt in ("line", "slope")
     pct100 = vt == "stacked_100"
     theme = p.theme
+    ex = {**ex, "annotations": list(ex.get("annotations") or []) + _auto_proof(ex, cats, series, stacked, is_line, pct100)}
 
     # --- scale ---------------------------------------------------------
     if pct100:
@@ -401,7 +401,15 @@ def category_chart(p: Painter, box: Box, ex: dict) -> dict:
             continue
         # clustered bar / column
         if len(series) == 1:
-            base = theme.c(s.get("color") or ("muted" if hl else "primary"))
+            if not hl and ex.get("focus", "auto") != "none" and not s.get("color") and n > 2:
+                # one focus by default: the latest period on a time axis, the leader in a ranking
+                from ..core.visual_reasoning import data_shape
+
+                time_axis = data_shape({"data": {"categories": cats, "series": series}}).get("time_axis")
+                vals = [v if v is not None else float("-inf") for v in s["values"]]
+                hl = {n - 1} if time_axis else {max(range(n), key=lambda i: vals[i])}
+                s["_context"] = theme.series[2] if time_axis else theme.c("muted")
+            base = theme.c(s.get("color") or (s.get("_context") or "muted" if hl else "primary"))
             _fill(ser, base)
             ser.invert_if_negative = False
             for i in range(n):
@@ -538,6 +546,45 @@ def _annotations(p: Painter, geom: PlotGeom, ex: dict, cats, series, f, is_line,
             p.text(Box(x, y, w, h + 0.06), text, role="annotation", fill="background", fit=True, kind="label", record="callout")
 
 
+def _auto_proof(ex: dict, cats: list, series: list, stacked: bool, is_line: bool, pct100: bool) -> list[dict]:
+    """If the headline quotes the first→last change (or CAGR) of the exhibit, draw it:
+    the proof of the headline must be visible on the slide, not only in the title."""
+    from ..core.headline import numbers_in
+
+    head = ex.get("_headline") or ""
+    if pct100 or ex.get("auto_proof") is False or not head or len(cats) < 2 or any(a.get("type") == "cagr" for a in ex.get("annotations") or []):
+        return []
+    pcts = [v for v, u in numbers_in(head) if u == "%"]
+    if not pcts:
+        return []
+    if stacked:
+        vals = [sum(s_["values"][i] or 0 for s_ in series) for i in range(len(cats))]
+    else:
+        focus = next((s_ for s_ in series if s_.get("role") == "focus"), series[0])
+        vals = focus["values"]
+    v0, v1 = vals[0], vals[-1]
+    if not v0 or v0 <= 0 or v1 is None or v1 <= 0:
+        return []
+    change = (v1 / v0 - 1) * 100
+    g = cagr(v0, v1, len(cats) - 1) * 100
+
+    def label(v, prefix=""):
+        txt = f"{v:g}"
+        if txt.replace(".", ",") in head and "." in txt:
+            txt = txt.replace(".", ",")
+        return f"{prefix}{'+' if change >= 0 else '−'}{txt}%"
+
+    last = (vals[-1] / vals[-2] - 1) * 100 if len(vals) > 2 and vals[-2] and vals[-2] > 0 else None
+    for v in pcts:
+        if last is not None and abs(abs(last) - v) <= 0.06 and abs(abs(change) - v) > 0.6:
+            return [{"type": "cagr", "from": len(cats) - 2, "to": len(cats) - 1, "label": label(v).replace("+" if change >= 0 else "−", "+" if last >= 0 else "−", 1), "series": series.index(focus) if not stacked else 0}]
+        if abs(abs(change) - v) <= 0.6:
+            return [{"type": "cagr", "from": 0, "to": len(cats) - 1, "label": label(v), "series": series.index(focus) if not stacked else 0}]
+        if len(cats) > 2 and abs(abs(g) - v) <= 0.3:
+            return [{"type": "cagr", "from": 0, "to": len(cats) - 1, "label": label(v, "CAGR "), "series": series.index(focus) if not stacked else 0}]
+    return []
+
+
 def _readable(color: str | None, theme, bg: str = "FFFFFF") -> str:
     """Series colour for a text label only if it is legible on white; else muted text."""
     from ..design.tokens import contrast_ratio
@@ -605,7 +652,13 @@ def waterfall(p: Painter, box: Box, ex: dict) -> dict:
     if lo:
         step = nice_scale(0, vmax - lo, 5)[2]
         hi = lo + math.ceil((vmax - lo) / step) * step
-    hi += step * 0.4
+    # proof: the headline quotes the total change → print it above the end total
+    from ..core.headline import numbers_in
+
+    first_total = next((t for t, k in zip(tot, kinds) if k == "total"), None)
+    wf_delta = (ends[-1] - first_total) if first_total is not None and kinds[-1] == "total" else None
+    proof = wf_delta is not None and any(abs(abs(wf_delta) - v) <= max(0.51, 0.01 * v) and abs(v - abs(ends[-1])) > 0.5 for v, _ in numbers_in(ex.get("_headline") or ""))
+    hi += step * (0.4 if not proof else 1.0)
     slot_w = plot_box.w / n
     cat_h, _ = _cat_label_height(p, labels, slot_w)
     fy = 0.02
@@ -663,6 +716,18 @@ def waterfall(p: Painter, box: Box, ex: dict) -> dict:
         label = fmt(val, f, plus=plus)
         y = geom.v(top)
         p.text(Box(geom.c(i) - geom.slot() / 2, y - 0.29, geom.slot(), 0.26), label, role="chart", bold=kinds[i] == "total", align="center", anchor="bottom", fit=False, kind="label")
+    if proof:
+        i = n - 1
+        y = geom.v(tot[i])
+        txt = f"{fmt(wf_delta, f, plus=True)} vs {labels[0]}"
+        w = p.text_w(txt, "annotation", bold=True) + 0.1
+        x = min(max(geom.c(i) - w / 2, plot_box.x), plot_box.r - w)  # stay inside the zone
+        # sit above every value label the text spans horizontally
+        covered = [k for k in range(n) if geom.c(k) + geom.slot() / 2 > x and geom.c(k) - geom.slot() / 2 < x + w]
+        y = min(geom.v(run[k]) for k in covered) - 0.29
+        y = max(plot_box.y + 0.26, y)
+        p.text(Box(x, y - 0.27, w, 0.26), txt, role="annotation", bold=True, color="negative" if wf_delta < 0 else "positive",
+               align="right" if x + w >= plot_box.r - 0.01 else "center", anchor="bottom", fit=False, kind="label")
     bw = geom.bar_w()
     for i in range(n - 1):
         level = ends[i]
@@ -884,6 +949,18 @@ def pie_chart(p: Painter, box: Box, ex: dict) -> dict:
         share = f"{v / tot * 100:.0f}%"
         p.text(Box(lx + 0.25, y, 0.7, rowh), share, role="chart", bold=True, anchor="middle", fit=False, kind="label")
         p.text(Box(lx + 0.95, y, lw - 0.95, rowh), c + (f"  ({fmt(v, f)})" if ex.get("show_values") else ""), role="chart", anchor="middle", max_lines=1, kind="label", record="pie label")
+    from ..core.headline import numbers_in
+
+    order = sorted(range(len(vals)), key=lambda i: -vals[i])
+    acc = 0.0
+    for k, i in enumerate(order[:-1], start=1):
+        acc += vals[i] / tot * 100
+        if k >= 2 and any(abs(acc - v) <= 0.6 for v, u in numbers_in(ex.get("_headline") or "") if u == "%"):
+            yk = y0 + len(cats) * rowh + 0.05
+            if yk + 0.3 <= plot_box.b:
+                p.line(lx, yk, plot_box.r, yk, color="rule", width=LINES["hairline"])
+                p.text(Box(lx + 0.25, yk + 0.02, lw - 0.25, 0.3), f"**Top {k}: {acc:.0f}%**", role="chart", anchor="middle", fit=False, kind="label")
+            break
     return {"type": ex["type"], "slices": len(cats)}
 
 
@@ -898,9 +975,8 @@ def combo_chart(p: Painter, box: Box, ex: dict) -> dict:
     cats, series = _prepare_categories({**ex, "sort": None})
     bars = [s for s in series if s.get("axis") != "secondary"]
     lines = [s for s in series if s.get("axis") == "secondary"]
-    theme = p.theme
     n = len(cats)
-    f_line = fmt_spec({"format": ex.get("line_format"), "data": {"series": lines}})
+    fmt_spec({"format": ex.get("line_format"), "data": {"series": lines}})
     # shared horizontal geometry: right padding for the line end labels
     lab_w = max(p.text_w(s["name"], "chart", bold=True) for s in lines) + 0.2 if lines else 0.1
     right = min(0.3, lab_w / plot_box.w)

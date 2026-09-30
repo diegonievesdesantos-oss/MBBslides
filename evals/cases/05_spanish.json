@@ -1,0 +1,152 @@
+{
+  "meta": {
+    "title": "Revisión de negocio",
+    "deck_type": "strategy_deck",
+    "theme": "meridian"
+  },
+  "storyline": {
+    "framework": "SCR",
+    "governing_thought": "Eval decks stress the engine so visual quality stays measurable",
+    "key_line": [
+      {
+        "id": "K1",
+        "role": "situation",
+        "message": "Context"
+      },
+      {
+        "id": "K2",
+        "role": "resolution",
+        "message": "Answer"
+      }
+    ]
+  },
+  "slides": [
+    {
+      "id": "e1",
+      "kind": "exec_summary",
+      "headline": "El margen cae 1,8 puntos y exige actuar en precios y costes este año",
+      "visual": {
+        "type": "statements",
+        "data": {
+          "items": [
+            {
+              "title": "Las ventas crecen un 4,1% pero por debajo del mercado",
+              "text": "El mercado creció un 5,3% impulsado por el canal online."
+            },
+            {
+              "title": "El margen bruto cae 1,8 puntos hasta el 27,4%",
+              "text": "Promociones y mermas en frescos explican la mayor parte."
+            },
+            {
+              "title": "Proponemos un plan de 90 días en precios y costes",
+              "text": "Impacto estimado de 14 millones de euros en EBITDA."
+            }
+          ]
+        }
+      },
+      "section": "K1",
+      "purpose": "Eval case",
+      "source": "Eval fixture (synthetic)"
+    },
+    {
+      "id": "e2",
+      "headline": "Las ventas crecen un 4,1% en 2025, por debajo del mercado",
+      "message_type": "trend",
+      "evidence": [
+        {
+          "claim": "ventas",
+          "values": [
+            812.4,
+            845.7
+          ]
+        }
+      ],
+      "visual": {
+        "type": "column",
+        "title": "Ventas netas",
+        "unit": "M€",
+        "format": {
+          "decimals": 1
+        },
+        "data": {
+          "categories": [
+            "2023",
+            "2024",
+            "2025"
+          ],
+          "series": [
+            {
+              "name": "Ventas",
+              "values": [
+                781.9,
+                812.4,
+                845.7
+              ]
+            }
+          ]
+        }
+      },
+      "commentary": {
+        "points": [
+          "El canal **online** aporta la mitad del crecimiento",
+          "Las tiendas de proximidad se estancan"
+        ]
+      },
+      "kind": "content",
+      "section": "K1",
+      "purpose": "Eval case",
+      "source": "Eval fixture (synthetic)"
+    },
+    {
+      "id": "e3",
+      "headline": "Las mermas en frescos explican la mitad de la caída del margen",
+      "message_type": "change_bridge",
+      "visual": {
+        "type": "waterfall",
+        "title": "Margen bruto 2024 a 2025",
+        "unit": "pp",
+        "format": {
+          "decimals": 1
+        },
+        "data": {
+          "steps": [
+            {
+              "label": "Margen 2024",
+              "value": 29.2,
+              "type": "total"
+            },
+            {
+              "label": "Mermas frescos",
+              "value": -0.9
+            },
+            {
+              "label": "Promociones",
+              "value": -0.6
+            },
+            {
+              "label": "Mix",
+              "value": -0.3
+            },
+            {
+              "label": "Margen 2025",
+              "type": "total"
+            }
+          ]
+        }
+      },
+      "commentary": {
+        "points": [
+          "Las **mermas** suben por la ampliación de surtido",
+          "Las **promociones** igualan a los discounters"
+        ]
+      },
+      "kind": "content",
+      "section": "K1",
+      "purpose": "Eval case",
+      "source": "Eval fixture (synthetic)"
+    }
+  ],
+  "eval": {
+    "purpose": "Spanish content: lints, comma decimals, accents, text widths"
+  }
+}

@@ -22,7 +22,7 @@ from pptx.enum.dml import MSO_LINE_DASH_STYLE
 from pptx.enum.shapes import MSO_CONNECTOR, MSO_SHAPE
 from pptx.enum.text import MSO_ANCHOR, MSO_AUTO_SIZE, PP_ALIGN
 from pptx.oxml.ns import qn
-from pptx.util import Emu, Inches, Pt
+from pptx.util import Emu, Pt
 
 from ..design import text_metrics as tm
 from ..design.tokens import FONT_FLOOR, LINE_SPACING, LINES, PARA_SPACE_AFTER, Theme, type_style

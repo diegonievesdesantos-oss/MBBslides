@@ -1,12 +1,11 @@
 import pytest
 
+from conftest import content_slide, mini_spec
 from cpe.core import storyline, visual_reasoning
 from cpe.core.headline import lint_headline, numbers_in
 from cpe.core.layout_selector import select
 from cpe.core.planner import plan
 from cpe.spec import DECK_TYPES, apply_patches, validate_structure
-
-from conftest import content_slide, mini_spec
 
 
 @pytest.mark.parametrize("h", ["Revenue evolution", "Market analysis", "Customer segmentation", "Resumen de mercado"])

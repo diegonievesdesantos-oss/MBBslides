@@ -1,0 +1,113 @@
+{
+  "meta": {
+    "title": "Headlines and structure",
+    "deck_type": "strategy_deck",
+    "theme": "meridian"
+  },
+  "storyline": {
+    "framework": "SCR",
+    "governing_thought": "Eval decks stress the engine so visual quality stays measurable",
+    "key_line": [
+      {
+        "id": "K1",
+        "role": "situation",
+        "message": "Context"
+      },
+      {
+        "id": "K2",
+        "role": "resolution",
+        "message": "Answer"
+      }
+    ]
+  },
+  "slides": [
+    {
+      "id": "h1",
+      "headline": "Customer acquisition costs rose 35% in two years as paid search prices climbed and conversion rates declined on mobile",
+      "message_type": "trend",
+      "evidence": [
+        {
+          "claim": "cac",
+          "values": [
+            100,
+            135
+          ]
+        }
+      ],
+      "visual": {
+        "type": "column",
+        "title": "Customer acquisition cost",
+        "unit": "index 2023 = 100",
+        "data": {
+          "categories": [
+            "2023",
+            "2024",
+            "2025"
+          ],
+          "series": [
+            {
+              "name": "CAC index",
+              "values": [
+                100,
+                118,
+                135
+              ]
+            }
+          ]
+        }
+      },
+      "kind": "content",
+      "section": "K1",
+      "purpose": "Eval case",
+      "source": "Eval fixture (synthetic)"
+    },
+    {
+      "id": "h2",
+      "headline": "Three options differ mainly on speed, cost and how much control we keep",
+      "message_type": "comparison",
+      "columns": [
+        {
+          "title": "Build",
+          "points": [
+            "Full control",
+            "24 months",
+            "€40M"
+          ]
+        },
+        {
+          "title": "Buy",
+          "emphasis": true,
+          "points": [
+            "Fastest: 6 months",
+            "€65M",
+            "Integration risk"
+          ]
+        },
+        {
+          "title": "Partner",
+          "points": [
+            "Shared control",
+            "12 months",
+            "€25M"
+          ]
+        }
+      ],
+      "kind": "content",
+      "section": "K1",
+      "purpose": "Eval case",
+      "source": "Eval fixture (synthetic)"
+    },
+    {
+      "id": "h3",
+      "kind": "statement",
+      "text": "We recommend buying: speed matters more than control in this market",
+      "support": "The window closes in 2027.",
+      "section": "K1",
+      "purpose": "Eval case",
+      "source": "Eval fixture (synthetic)"
+    }
+  ],
+  "eval": {
+    "purpose": "Two-line headlines, comparison columns, statement slides"
+  }
+}

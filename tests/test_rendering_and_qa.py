@@ -4,15 +4,12 @@ import json
 from pptx import Presentation
 from pptx.util import Inches, Pt
 
+from conftest import content_slide, mini_spec, needs_render
 from cpe.core.planner import plan
 from cpe.design.tokens import load_profile, load_theme
 from cpe.pipeline import run
 from cpe.pptx.builder import build
-from cpe.qa import geometry, render_checks
-from cpe.render import renderer
-from cpe.spec import VISUAL_TYPES
-
-from conftest import content_slide, mini_spec, needs_render
+from cpe.qa import geometry
 
 
 def _codes(issues):

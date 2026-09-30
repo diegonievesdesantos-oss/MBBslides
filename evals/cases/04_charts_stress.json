@@ -1,0 +1,285 @@
+{
+  "meta": {
+    "title": "Charts under stress",
+    "deck_type": "strategy_deck",
+    "theme": "meridian"
+  },
+  "storyline": {
+    "framework": "SCR",
+    "governing_thought": "Eval decks stress the engine so visual quality stays measurable",
+    "key_line": [
+      {
+        "id": "K1",
+        "role": "situation",
+        "message": "Context"
+      },
+      {
+        "id": "K2",
+        "role": "resolution",
+        "message": "Answer"
+      }
+    ]
+  },
+  "slides": [
+    {
+      "id": "d1",
+      "headline": "Segment A outgrew the six other segments every year since 2016",
+      "message_type": "trend",
+      "visual": {
+        "type": "line",
+        "title": "Revenue by segment",
+        "unit": "€M",
+        "highlight": [
+          "Segment A"
+        ],
+        "data": {
+          "categories": [
+            "2016",
+            "2017",
+            "2018",
+            "2019",
+            "2020",
+            "2021",
+            "2022",
+            "2023",
+            "2024",
+            "2025"
+          ],
+          "series": [
+            {
+              "name": "Segment A",
+              "values": [
+                100,
+                112,
+                124,
+                136,
+                148,
+                160,
+                172,
+                184,
+                196,
+                208
+              ]
+            },
+            {
+              "name": "Segment B",
+              "values": [
+                100,
+                103,
+                106,
+                109,
+                112,
+                115,
+                118,
+                121,
+                124,
+                127
+              ]
+            },
+            {
+              "name": "Segment C",
+              "values": [
+                100,
+                104,
+                108,
+                112,
+                116,
+                120,
+                124,
+                128,
+                132,
+                136
+              ]
+            },
+            {
+              "name": "Segment D",
+              "values": [
+                100,
+                105,
+                110,
+                115,
+                120,
+                125,
+                130,
+                135,
+                140,
+                145
+              ]
+            },
+            {
+              "name": "Segment E",
+              "values": [
+                100,
+                106,
+                112,
+                118,
+                124,
+                130,
+                136,
+                142,
+                148,
+                154
+              ]
+            },
+            {
+              "name": "Segment F",
+              "values": [
+                100,
+                107,
+                114,
+                121,
+                128,
+                135,
+                142,
+                149,
+                156,
+                163
+              ]
+            },
+            {
+              "name": "Segment G",
+              "values": [
+                100,
+                108,
+                116,
+                124,
+                132,
+                140,
+                148,
+                156,
+                164,
+                172
+              ]
+            }
+          ]
+        }
+      },
+      "kind": "content",
+      "section": "K1",
+      "purpose": "Eval case",
+      "source": "Eval fixture (synthetic)"
+    },
+    {
+      "id": "d2",
+      "headline": "Group revenue passed €1,234,567,890 in 2025, up 9.9%",
+      "message_type": "trend",
+      "evidence": [
+        {
+          "claim": "rev",
+          "values": [
+            1123353862,
+            1234567890
+          ]
+        }
+      ],
+      "visual": {
+        "type": "column",
+        "title": "Group revenue",
+        "unit": "€",
+        "format": {
+          "decimals": 0
+        },
+        "data": {
+          "categories": [
+            "2023",
+            "2024",
+            "2025"
+          ],
+          "series": [
+            {
+              "name": "Revenue",
+              "values": [
+                1002345678,
+                1123353862,
+                1234567890
+              ]
+            }
+          ]
+        }
+      },
+      "kind": "content",
+      "section": "K1",
+      "purpose": "Eval case",
+      "source": "Eval fixture (synthetic)"
+    },
+    {
+      "id": "d3",
+      "headline": "Customer service quality is the most cited reason for switching providers",
+      "message_type": "ranking",
+      "visual": {
+        "type": "column",
+        "title": "Reasons for switching",
+        "unit": "% of respondents",
+        "data": {
+          "categories": [
+            "Customer service quality and responsiveness",
+            "Price increases above inflation",
+            "Network coverage in rural areas",
+            "Contract flexibility and exit fees",
+            "Digital self-service experience"
+          ],
+          "series": [
+            {
+              "name": "Share",
+              "values": [
+                38,
+                27,
+                16,
+                11,
+                8
+              ]
+            }
+          ]
+        }
+      },
+      "kind": "content",
+      "section": "K1",
+      "purpose": "Eval case",
+      "source": "Eval fixture (synthetic)"
+    },
+    {
+      "id": "d4",
+      "headline": "Eight suppliers share the spend, but the top two hold 55%",
+      "message_type": "composition",
+      "visual": {
+        "type": "pie",
+        "title": "Spend by supplier",
+        "unit": "%",
+        "data": {
+          "categories": [
+            "Supplier A",
+            "Supplier B",
+            "Supplier C",
+            "Supplier D",
+            "Supplier E",
+            "Supplier F",
+            "Supplier G",
+            "Supplier H"
+          ],
+          "series": [
+            {
+              "name": "Spend",
+              "values": [
+                30,
+                25,
+                12,
+                10,
+                8,
+                6,
+                5,
+                4
+              ]
+            }
+          ]
+        }
+      },
+      "kind": "content",
+      "section": "K1",
+      "purpose": "Eval case",
+      "source": "Eval fixture (synthetic)"
+    }
+  ],
+  "eval": {
+    "purpose": "Many series, very long numbers, long labels, pies with too many slices (visual autofix)"
+  }
+}

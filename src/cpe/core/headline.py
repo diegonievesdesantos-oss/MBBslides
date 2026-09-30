@@ -37,6 +37,9 @@ VERBS = {
     "represent", "accounts", "account", "explains", "explain", "drives", "drive", "drove", "generates", "generate",
     "generated", "outperforms", "outperform", "outperformed", "lags", "lag", "lagged", "remains", "remain", "stays",
     "requires", "require", "needs", "need", "enables", "enable", "unlocks", "unlock", "delivers", "deliver", "adds", "add",
+    "report", "reports", "reported", "share", "shares", "differ", "differs", "fill", "fills", "passed", "pass", "passes",
+    "stands", "stand", "sit", "trail", "hit", "hits", "halve", "halves", "grew", "drop", "drops", "dropped",
+    "reporta", "reportan", "comparten", "difieren", "llena", "supera", "caen", "suben", "crecen", "pierde", "pierden", "gana", "ganan",
     "offers", "offer", "creates", "create", "concentrates", "concentrate", "slowed", "slows", "accelerated", "accelerates",
     "shifted", "shifts", "shift", "leads", "lead", "led", "wins", "win", "lost", "loses", "lose", "captures", "capture",
     "exceeds", "exceed", "exceeded", "trails", "trail", "dominate", "dominates", "depends", "depend", "costs", "cost",
@@ -64,7 +67,7 @@ VAGUE = {
     "significativo", "significativa", "importante", "varios", "algunos", "fuerte", "considerable", "notable",
 }
 
-NUM_RE = re.compile(r"(?<![\w.])[-−+]?(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?(?:\s*(?:%|pp|x|bn|mn|m|k|b)(?![A-Za-z]))?", re.IGNORECASE)
+NUM_RE = re.compile(r"(?<![\w.,])[-−+]?(?:\d+,\d{1,2}(?!\d)|\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?(?:\s*(?:%|pp|x|bn|mn|m|k|b)(?![A-Za-z]))?", re.IGNORECASE)
 
 
 def words(text: str) -> list[str]:
@@ -102,7 +105,8 @@ def numbers_in(text: str) -> list[tuple[float, str]]:
         if prev in ("wave", "waves", "phase", "step", "stage", "q", "h", "fy", "tier", "level", "option", "scenario", "ola", "fase", "hub", "top"):
             continue  # identifiers ("wave 1", "phase 2"), not quantities
         unit = re.sub(r"[-−+\d.,\s]", "", raw).lower()
-        num = raw.replace(",", "").replace("−", "-")
+        num = raw.replace("−", "-")
+        num = num.replace(",", ".") if re.search(r"\d,\d{1,2}(?!\d)", num) else num.replace(",", "")  # Spanish decimal comma
         num = re.sub(r"[^\d.\-+]", "", num)
         try:
             v = float(num)

@@ -58,6 +58,7 @@ def plan(spec: dict, auto_split: bool | None = None) -> tuple[dict, list[dict]]:
                 issues.append(issue("error", "SOURCE_MISSING", "Data slide without a source line", sid))
         # visual reasoning
         for k, ex in enumerate(slide_exhibits(s)):
+            ex["_headline"] = s.get("headline", "")  # lets exhibits put the headline's proof on the slide
             ex_path = ("visual" if k == 0 else f"exhibits[{k - 1}]") if isinstance(s.get("visual"), dict) else f"exhibits[{k}]"
             if ex.get("type", "auto") == "auto":
                 vt, why = visual_reasoning.choose(s, ex, profile)

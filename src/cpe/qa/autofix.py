@@ -11,8 +11,6 @@ author with a precise instruction.
 """
 from __future__ import annotations
 
-from ..spec import slide_exhibits
-
 FIT_CODES = {"TEXT_OVERFLOW", "RENDER_TEXT_SPILL", "CONTENT_OVER_CAPACITY", "OUTSIDE_ZONE", "RENDER_TEXT_COLLISION", "TEXT_COLLISION"}
 
 AGENT_ACTIONS = {

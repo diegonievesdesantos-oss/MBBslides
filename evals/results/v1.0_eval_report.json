@@ -1,0 +1,290 @@
+{
+  "suite_composition": 74.3,
+  "cases": [
+    {
+      "case": "01_sparse_content",
+      "ok": true,
+      "purpose": "Dead space / underused canvas: small exhibits must not float in an empty slide",
+      "qa_passed": true,
+      "qa_errors": 0,
+      "qa_warnings": 7,
+      "qa_score": 93.5,
+      "composition": 57.2,
+      "slides": {
+        "a1": {
+          "score": 57.5,
+          "flags": [
+            "DEAD_SPACE",
+            "UNDERUSED_CANVAS",
+            "OFF_BALANCE"
+          ]
+        },
+        "a2": {
+          "score": 67.5,
+          "flags": [
+            "DEAD_SPACE",
+            "UNDERUSED_CANVAS"
+          ]
+        },
+        "a3": {
+          "score": 53.3,
+          "flags": [
+            "DEAD_SPACE",
+            "UNDERUSED_CANVAS",
+            "OFF_BALANCE"
+          ]
+        },
+        "a4": {
+          "score": 50.3,
+          "flags": [
+            "DEAD_SPACE",
+            "UNDERUSED_CANVAS",
+            "OFF_BALANCE"
+          ]
+        }
+      },
+      "pending": 0,
+      "seconds": 2.5
+    },
+    {
+      "case": "02_text_overload",
+      "ok": true,
+      "purpose": "Density engine: shrink to floor, switch layout, report excess words — never overflow",
+      "qa_passed": true,
+      "qa_errors": 0,
+      "qa_warnings": 7,
+      "qa_score": 90.3,
+      "composition": 84.8,
+      "slides": {
+        "b1": {
+          "score": 71.2,
+          "flags": [
+            "NOISY_EMPHASIS",
+            "PROOF_NOT_VISIBLE"
+          ]
+        },
+        "b2": {
+          "score": 83.9,
+          "flags": [
+            "UNDERUSED_CANVAS"
+          ]
+        },
+        "b3": {
+          "score": 99.4,
+          "flags": []
+        }
+      },
+      "pending": 5,
+      "seconds": 2.4
+    },
+    {
+      "case": "03_tables",
+      "ok": true,
+      "purpose": "Big tables split / summarise; wide heatmaps keep equal cells",
+      "qa_passed": true,
+      "qa_errors": 0,
+      "qa_warnings": 5,
+      "qa_score": 94.3,
+      "composition": 79.7,
+      "slides": {
+        "c1": {
+          "score": 73.2,
+          "flags": [
+            "DEAD_SPACE"
+          ]
+        },
+        "c1_2": {
+          "score": 78.4,
+          "flags": [
+            "DEAD_SPACE"
+          ]
+        },
+        "c2": {
+          "score": 87.6,
+          "flags": [
+            "NO_FOCAL_POINT"
+          ]
+        }
+      },
+      "pending": 1,
+      "seconds": 2.3
+    },
+    {
+      "case": "04_charts_stress",
+      "ok": true,
+      "purpose": "Many series, very long numbers, long labels, pies with too many slices (visual autofix)",
+      "qa_passed": true,
+      "qa_errors": 0,
+      "qa_warnings": 6,
+      "qa_score": 94.5,
+      "composition": 76.5,
+      "slides": {
+        "d1": {
+          "score": 93.9,
+          "flags": []
+        },
+        "d2": {
+          "score": 71.4,
+          "flags": [
+            "OVERDENSE",
+            "NOISY_EMPHASIS"
+          ]
+        },
+        "d3": {
+          "score": 81.3,
+          "flags": [
+            "NOISY_EMPHASIS"
+          ]
+        },
+        "d4": {
+          "score": 59.3,
+          "flags": [
+            "DEAD_SPACE",
+            "NOISY_EMPHASIS",
+            "PROOF_NOT_VISIBLE"
+          ]
+        }
+      },
+      "pending": 0,
+      "seconds": 4.9
+    },
+    {
+      "case": "05_spanish",
+      "ok": true,
+      "purpose": "Spanish content: lints, comma decimals, accents, text widths",
+      "qa_passed": true,
+      "qa_errors": 0,
+      "qa_warnings": 2,
+      "qa_score": 98.0,
+      "composition": 77.7,
+      "slides": {
+        "e1": {
+          "score": 86.8,
+          "flags": []
+        },
+        "e2": {
+          "score": 65.6,
+          "flags": [
+            "NOISY_EMPHASIS",
+            "PROOF_NOT_VISIBLE"
+          ]
+        },
+        "e3": {
+          "score": 80.6,
+          "flags": [
+            "NOISY_EMPHASIS"
+          ]
+        }
+      },
+      "pending": 0,
+      "seconds": 2.2
+    },
+    {
+      "case": "06_diagrams_dense",
+      "ok": true,
+      "purpose": "Operating model, 10-row roadmap, 14-item matrix, wide org chart",
+      "qa_passed": false,
+      "qa_errors": 1,
+      "qa_warnings": 8,
+      "qa_score": 87.8,
+      "composition": 86.7,
+      "slides": {
+        "f1": {
+          "score": 87.2,
+          "flags": [
+            "OFF_BALANCE"
+          ]
+        },
+        "f2": {
+          "score": 91.0,
+          "flags": [
+            "NO_FOCAL_POINT"
+          ]
+        },
+        "f3": {
+          "score": 93.2,
+          "flags": []
+        },
+        "f4": {
+          "score": 75.5,
+          "flags": [
+            "NOISY_EMPHASIS"
+          ]
+        }
+      },
+      "pending": 1,
+      "seconds": 2.5
+    },
+    {
+      "case": "07_waterfalls",
+      "ok": true,
+      "purpose": "Many steps, subtotals, auto-truncated axis",
+      "qa_passed": true,
+      "qa_errors": 0,
+      "qa_warnings": 3,
+      "qa_score": 96.0,
+      "composition": 74.0,
+      "slides": {
+        "g1": {
+          "score": 79.0,
+          "flags": [
+            "PROOF_NOT_VISIBLE"
+          ]
+        },
+        "g2": {
+          "score": 68.9,
+          "flags": [
+            "NOISY_EMPHASIS",
+            "PROOF_NOT_VISIBLE"
+          ]
+        }
+      },
+      "pending": 0,
+      "seconds": 2.1
+    },
+    {
+      "case": "08_headlines_structure",
+      "ok": true,
+      "purpose": "Two-line headlines, comparison columns, statement slides",
+      "qa_passed": true,
+      "qa_errors": 0,
+      "qa_warnings": 3,
+      "qa_score": 97.0,
+      "composition": 57.5,
+      "slides": {
+        "h1": {
+          "score": 64.0,
+          "flags": [
+            "OVERDENSE",
+            "NOISY_EMPHASIS",
+            "PROOF_NOT_VISIBLE"
+          ]
+        },
+        "h2": {
+          "score": 50.9,
+          "flags": [
+            "DEAD_SPACE",
+            "UNDERUSED_CANVAS",
+            "OFF_BALANCE",
+            "NOISY_EMPHASIS"
+          ]
+        }
+      },
+      "pending": 1,
+      "seconds": 1.9
+    }
+  ],
+  "flag_counts": {
+    "NOISY_EMPHASIS": 10,
+    "DEAD_SPACE": 8,
+    "UNDERUSED_CANVAS": 6,
+    "PROOF_NOT_VISIBLE": 6,
+    "OFF_BALANCE": 5,
+    "NO_FOCAL_POINT": 2,
+    "OVERDENSE": 2
+  },
+  "slides_measured": 25,
+  "regressions": [],
+  "improvements": [],
+  "passed": true
+}

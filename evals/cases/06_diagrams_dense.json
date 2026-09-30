@@ -1,0 +1,388 @@
+{
+  "meta": {
+    "title": "Dense diagrams",
+    "deck_type": "strategy_deck",
+    "theme": "meridian"
+  },
+  "storyline": {
+    "framework": "SCR",
+    "governing_thought": "Eval decks stress the engine so visual quality stays measurable",
+    "key_line": [
+      {
+        "id": "K1",
+        "role": "situation",
+        "message": "Context"
+      },
+      {
+        "id": "K2",
+        "role": "resolution",
+        "message": "Answer"
+      }
+    ]
+  },
+  "slides": [
+    {
+      "id": "f1",
+      "headline": "The target model adds three capabilities across six layers",
+      "message_type": "structure",
+      "visual": {
+        "type": "operating_model",
+        "data": {
+          "layers": [
+            {
+              "label": "Layer 1",
+              "items": [
+                "Capability 1.1",
+                "Capability 1.2",
+                "Capability 1.3",
+                "Capability 1.4",
+                "Capability 1.5"
+              ]
+            },
+            {
+              "label": "Layer 2",
+              "items": [
+                "Capability 2.1",
+                "Capability 2.2",
+                "Capability 2.3",
+                "Capability 2.4",
+                "Capability 2.5"
+              ]
+            },
+            {
+              "label": "Layer 3",
+              "items": [
+                "Capability 3.1",
+                "Capability 3.2",
+                "Capability 3.3",
+                "Capability 3.4",
+                "Capability 3.5"
+              ]
+            },
+            {
+              "label": "Layer 4",
+              "items": [
+                "Capability 4.1",
+                "Capability 4.2",
+                "Capability 4.3",
+                "Capability 4.4",
+                "Capability 4.5"
+              ]
+            },
+            {
+              "label": "Layer 5",
+              "items": [
+                "Capability 5.1",
+                "Capability 5.2",
+                "Capability 5.3",
+                "Capability 5.4",
+                "Capability 5.5"
+              ]
+            },
+            {
+              "label": "Layer 6",
+              "items": [
+                "Capability 6.1",
+                "Capability 6.2",
+                "Capability 6.3",
+                "Capability 6.4",
+                "Capability 6.5"
+              ]
+            }
+          ],
+          "pillars": [
+            {
+              "label": "Governance"
+            }
+          ]
+        }
+      },
+      "kind": "content",
+      "section": "K1",
+      "purpose": "Eval case",
+      "source": "Eval fixture (synthetic)"
+    },
+    {
+      "id": "f2",
+      "headline": "Ten workstreams run in parallel, with the platform on the critical path",
+      "message_type": "plan",
+      "visual": {
+        "type": "gantt",
+        "data": {
+          "periods": [
+            "Q1 26",
+            "Q2 26",
+            "Q3 26",
+            "Q4 26",
+            "Q1 27",
+            "Q2 27",
+            "Q3 27",
+            "Q4 27"
+          ],
+          "today": 1.5,
+          "rows": [
+            {
+              "label": "Workstream 1",
+              "bars": [
+                {
+                  "start": 1,
+                  "end": 5,
+                  "label": "Deliverable 1"
+                }
+              ]
+            },
+            {
+              "label": "Workstream 2",
+              "bars": [
+                {
+                  "start": 2,
+                  "end": 7,
+                  "label": "Deliverable 2"
+                }
+              ]
+            },
+            {
+              "label": "Workstream 3",
+              "bars": [
+                {
+                  "start": 3,
+                  "end": 6,
+                  "label": "Deliverable 3"
+                }
+              ]
+            },
+            {
+              "label": "Workstream 4",
+              "bars": [
+                {
+                  "start": 0,
+                  "end": 4,
+                  "label": "Deliverable 4"
+                }
+              ]
+            },
+            {
+              "label": "Workstream 5",
+              "bars": [
+                {
+                  "start": 1,
+                  "end": 6,
+                  "label": "Deliverable 5"
+                }
+              ]
+            },
+            {
+              "label": "Workstream 6",
+              "bars": [
+                {
+                  "start": 2,
+                  "end": 5,
+                  "label": "Deliverable 6"
+                }
+              ]
+            },
+            {
+              "label": "Workstream 7",
+              "bars": [
+                {
+                  "start": 3,
+                  "end": 7,
+                  "label": "Deliverable 7"
+                }
+              ]
+            },
+            {
+              "label": "Workstream 8",
+              "bars": [
+                {
+                  "start": 0,
+                  "end": 5,
+                  "label": "Deliverable 8"
+                }
+              ]
+            },
+            {
+              "label": "Workstream 9",
+              "bars": [
+                {
+                  "start": 1,
+                  "end": 4,
+                  "label": "Deliverable 9"
+                }
+              ]
+            },
+            {
+              "label": "Workstream 10",
+              "bars": [
+                {
+                  "start": 2,
+                  "end": 6,
+                  "label": "Deliverable 10"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "kind": "content",
+      "section": "K1",
+      "purpose": "Eval case",
+      "source": "Eval fixture (synthetic)"
+    },
+    {
+      "id": "f3",
+      "headline": "Four of fourteen initiatives sit in the high-value, easy quadrant",
+      "message_type": "positioning",
+      "visual": {
+        "type": "matrix_2x2",
+        "data": {
+          "x_label": "Ease",
+          "y_label": "Value",
+          "quadrants": [
+            "Big bets",
+            "Quick wins",
+            "Deprioritise",
+            "Fill-ins"
+          ],
+          "focus": "TR",
+          "items": [
+            {
+              "label": "Initiative 1",
+              "x": 0.47,
+              "y": 0.63
+            },
+            {
+              "label": "Initiative 2",
+              "x": 0.84,
+              "y": 0.31000000000000005
+            },
+            {
+              "label": "Initiative 3",
+              "x": 0.3599999999999999,
+              "y": 0.8400000000000001
+            },
+            {
+              "label": "Initiative 4",
+              "x": 0.73,
+              "y": 0.5200000000000001
+            },
+            {
+              "label": "Initiative 5",
+              "x": 0.2500000000000001,
+              "y": 0.20000000000000043
+            },
+            {
+              "label": "Initiative 6",
+              "x": 0.6199999999999998,
+              "y": 0.7300000000000002
+            },
+            {
+              "label": "Initiative 7",
+              "x": 0.13999999999999993,
+              "y": 0.41000000000000003
+            },
+            {
+              "label": "Initiative 8",
+              "x": 0.51,
+              "y": 0.9400000000000003
+            },
+            {
+              "label": "Initiative 9",
+              "x": 0.8800000000000001,
+              "y": 0.6200000000000006
+            },
+            {
+              "label": "Initiative 10",
+              "x": 0.40000000000000024,
+              "y": 0.3000000000000008
+            },
+            {
+              "label": "Initiative 11",
+              "x": 0.7700000000000004,
+              "y": 0.8300000000000002
+            },
+            {
+              "label": "Initiative 12",
+              "x": 0.2899999999999996,
+              "y": 0.5100000000000005
+            },
+            {
+              "label": "Initiative 13",
+              "x": 0.6599999999999997,
+              "y": 0.19000000000000075
+            },
+            {
+              "label": "Initiative 14",
+              "x": 0.17999999999999985,
+              "y": 0.7200000000000001
+            }
+          ]
+        }
+      },
+      "kind": "content",
+      "section": "K1",
+      "purpose": "Eval case",
+      "source": "Eval fixture (synthetic)"
+    },
+    {
+      "id": "f4",
+      "headline": "Eight functions report into a lean transformation office",
+      "message_type": "hierarchy",
+      "visual": {
+        "type": "org_chart",
+        "data": {
+          "root": {
+            "label": "CEO",
+            "children": [
+              {
+                "label": "Transformation office",
+                "highlight": true,
+                "children": [
+                  {
+                    "label": "Function 1",
+                    "sub": "Lead"
+                  },
+                  {
+                    "label": "Function 2",
+                    "sub": "Lead"
+                  },
+                  {
+                    "label": "Function 3",
+                    "sub": "Lead"
+                  },
+                  {
+                    "label": "Function 4",
+                    "sub": "Lead"
+                  },
+                  {
+                    "label": "Function 5",
+                    "sub": "Lead"
+                  },
+                  {
+                    "label": "Function 6",
+                    "sub": "Lead"
+                  },
+                  {
+                    "label": "Function 7",
+                    "sub": "Lead"
+                  },
+                  {
+                    "label": "Function 8",
+                    "sub": "Lead"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "kind": "content",
+      "section": "K1",
+      "purpose": "Eval case",
+      "source": "Eval fixture (synthetic)"
+    }
+  ],
+  "eval": {
+    "purpose": "Operating model, 10-row roadmap, 14-item matrix, wide org chart"
+  }
+}

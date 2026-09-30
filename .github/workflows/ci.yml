@@ -1,0 +1,69 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install ruff
+      - run: ruff check src tests
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - name: System dependencies (LibreOffice Impress + metric-compatible fonts)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends libreoffice-impress fonts-liberation fonts-crosextra-carlito fonts-crosextra-caladea
+      - run: pip install -r requirements.txt pytest
+      - name: Unit, QA-stress and render tests
+        run: python -m pytest -q
+
+  regression:
+    # Blocks the merge if the regression decks cannot be generated / rendered or fail the QA gate,
+    # or if the visual-quality evals regress against the committed baseline.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - name: System dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends libreoffice-impress fonts-liberation fonts-crosextra-carlito fonts-crosextra-caladea
+      - run: pip install -r requirements.txt
+      - name: Demo and gallery decks pass the QA gate
+        run: |
+          scripts/cpe run examples/alvora/deck.json -o ci_out/alvora --max-iter 2
+          scripts/cpe run examples/gallery/deck.json -o ci_out/gallery --max-iter 2
+      - name: Visual-quality evals vs baseline
+        run: scripts/cpe eval evals/cases -o ci_out/evals --baseline evals/baseline.json
+      - name: Upload renders and reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: regression-output
+          path: |
+            ci_out/**/contact_sheet.png
+            ci_out/**/qa_report.md
+            ci_out/evals/eval_report.md
+            ci_out/evals/eval_report.json

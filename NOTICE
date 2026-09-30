@@ -1,0 +1,7 @@
+MBBslides — Consulting Presentation Engine
+Copyright 2026 Diego Nieves de Santos and contributors
+
+This product is licensed under the Apache License, Version 2.0 (see LICENSE).
+
+The design of this engine was informed by an audit of four public projects
+(see AUDIT.md and docs/audit/). No code from those projects is included.

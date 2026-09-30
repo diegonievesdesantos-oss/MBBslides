@@ -1,0 +1,152 @@
+{
+  "meta": {
+    "title": "Waterfalls",
+    "deck_type": "strategy_deck",
+    "theme": "meridian"
+  },
+  "storyline": {
+    "framework": "SCR",
+    "governing_thought": "Eval decks stress the engine so visual quality stays measurable",
+    "key_line": [
+      {
+        "id": "K1",
+        "role": "situation",
+        "message": "Context"
+      },
+      {
+        "id": "K2",
+        "role": "resolution",
+        "message": "Answer"
+      }
+    ]
+  },
+  "slides": [
+    {
+      "id": "g1",
+      "headline": "Twelve drivers explain the €37M EBITDA decline",
+      "message_type": "change_bridge",
+      "visual": {
+        "type": "waterfall",
+        "title": "EBITDA bridge",
+        "unit": "€M",
+        "data": {
+          "steps": [
+            {
+              "label": "EBITDA 2024",
+              "value": 420,
+              "type": "total"
+            },
+            {
+              "label": "Driver 1",
+              "value": 12
+            },
+            {
+              "label": "Driver 2",
+              "value": -18
+            },
+            {
+              "label": "Driver 3",
+              "value": 9
+            },
+            {
+              "label": "Driver 4",
+              "value": -22
+            },
+            {
+              "label": "Driver 5",
+              "value": 5
+            },
+            {
+              "label": "Driver 6",
+              "value": -14
+            },
+            {
+              "label": "Driver 7",
+              "value": 7
+            },
+            {
+              "label": "Driver 8",
+              "value": -6
+            },
+            {
+              "label": "Driver 9",
+              "value": 3
+            },
+            {
+              "label": "Driver 10",
+              "value": -9
+            },
+            {
+              "label": "Driver 11",
+              "value": 2
+            },
+            {
+              "label": "Driver 12",
+              "value": -6
+            },
+            {
+              "label": "EBITDA 2025",
+              "type": "total"
+            }
+          ]
+        }
+      },
+      "kind": "content",
+      "section": "K1",
+      "purpose": "Eval case",
+      "source": "Eval fixture (synthetic)"
+    },
+    {
+      "id": "g2",
+      "headline": "Price and volume add €45M, more than offsetting cost inflation",
+      "message_type": "change_bridge",
+      "visual": {
+        "type": "bridge",
+        "title": "Revenue bridge",
+        "unit": "€M",
+        "data": {
+          "steps": [
+            {
+              "label": "2024",
+              "value": 300,
+              "type": "total"
+            },
+            {
+              "label": "Price",
+              "value": 25
+            },
+            {
+              "label": "Volume",
+              "value": 20
+            },
+            {
+              "label": "Gross",
+              "type": "subtotal"
+            },
+            {
+              "label": "Inflation",
+              "value": -30
+            },
+            {
+              "label": "2025",
+              "type": "total"
+            }
+          ]
+        }
+      },
+      "commentary": {
+        "points": [
+          "**Price** carries the largest single gain",
+          "Inflation absorbs two thirds of the gross gain"
+        ]
+      },
+      "kind": "content",
+      "section": "K1",
+      "purpose": "Eval case",
+      "source": "Eval fixture (synthetic)"
+    }
+  ],
+  "eval": {
+    "purpose": "Many steps, subtotals, auto-truncated axis"
+  }
+}

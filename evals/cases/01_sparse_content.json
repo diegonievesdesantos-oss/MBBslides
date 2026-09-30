@@ -1,0 +1,162 @@
+{
+  "meta": {
+    "title": "Sparse content",
+    "deck_type": "strategy_deck",
+    "theme": "meridian"
+  },
+  "storyline": {
+    "framework": "SCR",
+    "governing_thought": "Eval decks stress the engine so visual quality stays measurable",
+    "key_line": [
+      {
+        "id": "K1",
+        "role": "situation",
+        "message": "Context"
+      },
+      {
+        "id": "K2",
+        "role": "resolution",
+        "message": "Answer"
+      }
+    ]
+  },
+  "slides": [
+    {
+      "id": "a1",
+      "headline": "The board is asked to approve two decisions to start in January",
+      "message_type": "recommendation",
+      "visual": {
+        "type": "table",
+        "title": "Decisions",
+        "columns": [
+          {
+            "label": "Decision",
+            "width": 4.5
+          },
+          {
+            "label": "Owner"
+          },
+          {
+            "label": "Impact (€M)",
+            "kind": "number"
+          }
+        ],
+        "rows": [
+          [
+            "Approve the pricing reset",
+            "CCO",
+            60
+          ],
+          [
+            "Approve the pilot budget",
+            "CFO",
+            18
+          ]
+        ]
+      },
+      "commentary": {
+        "points": [
+          "Both are reversible within one quarter"
+        ]
+      },
+      "kind": "content",
+      "section": "K1",
+      "purpose": "Eval case",
+      "source": "Eval fixture (synthetic)"
+    },
+    {
+      "id": "a2",
+      "headline": "A three-row table is the whole exhibit and still fills the slide",
+      "message_type": "comparison",
+      "visual": {
+        "type": "table",
+        "title": "Three options",
+        "columns": [
+          {
+            "label": "Option"
+          },
+          {
+            "label": "NPV (€M)",
+            "kind": "number"
+          },
+          {
+            "label": "Risk"
+          }
+        ],
+        "rows": [
+          [
+            "Build",
+            120,
+            "High"
+          ],
+          [
+            "Buy",
+            95,
+            "Medium"
+          ],
+          [
+            "Partner",
+            70,
+            "Low"
+          ]
+        ]
+      },
+      "kind": "content",
+      "section": "K1",
+      "purpose": "Eval case",
+      "source": "Eval fixture (synthetic)"
+    },
+    {
+      "id": "a3",
+      "headline": "One number matters: churn fell to 4.2% after the loyalty relaunch",
+      "message_type": "single_number",
+      "visual": {
+        "type": "kpi",
+        "data": {
+          "items": [
+            {
+              "value": "4.2%",
+              "label": "Monthly churn, Q3",
+              "delta": "−1.3pp",
+              "trend": "down",
+              "good": "down"
+            }
+          ]
+        }
+      },
+      "evidence": [
+        {
+          "claim": "churn",
+          "values": [
+            4.2,
+            5.5
+          ]
+        }
+      ],
+      "kind": "content",
+      "section": "K1",
+      "purpose": "Eval case",
+      "source": "Eval fixture (synthetic)"
+    },
+    {
+      "id": "a4",
+      "headline": "Only one argument is needed: the contract expires in March",
+      "message_type": "argument",
+      "visual": {
+        "type": "bullets",
+        "data": {
+          "points": [
+            "The current supplier contract expires in March and cannot be extended"
+          ]
+        }
+      },
+      "kind": "content",
+      "section": "K1",
+      "purpose": "Eval case",
+      "source": "Eval fixture (synthetic)"
+    }
+  ],
+  "eval": {
+    "purpose": "Dead space / underused canvas: small exhibits must not float in an empty slide"
+  }
+}

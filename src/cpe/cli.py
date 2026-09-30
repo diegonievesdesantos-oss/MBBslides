@@ -14,6 +14,7 @@ Rendering commands:
   run        the full loop: plan → build → render → QA → autofix → … (exit 1 if not passed)
   patch      deck.json + patches.json → patched deck.json
   review     score an agent-filled review.json (semantic visual QA)
+  eval       visual-quality benchmark over evals/cases vs evals/baseline.json (exit 1 on regression)
 Reference:
   catalog    layout library (markdown)        themes    available themes
 """
@@ -180,6 +181,18 @@ def cmd_review(a):
     return 0 if r["passed"] else 1
 
 
+def cmd_eval(a):
+    from .evals import run_suite
+
+    r = run_suite(a.cases, a.out, a.baseline, update_baseline=a.update_baseline, compose=not a.no_compose, tolerance=a.tolerance)
+    for x in r["regressions"]:
+        _p(f"REGRESSION  {x}")
+    for x in r["improvements"]:
+        _p(f"improved    {x}")
+    _p(f"\n{'PASSED' if r['passed'] else 'FAILED'} · suite composition {r['suite_composition']} · report {a.out}/eval_report.md")
+    return 0 if r["passed"] else 1
+
+
 def cmd_catalog(a):
     from .layout.engine import catalog_markdown
 
@@ -210,6 +223,7 @@ def main(argv=None) -> int:
     s = sub.add_parser("run"); s.add_argument("spec"); s.add_argument("-o", "--out", default="out"); s.add_argument("--max-iter", type=int, default=3); s.add_argument("--no-render", action="store_true"); s.add_argument("--dpi", type=int, default=110); s.add_argument("--name", default="deck"); s.set_defaults(f=cmd_run)
     s = sub.add_parser("patch"); s.add_argument("spec"); s.add_argument("patches"); s.add_argument("-o", "--out"); s.set_defaults(f=cmd_patch)
     s = sub.add_parser("review"); s.add_argument("review"); s.set_defaults(f=cmd_review)
+    s = sub.add_parser("eval"); s.add_argument("cases", nargs="?", default="evals/cases"); s.add_argument("-o", "--out", default="out/evals"); s.add_argument("--baseline", default="evals/baseline.json"); s.add_argument("--update-baseline", action="store_true"); s.add_argument("--no-compose", action="store_true"); s.add_argument("--tolerance", type=float, default=2.0); s.set_defaults(f=cmd_eval)
     s = sub.add_parser("catalog"); s.add_argument("-o", "--out"); s.set_defaults(f=cmd_catalog)
     s = sub.add_parser("themes"); s.set_defaults(f=cmd_themes)
     a = ap.parse_args(argv)

@@ -1,0 +1,303 @@
+{
+  "meta": {
+    "title": "Tables",
+    "deck_type": "strategy_deck",
+    "theme": "meridian"
+  },
+  "storyline": {
+    "framework": "SCR",
+    "governing_thought": "Eval decks stress the engine so visual quality stays measurable",
+    "key_line": [
+      {
+        "id": "K1",
+        "role": "situation",
+        "message": "Context"
+      },
+      {
+        "id": "K2",
+        "role": "resolution",
+        "message": "Answer"
+      }
+    ]
+  },
+  "slides": [
+    {
+      "id": "c1",
+      "headline": "Region 18 leads the network with the highest revenue in 2025",
+      "message_type": "ranking",
+      "visual": {
+        "type": "table",
+        "title": "Revenue by region",
+        "unit": "€M",
+        "columns": [
+          {
+            "label": "Region"
+          },
+          {
+            "label": "2025",
+            "kind": "number"
+          },
+          {
+            "label": "2024",
+            "kind": "number"
+          },
+          {
+            "label": "Growth",
+            "kind": "delta",
+            "format": {
+              "decimals": 1,
+              "suffix": "%"
+            }
+          }
+        ],
+        "rows": [
+          [
+            "Region 01",
+            107,
+            95,
+            2.1
+          ],
+          [
+            "Region 02",
+            114,
+            100,
+            4.0
+          ],
+          [
+            "Region 03",
+            121,
+            105,
+            5.7
+          ],
+          [
+            "Region 04",
+            128,
+            110,
+            7.3
+          ],
+          [
+            "Region 05",
+            135,
+            115,
+            8.7
+          ],
+          [
+            "Region 06",
+            142,
+            120,
+            10.0
+          ],
+          [
+            "Region 07",
+            149,
+            125,
+            11.2
+          ],
+          [
+            "Region 08",
+            156,
+            130,
+            12.3
+          ],
+          [
+            "Region 09",
+            163,
+            135,
+            13.3
+          ],
+          [
+            "Region 10",
+            170,
+            140,
+            14.3
+          ],
+          [
+            "Region 11",
+            177,
+            145,
+            15.2
+          ],
+          [
+            "Region 12",
+            184,
+            150,
+            16.0
+          ],
+          [
+            "Region 13",
+            191,
+            155,
+            16.8
+          ],
+          [
+            "Region 14",
+            198,
+            160,
+            17.5
+          ],
+          [
+            "Region 15",
+            205,
+            165,
+            18.2
+          ],
+          [
+            "Region 16",
+            212,
+            170,
+            18.8
+          ],
+          [
+            "Region 17",
+            219,
+            175,
+            19.4
+          ],
+          [
+            "Region 18",
+            226,
+            180,
+            20.0
+          ]
+        ]
+      },
+      "kind": "content",
+      "section": "K1",
+      "purpose": "Eval case",
+      "source": "Eval fixture (synthetic)"
+    },
+    {
+      "id": "c2",
+      "headline": "Heat concentrates in two cells of an otherwise flat matrix",
+      "message_type": "comparison",
+      "visual": {
+        "type": "heatmap",
+        "title": "Margin change",
+        "unit": "pp",
+        "columns": [
+          {
+            "label": "Category"
+          },
+          {
+            "label": "R1",
+            "kind": "number",
+            "format": {
+              "decimals": 1
+            }
+          },
+          {
+            "label": "R2",
+            "kind": "number",
+            "format": {
+              "decimals": 1
+            }
+          },
+          {
+            "label": "R3",
+            "kind": "number",
+            "format": {
+              "decimals": 1
+            }
+          },
+          {
+            "label": "R4",
+            "kind": "number",
+            "format": {
+              "decimals": 1
+            }
+          },
+          {
+            "label": "R5",
+            "kind": "number",
+            "format": {
+              "decimals": 1
+            }
+          },
+          {
+            "label": "R6",
+            "kind": "number",
+            "format": {
+              "decimals": 1
+            }
+          },
+          {
+            "label": "R7",
+            "kind": "number",
+            "format": {
+              "decimals": 1
+            }
+          }
+        ],
+        "rows": [
+          [
+            "Category 1",
+            -1.2,
+            -0.6,
+            0.0,
+            0.6,
+            1.2,
+            1.8,
+            -1.8
+          ],
+          [
+            "Category 2",
+            -0.6,
+            0.6,
+            1.8,
+            -1.2,
+            0.0,
+            1.2,
+            -1.8
+          ],
+          [
+            "Category 3",
+            0.0,
+            1.8,
+            -0.6,
+            1.2,
+            -1.2,
+            0.6,
+            -1.8
+          ],
+          [
+            "Category 4",
+            0.6,
+            -1.2,
+            1.2,
+            -0.6,
+            1.8,
+            0.0,
+            -1.8
+          ],
+          [
+            "Category 5",
+            1.2,
+            0.0,
+            -1.2,
+            1.8,
+            0.6,
+            -0.6,
+            -1.8
+          ],
+          [
+            "Category 6",
+            1.8,
+            1.2,
+            0.6,
+            0.0,
+            -0.6,
+            -1.2,
+            -1.8
+          ]
+        ]
+      },
+      "kind": "content",
+      "section": "K1",
+      "purpose": "Eval case",
+      "source": "Eval fixture (synthetic)"
+    }
+  ],
+  "eval": {
+    "purpose": "Big tables split / summarise; wide heatmaps keep equal cells"
+  }
+}

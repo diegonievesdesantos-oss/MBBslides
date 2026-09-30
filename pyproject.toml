@@ -7,10 +7,12 @@ name = "consulting-presentation-engine"
 version = "1.0.0"
 description = "Storyline-first consulting presentation engine: native editable PPTX with render-based QA and a self-correction loop"
 requires-python = ">=3.10"
+license = {text = "Apache-2.0"}
+readme = "README.md"
 dependencies = ["python-pptx>=1.0", "Pillow>=10", "lxml>=4.9", "PyMuPDF>=1.24", "openpyxl>=3.1"]
 
 [project.optional-dependencies]
-dev = ["pytest>=7"]
+dev = ["pytest>=7", "ruff>=0.5"]
 
 [project.scripts]
 cpe = "cpe.cli:main"
@@ -24,3 +26,15 @@ cpe = ["design/themes/*.json", "design/profiles.json"]
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 pythonpath = ["src"]
+
+[tool.ruff]
+line-length = 200
+target-version = "py310"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E9", "F", "B006", "B008", "I"]
+ignore = ["E731"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["cpe"]
