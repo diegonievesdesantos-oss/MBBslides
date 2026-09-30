@@ -32,6 +32,14 @@ manual is [SKILL.md](SKILL.md).
 - **Bounded self-correction.** The engine fixes form (visual type, layout, splitting); anything
   that requires rewriting is returned as a concrete action. It never truncates sentences.
 
+## Languages
+
+Code and documentation are in English; the engine is **bilingual (English / Spanish)** for
+content. The headline lint (verbs, topic nouns, vague words), the number check (durations and
+identifiers such as "24 months" / "24 meses", "wave 1" / "fase 1"), the storyline lint and the
+ingestion number parser (`1,234.5` and `1.234,5`) understand both languages, so decks can be
+written in either.
+
 ## Installation
 
 ```bash

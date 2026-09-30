@@ -31,6 +31,9 @@ Requirements: Python ≥3.10, `pip install -r requirements.txt`, LibreOffice **w
 
 ## 0. When to use / not use
 
+Content can be English or Spanish: the lints recognise verbs, topic nouns, vague words and
+number formats in both languages. Write the whole deck in the user's language.
+
 Use when the user wants a presentation, deck, slides, board pack, SteerCo pack, memo-as-slides,
 or wants to "turn this into slides", in any language. Also to review/QA an existing deck spec.
 

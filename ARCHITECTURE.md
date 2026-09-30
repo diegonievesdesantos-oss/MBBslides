@@ -1,144 +1,152 @@
 # ARCHITECTURE.md — Consulting Presentation Engine
 
-## 1. Principio: THINKING separado de RENDERING
+## 1. Principle: THINKING separated from RENDERING
 
-El sistema tiene una frontera explícita: la **deck spec** (JSON). A un lado razona el agente
-(qué comunicar, storyline, intención de cada slide, evidencia); al otro, el motor dibuja, renderiza
-y comprueba. Nada se dibuja sin *slide intent* completa (`validate_structure` lo bloquea), y todo
-cambio posterior se expresa como **parche sobre la spec**, nunca como edición del PPTX. Así el
-resultado es reproducible, diffable y auditable.
+The system has an explicit boundary: the **deck spec** (JSON). On one side the agent reasons
+(what to communicate, storyline, the intent of each slide, evidence); on the other, the engine
+draws, renders and checks. Nothing is drawn without a complete *slide intent* (`validate_structure`
+blocks it), and every later change is expressed as a **patch on the spec**, never as an edit to
+the PPTX. The result is reproducible, diffable and auditable.
 
 ```
-                THINKING (agente + core/)                                RENDERING (motor)
+                THINKING (agent + core/)                                 RENDERING (engine)
 ┌──────────────────────────────────────────────────────┐   ┌──────────────────────────────────────────────┐
-│ INPUT ──ingest──► inventory (bloques, tablas, cifras)│   │ SLIDE SPECIFICATION (resolved.json)          │
+│ INPUT ──ingest──► inventory (blocks, tables, numbers)│   │ SLIDE SPECIFICATION (resolved.json)          │
 │   │                                                  │   │   │                                          │
-│   ▼  CONTENT UNDERSTANDING (triage, SKILL §1)        │   │   ▼ pptx/builder ─► painter ─► componentes   │
-│ STORYLINE  core/storyline  (framework, key line,     │   │      text · charts(nativos) · tables · diag. │
-│            ghost deck, lint horizontal)              │   │   ▼ deck.pptx + build_manifest.json          │
+│   ▼  CONTENT UNDERSTANDING (triage, SKILL §1)        │   │   ▼ pptx/builder ─► painter ─► components    │
+│ STORYLINE  core/storyline  (framework, key line,     │   │      text · charts(native) · tables · diag.  │
+│            ghost deck, horizontal lint)              │   │   ▼ deck.pptx + build_manifest.json          │
 │   ▼                                                  │   │ RENDER  render/renderer (LibreOffice→PDF→PNG)│
 │ SLIDE INTENT (purpose, headline, message_type,       │   │   ▼                                          │
 │               evidence)  core/headline (lint)        │   │ QA  qa/geometry · qa/render_checks ·         │
-│   ▼                                                  │   │     contenido (planner)  → qa/report (gate)  │
+│   ▼                                                  │   │     content (planner)  → qa/report (gate)    │
 │ VISUAL ENCODING  core/visual_reasoning               │   │   ▼                                          │
-│   ▼                                                  │   │ ITERATION qa/autofix → parches de forma ─────┼──┐
-│ LAYOUT SELECTION core/layout_selector + layouts/*.json│  │         + review packet → parches del agente │  │
+│   ▼                                                  │   │ ITERATION qa/autofix → form patches ─────────┼──┐
+│ LAYOUT SELECTION core/layout_selector + layouts/*.json│  │         + review packet → agent patches      │  │
 │   ▼                                                  │   └──────────────────────────────────────────────┘  │
 │ DENSITY core/density  →  PLANNER core/planner ───────┼──► (resolved.json)                                  │
-└──────────────────────────────────────────────────────┘◄──────────────── spec parcheada ───────────────────┘
+└──────────────────────────────────────────────────────┘◄──────────────── patched spec ─────────────────────┘
 ```
 
-## 2. Módulos
+## 2. Modules
 
 ```
-consulting-presentation-engine/
-├── SKILL.md                 manual operativo del agente
-├── layouts/01_…/…16_…/      43 layouts declarativos (JSON) en 16 familias
+MBBslides/
+├── SKILL.md                 the agent's operating manual
+├── layouts/01_…/…16_…/      43 declarative layouts (JSON) in 16 families
 ├── src/cpe/
-│   ├── spec.py              vocabulario (kinds, 45 visual types, 20 message types, 14 deck types),
-│   │                        validación estructural, parches
-│   ├── ingest/readers.py    txt/md/csv/xlsx/json/pdf/docx/pptx → inventario con cifras trazables
+│   ├── spec.py              vocabulary (kinds, 45 visual types, 20 message types, 14 deck types),
+│   │                        structural validation, patches
+│   ├── ingest/readers.py    txt/md/csv/xlsx/json/pdf/docx/pptx → inventory with traceable numbers
 │   ├── core/
-│   │   ├── storyline.py     7 frameworks, 14 blueprints de deck, arquetipos, scaffold, ghost deck, lint
-│   │   ├── headline.py      lint de headlines + verificación de cifras contra la evidencia
-│   │   ├── visual_reasoning.py  mensaje × forma de datos → visual (con motivos); crítica de elecciones
-│   │   ├── layout_selector.py   roles × compatibilidad × capacidad × variedad
-│   │   ├── density.py       capacidad por zona con métricas reales; cambio de layout; división
-│   │   └── planner.py       spec → resolved spec (visual, layout, ajuste, trazas `_plan`)
+│   │   ├── storyline.py     7 frameworks, 14 deck blueprints, archetypes, scaffold, ghost deck, lint
+│   │   ├── headline.py      headline lint + check of headline numbers against the evidence
+│   │   ├── visual_reasoning.py  message × data shape → visual (with reasons); critique of choices
+│   │   ├── layout_selector.py   roles × compatibility × capacity × variety
+│   │   ├── density.py       per-zone capacity with real metrics; layout switch; splitting
+│   │   └── planner.py       spec → resolved spec (visual, layout, fitting, `_plan` traces)
 │   ├── design/
-│   │   ├── tokens.py        rejilla 12 col, bandas, spacing XS–XXL, escala tipográfica, suelos,
-│   │   │                    líneas, contraste WCAG, escalas de color
+│   │   ├── tokens.py        12-col grid, bands, XS–XXL spacing, type scale, floors, lines,
+│   │   │                    WCAG contrast, colour scales
 │   │   ├── themes/*.json    meridian · graphite · harbor
-│   │   ├── profiles.json    densidad por perfil (board/standard/analytical/status) y tipo de deck
-│   │   └── text_metrics.py  medición de texto con glifos reales (Liberation Sans ≡ Arial)
-│   ├── layout/engine.py     carga de la librería y resolución de zonas a cajas en pulgadas
+│   │   ├── profiles.json    density per profile (board/standard/analytical/status) and deck type
+│   │   └── text_metrics.py  text measurement with real glyphs (Liberation Sans ≡ Arial)
+│   ├── layout/engine.py     loads the library and resolves zones to boxes in inches
 │   ├── pptx/
-│   │   ├── painter.py       única capa que toca python-pptx: tokens, sin p:style, nombres
-│   │   │                    `cpe|zona|tipo|n`, ajuste de texto hacia el suelo, manifest
-│   │   ├── text_components.py  chrome, headline equilibrado, KPIs, statements, columnas, takeaway
-│   │   └── builder.py       orquesta slides → .pptx + manifest
-│   ├── charts/              native.py (charts nativos con plot area determinista + overlays),
-│   │                        numfmt.py (formatos Excel ⇄ Python, escalas redondas, CAGR)
-│   ├── tables/table.py      tablas nativas: heatmap, deltas, subtotales, Harvey, RAG
-│   ├── diagrams/diagrams.py proceso, timeline, gantt, 2x2, árboles, org chart, funnel, pirámide,
-│   │                        tile map, flow, journey, capas/modelo operativo, mekko
-│   ├── render/renderer.py   LibreOffice headless → PDF → PNG (PyMuPDF) → contact sheet
+│   │   ├── painter.py       the only layer touching python-pptx: tokens, no p:style, names
+│   │   │                    `cpe|zone|kind|n`, text fitting down to the floor, manifest
+│   │   ├── text_components.py  chrome, balanced headline, KPIs, statements, columns, takeaway
+│   │   └── builder.py       orchestrates slides → .pptx + manifest
+│   ├── charts/              native.py (native charts with a deterministic plot area + overlays),
+│   │                        numfmt.py (Excel ⇄ Python formats, round scales, CAGR)
+│   ├── tables/table.py      native tables: heatmap, deltas, subtotals, Harvey balls, RAG
+│   ├── diagrams/diagrams.py process, timeline, gantt, 2x2, trees, org chart, funnel, pyramid,
+│   │                        tile map, flow, journey, layers/operating model, mekko
+│   ├── render/renderer.py   headless LibreOffice → PDF → PNG (PyMuPDF) → contact sheet
 │   ├── qa/
-│   │   ├── geometry.py      ~20 comprobaciones sobre el PPTX
-│   │   ├── render_checks.py comprobaciones sobre lo que LibreOffice dibujó (spans del PDF + tinta)
-│   │   ├── autofix.py       issues → parches de forma / acciones para el autor
-│   │   └── report.py        score, gate `passed`, excepciones acotadas, informe, review packet
-│   ├── pipeline.py          bucle generate → render → inspect → patch → render
+│   │   ├── geometry.py      ~20 checks on the PPTX
+│   │   ├── render_checks.py checks on what LibreOffice drew (PDF spans + ink)
+│   │   ├── autofix.py       issues → form patches / author actions
+│   │   └── report.py        score, `passed` gate, scoped exemptions, report, review packet
+│   ├── pipeline.py          generate → render → inspect → patch → render loop
 │   └── cli.py               `cpe` (ingest, scaffold, outline, lint, recommend, plan, build,
 │                            render, qa, run, patch, review, catalog, themes)
-├── examples/alvora/         deck de demostración (borrador → QA → parches → final), PPTX y renders
-├── examples/gallery/        todos los tipos de exhibit (26 slides), PPTX y renders
-├── tests/                   44 tests (unitarios, estrés de QA, render, bucle)
-└── docs/                    auditoría detallada, catálogo de layouts, guía visual, spec, códigos QA
+├── examples/alvora/         demo deck (draft → QA → patches → final), PPTX and renders
+├── examples/gallery/        every exhibit type (26 slides), PPTX and renders
+├── tests/                   44 tests (unit, QA stress, render, loop)
+└── docs/                    detailed audit, layout catalogue, visual guide, spec, QA codes
 ```
 
-## 3. Decisiones clave de implementación
+## 3. Key implementation decisions
 
-**Rejilla y bandas fijas.** Slide 13,333″×7,5″; márgenes 0,55″; 12 columnas con gutter 0,22″;
-bandas: tracker 0,30″ · headline 0,52″ (2 líneas) · body 1,62–6,78″ · footer 6,86″. Los layouts
-sólo declaran columnas y fracciones verticales del body; el motor añade exactamente un gutter entre
-zonas adyacentes. Resultado: todas las slides comparten alineaciones sin coordenadas manuales.
+**Fixed grid and bands.** Slide 13.333″×7.5″; 0.55″ margins; 12 columns with a 0.22″ gutter;
+bands: tracker 0.30″ · headline 0.52″ (2 lines) · body 1.62–6.78″ · footer 6.86″. Layouts only
+declare columns and vertical fractions of the body; the engine adds exactly one gutter between
+adjacent zones. Result: every slide shares the same alignments without manual coordinates.
 
-**Métricas reales en ambos sentidos.** `text_metrics` envuelve el texto con los avances de glifo de
-Liberation Sans (métricas idénticas a Arial). El mismo cálculo decide *antes* (densidad, ajuste a
-suelo, headline equilibrado) y verifica *después* (QA geométrico), y el render de LibreOffice lo
-contrasta con la realidad.
+**Real metrics in both directions.** `text_metrics` wraps text using the glyph advances of
+Liberation Sans (metrics identical to Arial). The same calculation decides *before* (density,
+fitting to the floor, balanced headline) and verifies *after* (geometric QA), and the LibreOffice
+render checks it against reality.
 
-**Charts nativos con geometría determinista.** Cada chart fija escala (redonda) y *plot area*
-(`c:manualLayout`, `layoutTarget=inner`). Con eso el motor conoce el mapeo dato→pulgada y coloca
-overlays exactos: totales de apilados, etiquetas directas al final de series (sin leyenda),
-flechas CAGR, líneas de referencia, sombreado de forecast, conectores y marcas de corte de eje en
-waterfalls. Los datos quedan en el workbook embebido (editables). El combo se resuelve con dos
-paneles nativos alineados en lugar de un eje dual.
+**Native charts with deterministic geometry.** Every chart fixes its (round) scale and its *plot
+area* (`c:manualLayout`, `layoutTarget=inner`). The engine therefore knows the data→inch mapping
+and places exact overlays: stacked totals, direct end-of-series labels (no legend), CAGR arrows,
+reference lines, forecast shading, connectors and axis-break marks on waterfalls. The data stays
+in the embedded workbook (editable). The combo chart is two aligned native panels instead of a
+dual axis.
 
-**Waterfall 100 % nativo.** Barra apilada con serie base invisible; totales/subtotales; deltas
-coloreados o neutros; eje truncado automáticamente cuando los deltas serían astillas, con marcas
-de corte visibles para no engañar.
+**100% native waterfall.** A stacked bar with an invisible base series; totals/subtotals;
+coloured or neutral deltas; the axis is truncated automatically when deltas would be slivers,
+with visible break marks so the eye is not misled.
 
-**Nombres de shape como contrato con el QA.** `cpe|<zona>|<tipo>|<n>` permite al QA saber a qué
-zona pertenece cada shape (escape de zona), qué solapes son intencionados (texto sobre relleno,
-etiqueta sobre su línea guía) y cuáles no (tinta de texto sobre tinta de texto).
+**Shape names as a contract with QA.** `cpe|<zone>|<kind>|<n>` tells QA which zone each shape
+belongs to (zone escape), which overlaps are intentional (text on a fill, a label on its leader
+line) and which are not (text ink over text ink).
 
-**QA en tres capas + revisión semántica.** (1a) contenido sobre la spec; (1b) geometría sobre el
-PPTX; (1c) render: los spans de texto del PDF de LibreOffice se comparan con las cajas del PPTX
-(texto desbordado, colisiones reales, líneas reales del headline) y el PNG da la cobertura de
-tinta. (2) El agente revisa los PNG con 8 preguntas y 4 lentes. El veredicto `passed` lo calcula
-el código; las excepciones exigen slide + código + motivo.
+**Three-layer QA + semantic review.** (1a) content on the spec; (1b) geometry on the PPTX;
+(1c) render: the text spans of the LibreOffice PDF are compared with the PPTX boxes (overflowing
+text, real collisions, real headline line breaks) and the PNG gives ink coverage. (2) The agent
+reviews the PNGs with 8 questions and 4 lenses. The `passed` verdict is computed by code;
+exemptions require slide + code + reason.
 
-**Autocorrección acotada.** El bucle aplica sólo cambios de forma (tipo de visual con fix concreto,
-alternativa de layout, división de tablas), registra cada parche y se detiene cuando no hay
-parches nuevos o se agota el presupuesto. Lo que requiere reescribir se devuelve como acción
-precisa para el autor (p. ej. "recorta ≈90 palabras").
+**Bounded self-correction.** The loop applies only form changes (visual type with a concrete fix,
+layout alternative, table splitting), records every patch and stops when there are no new patches
+or the budget is exhausted. Anything that requires rewording is returned as a precise author
+action (e.g. "cut ≈90 words").
 
-## 4. Flujo de datos y artefactos
+**Bilingual (English / Spanish).** The engine's code and documentation are in English, but the
+thinking checks understand both languages: the headline lint's verb, generic-noun and
+vague-word lexicons, the duration/identifier words ignored by the number check, the storyline
+stopwords and the ingestion number parser include English and Spanish forms (`crece`,
+`representa`, `resumen`, `mes`, `fase`, `€1.234,5`…). Decks can be written in either language.
 
-| Paso | Entrada | Salida |
+## 4. Data flow and artefacts
+
+| Step | Input | Output |
 |---|---|---|
-| ingest | ficheros | `inventory.json/.md` |
-| scaffold / edición | tipo de deck | `deck.json` |
+| ingest | files | `inventory.json/.md` |
+| scaffold / editing | deck type | `deck.json` |
 | outline / lint | `deck.json` | ghost deck, issues |
-| plan | `deck.json` | `resolved.json` (visual, layout, ajuste, motivos) |
+| plan | `deck.json` | `resolved.json` (visual, layout, fitting, reasons) |
 | build | `resolved.json` | `deck.pptx`, `build_manifest.json` |
 | render | `deck.pptx` | `deck.pdf`, `renders/*.png`, `contact_sheet.png` |
 | qa | pptx + manifest + pdf/png | `qa_report.json/.md` |
-| run | `deck.json` | todo lo anterior + iteraciones + `review.md` + `deck.autofixed.json` |
-| patch / review | parches / `review.json` | spec corregida / veredicto semántico |
+| run | `deck.json` | all of the above + iterations + `review.md` + `deck.autofixed.json` |
+| patch / review | patches / `review.json` | corrected spec / semantic verdict |
 
-## 5. Extender el motor
+## 5. Extending the engine
 
-- **Nuevo layout:** añade un JSON en `layouts/<familia>/` (zonas por columnas y fracciones,
-  `accepts`, `compatible_visuals`, `capacity`, `when_to_use`). El test de librería comprueba que
-  ninguna zona se solape ni salga de los márgenes.
-- **Nuevo visual:** implementa `render(p, box, ex)` usando sólo `Painter`, regístralo en
-  `spec.VISUAL_TYPES` y en `diagrams.RENDERERS` / `charts.native.render`, añade reglas en
-  `visual_reasoning.BASE` y un ejemplo en la galería.
-- **Nuevo tema:** copia `design/themes/meridian.json`; los tests exigen contraste ≥7:1 (texto) y
-  ≥4,5:1 (texto secundario).
-- **Nuevo check:** devuelve `issue(level, CODE, message, slide)` desde `qa/`; documenta el código
-  (el generador de `docs/QA_CODES.md` lo recoge) y, si puede corregirse sin tocar el mensaje,
-  añade la regla en `qa/autofix.py`.
+- **New layout:** add a JSON file in `layouts/<family>/` (zones by columns and fractions,
+  `accepts`, `compatible_visuals`, `capacity`, `when_to_use`). The library test checks that no
+  zone overlaps another or crosses the margins.
+- **New visual:** implement `render(p, box, ex)` using only `Painter`, register it in
+  `spec.VISUAL_TYPES` and in `diagrams.RENDERERS` / `charts.native.render`, add rules to
+  `visual_reasoning.BASE` and an example to the gallery.
+- **New theme:** copy `design/themes/meridian.json`; the tests require contrast ≥7:1 (text) and
+  ≥4.5:1 (secondary text).
+- **New check:** return `issue(level, CODE, message, slide)` from `qa/`; document the code in
+  `docs/QA_CODES.md` and, if it can be fixed without touching the message, add the rule to
+  `qa/autofix.py`.
+- **New language:** extend the lexicons in `core/headline.py` (`VERBS`, `GENERIC_NOUNS`,
+  `VAGUE`, `DURATION_RE`) and the stopwords in `core/storyline.py`.
