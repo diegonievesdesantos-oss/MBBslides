@@ -179,7 +179,9 @@ def check_slide(slide, idx: int, manifest: dict | None, theme: Theme, profile: d
             palette |= {interpolate(theme.c(tok), theme.c("text"), k / 10) for k in range(1, 11)}
     used_zones = set()
     texts = [s for s in shapes if s.ink is not None]
-    reserved = [(r.get("name", "artwork"), Box(r["x"], r["y"], r["w"], r["h"])) for r in theme.extras.get("reserved") or []]
+    # per-slide reserved artwork when the slide sits on a matched corporate layout, else the base layout's
+    res_src = (manifest or {}).get("reserved") if (manifest or {}).get("reserved") is not None else (theme.extras.get("reserved") or [])
+    reserved = [(r.get("name", "artwork"), Box(r["x"], r["y"], r["w"], r["h"])) for r in res_src]
     for s in shapes:
         test = s.ink if s.ink is not None else s.box
         for rname, rb in reserved:

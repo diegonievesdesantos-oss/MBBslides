@@ -46,6 +46,7 @@
   "extras": {
     "template": "template.pptx",
     "base_layout": "Blank",
+    "base_layout_id": "m1.l7",
     "grid": {
       "margin_l": 0.7,
       "margin_r": 0.7,
@@ -72,6 +73,897 @@
     "measure_fonts": {
       "Georgia": "DejaVuSerif",
       "Calibri": "Carlito"
+    },
+    "corporate": {
+      "layouts": [
+        {
+          "id": "m1.l1",
+          "name": "Title Slide",
+          "master": "m1",
+          "master_index": 0,
+          "layout_index": 0,
+          "classification": [
+            {
+              "type": "cover",
+              "confidence": 0.92
+            }
+          ],
+          "usage_n": 1,
+          "placeholders": [
+            {
+              "type": "CENTER_TITLE",
+              "idx": 0,
+              "x": 0.7,
+              "y": 2.33,
+              "w": 11.933,
+              "h": 1.608
+            },
+            {
+              "type": "SUBTITLE",
+              "idx": 1,
+              "x": 1.5,
+              "y": 4.25,
+              "w": 7.0,
+              "h": 1.917
+            },
+            {
+              "type": "DATE",
+              "idx": 10,
+              "x": 0.5,
+              "y": 6.951,
+              "w": 2.333,
+              "h": 0.399
+            },
+            {
+              "type": "FOOTER",
+              "idx": 11,
+              "x": 3.417,
+              "y": 6.951,
+              "w": 3.167,
+              "h": 0.399
+            },
+            {
+              "type": "SLIDE_NUMBER",
+              "idx": 12,
+              "x": 7.167,
+              "y": 6.951,
+              "w": 2.333,
+              "h": 0.399
+            }
+          ],
+          "reserved": [
+            {
+              "name": "Kestrel logo",
+              "kind": "picture",
+              "x": 11.2,
+              "y": 0.26,
+              "w": 1.45,
+              "h": 0.35
+            },
+            {
+              "name": "Brand bar",
+              "kind": "shape",
+              "x": 0.0,
+              "y": 7.4,
+              "w": 13.333,
+              "h": 0.1
+            }
+          ],
+          "dark_bg": true,
+          "coloured_bg": false,
+          "picture_bg": false,
+          "artwork_in_body": 0
+        },
+        {
+          "id": "m1.l2",
+          "name": "Title and Content",
+          "master": "m1",
+          "master_index": 0,
+          "layout_index": 1,
+          "classification": [
+            {
+              "type": "one_column",
+              "confidence": 0.95
+            }
+          ],
+          "usage_n": 0,
+          "placeholders": [
+            {
+              "type": "TITLE",
+              "idx": 0,
+              "x": 0.7,
+              "y": 0.0,
+              "w": 11.933,
+              "h": 0.0
+            },
+            {
+              "type": "OBJECT",
+              "idx": 1,
+              "x": 0.7,
+              "y": 0.0,
+              "w": 11.933,
+              "h": 0.0
+            },
+            {
+              "type": "DATE",
+              "idx": 10,
+              "x": 0.5,
+              "y": 6.951,
+              "w": 2.333,
+              "h": 0.399
+            },
+            {
+              "type": "FOOTER",
+              "idx": 11,
+              "x": 3.417,
+              "y": 6.951,
+              "w": 3.167,
+              "h": 0.399
+            },
+            {
+              "type": "SLIDE_NUMBER",
+              "idx": 12,
+              "x": 7.167,
+              "y": 6.951,
+              "w": 2.333,
+              "h": 0.399
+            }
+          ],
+          "reserved": [
+            {
+              "name": "Kestrel logo",
+              "kind": "picture",
+              "x": 11.2,
+              "y": 0.26,
+              "w": 1.45,
+              "h": 0.35
+            },
+            {
+              "name": "Brand bar",
+              "kind": "shape",
+              "x": 0.0,
+              "y": 7.4,
+              "w": 13.333,
+              "h": 0.1
+            }
+          ],
+          "dark_bg": false,
+          "coloured_bg": false,
+          "picture_bg": false,
+          "artwork_in_body": 0
+        },
+        {
+          "id": "m1.l3",
+          "name": "Section Header",
+          "master": "m1",
+          "master_index": 0,
+          "layout_index": 2,
+          "classification": [
+            {
+              "type": "section",
+              "confidence": 0.8
+            }
+          ],
+          "usage_n": 0,
+          "placeholders": [
+            {
+              "type": "TITLE",
+              "idx": 0,
+              "x": 0.7,
+              "y": 4.819,
+              "w": 11.933,
+              "h": 1.49
+            },
+            {
+              "type": "BODY",
+              "idx": 1,
+              "x": 0.7,
+              "y": 3.179,
+              "w": 11.933,
+              "h": 1.641
+            },
+            {
+              "type": "DATE",
+              "idx": 10,
+              "x": 0.5,
+              "y": 6.951,
+              "w": 2.333,
+              "h": 0.399
+            },
+            {
+              "type": "FOOTER",
+              "idx": 11,
+              "x": 3.417,
+              "y": 6.951,
+              "w": 3.167,
+              "h": 0.399
+            },
+            {
+              "type": "SLIDE_NUMBER",
+              "idx": 12,
+              "x": 7.167,
+              "y": 6.951,
+              "w": 2.333,
+              "h": 0.399
+            }
+          ],
+          "reserved": [
+            {
+              "name": "Kestrel logo",
+              "kind": "picture",
+              "x": 11.2,
+              "y": 0.26,
+              "w": 1.45,
+              "h": 0.35
+            },
+            {
+              "name": "Brand bar",
+              "kind": "shape",
+              "x": 0.0,
+              "y": 7.4,
+              "w": 13.333,
+              "h": 0.1
+            }
+          ],
+          "dark_bg": false,
+          "coloured_bg": false,
+          "picture_bg": false,
+          "artwork_in_body": 0
+        },
+        {
+          "id": "m1.l4",
+          "name": "Two Content",
+          "master": "m1",
+          "master_index": 0,
+          "layout_index": 3,
+          "classification": [
+            {
+              "type": "two_column",
+              "confidence": 0.8
+            }
+          ],
+          "usage_n": 0,
+          "placeholders": [
+            {
+              "type": "TITLE",
+              "idx": 0,
+              "x": 0.7,
+              "y": 0.0,
+              "w": 11.933,
+              "h": 0.0
+            },
+            {
+              "type": "OBJECT",
+              "idx": 1,
+              "x": 0.7,
+              "y": 1.75,
+              "w": 11.933,
+              "h": 4.95
+            },
+            {
+              "type": "OBJECT",
+              "idx": 2,
+              "x": 0.7,
+              "y": 1.75,
+              "w": 11.933,
+              "h": 4.95
+            },
+            {
+              "type": "DATE",
+              "idx": 10,
+              "x": 0.5,
+              "y": 6.951,
+              "w": 2.333,
+              "h": 0.399
+            },
+            {
+              "type": "FOOTER",
+              "idx": 11,
+              "x": 3.417,
+              "y": 6.951,
+              "w": 3.167,
+              "h": 0.399
+            },
+            {
+              "type": "SLIDE_NUMBER",
+              "idx": 12,
+              "x": 7.167,
+              "y": 6.951,
+              "w": 2.333,
+              "h": 0.399
+            }
+          ],
+          "reserved": [
+            {
+              "name": "Kestrel logo",
+              "kind": "picture",
+              "x": 11.2,
+              "y": 0.26,
+              "w": 1.45,
+              "h": 0.35
+            },
+            {
+              "name": "Brand bar",
+              "kind": "shape",
+              "x": 0.0,
+              "y": 7.4,
+              "w": 13.333,
+              "h": 0.1
+            }
+          ],
+          "dark_bg": false,
+          "coloured_bg": false,
+          "picture_bg": false,
+          "artwork_in_body": 0
+        },
+        {
+          "id": "m1.l5",
+          "name": "Comparison",
+          "master": "m1",
+          "master_index": 0,
+          "layout_index": 4,
+          "classification": [
+            {
+              "type": "comparison",
+              "confidence": 0.8
+            }
+          ],
+          "usage_n": 0,
+          "placeholders": [
+            {
+              "type": "TITLE",
+              "idx": 0,
+              "x": 0.7,
+              "y": 0.0,
+              "w": 11.933,
+              "h": 0.0
+            },
+            {
+              "type": "BODY",
+              "idx": 1,
+              "x": 0.7,
+              "y": 1.679,
+              "w": 11.933,
+              "h": 0.7
+            },
+            {
+              "type": "OBJECT",
+              "idx": 2,
+              "x": 0.7,
+              "y": 2.378,
+              "w": 11.933,
+              "h": 4.321
+            },
+            {
+              "type": "BODY",
+              "idx": 3,
+              "x": 0.7,
+              "y": 1.679,
+              "w": 11.933,
+              "h": 0.7
+            },
+            {
+              "type": "OBJECT",
+              "idx": 4,
+              "x": 0.7,
+              "y": 2.378,
+              "w": 11.933,
+              "h": 4.321
+            },
+            {
+              "type": "DATE",
+              "idx": 10,
+              "x": 0.5,
+              "y": 6.951,
+              "w": 2.333,
+              "h": 0.399
+            },
+            {
+              "type": "FOOTER",
+              "idx": 11,
+              "x": 3.417,
+              "y": 6.951,
+              "w": 3.167,
+              "h": 0.399
+            },
+            {
+              "type": "SLIDE_NUMBER",
+              "idx": 12,
+              "x": 7.167,
+              "y": 6.951,
+              "w": 2.333,
+              "h": 0.399
+            }
+          ],
+          "reserved": [
+            {
+              "name": "Kestrel logo",
+              "kind": "picture",
+              "x": 11.2,
+              "y": 0.26,
+              "w": 1.45,
+              "h": 0.35
+            },
+            {
+              "name": "Brand bar",
+              "kind": "shape",
+              "x": 0.0,
+              "y": 7.4,
+              "w": 13.333,
+              "h": 0.1
+            }
+          ],
+          "dark_bg": false,
+          "coloured_bg": false,
+          "picture_bg": false,
+          "artwork_in_body": 0
+        },
+        {
+          "id": "m1.l6",
+          "name": "Title Only",
+          "master": "m1",
+          "master_index": 0,
+          "layout_index": 5,
+          "classification": [
+            {
+              "type": "content",
+              "confidence": 0.97
+            }
+          ],
+          "usage_n": 0,
+          "placeholders": [
+            {
+              "type": "TITLE",
+              "idx": 0,
+              "x": 0.7,
+              "y": 0.0,
+              "w": 11.933,
+              "h": 0.0
+            },
+            {
+              "type": "DATE",
+              "idx": 10,
+              "x": 0.5,
+              "y": 6.951,
+              "w": 2.333,
+              "h": 0.399
+            },
+            {
+              "type": "FOOTER",
+              "idx": 11,
+              "x": 3.417,
+              "y": 6.951,
+              "w": 3.167,
+              "h": 0.399
+            },
+            {
+              "type": "SLIDE_NUMBER",
+              "idx": 12,
+              "x": 7.167,
+              "y": 6.951,
+              "w": 2.333,
+              "h": 0.399
+            }
+          ],
+          "reserved": [
+            {
+              "name": "Kestrel logo",
+              "kind": "picture",
+              "x": 11.2,
+              "y": 0.26,
+              "w": 1.45,
+              "h": 0.35
+            },
+            {
+              "name": "Brand bar",
+              "kind": "shape",
+              "x": 0.0,
+              "y": 7.4,
+              "w": 13.333,
+              "h": 0.1
+            }
+          ],
+          "dark_bg": false,
+          "coloured_bg": false,
+          "picture_bg": false,
+          "artwork_in_body": 0
+        },
+        {
+          "id": "m1.l7",
+          "name": "Blank",
+          "master": "m1",
+          "master_index": 0,
+          "layout_index": 6,
+          "classification": [
+            {
+              "type": "content",
+              "confidence": 0.8
+            }
+          ],
+          "usage_n": 0,
+          "placeholders": [
+            {
+              "type": "DATE",
+              "idx": 10,
+              "x": 0.5,
+              "y": 6.951,
+              "w": 2.333,
+              "h": 0.399
+            },
+            {
+              "type": "FOOTER",
+              "idx": 11,
+              "x": 3.417,
+              "y": 6.951,
+              "w": 3.167,
+              "h": 0.399
+            },
+            {
+              "type": "SLIDE_NUMBER",
+              "idx": 12,
+              "x": 7.167,
+              "y": 6.951,
+              "w": 2.333,
+              "h": 0.399
+            }
+          ],
+          "reserved": [
+            {
+              "name": "Kestrel logo",
+              "kind": "picture",
+              "x": 11.2,
+              "y": 0.26,
+              "w": 1.45,
+              "h": 0.35
+            },
+            {
+              "name": "Brand bar",
+              "kind": "shape",
+              "x": 0.0,
+              "y": 7.4,
+              "w": 13.333,
+              "h": 0.1
+            }
+          ],
+          "dark_bg": false,
+          "coloured_bg": false,
+          "picture_bg": false,
+          "artwork_in_body": 0
+        },
+        {
+          "id": "m1.l8",
+          "name": "Content with Caption",
+          "master": "m1",
+          "master_index": 0,
+          "layout_index": 7,
+          "classification": [
+            {
+              "type": "chart_commentary",
+              "confidence": 0.45
+            },
+            {
+              "type": "content",
+              "confidence": 0.35
+            }
+          ],
+          "usage_n": 0,
+          "placeholders": [
+            {
+              "type": "TITLE",
+              "idx": 0,
+              "x": 0.7,
+              "y": 0.299,
+              "w": 11.933,
+              "h": 1.271
+            },
+            {
+              "type": "OBJECT",
+              "idx": 1,
+              "x": 0.7,
+              "y": 0.299,
+              "w": 11.933,
+              "h": 6.401
+            },
+            {
+              "type": "BODY",
+              "idx": 2,
+              "x": 0.7,
+              "y": 1.569,
+              "w": 11.933,
+              "h": 5.13
+            },
+            {
+              "type": "DATE",
+              "idx": 10,
+              "x": 0.5,
+              "y": 6.951,
+              "w": 2.333,
+              "h": 0.399
+            },
+            {
+              "type": "FOOTER",
+              "idx": 11,
+              "x": 3.417,
+              "y": 6.951,
+              "w": 3.167,
+              "h": 0.399
+            },
+            {
+              "type": "SLIDE_NUMBER",
+              "idx": 12,
+              "x": 7.167,
+              "y": 6.951,
+              "w": 2.333,
+              "h": 0.399
+            }
+          ],
+          "reserved": [
+            {
+              "name": "Kestrel logo",
+              "kind": "picture",
+              "x": 11.2,
+              "y": 0.26,
+              "w": 1.45,
+              "h": 0.35
+            },
+            {
+              "name": "Brand bar",
+              "kind": "shape",
+              "x": 0.0,
+              "y": 7.4,
+              "w": 13.333,
+              "h": 0.1
+            }
+          ],
+          "dark_bg": false,
+          "coloured_bg": false,
+          "picture_bg": false,
+          "artwork_in_body": 0
+        },
+        {
+          "id": "m1.l9",
+          "name": "Picture with Caption",
+          "master": "m1",
+          "master_index": 0,
+          "layout_index": 8,
+          "classification": [
+            {
+              "type": "image_split",
+              "confidence": 0.8
+            }
+          ],
+          "usage_n": 0,
+          "placeholders": [
+            {
+              "type": "TITLE",
+              "idx": 0,
+              "x": 0.7,
+              "y": 5.25,
+              "w": 11.933,
+              "h": 0.62
+            },
+            {
+              "type": "PICTURE",
+              "idx": 1,
+              "x": 1.96,
+              "y": 0.67,
+              "w": 6.0,
+              "h": 4.5
+            },
+            {
+              "type": "BODY",
+              "idx": 2,
+              "x": 0.7,
+              "y": 5.87,
+              "w": 11.933,
+              "h": 0.88
+            },
+            {
+              "type": "DATE",
+              "idx": 10,
+              "x": 0.5,
+              "y": 6.951,
+              "w": 2.333,
+              "h": 0.399
+            },
+            {
+              "type": "FOOTER",
+              "idx": 11,
+              "x": 3.417,
+              "y": 6.951,
+              "w": 3.167,
+              "h": 0.399
+            },
+            {
+              "type": "SLIDE_NUMBER",
+              "idx": 12,
+              "x": 7.167,
+              "y": 6.951,
+              "w": 2.333,
+              "h": 0.399
+            }
+          ],
+          "reserved": [
+            {
+              "name": "Kestrel logo",
+              "kind": "picture",
+              "x": 11.2,
+              "y": 0.26,
+              "w": 1.45,
+              "h": 0.35
+            },
+            {
+              "name": "Brand bar",
+              "kind": "shape",
+              "x": 0.0,
+              "y": 7.4,
+              "w": 13.333,
+              "h": 0.1
+            }
+          ],
+          "dark_bg": false,
+          "coloured_bg": false,
+          "picture_bg": false,
+          "artwork_in_body": 0
+        },
+        {
+          "id": "m1.l10",
+          "name": "Title and Vertical Text",
+          "master": "m1",
+          "master_index": 0,
+          "layout_index": 9,
+          "classification": [
+            {
+              "type": "one_column",
+              "confidence": 0.5
+            }
+          ],
+          "usage_n": 0,
+          "placeholders": [
+            {
+              "type": "TITLE",
+              "idx": 0,
+              "x": 0.7,
+              "y": 0.0,
+              "w": 11.933,
+              "h": 0.0
+            },
+            {
+              "type": "BODY",
+              "idx": 1,
+              "x": 0.7,
+              "y": 0.0,
+              "w": 11.933,
+              "h": 0.0
+            },
+            {
+              "type": "DATE",
+              "idx": 10,
+              "x": 0.5,
+              "y": 6.951,
+              "w": 2.333,
+              "h": 0.399
+            },
+            {
+              "type": "FOOTER",
+              "idx": 11,
+              "x": 3.417,
+              "y": 6.951,
+              "w": 3.167,
+              "h": 0.399
+            },
+            {
+              "type": "SLIDE_NUMBER",
+              "idx": 12,
+              "x": 7.167,
+              "y": 6.951,
+              "w": 2.333,
+              "h": 0.399
+            }
+          ],
+          "reserved": [
+            {
+              "name": "Kestrel logo",
+              "kind": "picture",
+              "x": 11.2,
+              "y": 0.26,
+              "w": 1.45,
+              "h": 0.35
+            },
+            {
+              "name": "Brand bar",
+              "kind": "shape",
+              "x": 0.0,
+              "y": 7.4,
+              "w": 13.333,
+              "h": 0.1
+            }
+          ],
+          "dark_bg": false,
+          "coloured_bg": false,
+          "picture_bg": false,
+          "artwork_in_body": 0
+        },
+        {
+          "id": "m1.l11",
+          "name": "Vertical Title and Text",
+          "master": "m1",
+          "master_index": 0,
+          "layout_index": 10,
+          "classification": [
+            {
+              "type": "one_column",
+              "confidence": 0.5
+            }
+          ],
+          "usage_n": 0,
+          "placeholders": [
+            {
+              "type": "TITLE",
+              "idx": 0,
+              "x": 0.7,
+              "y": 0.3,
+              "w": 11.933,
+              "h": 6.399
+            },
+            {
+              "type": "BODY",
+              "idx": 1,
+              "x": 0.7,
+              "y": 0.3,
+              "w": 11.933,
+              "h": 6.399
+            },
+            {
+              "type": "DATE",
+              "idx": 10,
+              "x": 0.5,
+              "y": 6.951,
+              "w": 2.333,
+              "h": 0.399
+            },
+            {
+              "type": "FOOTER",
+              "idx": 11,
+              "x": 3.417,
+              "y": 6.951,
+              "w": 3.167,
+              "h": 0.399
+            },
+            {
+              "type": "SLIDE_NUMBER",
+              "idx": 12,
+              "x": 7.167,
+              "y": 6.951,
+              "w": 2.333,
+              "h": 0.399
+            }
+          ],
+          "reserved": [
+            {
+              "name": "Kestrel logo",
+              "kind": "picture",
+              "x": 11.2,
+              "y": 0.26,
+              "w": 1.45,
+              "h": 0.35
+            },
+            {
+              "name": "Brand bar",
+              "kind": "shape",
+              "x": 0.0,
+              "y": 7.4,
+              "w": 13.333,
+              "h": 0.1
+            }
+          ],
+          "dark_bg": false,
+          "coloured_bg": false,
+          "picture_bg": false,
+          "artwork_in_body": 0
+        }
+      ],
+      "scale": 1.0
     }
   }
 }

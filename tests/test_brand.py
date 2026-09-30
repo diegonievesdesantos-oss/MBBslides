@@ -38,11 +38,12 @@ def test_deck_is_built_on_the_template_masters(tmp_path):
     spec["meta"]["brand"] = str(tmp_path / "brand")
     res, _ = plan(spec)
     out = tmp_path / "d.pptx"
-    build(res, out)
+    man = build(res, out)
     prs = Presentation(str(out))
     assert len(prs.slides) == 1  # the template's sample slide was dropped
     s = prs.slides[0]
-    assert s.slide_layout.name == "Blank"
+    # a content slide is carried by the template's own content layout (adaptive corporate composition)
+    assert man[0]["corporate"]["mode"] == "adaptive" and s.slide_layout.name == man[0]["corporate"]["layout"] == "Title Only"
     assert not list(s.placeholders)  # no empty "click to add" boxes
     fonts = {r.font.name for sh in s.shapes if sh.has_text_frame for p in sh.text_frame.paragraphs for r in p.runs}
     assert {"Georgia", "Calibri"} <= fonts

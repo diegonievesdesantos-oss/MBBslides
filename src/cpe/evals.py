@@ -204,6 +204,8 @@ def record_result(section: str, summary: dict, path: Path = LATEST) -> dict:
         data[section] = _slim(summary)
     elif section == "holdout":
         data.setdefault("holdout", {})["public"] = _slim(summary)
+    elif section == "holdout_private":  # sanitized aggregates only
+        data.setdefault("holdout", {})["private"] = summary
     else:
         data[section] = summary
     if "environment" in summary:

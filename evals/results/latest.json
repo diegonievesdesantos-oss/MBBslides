@@ -266,7 +266,7 @@
     },
     "cpe_version": "1.2.0.dev0",
     "container_image": "mbbslides-visual:1.2@sha256:f883eeb28a0a267cc316071dd5cd3dd1c3220443775de5f9bdaac937e7e0800d",
-    "commit": "40f185654df22078860d1f655f1592290dc43b20-dirty",
+    "commit": "036128252dd5900663d9f9e22a49e700157ae59b-dirty",
     "fingerprint": "6b5b1872486a594a"
   },
   "holdout": {

@@ -17,14 +17,11 @@ elements the engine does not use.
 from __future__ import annotations
 
 import json
-import shutil
 import subprocess
 from pathlib import Path
 
-from lxml import etree
 from pptx import Presentation
 from pptx.enum.shapes import MSO_SHAPE_TYPE
-from pptx.opc.constants import RELATIONSHIP_TYPE as RT
 from pptx.util import Emu
 
 from ..design import text_metrics as tm
@@ -40,35 +37,11 @@ def _in(v) -> float:
     return round(Emu(v).inches, 3)
 
 
-def _theme_xml(prs):
-    master = prs.slide_masters[0]
-    part = master.part.part_related_by(RT.THEME)
-    return etree.fromstring(part.blob)
+def read_theme(prs) -> list[dict]:
+    """Theme (colours, fonts) of EVERY slide master."""
+    from .model import theme_of_master
 
-
-def read_theme(prs) -> dict:
-    root = _theme_xml(prs)
-    colors = {}
-    cs = root.find(f".//{A}clrScheme")
-    for slot in SCHEME_SLOTS:
-        el = cs.find(f"{A}{slot}") if cs is not None else None
-        if el is None:
-            continue
-        c = el.find(f"{A}srgbClr")
-        if c is not None:
-            colors[slot] = c.get("val").upper()
-        else:
-            s = el.find(f"{A}sysClr")
-            if s is not None:
-                colors[slot] = (s.get("lastClr") or ("000000" if s.get("val") == "windowText" else "FFFFFF")).upper()
-    fs = root.find(f".//{A}fontScheme")
-    fonts = {}
-    if fs is not None:
-        for kind in ("majorFont", "minorFont"):
-            lat = fs.find(f"{A}{kind}/{A}latin")
-            ea = fs.find(f"{A}{kind}/{A}ea")
-            fonts[kind] = {"latin": lat.get("typeface") if lat is not None else None, "ea": (ea.get("typeface") or None) if ea is not None else None}
-    return {"colors": colors, "fonts": fonts, "scheme_name": cs.get("name") if cs is not None else None}
+    return [theme_of_master(m) for m in prs.slide_masters]
 
 
 def installed_font_families() -> set[str]:
@@ -207,17 +180,26 @@ def _bg_kind(el) -> str | None:
 
 
 def read_structure(prs) -> dict:
-    master = prs.slide_masters[0]
-    out = {"master": {"artwork": [], "background": _bg_kind(master._element), "placeholders": []}, "layouts": [], "unsupported": []}
+    """Masters, layouts, placeholders and artwork of EVERY master (layouts keep their master's artwork)."""
+    out = {"masters": [], "layouts": [], "unsupported": []}
+    for mi, master in enumerate(prs.slide_masters):
+        _read_master(master, mi, out)
+    out["master"] = out["masters"][0] if out["masters"] else {"artwork": [], "background": None, "placeholders": []}
+    return out
+
+
+def _read_master(master, mi: int, out: dict) -> None:
+    mrec = {"id": f"m{mi + 1}", "name": master.name, "artwork": [], "background": _bg_kind(master._element), "placeholders": []}
+    out["masters"].append(mrec)
     for sh in master.shapes:
         k = _shape_kind(sh)
         if k == "placeholder":
-            out["master"]["placeholders"].append({"type": str(sh.placeholder_format.type).split(".")[-1].split(" ")[0], "name": sh.name, **_box(sh)})
+            mrec["placeholders"].append({"type": str(sh.placeholder_format.type).split(".")[-1].split(" ")[0], "name": sh.name, **_box(sh)})
         else:
-            out["master"]["artwork"].append({"kind": k, "name": sh.name, **_box(sh)})
-    if out["master"]["background"] in ("picture background", "gradient background"):
-        out["unsupported"].append(f"Master has a {out['master']['background']}: kept from the template, but contrast QA assumes a plain background.")
-    for lay in master.slide_layouts:
+            mrec["artwork"].append({"kind": k, "name": sh.name, **_box(sh)})
+    if mrec["background"] in ("picture background", "gradient background"):
+        out["unsupported"].append(f"Master '{master.name}' has a {mrec['background']}: kept from the template, but contrast QA assumes a plain background.")
+    for li, lay in enumerate(master.slide_layouts):
         phs, art = [], []
         for sh in lay.shapes:
             if sh.is_placeholder:
@@ -225,32 +207,52 @@ def read_structure(prs) -> dict:
             else:
                 art.append({"kind": _shape_kind(sh), "name": sh.name, **_box(sh)})
         bgk = _bg_kind(lay._element)
-        out["layouts"].append({"name": lay.name, "placeholders": phs, "artwork": art, "background": bgk,
+        out["layouts"].append({"name": lay.name, "id": f"{mrec['id']}.l{li + 1}", "master": mrec["id"], "master_artwork": mrec["artwork"],
+                               "placeholders": phs, "artwork": art, "background": bgk,
                                "shows_master_artwork": lay._element.get("showMasterSp", "1") != "0"})
         if bgk in ("picture background", "gradient background"):
             out["unsupported"].append(f"Layout '{lay.name}' has a {bgk} (not used as the base layout).")
         for a in art:
             if a["kind"] in ("chart", "graphic_frame", "group"):
                 out["unsupported"].append(f"Layout '{lay.name}' contains a {a['kind']} ('{a['name']}'): treated as artwork, not content.")
-    return out
 
 
 RECOGNISED = {"TITLE": "headline", "CENTER_TITLE": "cover title", "SUBTITLE": "cover subtitle", "BODY": "body text", "OBJECT": "content",
               "DATE": "date", "FOOTER": "footer", "SLIDE_NUMBER": "slide number", "PICTURE": "picture", "CHART": "chart", "TABLE": "table"}
 
 
-def choose_base_layout(struct: dict) -> dict:
-    """The emptiest layout that still shows the master artwork (logo, rules)."""
+def choose_base_layout(struct: dict, model: dict | None = None) -> dict:
+    """Base layout for engine-drawn slides (fallback mode): across ALL masters, the emptiest layout
+    that shows its master's artwork, on a light background, preferring a recognised content layout."""
     def content_phs(lay):
         return [p for p in lay["placeholders"] if p["type"] not in ("DATE", "FOOTER", "SLIDE_NUMBER")]
 
-    cands = sorted(struct["layouts"], key=lambda l: (len(content_phs(l)), 0 if "blank" in l["name"].lower() else 1, 0 if l["shows_master_artwork"] else 1, 0 if not l["background"] else 1))
+    feats = {c["layout_id"]: c for c in (model or {}).get("layouts", [])}
+
+    def light(lay):
+        f = (feats.get(lay.get("id")) or {}).get("features", {}).get("background", {})
+        return 0 if not (f.get("dark") or f.get("picture")) else 1
+
+    def content_rank(lay):
+        cl = (feats.get(lay.get("id")) or {}).get("classification") or []
+        return 0 if cl and cl[0]["type"] in ("content", "one_column") else 1
+
+    cands = sorted(struct["layouts"], key=lambda l: (light(l), len(content_phs(l)) > 1, 0 if "blank" in l["name"].lower() else 1, content_rank(l),
+                                                     len(content_phs(l)), 0 if l["shows_master_artwork"] else 1, 0 if not l["background"] else 1))
     return cands[0] if cands else {"name": None}
 
 
-def derive_grid(struct: dict, sw: float, sh: float) -> tuple[dict, list[str]]:
+def derive_grid(struct: dict, sw: float, sh: float, model: dict | None = None, k: float = 1.0) -> tuple[dict, list[str]]:
+    """Margins from the inferred grid when the example slides support it, else from the title placeholder."""
     notes = []
     grid = {}
+    g = (model or {}).get("grid") or {}
+    if g.get("confidence", 0) >= 0.6 and g.get("edges_sampled", 0) >= 40 and abs(sw / sh - SLIDE_W / SLIDE_H) < 0.02:
+        ml, mr = min(1.2, max(0.25, g["margin_left_in"] * k)), min(1.2, max(0.25, g["margin_right_in"] * k))
+        grid.update(margin_l=round(ml, 3), margin_r=round(mr, 3))
+        notes.append(f"Margins from the inferred {g['columns']}-column grid (explains {round(100 * g['edges_explained'])}% of {g['edges_sampled']} shape edges): "
+                     f"left {ml:.2f} in, right {mr:.2f} in (engine canvas).")
+        return grid, notes
     title = None
     for lay in struct["layouts"]:
         t = next((p for p in lay["placeholders"] if p["type"] == "TITLE"), None)
@@ -259,18 +261,18 @@ def derive_grid(struct: dict, sw: float, sh: float) -> tuple[dict, list[str]]:
             break
     if title is None:
         title = next((p for p in struct["master"]["placeholders"] if p["type"] == "TITLE"), None)
-    if title and abs(sw - SLIDE_W) < 0.05:
-        ml = min(1.2, max(0.3, title["x"]))
-        mr = min(1.2, max(0.3, sw - title["x"] - title["w"]))
+    if title and abs(sw / sh - SLIDE_W / SLIDE_H) < 0.02:
+        ml = min(1.2, max(0.3, title["x"] * k))
+        mr = min(1.2, max(0.3, (sw - title["x"] - title["w"]) * k))
         grid.update(margin_l=round(ml, 3), margin_r=round(mr, 3))
         notes.append(f"Margins taken from the title placeholder: left {ml:.2f} in, right {mr:.2f} in.")
     return grid, notes
 
 
 def reserved_areas(struct: dict, base: dict, sw: float, sh: float) -> list[dict]:
-    """Master/base-layout artwork the content must not cover (logos, bars, marks)."""
+    """Master/base-layout artwork the content must not cover (logos, bars, marks) — the base layout's OWN master."""
     out = []
-    items = (struct["master"]["artwork"] if base.get("shows_master_artwork", True) else []) + base.get("artwork", [])
+    items = (base.get("master_artwork", struct["master"]["artwork"]) if base.get("shows_master_artwork", True) else []) + base.get("artwork", [])
     for a in items:
         full_width = a["w"] > sw * 0.8
         full_height = a["h"] > sh * 0.8
@@ -280,47 +282,125 @@ def reserved_areas(struct: dict, base: dict, sw: float, sh: float) -> list[dict]
     return out
 
 
+def _scaled(b: dict, k: float) -> dict:
+    return {kk: round(v * k, 3) if kk in ("x", "y", "w", "h") else v for kk, v in b.items()}
+
+
+def corporate_layouts(model: dict, k: float) -> list[dict]:
+    """The layout catalogue in ENGINE canvas units, as the builder's matcher needs it."""
+    out = []
+    ids = {}
+    for c in model["layouts"]:
+        f = c["features"]
+        mi = int(c["master_id"][1:]) - 1
+        ids.setdefault(mi, 0)
+        li = ids[mi]
+        ids[mi] += 1
+        out.append({
+            "id": c["layout_id"], "name": c["layout"], "master": c["master_id"], "master_index": mi, "layout_index": li,
+            "classification": c["classification"], "usage_n": c["evidence"]["example_slides"],
+            "placeholders": [_scaled({"type": p["type"], "idx": p.get("idx"), "x": p["x"], "y": p["y"], "w": p["w"], "h": p["h"]}, k) for p in c["_placeholders"]],
+            "reserved": [_scaled(a, k) for a in f["reserved_artwork"]],
+            "dark_bg": f["background"]["dark"], "coloured_bg": f["background"]["coloured"], "picture_bg": f["background"]["picture"],
+            "artwork_in_body": f["artwork_in_body"],
+        })
+    return out
+
+
+def font_warning(role: str, font: str | None, installed: set[str], declared: str | None, observed: bool) -> dict:
+    rep = font_report(font, installed)
+    rep.update(role=role, declared=bool(declared and font and declared.lower() == font.lower()), observed=observed)
+    renderable = rep.get("installed") or rep.get("status") == "metric-compatible substitute"
+    rep["renderable"] = bool(renderable)
+    if font and not rep.get("installed"):
+        rep["warning"] = (f"FONT WARNING — corporate font {font} is not available in the authoring environment. "
+                          f"LibreOffice renders it with {rep.get('render_fallback')}; text is measured with {rep.get('measure_family')} "
+                          f"({rep.get('measurement')}). Expected risk: " + ("none for widths (metric-compatible)." if rep.get("measurement") == "exact"
+                                                                            else "line wrapping and box fits may differ in the corporate environment where the font is installed."))
+    return rep
+
+
 def ingest(template: str | Path, out_dir: str | Path, name: str | None = None, base_theme: str = "meridian") -> dict:
+    from .model import analyse
+    from .rescale import rescale
+
     template = Path(template)
     out = Path(out_dir)
     out.mkdir(parents=True, exist_ok=True)
     prs = Presentation(str(template))
     sw, sh = _in(prs.slide_width), _in(prs.slide_height)
     base = load_theme(base_theme)
-    th = read_theme(prs)
-    struct = read_structure(prs)
     installed = installed_font_families()
-    heading = (th["fonts"].get("majorFont") or {}).get("latin") or base.font_latin
-    body = (th["fonts"].get("minorFont") or {}).get("latin") or base.font_latin
-    fonts = {"heading": font_report(heading, installed), "body": font_report(body, installed)}
-    colors, series, color_notes = map_colors(th["colors"], base)
-    base_layout = choose_base_layout(struct)
-    grid, grid_notes = derive_grid(struct, sw, sh)
-    reserved = reserved_areas(struct, base_layout, sw, sh)
-    size_ok = abs(sw - SLIDE_W) < 0.05 and abs(sh - SLIDE_H) < 0.05
-    notes = color_notes + grid_notes
-    unsupported = list(struct["unsupported"])
-    use_template = size_ok
-    if not size_ok:
-        ratio = sw / sh if sh else 0
-        unsupported.append(f"Slide size {sw}×{sh} in (ratio {ratio:.2f}) is not the engine canvas 13.333×7.5 in: colours and fonts are applied, masters are NOT used.")
-    # limits so the headline / footer never run into reserved artwork
+    model = analyse(prs, installed)
+    # keep raw placeholder geometry for the matcher (template units)
+    for c, (mi, lay) in zip(model["layouts"], [(mi, lay) for mi, m in enumerate(prs.slide_masters) for lay in m.slide_layouts]):
+        c["_placeholders"] = [{"type": str(x.placeholder_format.type).split(".")[-1].split(" ")[0], "idx": x.placeholder_format.idx,
+                               "x": _in(x.left), "y": _in(x.top), "w": _in(x.width), "h": _in(x.height)} for x in lay.placeholders]
+    notes, unsupported = [], []
+    same_size = abs(sw - SLIDE_W) < 0.05 and abs(sh - SLIDE_H) < 0.05
+    same_ratio = sh > 0 and abs((sw / sh) / (SLIDE_W / SLIDE_H) - 1) < 0.01
+    k = 1.0
+    scale_info = None
+    if same_size:
+        rescale(str(template), str(out / "template.pptx"), target_w_in=sw)  # a copy without the example slides
+        use_template = True
+    elif same_ratio:
+        scale_info = rescale(str(template), str(out / "template.pptx"), target_w_in=SLIDE_W)
+        k = scale_info["factor"]
+        use_template = True
+        notes.append(f"Template canvas {sw}×{sh} in has the engine's 16:9 ratio: masters and layouts were rescaled ×{k} to {SLIDE_W}×{SLIDE_H} in "
+                     "(positions, sizes, font sizes, spacing, line widths). PowerPoint's Slide Size dialog scales the output back without distortion.")
+    else:
+        use_template = False
+        unsupported.append(f"Slide size {sw}×{sh} in (ratio {sw / sh if sh else 0:.2f}) is not 16:9: colours and fonts are applied, masters are NOT used.")
+    typo = model["typography"]
+    roles = typo.get("roles") or {}
+    heading = (roles.get("heading") or {}).get("font") or base.font_latin
+    body = (roles.get("body") or {}).get("font") or base.font_latin
+    fonts = {r: font_warning(r, f, installed, (roles.get(r) or {}).get("declared"), (roles.get(r) or {}).get("source") == "observed")
+             for r, f in (("heading", heading), ("body", body))}
+    struct = read_structure(prs)
+    unsupported += struct["unsupported"]
+    base_layout = choose_base_layout(struct, model)
+    # colours: theme scheme mapped to roles, corrected by what the slides actually use
+    # the scheme of the master that carries engine-drawn slides (not blindly master 0)
+    th0 = next((m["theme"] for m in model["masters"] if m["master_id"] == base_layout.get("master")), None) or (model["masters"][0]["theme"] if model["masters"] else {"colors": {}})
+    colors, series, color_notes = map_colors(th0["colors"], base)
+    pal = model["palette"]
+    sources = {k_: "theme" for k_ in ("primary", "highlight", "text")}
+    if pal.get("primary") and contrast_ratio(pal["primary"], colors["background"]) >= 1.5:
+        if pal["primary"] != colors["highlight"]:
+            color_notes.append(f"Highlight set to the colour the slides actually use most (#{pal['primary']}) instead of the theme mapping (#{colors['highlight']}).")
+        colors["highlight"] = pal["primary"]
+        sources["highlight"] = "observed usage"
+        series = [colors["primary"], colors["secondary"], interpolate(colors["primary"], colors["background"], 0.55), colors["muted"], colors["highlight"], colors["neutral"]]
+    if pal.get("text") and contrast_ratio(pal["text"], colors["background"]) >= 7 and pal["text"] != colors["text"]:
+        color_notes.append(f"Text colour set to the one used on the slides (#{pal['text']}).")
+        colors["text"] = pal["text"]
+        sources["text"] = "observed usage"
+    notes += color_notes
+    grid, grid_notes = derive_grid(struct, sw, sh, model, k)
+    notes += grid_notes
+    reserved = [_scaled(r, k) for r in reserved_areas(struct, base_layout, sw, sh)]
     from ..design.tokens import GRID
 
     ml = grid.get("margin_l", GRID.margin_l)
     for r in reserved:
-        if r["y"] < GRID.body_y and r["y"] + r["h"] > GRID.tracker_y and r["x"] > sw / 2:
-            grid["headline_right_limit"] = round(min(grid.get("headline_right_limit") or sw, r["x"] - 0.15), 3)
-        if r["y"] + r["h"] > GRID.footer_y and r["x"] > sw / 2:
-            grid["footer_right_limit"] = round(min(grid.get("footer_right_limit") or sw, r["x"] - 0.15), 3)
+        if r["y"] < GRID.body_y and r["y"] + r["h"] > GRID.tracker_y and r["x"] > SLIDE_W / 2:
+            grid["headline_right_limit"] = round(min(grid.get("headline_right_limit") or SLIDE_W, r["x"] - 0.15), 3)
+        if r["y"] + r["h"] > GRID.footer_y and r["x"] > SLIDE_W / 2:
+            grid["footer_right_limit"] = round(min(grid.get("footer_right_limit") or SLIDE_W, r["x"] - 0.15), 3)
     if grid.get("headline_right_limit"):
         notes.append(f"Headline width limited to end at {grid['headline_right_limit']} in to keep clear of master artwork.")
     for r in reserved:
-        inside_body = r["y"] < 6.78 and r["y"] + r["h"] > 1.62 and r["x"] < sw - 0.4 and r["x"] + r["w"] > ml + 0.4
-        if inside_body:
+        if r["y"] < 6.78 and r["y"] + r["h"] > 1.62 and r["x"] < SLIDE_W - 0.4 and r["x"] + r["w"] > ml + 0.4:
             unsupported.append(f"Master artwork '{r['name']}' sits inside the content area: QA will flag any content that overlaps it.")
+    if not use_template:
+        pass
+    elif not same_size and not scale_info:
+        use_template = False
     brand_name = name or template.stem
-    shutil.copy(template, out / "template.pptx")
+    corp = corporate_layouts(model, k) if use_template else []
     theme = {
         "name": brand_name,
         "description": f"Brand theme ingested from {template.name}",
@@ -334,20 +414,33 @@ def ingest(template: str | Path, out_dir: str | Path, name: str | None = None, b
         "extras": {
             "template": "template.pptx" if use_template else None,
             "base_layout": base_layout.get("name") if use_template else None,
+            "base_layout_id": base_layout.get("id") if use_template else None,
             "grid": grid,
             "reserved": reserved if use_template else [],
             "measure_fonts": {f["font"]: f["measure_family"] for f in fonts.values() if f.get("font")},
+            "corporate": {"layouts": corp, "scale": k},
         },
     }
+    for c in model["layouts"]:
+        c.pop("_placeholders", None)
     report = {
         "brand": brand_name,
         "template": template.name,
-        "slide_size": {"width_in": sw, "height_in": sh, "supported": size_ok},
+        "slide_size": {"width_in": sw, "height_in": sh, "supported": use_template, "rescaled": scale_info},
+        "masters": [{"id": m["master_id"], "name": m["name"], "layouts": m["layouts"], "theme": m["theme"]["name"], "fonts": m["theme"]["fonts"]} for m in model["masters"]],
+        "layout_count": len(model["layouts"]),
+        "layout_families": model["layout_families"],
+        "example_slides": model["example_slides"],
         "fonts": fonts,
-        "theme_colors": th["colors"],
-        "color_mapping": {k: colors[k] for k in ("primary", "secondary", "highlight", "text", "text_muted", "background", "positive", "negative")},
-        "master": {"placeholders": struct["master"]["placeholders"], "artwork": struct["master"]["artwork"], "background": struct["master"]["background"]},
-        "layouts": [{"name": l["name"], "placeholders": [f"{RECOGNISED.get(p['type'], p['type'].lower())}" for p in l["placeholders"]], "artwork": len(l["artwork"]), "background": l["background"]} for l in struct["layouts"]],
+        "typography": {k_: typo[k_] for k_ in ("primary", "confidence", "conflict", "roles", "candidates", "evidence_weights", "sizes")},
+        "theme_colors": th0["colors"],
+        "palette": {k_: pal[k_] for k_ in ("primary", "text", "supporting", "neutrals", "brand_background_share", "conflict", "confidence")},
+        "color_mapping": {k_: colors[k_] for k_ in ("primary", "secondary", "highlight", "text", "text_muted", "background", "positive", "negative")},
+        "color_sources": sources,
+        "grid": model["grid"],
+        "assets": model["assets"],
+        "rules": model["rules"],
+        "layouts": [{"id": c["layout_id"], "master": c["master_id"], "name": c["layout"], "classification": c["classification"], "usage": c["usage"]} for c in model["layouts"]],
         "base_layout": base_layout.get("name"),
         "reserved_areas": reserved,
         "grid_overrides": grid,
@@ -356,29 +449,75 @@ def ingest(template: str | Path, out_dir: str | Path, name: str | None = None, b
         "masters_used": use_template,
     }
     (out / "theme.json").write_text(json.dumps(theme, indent=2, ensure_ascii=False))
-    (out / "compatibility.json").write_text(json.dumps(report, indent=2, ensure_ascii=False))
+    (out / "brand_model.json").write_text(json.dumps(model, indent=2, ensure_ascii=False, default=str))
+    (out / "layout_catalog.json").write_text(json.dumps(model["layouts"], indent=2, ensure_ascii=False, default=str))
+    (out / "compatibility.json").write_text(json.dumps(report, indent=2, ensure_ascii=False, default=str))
     (out / "compatibility.md").write_text(to_markdown(report))
     return report
 
 
+def _bar(conf) -> str:
+    if conf is None:
+        return "—"
+    return "high" if conf >= 0.75 else "medium" if conf >= 0.5 else "low"
+
+
 def to_markdown(r: dict) -> str:
-    L = [f"# Brand compatibility report — {r['brand']}", "", f"Template: `{r['template']}`", ""]
+    ty, pal, g, rules = r["typography"], r["palette"], r["grid"], r["rules"]
+    L = [f"# Brand ingest report — {r['brand']}", "", f"Template: `{r['template']}`", ""]
     ok = r["masters_used"] and all(f.get("measurement") == "exact" for f in r["fonts"].values() if f.get("font"))
     L.append(f"**Verdict:** {'✅ fully compatible' if ok else '⚠️ compatible with approximations (see below)'}")
-    L += ["", "## Slide size", "", f"{r['slide_size']['width_in']} × {r['slide_size']['height_in']} in — {'supported (masters used)' if r['slide_size']['supported'] else 'NOT the engine canvas: masters not used'}", ""]
-    L += ["## Fonts", "", "| role | font | installed | status | measured with | measurement | rendered with if missing |", "|---|---|---|---|---|---|---|"]
+    sz = r["slide_size"]
+    L += ["", "## Presentation", "", f"- Canvas: {sz['width_in']} × {sz['height_in']} in"
+          + (f" — rescaled ×{sz['rescaled']['factor']} to the engine canvas {sz['rescaled']['to_in'][0]} × {sz['rescaled']['to_in'][1]} in" if sz.get("rescaled") else "")
+          + ("" if sz["supported"] else " — masters NOT used"),
+          f"- Masters: **{len(r['masters'])}** detected · Layouts: **{r['layout_count']}** · Example slides: **{r['example_slides']['count']}**"]
+    for m in r["masters"]:
+        L.append(f"  - {m['id']} `{m['name']}` — {m['layouts']} layouts, theme `{m['theme']}` (heading {m['fonts'].get('majorFont')}, body {m['fonts'].get('minorFont')})")
+    L += ["", "## Typography", "", f"- Primary observed: **{ty['primary']}** (confidence {ty['confidence']}, {_bar(ty['confidence'])})"]
+    for role, x in (ty.get("roles") or {}).items():
+        L.append(f"- {role}: **{x['font']}** — {x['source']}" + (f", {round(100 * x['share'])}% of {role} text" if x.get("share") else "") + f"; theme declares {x['declared']}"
+                 + (" → **conflict**" if x.get("conflict") else ""))
+    if ty.get("conflict"):
+        c = ty["conflict"]
+        L += ["", f"> **Conflict detected:** declared theme font `{c['declared_theme_font']}` vs observed `{c['observed_primary_font']}`. {c['reason']}"]
+    L += ["", "| candidate | score | declared | observed chars | direct formatting | style-guide mentions | installed |", "|---|---|---|---|---|---|---|"]
+    for c in ty["candidates"]:
+        L.append(f"| {c['font']} | {c['score']} | {'yes' if c['declared'] else 'no'} | {c['observed_chars']} | {c['direct_chars']} | {c['guide_mentions']} | {'yes' if c['installed'] else 'no'} |")
+    L += ["", f"Evidence weights: `{json.dumps(ty['evidence_weights'])}` · most used sizes: {ty['sizes']['most_used_pt']} pt", ""]
+    L += ["## Fonts in this environment", "", "| role | font | declared | observed | installed | renderable | measured with | measurement | LibreOffice fallback |", "|---|---|---|---|---|---|---|---|---|"]
     for role, f in r["fonts"].items():
         if f.get("font"):
-            L.append(f"| {role} | {f['font']} | {'yes' if f['installed'] else 'no'} | {f['status']} | {f['measure_family']} | {f['measurement']} | {f['render_fallback'] or '—'} |")
-    L += ["", "## Theme colours → engine roles", "", "| slot | colour |", "|---|---|"]
-    L += [f"| {k} | `#{v}` |" for k, v in r["theme_colors"].items()]
-    L += ["", "| role | colour |", "|---|---|"] + [f"| {k} | `#{v}` |" for k, v in r["color_mapping"].items()]
-    L += ["", "## Masters and layouts", "", f"Base layout for generated slides: **{r['base_layout']}**", "", "| layout | recognised placeholders | artwork | background |", "|---|---|---|---|"]
+            L.append(f"| {role} | {f['font']} | {'yes' if f.get('declared') else 'no'} | {'yes' if f.get('observed') else 'no'} | {'yes' if f['installed'] else 'no'} | "
+                     f"{'yes' if f.get('renderable') else 'substituted'} | {f['measure_family']} | {f['measurement']} | {f['render_fallback'] or '—'} |")
+    for w in dict.fromkeys(f["warning"] for f in r["fonts"].values() if f.get("warning")):
+        L += ["", f"> ⚠️ {w}"]
+    L += ["", "## Colours", "", f"- Primary brand colour (observed): `#{pal['primary']}` · text: `#{pal['text']}` · supporting: "
+          + (", ".join(f"`#{c}`" for c in pal["supporting"]) or "—") + f" · neutrals: {', '.join(f'`#{c}`' for c in pal['neutrals']) or '—'}",
+          f"- Share of example slides on a brand-colour background: {pal['brand_background_share']}"]
+    if pal.get("conflict"):
+        L.append(f"- **Conflict:** {pal['conflict']['reason']} (theme accent1 `#{pal['conflict']['theme_accent1']}`, observed `#{pal['conflict']['observed_primary']}`)")
+    L += ["", "| engine role | colour | source |", "|---|---|---|"] + [f"| {k} | `#{v}` | {r['color_sources'].get(k, 'theme mapping')} |" for k, v in r["color_mapping"].items()]
+    L += ["", "## Grid", "", f"- Likely **{g.get('columns')}-column** system, margins {g.get('margin_left_in')} / {g.get('margin_right_in')} in, gutter {g.get('gutter_in')} in "
+          f"(explains {g.get('edges_explained')} of {g.get('edges_sampled')} shape edges; confidence {g.get('confidence')}, {_bar(g.get('confidence'))})",
+          f"- Engine grid overrides: `{json.dumps(r['grid_overrides'])}`", ""]
+    L += ["## Layout families", ""] + [f"- {k}: {v}" for k, v in r["layout_families"].items()]
+    L += ["", "| id | layout | classification (confidence) | observed use on example slides |", "|---|---|---|---|"]
     for l in r["layouts"]:
-        L.append(f"| {l['name']} | {', '.join(l['placeholders']) or '—'} | {l['artwork']} | {l['background'] or '—'} |")
-    L += ["", "## Reserved areas (master artwork protected by QA)", ""]
-    L += [f"- {a['kind']} `{a['name']}` at ({a['x']}, {a['y']}) {a['w']}×{a['h']} in" for a in r["reserved_areas"]] or ["- none"]
-    L += ["", "## Grid overrides", "", f"`{json.dumps(r['grid_overrides'])}`", ""]
-    L += ["## Unsupported / not used", ""] + ([f"- {u}" for u in r["unsupported"]] or ["- none"])
+        L.append(f"| {l['id']} | {l['name']} | " + ", ".join(f"{c['type']} ({c['confidence']})" for c in l["classification"]) + f" | {', '.join(f'{k}×{v}' for k, v in l['usage'].items()) or '—'} |")
+    a = r["assets"]
+    L += ["", "## Assets", "", f"- Logos: {len(a['logos'])} ({', '.join(f'{k}×{v}' for k, v in a['logo_positions'].items()) or '—'})",
+          f"- Icons (distinct small images on slides): {a['icons_distinct']} · pictures on slides: {a['pictures_on_slides']} · vector groups: {a['vector_groups_on_slides']}",
+          f"- Reserved artwork on masters/layouts: {a['reserved_artwork']}", f"- Base layout for engine-drawn slides: **{r['base_layout']}**", ""]
+    hc = rules["headline_case"]
+    L += ["## Inferred brand rules", "",
+          f"- Headline case: **{hc['dominant']}** ({json.dumps(hc['shares'])}, {hc['titles_sampled']} titles)",
+          f"- Bookend: first and last slides in the brand colour: {rules['bookend']['first_and_last_in_brand_colour']} (same colour: {rules['bookend'].get('first_and_last_share_a_colour')}; {rules['bookend']['first_last_backgrounds']})",
+          f"- Slides on a brand-colour background: {rules['brand_colour_slide_share']}",
+          f"- Text alignment: {json.dumps(rules['text_alignment'])}",
+          f"- Content headline: top at {rules['headline_position']['content_title_top_in']} in, width {rules['headline_position']['content_title_width_share']} of the slide",
+          f"- Shapes: rounded share of rectangles {rules['shapes']['rounded_share_of_rectangles']}, chevrons {rules['shapes']['chevrons']}, most used {json.dumps(rules['shapes']['most_used'])}", ""]
+    L += ["## Reserved areas (protected by QA)", ""] + ([f"- {x['kind']} `{x['name']}` at ({x['x']}, {x['y']}) {x['w']}×{x['h']} in" for x in r["reserved_areas"]] or ["- none"])
+    L += ["", "## Unsupported / not used", ""] + ([f"- {u}" for u in r["unsupported"]] or ["- none"])
     L += ["", "## Notes", ""] + ([f"- {n}" for n in r["notes"]] or ["- none"])
     return "\n".join(L) + "\n"

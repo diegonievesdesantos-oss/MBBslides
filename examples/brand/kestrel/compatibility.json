@@ -4,7 +4,37 @@
   "slide_size": {
     "width_in": 13.333,
     "height_in": 7.5,
-    "supported": true
+    "supported": true,
+    "rescaled": null
+  },
+  "masters": [
+    {
+      "id": "m1",
+      "name": "",
+      "layouts": 11,
+      "theme": "Office Theme",
+      "fonts": {
+        "majorFont": "Georgia",
+        "minorFont": "Calibri"
+      }
+    }
+  ],
+  "layout_count": 11,
+  "layout_families": {
+    "one_column": 3,
+    "content": 2,
+    "cover": 1,
+    "section": 1,
+    "two_column": 1,
+    "comparison": 1,
+    "chart_commentary": 1,
+    "image_split": 1
+  },
+  "example_slides": {
+    "count": 1,
+    "observed_archetypes": {
+      "cover": 1
+    }
   },
   "fonts": {
     "heading": {
@@ -13,7 +43,12 @@
       "status": "missing",
       "measure_family": "DejaVuSerif",
       "measurement": "approximate",
-      "render_fallback": "DejaVu Serif"
+      "render_fallback": "DejaVu Serif",
+      "role": "heading",
+      "declared": true,
+      "observed": false,
+      "renderable": false,
+      "warning": "FONT WARNING — corporate font Georgia is not available in the authoring environment. LibreOffice renders it with DejaVu Serif; text is measured with DejaVuSerif (approximate). Expected risk: line wrapping and box fits may differ in the corporate environment where the font is installed."
     },
     "body": {
       "font": "Calibri",
@@ -21,7 +56,61 @@
       "status": "metric-compatible substitute",
       "measure_family": "Carlito",
       "measurement": "exact",
-      "render_fallback": "Carlito"
+      "render_fallback": "Carlito",
+      "role": "body",
+      "declared": true,
+      "observed": false,
+      "renderable": true,
+      "warning": "FONT WARNING — corporate font Calibri is not available in the authoring environment. LibreOffice renders it with Carlito; text is measured with Carlito (exact). Expected risk: none for widths (metric-compatible)."
+    }
+  },
+  "typography": {
+    "primary": "Georgia",
+    "confidence": 0.821,
+    "conflict": null,
+    "roles": {
+      "heading": {
+        "font": "Georgia",
+        "source": "declared (too little example text to observe)",
+        "share": null,
+        "declared": "Georgia",
+        "conflict": false
+      },
+      "body": {
+        "font": "Calibri",
+        "source": "declared (too little example text to observe)",
+        "share": null,
+        "declared": "Calibri",
+        "conflict": false
+      }
+    },
+    "candidates": [
+      {
+        "font": "Georgia",
+        "score": 0.821,
+        "declared": true,
+        "observed_chars": 24,
+        "direct_chars": 0,
+        "guide_mentions": 0,
+        "installed": false
+      },
+      {
+        "font": "Calibri",
+        "score": 0.179,
+        "declared": true,
+        "observed_chars": 0,
+        "direct_chars": 0,
+        "guide_mentions": 0,
+        "installed": false
+      }
+    ],
+    "evidence_weights": {
+      "theme": 0.214,
+      "master": 0.143,
+      "usage": 0.643
+    },
+    "sizes": {
+      "most_used_pt": []
     }
   },
   "theme_colors": {
@@ -38,6 +127,17 @@
     "hlink": "2E6B4F",
     "folHlink": "5B6770"
   },
+  "palette": {
+    "primary": null,
+    "text": "222222",
+    "supporting": [
+      "1B3A2F"
+    ],
+    "neutrals": [],
+    "brand_background_share": 0.0,
+    "conflict": null,
+    "confidence": 0.5
+  },
   "color_mapping": {
     "primary": "1B3A2F",
     "secondary": "2E6B4F",
@@ -48,204 +148,222 @@
     "positive": "2E6B4F",
     "negative": "A33A2B"
   },
-  "master": {
-    "placeholders": [
+  "color_sources": {
+    "primary": "theme",
+    "highlight": "theme",
+    "text": "theme"
+  },
+  "grid": {
+    "margin_left_in": 0.667,
+    "margin_right_in": 0.667,
+    "columns": 12,
+    "gutter_in": 0.267,
+    "edges_explained": 1.0,
+    "confidence": 0.95,
+    "edges_sampled": 4
+  },
+  "assets": {
+    "logos": [
       {
-        "type": "TITLE",
-        "name": "Title Placeholder 1",
-        "x": 0.7,
-        "y": 0.3,
-        "w": 11.933,
-        "h": 1.25
-      },
-      {
-        "type": "BODY",
-        "name": "Text Placeholder 2",
-        "x": 0.7,
-        "y": 1.75,
-        "w": 11.933,
-        "h": 4.95
-      },
-      {
-        "type": "DATE",
-        "name": "Date Placeholder 3",
-        "x": 0.5,
-        "y": 6.951,
-        "w": 2.333,
-        "h": 0.399
-      },
-      {
-        "type": "FOOTER",
-        "name": "Footer Placeholder 4",
-        "x": 3.417,
-        "y": 6.951,
-        "w": 3.167,
-        "h": 0.399
-      },
-      {
-        "type": "SLIDE_NUMBER",
-        "name": "Slide Number Placeholder 5",
-        "x": 7.167,
-        "y": 6.951,
-        "w": 2.333,
-        "h": 0.399
-      }
-    ],
-    "artwork": [
-      {
-        "kind": "picture",
+        "scope": "master",
+        "owner": "m1",
         "name": "Kestrel logo",
+        "kind": "picture",
         "x": 11.2,
         "y": 0.26,
         "w": 1.45,
         "h": 0.35
-      },
+      }
+    ],
+    "logo_positions": {
+      "top-right": 1
+    },
+    "icons_distinct": 0,
+    "pictures_on_slides": 0,
+    "vector_groups_on_slides": 0,
+    "reserved_artwork": 1,
+    "reserved_examples": [
       {
-        "kind": "shape",
+        "scope": "master",
+        "owner": "m1",
         "name": "Brand bar",
+        "kind": "shape",
         "x": 0.0,
         "y": 7.4,
         "w": 13.333,
         "h": 0.1
       }
-    ],
-    "background": "solid background"
+    ]
+  },
+  "rules": {
+    "headline_case": {
+      "dominant": "sentence",
+      "shares": {
+        "sentence": 1.0
+      },
+      "titles_sampled": 1
+    },
+    "bookend": {
+      "first_and_last_in_brand_colour": false,
+      "first_and_last_share_a_colour": true,
+      "first_last_backgrounds": [
+        "1B3A2F",
+        "1B3A2F"
+      ],
+      "brand_colour": null
+    },
+    "brand_colour_slide_share": 0.0,
+    "text_alignment": {
+      "l": 1.0
+    },
+    "headline_position": {
+      "content_title_top_in": 0.0,
+      "content_title_width_share": 0.895
+    },
+    "shapes": {
+      "rounded_share_of_rectangles": null,
+      "chevrons": 0,
+      "most_used": {}
+    }
   },
   "layouts": [
     {
+      "id": "m1.l1",
+      "master": "m1",
       "name": "Title Slide",
-      "placeholders": [
-        "cover title",
-        "cover subtitle",
-        "date",
-        "footer",
-        "slide number"
+      "classification": [
+        {
+          "type": "cover",
+          "confidence": 0.92
+        }
       ],
-      "artwork": 0,
-      "background": "gradient background"
+      "usage": {
+        "cover": 1
+      }
     },
     {
+      "id": "m1.l2",
+      "master": "m1",
       "name": "Title and Content",
-      "placeholders": [
-        "headline",
-        "content",
-        "date",
-        "footer",
-        "slide number"
+      "classification": [
+        {
+          "type": "one_column",
+          "confidence": 0.95
+        }
       ],
-      "artwork": 0,
-      "background": null
+      "usage": {}
     },
     {
+      "id": "m1.l3",
+      "master": "m1",
       "name": "Section Header",
-      "placeholders": [
-        "headline",
-        "body text",
-        "date",
-        "footer",
-        "slide number"
+      "classification": [
+        {
+          "type": "section",
+          "confidence": 0.8
+        }
       ],
-      "artwork": 0,
-      "background": null
+      "usage": {}
     },
     {
+      "id": "m1.l4",
+      "master": "m1",
       "name": "Two Content",
-      "placeholders": [
-        "headline",
-        "content",
-        "content",
-        "date",
-        "footer",
-        "slide number"
+      "classification": [
+        {
+          "type": "two_column",
+          "confidence": 0.8
+        }
       ],
-      "artwork": 0,
-      "background": null
+      "usage": {}
     },
     {
+      "id": "m1.l5",
+      "master": "m1",
       "name": "Comparison",
-      "placeholders": [
-        "headline",
-        "body text",
-        "content",
-        "body text",
-        "content",
-        "date",
-        "footer",
-        "slide number"
+      "classification": [
+        {
+          "type": "comparison",
+          "confidence": 0.8
+        }
       ],
-      "artwork": 0,
-      "background": null
+      "usage": {}
     },
     {
+      "id": "m1.l6",
+      "master": "m1",
       "name": "Title Only",
-      "placeholders": [
-        "headline",
-        "date",
-        "footer",
-        "slide number"
+      "classification": [
+        {
+          "type": "content",
+          "confidence": 0.97
+        }
       ],
-      "artwork": 0,
-      "background": null
+      "usage": {}
     },
     {
+      "id": "m1.l7",
+      "master": "m1",
       "name": "Blank",
-      "placeholders": [
-        "date",
-        "footer",
-        "slide number"
+      "classification": [
+        {
+          "type": "content",
+          "confidence": 0.8
+        }
       ],
-      "artwork": 0,
-      "background": null
+      "usage": {}
     },
     {
+      "id": "m1.l8",
+      "master": "m1",
       "name": "Content with Caption",
-      "placeholders": [
-        "headline",
-        "content",
-        "body text",
-        "date",
-        "footer",
-        "slide number"
+      "classification": [
+        {
+          "type": "chart_commentary",
+          "confidence": 0.45
+        },
+        {
+          "type": "content",
+          "confidence": 0.35
+        }
       ],
-      "artwork": 0,
-      "background": null
+      "usage": {}
     },
     {
+      "id": "m1.l9",
+      "master": "m1",
       "name": "Picture with Caption",
-      "placeholders": [
-        "headline",
-        "picture",
-        "body text",
-        "date",
-        "footer",
-        "slide number"
+      "classification": [
+        {
+          "type": "image_split",
+          "confidence": 0.8
+        }
       ],
-      "artwork": 0,
-      "background": null
+      "usage": {}
     },
     {
+      "id": "m1.l10",
+      "master": "m1",
       "name": "Title and Vertical Text",
-      "placeholders": [
-        "headline",
-        "body text",
-        "date",
-        "footer",
-        "slide number"
+      "classification": [
+        {
+          "type": "one_column",
+          "confidence": 0.5
+        }
       ],
-      "artwork": 0,
-      "background": null
+      "usage": {}
     },
     {
+      "id": "m1.l11",
+      "master": "m1",
       "name": "Vertical Title and Text",
-      "placeholders": [
-        "headline",
-        "body text",
-        "date",
-        "footer",
-        "slide number"
+      "classification": [
+        {
+          "type": "one_column",
+          "confidence": 0.5
+        }
       ],
-      "artwork": 0,
-      "background": null
+      "usage": {}
     }
   ],
   "base_layout": "Blank",

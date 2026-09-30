@@ -650,6 +650,7 @@ def infer_typography(prs, masters, themes, layouts, installed: set[str]) -> dict
                 ev["layouts"][f] += 1
     chars_direct = collections.Counter()
     chars_inherited = collections.Counter()
+    by_role = {"heading": collections.Counter(), "body": collections.Counter()}
     guide_mentions = collections.Counter()
     known = set()
     for th in themes:
@@ -679,9 +680,11 @@ def infer_typography(prs, masters, themes, layouts, installed: set[str]) -> dict
                         chars_direct[face] += len(t)
                         known.add(face)
                     else:
-                        inherited = head_default if is_title else body_default
-                        if inherited:
-                            chars_inherited[inherited] += len(t)
+                        face = head_default if is_title else body_default
+                        if face:
+                            chars_inherited[face] += len(t)
+                    if face:
+                        by_role["heading" if is_title else "body"][face] += len(t)
         slide_texts.append(" ".join(txt))
     for t in slide_texts:
         if GUIDE_WORDS.search(t):
@@ -721,7 +724,17 @@ def infer_typography(prs, masters, themes, layouts, installed: set[str]) -> dict
     for f, sc in ranked[:6]:
         fonts_report.append({"font": f, "score": round(sc, 3), "declared": f in [x for v in declared.values() for x in v], "observed_chars": usage.get(f, 0),
                              "direct_chars": chars_direct.get(f, 0), "guide_mentions": guide_mentions.get(f, 0), "installed": f.lower() in installed})
-    return {"primary": primary, "confidence": conf, "declared": declared, "conflict": conflict, "candidates": fonts_report,
+    roles = {}
+    for role, key in (("heading", "majorFont"), ("body", "minorFont")):
+        c = by_role[role]
+        dec = collections.Counter(th["fonts"].get(key) for th in themes if th["fonts"].get(key)).most_common(1)
+        dec = dec[0][0] if dec else None
+        if sum(c.values()) >= 40:
+            f, n = c.most_common(1)[0]
+            roles[role] = {"font": f, "source": "observed", "share": round(n / sum(c.values()), 3), "declared": dec, "conflict": bool(dec and f.lower() != dec.lower())}
+        else:
+            roles[role] = {"font": dec or primary, "source": "declared (too little example text to observe)", "share": None, "declared": dec, "conflict": False}
+    return {"primary": primary, "confidence": conf, "declared": declared, "conflict": conflict, "candidates": fonts_report, "roles": roles,
             "evidence_weights": {k: round(w / norm, 3) for k, w in active.items()},
             "master_styles": [{"master": m["master_id"], "title": m["title_style"], "body": m["body_style"]} for m in masters],
             "sizes": _size_profile(prs)}

@@ -1,0 +1,1032 @@
+[
+  {
+    "master_id": "m1",
+    "layout_id": "m1.l1",
+    "layout": "Title Slide",
+    "classification": [
+      {
+        "type": "cover",
+        "confidence": 0.92
+      }
+    ],
+    "usage": {
+      "cover": 1
+    },
+    "evidence": {
+      "geometry": {
+        "cover": 1.0,
+        "section": 0.45,
+        "statement": 0.15,
+        "closing": 0.2
+      },
+      "example_slides": 1
+    },
+    "features": {
+      "master_id": "m1",
+      "layout_id": "m1.l1",
+      "layout_name": "Title Slide",
+      "ooxml_type": "title",
+      "placeholder_count": 5,
+      "placeholder_types": [
+        "CENTER_TITLE",
+        "DATE",
+        "FOOTER",
+        "SLIDE_NUMBER",
+        "SUBTITLE"
+      ],
+      "title_geometry": {
+        "x": 0.7,
+        "y": 2.33,
+        "w": 11.933,
+        "h": 1.608,
+        "nx": 0.0525,
+        "ny": 0.3107,
+        "nw": 0.895,
+        "nh": 0.2144
+      },
+      "title_position": "middle",
+      "subtitle": true,
+      "body_geometry": null,
+      "image_placeholders": 0,
+      "chart_placeholders": 0,
+      "table_placeholders": 0,
+      "table_compatible_regions": 0,
+      "content_placeholders": 0,
+      "column_headers": 0,
+      "columns": 0,
+      "rows": 0,
+      "symmetric": false,
+      "background": {
+        "kind": "gradient",
+        "color": "1B3A2F",
+        "dark": true,
+        "coloured": false,
+        "picture": false
+      },
+      "content_capacity": 0.355,
+      "content_coverage": 0,
+      "reserved_artwork": [
+        {
+          "name": "Kestrel logo",
+          "kind": "picture",
+          "x": 11.2,
+          "y": 0.26,
+          "w": 1.45,
+          "h": 0.35
+        },
+        {
+          "name": "Brand bar",
+          "kind": "shape",
+          "x": 0.0,
+          "y": 7.4,
+          "w": 13.333,
+          "h": 0.1
+        }
+      ],
+      "artwork_in_body": 0,
+      "footer": true,
+      "logo": true,
+      "orientation": "single",
+      "name_tokens": [
+        "slide",
+        "title"
+      ]
+    }
+  },
+  {
+    "master_id": "m1",
+    "layout_id": "m1.l2",
+    "layout": "Title and Content",
+    "classification": [
+      {
+        "type": "one_column",
+        "confidence": 0.95
+      }
+    ],
+    "usage": {},
+    "evidence": {
+      "geometry": {
+        "one_column": 0.95,
+        "content": 0.55
+      },
+      "example_slides": 0
+    },
+    "features": {
+      "master_id": "m1",
+      "layout_id": "m1.l2",
+      "layout_name": "Title and Content",
+      "ooxml_type": "obj",
+      "placeholder_count": 5,
+      "placeholder_types": [
+        "DATE",
+        "FOOTER",
+        "OBJECT",
+        "SLIDE_NUMBER",
+        "TITLE"
+      ],
+      "title_geometry": {
+        "x": 0.7,
+        "y": 0.0,
+        "w": 11.933,
+        "h": 0.0,
+        "nx": 0.0525,
+        "ny": 0.0,
+        "nw": 0.895,
+        "nh": 0.0
+      },
+      "title_position": "top",
+      "subtitle": false,
+      "body_geometry": {
+        "nx": 0.0525,
+        "ny": 0.0,
+        "nw": 0.895,
+        "nh": 0.0
+      },
+      "image_placeholders": 0,
+      "chart_placeholders": 0,
+      "table_placeholders": 0,
+      "table_compatible_regions": 0,
+      "content_placeholders": 1,
+      "column_headers": 1,
+      "columns": 0,
+      "rows": 0,
+      "symmetric": false,
+      "background": {
+        "kind": "solid",
+        "color": "FFFFFF",
+        "dark": false,
+        "coloured": false,
+        "picture": false
+      },
+      "content_capacity": 0.828,
+      "content_coverage": 0,
+      "reserved_artwork": [
+        {
+          "name": "Kestrel logo",
+          "kind": "picture",
+          "x": 11.2,
+          "y": 0.26,
+          "w": 1.45,
+          "h": 0.35
+        },
+        {
+          "name": "Brand bar",
+          "kind": "shape",
+          "x": 0.0,
+          "y": 7.4,
+          "w": 13.333,
+          "h": 0.1
+        }
+      ],
+      "artwork_in_body": 0,
+      "footer": true,
+      "logo": true,
+      "orientation": "single",
+      "name_tokens": [
+        "and",
+        "content",
+        "title"
+      ]
+    }
+  },
+  {
+    "master_id": "m1",
+    "layout_id": "m1.l3",
+    "layout": "Section Header",
+    "classification": [
+      {
+        "type": "section",
+        "confidence": 0.8
+      }
+    ],
+    "usage": {},
+    "evidence": {
+      "geometry": {
+        "section": 0.8
+      },
+      "example_slides": 0
+    },
+    "features": {
+      "master_id": "m1",
+      "layout_id": "m1.l3",
+      "layout_name": "Section Header",
+      "ooxml_type": "secHead",
+      "placeholder_count": 5,
+      "placeholder_types": [
+        "BODY",
+        "DATE",
+        "FOOTER",
+        "SLIDE_NUMBER",
+        "TITLE"
+      ],
+      "title_geometry": {
+        "x": 0.7,
+        "y": 4.819,
+        "w": 11.933,
+        "h": 1.49,
+        "nx": 0.0525,
+        "ny": 0.6425,
+        "nw": 0.895,
+        "nh": 0.1987
+      },
+      "title_position": "middle",
+      "subtitle": false,
+      "body_geometry": {
+        "nx": 0.0525,
+        "ny": 0.4239,
+        "nw": 0.895,
+        "nh": 0.2188
+      },
+      "image_placeholders": 0,
+      "chart_placeholders": 0,
+      "table_placeholders": 0,
+      "table_compatible_regions": 0,
+      "content_placeholders": 1,
+      "column_headers": 0,
+      "columns": 1,
+      "rows": 1,
+      "symmetric": true,
+      "background": {
+        "kind": "solid",
+        "color": "FFFFFF",
+        "dark": false,
+        "coloured": false,
+        "picture": false
+      },
+      "content_capacity": 0.071,
+      "content_coverage": 0.196,
+      "reserved_artwork": [
+        {
+          "name": "Kestrel logo",
+          "kind": "picture",
+          "x": 11.2,
+          "y": 0.26,
+          "w": 1.45,
+          "h": 0.35
+        },
+        {
+          "name": "Brand bar",
+          "kind": "shape",
+          "x": 0.0,
+          "y": 7.4,
+          "w": 13.333,
+          "h": 0.1
+        }
+      ],
+      "artwork_in_body": 0,
+      "footer": true,
+      "logo": true,
+      "orientation": "single",
+      "name_tokens": [
+        "header",
+        "section"
+      ]
+    }
+  },
+  {
+    "master_id": "m1",
+    "layout_id": "m1.l4",
+    "layout": "Two Content",
+    "classification": [
+      {
+        "type": "two_column",
+        "confidence": 0.8
+      }
+    ],
+    "usage": {},
+    "evidence": {
+      "geometry": {
+        "two_column": 0.8,
+        "content": 0.35
+      },
+      "example_slides": 0
+    },
+    "features": {
+      "master_id": "m1",
+      "layout_id": "m1.l4",
+      "layout_name": "Two Content",
+      "ooxml_type": "twoObj",
+      "placeholder_count": 6,
+      "placeholder_types": [
+        "DATE",
+        "FOOTER",
+        "OBJECT",
+        "SLIDE_NUMBER",
+        "TITLE"
+      ],
+      "title_geometry": {
+        "x": 0.7,
+        "y": 0.0,
+        "w": 11.933,
+        "h": 0.0,
+        "nx": 0.0525,
+        "ny": 0.0,
+        "nw": 0.895,
+        "nh": 0.0
+      },
+      "title_position": "top",
+      "subtitle": false,
+      "body_geometry": {
+        "nx": 0.0525,
+        "ny": 0.2333,
+        "nw": 0.895,
+        "nh": 0.66
+      },
+      "image_placeholders": 0,
+      "chart_placeholders": 0,
+      "table_placeholders": 0,
+      "table_compatible_regions": 2,
+      "content_placeholders": 2,
+      "column_headers": 0,
+      "columns": 1,
+      "rows": 1,
+      "symmetric": true,
+      "background": {
+        "kind": "solid",
+        "color": "FFFFFF",
+        "dark": false,
+        "coloured": false,
+        "picture": false
+      },
+      "content_capacity": 0.828,
+      "content_coverage": 1.181,
+      "reserved_artwork": [
+        {
+          "name": "Kestrel logo",
+          "kind": "picture",
+          "x": 11.2,
+          "y": 0.26,
+          "w": 1.45,
+          "h": 0.35
+        },
+        {
+          "name": "Brand bar",
+          "kind": "shape",
+          "x": 0.0,
+          "y": 7.4,
+          "w": 13.333,
+          "h": 0.1
+        }
+      ],
+      "artwork_in_body": 0,
+      "footer": true,
+      "logo": true,
+      "orientation": "single",
+      "name_tokens": [
+        "content",
+        "two"
+      ]
+    }
+  },
+  {
+    "master_id": "m1",
+    "layout_id": "m1.l5",
+    "layout": "Comparison",
+    "classification": [
+      {
+        "type": "comparison",
+        "confidence": 0.8
+      }
+    ],
+    "usage": {},
+    "evidence": {
+      "geometry": {
+        "comparison": 0.8
+      },
+      "example_slides": 0
+    },
+    "features": {
+      "master_id": "m1",
+      "layout_id": "m1.l5",
+      "layout_name": "Comparison",
+      "ooxml_type": "twoTxTwoObj",
+      "placeholder_count": 8,
+      "placeholder_types": [
+        "BODY",
+        "DATE",
+        "FOOTER",
+        "OBJECT",
+        "SLIDE_NUMBER",
+        "TITLE"
+      ],
+      "title_geometry": {
+        "x": 0.7,
+        "y": 0.0,
+        "w": 11.933,
+        "h": 0.0,
+        "nx": 0.0525,
+        "ny": 0.0,
+        "nw": 0.895,
+        "nh": 0.0
+      },
+      "title_position": "top",
+      "subtitle": false,
+      "body_geometry": {
+        "nx": 0.0525,
+        "ny": 0.2239,
+        "nw": 0.895,
+        "nh": 0.6693
+      },
+      "image_placeholders": 0,
+      "chart_placeholders": 0,
+      "table_placeholders": 0,
+      "table_compatible_regions": 2,
+      "content_placeholders": 4,
+      "column_headers": 2,
+      "columns": 1,
+      "rows": 1,
+      "symmetric": true,
+      "background": {
+        "kind": "solid",
+        "color": "FFFFFF",
+        "dark": false,
+        "coloured": false,
+        "picture": false
+      },
+      "content_capacity": 0.828,
+      "content_coverage": 1.198,
+      "reserved_artwork": [
+        {
+          "name": "Kestrel logo",
+          "kind": "picture",
+          "x": 11.2,
+          "y": 0.26,
+          "w": 1.45,
+          "h": 0.35
+        },
+        {
+          "name": "Brand bar",
+          "kind": "shape",
+          "x": 0.0,
+          "y": 7.4,
+          "w": 13.333,
+          "h": 0.1
+        }
+      ],
+      "artwork_in_body": 0,
+      "footer": true,
+      "logo": true,
+      "orientation": "single",
+      "name_tokens": [
+        "comparison"
+      ]
+    }
+  },
+  {
+    "master_id": "m1",
+    "layout_id": "m1.l6",
+    "layout": "Title Only",
+    "classification": [
+      {
+        "type": "content",
+        "confidence": 0.97
+      }
+    ],
+    "usage": {},
+    "evidence": {
+      "geometry": {
+        "content": 1.0
+      },
+      "example_slides": 0
+    },
+    "features": {
+      "master_id": "m1",
+      "layout_id": "m1.l6",
+      "layout_name": "Title Only",
+      "ooxml_type": "titleOnly",
+      "placeholder_count": 4,
+      "placeholder_types": [
+        "DATE",
+        "FOOTER",
+        "SLIDE_NUMBER",
+        "TITLE"
+      ],
+      "title_geometry": {
+        "x": 0.7,
+        "y": 0.0,
+        "w": 11.933,
+        "h": 0.0,
+        "nx": 0.0525,
+        "ny": 0.0,
+        "nw": 0.895,
+        "nh": 0.0
+      },
+      "title_position": "top",
+      "subtitle": false,
+      "body_geometry": null,
+      "image_placeholders": 0,
+      "chart_placeholders": 0,
+      "table_placeholders": 0,
+      "table_compatible_regions": 0,
+      "content_placeholders": 0,
+      "column_headers": 0,
+      "columns": 0,
+      "rows": 0,
+      "symmetric": false,
+      "background": {
+        "kind": "solid",
+        "color": "FFFFFF",
+        "dark": false,
+        "coloured": false,
+        "picture": false
+      },
+      "content_capacity": 0.828,
+      "content_coverage": 0,
+      "reserved_artwork": [
+        {
+          "name": "Kestrel logo",
+          "kind": "picture",
+          "x": 11.2,
+          "y": 0.26,
+          "w": 1.45,
+          "h": 0.35
+        },
+        {
+          "name": "Brand bar",
+          "kind": "shape",
+          "x": 0.0,
+          "y": 7.4,
+          "w": 13.333,
+          "h": 0.1
+        }
+      ],
+      "artwork_in_body": 0,
+      "footer": true,
+      "logo": true,
+      "orientation": "single",
+      "name_tokens": [
+        "only",
+        "title"
+      ]
+    }
+  },
+  {
+    "master_id": "m1",
+    "layout_id": "m1.l7",
+    "layout": "Blank",
+    "classification": [
+      {
+        "type": "content",
+        "confidence": 0.8
+      }
+    ],
+    "usage": {},
+    "evidence": {
+      "geometry": {
+        "content": 0.8,
+        "special": 0.3
+      },
+      "example_slides": 0
+    },
+    "features": {
+      "master_id": "m1",
+      "layout_id": "m1.l7",
+      "layout_name": "Blank",
+      "ooxml_type": "blank",
+      "placeholder_count": 3,
+      "placeholder_types": [
+        "DATE",
+        "FOOTER",
+        "SLIDE_NUMBER"
+      ],
+      "title_geometry": null,
+      "title_position": null,
+      "subtitle": false,
+      "body_geometry": null,
+      "image_placeholders": 0,
+      "chart_placeholders": 0,
+      "table_placeholders": 0,
+      "table_compatible_regions": 0,
+      "content_placeholders": 0,
+      "column_headers": 0,
+      "columns": 0,
+      "rows": 0,
+      "symmetric": false,
+      "background": {
+        "kind": "solid",
+        "color": "FFFFFF",
+        "dark": false,
+        "coloured": false,
+        "picture": false
+      },
+      "content_capacity": 0.72,
+      "content_coverage": 0,
+      "reserved_artwork": [
+        {
+          "name": "Kestrel logo",
+          "kind": "picture",
+          "x": 11.2,
+          "y": 0.26,
+          "w": 1.45,
+          "h": 0.35
+        },
+        {
+          "name": "Brand bar",
+          "kind": "shape",
+          "x": 0.0,
+          "y": 7.4,
+          "w": 13.333,
+          "h": 0.1
+        }
+      ],
+      "artwork_in_body": 0,
+      "footer": true,
+      "logo": true,
+      "orientation": "single",
+      "name_tokens": [
+        "blank"
+      ]
+    }
+  },
+  {
+    "master_id": "m1",
+    "layout_id": "m1.l8",
+    "layout": "Content with Caption",
+    "classification": [
+      {
+        "type": "chart_commentary",
+        "confidence": 0.45
+      },
+      {
+        "type": "content",
+        "confidence": 0.35
+      }
+    ],
+    "usage": {},
+    "evidence": {
+      "geometry": {
+        "chart_commentary": 0.45,
+        "content": 0.35
+      },
+      "example_slides": 0
+    },
+    "features": {
+      "master_id": "m1",
+      "layout_id": "m1.l8",
+      "layout_name": "Content with Caption",
+      "ooxml_type": "objTx",
+      "placeholder_count": 6,
+      "placeholder_types": [
+        "BODY",
+        "DATE",
+        "FOOTER",
+        "OBJECT",
+        "SLIDE_NUMBER",
+        "TITLE"
+      ],
+      "title_geometry": {
+        "x": 0.7,
+        "y": 0.299,
+        "w": 11.933,
+        "h": 1.271,
+        "nx": 0.0525,
+        "ny": 0.0399,
+        "nw": 0.895,
+        "nh": 0.1695
+      },
+      "title_position": "top",
+      "subtitle": false,
+      "body_geometry": {
+        "nx": 0.0525,
+        "ny": 0.0399,
+        "nw": 0.895,
+        "nh": 0.8535
+      },
+      "image_placeholders": 0,
+      "chart_placeholders": 0,
+      "table_placeholders": 0,
+      "table_compatible_regions": 2,
+      "content_placeholders": 2,
+      "column_headers": 0,
+      "columns": 1,
+      "rows": 2,
+      "symmetric": true,
+      "background": {
+        "kind": "solid",
+        "color": "FFFFFF",
+        "dark": false,
+        "coloured": false,
+        "picture": false
+      },
+      "content_capacity": 0.64,
+      "content_coverage": 1.376,
+      "reserved_artwork": [
+        {
+          "name": "Kestrel logo",
+          "kind": "picture",
+          "x": 11.2,
+          "y": 0.26,
+          "w": 1.45,
+          "h": 0.35
+        },
+        {
+          "name": "Brand bar",
+          "kind": "shape",
+          "x": 0.0,
+          "y": 7.4,
+          "w": 13.333,
+          "h": 0.1
+        }
+      ],
+      "artwork_in_body": 0,
+      "footer": true,
+      "logo": true,
+      "orientation": "vertical",
+      "name_tokens": [
+        "caption",
+        "content",
+        "with"
+      ]
+    }
+  },
+  {
+    "master_id": "m1",
+    "layout_id": "m1.l9",
+    "layout": "Picture with Caption",
+    "classification": [
+      {
+        "type": "image_split",
+        "confidence": 0.8
+      }
+    ],
+    "usage": {},
+    "evidence": {
+      "geometry": {
+        "image_split": 0.8
+      },
+      "example_slides": 0
+    },
+    "features": {
+      "master_id": "m1",
+      "layout_id": "m1.l9",
+      "layout_name": "Picture with Caption",
+      "ooxml_type": "picTx",
+      "placeholder_count": 6,
+      "placeholder_types": [
+        "BODY",
+        "DATE",
+        "FOOTER",
+        "PICTURE",
+        "SLIDE_NUMBER",
+        "TITLE"
+      ],
+      "title_geometry": {
+        "x": 0.7,
+        "y": 5.25,
+        "w": 11.933,
+        "h": 0.62,
+        "nx": 0.0525,
+        "ny": 0.7,
+        "nw": 0.895,
+        "nh": 0.0827
+      },
+      "title_position": "middle",
+      "subtitle": false,
+      "body_geometry": {
+        "nx": 0.0525,
+        "ny": 0.0893,
+        "nw": 0.895,
+        "nh": 0.8107
+      },
+      "image_placeholders": 1,
+      "chart_placeholders": 0,
+      "table_placeholders": 0,
+      "table_compatible_regions": 0,
+      "content_placeholders": 2,
+      "column_headers": 0,
+      "columns": 2,
+      "rows": 2,
+      "symmetric": false,
+      "background": {
+        "kind": "solid",
+        "color": "FFFFFF",
+        "dark": false,
+        "coloured": false,
+        "picture": false
+      },
+      "content_capacity": 0.124,
+      "content_coverage": 0.375,
+      "reserved_artwork": [
+        {
+          "name": "Kestrel logo",
+          "kind": "picture",
+          "x": 11.2,
+          "y": 0.26,
+          "w": 1.45,
+          "h": 0.35
+        },
+        {
+          "name": "Brand bar",
+          "kind": "shape",
+          "x": 0.0,
+          "y": 7.4,
+          "w": 13.333,
+          "h": 0.1
+        }
+      ],
+      "artwork_in_body": 0,
+      "footer": true,
+      "logo": true,
+      "orientation": "grid",
+      "name_tokens": [
+        "caption",
+        "picture",
+        "with"
+      ]
+    }
+  },
+  {
+    "master_id": "m1",
+    "layout_id": "m1.l10",
+    "layout": "Title and Vertical Text",
+    "classification": [
+      {
+        "type": "one_column",
+        "confidence": 0.5
+      }
+    ],
+    "usage": {},
+    "evidence": {
+      "geometry": {
+        "one_column": 0.5,
+        "content": 0.2
+      },
+      "example_slides": 0
+    },
+    "features": {
+      "master_id": "m1",
+      "layout_id": "m1.l10",
+      "layout_name": "Title and Vertical Text",
+      "ooxml_type": "vertTx",
+      "placeholder_count": 5,
+      "placeholder_types": [
+        "BODY",
+        "DATE",
+        "FOOTER",
+        "SLIDE_NUMBER",
+        "TITLE"
+      ],
+      "title_geometry": {
+        "x": 0.7,
+        "y": 0.0,
+        "w": 11.933,
+        "h": 0.0,
+        "nx": 0.0525,
+        "ny": 0.0,
+        "nw": 0.895,
+        "nh": 0.0
+      },
+      "title_position": "top",
+      "subtitle": false,
+      "body_geometry": {
+        "nx": 0.0525,
+        "ny": 0.0,
+        "nw": 0.895,
+        "nh": 0.0
+      },
+      "image_placeholders": 0,
+      "chart_placeholders": 0,
+      "table_placeholders": 0,
+      "table_compatible_regions": 0,
+      "content_placeholders": 1,
+      "column_headers": 1,
+      "columns": 0,
+      "rows": 0,
+      "symmetric": false,
+      "background": {
+        "kind": "solid",
+        "color": "FFFFFF",
+        "dark": false,
+        "coloured": false,
+        "picture": false
+      },
+      "content_capacity": 0.828,
+      "content_coverage": 0,
+      "reserved_artwork": [
+        {
+          "name": "Kestrel logo",
+          "kind": "picture",
+          "x": 11.2,
+          "y": 0.26,
+          "w": 1.45,
+          "h": 0.35
+        },
+        {
+          "name": "Brand bar",
+          "kind": "shape",
+          "x": 0.0,
+          "y": 7.4,
+          "w": 13.333,
+          "h": 0.1
+        }
+      ],
+      "artwork_in_body": 0,
+      "footer": true,
+      "logo": true,
+      "orientation": "single",
+      "name_tokens": [
+        "and",
+        "text",
+        "title",
+        "vertical"
+      ]
+    }
+  },
+  {
+    "master_id": "m1",
+    "layout_id": "m1.l11",
+    "layout": "Vertical Title and Text",
+    "classification": [
+      {
+        "type": "one_column",
+        "confidence": 0.5
+      }
+    ],
+    "usage": {},
+    "evidence": {
+      "geometry": {
+        "one_column": 0.5,
+        "content": 0.2
+      },
+      "example_slides": 0
+    },
+    "features": {
+      "master_id": "m1",
+      "layout_id": "m1.l11",
+      "layout_name": "Vertical Title and Text",
+      "ooxml_type": "vertTitleAndTx",
+      "placeholder_count": 5,
+      "placeholder_types": [
+        "BODY",
+        "DATE",
+        "FOOTER",
+        "SLIDE_NUMBER",
+        "TITLE"
+      ],
+      "title_geometry": {
+        "x": 0.7,
+        "y": 0.3,
+        "w": 11.933,
+        "h": 6.399,
+        "nx": 0.0525,
+        "ny": 0.04,
+        "nw": 0.895,
+        "nh": 0.8532
+      },
+      "title_position": "top",
+      "subtitle": false,
+      "body_geometry": {
+        "nx": 0.0525,
+        "ny": 0.04,
+        "nw": 0.895,
+        "nh": 0.8532
+      },
+      "image_placeholders": 0,
+      "chart_placeholders": 0,
+      "table_placeholders": 0,
+      "table_compatible_regions": 1,
+      "content_placeholders": 1,
+      "column_headers": 0,
+      "columns": 1,
+      "rows": 1,
+      "symmetric": true,
+      "background": {
+        "kind": "solid",
+        "color": "FFFFFF",
+        "dark": false,
+        "coloured": false,
+        "picture": false
+      },
+      "content_capacity": 0.024,
+      "content_coverage": 0.764,
+      "reserved_artwork": [
+        {
+          "name": "Kestrel logo",
+          "kind": "picture",
+          "x": 11.2,
+          "y": 0.26,
+          "w": 1.45,
+          "h": 0.35
+        },
+        {
+          "name": "Brand bar",
+          "kind": "shape",
+          "x": 0.0,
+          "y": 7.4,
+          "w": 13.333,
+          "h": 0.1
+        }
+      ],
+      "artwork_in_body": 0,
+      "footer": true,
+      "logo": true,
+      "orientation": "single",
+      "name_tokens": [
+        "and",
+        "text",
+        "title",
+        "vertical"
+      ]
+    }
+  }
+]

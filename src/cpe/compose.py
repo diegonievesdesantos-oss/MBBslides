@@ -74,7 +74,20 @@ def _variants(slide: dict, layout_id: str) -> list[dict]:
     return out
 
 
-def _candidates(slide: dict, prev: str | None, profile: dict) -> list[dict]:
+def _corporate_variants(slide: dict, theme) -> list[dict]:
+    """With a corporate template: the top adaptive corporate layouts become render-evaluated candidates."""
+    corp = (theme.extras.get("corporate") or {}) if theme.extras.get("template") else {}
+    if not corp.get("layouts"):
+        return []
+    from .brand.matching import adaptive_candidates
+    from .design.tokens import GRID
+    from .qa.archetypes import classify
+
+    ranked, _ = adaptive_candidates(classify(slide)[0], corp["layouts"], GRID)
+    return [{"corporate": lay["id"]} for _, lay, _ in ranked[1:3]]
+
+
+def _candidates(slide: dict, prev: str | None, profile: dict, theme=None) -> list[dict]:
     if slide.get("kind", "content") not in ("content",) or (slide.get("layout") and slide.get("layout") != "auto" and not slide.get("_composed")):
         return []
     try:
@@ -86,6 +99,8 @@ def _candidates(slide: dict, prev: str | None, profile: dict) -> list[dict]:
     for lay in layouts:
         for v in _variants(slide, lay):
             out.append({"layout": lay, "variant": v, "default": lay == best and not v})
+    if theme is not None:  # alternative corporate layouts for the default composition
+        out += [{"layout": best, "variant": v, "default": False} for v in _corporate_variants(slide, theme)]
     return out if len(out) > 1 else []
 
 
@@ -97,7 +112,7 @@ def compose(spec: dict, work_dir: str | Path | None = None, dpi: int = 70, verbo
     cand_slides, index = [], []
     prev = None
     for s in spec.get("slides", []):
-        cands = _candidates(s, prev, profile)
+        cands = _candidates(s, prev, profile, theme)
         rs = next((r for r in resolved["slides"] if r.get("id") == s.get("id")), None)
         if cands and rs is not None:
             for k, c in enumerate(cands):

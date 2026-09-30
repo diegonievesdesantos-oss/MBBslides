@@ -19,6 +19,7 @@ Rendering commands:
              --docker runs inside the pinned visual environment; --record writes evals/results/latest.json
   repro      render a spec twice and compare (slides, dimensions, PNG hashes, pixels, spans, metrics, QA)
   human      blind A/B preference rounds: build | serve | import | report (docs/EVALS.md)
+  holdout    `holdout private`: corporate templates in .private/holdouts (never in the repo; skipped if absent)
   results    `results readme [--check]`: regenerate the README metrics block from evals/results/latest.json
 Reference:
   catalog    layout library (markdown)        themes    available themes
@@ -262,6 +263,19 @@ def cmd_human(a):
     return 0
 
 
+def cmd_holdout(a):
+    from . import private_holdout
+
+    r = private_holdout.run(a.root, a.out, record=a.record)
+    if r["status"] == "skipped":
+        _p(f"private holdout skipped: {r['reason']}")
+        return 0
+    for name, s in r["holdouts"].items():
+        _p(f"{name}: " + json.dumps(s))
+    _p(f"private results in {a.out or 'private_results/'} (git-ignored){' · sanitized summary recorded in evals/results/latest.json' if a.record else ''}")
+    return 0
+
+
 def cmd_results(a):
     from .results_report import update_readme
 
@@ -345,6 +359,7 @@ def main(argv=None) -> int:
     h = hs.add_parser("serve"); h.add_argument("round"); h.add_argument("--port", type=int, default=8765); h.add_argument("--host", default="127.0.0.1"); h.set_defaults(f=cmd_human)
     h = hs.add_parser("import"); h.add_argument("round"); h.add_argument("votes"); h.set_defaults(f=cmd_human)
     h = hs.add_parser("report"); h.add_argument("round"); h.add_argument("--record", action="store_true"); h.set_defaults(f=cmd_human)
+    s = sub.add_parser("holdout"); s.add_argument("which", choices=["private"]); s.add_argument("--root"); s.add_argument("-o", "--out"); s.add_argument("--record", action="store_true"); s.set_defaults(f=cmd_holdout)
     s = sub.add_parser("results"); s.add_argument("what", choices=["readme"]); s.add_argument("--check", action="store_true"); s.set_defaults(f=cmd_results)
     s = sub.add_parser("brand"); bs = s.add_subparsers(dest="brand_cmd", required=True)
     s2 = bs.add_parser("ingest"); s2.add_argument("template"); s2.add_argument("-o", "--out", required=True); s2.add_argument("--name"); s2.add_argument("--base-theme", default="meridian"); s2.set_defaults(f=cmd_brand)

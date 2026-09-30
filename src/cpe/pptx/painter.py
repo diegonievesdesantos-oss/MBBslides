@@ -77,9 +77,13 @@ class Manifest:
     fits: list = field(default_factory=list)
     warnings: list = field(default_factory=list)
     exhibits: list = field(default_factory=list)
+    corporate: dict | None = None
+    reserved: list | None = None
 
     def to_dict(self) -> dict:
         return {
+            **({"corporate": self.corporate} if self.corporate else {}),
+            **({"reserved": self.reserved} if self.reserved is not None else {}),
             "slide_id": self.slide_id,
             "layout": self.layout,
             "zones": self.zones,
