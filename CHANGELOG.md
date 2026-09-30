@@ -1,5 +1,82 @@
 # Changelog
 
+## 1.2.0 — Reproducible, archetype-aware, independently evaluated, corporate-template aware
+
+**Goal:** make visual quality reproducible, archetype-aware, independently evaluable, and capable
+of understanding real corporate PowerPoint systems. Not a higher score for its own sake: a higher
+score should correspond more closely to a genuinely better composition on unseen slides.
+
+### Reproducibility
+- `docker/Dockerfile`: the visual environment pinned end to end (base image digest, Ubuntu archive
+  snapshot, exact LibreOffice / fontconfig / FreeType / HarfBuzz / FriBiDi / font versions,
+  `requirements.lock`). `scripts/cpe-docker` runs it locally; CI uses the same image (built once
+  per commit and published to GHCR).
+- Silent drift found and fixed: without FriBiDi, Pillow falls back from RAQM to BASIC text layout
+  (no kerning) and every text measurement shifts ~0.2%.
+- `environment.py`: manifest + render fingerprint recorded with every eval; `scripts/check_environment.py`.
+- `cpe repro`: render twice, compare slide count, dimensions, PNG hashes, pixels, PDF spans,
+  composition metrics and QA. Observed and required: pixel-identical.
+- CI on `ubuntu-24.04`; actions on Node 24 pinned to SHAs; jobs lint · package · image · tests ·
+  regression · reproducibility.
+- `evals/results/latest.json` is the single source of truth; the README table is generated from
+  it (`cpe results readme`, checked in CI).
+
+### Composition
+- `qa/archetypes.py`: 17 archetypes from content; expected visual profiles; score = fitness to the
+  archetype (weighted mean + worst critical metric). v1.1 universal score kept as `score_v1`.
+- Measurement fixes: hairline table rules, accent-only regions, one-sided emphasis, continuation
+  markers, structural counts in the proof check.
+- Composition is editorial advice (`editorial_advice`), never part of the hard-QA verdict or score.
+- Candidate selection: hard-QA filter → archetype fitness; explicit "technically compatible but
+  inappropriate for this content volume / archetype" verdicts; corporate layouts as candidates.
+- Engine fixes from the development set: exhibit data given at the top level is normalised
+  (`SPEC_DATA_SHAPE`) instead of crashing the build; table decimals follow the data; table splits
+  are balanced; layouts are packaged so an installed wheel works.
+
+### Evaluation
+- `evals/regression/` (10 decks, +currencies/negatives/multi-source, +one slide per archetype),
+  `evals/holdout/public/` (5 decks, sealed before the metric work), `evals/human_reference/`.
+- `cpe eval --suite regression|holdout|examples [--docker] [--record]`; the holdout can never be
+  baselined; `cpe holdout private` for corporate templates in `.private/` (git-ignored).
+- `cpe human build|serve|import|report`: blind A/B page (random sides and order, no version /
+  layout / score, keyboard, anonymous evaluators, resumable), Wilson intervals, Fleiss' κ, left
+  bias, self-consistency, agreement between the automatic score and people. Round r1: 40 pairs.
+
+### Corporate templates
+- Every master analysed (no `slide_masters[0]` assumption); layout features → 20 classes with
+  confidences, refined by observed usage; typography from theme + masters + layouts + usage +
+  style-guide slides with conflicts; palette, grid, assets and brand rules with confidence.
+- 16:9 templates on the 10 in page are rescaled and their masters used.
+- Layout matching: native (placeholders filled) → adaptive (corporate layout + engine body) →
+  CPE layout + theme; rejections recorded; per-slide reserved areas and headline/footer limits.
+- New brand report (FONT WARNING with declared / observed / installed / renderable / fallback / risk).
+- Synthetic three-master fixture for tests (`brand/fixtures.py`).
+
+### Results (frozen for this release; current numbers live in `evals/results/latest.json`)
+- Regression (archetype fitness): 87.3 over 10 decks / 35 slides, 0 QA errors. Not comparable to
+  v1.1's 84.0 (a different metric); the v1.1 universal score of the v1.1.1 engine in the pinned
+  environment reproduced 84.0 exactly (`evals/results/history/v1.1.1_pinned_env_*.json`).
+- Holdout, public (rules frozen at e3b63e1): 81.0 over 5 decks / 26 slides, 1 QA error —
+  a generalisation gap of 6.3 points.
+- Holdout, private corporate template (sanitized): 1 master, 54 layouts, 32% of layouts classified
+  with confidence ≥ 0.5; 13/22 claims of the human-written brand spec confirmed; the test deck
+  generated on it failed QA (contrast).
+- Human preference: tool and round r1 ready; no votes yet.
+
+### Holdout findings (reported, not tuned on in this release)
+- Typography inheritance stops at the master text styles: a template whose master placeholders
+  are styled in another font (and whose weight variants are named as families, e.g. "Inter Black")
+  is read as the theme font. Detected on the private holdout.
+- Colour roles can put dark template accents under dark text (110 contrast errors on the private
+  holdout test deck; the QA caught all of them).
+- Grid inference over-fits finer column systems; closing layouts on brand colour are read as
+  section dividers.
+- `PROOF_NOT_VISIBLE` fires on derived headline numbers (sums, ratios) that the exhibit supports
+  (≈ 4 of 7 flags on the public holdout).
+- Fixed as correctness bugs, holdout results not re-recorded: layout classifier crash when all
+  evidence is weak (private holdout); `TODO` placeholder check matched the Spanish word "todo"
+  (public holdout).
+
 ## 1.1.1 — Full-width headlines and sparse-slide fixes
 
 ### Changed

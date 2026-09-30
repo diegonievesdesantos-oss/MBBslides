@@ -266,13 +266,154 @@
     },
     "cpe_version": "1.2.0.dev0",
     "container_image": "mbbslides-visual:1.2@sha256:f883eeb28a0a267cc316071dd5cd3dd1c3220443775de5f9bdaac937e7e0800d",
-    "commit": "036128252dd5900663d9f9e22a49e700157ae59b-dirty",
+    "commit": "e3b63e16b4520ab4b45c3cd33ff83f3ec0c4d1fc-dirty",
     "fingerprint": "6b5b1872486a594a"
   },
   "holdout": {
-    "public": null,
+    "public": {
+      "metric": "archetype-fitness composition score",
+      "suite_composition": 81.0,
+      "suite_composition_v1": 79.3,
+      "slides_measured": 27,
+      "qa_errors": 1,
+      "qa_warnings": 40,
+      "cases_ok": 5,
+      "cases_total": 5,
+      "by_archetype": {
+        "architecture": {
+          "slides": 1,
+          "mean": 57.6
+        },
+        "chart": {
+          "slides": 5,
+          "mean": 76.4
+        },
+        "comparison": {
+          "slides": 1,
+          "mean": 56.4
+        },
+        "executive_summary": {
+          "slides": 3,
+          "mean": 95.3
+        },
+        "hierarchy": {
+          "slides": 2,
+          "mean": 94.0
+        },
+        "kpi_dashboard": {
+          "slides": 1,
+          "mean": 97.3
+        },
+        "kpi_hero": {
+          "slides": 1,
+          "mean": 65.5
+        },
+        "matrix": {
+          "slides": 1,
+          "mean": 98.7
+        },
+        "process": {
+          "slides": 1,
+          "mean": 48.2
+        },
+        "roadmap": {
+          "slides": 1,
+          "mean": 63.0
+        },
+        "statement": {
+          "slides": 2,
+          "mean": 100.0
+        },
+        "table": {
+          "slides": 5,
+          "mean": 82.0
+        },
+        "text_exhibit": {
+          "slides": 1,
+          "mean": 19.0
+        },
+        "timeline": {
+          "slides": 1,
+          "mean": 100.0
+        },
+        "waterfall": {
+          "slides": 1,
+          "mean": 90.1
+        }
+      },
+      "flag_counts": {
+        "PROOF_NOT_VISIBLE": 7,
+        "DEAD_SPACE": 6,
+        "OFF_BALANCE": 4,
+        "UNDERUSED_CANVAS": 4,
+        "WEAK_HIERARCHY": 1,
+        "NOISY_EMPHASIS": 1
+      },
+      "passed": true,
+      "cases": {
+        "H01_hospital_operations": {
+          "composition": 82.6,
+          "qa_score": 95.8,
+          "qa_errors": 0,
+          "qa_warnings": 5,
+          "qa_passed": true
+        },
+        "H02_energy_transition": {
+          "composition": 81.1,
+          "qa_score": 92.8,
+          "qa_errors": 0,
+          "qa_warnings": 9,
+          "qa_passed": true
+        },
+        "H03_retail_es": {
+          "composition": 90.4,
+          "qa_score": 89.6,
+          "qa_errors": 1,
+          "qa_warnings": 6,
+          "qa_passed": false
+        },
+        "H04_saas_board": {
+          "composition": 68.7,
+          "qa_score": 91.9,
+          "qa_errors": 0,
+          "qa_warnings": 14,
+          "qa_passed": true
+        },
+        "H05_public_sector": {
+          "composition": 82.2,
+          "qa_score": 94.6,
+          "qa_errors": 0,
+          "qa_warnings": 6,
+          "qa_passed": true
+        }
+      },
+      "environment_fingerprint": "6b5b1872486a594a"
+    },
     "private": {
-      "status": "private corporate holdouts run outside the public repo; only sanitized aggregates are recorded here"
+      "summary": "1 master(s), 54 layouts, 32% classified with confidence ≥ 0.5; font conflict none; test deck QA failed; agreement with the human brand spec 13/22",
+      "holdouts": {
+        "corporate_template_A": {
+          "masters": 1,
+          "layouts": 54,
+          "example_slides": 63,
+          "layouts_classified_confidence_ge_0_5": 0.315,
+          "layout_families": 10,
+          "rescaled": true,
+          "masters_used": true,
+          "font_conflict_detected": false,
+          "corporate_font_installed": false,
+          "template_pages_rendered": 63,
+          "test_deck_qa_passed": false,
+          "test_deck_qa_errors": 112,
+          "test_deck_composition": 93.3,
+          "corporate_modes": {
+            "native": 1,
+            "adaptive": 11
+          },
+          "spec_agreement": "13/22",
+          "spec_weighted_agreement": 0.531
+        }
+      }
     }
   },
   "human_reference": {
@@ -368,7 +509,7 @@
       },
       "alvora_on_kestrel": {
         "composition": 99.5,
-        "qa_score": 99.8,
+        "qa_score": 99.7,
         "qa_errors": 0,
         "qa_warnings": 0,
         "qa_passed": true

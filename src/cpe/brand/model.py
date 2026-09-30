@@ -520,7 +520,8 @@ def classify(geom: dict, usage: dict) -> list[dict]:
     ranked = sorted(scores.items(), key=lambda kv: -kv[1])
     top = ranked[0][1]
     out = [{"type": k, "confidence": round(min(0.97, v), 2)} for k, v in ranked if v >= max(0.2, top * 0.6)][:3]
-    return out
+    # all evidence below 0.2: say so ("unknown") instead of returning nothing (crash found by the private holdout)
+    return out or [{"type": "unknown", "confidence": round(max(0.05, 1 - top), 2), "weak_evidence": [{"type": k, "score": round(v, 2)} for k, v in ranked[:2]]}]
 
 
 # ── the model ───────────────────────────────────────────────────────────────────

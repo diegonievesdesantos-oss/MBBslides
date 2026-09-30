@@ -213,7 +213,7 @@
         ]
       },
       "source": "Benchmark consortium 2025 (illustrative)",
-      "layout": "exhibit_takeaways_below",
+      "layout": "exhibit_commentary_right",
       "_composed": true,
       "kind": "content",
       "_plan": {
@@ -224,13 +224,16 @@
           }
         ],
         "layout": {
-          "id": "exhibit_takeaways_below",
+          "id": "exhibit_commentary_right",
           "why": "explicit in spec"
         },
         "fit": {
           "commentary": {
             "fits_base": true,
             "fits_floor": true,
+            "need_base": 0.74,
+            "need_floor": 0.69,
+            "avail": 5.16,
             "excess_words": 0
           },
           "words": 35
@@ -327,11 +330,8 @@
         ]
       },
       "source": "Cost model (illustrative)",
-      "layout": "exhibit_commentary_left",
+      "layout": "framework_commentary",
       "_composed": true,
-      "_compose": {
-        "scale": 1.15
-      },
       "kind": "content",
       "_plan": {
         "visuals": [
@@ -341,7 +341,7 @@
           }
         ],
         "layout": {
-          "id": "exhibit_commentary_left",
+          "id": "framework_commentary",
           "why": "explicit in spec"
         },
         "fit": {
@@ -787,9 +787,6 @@
       "source": "Depot P&L (illustrative)",
       "layout": "exhibit_commentary_left",
       "_composed": true,
-      "_compose": {
-        "scale": 1.15
-      },
       "kind": "content",
       "_plan": {
         "visuals": [
@@ -1109,7 +1106,7 @@
       "layout": "exhibit_full",
       "_composed": true,
       "_compose": {
-        "scale": 1.15
+        "scale": 1.3
       },
       "kind": "content",
       "_plan": {
@@ -1697,7 +1694,7 @@
         ]
       },
       "source": "Business cases (illustrative)",
-      "layout": "waterfall_drivers",
+      "layout": "exhibit_takeaways_below",
       "_composed": true,
       "kind": "content",
       "_plan": {
@@ -1708,16 +1705,13 @@
           }
         ],
         "layout": {
-          "id": "waterfall_drivers",
+          "id": "exhibit_takeaways_below",
           "why": "explicit in spec"
         },
         "fit": {
           "commentary": {
             "fits_base": true,
             "fits_floor": true,
-            "need_base": 0.74,
-            "need_floor": 0.69,
-            "avail": 5.16,
             "excess_words": 0
           },
           "words": 31

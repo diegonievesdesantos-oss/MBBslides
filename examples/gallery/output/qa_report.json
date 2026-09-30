@@ -81,10 +81,10 @@
       "ink_coverage": 0.026
     },
     "g05": {
-      "ink_coverage": 0.325
+      "ink_coverage": 0.243
     },
     "g06": {
-      "ink_coverage": 0.106
+      "ink_coverage": 0.099
     },
     "g07": {
       "ink_coverage": 0.028
@@ -99,7 +99,7 @@
       "ink_coverage": 0.319
     },
     "g11": {
-      "ink_coverage": 0.027
+      "ink_coverage": 0.024
     },
     "g13": {
       "ink_coverage": 0.047
@@ -108,7 +108,7 @@
       "ink_coverage": 0.067
     },
     "g15": {
-      "ink_coverage": 0.097
+      "ink_coverage": 0.1
     },
     "g16": {
       "ink_coverage": 0.079
@@ -129,7 +129,7 @@
       "ink_coverage": 0.029
     },
     "g23": {
-      "ink_coverage": 0.161
+      "ink_coverage": 0.197
     },
     "g24": {
       "ink_coverage": 0.261
@@ -145,13 +145,13 @@
       "warnings": 0,
       "score": 99.8,
       "patches": [],
-      "seconds": 7.1
+      "seconds": 8.0
     }
   ],
   "pending_actions": [],
   "artifacts": {
     "pptx": "examples/gallery/output/deck.pptx",
-    "pdf": "/home/user/mbbslides/examples/gallery/output/deck.pdf",
+    "pdf": "/work/examples/gallery/output/deck.pdf",
     "pngs": [
       "examples/gallery/output/renders/slide-01.png",
       "examples/gallery/output/renders/slide-02.png",
@@ -182,14 +182,82 @@
     ],
     "contact_sheet": "examples/gallery/output/contact_sheet.png"
   },
+  "editorial_advice": [],
   "composition": {
-    "deck_score": 92.1,
+    "metric": "archetype-fitness composition score",
+    "deck_score": 98.8,
+    "deck_score_v1": 90.9,
     "slides": [
       {
         "slide_id": "g03",
-        "score": 90.5,
+        "archetype": "executive_summary",
+        "archetype_why": "slide kind exec_summary",
+        "score": 95.8,
+        "observed": {
+          "utilization": 0.731,
+          "empty": 0.269,
+          "ink": 0.025,
+          "offcentre": 0.059,
+          "emphasis": 0.422,
+          "regions": 0.0,
+          "ratio": 1.571,
+          "edges": 3.0
+        },
+        "fitness": {
+          "utilization": 0.936,
+          "empty": 0.936,
+          "ink": 0.956,
+          "offcentre": 1.0,
+          "regions": 1.0,
+          "ratio": 1.0,
+          "edges": 1.0
+        },
+        "deviations": [
+          {
+            "metric": "empty",
+            "value": 0.269,
+            "expected": [
+              0.0,
+              0.25
+            ],
+            "direction": "high",
+            "fitness": 0.936,
+            "weight": 16,
+            "meaning": "a large area is left empty",
+            "flag": "DEAD_SPACE"
+          },
+          {
+            "metric": "utilization",
+            "value": 0.731,
+            "expected": [
+              0.75,
+              1.0
+            ],
+            "direction": "low",
+            "fitness": 0.936,
+            "weight": 12,
+            "meaning": "content uses too little of the canvas",
+            "flag": "UNDERUSED_CANVAS"
+          },
+          {
+            "metric": "ink",
+            "value": 0.025,
+            "expected": [
+              0.03,
+              0.35
+            ],
+            "direction": "low",
+            "fitness": 0.956,
+            "weight": 8,
+            "meaning": "too sparse",
+            "flag": "SPARSE"
+          }
+        ],
+        "flags": [],
+        "score_v1": 91.5,
+        "flags_v1": [],
         "metrics": {
-          "dead_space": 0.729,
+          "dead_space": 0.777,
           "utilization": 0.962,
           "balance": 0.983,
           "density": 0.706,
@@ -199,7 +267,7 @@
           "alignment": 1.0
         },
         "raw": {
-          "largest_empty_share": 0.288,
+          "largest_empty_share": 0.269,
           "utilization": 0.731,
           "center_of_mass": [
             0.441,
@@ -208,6 +276,7 @@
           "ink_coverage": 0.025,
           "emphasis_share": 0.422,
           "focus_regions": 0,
+          "accent_regions": 0,
           "proof_checks": "1/1",
           "headline_body_ratio": 1.57,
           "body_font_sizes": [
@@ -215,32 +284,74 @@
             14
           ],
           "left_edges": 3
-        },
-        "flags": []
+        }
       },
       {
         "slide_id": "g05",
-        "score": 99.5,
-        "metrics": {
-          "dead_space": 1.0,
+        "archetype": "chart",
+        "archetype_why": "main exhibit is a bar chart",
+        "score": 98.1,
+        "observed": {
+          "utilization": 0.975,
+          "empty": 0.27,
+          "ink": 0.054,
+          "offcentre": 0.207,
+          "emphasis": 0.193,
+          "regions": 0.0,
+          "ratio": 1.834,
+          "edges": 2.0,
+          "proof": 1.0
+        },
+        "fitness": {
           "utilization": 1.0,
-          "balance": 0.947,
-          "density": 1.0,
+          "empty": 1.0,
+          "ink": 1.0,
+          "offcentre": 0.711,
+          "emphasis": 1.0,
+          "regions": 1.0,
+          "ratio": 1.0,
+          "edges": 1.0,
+          "proof": 1.0
+        },
+        "deviations": [
+          {
+            "metric": "offcentre",
+            "value": 0.207,
+            "expected": [
+              0.0,
+              0.12
+            ],
+            "direction": "high",
+            "fitness": 0.711,
+            "weight": 8,
+            "meaning": "visual weight is off-balance",
+            "flag": "OFF_BALANCE"
+          }
+        ],
+        "flags": [],
+        "score_v1": 92.9,
+        "flags_v1": [],
+        "metrics": {
+          "dead_space": 0.774,
+          "utilization": 1.0,
+          "balance": 0.791,
+          "density": 0.952,
           "emphasis": 1.0,
           "evidence": 1.0,
           "hierarchy": 1.0,
           "alignment": 1.0
         },
         "raw": {
-          "largest_empty_share": 0.174,
-          "utilization": 0.82,
+          "largest_empty_share": 0.27,
+          "utilization": 0.975,
           "center_of_mass": [
-            0.396,
-            0.463
+            0.293,
+            0.502
           ],
-          "ink_coverage": 0.07,
-          "emphasis_share": 0.198,
+          "ink_coverage": 0.054,
+          "emphasis_share": 0.193,
           "focus_regions": 1,
+          "accent_regions": 0,
           "proof_checks": "2/2",
           "headline_body_ratio": 1.83,
           "body_font_sizes": [
@@ -249,44 +360,127 @@
             12
           ],
           "left_edges": 2
-        },
-        "flags": []
+        }
       },
       {
         "slide_id": "g06",
-        "score": 89.9,
-        "metrics": {
-          "dead_space": 0.927,
+        "archetype": "hierarchy",
+        "archetype_why": "main exhibit is a driver_tree",
+        "score": 98.8,
+        "observed": {
+          "utilization": 0.962,
+          "empty": 0.221,
+          "ink": 0.095,
+          "offcentre": 0.169,
+          "emphasis": 0.804,
+          "regions": 2.0,
+          "ratio": 1.834,
+          "edges": 2.0,
+          "proof": 0.5
+        },
+        "fitness": {
           "utilization": 1.0,
-          "balance": 0.983,
+          "empty": 1.0,
+          "ink": 1.0,
+          "offcentre": 0.835,
+          "emphasis": 1.0,
+          "regions": 1.0,
+          "ratio": 1.0,
+          "edges": 1.0,
+          "proof": 1.0
+        },
+        "deviations": [
+          {
+            "metric": "offcentre",
+            "value": 0.169,
+            "expected": [
+              0.0,
+              0.12
+            ],
+            "direction": "high",
+            "fitness": 0.835,
+            "weight": 8,
+            "meaning": "visual weight is off-balance",
+            "flag": "OFF_BALANCE"
+          }
+        ],
+        "flags": [],
+        "score_v1": 88.5,
+        "flags_v1": [],
+        "metrics": {
+          "dead_space": 0.897,
+          "utilization": 1.0,
+          "balance": 0.859,
           "density": 1.0,
           "emphasis": 1.0,
           "evidence": 0.5,
-          "hierarchy": 0.951,
+          "hierarchy": 1.0,
           "alignment": 1.0
         },
         "raw": {
-          "largest_empty_share": 0.209,
-          "utilization": 0.934,
+          "largest_empty_share": 0.221,
+          "utilization": 0.962,
           "center_of_mass": [
-            0.559,
-            0.381
+            0.331,
+            0.383
           ],
-          "ink_coverage": 0.1,
-          "emphasis_share": 0.787,
+          "ink_coverage": 0.095,
+          "emphasis_share": 0.804,
           "focus_regions": 3,
+          "accent_regions": 2,
           "proof_checks": "1/2",
-          "headline_body_ratio": 1.57,
+          "headline_body_ratio": 1.83,
           "body_font_sizes": [
-            14
+            12
           ],
           "left_edges": 2
-        },
-        "flags": []
+        }
       },
       {
         "slide_id": "g07",
-        "score": 95.0,
+        "archetype": "chart",
+        "archetype_why": "main exhibit is a line chart",
+        "score": 99.9,
+        "observed": {
+          "utilization": 1.0,
+          "empty": 0.119,
+          "ink": 0.017,
+          "offcentre": 0.123,
+          "emphasis": 0.381,
+          "regions": 0.0,
+          "ratio": 1.691,
+          "edges": 1.0,
+          "proof": 1.0
+        },
+        "fitness": {
+          "utilization": 1.0,
+          "empty": 1.0,
+          "ink": 1.0,
+          "offcentre": 0.99,
+          "emphasis": 1.0,
+          "regions": 1.0,
+          "ratio": 1.0,
+          "edges": 1.0,
+          "proof": 1.0
+        },
+        "deviations": [
+          {
+            "metric": "offcentre",
+            "value": 0.123,
+            "expected": [
+              0.0,
+              0.12
+            ],
+            "direction": "high",
+            "fitness": 0.99,
+            "weight": 8,
+            "meaning": "visual weight is off-balance",
+            "flag": "OFF_BALANCE"
+          }
+        ],
+        "flags": [],
+        "score_v1": 95.0,
+        "flags_v1": [],
         "metrics": {
           "dead_space": 1.0,
           "utilization": 1.0,
@@ -299,7 +493,7 @@
         },
         "raw": {
           "largest_empty_share": 0.119,
-          "utilization": 0.918,
+          "utilization": 1.0,
           "center_of_mass": [
             0.395,
             0.614
@@ -307,6 +501,7 @@
           "ink_coverage": 0.017,
           "emphasis_share": 0.381,
           "focus_regions": 0,
+          "accent_regions": 0,
           "proof_checks": "1/1",
           "headline_body_ratio": 1.69,
           "body_font_sizes": [
@@ -315,14 +510,55 @@
             13
           ],
           "left_edges": 1
-        },
-        "flags": []
+        }
       },
       {
         "slide_id": "g08",
-        "score": 91.5,
+        "archetype": "chart",
+        "archetype_why": "main exhibit is a funnel chart",
+        "score": 99.8,
+        "observed": {
+          "utilization": 1.0,
+          "empty": 0.27,
+          "ink": 0.244,
+          "offcentre": 0.129,
+          "emphasis": 0.399,
+          "regions": 0.0,
+          "ratio": 1.834,
+          "edges": 2.0,
+          "proof": 1.0
+        },
+        "fitness": {
+          "utilization": 1.0,
+          "empty": 1.0,
+          "ink": 1.0,
+          "offcentre": 0.971,
+          "emphasis": 1.0,
+          "regions": 1.0,
+          "ratio": 1.0,
+          "edges": 1.0,
+          "proof": 1.0
+        },
+        "deviations": [
+          {
+            "metric": "offcentre",
+            "value": 0.129,
+            "expected": [
+              0.0,
+              0.12
+            ],
+            "direction": "high",
+            "fitness": 0.971,
+            "weight": 8,
+            "meaning": "visual weight is off-balance",
+            "flag": "OFF_BALANCE"
+          }
+        ],
+        "flags": [],
+        "score_v1": 94.7,
+        "flags_v1": [],
         "metrics": {
-          "dead_space": 0.618,
+          "dead_space": 0.774,
           "utilization": 1.0,
           "balance": 0.919,
           "density": 1.0,
@@ -332,7 +568,7 @@
           "alignment": 1.0
         },
         "raw": {
-          "largest_empty_share": 0.333,
+          "largest_empty_share": 0.27,
           "utilization": 1.0,
           "center_of_mass": [
             0.371,
@@ -341,6 +577,7 @@
           "ink_coverage": 0.244,
           "emphasis_share": 0.399,
           "focus_regions": 2,
+          "accent_regions": 0,
           "proof_checks": "1/1",
           "headline_body_ratio": 1.83,
           "body_font_sizes": [
@@ -349,14 +586,41 @@
             12
           ],
           "left_edges": 2
-        },
-        "flags": []
+        }
       },
       {
         "slide_id": "g09",
-        "score": 95.0,
+        "archetype": "segmentation",
+        "archetype_why": "main exhibit is a tile_map",
+        "score": 100.0,
+        "observed": {
+          "utilization": 0.981,
+          "empty": 0.261,
+          "ink": 0.109,
+          "offcentre": 0.044,
+          "emphasis": 0.105,
+          "regions": 0.0,
+          "ratio": 1.834,
+          "edges": 2.0,
+          "proof": 1.0
+        },
+        "fitness": {
+          "utilization": 1.0,
+          "empty": 1.0,
+          "ink": 1.0,
+          "offcentre": 1.0,
+          "emphasis": 1.0,
+          "regions": 1.0,
+          "ratio": 1.0,
+          "edges": 1.0,
+          "proof": 1.0
+        },
+        "deviations": [],
+        "flags": [],
+        "score_v1": 95.9,
+        "flags_v1": [],
         "metrics": {
-          "dead_space": 0.755,
+          "dead_space": 0.797,
           "utilization": 1.0,
           "balance": 0.99,
           "density": 1.0,
@@ -366,8 +630,8 @@
           "alignment": 1.0
         },
         "raw": {
-          "largest_empty_share": 0.278,
-          "utilization": 0.796,
+          "largest_empty_share": 0.261,
+          "utilization": 0.981,
           "center_of_mass": [
             0.456,
             0.402
@@ -375,6 +639,7 @@
           "ink_coverage": 0.109,
           "emphasis_share": 0.105,
           "focus_regions": 2,
+          "accent_regions": 0,
           "proof_checks": "2/2",
           "headline_body_ratio": 1.83,
           "body_font_sizes": [
@@ -384,14 +649,55 @@
             12
           ],
           "left_edges": 2
-        },
-        "flags": []
+        }
       },
       {
         "slide_id": "g10",
-        "score": 89.0,
+        "archetype": "chart",
+        "archetype_why": "main exhibit is a stacked_100 chart",
+        "score": 98.4,
+        "observed": {
+          "utilization": 1.0,
+          "empty": 0.27,
+          "ink": 0.315,
+          "offcentre": 0.19,
+          "emphasis": 0.245,
+          "regions": 0.0,
+          "ratio": 1.834,
+          "edges": 2.0,
+          "proof": 1.0
+        },
+        "fitness": {
+          "utilization": 1.0,
+          "empty": 1.0,
+          "ink": 1.0,
+          "offcentre": 0.766,
+          "emphasis": 1.0,
+          "regions": 1.0,
+          "ratio": 1.0,
+          "edges": 1.0,
+          "proof": 1.0
+        },
+        "deviations": [
+          {
+            "metric": "offcentre",
+            "value": 0.19,
+            "expected": [
+              0.0,
+              0.12
+            ],
+            "direction": "high",
+            "fitness": 0.766,
+            "weight": 8,
+            "meaning": "visual weight is off-balance",
+            "flag": "OFF_BALANCE"
+          }
+        ],
+        "flags": [],
+        "score_v1": 92.5,
+        "flags_v1": [],
         "metrics": {
-          "dead_space": 0.6,
+          "dead_space": 0.774,
           "utilization": 1.0,
           "balance": 0.823,
           "density": 0.876,
@@ -401,7 +707,7 @@
           "alignment": 1.0
         },
         "raw": {
-          "largest_empty_share": 0.34,
+          "largest_empty_share": 0.27,
           "utilization": 1.0,
           "center_of_mass": [
             0.31,
@@ -410,6 +716,7 @@
           "ink_coverage": 0.315,
           "emphasis_share": 0.245,
           "focus_regions": 2,
+          "accent_regions": 0,
           "proof_checks": "2/2",
           "headline_body_ratio": 1.83,
           "body_font_sizes": [
@@ -418,46 +725,98 @@
             12
           ],
           "left_edges": 2
-        },
-        "flags": []
+        }
       },
       {
         "slide_id": "g11",
-        "score": 88.0,
-        "metrics": {
-          "dead_space": 0.832,
+        "archetype": "chart",
+        "archetype_why": "main exhibit is a scatter chart",
+        "score": 100.0,
+        "observed": {
+          "utilization": 0.992,
+          "empty": 0.27,
+          "ink": 0.014,
+          "offcentre": 0.065,
+          "emphasis": 0.198,
+          "regions": 0.0,
+          "ratio": 1.834,
+          "edges": 2.0,
+          "proof": 0.75
+        },
+        "fitness": {
           "utilization": 1.0,
-          "balance": 0.952,
-          "density": 0.631,
+          "empty": 1.0,
+          "ink": 1.0,
+          "offcentre": 1.0,
+          "emphasis": 1.0,
+          "regions": 1.0,
+          "ratio": 1.0,
+          "edges": 1.0,
+          "proof": 1.0
+        },
+        "deviations": [],
+        "flags": [],
+        "score_v1": 87.4,
+        "flags_v1": [],
+        "metrics": {
+          "dead_space": 0.774,
+          "utilization": 1.0,
+          "balance": 0.979,
+          "density": 0.614,
           "emphasis": 1.0,
           "evidence": 0.75,
-          "hierarchy": 0.951,
+          "hierarchy": 1.0,
           "alignment": 1.0
         },
         "raw": {
-          "largest_empty_share": 0.247,
+          "largest_empty_share": 0.27,
           "utilization": 0.992,
           "center_of_mass": [
-            0.401,
-            0.381
+            0.435,
+            0.4
           ],
-          "ink_coverage": 0.016,
-          "emphasis_share": 0.258,
+          "ink_coverage": 0.014,
+          "emphasis_share": 0.198,
           "focus_regions": 0,
+          "accent_regions": 0,
           "proof_checks": "3/4",
-          "headline_body_ratio": 1.57,
+          "headline_body_ratio": 1.83,
           "body_font_sizes": [
             10,
             11,
-            14
+            12
           ],
           "left_edges": 2
-        },
-        "flags": []
+        }
       },
       {
         "slide_id": "g13",
-        "score": 94.2,
+        "archetype": "table",
+        "archetype_why": "main exhibit is a harvey_table",
+        "score": 100.0,
+        "observed": {
+          "utilization": 1.0,
+          "empty": 0.084,
+          "ink": 0.032,
+          "offcentre": 0.08,
+          "emphasis": 0.266,
+          "regions": 0.0,
+          "ratio": 1.691,
+          "edges": 1.0
+        },
+        "fitness": {
+          "utilization": 1.0,
+          "empty": 1.0,
+          "ink": 1.0,
+          "offcentre": 1.0,
+          "regions": 1.0,
+          "ratio": 1.0,
+          "edges": 1.0
+        },
+        "deviations": [],
+        "flags": [],
+        "score_v1": 94.2,
+        "flags_v1": [],
         "metrics": {
           "dead_space": 1.0,
           "utilization": 1.0,
@@ -469,7 +828,7 @@
           "alignment": 1.0
         },
         "raw": {
-          "largest_empty_share": 0.122,
+          "largest_empty_share": 0.084,
           "utilization": 1.0,
           "center_of_mass": [
             0.42,
@@ -478,6 +837,7 @@
           "ink_coverage": 0.032,
           "emphasis_share": 0.266,
           "focus_regions": 3,
+          "accent_regions": 0,
           "proof_checks": "0/0",
           "headline_body_ratio": 1.69,
           "body_font_sizes": [
@@ -486,12 +846,64 @@
             13
           ],
           "left_edges": 1
-        },
-        "flags": []
+        }
       },
       {
         "slide_id": "g14",
-        "score": 91.0,
+        "archetype": "process",
+        "archetype_why": "main exhibit is a process",
+        "score": 98.5,
+        "observed": {
+          "utilization": 1.0,
+          "empty": 0.288,
+          "ink": 0.057,
+          "offcentre": 0.049,
+          "emphasis": 0.539,
+          "regions": 0.0,
+          "ratio": 1.691,
+          "edges": 1.0
+        },
+        "fitness": {
+          "utilization": 1.0,
+          "empty": 0.972,
+          "ink": 0.973,
+          "offcentre": 1.0,
+          "emphasis": 1.0,
+          "regions": 1.0,
+          "ratio": 1.0,
+          "edges": 1.0
+        },
+        "deviations": [
+          {
+            "metric": "empty",
+            "value": 0.288,
+            "expected": [
+              0.0,
+              0.28
+            ],
+            "direction": "high",
+            "fitness": 0.972,
+            "weight": 14,
+            "meaning": "a large area is left empty",
+            "flag": "DEAD_SPACE"
+          },
+          {
+            "metric": "ink",
+            "value": 0.057,
+            "expected": [
+              0.06,
+              0.3
+            ],
+            "direction": "low",
+            "fitness": 0.973,
+            "weight": 8,
+            "meaning": "too sparse",
+            "flag": "SPARSE"
+          }
+        ],
+        "flags": [],
+        "score_v1": 91.0,
+        "flags_v1": [],
         "metrics": {
           "dead_space": 0.729,
           "utilization": 1.0,
@@ -512,6 +924,7 @@
           "ink_coverage": 0.057,
           "emphasis_share": 0.539,
           "focus_regions": 1,
+          "accent_regions": 0,
           "proof_checks": "0/0",
           "headline_body_ratio": 1.69,
           "body_font_sizes": [
@@ -522,45 +935,124 @@
             22
           ],
           "left_edges": 1
-        },
-        "flags": []
+        }
       },
       {
         "slide_id": "g15",
-        "score": 90.0,
-        "metrics": {
-          "dead_space": 0.887,
+        "archetype": "process",
+        "archetype_why": "main exhibit is a journey",
+        "score": 97.7,
+        "observed": {
+          "utilization": 0.885,
+          "empty": 0.205,
+          "ink": 0.094,
+          "offcentre": 0.207,
+          "emphasis": 0.379,
+          "regions": 0.0,
+          "ratio": 1.419,
+          "edges": 0.0
+        },
+        "fitness": {
           "utilization": 1.0,
-          "balance": 0.598,
+          "empty": 1.0,
+          "ink": 1.0,
+          "offcentre": 0.711,
+          "emphasis": 1.0,
+          "regions": 1.0,
+          "ratio": 1.0,
+          "edges": 1.0
+        },
+        "deviations": [
+          {
+            "metric": "offcentre",
+            "value": 0.207,
+            "expected": [
+              0.0,
+              0.12
+            ],
+            "direction": "high",
+            "fitness": 0.711,
+            "weight": 8,
+            "meaning": "visual weight is off-balance",
+            "flag": "OFF_BALANCE"
+          }
+        ],
+        "flags": [],
+        "score_v1": 88.8,
+        "flags_v1": [],
+        "metrics": {
+          "dead_space": 0.938,
+          "utilization": 1.0,
+          "balance": 0.627,
           "density": 1.0,
           "emphasis": 1.0,
           "evidence": 0.8,
-          "hierarchy": 0.951,
+          "hierarchy": 0.698,
           "alignment": 1.0
         },
         "raw": {
-          "largest_empty_share": 0.225,
+          "largest_empty_share": 0.205,
           "utilization": 0.885,
           "center_of_mass": [
-            0.549,
-            0.135
+            0.545,
+            0.148
           ],
-          "ink_coverage": 0.091,
-          "emphasis_share": 0.37,
+          "ink_coverage": 0.094,
+          "emphasis_share": 0.379,
           "focus_regions": 2,
+          "accent_regions": 0,
           "proof_checks": "0/0",
-          "headline_body_ratio": 1.57,
+          "headline_body_ratio": 1.42,
           "body_font_sizes": [
-            13,
-            14
+            15,
+            16
           ],
           "left_edges": 0
-        },
-        "flags": []
+        }
       },
       {
         "slide_id": "g16",
-        "score": 83.9,
+        "archetype": "hierarchy",
+        "archetype_why": "main exhibit is a org_chart",
+        "score": 89.9,
+        "observed": {
+          "utilization": 0.568,
+          "empty": 0.327,
+          "ink": 0.079,
+          "offcentre": 0.08,
+          "emphasis": 0.856,
+          "regions": 1.0,
+          "ratio": 1.834,
+          "edges": 0.0
+        },
+        "fitness": {
+          "utilization": 0.766,
+          "empty": 1.0,
+          "ink": 1.0,
+          "offcentre": 1.0,
+          "emphasis": 1.0,
+          "regions": 1.0,
+          "ratio": 1.0,
+          "edges": 1.0
+        },
+        "deviations": [
+          {
+            "metric": "utilization",
+            "value": 0.568,
+            "expected": [
+              0.65,
+              1.0
+            ],
+            "direction": "low",
+            "fitness": 0.766,
+            "weight": 12,
+            "meaning": "content uses too little of the canvas",
+            "flag": "UNDERUSED_CANVAS"
+          }
+        ],
+        "flags": [],
+        "score_v1": 83.9,
+        "flags_v1": [],
         "metrics": {
           "dead_space": 0.633,
           "utilization": 0.637,
@@ -581,6 +1073,7 @@
           "ink_coverage": 0.079,
           "emphasis_share": 0.856,
           "focus_regions": 2,
+          "accent_regions": 1,
           "proof_checks": "0/0",
           "headline_body_ratio": 1.83,
           "body_font_sizes": [
@@ -588,12 +1081,37 @@
             12
           ],
           "left_edges": 0
-        },
-        "flags": []
+        }
       },
       {
         "slide_id": "g17",
-        "score": 92.6,
+        "archetype": "architecture",
+        "archetype_why": "main exhibit is a architecture",
+        "score": 100.0,
+        "observed": {
+          "utilization": 1.0,
+          "empty": 0.0,
+          "ink": 0.236,
+          "offcentre": 0.292,
+          "emphasis": 0.388,
+          "regions": 1.0,
+          "ratio": 1.834,
+          "edges": 0.0
+        },
+        "fitness": {
+          "utilization": 1.0,
+          "empty": 1.0,
+          "ink": 1.0,
+          "offcentre": 1.0,
+          "emphasis": 1.0,
+          "regions": 1.0,
+          "ratio": 1.0,
+          "edges": 1.0
+        },
+        "deviations": [],
+        "flags": [],
+        "score_v1": 92.6,
+        "flags_v1": [],
         "metrics": {
           "dead_space": 1.0,
           "utilization": 1.0,
@@ -605,7 +1123,7 @@
           "alignment": 1.0
         },
         "raw": {
-          "largest_empty_share": 0.086,
+          "largest_empty_share": 0.0,
           "utilization": 1.0,
           "center_of_mass": [
             0.208,
@@ -614,20 +1132,46 @@
           "ink_coverage": 0.236,
           "emphasis_share": 0.388,
           "focus_regions": 2,
+          "accent_regions": 1,
           "proof_checks": "0/0",
           "headline_body_ratio": 1.83,
           "body_font_sizes": [
             12
           ],
           "left_edges": 0
-        },
-        "flags": []
+        }
       },
       {
         "slide_id": "g18",
-        "score": 91.1,
+        "archetype": "comparison",
+        "archetype_why": "comparison columns",
+        "score": 100.0,
+        "observed": {
+          "utilization": 1.0,
+          "empty": 0.212,
+          "ink": 0.078,
+          "offcentre": 0.077,
+          "emphasis": 0.63,
+          "regions": 0.0,
+          "ratio": 1.571,
+          "edges": 5.0
+        },
+        "fitness": {
+          "utilization": 1.0,
+          "empty": 1.0,
+          "ink": 1.0,
+          "offcentre": 1.0,
+          "emphasis": 1.0,
+          "regions": 1.0,
+          "ratio": 1.0,
+          "edges": 1.0
+        },
+        "deviations": [],
+        "flags": [],
+        "score_v1": 93.9,
+        "flags_v1": [],
         "metrics": {
-          "dead_space": 0.782,
+          "dead_space": 0.921,
           "utilization": 1.0,
           "balance": 0.912,
           "density": 1.0,
@@ -637,7 +1181,7 @@
           "alignment": 1.0
         },
         "raw": {
-          "largest_empty_share": 0.267,
+          "largest_empty_share": 0.212,
           "utilization": 1.0,
           "center_of_mass": [
             0.449,
@@ -646,6 +1190,7 @@
           "ink_coverage": 0.078,
           "emphasis_share": 0.63,
           "focus_regions": 1,
+          "accent_regions": 0,
           "proof_checks": "0/0",
           "headline_body_ratio": 1.57,
           "body_font_sizes": [
@@ -656,12 +1201,37 @@
             24
           ],
           "left_edges": 5
-        },
-        "flags": []
+        }
       },
       {
         "slide_id": "g19",
-        "score": 92.1,
+        "archetype": "timeline",
+        "archetype_why": "main exhibit is a timeline",
+        "score": 100.0,
+        "observed": {
+          "utilization": 0.846,
+          "empty": 0.227,
+          "ink": 0.032,
+          "offcentre": 0.024,
+          "emphasis": 0.231,
+          "regions": 0.0,
+          "ratio": 1.834,
+          "edges": 3.0
+        },
+        "fitness": {
+          "utilization": 1.0,
+          "empty": 1.0,
+          "ink": 1.0,
+          "offcentre": 1.0,
+          "emphasis": 1.0,
+          "regions": 1.0,
+          "ratio": 1.0,
+          "edges": 1.0
+        },
+        "deviations": [],
+        "flags": [],
+        "score_v1": 92.1,
+        "flags_v1": [],
         "metrics": {
           "dead_space": 0.882,
           "utilization": 1.0,
@@ -682,6 +1252,7 @@
           "ink_coverage": 0.032,
           "emphasis_share": 0.231,
           "focus_regions": 0,
+          "accent_regions": 0,
           "proof_checks": "0/0",
           "headline_body_ratio": 1.83,
           "body_font_sizes": [
@@ -690,12 +1261,36 @@
             12
           ],
           "left_edges": 3
-        },
-        "flags": []
+        }
       },
       {
         "slide_id": "g21",
-        "score": 94.6,
+        "archetype": "table",
+        "archetype_why": "main exhibit is a scorecard",
+        "score": 100.0,
+        "observed": {
+          "utilization": 0.962,
+          "empty": 0.096,
+          "ink": 0.034,
+          "offcentre": 0.03,
+          "emphasis": 0.384,
+          "regions": 1.0,
+          "ratio": 1.691,
+          "edges": 0.0
+        },
+        "fitness": {
+          "utilization": 1.0,
+          "empty": 1.0,
+          "ink": 1.0,
+          "offcentre": 1.0,
+          "regions": 1.0,
+          "ratio": 1.0,
+          "edges": 1.0
+        },
+        "deviations": [],
+        "flags": [],
+        "score_v1": 94.6,
+        "flags_v1": [],
         "metrics": {
           "dead_space": 1.0,
           "utilization": 1.0,
@@ -716,6 +1311,7 @@
           "ink_coverage": 0.034,
           "emphasis_share": 0.384,
           "focus_regions": 1,
+          "accent_regions": 1,
           "proof_checks": "0/0",
           "headline_body_ratio": 1.69,
           "body_font_sizes": [
@@ -723,14 +1319,68 @@
             13
           ],
           "left_edges": 0
-        },
-        "flags": []
+        }
       },
       {
         "slide_id": "g22",
-        "score": 94.1,
+        "archetype": "kpi_dashboard",
+        "archetype_why": "4 KPIs",
+        "score": 98.1,
+        "observed": {
+          "utilization": 0.865,
+          "empty": 0.192,
+          "ink": 0.022,
+          "offcentre": 0.149,
+          "emphasis": 0.336,
+          "regions": 0.0,
+          "ratio": 1.833,
+          "edges": 2.0,
+          "proof": 1.0
+        },
+        "fitness": {
+          "utilization": 1.0,
+          "empty": 1.0,
+          "ink": 0.815,
+          "offcentre": 0.903,
+          "emphasis": 1.0,
+          "regions": 1.0,
+          "ratio": 1.0,
+          "edges": 1.0,
+          "proof": 1.0
+        },
+        "deviations": [
+          {
+            "metric": "ink",
+            "value": 0.022,
+            "expected": [
+              0.04,
+              0.3
+            ],
+            "direction": "low",
+            "fitness": 0.815,
+            "weight": 8,
+            "meaning": "too sparse",
+            "flag": "SPARSE"
+          },
+          {
+            "metric": "offcentre",
+            "value": 0.149,
+            "expected": [
+              0.0,
+              0.12
+            ],
+            "direction": "high",
+            "fitness": 0.903,
+            "weight": 8,
+            "meaning": "visual weight is off-balance",
+            "flag": "OFF_BALANCE"
+          }
+        ],
+        "flags": [],
+        "score_v1": 95.1,
+        "flags_v1": [],
         "metrics": {
-          "dead_space": 0.921,
+          "dead_space": 0.969,
           "utilization": 1.0,
           "balance": 0.891,
           "density": 0.679,
@@ -740,7 +1390,7 @@
           "alignment": 1.0
         },
         "raw": {
-          "largest_empty_share": 0.212,
+          "largest_empty_share": 0.192,
           "utilization": 0.865,
           "center_of_mass": [
             0.351,
@@ -749,6 +1399,7 @@
           "ink_coverage": 0.022,
           "emphasis_share": 0.336,
           "focus_regions": 2,
+          "accent_regions": 0,
           "proof_checks": "1/1",
           "headline_body_ratio": 1.83,
           "body_font_sizes": [
@@ -756,33 +1407,61 @@
             34
           ],
           "left_edges": 2
-        },
-        "flags": []
+        }
       },
       {
         "slide_id": "g23",
-        "score": 93.9,
-        "metrics": {
-          "dead_space": 0.739,
+        "archetype": "waterfall",
+        "archetype_why": "main exhibit is a bridge",
+        "score": 100.0,
+        "observed": {
+          "utilization": 0.981,
+          "empty": 0.222,
+          "ink": 0.192,
+          "offcentre": 0.095,
+          "emphasis": 0.564,
+          "regions": 0.0,
+          "ratio": 1.834,
+          "edges": 2.0,
+          "proof": 0.667
+        },
+        "fitness": {
           "utilization": 1.0,
-          "balance": 0.915,
+          "empty": 1.0,
+          "ink": 1.0,
+          "offcentre": 1.0,
+          "emphasis": 1.0,
+          "regions": 1.0,
+          "ratio": 1.0,
+          "edges": 1.0,
+          "proof": 1.0
+        },
+        "deviations": [],
+        "flags": [],
+        "score_v1": 92.1,
+        "flags_v1": [],
+        "metrics": {
+          "dead_space": 0.895,
+          "utilization": 1.0,
+          "balance": 0.956,
           "density": 1.0,
           "emphasis": 1.0,
-          "evidence": 1.0,
+          "evidence": 0.667,
           "hierarchy": 1.0,
           "alignment": 1.0
         },
         "raw": {
-          "largest_empty_share": 0.284,
-          "utilization": 1.0,
+          "largest_empty_share": 0.222,
+          "utilization": 0.981,
           "center_of_mass": [
-            0.414,
-            0.594
+            0.595,
+            0.545
           ],
-          "ink_coverage": 0.153,
-          "emphasis_share": 0.562,
+          "ink_coverage": 0.192,
+          "emphasis_share": 0.564,
           "focus_regions": 2,
-          "proof_checks": "3/3",
+          "accent_regions": 0,
+          "proof_checks": "2/3",
           "headline_body_ratio": 1.83,
           "body_font_sizes": [
             10,
@@ -790,12 +1469,37 @@
             12
           ],
           "left_edges": 2
-        },
-        "flags": []
+        }
       },
       {
         "slide_id": "g24",
-        "score": 95.5,
+        "archetype": "chart",
+        "archetype_why": "main exhibit is a column chart",
+        "score": 100.0,
+        "observed": {
+          "utilization": 1.0,
+          "empty": 0.161,
+          "ink": 0.259,
+          "offcentre": 0.087,
+          "emphasis": 0.546,
+          "regions": 0.0,
+          "ratio": 2.0,
+          "edges": 0.0
+        },
+        "fitness": {
+          "utilization": 1.0,
+          "empty": 1.0,
+          "ink": 1.0,
+          "offcentre": 1.0,
+          "emphasis": 1.0,
+          "regions": 1.0,
+          "ratio": 1.0,
+          "edges": 1.0
+        },
+        "deviations": [],
+        "flags": [],
+        "score_v1": 95.5,
+        "flags_v1": [],
         "metrics": {
           "dead_space": 1.0,
           "utilization": 1.0,
@@ -816,6 +1520,7 @@
           "ink_coverage": 0.259,
           "emphasis_share": 0.546,
           "focus_regions": 3,
+          "accent_regions": 0,
           "proof_checks": "0/0",
           "headline_body_ratio": 2.0,
           "body_font_sizes": [
@@ -823,12 +1528,39 @@
             11
           ],
           "left_edges": 0
-        },
-        "flags": []
+        }
       },
       {
         "slide_id": "g25",
-        "score": 89.9,
+        "archetype": "chart",
+        "archetype_why": "main exhibit is a donut chart",
+        "score": 100.0,
+        "observed": {
+          "utilization": 1.0,
+          "empty": 0.264,
+          "ink": 0.134,
+          "offcentre": 0.018,
+          "emphasis": 0.344,
+          "regions": 0.0,
+          "ratio": 1.571,
+          "edges": 2.0,
+          "proof": 0.667
+        },
+        "fitness": {
+          "utilization": 1.0,
+          "empty": 1.0,
+          "ink": 1.0,
+          "offcentre": 1.0,
+          "emphasis": 1.0,
+          "regions": 1.0,
+          "ratio": 1.0,
+          "edges": 1.0,
+          "proof": 1.0
+        },
+        "deviations": [],
+        "flags": [],
+        "score_v1": 89.9,
+        "flags_v1": [],
         "metrics": {
           "dead_space": 0.789,
           "utilization": 1.0,
@@ -849,6 +1581,7 @@
           "ink_coverage": 0.134,
           "emphasis_share": 0.344,
           "focus_regions": 1,
+          "accent_regions": 0,
           "proof_checks": "2/3",
           "headline_body_ratio": 1.57,
           "body_font_sizes": [
@@ -856,31 +1589,90 @@
             14
           ],
           "left_edges": 2
+        }
+      },
+      {
+        "slide_id": "g26",
+        "archetype": "statement",
+        "archetype_why": "slide kind statement",
+        "score": 100.0,
+        "observed": {
+          "utilization": 0.359,
+          "empty": 0.308,
+          "ink": 0.037,
+          "offcentre": 0.179,
+          "emphasis": 0.641,
+          "regions": 1.0,
+          "ratio": 0.733,
+          "edges": 1.0
         },
-        "flags": []
+        "fitness": {
+          "utilization": 1.0,
+          "empty": 1.0,
+          "ink": 1.0,
+          "offcentre": 1.0,
+          "regions": 1.0,
+          "edges": 1.0
+        },
+        "deviations": [],
+        "flags": [],
+        "score_v1": 67.5,
+        "flags_v1": [
+          "UNDERUSED_CANVAS",
+          "WEAK_HIERARCHY"
+        ],
+        "metrics": {
+          "dead_space": 0.681,
+          "utilization": 0.218,
+          "balance": 0.843,
+          "density": 0.807,
+          "emphasis": 1.0,
+          "evidence": 0.8,
+          "hierarchy": 0.0,
+          "alignment": 1.0
+        },
+        "raw": {
+          "largest_empty_share": 0.308,
+          "utilization": 0.359,
+          "center_of_mass": [
+            0.321,
+            0.418
+          ],
+          "ink_coverage": 0.037,
+          "emphasis_share": 0.641,
+          "focus_regions": 3,
+          "accent_regions": 1,
+          "proof_checks": "0/0",
+          "headline_body_ratio": 0.73,
+          "body_font_sizes": [
+            14,
+            30
+          ],
+          "left_edges": 1
+        }
       }
     ],
     "decisions": {
       "g05": {
+        "archetype": "chart",
         "chosen": {
-          "layout": "exhibit_takeaways_below",
+          "layout": "exhibit_commentary_right",
           "variant": {},
-          "score": 99.5
+          "score": 98.1
         },
-        "default_score": 88.3,
+        "default_score": 98.1,
         "candidates": [
           {
             "k": 0,
             "layout": "exhibit_commentary_right",
             "variant": {},
             "default": true,
-            "score": 88.3,
-            "flags": [
-              "DEAD_SPACE"
-            ],
+            "score": 98.1,
+            "archetype": "chart",
+            "flags": [],
             "errors": 0,
-            "verdict": "ok",
-            "adjusted": 88.3
+            "verdict": "chosen",
+            "adjusted": 98.1
           },
           {
             "k": 1,
@@ -889,24 +1681,24 @@
               "scale": 1.15
             },
             "default": false,
-            "score": 88.0,
-            "flags": [
-              "DEAD_SPACE"
-            ],
+            "score": 98.2,
+            "archetype": "chart",
+            "flags": [],
             "errors": 0,
             "verdict": "ok",
-            "adjusted": 88.0
+            "adjusted": 98.2
           },
           {
             "k": 2,
             "layout": "exhibit_takeaways_below",
             "variant": {},
             "default": false,
-            "score": 99.5,
+            "score": 100.0,
+            "archetype": "chart",
             "flags": [],
             "errors": 0,
-            "verdict": "chosen",
-            "adjusted": 99.5
+            "verdict": "ok",
+            "adjusted": 100.0
           },
           {
             "k": 3,
@@ -915,24 +1707,24 @@
               "scale": 1.15
             },
             "default": false,
-            "score": 99.0,
+            "score": 100.0,
+            "archetype": "chart",
             "flags": [],
             "errors": 0,
             "verdict": "ok",
-            "adjusted": 99.0
+            "adjusted": 100.0
           },
           {
             "k": 4,
             "layout": "map_commentary",
             "variant": {},
             "default": false,
-            "score": 88.3,
-            "flags": [
-              "DEAD_SPACE"
-            ],
+            "score": 98.1,
+            "archetype": "chart",
+            "flags": [],
             "errors": 0,
             "verdict": "ok",
-            "adjusted": 88.3
+            "adjusted": 98.1
           },
           {
             "k": 5,
@@ -941,36 +1733,35 @@
               "scale": 1.15
             },
             "default": false,
-            "score": 88.0,
-            "flags": [
-              "DEAD_SPACE"
-            ],
+            "score": 98.2,
+            "archetype": "chart",
+            "flags": [],
             "errors": 0,
             "verdict": "ok",
-            "adjusted": 88.0
+            "adjusted": 98.2
           }
         ]
       },
       "g06": {
+        "archetype": "hierarchy",
         "chosen": {
-          "layout": "exhibit_commentary_left",
-          "variant": {
-            "scale": 1.15
-          },
-          "score": 89.9
+          "layout": "framework_commentary",
+          "variant": {},
+          "score": 99.2
         },
-        "default_score": 84.8,
+        "default_score": 99.2,
         "candidates": [
           {
             "k": 0,
             "layout": "framework_commentary",
             "variant": {},
             "default": true,
-            "score": 84.8,
+            "score": 99.2,
+            "archetype": "hierarchy",
             "flags": [],
             "errors": 0,
-            "verdict": "ok",
-            "adjusted": 84.8
+            "verdict": "chosen",
+            "adjusted": 99.2
           },
           {
             "k": 1,
@@ -979,22 +1770,24 @@
               "scale": 1.15
             },
             "default": false,
-            "score": 86.0,
+            "score": 99.6,
+            "archetype": "hierarchy",
             "flags": [],
             "errors": 0,
             "verdict": "ok",
-            "adjusted": 86.0
+            "adjusted": 99.6
           },
           {
             "k": 2,
             "layout": "exhibit_takeaways_below",
             "variant": {},
             "default": false,
-            "score": 91.7,
+            "score": 100.0,
+            "archetype": "hierarchy",
             "flags": [],
             "errors": 0,
             "verdict": "ok",
-            "adjusted": 89.2
+            "adjusted": 100.0
           },
           {
             "k": 3,
@@ -1003,22 +1796,24 @@
               "scale": 1.15
             },
             "default": false,
-            "score": 91.3,
+            "score": 100.0,
+            "archetype": "hierarchy",
             "flags": [],
             "errors": 0,
             "verdict": "ok",
-            "adjusted": 88.8
+            "adjusted": 100.0
           },
           {
             "k": 4,
             "layout": "exhibit_commentary_left",
             "variant": {},
             "default": false,
-            "score": 89.8,
+            "score": 100.0,
+            "archetype": "hierarchy",
             "flags": [],
             "errors": 0,
             "verdict": "ok",
-            "adjusted": 89.8
+            "adjusted": 100.0
           },
           {
             "k": 5,
@@ -1027,32 +1822,35 @@
               "scale": 1.15
             },
             "default": false,
-            "score": 89.9,
+            "score": 100.0,
+            "archetype": "hierarchy",
             "flags": [],
             "errors": 0,
-            "verdict": "chosen",
-            "adjusted": 89.9
+            "verdict": "ok",
+            "adjusted": 100.0
           }
         ]
       },
       "g08": {
+        "archetype": "chart",
         "chosen": {
           "layout": "process_commentary",
           "variant": {},
-          "score": 91.6
+          "score": 99.8
         },
-        "default_score": 91.6,
+        "default_score": 99.8,
         "candidates": [
           {
             "k": 0,
             "layout": "process_commentary",
             "variant": {},
             "default": true,
-            "score": 91.6,
+            "score": 99.8,
+            "archetype": "chart",
             "flags": [],
             "errors": 0,
             "verdict": "chosen",
-            "adjusted": 91.6
+            "adjusted": 99.8
           },
           {
             "k": 1,
@@ -1061,22 +1859,24 @@
               "scale": 1.15
             },
             "default": false,
-            "score": 91.5,
+            "score": 99.9,
+            "archetype": "chart",
             "flags": [],
             "errors": 0,
             "verdict": "ok",
-            "adjusted": 91.5
+            "adjusted": 99.9
           },
           {
             "k": 2,
             "layout": "exhibit_commentary_right",
             "variant": {},
             "default": false,
-            "score": 91.6,
+            "score": 99.8,
+            "archetype": "chart",
             "flags": [],
             "errors": 0,
             "verdict": "ok",
-            "adjusted": 91.6
+            "adjusted": 99.8
           },
           {
             "k": 3,
@@ -1085,24 +1885,24 @@
               "scale": 1.15
             },
             "default": false,
-            "score": 91.5,
+            "score": 99.9,
+            "archetype": "chart",
             "flags": [],
             "errors": 0,
             "verdict": "ok",
-            "adjusted": 91.5
+            "adjusted": 99.9
           },
           {
             "k": 4,
             "layout": "exhibit_takeaways_below",
             "variant": {},
             "default": false,
-            "score": 94.5,
-            "flags": [
-              "OVERDENSE"
-            ],
+            "score": 100.0,
+            "archetype": "chart",
+            "flags": [],
             "errors": 0,
             "verdict": "ok",
-            "adjusted": 94.5
+            "adjusted": 100.0
           },
           {
             "k": 5,
@@ -1111,34 +1911,35 @@
               "scale": 1.15
             },
             "default": false,
-            "score": 93.6,
-            "flags": [
-              "OVERDENSE"
-            ],
+            "score": 100.0,
+            "archetype": "chart",
+            "flags": [],
             "errors": 0,
             "verdict": "ok",
-            "adjusted": 93.6
+            "adjusted": 100.0
           }
         ]
       },
       "g09": {
+        "archetype": "segmentation",
         "chosen": {
           "layout": "exhibit_takeaways_below",
           "variant": {},
-          "score": 95.6
+          "score": 100.0
         },
-        "default_score": 90.3,
+        "default_score": 90.4,
         "candidates": [
           {
             "k": 0,
             "layout": "map_commentary",
             "variant": {},
             "default": true,
-            "score": 90.3,
+            "score": 90.4,
+            "archetype": "segmentation",
             "flags": [],
             "errors": 0,
             "verdict": "ok",
-            "adjusted": 90.3
+            "adjusted": 90.4
           },
           {
             "k": 1,
@@ -1147,22 +1948,24 @@
               "scale": 1.15
             },
             "default": false,
-            "score": 90.7,
+            "score": 92.7,
+            "archetype": "segmentation",
             "flags": [],
             "errors": 0,
             "verdict": "ok",
-            "adjusted": 90.7
+            "adjusted": 92.7
           },
           {
             "k": 2,
             "layout": "exhibit_commentary_right",
             "variant": {},
             "default": false,
-            "score": 90.3,
+            "score": 90.4,
+            "archetype": "segmentation",
             "flags": [],
             "errors": 0,
             "verdict": "ok",
-            "adjusted": 90.3
+            "adjusted": 90.4
           },
           {
             "k": 3,
@@ -1171,22 +1974,24 @@
               "scale": 1.15
             },
             "default": false,
-            "score": 90.7,
+            "score": 92.7,
+            "archetype": "segmentation",
             "flags": [],
             "errors": 0,
             "verdict": "ok",
-            "adjusted": 90.7
+            "adjusted": 92.7
           },
           {
             "k": 4,
             "layout": "exhibit_takeaways_below",
             "variant": {},
             "default": false,
-            "score": 95.6,
+            "score": 100.0,
+            "archetype": "segmentation",
             "flags": [],
             "errors": 0,
             "verdict": "chosen",
-            "adjusted": 95.6
+            "adjusted": 100.0
           },
           {
             "k": 5,
@@ -1195,32 +2000,35 @@
               "scale": 1.15
             },
             "default": false,
-            "score": 94.8,
+            "score": 100.0,
+            "archetype": "segmentation",
             "flags": [],
             "errors": 0,
             "verdict": "ok",
-            "adjusted": 94.8
+            "adjusted": 100.0
           }
         ]
       },
       "g10": {
+        "archetype": "chart",
         "chosen": {
           "layout": "exhibit_commentary_right",
           "variant": {},
-          "score": 88.8
+          "score": 98.5
         },
-        "default_score": 88.8,
+        "default_score": 98.5,
         "candidates": [
           {
             "k": 0,
             "layout": "exhibit_commentary_right",
             "variant": {},
             "default": true,
-            "score": 88.8,
+            "score": 98.5,
+            "archetype": "chart",
             "flags": [],
             "errors": 0,
             "verdict": "chosen",
-            "adjusted": 88.8
+            "adjusted": 98.5
           },
           {
             "k": 1,
@@ -1229,24 +2037,24 @@
               "scale": 1.15
             },
             "default": false,
-            "score": 89.8,
+            "score": 98.5,
+            "archetype": "chart",
             "flags": [],
             "errors": 0,
             "verdict": "ok",
-            "adjusted": 89.8
+            "adjusted": 98.5
           },
           {
             "k": 2,
             "layout": "exhibit_takeaways_below",
             "variant": {},
             "default": false,
-            "score": 90.9,
-            "flags": [
-              "OVERDENSE"
-            ],
+            "score": 100.0,
+            "archetype": "chart",
+            "flags": [],
             "errors": 0,
             "verdict": "ok",
-            "adjusted": 88.4
+            "adjusted": 97.5
           },
           {
             "k": 3,
@@ -1255,24 +2063,24 @@
               "scale": 1.15
             },
             "default": false,
-            "score": 90.4,
-            "flags": [
-              "OVERDENSE"
-            ],
+            "score": 100.0,
+            "archetype": "chart",
+            "flags": [],
             "errors": 0,
             "verdict": "ok",
-            "adjusted": 87.9
+            "adjusted": 97.5
           },
           {
             "k": 4,
             "layout": "segmentation_commentary",
             "variant": {},
             "default": false,
-            "score": 88.8,
+            "score": 98.5,
+            "archetype": "chart",
             "flags": [],
             "errors": 0,
             "verdict": "ok",
-            "adjusted": 88.8
+            "adjusted": 98.5
           },
           {
             "k": 5,
@@ -1281,534 +2089,21 @@
               "scale": 1.15
             },
             "default": false,
-            "score": 89.8,
+            "score": 98.5,
+            "archetype": "chart",
             "flags": [],
             "errors": 0,
             "verdict": "ok",
-            "adjusted": 89.8
+            "adjusted": 98.5
           }
         ]
       },
       "g11": {
+        "archetype": "chart",
         "chosen": {
           "layout": "exhibit_commentary_left",
-          "variant": {
-            "scale": 1.15
-          },
-          "score": 88.1
-        },
-        "default_score": 81.3,
-        "candidates": [
-          {
-            "k": 0,
-            "layout": "exhibit_takeaways_below",
-            "variant": {},
-            "default": true,
-            "score": 81.3,
-            "flags": [],
-            "errors": 0,
-            "verdict": "ok",
-            "adjusted": 81.3
-          },
-          {
-            "k": 1,
-            "layout": "exhibit_takeaways_below",
-            "variant": {
-              "scale": 1.15
-            },
-            "default": false,
-            "score": 81.5,
-            "flags": [],
-            "errors": 0,
-            "verdict": "ok",
-            "adjusted": 81.5
-          },
-          {
-            "k": 2,
-            "layout": "matrix_commentary",
-            "variant": {},
-            "default": false,
-            "score": 79.5,
-            "flags": [
-              "DEAD_SPACE"
-            ],
-            "errors": 0,
-            "verdict": "ok",
-            "adjusted": 79.5
-          },
-          {
-            "k": 3,
-            "layout": "matrix_commentary",
-            "variant": {
-              "scale": 1.15
-            },
-            "default": false,
-            "score": 80.6,
-            "flags": [
-              "DEAD_SPACE"
-            ],
-            "errors": 0,
-            "verdict": "ok",
-            "adjusted": 80.6
-          },
-          {
-            "k": 4,
-            "layout": "exhibit_commentary_left",
-            "variant": {},
-            "default": false,
-            "score": 87.5,
-            "flags": [],
-            "errors": 0,
-            "verdict": "ok",
-            "adjusted": 87.5
-          },
-          {
-            "k": 5,
-            "layout": "exhibit_commentary_left",
-            "variant": {
-              "scale": 1.15
-            },
-            "default": false,
-            "score": 88.1,
-            "flags": [],
-            "errors": 0,
-            "verdict": "chosen",
-            "adjusted": 88.1
-          }
-        ]
-      },
-      "g13": {
-        "chosen": {
-          "layout": "comparison_table",
-          "variant": {
-            "scale": 1.2,
-            "table_stretch": 0.6
-          },
-          "score": 94.7
-        },
-        "default_score": 89.2,
-        "candidates": [
-          {
-            "k": 0,
-            "layout": "comparison_table",
-            "variant": {},
-            "default": true,
-            "score": 89.2,
-            "flags": [],
-            "errors": 0,
-            "verdict": "ok",
-            "adjusted": 89.2
-          },
-          {
-            "k": 1,
-            "layout": "comparison_table",
-            "variant": {
-              "scale": 1.2,
-              "table_stretch": 0.6
-            },
-            "default": false,
-            "score": 94.7,
-            "flags": [],
-            "errors": 0,
-            "verdict": "chosen",
-            "adjusted": 94.7
-          },
-          {
-            "k": 2,
-            "layout": "comparison_table",
-            "variant": {
-              "scale": 1.35,
-              "table_stretch": 0.9
-            },
-            "default": false,
-            "score": 92.8,
-            "flags": [],
-            "errors": 0,
-            "verdict": "ok",
-            "adjusted": 92.8
-          },
-          {
-            "k": 3,
-            "layout": "exhibit_full",
-            "variant": {},
-            "default": false,
-            "score": 89.2,
-            "flags": [],
-            "errors": 0,
-            "verdict": "ok",
-            "adjusted": 89.2
-          },
-          {
-            "k": 4,
-            "layout": "exhibit_full",
-            "variant": {
-              "scale": 1.2,
-              "table_stretch": 0.6
-            },
-            "default": false,
-            "score": 94.7,
-            "flags": [],
-            "errors": 0,
-            "verdict": "ok",
-            "adjusted": 94.7
-          },
-          {
-            "k": 5,
-            "layout": "exhibit_full",
-            "variant": {
-              "scale": 1.35,
-              "table_stretch": 0.9
-            },
-            "default": false,
-            "score": 92.8,
-            "flags": [],
-            "errors": 0,
-            "verdict": "ok",
-            "adjusted": 92.8
-          },
-          {
-            "k": 6,
-            "layout": "table_full",
-            "variant": {},
-            "default": false,
-            "score": 89.2,
-            "flags": [],
-            "errors": 0,
-            "verdict": "ok",
-            "adjusted": 89.2
-          },
-          {
-            "k": 7,
-            "layout": "table_full",
-            "variant": {
-              "scale": 1.2,
-              "table_stretch": 0.6
-            },
-            "default": false,
-            "score": 94.7,
-            "flags": [],
-            "errors": 0,
-            "verdict": "ok",
-            "adjusted": 94.7
-          },
-          {
-            "k": 8,
-            "layout": "table_full",
-            "variant": {
-              "scale": 1.35,
-              "table_stretch": 0.9
-            },
-            "default": false,
-            "score": 92.8,
-            "flags": [],
-            "errors": 0,
-            "verdict": "ok",
-            "adjusted": 92.8
-          }
-        ]
-      },
-      "g14": {
-        "chosen": {
-          "layout": "process_full",
           "variant": {},
-          "score": 90.2
-        },
-        "default_score": 90.2,
-        "candidates": [
-          {
-            "k": 0,
-            "layout": "process_full",
-            "variant": {},
-            "default": true,
-            "score": 90.2,
-            "flags": [],
-            "errors": 0,
-            "verdict": "chosen",
-            "adjusted": 90.2
-          },
-          {
-            "k": 1,
-            "layout": "process_full",
-            "variant": {
-              "scale": 1.15
-            },
-            "default": false,
-            "score": 91.7,
-            "flags": [],
-            "errors": 0,
-            "verdict": "ok",
-            "adjusted": 91.7
-          },
-          {
-            "k": 2,
-            "layout": "process_full",
-            "variant": {
-              "scale": 1.3
-            },
-            "default": false,
-            "score": 89.3,
-            "flags": [],
-            "errors": 0,
-            "verdict": "ok",
-            "adjusted": 89.3
-          },
-          {
-            "k": 3,
-            "layout": "exhibit_full",
-            "variant": {},
-            "default": false,
-            "score": 90.2,
-            "flags": [],
-            "errors": 0,
-            "verdict": "ok",
-            "adjusted": 90.2
-          },
-          {
-            "k": 4,
-            "layout": "exhibit_full",
-            "variant": {
-              "scale": 1.15
-            },
-            "default": false,
-            "score": 91.7,
-            "flags": [],
-            "errors": 0,
-            "verdict": "ok",
-            "adjusted": 91.7
-          },
-          {
-            "k": 5,
-            "layout": "exhibit_full",
-            "variant": {
-              "scale": 1.3
-            },
-            "default": false,
-            "score": 89.3,
-            "flags": [],
-            "errors": 0,
-            "verdict": "ok",
-            "adjusted": 89.3
-          }
-        ]
-      },
-      "g15": {
-        "chosen": {
-          "layout": "exhibit_full",
-          "variant": {
-            "scale": 1.15
-          },
-          "score": 91.2
-        },
-        "default_score": 90.0,
-        "candidates": [
-          {
-            "k": 0,
-            "layout": "process_full",
-            "variant": {},
-            "default": true,
-            "score": 90.0,
-            "flags": [],
-            "errors": 0,
-            "verdict": "ok",
-            "adjusted": 87.5
-          },
-          {
-            "k": 1,
-            "layout": "process_full",
-            "variant": {
-              "scale": 1.15
-            },
-            "default": false,
-            "score": 91.2,
-            "flags": [],
-            "errors": 0,
-            "verdict": "ok",
-            "adjusted": 88.7
-          },
-          {
-            "k": 2,
-            "layout": "process_full",
-            "variant": {
-              "scale": 1.3
-            },
-            "default": false,
-            "score": 88.9,
-            "flags": [],
-            "errors": 0,
-            "verdict": "ok",
-            "adjusted": 86.4
-          },
-          {
-            "k": 3,
-            "layout": "exhibit_full",
-            "variant": {},
-            "default": false,
-            "score": 90.0,
-            "flags": [],
-            "errors": 0,
-            "verdict": "ok",
-            "adjusted": 90.0
-          },
-          {
-            "k": 4,
-            "layout": "exhibit_full",
-            "variant": {
-              "scale": 1.15
-            },
-            "default": false,
-            "score": 91.2,
-            "flags": [],
-            "errors": 0,
-            "verdict": "chosen",
-            "adjusted": 91.2
-          },
-          {
-            "k": 5,
-            "layout": "exhibit_full",
-            "variant": {
-              "scale": 1.3
-            },
-            "default": false,
-            "score": 88.9,
-            "flags": [],
-            "errors": 0,
-            "verdict": "ok",
-            "adjusted": 88.9
-          }
-        ]
-      },
-      "g16": {
-        "chosen": {
-          "layout": "architecture_full",
-          "variant": {},
-          "score": 84.0
-        },
-        "default_score": 84.0,
-        "candidates": [
-          {
-            "k": 0,
-            "layout": "architecture_full",
-            "variant": {},
-            "default": true,
-            "score": 84.0,
-            "flags": [],
-            "errors": 0,
-            "verdict": "chosen",
-            "adjusted": 84.0
-          },
-          {
-            "k": 1,
-            "layout": "exhibit_full",
-            "variant": {},
-            "default": false,
-            "score": 84.0,
-            "flags": [],
-            "errors": 0,
-            "verdict": "ok",
-            "adjusted": 81.5
-          },
-          {
-            "k": 2,
-            "layout": "framework_full",
-            "variant": {},
-            "default": false,
-            "score": 84.0,
-            "flags": [],
-            "errors": 0,
-            "verdict": "ok",
-            "adjusted": 84.0
-          }
-        ]
-      },
-      "g17": {
-        "chosen": {
-          "layout": "architecture_full",
-          "variant": {},
-          "score": 92.8
-        },
-        "default_score": 92.8,
-        "candidates": [
-          {
-            "k": 0,
-            "layout": "architecture_full",
-            "variant": {},
-            "default": true,
-            "score": 92.8,
-            "flags": [],
-            "errors": 0,
-            "verdict": "chosen",
-            "adjusted": 90.3
-          },
-          {
-            "k": 1,
-            "layout": "architecture_full",
-            "variant": {
-              "scale": 1.15
-            },
-            "default": false,
-            "score": 92.4,
-            "flags": [],
-            "errors": 0,
-            "verdict": "ok",
-            "adjusted": 89.9
-          },
-          {
-            "k": 2,
-            "layout": "architecture_full",
-            "variant": {
-              "scale": 1.3
-            },
-            "default": false,
-            "score": 90.0,
-            "flags": [],
-            "errors": 0,
-            "verdict": "ok",
-            "adjusted": 87.5
-          },
-          {
-            "k": 3,
-            "layout": "exhibit_full",
-            "variant": {},
-            "default": false,
-            "score": 92.8,
-            "flags": [],
-            "errors": 0,
-            "verdict": "ok",
-            "adjusted": 92.8
-          },
-          {
-            "k": 4,
-            "layout": "exhibit_full",
-            "variant": {
-              "scale": 1.15
-            },
-            "default": false,
-            "score": 92.4,
-            "flags": [],
-            "errors": 0,
-            "verdict": "ok",
-            "adjusted": 92.4
-          },
-          {
-            "k": 5,
-            "layout": "exhibit_full",
-            "variant": {
-              "scale": 1.3
-            },
-            "default": false,
-            "score": 90.0,
-            "flags": [],
-            "errors": 0,
-            "verdict": "ok",
-            "adjusted": 90.0
-          }
-        ]
-      },
-      "g19": {
-        "chosen": {
-          "layout": "exhibit_takeaways_below",
-          "variant": {},
-          "score": 90.6
+          "score": 100.0
         },
         "default_score": 90.6,
         "candidates": [
@@ -1818,9 +2113,10 @@
             "variant": {},
             "default": true,
             "score": 90.6,
+            "archetype": "chart",
             "flags": [],
             "errors": 0,
-            "verdict": "chosen",
+            "verdict": "ok",
             "adjusted": 90.6
           },
           {
@@ -1830,22 +2126,575 @@
               "scale": 1.15
             },
             "default": false,
-            "score": 92.0,
+            "score": 91.0,
+            "archetype": "chart",
             "flags": [],
             "errors": 0,
             "verdict": "ok",
-            "adjusted": 92.0
+            "adjusted": 91.0
+          },
+          {
+            "k": 2,
+            "layout": "matrix_commentary",
+            "variant": {},
+            "default": false,
+            "score": 83.3,
+            "archetype": "chart",
+            "flags": [],
+            "errors": 0,
+            "verdict": "ok",
+            "adjusted": 83.3
+          },
+          {
+            "k": 3,
+            "layout": "matrix_commentary",
+            "variant": {
+              "scale": 1.15
+            },
+            "default": false,
+            "score": 85.7,
+            "archetype": "chart",
+            "flags": [],
+            "errors": 0,
+            "verdict": "ok",
+            "adjusted": 85.7
+          },
+          {
+            "k": 4,
+            "layout": "exhibit_commentary_left",
+            "variant": {},
+            "default": false,
+            "score": 100.0,
+            "archetype": "chart",
+            "flags": [],
+            "errors": 0,
+            "verdict": "chosen",
+            "adjusted": 100.0
+          },
+          {
+            "k": 5,
+            "layout": "exhibit_commentary_left",
+            "variant": {
+              "scale": 1.15
+            },
+            "default": false,
+            "score": 100.0,
+            "archetype": "chart",
+            "flags": [],
+            "errors": 0,
+            "verdict": "ok",
+            "adjusted": 100.0
+          }
+        ]
+      },
+      "g13": {
+        "archetype": "table",
+        "chosen": {
+          "layout": "comparison_table",
+          "variant": {
+            "scale": 1.2,
+            "table_stretch": 0.6
+          },
+          "score": 100.0
+        },
+        "default_score": 93.8,
+        "candidates": [
+          {
+            "k": 0,
+            "layout": "comparison_table",
+            "variant": {},
+            "default": true,
+            "score": 93.8,
+            "archetype": "table",
+            "flags": [],
+            "errors": 0,
+            "verdict": "ok",
+            "adjusted": 93.8
+          },
+          {
+            "k": 1,
+            "layout": "comparison_table",
+            "variant": {
+              "scale": 1.2,
+              "table_stretch": 0.6
+            },
+            "default": false,
+            "score": 100.0,
+            "archetype": "table",
+            "flags": [],
+            "errors": 0,
+            "verdict": "chosen",
+            "adjusted": 100.0
+          },
+          {
+            "k": 2,
+            "layout": "comparison_table",
+            "variant": {
+              "scale": 1.35,
+              "table_stretch": 0.9
+            },
+            "default": false,
+            "score": 100.0,
+            "archetype": "table",
+            "flags": [],
+            "errors": 0,
+            "verdict": "ok",
+            "adjusted": 100.0
+          },
+          {
+            "k": 3,
+            "layout": "exhibit_full",
+            "variant": {},
+            "default": false,
+            "score": 93.8,
+            "archetype": "table",
+            "flags": [],
+            "errors": 0,
+            "verdict": "ok",
+            "adjusted": 93.8
+          },
+          {
+            "k": 4,
+            "layout": "exhibit_full",
+            "variant": {
+              "scale": 1.2,
+              "table_stretch": 0.6
+            },
+            "default": false,
+            "score": 100.0,
+            "archetype": "table",
+            "flags": [],
+            "errors": 0,
+            "verdict": "ok",
+            "adjusted": 100.0
+          },
+          {
+            "k": 5,
+            "layout": "exhibit_full",
+            "variant": {
+              "scale": 1.35,
+              "table_stretch": 0.9
+            },
+            "default": false,
+            "score": 100.0,
+            "archetype": "table",
+            "flags": [],
+            "errors": 0,
+            "verdict": "ok",
+            "adjusted": 100.0
+          },
+          {
+            "k": 6,
+            "layout": "table_full",
+            "variant": {},
+            "default": false,
+            "score": 93.8,
+            "archetype": "table",
+            "flags": [],
+            "errors": 0,
+            "verdict": "ok",
+            "adjusted": 93.8
+          },
+          {
+            "k": 7,
+            "layout": "table_full",
+            "variant": {
+              "scale": 1.2,
+              "table_stretch": 0.6
+            },
+            "default": false,
+            "score": 100.0,
+            "archetype": "table",
+            "flags": [],
+            "errors": 0,
+            "verdict": "ok",
+            "adjusted": 100.0
+          },
+          {
+            "k": 8,
+            "layout": "table_full",
+            "variant": {
+              "scale": 1.35,
+              "table_stretch": 0.9
+            },
+            "default": false,
+            "score": 100.0,
+            "archetype": "table",
+            "flags": [],
+            "errors": 0,
+            "verdict": "ok",
+            "adjusted": 100.0
+          }
+        ]
+      },
+      "g14": {
+        "archetype": "process",
+        "chosen": {
+          "layout": "process_full",
+          "variant": {},
+          "score": 99.9
+        },
+        "default_score": 99.9,
+        "candidates": [
+          {
+            "k": 0,
+            "layout": "process_full",
+            "variant": {},
+            "default": true,
+            "score": 99.9,
+            "archetype": "process",
+            "flags": [],
+            "errors": 0,
+            "verdict": "chosen",
+            "adjusted": 99.9
+          },
+          {
+            "k": 1,
+            "layout": "process_full",
+            "variant": {
+              "scale": 1.15
+            },
+            "default": false,
+            "score": 100.0,
+            "archetype": "process",
+            "flags": [],
+            "errors": 0,
+            "verdict": "ok",
+            "adjusted": 100.0
+          },
+          {
+            "k": 2,
+            "layout": "process_full",
+            "variant": {
+              "scale": 1.3
+            },
+            "default": false,
+            "score": 100.0,
+            "archetype": "process",
+            "flags": [],
+            "errors": 0,
+            "verdict": "ok",
+            "adjusted": 100.0
+          },
+          {
+            "k": 3,
+            "layout": "exhibit_full",
+            "variant": {},
+            "default": false,
+            "score": 99.9,
+            "archetype": "process",
+            "flags": [],
+            "errors": 0,
+            "verdict": "ok",
+            "adjusted": 99.9
+          },
+          {
+            "k": 4,
+            "layout": "exhibit_full",
+            "variant": {
+              "scale": 1.15
+            },
+            "default": false,
+            "score": 100.0,
+            "archetype": "process",
+            "flags": [],
+            "errors": 0,
+            "verdict": "ok",
+            "adjusted": 100.0
+          },
+          {
+            "k": 5,
+            "layout": "exhibit_full",
+            "variant": {
+              "scale": 1.3
+            },
+            "default": false,
+            "score": 100.0,
+            "archetype": "process",
+            "flags": [],
+            "errors": 0,
+            "verdict": "ok",
+            "adjusted": 100.0
+          }
+        ]
+      },
+      "g15": {
+        "archetype": "process",
+        "chosen": {
+          "layout": "exhibit_full",
+          "variant": {
+            "scale": 1.3
+          },
+          "score": 97.9
+        },
+        "default_score": 97.1,
+        "candidates": [
+          {
+            "k": 0,
+            "layout": "process_full",
+            "variant": {},
+            "default": true,
+            "score": 97.1,
+            "archetype": "process",
+            "flags": [],
+            "errors": 0,
+            "verdict": "ok",
+            "adjusted": 94.6
+          },
+          {
+            "k": 1,
+            "layout": "process_full",
+            "variant": {
+              "scale": 1.15
+            },
+            "default": false,
+            "score": 97.6,
+            "archetype": "process",
+            "flags": [],
+            "errors": 0,
+            "verdict": "ok",
+            "adjusted": 95.1
+          },
+          {
+            "k": 2,
+            "layout": "process_full",
+            "variant": {
+              "scale": 1.3
+            },
+            "default": false,
+            "score": 97.9,
+            "archetype": "process",
+            "flags": [],
+            "errors": 0,
+            "verdict": "ok",
+            "adjusted": 95.4
+          },
+          {
+            "k": 3,
+            "layout": "exhibit_full",
+            "variant": {},
+            "default": false,
+            "score": 97.1,
+            "archetype": "process",
+            "flags": [],
+            "errors": 0,
+            "verdict": "ok",
+            "adjusted": 97.1
+          },
+          {
+            "k": 4,
+            "layout": "exhibit_full",
+            "variant": {
+              "scale": 1.15
+            },
+            "default": false,
+            "score": 97.6,
+            "archetype": "process",
+            "flags": [],
+            "errors": 0,
+            "verdict": "ok",
+            "adjusted": 97.6
+          },
+          {
+            "k": 5,
+            "layout": "exhibit_full",
+            "variant": {
+              "scale": 1.3
+            },
+            "default": false,
+            "score": 97.9,
+            "archetype": "process",
+            "flags": [],
+            "errors": 0,
+            "verdict": "chosen",
+            "adjusted": 97.9
+          }
+        ]
+      },
+      "g16": {
+        "archetype": "hierarchy",
+        "chosen": {
+          "layout": "architecture_full",
+          "variant": {},
+          "score": 89.9
+        },
+        "default_score": 89.9,
+        "candidates": [
+          {
+            "k": 0,
+            "layout": "architecture_full",
+            "variant": {},
+            "default": true,
+            "score": 89.9,
+            "archetype": "hierarchy",
+            "flags": [],
+            "errors": 0,
+            "verdict": "chosen",
+            "adjusted": 89.9
+          },
+          {
+            "k": 1,
+            "layout": "exhibit_full",
+            "variant": {},
+            "default": false,
+            "score": 89.9,
+            "archetype": "hierarchy",
+            "flags": [],
+            "errors": 0,
+            "verdict": "ok",
+            "adjusted": 87.4
+          },
+          {
+            "k": 2,
+            "layout": "framework_full",
+            "variant": {},
+            "default": false,
+            "score": 89.9,
+            "archetype": "hierarchy",
+            "flags": [],
+            "errors": 0,
+            "verdict": "ok",
+            "adjusted": 89.9
+          }
+        ]
+      },
+      "g17": {
+        "archetype": "architecture",
+        "chosen": {
+          "layout": "architecture_full",
+          "variant": {},
+          "score": 100.0
+        },
+        "default_score": 100.0,
+        "candidates": [
+          {
+            "k": 0,
+            "layout": "architecture_full",
+            "variant": {},
+            "default": true,
+            "score": 100.0,
+            "archetype": "architecture",
+            "flags": [],
+            "errors": 0,
+            "verdict": "chosen",
+            "adjusted": 97.5
+          },
+          {
+            "k": 1,
+            "layout": "architecture_full",
+            "variant": {
+              "scale": 1.15
+            },
+            "default": false,
+            "score": 100.0,
+            "archetype": "architecture",
+            "flags": [],
+            "errors": 0,
+            "verdict": "ok",
+            "adjusted": 97.5
+          },
+          {
+            "k": 2,
+            "layout": "architecture_full",
+            "variant": {
+              "scale": 1.3
+            },
+            "default": false,
+            "score": 100.0,
+            "archetype": "architecture",
+            "flags": [],
+            "errors": 0,
+            "verdict": "ok",
+            "adjusted": 97.5
+          },
+          {
+            "k": 3,
+            "layout": "exhibit_full",
+            "variant": {},
+            "default": false,
+            "score": 100.0,
+            "archetype": "architecture",
+            "flags": [],
+            "errors": 0,
+            "verdict": "ok",
+            "adjusted": 100.0
+          },
+          {
+            "k": 4,
+            "layout": "exhibit_full",
+            "variant": {
+              "scale": 1.15
+            },
+            "default": false,
+            "score": 100.0,
+            "archetype": "architecture",
+            "flags": [],
+            "errors": 0,
+            "verdict": "ok",
+            "adjusted": 100.0
+          },
+          {
+            "k": 5,
+            "layout": "exhibit_full",
+            "variant": {
+              "scale": 1.3
+            },
+            "default": false,
+            "score": 100.0,
+            "archetype": "architecture",
+            "flags": [],
+            "errors": 0,
+            "verdict": "ok",
+            "adjusted": 100.0
+          }
+        ]
+      },
+      "g19": {
+        "archetype": "timeline",
+        "chosen": {
+          "layout": "exhibit_takeaways_below",
+          "variant": {},
+          "score": 100.0
+        },
+        "default_score": 100.0,
+        "candidates": [
+          {
+            "k": 0,
+            "layout": "exhibit_takeaways_below",
+            "variant": {},
+            "default": true,
+            "score": 100.0,
+            "archetype": "timeline",
+            "flags": [],
+            "errors": 0,
+            "verdict": "chosen",
+            "adjusted": 100.0
+          },
+          {
+            "k": 1,
+            "layout": "exhibit_takeaways_below",
+            "variant": {
+              "scale": 1.15
+            },
+            "default": false,
+            "score": 100.0,
+            "archetype": "timeline",
+            "flags": [],
+            "errors": 0,
+            "verdict": "ok",
+            "adjusted": 100.0
           },
           {
             "k": 2,
             "layout": "timeline_commentary",
             "variant": {},
             "default": false,
-            "score": 89.4,
+            "score": 100.0,
+            "archetype": "timeline",
             "flags": [],
             "errors": 0,
             "verdict": "ok",
-            "adjusted": 89.4
+            "adjusted": 100.0
           },
           {
             "k": 3,
@@ -1854,22 +2703,24 @@
               "scale": 1.15
             },
             "default": false,
-            "score": 91.6,
+            "score": 100.0,
+            "archetype": "timeline",
             "flags": [],
             "errors": 0,
             "verdict": "ok",
-            "adjusted": 91.6
+            "adjusted": 100.0
           },
           {
             "k": 4,
             "layout": "exhibit_commentary_right",
             "variant": {},
             "default": false,
-            "score": 89.4,
+            "score": 100.0,
+            "archetype": "timeline",
             "flags": [],
             "errors": 0,
             "verdict": "ok",
-            "adjusted": 89.4
+            "adjusted": 100.0
           },
           {
             "k": 5,
@@ -1878,35 +2729,38 @@
               "scale": 1.15
             },
             "default": false,
-            "score": 91.6,
+            "score": 100.0,
+            "archetype": "timeline",
             "flags": [],
             "errors": 0,
             "verdict": "ok",
-            "adjusted": 91.6
+            "adjusted": 100.0
           }
         ]
       },
       "g21": {
+        "archetype": "table",
         "chosen": {
           "layout": "table_full",
           "variant": {
             "scale": 1.2,
             "table_stretch": 0.6
           },
-          "score": 94.2
+          "score": 100.0
         },
-        "default_score": 88.3,
+        "default_score": 79.6,
         "candidates": [
           {
             "k": 0,
             "layout": "table_full",
             "variant": {},
             "default": true,
-            "score": 88.3,
+            "score": 79.6,
+            "archetype": "table",
             "flags": [],
             "errors": 0,
             "verdict": "ok",
-            "adjusted": 88.3
+            "adjusted": 79.6
           },
           {
             "k": 1,
@@ -1916,11 +2770,12 @@
               "table_stretch": 0.6
             },
             "default": false,
-            "score": 94.2,
+            "score": 100.0,
+            "archetype": "table",
             "flags": [],
             "errors": 0,
             "verdict": "chosen",
-            "adjusted": 94.2
+            "adjusted": 100.0
           },
           {
             "k": 2,
@@ -1930,22 +2785,24 @@
               "table_stretch": 0.9
             },
             "default": false,
-            "score": 93.3,
+            "score": 100.0,
+            "archetype": "table",
             "flags": [],
             "errors": 0,
             "verdict": "ok",
-            "adjusted": 93.3
+            "adjusted": 100.0
           },
           {
             "k": 3,
             "layout": "exhibit_full",
             "variant": {},
             "default": false,
-            "score": 88.3,
+            "score": 79.6,
+            "archetype": "table",
             "flags": [],
             "errors": 0,
             "verdict": "ok",
-            "adjusted": 88.3
+            "adjusted": 79.6
           },
           {
             "k": 4,
@@ -1955,11 +2812,12 @@
               "table_stretch": 0.6
             },
             "default": false,
-            "score": 94.2,
+            "score": 100.0,
+            "archetype": "table",
             "flags": [],
             "errors": 0,
             "verdict": "ok",
-            "adjusted": 94.2
+            "adjusted": 100.0
           },
           {
             "k": 5,
@@ -1969,22 +2827,24 @@
               "table_stretch": 0.9
             },
             "default": false,
-            "score": 93.3,
+            "score": 100.0,
+            "archetype": "table",
             "flags": [],
             "errors": 0,
             "verdict": "ok",
-            "adjusted": 93.3
+            "adjusted": 100.0
           },
           {
             "k": 6,
             "layout": "comparison_table",
             "variant": {},
             "default": false,
-            "score": 88.3,
+            "score": 79.6,
+            "archetype": "table",
             "flags": [],
             "errors": 0,
             "verdict": "ok",
-            "adjusted": 88.3
+            "adjusted": 79.6
           },
           {
             "k": 7,
@@ -1994,11 +2854,12 @@
               "table_stretch": 0.6
             },
             "default": false,
-            "score": 94.2,
+            "score": 100.0,
+            "archetype": "table",
             "flags": [],
             "errors": 0,
             "verdict": "ok",
-            "adjusted": 94.2
+            "adjusted": 100.0
           },
           {
             "k": 8,
@@ -2008,32 +2869,35 @@
               "table_stretch": 0.9
             },
             "default": false,
-            "score": 93.3,
+            "score": 100.0,
+            "archetype": "table",
             "flags": [],
             "errors": 0,
             "verdict": "ok",
-            "adjusted": 93.3
+            "adjusted": 100.0
           }
         ]
       },
       "g22": {
+        "archetype": "kpi_dashboard",
         "chosen": {
           "layout": "kpi_grid",
           "variant": {},
-          "score": 94.5
+          "score": 98.6
         },
-        "default_score": 94.5,
+        "default_score": 98.6,
         "candidates": [
           {
             "k": 0,
             "layout": "kpi_grid",
             "variant": {},
             "default": true,
-            "score": 94.5,
+            "score": 98.6,
+            "archetype": "kpi_dashboard",
             "flags": [],
             "errors": 0,
             "verdict": "chosen",
-            "adjusted": 94.5
+            "adjusted": 98.6
           },
           {
             "k": 1,
@@ -2042,11 +2906,12 @@
               "scale": 1.2
             },
             "default": false,
-            "score": 94.7,
+            "score": 98.7,
+            "archetype": "kpi_dashboard",
             "flags": [],
             "errors": 0,
             "verdict": "ok",
-            "adjusted": 94.7
+            "adjusted": 98.7
           },
           {
             "k": 2,
@@ -2055,32 +2920,35 @@
               "scale": 1.4
             },
             "default": false,
-            "score": 95.8,
+            "score": 98.9,
+            "archetype": "kpi_dashboard",
             "flags": [],
             "errors": 0,
             "verdict": "ok",
-            "adjusted": 95.8
+            "adjusted": 98.9
           }
         ]
       },
       "g23": {
+        "archetype": "waterfall",
         "chosen": {
-          "layout": "waterfall_drivers",
+          "layout": "exhibit_takeaways_below",
           "variant": {},
-          "score": 93.4
+          "score": 100.0
         },
-        "default_score": 93.4,
+        "default_score": 96.0,
         "candidates": [
           {
             "k": 0,
             "layout": "waterfall_drivers",
             "variant": {},
             "default": true,
-            "score": 93.4,
+            "score": 96.0,
+            "archetype": "waterfall",
             "flags": [],
             "errors": 0,
-            "verdict": "chosen",
-            "adjusted": 93.4
+            "verdict": "ok",
+            "adjusted": 96.0
           },
           {
             "k": 1,
@@ -2089,22 +2957,24 @@
               "scale": 1.15
             },
             "default": false,
-            "score": 93.4,
+            "score": 97.0,
+            "archetype": "waterfall",
             "flags": [],
             "errors": 0,
             "verdict": "ok",
-            "adjusted": 93.4
+            "adjusted": 97.0
           },
           {
             "k": 2,
             "layout": "exhibit_commentary_right",
             "variant": {},
             "default": false,
-            "score": 93.4,
+            "score": 96.0,
+            "archetype": "waterfall",
             "flags": [],
             "errors": 0,
             "verdict": "ok",
-            "adjusted": 93.4
+            "adjusted": 96.0
           },
           {
             "k": 3,
@@ -2113,22 +2983,24 @@
               "scale": 1.15
             },
             "default": false,
-            "score": 93.4,
+            "score": 97.0,
+            "archetype": "waterfall",
             "flags": [],
             "errors": 0,
             "verdict": "ok",
-            "adjusted": 93.4
+            "adjusted": 97.0
           },
           {
             "k": 4,
             "layout": "exhibit_takeaways_below",
             "variant": {},
             "default": false,
-            "score": 92.6,
+            "score": 100.0,
+            "archetype": "waterfall",
             "flags": [],
             "errors": 0,
-            "verdict": "ok",
-            "adjusted": 92.6
+            "verdict": "chosen",
+            "adjusted": 100.0
           },
           {
             "k": 5,
@@ -2137,36 +3009,39 @@
               "scale": 1.15
             },
             "default": false,
-            "score": 92.1,
+            "score": 100.0,
+            "archetype": "waterfall",
             "flags": [],
             "errors": 0,
             "verdict": "ok",
-            "adjusted": 92.1
+            "adjusted": 100.0
           }
         ]
       },
       "g25": {
+        "archetype": "chart",
         "chosen": {
           "layout": "exhibit_commentary_left",
           "variant": {
             "scale": 1.15
           },
-          "score": 90.0
+          "score": 100.0
         },
-        "default_score": 81.6,
+        "default_score": 96.0,
         "candidates": [
           {
             "k": 0,
             "layout": "exhibit_commentary_right",
             "variant": {},
             "default": true,
-            "score": 81.6,
+            "score": 96.0,
+            "archetype": "chart",
             "flags": [
-              "DEAD_SPACE"
+              "OFF_BALANCE"
             ],
             "errors": 0,
             "verdict": "ok",
-            "adjusted": 81.6
+            "adjusted": 96.0
           },
           {
             "k": 1,
@@ -2175,25 +3050,28 @@
               "scale": 1.15
             },
             "default": false,
-            "score": 82.4,
-            "flags": [],
+            "score": 96.5,
+            "archetype": "chart",
+            "flags": [
+              "OFF_BALANCE"
+            ],
             "errors": 0,
             "verdict": "ok",
-            "adjusted": 82.4
+            "adjusted": 96.5
           },
           {
             "k": 2,
             "layout": "exhibit_takeaways_below",
             "variant": {},
             "default": false,
-            "score": 79.2,
+            "score": 95.8,
+            "archetype": "chart",
             "flags": [
-              "DEAD_SPACE",
               "OFF_BALANCE"
             ],
             "errors": 0,
             "verdict": "ok",
-            "adjusted": 79.2
+            "adjusted": 95.8
           },
           {
             "k": 3,
@@ -2202,22 +3080,26 @@
               "scale": 1.15
             },
             "default": false,
-            "score": 84.4,
-            "flags": [],
+            "score": 95.2,
+            "archetype": "chart",
+            "flags": [
+              "OFF_BALANCE"
+            ],
             "errors": 0,
             "verdict": "ok",
-            "adjusted": 84.4
+            "adjusted": 95.2
           },
           {
             "k": 4,
             "layout": "exhibit_commentary_left",
             "variant": {},
             "default": false,
-            "score": 89.5,
+            "score": 99.7,
+            "archetype": "chart",
             "flags": [],
             "errors": 0,
             "verdict": "ok",
-            "adjusted": 89.5
+            "adjusted": 99.7
           },
           {
             "k": 5,
@@ -2226,11 +3108,12 @@
               "scale": 1.15
             },
             "default": false,
-            "score": 90.0,
+            "score": 100.0,
+            "archetype": "chart",
             "flags": [],
             "errors": 0,
             "verdict": "chosen",
-            "adjusted": 90.0
+            "adjusted": 100.0
           }
         ]
       }

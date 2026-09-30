@@ -70,7 +70,7 @@ Open each PNG, answer the questions (0 = no, 1 = partly, 2 = yes), and write
 
 - **Headline:** Helix's cost-to-serve is 18% above the peer median, the highest of the panel
 - **Purpose:** Size the gap
-- **Layout:** `exhibit_takeaways_below` — explicit in spec
+- **Layout:** `exhibit_commentary_right` — explicit in spec
 - **Visual:** `bar` — explicit in spec
 
   - [ ] Does the slide communicate ONE clear idea?
@@ -87,7 +87,7 @@ Open each PNG, answer the questions (0 = no, 1 = partly, 2 = yes), and write
 
 - **Headline:** Network and warehousing explain €31M of the €44M gap to peers
 - **Purpose:** Decompose cost-to-serve
-- **Layout:** `exhibit_commentary_left` — explicit in spec
+- **Layout:** `framework_commentary` — explicit in spec
 - **Visual:** `driver_tree` — explicit in spec
 
   - [ ] Does the slide communicate ONE clear idea?
@@ -369,7 +369,7 @@ Open each PNG, answer the questions (0 = no, 1 = partly, 2 = yes), and write
 
 - **Headline:** €48M run-rate savings by 2027, with €24M secured by wave 1 and 2
 - **Purpose:** Bridge savings
-- **Layout:** `waterfall_drivers` — explicit in spec
+- **Layout:** `exhibit_takeaways_below` — explicit in spec
 - **Visual:** `bridge` — explicit in spec
 
   - [ ] Does the slide communicate ONE clear idea?

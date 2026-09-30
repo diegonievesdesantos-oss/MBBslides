@@ -105,3 +105,10 @@ def test_demo_deck_passes_the_gate(alvora, tmp_path):
     assert rep["passed"], [i for i in rep["issues"] if i["level"] == "error"]
     assert rep["deck_score"] >= 95
     assert len(list((tmp_path / "renders").glob("*.png"))) == 12
+
+
+def test_placeholder_check_does_not_flag_spanish_todo():
+    from cpe.qa.geometry import PLACEHOLDER_RE
+
+    assert not PLACEHOLDER_RE.search("Reformar todo") and not PLACEHOLDER_RE.search("Todo el mercado")
+    assert PLACEHOLDER_RE.search("TODO add source") and PLACEHOLDER_RE.search("lorem ipsum")

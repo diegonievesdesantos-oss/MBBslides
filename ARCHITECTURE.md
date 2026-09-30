@@ -153,8 +153,8 @@ PDF text spans:
 
 They are heuristics, calibrated on the engine's own output; the eval suite keeps them honest.
 
-**Evals as a gate.** `evals/cases` are decks designed to break the engine. `cpe eval` compares
-each case with `evals/baseline.json` (crash, render failure, more QA errors, composition drop,
+**Evals as a gate.** `evals/regression/cases` are decks designed to break the engine. `cpe eval` compares
+each case with `evals/regression/baseline.json` (crash, render failure, more QA errors, composition drop,
 new flags → exit 1), and CI runs it on every push and pull request. `cpe measure` scores any
 existing run, which is how v1.0's renders were compared with v1.1's using the same metrics.
 
@@ -167,7 +167,50 @@ title placeholder, and turns logos and bars into reserved areas protected by QA.
 measured with their metric twin when one exists, otherwise with the font fontconfig will render
 with; the report states which measurements are exact.
 
-## 5. Data flow and artefacts
+## 5. v1.2 — reproducible, archetype-aware, independently evaluated, template-aware
+
+```
+                    ┌──────────── docker/Dockerfile (pinned renderer, fonts, libs) ────────────┐
+deck.json → plan → compose ─┬─ candidates: layouts × variants × corporate layouts          │
+                            ├─ render once → hard QA filter (geometry + render)           │
+                            └─ archetype fitness (qa/archetypes.py) → choose             │
+          → build (brand/matching: native · adaptive · cpe) → render → QA → editorial advice │
+          → evals: regression (gate) · holdout (report) · human A/B (independent)           │
+                    └──────────── environment manifest + fingerprint with every eval ──────┘
+```
+
+| module | role |
+|---|---|
+| `environment.py` | manifest of everything that can move a pixel; render fingerprint; manifest diff |
+| `reproducibility.py` | `cpe repro`: render twice, compare hashes, pixels, spans, metrics, QA |
+| `results_report.py` | README metrics block generated from `evals/results/latest.json` |
+| `qa/archetypes.py` | archetype taxonomy from content, expected profiles, fitness, deviation meanings |
+| `qa/composition.py` | measures the observed profile; archetype fitness as score; `score_v1`; `advice_from` |
+| `evals.py` | suites (regression / holdout / examples), baseline compare, `record_result` |
+| `human.py` | blind A/B rounds: build, local server, votes, statistics (Wilson, Fleiss' κ) |
+| `private_holdout.py` | corporate templates in `.private/` → `private_results/`, sanitized summary |
+| `brand/model.py` | multi-master analysis: layout features, classification with usage, typography, palette, grid, assets, rules |
+| `brand/rescale.py` | 16:9 templates on other page sizes rescaled to the engine canvas |
+| `brand/matching.py` | corporate layout candidates per slide, rejections with reasons, per-slide limits |
+| `brand/fixtures.py` | synthetic three-master template for tests |
+
+**Decisions.**
+- *The archetype comes from content, not from the layout*, so every candidate layout of a slide is
+  judged against the same expectations; otherwise the metric would move with the choice it judges.
+- *Composition is advice, hard QA is a gate.* Mixing them let a preference (a sparse statement)
+  lower a quality score and let a defect be traded against good whitespace.
+- *Worst critical metric in the score.* A mean dilutes one severe failure.
+- *No overall score.* Regression, holdout and human preference answer different questions with
+  different reliability; the README shows them side by side.
+- *Holdout discipline in code*: holdout cases are sealed by hash; the holdout suite cannot be
+  baselined; the private runner never touches baselines; human votes cannot enter the score.
+- *Native corporate layouts only where the template's placeholders can carry the content*
+  (structural slides); content slides reuse the corporate layout for its frame and let the engine
+  compose the body; everything else falls back explicitly, with the reason recorded.
+- *Same environment locally and in CI.* A benchmark whose renderer changes under it measures the
+  renderer.
+
+## 6. Data flow and artefacts
 
 | Step | Input | Output |
 |---|---|---|
@@ -181,7 +224,7 @@ with; the report states which measurements are exact.
 | run | `deck.json` | all of the above + iterations + `review.md` + `deck.autofixed.json` |
 | patch / review | patches / `review.json` | corrected spec / semantic verdict |
 
-## 6. Extending the engine
+## 7. Extending the engine
 
 - **New layout:** add a JSON file in `layouts/<family>/` (zones by columns and fractions,
   `accepts`, `compatible_visuals`, `capacity`, `when_to_use`). The library test checks that no
@@ -194,7 +237,8 @@ with; the report states which measurements are exact.
 - **New check:** return `issue(level, CODE, message, slide)` from `qa/`; document the code in
   `docs/QA_CODES.md` and, if it can be fixed without touching the message, add the rule to
   `qa/autofix.py`.
-- **New eval case:** add a deck to `evals/cases/` with `"eval": {"purpose": …}`, run
+- **New eval case:** add a deck to `evals/regression/cases/` with `"eval": {"purpose": …}` (never to the
+  holdout during a cycle — see docs/EVALS.md), run
   `cpe eval --update-baseline` and commit the baseline with the case.
 - **New language:** extend the lexicons in `core/headline.py` (`VERBS`, `GENERIC_NOUNS`,
   `VAGUE`, `DURATION_RE`) and the stopwords in `core/storyline.py`.

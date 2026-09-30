@@ -176,7 +176,7 @@
         ]
       },
       "source": "National statistics; retailer reports; team market model (illustrative)",
-      "layout": "exhibit_takeaways_below",
+      "layout": "exhibit_commentary_right",
       "_composed": true
     },
     {
@@ -686,7 +686,7 @@
         ]
       },
       "source": "Customer survey 2025, n=4,000 (illustrative)",
-      "layout": "exhibit_takeaways_below",
+      "layout": "matrix_commentary",
       "_composed": true
     },
     {

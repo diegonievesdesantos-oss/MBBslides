@@ -214,7 +214,7 @@
         ]
       },
       "source": "National statistics; retailer reports; team market model (illustrative)",
-      "layout": "exhibit_takeaways_below",
+      "layout": "exhibit_commentary_right",
       "_composed": true,
       "kind": "content",
       "_plan": {
@@ -225,13 +225,16 @@
           }
         ],
         "layout": {
-          "id": "exhibit_takeaways_below",
+          "id": "exhibit_commentary_right",
           "why": "explicit in spec"
         },
         "fit": {
           "commentary": {
             "fits_base": true,
             "fits_floor": true,
+            "need_base": 1.6,
+            "need_floor": 1.49,
+            "avail": 4.66,
             "excess_words": 0
           },
           "words": 43
@@ -832,7 +835,7 @@
         ]
       },
       "source": "Customer survey 2025, n=4,000 (illustrative)",
-      "layout": "exhibit_takeaways_below",
+      "layout": "matrix_commentary",
       "_composed": true,
       "kind": "content",
       "_plan": {
@@ -843,13 +846,16 @@
           }
         ],
         "layout": {
-          "id": "exhibit_takeaways_below",
+          "id": "matrix_commentary",
           "why": "explicit in spec"
         },
         "fit": {
           "commentary": {
             "fits_base": true,
             "fits_floor": true,
+            "need_base": 1.28,
+            "need_floor": 0.99,
+            "avail": 5.16,
             "excess_words": 0
           },
           "words": 48

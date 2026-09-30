@@ -193,6 +193,7 @@ def _slim(summary: dict) -> dict:
     out["cases"] = {r["case"]: {"composition": r.get("composition"), "qa_score": r.get("qa_score"), "qa_errors": r.get("qa_errors"),
                                 "qa_warnings": r.get("qa_warnings"), "qa_passed": r.get("qa_passed")} for r in summary["cases"]}
     out["environment_fingerprint"] = summary["environment"]["fingerprint"]
+    out["engine"] = {"version": summary["environment"].get("cpe_version"), "commit": summary["environment"].get("commit")}
     return out
 
 

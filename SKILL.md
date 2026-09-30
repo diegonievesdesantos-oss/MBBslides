@@ -170,15 +170,18 @@ Use `annotations`: `cagr` {from, to}, `reference` {value, label}, `callout` {at,
 
 ## 6. Layout and composition (Step 6)
 
-Composition (v1.1): `cpe run` does not just take the first compatible layout. For each content
+Composition (v1.2): `cpe run` does not just take the first compatible layout. For each content
 slide it renders the compatible layouts × composition variants (content scale on sparse slides,
-table rows stretched to the zone), scores them on the render (dead space, canvas use, balance,
-density, focal point, visible proof, hierarchy, alignment) and keeps the best. A different layout
-must win clearly, for deck consistency. `out/composition.md` lists every choice and every rejected
-or "compatible but editorially weak" alternative. When even the best composition is weak
-(`COMPOSITION_DEAD_SPACE`, `COMPOSITION_UNDERUSED_CANVAS`), the fix is content, not layout: add
-the proof or merge the slide.
-
+table rows stretched to the zone, alternative corporate layouts), drops candidates with QA errors,
+and scores the rest by **fitness to the slide's archetype** — what the slide is (statement, KPI
+hero, table, roadmap…), derived from its content. A statement may breathe; a table must not float
+in half an empty slide. A different layout must win clearly, for deck consistency.
+`out/composition.md` lists every choice and every "technically compatible but inappropriate for
+this content volume / archetype" alternative, with the deviations. Composition findings are
+**editorial advice** in `qa_report.md` — they never fail the gate. When even the best composition
+is weak (`COMPOSITION_DEAD_SPACE`, `COMPOSITION_UNDERUSED_CANVAS`), the fix is content, not
+layout: add the proof, merge the slide, or turn it into the archetype it really is (a statement,
+a KPI hero).
 
 Leave `layout: "auto"`. The selector matches the slide's content roles (exhibit, commentary,
 kpis, columns, statements, statement, takeaway) and visual family against 43 layouts in 16
@@ -191,10 +194,18 @@ metrics, and avoids repeating the previous slide's layout. Fix a layout only for
 
 If the user supplies a corporate template, run `scripts/cpe brand ingest template.pptx -o brands/<name>`
 **before** building and read `brands/<name>/compatibility.md`. Tell the user, in one line each:
-fonts that are missing or only approximated (and the substitute used), slide-size limitations,
-and unsupported elements. Then set `"meta": {"brand": "brands/<name>"}`. The deck is generated
-on the template's masters (logo and artwork kept); QA protects the artwork (`BRAND_RESERVED_OVERLAP`),
-and light brand accents used as text are darkened automatically to stay legible.
+- masters and layouts found, and the layout families recognised (with low-confidence ones);
+- the typography actually used vs the theme's declared fonts (any **conflict**), and every
+  **FONT WARNING** (font not installed here → substitute and approximate line breaks);
+- the colours inferred as brand colour and text colour, and their source (theme vs observed usage);
+- canvas rescaling, unsupported elements.
+Then set `"meta": {"brand": "brands/<name>"}`. Structural slides (cover, dividers, closing,
+statements) are generated **natively** on the template's own layouts; content slides use a
+corporate content layout with an engine-composed body (**adaptive**); otherwise the engine layout
+with the corporate theme. `build_manifest.json` → `corporate` records the mode and the reason per
+slide. QA protects the template's artwork (`BRAND_RESERVED_OVERLAP`) and checks contrast against
+the layout's real background. Never claim the deck is "on brand" when the report shows conflicts
+or missing fonts: say what was approximated.
 
 ## 7. Density (Step 7)
 
@@ -289,10 +300,17 @@ Themes: `meridian` (navy + teal, default), `graphite` (charcoal + green, finance
 
 ## Changing the engine itself
 
-Run `scripts/cpe eval` before and after any change to renderers, layouts, tokens or QA. It fails
-on crashes, new QA errors, composition drops or new flags against `evals/baseline.json`. Improve
-the engine, not the baseline. Update the baseline (`--update-baseline`) only for an intended
-change, and say so in the commit.
+Use the pinned environment: `scripts/cpe-docker eval --suite regression` before and after any
+change to renderers, layouts, tokens, QA or composition. It fails on crashes, new QA errors,
+composition drops or new flags against `evals/regression/baseline.json`. Improve the engine, not the
+baseline; update it (`--update-baseline --record`) only for an intended change, and say so in the
+commit. Three rules keep the evaluation honest (docs/EVALS.md):
+- the **regression** suite is the development set — tune on it;
+- the **holdout** (`evals/holdout/public`, `.private/holdouts`) is run only with the rules frozen,
+  reported, never tuned on in the same cycle, never baselined;
+- **human preference** (`cpe human`) is an independent signal, never part of the score.
+Never hand-edit numbers in the README: `cpe results readme` generates them from
+`evals/results/latest.json`.
 
 ## Troubleshooting
 

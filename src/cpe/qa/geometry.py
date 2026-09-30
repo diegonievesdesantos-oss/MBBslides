@@ -37,7 +37,8 @@ from ..layout.engine import Box
 from ..spec import issue
 
 EMU = 914400
-PLACEHOLDER_RE = re.compile(r"\bTODO\b|\bTBD\b|lorem ipsum|\bxx+\b|\[[^\]]{1,40}\]|\?\?\?", re.IGNORECASE)
+# TODO / TBD only in capitals: "todo" is an ordinary Spanish word ("Reformar todo"; false error found by the public holdout)
+PLACEHOLDER_RE = re.compile(r"\bTODO\b|\bTBD\b|(?i:lorem ipsum)|(?i:\bxx+\b)|\[[^\]]{1,40}\]|\?\?\?")
 TOL = 0.03
 
 
@@ -168,6 +169,7 @@ def check_slide(slide, idx: int, manifest: dict | None, theme: Theme, profile: d
     sid = (manifest or {}).get("slide_id") or f"#{idx}"
     out: list[dict] = []
     shapes = collect(slide)
+    page = slide_background(slide, theme)
     zones = {n: Box(z["x"], z["y"], z["w"], z["h"]) for n, z in ((manifest or {}).get("zones") or {}).items()}
     safe_l, safe_r = GRID.margin_l - TOL, SLIDE_W - GRID.margin_r + TOL
     safe_t, safe_b = GRID.tracker_y - TOL, GRID.footer_y + GRID.footer_h + TOL
@@ -233,7 +235,7 @@ def check_slide(slide, idx: int, manifest: dict | None, theme: Theme, profile: d
                 if col and col.upper() not in palette:
                     out.append(issue("warning", "COLOR_OFF_PALETTE", f"Text colour #{col} not in theme palette", sid, shape=s.name))
                 if col:
-                    bg = _background_at(shapes, s, theme)
+                    bg = _background_at(shapes, s, theme, page)
                     cr = contrast_ratio(col, bg)
                     if cr < 3.0:
                         out.append(issue("error", "LOW_CONTRAST", f"Contrast {cr:.1f}:1 for '{r.text[:25]}' on #{bg}", sid, shape=s.name))
@@ -295,17 +297,34 @@ def check_slide(slide, idx: int, manifest: dict | None, theme: Theme, profile: d
         if f.get("chosen_pt") and f.get("base_pt") and f["chosen_pt"] < f["base_pt"] - 0.01:
             out.append(issue("info", "FIT_SHRUNK", f"'{f.get('what', '')[:40]}' shrunk {f['base_pt']}→{f['chosen_pt']} pt to fit", sid, zone=f.get("zone")))
     for w in (manifest or {}).get("warnings", []):
-        out.append(issue("warning", w["code"], w["message"], sid, zone=w.get("zone")))
+        out.append(issue(w.get("level", "warning"), w["code"], w["message"], sid, zone=w.get("zone")))
     return out
 
 
-def _background_at(shapes: list[ShapeInfo], s: ShapeInfo, theme: Theme) -> str:
+def slide_background(slide, theme: Theme) -> str:
+    """The page colour behind everything: the slide's layout / master background (corporate templates
+    may put text on a coloured or gradient layout), else the theme background."""
+    try:
+        from ..brand.model import background, theme_of_master
+
+        lay = slide.slide_layout
+        th = theme_of_master(lay.slide_master)
+        for el in (slide._element, lay._element, lay.slide_master._element):
+            b = background(el, th)
+            if b and b.get("color"):
+                return b["color"]
+    except Exception:
+        pass
+    return theme.c("background")
+
+
+def _background_at(shapes: list[ShapeInfo], s: ShapeInfo, theme: Theme, page: str | None = None) -> str:
     """Topmost filled shape drawn before `s` that contains its ink centre."""
     if s.fill:  # the text box itself is filled
         return s.fill
     cx = s.ink.x + s.ink.w / 2
     cy = s.ink.y + s.ink.h / 2
-    bg = theme.c("background")
+    bg = page or theme.c("background")
     for o in shapes:
         if o.order >= s.order:
             break

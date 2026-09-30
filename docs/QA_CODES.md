@@ -21,6 +21,7 @@ Every issue has `level` (error blocks the gate · warning · info), `code`, `mes
 | `DENSITY_TREE` | warning | see message |
 | `DENSITY_WORDS` | warning | Cut words: keep only what proves the headline. |
 | `DUP_ID` | error | see message |
+| `SPEC_DATA_SHAPE` | warning | Exhibit data fields given at the top level were moved under `data` (the documented shape); fix the spec. |
 | `HEADLINE_LONG` | warning | Cut the headline to the claim. |
 | `HEADLINE_NO_VERB` | warning | see message |
 | `HEADLINE_NUMBER_UNSUPPORTED` | warning | Add the evidence that produces this number (evidence[].value) or correct the number. |
@@ -76,6 +77,7 @@ Every issue has `level` (error blocks the gate · warning · info), `code`, `mes
 | `VIS_TOO_MANY_SERIES` | warning | see message |
 | `VIS_UNSORTED` | info | see message |
 
+
 ## Layer 1b — geometry (the .pptx, real font metrics) and 1c — render (what LibreOffice drew)
 
 | code | level | layer | what it detects |
@@ -109,22 +111,29 @@ Every issue has `level` (error blocks the gate · warning · info), `code`, `mes
 | `RENDER_LABEL_ROTATED` | error | render | chart axis labels rotated because they do not fit |
 | `RENDER_TOO_EMPTY` | warning | render | body ink coverage very low |
 | `RENDER_UNBALANCED` | info | render | large empty region next to dense content |
-| `BRAND_RESERVED_OVERLAP` | error | geometry | content covers template artwork (logo, bars) of a brand theme |
+| `BRAND_RESERVED_OVERLAP` | error | geometry | content covers template artwork (logo, bars) of the slide's corporate layout |
+| `NATIVE_TEXT_COLOR` | info | geometry | a native corporate layout's own text/background pair was unreadable; the text colour was set for contrast |
 
-## Layer 1d — composition (v1.1, measured on the render)
+## Layer 1d — composition (v1.2: editorial ADVICE, not QA)
 
-Flags the composition engine could not fix become warnings with a remedy for the author:
+Measured on the render as **fitness to the slide's archetype** ([docs/COMPOSITION_SCORING.md](COMPOSITION_SCORING.md)).
+Level `advice`: listed under "Editorial advice" in `qa_report.md` / `editorial_advice` in
+`qa_report.json`; never counted as errors or warnings, never changes `passed` or the QA score.
+Each message states the archetype, the deviation and the expected range.
 
 | code | remedy |
 |---|---|
-| `COMPOSITION_DEAD_SPACE` | Even the best composition leaves a large empty area: the content is too thin for a full slide — add the proof (numbers, comparison) or merge it into a neighbouring slide. |
-| `COMPOSITION_UNDERUSED_CANVAS` | The exhibit uses little of the slide: give it more data/proof or merge the slide. |
+| `COMPOSITION_DEAD_SPACE` | Even the best composition leaves a large empty area: the content is too thin for this kind of slide — add the proof (numbers, comparison) or merge it into a neighbouring slide. |
+| `COMPOSITION_UNDERUSED_CANVAS` | The content uses little of the slide for what it is: give it more data/proof, or turn it into a different slide type (statement, KPI). |
+| `COMPOSITION_OVERFILLED` | The content crowds the canvas for this kind of slide: cut or split. |
 | `COMPOSITION_PROOF_NOT_VISIBLE` | The headline's number or highlighted item is not visible in the exhibit: label it or highlight it. |
 | `COMPOSITION_NO_FOCAL_POINT` | Nothing stands out: highlight the one element that proves the headline. |
 | `COMPOSITION_NOISY_EMPHASIS` | Too much in the focus colour: keep one highlight and grey the context. |
-| `COMPOSITION_OVERDENSE` | Very dense slide: cut or split. |
-
-Metric definitions and thresholds: `src/cpe/qa/composition.py`. Other composition flags (`OFF_BALANCE`, `WEAK_HIERARCHY`, `RAGGED_ALIGNMENT`, `SPARSE`) are reported in `qa_report.json → composition` and tracked by `cpe eval`.
+| `COMPOSITION_OVERDENSE` | Very dense for this kind of slide: cut or split. |
+| `COMPOSITION_SPARSE` | Very little ink for this kind of slide: add the proof or merge the slide. |
+| `COMPOSITION_OFF_BALANCE` | The visual weight sits on one side: check the layout choice. |
+| `COMPOSITION_WEAK_HIERARCHY` | The body text competes with the headline: reduce it or reword as a statement slide. |
+| `COMPOSITION_RAGGED_ALIGNMENT` | Many unrelated left edges: align the text blocks. |
 
 ## Layer 2 — semantic visual review (agent)
 

@@ -1,18 +1,18 @@
 # QA report
 
-**Verdict:** ✅ PASSED · **Deck score:** 99.8/100 · errors 0 · warnings 0 · info 2
+**Verdict:** ✅ PASSED · **Deck score:** 99.7/100 · errors 0 · warnings 0 · info 4
 
 ## Iterations (generate → render → inspect → patch)
 
 | # | errors | warnings | score | patches applied |
 |---|---|---|---|---|
-| 1 | 0 | 0 | 99.8 | — |
+| 1 | 0 | 0 | 99.7 | — |
 
 ## Slide scores
 
 | slide | score | errors | warnings |
 |---|---|---|---|
-| s01 | 100 | 0 | 0 |
+| s01 | 98 | 0 | 0 |
 | s02 | 100 | 0 | 0 |
 | s03 | 100 | 0 | 0 |
 | s04 | 100 | 0 | 0 |
@@ -32,4 +32,8 @@
 
 ### s12
 - **info** `HEADLINE_UNQUANTIFIED` — Data slide without a number in the headline; the strongest action titles quantify
+
+### s01
+- **info** `NATIVE_TEXT_COLOR` — title: inherited #222222 on #1B3A2F (1.3:1) → #FFFFFF
+- **info** `NATIVE_TEXT_COLOR` — subtitle: inherited #222222 on #1B3A2F (1.3:1) → #FFFFFF
 

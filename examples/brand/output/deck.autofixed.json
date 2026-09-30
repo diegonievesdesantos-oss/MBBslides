@@ -7,7 +7,7 @@
     "deck_type": "strategy_deck",
     "theme": "meridian",
     "confidentiality": "Illustrative data",
-    "brand": "/home/user/mbbslides/examples/brand/kestrel"
+    "brand": "/work/examples/brand/kestrel"
   },
   "storyline": {
     "framework": "SCR",
@@ -687,7 +687,7 @@
         ]
       },
       "source": "Customer survey 2025, n=4,000 (illustrative)",
-      "layout": "exhibit_takeaways_below",
+      "layout": "matrix_commentary",
       "_composed": true
     },
     {

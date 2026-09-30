@@ -150,6 +150,43 @@ def _inherited_size(ph, default: float) -> float:
     return default
 
 
+def _effective_colors(ph, slide) -> tuple[str | None, str | None]:
+    """(inherited text colour of a placeholder, background colour behind it) through layout → master."""
+    from ..brand.model import _color_of, background, theme_of_master
+
+    A = "{http://schemas.openxmlformats.org/drawingml/2006/main}"
+    P = "{http://schemas.openxmlformats.org/presentationml/2006/main}"
+    lay = slide.slide_layout
+    master = lay.slide_master
+    th = theme_of_master(master)
+    bg = None
+    for el in (lay._element, master._element):
+        b = background(el, th)
+        if b and b.get("color"):
+            bg = b["color"]
+            break
+    text = None
+    chain = []
+    try:
+        base = ph._base_placeholder
+        chain.append(base._element if base is not None else None)
+        mb = base._base_placeholder if base is not None else None
+        chain.append(mb._element if mb is not None else None)
+    except Exception:
+        pass
+    for el in [e for e in chain if e is not None]:
+        d = el.find(f".//{A}lstStyle/{A}lvl1pPr/{A}defRPr")
+        if d is not None and d.find(f"{A}solidFill") is not None:
+            text = _color_of(d.find(f"{A}solidFill"), th)
+            break
+    if text is None:
+        tag = "titleStyle" if ph.placeholder_format.type in (1, 3) else "bodyStyle"
+        d = master._element.find(f"{P}txStyles/{P}{tag}/{A}lvl1pPr/{A}defRPr")
+        if d is not None and d.find(f"{A}solidFill") is not None:
+            text = _color_of(d.find(f"{A}solidFill"), th)
+    return text or th["colors"].get("dk1"), bg
+
+
 def _native_slide(slide, s: dict, meta: dict, m: Manifest, theme) -> None:
     """Fill the corporate layout's own placeholders: the slide inherits the template's typography and look."""
     from ..design import text_metrics as tm
@@ -173,9 +210,20 @@ def _native_slide(slide, s: dict, meta: dict, m: Manifest, theme) -> None:
         size = _inherited_size(ph, default)
         w, h = Emu(ph.width).inches, Emu(ph.height).inches
         fit = tm.largest_fitting_size([text], max(0.5, w - 0.2), max(0.3, h - 0.1), size, max(10.0, size * 0.6), bold=role == "title") or max(10.0, size * 0.6)
+        from pptx.dml.color import RGBColor
+
+        from ..design.tokens import contrast_ratio
+
+        txt_c, bg_c = _effective_colors(ph, slide)
+        override = None
+        if txt_c and bg_c and contrast_ratio(txt_c, bg_c) < 4.5:  # the template's own pairing is unreadable here
+            override = max(("FFFFFF", theme.c("text")), key=lambda c: contrast_ratio(c, bg_c))
+            m.warnings.append({"level": "info", "code": "NATIVE_TEXT_COLOR", "message": f"{role}: inherited #{txt_c} on #{bg_c} ({contrast_ratio(txt_c, bg_c):.1f}:1) → #{override}"})
         for p_ in ph.text_frame.paragraphs:
             for r in p_.runs:
                 r.font.size = Emu(int(fit * 12700))
+                if override:
+                    r.font.color.rgb = RGBColor.from_string(override)
         ph.name = f"cpe|{role}|text|{n + 1}"
         m.zones[role] = {"role": "statement" if role == "title" else "subtitle", "x": round(Emu(ph.left).inches, 3), "y": round(Emu(ph.top).inches, 3), "w": round(w, 3), "h": round(Emu(ph.height).inches, 3)}
     for ph in list(slide.placeholders):  # nothing empty is left behind

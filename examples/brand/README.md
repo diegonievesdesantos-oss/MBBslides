@@ -15,5 +15,12 @@ scripts/cpe run examples/brand/alvora_on_kestrel.json -o examples/brand/output
   renderer will substitute (DejaVu Serif) and flagged as approximate.
 - `kestrel/theme.json`: the brand theme. `alvora_on_kestrel.json` is the Alvora deck spec with
   `"meta": {"brand": "kestrel"}`.
-- `output/`: the generated deck (on the template's masters, with the logo and bar kept) and its QA
-  report, including the protected logo area (`BRAND_RESERVED_OVERLAP`).
+- `kestrel/brand_model.json`, `kestrel/layout_catalog.json`: the full brand model (layout features,
+  classification, typography / palette / grid inference, assets, rules).
+- `output/`: the generated deck and its QA report. The cover is **native** (the template's own
+  "Title Slide" layout and placeholders, with the text colour corrected because the template's own
+  pairing is unreadable on its gradient); content slides are **adaptive** on the template's
+  "Title Only" layout; `build_manifest.json` → `corporate` gives the reason per slide.
+
+A synthetic **three-master** template for tests and experiments: `src/cpe/brand/fixtures.py`
+(`make_multimaster(path)`), see [docs/BRAND_INGESTION.md](../../docs/BRAND_INGESTION.md).

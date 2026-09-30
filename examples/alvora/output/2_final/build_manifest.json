@@ -159,21 +159,21 @@
   },
   {
     "slide_id": "s03",
-    "layout": "exhibit_takeaways_below",
+    "layout": "exhibit_commentary_right",
     "zones": {
       "exhibit": {
         "role": "exhibit",
         "x": 0.55,
         "y": 1.62,
-        "w": 12.233,
-        "h": 3.975
+        "w": 8.082,
+        "h": 5.16
       },
       "commentary": {
         "role": "commentary",
-        "x": 0.55,
-        "y": 5.815,
-        "w": 12.233,
-        "h": 0.965
+        "x": 8.852,
+        "y": 1.62,
+        "w": 3.931,
+        "h": 5.16
       }
     },
     "fits": [
@@ -213,7 +213,7 @@
       {
         "zone": "commentary",
         "role": "exhibit_title",
-        "what": "takeaways title",
+        "what": "commentary title",
         "base_pt": 12.0,
         "chosen_pt": 12.0,
         "need_h": 0.195,
@@ -224,45 +224,12 @@
       {
         "zone": "commentary",
         "role": "body",
-        "what": "takeaway column",
+        "what": "commentary",
         "base_pt": 12.0,
         "chosen_pt": 12.0,
-        "need_h": 0.39,
-        "box_h": 0.54,
-        "lines": 2,
-        "overflow": false
-      },
-      {
-        "zone": "commentary",
-        "role": "body",
-        "what": "takeaway column",
-        "base_pt": 12.0,
-        "chosen_pt": 12.0,
-        "need_h": 0.39,
-        "box_h": 0.54,
-        "lines": 2,
-        "overflow": false
-      },
-      {
-        "zone": "commentary",
-        "role": "body",
-        "what": "takeaway column",
-        "base_pt": 12.0,
-        "chosen_pt": 12.0,
-        "need_h": 0.39,
-        "box_h": 0.54,
-        "lines": 2,
-        "overflow": false
-      },
-      {
-        "zone": "commentary",
-        "role": "body",
-        "what": "takeaway column",
-        "base_pt": 12.0,
-        "chosen_pt": 12.0,
-        "need_h": 0.39,
-        "box_h": 0.54,
-        "lines": 2,
+        "need_h": 1.597,
+        "box_h": 4.815,
+        "lines": 6,
         "overflow": false
       }
     ],
@@ -275,7 +242,7 @@
         "series": 5,
         "scale": [
           0,
-          187.5,
+          175.0,
           50
         ]
       }
@@ -760,21 +727,21 @@
   },
   {
     "slide_id": "s08",
-    "layout": "exhibit_takeaways_below",
+    "layout": "matrix_commentary",
     "zones": {
       "exhibit": {
         "role": "exhibit",
         "x": 0.55,
         "y": 1.62,
-        "w": 12.233,
-        "h": 4.25
+        "w": 7.0442,
+        "h": 5.16
       },
       "commentary": {
         "role": "commentary",
-        "x": 0.55,
-        "y": 6.09,
-        "w": 12.233,
-        "h": 0.69
+        "x": 7.8142,
+        "y": 1.62,
+        "w": 4.9687,
+        "h": 5.16
       }
     },
     "fits": [
@@ -858,34 +825,12 @@
       {
         "zone": "commentary",
         "role": "body",
-        "what": "takeaway column",
+        "what": "commentary",
         "base_pt": 12.0,
         "chosen_pt": 12.0,
-        "need_h": 0.39,
-        "box_h": 0.54,
-        "lines": 2,
-        "overflow": false
-      },
-      {
-        "zone": "commentary",
-        "role": "body",
-        "what": "takeaway column",
-        "base_pt": 12.0,
-        "chosen_pt": 12.0,
-        "need_h": 0.39,
-        "box_h": 0.54,
-        "lines": 2,
-        "overflow": false
-      },
-      {
-        "zone": "commentary",
-        "role": "body",
-        "what": "takeaway column",
-        "base_pt": 12.0,
-        "chosen_pt": 12.0,
-        "need_h": 0.39,
-        "box_h": 0.54,
-        "lines": 2,
+        "need_h": 1.275,
+        "box_h": 5.16,
+        "lines": 5,
         "overflow": false
       }
     ],

@@ -126,7 +126,7 @@ Open each PNG, answer the questions (0 = no, 1 = partly, 2 = yes), and write
 
 - **Headline:** Alvora is stuck in the middle: priced above discounters without a clear experience edge
 - **Purpose:** Show Alvora's competitive position
-- **Layout:** `exhibit_takeaways_below` — explicit in spec
+- **Layout:** `matrix_commentary` — explicit in spec
 - **Visual:** `portfolio` — explicit in spec
 
   - [ ] Does the slide communicate ONE clear idea?

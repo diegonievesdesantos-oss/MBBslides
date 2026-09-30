@@ -12,8 +12,8 @@ PowerPoint** built the way strategy consultants build decks: an explicit storyli
 per slide with conclusion headlines, and visuals chosen by the message. It then renders the deck,
 measures its visual quality, and corrects what it can. The pass/fail verdict is computed by code.
 
-> **v1.1** makes visual quality *testable rather than subjective*, adapts the composition to the
-> amount of content, and can inherit the visual identity of an existing corporate PowerPoint.
+> **v1.2** makes visual quality *reproducible, archetype-aware and independently evaluable*, and
+> understands real corporate PowerPoint systems — every master, layout, font and convention.
 
 <!-- metrics:start (generated from evals/results/latest.json by `cpe results readme`; do not edit) -->
 
@@ -35,31 +35,31 @@ Three independent signals, never combined into one number ([why](docs/EVALS.md))
 
 <!-- metrics:end -->
 
-## What's new in v1.1
+## What's new in v1.2
 
-- **Visual-quality evals** (`cpe eval`). Eight stress decks built to break the engine: sparse
-  content, text overload, small and large tables, many series, very long numbers, Spanish content,
-  dense diagrams, waterfalls and long headlines. Every render gets a composition score from eight
-  metrics: dead space, canvas use, balance, density, focal-point strength, visible proof of the
-  headline, hierarchy and alignment rhythm. CI blocks a merge if a case crashes, gains QA errors,
-  or loses composition points against [`evals/baseline.json`](evals/baseline.json).
-  Measured with the same metrics, the suite went from **77.6 (v1.0) to 83.8 (v1.1)**
-  ([details](evals/results/v1.0_vs_v1.1.md)).
-- **Composition engine.** Layout selection finds the layouts that are *compatible* with the
-  content. The composition engine then renders the candidates (layout × content scale × table
-  stretch), scores them, and keeps the one that reads best with *this amount* of content. It also
-  names the options that are "technically compatible but editorially weak". Example: on the demo's
-  decisions slide, v1.0 left half the slide empty; v1.1 scores its choice 23 points higher.
-- **Corporate templates** (`cpe brand ingest template.pptx`). The engine reads the template's theme
-  colours, fonts, masters, layouts, placeholders and logos, and writes a compatibility report:
-  fonts detected / installed / missing, the substitute used for measuring and for rendering, and
-  what is not supported. It never silently produces a different deck. Decks are then generated on
-  the template's own masters. [See the example](examples/brand/).
-- **Proof on the slide.** When the headline quotes a change, a CAGR, the last period's growth, a
-  waterfall's total delta or a top-k share, the exhibit shows it. One-series charts get a single
-  default focus instead of all bars in the accent colour.
-- **Repo hygiene.** Apache-2.0 license, GitHub Actions (lint, tests, regression decks and evals),
-  and 50 tests.
+- **Reproducible benchmark.** One pinned visual environment (`docker/Dockerfile`: base image by
+  digest, Ubuntu archive snapshot, exact LibreOffice / fontconfig / FreeType / HarfBuzz / FriBiDi /
+  font versions, locked Python packages) used locally (`scripts/cpe-docker`) and in CI. Every eval
+  records an environment manifest and render fingerprint; `cpe repro` renders twice and requires
+  pixel-identical output. CI runs on `ubuntu-24.04` with Node 24 actions pinned to SHAs.
+  [docs/REPRODUCIBILITY.md](docs/REPRODUCIBILITY.md)
+- **Archetype-aware composition.** A statement slide should breathe; a table should not float in
+  half an empty slide. 17 archetypes, each with an expected visual profile; the composition score is
+  now *fitness to the archetype*. Composition is editorial advice, separate from hard QA; candidate
+  selection names layouts that are "technically compatible but inappropriate for this content
+  volume". [docs/COMPOSITION_SCORING.md](docs/COMPOSITION_SCORING.md)
+- **Three separate evaluation signals.** Regression (development set, gates CI) ≠ holdout (sealed
+  unseen cases + private corporate templates, reported, never tuned on) ≠ human preference (a blind
+  A/B tool with Wilson intervals and inter-rater agreement). Never merged into one number.
+  [docs/EVALS.md](docs/EVALS.md)
+- **Corporate template intelligence.** `cpe brand ingest` reads every master, classifies every
+  layout by geometry and by how the example slides use it, infers typography (theme vs actual
+  usage, with conflicts), palette, grid, logos and brand rules, and generates slides on the
+  template's own layouts (native → adaptive → fallback). [docs/BRAND_INGESTION.md](docs/BRAND_INGESTION.md)
+- `evals/results/latest.json` is the single source of truth: the table above is generated from it.
+
+v1.1 introduced the composition metrics, the composition engine, `cpe eval` and brand ingestion;
+see [CHANGELOG.md](CHANGELOG.md).
 
 ## How it works
 
@@ -88,8 +88,11 @@ pip install -r requirements.txt            # python-pptx, Pillow, lxml, PyMuPDF,
 # rendering: LibreOffice with Impress + metric-compatible fonts
 sudo apt-get install -y libreoffice-impress fonts-liberation fonts-crosextra-carlito fonts-crosextra-caladea
 # macOS: brew install --cask libreoffice
-pip install pytest && python -m pytest -q  # 50 tests
+pip install pytest && python -m pytest -q  # 85 tests
 ```
+
+Reproducible renders (recommended for benchmarks): `scripts/cpe-docker <command>` runs the same
+pinned environment as CI (Docker required; the image is built on first use).
 
 Optional: `pip install -e .` installs the `cpe` command. Without installing: `scripts/cpe <command>`.
 
@@ -114,11 +117,17 @@ scripts/cpe brand ingest corporate.pptx -o brands/acme     # theme.json + compat
 # in deck.json:  "meta": {"brand": "brands/acme", …}
 ```
 
-Quality benchmark:
+Evaluation (three separate signals, [docs/EVALS.md](docs/EVALS.md)):
 
 ```bash
-scripts/cpe eval                                  # evals/cases vs evals/baseline.json (exit 1 on regression)
-scripts/cpe eval --update-baseline                # accept an intentional change
+scripts/cpe-docker eval --suite regression        # development set vs baseline (exit 1 on regression)
+scripts/cpe-docker eval --suite regression --update-baseline --record   # accept an intended change
+scripts/cpe-docker eval --suite holdout --record  # sealed unseen cases: reported, never baselined
+scripts/cpe holdout private                       # corporate templates in .private/ (git-ignored)
+scripts/cpe human serve evals/human_reference/rounds/r1   # blind A/B page on localhost
+scripts/cpe human report evals/human_reference/rounds/r1 --record
+scripts/cpe repro examples/alvora/deck.json       # render twice, require identical output
+scripts/cpe results readme                        # regenerate the metrics table from latest.json
 scripts/cpe measure out/                          # composition metrics of any existing run
 ```
 
@@ -168,7 +177,11 @@ density profile (board / standard / analytical / status). Themes: `meridian`, `g
 | [docs/SPEC_REFERENCE.md](docs/SPEC_REFERENCE.md) | deck spec and patch reference |
 | [docs/LAYOUT_CATALOG.md](docs/LAYOUT_CATALOG.md) | 43 layouts in 16 families |
 | [docs/QA_CODES.md](docs/QA_CODES.md) | every QA code, its severity and remedy |
-| [evals/](evals/) | the benchmark, baseline and results |
+| [docs/EVALS.md](docs/EVALS.md) | regression ≠ holdout ≠ human evaluation, holdout protocol, A/B statistics |
+| [docs/COMPOSITION_SCORING.md](docs/COMPOSITION_SCORING.md) | archetypes, expected profiles, fitness, hard QA vs preference |
+| [docs/BRAND_INGESTION.md](docs/BRAND_INGESTION.md) | corporate template intelligence and layout matching |
+| [docs/REPRODUCIBILITY.md](docs/REPRODUCIBILITY.md) | pinned environment, manifest, reproducibility test, CI |
+| [evals/](evals/) | the suites, baseline and results |
 
 ## Troubleshooting
 
@@ -178,7 +191,9 @@ density profile (board / standard / analytical / status). Themes: `meridian`, `g
 | Rendering is slow or hangs | Another LibreOffice instance is running: the engine uses a temporary profile per conversion; kill stray instances (`pkill soffice`). |
 | Text widths differ from PowerPoint | Install the fonts (or their metric twins: Liberation for Arial/Times, Carlito for Calibri, Caladea for Cambria). The brand report says which fonts are measured exactly and which only approximately. |
 | `cpe eval` fails after an intended change | Read `eval_report.md`; if the change is intended, run `cpe eval --update-baseline` and commit the new baseline with the change. |
-| `COMPOSITION_DEAD_SPACE` / `COMPOSITION_UNDERUSED_CANVAS` | Even the best composition leaves the slide half empty: the content is too thin; add the proof or merge the slide. |
+| `COMPOSITION_*` in "Editorial advice" | A preference, not a QA defect (the verdict is unaffected): the composition does not fit what the slide is (e.g. a table using half the slide). Add the proof, merge the slide or accept it. |
+| `FONT WARNING` in the brand report | The corporate font is not installed here: text is measured and rendered with a substitute. Install the font or accept approximate line breaks. |
+| Scores differ from CI / the README | Run through `scripts/cpe-docker`; `eval_report.md` names what differs in the environment. |
 | `BRAND_RESERVED_OVERLAP` | Content covers the template's logo or artwork: shorten the element or pick another layout. |
 | `HEADLINE_NUMBER_UNSUPPORTED` | The headline number does not come from the data: add `evidence[].value(s)` or correct the number. |
 | `CONTENT_OVER_CAPACITY` | The text does not fit even at the minimum size: cut the indicated number of words or split the slide. |
@@ -187,11 +202,16 @@ density profile (board / standard / analytical / status). Themes: `meridian`, `g
 ## Known limitations
 
 - Verification rendering uses LibreOffice; PowerPoint may break lines slightly differently.
-- Brand templates must use the 13.333×7.5 in canvas for their masters to be used. Other sizes get
-  colours and fonts only, and the report says so.
+- Brand templates must be 16:9 for their masters to be used (10 in pages are rescaled). Other
+  ratios get colours and fonts only, and the report says so.
+- Brand inference follows font and colour inheritance only down to the master text styles; a
+  template that styles its master placeholders differently from its text styles can be misread
+  (found on a private corporate holdout; see CHANGELOG "Holdout findings").
+- The proof check does not yet recognise derived headline numbers (a sum, a ratio) as proven.
+- Human-preference results depend on the votes collected; round r1 is built and awaiting votes.
 - Maps are editable *tile maps* (cartograms), not choropleth maps with real borders.
-- Composition metrics are heuristics calibrated on this engine's own output; they catch the
-  failures in the eval suite but do not replace a human visual review.
+- Composition fitness is a heuristic calibrated on the development set; the holdout gap and the
+  human A/B rounds exist to tell how well it generalises. It does not replace a visual review.
 - Storyline quality depends on the agent; the engine structures and checks it, it does not invent it.
 
 ## License
