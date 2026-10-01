@@ -1,7 +1,7 @@
 {
   "suite_composition": 95.1,
   "environment_fingerprint": "f98cee49d123ed5f",
-  "engine_version": "1.5.0rc1",
+  "engine_version": "1.6.0rc1",
   "archetype_counts": {
     "architecture": 9,
     "chart": 18,
