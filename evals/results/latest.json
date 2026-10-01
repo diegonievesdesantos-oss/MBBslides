@@ -1962,6 +1962,113 @@
         "status": "votes received (1 expert evaluator) — FIRST EXTERNAL CASE (owner's corporate business case, kept private: no case content in the repository). Protocol 1.2 preferred, 1/1 decisive, consistent on the side-swapped repeat. One case: a signal, not validation.",
         "case_type": "document → storyline (already-analysed business case)",
         "privacy": "round, key, storylines and case under .private/ (gitignored)"
+      },
+      "s4": {
+        "evaluators": 1,
+        "comparisons": 5,
+        "challenger_wins": 1,
+        "baseline_wins": 4,
+        "ties": 0,
+        "challenger_preference": 0.2,
+        "challenger_preference_ci95": [
+          0.036,
+          0.624
+        ],
+        "ties_as_half": 0.2,
+        "by_comparison": {
+          "agent_baseline->agent_protocol_1.3": {
+            "comparisons": 5,
+            "challenger_wins": 1,
+            "baseline_wins": 4,
+            "ties": 0,
+            "challenger_preference": 0.2,
+            "challenger_preference_ci95": [
+              0.036,
+              0.624
+            ],
+            "ties_as_half": 0.2
+          }
+        },
+        "score_agreement": {
+          "decisive_votes_with_score_gap": 0,
+          "agree": 0,
+          "rate": null,
+          "ci95": [
+            null,
+            null
+          ]
+        },
+        "pair_agreement": {
+          "pairs_with_votes": 5,
+          "decisive_pairs": 0,
+          "agree": 0,
+          "disagree": 0,
+          "ties": 5,
+          "rate": null,
+          "ci95": [
+            null,
+            null
+          ],
+          "by_score_gap": {
+            "|Δ| < 5": {
+              "pairs": 0,
+              "agree": 0,
+              "rate": null,
+              "ci95": [
+                null,
+                null
+              ]
+            },
+            "5 ≤ |Δ| < 15": {
+              "pairs": 0,
+              "agree": 0,
+              "rate": null,
+              "ci95": [
+                null,
+                null
+              ]
+            },
+            "|Δ| ≥ 15": {
+              "pairs": 0,
+              "agree": 0,
+              "rate": null,
+              "ci95": [
+                null,
+                null
+              ]
+            }
+          }
+        },
+        "score_human_correlation": {
+          "method": "Kendall tau-b between score delta (challenger − baseline) and human majority (+1/0/−1), percentile bootstrap 95% CI",
+          "n": 0,
+          "tau_b": null,
+          "ci95": [
+            null,
+            null
+          ]
+        },
+        "inter_rater": {
+          "note": "one evaluator: agreement needs ≥2"
+        },
+        "self_consistency": {
+          "repeated_pairs": 2,
+          "consistent": 2,
+          "note": "WITHIN-rater: the same person on a side-swapped repeat; not between-rater agreement"
+        },
+        "left_bias": {
+          "left_share": 0.8,
+          "ci95": [
+            0.376,
+            0.964
+          ]
+        },
+        "method": "Preference = challenger wins / decisive votes, Wilson 95% interval (ties excluded; ties-as-half also shown). Agreement: percent agreement and Fleiss' kappa over {baseline, challenger, tie} on pairs rated by ≥2 evaluators. Human preference is an independent signal and is never part of the automatic composition score.",
+        "blind": true,
+        "used_for_calibration": false,
+        "status": "votes received (1 expert evaluator) — 5 EXTERNAL raw-data cases written by the owner (private: no case content in the repository). Baseline agent preferred 4–1 over protocol 1.3; consistent on both side-swapped repeats; left chosen in 4 of 5 decisive votes.",
+        "case_type": "raw data + documents → storyline",
+        "privacy": "cases, storylines, round, key and votes under .private/ (gitignored)"
       }
     }
   },

@@ -168,3 +168,28 @@ The owner supplied a corporate business case. It and everything derived from it 
 were not split; rate and period headers were taken as units.
 
 One case is a signal. Evidence needs 4–6 external cases.
+
+## Five external raw-data cases (round s4, private)
+
+The owner wrote five cases with raw data and documents: operations, SaaS churn, restaurant P&L, a
+customer-service organisation and a marketing budget. No case content is in the repository.
+
+| | |
+|---|---|
+| systems | agent without protocol vs agent with protocol 1.3, independent, blind |
+| verdict | **baseline preferred 4–1** (Wilson 95% CI for the protocol 0.04–0.62); consistent on both side-swapped repeats; left side chosen in 4 of 5 decisive votes |
+| check | all five protocol runs pass the reasoning check (0 hard failures); the data cleaning they did is recorded in their scripts |
+
+**First reading, to confirm with the expert's feedback:**
+- **Substance converges.** In the three cases read so far, both systems reach the same recommendation and
+  catch the same data problems (the double-loaded batch, the non-recurring reform, the central cost that stays).
+- **The protocol runs are about 30% shorter.** They drop concrete detail that the baseline keeps: deadlines
+  ("comunicar antes del 31/12/2026"), the mechanism told as a story, and the bridge from numbers to action.
+- **Several cuts were forced by tool friction.** Agents rewrote dates and ratios to get past false
+  UNSUPPORTED_NUMBER errors; those parser bugs are fixed since. Checks that cost the reader concrete
+  information are a product defect.
+- **The protocol runs hedge more** (upper bounds, "siempre que …"). That is precise, but it may read as less decisive.
+
+**This is the first round where the protocol loses clearly, on the hardest and most realistic cases.**
+The automatic checks measure verifiability; the expert judges the storyline as a client document.
+The next protocol version must not trade readability for traceability.
