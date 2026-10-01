@@ -1,0 +1,10 @@
+{
+  "status": "development run — NOT evidence",
+  "date": "2026-10-01",
+  "experiment": "02, end to end (raw sources → rendered deck)",
+  "model": "Claude (independent subagent of the developing session; exact model per session metadata)",
+  "input": "runs/protocol_agent_02 (protocol 1.1 reasoning artifacts)",
+  "passes": "protocol pass 11–12 (slide intents, visuals) + cpe run render loop",
+  "result": "reason check PASS (0 errors, 0 hard); render QA 0 errors, 11 warnings; deck score 95.0, composition 99.7",
+  "facts_note": "two unused year facts (F0001, F0007, from an older extractor) were removed from facts.json; see docs/S2D_EXPERIMENT_02.md"
+}

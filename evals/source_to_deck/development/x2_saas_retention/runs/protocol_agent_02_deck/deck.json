@@ -1,0 +1,1305 @@
+{
+  "meta": {
+    "title": "2026 growth investment: fix retention before adding sales capacity",
+    "subtitle": "Board discussion",
+    "client": "B2B SaaS company",
+    "date": "Q1 2026",
+    "deck_type": "board_presentation",
+    "theme": "meridian",
+    "confidentiality": "Board confidential"
+  },
+  "storyline": {
+    "framework": "SCR",
+    "audience": "CEO, CFO and Board",
+    "decision_sought": "Approve the 2026 growth investment (the CRO proposes hiring 30 account executives)",
+    "governing_thought": "Growth slowed because we lost customers, not deals: higher churn explains 80.4% of the €5.6M fall in net new ARR, concentrated in first-year customers after the onboarding cut. Fund retention first (restore onboarding, €0.8M) with a gated first wave of 10 AEs, for €2.0M a year instead of €3.6M, rather than 30 AEs whose 2026 yield is at most an estimated €4.5M, not the €9M promised.",
+    "key_line": [
+      {
+        "id": "K1",
+        "role": "problem",
+        "message": "Growth slowed because churn more than doubled to €7.8M and explains 80.4% of the €5.6M fall in net new ARR; the sales engine kept growing pipeline 18.0% at a stable win rate"
+      },
+      {
+        "id": "K2",
+        "role": "cause",
+        "message": "The leak sits in the first year: new customers churned 26% versus 12% in 2024 after onboarding was cut to save €0.8M, costing €2.5M of ARR"
+      },
+      {
+        "id": "K3",
+        "role": "risk",
+        "message": "The 30-AE plan does not hold: with a 9-month ramp it yields at most €4.5M in 2026, not €9M, for €3.6M a year, and pours new customers into the leak"
+      },
+      {
+        "id": "K4",
+        "role": "solution",
+        "message": "A retention-first plan for €2.0M a year identifies up to €5.3M of the €5.6M needed, with AE wave 2 gated on retention"
+      }
+    ]
+  },
+  "slides": [
+    {
+      "id": "S1",
+      "kind": "cover",
+      "title": "2026 growth investment: fix retention before adding sales capacity",
+      "subtitle": "Board discussion: why ARR growth slowed and where the 2026 budget should go"
+    },
+    {
+      "id": "S2",
+      "kind": "exec_summary",
+      "tracker": "Executive summary",
+      "purpose": "Answer first: diagnosis, plan test, recommendation and asks",
+      "headline": "Churn, not sales, cut net new ARR by €5.6M; we recommend a retention-first plan at an estimated €2.0M a year instead of €3.6M for 30 AEs",
+      "evidence": [
+        {
+          "fact": "C0003",
+          "claim": "Fall in net new ARR from 2024 to 2025",
+          "values": [
+            5.6
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "C0025",
+          "claim": "Annual cost of the retention-first plan: restore the onboarding team (reverse the 0.8 EUR M cut) plus 10 AEs (0.8 = annual saving of the onboarding cut, F0061)",
+          "values": [
+            2.0
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "F0058",
+          "claim": "We propose to hire 30 account executives in Q1 2026 (3.6 EUR M per year fully loaded), which will add 9 EUR M of new ARR in 2026.",
+          "values": [
+            30.0,
+            3.6,
+            9.0
+          ],
+          "source": "board_pack_Q4_2025.pdf"
+        },
+        {
+          "fact": "C0007",
+          "claim": "Share of the fall in net new ARR explained by higher churn",
+          "values": [
+            80.4
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "C0020",
+          "claim": "Upper bound of 2026 new ARR from 30 AEs hired in Q1 2026, given A001",
+          "values": [
+            4.5
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "C0028",
+          "claim": "Identified 2026 net new ARR uplift of the retention-first plan (L1 + L2 + L3)",
+          "values": [
+            5.3
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "C0029",
+          "claim": "Remaining gap to the 2024 net new ARR level",
+          "values": [
+            0.3
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "F0047",
+          "claim": "Onboarded in the previous 12 months — Churn rate 2025 (%): 26 PCT",
+          "values": [
+            26.0
+          ],
+          "source": "crm_export.xlsx"
+        },
+        {
+          "fact": "F0063",
+          "claim": "In 2024, first-year customers churned 12%.",
+          "values": [
+            12.0
+          ],
+          "source": "customer_success_notes.md"
+        }
+      ],
+      "visual": {
+        "type": "statements",
+        "style": "scr",
+        "data": {
+          "style": "numbered",
+          "items": [
+            {
+              "title": "Churn, not sales, broke growth",
+              "text": "Net new ARR fell €5.6M to €4.8M; higher churn explains 80.4% while pipeline grew 18.0%."
+            },
+            {
+              "title": "The leak is in first-year customers",
+              "text": "First-year churn rose from 12% to 26% after a €0.8M onboarding cut, costing €2.5M of ARR."
+            },
+            {
+              "title": "The 30-AE plan does not hold",
+              "text": "With a 9-month ramp, 30 AEs yield at most an estimated €4.5M in 2026, not €9M."
+            },
+            {
+              "title": "Retention first closes most of the gap for less",
+              "text": "Onboarding plus 10 AEs: an estimated €2.0M a year for up to €5.3M of the €5.6M; AE wave 2 gated in June."
+            }
+          ]
+        }
+      },
+      "source": "Source: ARR bridge, CRM export, board pack Q4 2025, customer success notes; team analysis. Estimates rest on assumptions A001-A003"
+    },
+    {
+      "id": "S3",
+      "section": "K1",
+      "tracker": "Diagnosis: ARR bridge",
+      "purpose": "Show where the slowdown came from in the ARR bridge",
+      "headline": "Higher churn explains 80.4% of the €5.6M fall in net new ARR; new-logo ARR still grew €0.2M",
+      "message_type": "change_bridge",
+      "supporting_message": "Churn and expansion broke the bridge; acquisition held",
+      "evidence": [
+        {
+          "fact": "C0001",
+          "claim": "Net new ARR 2024 = closing minus opening ARR",
+          "values": [
+            10.4
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "C0002",
+          "claim": "Net new ARR 2025 = closing minus opening ARR",
+          "values": [
+            4.8
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "C0003",
+          "claim": "Fall in net new ARR from 2024 to 2025",
+          "values": [
+            5.6
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "C0004",
+          "claim": "Increase in churned ARR 2025 vs 2024",
+          "values": [
+            4.5
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "C0005",
+          "claim": "Decline in expansion ARR 2025 vs 2024",
+          "values": [
+            1.3
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "C0006",
+          "claim": "Change in new-logo ARR 2025 vs 2024",
+          "values": [
+            0.2
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "C0007",
+          "claim": "Share of the fall in net new ARR explained by higher churn",
+          "values": [
+            80.4
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "F0002",
+          "claim": "row 2 — opening_arr_eur_m: 41.6 EUR",
+          "values": [
+            41.6
+          ],
+          "source": "arr_bridge.csv"
+        },
+        {
+          "fact": "F0006",
+          "claim": "row 2 — closing_arr_eur_m: 52 EUR",
+          "values": [
+            52.0
+          ],
+          "source": "arr_bridge.csv"
+        },
+        {
+          "fact": "F0008",
+          "claim": "row 3 — opening_arr_eur_m: 52 EUR",
+          "values": [
+            52.0
+          ],
+          "source": "arr_bridge.csv"
+        },
+        {
+          "fact": "F0012",
+          "claim": "row 3 — closing_arr_eur_m: 56.8 EUR",
+          "values": [
+            56.8
+          ],
+          "source": "arr_bridge.csv"
+        },
+        {
+          "fact": "F0003",
+          "claim": "row 2 — new_arr_eur_m: 9.4 EUR",
+          "values": [
+            9.4
+          ],
+          "source": "arr_bridge.csv"
+        },
+        {
+          "fact": "F0009",
+          "claim": "row 3 — new_arr_eur_m: 9.6 EUR",
+          "values": [
+            9.6
+          ],
+          "source": "arr_bridge.csv"
+        },
+        {
+          "fact": "F0004",
+          "claim": "row 2 — expansion_arr_eur_m: 4.3 EUR",
+          "values": [
+            4.3
+          ],
+          "source": "arr_bridge.csv"
+        },
+        {
+          "fact": "F0010",
+          "claim": "row 3 — expansion_arr_eur_m: 3 EUR",
+          "values": [
+            3.0
+          ],
+          "source": "arr_bridge.csv"
+        },
+        {
+          "fact": "F0005",
+          "claim": "row 2 — churned_arr_eur_m: 3.3 EUR",
+          "values": [
+            3.3
+          ],
+          "source": "arr_bridge.csv"
+        },
+        {
+          "fact": "F0011",
+          "claim": "row 3 — churned_arr_eur_m: 7.8 EUR",
+          "values": [
+            7.8
+          ],
+          "source": "arr_bridge.csv"
+        }
+      ],
+      "visual": {
+        "type": "waterfall",
+        "title": "Net new ARR bridge, 2024 to 2025",
+        "unit": "€M",
+        "format": {
+          "decimals": 1
+        },
+        "highlight": [
+          "Higher churn"
+        ],
+        "delta_colors": "neutral",
+        "data": {
+          "steps": [
+            {
+              "label": "Net new ARR 2024",
+              "value": 10.4,
+              "type": "total"
+            },
+            {
+              "label": "More new-logo ARR",
+              "value": 0.2
+            },
+            {
+              "label": "Less expansion",
+              "value": -1.3
+            },
+            {
+              "label": "Higher churn",
+              "value": -4.5
+            },
+            {
+              "label": "Net new ARR 2025",
+              "type": "total"
+            }
+          ]
+        }
+      },
+      "commentary": {
+        "title": "Churn, not acquisition, broke the bridge",
+        "points": [
+          "**Churn (−€4.5M), 80.4% of the fall:** churned ARR more than doubled, from €3.3M to €7.8M",
+          "**Expansion (−€1.3M):** fell from €4.3M to €3.0M; cause not yet established",
+          "**New logos (+€0.2M):** €9.4M to €9.6M; acquisition held up"
+        ]
+      },
+      "source": "Source: ARR bridge 2024-25 (arr_bridge.csv); team analysis"
+    },
+    {
+      "id": "S4",
+      "section": "K1",
+      "tracker": "Diagnosis: sales engine",
+      "purpose": "Test the CRO's price-competitor diagnosis against the funnel",
+      "headline": "The sales engine did not break: pipeline grew 18.0%, deals won rose from 175 to 193 and only 31% of churned customers cite a competitor or price",
+      "message_type": "comparison",
+      "supporting_message": "The CRO's price-competitor diagnosis is not what the funnel and the exit interviews show",
+      "evidence": [
+        {
+          "fact": "C0012",
+          "claim": "Pipeline created 2024 (sum of quarters)",
+          "values": [
+            38.9
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "C0013",
+          "claim": "Pipeline created 2025 (sum of quarters)",
+          "values": [
+            45.9
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "C0014",
+          "claim": "Growth in pipeline created 2025 vs 2024",
+          "values": [
+            18.0
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "C0015",
+          "claim": "Deals won 2024 (sum of quarters)",
+          "values": [
+            175
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "C0016",
+          "claim": "Deals won 2025 (sum of quarters)",
+          "values": [
+            193
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "C0026",
+          "claim": "Exit interviews 2025: share of churned customers citing a competitor or price (17% + 14%)",
+          "values": [
+            31
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "F0015",
+          "claim": "row 2 — Win rate (%): 24 PCT",
+          "values": [
+            24.0
+          ],
+          "source": "crm_export.xlsx"
+        },
+        {
+          "fact": "F0019",
+          "claim": "row 3 — Win rate (%): 25 PCT",
+          "values": [
+            25.0
+          ],
+          "source": "crm_export.xlsx"
+        },
+        {
+          "fact": "F0043",
+          "claim": "row 9 — Win rate (%): 23 PCT",
+          "values": [
+            23.0
+          ],
+          "source": "crm_export.xlsx"
+        },
+        {
+          "fact": "F0064",
+          "claim": "Exit interviews 2025 (64 churned customers): 58% say they never fully implemented the product, 17% moved to a competitor, 14% cite price.",
+          "values": [
+            64.0,
+            58.0,
+            17.0,
+            14.0
+          ],
+          "source": "customer_success_notes.md"
+        },
+        {
+          "fact": "C0017",
+          "claim": "Average new ARR per deal won 2024 (EUR k)",
+          "values": [
+            53.7
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "C0018",
+          "claim": "Average new ARR per deal won 2025 (EUR k)",
+          "values": [
+            49.7
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "F0054",
+          "claim": "Price — Share of lost deals 2025 (%): 34 PCT",
+          "values": [
+            34.0
+          ],
+          "source": "crm_export.xlsx"
+        }
+      ],
+      "kpis": {
+        "items": [
+          {
+            "value": "+18.0%",
+            "label": "Pipeline created, €38.9M to €45.9M (2024 to 2025)",
+            "trend": "up",
+            "good": "up"
+          },
+          {
+            "value": "175 → 193",
+            "label": "Deals won, 2024 to 2025",
+            "trend": "up",
+            "good": "up"
+          },
+          {
+            "value": "23-25%",
+            "label": "Quarterly win rate, stable through 2024-25",
+            "trend": "flat"
+          }
+        ]
+      },
+      "visual": {
+        "type": "bar",
+        "title": "Reasons given by churned customers, 2025 exit interviews (n=64)",
+        "unit": "% of churned customers",
+        "highlight": [
+          "Never fully implemented"
+        ],
+        "sort": "desc",
+        "format": {
+          "decimals": 0,
+          "suffix": "%"
+        },
+        "data": {
+          "categories": [
+            "Never fully implemented",
+            "Moved to a competitor",
+            "Price"
+          ],
+          "series": [
+            {
+              "name": "Share",
+              "values": [
+                58,
+                17,
+                14
+              ]
+            }
+          ]
+        }
+      },
+      "takeaway": "Price pressure is real but marginal: new ARR per deal slipped from €53.7k to €49.7k; price is 34% of lost deals",
+      "source": "Source: CRM export, funnel and lost-deals sheets (crm_export.xlsx); customer success notes (customer_success_notes.md); team analysis"
+    },
+    {
+      "id": "S5",
+      "section": "K2",
+      "tracker": "Cause: where the leak is",
+      "purpose": "Locate the leak by cohort",
+      "headline": "First-year customers churned 26% versus 12% in 2024 and supplied 60.3% of churned ARR; mature customers churned 9%",
+      "message_type": "comparison",
+      "evidence": [
+        {
+          "fact": "F0047",
+          "claim": "Onboarded in the previous 12 months — Churn rate 2025 (%): 26 PCT",
+          "values": [
+            26.0
+          ],
+          "source": "crm_export.xlsx"
+        },
+        {
+          "fact": "F0063",
+          "claim": "In 2024, first-year customers churned 12%.",
+          "values": [
+            12.0
+          ],
+          "source": "customer_success_notes.md"
+        },
+        {
+          "fact": "C0011",
+          "claim": "Rise in first-year churn rate 2025 vs 2024",
+          "values": [
+            14
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "C0010",
+          "claim": "Share of 2025 churned ARR coming from customers onboarded in the previous 12 months",
+          "values": [
+            60.3
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "F0050",
+          "claim": "Customers for more than 12 months — Churn rate 2025 (%): 9 PCT",
+          "values": [
+            9.0
+          ],
+          "source": "crm_export.xlsx"
+        },
+        {
+          "fact": "F0046",
+          "claim": "Onboarded in the previous 12 months — ARR churned in 2025 (EUR M): 4.7 EUR_M",
+          "values": [
+            4.7
+          ],
+          "source": "crm_export.xlsx"
+        },
+        {
+          "fact": "F0052",
+          "claim": "Total — ARR churned in 2025 (EUR M): 7.8 EUR_M",
+          "values": [
+            7.8
+          ],
+          "source": "crm_export.xlsx"
+        },
+        {
+          "fact": "F0049",
+          "claim": "Customers for more than 12 months — ARR churned in 2025 (EUR M): 3.1 EUR_M",
+          "values": [
+            3.1
+          ],
+          "source": "crm_export.xlsx"
+        }
+      ],
+      "exhibits": [
+        {
+          "type": "column",
+          "title": "Churn rate by customer tenure",
+          "unit": "% of opening ARR",
+          "highlight": [
+            "First-year 2025"
+          ],
+          "format": {
+            "decimals": 0,
+            "suffix": "%"
+          },
+          "data": {
+            "categories": [
+              "First-year 2024",
+              "First-year 2025",
+              "Mature 2025"
+            ],
+            "series": [
+              {
+                "name": "Churn rate",
+                "values": [
+                  12,
+                  26,
+                  9
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "bar",
+          "title": "Churned ARR by tenure, 2025",
+          "unit": "€M",
+          "highlight": [
+            "First-year customers"
+          ],
+          "format": {
+            "decimals": 1
+          },
+          "data": {
+            "categories": [
+              "First-year customers",
+              "Mature customers"
+            ],
+            "series": [
+              {
+                "name": "Churned ARR",
+                "values": [
+                  4.7,
+                  3.1
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "takeaway": "First-year customers supplied €4.7M of the €7.8M churned (60.3%): the leak is in onboarding, not in the mature base",
+      "source": "Source: CRM export, cohorts sheet (crm_export.xlsx); customer success notes (customer_success_notes.md)",
+      "footnotes": [
+        "First-year = onboarded in the previous 12 months; mature = customers for more than 12 months. No 2024 rate is available for mature customers"
+      ]
+    },
+    {
+      "id": "S6",
+      "section": "K2",
+      "tracker": "Cause: onboarding cut",
+      "purpose": "Link the leak to the onboarding cut and size its cost",
+      "headline": "Cutting onboarding saved €0.8M but more than doubled time to first value (21 to 48 days) and cost about €2.5M of ARR",
+      "message_type": "sequence",
+      "evidence": [
+        {
+          "fact": "F0061",
+          "claim": "The onboarding team was reduced from 14 to 6 people in February 2025 (saving 0.8 EUR M per year).",
+          "values": [
+            14.0,
+            0.8
+          ],
+          "source": "customer_success_notes.md"
+        },
+        {
+          "fact": "F0062",
+          "claim": "Median time to first value rose from 21 days in 2024 to 48 days in 2025.",
+          "values": [
+            21.0,
+            48.0
+          ],
+          "source": "customer_success_notes.md"
+        },
+        {
+          "fact": "F0064",
+          "claim": "Exit interviews 2025 (64 churned customers): 58% say they never fully implemented the product, 17% moved to a competitor, 14% cite price.",
+          "values": [
+            64.0,
+            58.0,
+            17.0,
+            14.0
+          ],
+          "source": "customer_success_notes.md"
+        },
+        {
+          "fact": "C0008",
+          "claim": "First-year churn 2025 had the cohort churned at the 2024 first-year rate of 12%",
+          "values": [
+            2.2
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "C0009",
+          "claim": "Excess first-year churn in 2025 above the 2024 first-year rate",
+          "values": [
+            2.5
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "F0045",
+          "claim": "Onboarded in the previous 12 months — ARR at start of 2025 (EUR M): 18.2 EUR_M",
+          "values": [
+            18.2
+          ],
+          "source": "crm_export.xlsx"
+        },
+        {
+          "fact": "F0046",
+          "claim": "Onboarded in the previous 12 months — ARR churned in 2025 (EUR M): 4.7 EUR_M",
+          "values": [
+            4.7
+          ],
+          "source": "crm_export.xlsx"
+        },
+        {
+          "fact": "F0063",
+          "claim": "In 2024, first-year customers churned 12%.",
+          "values": [
+            12.0
+          ],
+          "source": "customer_success_notes.md"
+        }
+      ],
+      "visual": {
+        "type": "process",
+        "highlight": [
+          3
+        ],
+        "data": {
+          "steps": [
+            {
+              "title": "Onboarding team cut",
+              "text": "February 2025, to save €0.8M a year",
+              "metric": "14 → 6",
+              "metric_label": "onboarding staff"
+            },
+            {
+              "title": "Customers wait longer",
+              "text": "Median time to first value, 2024 to 2025",
+              "metric": "21 → 48",
+              "metric_label": "days"
+            },
+            {
+              "title": "Customers don't go live",
+              "text": "Of 64 churned customers in 2025 exit interviews",
+              "metric": "58%",
+              "metric_label": "never fully implemented"
+            },
+            {
+              "title": "First-year churn spikes",
+              "text": "€4.7M churned vs €2.2M at the 2024 rate of 12%",
+              "metric": "€2.5M",
+              "metric_label": "excess ARR lost"
+            }
+          ]
+        }
+      },
+      "takeaway": "Restoring the team is lever L1; causality is inferred from timing and exit interviews, not a controlled test",
+      "source": "Source: customer success notes (customer_success_notes.md); CRM export, cohorts sheet (crm_export.xlsx); team analysis"
+    },
+    {
+      "id": "S7",
+      "section": "K3",
+      "tracker": "Current plan test",
+      "purpose": "Test the plan in force",
+      "headline": "30 AEs hired in Q1 deliver at most an estimated €4.5M in 2026, not €9M, because new AEs need 9 months to reach €300k (assumes a linear ramp)",
+      "message_type": "comparison",
+      "evidence": [
+        {
+          "fact": "F0058",
+          "claim": "We propose to hire 30 account executives in Q1 2026 (3.6 EUR M per year fully loaded), which will add 9 EUR M of new ARR in 2026.",
+          "values": [
+            30.0,
+            3.6,
+            9.0
+          ],
+          "source": "board_pack_Q4_2025.pdf"
+        },
+        {
+          "fact": "F0065",
+          "claim": "New account executives reach full productivity (300 EUR k of new ARR per year) after 9 months.",
+          "values": [
+            300.0
+          ],
+          "source": "customer_success_notes.md"
+        },
+        {
+          "fact": "C0019",
+          "claim": "Full-year capacity of 30 fully productive AEs at 300 EUR k each (EUR M) - the CRO's 9 EUR M assumes no ramp",
+          "values": [
+            9.0
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "C0020",
+          "claim": "Upper bound of 2026 new ARR from 30 AEs hired in Q1 2026, given A001",
+          "values": [
+            4.5
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "C0021",
+          "claim": "Shortfall of the 30-AE plan versus the 9 EUR M promised for 2026",
+          "values": [
+            4.5
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "C0022",
+          "claim": "Fully loaded cost per AE per year (EUR M)",
+          "values": [
+            0.12
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "A001",
+          "claim": "An account executive hired in Q1 2026 delivers the equivalent of 6 fully productive months in 2026 (average start mid-February, linear ramp to full productivity over 9 months: 1.5 full months + 9 ramp months at 50%)",
+          "values": [
+            6
+          ],
+          "source": "assumptions.json"
+        }
+      ],
+      "visual": {
+        "type": "waterfall",
+        "title": "2026 new ARR from 30 AEs hired in Q1 2026",
+        "unit": "€M",
+        "format": {
+          "decimals": 1
+        },
+        "highlight": [
+          "9-month ramp"
+        ],
+        "delta_colors": "neutral",
+        "data": {
+          "steps": [
+            {
+              "label": "CRO promise (no ramp)",
+              "value": 9.0,
+              "type": "total"
+            },
+            {
+              "label": "9-month ramp",
+              "value": -4.5
+            },
+            {
+              "label": "Estimate, upper bound",
+              "type": "total"
+            }
+          ]
+        }
+      },
+      "commentary": {
+        "title": "Why €9M does not hold",
+        "points": [
+          "**€9M = 30 AEs × €300k × 12 months:** every AE fully productive from day one",
+          "**Ramp:** a Q1 hire gives about 6 productive months in 2026 (our assumption, note 1)",
+          "**Cost:** €3.6M a year fully loaded, €0.12M per AE",
+          "**Validate:** ramp of the 2025 AE hires before any offer letter"
+        ]
+      },
+      "source": "Source: board pack Q4 2025 (board_pack_Q4_2025.pdf); customer success notes (customer_success_notes.md); team estimate",
+      "footnotes": [
+        "Estimate: A001 assumes a mid-February start and a linear 9-month ramp (6 productive months in 2026); €4.5M is an upper bound"
+      ]
+    },
+    {
+      "id": "S8",
+      "section": "K4",
+      "tracker": "Options",
+      "purpose": "Compare costed options and show levers versus the target",
+      "headline": "Retention first costs an estimated €2.0M versus €3.6M and identifies up to €5.3M of the €5.6M needed, leaving an estimated €0.3M gap (levers are upper bounds)",
+      "message_type": "comparison",
+      "evidence": [
+        {
+          "fact": "C0025",
+          "claim": "Annual cost of the retention-first plan: restore the onboarding team (reverse the 0.8 EUR M cut) plus 10 AEs (0.8 = annual saving of the onboarding cut, F0061)",
+          "values": [
+            2.0
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "C0027",
+          "claim": "Annual budget freed versus the CRO plan by the retention-first plan",
+          "values": [
+            1.6
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "C0009",
+          "claim": "Excess first-year churn in 2025 above the 2024 first-year rate",
+          "values": [
+            2.5
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "C0005",
+          "claim": "Decline in expansion ARR 2025 vs 2024",
+          "values": [
+            1.3
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "C0023",
+          "claim": "Upper bound of 2026 new ARR from a first wave of 10 AEs hired in Q1 2026, given A001",
+          "values": [
+            1.5
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "C0028",
+          "claim": "Identified 2026 net new ARR uplift of the retention-first plan (L1 + L2 + L3)",
+          "values": [
+            5.3
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "C0029",
+          "claim": "Remaining gap to the 2024 net new ARR level",
+          "values": [
+            0.3
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "C0003",
+          "claim": "Fall in net new ARR from 2024 to 2025",
+          "values": [
+            5.6
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "F0002",
+          "claim": "row 2 — opening_arr_eur_m: 41.6 EUR",
+          "values": [
+            41.6
+          ],
+          "source": "arr_bridge.csv"
+        },
+        {
+          "fact": "F0006",
+          "claim": "row 2 — closing_arr_eur_m: 52 EUR",
+          "values": [
+            52.0
+          ],
+          "source": "arr_bridge.csv"
+        },
+        {
+          "fact": "F0008",
+          "claim": "row 3 — opening_arr_eur_m: 52 EUR",
+          "values": [
+            52.0
+          ],
+          "source": "arr_bridge.csv"
+        },
+        {
+          "fact": "F0012",
+          "claim": "row 3 — closing_arr_eur_m: 56.8 EUR",
+          "values": [
+            56.8
+          ],
+          "source": "arr_bridge.csv"
+        },
+        {
+          "fact": "F0004",
+          "claim": "row 2 — expansion_arr_eur_m: 4.3 EUR",
+          "values": [
+            4.3
+          ],
+          "source": "arr_bridge.csv"
+        },
+        {
+          "fact": "F0010",
+          "claim": "row 3 — expansion_arr_eur_m: 3 EUR",
+          "values": [
+            3.0
+          ],
+          "source": "arr_bridge.csv"
+        },
+        {
+          "fact": "F0045",
+          "claim": "Onboarded in the previous 12 months — ARR at start of 2025 (EUR M): 18.2 EUR_M",
+          "values": [
+            18.2
+          ],
+          "source": "crm_export.xlsx"
+        },
+        {
+          "fact": "F0046",
+          "claim": "Onboarded in the previous 12 months — ARR churned in 2025 (EUR M): 4.7 EUR_M",
+          "values": [
+            4.7
+          ],
+          "source": "crm_export.xlsx"
+        },
+        {
+          "fact": "F0058",
+          "claim": "We propose to hire 30 account executives in Q1 2026 (3.6 EUR M per year fully loaded), which will add 9 EUR M of new ARR in 2026.",
+          "values": [
+            30.0,
+            3.6,
+            9.0
+          ],
+          "source": "board_pack_Q4_2025.pdf"
+        },
+        {
+          "fact": "F0061",
+          "claim": "The onboarding team was reduced from 14 to 6 people in February 2025 (saving 0.8 EUR M per year).",
+          "values": [
+            14.0,
+            0.8
+          ],
+          "source": "customer_success_notes.md"
+        },
+        {
+          "fact": "C0024",
+          "claim": "Annual cost of a first wave of 10 AEs (EUR M)",
+          "values": [
+            1.2
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "C0020",
+          "claim": "Upper bound of 2026 new ARR from 30 AEs hired in Q1 2026, given A001",
+          "values": [
+            4.5
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "A001",
+          "claim": "An account executive hired in Q1 2026 delivers the equivalent of 6 fully productive months in 2026 (average start mid-February, linear ramp to full productivity over 9 months: 1.5 full months + 9 ramp months at 50%)",
+          "values": [
+            6
+          ],
+          "source": "assumptions.json"
+        },
+        {
+          "fact": "A002",
+          "claim": "The first-year cohort entering 2026 carries about the same ARR at risk as the 2025 first-year cohort (€18.2M), so restoring the 2024 first-year churn rate of 12% saves about the same €2.5M",
+          "values": [
+            18.2
+          ],
+          "source": "assumptions.json"
+        },
+        {
+          "fact": "A003",
+          "claim": "First hiring wave sized at 10 account executives (one third of the CRO request), a decision parameter rather than a data point",
+          "values": [
+            10
+          ],
+          "source": "assumptions.json"
+        }
+      ],
+      "exhibits": [
+        {
+          "type": "table",
+          "title": "Options, costed on the same annual basis",
+          "columns": [
+            {
+              "label": "Option",
+              "width": 2.4
+            },
+            {
+              "label": "€M a year",
+              "align": "right",
+              "width": 1.0
+            },
+            {
+              "label": "2026 ARR effect, €M",
+              "align": "right",
+              "width": 1.4
+            },
+            {
+              "label": "Fixes leak",
+              "width": 0.9
+            }
+          ],
+          "rows": [
+            [
+              "Keep CRO plan: 30 AEs in Q1",
+              "3.6",
+              "≤4.5, new logos only",
+              "No"
+            ],
+            {
+              "cells": [
+                "Retention first: onboarding + 10 AEs, wave 2 gated",
+                "2.0 (est.)",
+                "≤5.3",
+                "Yes"
+              ],
+              "style": "highlight"
+            },
+            [
+              "Onboarding only, no new AEs",
+              "0.8",
+              "≤2.5 + ≤1.3, no new logos",
+              "Yes"
+            ]
+          ]
+        },
+        {
+          "type": "waterfall",
+          "title": "Retention-first levers vs the €5.6M needed",
+          "unit": "€M, upper bounds",
+          "format": {
+            "decimals": 1
+          },
+          "highlight": [
+            "Gap"
+          ],
+          "delta_colors": "neutral",
+          "data": {
+            "steps": [
+              {
+                "label": "Onboarding (L1)",
+                "value": 2.5
+              },
+              {
+                "label": "Expansion (L2)",
+                "value": 1.3
+              },
+              {
+                "label": "10 AEs (L3)",
+                "value": 1.5
+              },
+              {
+                "label": "Identified",
+                "type": "subtotal"
+              },
+              {
+                "label": "Gap",
+                "value": 0.3
+              },
+              {
+                "label": "Needed",
+                "type": "total"
+              }
+            ]
+          }
+        }
+      ],
+      "takeaway": "Retention first frees an estimated €1.6M a year versus the CRO plan, held as a gated reserve for AE wave 2",
+      "source": "Source: board pack Q4 2025 (board_pack_Q4_2025.pdf); ARR bridge (arr_bridge.csv); customer success notes; team estimates",
+      "footnotes": [
+        "Upper bounds: L1 assumes a 2026 first-year cohort like 2025's (A002); L3 a linear ramp (A001) and a 10-AE wave (A003). Needed = back to 2024 net new ARR (inferred)"
+      ]
+    },
+    {
+      "id": "S9",
+      "section": "K4",
+      "tracker": "Decisions",
+      "purpose": "Approvable asks, gates and KPIs",
+      "headline": "Decisions today: reject 30 AEs, approve €0.8M for onboarding and a first wave of 10 AEs (our sizing), hold an estimated €1.6M until first-year churn is back at 12%",
+      "message_type": "recommendation",
+      "evidence": [
+        {
+          "fact": "F0058",
+          "claim": "We propose to hire 30 account executives in Q1 2026 (3.6 EUR M per year fully loaded), which will add 9 EUR M of new ARR in 2026.",
+          "values": [
+            30.0,
+            3.6,
+            9.0
+          ],
+          "source": "board_pack_Q4_2025.pdf"
+        },
+        {
+          "fact": "A003",
+          "claim": "First hiring wave sized at 10 account executives (one third of the CRO request), a decision parameter rather than a data point",
+          "values": [
+            10
+          ],
+          "source": "assumptions.json"
+        },
+        {
+          "fact": "F0061",
+          "claim": "The onboarding team was reduced from 14 to 6 people in February 2025 (saving 0.8 EUR M per year).",
+          "values": [
+            14.0,
+            0.8
+          ],
+          "source": "customer_success_notes.md"
+        },
+        {
+          "fact": "C0027",
+          "claim": "Annual budget freed versus the CRO plan by the retention-first plan",
+          "values": [
+            1.6
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "F0063",
+          "claim": "In 2024, first-year customers churned 12%.",
+          "values": [
+            12.0
+          ],
+          "source": "customer_success_notes.md"
+        },
+        {
+          "fact": "C0024",
+          "claim": "Annual cost of a first wave of 10 AEs (EUR M)",
+          "values": [
+            1.2
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "F0062",
+          "claim": "Median time to first value rose from 21 days in 2024 to 48 days in 2025.",
+          "values": [
+            21.0,
+            48.0
+          ],
+          "source": "customer_success_notes.md"
+        },
+        {
+          "fact": "F0047",
+          "claim": "Onboarded in the previous 12 months — Churn rate 2025 (%): 26 PCT",
+          "values": [
+            26.0
+          ],
+          "source": "crm_export.xlsx"
+        }
+      ],
+      "visual": {
+        "type": "table",
+        "title": "Decisions requested today",
+        "columns": [
+          {
+            "label": "Decision",
+            "width": 3.4
+          },
+          {
+            "label": "Owner"
+          },
+          {
+            "label": "€M a year",
+            "align": "right"
+          },
+          {
+            "label": "When"
+          }
+        ],
+        "rows": [
+          [
+            "Reject the 30-AE plan as proposed",
+            "Board",
+            "3.6",
+            "Today"
+          ],
+          [
+            "Approve restoring onboarding to 14 people",
+            "CEO / VP CS",
+            "0.8",
+            "Q1 2026"
+          ],
+          [
+            "Approve a first wave of 10 AEs (our sizing)",
+            "CRO",
+            "1.2 (est.)",
+            "Q1 2026"
+          ],
+          [
+            "Hold the rest as reserve for AE wave 2",
+            "CFO",
+            "1.6 (est.)",
+            "June 2026 gate"
+          ]
+        ]
+      },
+      "commentary": {
+        "title": "Gate and KPIs",
+        "points": [
+          "**Gate (June 2026 board):** first-year churn ≤12% and time to first value ≤21 days release wave 2",
+          "**Monthly:** first-year churn (from 26%), time to first value (from 48 days), new ARR per AE vs ramp",
+          "**Quarterly:** net new ARR back to the €10.4M of 2024"
+        ]
+      },
+      "source": "Source: board pack Q4 2025 (board_pack_Q4_2025.pdf); customer success notes; team sizing (A003)"
+    }
+  ]
+}

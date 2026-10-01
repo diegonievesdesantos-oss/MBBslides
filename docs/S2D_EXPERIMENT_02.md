@@ -54,3 +54,38 @@ The tiendas trap T2 initially fired for both systems. Its terms matched storylin
 One rater, four cases, one run per system. The cases were written by the developing agent, so the 95%
 interval (0.30–0.95) is wide. A 3–1 result is a direction, not a validation. The next evidence needs
 external cases, more of them, and ideally a second rater.
+
+## End to end: SaaS case, raw sources → rendered deck
+
+`runs/protocol_agent_02_deck/` takes the protocol-1.1 reasoning run of x2_saas_retention through passes
+11–12 and the render loop:
+- **Spec:** `deck.json`; every slide cites fact ids in `evidence`.
+- **Checks:** `cpe reason check --enrich`, then `cpe run`.
+- **Agent review:** the agent read the renders and fixed what a partner would reject. S3: the wrong bar
+  drew the eye. S7: the autofix hid the €4.5M shortfall. S8–S9: wrapped headers, a pointless highlight.
+
+**Result:** reasoning check PASS (0 errors, 0 hard failures). Render QA: 0 errors, 11 warnings (7 long
+headlines, 3 two-message headlines, a dense executive summary). Deck score 95.0, composition 99.7. All 9
+deck-plan headlines were kept word for word.
+
+### Product gaps found (the v1.8 backlog for source → deck)
+
+| # | gap | consequence |
+|---|---|---|
+| 1 | The fact checker compares against a fresh re-extraction, and fact ids are not stable across extractor versions | An extractor fix makes an older fact model fail as FACT_FABRICATED. Two unused year facts had to be removed here. |
+| 2 | WRONG_SOURCE does not follow computed-fact lineage | A slide citing only C-facts cannot name the raw file. |
+| 3 | The deck check grounds headline numbers only | Body text, KPIs, table cells, chart data and takeaways are not checked against cited facts. |
+| 4 | Render QA reads numbers only after `--enrich`, which overwrites the claim text | Regenerating deck.json without re-enriching silently disables the headline proof. |
+| 5 | The reasoning check and the board profile disagree on headline length | The plan's 22–29-word headlines pass one layer and warn in the other. |
+| 6 | No way to mark an estimate or upper bound on a cell, bar or waterfall step; no footnote on a number | Estimates are written as text ("≤4.5", "est."), so the number formatting is lost. |
+| 7 | Waterfall: no "grey all but the highlight"; the "neutral" palette is close to the totals | The default red and green deltas compete with the highlighted step. |
+| 8 | No target or reference marker on a bridge | "Needed €5.6M" had to be faked as a final total. |
+| 9 | Table + chart has no commentary slot | The empty space was filled by a full-width takeaway. |
+| 10 | Table column widths are relative and undocumented | Setting one width causes wraps in the others. |
+| 11 | No cause → effect exhibit | A process chart reads as steps, not causality. |
+| 12 | No explicit n/a cell in grouped categories with missing values | |
+| 13 | No decisions-table + timeline combination | The gate date cannot sit next to the decision. |
+| 14 | Automatic waterfall labels ("−5.6 vs …") cannot be styled or turned off | It adds a second accent colour. |
+
+Gaps 1–4 are factuality gaps, and 1 and 3 matter most. A deck can pass every check with an unchecked
+number in a table cell, and an extractor upgrade breaks old runs. They are the first items for v1.8.
