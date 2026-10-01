@@ -1,0 +1,802 @@
+{
+  "protocol": "1.0",
+  "facts": [
+    {
+      "id": "F0001",
+      "claim": "Particulares — Clientes 2024: 820,000",
+      "values": [
+        {
+          "value": 820000.0,
+          "unit": "",
+          "period": "2024",
+          "basis": "actual",
+          "label": "Particulares",
+          "column": "Clientes 2024"
+        }
+      ],
+      "source": {
+        "file": "clientes_ingresos.xlsx",
+        "sheet": "Clientes",
+        "range": "B2",
+        "loc": "sheet Clientes"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0002",
+      "claim": "Particulares — Clientes 2025: 770,000",
+      "values": [
+        {
+          "value": 770000.0,
+          "unit": "",
+          "period": "2025",
+          "basis": "actual",
+          "label": "Particulares",
+          "column": "Clientes 2025"
+        }
+      ],
+      "source": {
+        "file": "clientes_ingresos.xlsx",
+        "sheet": "Clientes",
+        "range": "C2",
+        "loc": "sheet Clientes"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0003",
+      "claim": "Particulares — Bajas 2025 (%): 14.2 PCT",
+      "values": [
+        {
+          "value": 14.2,
+          "unit": "PCT",
+          "period": "2025",
+          "basis": "actual",
+          "label": "Particulares",
+          "column": "Bajas 2025 (%)"
+        }
+      ],
+      "source": {
+        "file": "clientes_ingresos.xlsx",
+        "sheet": "Clientes",
+        "range": "D2",
+        "loc": "sheet Clientes"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0004",
+      "claim": "Particulares — clientes: 820,000 → 770,000 (2024→2025), change -50,000 (-6.1%)",
+      "values": [
+        {
+          "value": -50000.0,
+          "unit": "",
+          "period": "2024→2025",
+          "label": "Particulares",
+          "kind": "change"
+        },
+        {
+          "value": -6.097560975609756,
+          "unit": "PCT",
+          "period": "2024→2025",
+          "label": "Particulares",
+          "kind": "relative_change"
+        }
+      ],
+      "source": {
+        "file": "clientes_ingresos.xlsx",
+        "sheet": "Clientes",
+        "range": "B2:C2",
+        "loc": "sheet Clientes"
+      },
+      "fact_type": "derived_change",
+      "confidence": 1.0,
+      "derived_from": [
+        "F0001",
+        "F0002"
+      ],
+      "operation": "last − first"
+    },
+    {
+      "id": "F0005",
+      "claim": "Autónomos — Clientes 2024: 96,000",
+      "values": [
+        {
+          "value": 96000.0,
+          "unit": "",
+          "period": "2024",
+          "basis": "actual",
+          "label": "Autónomos",
+          "column": "Clientes 2024"
+        }
+      ],
+      "source": {
+        "file": "clientes_ingresos.xlsx",
+        "sheet": "Clientes",
+        "range": "B3",
+        "loc": "sheet Clientes"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0006",
+      "claim": "Autónomos — Clientes 2025: 101,000",
+      "values": [
+        {
+          "value": 101000.0,
+          "unit": "",
+          "period": "2025",
+          "basis": "actual",
+          "label": "Autónomos",
+          "column": "Clientes 2025"
+        }
+      ],
+      "source": {
+        "file": "clientes_ingresos.xlsx",
+        "sheet": "Clientes",
+        "range": "C3",
+        "loc": "sheet Clientes"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0007",
+      "claim": "Autónomos — Bajas 2025 (%): 8.1 PCT",
+      "values": [
+        {
+          "value": 8.1,
+          "unit": "PCT",
+          "period": "2025",
+          "basis": "actual",
+          "label": "Autónomos",
+          "column": "Bajas 2025 (%)"
+        }
+      ],
+      "source": {
+        "file": "clientes_ingresos.xlsx",
+        "sheet": "Clientes",
+        "range": "D3",
+        "loc": "sheet Clientes"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0008",
+      "claim": "Autónomos — clientes: 96,000 → 101,000 (2024→2025), change 5,000 (+5.2%)",
+      "values": [
+        {
+          "value": 5000.0,
+          "unit": "",
+          "period": "2024→2025",
+          "label": "Autónomos",
+          "kind": "change"
+        },
+        {
+          "value": 5.208333333333334,
+          "unit": "PCT",
+          "period": "2024→2025",
+          "label": "Autónomos",
+          "kind": "relative_change"
+        }
+      ],
+      "source": {
+        "file": "clientes_ingresos.xlsx",
+        "sheet": "Clientes",
+        "range": "B3:C3",
+        "loc": "sheet Clientes"
+      },
+      "fact_type": "derived_change",
+      "confidence": 1.0,
+      "derived_from": [
+        "F0005",
+        "F0006"
+      ],
+      "operation": "last − first"
+    },
+    {
+      "id": "F0009",
+      "claim": "Empresas — Clientes 2024: 21,000",
+      "values": [
+        {
+          "value": 21000.0,
+          "unit": "",
+          "period": "2024",
+          "basis": "actual",
+          "label": "Empresas",
+          "column": "Clientes 2024"
+        }
+      ],
+      "source": {
+        "file": "clientes_ingresos.xlsx",
+        "sheet": "Clientes",
+        "range": "B4",
+        "loc": "sheet Clientes"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0010",
+      "claim": "Empresas — Clientes 2025: 22,500",
+      "values": [
+        {
+          "value": 22500.0,
+          "unit": "",
+          "period": "2025",
+          "basis": "actual",
+          "label": "Empresas",
+          "column": "Clientes 2025"
+        }
+      ],
+      "source": {
+        "file": "clientes_ingresos.xlsx",
+        "sheet": "Clientes",
+        "range": "C4",
+        "loc": "sheet Clientes"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0011",
+      "claim": "Empresas — Bajas 2025 (%): 5.3 PCT",
+      "values": [
+        {
+          "value": 5.3,
+          "unit": "PCT",
+          "period": "2025",
+          "basis": "actual",
+          "label": "Empresas",
+          "column": "Bajas 2025 (%)"
+        }
+      ],
+      "source": {
+        "file": "clientes_ingresos.xlsx",
+        "sheet": "Clientes",
+        "range": "D4",
+        "loc": "sheet Clientes"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0012",
+      "claim": "Empresas — clientes: 21,000 → 22,500 (2024→2025), change 1,500 (+7.1%)",
+      "values": [
+        {
+          "value": 1500.0,
+          "unit": "",
+          "period": "2024→2025",
+          "label": "Empresas",
+          "kind": "change"
+        },
+        {
+          "value": 7.142857142857142,
+          "unit": "PCT",
+          "period": "2024→2025",
+          "label": "Empresas",
+          "kind": "relative_change"
+        }
+      ],
+      "source": {
+        "file": "clientes_ingresos.xlsx",
+        "sheet": "Clientes",
+        "range": "B4:C4",
+        "loc": "sheet Clientes"
+      },
+      "fact_type": "derived_change",
+      "confidence": 1.0,
+      "derived_from": [
+        "F0009",
+        "F0010"
+      ],
+      "operation": "last − first"
+    },
+    {
+      "id": "F0013",
+      "claim": "Total — Clientes 2024: 937,000",
+      "values": [
+        {
+          "value": 937000.0,
+          "unit": "",
+          "period": "2024",
+          "basis": "actual",
+          "label": "Total",
+          "column": "Clientes 2024"
+        }
+      ],
+      "source": {
+        "file": "clientes_ingresos.xlsx",
+        "sheet": "Clientes",
+        "range": "B5",
+        "loc": "sheet Clientes"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0014",
+      "claim": "Total — Clientes 2025: 893,500",
+      "values": [
+        {
+          "value": 893500.0,
+          "unit": "",
+          "period": "2025",
+          "basis": "actual",
+          "label": "Total",
+          "column": "Clientes 2025"
+        }
+      ],
+      "source": {
+        "file": "clientes_ingresos.xlsx",
+        "sheet": "Clientes",
+        "range": "C5",
+        "loc": "sheet Clientes"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0015",
+      "claim": "Total — Bajas 2025 (%): 13.1 PCT",
+      "values": [
+        {
+          "value": 13.1,
+          "unit": "PCT",
+          "period": "2025",
+          "basis": "actual",
+          "label": "Total",
+          "column": "Bajas 2025 (%)"
+        }
+      ],
+      "source": {
+        "file": "clientes_ingresos.xlsx",
+        "sheet": "Clientes",
+        "range": "D5",
+        "loc": "sheet Clientes"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0016",
+      "claim": "Total — clientes: 937,000 → 893,500 (2024→2025), change -43,500 (-4.6%)",
+      "values": [
+        {
+          "value": -43500.0,
+          "unit": "",
+          "period": "2024→2025",
+          "label": "Total",
+          "kind": "change"
+        },
+        {
+          "value": -4.64247598719317,
+          "unit": "PCT",
+          "period": "2024→2025",
+          "label": "Total",
+          "kind": "relative_change"
+        }
+      ],
+      "source": {
+        "file": "clientes_ingresos.xlsx",
+        "sheet": "Clientes",
+        "range": "B5:C5",
+        "loc": "sheet Clientes"
+      },
+      "fact_type": "derived_change",
+      "confidence": 1.0,
+      "derived_from": [
+        "F0013",
+        "F0014"
+      ],
+      "operation": "last − first"
+    },
+    {
+      "id": "F0017",
+      "claim": "Particulares — Ingresos 2024 (M€): 410 EUR_M",
+      "values": [
+        {
+          "value": 410.0,
+          "unit": "EUR_M",
+          "period": "2024",
+          "basis": "actual",
+          "label": "Particulares",
+          "column": "Ingresos 2024 (M€)"
+        }
+      ],
+      "source": {
+        "file": "clientes_ingresos.xlsx",
+        "sheet": "Ingresos",
+        "range": "B2",
+        "loc": "sheet Ingresos"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0018",
+      "claim": "Particulares — Ingresos 2025 (M€): 388 EUR_M",
+      "values": [
+        {
+          "value": 388.0,
+          "unit": "EUR_M",
+          "period": "2025",
+          "basis": "actual",
+          "label": "Particulares",
+          "column": "Ingresos 2025 (M€)"
+        }
+      ],
+      "source": {
+        "file": "clientes_ingresos.xlsx",
+        "sheet": "Ingresos",
+        "range": "C2",
+        "loc": "sheet Ingresos"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0019",
+      "claim": "Particulares — ingresos: 410 → 388 (2024→2025), change -22 (-5.4%)",
+      "values": [
+        {
+          "value": -22.0,
+          "unit": "EUR_M",
+          "period": "2024→2025",
+          "label": "Particulares",
+          "kind": "change"
+        },
+        {
+          "value": -5.365853658536586,
+          "unit": "PCT",
+          "period": "2024→2025",
+          "label": "Particulares",
+          "kind": "relative_change"
+        }
+      ],
+      "source": {
+        "file": "clientes_ingresos.xlsx",
+        "sheet": "Ingresos",
+        "range": "B2:C2",
+        "loc": "sheet Ingresos"
+      },
+      "fact_type": "derived_change",
+      "confidence": 1.0,
+      "derived_from": [
+        "F0017",
+        "F0018"
+      ],
+      "operation": "last − first"
+    },
+    {
+      "id": "F0020",
+      "claim": "Autónomos — Ingresos 2024 (M€): 120 EUR_M",
+      "values": [
+        {
+          "value": 120.0,
+          "unit": "EUR_M",
+          "period": "2024",
+          "basis": "actual",
+          "label": "Autónomos",
+          "column": "Ingresos 2024 (M€)"
+        }
+      ],
+      "source": {
+        "file": "clientes_ingresos.xlsx",
+        "sheet": "Ingresos",
+        "range": "B3",
+        "loc": "sheet Ingresos"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0021",
+      "claim": "Autónomos — Ingresos 2025 (M€): 131 EUR_M",
+      "values": [
+        {
+          "value": 131.0,
+          "unit": "EUR_M",
+          "period": "2025",
+          "basis": "actual",
+          "label": "Autónomos",
+          "column": "Ingresos 2025 (M€)"
+        }
+      ],
+      "source": {
+        "file": "clientes_ingresos.xlsx",
+        "sheet": "Ingresos",
+        "range": "C3",
+        "loc": "sheet Ingresos"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0022",
+      "claim": "Autónomos — ingresos: 120 → 131 (2024→2025), change 11 (+9.2%)",
+      "values": [
+        {
+          "value": 11.0,
+          "unit": "EUR_M",
+          "period": "2024→2025",
+          "label": "Autónomos",
+          "kind": "change"
+        },
+        {
+          "value": 9.166666666666666,
+          "unit": "PCT",
+          "period": "2024→2025",
+          "label": "Autónomos",
+          "kind": "relative_change"
+        }
+      ],
+      "source": {
+        "file": "clientes_ingresos.xlsx",
+        "sheet": "Ingresos",
+        "range": "B3:C3",
+        "loc": "sheet Ingresos"
+      },
+      "fact_type": "derived_change",
+      "confidence": 1.0,
+      "derived_from": [
+        "F0020",
+        "F0021"
+      ],
+      "operation": "last − first"
+    },
+    {
+      "id": "F0023",
+      "claim": "Empresas — Ingresos 2024 (M€): 210 EUR_M",
+      "values": [
+        {
+          "value": 210.0,
+          "unit": "EUR_M",
+          "period": "2024",
+          "basis": "actual",
+          "label": "Empresas",
+          "column": "Ingresos 2024 (M€)"
+        }
+      ],
+      "source": {
+        "file": "clientes_ingresos.xlsx",
+        "sheet": "Ingresos",
+        "range": "B4",
+        "loc": "sheet Ingresos"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0024",
+      "claim": "Empresas — Ingresos 2025 (M€): 226 EUR_M",
+      "values": [
+        {
+          "value": 226.0,
+          "unit": "EUR_M",
+          "period": "2025",
+          "basis": "actual",
+          "label": "Empresas",
+          "column": "Ingresos 2025 (M€)"
+        }
+      ],
+      "source": {
+        "file": "clientes_ingresos.xlsx",
+        "sheet": "Ingresos",
+        "range": "C4",
+        "loc": "sheet Ingresos"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0025",
+      "claim": "Empresas — ingresos: 210 → 226 (2024→2025), change 16 (+7.6%)",
+      "values": [
+        {
+          "value": 16.0,
+          "unit": "EUR_M",
+          "period": "2024→2025",
+          "label": "Empresas",
+          "kind": "change"
+        },
+        {
+          "value": 7.6190476190476195,
+          "unit": "PCT",
+          "period": "2024→2025",
+          "label": "Empresas",
+          "kind": "relative_change"
+        }
+      ],
+      "source": {
+        "file": "clientes_ingresos.xlsx",
+        "sheet": "Ingresos",
+        "range": "B4:C4",
+        "loc": "sheet Ingresos"
+      },
+      "fact_type": "derived_change",
+      "confidence": 1.0,
+      "derived_from": [
+        "F0023",
+        "F0024"
+      ],
+      "operation": "last − first"
+    },
+    {
+      "id": "F0026",
+      "claim": "Total — Ingresos 2024 (M€): 740 EUR_M",
+      "values": [
+        {
+          "value": 740.0,
+          "unit": "EUR_M",
+          "period": "2024",
+          "basis": "actual",
+          "label": "Total",
+          "column": "Ingresos 2024 (M€)"
+        }
+      ],
+      "source": {
+        "file": "clientes_ingresos.xlsx",
+        "sheet": "Ingresos",
+        "range": "B5",
+        "loc": "sheet Ingresos"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0027",
+      "claim": "Total — Ingresos 2025 (M€): 745 EUR_M",
+      "values": [
+        {
+          "value": 745.0,
+          "unit": "EUR_M",
+          "period": "2025",
+          "basis": "actual",
+          "label": "Total",
+          "column": "Ingresos 2025 (M€)"
+        }
+      ],
+      "source": {
+        "file": "clientes_ingresos.xlsx",
+        "sheet": "Ingresos",
+        "range": "C5",
+        "loc": "sheet Ingresos"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0028",
+      "claim": "Total — ingresos: 740 → 745 (2024→2025), change 5 (+0.7%)",
+      "values": [
+        {
+          "value": 5.0,
+          "unit": "EUR_M",
+          "period": "2024→2025",
+          "label": "Total",
+          "kind": "change"
+        },
+        {
+          "value": 0.6756756756756757,
+          "unit": "PCT",
+          "period": "2024→2025",
+          "label": "Total",
+          "kind": "relative_change"
+        }
+      ],
+      "source": {
+        "file": "clientes_ingresos.xlsx",
+        "sheet": "Ingresos",
+        "range": "B5:C5",
+        "loc": "sheet Ingresos"
+      },
+      "fact_type": "derived_change",
+      "confidence": 1.0,
+      "derived_from": [
+        "F0026",
+        "F0027"
+      ],
+      "operation": "last − first"
+    },
+    {
+      "id": "F0029",
+      "claim": "Atención al cliente: el tiempo medio de resolución de incidencias pasó de 2,1 a 4,6 días tras el cambio de proveedor del centro de llamadas.",
+      "values": [
+        {
+          "value": 2.1,
+          "unit": "DAYS",
+          "raw": "2,1",
+          "period": null,
+          "basis": null
+        },
+        {
+          "value": 4.6,
+          "unit": "DAYS",
+          "raw": "4,6",
+          "period": null,
+          "basis": null
+        }
+      ],
+      "source": {
+        "file": "notas_comite.md",
+        "loc": "line 4"
+      },
+      "fact_type": "text_statement",
+      "confidence": 0.8
+    },
+    {
+      "id": "F0030",
+      "claim": "Encuesta de bajas 2025: el 61% de los particulares que se dieron de baja cita la atención al cliente como motivo principal;",
+      "values": [
+        {
+          "value": 61.0,
+          "unit": "PCT",
+          "raw": "61%",
+          "period": "2025",
+          "basis": "actual"
+        }
+      ],
+      "source": {
+        "file": "notas_comite.md",
+        "loc": "line 5"
+      },
+      "fact_type": "text_statement",
+      "confidence": 0.8
+    },
+    {
+      "id": "F0031",
+      "claim": "el 22% cita el precio.",
+      "values": [
+        {
+          "value": 22.0,
+          "unit": "PCT",
+          "raw": "22%",
+          "period": null,
+          "basis": null
+        }
+      ],
+      "source": {
+        "file": "notas_comite.md",
+        "loc": "line 5"
+      },
+      "fact_type": "text_statement",
+      "confidence": 0.8
+    },
+    {
+      "id": "F0032",
+      "claim": "El presupuesto 2026 asume recuperar 30.000 clientes particulares.",
+      "values": [
+        {
+          "value": 30000.0,
+          "unit": "",
+          "raw": "30.000",
+          "period": "2026",
+          "basis": "budget"
+        }
+      ],
+      "source": {
+        "file": "notas_comite.md",
+        "loc": "line 6"
+      },
+      "fact_type": "text_statement",
+      "confidence": 0.8
+    }
+  ],
+  "stats": {
+    "sources": 2,
+    "tables": 2,
+    "facts": 32,
+    "by_type": {
+      "table_value": 20,
+      "derived_change": 8,
+      "text_statement": 4
+    }
+  }
+}

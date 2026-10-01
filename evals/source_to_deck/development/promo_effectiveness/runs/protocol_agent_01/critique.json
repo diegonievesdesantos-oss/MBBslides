@@ -1,0 +1,104 @@
+{
+  "protocol": "1.0",
+  "findings": [
+    {
+      "critic": "FACT CHECKER",
+      "finding": "Volume, depth and gross-margin figures in the FY2025 review have no explicit period; S3–S5 present them as FY2024→FY2025",
+      "artifact": "deck_plan.json",
+      "ref": "S3,S4,S5",
+      "severity": "medium",
+      "action": "Assumption recorded in project.json (source says 'over the same period'); footnote the period basis on S3–S5",
+      "resolved": true
+    },
+    {
+      "critic": "FACT CHECKER",
+      "finding": "'per 100 EUR' figures rely on the definition in F0018 (margin net of sales that would have happened anyway); headline must not imply absolute EUR losses",
+      "artifact": "deck_plan.json",
+      "ref": "S6",
+      "severity": "medium",
+      "action": "S6 cites F0018 and wording kept as margin per hundred euros of promotion",
+      "resolved": true
+    },
+    {
+      "critic": "PARTNER REVIEW",
+      "finding": "The ask must be explicit: the board decides on the proposal on the table (+20% budget, deep discounts in Household), not on an abstract principle",
+      "artifact": "deck_plan.json",
+      "ref": "S1,S7,S8",
+      "severity": "high",
+      "action": "S1 and S8 state the decision: reject the +20% increase, hold budget, reallocate by category; S7 tests the proposal explicitly",
+      "resolved": true
+    },
+    {
+      "critic": "PARTNER REVIEW",
+      "finding": "Sources do not allow quantifying the EUR value of the recommended plan; the board may ask for it",
+      "artifact": "storyline.json",
+      "ref": "K4",
+      "severity": "medium",
+      "action": "Next steps include a margin bridge and controlled promotion tests before Q1 sign-off; no unsupported estimate added",
+      "resolved": true
+    },
+    {
+      "critic": "RED TEAM",
+      "finding": "H6 unresolved: the gross-margin decline may be partly driven by input costs or mix; linking it fully to promotions would overclaim",
+      "artifact": "insights.json",
+      "ref": "I4",
+      "severity": "high",
+      "action": "Governing thought says margin fell 'while' promotions deepened (no causal claim); caveat on S5; margin bridge as next step",
+      "resolved": true
+    },
+    {
+      "critic": "RED TEAM",
+      "finding": "Counterfactual: without promotions total volume might have declined; the +2.1% could still be partly promotion-driven",
+      "artifact": "insights.json",
+      "ref": "I2",
+      "severity": "medium",
+      "action": "Mitigated by I3 (71% of promoted volume from full-price buyers, −22% post-promotion dip); recommendation keeps promotion where incremental margin is positive rather than abolishing it",
+      "resolved": true
+    },
+    {
+      "critic": "RED TEAM",
+      "finding": "Positive returns in Fresh (+1.6) and Beverages (+0.8) are small; scaling them may hit diminishing returns",
+      "artifact": "deck_plan.json",
+      "ref": "S8",
+      "severity": "medium",
+      "action": "S8 recommends targeted, tested promotion in these categories, not budget reallocation at scale",
+      "resolved": true
+    },
+    {
+      "critic": "EDITOR",
+      "finding": "S3 and S4 could merge into one 'promotions shift demand' slide",
+      "artifact": "deck_plan.json",
+      "ref": "S3,S4",
+      "severity": "low",
+      "action": "Kept separate: outcome (total volume) vs mechanism (loyalty-card data); why_not_merge recorded",
+      "resolved": true
+    },
+    {
+      "critic": "EDITOR",
+      "finding": "S7 overlaps S6 on Household",
+      "artifact": "deck_plan.json",
+      "ref": "S6,S7",
+      "severity": "low",
+      "action": "Kept: S7 is the explicit test of the proposal under decision; 8 slides within the 9-slide limit",
+      "resolved": true
+    },
+    {
+      "critic": "DATA-VIZ REVIEW",
+      "finding": "A waterfall on S3 would sum growth rates (+14%, −6%) that have different volume bases; contributions are not additive",
+      "artifact": "deck_plan.json",
+      "ref": "S3",
+      "severity": "high",
+      "action": "Changed S3 to a bar chart of growth rates (promoted, full-price, total)",
+      "resolved": true
+    },
+    {
+      "critic": "DATA-VIZ REVIEW",
+      "finding": "S6 ranking includes negative and positive values",
+      "artifact": "deck_plan.json",
+      "ref": "S6",
+      "severity": "low",
+      "action": "Use a diverging horizontal bar sorted from Household to Fresh with a zero axis",
+      "resolved": true
+    }
+  ]
+}

@@ -1,0 +1,131 @@
+{
+  "protocol": "1.0",
+  "framework": "SCR",
+  "framework_rationale": "The board faces a proposal to approve; SCR lets us set the situation (promotion escalation), the complication (it shifted volume and eroded margin, unevenly by category) and the resolution (a smaller, category-targeted 2026 plan) in the order a decision meeting needs",
+  "candidates": [
+    {
+      "text": "Our promotions are destroying value — they shift existing demand rather than create it while gross margin fell from 27.4% to 25.1% — so the board should reject the 20% budget increase and refocus the 2026 plan on Fresh and Beverages, cutting deep discounts in Household and Snacks",
+      "scores": {
+        "answers_question": 2,
+        "supported": 2,
+        "specific": 2,
+        "decision_oriented": 2,
+        "non_trivial": 2,
+        "covers_storyline": 2
+      },
+      "insights": [
+        "I2",
+        "I3",
+        "I4",
+        "I5",
+        "I6"
+      ]
+    },
+    {
+      "text": "Promotions grew to 38% of sales but total volume grew only 2.1%, so promotions should be reviewed",
+      "scores": {
+        "answers_question": 1,
+        "supported": 2,
+        "specific": 1,
+        "decision_oriented": 0,
+        "non_trivial": 1,
+        "covers_storyline": 1
+      },
+      "insights": [
+        "I1",
+        "I2"
+      ]
+    },
+    {
+      "text": "Promotion returns vary by category, so the 2026 budget should be reallocated across categories at constant level",
+      "scores": {
+        "answers_question": 1,
+        "supported": 2,
+        "specific": 1,
+        "decision_oriented": 2,
+        "non_trivial": 1,
+        "covers_storyline": 1
+      },
+      "insights": [
+        "I5"
+      ]
+    }
+  ],
+  "governing_thought": "Our promotions are destroying value — they shift existing demand rather than create it while gross margin fell from 27.4% to 25.1% — so the board should reject the 20% budget increase and refocus the 2026 plan on Fresh and Beverages, cutting deep discounts in Household and Snacks",
+  "key_line": [
+    {
+      "id": "K1",
+      "role": "situation",
+      "message": "Promotions escalated sharply in FY2025: 38% of sales (from 29%) at 24% average depth (from 18%)",
+      "insights": [
+        "I1"
+      ],
+      "facts": [
+        "F0004",
+        "F0008",
+        "F0012",
+        "F0016",
+        "F0019",
+        "F0022"
+      ]
+    },
+    {
+      "id": "K2",
+      "role": "complication",
+      "message": "They shifted rather than created volume, while gross margin fell from 27.4% to 25.1%",
+      "insights": [
+        "I2",
+        "I3",
+        "I4"
+      ],
+      "facts": [
+        "F0020",
+        "F0021",
+        "F0022",
+        "F0023",
+        "F0024",
+        "F0025",
+        "C001"
+      ]
+    },
+    {
+      "id": "K3",
+      "role": "complication",
+      "message": "Returns split by category: Household and Snacks destroy margin, Fresh and Beverages create it — and the marketing proposal scales the worst of them",
+      "insights": [
+        "I5",
+        "I6"
+      ],
+      "facts": [
+        "F0003",
+        "F0007",
+        "F0011",
+        "F0012",
+        "F0015",
+        "F0017",
+        "F0018"
+      ]
+    },
+    {
+      "id": "K4",
+      "role": "resolution",
+      "message": "2026 plan: no budget increase, cut depth in Household and Snacks, keep targeted promotion in Fresh and Beverages, and verify with a margin bridge and controlled tests",
+      "insights": [
+        "I5",
+        "I6",
+        "I4"
+      ],
+      "facts": [
+        "F0003",
+        "F0007",
+        "F0011",
+        "F0012",
+        "F0015",
+        "F0017",
+        "F0018",
+        "F0022",
+        "F0023"
+      ]
+    }
+  ]
+}

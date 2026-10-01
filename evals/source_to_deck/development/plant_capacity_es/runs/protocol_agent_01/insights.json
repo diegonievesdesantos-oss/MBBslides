@@ -1,0 +1,106 @@
+{
+ "protocol": "1.0",
+ "insights": [
+  {
+   "id": "I1",
+   "statement": "El objetivo de 2026 equivale a 1.800 h productivas adicionales, solo el 30% de las 6.000 h que hoy se pierden en paradas",
+   "facts": [
+    "F0012",
+    "F0013",
+    "F0017",
+    "F0009",
+    "C001",
+    "C002",
+    "C004"
+   ],
+   "hypotheses": [
+    "H6"
+   ],
+   "materiality": "high",
+   "decision_relevance": "Reformula la decisión: el crecimiento puede financiarse con horas perdidas antes que con capacidad nueva"
+  },
+  {
+   "id": "I2",
+   "statement": "La planta no está al límite de capacidad sino de disponibilidad: pierde un tercio de sus horas y su OEE (61%) está 14 puntos por debajo de la referencia del sector (75%)",
+   "facts": [
+    "F0012",
+    "F0013",
+    "C003",
+    "F0014"
+   ],
+   "hypotheses": [
+    "H6"
+   ],
+   "materiality": "high",
+   "decision_relevance": "Refuta la premisa de la propuesta de cuarta línea",
+   "contradicting_facts": [
+    "F0011"
+   ],
+   "caveat": "La dirección técnica afirma que las líneas están al límite; los datos de paradas y OEE indican lo contrario"
+  },
+  {
+   "id": "I3",
+   "statement": "Los cambios de formato son la primera causa de pérdida (2.280 h, 38%) y por sí solos superan la necesidad adicional de 1.800 h",
+   "facts": [
+    "F0001",
+    "F0002",
+    "C002",
+    "C010"
+   ],
+   "hypotheses": [
+    "H2"
+   ],
+   "materiality": "high",
+   "decision_relevance": "Señala dónde concentrar el esfuerzo"
+  },
+  {
+   "id": "I4",
+   "statement": "Llevar el cambio de formato de 95 a 30 minutos (SMED) recuperaría ~1.560 h, el 87% de la necesidad de 2026",
+   "facts": [
+    "F0001",
+    "F0015",
+    "F0016",
+    "C005",
+    "C006",
+    "C007"
+   ],
+   "hypotheses": [
+    "H2"
+   ],
+   "materiality": "high",
+   "decision_relevance": "Palanca principal del plan",
+   "caveat": "Supone un número de cambios de formato similar al de 2025 (A001) y alcanzar el nivel de las plantas con SMED"
+  },
+  {
+   "id": "I5",
+   "statement": "Las 240 h restantes se cubren reduciendo un 15% las horas de avería (1.620 h), con la falta de material (1.200 h) como colchón adicional",
+   "facts": [
+    "F0003",
+    "F0005",
+    "C008",
+    "C009"
+   ],
+   "hypotheses": [
+    "H3",
+    "H4"
+   ],
+   "materiality": "medium",
+   "decision_relevance": "Completa el plan y da margen ante una ejecución parcial de SMED",
+   "caveat": "No hay datos sobre el coste de reducir averías o faltas de material"
+  },
+  {
+   "id": "I6",
+   "statement": "La cuarta línea (12 M€, 18 meses) no llegaría a tiempo para 2026; su decisión puede posponerse hasta medir el efecto de SMED y mantenimiento",
+   "facts": [
+    "F0011",
+    "F0017"
+   ],
+   "hypotheses": [
+    "H6",
+    "H5"
+   ],
+   "materiality": "high",
+   "decision_relevance": "Responde directamente a la segunda parte de la pregunta"
+  }
+ ]
+}

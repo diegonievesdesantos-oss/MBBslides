@@ -1,0 +1,145 @@
+{
+  "protocol": "1.0",
+  "facts": [
+    {
+      "id": "C001",
+      "claim": "Gross margin change: 27.4% → 25.1%, change −2.3 pp",
+      "values": [
+        {
+          "value": -2.3,
+          "unit": "PP",
+          "period": "FY2024→FY2025",
+          "kind": "change"
+        }
+      ],
+      "fact_type": "computed",
+      "derived_from": [
+        "F0023"
+      ],
+      "operation": "last − first",
+      "inputs": [
+        27.4,
+        25.1
+      ],
+      "formula": "25.1 - 27.4",
+      "confidence": 1.0
+    },
+    {
+      "id": "C002",
+      "claim": "Promotion share of sales: 29% → 38%, change 9 pp",
+      "values": [
+        {
+          "value": 9.0,
+          "unit": "PP",
+          "period": "FY2024→FY2025",
+          "kind": "change"
+        }
+      ],
+      "fact_type": "computed",
+      "derived_from": [
+        "F0019"
+      ],
+      "operation": "last − first",
+      "inputs": [
+        29,
+        38
+      ],
+      "formula": "38 - 29",
+      "confidence": 1.0
+    },
+    {
+      "id": "C003",
+      "claim": "Average promotional depth: 18% → 24%, change 6 pp",
+      "values": [
+        {
+          "value": 6.0,
+          "unit": "PP",
+          "period": "FY2024→FY2025",
+          "kind": "change"
+        }
+      ],
+      "fact_type": "computed",
+      "derived_from": [
+        "F0022"
+      ],
+      "operation": "last − first",
+      "inputs": [
+        18,
+        24
+      ],
+      "formula": "24 - 18",
+      "confidence": 1.0
+    }
+  ],
+  "computed_facts": [
+    {
+      "id": "C001",
+      "claim": "Gross margin change: 27.4% → 25.1%, change −2.3 pp",
+      "values": [
+        {
+          "value": -2.3,
+          "unit": "PP",
+          "period": "FY2024→FY2025",
+          "kind": "change"
+        }
+      ],
+      "fact_type": "computed",
+      "derived_from": [
+        "F0023"
+      ],
+      "operation": "last − first",
+      "inputs": [
+        27.4,
+        25.1
+      ],
+      "formula": "25.1 - 27.4",
+      "confidence": 1.0
+    },
+    {
+      "id": "C002",
+      "claim": "Promotion share of sales: 29% → 38%, change 9 pp",
+      "values": [
+        {
+          "value": 9.0,
+          "unit": "PP",
+          "period": "FY2024→FY2025",
+          "kind": "change"
+        }
+      ],
+      "fact_type": "computed",
+      "derived_from": [
+        "F0019"
+      ],
+      "operation": "last − first",
+      "inputs": [
+        29,
+        38
+      ],
+      "formula": "38 - 29",
+      "confidence": 1.0
+    },
+    {
+      "id": "C003",
+      "claim": "Average promotional depth: 18% → 24%, change 6 pp",
+      "values": [
+        {
+          "value": 6.0,
+          "unit": "PP",
+          "period": "FY2024→FY2025",
+          "kind": "change"
+        }
+      ],
+      "fact_type": "computed",
+      "derived_from": [
+        "F0022"
+      ],
+      "operation": "last − first",
+      "inputs": [
+        18,
+        24
+      ],
+      "formula": "24 - 18",
+      "confidence": 1.0
+    }
+  ]
+}

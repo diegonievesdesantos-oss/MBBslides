@@ -1,0 +1,16 @@
+{
+  "protocol": "1.0",
+  "framework": "SCR",
+  "framework_rationale": "La pregunta enfrenta una propuesta existente (cuarta línea) con una alternativa; SCR permite partir del reto de demanda, mostrar que la complicación es de disponibilidad y no de capacidad, y cerrar con una recomendación accionable para el comité",
+  "candidates": [
+    {"text": "El 15% adicional de 2026 (1.800 h) se consigue sin cuarta línea: SMED en cambios de formato recupera ~1.560 h y una reducción del 15% de las averías cubre el resto, mientras la inversión de 12 M€ se pospone hasta medir resultados", "scores": {"answers_question": 2, "supported_by_evidence": 2, "specific": 2, "decision_oriented": 2, "non_trivial": 2, "covers_storyline": 2}, "insights": ["I1", "I2", "I3", "I4", "I5", "I6"]},
+    {"text": "La planta debe mejorar su OEE antes de invertir en capacidad", "scores": {"answers_question": 1, "supported_by_evidence": 2, "specific": 0, "decision_oriented": 1, "non_trivial": 1, "covers_storyline": 1}, "insights": ["I2"]},
+    {"text": "Hace falta la cuarta línea de 12 M€ para crecer en 2026", "scores": {"answers_question": 1, "supported_by_evidence": 0, "specific": 1, "decision_oriented": 2, "non_trivial": 0, "covers_storyline": 0}, "insights": ["I6"]}
+  ],
+  "governing_thought": "El 15% adicional de 2026 (1.800 h) se consigue sin cuarta línea: SMED en cambios de formato recupera ~1.560 h y una reducción del 15% de las averías cubre el resto, mientras la inversión de 12 M€ se pospone hasta medir resultados",
+  "key_line": [
+    {"id": "K1", "message": "El reto no es de capacidad sino de disponibilidad: las 1.800 h necesarias son el 30% de las 6.000 h que se pierden en paradas", "insights": ["I1", "I2"], "role": "situation_complication"},
+    {"id": "K2", "message": "Los cambios de formato concentran la solución: SMED recupera ~1.560 h y reducir averías un 15% cierra la brecha", "insights": ["I3", "I4", "I5"], "role": "resolution"},
+    {"id": "K3", "message": "La cuarta línea no llega a 2026: posponer la inversión de 12 M€ y lanzar ya el programa de disponibilidad", "insights": ["I6"], "role": "recommendation"}
+  ]
+}

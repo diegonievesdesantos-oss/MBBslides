@@ -1,0 +1,96 @@
+{
+  "protocol": "1.0",
+  "insights": [
+    {
+      "id": "I1",
+      "statement": "Promotional intensity escalated sharply in FY2025: promotions rose from 29% to 38% of sales and average depth from 18% to 24% of regular price, with promo share up in all four categories",
+      "facts": [
+        "F0019",
+        "F0022",
+        "F0004",
+        "F0008",
+        "F0012",
+        "F0016"
+      ],
+      "hypotheses": [
+        "H3"
+      ],
+      "materiality": "high",
+      "decision_relevance": "Sets the baseline: 2026 plan starts from an already very high promotional level"
+    },
+    {
+      "id": "I2",
+      "statement": "Promotions did not drive growth: promoted volume grew 14% but full-price volume fell 6%, leaving total volume up only 2.1% — volume shifted to promotion rather than being created",
+      "facts": [
+        "F0020",
+        "F0021"
+      ],
+      "hypotheses": [
+        "H2"
+      ],
+      "materiality": "high",
+      "decision_relevance": "Contradicts the core premise of the marketing proposal (H1 rejected)",
+      "contradicting_facts": []
+    },
+    {
+      "id": "I3",
+      "statement": "Most promoted volume is subsidised demand: 71% is bought by customers who also buy the same item at full price, and sales of promoted items fall 22% in the two weeks after a promotion ends (forward buying)",
+      "facts": [
+        "F0025",
+        "F0024"
+      ],
+      "hypotheses": [
+        "H2"
+      ],
+      "materiality": "high",
+      "decision_relevance": "Explains why more promotion budget buys little incremental volume"
+    },
+    {
+      "id": "I4",
+      "statement": "The cost is visible in margin: gross margin fell 2.3 pp from 27.4% to 25.1% while promotional depth rose 6 pp",
+      "facts": [
+        "F0023",
+        "F0022"
+      ],
+      "hypotheses": [
+        "H3",
+        "H6"
+      ],
+      "materiality": "high",
+      "decision_relevance": "Quantifies the value at stake for the CFO",
+      "caveat": "Correlation; sources lack a margin bridge, so non-promotional drivers (H6) are not excluded"
+    },
+    {
+      "id": "I5",
+      "statement": "Returns split by category: per hundred euros of promoted sales, Household (−3.4 EUR) and Snacks (−2.1 EUR) lose incremental margin, while Fresh (+1.6 EUR) and Beverages (+0.8 EUR) gain it",
+      "facts": [
+        "F0011",
+        "F0003",
+        "F0015",
+        "F0007",
+        "F0018"
+      ],
+      "hypotheses": [
+        "H4"
+      ],
+      "materiality": "high",
+      "decision_relevance": "Defines where to cut and where to keep promotion in 2026"
+    },
+    {
+      "id": "I6",
+      "statement": "The marketing proposal would scale the worst economics: a 20% budget increase and deep discounts in Household, the category with the most negative incremental margin (−3.4 EUR per hundred euros of promoted sales)",
+      "facts": [
+        "F0017",
+        "F0011",
+        "F0012",
+        "F0018"
+      ],
+      "hypotheses": [
+        "H4",
+        "H2"
+      ],
+      "materiality": "high",
+      "decision_relevance": "Board should not approve the proposal as submitted"
+    }
+  ]
+}

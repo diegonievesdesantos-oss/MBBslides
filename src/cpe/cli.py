@@ -392,6 +392,10 @@ def cmd_reason(a):
         t = graph.trace(a.work, a.text)
         _p(json.dumps(t, indent=2, ensure_ascii=False) if a.json else graph.trace_markdown(t))
         return 0 if t.get("match") else 1
+    if a.reason_cmd == "eval-text":
+        r = benchmark.evaluate_text(a.case, a.storyline)
+        _p(json.dumps(r, indent=2, ensure_ascii=False))
+        return 0
     if a.reason_cmd == "eval":
         from . import __version__
         from .reasoning import PROTOCOL_VERSION
@@ -545,6 +549,8 @@ def main(argv=None) -> int:
                                                                                                     help="fill deck.json evidence from the cited facts first"); r.set_defaults(f=cmd_reason)
     r = rs.add_parser("ghost"); r.add_argument("work"); r.set_defaults(f=cmd_reason)
     r = rs.add_parser("trace"); r.add_argument("work"); r.add_argument("text"); r.add_argument("--json", action="store_true"); r.set_defaults(f=cmd_reason)
+    r = rs.add_parser("eval-text", help="any system's storyline.md vs the case reference (conclusions, traps, untraced numbers)")
+    r.add_argument("case"); r.add_argument("storyline"); r.set_defaults(f=cmd_reason)
     r = rs.add_parser("eval"); r.add_argument("case"); r.add_argument("work"); r.add_argument("--model", default="unrecorded"); r.add_argument("--skill", default="unrecorded")
     r.add_argument("--author", default="unrecorded", help="who produced the work (agent/session/person)"); r.set_defaults(f=cmd_reason)
     s = sub.add_parser("quality"); s.add_argument("report", help="eval_report.json"); s.add_argument("--check", action="store_true", help="exit 1 on an enforced gate failure")

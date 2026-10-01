@@ -1,0 +1,16 @@
+{
+  "protocol": "1.0",
+  "framework": "SCR",
+  "framework_rationale": "El consejo debe aprobar un plan: la situación (fuga acotada a particulares y oculta en el total), la complicación (la causa es el servicio, no el precio que la dirección comercial señala) y la resolución (restaurar el servicio como primera palanca y condición del presupuesto) llevan directamente a la decisión.",
+  "candidates": [
+    {"text": "La fuga de particulares (-50.000 clientes, -22 M€) nace del deterioro de la atención al cliente tras el cambio de proveedor del centro de llamadas, no de la subida de precios: restaurar el tiempo de resolución es la primera palanca y la condición para recuperar los 30.000 clientes del presupuesto 2026.", "scores": {"answers_question": 2, "supported_by_evidence": 2, "specific": 2, "decision_oriented": 2, "non_trivial": 2, "covers_storyline": 2}, "insights": ["I1", "I2", "I3", "I4", "I5"]},
+    {"text": "Para frenar la fuga de particulares hay que revertir la subida de precios de marzo de 2025.", "scores": {"answers_question": 2, "supported_by_evidence": 0, "specific": 1, "decision_oriented": 2, "non_trivial": 0, "covers_storyline": 0}, "insights": ["I4"]},
+    {"text": "Los particulares pierden 50.000 clientes y 22 M€ mientras autónomos y empresas crecen.", "scores": {"answers_question": 0, "supported_by_evidence": 2, "specific": 2, "decision_oriented": 0, "non_trivial": 1, "covers_storyline": 1}, "insights": ["I1", "I2"]}
+  ],
+  "governing_thought": "La fuga de particulares (-50.000 clientes, -22 M€) nace del deterioro de la atención al cliente tras el cambio de proveedor del centro de llamadas, no de la subida de precios: restaurar el tiempo de resolución es la primera palanca y la condición para recuperar los 30.000 clientes del presupuesto 2026.",
+  "key_line": [
+    {"id": "K1", "message": "La fuga es exclusiva de particulares y el total consolidado la oculta", "insights": ["I1", "I2"], "role": "situation"},
+    {"id": "K2", "message": "La causa es el servicio, no el precio", "insights": ["I3", "I4"], "role": "complication"},
+    {"id": "K3", "message": "Restaurar el tiempo de resolución es la primera palanca y condición del objetivo 2026", "insights": ["I3", "I5"], "role": "resolution"}
+  ]
+}

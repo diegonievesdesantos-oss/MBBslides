@@ -1,0 +1,20 @@
+{
+  "protocol": "1.0",
+  "sources": [
+    {
+      "file": "meeting_notes.md",
+      "sha256": "775897857a063735fe789efc4536e94f38d77a769cd13287f3b64c2ed16a29d1",
+      "bytes": 780
+    },
+    {
+      "file": "operating_costs.csv",
+      "sha256": "1988c52f8084089b9c7099c5bc8b498a26fbe7a21969fb547d4ef2aee570cee4",
+      "bytes": 130
+    },
+    {
+      "file": "pnl_by_category.csv",
+      "sha256": "45c49656e625315a3f8740eaa2ff1737f05d617beec609c4941be8ff1b0e6df6",
+      "bytes": 233
+    }
+  ]
+}

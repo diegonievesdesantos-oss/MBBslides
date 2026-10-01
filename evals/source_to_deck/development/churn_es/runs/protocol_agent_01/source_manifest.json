@@ -1,0 +1,15 @@
+{
+  "protocol": "1.0",
+  "sources": [
+    {
+      "file": "clientes_ingresos.xlsx",
+      "sha256": "304259c0d0a368e53fa5105de42d43215be3832034761e1af0f9d5d01d279abb",
+      "bytes": 5658
+    },
+    {
+      "file": "notas_comite.md",
+      "sha256": "ad0bea690c815c17f5b03a45634e2b6ccb032c631462968d48f1f48b40e74a99",
+      "bytes": 510
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+ "protocol": "1.0",
+ "insights": [
+  {
+   "id": "I1",
+   "statement": "La fuga es exclusiva de particulares: pierden 50.000 clientes (-6,1%) con una tasa de bajas del 14,2%, mientras autónomos (+5,2%) y empresas (+7,1%) crecen con bajas del 8,1% y 5,3%",
+   "facts": [
+    "F0004",
+    "F0003",
+    "F0008",
+    "F0012",
+    "F0007",
+    "F0011",
+    "C004"
+   ],
+   "hypotheses": [],
+   "materiality": "high",
+   "decision_relevance": "Acota el plan al segmento particulares y descarta una causa de mercado general"
+  },
+  {
+   "id": "I2",
+   "statement": "Los particulares restan 22 M€ de ingresos (-5,4%), ocultos en un total que crece 5 M€ gracias a autónomos (+11 M€) y empresas (+16 M€)",
+   "facts": [
+    "F0019",
+    "F0028",
+    "F0022",
+    "F0025"
+   ],
+   "hypotheses": [
+    "H4"
+   ],
+   "materiality": "high",
+   "decision_relevance": "El total consolidado no da la señal de alarma; el consejo debe juzgar el segmento por separado"
+  },
+  {
+   "id": "I3",
+   "statement": "El servicio, no el precio, explica la fuga: el 61% de los particulares que se dieron de baja cita la atención al cliente frente a un 22% el precio, coincidiendo con un tiempo de resolución que pasó de 2,1 a 4,6 días tras el cambio de proveedor",
+   "facts": [
+    "F0030",
+    "F0031",
+    "C006",
+    "F0029",
+    "C003"
+   ],
+   "hypotheses": [
+    "H2"
+   ],
+   "materiality": "high",
+   "decision_relevance": "Dirige la acción al centro de llamadas en lugar de a una rebaja de precios",
+   "caveat": "Evidencia de encuesta declarada y notas de comité (confianza 0,8); la relación temporal no prueba causalidad por sí sola"
+  },
+  {
+   "id": "I4",
+   "statement": "El ingreso medio por particular subió de 500 € a 504 € pese a la subida de precios: revertirla no recuperaría clientes perdidos por el servicio y reduciría ingreso por cliente",
+   "facts": [
+    "C001",
+    "C002",
+    "F0031"
+   ],
+   "hypotheses": [],
+   "materiality": "medium",
+   "decision_relevance": "Descarta la rebaja de precios como primera palanca",
+   "caveat": "El ingreso medio también depende de mezcla de productos, no observada en las fuentes"
+  },
+  {
+   "id": "I5",
+   "statement": "El presupuesto 2026 asume recuperar 30.000 particulares, el 60% de la pérdida neta de 2025, sin una acción que ataque la causa",
+   "facts": [
+    "F0032",
+    "F0004",
+    "C005"
+   ],
+   "hypotheses": [
+    "H5"
+   ],
+   "materiality": "high",
+   "decision_relevance": "Condiciona el objetivo presupuestario a restaurar el nivel de servicio"
+  }
+ ]
+}

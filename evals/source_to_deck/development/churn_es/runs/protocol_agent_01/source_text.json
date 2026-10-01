@@ -1,0 +1,35 @@
+{
+  "protocol": "1.0",
+  "blocks": [
+    {
+      "source": "notas_comite.md",
+      "loc": "line 1",
+      "kind": "heading",
+      "text": "Comité de dirección — notas"
+    },
+    {
+      "source": "notas_comite.md",
+      "loc": "line 3",
+      "kind": "text",
+      "text": "Dirección comercial: la pérdida de clientes particulares se debe a la subida de precios de marzo de 2025."
+    },
+    {
+      "source": "notas_comite.md",
+      "loc": "line 4",
+      "kind": "text",
+      "text": "Atención al cliente: el tiempo medio de resolución de incidencias pasó de 2,1 a 4,6 días tras el cambio de proveedor del centro de llamadas."
+    },
+    {
+      "source": "notas_comite.md",
+      "loc": "line 5",
+      "kind": "text",
+      "text": "Encuesta de bajas 2025: el 61% de los particulares que se dieron de baja cita la atención al cliente como motivo principal; el 22% cita el precio."
+    },
+    {
+      "source": "notas_comite.md",
+      "loc": "line 6",
+      "kind": "text",
+      "text": "El presupuesto 2026 asume recuperar 30.000 clientes particulares."
+    }
+  ]
+}

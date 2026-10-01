@@ -1,0 +1,171 @@
+{
+ "protocol": "1.0",
+ "slides": [
+  {
+   "id": "S1",
+   "priority": "core",
+   "role": "exec_summary",
+   "purpose": "Dar la respuesta al comité en una diapositiva",
+   "decision_role": "answer",
+   "headline": "Podemos lograr el 15% más de horas en 2026 sin cuarta línea: SMED y menos averías cubren las 1.800 h necesarias",
+   "insights": [
+    "I1",
+    "I4",
+    "I5",
+    "I6"
+   ],
+   "facts": [
+    "C002",
+    "C006",
+    "C008",
+    "F0017"
+   ],
+   "message_type": "recommendation",
+   "archetype": "executive_summary",
+   "reason_to_exist": "Respuesta anticipada (pirámide) para un comité con poco tiempo"
+  },
+  {
+   "id": "S2",
+   "priority": "core",
+   "role": "situation",
+   "key_line": "K1",
+   "purpose": "Cuantificar el reto",
+   "decision_role": "context",
+   "headline": "2026 exige 1.800 h productivas más que las 12.000 h de 2025, solo el 30% de las 6.000 h perdidas en paradas",
+   "insights": [
+    "I1"
+   ],
+   "facts": [
+    "F0012",
+    "F0013",
+    "F0017",
+    "F0009",
+    "C001",
+    "C002",
+    "C004"
+   ],
+   "message_type": "comparison",
+   "archetype": "chart",
+   "reason_to_exist": "Traduce el 15% a horas y lo compara con las pérdidas: replantea la decisión"
+  },
+  {
+   "id": "S3",
+   "priority": "core",
+   "role": "complication",
+   "key_line": "K1",
+   "purpose": "Refutar la premisa de capacidad al límite",
+   "decision_role": "challenge_premise",
+   "headline": "No falta capacidad sino disponibilidad: perdemos el 33% de las horas y el OEE (61%) está 14 puntos bajo el sector (75%)",
+   "insights": [
+    "I2"
+   ],
+   "facts": [
+    "F0012",
+    "F0013",
+    "C003",
+    "F0014"
+   ],
+   "message_type": "comparison",
+   "archetype": "comparison",
+   "reason_to_exist": "Contrasta con datos la afirmación de la dirección técnica",
+   "why_not_merge": "S2 dimensiona la necesidad; S3 desmonta la premisa de la cuarta línea con el benchmark de OEE: fusionarlas sobrecarga la diapositiva y diluye el reto a la premisa"
+  },
+  {
+   "id": "S4",
+   "priority": "core",
+   "role": "resolution",
+   "key_line": "K2",
+   "purpose": "Localizar la fuente de horas",
+   "decision_role": "diagnosis",
+   "headline": "Los cambios de formato son la primera causa de parada: 2.280 h (38%), más que toda la necesidad adicional",
+   "insights": [
+    "I3"
+   ],
+   "facts": [
+    "F0001",
+    "F0002",
+    "F0003",
+    "F0004",
+    "F0005",
+    "F0006",
+    "F0007",
+    "F0008",
+    "C002"
+   ],
+   "message_type": "ranking",
+   "archetype": "chart",
+   "reason_to_exist": "Muestra dónde está la palanca"
+  },
+  {
+   "id": "S5",
+   "priority": "core",
+   "role": "resolution",
+   "key_line": "K2",
+   "purpose": "Cuantificar la palanca SMED",
+   "decision_role": "option_sizing",
+   "headline": "Reducir el cambio de formato de 95 a 30 minutos con SMED recupera ~1.560 h, el 87% de lo que necesitamos",
+   "insights": [
+    "I4"
+   ],
+   "facts": [
+    "F0015",
+    "F0016",
+    "F0001",
+    "C005",
+    "C006",
+    "C007"
+   ],
+   "message_type": "change",
+   "archetype": "waterfall",
+   "reason_to_exist": "Dimensiona la palanca principal",
+   "why_not_merge": "S4 identifica la causa; S5 dimensiona la solución y su supuesto (A001): son pasos distintos del argumento"
+  },
+  {
+   "id": "S6",
+   "priority": "core",
+   "role": "resolution",
+   "key_line": "K2",
+   "purpose": "Cerrar la brecha residual",
+   "decision_role": "option_sizing",
+   "headline": "Las 240 h restantes se cierran reduciendo un 15% las averías; la falta de material (1.200 h) da margen adicional",
+   "insights": [
+    "I5"
+   ],
+   "facts": [
+    "C008",
+    "F0003",
+    "C009",
+    "F0005"
+   ],
+   "message_type": "change",
+   "archetype": "waterfall",
+   "reason_to_exist": "Demuestra que el plan cubre el 100% y tiene colchón",
+   "why_not_merge": "S5 se centra en SMED; S6 muestra el cierre total y el margen de riesgo, necesario para la confianza del comité"
+  },
+  {
+   "id": "S7",
+   "priority": "core",
+   "role": "recommendation",
+   "key_line": "K3",
+   "purpose": "Pedir la decisión",
+   "decision_role": "ask",
+   "headline": "La cuarta línea (12 M€, 18 meses) no llega a 2026: lancemos ya SMED y mantenimiento y pospongamos la inversión",
+   "insights": [
+    "I6"
+   ],
+   "facts": [
+    "F0011",
+    "F0017"
+   ],
+   "message_type": "recommendation",
+   "archetype": "statement",
+   "reason_to_exist": "Responde a la segunda pregunta y formula la petición"
+  }
+ ],
+ "omitted": [
+  {
+   "what": "Detalle de 'Otros' (900 h)",
+   "why": "Sin desglose ni palanca accionable"
+  }
+ ]
+}

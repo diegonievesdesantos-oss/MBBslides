@@ -2,6 +2,16 @@
 
 ## Unreleased — 1.7.0.dev0: consulting intelligence (development)
 
+- **Experiment 01 (docs/S2D_EXPERIMENT_01.md):** 4 development cases, independent agents without
+  (A) and with (B) the reasoning protocol. Substance tie (3/3 conclusions, 0 traps each); B
+  verifiable (every number a fact or a recomputed formula), fewer untraced numbers. Blind
+  storyline round `s1` built for the expert rater. Two new cases with PDF and DOCX sources.
+- Fact model: period per number ("38% in FY2025, up from 29% in FY2024"), comparison bases ("15%
+  more than in 2025" is a 2026 figure), forecast words (prevista, expected, target), units in prose
+  and headers (días, horas, minutos, meses), "12 M€"; Spanish thousands in headline numbers; "100
+  EUR" is money. `cpe reason eval-text` scores any system's storyline.md (negation- and
+  reported-speech-aware trap detection).
+
 - **Evidence standard (owner decision):** one expert rater. r3 closed (blind v1.5 result preserved
   in `VALIDATION_v1.5.json`) and marked development data.
 - **Waterfall scorer blind spot fixed:** new critical `integrity` metric — a broken slide (content

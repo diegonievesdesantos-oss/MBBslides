@@ -1,0 +1,95 @@
+{
+ "protocol": "1.0",
+ "hypotheses": [
+  {
+   "id": "H1",
+   "statement": "Las tres líneas están al límite de su capacidad y el crecimiento de 2026 exige una cuarta línea (visión de la dirección técnica)",
+   "status": "rejected",
+   "supporting_facts": [
+    "F0011"
+   ],
+   "contradicting_facts": [
+    "F0012",
+    "F0013",
+    "C003",
+    "F0014",
+    "C004"
+   ],
+   "confidence": 0.85,
+   "implication": "El cuello de botella no es la capacidad instalada sino la disponibilidad: un tercio de las horas se pierde en paradas y el OEE está 14 puntos por debajo del sector"
+  },
+  {
+   "id": "H6",
+   "statement": "El cuello de botella es la disponibilidad de las líneas (paradas), no la capacidad instalada",
+   "status": "supported",
+   "supporting_facts": [
+    "F0012",
+    "F0013",
+    "C003",
+    "F0014",
+    "C004"
+   ],
+   "contradicting_facts": [
+    "F0011"
+   ],
+   "confidence": 0.85,
+   "implication": "El crecimiento de 2026 puede salir de recuperar horas perdidas",
+   "rationale": "F0011 es una afirmación cualitativa sin datos de utilización; las cifras medidas (6.000 h perdidas de 18.000, OEE 61% vs 75%) muestran holgura de disponibilidad"
+  },
+  {
+   "id": "H2",
+   "statement": "Reducir los cambios de formato con SMED cubre la mayor parte del 15% adicional",
+   "status": "supported",
+   "supporting_facts": [
+    "F0001",
+    "F0002",
+    "F0015",
+    "F0016",
+    "C005",
+    "C006",
+    "C007"
+   ],
+   "contradicting_facts": [],
+   "confidence": 0.7,
+   "implication": "SMED es la palanca prioritaria: recupera ~1.560 h de las 1.800 h necesarias, con el supuesto de un número de cambios estable"
+  },
+  {
+   "id": "H3",
+   "statement": "Reducir las averías es necesario para cerrar la brecha residual tras SMED",
+   "status": "supported",
+   "supporting_facts": [
+    "F0003",
+    "F0004",
+    "C008",
+    "C009"
+   ],
+   "contradicting_facts": [],
+   "confidence": 0.7,
+   "implication": "Basta con reducir un 15% las horas de avería (240 de 1.620 h) para completar el objetivo"
+  },
+  {
+   "id": "H4",
+   "statement": "La falta de material es una palanca de capacidad relevante",
+   "status": "unresolved",
+   "supporting_facts": [
+    "F0005",
+    "F0006"
+   ],
+   "contradicting_facts": [],
+   "confidence": 0.3,
+   "implication": "1.200 h (20%) perdidas; no hay datos sobre causas ni coste de corregirlas: colchón adicional a investigar"
+  },
+  {
+   "id": "H5",
+   "statement": "La cuarta línea no puede cubrir la demanda de 2026 por plazo",
+   "status": "supported",
+   "supporting_facts": [
+    "F0011",
+    "F0017"
+   ],
+   "contradicting_facts": [],
+   "confidence": 0.7,
+   "implication": "Con 18 meses hasta estar operativa, la cuarta línea no resuelve 2026 en ningún escenario; la decisión de 12 M€ puede posponerse hasta conocer el resultado de SMED"
+  }
+ ]
+}

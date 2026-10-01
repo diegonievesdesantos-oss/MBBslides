@@ -1,0 +1,382 @@
+{
+  "protocol": "1.0",
+  "facts": [
+    {
+      "id": "F0001",
+      "claim": "Cambios de formato — Horas perdidas 2025: 2,280 HOURS",
+      "values": [
+        {
+          "value": 2280.0,
+          "unit": "HOURS",
+          "period": "2025",
+          "basis": "actual",
+          "label": "Cambios de formato",
+          "column": "Horas perdidas 2025"
+        }
+      ],
+      "source": {
+        "file": "paradas_por_causa.docx",
+        "sheet": "table at 2",
+        "range": "B2",
+        "loc": "table at 2"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0002",
+      "claim": "Cambios de formato — Porcentaje del tiempo perdido (%): 38 PCT",
+      "values": [
+        {
+          "value": 38.0,
+          "unit": "PCT",
+          "period": null,
+          "basis": null,
+          "label": "Cambios de formato",
+          "column": "Porcentaje del tiempo perdido (%)"
+        }
+      ],
+      "source": {
+        "file": "paradas_por_causa.docx",
+        "sheet": "table at 2",
+        "range": "C2",
+        "loc": "table at 2"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0003",
+      "claim": "Averías — Horas perdidas 2025: 1,620 HOURS",
+      "values": [
+        {
+          "value": 1620.0,
+          "unit": "HOURS",
+          "period": "2025",
+          "basis": "actual",
+          "label": "Averías",
+          "column": "Horas perdidas 2025"
+        }
+      ],
+      "source": {
+        "file": "paradas_por_causa.docx",
+        "sheet": "table at 2",
+        "range": "B3",
+        "loc": "table at 2"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0004",
+      "claim": "Averías — Porcentaje del tiempo perdido (%): 27 PCT",
+      "values": [
+        {
+          "value": 27.0,
+          "unit": "PCT",
+          "period": null,
+          "basis": null,
+          "label": "Averías",
+          "column": "Porcentaje del tiempo perdido (%)"
+        }
+      ],
+      "source": {
+        "file": "paradas_por_causa.docx",
+        "sheet": "table at 2",
+        "range": "C3",
+        "loc": "table at 2"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0005",
+      "claim": "Falta de material — Horas perdidas 2025: 1,200 HOURS",
+      "values": [
+        {
+          "value": 1200.0,
+          "unit": "HOURS",
+          "period": "2025",
+          "basis": "actual",
+          "label": "Falta de material",
+          "column": "Horas perdidas 2025"
+        }
+      ],
+      "source": {
+        "file": "paradas_por_causa.docx",
+        "sheet": "table at 2",
+        "range": "B4",
+        "loc": "table at 2"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0006",
+      "claim": "Falta de material — Porcentaje del tiempo perdido (%): 20 PCT",
+      "values": [
+        {
+          "value": 20.0,
+          "unit": "PCT",
+          "period": null,
+          "basis": null,
+          "label": "Falta de material",
+          "column": "Porcentaje del tiempo perdido (%)"
+        }
+      ],
+      "source": {
+        "file": "paradas_por_causa.docx",
+        "sheet": "table at 2",
+        "range": "C4",
+        "loc": "table at 2"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0007",
+      "claim": "Otros — Horas perdidas 2025: 900 HOURS",
+      "values": [
+        {
+          "value": 900.0,
+          "unit": "HOURS",
+          "period": "2025",
+          "basis": "actual",
+          "label": "Otros",
+          "column": "Horas perdidas 2025"
+        }
+      ],
+      "source": {
+        "file": "paradas_por_causa.docx",
+        "sheet": "table at 2",
+        "range": "B5",
+        "loc": "table at 2"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0008",
+      "claim": "Otros — Porcentaje del tiempo perdido (%): 15 PCT",
+      "values": [
+        {
+          "value": 15.0,
+          "unit": "PCT",
+          "period": null,
+          "basis": null,
+          "label": "Otros",
+          "column": "Porcentaje del tiempo perdido (%)"
+        }
+      ],
+      "source": {
+        "file": "paradas_por_causa.docx",
+        "sheet": "table at 2",
+        "range": "C5",
+        "loc": "table at 2"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0009",
+      "claim": "Total — Horas perdidas 2025: 6,000 HOURS",
+      "values": [
+        {
+          "value": 6000.0,
+          "unit": "HOURS",
+          "period": "2025",
+          "basis": "actual",
+          "label": "Total",
+          "column": "Horas perdidas 2025"
+        }
+      ],
+      "source": {
+        "file": "paradas_por_causa.docx",
+        "sheet": "table at 2",
+        "range": "B6",
+        "loc": "table at 2"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0010",
+      "claim": "Total — Porcentaje del tiempo perdido (%): 100 PCT",
+      "values": [
+        {
+          "value": 100.0,
+          "unit": "PCT",
+          "period": null,
+          "basis": null,
+          "label": "Total",
+          "column": "Porcentaje del tiempo perdido (%)"
+        }
+      ],
+      "source": {
+        "file": "paradas_por_causa.docx",
+        "sheet": "table at 2",
+        "range": "C6",
+        "loc": "table at 2"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0011",
+      "claim": "Necesitamos una cuarta línea para crecer: la inversión es de 12 M€ y estaría operativa en 18 meses.",
+      "values": [
+        {
+          "value": 12.0,
+          "unit": "EUR_M",
+          "raw": "12 M",
+          "period": null,
+          "basis": null
+        },
+        {
+          "value": 18.0,
+          "unit": "MONTHS",
+          "raw": "18",
+          "period": null,
+          "basis": null
+        }
+      ],
+      "source": {
+        "file": "correo_direccion_tecnica.md",
+        "loc": "line 3"
+      },
+      "fact_type": "text_statement",
+      "confidence": 0.8
+    },
+    {
+      "id": "F0012",
+      "claim": "Las tres líneas disponen de 18.000 horas al año;",
+      "values": [
+        {
+          "value": 18000.0,
+          "unit": "HOURS",
+          "raw": "18.000",
+          "period": null,
+          "basis": null
+        }
+      ],
+      "source": {
+        "file": "informe_produccion_2025.pdf",
+        "loc": "p.1"
+      },
+      "fact_type": "text_statement",
+      "confidence": 0.8
+    },
+    {
+      "id": "F0013",
+      "claim": "en 2025 se perdieron 6.000 horas por paradas.",
+      "values": [
+        {
+          "value": 6000.0,
+          "unit": "HOURS",
+          "raw": "6.000",
+          "period": "2025",
+          "basis": "actual"
+        }
+      ],
+      "source": {
+        "file": "informe_produccion_2025.pdf",
+        "loc": "p.1"
+      },
+      "fact_type": "text_statement",
+      "confidence": 0.8
+    },
+    {
+      "id": "F0014",
+      "claim": "El OEE de la planta fue del 61%, frente al 75% de referencia del sector.",
+      "values": [
+        {
+          "value": 61.0,
+          "unit": "PCT",
+          "raw": "61%",
+          "period": null,
+          "basis": null
+        },
+        {
+          "value": 75.0,
+          "unit": "PCT",
+          "raw": "75%",
+          "period": null,
+          "basis": null
+        }
+      ],
+      "source": {
+        "file": "informe_produccion_2025.pdf",
+        "loc": "p.1"
+      },
+      "fact_type": "text_statement",
+      "confidence": 0.8
+    },
+    {
+      "id": "F0015",
+      "claim": "El cambio de formato medio dura 95 minutos;",
+      "values": [
+        {
+          "value": 95.0,
+          "unit": "MINUTES",
+          "raw": "95",
+          "period": null,
+          "basis": null
+        }
+      ],
+      "source": {
+        "file": "informe_produccion_2025.pdf",
+        "loc": "p.1"
+      },
+      "fact_type": "text_statement",
+      "confidence": 0.8
+    },
+    {
+      "id": "F0016",
+      "claim": "las plantas que aplican SMED lo hacen en 30 minutos.",
+      "values": [
+        {
+          "value": 30.0,
+          "unit": "MINUTES",
+          "raw": "30",
+          "period": null,
+          "basis": null
+        }
+      ],
+      "source": {
+        "file": "informe_produccion_2025.pdf",
+        "loc": "p.1"
+      },
+      "fact_type": "text_statement",
+      "confidence": 0.8
+    },
+    {
+      "id": "F0017",
+      "claim": "La demanda prevista para 2026 exige un 15% más de horas productivas que en 2025.",
+      "values": [
+        {
+          "value": 15.0,
+          "unit": "PCT",
+          "raw": "15%",
+          "period": "2026",
+          "basis": "forecast"
+        }
+      ],
+      "source": {
+        "file": "informe_produccion_2025.pdf",
+        "loc": "p.1"
+      },
+      "fact_type": "text_statement",
+      "confidence": 0.8
+    }
+  ],
+  "stats": {
+    "sources": 3,
+    "tables": 1,
+    "facts": 17,
+    "by_type": {
+      "table_value": 10,
+      "derived_change": 0,
+      "text_statement": 7
+    }
+  }
+}

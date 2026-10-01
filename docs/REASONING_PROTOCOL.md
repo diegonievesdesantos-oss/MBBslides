@@ -25,6 +25,24 @@ short rationales and critic findings — never hidden reasoning traces.
 | `deck.json` | agent (render spec) | slides cite facts: `evidence: [{"fact": "F0012", "claim": …}]` |
 | `reasoning_report.json/.md`, `evidence_graph.json` | `cpe reason check` | every check, hard gates, stopping criteria, lineage |
 
+### Exact formats (learned from the first independent agent runs)
+
+- `hypotheses.json`: `confidence` is a number in 0–1; a supported hypothesis with contradicting
+  facts carries a `rationale` saying why it still holds.
+- `insights.json`: `hypotheses` lists the hypotheses an insight SUPPORTS; a rejected hypothesis an
+  insight argues against goes in `refutes` (citing a rejected hypothesis under `hypotheses` is a
+  hard failure: the insight would rest on it).
+- `computed_facts.json`: `{"facts": [{"id": "C0001", "claim": …, "formula": "F0029 / F0041 * 100",
+  "values": [{"value": 19.9, "unit": "PCT"}]}]}` — the formula uses fact ids (`F…`, `C…`, `A…`),
+  numbers, `+ − × ÷`, `sum()` and `abs()`; it is recomputed and must match the stated value.
+- `assumptions.json`: `{"assumptions": [{"id": "A001", "statement": …, "values": [{"value": 3,
+  "unit": "PP"}], "rationale": …, "owner": …}]}`.
+- `deck_plan.json`: each slide's `key_line` is ONE key-line id; the executive summary is
+  `"role": "exec_summary"` (no key line); `title`, `divider`, `next_steps` are the other roles.
+- Units: `EUR_M`, `USD_BN`, `PCT`, `PP`, `DAYS`, `HOURS`, … (as `facts.json` writes them).
+- Grounding is per sentence: a number must come from the facts the sentence (insight, key-line
+  insights for the governing thought, slide facts and insights for a headline) cites.
+
 ## Passes
 
 Each pass reads the artifacts before it and writes or amends one artifact. A pass may send the

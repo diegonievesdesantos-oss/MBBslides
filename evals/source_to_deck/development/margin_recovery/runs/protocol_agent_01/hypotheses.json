@@ -1,0 +1,111 @@
+{
+ "protocol": "1.0",
+ "hypotheses": [
+  {
+   "id": "H1",
+   "statement": "Lower volume ('we simply sold less') is driving the gross-margin decline (Sales director's view)",
+   "status": "rejected",
+   "supporting_facts": [
+    "F0020",
+    "F0038"
+   ],
+   "contradicting_facts": [
+    "F0044",
+    "F0041",
+    "F0040"
+   ],
+   "confidence": 0.85,
+   "implication": "Volume plans will not fix margin; group revenue rose 7.4% while margin fell 1.9 pp. Fresh and apparel did shrink, but that is mix, not volume."
+  },
+  {
+   "id": "H2",
+   "statement": "Mix shift towards low-margin electronics is the main driver of the decline",
+   "status": "supported",
+   "supporting_facts": [
+    "F0032",
+    "F0031",
+    "F0043",
+    "F0045",
+    "F0028",
+    "F0029",
+    "F0040",
+    "F0041"
+   ],
+   "contradicting_facts": [],
+   "confidence": 0.85,
+   "implication": "The fix sits in electronics pricing and growth policy, not in cost cutting."
+  },
+  {
+   "id": "H3",
+   "statement": "Freight inflation from the March 2025 carrier contract is driving the gross-margin decline",
+   "status": "rejected",
+   "supporting_facts": [
+    "F0003",
+    "F0047"
+   ],
+   "contradicting_facts": [
+    "F0013",
+    "F0014",
+    "F0021",
+    "F0019",
+    "F0018"
+   ],
+   "confidence": 0.6,
+   "implication": "Freight (+€9M, +24%) is real but sits in operating costs; renegotiation is an EBIT lever, not a gross-margin lever (classification to confirm)."
+  },
+  {
+   "id": "H4",
+   "statement": "Price/cost erosion within categories (rate effect) explains part of the decline",
+   "status": "supported",
+   "supporting_facts": [
+    "F0027",
+    "F0033",
+    "F0039",
+    "F0021"
+   ],
+   "contradicting_facts": [],
+   "confidence": 0.6,
+   "implication": "Rates fell 0.5–1.0 pp in three of four categories, ~0.4 pp of the group decline; recoverable via promotion and terms discipline."
+  },
+  {
+   "id": "H5",
+   "statement": "Electronics is under-priced and can be repriced towards the main competitor without losing the volume",
+   "status": "unresolved",
+   "supporting_facts": [
+    "F0050"
+   ],
+   "contradicting_facts": [],
+   "confidence": 0.3,
+   "implication": "Biggest single lever, but no elasticity evidence: needs a price test before committing the full gap."
+  },
+  {
+   "id": "H6",
+   "statement": "The 2026 budget (+25% electronics growth) will dilute gross margin further",
+   "status": "supported",
+   "supporting_facts": [
+    "F0046",
+    "F0031",
+    "F0043"
+   ],
+   "contradicting_facts": [],
+   "confidence": 0.6,
+   "implication": "Without changing the growth policy, the 1.5 pp target becomes ~2.2 pp of levers."
+  },
+  {
+   "id": "H7",
+   "statement": "Freight inflation is an operating-cost (EBIT) issue that sits outside gross margin",
+   "status": "supported",
+   "supporting_facts": [
+    "F0001",
+    "F0002",
+    "F0003",
+    "F0013",
+    "F0014",
+    "F0047"
+   ],
+   "contradicting_facts": [],
+   "confidence": 0.6,
+   "implication": "Freight renegotiation belongs in the EBIT plan, not in the 1.5 pp gross-margin count; confirm classification with Finance."
+  }
+ ]
+}

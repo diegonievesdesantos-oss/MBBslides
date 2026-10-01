@@ -1,0 +1,178 @@
+{
+ "protocol": "1.0",
+ "facts": [
+  {
+   "id": "C001",
+   "inputs": [
+    "F0012",
+    "F0013"
+   ],
+   "formula": "F0012 - F0013",
+   "claim": "Horas productivas 2025 = 18.000 disponibles - 6.000 perdidas = 12.000 h",
+   "values": [
+    {
+     "value": 12000,
+     "unit": "HOURS",
+     "period": "2025",
+     "basis": "computed"
+    }
+   ]
+  },
+  {
+   "id": "C002",
+   "inputs": [
+    "C001",
+    "F0017"
+   ],
+   "formula": "C001 * F0017 / 100",
+   "claim": "Horas productivas adicionales necesarias en 2026 = 15% de 12.000 h = 1.800 h",
+   "values": [
+    {
+     "value": 1800,
+     "unit": "HOURS",
+     "period": "2026",
+     "basis": "computed"
+    }
+   ]
+  },
+  {
+   "id": "C003",
+   "inputs": [
+    "F0013",
+    "F0012"
+   ],
+   "formula": "F0013 / F0012 * 100",
+   "claim": "Las horas perdidas por paradas son el 33% de las horas disponibles (6.000 / 18.000)",
+   "values": [
+    {
+     "value": 33.3,
+     "unit": "PCT",
+     "period": "2025",
+     "basis": "computed"
+    }
+   ]
+  },
+  {
+   "id": "C004",
+   "inputs": [
+    "C002",
+    "F0009"
+   ],
+   "formula": "C002 / F0009 * 100",
+   "claim": "La necesidad adicional equivale al 30% de las horas perdidas (1.800 / 6.000)",
+   "values": [
+    {
+     "value": 30,
+     "unit": "PCT",
+     "period": "2026",
+     "basis": "computed"
+    }
+   ]
+  },
+  {
+   "id": "C005",
+   "inputs": [
+    "F0015",
+    "F0016"
+   ],
+   "formula": "(F0016 - F0015) / F0015 * 100",
+   "claim": "SMED reduce la duración del cambio de formato un 68% (de 95 a 30 minutos)",
+   "values": [
+    {
+     "value": -68.4,
+     "unit": "PCT",
+     "period": null,
+     "basis": "computed"
+    }
+   ]
+  },
+  {
+   "id": "C006",
+   "inputs": [
+    "F0001",
+    "C005"
+   ],
+   "assumptions": [
+    "A001"
+   ],
+   "formula": "F0001 * (F0015 - F0016) / F0015",
+   "claim": "Horas recuperables con SMED = 2.280 h x 68% = 1.560 h",
+   "values": [
+    {
+     "value": 1560,
+     "unit": "HOURS",
+     "period": "2026",
+     "basis": "computed"
+    }
+   ]
+  },
+  {
+   "id": "C007",
+   "inputs": [
+    "C006",
+    "C002"
+   ],
+   "formula": "C006 / C002 * 100",
+   "claim": "SMED cubre el 87% de las 1.800 h necesarias (1.560 / 1.800)",
+   "values": [
+    {
+     "value": 86.7,
+     "unit": "PCT",
+     "period": "2026",
+     "basis": "computed"
+    }
+   ]
+  },
+  {
+   "id": "C008",
+   "inputs": [
+    "C002",
+    "C006"
+   ],
+   "formula": "C002 - C006",
+   "claim": "Brecha residual tras SMED = 1.800 - 1.560 = 240 h",
+   "values": [
+    {
+     "value": 240,
+     "unit": "HOURS",
+     "period": "2026",
+     "basis": "computed"
+    }
+   ]
+  },
+  {
+   "id": "C009",
+   "inputs": [
+    "C008",
+    "F0003"
+   ],
+   "formula": "C008 / F0003 * 100",
+   "claim": "Las 240 h residuales equivalen al 15% de las horas perdidas por averías (240 / 1.620)",
+   "values": [
+    {
+     "value": 14.8,
+     "unit": "PCT",
+     "period": "2026",
+     "basis": "computed"
+    }
+   ]
+  },
+  {
+   "id": "C010",
+   "inputs": [
+    "F0001",
+    "C002"
+   ],
+   "formula": "F0001 / C002 * 100",
+   "claim": "Las horas perdidas en cambios de formato (2.280 h) superan en un 27% la necesidad adicional (1.800 h)",
+   "values": [
+    {
+     "value": 126.7,
+     "unit": "PCT",
+     "period": "2026",
+     "basis": "computed"
+    }
+   ]
+  }
+ ]
+}

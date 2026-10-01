@@ -1,0 +1,174 @@
+{
+ "protocol": "1.0",
+ "slides": [
+  {
+   "id": "S1",
+   "priority": "core",
+   "role": "exec_summary",
+   "key_line": null,
+   "purpose": "Dar la respuesta y la petición al consejo en una página",
+   "decision_role": "Plantea la decisión: aprobar el plan de servicio",
+   "headline": "La fuga de particulares nace del servicio, no del precio: restaurar el tiempo de resolución es la primera palanca para 2026",
+   "insights": [
+    "I1",
+    "I3",
+    "I5"
+   ],
+   "facts": [
+    "F0004",
+    "F0030",
+    "F0031",
+    "F0032"
+   ],
+   "message_type": "summary",
+   "archetype": "executive_summary",
+   "reason_to_exist": "Un consejo necesita la respuesta antes del análisis"
+  },
+  {
+   "id": "S2",
+   "priority": "core",
+   "role": "situation",
+   "key_line": "K1",
+   "purpose": "Mostrar que la pérdida se concentra en particulares",
+   "decision_role": "Acota el plan al segmento particulares",
+   "headline": "Particulares pierde 50.000 clientes (-6,1%) con un 14,2% de bajas, mientras autónomos y empresas crecen",
+   "insights": [
+    "I1"
+   ],
+   "facts": [
+    "F0004",
+    "F0003",
+    "F0008",
+    "F0012",
+    "F0007",
+    "F0011"
+   ],
+   "message_type": "comparison",
+   "archetype": "chart",
+   "reason_to_exist": "Descarta una causa de mercado general y fija el perímetro del problema"
+  },
+  {
+   "id": "S3",
+   "priority": "support",
+   "role": "situation",
+   "key_line": "K1",
+   "purpose": "Mostrar el impacto en ingresos oculto en el total",
+   "decision_role": "Justifica la urgencia aunque el total crezca",
+   "headline": "Los ingresos totales suben 5 M€, pero ocultan 22 M€ perdidos en particulares",
+   "insights": [
+    "I2"
+   ],
+   "facts": [
+    "F0019",
+    "F0028",
+    "F0022",
+    "F0025"
+   ],
+   "message_type": "change",
+   "archetype": "waterfall",
+   "reason_to_exist": "Sin esta lectura el consejo vería un total en crecimiento y no actuaría",
+   "why_not_merge": "S2 trata clientes y tasa de bajas por segmento; S3 trata el puente de ingresos, que exige un exhibit distinto (cascada)"
+  },
+  {
+   "id": "S4",
+   "priority": "core",
+   "role": "complication",
+   "key_line": "K2",
+   "purpose": "Contrastar la tesis del precio con la voz del cliente",
+   "decision_role": "Redirige la acción del precio al servicio",
+   "headline": "El 61% de los particulares que se dieron de baja cita la atención al cliente; solo el 22% cita el precio",
+   "insights": [
+    "I3"
+   ],
+   "facts": [
+    "F0030",
+    "F0031"
+   ],
+   "message_type": "ranking",
+   "archetype": "chart",
+   "reason_to_exist": "Rechaza con evidencia la hipótesis de la dirección comercial"
+  },
+  {
+   "id": "S5",
+   "priority": "core",
+   "role": "complication",
+   "key_line": "K2",
+   "purpose": "Mostrar el mecanismo operativo detrás del motivo declarado",
+   "decision_role": "Identifica qué hay que corregir: el tiempo de resolución",
+   "headline": "El tiempo medio de resolución pasó de 2,1 a 4,6 días tras el cambio de proveedor del centro de llamadas",
+   "insights": [
+    "I3"
+   ],
+   "facts": [
+    "F0029"
+   ],
+   "message_type": "change",
+   "archetype": "chart",
+   "reason_to_exist": "Convierte el motivo declarado en una métrica operativa gestionable",
+   "why_not_merge": "S4 es la voz del cliente (encuesta); S5 es la métrica operativa que el plan debe mover; juntas cada una pierde fuerza"
+  },
+  {
+   "id": "S6",
+   "priority": "support",
+   "role": "complication",
+   "key_line": "K2",
+   "purpose": "Descartar la rebaja de precios como palanca",
+   "decision_role": "Evita una acción costosa que no ataca la causa",
+   "headline": "El ingreso medio por particular subió de 500 € a 504 €: revertir la subida de precios restaría ingreso sin atacar la causa",
+   "insights": [
+    "I4"
+   ],
+   "facts": [
+    "C001",
+    "C002",
+    "F0031"
+   ],
+   "message_type": "comparison",
+   "archetype": "comparison",
+   "reason_to_exist": "Responde a la alternativa que la dirección comercial propondrá"
+  },
+  {
+   "id": "S7",
+   "priority": "core",
+   "role": "resolution",
+   "key_line": "K3",
+   "purpose": "Vincular el objetivo presupuestario a la acción de servicio",
+   "decision_role": "Muestra el riesgo de aprobar el presupuesto sin plan",
+   "headline": "El presupuesto 2026 asume recuperar 30.000 particulares, el 60% de lo perdido en 2025, sin una acción sobre la causa",
+   "insights": [
+    "I5"
+   ],
+   "facts": [
+    "F0032",
+    "F0004",
+    "C005"
+   ],
+   "message_type": "comparison",
+   "archetype": "chart",
+   "reason_to_exist": "Conecta el diagnóstico con el compromiso financiero del consejo"
+  },
+  {
+   "id": "S8",
+   "priority": "core",
+   "role": "recommendation",
+   "key_line": "K3",
+   "purpose": "Pedir la aprobación del plan y sus próximos pasos",
+   "decision_role": "La decisión que se solicita",
+   "headline": "Proponemos aprobar un plan para devolver el tiempo de resolución a 2,1 días y no tocar precios",
+   "insights": [
+    "I3",
+    "I4",
+    "I5"
+   ],
+   "facts": [
+    "F0029",
+    "F0030",
+    "F0032"
+   ],
+   "message_type": "recommendation",
+   "archetype": "statement",
+   "reason_to_exist": "Cierra con la petición concreta al consejo",
+   "why_not_merge": "S7 cuantifica el riesgo presupuestario; S8 formula la petición y los próximos pasos que el consejo debe aprobar"
+  }
+ ]
+}

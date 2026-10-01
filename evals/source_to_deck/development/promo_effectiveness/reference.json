@@ -1,0 +1,151 @@
+{
+  "status": "development",
+  "authored_by": "developing agent (synthetic case; visible, tunable)",
+  "critical_facts": [
+    {
+      "id": "R1",
+      "description": "Promo share of sales FY2025",
+      "value": 38,
+      "unit": "%"
+    },
+    {
+      "id": "R2",
+      "description": "Share of promoted volume bought by customers who also buy at full price",
+      "value": 71,
+      "unit": "%"
+    },
+    {
+      "id": "R3",
+      "description": "Gross margin FY2025",
+      "value": 25.1,
+      "unit": "%"
+    },
+    {
+      "id": "R4",
+      "description": "Total volume growth",
+      "value": 2.1,
+      "unit": "%"
+    }
+  ],
+  "required_conclusions": [
+    {
+      "id": "C1",
+      "description": "Promotions mostly subsidise purchases that would happen anyway (71%, post-promo dip) — volume shifted, not created (total +2.1%)",
+      "any_of": [
+        [
+          "anyway"
+        ],
+        [
+          "subsidis"
+        ],
+        [
+          "subsidiz"
+        ],
+        [
+          "would have bought"
+        ],
+        [
+          "full price",
+          "71%"
+        ],
+        [
+          "shift",
+          "full-price"
+        ],
+        [
+          "cannibal"
+        ]
+      ]
+    },
+    {
+      "id": "C2",
+      "description": "Snacks and household promotions destroy margin (negative incremental margin)",
+      "any_of": [
+        [
+          "snacks",
+          "household"
+        ],
+        [
+          "negative",
+          "incremental"
+        ]
+      ]
+    },
+    {
+      "id": "C3",
+      "description": "Cut / reshape promotions (less depth, fewer in snacks and household, keep where incremental margin is positive)",
+      "any_of": [
+        [
+          "cut"
+        ],
+        [
+          "reduce",
+          "promotion"
+        ],
+        [
+          "reduce",
+          "depth"
+        ],
+        [
+          "redirect"
+        ],
+        [
+          "shallower"
+        ],
+        [
+          "fewer promotions"
+        ]
+      ]
+    }
+  ],
+  "traps": [
+    {
+      "id": "T1",
+      "description": "Accepting that promotions drove growth and raising the budget 20%",
+      "forbidden": [
+        [
+          "raise",
+          "budget"
+        ],
+        [
+          "increase",
+          "promotion budget"
+        ],
+        [
+          "promotions drove",
+          "growth"
+        ],
+        [
+          "drove",
+          "volume growth"
+        ]
+      ]
+    },
+    {
+      "id": "T2",
+      "description": "Presenting promoted-volume growth (+14%) as total growth (+2.1%) (v2 terms: promoted-volume growth stated as such is correct)",
+      "forbidden": [
+        [
+          "total volume grew 14%"
+        ],
+        [
+          "sales grew 14%"
+        ],
+        [
+          "volume grew 14% thanks to"
+        ],
+        [
+          "promotions drove 14%"
+        ]
+      ]
+    }
+  ],
+  "acceptable_frameworks": [
+    "SCR",
+    "PDS",
+    "DRI",
+    "CII"
+  ],
+  "reference_governing_thought": "Promotions now drive 38% of sales but mostly subsidise customers who would buy anyway; cutting deep promotions in snacks and household and keeping them where they pay recovers margin at little volume cost.",
+  "notes": "Total volume grew only 2.1% while promoted volume grew 14% and full-price volume fell 6%: a shift, not growth."
+}

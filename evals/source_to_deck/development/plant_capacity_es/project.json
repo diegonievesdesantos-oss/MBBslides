@@ -1,0 +1,11 @@
+{
+  "project": "Capacidad de la planta de envases (caso de desarrollo)",
+  "audience": ["Director general", "Director de operaciones"],
+  "decision": "Decidir cómo cubrir el aumento de demanda de 2026",
+  "question": "¿Cómo conseguimos un 15% más de horas productivas en 2026, y hace falta la cuarta línea?",
+  "horizon": "2026",
+  "scope": ["Planta de envases, tres líneas"],
+  "language": "es",
+  "deck_type": "board_presentation",
+  "max_slides": 8
+}

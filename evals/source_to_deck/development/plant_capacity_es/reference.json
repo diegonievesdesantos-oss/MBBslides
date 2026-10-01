@@ -1,0 +1,21 @@
+{
+  "status": "development",
+  "authored_by": "developing agent (synthetic case; visible, tunable)",
+  "critical_facts": [
+    {"id": "R1", "description": "Horas perdidas 2025", "value": 6000, "unit": ""},
+    {"id": "R2", "description": "Horas perdidas por cambios de formato", "value": 2280, "unit": ""},
+    {"id": "R3", "description": "Duración media del cambio de formato", "value": 95, "unit": ""},
+    {"id": "R4", "description": "OEE 2025", "value": 61, "unit": "%"}
+  ],
+  "required_conclusions": [
+    {"id": "C1", "description": "La capacidad perdida está en las paradas, sobre todo los cambios de formato (38%)", "any_of": [["cambios de formato"], ["cambio de formato"], ["changeover"]]},
+    {"id": "C2", "description": "Reducir el cambio de formato de 95 a 30 minutos (SMED) recupera ≈1.560 horas (+13%)", "any_of": [["smed"], ["30 minutos"]]},
+    {"id": "C3", "description": "No hace falta la cuarta línea de 12 M€ para 2026", "any_of": [["sin", "línea"], ["no", "cuarta línea"], ["evitar", "inversión"], ["sin invertir"], ["en lugar de", "línea"]]}
+  ],
+  "traps": [
+    {"id": "T1", "description": "Aceptar que las líneas están al límite y recomendar la cuarta línea", "forbidden": [["aprobar", "cuarta línea"], ["invertir", "12 M€"], ["construir", "línea"], ["al límite"]]}
+  ],
+  "acceptable_frameworks": ["SCR", "PDS", "DRI", "CII"],
+  "reference_governing_thought": "Perdemos un tercio de las horas en paradas; aplicar SMED a los cambios de formato y reducir averías da el 15% de horas que pide 2026 sin la cuarta línea de 12 M€.",
+  "notes": "SMED 95 → 30 min recupera 2.280 × 65/95 ≈ 1.560 h ≈ 13% de las 12.000 h productivas; el resto con averías."
+}

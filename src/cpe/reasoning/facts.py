@@ -18,8 +18,9 @@ from . import PROTOCOL_VERSION
 PERIOD_RE = re.compile(
     r"\b(?:(?P<fy>FY|CY)\s?'?(?P<fyy>\d{2}|\d{4})(?P<fs>[EABF])?|(?P<q>Q[1-4])\s?'?(?P<qy>\d{2}|\d{4})?|(?P<h>H[12])\s?'?(?P<hy>\d{2}|\d{4})?"
     r"|(?P<y>(?:19|20)\d{2})(?P<ys>[EABF])?|(?P<w>YTD|LTM|TTM|run[- ]rate))\b", re.IGNORECASE)
-BASIS_WORDS = {"budget": "budget", "presupuesto": "budget", "forecast": "forecast", "previsión": "forecast", "plan": "plan",
-               "actual": "actual", "real": "actual", "estimate": "estimate", "est.": "estimate"}
+BASIS_WORDS = {"budget": "budget", "presupuesto": "budget", "forecast": "forecast", "previsión": "forecast", "prevista": "forecast",
+               "previsto": "forecast", "projected": "forecast", "proyectad": "forecast", "expected": "forecast", "target": "target",
+               "objetivo": "target", "plan": "plan", "actual": "actual", "real": "actual", "estimate": "estimate", "est.": "estimate"}
 SUFFIX_BASIS = {"E": "estimate", "A": "actual", "B": "budget", "F": "forecast"}
 UNIT_RE = re.compile(r"(€|\$|£|eur|usd|gbp)\s?(m|mn|bn|k|million|billion|thousand)?|\b(m|mn|bn|k)\s?(€|\$|£|eur|usd)|%|\bpp\b|\bbps\b|\bdays?\b|\bmonths?\b|\byears?\b",
                      re.IGNORECASE)
@@ -55,7 +56,8 @@ def detect_unit(text: str) -> str:
     t = str(text or "")
     m = UNIT_RE.search(t)
     if not m:
-        return ""
+        w = next((UNIT_WORDS[x] for x in re.findall(r"[a-záéíóúñ]+", t.lower()) if x in UNIT_WORDS and UNIT_WORDS[x] != "PP"), "")
+        return w
     s = m.group(0).lower().replace(" ", "")
     cur = "EUR" if ("€" in s or "eur" in s) else "USD" if ("$" in s or "usd" in s) else "GBP" if ("£" in s or "gbp" in s) else None
     scale = "BN" if ("bn" in s or "billion" in s) else "M" if re.search(r"m(n|illion)?$|^m", s.replace("€", "").replace("$", "").replace("£", "").replace("eur", "")
@@ -84,6 +86,46 @@ def unit_from_raw(raw: str) -> str:
     if cur:
         return f"{cur}_{scale}" if scale else cur
     return scale and f"PLAIN_{scale}"
+
+
+UNIT_WORDS = {"day": "DAYS", "days": "DAYS", "día": "DAYS", "días": "DAYS", "dias": "DAYS", "week": "WEEKS", "weeks": "WEEKS", "semana": "WEEKS",
+              "semanas": "WEEKS", "month": "MONTHS", "months": "MONTHS", "mes": "MONTHS", "meses": "MONTHS", "year": "YEARS", "years": "YEARS",
+              "año": "YEARS", "años": "YEARS", "hour": "HOURS", "hours": "HOURS", "hora": "HOURS", "horas": "HOURS", "min": "MINUTES",
+              "minutes": "MINUTES", "minutos": "MINUTES", "points": "PP", "puntos": "PP", "pts": "PP"}
+
+
+def period_near(raw: str, context: str) -> dict | None:
+    """The period a number belongs to in prose: the first period mentioned after it, before the next
+    number ('38% in FY2025, up from 29% in FY2024' → FY2025 / FY2024); else the sentence's period."""
+    i = context.find(raw)
+    if i < 0:
+        return detect_period(context)
+    after = context[i + len(raw):]
+    nxt = re.search(r"[-−+]?\d", re.sub(PERIOD_RE, lambda m: " " * len(m.group(0)), after))
+    seg = after[: nxt.start()] if nxt else after
+    m = PERIOD_RE.search(seg)
+    if m and re.search(r"\b(than|vs\.?|versus|compared|que en|que|frente a|respecto a)\b", seg[: m.start()], re.I):
+        before = detect_period(context[:i])  # "15% more than in 2025": 2025 is the base, not the number's period
+        if before:
+            return before
+    per = detect_period(seg)
+    if per:
+        sent = detect_period(context)
+        if sent and sent.get("basis") != "actual" and per.get("basis") == "actual":
+            per["basis"] = sent["basis"]  # "the 2026 budget assumes … growth": basis from the sentence
+        return per
+    return detect_period(context)
+
+
+def unit_in_context(raw: str, context: str) -> str:
+    """Unit stated by the word after a number in prose: 'from 2,1 to 4,6 días' → DAYS for both
+    numbers of a range."""
+    i = context.find(raw)
+    if i < 0:
+        return ""
+    after = context[i + len(raw):]
+    m = re.match(r"\s*(?:(?:to|a|y|and|-|–)\s*[-−+]?[\d.,]+\s*)?([A-Za-zÀ-ÿ]+)", after)
+    return UNIT_WORDS.get(m.group(1).lower(), "") if m else ""
 
 
 def _col(j: int) -> str:
@@ -176,9 +218,16 @@ def build_fact_model(paths: list[str | Path]) -> dict:
     for f in inv["facts"]:
         by_sentence.setdefault((f["source"], f["loc"], f["context"]), []).append(f)
     for (src, loc, ctx), fs in by_sentence.items():
-        per = detect_period(ctx)
-        facts.append({"id": next_id(), "claim": ctx, "values": [{"value": f["value"], "unit": unit_from_raw(f["raw"]), "raw": f["raw"],
-                                                                "period": (per or {}).get("period"), "basis": (per or {}).get("basis")} for f in fs],
+        vals = []
+        for f in fs:
+            per = period_near(f["raw"], ctx)
+            unit = unit_from_raw(f["raw"])
+            after = ctx[ctx.find(f["raw"]) + len(f["raw"]):] if f["raw"] in ctx else ""
+            if unit.startswith("PLAIN_") and re.match(r"\s*(€|eur)", after, re.I):  # "12 M€"
+                unit = "EUR_" + unit.split("_")[1]
+            vals.append({"value": f["value"], "unit": unit or unit_in_context(f["raw"], ctx), "raw": f["raw"],
+                         "period": (per or {}).get("period"), "basis": (per or {}).get("basis")})
+        facts.append({"id": next_id(), "claim": ctx, "values": vals,
                       "source": {"file": src, "loc": loc}, "fact_type": "text_statement", "confidence": 0.8})
     stats = {"sources": len(inv["sources"]), "tables": len(inv["tables"]), "facts": len(facts),
              "by_type": {k: sum(1 for f in facts if f["fact_type"] == k) for k in ("table_value", "derived_change", "text_statement")}}

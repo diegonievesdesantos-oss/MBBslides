@@ -1,0 +1,23 @@
+{
+  "protocol": "1.0",
+  "hypotheses": [
+    {"id": "H1", "statement": "Management/marketing view: promotions drove volume growth in FY2025 and are our most effective commercial tool", "status": "rejected",
+     "supporting_facts": ["F0019", "F0020"], "contradicting_facts": ["F0021", "F0020", "F0025", "F0024", "F0003", "F0011", "F0023"], "confidence": 0.85,
+     "implication": "The case for a 20% budget increase rests on a claim the data do not support"},
+    {"id": "H2", "statement": "Promotions mostly shift existing demand (from full price and from future weeks) rather than create new volume", "status": "supported",
+     "supporting_facts": ["F0020", "F0021", "F0025", "F0024"], "contradicting_facts": [], "confidence": 0.85,
+     "implication": "Promotional spend is largely subsidising purchases that would have happened anyway"},
+    {"id": "H3", "statement": "Higher promotional intensity and depth are the main driver of the gross-margin decline", "status": "supported",
+     "supporting_facts": ["F0019", "F0022", "F0023", "F0003", "F0011"], "contradicting_facts": [], "confidence": 0.6,
+     "implication": "Reducing depth and intensity is the main lever to recover margin; other cost drivers are not yet ruled out (see H6)"},
+    {"id": "H4", "statement": "Promotion returns differ by category: some categories earn positive incremental margin", "status": "supported",
+     "supporting_facts": ["F0007", "F0015", "F0003", "F0011"], "contradicting_facts": [], "confidence": 0.85,
+     "implication": "The 2026 plan should reallocate by category instead of scaling spend across the board"},
+    {"id": "H5", "statement": "Extending deep discounts to Household would create value", "status": "rejected",
+     "supporting_facts": [], "contradicting_facts": ["F0011", "F0012", "F0022"], "confidence": 0.85,
+     "implication": "Household is the worst-returning category; deeper discounts there would amplify losses"},
+    {"id": "H6", "statement": "The gross-margin decline is mainly driven by non-promotional factors (input costs, mix outside promotions)", "status": "unresolved",
+     "supporting_facts": [], "contradicting_facts": [], "confidence": 0.3,
+     "implication": "Sources contain no cost or mix data; a margin bridge should confirm the promo share of the decline before final budget sign-off"}
+  ]
+}

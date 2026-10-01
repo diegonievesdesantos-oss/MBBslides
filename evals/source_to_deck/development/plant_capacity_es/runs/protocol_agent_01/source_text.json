@@ -1,0 +1,59 @@
+{
+  "protocol": "1.0",
+  "blocks": [
+    {
+      "source": "correo_direccion_tecnica.md",
+      "loc": "line 1",
+      "kind": "heading",
+      "text": "Correo de la dirección técnica"
+    },
+    {
+      "source": "correo_direccion_tecnica.md",
+      "loc": "line 3",
+      "kind": "text",
+      "text": "Necesitamos una cuarta línea para crecer: la inversión es de 12 M€ y estaría operativa en 18 meses."
+    },
+    {
+      "source": "correo_direccion_tecnica.md",
+      "loc": "line 4",
+      "kind": "text",
+      "text": "Las líneas actuales están al límite de su capacidad."
+    },
+    {
+      "source": "informe_produccion_2025.pdf",
+      "loc": "p.1",
+      "kind": "text",
+      "text": "Informe de producción 2025 - planta de envases."
+    },
+    {
+      "source": "informe_produccion_2025.pdf",
+      "loc": "p.1",
+      "kind": "text",
+      "text": "Las tres líneas disponen de 18.000 horas al año; en 2025 se perdieron 6.000 horas por paradas."
+    },
+    {
+      "source": "informe_produccion_2025.pdf",
+      "loc": "p.1",
+      "kind": "text",
+      "text": "El OEE de la planta fue del 61%, frente al 75% de referencia del sector."
+    },
+    {
+      "source": "informe_produccion_2025.pdf",
+      "loc": "p.1",
+      "kind": "text",
+      "text": "El cambio de formato medio dura 95 minutos; las plantas que aplican SMED lo hacen en 30 minutos."
+    },
+    {
+      "source": "informe_produccion_2025.pdf",
+      "loc": "p.1",
+      "kind": "text",
+      "text": "La demanda prevista para 2026 exige un 15% más de horas productivas que en 2025."
+    },
+    {
+      "source": "paradas_por_causa.docx",
+      "loc": "para 1",
+      "kind": "heading",
+      "text": "Horas perdidas por causa, 2025"
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+ "protocol": "1.0",
+ "findings": [
+  {
+   "critic": "FACT CHECKER",
+   "finding": "Todas las cifras de los titulares (1.800, 12.000, 30%, 33%, 2.280, 38%, 1.560, 87%, 240, 15%, 12 M€, 18 meses) están en facts.json o en computed_facts.json con fórmula de una operación",
+   "artifact": "deck_plan.json",
+   "ref": "S1-S7",
+   "severity": "low",
+   "action": "Ninguna",
+   "resolved": true
+  },
+  {
+   "critic": "FACT CHECKER",
+   "finding": "Las 1.560 h de SMED dependen del supuesto A001 (número de cambios estable) y de alcanzar 30 min como las plantas SMED",
+   "artifact": "insights.json",
+   "ref": "I4",
+   "severity": "medium",
+   "action": "Caveat explícito en I4 y en la diapositiva S5; '~' en el titular",
+   "resolved": true
+  },
+  {
+   "critic": "PARTNER REVIEW",
+   "finding": "La petición al comité debe ser explícita: aprobar el programa SMED + mantenimiento y posponer (no rechazar) la cuarta línea con un punto de revisión",
+   "artifact": "deck_plan.json",
+   "ref": "S7",
+   "severity": "high",
+   "action": "Titular de S7 reformulado como petición; próximos pasos con hito de revisión",
+   "resolved": true
+  },
+  {
+   "critic": "PARTNER REVIEW",
+   "finding": "No hay datos de coste de SMED ni de mantenimiento; el comité preguntará por la inversión alternativa",
+   "artifact": "storyline.json",
+   "ref": "K2",
+   "severity": "medium",
+   "action": "Incluir como próximo paso estimar coste del programa; no se inventan cifras",
+   "resolved": true
+  },
+  {
+   "critic": "RED TEAM",
+   "finding": "H1 (líneas al límite) podría ser cierta si la demanda sigue creciendo más allá de 2026: el plan de disponibilidad compra tiempo, no elimina la cuarta línea para siempre",
+   "artifact": "hypotheses.json",
+   "ref": "H1",
+   "severity": "medium",
+   "action": "Recomendar posponer, no cancelar, y reevaluar tras medir SMED",
+   "resolved": true
+  },
+  {
+   "critic": "RED TEAM",
+   "finding": "La ejecución parcial de SMED dejaría brecha; H4 (falta de material, 1.200 h) está sin resolver",
+   "artifact": "insights.json",
+   "ref": "I5",
+   "severity": "medium",
+   "action": "Presentar falta de material como colchón, no como base del plan",
+   "resolved": true
+  },
+  {
+   "critic": "EDITOR",
+   "finding": "S5 y S6 podrían fusionarse en una cascada única; se mantienen separadas porque S6 aporta la cobertura total y el margen de riesgo",
+   "artifact": "deck_plan.json",
+   "ref": "S5,S6",
+   "severity": "low",
+   "action": "why_not_merge documentado; 7 diapositivas dentro del máximo de 8",
+   "resolved": true
+  },
+  {
+   "critic": "EDITOR",
+   "finding": "El desglose de 'Otros' (900 h) no aporta a la decisión",
+   "artifact": "deck_plan.json",
+   "ref": "omitted",
+   "severity": "low",
+   "action": "Omitido del deck",
+   "resolved": true
+  },
+  {
+   "critic": "DATA-VIZ REVIEW",
+   "finding": "S2 y S3 como comparación: barras horas disponibles/perdidas/necesarias y OEE planta vs sector; S4 ranking en barras horizontales; S5-S6 cascada de 1.800 h necesarias",
+   "artifact": "deck_plan.json",
+   "ref": "S2-S6",
+   "severity": "low",
+   "action": "Arquetipos ajustados (chart/comparison/chart/waterfall)",
+   "resolved": true
+  }
+ ]
+}

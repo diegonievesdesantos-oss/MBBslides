@@ -1,0 +1,314 @@
+{
+ "protocol": "1.0",
+ "facts": [
+  {
+   "id": "C001",
+   "claim": "Electronics share of group revenue FY2025: 19.9%",
+   "values": [
+    {
+     "value": 19.9,
+     "unit": "PCT",
+     "period": "FY2025"
+    }
+   ],
+   "fact_type": "computed",
+   "derived_from": [
+    "F0029",
+    "F0041"
+   ],
+   "operation": "ratio",
+   "formula": "290 / 1460 * 100"
+  },
+  {
+   "id": "C002",
+   "claim": "Electronics share of group revenue FY2024: 13.2%",
+   "values": [
+    {
+     "value": 13.2,
+     "unit": "PCT",
+     "period": "FY2024"
+    }
+   ],
+   "fact_type": "computed",
+   "derived_from": [
+    "F0028",
+    "F0040"
+   ],
+   "operation": "ratio",
+   "formula": "180 / 1360 * 100"
+  },
+  {
+   "id": "C003",
+   "claim": "Electronics gross margin is 14.9 pp below the group average in FY2025 (11.5% vs 26.4%)",
+   "values": [
+    {
+     "value": -14.9,
+     "unit": "PP",
+     "period": "FY2025"
+    }
+   ],
+   "fact_type": "computed",
+   "derived_from": [
+    "F0031",
+    "F0043"
+   ],
+   "operation": "difference",
+   "formula": "11.5 - 26.4"
+  },
+  {
+   "id": "C004",
+   "claim": "Electronics revenue growth (€110M) exceeds total group revenue growth (€100M)",
+   "values": [
+    {
+     "value": 110,
+     "unit": "PCT",
+     "period": "FY2024→FY2025"
+    }
+   ],
+   "fact_type": "computed",
+   "derived_from": [
+    "F0032",
+    "F0044"
+   ],
+   "operation": "ratio",
+   "formula": "110 / 100 * 100"
+  },
+  {
+   "id": "C005",
+   "claim": "Group gross profit FY2024: €385M",
+   "values": [
+    {
+     "value": 384.9,
+     "unit": "EUR_M",
+     "period": "FY2024"
+    }
+   ],
+   "fact_type": "computed",
+   "derived_from": [
+    "F0040",
+    "F0042"
+   ],
+   "operation": "product",
+   "formula": "1360 * 28.3 / 100"
+  },
+  {
+   "id": "C006",
+   "claim": "Group gross profit FY2025: €385M",
+   "values": [
+    {
+     "value": 385.4,
+     "unit": "EUR_M",
+     "period": "FY2025"
+    }
+   ],
+   "fact_type": "computed",
+   "derived_from": [
+    "F0041",
+    "F0043"
+   ],
+   "operation": "product",
+   "formula": "1460 * 26.4 / 100"
+  },
+  {
+   "id": "C007",
+   "claim": "Rate effect: category gross-margin changes weighted by FY2025 revenue explain -0.4 pp of the decline",
+   "values": [
+    {
+     "value": -0.4,
+     "unit": "PP",
+     "period": "FY2024→FY2025"
+    }
+   ],
+   "fact_type": "computed",
+   "derived_from": [
+    "F0017",
+    "F0021",
+    "F0023",
+    "F0027",
+    "F0029",
+    "F0033",
+    "F0035",
+    "F0039",
+    "F0041"
+   ],
+   "operation": "weighted_average",
+   "formula": "(410*0 + 625*-0.5 + 290*-0.5 + 135*-1) / 1460"
+  },
+  {
+   "id": "C008",
+   "claim": "Mix effect: -1.5 pp of the -1.9 pp decline comes from the shift in category mix (total change minus rate effect)",
+   "values": [
+    {
+     "value": -1.5,
+     "unit": "PP",
+     "period": "FY2024→FY2025"
+    }
+   ],
+   "fact_type": "computed",
+   "derived_from": [
+    "F0045",
+    "C007"
+   ],
+   "operation": "difference",
+   "formula": "-1.9 - (-0.4)"
+  },
+  {
+   "id": "C009",
+   "claim": "Freight is 3.2% of FY2025 revenue",
+   "values": [
+    {
+     "value": 3.2,
+     "unit": "PCT",
+     "period": "FY2025"
+    }
+   ],
+   "fact_type": "computed",
+   "derived_from": [
+    "F0002",
+    "F0041"
+   ],
+   "operation": "ratio",
+   "formula": "47 / 1460 * 100"
+  },
+  {
+   "id": "C010",
+   "claim": "FY2025 revenue came in €40M below the January forecast",
+   "values": [
+    {
+     "value": -40,
+     "unit": "EUR_M",
+     "period": "FY2025"
+    }
+   ],
+   "fact_type": "computed",
+   "derived_from": [
+    "F0041",
+    "F0049"
+   ],
+   "operation": "difference",
+   "formula": "1460 - 1500"
+  },
+  {
+   "id": "C011",
+   "claim": "Closing the 6% electronics price gap at flat volume adds €17.4M gross profit",
+   "values": [
+    {
+     "value": 17.4,
+     "unit": "EUR_M",
+     "period": "FY2025 base"
+    }
+   ],
+   "fact_type": "computed",
+   "derived_from": [
+    "F0029",
+    "F0050"
+   ],
+   "operation": "product",
+   "formula": "290 * 6 / 100"
+  },
+  {
+   "id": "C012",
+   "claim": "Electronics repricing (C011) lifts group gross margin by ~0.9 pp on the FY2025 base",
+   "values": [
+    {
+     "value": 0.87,
+     "unit": "PP",
+     "period": "FY2025 base"
+    }
+   ],
+   "fact_type": "computed",
+   "derived_from": [
+    "F0041",
+    "F0043",
+    "C011"
+   ],
+   "operation": "scenario",
+   "formula": "(1460 * 26.4 / 100 + 17.4) / (1460 + 17.4) * 100 - 26.4"
+  },
+  {
+   "id": "C013",
+   "claim": "Restoring FY2024 margin rates in grocery (+0.5 pp) and apparel (+1.0 pp) adds ~0.3 pp to group gross margin",
+   "values": [
+    {
+     "value": 0.31,
+     "unit": "PP",
+     "period": "FY2025 base"
+    }
+   ],
+   "fact_type": "computed",
+   "derived_from": [
+    "F0023",
+    "F0027",
+    "F0035",
+    "F0039",
+    "F0041"
+   ],
+   "operation": "weighted_average",
+   "formula": "(625 * 0.5 + 135 * 1.0) / 1460"
+  },
+  {
+   "id": "C014",
+   "claim": "Budgeted +25% electronics growth at 11.5% margin, other categories flat, cuts group gross margin by a further ~0.7 pp",
+   "values": [
+    {
+     "value": -0.7,
+     "unit": "PP",
+     "period": "2026 budget"
+    }
+   ],
+   "fact_type": "computed",
+   "derived_from": [
+    "F0041",
+    "F0043",
+    "F0029",
+    "F0031",
+    "F0046"
+   ],
+   "operation": "scenario",
+   "formula": "(1460 * 26.4 / 100 + 290 * 0.25 * 11.5 / 100) / (1460 + 290 * 0.25) * 100 - 26.4"
+  },
+  {
+   "id": "C015",
+   "claim": "Recovering fresh and apparel to FY2024 revenue at FY2025 margins, with electronics held flat, adds ~0.2 pp",
+   "values": [
+    {
+     "value": 0.19,
+     "unit": "PP",
+     "period": "FY2025 base"
+    }
+   ],
+   "fact_type": "computed",
+   "derived_from": [
+    "F0016",
+    "F0017",
+    "F0019",
+    "F0034",
+    "F0035",
+    "F0037",
+    "F0041",
+    "F0043"
+   ],
+   "operation": "scenario",
+   "formula": "(1460 * 26.4 / 100 + 10 * 34 / 100 + 15 * 40 / 100) / (1460 + 25) * 100 - 26.4"
+  },
+  {
+   "id": "C016",
+   "claim": "Identified gross-margin levers sum to ~1.4 pp (repricing 0.9 + rate restoration 0.3 + mix recovery 0.2)",
+   "values": [
+    {
+     "value": 1.37,
+     "unit": "PP",
+     "period": "2027"
+    }
+   ],
+   "fact_type": "computed",
+   "derived_from": [
+    "C012",
+    "C013",
+    "C015"
+   ],
+   "operation": "sum",
+   "formula": "0.87 + 0.31 + 0.19"
+  }
+ ]
+}

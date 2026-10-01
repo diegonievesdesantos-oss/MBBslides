@@ -1,0 +1,9 @@
+{
+  "round": "s1",
+  "created": "2026-10-01",
+  "purpose": "blind A/B of storylines",
+  "blind": true,
+  "used_for_calibration": false,
+  "status": "awaiting human votes",
+  "key": "private"
+}

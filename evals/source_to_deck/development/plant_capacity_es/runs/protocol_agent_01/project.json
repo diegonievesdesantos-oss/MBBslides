@@ -1,0 +1,15 @@
+{
+  "protocol": "1.0",
+  "project": "Capacidad de la planta de envases (caso de desarrollo)",
+  "audience": ["Director general", "Director de operaciones"],
+  "decision": "Decidir cómo cubrir el aumento de demanda de 2026",
+  "question": "¿Cómo conseguimos un 15% más de horas productivas en 2026, y hace falta la cuarta línea?",
+  "horizon": "2026",
+  "scope": ["Planta de envases, tres líneas"],
+  "constraints": ["Máximo 8 diapositivas", "Presentación al comité de dirección"],
+  "assumptions": ["Las 18.000 horas disponibles al año se mantienen en 2026", "El número de cambios de formato en 2026 es similar al de 2025"],
+  "language": "es",
+  "deck_type": "board_presentation",
+  "max_slides": 8,
+  "inferred": ["constraints", "assumptions"]
+}

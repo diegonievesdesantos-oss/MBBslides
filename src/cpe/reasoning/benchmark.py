@@ -44,6 +44,40 @@ def _group_hit(text: str, groups: list[list[str]], numbers: list[str] | None = N
     return True
 
 
+NEGATION = re.compile(r"\b(no|not|never|without|isn't|aren't|wasn't|don't|doesn't|sin|nunca|ni|rather than|instead of|en lugar de|en vez de|reject|"
+                      r"rechaz\w*|avoid|evitar|unnecessary|innecesari\w*|excluding|except|but not|ruled out|descart\w*)\b", re.I)
+
+
+REPORTED = re.compile(r"\b(marketing's|management's|sales director|dirección (?:comercial|técnica)|proposal|proposes|propos\w*|propone|propuesta|would|"
+                      r"claims?|says?|según|asks?|pide|plan to|budget assumes|el presupuesto asume)\b", re.I)
+
+
+def _trap_hit(text: str, groups: list[list[str]], numbers: list[str] | None = None, span: int = 60) -> bool:
+    """A trap is triggered when its terms appear together (within `span` characters) and AFFIRMED:
+    'the lines are at full capacity', not 'the lines are NOT at full capacity' or 'margin fell …
+    because of mix, not volume'. A negation within the 6 words before the matched phrase disarms it."""
+    if not _group_hit(text, groups, numbers):
+        return False
+    t = _norm(text)
+    for g in groups or []:
+        terms = [x.lower() for x in g]
+        starts = [[m.start() for m in re.finditer(re.escape(x), t)] for x in terms]
+        if not all(starts):
+            continue
+        for a in starts[0]:
+            pos = [a] + [min(p, key=lambda q: abs(q - a)) for p in starts[1:]]
+            if max(pos) - min(pos) > span:
+                continue
+            end = max(pos) + max(len(x) for x in terms)
+            before = " ".join(t[:min(pos)].split()[-6:])
+            after = " ".join(t[end:].split()[:4])  # "volume is not the problem"
+            each = any(NEGATION.search(" ".join(t[:q].split()[-3:])) for q in pos)  # "… because of mix, not volume"
+            reported = REPORTED.search(" ".join(t[:min(pos)].split()[-8:]))  # someone else's claim, reported in order to discuss it
+            if not NEGATION.search(before) and not NEGATION.search(after) and not each and not reported:
+                return True
+    return False
+
+
 def evaluate(case_dir: str | Path, work_dir: str | Path, run_meta: dict | None = None) -> dict:
     case, work = Path(case_dir), Path(work_dir)
     ref = json.loads((case / "reference.json").read_text(encoding="utf-8"))
@@ -89,7 +123,7 @@ def evaluate(case_dir: str | Path, work_dir: str | Path, run_meta: dict | None =
                        "with_decision_relevance": sum(1 for i in insights if i.get("decision_relevance"))}
     # STORYLINE
     gt = sl.get("governing_thought", "")
-    traps = {t["id"]: any(_group_hit(x, t.get("forbidden"), t.get("numbers")) for x in [gt] + [s.get("headline", "") for s in core]) for t in ref.get("traps") or []}
+    traps = {t["id"]: any(_trap_hit(x, t.get("forbidden"), t.get("numbers")) for x in [gt] + [s.get("headline", "") for s in core]) for t in ref.get("traps") or []}
     storyline = {"governing_thought": gt, "candidates_compared": len(sl.get("candidates") or []),
                  "framework": sl.get("framework"), "framework_acceptable": (sl.get("framework") in ref["acceptable_frameworks"]) if ref.get("acceptable_frameworks") else None,
                  "answer_first": not any(i["code"] == "ANSWER_NOT_FIRST" for i in issues),
@@ -134,3 +168,46 @@ def to_markdown(r: dict) -> str:
         L.append("")
     L.append(f"_{r['note']}_")
     return "\n".join(L) + "\n"
+
+
+# ── storyline text: the same yardstick for any system, protocol or not ──────────────────────────
+
+def parse_storyline_md(md: str) -> dict:
+    """Template sections of a storyline.md (docs/SOURCE_TO_DECK.md): governing thought, key line,
+    outline headlines, recommendation. Labels may be English or Spanish."""
+    gt = re.search(r"\*\*(?:governing thought|idea central|idea principal|mensaje principal|tesis|conclusión principal|respuesta|governing thought \(.*?\))[:：]?\*\*[:：]?\s*(.+)", md, re.I)
+    sections = re.split(r"\n\*\*", md)[1:]  # [0] is the title
+    def items(sec_names):
+        for sec in sections:
+            head = sec.split("**", 1)[0].lower()
+            if any(n in head for n in sec_names):
+                return [re.sub(r"^\s*\d+[.)]\s*", "", ln).strip() for ln in sec.splitlines()[1:] if re.match(r"^\s*\d+[.)]\s+", ln)]
+        return []
+    return {"governing_thought": gt.group(1).strip() if gt else "", "key_line": items(("key line", "línea", "linea", "argumento")),
+            "outline": items(("outline", "esquema", "índice", "indice", "estructura", "guion", "guión")), "text": md}
+
+
+def evaluate_text(case_dir: str | Path, md_path: str | Path) -> dict:
+    """Conclusions reached, traps triggered and numbers that cannot be traced to the sources, for a
+    storyline.md produced by ANY system. Numbers are traced against the whole fact base (directly or by
+    one operation on two facts) — weaker than the per-claim grounding of `cpe reason check`."""
+    from .facts import build_fact_model
+    from .grounding import ground_numbers
+
+    case = Path(case_dir)
+    ref = json.loads((case / "reference.json").read_text(encoding="utf-8"))
+    sl = parse_storyline_md(Path(md_path).read_text(encoding="utf-8"))
+    fm = build_fact_model(sorted(p for p in (case / "sources").rglob("*") if p.is_file()))
+    exposed = [sl["governing_thought"], *sl["outline"]]
+    concl = {c["id"]: _group_hit(sl["text"], c.get("any_of"), c.get("numbers")) for c in ref.get("required_conclusions") or []}
+    traps = [t["id"] for t in ref.get("traps") or [] if any(_trap_hit(x, t.get("forbidden"), t.get("numbers")) for x in exposed)]
+    nums = []
+    for line in [sl["governing_thought"], *sl["key_line"], *sl["outline"]]:
+        nums += ground_numbers(line, fm["facts"], max_pairs_facts=10_000)
+    raw_vals = {round(abs(float(v["value"])), 6) for f in fm["facts"] for v in f["values"]}
+    untraced = sorted({g["number"] for g in nums if g["status"] == "unsupported"
+                       and not (re.fullmatch(r"[-+−]?[\d.,]+", g["number"]) and any(round(q["value"], 6) in raw_vals for q in headline_quantities(g["number"])))})
+    return {"case": case.name, "governing_thought": sl["governing_thought"], "key_line_points": len(sl["key_line"]), "slides": len(sl["outline"]),
+            "max_slides": json.loads((case / "project.json").read_text(encoding="utf-8")).get("max_slides"),
+            "conclusions": concl, "conclusions_reached": f"{sum(concl.values())}/{len(concl)}", "traps_triggered": traps,
+            "numbers": len(nums), "untraced_numbers": untraced}

@@ -1,0 +1,92 @@
+{
+ "protocol": "1.0",
+ "framework": "PDS",
+ "framework_rationale": "The question has two halves — what drives the decline and which actions recover 1.5 pp — so Problem → Diagnosis → Solution fits: the board must first accept that the cause is mix (not volume or freight) before the levers and the growth-policy change make sense.",
+ "candidates": [
+  {
+   "id": "G1",
+   "text": "Gross margin fell 1.9 pp because low-margin electronics grew to 19.9% of sales, not because of volume or freight; approve a 2027 plan led by electronics repricing that recovers about 1.4 pp without touching store labour, and make electronics growth margin-conditional, since the budgeted +25% would cost a further 0.7 pp.",
+   "scores": {
+    "answers_question": 2,
+    "supported_by_evidence": 2,
+    "specific": 2,
+    "decision_oriented": 2,
+    "non_trivial": 2,
+    "covers_storyline": 2
+   },
+   "insights": [
+    "I1",
+    "I2",
+    "I5",
+    "I6",
+    "I7"
+   ]
+  },
+  {
+   "id": "G2",
+   "text": "Gross margin fell 1.9 pp on higher freight and weaker volumes; renegotiate the carrier contract and drive store traffic to recover 1.5 pp.",
+   "scores": {
+    "answers_question": 1,
+    "supported_by_evidence": 0,
+    "specific": 1,
+    "decision_oriented": 2,
+    "non_trivial": 0,
+    "covers_storyline": 1
+   },
+   "insights": [
+    "I4"
+   ],
+   "rejected_because": "Contradicted by evidence: revenue grew 7.4% and freight sits in operating costs (H1, H3 rejected)"
+  },
+  {
+   "id": "G3",
+   "text": "Electronics growth has diluted gross margin by 1.5 pp; the margin can be recovered with a mix of pricing and cost actions.",
+   "scores": {
+    "answers_question": 1,
+    "supported_by_evidence": 2,
+    "specific": 1,
+    "decision_oriented": 1,
+    "non_trivial": 1,
+    "covers_storyline": 1
+   },
+   "insights": [
+    "I2",
+    "I7"
+   ],
+   "rejected_because": "Correct diagnosis but vague on the actions and silent on the budget decision the board must take"
+  }
+ ],
+ "governing_thought": "Gross margin fell 1.9 pp because low-margin electronics grew to 19.9% of sales, not because of volume or freight; approve a 2027 plan led by electronics repricing that recovers about 1.4 pp without touching store labour, and make electronics growth margin-conditional, since the budgeted +25% would cost a further 0.7 pp.",
+ "key_line": [
+  {
+   "id": "K1",
+   "message": "The 1.9 pp decline is a mix problem: electronics, at 11.5% margin, grew from 13.2% to 19.9% of sales; volume grew and freight sits below gross margin",
+   "insights": [
+    "I1",
+    "I2",
+    "I3",
+    "I4"
+   ],
+   "role": "problem_diagnosis"
+  },
+  {
+   "id": "K2",
+   "message": "Repricing electronics, restoring grocery and apparel rates and recovering fresh and apparel sales add up to about 1.4 pp, with no store-labour cut",
+   "insights": [
+    "I5",
+    "I3",
+    "I7"
+   ],
+   "role": "solution"
+  },
+  {
+   "id": "K3",
+   "message": "The plan only holds if electronics growth becomes margin-conditional: the budgeted +25% would take away a further 0.7 pp",
+   "insights": [
+    "I6",
+    "I5"
+   ],
+   "role": "decision"
+  }
+ ]
+}

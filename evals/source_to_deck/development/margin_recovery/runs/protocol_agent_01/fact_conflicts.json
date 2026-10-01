@@ -1,0 +1,33 @@
+{
+ "protocol": "1.0",
+ "conflicts": [
+  {
+   "id": "X001",
+   "type": "forecast_vs_actual",
+   "measure": [
+    "revenue"
+   ],
+   "period": "FY2025",
+   "facts": [
+    {
+     "fact": "F0041",
+     "value": 1460.0,
+     "unit": "EUR_M",
+     "basis": "actual",
+     "source": "pnl_by_category.csv"
+    },
+    {
+     "fact": "F0049",
+     "value": 1500.0,
+     "unit": "EUR_M",
+     "basis": "estimate",
+     "source": "meeting_notes.md"
+    }
+   ],
+   "resolution": {
+    "use": "F0041",
+    "rationale": "Use the FY2025 actual close (€1,460M, P&L by category); the €1,500M figure is the January forecast (FY2025E) and is superseded. Only cited to note the revenue shortfall vs forecast, never as actual."
+   }
+  }
+ ]
+}

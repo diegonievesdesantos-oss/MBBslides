@@ -42,6 +42,8 @@ def _num(raw: str) -> float | None:
     s = raw.replace("−", "-").replace("–", "-").strip()
     s = s.replace(",", ".") if re.search(r"\d,\d{1,2}(?!\d)", s) else s.replace(",", "")
     s = re.sub(r"[^\d.\-+]", "", s)
+    if re.fullmatch(r"[-+]?\d{1,3}(?:\.\d{3})+", s):
+        s = s.replace(".", "")  # Spanish thousands "820.000" (same rule as ingest; 3-decimal figures are rare in headlines)
     try:
         return float(s)
     except ValueError:
@@ -89,6 +91,9 @@ def headline_quantities(text: str) -> list[dict]:
         suffix = re.sub(r"[-−+\d.,\s]", "", raw).lower()
         word = re.match(r"\s*(bps|pts|points|puntos|pp)\b", rest, re.IGNORECASE)
         cur = next((CURRENCIES[c] for c in ("€", "$", "£") if before.endswith(c) or before.endswith(c + " ") or rest.lstrip().startswith(c)), None)
+        if cur is None:  # "100 EUR", "500 euros", "3 USD" (v1.7)
+            w = re.match(r"\s*(eur|euros?|usd|dollars?|gbp|pounds?)\b", rest, re.I)
+            cur = {"e": "EUR", "u": "USD", "d": "USD", "g": "GBP", "p": "GBP"}[w.group(1)[0].lower()] if w else None
         if suffix == "" and 1900 <= v <= 2100 and float(v).is_integer():
             continue
         if suffix == "pp" or (word and word.group(1).lower() in ("pp", "pts", "points", "puntos")):

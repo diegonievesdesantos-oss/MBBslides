@@ -1,0 +1,247 @@
+{
+ "protocol": "1.0",
+ "slides": [
+  {
+   "id": "S01",
+   "priority": "core",
+   "key_line": null,
+   "purpose": "State the answer and the ask up front",
+   "decision_role": "frames the decision",
+   "headline": "Electronics mix, not volume or freight, cut gross margin by 1.9 pp; a pricing-led plan recovers about 1.4 pp if electronics growth becomes margin-conditional",
+   "insights": [
+    "I2",
+    "I7",
+    "I6"
+   ],
+   "facts": [
+    "F0045",
+    "C001",
+    "C016",
+    "C014"
+   ],
+   "message_type": "recommendation",
+   "archetype": "executive_summary",
+   "reason_to_exist": "Board reads the answer and the decision in one page",
+   "role": "exec_summary"
+  },
+  {
+   "id": "S02",
+   "priority": "core",
+   "key_line": "K1",
+   "purpose": "Reject the volume explanation",
+   "decision_role": "removes the wrong fix",
+   "headline": "Revenue grew 7.4% while gross margin fell 1.9 pp, leaving gross profit flat at €385M: this is not a volume problem",
+   "insights": [
+    "I1"
+   ],
+   "facts": [
+    "F0044",
+    "F0045",
+    "C005",
+    "C006"
+   ],
+   "message_type": "change",
+   "archetype": "bar_comparison",
+   "reason_to_exist": "Sales' volume hypothesis is management's prevailing belief and must be explicitly retired"
+  },
+  {
+   "id": "S03",
+   "priority": "core",
+   "key_line": "K1",
+   "purpose": "Quantify mix vs rate",
+   "decision_role": "locates the problem",
+   "headline": "1.5 of the 1.9 pp decline is mix: electronics, at 11.5% margin, rose from 13.2% to 19.9% of sales; rate erosion explains the other 0.4 pp",
+   "insights": [
+    "I2",
+    "I3"
+   ],
+   "facts": [
+    "F0045",
+    "F0031",
+    "C001",
+    "C002",
+    "C007",
+    "C008"
+   ],
+   "message_type": "change",
+   "archetype": "waterfall",
+   "reason_to_exist": "Core diagnostic: decomposes the decline into its drivers",
+   "why_not_merge": "S02 retires a wrong hypothesis with revenue/gross-profit data; S03 decomposes the margin bridge — different evidence and exhibit"
+  },
+  {
+   "id": "S04",
+   "priority": "support",
+   "key_line": "K1",
+   "purpose": "Place freight correctly",
+   "decision_role": "prevents a mis-allocated lever",
+   "headline": "Freight rose €9M (+23.7%) after the new carrier contract, but it sits in operating costs: an EBIT lever, not a gross-margin one",
+   "insights": [
+    "I4"
+   ],
+   "facts": [
+    "F0003",
+    "F0047",
+    "F0013",
+    "F0014"
+   ],
+   "message_type": "comparison",
+   "archetype": "table",
+   "reason_to_exist": "The supply-chain view will be raised in the room; one slide closes it"
+  },
+  {
+   "id": "S05",
+   "priority": "core",
+   "key_line": "K2",
+   "purpose": "Size the largest lever",
+   "decision_role": "shows the fastest route",
+   "headline": "Electronics is priced 6% below the main competitor; closing the gap at flat volume adds €17.4M gross profit, about +0.9 pp",
+   "insights": [
+    "I5"
+   ],
+   "facts": [
+    "F0050",
+    "C011",
+    "C012"
+   ],
+   "message_type": "opportunity",
+   "archetype": "bar_comparison",
+   "reason_to_exist": "Largest and fastest lever; carries the main risk (elasticity), so it needs its own page"
+  },
+  {
+   "id": "S06",
+   "priority": "core",
+   "key_line": "K2",
+   "purpose": "Show the full plan against the target",
+   "decision_role": "sizes the plan",
+   "headline": "Three levers recover about 1.4 pp of the 1.5 pp target by 2027 — repricing 0.9, category rates 0.3, fresh and apparel recovery 0.2 — with no store-labour cut",
+   "insights": [
+    "I7",
+    "I3"
+   ],
+   "facts": [
+    "C012",
+    "C013",
+    "C015",
+    "C016",
+    "F0048"
+   ],
+   "message_type": "change",
+   "archetype": "waterfall",
+   "reason_to_exist": "Ties all levers to the board's 1.5 pp target and shows the residual gap",
+   "why_not_merge": "S05 tests the riskiest single lever; S06 aggregates all levers vs target"
+  },
+  {
+   "id": "S07",
+   "priority": "core",
+   "key_line": "K3",
+   "purpose": "Expose the budget conflict",
+   "decision_role": "forces the growth-policy decision",
+   "headline": "The 2026 budget's +25% electronics growth would cut a further 0.7 pp at today's 11.5% margin: growth must be conditional on margin",
+   "insights": [
+    "I6"
+   ],
+   "facts": [
+    "F0046",
+    "F0031",
+    "C014"
+   ],
+   "message_type": "risk",
+   "archetype": "bar_comparison",
+   "reason_to_exist": "Without this change, the plan is cancelled out by the budget"
+  },
+  {
+   "id": "S08",
+   "priority": "core",
+   "key_line": "K3",
+   "purpose": "State the decision and next steps",
+   "decision_role": "asks for approval",
+   "headline": "Approve the plan with a Q1 2027 electronics price test as the gate, margin-conditional electronics growth and freight renegotiation in the EBIT plan",
+   "insights": [
+    "I5",
+    "I6",
+    "I4"
+   ],
+   "facts": [
+    "F0050",
+    "C014",
+    "F0003"
+   ],
+   "message_type": "recommendation",
+   "archetype": "roadmap",
+   "reason_to_exist": "The board needs a clear ask with gates and owners",
+   "why_not_merge": "S07 quantifies the budget conflict; S08 is the ask with gates and owners across all three key-line points"
+  },
+  {
+   "id": "S09",
+   "priority": "appendix",
+   "key_line": null,
+   "purpose": "Reference data",
+   "decision_role": "backs up the diagnosis",
+   "headline": "Category P&L: electronics is the only category growing fast, and at the lowest margin",
+   "insights": [
+    "I2"
+   ],
+   "facts": [
+    "F0016",
+    "F0017",
+    "F0018",
+    "F0019",
+    "F0022",
+    "F0023",
+    "F0024",
+    "F0025",
+    "F0028",
+    "F0029",
+    "F0030",
+    "F0031",
+    "F0034",
+    "F0035",
+    "F0036",
+    "F0037",
+    "F0040",
+    "F0041",
+    "F0042",
+    "F0043"
+   ],
+   "message_type": "ranking",
+   "archetype": "table",
+   "reason_to_exist": "Detailed backup for questions on category numbers"
+  },
+  {
+   "id": "S10",
+   "priority": "appendix",
+   "key_line": null,
+   "purpose": "Make sizing transparent",
+   "decision_role": "backs up the plan",
+   "headline": "Lever sizing rests on four assumptions to validate, led by flat electronics volume after repricing",
+   "insights": [
+    "I5",
+    "I6",
+    "I7"
+   ],
+   "facts": [
+    "C011",
+    "C012",
+    "C013",
+    "C014",
+    "C015",
+    "C016",
+    "F0041",
+    "F0049"
+   ],
+   "message_type": "comparison",
+   "archetype": "table",
+   "reason_to_exist": "Shows assumptions and the FY2025 base (actual €1,460M, not the €1,500M forecast)"
+  }
+ ],
+ "omitted": [
+  {
+   "what": "Marketing and rent cost changes",
+   "why": "Small (+€1M each) and below gross margin"
+  },
+  {
+   "what": "Store labour",
+   "why": "Out of scope by constraint; +€2M, below gross margin"
+  }
+ ]
+}

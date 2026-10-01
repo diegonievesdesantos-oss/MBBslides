@@ -1,0 +1,59 @@
+{
+ "protocol": "1.0",
+ "assumptions": [
+  {
+   "id": "A001",
+   "statement": "Closing the 6% electronics price gap to the main competitor keeps electronics volume flat (no elasticity data in sources); sizing: +€17M gross profit on €290M, ≈ +0.9 pp group gross margin",
+   "basis": [
+    "F0050",
+    "F0029",
+    "F0031",
+    "F0041",
+    "C011",
+    "C012"
+   ],
+   "sensitivity": "If only half the gap is closed, ≈ +0.4 pp",
+   "status": "to_validate",
+   "validation": "Price test on top 200 references, Q1 2027"
+  },
+  {
+   "id": "A002",
+   "statement": "Restoring FY2024 margin rates in grocery (+0.5 pp) and apparel (+1.0 pp) on FY2025 revenue adds ≈ €4.5M gross profit, ≈ +0.3 pp",
+   "basis": [
+    "F0023",
+    "F0027",
+    "F0035",
+    "F0039",
+    "F0041",
+    "C013"
+   ],
+   "sensitivity": "Promotional intensity",
+   "status": "to_validate"
+  },
+  {
+   "id": "A003",
+   "statement": "If electronics grows 25% as budgeted at 11.5% margin with other categories flat, group gross margin falls a further ≈ 0.7 pp (to ≈ 25.7%)",
+   "basis": [
+    "F0046",
+    "F0029",
+    "F0031",
+    "F0041",
+    "C014"
+   ],
+   "sensitivity": "Linear in electronics growth",
+   "status": "scenario"
+  },
+  {
+   "id": "A004",
+   "statement": "Freight is booked in operating costs, below gross margin, so freight savings improve EBIT, not gross margin",
+   "basis": [
+    "F0001",
+    "F0002",
+    "F0013",
+    "F0014"
+   ],
+   "status": "to_validate",
+   "validation": "Confirm cost classification with Finance"
+  }
+ ]
+}

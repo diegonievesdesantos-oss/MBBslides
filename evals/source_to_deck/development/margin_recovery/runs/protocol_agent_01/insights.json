@@ -1,0 +1,130 @@
+{
+ "protocol": "1.0",
+ "insights": [
+  {
+   "id": "I1",
+   "statement": "Sales grew, margin fell: revenue rose 7.4% (+€100M) while gross margin fell 1.9 pp, so gross profit stayed flat at €385M — the decline is not a volume problem",
+   "facts": [
+    "F0044",
+    "F0045",
+    "C005",
+    "C006"
+   ],
+   "hypotheses": [
+    "H2"
+   ],
+   "contradicting_facts": [
+    "F0020",
+    "F0038"
+   ],
+   "materiality": "high",
+   "decision_relevance": "Rules out the volume-led recovery Sales proposes (H1 rejected)",
+   "caveat": "Fresh (-2.4%) and apparel (-10%) did lose revenue"
+  },
+  {
+   "id": "I2",
+   "statement": "Electronics, at 11.5% margin (14.9 pp below the group's 26.4%), grew 61% and went from 13.2% to 19.9% of sales; its +€110M is more than the group's +€100M growth, so 1.5 of the 1.9 pp decline is mix",
+   "facts": [
+    "F0032",
+    "F0031",
+    "F0043",
+    "F0044",
+    "F0045",
+    "C001",
+    "C002",
+    "C003",
+    "C004",
+    "C007",
+    "C008"
+   ],
+   "hypotheses": [
+    "H2"
+   ],
+   "materiality": "high",
+   "decision_relevance": "Locates the problem: electronics pricing and growth policy"
+  },
+  {
+   "id": "I3",
+   "statement": "Category rates eroded 0.5–1.0 pp in grocery, electronics and apparel (fresh flat), worth 0.4 pp of the decline — a secondary, recoverable driver",
+   "facts": [
+    "F0027",
+    "F0033",
+    "F0039",
+    "F0021",
+    "C007"
+   ],
+   "hypotheses": [
+    "H4"
+   ],
+   "materiality": "medium",
+   "decision_relevance": "Second lever: promotion and supplier-terms discipline"
+  },
+  {
+   "id": "I4",
+   "statement": "Freight rose €9M (+23.7%) after the March 2025 carrier contract, but it is booked in operating costs, so it does not explain the gross-margin decline; it is an EBIT lever",
+   "facts": [
+    "F0003",
+    "F0047",
+    "F0013",
+    "F0014",
+    "C009"
+   ],
+   "hypotheses": [
+    "H7"
+   ],
+   "materiality": "medium",
+   "decision_relevance": "Keeps freight renegotiation in the plan for EBIT but out of the 1.5 pp gross-margin count (H3 rejected)",
+   "caveat": "Cost classification to confirm with Finance (A004)"
+  },
+  {
+   "id": "I5",
+   "statement": "Electronics is priced 6% below the main competitor on the top 200 references: closing the gap at flat volume adds €17.4M gross profit, about +0.9 pp of group margin",
+   "facts": [
+    "F0050",
+    "F0029",
+    "C011",
+    "C012"
+   ],
+   "hypotheses": [
+    "H5"
+   ],
+   "materiality": "high",
+   "decision_relevance": "Largest and fastest lever toward 1.5 pp",
+   "caveat": "No elasticity data in the sources; sizing rests on assumption A001 and must be tested"
+  },
+  {
+   "id": "I6",
+   "statement": "The 2026 budget's +25% electronics growth would cut a further 0.7 pp at today's 11.5% electronics margin, so electronics growth must be made conditional on margin",
+   "facts": [
+    "F0046",
+    "F0031",
+    "C014"
+   ],
+   "hypotheses": [
+    "H6"
+   ],
+   "materiality": "high",
+   "decision_relevance": "The board must reset the electronics growth target for the plan to work",
+   "caveat": "Scenario A003, other categories held flat"
+  },
+  {
+   "id": "I7",
+   "statement": "Three gross-margin levers add up to about 1.4 pp — repricing electronics (0.9), restoring grocery and apparel rates (0.3) and recovering fresh and apparel sales (0.2) — just short of the 1.5 pp target, with no store-labour cut",
+   "facts": [
+    "C012",
+    "C013",
+    "C015",
+    "C016",
+    "F0048"
+   ],
+   "hypotheses": [
+    "H2",
+    "H4",
+    "H5"
+   ],
+   "materiality": "high",
+   "decision_relevance": "Sizes the plan against the board target and shows the remaining gap",
+   "caveat": "Levers sized on the FY2025 base and not fully additive; repricing depends on A001"
+  }
+ ]
+}

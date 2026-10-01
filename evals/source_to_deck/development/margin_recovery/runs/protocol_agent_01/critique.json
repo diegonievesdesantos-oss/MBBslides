@@ -1,0 +1,105 @@
+{
+ "protocol": "1.0",
+ "round": 2,
+ "findings": [
+  {
+   "critic": "FACT CHECKER",
+   "finding": "All headline numbers trace to source facts or single-formula computed facts (C001–C016); the €1,500M FY2025E figure is a forecast and is used only as context in the appendix",
+   "artifact": "deck_plan.json",
+   "ref": "S10",
+   "severity": "low",
+   "action": "Resolved conflict X001 in favour of the €1,460M actual (F0041)",
+   "resolved": true
+  },
+  {
+   "critic": "FACT CHECKER",
+   "finding": "Total gross margin change is reported as -1.9 pp (rounded), while category-level gross profit implies about -1.8 pp; mix/rate split uses the reported -1.9 pp",
+   "artifact": "computed_facts.json",
+   "ref": "C008",
+   "severity": "low",
+   "action": "Keep reported figure; note rounding in appendix",
+   "resolved": true
+  },
+  {
+   "critic": "PARTNER REVIEW",
+   "finding": "Identified levers total about 1.4 pp against a 1.5 pp target; the board must see the residual gap rather than a plan that claims to hit the target",
+   "artifact": "deck_plan.json",
+   "ref": "S06",
+   "severity": "high",
+   "action": "S06 headline states 1.4 pp vs 1.5 pp explicitly; S08 makes the ask conditional on the price-test gate",
+   "resolved": true
+  },
+  {
+   "critic": "PARTNER REVIEW",
+   "finding": "The ask must include the budget change, not only the margin levers",
+   "artifact": "storyline.json",
+   "ref": "K3",
+   "severity": "medium",
+   "action": "K3 and S07 make margin-conditional electronics growth part of the decision",
+   "resolved": true
+  },
+  {
+   "critic": "RED TEAM",
+   "finding": "Repricing sizing assumes flat electronics volume (H5 unresolved); with elastic demand the +0.9 pp lever could be much smaller",
+   "artifact": "insights.json",
+   "ref": "I5",
+   "severity": "high",
+   "action": "Caveat on I5/S05, assumption A001 flagged to_validate, Q1 2027 price test made the approval gate in S08",
+   "resolved": true
+  },
+  {
+   "critic": "RED TEAM",
+   "finding": "If freight is in fact booked in cost of goods, H3 (freight) could explain part of the decline; current sources show it in operating costs",
+   "artifact": "hypotheses.json",
+   "ref": "H3",
+   "severity": "medium",
+   "action": "A004: confirm classification with Finance before the board; S04 wording limited to 'sits in operating costs'",
+   "resolved": true
+  },
+  {
+   "critic": "RED TEAM",
+   "finding": "Fresh and apparel revenue did fall (-2.4%, -10%), partially supporting the Sales director's volume view",
+   "artifact": "insights.json",
+   "ref": "I1",
+   "severity": "low",
+   "action": "Recorded as caveat and contradicting facts on I1; framed as mix in S03",
+   "resolved": true
+  },
+  {
+   "critic": "EDITOR",
+   "finding": "S04 (freight) is not on the gross-margin critical path and could move to appendix",
+   "artifact": "deck_plan.json",
+   "ref": "S04",
+   "severity": "low",
+   "action": "Kept as support slide: the freight explanation will be raised in the room and must be closed in the main flow",
+   "resolved": true
+  },
+  {
+   "critic": "EDITOR",
+   "finding": "S05 and S06 both sit on K2; considered merging",
+   "artifact": "deck_plan.json",
+   "ref": "S05",
+   "severity": "low",
+   "action": "Kept separate: S05 tests the riskiest lever, S06 aggregates against target (why_not_merge stated)",
+   "resolved": true
+  },
+  {
+   "critic": "DATA-VIZ REVIEW",
+   "finding": "S02 compares a % revenue change with a pp margin change; a single dual-axis chart would mislead",
+   "artifact": "deck_plan.json",
+   "ref": "S02",
+   "severity": "medium",
+   "action": "Use paired bars (revenue, gross profit FY2024 vs FY2025) with margin annotated, no dual axis",
+   "resolved": true
+  },
+  {
+   "critic": "DATA-VIZ REVIEW",
+   "finding": "S03 and S06 are bridges (decline decomposition, lever build-up) — waterfall is appropriate; S07 scenario fits a simple bar vs baseline",
+   "artifact": "deck_plan.json",
+   "ref": "S03",
+   "severity": "low",
+   "action": "Keep waterfall for S03/S06",
+   "resolved": true
+  }
+ ]
+}

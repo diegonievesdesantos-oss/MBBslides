@@ -1,0 +1,15 @@
+{
+  "protocol": "1.0",
+  "project": "Promotion effectiveness (development case)",
+  "audience": ["CEO", "Commercial director", "CFO"],
+  "decision": "Approve the 2026 promotion plan and budget",
+  "question": "Are our promotions creating value, and what should the 2026 promotion plan be?",
+  "horizon": "2026",
+  "scope": ["Grocery retail, four categories"],
+  "language": "en",
+  "deck_type": "board_presentation",
+  "max_slides": 9,
+  "constraints": ["Evidence limited to three internal sources: commercial finance FY2025 promotion review, category promotion economics table, marketing 2026 proposal"],
+  "assumptions": ["Promotion review figures without an explicit period (volume, depth, gross margin) refer to FY2024→FY2025, as the review states 'over the same period'"],
+  "inferred": ["constraints", "assumptions"]
+}

@@ -1,0 +1,86 @@
+{
+  "protocol": "1.0",
+  "case": "plant_capacity_es",
+  "run": {
+    "engine": "1.7.0.dev0",
+    "reasoning_protocol": "1.0",
+    "model": "Claude subagent (fresh context)",
+    "skill": "REASONING_PROTOCOL 1.0",
+    "author": "independent subagent B"
+  },
+  "factuality": {
+    "hard_failures": 0,
+    "status": "PASS",
+    "by_code": {}
+  },
+  "fact_grounding": {
+    "critical_fact_recall": 1.0,
+    "critical_facts": "4/4",
+    "facts": 27,
+    "fabricated_facts": 0,
+    "fact_precision": 1.0,
+    "traceable": 1.0,
+    "arithmetic_errors": 0
+  },
+  "insight_quality": {
+    "insights": 6,
+    "supported": 6,
+    "unsupported": 0,
+    "material_conclusion_coverage": "3/3",
+    "conclusions": {
+      "C1": true,
+      "C2": true,
+      "C3": true
+    },
+    "restating_facts": 0,
+    "causal_overclaims": 0,
+    "with_decision_relevance": 6
+  },
+  "storyline": {
+    "governing_thought": "El 15% adicional de 2026 (1.800 h) se consigue sin cuarta línea: SMED en cambios de formato recupera ~1.560 h y una reducción del 15% de las averías cubre el resto, mientras la inversión de 12 M€ se pospone hasta medir resultados",
+    "candidates_compared": 3,
+    "framework": "SCR",
+    "framework_acceptable": true,
+    "answer_first": true,
+    "key_line_points": 3,
+    "unsupported_key_line_points": 0,
+    "mece_overlaps": 0,
+    "traps_triggered": [],
+    "errors": 0
+  },
+  "slide_architecture": {
+    "slides": 7,
+    "core": 7,
+    "appendix": 0,
+    "max_slides": 8,
+    "within_length": true,
+    "required_messages_on_core_slides": "3/3",
+    "orphan_slides": 0,
+    "duplicates": 0,
+    "unjustified_extra_slides": 0,
+    "information_economy": {
+      "facts_available": 29,
+      "facts_used": 26,
+      "facts_appendix": 0,
+      "facts_omitted": 3,
+      "slides": 7,
+      "core": 7,
+      "support": 0,
+      "appendix": 0,
+      "note": "omitting facts is expected: decision relevance, not coverage, is the goal"
+    }
+  },
+  "headlines": {
+    "headlines": 7,
+    "conclusion_rate": 1.0,
+    "numbers_proven_rate": 1.0,
+    "mean_words": 20.7
+  },
+  "visual_intent": {
+    "slides_with_intent": 7,
+    "mismatches": 0,
+    "accuracy": 1.0
+  },
+  "reasoning_check_status": "pass",
+  "note": "dimensions are separate on purpose; there is no total score"
+}

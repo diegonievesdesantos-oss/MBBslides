@@ -185,7 +185,7 @@ def check_hypotheses(h: dict | None, facts: dict) -> list[dict]:
             out.append(_issue("error", "HYPOTHESIS_UNSUPPORTED", "hypotheses.json", x["id"], "'supported' without supporting facts"))
         if st == "rejected" and not x.get("contradicting_facts"):
             out.append(_issue("error", "HYPOTHESIS_UNSUPPORTED", "hypotheses.json", x["id"], "'rejected' without contradicting facts"))
-        if st == "supported" and x.get("contradicting_facts"):
+        if st == "supported" and x.get("contradicting_facts") and not x.get("rationale"):
             out.append(_issue("info", "HYPOTHESIS_TENSION", "hypotheses.json", x["id"], "supported despite contradicting facts: say why in the rationale"))
         c = x.get("confidence")
         if c is not None and not (0 <= c <= 1):

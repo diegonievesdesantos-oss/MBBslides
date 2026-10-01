@@ -1,0 +1,20 @@
+{
+  "protocol": "1.0",
+  "sources": [
+    {
+      "file": "marketing_proposal.md",
+      "sha256": "dd28f1762f8e57c0bc38e6736aed430031048aae686a2468f3dcde1b05ca1907",
+      "bytes": 216
+    },
+    {
+      "file": "promo_by_category.docx",
+      "sha256": "48b02f6d27d1c85db4764f60e25cd133f5c95f97b1a71b24eaa8fae20d8d67a5",
+      "bytes": 1193
+    },
+    {
+      "file": "promo_review_FY2025.pdf",
+      "sha256": "f0c20203eca22b46b6d157ceaf01d11e08168ff5bdc80ac387e485f51877a61a",
+      "bytes": 2351
+    }
+  ]
+}

@@ -1,0 +1,582 @@
+{
+  "protocol": "1.0",
+  "facts": [
+    {
+      "id": "F0001",
+      "claim": "Snacks — Promo share FY2024 (%): 31 PCT",
+      "values": [
+        {
+          "value": 31.0,
+          "unit": "PCT",
+          "period": "FY2024",
+          "basis": "actual",
+          "label": "Snacks",
+          "column": "Promo share FY2024 (%)"
+        }
+      ],
+      "source": {
+        "file": "promo_by_category.docx",
+        "sheet": "table at 3",
+        "range": "B2",
+        "loc": "table at 3"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0002",
+      "claim": "Snacks — Promo share FY2025 (%): 45 PCT",
+      "values": [
+        {
+          "value": 45.0,
+          "unit": "PCT",
+          "period": "FY2025",
+          "basis": "actual",
+          "label": "Snacks",
+          "column": "Promo share FY2025 (%)"
+        }
+      ],
+      "source": {
+        "file": "promo_by_category.docx",
+        "sheet": "table at 3",
+        "range": "C2",
+        "loc": "table at 3"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0003",
+      "claim": "Snacks — Incremental margin per 100 EUR promo (EUR): -2.1 EUR",
+      "values": [
+        {
+          "value": -2.1,
+          "unit": "EUR",
+          "period": null,
+          "basis": null,
+          "label": "Snacks",
+          "column": "Incremental margin per 100 EUR promo (EUR)"
+        }
+      ],
+      "source": {
+        "file": "promo_by_category.docx",
+        "sheet": "table at 3",
+        "range": "D2",
+        "loc": "table at 3"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0004",
+      "claim": "Snacks — promo share: 31 → 45 (FY2024→FY2025), change 14 pp",
+      "values": [
+        {
+          "value": 14.0,
+          "unit": "PP",
+          "period": "FY2024→FY2025",
+          "label": "Snacks",
+          "kind": "change"
+        }
+      ],
+      "source": {
+        "file": "promo_by_category.docx",
+        "sheet": "table at 3",
+        "range": "B2:C2",
+        "loc": "table at 3"
+      },
+      "fact_type": "derived_change",
+      "confidence": 1.0,
+      "derived_from": [
+        "F0001",
+        "F0002"
+      ],
+      "operation": "last − first"
+    },
+    {
+      "id": "F0005",
+      "claim": "Beverages — Promo share FY2024 (%): 34 PCT",
+      "values": [
+        {
+          "value": 34.0,
+          "unit": "PCT",
+          "period": "FY2024",
+          "basis": "actual",
+          "label": "Beverages",
+          "column": "Promo share FY2024 (%)"
+        }
+      ],
+      "source": {
+        "file": "promo_by_category.docx",
+        "sheet": "table at 3",
+        "range": "B3",
+        "loc": "table at 3"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0006",
+      "claim": "Beverages — Promo share FY2025 (%): 44 PCT",
+      "values": [
+        {
+          "value": 44.0,
+          "unit": "PCT",
+          "period": "FY2025",
+          "basis": "actual",
+          "label": "Beverages",
+          "column": "Promo share FY2025 (%)"
+        }
+      ],
+      "source": {
+        "file": "promo_by_category.docx",
+        "sheet": "table at 3",
+        "range": "C3",
+        "loc": "table at 3"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0007",
+      "claim": "Beverages — Incremental margin per 100 EUR promo (EUR): 0.8 EUR",
+      "values": [
+        {
+          "value": 0.8,
+          "unit": "EUR",
+          "period": null,
+          "basis": null,
+          "label": "Beverages",
+          "column": "Incremental margin per 100 EUR promo (EUR)"
+        }
+      ],
+      "source": {
+        "file": "promo_by_category.docx",
+        "sheet": "table at 3",
+        "range": "D3",
+        "loc": "table at 3"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0008",
+      "claim": "Beverages — promo share: 34 → 44 (FY2024→FY2025), change 10 pp",
+      "values": [
+        {
+          "value": 10.0,
+          "unit": "PP",
+          "period": "FY2024→FY2025",
+          "label": "Beverages",
+          "kind": "change"
+        }
+      ],
+      "source": {
+        "file": "promo_by_category.docx",
+        "sheet": "table at 3",
+        "range": "B3:C3",
+        "loc": "table at 3"
+      },
+      "fact_type": "derived_change",
+      "confidence": 1.0,
+      "derived_from": [
+        "F0005",
+        "F0006"
+      ],
+      "operation": "last − first"
+    },
+    {
+      "id": "F0009",
+      "claim": "Household — Promo share FY2024 (%): 22 PCT",
+      "values": [
+        {
+          "value": 22.0,
+          "unit": "PCT",
+          "period": "FY2024",
+          "basis": "actual",
+          "label": "Household",
+          "column": "Promo share FY2024 (%)"
+        }
+      ],
+      "source": {
+        "file": "promo_by_category.docx",
+        "sheet": "table at 3",
+        "range": "B4",
+        "loc": "table at 3"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0010",
+      "claim": "Household — Promo share FY2025 (%): 30 PCT",
+      "values": [
+        {
+          "value": 30.0,
+          "unit": "PCT",
+          "period": "FY2025",
+          "basis": "actual",
+          "label": "Household",
+          "column": "Promo share FY2025 (%)"
+        }
+      ],
+      "source": {
+        "file": "promo_by_category.docx",
+        "sheet": "table at 3",
+        "range": "C4",
+        "loc": "table at 3"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0011",
+      "claim": "Household — Incremental margin per 100 EUR promo (EUR): -3.4 EUR",
+      "values": [
+        {
+          "value": -3.4,
+          "unit": "EUR",
+          "period": null,
+          "basis": null,
+          "label": "Household",
+          "column": "Incremental margin per 100 EUR promo (EUR)"
+        }
+      ],
+      "source": {
+        "file": "promo_by_category.docx",
+        "sheet": "table at 3",
+        "range": "D4",
+        "loc": "table at 3"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0012",
+      "claim": "Household — promo share: 22 → 30 (FY2024→FY2025), change 8 pp",
+      "values": [
+        {
+          "value": 8.0,
+          "unit": "PP",
+          "period": "FY2024→FY2025",
+          "label": "Household",
+          "kind": "change"
+        }
+      ],
+      "source": {
+        "file": "promo_by_category.docx",
+        "sheet": "table at 3",
+        "range": "B4:C4",
+        "loc": "table at 3"
+      },
+      "fact_type": "derived_change",
+      "confidence": 1.0,
+      "derived_from": [
+        "F0009",
+        "F0010"
+      ],
+      "operation": "last − first"
+    },
+    {
+      "id": "F0013",
+      "claim": "Fresh — Promo share FY2024 (%): 12 PCT",
+      "values": [
+        {
+          "value": 12.0,
+          "unit": "PCT",
+          "period": "FY2024",
+          "basis": "actual",
+          "label": "Fresh",
+          "column": "Promo share FY2024 (%)"
+        }
+      ],
+      "source": {
+        "file": "promo_by_category.docx",
+        "sheet": "table at 3",
+        "range": "B5",
+        "loc": "table at 3"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0014",
+      "claim": "Fresh — Promo share FY2025 (%): 15 PCT",
+      "values": [
+        {
+          "value": 15.0,
+          "unit": "PCT",
+          "period": "FY2025",
+          "basis": "actual",
+          "label": "Fresh",
+          "column": "Promo share FY2025 (%)"
+        }
+      ],
+      "source": {
+        "file": "promo_by_category.docx",
+        "sheet": "table at 3",
+        "range": "C5",
+        "loc": "table at 3"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0015",
+      "claim": "Fresh — Incremental margin per 100 EUR promo (EUR): 1.6 EUR",
+      "values": [
+        {
+          "value": 1.6,
+          "unit": "EUR",
+          "period": null,
+          "basis": null,
+          "label": "Fresh",
+          "column": "Incremental margin per 100 EUR promo (EUR)"
+        }
+      ],
+      "source": {
+        "file": "promo_by_category.docx",
+        "sheet": "table at 3",
+        "range": "D5",
+        "loc": "table at 3"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0016",
+      "claim": "Fresh — promo share: 12 → 15 (FY2024→FY2025), change 3 pp",
+      "values": [
+        {
+          "value": 3.0,
+          "unit": "PP",
+          "period": "FY2024→FY2025",
+          "label": "Fresh",
+          "kind": "change"
+        }
+      ],
+      "source": {
+        "file": "promo_by_category.docx",
+        "sheet": "table at 3",
+        "range": "B5:C5",
+        "loc": "table at 3"
+      },
+      "fact_type": "derived_change",
+      "confidence": 1.0,
+      "derived_from": [
+        "F0013",
+        "F0014"
+      ],
+      "operation": "last − first"
+    },
+    {
+      "id": "F0017",
+      "claim": "We propose to raise the promotion budget by 20% in 2026 and extend deep discounts to household.",
+      "values": [
+        {
+          "value": 20.0,
+          "unit": "PCT",
+          "raw": "20%",
+          "period": "2026",
+          "basis": "budget"
+        }
+      ],
+      "source": {
+        "file": "marketing_proposal.md",
+        "loc": "line 4"
+      },
+      "fact_type": "text_statement",
+      "confidence": 0.8
+    },
+    {
+      "id": "F0018",
+      "claim": "Incremental margin is the margin gained per 100 EUR of promoted sales after subtracting sales that would have happened anyway.",
+      "values": [
+        {
+          "value": 100.0,
+          "unit": "EUR",
+          "raw": "100 EUR",
+          "period": null,
+          "basis": null
+        }
+      ],
+      "source": {
+        "file": "promo_by_category.docx",
+        "loc": "para 2"
+      },
+      "fact_type": "text_statement",
+      "confidence": 0.8
+    },
+    {
+      "id": "F0019",
+      "claim": "Promotions represented 38% of sales in FY2025, up from 29% in FY2024.",
+      "values": [
+        {
+          "value": 38.0,
+          "unit": "PCT",
+          "raw": "38%",
+          "period": "FY2025",
+          "basis": "actual"
+        },
+        {
+          "value": 29.0,
+          "unit": "PCT",
+          "raw": "29%",
+          "period": "FY2024",
+          "basis": "actual"
+        }
+      ],
+      "source": {
+        "file": "promo_review_FY2025.pdf",
+        "loc": "p.1"
+      },
+      "fact_type": "text_statement",
+      "confidence": 0.8
+    },
+    {
+      "id": "F0020",
+      "claim": "Promoted volume grew 14% while full-price volume fell 6%;",
+      "values": [
+        {
+          "value": 14.0,
+          "unit": "PCT",
+          "raw": "14%",
+          "period": null,
+          "basis": null
+        },
+        {
+          "value": 6.0,
+          "unit": "PCT",
+          "raw": "6%",
+          "period": null,
+          "basis": null
+        }
+      ],
+      "source": {
+        "file": "promo_review_FY2025.pdf",
+        "loc": "p.1"
+      },
+      "fact_type": "text_statement",
+      "confidence": 0.8
+    },
+    {
+      "id": "F0021",
+      "claim": "total volume grew 2.1%.",
+      "values": [
+        {
+          "value": 2.1,
+          "unit": "PCT",
+          "raw": "2.1%",
+          "period": null,
+          "basis": null
+        }
+      ],
+      "source": {
+        "file": "promo_review_FY2025.pdf",
+        "loc": "p.1"
+      },
+      "fact_type": "text_statement",
+      "confidence": 0.8
+    },
+    {
+      "id": "F0022",
+      "claim": "Average promotional depth rose from 18% to 24% of the regular price.",
+      "values": [
+        {
+          "value": 18.0,
+          "unit": "PCT",
+          "raw": "18%",
+          "period": null,
+          "basis": null
+        },
+        {
+          "value": 24.0,
+          "unit": "PCT",
+          "raw": "24%",
+          "period": null,
+          "basis": null
+        }
+      ],
+      "source": {
+        "file": "promo_review_FY2025.pdf",
+        "loc": "p.1"
+      },
+      "fact_type": "text_statement",
+      "confidence": 0.8
+    },
+    {
+      "id": "F0023",
+      "claim": "Gross margin fell from 27.4% to 25.1% over the same period.",
+      "values": [
+        {
+          "value": 27.4,
+          "unit": "PCT",
+          "raw": "27.4%",
+          "period": null,
+          "basis": null
+        },
+        {
+          "value": 25.1,
+          "unit": "PCT",
+          "raw": "25.1%",
+          "period": null,
+          "basis": null
+        }
+      ],
+      "source": {
+        "file": "promo_review_FY2025.pdf",
+        "loc": "p.1"
+      },
+      "fact_type": "text_statement",
+      "confidence": 0.8
+    },
+    {
+      "id": "F0024",
+      "claim": "Sales of promoted items fall 22% in the two weeks after a promotion ends.",
+      "values": [
+        {
+          "value": 22.0,
+          "unit": "PCT",
+          "raw": "22%",
+          "period": null,
+          "basis": null
+        }
+      ],
+      "source": {
+        "file": "promo_review_FY2025.pdf",
+        "loc": "p.1"
+      },
+      "fact_type": "text_statement",
+      "confidence": 0.8
+    },
+    {
+      "id": "F0025",
+      "claim": "Loyalty-card data show that 71% of promoted volume is bought by customers who also buy the same item at full price.",
+      "values": [
+        {
+          "value": 71.0,
+          "unit": "PCT",
+          "raw": "71%",
+          "period": null,
+          "basis": null
+        }
+      ],
+      "source": {
+        "file": "promo_review_FY2025.pdf",
+        "loc": "p.1"
+      },
+      "fact_type": "text_statement",
+      "confidence": 0.8
+    }
+  ],
+  "stats": {
+    "sources": 3,
+    "tables": 1,
+    "facts": 25,
+    "by_type": {
+      "table_value": 12,
+      "derived_change": 4,
+      "text_statement": 9
+    }
+  }
+}

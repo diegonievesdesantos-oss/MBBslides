@@ -1,0 +1,77 @@
+{
+  "protocol": "1.0",
+  "blocks": [
+    {
+      "source": "marketing_proposal.md",
+      "loc": "line 1",
+      "kind": "heading",
+      "text": "Marketing proposal 2026"
+    },
+    {
+      "source": "marketing_proposal.md",
+      "loc": "line 3",
+      "kind": "text",
+      "text": "Marketing: promotions drove our volume growth this year and are our most effective tool."
+    },
+    {
+      "source": "marketing_proposal.md",
+      "loc": "line 4",
+      "kind": "text",
+      "text": "We propose to raise the promotion budget by 20% in 2026 and extend deep discounts to household."
+    },
+    {
+      "source": "promo_by_category.docx",
+      "loc": "para 1",
+      "kind": "heading",
+      "text": "Promotion economics by category"
+    },
+    {
+      "source": "promo_by_category.docx",
+      "loc": "para 2",
+      "kind": "text",
+      "text": "Incremental margin is the margin gained per 100 EUR of promoted sales after subtracting sales that would have happened anyway."
+    },
+    {
+      "source": "promo_review_FY2025.pdf",
+      "loc": "p.1",
+      "kind": "text",
+      "text": "Promotion review FY2025 - commercial finance."
+    },
+    {
+      "source": "promo_review_FY2025.pdf",
+      "loc": "p.1",
+      "kind": "text",
+      "text": "Promotions represented 38% of sales in FY2025, up from 29% in FY2024."
+    },
+    {
+      "source": "promo_review_FY2025.pdf",
+      "loc": "p.1",
+      "kind": "text",
+      "text": "Promoted volume grew 14% while full-price volume fell 6%; total volume grew 2.1%."
+    },
+    {
+      "source": "promo_review_FY2025.pdf",
+      "loc": "p.1",
+      "kind": "text",
+      "text": "Average promotional depth rose from 18% to 24% of the regular price."
+    },
+    {
+      "source": "promo_review_FY2025.pdf",
+      "loc": "p.1",
+      "kind": "text",
+      "text": "Gross margin fell from 27.4% to 25.1% over the same period."
+    },
+    {
+      "source": "promo_review_FY2025.pdf",
+      "loc": "p.1",
+      "kind": "text",
+      "text": "Sales of promoted items fall 22% in the two weeks after a promotion ends."
+    },
+    {
+      "source": "promo_review_FY2025.pdf",
+      "loc": "p.1",
+      "kind": "text",
+      "text": "Loyalty-card data show that 71% of promoted volume is bought by customers who also buy the same item at full price."
+    }
+  ]
+}

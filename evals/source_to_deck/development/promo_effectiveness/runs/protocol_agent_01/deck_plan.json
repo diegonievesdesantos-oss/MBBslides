@@ -1,0 +1,188 @@
+{
+  "protocol": "1.0",
+  "slides": [
+    {
+      "id": "S1",
+      "priority": "core",
+      "role": "exec_summary",
+      "purpose": "State the answer and the ask up front",
+      "decision_role": "frames the decision",
+      "headline": "Promotions are destroying value: reject the 20% budget increase and refocus 2026 on Fresh and Beverages",
+      "insights": [
+        "I2",
+        "I4",
+        "I5",
+        "I6"
+      ],
+      "facts": [
+        "F0017",
+        "F0020",
+        "F0021",
+        "F0023"
+      ],
+      "message_type": "recommendation",
+      "archetype": "executive_summary",
+      "reason_to_exist": "Board members need the answer and the decision in one page"
+    },
+    {
+      "id": "S2",
+      "priority": "core",
+      "role": "situation",
+      "key_line": "K1",
+      "purpose": "Show the escalation of promotional intensity",
+      "decision_role": "baseline",
+      "headline": "Promotions rose from 29% to 38% of sales in FY2025, at an average depth up from 18% to 24%",
+      "insights": [
+        "I1"
+      ],
+      "facts": [
+        "F0019",
+        "F0022",
+        "F0004",
+        "F0008",
+        "F0012",
+        "F0016"
+      ],
+      "message_type": "change",
+      "archetype": "bar_comparison",
+      "reason_to_exist": "Establishes that the business already promotes heavily, before asking for more"
+    },
+    {
+      "id": "S3",
+      "priority": "core",
+      "role": "complication",
+      "key_line": "K2",
+      "purpose": "Disprove that promotions drove growth",
+      "decision_role": "rejects the proposal's premise",
+      "headline": "Promoted volume grew 14% but full-price volume fell 6%, so total volume grew only 2.1%",
+      "insights": [
+        "I2"
+      ],
+      "facts": [
+        "F0020",
+        "F0021"
+      ],
+      "message_type": "change",
+      "archetype": "chart",
+      "reason_to_exist": "Directly tests marketing's claim that promotions drove volume growth"
+    },
+    {
+      "id": "S4",
+      "priority": "core",
+      "role": "complication",
+      "key_line": "K2",
+      "purpose": "Explain why promotions do not add volume",
+      "decision_role": "explains mechanism",
+      "headline": "71% of promoted volume goes to customers who also buy at full price, and their sales drop 22% in the two weeks after a promotion ends",
+      "insights": [
+        "I3"
+      ],
+      "facts": [
+        "F0025",
+        "F0024"
+      ],
+      "message_type": "explanation",
+      "archetype": "two_kpi",
+      "reason_to_exist": "Gives the causal mechanism (subsidy and forward buying) behind the flat volume",
+      "why_not_merge": "S3 shows the outcome at total level; S4 shows the customer-level mechanism from a different data set (loyalty card) — merging would overload one slide"
+    },
+    {
+      "id": "S5",
+      "priority": "core",
+      "role": "complication",
+      "key_line": "K2",
+      "purpose": "Quantify the financial cost",
+      "decision_role": "value at stake",
+      "headline": "Gross margin fell 2.3 pp, from 27.4% to 25.1%, as promotional depth rose 6 pp",
+      "insights": [
+        "I4"
+      ],
+      "facts": [
+        "F0023",
+        "F0022"
+      ],
+      "message_type": "change",
+      "archetype": "line_or_bar",
+      "reason_to_exist": "The CFO needs the margin impact, not just volume",
+      "why_not_merge": "Volume (S3/S4) and margin are two distinct consequences; margin carries its own caveat on causality",
+      "caveat": "Correlation, not a margin bridge: non-promotional drivers (H6) not excluded"
+    },
+    {
+      "id": "S6",
+      "priority": "core",
+      "role": "complication",
+      "key_line": "K3",
+      "purpose": "Show where promotion creates and destroys value",
+      "decision_role": "defines reallocation",
+      "headline": "Per hundred euros of promotion, Household (−3.4 EUR) and Snacks (−2.1 EUR) lose margin while Fresh (+1.6 EUR) and Beverages (+0.8 EUR) gain",
+      "insights": [
+        "I5"
+      ],
+      "facts": [
+        "F0011",
+        "F0003",
+        "F0015",
+        "F0007",
+        "F0018"
+      ],
+      "message_type": "ranking",
+      "archetype": "chart",
+      "reason_to_exist": "Category economics determine where to cut and where to keep promotion"
+    },
+    {
+      "id": "S7",
+      "priority": "core",
+      "role": "complication",
+      "key_line": "K3",
+      "purpose": "Confront the marketing proposal with the evidence",
+      "decision_role": "evaluates the option on the table",
+      "headline": "Marketing's plan would raise the promotion budget 20% and deepen discounts in Household, the category with the worst return",
+      "insights": [
+        "I6"
+      ],
+      "facts": [
+        "F0017",
+        "F0011",
+        "F0012"
+      ],
+      "message_type": "comparison",
+      "archetype": "comparison",
+      "reason_to_exist": "The board is asked to approve this proposal; it must see it tested explicitly",
+      "why_not_merge": "S6 is the neutral category diagnosis; S7 applies it to the specific proposal under decision"
+    },
+    {
+      "id": "S8",
+      "priority": "core",
+      "role": "recommendation",
+      "key_line": "K4",
+      "purpose": "Set out the 2026 plan and next steps",
+      "decision_role": "the ask",
+      "headline": "2026 plan: hold the budget, cut depth in Household and Snacks, target Fresh and Beverages, and confirm with a margin bridge and tests",
+      "insights": [
+        "I5",
+        "I6",
+        "I4"
+      ],
+      "facts": [
+        "F0017",
+        "F0011",
+        "F0003",
+        "F0015",
+        "F0007"
+      ],
+      "message_type": "recommendation",
+      "archetype": "statement",
+      "reason_to_exist": "Converts the diagnosis into the decision the board must take"
+    }
+  ],
+  "omitted": [
+    {
+      "item": "Separate slide on per-category promo share changes",
+      "reason": "Merged into S2 as supporting detail"
+    },
+    {
+      "item": "Definition of incremental margin",
+      "reason": "Footnote on S6 (F0018) rather than its own slide"
+    }
+  ]
+}

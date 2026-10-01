@@ -1,0 +1,118 @@
+{
+ "protocol": "1.0",
+ "facts": [
+  {
+   "id": "C001",
+   "claim": "Ingreso medio por cliente particular 2024: 500 €",
+   "values": [
+    {
+     "value": 500,
+     "unit": "EUR",
+     "period": "2024",
+     "kind": "computed"
+    }
+   ],
+   "fact_type": "computed",
+   "derived_from": [
+    "F0017",
+    "F0001"
+   ],
+   "operation": "ratio",
+   "formula": "F0017 * 1000000 / F0001"
+  },
+  {
+   "id": "C002",
+   "claim": "Ingreso medio por cliente particular 2025: 504 €",
+   "values": [
+    {
+     "value": 503.9,
+     "unit": "EUR",
+     "period": "2025",
+     "kind": "computed"
+    }
+   ],
+   "fact_type": "computed",
+   "derived_from": [
+    "F0018",
+    "F0002"
+   ],
+   "operation": "ratio",
+   "formula": "F0018 * 1000000 / F0002"
+  },
+  {
+   "id": "C003",
+   "claim": "El tiempo medio de resolución de incidencias se multiplicó por 2,2 (de 2,1 a 4,6 días)",
+   "values": [
+    {
+     "value": 2.19,
+     "unit": "",
+     "period": null,
+     "kind": "computed"
+    }
+   ],
+   "fact_type": "computed",
+   "derived_from": [
+    "F0029"
+   ],
+   "operation": "ratio",
+   "formula": "4.6 / 2.1"
+  },
+  {
+   "id": "C004",
+   "claim": "La tasa de bajas de particulares (14,2%) es 1,75 veces la de autónomos (8,1%)",
+   "values": [
+    {
+     "value": 1.75,
+     "unit": "",
+     "period": "2025",
+     "kind": "computed"
+    }
+   ],
+   "fact_type": "computed",
+   "derived_from": [
+    "F0003",
+    "F0007"
+   ],
+   "operation": "ratio",
+   "formula": "F0003 / F0007"
+  },
+  {
+   "id": "C005",
+   "claim": "La recuperación presupuestada de 30.000 particulares equivale al 60% de la pérdida neta de 2025 (50.000)",
+   "values": [
+    {
+     "value": 60,
+     "unit": "PCT",
+     "period": null,
+     "kind": "computed"
+    }
+   ],
+   "fact_type": "computed",
+   "derived_from": [
+    "F0032",
+    "F0004"
+   ],
+   "operation": "ratio",
+   "formula": "30000 / 50000 * 100"
+  },
+  {
+   "id": "C006",
+   "claim": "La atención al cliente es citada como motivo principal de baja 2,8 veces más que el precio (61% vs 22%)",
+   "values": [
+    {
+     "value": 2.77,
+     "unit": "",
+     "period": "2025",
+     "kind": "computed"
+    }
+   ],
+   "fact_type": "computed",
+   "derived_from": [
+    "F0030",
+    "F0031"
+   ],
+   "operation": "ratio",
+   "formula": "F0030 / F0031"
+  }
+ ]
+}

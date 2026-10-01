@@ -1,0 +1,7 @@
+{
+  "protocol": "1.0",
+  "assumptions": [
+    {"id": "A001", "statement": "El número de cambios de formato en 2026 es similar al de 2025, de modo que las horas perdidas en cambios escalan con su duración media", "used_by": ["C006"], "rationale": "No hay datos del número de cambios ni del mix de 2026; supuesto conservador de volumen constante", "sensitivity": "Si el número de cambios crece con la demanda, el ahorro en horas por SMED aumenta, no disminuye, en términos absolutos"},
+    {"id": "A002", "statement": "Las horas disponibles (18.000 h al año) se mantienen en 2026", "used_by": ["C001", "C002"], "rationale": "El informe no anuncia cambios de turnos ni de calendario"}
+  ]
+}

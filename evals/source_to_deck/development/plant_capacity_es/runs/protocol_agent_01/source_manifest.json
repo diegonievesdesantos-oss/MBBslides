@@ -1,0 +1,20 @@
+{
+  "protocol": "1.0",
+  "sources": [
+    {
+      "file": "correo_direccion_tecnica.md",
+      "sha256": "4d5c174a455f3fc2cc27023d376db9dc3a0ab5635b69d8200b376eba84d2f3f8",
+      "bytes": 201
+    },
+    {
+      "file": "informe_produccion_2025.pdf",
+      "sha256": "5697a767c2e50ff6e2b845191879bb386ab2eba5bea7f67697c8270f4bdf87a6",
+      "bytes": 1862
+    },
+    {
+      "file": "paradas_por_causa.docx",
+      "sha256": "992e5f128a17b4e71aabc91f921a31b0799202734511b28daa6a3efeb5c845d5",
+      "bytes": 1117
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "protocol": "1.0",
+  "project": "Fuga de clientes particulares (caso de desarrollo)",
+  "audience": ["Consejero delegado", "Dirección comercial"],
+  "decision": "Aprobar el plan para frenar la pérdida de clientes particulares en 2026",
+  "question": "¿Por qué perdemos clientes particulares y qué acción frena la fuga más rápido?",
+  "horizon": "2026",
+  "scope": ["Particulares, España"],
+  "language": "es",
+  "deck_type": "board_presentation",
+  "max_slides": 8,
+  "constraints": ["Máximo 8 diapositivas", "Solo datos 2024-2025 de las fuentes del caso"],
+  "assumptions": ["La encuesta de bajas 2025 es representativa de las bajas de particulares"],
+  "inferred": ["constraints", "assumptions"]
+}

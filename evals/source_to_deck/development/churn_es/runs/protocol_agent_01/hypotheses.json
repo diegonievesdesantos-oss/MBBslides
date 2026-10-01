@@ -1,0 +1,78 @@
+{
+ "protocol": "1.0",
+ "hypotheses": [
+  {
+   "id": "H1",
+   "statement": "La subida de precios de marzo de 2025 es la causa principal de la fuga de particulares (tesis de Dirección comercial)",
+   "status": "rejected",
+   "supporting_facts": [
+    "F0031"
+   ],
+   "contradicting_facts": [
+    "F0030",
+    "C006",
+    "C001",
+    "C002"
+   ],
+   "confidence": 0.7,
+   "implication": "Una rebaja o congelación de precios no atacaría la causa principal y sacrificaría ingreso medio por cliente"
+  },
+  {
+   "id": "H2",
+   "statement": "El deterioro de la atención al cliente tras el cambio de proveedor del centro de llamadas es la causa principal de la fuga",
+   "status": "supported",
+   "supporting_facts": [
+    "F0029",
+    "C003",
+    "F0030",
+    "C006"
+   ],
+   "contradicting_facts": [],
+   "confidence": 0.7,
+   "implication": "La palanca más rápida es restaurar el nivel de servicio (tiempo de resolución) del centro de llamadas"
+  },
+  {
+   "id": "H3",
+   "statement": "La fuga refleja una contracción general del mercado que afecta a todos los segmentos",
+   "status": "rejected",
+   "supporting_facts": [],
+   "contradicting_facts": [
+    "F0008",
+    "F0012",
+    "F0007",
+    "F0011",
+    "F0003"
+   ],
+   "confidence": 0.9,
+   "implication": "El problema es específico de particulares; no requiere una respuesta para toda la base de clientes"
+  },
+  {
+   "id": "H4",
+   "statement": "La caída de particulares queda oculta en el total consolidado porque autónomos y empresas crecen",
+   "status": "supported",
+   "supporting_facts": [
+    "F0019",
+    "F0028",
+    "F0022",
+    "F0025"
+   ],
+   "contradicting_facts": [],
+   "confidence": 0.9,
+   "implication": "El consejo debe seguir el segmento particulares por separado; el total no da la señal de alarma"
+  },
+  {
+   "id": "H5",
+   "statement": "La recuperación de 30.000 particulares asumida en el presupuesto 2026 es alcanzable sin corregir la causa de las bajas",
+   "status": "unresolved",
+   "supporting_facts": [
+    "F0032"
+   ],
+   "contradicting_facts": [
+    "F0003",
+    "F0004"
+   ],
+   "confidence": 0.3,
+   "implication": "Sin un plan de servicio el objetivo presupuestario (60% de la pérdida neta de 2025) es un riesgo"
+  }
+ ]
+}

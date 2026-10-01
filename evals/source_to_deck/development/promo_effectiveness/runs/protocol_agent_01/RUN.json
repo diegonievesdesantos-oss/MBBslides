@@ -1,0 +1,9 @@
+{
+  "status": "development run \u2014 NOT evidence",
+  "date": "2026-10-01",
+  "model": "Claude (independent subagent of the developing session, fresh context; exact model per session metadata)",
+  "isolation": "instructed to read only its copy of brief + sources; not technically enforced",
+  "cases_author": "developing agent (development cases)",
+  "system": "B \u2014 protocol agent: brief + sources + docs/REASONING_PROTOCOL.md 1.0 + cpe reason facts/check",
+  "reasoning_protocol": "1.0"
+}

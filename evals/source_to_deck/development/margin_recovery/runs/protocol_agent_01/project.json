@@ -1,0 +1,28 @@
+{
+ "protocol": "1.0",
+ "project": "Margin recovery (development case)",
+ "audience": [
+  "CEO",
+  "CFO"
+ ],
+ "decision": "Approve the 2027 gross-margin recovery plan",
+ "question": "What is driving the gross-margin decline and which actions recover 1.5 pp fastest?",
+ "horizon": "2027",
+ "scope": [
+  "Group retail, all categories"
+ ],
+ "constraints": [
+  "No cuts to store labour"
+ ],
+ "assumptions": [
+  "Gross margin target of +1.5 pp is measured against the FY2025 actual of 26.4%",
+  "Freight sits in operating costs (below the gross-margin line), as reported in operating_costs.csv"
+ ],
+ "language": "en",
+ "deck_type": "board_presentation",
+ "max_slides": 10,
+ "inferred": [
+  "assumptions",
+  "baseline year for the 1.5 pp target (FY2025 actual)"
+ ]
+}

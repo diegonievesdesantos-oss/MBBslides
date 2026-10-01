@@ -266,3 +266,46 @@ def test_r3_is_development_data_with_blind_result_preserved():
     assert (v["challenger_wins"], v["baseline_wins"], v["ties"]) == (9, 1, 28)
     prof = json.loads((ROOT / "src" / "cpe" / "qa" / "archetype_profiles.json").read_text())
     assert prof["base"]["integrity"]["w"] >= 10 and prof["archetypes"]["kpi_dashboard"]["metrics"]["utilization"]["status"] == "provisional"
+
+
+# ── fact model on PDF / DOCX sources and prose semantics ──────────────────────────────────────────
+
+DEV = ROOT / "evals" / "source_to_deck" / "development"
+
+
+def test_pdf_docx_sources_and_prose_semantics():
+    fm = facts.build_fact_model(sorted((DEV / "promo_effectiveness" / "sources").glob("*")))
+    share = next(f for f in fm["facts"] if f["claim"].startswith("Promotions represented"))
+    assert [(v["value"], v["period"]) for v in share["values"]] == [(38, "FY2025"), (29, "FY2024")]  # period per number, not per sentence
+    assert share["source"]["file"].endswith(".pdf")
+    tbl = next(f for f in fm["facts"] if f["claim"].startswith("Household — Incremental margin"))
+    assert tbl["values"][0]["value"] == -3.4 and tbl["source"]["file"].endswith(".docx")
+    fm = facts.build_fact_model(sorted((DEV / "plant_capacity_es" / "sources").glob("*")))
+    by = {f["claim"][:30]: f for f in fm["facts"]}
+    capex = next(f for f in fm["facts"] if "cuarta línea" in f["claim"])
+    assert [v["unit"] for v in capex["values"]] == ["EUR_M", "MONTHS"]  # "12 M€", "18 meses"
+    dem = next(f for f in fm["facts"] if "demanda prevista" in f["claim"])
+    assert dem["values"][0]["period"] == "2026" and dem["values"][0]["basis"] == "forecast"  # "15% más … que en 2025": 2025 is the base
+    hrs = next(f for f in fm["facts"] if f["claim"].startswith("Cambios de formato — Horas perdidas"))
+    assert hrs["values"][0]["unit"] == "HOURS"  # unit word in the header
+    assert by
+
+
+def test_storyline_text_evaluation_is_negation_aware():
+    from cpe.reasoning.benchmark import _trap_hit, parse_storyline_md
+
+    g = [["volume", "fell"], ["sold less"], ["al límite"], ["cut", "store labour"]]
+    for affirmed in ("Margin fell because volume fell", "We sold less this year", "Las líneas están al límite"):
+        assert _trap_hit(affirmed, g), affirmed
+    for negated in ("Volume is not the problem", "Margin fell 1.8 pp because of mix, not volume", "Las líneas no están al límite",
+                    "Recover 1.5 pp without cutting store labour"):
+        assert not _trap_hit(negated, g), negated
+    md = "# T\n\n**Idea principal:** X\n\n**Línea argumental**\n1. a\n2. b\n\n**Estructura del deck** (…)\n1. h1\n2. h2\n3. h3\n"
+    sl = parse_storyline_md(md)
+    assert sl["governing_thought"] == "X" and sl["key_line"] == ["a", "b"] and len(sl["outline"]) == 3
+
+
+def test_spanish_thousands_in_headline_numbers():
+    from cpe.qa.proof import headline_quantities
+
+    assert headline_quantities("pasamos de 820.000 a 770.000 clientes")[0]["value"] == 820000

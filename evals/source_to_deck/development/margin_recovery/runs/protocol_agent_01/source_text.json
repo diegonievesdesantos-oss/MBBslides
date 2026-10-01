@@ -1,0 +1,53 @@
+{
+  "protocol": "1.0",
+  "blocks": [
+    {
+      "source": "meeting_notes.md",
+      "loc": "line 1",
+      "kind": "heading",
+      "text": "Margin review — meeting notes (internal)"
+    },
+    {
+      "source": "meeting_notes.md",
+      "loc": "line 4",
+      "kind": "text",
+      "text": "Attendees: CFO, Sales director, Category directors, Supply chain lead."
+    },
+    {
+      "source": "meeting_notes.md",
+      "loc": "line 5",
+      "kind": "text",
+      "text": "Sales director: the margin problem is volume. Stores are quieter and we simply sold less this year."
+    },
+    {
+      "source": "meeting_notes.md",
+      "loc": "line 6",
+      "kind": "text",
+      "text": "Category director Electronics: the electronics push worked; electronics is now our fastest-growing category and the 2026 budget assumes another 25% growth."
+    },
+    {
+      "source": "meeting_notes.md",
+      "loc": "line 7",
+      "kind": "text",
+      "text": "Supply chain lead: freight rates rose 24% after the new carrier contract signed in March 2025."
+    },
+    {
+      "source": "meeting_notes.md",
+      "loc": "line 8",
+      "kind": "text",
+      "text": "CFO: the board wants a plan that recovers 1.5 pp of gross margin by 2027 without cutting store labour."
+    },
+    {
+      "source": "meeting_notes.md",
+      "loc": "line 9",
+      "kind": "text",
+      "text": "The FY2025E forecast presented in January showed revenue of €1,500M; the actual close came in lower."
+    },
+    {
+      "source": "meeting_notes.md",
+      "loc": "line 10",
+      "kind": "text",
+      "text": "Pricing team: electronics prices are 6% below the main competitor on the top 200 references."
+    }
+  ]
+}
