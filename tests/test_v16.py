@@ -125,3 +125,16 @@ def test_cross_exhibit_proof_requires_explicit_single_quantities():
     assert derive_across(headline_quantities("€40M")[0], slide_scalars(one))["status"] == "unknown"  # one exhibit: not this rule
     many = {"exhibits": [{"type": "kpi", "data": {"items": [{"value": f"€{v}M", "label": f"k{v}"}]}} for v in range(11, 23)]}
     assert "more than" in derive_across(headline_quantities("€25M")[0], slide_scalars(many))["reason"]
+
+
+def test_undo_last_vote(tmp_path):
+    base, chal = _runs(tmp_path)
+    rd = tmp_path / "r"
+    human.build_round(rd, [("a->b", str(base), str(chal))], n=4, repeats=0, key_out=tmp_path / "k" / "key.json")
+    ps = json.loads((rd / "pairs.json").read_text())["pairs"]
+    for p in ps[:2]:
+        human.record_vote(rd, {"evaluator": "ana", "pair": p["id"], "left": p["images"][0], "right": p["images"][1], "choice": "left"})
+    assert human.undo_last_vote(rd, "ana") == ps[1]["id"]
+    assert human.done_pairs(rd, "ana") == [ps[0]["id"]]
+    assert human.undo_last_vote(rd, "ana") == ps[0]["id"] and human.undo_last_vote(rd, "ana") is None
+    assert "Undo last vote" in (rd / "index.html").read_text() and "fetch('undo'" in human.PAGE

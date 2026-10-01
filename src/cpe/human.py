@@ -286,6 +286,20 @@ def record_vote(round_dir: Path, vote: dict) -> None:
         f.write(json.dumps(rec) + "\n")
 
 
+def undo_last_vote(round_dir: Path, evaluator: str) -> str | None:
+    """Remove the evaluator's most recent vote (a mis-click) and return its pair id, so the page can
+    show that pair again. Only the last vote can be undone, one at a time."""
+    f = Path(round_dir) / "votes" / f"{evaluator}.jsonl"
+    if not _valid_evaluator(evaluator) or not f.exists():
+        return None
+    lines = [ln for ln in _read(f).splitlines() if ln.strip()]
+    if not lines:
+        return None
+    last = json.loads(lines[-1])["pair"]
+    _write(f, "".join(ln + "\n" for ln in lines[:-1]))
+    return last
+
+
 def done_pairs(round_dir: Path, evaluator: str) -> list[str]:
     f = round_dir / "votes" / f"{evaluator}.jsonl"
     return [json.loads(line)["pair"] for line in _read(f).splitlines() if line.strip()] if f.exists() else []
@@ -391,6 +405,13 @@ def serve(round_dir: str | Path, port: int = 8765, host: str = "127.0.0.1") -> N
             return self._send(404, "{}")  # key.json and votes/ are never served
 
         def do_POST(self):
+            if urlparse(self.path).path == "/undo":
+                try:
+                    n = int(self.headers.get("Content-Length", "0"))
+                    e = str(json.loads(self.rfile.read(min(n, 1024))).get("evaluator", ""))
+                except (ValueError, json.JSONDecodeError):
+                    return self._send(400, "{}")
+                return self._send(200, json.dumps({"pair": undo_last_vote(root, e)}))
             if urlparse(self.path).path != "/vote":
                 return self._send(404, "{}")
             try:
@@ -729,10 +750,10 @@ button:hover{border-color:var(--acc)}kbd{border:1px solid var(--line);border-rad
 .ctx{border:1px dashed var(--line);border-radius:8px;margin-bottom:12px;max-height:30vh}
 progress{width:220px}.done{text-align:center;padding:60px 16px}input{font:inherit;padding:6px 8px;border:1px solid var(--line);border-radius:6px;background:var(--card);color:var(--fg)}
 </style></head><body>
-<header><strong>Blind slide comparison</strong><span id="who"></span><span><progress id="prog" value="0" max="1"></progress> <span id="count"></span></span></header>
+<header><strong>Blind comparison</strong><span id="who"></span><span><button id="undo" title="Undo the last vote (U)">↶ Undo last vote / Deshacer último voto</button> <progress id="prog" value="0" max="1"></progress> <span id="count"></span></span></header>
 <main id="app"></main>
 <script>
-const app=document.getElementById('app');let data,order=[],i=0,shownAt=0,ev='';
+const app=document.getElementById('app');let data,order=[],i=0,shownAt=0,ev='',busy=false;
 function rng(seed){let h=2166136261;for(const c of seed){h^=c.charCodeAt(0);h=Math.imul(h,16777619)}return()=>{h^=h<<13;h^=h>>>17;h^=h<<5;return((h>>>0)%1e6)/1e6}}
 function shuffle(a,r){for(let k=a.length-1;k>0;k--){const j=Math.floor(r()*(k+1));[a[k],a[j]]=[a[j],a[k]]}return a}
 function getId(){let e='';try{e=localStorage.getItem('ab-evaluator')||''}catch(_){}return e}
@@ -741,9 +762,13 @@ async function start(){data=await (await fetch('pairs.json')).json();ev=getId();
 function ask(){const sug='r-'+Math.random().toString(36).slice(2,7);app.innerHTML=`<div class="done"><p>${data.meta.instructions}</p>
 <p>Your anonymous evaluator id (keep it to resume later):</p><p><input id="eid" value="${sug}" maxlength="40"> <button id="go">Start</button></p></div>`;
 document.getElementById('go').onclick=()=>{const v=document.getElementById('eid').value.trim().replace(/[^A-Za-z0-9_-]/g,'');if(!v)return;ev=v;setId(v);begin()}}
-async function begin(){document.getElementById('who').textContent='evaluator '+ev;const r=rng(ev);
+async function begin(first){document.getElementById('who').textContent='evaluator '+ev;const r=rng(ev);
 const st=await (await fetch('state?evaluator='+encodeURIComponent(ev))).json();const done=new Set(st.done);
-order=shuffle(data.pairs.map(p=>({...p,images:(r()<0.5?[...p.images]:[...p.images].reverse())})),r).filter(p=>!done.has(p.id));i=0;show()}
+order=shuffle(data.pairs.map(p=>({...p,images:(r()<0.5?[...p.images]:[...p.images].reverse())})),r).filter(p=>!done.has(p.id));
+if(first){const k=order.findIndex(p=>p.id===first);if(k>0)order.unshift(order.splice(k,1)[0])}i=0;show()}
+async function undo(){if(!ev||busy)return;busy=true;try{const r=await fetch('undo',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({evaluator:ev})});
+const j=await r.json();if(j.pair){await begin(j.pair)}else alert('Nothing to undo / Nada que deshacer')}catch(e){alert('Undo failed (is the server running?)')}busy=false}
+document.getElementById('undo').onclick=undo;
 function show(){const total=data.pairs.length,left=order.length-i;document.getElementById('prog').max=total;document.getElementById('prog').value=total-left;
 document.getElementById('count').textContent=(total-left)+' / '+total;if(i>=order.length){app.innerHTML='<div class="done"><h2>Done — thank you.</h2><p>You can close this page.</p></div>';return}
 const p=order[i];const txt=data.meta.kind==='text';
@@ -754,12 +779,12 @@ app.innerHTML=`<p class="q">${data.meta.instructions}</p>${txt&&p.context?'<pre 
 <div class="bar"><button data-c="left">A is better</button><button data-c="tie">Tie <kbd>T</kbd> <kbd>↓</kbd></button><button data-c="right">B is better</button></div>`;
 app.querySelectorAll('[data-c]').forEach(el=>el.onclick=()=>vote(el.dataset.c));
 app.querySelectorAll('pre[data-src]').forEach(el=>fetch(el.dataset.src).then(r=>r.text()).then(t=>{el.textContent=t}));shownAt=performance.now()}
-let busy=false;async function vote(c){if(busy||i>=order.length)return;busy=true;const p=order[i];
+async function vote(c){if(busy||i>=order.length)return;busy=true;const p=order[i];
 const body={evaluator:ev,pair:p.id,left:p.images[0],right:p.images[1],choice:c,ms:Math.round(performance.now()-shownAt)};
 try{const r=await fetch('vote',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});if(r.ok){i++;show()}else alert('Vote not saved: '+r.status)}
 catch(e){alert('Vote not saved (is the server running?)')}busy=false}
 document.addEventListener('keydown',e=>{if(!order.length)return;const k=e.key.toLowerCase();
-if(k==='arrowleft'||k==='1'||k==='a')vote('left');else if(k==='arrowright'||k==='2'||k==='b')vote('right');else if(k==='t'||k==='arrowdown'||k==='0')vote('tie')});
+if(k==='u'){undo();return}if(k==='arrowleft'||k==='1'||k==='a')vote('left');else if(k==='arrowright'||k==='2'||k==='b')vote('right');else if(k==='t'||k==='arrowdown'||k==='0')vote('tie')});
 start();
 </script></body></html>
 """

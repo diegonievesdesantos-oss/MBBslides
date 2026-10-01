@@ -74,6 +74,20 @@ class H(BaseHTTPRequestHandler):
         return self._send(404, "{}")
 
     def do_POST(self):
+        if urlparse(self.path).path == "/undo":  # remove the evaluator's last vote (a mis-click)
+            try:
+                n = int(self.headers.get("Content-Length", "0"))
+                e = str(json.loads(self.rfile.read(min(n, 1024))).get("evaluator", ""))
+            except (ValueError, json.JSONDecodeError):
+                return self._send(400, "{}")
+            f = ROOT / "votes" / f"{e}.jsonl"
+            pair = None
+            if _ok_id(e) and f.exists():
+                lines = [ln for ln in f.read_text(encoding="utf-8").splitlines() if ln.strip()]
+                if lines:
+                    pair = json.loads(lines[-1])["pair"]
+                    f.write_text("".join(ln + "\n" for ln in lines[:-1]), encoding="utf-8")
+            return self._send(200, json.dumps({"pair": pair}))
         if urlparse(self.path).path != "/vote":
             return self._send(404, "{}")
         try:
