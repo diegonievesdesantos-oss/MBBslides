@@ -724,10 +724,10 @@ def waterfall(p: Painter, box: Box, ex: dict) -> dict:
     for (c, _), s in series.items():
         _fill(s, colours[c])
     hl = _highlight_idx(ex, labels)
-    for i in hl:
+    for i in hl:  # a highlighted loss stays a loss: emphasis in the negative colour, never the (often green) accent (DEBT L2)
         for (c, _), s in series.items():
             if c != "total":
-                _fill(s.points[i], theme.c("highlight"))
+                _fill(s.points[i], theme.c("negative" if kinds[i] == "down" else "highlight"))
     # v1.8: a step that is an estimate or a bound is drawn hollow with a dashed outline, and its
     # label says so ("~1.5", "≤4.5"), so a reader never takes it for an actual
     from pptx.enum.dml import MSO_LINE_DASH_STYLE
@@ -737,7 +737,7 @@ def waterfall(p: Painter, box: Box, ex: dict) -> dict:
         b = st.get("bound") or ("estimate" if st.get("estimate") else None)
         if b in ("estimate", "upper", "lower", "range"):
             marks[i] = {"estimate": "~", "upper": "≤", "lower": "≥", "range": "~"}[b]
-            col = theme.c("highlight") if i in hl else (theme.c("text_muted") if delta_col == "muted" else colours[kinds[i]])  # a pale outline vanishes
+            col = theme.c(("negative" if kinds[i] == "down" else "highlight")) if i in hl else (theme.c("text_muted") if delta_col == "muted" else colours[kinds[i]])  # a pale outline vanishes
             for (c, _), s in series.items():
                 if c == kinds[i]:
                     pt = s.points[i]

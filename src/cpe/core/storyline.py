@@ -15,7 +15,6 @@ from __future__ import annotations
 import re
 
 from ..spec import CONTENT_KINDS, DECK_TYPES, issue
-from .headline import words
 
 FRAMEWORKS = {
     "SCR": {
@@ -225,8 +224,9 @@ def lint_storyline(spec: dict) -> list[dict]:
     if kl and not 2 <= len(kl) <= 5:
         out.append(issue("warning", "STORY_KEYLINE_SIZE", f"Key line has {len(kl)} points; 2-5 keeps the pyramid readable"))
     gt = st.get("governing_thought", "")
-    if gt and len(words(gt)) > 35:
-        out.append(issue("warning", "STORY_GT_LONG", "Governing thought over 35 words: it should fit in one breath"))
+    n_gt = sum(1 for w in (gt or "").split() if re.search(r"[A-Za-zÀ-ÿ0-9]", w))  # words as a reader counts them (DEBT L4)
+    if gt and n_gt > 35:
+        out.append(issue("warning", "STORY_GT_LONG", f"Governing thought has {n_gt} words (over 35): it should fit in one breath"))
     content = [s for s in slides if s.get("kind", "content") == "content"]
     # exec summary present and early
     es_idx = next((i for i, s in enumerate(slides) if s.get("kind") == "exec_summary"), None)

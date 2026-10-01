@@ -79,7 +79,7 @@ VAGUE = {
 }
 
 NUM_RE = re.compile(r"(?<![\w.,])[-−+]?(?:\d{1,3}(?:\.\d{3}){2,}(?:,\d+)?|\d+,\d{1,2}(?!\d)|\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?"
-                    r"(?:\s*(?:%|pp|x|bn|mn|m|k|b)(?![A-Za-zÀ-ÿ]))?", re.IGNORECASE)  # v1.8: "1.428.000"; "más" is not "m"
+                    r"(?:\s*(?:%|pp|x|bn|mn|m|k|b)(?![A-Za-zÀ-ÿ²³]))?", re.IGNORECASE)  # v1.8: "1.428.000"; "más" is not "m"
 
 
 def words(text: str) -> list[str]:

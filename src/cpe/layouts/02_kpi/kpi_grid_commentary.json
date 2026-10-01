@@ -1,0 +1,58 @@
+{
+  "id": "kpi_grid_commentary",
+  "family": "02_kpi",
+  "name": "KPI grid + commentary",
+  "description": "2-6 KPIs on 8 columns with the reading of them on the right.",
+  "when_to_use": "A few numbers are the message and need an explanation, with no chart (v1.7.1).",
+  "zones": [
+    {
+      "name": "kpis",
+      "role": "kpis",
+      "cols": [
+        1,
+        8
+      ],
+      "top": 0,
+      "bottom": 1
+    },
+    {
+      "name": "commentary",
+      "role": "commentary",
+      "cols": [
+        9,
+        12
+      ],
+      "top": 0,
+      "bottom": 1,
+      "style": "rule_left"
+    }
+  ],
+  "accepts": {
+    "kpis": [
+      1,
+      1
+    ],
+    "commentary": [
+      1,
+      1
+    ]
+  },
+  "takeaway": "optional",
+  "compatible_visuals": [
+    "kpi"
+  ],
+  "capacity": {
+    "kpis": {
+      "items": 6
+    },
+    "commentary": {
+      "bullets": 4,
+      "words": 70
+    }
+  },
+  "hierarchy": [
+    "kpis",
+    "commentary"
+  ],
+  "body_band": "body"
+}

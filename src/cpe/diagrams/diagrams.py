@@ -35,7 +35,9 @@ def _label_in(p: Painter, box: Box, text: str, fill_token: str | None, role: str
 def process(p: Painter, box: Box, ex: dict) -> dict:
     """Steps: [{"title", "text"|"points", "owner", "duration"}]; highlight: [index]."""
     box = exhibit_header(p, box, ex)
-    steps = ex["data"]["steps"]
+    # "label" / "name" are accepted for "title" (a spec slip must not crash the build, v1.7.1)
+    steps = [st if isinstance(st, dict) and "title" in st else
+             ({**st, "title": st.get("label") or st.get("name") or ""} if isinstance(st, dict) else {"title": str(st)}) for st in ex["data"]["steps"]]
     n = len(steps)
     hl = set(ex.get("highlight") or [])
     vertical = ex.get("orientation") == "vertical" or (box.w < 6.5 and n > 3)

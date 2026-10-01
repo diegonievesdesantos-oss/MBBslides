@@ -698,3 +698,67 @@ def test_protocol_14_checks_only_quantities():
     text = "Comunicar antes del 31/12/2026 al propietario; 2 personas en 6-8 semanas, 12 mensualidades de penalización, revisión en Q1 2027"
     assert ground_numbers(text, []) == [] or all(g["status"] == "grounded" for g in ground_numbers(text, []))
     assert [g["status"] for g in ground_numbers("ahorra 140 k€ al año", [])] == ["unsupported"]
+
+
+# ── v1.7.1: DEBT_V17 fine-tuning ──
+
+def test_debt_f1_data_values_must_be_cited_facts():
+    from cpe.reasoning.checks import _value_grounded
+    cited = [{"values": [{"value": 1066}, {"value": 943}, {"value": 2850}, {"value": 3487}, {"value": 637}, {"value": 115}]}]
+    assert _value_grounded(1066, cited) and _value_grounded(1.066, cited) and _value_grounded(2.85, cited)  # same value, other scale (F7)
+    assert not _value_grounded(777, cited)  # 1066 − 2850 + … : derivations are not accepted for data values
+    assert not _value_grounded(3488, cited) and not _value_grounded(944, [{"values": [{"value": 943}]}])
+
+
+def test_debt_f2_prose_conflicts_without_period():
+    from cpe.reasoning.conflicts import detect_conflicts
+    f = [{"id": "F1", "fact_type": "text_statement", "claim": "El coste de cierre estimado es de 1,5 M€.", "source": {"file": "ops.md"}, "values": [{"value": 1.5, "unit": "EUR_M"}]},
+         {"id": "F2", "fact_type": "text_statement", "claim": "El coste de cierre asciende a 3,2 M€.", "source": {"file": "fin.pdf"}, "values": [{"value": 3.2, "unit": "EUR_M"}]},
+         {"id": "F3", "fact_type": "text_statement", "claim": "Supplier B has 70% of our volume.", "source": {"file": "a.md"}, "values": [{"value": 70, "unit": "PCT"}]},
+         {"id": "F4", "fact_type": "text_statement", "claim": "Moving 100% of our volume to Supplier B.", "source": {"file": "b.md"}, "values": [{"value": 100, "unit": "PCT"}]}]
+    c = detect_conflicts(f)
+    assert [(x["type"], x["phrase"]) for x in c] == [("prose_mismatch", "coste cierre")]
+
+
+def test_debt_f3_f4_text_cells_and_k_suffix(tmp_path):
+    from cpe.reasoning.facts import build_fact_model, detect_unit
+    (tmp_path / "t.md").write_text("| Local | Condiciones | Renta (€/mes) |\n|---|---|---|\n| Norte | Subida del 22% al renovar | 7.420 |\n| Sur | Sin cambios | 6.100 |\n", encoding="utf-8")
+    fm = build_fact_model([tmp_path / "t.md"])
+    assert any(f["source"]["loc"].endswith("r2c2") and f["values"][0] == {**f["values"][0], "value": 22.0, "unit": "PCT"} for f in fm["facts"])
+    assert detect_unit("contribucion_k") == "EUR_K" and detect_unit("orders_k") == "PLAIN_K"
+
+
+def test_debt_f5_unit_conversion_in_formulas():
+    from cpe.reasoning.checks import check_computed
+    facts = {"F0212": {"id": "F0212", "values": [{"value": 250000, "unit": "EUR"}]}, "F0207": {"id": "F0207", "values": [{"value": 40, "unit": ""}]}}
+    issues, good = check_computed({"facts": [{"id": "C0001", "formula": 'to(F0212, "EUR_K") * F0207', "values": [{"value": 10000, "unit": "EUR_K"}]}]}, facts)
+    assert issues == [] and good["C0001"]["derived_from"] == ["F0207", "F0212"]
+    bad, _ = check_computed({"facts": [{"id": "C0002", "formula": 'to(F0207, "EUR_K")', "values": [{"value": 1, "unit": "EUR_K"}]}]}, facts)
+    assert [i["code"] for i in bad] == ["FORMULA_INVALID"]
+
+
+def test_debt_l1_spanish_number_format():
+    from cpe.charts.numfmt import LOCALE, excel_code, fmt, set_locale
+    t = set_locale("es")
+    try:
+        assert fmt(1066.5, {"decimals": 1}) == "1.066,5" and fmt(2.67, {"decimals": 2, "suffix": "x"}) == "2,67x"
+        assert excel_code({"decimals": 1}).startswith("[$-C0A]")
+    finally:
+        LOCALE.reset(t)
+    assert fmt(1066.5, {"decimals": 1}) == "1,066.5" and not excel_code({"decimals": 1}).startswith("[$")
+
+
+def test_debt_l3_l4_l7_small_fixes():
+    import inspect
+
+    from cpe.core.storyline import lint_storyline
+    from cpe.reasoning.facts import build_fact_model
+    from cpe.tables import table
+    assert "_align_set" in inspect.getsource(table)
+    gt = " ".join(["palabra"] * 34) + " (3,70x)"
+    assert not any(i["code"] == "STORY_GT_LONG" for i in lint_storyline({"storyline": {"governing_thought": gt}, "slides": []}))
+    import pathlib
+    import tempfile
+    p = pathlib.Path(tempfile.mkdtemp()) / "t.md"
+    p.write_text("- Una tienda de 640 m² a 2,4 km del centro.\n", encoding="utf-8")
+    assert [(v["value"], v["unit"]) for f in build_fact_model([p])["facts"] for v in f["values"]] == [(640.0, "M2"), (2.4, "KM")]

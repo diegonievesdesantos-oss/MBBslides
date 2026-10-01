@@ -19,6 +19,15 @@ def _measures(text: str) -> set[str]:
     return {m for m in MEASURES if re.search(rf"\b{m}\b", t)}
 
 
+STOP = set("de la el los las del al en por para con un una y o que se su sus es son the of to in for and a an on at by is are".split())
+
+
+def _bigrams(text: str) -> set[str]:
+    """Content-word pairs of a sentence ('coste de cierre' → 'coste cierre')."""
+    w = [x for x in re.findall(r"[a-záéíóúñü]+", (text or "").lower()) if x not in STOP and len(x) > 2]
+    return {f"{a} {b}" for a, b in zip(w, w[1:])}
+
+
 def _kind(unit: str) -> str:
     u = (unit or "").upper()
     return u.split("_")[0] if "_" in u else u
@@ -101,6 +110,30 @@ def detect_conflicts(facts: list[dict], tolerance: float = 0.01) -> list[dict]:
             seen.add(key)
             kind = "forecast_vs_actual" if (va.get("basis") or "actual") != (vb.get("basis") or "actual") else "value_mismatch"
             out.append({"id": f"X{len(out) + 1:03d}", "type": kind, "measure": sorted(ma & mb), "period": va["period"],
+                        "facts": [{"fact": fa["id"], "value": va["value"], "unit": va["unit"], "basis": va.get("basis"), "source": fa["source"].get("file")},
+                                  {"fact": fb["id"], "value": vb["value"], "unit": vb["unit"], "basis": vb.get("basis"), "source": fb["source"].get("file")}],
+                        "resolution": None})
+    # v1.7.1 (DEBT F2): two sources stating the same quantity in prose, neither with a period
+    # ("cierre: 1,5 M€" in one memo, "3,2 M€" in the finance note). Conservative: same unit kind,
+    # a shared measure word AND a shared two-word phrase, different files, values >10% apart.
+    texts = [(f, v) for f in facts if f.get("fact_type") == "text_statement" for v in f.get("values") or []
+             if not v.get("period") and _kind(v.get("unit")) in ("EUR", "USD", "GBP")]  # money only: shares and rates legitimately differ
+    for i, (fa, va) in enumerate(texts):
+        for fb, vb in texts[i + 1:]:
+            if fa["id"] == fb["id"] or fa["source"].get("file") == fb["source"].get("file") or _kind(va["unit"]) != _kind(vb["unit"]):
+                continue
+            ma, mb = _measures(fa.get("claim", "")), _measures(fb.get("claim", ""))
+            shared = _bigrams(fa.get("claim", "")) & _bigrams(fb.get("claim", ""))
+            if not (ma & mb) or not shared:
+                continue
+            a, b = abs(_base(va)), abs(_base(vb))
+            if abs(a - b) <= 0.10 * max(a, b, 1e-9):
+                continue
+            key = tuple(sorted((fa["id"], fb["id"])))
+            if key in seen:
+                continue
+            seen.add(key)
+            out.append({"id": f"X{len(out) + 1:03d}", "type": "prose_mismatch", "measure": sorted(ma & mb), "period": None, "phrase": sorted(shared)[0],
                         "facts": [{"fact": fa["id"], "value": va["value"], "unit": va["unit"], "basis": va.get("basis"), "source": fa["source"].get("file")},
                                   {"fact": fb["id"], "value": vb["value"], "unit": vb["unit"], "basis": vb.get("basis"), "source": fb["source"].get("file")}],
                         "resolution": None})

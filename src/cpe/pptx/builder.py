@@ -237,6 +237,16 @@ def _native_slide(slide, s: dict, meta: dict, m: Manifest, theme) -> None:
 
 
 def build(resolved: dict, out_path: str | Path) -> list[dict]:
+    from ..charts.numfmt import LOCALE, set_locale
+
+    token = set_locale(resolved.get("meta", {}).get("language"))
+    try:
+        return _build(resolved, out_path)
+    finally:
+        LOCALE.reset(token)
+
+
+def _build(resolved: dict, out_path: str | Path) -> list[dict]:
     meta = resolved.get("meta", {})
     theme = theme_for(meta)
     activate(theme)

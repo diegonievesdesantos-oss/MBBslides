@@ -73,7 +73,11 @@
     "heatmap",
     "table",
     "harvey_table",
-    "scorecard"
+    "scorecard",
+    "process",
+    "value_chain",
+    "flow",
+    "journey"
   ],
   "capacity": {
     "kpis": {

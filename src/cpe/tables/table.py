@@ -77,6 +77,8 @@ def _norm_cols(ex: dict, rows: list[dict]) -> list[dict]:
             vals = [r["cells"][j] for r in rows if j < len(r["cells"])]
             numeric = all(isinstance(v, (int, float)) or v is None for v in vals) and any(isinstance(v, (int, float)) for v in vals)
             c["kind"] = "harvey" if (ex_kind == "harvey_table" and numeric and j > 0) else ("number" if numeric else "text")
+        if "align" in c:
+            c["_align_set"] = True
         c.setdefault("align", "left" if c["kind"] == "text" else ("center" if c["kind"] in ("harvey", "rag") else "right"))
         if c["kind"] in ("number", "delta") and "decimals" not in (c.get("format") or {}):
             vals = [r["cells"][j] for r in rows if j < len(r["cells"])]
@@ -257,7 +259,7 @@ def render(p: Painter, box: Box, ex: dict) -> dict:
     for j, c in enumerate(cols):
         cell = tbl.cell(0, j)
         _tc_borders(cell, top=None, bottom=(strong, LINES["rule"] * 1.3))
-        set_text(cell, c["label"], True, theme.c("primary") if j in hl_cols else theme.c("text"), c["align"] if c["kind"] != "text" else "left")
+        set_text(cell, c["label"], True, theme.c("primary") if j in hl_cols else theme.c("text"), c["align"] if (c["kind"] != "text" or c.get("_align_set")) else "left")  # an explicit align is honoured (DEBT L3)
     shapes_after = []
     y = plot.y + hs[0]
     for i, r in enumerate(rows, start=1):

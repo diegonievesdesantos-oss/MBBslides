@@ -93,8 +93,8 @@ def check_analyses(work_dir: str | Path, sources_dir: str | Path | None) -> list
     for a in json.loads(man_p.read_text(encoding="utf-8")).get("analyses") or []:
         n = a.get("name")
         s = Path(a.get("script") or "")
-        if not s.is_absolute() and not s.exists():
-            s = work / s
+        if not s.is_absolute():  # recorded relative to where `cpe reason analyze` ran (usually the case folder)
+            s = next((c for c in (work.parent / s, work / s, s) if c.exists()), s)
         if not s.exists() or _sha(s) != a.get("script_sha256"):
             issues.append(issue("ANALYSIS_STALE", n, "the script changed (or is missing) after its outputs were recorded: re-run `cpe reason analyze`"))
         if sources_dir:

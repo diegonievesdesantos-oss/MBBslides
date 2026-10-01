@@ -24,7 +24,7 @@ FACT_RE = re.compile(
     # v1.7: a number starts at a digit boundary and takes all its digits ("2026" was read as "202" + "6");
     # v1.8: "35-39" is a range (no sign after a digit); "más" is not "m" (accented letters end a word too)
     r"(?P<raw>(?:[€$£]\s?)?(?<![\d.,])[-−+]?(?<![\d.,])\d+(?:[,.\s]\d{3}(?!\d))*(?:[.,]\d+)?"
-    r"(?:\s?(?:%|pp|bps|x|bn|billion|mn|million|m|k|thousand|€|eur|usd)(?![a-záéíóúñü]))?)",
+    r"(?:\s?(?:%|pp|bps|x|bn|billion|mn|million|m|k|thousand|€|eur|usd)(?![a-záéíóúñü²³]))?)",
     re.IGNORECASE,
 )
 MONTHS = ("enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|setiembre|octubre|noviembre|diciembre|"
@@ -140,7 +140,8 @@ def _table(header, rows, source, loc, dot_decimal: bool = False, decimal_comma: 
         parsed = [(_num(c, j in dot, decimal_comma) if j in numeric else (c, "")) for j, c in enumerate(r)]
         conv.append([v for v, _ in parsed])
         units.append([u for _, u in parsed])  # "1,6%", "140.000 €": the unit written in the cell itself
-    return {"source": source, "loc": loc, "header": list(header), "rows": conv, "numeric_columns": numeric, "cell_units": units}
+    return {"source": source, "loc": loc, "header": list(header), "rows": conv, "numeric_columns": numeric, "cell_units": units,
+            "decimal_comma": decimal_comma}
 
 
 def decimal_comma_document(txt: str) -> bool:

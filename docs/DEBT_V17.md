@@ -1,4 +1,4 @@
-# v1.7 debt — final fine-tuning backlog
+# v1.7 debt — final fine-tuning backlog (status after 1.7.1)
 
 v1.7.0 closed on 2026-10-02. Its acceptance test was one real end-to-end case: Grupo Brasa, an external
 case written by the owner and kept private. With protocol 1.4 it went from raw ERP data and documents
@@ -40,3 +40,27 @@ kept as debt for a last fine-tuning pass. These are the findings, ordered by imp
 | E1 | Human evidence is one expert rater (owner decision), and every round is small. s2: 3–1 for the protocol. s3: 1–0. s4: 1–4 against protocol 1.3, which is what led to 1.4. Brasa (1.4): accepted as perfect. | Protocol 1.4 has not been through a blind multi-case round; the owner accepted it on one real case. |
 | E2 | External slide holdout and unseen corporate template (from v1.6) | awaiting external input |
 | E3 | The development cases (sets 01 and 02) and their references were written by the developing agent; packaging C3 was wrong and is marked contested. | development data only |
+
+## Status after 1.7.1 (fine-tuning pass, 2026-10-02)
+
+No new agent runs were made. Each fix is covered by a test. The stored decks were the regression set: the
+SaaS deck, the tiendas deck, the real Brasa deck (private) and the v1.7 development run. All four still
+pass the reasoning check with 0 hard failures. Brasa re-renders at 98.1 with Spanish number formats.
+
+| # | status | what changed |
+|---|---|---|
+| F1 | **fixed** (residual noted) | Table cells and chart values must BE a cited fact value, in any scale (×10³, ×10⁶), within display rounding; derived cells are written as computed facts. On the Brasa deck, 4 of 5 injected invented values are now blocked. **Residual:** a value that is a real fact cited on the same slide but placed in the wrong cell is not caught; that needs cell-to-fact binding (v1.8). |
+| F2 | **fixed** | Prose-vs-prose money conflicts with no period (shared measure word and a shared two-word phrase, different files, >10% apart). It finds the real almacén closure-cost conflict and the Seguros Alba cost conflict, with no false positives on the development or external cases. |
+| F3 | **fixed** | Numbers inside text cells of report tables become prose facts located at their cell ("… r2c2"). |
+| F4 | **fixed** | `_k` / `_m` header suffixes: EUR_K / EUR_M when the column is money (cost, sales, EBITDA, rent …), PLAIN_K otherwise. |
+| F5 | **fixed** | `to(F0212, "EUR_K")` converts a fact's unit inside a formula; conversion across kinds is refused. |
+| F6 | **closed by design** | Since protocol 1.4, small whole counts are not checked, so number words need no citation. |
+| F7 | **fixed** | Cells written in another scale of the same quantity ground (10 M€ against 10.000 k€). |
+| L1 | **fixed** | `meta.language` "es" (or fr/de/it/pt/nl) formats every number in tables and overlays as 1.066,5 / 2,67x. Native chart labels carry the locale tag `[$-C0A]`, so LibreOffice and PowerPoint print "20,5". |
+| L2 | **fixed** | A highlighted loss in a waterfall uses the negative colour, never the accent. |
+| L3 | **fixed** | An explicit `align` on a text column is honoured in the header. |
+| L4 | **fixed** | The STORY_GT_LONG word count counts words as a reader does. |
+| L5 | **fixed** | New layout `kpi_grid_commentary` (KPIs + commentary, no exhibit). The KPI strip layouts accept process / flow exhibits. A process step written with `label` no longer crashes the build. |
+| L6 | **moved to v1.8 (features)** | A cause → effect exhibit, a decisions table + timeline, explicit n/a cells. |
+| L7 | **fixed** | km and m² units in headers and prose. |
+| E1–E3 | open | Evidence debts are unchanged: one rater, protocol 1.4 accepted on one real case, external slide holdout and template pending. |

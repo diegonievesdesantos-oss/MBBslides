@@ -8,7 +8,25 @@ Exhibit format spec (all optional):
 """
 from __future__ import annotations
 
+import contextvars
 import math
+
+# v1.7.1 (DEBT L1): the deck's language decides separators. "es" → 1.066,5 ; "en" → 1,066.5.
+# Set by the builder from meta.language for the duration of a build.
+LOCALE: contextvars.ContextVar[str] = contextvars.ContextVar("cpe_number_locale", default="en")
+LCID = {"es": "[$-C0A]", "fr": "[$-40C]", "de": "[$-407]", "it": "[$-410]", "pt": "[$-816]", "nl": "[$-413]"}
+COMMA_DECIMAL = set(LCID)
+
+
+def set_locale(language: str | None):
+    lang = (language or "en").lower()[:2]
+    return LOCALE.set(lang if lang in COMMA_DECIMAL else "en")
+
+
+def _localise(s: str) -> str:
+    if LOCALE.get() in COMMA_DECIMAL:
+        return s.replace(",", "\x00").replace(".", ",").replace("\x00", ".")
+    return s
 
 
 def fmt_spec(ex: dict) -> dict:
@@ -45,7 +63,7 @@ def fmt(v: float | None, f: dict, plus: bool | None = None) -> str:
     if v is None or (isinstance(v, float) and math.isnan(v)):
         return "–"
     d = int(f.get("decimals", 0))
-    s = f"{abs(v):,.{d}f}" if f.get("thousands", True) else f"{abs(v):.{d}f}"
+    s = _localise(f"{abs(v):,.{d}f}" if f.get("thousands", True) else f"{abs(v):.{d}f}")
     sign = "−" if v < 0 else ("+" if (plus if plus is not None else f.get("plus")) and v > 0 else "")
     pct = "%" if f.get("percent") else ""
     return f"{sign}{f.get('prefix', '')}{s}{f.get('suffix', '')}{pct}"
@@ -59,9 +77,10 @@ def excel_code(f: dict, plus: bool | None = None) -> str:
     pct = '"%"' if f.get("percent") else ""
     pos = f"{pre}{core}{suf}{pct}"
     neg = f"-{pre}{core}{suf}{pct}"
+    lc = LCID.get(LOCALE.get(), "")  # the code stays en-US syntax; the locale tag makes the renderer print 1.066,5
     if plus if plus is not None else f.get("plus"):
-        return f"+{pos};{neg};{pos}"
-    return f"{pos};{neg}"
+        return f"{lc}+{pos};{neg};{pos}"
+    return f"{lc}{pos};{neg}"
 
 
 def nice_scale(lo: float, hi: float, ticks: int = 5, include_zero: bool = True) -> tuple[float, float, float]:

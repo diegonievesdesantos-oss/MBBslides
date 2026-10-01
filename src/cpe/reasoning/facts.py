@@ -55,6 +55,12 @@ def detect_period(text: str) -> dict | None:
 def detect_unit(text: str) -> str:
     """Normalised unit token of a header / label: 'EUR_M', 'USD_K', 'PCT', 'PP', 'BPS', 'DAYS', '' …"""
     t = str(text or "").replace("_", " ")  # "opening_arr_eur_m"
+    sk = re.search(r"\s(k|keur|m|meur)$", t.strip().lower()) if "_" in str(text or "") else None
+    if sk and not re.search(r"€|eur|usd|\$", t.lower().rsplit(" ", 1)[0]):  # "contribucion_k": thousands of the deck's currency (DEBT F4)
+        scale = {"k": "K", "keur": "K", "m": "M", "meur": "M"}[sk.group(1)]
+        money = sk.group(1).endswith("eur") or re.search(r"cost|coste|venta|sales|revenue|ingreso|ebitda|margen|margin|contribuc|alquiler|rent|precio|"
+                                                       r"price|beneficio|profit|capex|opex|deuda|debt|caja|cash|presupuesto|budget|gasto|spend|ahorro|saving", t.lower())
+        return f"EUR_{scale}" if money else f"PLAIN_{scale}"
     t = re.sub(r"\s*(/\s*(año|year|yr|mes|month|semana|sem|week|wk|día|dia|day|hora|hour|h)|per (year|month|annum|week|day|hour)"
                r"|al año|a year|al mes|por año|a la semana|por semana|al día|por día|por hora)\b\.?", "", t, flags=re.I)  # a rate, not the unit
     if re.search(r"(?:^|[\s_(])(pct|percent|porcentaje)(?:$|[\s_)])", t, re.I):
@@ -103,7 +109,8 @@ def unit_from_raw(raw: str) -> str:
     return scale and f"PLAIN_{scale}"
 
 
-UNIT_WORDS = {"day": "DAYS", "days": "DAYS", "día": "DAYS", "días": "DAYS", "dias": "DAYS", "week": "WEEKS", "weeks": "WEEKS", "semana": "WEEKS",
+UNIT_WORDS = {"km": "KM", "kilómetros": "KM", "kilometros": "KM", "kilometres": "KM", "kilometers": "KM", "m²": "M2", "m2": "M2",
+              "day": "DAYS", "days": "DAYS", "día": "DAYS", "días": "DAYS", "dias": "DAYS", "week": "WEEKS", "weeks": "WEEKS", "semana": "WEEKS",
               "semanas": "WEEKS", "month": "MONTHS", "months": "MONTHS", "mes": "MONTHS", "meses": "MONTHS", "year": "YEARS", "years": "YEARS",
               "año": "YEARS", "años": "YEARS", "hour": "HOURS", "hours": "HOURS", "hora": "HOURS", "horas": "HOURS", "min": "MINUTES",
               "minutes": "MINUTES", "minutos": "MINUTES", "points": "PP", "puntos": "PP", "pts": "PP"}
@@ -139,7 +146,7 @@ def unit_in_context(raw: str, context: str) -> str:
     if i < 0:
         return ""
     after = context[i + len(raw):]
-    m = re.match(r"\s*(?:(?:to|a|y|and|-|–)\s*[-−+]?[\d.,]+\s*)?([A-Za-zÀ-ÿ]+)", after)
+    m = re.match(r"\s*(?:(?:to|a|y|and|-|–)\s*[-−+]?[\d.,]+\s*)?([A-Za-zÀ-ÿ]+[²³]?)", after)
     return UNIT_WORDS.get(m.group(1).lower(), "") if m else ""
 
 
@@ -246,8 +253,26 @@ def build_fact_model(paths: list[str | Path]) -> dict:
                              "note": "row-level dataset: aggregate it with `cpe reason analyze` to get citable facts"})
             continue
         facts += _table_facts(t, next_id)
+    # v1.7.1 (DEBT F3): numbers written inside text cells of report tables ("subida del 22%",
+    # "12/18 mensualidades") are prose facts located at their cell
+    from ..ingest.readers import extract_facts as _xf
+
+    extra_cells = []
+    for t in inv["tables"]:
+        if len(t["rows"]) > DATASET_ROWS:
+            continue
+        numeric = set(t["numeric_columns"])
+        for i, row in enumerate(t["rows"]):
+            label = next((str(c) for j, c in enumerate(row) if j not in numeric and str(c).strip()), "")
+            for j, c in enumerate(row):
+                if j in numeric or not isinstance(c, str) or not re.search(r"\d", c) or (j == 0 and len(c) < 12):
+                    continue
+                head = str(t["header"][j]) if j < len(t["header"]) else ""
+                ctx = f"{label} — {head}: {c}" if label and label != c else f"{head}: {c}"
+                for x in _xf(c, t["source"], f"{t['loc']} r{i + 2}c{j + 1}", decimal_comma=t.get("decimal_comma", False)):
+                    extra_cells.append({**x, "context": ctx[:300]})
     by_sentence: dict = {}  # one text fact per sentence, with every number it states
-    for f in inv["facts"]:
+    for f in inv["facts"] + extra_cells:
         by_sentence.setdefault((f["source"], f["loc"], f["context"]), []).append(f)
     for (src, loc, ctx), fs in by_sentence.items():
         vals = []

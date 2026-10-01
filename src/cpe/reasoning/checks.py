@@ -156,12 +156,35 @@ def raw_numbers(path: Path) -> set[float]:
 
 # ── computed facts: the agent's arithmetic, recomputed deterministically ───────────────────────────
 
-def _safe_eval(formula: str, env: dict) -> float:
+SCALE_OF = {"": 1.0, "K": 1e3, "M": 1e6, "BN": 1e9}
+
+
+def _scale(unit: str) -> tuple[str, float]:
+    kind, _, sc = (unit or "").upper().partition("_")
+    return kind, SCALE_OF.get(sc, 1.0)
+
+
+def _safe_eval(formula: str, env: dict, units: dict | None = None) -> float:
     import ast
 
     tree = ast.parse(formula, mode="eval")
+    units = units or {}
+
+    def unit_of(n):
+        if isinstance(n, ast.Name):
+            return (units.get(n.id) or [""])[0]
+        if isinstance(n, ast.Subscript) and isinstance(n.value, ast.Name) and isinstance(n.slice, ast.Constant):
+            u = units.get(n.value.id) or []
+            return u[n.slice.value] if isinstance(n.slice.value, int) and n.slice.value < len(u) else ""
+        raise ValueError("to() converts a fact reference: to(F0012, 'EUR_K')")
 
     def ev(n):
+        if isinstance(n, ast.Call) and isinstance(n.func, ast.Name) and n.func.id == "to" and len(n.args) == 2 and isinstance(n.args[1], ast.Constant):
+            # v1.7.1 (DEBT F5): to(F0212, "EUR_K") — a fact in EUR read in thousands of EUR
+            (fk, fs), (tk, ts) = _scale(unit_of(n.args[0])), _scale(str(n.args[1].value))
+            if fk != tk:
+                raise ValueError(f"to(): cannot convert {fk or 'plain'} to {tk or 'plain'}")
+            return ev(n.args[0]) * fs / ts
         if isinstance(n, ast.Expression):
             return ev(n.body)
         if isinstance(n, ast.BinOp) and isinstance(n.op, (ast.Add, ast.Sub, ast.Mult, ast.Div)):
@@ -201,8 +224,9 @@ def check_computed(cf: dict | None, facts: dict) -> tuple[list[dict], dict]:
         fid = f.get("id", "?")
         env = {k: [float(x["value"]) for x in v["values"]] for k, v in facts.items() if v.get("values")}
         env.update({k: [float(x["value"]) for x in v["values"]] for k, v in good.items()})
+        units = {k: [x.get("unit") or "" for x in v["values"]] for k, v in {**facts, **good}.items() if v.get("values")}
         try:
-            res = _safe_eval(f["formula"], env)
+            res = _safe_eval(f["formula"], env, units)
         except KeyError as e:
             out.append(_issue("error", "UNKNOWN_FACT", "computed_facts.json", fid, f"formula uses {e.args[0]}, which is not a fact", hard=True))
             continue
@@ -478,20 +502,17 @@ def _deck_text(t: str) -> str:
 
 
 def _value_grounded(v: float, cited: list[dict]) -> bool:
-    """A chart / table number: a cited fact's value (as written, unit-free) or one operation on two."""
+    """A chart / table number must BE a cited fact value (v1.7.1, DEBT F1). Derived cells are written as
+    computed facts (`computed_facts.json`) and cited: on a slide citing 20 facts, "one operation on two"
+    reaches almost any number, so it is not allowed for data values. The value may be written in another
+    scale of the same quantity (10 M€ in a k€ column: ×1000, DEBT F7) or rounded as displayed."""
     if float(v).is_integer() and (abs(v) <= 10 or 1900 <= v <= 2100):
         return True  # small counts, ranks, years
     vals = [abs(float(x["value"])) for f in cited for x in f.get("values") or []]
     s = f"{abs(v):g}"
-    tol = 0.5 * 10 ** -(len(s.split(".")[1]) if "." in s else 0) + 0.005 * abs(v)
+    tol = 0.5 * 10 ** -(len(s.split(".")[1]) if "." in s else 0) + 1e-6 * abs(v)  # display rounding only
     a = abs(v)
-    if any(abs(x - a) <= tol for x in vals):
-        return True
-    for i, x in enumerate(vals):
-        for y in vals[i + 1:]:
-            if min(abs(x + y - a), abs(abs(x - y) - a)) <= tol or (y and abs(x / y * 100 - a) <= tol) or (x and abs(y / x * 100 - a) <= tol):
-                return True
-    return False
+    return any(abs(x * k - a) <= tol for x in vals for k in (1, 1e3, 1e-3, 1e6, 1e-6))
 
 
 def _raw_files(cited: list[dict], facts: dict) -> set[str]:
@@ -543,7 +564,7 @@ def factcheck_deck(deck: dict | None, facts: dict) -> list[dict]:
                     if g["status"] == "unsupported":
                         out.append(_issue("error", "UNSUPPORTED_NUMBER", "deck.json", f"{sid}:{path}", f"{g['number']} not grounded in the slide's cited facts", hard=True))
             elif not _value_grounded(val, cited):
-                out.append(_issue("error", "UNSUPPORTED_NUMBER", "deck.json", f"{sid}:{path}", f"data value {val:g} is not a cited fact value or one operation on two", hard=True))
+                out.append(_issue("error", "UNSUPPORTED_NUMBER", "deck.json", f"{sid}:{path}", f"data value {val:g} is not a cited fact value: cite the fact, or write the derived value as a computed fact and cite it", hard=True))
         files = _raw_files(cited, facts)
         named = re.findall(r"[\w\-. ]+\.(?:xlsx|csv|pdf|docx|pptx|md|txt)", s.get("source") or "", re.I)
         for n in named:

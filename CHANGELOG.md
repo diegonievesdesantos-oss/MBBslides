@@ -1,5 +1,24 @@
 # Changelog
 
+## 1.7.1 — Fine-tuning of the v1.7 debt
+
+Fine-tuning of docs/DEBT_V17.md, with no new agent runs. The stored decks are the regression set: all
+pass, and the real Brasa deck re-renders at 98.1.
+- **Factuality:**
+  - table and chart values must be cited fact values, in any scale (F1, F7);
+  - prose-vs-prose money conflicts are detected (F2);
+  - numbers in table text cells are extracted (F3);
+  - `_k` / `_m` header units (F4);
+  - `to()` converts units in formulas (F5).
+- **Locale and render:**
+  - Spanish and other decimal-comma number formats everywhere, including native chart labels (L1);
+  - a highlighted loss uses the negative colour (L2);
+  - header alignment (L3);
+  - the governing-thought word count (L4);
+  - a KPI + commentary layout, KPI strip + process, and process steps accept `label` (L5);
+  - km and m² units (L7).
+- **Moved to v1.8:** new exhibits (cause → effect, decisions + timeline) and cell-to-fact binding.
+
 ## 1.7.0 — Consulting intelligence: from raw material to a decision deck
 
 **Closed 2026-10-02.**
