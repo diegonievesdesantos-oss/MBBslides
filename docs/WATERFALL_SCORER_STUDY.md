@@ -16,9 +16,12 @@ fitness measures only layout properties (occupancy, balance, hierarchy, proof). 
 good proportions scored 100.
 
 **Fix (generic, no slide or archetype exception).** A critical `integrity` metric in every profile
-(`archetype_profiles.json`, base, weight 16, range 1–1): 0 when the slide has a *broken* QA finding
-— content off the slide or outside its zone, overflowing, colliding, truncated, a placeholder, or
-a chart that cannot encode its data (WATERFALL_NEGATIVE) — else 1. `cpe measure` recomputes it with
+(`archetype_profiles.json`, base, weight 16, range 1–1), observed **only** when the slide has a
+*broken* QA finding — content off the slide or outside its zone, overflowing, colliding,
+truncated, a placeholder, or a chart that cannot encode its data (WATERFALL_NEGATIVE) — and then
+0. An intact slide does not observe it at all, so its score is exactly what it was: a first
+version that observed 1 on intact slides diluted every other penalty and lifted the development
+regression from 95.1 to 95.5 — score inflation, rejected. `cpe measure` recomputes it with
 the CURRENT checks on stored renders. Other QA errors (low contrast, small type, palette) still fail
 the QA gate but are not "broken".
 

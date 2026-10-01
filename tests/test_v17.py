@@ -246,7 +246,7 @@ def test_broken_slide_cannot_score_well():
     from cpe.qa.composition import BROKEN_CODES, integrity_issues
 
     ok = {"utilization": 0.9, "empty": 0.1, "ink": 0.15, "offcentre": 0.05, "emphasis": 0.2, "regions": 2, "ratio": 2.0, "edges": 3, "proof": 1.0}
-    good = fitness("waterfall", {**ok, "integrity": 1.0})["score"]
+    good = fitness("waterfall", ok)["score"]  # intact: integrity is not observed, the score is unchanged
     broken = fitness("waterfall", {**ok, "integrity": 0.0})
     assert good >= 99 and good - broken["score"] >= 30 and broken["worst_critical"] == 0.0
     issues = [{"slide": "w1", "level": "error", "code": "OFF_SLIDE"}, {"slide": "k1", "level": "error", "code": "LOW_CONTRAST"},

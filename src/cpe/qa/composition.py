@@ -525,8 +525,11 @@ def apply_integrity(comps: list["SlideComposition"], issues: list[dict], manifes
         warn += [{"slide": m.get("slide_id"), "level": "warning", "code": w.get("code")} for w in m.get("warnings") or []]
     for sc in comps:
         bad = integrity_issues(warn, sc.slide_id)
-        sc.observed["integrity"] = 0.0 if bad else 1.0
         sc.raw["integrity_issues"] = bad
+        if not bad:  # an intact slide is scored exactly as before: integrity only ever caps
+            sc.observed.pop("integrity", None)
+            continue
+        sc.observed["integrity"] = 0.0
         f = fitness(sc.archetype, sc.observed)
         if f["score"] is None:
             continue
