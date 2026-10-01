@@ -1,0 +1,180 @@
+{
+  "meta": {
+    "title": "Estrategia de hoteles urbanos",
+    "deck_type": "strategy_deck",
+    "theme": "harbor"
+  },
+  "eval": {
+    "purpose": "Holdout v2: hospitality, Spanish"
+  },
+  "slides": [
+    {
+      "id": "v086",
+      "kind": "exec_summary",
+      "purpose": "Give the whole answer",
+      "headline": "Reposicionar 12 hoteles al segmento de estancias largas sube el RevPAR un 16%",
+      "visual": {
+        "type": "statements",
+        "data": {
+          "items": [
+            {
+              "title": "La ocupación entre semana cae al 61%",
+              "text": "El viajero de negocios ya no vuelve a niveles de 2019."
+            },
+            {
+              "title": "Las estancias de más de 7 noches crecen un 22% al año",
+              "text": "Nómadas digitales, desplazados y estudiantes."
+            },
+            {
+              "title": "La reforma cuesta 48 M€ y se paga en cuatro años",
+              "text": "Cocinas en habitación y zonas de trabajo compartidas."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "v087",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "Las estancias largas crecen mientras el viaje de negocios se estanca",
+      "message_type": "trend",
+      "visual": {
+        "type": "column",
+        "title": "Noches vendidas por motivo",
+        "unit": "miles",
+        "data": {
+          "categories": [
+            "2023",
+            "2024",
+            "2025"
+          ],
+          "series": [
+            {
+              "name": "Negocios",
+              "values": [
+                410,
+                405,
+                398
+              ]
+            },
+            {
+              "name": "Ocio",
+              "values": [
+                520,
+                545,
+                560
+              ]
+            },
+            {
+              "name": "Estancia larga",
+              "values": [
+                95,
+                118,
+                144
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Sistema de reservas (sintético)"
+    },
+    {
+      "id": "v088",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "La ocupación entre semana es del 61%",
+      "message_type": "single_number",
+      "visual": {
+        "type": "kpi",
+        "data": {
+          "items": [
+            {
+              "value": "61%",
+              "label": "ocupación de lunes a jueves",
+              "delta": "−9 pp frente a 2019",
+              "trend": "down",
+              "good": "up"
+            }
+          ]
+        }
+      },
+      "source": "Sistema de reservas (sintético)"
+    },
+    {
+      "id": "v089",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "Las estancias largas igualan el RevPAR con menos coste operativo",
+      "message_type": "comparison",
+      "columns": [
+        {
+          "title": "Hotel actual",
+          "points": [
+            "RevPAR 86 €",
+            "Limpieza diaria",
+            "Recepción 24 h"
+          ]
+        },
+        {
+          "title": "Estancia larga",
+          "points": [
+            "RevPAR 100 €",
+            "Limpieza semanal",
+            "Acceso digital"
+          ],
+          "emphasis": true
+        }
+      ],
+      "source": "Modelo económico (sintético)"
+    },
+    {
+      "id": "v090",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "La reforma se hace por fases para no cerrar ningún hotel completo",
+      "message_type": "sequence",
+      "visual": {
+        "type": "timeline",
+        "data": {
+          "events": [
+            {
+              "date": "Mar 2026",
+              "text": "Primeros 3 hoteles"
+            },
+            {
+              "date": "Sep 2026",
+              "text": "Siguientes 5 hoteles"
+            },
+            {
+              "date": "Mar 2027",
+              "text": "Últimos 4 hoteles"
+            },
+            {
+              "date": "Dic 2027",
+              "text": "Revisión de precios"
+            }
+          ]
+        }
+      },
+      "source": "Plan de obra (sintético)"
+    },
+    {
+      "id": "v091",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "La conversión sólo funciona si se cumplen dos condiciones",
+      "message_type": "argument",
+      "visual": {
+        "type": "bullets",
+        "data": {
+          "points": [
+            "Licencia urbanística que permita estancias superiores a 30 días",
+            "Ubicación a menos de 15 minutos de un nodo de transporte"
+          ]
+        }
+      },
+      "source": "Análisis jurídico (sintético)"
+    }
+  ]
+}

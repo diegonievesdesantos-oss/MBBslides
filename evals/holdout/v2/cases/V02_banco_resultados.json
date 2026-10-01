@@ -1,0 +1,203 @@
+{
+  "meta": {
+    "title": "Resultados del tercer trimestre",
+    "deck_type": "board_update",
+    "theme": "harbor"
+  },
+  "eval": {
+    "purpose": "Holdout v2: financial results, Spanish"
+  },
+  "slides": [
+    {
+      "id": "v007",
+      "kind": "exec_summary",
+      "purpose": "Give the whole answer",
+      "headline": "El margen de intereses compensa la caída de comisiones y el beneficio crece un 9%",
+      "visual": {
+        "type": "statements",
+        "data": {
+          "items": [
+            {
+              "title": "El margen de intereses sube un 12%",
+              "text": "La repreciación de la cartera hipotecaria aporta 180 M€."
+            },
+            {
+              "title": "Las comisiones caen un 5%",
+              "text": "Menos operaciones de valores y gratuidad en cuentas jóvenes."
+            },
+            {
+              "title": "El coste del riesgo se mantiene en 0,42%",
+              "text": "Sin deterioro en pymes pese a la desaceleración."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "v008",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "Rentabilidad y solvencia mejoran a la vez",
+      "message_type": "kpi_dashboard",
+      "visual": {
+        "type": "kpi",
+        "data": {
+          "items": [
+            {
+              "value": "13,1%",
+              "label": "ROTE",
+              "delta": "+1,4 pp",
+              "trend": "up",
+              "good": "up"
+            },
+            {
+              "value": "12,8%",
+              "label": "CET1",
+              "delta": "+0,3 pp",
+              "trend": "up",
+              "good": "up"
+            },
+            {
+              "value": "41,2%",
+              "label": "Ratio de eficiencia",
+              "delta": "−2,1 pp",
+              "trend": "down",
+              "good": "down"
+            },
+            {
+              "value": "2,9%",
+              "label": "Morosidad",
+              "delta": "−0,2 pp",
+              "trend": "down",
+              "good": "down"
+            }
+          ]
+        }
+      },
+      "source": "Información financiera trimestral (sintética)"
+    },
+    {
+      "id": "v009",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "El beneficio neto pasa de 1.020 M€ a 1.112 M€",
+      "message_type": "change_bridge",
+      "visual": {
+        "type": "waterfall",
+        "title": "Beneficio neto, 3T 2024 a 3T 2025",
+        "unit": "M€",
+        "data": {
+          "steps": [
+            {
+              "label": "3T 2024",
+              "value": 1020,
+              "type": "total"
+            },
+            {
+              "label": "Margen de intereses",
+              "value": 180
+            },
+            {
+              "label": "Comisiones",
+              "value": -48
+            },
+            {
+              "label": "Costes",
+              "value": -22
+            },
+            {
+              "label": "Provisiones",
+              "value": -6
+            },
+            {
+              "label": "Impuestos",
+              "value": -12
+            },
+            {
+              "label": "3T 2025",
+              "type": "total"
+            }
+          ]
+        }
+      },
+      "source": "Información financiera trimestral (sintética)"
+    },
+    {
+      "id": "v010",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "Las comisiones caen en valores y suben en seguros",
+      "message_type": "ranking",
+      "visual": {
+        "type": "bar",
+        "title": "Comisiones por línea, variación interanual",
+        "unit": "M€",
+        "data": {
+          "categories": [
+            "Seguros",
+            "Tarjetas",
+            "Fondos",
+            "Cuentas",
+            "Valores"
+          ],
+          "series": [
+            {
+              "name": "Variación",
+              "values": [
+                14,
+                6,
+                -9,
+                -21,
+                -38
+              ]
+            }
+          ]
+        },
+        "highlight": [
+          "Valores"
+        ]
+      },
+      "source": "Información financiera trimestral (sintética)"
+    },
+    {
+      "id": "v011",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "La morosidad baja al 2,9%, el nivel más bajo desde 2008",
+      "message_type": "single_number",
+      "visual": {
+        "type": "kpi",
+        "data": {
+          "items": [
+            {
+              "value": "2,9%",
+              "label": "tasa de morosidad, septiembre",
+              "delta": "−0,2 pp",
+              "trend": "down",
+              "good": "down"
+            }
+          ]
+        }
+      },
+      "source": "Información financiera trimestral (sintética)"
+    },
+    {
+      "id": "v012",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "Tres riesgos pueden afectar al cuarto trimestre",
+      "message_type": "argument",
+      "visual": {
+        "type": "bullets",
+        "data": {
+          "points": [
+            "Bajada de tipos más rápida de lo previsto",
+            "Mayor competencia en depósitos a plazo",
+            "Impuesto extraordinario a la banca prorrogado"
+          ]
+        }
+      },
+      "source": "Dirección financiera (sintética)"
+    }
+  ]
+}

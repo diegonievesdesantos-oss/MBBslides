@@ -1,0 +1,210 @@
+{
+  "meta": {
+    "title": "Frontline attrition",
+    "deck_type": "strategy_deck",
+    "theme": "graphite"
+  },
+  "eval": {
+    "purpose": "Holdout v2: HR, workforce"
+  },
+  "slides": [
+    {
+      "id": "v128",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "Frontline attrition reached 46% last year",
+      "message_type": "single_number",
+      "visual": {
+        "type": "kpi",
+        "data": {
+          "items": [
+            {
+              "value": "46%",
+              "label": "annual attrition, frontline staff",
+              "delta": "+9 pts in two years",
+              "trend": "up",
+              "good": "down"
+            }
+          ]
+        }
+      },
+      "source": "Synthetic data (holdout v2)"
+    },
+    {
+      "id": "v129",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "Most leavers go in their first six months",
+      "message_type": "ranking",
+      "visual": {
+        "type": "column",
+        "title": "Leavers by tenure",
+        "unit": "% of leavers",
+        "data": {
+          "categories": [
+            "0–3 m",
+            "3–6 m",
+            "6–12 m",
+            "1–2 y",
+            "2 y+"
+          ],
+          "series": [
+            {
+              "name": "Leavers",
+              "values": [
+                34,
+                22,
+                18,
+                14,
+                12
+              ]
+            }
+          ]
+        },
+        "highlight": [
+          "0–3 m",
+          "3–6 m"
+        ]
+      },
+      "source": "Synthetic data (holdout v2)"
+    },
+    {
+      "id": "v130",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "Exit interviews point to scheduling, not pay, as the main reason",
+      "message_type": "argument",
+      "visual": {
+        "type": "bullets",
+        "data": {
+          "points": [
+            "61% cite unpredictable shifts published less than a week ahead",
+            "Only 18% cite pay as the main reason",
+            "New starters with a buddy in the first month stay twice as long"
+          ]
+        }
+      },
+      "source": "Synthetic data (holdout v2)"
+    },
+    {
+      "id": "v131",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "Fixed rosters cost less than a pay rise and target the main reason for leaving",
+      "message_type": "comparison",
+      "columns": [
+        {
+          "title": "Fixed rosters",
+          "points": [
+            "Attrition −12 pts",
+            "Cost €2.1M a year",
+            "Needs new planning tool"
+          ],
+          "emphasis": true
+        },
+        {
+          "title": "Pay rise of 5%",
+          "points": [
+            "Attrition −5 pts",
+            "Cost €9.4M a year",
+            "Easy to implement"
+          ]
+        },
+        {
+          "title": "Buddy programme",
+          "points": [
+            "Attrition −6 pts",
+            "Cost €0.6M a year",
+            "Needs trained buddies"
+          ]
+        }
+      ],
+      "source": "Synthetic data (holdout v2)"
+    },
+    {
+      "id": "v132",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "A people team of four leads the programme with store managers",
+      "message_type": "hierarchy",
+      "visual": {
+        "type": "org_chart",
+        "data": {
+          "root": {
+            "label": "Programme sponsor",
+            "sub": "COO",
+            "children": [
+              {
+                "label": "People lead",
+                "sub": "HR director",
+                "highlight": true,
+                "children": [
+                  {
+                    "label": "Rostering",
+                    "sub": "Workforce planning"
+                  },
+                  {
+                    "label": "Onboarding",
+                    "sub": "L&D"
+                  }
+                ]
+              },
+              {
+                "label": "Store managers",
+                "sub": "320 stores",
+                "children": [
+                  {
+                    "label": "Buddies",
+                    "sub": "1 per store"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "source": "Synthetic data (holdout v2)"
+    },
+    {
+      "id": "v133",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "Lower attrition saves €7.6M a year net of programme costs",
+      "message_type": "change_bridge",
+      "visual": {
+        "type": "waterfall",
+        "title": "Annual impact",
+        "unit": "€M",
+        "data": {
+          "steps": [
+            {
+              "label": "Hiring costs avoided",
+              "value": 6.2
+            },
+            {
+              "label": "Training avoided",
+              "value": 2.9
+            },
+            {
+              "label": "Productivity",
+              "value": 2.2
+            },
+            {
+              "label": "Rostering tool",
+              "value": -1.1
+            },
+            {
+              "label": "Buddy programme",
+              "value": -0.6
+            },
+            {
+              "label": "Net saving",
+              "type": "total"
+            }
+          ]
+        }
+      },
+      "source": "Synthetic data (holdout v2)"
+    }
+  ]
+}

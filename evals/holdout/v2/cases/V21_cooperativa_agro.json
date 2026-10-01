@@ -1,0 +1,189 @@
+{
+  "meta": {
+    "title": "Plan estratégico de la cooperativa",
+    "deck_type": "strategy_deck",
+    "theme": "harbor"
+  },
+  "eval": {
+    "purpose": "Holdout v2: agri-food cooperative, Spanish"
+  },
+  "slides": [
+    {
+      "id": "v122",
+      "kind": "exec_summary",
+      "purpose": "Give the whole answer",
+      "headline": "Exportar aceite envasado en lugar de granel duplica el margen por litro",
+      "visual": {
+        "type": "statements",
+        "data": {
+          "items": [
+            {
+              "title": "El 78% del aceite se vende a granel",
+              "text": "A precios que fija el mercado y con margen de 0,18 €/l."
+            },
+            {
+              "title": "El envasado deja 0,41 €/l de margen",
+              "text": "Marca propia en tres mercados de exportación."
+            },
+            {
+              "title": "La planta de envasado cuesta 7 M€",
+              "text": "Se paga en cinco años con el 30% del volumen envasado."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "v123",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "El precio del granel ha oscilado un 60% en cinco campañas",
+      "message_type": "trend",
+      "visual": {
+        "type": "line",
+        "title": "Precio del aceite a granel",
+        "unit": "€/kg",
+        "data": {
+          "categories": [
+            "20/21",
+            "21/22",
+            "22/23",
+            "23/24",
+            "24/25"
+          ],
+          "series": [
+            {
+              "name": "Virgen extra",
+              "values": [
+                3.1,
+                3.4,
+                5.6,
+                8.2,
+                4.9
+              ]
+            }
+          ]
+        },
+        "format": {
+          "decimals": 1
+        }
+      },
+      "source": "Observatorio de precios (sintético)"
+    },
+    {
+      "id": "v124",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "El envasado deja 0,41 € de margen por litro",
+      "message_type": "single_number",
+      "visual": {
+        "type": "kpi",
+        "data": {
+          "items": [
+            {
+              "value": "0,41 €",
+              "label": "margen por litro envasado",
+              "delta": "+0,23 € frente a granel",
+              "trend": "up",
+              "good": "up"
+            }
+          ]
+        }
+      },
+      "source": "Contabilidad de la cooperativa (sintética)"
+    },
+    {
+      "id": "v125",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "Alemania y Estados Unidos concentran la demanda de aceite envasado premium",
+      "message_type": "composition",
+      "visual": {
+        "type": "mekko",
+        "title": "Mercados de exportación por segmento",
+        "unit": "% del mercado; anchura = volumen (miles de t)",
+        "data": {
+          "order": [
+            "Premium",
+            "Estándar",
+            "Marca blanca"
+          ],
+          "columns": [
+            {
+              "label": "Alemania",
+              "total": 62,
+              "parts": {
+                "Premium": 34,
+                "Estándar": 30,
+                "Marca blanca": 36
+              }
+            },
+            {
+              "label": "EE. UU.",
+              "total": 145,
+              "parts": {
+                "Premium": 28,
+                "Estándar": 41,
+                "Marca blanca": 31
+              }
+            },
+            {
+              "label": "Japón",
+              "total": 38,
+              "parts": {
+                "Premium": 46,
+                "Estándar": 32,
+                "Marca blanca": 22
+              }
+            },
+            {
+              "label": "Reino Unido",
+              "total": 54,
+              "parts": {
+                "Premium": 22,
+                "Estándar": 35,
+                "Marca blanca": 43
+              }
+            }
+          ]
+        },
+        "highlight": [
+          "Premium"
+        ]
+      },
+      "source": "Datos de comercio exterior (sintéticos)"
+    },
+    {
+      "id": "v126",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "El paso a envasado se hace en tres campañas",
+      "message_type": "process",
+      "visual": {
+        "type": "process",
+        "data": {
+          "steps": [
+            {
+              "title": "Campaña 1",
+              "text": "Planta y certificaciones"
+            },
+            {
+              "title": "Campaña 2",
+              "text": "Alemania y Japón"
+            },
+            {
+              "title": "Campaña 3",
+              "text": "EE. UU. con distribuidor"
+            }
+          ]
+        }
+      },
+      "source": "Plan estratégico (sintético)"
+    },
+    {
+      "id": "v127",
+      "kind": "statement",
+      "text": "La asamblea debe aprobar la inversión de 7 M€ en la planta de envasado"
+    }
+  ]
+}

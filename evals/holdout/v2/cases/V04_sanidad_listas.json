@@ -1,0 +1,189 @@
+{
+  "meta": {
+    "title": "Plan de reducción de listas de espera",
+    "deck_type": "board_update",
+    "theme": "meridian"
+  },
+  "eval": {
+    "purpose": "Holdout v2: public sector health, Spanish"
+  },
+  "slides": [
+    {
+      "id": "v019",
+      "kind": "statement",
+      "text": "Reducir la espera quirúrgica a 90 días es posible sin abrir nuevos quirófanos",
+      "support": "Basta con usar por la tarde la capacidad que hoy está parada."
+    },
+    {
+      "id": "v020",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "La espera media para cirugía es de 128 días",
+      "message_type": "single_number",
+      "visual": {
+        "type": "kpi",
+        "data": {
+          "items": [
+            {
+              "value": "128",
+              "label": "días de espera media, junio",
+              "delta": "+17 días interanual",
+              "trend": "up",
+              "good": "down"
+            }
+          ]
+        }
+      },
+      "source": "Registro de lista de espera (sintético)"
+    },
+    {
+      "id": "v021",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "Traumatología concentra el 41% de los pacientes en espera",
+      "message_type": "ranking",
+      "visual": {
+        "type": "bar",
+        "title": "Pacientes en espera por especialidad",
+        "unit": "miles",
+        "data": {
+          "categories": [
+            "Traumatología",
+            "Oftalmología",
+            "Cirugía general",
+            "Urología",
+            "Otras"
+          ],
+          "series": [
+            {
+              "name": "Pacientes",
+              "values": [
+                18.4,
+                9.7,
+                7.9,
+                4.6,
+                4.3
+              ]
+            }
+          ]
+        },
+        "highlight": [
+          "Traumatología"
+        ]
+      },
+      "source": "Registro de lista de espera (sintético)"
+    },
+    {
+      "id": "v022",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "El circuito actual tiene seis pasos y la preanestesia añade tres semanas",
+      "message_type": "process",
+      "visual": {
+        "type": "process",
+        "data": {
+          "steps": [
+            {
+              "title": "Indicación",
+              "text": "Consulta del especialista"
+            },
+            {
+              "title": "Inclusión",
+              "text": "Alta en el registro"
+            },
+            {
+              "title": "Preanestesia",
+              "text": "Cita en 21 días"
+            },
+            {
+              "title": "Programación",
+              "text": "Parte quirúrgico semanal"
+            },
+            {
+              "title": "Cirugía",
+              "text": "Mañana, 8 a 15 h"
+            },
+            {
+              "title": "Alta",
+              "text": "Revisión a 30 días"
+            }
+          ]
+        },
+        "highlight": [
+          2
+        ]
+      },
+      "source": "Análisis del circuito (sintético)"
+    },
+    {
+      "id": "v023",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "Abrir quirófanos de tarde rinde más que concertar con la privada",
+      "message_type": "comparison",
+      "columns": [
+        {
+          "title": "Quirófanos de tarde",
+          "points": [
+            "+6.200 intervenciones/año",
+            "Coste 9,8 M€",
+            "Plantilla propia con incentivos"
+          ],
+          "emphasis": true
+        },
+        {
+          "title": "Concierto privado",
+          "points": [
+            "+4.000 intervenciones/año",
+            "Coste 11,5 M€",
+            "Dependencia de terceros"
+          ]
+        },
+        {
+          "title": "Mantener",
+          "points": [
+            "Espera sube a 150 días",
+            "Sin coste adicional",
+            "Riesgo de reclamaciones"
+          ]
+        }
+      ],
+      "source": "Análisis de alternativas (sintético)"
+    },
+    {
+      "id": "v024",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "El plan alcanza los 90 días en cuatro hitos",
+      "message_type": "sequence",
+      "visual": {
+        "type": "timeline",
+        "data": {
+          "events": [
+            {
+              "date": "Oct 2026",
+              "text": "Tardes en 4 hospitales"
+            },
+            {
+              "date": "Ene 2027",
+              "text": "Preanestesia en acto único"
+            },
+            {
+              "date": "Abr 2027",
+              "text": "Tardes en 9 hospitales",
+              "detail": "Capacidad completa"
+            },
+            {
+              "date": "Sep 2027",
+              "text": "Objetivo de 90 días"
+            }
+          ]
+        },
+        "highlight": [
+          3
+        ]
+      },
+      "source": "Plan de acción (sintético)"
+    }
+  ]
+}

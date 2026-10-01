@@ -1,0 +1,211 @@
+{
+  "meta": {
+    "title": "Plan de marca de bebidas",
+    "deck_type": "strategy_deck",
+    "theme": "meridian"
+  },
+  "eval": {
+    "purpose": "Holdout v2: marketing, consumer goods, Spanish"
+  },
+  "slides": [
+    {
+      "id": "v098",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "La marca perdió 1,8 puntos de cuota en 2025",
+      "message_type": "single_number",
+      "visual": {
+        "type": "kpi",
+        "data": {
+          "items": [
+            {
+              "value": "−1,8 pp",
+              "label": "cuota de mercado en valor, 2025",
+              "trend": "down",
+              "good": "up",
+              "note": "Hasta el 14,6% del mercado"
+            }
+          ]
+        }
+      },
+      "source": "Panel de consumidores (sintético)"
+    },
+    {
+      "id": "v099",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "La marca blanca gana cuota en todos los formatos",
+      "message_type": "composition",
+      "visual": {
+        "type": "stacked_column",
+        "title": "Cuota por fabricante y formato",
+        "unit": "% en valor",
+        "data": {
+          "categories": [
+            "Lata",
+            "Botella 1,5 l",
+            "Botella 0,5 l",
+            "Multipack"
+          ],
+          "series": [
+            {
+              "name": "Nuestra marca",
+              "values": [
+                21,
+                12,
+                18,
+                9
+              ]
+            },
+            {
+              "name": "Competidor A",
+              "values": [
+                30,
+                26,
+                28,
+                24
+              ]
+            },
+            {
+              "name": "Marca blanca",
+              "values": [
+                24,
+                41,
+                22,
+                46
+              ]
+            },
+            {
+              "name": "Otros",
+              "values": [
+                25,
+                21,
+                32,
+                21
+              ]
+            }
+          ]
+        },
+        "highlight": [
+          "Marca blanca"
+        ]
+      },
+      "source": "Panel de consumidores (sintético)"
+    },
+    {
+      "id": "v100",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "La marca gana en sabor y pierde en precio frente a la marca blanca",
+      "message_type": "comparison",
+      "columns": [
+        {
+          "title": "Nuestra marca",
+          "points": [
+            "Preferida en cata ciega",
+            "Precio +38%",
+            "Notoriedad 81%"
+          ]
+        },
+        {
+          "title": "Marca blanca",
+          "points": [
+            "Paridad en cata",
+            "Precio de referencia",
+            "Notoriedad 45%"
+          ]
+        }
+      ],
+      "source": "Estudio de consumidor n=1.200 (sintético)"
+    },
+    {
+      "id": "v101",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "La recuperación de cuota depende de una sola decisión: el precio del multipack",
+      "message_type": "argument",
+      "visual": {
+        "type": "bullets",
+        "data": {
+          "points": [
+            "El multipack es el 46% del volumen de la categoría y donde más cuota perdemos",
+            "Una bajada del 9% en multipack recupera 1,2 puntos de cuota con margen positivo",
+            "El resto de formatos mantiene precio y se apoya en innovación"
+          ]
+        }
+      },
+      "source": "Modelo de elasticidad (sintético)"
+    },
+    {
+      "id": "v102",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "Bajar el precio del multipack sube el margen bruto en 6 M€",
+      "message_type": "change_bridge",
+      "visual": {
+        "type": "waterfall",
+        "title": "Margen bruto, impacto anual",
+        "unit": "M€",
+        "data": {
+          "steps": [
+            {
+              "label": "Volumen recuperado",
+              "value": 14.2
+            },
+            {
+              "label": "Bajada de precio",
+              "value": -9.5
+            },
+            {
+              "label": "Ahorro en promociones",
+              "value": 3.1
+            },
+            {
+              "label": "Coste de envase",
+              "value": -1.8
+            },
+            {
+              "label": "Impacto neto",
+              "type": "total"
+            }
+          ]
+        }
+      },
+      "source": "Modelo de elasticidad (sintético)"
+    },
+    {
+      "id": "v103",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "El nuevo precio llega al lineal antes del verano",
+      "message_type": "sequence",
+      "visual": {
+        "type": "timeline",
+        "data": {
+          "events": [
+            {
+              "date": "Feb",
+              "text": "Negociación con distribución"
+            },
+            {
+              "date": "Abr",
+              "text": "Nuevo precio en multipack"
+            },
+            {
+              "date": "May",
+              "text": "Campaña de verano"
+            },
+            {
+              "date": "Sep",
+              "text": "Revisión de cuota"
+            }
+          ]
+        },
+        "highlight": [
+          1
+        ]
+      },
+      "source": "Plan comercial (sintético)"
+    }
+  ]
+}

@@ -1,0 +1,260 @@
+{
+  "meta": {
+    "title": "Product strategy review",
+    "deck_type": "strategy_deck",
+    "theme": "harbor"
+  },
+  "eval": {
+    "purpose": "Holdout v2: product, SaaS"
+  },
+  "slides": [
+    {
+      "id": "v025",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "Activation improved but expansion revenue is flat",
+      "message_type": "kpi_dashboard",
+      "visual": {
+        "type": "kpi",
+        "data": {
+          "items": [
+            {
+              "value": "41%",
+              "label": "trial activation",
+              "delta": "+6 pts",
+              "trend": "up",
+              "good": "up"
+            },
+            {
+              "value": "104%",
+              "label": "net revenue retention",
+              "delta": "0 pts",
+              "trend": "flat"
+            },
+            {
+              "value": "3.1%",
+              "label": "monthly logo churn",
+              "delta": "−0.4 pts",
+              "trend": "down",
+              "good": "down"
+            }
+          ]
+        }
+      },
+      "source": "Product analytics (synthetic)"
+    },
+    {
+      "id": "v026",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "Users who reach the third step within a week convert three times as often",
+      "message_type": "process",
+      "visual": {
+        "type": "process",
+        "data": {
+          "steps": [
+            {
+              "title": "Sign up",
+              "text": "Work email"
+            },
+            {
+              "title": "Connect data",
+              "text": "One integration"
+            },
+            {
+              "title": "First report",
+              "text": "Template or blank"
+            },
+            {
+              "title": "Invite team",
+              "text": "Two or more seats"
+            }
+          ]
+        },
+        "highlight": [
+          2
+        ]
+      },
+      "source": "Product analytics (synthetic)"
+    },
+    {
+      "id": "v027",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "Three features combine high demand with low build effort",
+      "message_type": "positioning",
+      "visual": {
+        "type": "matrix_2x2",
+        "data": {
+          "x_label": "Build effort (lower →)",
+          "y_label": "Customer demand",
+          "quadrants": [
+            "Strategic bets",
+            "Build now",
+            "Avoid",
+            "Fill-ins"
+          ],
+          "focus": "TR",
+          "items": [
+            {
+              "label": "Scheduled exports",
+              "x": 0.82,
+              "y": 0.78
+            },
+            {
+              "label": "SSO",
+              "x": 0.7,
+              "y": 0.86
+            },
+            {
+              "label": "Custom themes",
+              "x": 0.76,
+              "y": 0.35
+            },
+            {
+              "label": "AI summaries",
+              "x": 0.25,
+              "y": 0.81
+            },
+            {
+              "label": "Offline mode",
+              "x": 0.15,
+              "y": 0.28
+            },
+            {
+              "label": "Slack alerts",
+              "x": 0.88,
+              "y": 0.66
+            },
+            {
+              "label": "Audit log",
+              "x": 0.45,
+              "y": 0.58
+            }
+          ]
+        }
+      },
+      "source": "Customer survey n=312 (synthetic)"
+    },
+    {
+      "id": "v028",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "Expansion revenue has been flat for four quarters",
+      "message_type": "trend",
+      "visual": {
+        "type": "column",
+        "title": "Expansion ARR added",
+        "unit": "$M",
+        "data": {
+          "categories": [
+            "Q3 24",
+            "Q4 24",
+            "Q1 25",
+            "Q2 25",
+            "Q3 25"
+          ],
+          "series": [
+            {
+              "name": "Expansion",
+              "values": [
+                2.4,
+                2.1,
+                2.2,
+                2.0,
+                2.1
+              ]
+            }
+          ]
+        }
+      },
+      "commentary": {
+        "points": [
+          "Seat expansion slowed in mid-market",
+          "No add-on products yet"
+        ]
+      },
+      "source": "Finance (synthetic)"
+    },
+    {
+      "id": "v029",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "Pricing by seat caps expansion in teams that share dashboards",
+      "message_type": "argument",
+      "visual": {
+        "type": "bullets",
+        "data": {
+          "points": [
+            "Viewers do not need seats, so usage grows without revenue",
+            "Mid-market accounts average 6 paid seats and 40 viewers",
+            "Usage-based pricing on reports would capture that growth"
+          ]
+        }
+      },
+      "source": "Pricing analysis (synthetic)"
+    },
+    {
+      "id": "v030",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "The roadmap ships SSO and exports before the pricing change",
+      "message_type": "plan",
+      "visual": {
+        "type": "gantt",
+        "data": {
+          "periods": [
+            "Q1",
+            "Q2",
+            "Q3",
+            "Q4"
+          ],
+          "rows": [
+            {
+              "label": "Platform",
+              "bars": [
+                {
+                  "start": 0,
+                  "end": 1,
+                  "label": "SSO",
+                  "highlight": true
+                }
+              ]
+            },
+            {
+              "label": "Reporting",
+              "bars": [
+                {
+                  "start": 0,
+                  "end": 2,
+                  "label": "Scheduled exports"
+                }
+              ]
+            },
+            {
+              "label": "Pricing",
+              "bars": [
+                {
+                  "start": 2,
+                  "end": 4,
+                  "label": "Usage pricing pilot"
+                }
+              ]
+            },
+            {
+              "label": "Integrations",
+              "bars": [
+                {
+                  "start": 1,
+                  "end": 3,
+                  "label": "Slack alerts"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Product plan (synthetic)"
+    }
+  ]
+}

@@ -1,0 +1,263 @@
+{
+  "meta": {
+    "title": "Plant performance programme",
+    "deck_type": "operating_model",
+    "theme": "graphite"
+  },
+  "eval": {
+    "purpose": "Holdout v2: operations, manufacturing"
+  },
+  "slides": [
+    {
+      "id": "v013",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "Changeovers take five steps and cleaning causes most of the lost time",
+      "message_type": "process",
+      "visual": {
+        "type": "process",
+        "data": {
+          "steps": [
+            {
+              "title": "Stop line",
+              "text": "Drain and lock out"
+            },
+            {
+              "title": "Clean",
+              "text": "Manual CIP, 95 min"
+            },
+            {
+              "title": "Swap tooling",
+              "text": "Two operators"
+            },
+            {
+              "title": "Calibrate",
+              "text": "Trial run, 3 checks"
+            },
+            {
+              "title": "Restart",
+              "text": "Ramp to speed"
+            }
+          ]
+        },
+        "highlight": [
+          1
+        ]
+      },
+      "source": "Synthetic data (holdout v2)"
+    },
+    {
+      "id": "v014",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "Line 3 loses 21% of planned time, twice the other lines",
+      "message_type": "ranking",
+      "visual": {
+        "type": "column",
+        "title": "Availability loss by line",
+        "unit": "% of planned time",
+        "data": {
+          "categories": [
+            "Line 1",
+            "Line 2",
+            "Line 3",
+            "Line 4"
+          ],
+          "series": [
+            {
+              "name": "Loss",
+              "values": [
+                9.5,
+                11.2,
+                21.4,
+                10.1
+              ]
+            }
+          ]
+        },
+        "highlight": [
+          "Line 3"
+        ]
+      },
+      "source": "Synthetic data (holdout v2)"
+    },
+    {
+      "id": "v015",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "Cleaning and calibration explain 70% of changeover time on line 3",
+      "message_type": "comparison",
+      "visual": {
+        "type": "table",
+        "title": "Changeover time by step, line 3",
+        "columns": [
+          {
+            "label": "Step"
+          },
+          {
+            "label": "Minutes",
+            "kind": "number"
+          },
+          {
+            "label": "Share (%)",
+            "kind": "number"
+          },
+          {
+            "label": "Owner"
+          }
+        ],
+        "rows": [
+          [
+            "Stop line",
+            12,
+            7,
+            "Shift lead"
+          ],
+          [
+            "Clean",
+            95,
+            52,
+            "Sanitation"
+          ],
+          [
+            "Swap tooling",
+            28,
+            15,
+            "Maintenance"
+          ],
+          [
+            "Calibrate",
+            33,
+            18,
+            "Quality"
+          ],
+          [
+            "Restart",
+            15,
+            8,
+            "Shift lead"
+          ]
+        ]
+      },
+      "commentary": {
+        "points": [
+          "Automated CIP would cut cleaning to 40 minutes"
+        ]
+      },
+      "source": "Synthetic data (holdout v2)"
+    },
+    {
+      "id": "v016",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "OEE on line 3 is 58%, against 74% on the best line",
+      "message_type": "single_number",
+      "visual": {
+        "type": "kpi",
+        "data": {
+          "items": [
+            {
+              "value": "58%",
+              "label": "overall equipment effectiveness, line 3",
+              "delta": "−16 pts vs best line",
+              "trend": "down",
+              "good": "up"
+            }
+          ]
+        }
+      },
+      "source": "Synthetic data (holdout v2)"
+    },
+    {
+      "id": "v017",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "Automated cleaning beats a fourth crew on cost and speed",
+      "message_type": "comparison",
+      "columns": [
+        {
+          "title": "Automated CIP",
+          "points": [
+            "Capex €1.9M",
+            "Cuts cleaning to 40 min",
+            "Payback 14 months"
+          ],
+          "emphasis": true
+        },
+        {
+          "title": "Fourth crew",
+          "points": [
+            "Opex €0.8M a year",
+            "Cuts cleaning to 70 min",
+            "Hiring takes 6 months"
+          ]
+        }
+      ],
+      "source": "Synthetic data (holdout v2)"
+    },
+    {
+      "id": "v018",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "The CIP retrofit runs over two quarters without stopping production",
+      "message_type": "plan",
+      "visual": {
+        "type": "gantt",
+        "data": {
+          "periods": [
+            "Jan",
+            "Feb",
+            "Mar",
+            "Apr",
+            "May",
+            "Jun"
+          ],
+          "rows": [
+            {
+              "label": "Engineering",
+              "bars": [
+                {
+                  "start": 0,
+                  "end": 2,
+                  "label": "Design"
+                }
+              ]
+            },
+            {
+              "label": "Procurement",
+              "bars": [
+                {
+                  "start": 1,
+                  "end": 3,
+                  "label": "Skids and valves"
+                }
+              ]
+            },
+            {
+              "label": "Installation",
+              "bars": [
+                {
+                  "start": 3,
+                  "end": 5,
+                  "label": "Weekend installs",
+                  "highlight": true
+                }
+              ]
+            },
+            {
+              "label": "Validation",
+              "bars": [
+                {
+                  "start": 5,
+                  "end": 6,
+                  "label": "Trials"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Synthetic data (holdout v2)"
+    }
+  ]
+}

@@ -1,0 +1,255 @@
+{
+  "meta": {
+    "title": "Core banking modernisation",
+    "deck_type": "strategy_deck",
+    "theme": "meridian"
+  },
+  "eval": {
+    "purpose": "Holdout v2: technology architecture"
+  },
+  "slides": [
+    {
+      "id": "v116",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "Today's stack has four layers and three duplicated customer databases",
+      "message_type": "structure",
+      "visual": {
+        "type": "architecture",
+        "data": {
+          "layers": [
+            {
+              "label": "Channels",
+              "items": [
+                "Branch",
+                "Mobile",
+                "Web",
+                "Call centre"
+              ]
+            },
+            {
+              "label": "Middleware",
+              "items": [
+                "ESB",
+                "Batch scheduler"
+              ]
+            },
+            {
+              "label": "Core",
+              "items": [
+                "Deposits",
+                "Loans",
+                "Cards"
+              ],
+              "emphasis": true
+            },
+            {
+              "label": "Data",
+              "items": [
+                "Customer DB 1",
+                "Customer DB 2",
+                "Customer DB 3",
+                "Warehouse"
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Synthetic data (holdout v2)"
+    },
+    {
+      "id": "v117",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "The target architecture puts one customer record behind every product",
+      "message_type": "structure",
+      "visual": {
+        "type": "architecture",
+        "data": {
+          "layers": [
+            {
+              "label": "Experience",
+              "items": [
+                "Mobile",
+                "Web",
+                "Branch tablet",
+                "Partner APIs"
+              ]
+            },
+            {
+              "label": "Integration",
+              "items": [
+                {
+                  "label": "API gateway",
+                  "change": "new"
+                },
+                "Event bus"
+              ]
+            },
+            {
+              "label": "Products",
+              "items": [
+                {
+                  "label": "Cloud core",
+                  "change": "new",
+                  "emphasis": true
+                },
+                "Cards",
+                "Payments"
+              ],
+              "emphasis": true
+            },
+            {
+              "label": "Data",
+              "items": [
+                {
+                  "label": "Single customer record",
+                  "change": "new"
+                },
+                "Analytics"
+              ]
+            },
+            {
+              "label": "Platform",
+              "items": [
+                "Cloud",
+                "Identity",
+                "Monitoring"
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Synthetic data (holdout v2)"
+    },
+    {
+      "id": "v118",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "Run costs are 70% of the IT budget, leaving little for change",
+      "message_type": "composition",
+      "visual": {
+        "type": "stacked_100",
+        "title": "IT budget split",
+        "unit": "% of budget",
+        "data": {
+          "categories": [
+            "2023",
+            "2024",
+            "2025"
+          ],
+          "series": [
+            {
+              "name": "Run",
+              "values": [
+                68,
+                70,
+                71
+              ]
+            },
+            {
+              "name": "Change",
+              "values": [
+                32,
+                30,
+                29
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Synthetic data (holdout v2)"
+    },
+    {
+      "id": "v119",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "Migration moves product by product over three years",
+      "message_type": "sequence",
+      "visual": {
+        "type": "timeline",
+        "data": {
+          "events": [
+            {
+              "date": "2026",
+              "text": "Deposits to cloud core"
+            },
+            {
+              "date": "2027",
+              "text": "Loans and cards"
+            },
+            {
+              "date": "2028",
+              "text": "Decommission mainframe",
+              "detail": "Saves €40M a year"
+            }
+          ]
+        },
+        "highlight": [
+          2
+        ]
+      },
+      "source": "Synthetic data (holdout v2)"
+    },
+    {
+      "id": "v120",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "The new core lowers IT run costs by €55M a year",
+      "message_type": "change_bridge",
+      "visual": {
+        "type": "waterfall",
+        "title": "IT run cost",
+        "unit": "€M",
+        "data": {
+          "steps": [
+            {
+              "label": "2025",
+              "value": 310,
+              "type": "total"
+            },
+            {
+              "label": "Mainframe exit",
+              "value": -40
+            },
+            {
+              "label": "Licences",
+              "value": -18
+            },
+            {
+              "label": "Data duplication",
+              "value": -9
+            },
+            {
+              "label": "Cloud costs",
+              "value": 12
+            },
+            {
+              "label": "2029",
+              "type": "total"
+            }
+          ]
+        }
+      },
+      "source": "Synthetic data (holdout v2)"
+    },
+    {
+      "id": "v121",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "Three risks need active management during migration",
+      "message_type": "argument",
+      "visual": {
+        "type": "bullets",
+        "data": {
+          "points": [
+            "Data migration errors in legacy loan contracts",
+            "Dual running costs if milestones slip",
+            "Scarcity of mainframe skills in the final year"
+          ]
+        }
+      },
+      "source": "Synthetic data (holdout v2)"
+    }
+  ]
+}

@@ -1,0 +1,293 @@
+{
+  "meta": {
+    "title": "Office portfolio review",
+    "deck_type": "strategy_deck",
+    "theme": "meridian"
+  },
+  "eval": {
+    "purpose": "Holdout v2: real estate, financial"
+  },
+  "slides": [
+    {
+      "id": "v134",
+      "kind": "exec_summary",
+      "purpose": "Give the whole answer",
+      "headline": "Selling eight secondary offices and refurbishing five prime assets lifts portfolio yield to 5.9%",
+      "visual": {
+        "type": "statements",
+        "data": {
+          "items": [
+            {
+              "title": "Vacancy in secondary offices reached 24%",
+              "text": "Prime CBD vacancy is 6% and falling."
+            },
+            {
+              "title": "Refurbished prime space lets at a 30% premium",
+              "text": "Tenants pay for energy class A and amenities."
+            },
+            {
+              "title": "Disposals fund the refurbishments",
+              "text": "€420M of sales cover the €260M capex programme."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "v135",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "Vacancy is rising in secondary offices and falling in prime",
+      "message_type": "trend",
+      "visual": {
+        "type": "line",
+        "title": "Office vacancy",
+        "unit": "%",
+        "data": {
+          "categories": [
+            "2021",
+            "2022",
+            "2023",
+            "2024",
+            "2025"
+          ],
+          "series": [
+            {
+              "name": "Prime CBD",
+              "values": [
+                9.1,
+                8.4,
+                7.6,
+                6.8,
+                6.0
+              ]
+            },
+            {
+              "name": "Secondary",
+              "values": [
+                14.2,
+                16.9,
+                19.8,
+                22.1,
+                24.0
+              ]
+            }
+          ]
+        },
+        "highlight": [
+          "Secondary"
+        ]
+      },
+      "source": "Synthetic data (holdout v2)"
+    },
+    {
+      "id": "v136",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "Eight secondary assets are proposed for sale",
+      "message_type": "comparison",
+      "visual": {
+        "type": "table",
+        "title": "Disposal candidates",
+        "columns": [
+          {
+            "label": "Asset"
+          },
+          {
+            "label": "City"
+          },
+          {
+            "label": "Value (€M)",
+            "kind": "number"
+          },
+          {
+            "label": "Vacancy (%)",
+            "kind": "number"
+          },
+          {
+            "label": "Yield (%)",
+            "kind": "number"
+          }
+        ],
+        "rows": [
+          [
+            "Parque Norte",
+            "Madrid",
+            72,
+            31,
+            4.1
+          ],
+          [
+            "Torre Sur",
+            "Madrid",
+            64,
+            27,
+            4.4
+          ],
+          [
+            "Diagonal 300",
+            "Barcelona",
+            58,
+            22,
+            4.6
+          ],
+          [
+            "Avenida 12",
+            "Valencia",
+            44,
+            35,
+            3.8
+          ],
+          [
+            "Campus Este",
+            "Madrid",
+            52,
+            29,
+            4.2
+          ],
+          [
+            "Edificio Mar",
+            "Málaga",
+            38,
+            19,
+            5.0
+          ],
+          [
+            "Plaza Centro",
+            "Sevilla",
+            41,
+            26,
+            4.3
+          ],
+          [
+            "Business Park",
+            "Bilbao",
+            51,
+            24,
+            4.5
+          ]
+        ]
+      },
+      "source": "Synthetic data (holdout v2)"
+    },
+    {
+      "id": "v137",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "Five prime assets combine strong locations with outdated specifications",
+      "message_type": "positioning",
+      "visual": {
+        "type": "matrix_2x2",
+        "data": {
+          "x_label": "Building quality",
+          "y_label": "Location quality",
+          "quadrants": [
+            "Refurbish",
+            "Hold",
+            "Sell",
+            "Reposition"
+          ],
+          "focus": "TL",
+          "items": [
+            {
+              "label": "Castellana 80",
+              "x": 0.3,
+              "y": 0.9
+            },
+            {
+              "label": "Gràcia 15",
+              "x": 0.35,
+              "y": 0.82
+            },
+            {
+              "label": "Serrano 41",
+              "x": 0.28,
+              "y": 0.88
+            },
+            {
+              "label": "Colón 7",
+              "x": 0.4,
+              "y": 0.75
+            },
+            {
+              "label": "Ribera 2",
+              "x": 0.33,
+              "y": 0.7
+            },
+            {
+              "label": "Azca Tower",
+              "x": 0.85,
+              "y": 0.92
+            },
+            {
+              "label": "Parque Norte",
+              "x": 0.4,
+              "y": 0.3
+            },
+            {
+              "label": "Torre Sur",
+              "x": 0.55,
+              "y": 0.25
+            }
+          ]
+        }
+      },
+      "source": "Synthetic data (holdout v2)"
+    },
+    {
+      "id": "v138",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "Portfolio yield rises from 4.6% to 5.9%",
+      "message_type": "single_number",
+      "visual": {
+        "type": "kpi",
+        "data": {
+          "items": [
+            {
+              "value": "5.9%",
+              "label": "portfolio yield after the programme",
+              "delta": "+1.3 pts"
+            }
+          ]
+        }
+      },
+      "source": "Synthetic data (holdout v2)"
+    },
+    {
+      "id": "v139",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "Disposals close before refurbishment capex peaks",
+      "message_type": "sequence",
+      "visual": {
+        "type": "timeline",
+        "data": {
+          "events": [
+            {
+              "date": "Q1 2026",
+              "text": "Launch sales of 8 assets"
+            },
+            {
+              "date": "Q3 2026",
+              "text": "First 4 disposals close"
+            },
+            {
+              "date": "Q1 2027",
+              "text": "Refurbishment starts",
+              "detail": "Five prime assets"
+            },
+            {
+              "date": "Q4 2028",
+              "text": "Re-letting complete"
+            }
+          ]
+        },
+        "highlight": [
+          2
+        ]
+      },
+      "source": "Synthetic data (holdout v2)"
+    }
+  ]
+}

@@ -1,0 +1,307 @@
+{
+  "meta": {
+    "title": "R&D portfolio review",
+    "deck_type": "strategy_deck",
+    "theme": "graphite"
+  },
+  "eval": {
+    "purpose": "Holdout v2: pharma portfolio"
+  },
+  "slides": [
+    {
+      "id": "v056",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "Two late-stage assets carry most of the portfolio's value",
+      "message_type": "positioning",
+      "visual": {
+        "type": "matrix_2x2",
+        "data": {
+          "x_label": "Probability of success",
+          "y_label": "Peak sales potential",
+          "quadrants": [
+            "High risk, high value",
+            "Priorities",
+            "Stop",
+            "Niche"
+          ],
+          "focus": "TR",
+          "items": [
+            {
+              "label": "ONC-201",
+              "x": 0.62,
+              "y": 0.88
+            },
+            {
+              "label": "IMM-114",
+              "x": 0.71,
+              "y": 0.74
+            },
+            {
+              "label": "CNS-045",
+              "x": 0.22,
+              "y": 0.81
+            },
+            {
+              "label": "ONC-310",
+              "x": 0.35,
+              "y": 0.42
+            },
+            {
+              "label": "RES-008",
+              "x": 0.8,
+              "y": 0.31
+            },
+            {
+              "label": "IMM-220",
+              "x": 0.55,
+              "y": 0.52
+            },
+            {
+              "label": "CNS-102",
+              "x": 0.15,
+              "y": 0.22
+            },
+            {
+              "label": "ONC-415",
+              "x": 0.48,
+              "y": 0.66
+            }
+          ]
+        }
+      },
+      "source": "Synthetic data (holdout v2)"
+    },
+    {
+      "id": "v057",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "Phase III spend is concentrated on two assets",
+      "message_type": "comparison",
+      "visual": {
+        "type": "table",
+        "title": "R&D spend by asset, 2026",
+        "columns": [
+          {
+            "label": "Asset"
+          },
+          {
+            "label": "Phase"
+          },
+          {
+            "label": "Spend (€M)",
+            "kind": "number"
+          },
+          {
+            "label": "Peak sales (€bn)",
+            "kind": "number"
+          },
+          {
+            "label": "Next readout"
+          }
+        ],
+        "rows": [
+          [
+            "ONC-201",
+            "III",
+            210,
+            2.4,
+            "Q2 2027"
+          ],
+          [
+            "IMM-114",
+            "III",
+            165,
+            1.7,
+            "Q4 2026"
+          ],
+          [
+            "CNS-045",
+            "II",
+            80,
+            2.1,
+            "Q1 2027"
+          ],
+          [
+            "ONC-310",
+            "II",
+            55,
+            0.6,
+            "Q3 2027"
+          ],
+          [
+            "IMM-220",
+            "I",
+            30,
+            0.9,
+            "Q2 2027"
+          ],
+          [
+            "RES-008",
+            "II",
+            25,
+            0.4,
+            "Q4 2026"
+          ],
+          [
+            "ONC-415",
+            "I",
+            20,
+            1.1,
+            "Q1 2028"
+          ],
+          [
+            "CNS-102",
+            "I",
+            15,
+            0.3,
+            "Q3 2027"
+          ]
+        ]
+      },
+      "source": "Synthetic data (holdout v2)"
+    },
+    {
+      "id": "v058",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "Portfolio value depends on readouts in the next 12 months",
+      "message_type": "ranking",
+      "visual": {
+        "type": "bar",
+        "title": "Risk-adjusted NPV by asset",
+        "unit": "€M",
+        "data": {
+          "categories": [
+            "ONC-201",
+            "IMM-114",
+            "CNS-045",
+            "ONC-415",
+            "IMM-220",
+            "ONC-310",
+            "RES-008",
+            "CNS-102"
+          ],
+          "series": [
+            {
+              "name": "rNPV",
+              "values": [
+                1450,
+                1120,
+                380,
+                240,
+                190,
+                110,
+                60,
+                -40
+              ]
+            }
+          ]
+        },
+        "highlight": [
+          "ONC-201",
+          "IMM-114"
+        ]
+      },
+      "source": "Synthetic data (holdout v2)"
+    },
+    {
+      "id": "v059",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "Four readouts in 2026–27 decide the portfolio",
+      "message_type": "sequence",
+      "visual": {
+        "type": "timeline",
+        "data": {
+          "events": [
+            {
+              "date": "Q4 2026",
+              "text": "IMM-114 Phase III",
+              "detail": "Primary endpoint"
+            },
+            {
+              "date": "Q1 2027",
+              "text": "CNS-045 Phase II"
+            },
+            {
+              "date": "Q2 2027",
+              "text": "ONC-201 Phase III",
+              "detail": "Filing decision"
+            },
+            {
+              "date": "Q3 2027",
+              "text": "ONC-310 Phase II"
+            }
+          ]
+        },
+        "highlight": [
+          2
+        ]
+      },
+      "source": "Synthetic data (holdout v2)"
+    },
+    {
+      "id": "v060",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "Value comes mainly from oncology, where two assets carry 80%",
+      "message_type": "hierarchy",
+      "visual": {
+        "type": "driver_tree",
+        "data": {
+          "root": {
+            "label": "Portfolio rNPV",
+            "value": 3510,
+            "children": [
+              {
+                "label": "Oncology",
+                "value": 1910,
+                "highlight": true,
+                "children": [
+                  {
+                    "label": "ONC-201",
+                    "value": 1450
+                  },
+                  {
+                    "label": "Other oncology",
+                    "value": 460
+                  }
+                ]
+              },
+              {
+                "label": "Immunology",
+                "value": 1310,
+                "children": [
+                  {
+                    "label": "IMM-114",
+                    "value": 1120
+                  },
+                  {
+                    "label": "IMM-220",
+                    "value": 190
+                  }
+                ]
+              },
+              {
+                "label": "Other",
+                "value": 290
+              }
+            ]
+          }
+        },
+        "format": {
+          "prefix": "€",
+          "suffix": "M"
+        }
+      },
+      "source": "Synthetic data (holdout v2)"
+    },
+    {
+      "id": "v061",
+      "kind": "statement",
+      "text": "Stop CNS-102 and move its budget to the ONC-201 filing",
+      "support": "Frees €15M with no impact on 2027 readouts."
+    }
+  ]
+}

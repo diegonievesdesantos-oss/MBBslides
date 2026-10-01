@@ -1,0 +1,223 @@
+{
+  "meta": {
+    "title": "Plan de tiendas de moda",
+    "deck_type": "board_update",
+    "theme": "meridian"
+  },
+  "eval": {
+    "purpose": "Holdout v2: retail fashion, Spanish"
+  },
+  "slides": [
+    {
+      "id": "v050",
+      "kind": "exec_summary",
+      "purpose": "Give the whole answer",
+      "headline": "Cerrar 22 tiendas y reformar 40 devuelve la red a beneficio en 2027",
+      "visual": {
+        "type": "statements",
+        "data": {
+          "items": [
+            {
+              "title": "22 tiendas pierden dinero por tercer año",
+              "text": "Todas en centros comerciales de segunda línea."
+            },
+            {
+              "title": "Las tiendas reformadas venden un 18% más",
+              "text": "Piloto en 6 tiendas durante 2025."
+            },
+            {
+              "title": "La venta online ya es el 24% del total",
+              "text": "Crece al 15% y canibaliza tiendas pequeñas."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "v051",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "Las ventas por metro cuadrado caen en centros comerciales y suben en calle",
+      "message_type": "trend",
+      "visual": {
+        "type": "slope",
+        "title": "Ventas por m², 2023 a 2025",
+        "unit": "€/m²",
+        "data": {
+          "categories": [
+            "2023",
+            "2025"
+          ],
+          "series": [
+            {
+              "name": "Calle",
+              "values": [
+                4100,
+                4600
+              ]
+            },
+            {
+              "name": "Centro comercial",
+              "values": [
+                3600,
+                3100
+              ]
+            },
+            {
+              "name": "Outlet",
+              "values": [
+                2900,
+                3000
+              ]
+            }
+          ]
+        },
+        "highlight": [
+          "Centro comercial"
+        ]
+      },
+      "source": "Contabilidad de tiendas (sintética)"
+    },
+    {
+      "id": "v052",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "Las 22 tiendas a cerrar suman 9 M€ de pérdidas",
+      "message_type": "comparison",
+      "visual": {
+        "type": "table",
+        "title": "Tiendas propuestas para cierre por región",
+        "columns": [
+          {
+            "label": "Región"
+          },
+          {
+            "label": "Tiendas",
+            "kind": "number"
+          },
+          {
+            "label": "Ventas (M€)",
+            "kind": "number"
+          },
+          {
+            "label": "Resultado (M€)",
+            "kind": "number"
+          }
+        ],
+        "rows": [
+          [
+            "Norte",
+            6,
+            14.2,
+            -2.6
+          ],
+          [
+            "Centro",
+            5,
+            12.8,
+            -2.1
+          ],
+          [
+            "Levante",
+            4,
+            9.1,
+            -1.7
+          ],
+          [
+            "Sur",
+            5,
+            10.4,
+            -1.9
+          ],
+          [
+            "Islas",
+            2,
+            3.9,
+            -0.7
+          ]
+        ]
+      },
+      "source": "Contabilidad de tiendas (sintética)"
+    },
+    {
+      "id": "v053",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "El plan mejora el resultado de la red en 21 M€",
+      "message_type": "change_bridge",
+      "visual": {
+        "type": "waterfall",
+        "title": "Resultado de la red, 2025 a 2027",
+        "unit": "M€",
+        "data": {
+          "steps": [
+            {
+              "label": "2025",
+              "value": -4,
+              "type": "total"
+            },
+            {
+              "label": "Cierres",
+              "value": 9
+            },
+            {
+              "label": "Reformas",
+              "value": 14
+            },
+            {
+              "label": "Traspaso online",
+              "value": 5
+            },
+            {
+              "label": "Costes de cierre",
+              "value": -7
+            },
+            {
+              "label": "2027",
+              "type": "total"
+            }
+          ]
+        }
+      },
+      "source": "Plan de negocio (sintético)"
+    },
+    {
+      "id": "v054",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "Las tiendas reformadas venden un 18% más que las de control",
+      "message_type": "single_number",
+      "visual": {
+        "type": "kpi",
+        "data": {
+          "items": [
+            {
+              "value": "+18%",
+              "label": "ventas comparables, tiendas reformadas",
+              "note": "6 tiendas piloto, 12 meses"
+            }
+          ]
+        }
+      },
+      "source": "Piloto 2025 (sintético)"
+    },
+    {
+      "id": "v055",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "Tres condiciones hacen que una reforma sea rentable",
+      "message_type": "argument",
+      "visual": {
+        "type": "bullets",
+        "data": {
+          "points": [
+            "Ubicación a pie de calle o centro comercial de primera línea",
+            "Más de 450 m² de sala de ventas",
+            "Contrato de alquiler con al menos seis años de vigencia"
+          ]
+        }
+      },
+      "source": "Análisis del piloto (sintético)"
+    }
+  ]
+}

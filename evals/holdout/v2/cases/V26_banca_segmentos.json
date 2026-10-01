@@ -1,0 +1,243 @@
+{
+  "meta": {
+    "title": "Segmentación de clientes particulares",
+    "deck_type": "strategy_deck",
+    "theme": "meridian"
+  },
+  "eval": {
+    "purpose": "Holdout v2: segmentation, Spanish"
+  },
+  "slides": [
+    {
+      "id": "v152",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "Los clientes digitales jóvenes son el segmento de mayor crecimiento y menor vinculación",
+      "message_type": "composition",
+      "visual": {
+        "type": "mekko",
+        "title": "Clientes por segmento y nivel de vinculación",
+        "unit": "% del segmento; anchura = clientes (miles)",
+        "data": {
+          "order": [
+            "Alta",
+            "Media",
+            "Baja"
+          ],
+          "columns": [
+            {
+              "label": "Digitales jóvenes",
+              "total": 820,
+              "parts": {
+                "Alta": 12,
+                "Media": 28,
+                "Baja": 60
+              }
+            },
+            {
+              "label": "Familias",
+              "total": 1240,
+              "parts": {
+                "Alta": 38,
+                "Media": 41,
+                "Baja": 21
+              }
+            },
+            {
+              "label": "Senior",
+              "total": 960,
+              "parts": {
+                "Alta": 52,
+                "Media": 33,
+                "Baja": 15
+              }
+            },
+            {
+              "label": "Banca personal",
+              "total": 310,
+              "parts": {
+                "Alta": 71,
+                "Media": 22,
+                "Baja": 7
+              }
+            }
+          ]
+        },
+        "highlight": [
+          "Baja"
+        ]
+      },
+      "source": "CRM (sintético)"
+    },
+    {
+      "id": "v153",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "El margen por cliente es mayor en el norte, donde la red es más densa",
+      "message_type": "geography",
+      "visual": {
+        "type": "tile_map",
+        "title": "Margen por cliente por comunidad, 2025",
+        "unit": "€",
+        "highlight": [
+          "PV",
+          "NA"
+        ],
+        "data": {
+          "preset": "spain",
+          "values": {
+            "GA": 182,
+            "AS": 176,
+            "CB": 190,
+            "PV": 241,
+            "NA": 236,
+            "CL": 171,
+            "RI": 198,
+            "AR": 205,
+            "CT": 214,
+            "MD": 228,
+            "EX": 142,
+            "CM": 151,
+            "VC": 188,
+            "IB": 196,
+            "AN": 158,
+            "MC": 163,
+            "CN": 149
+          }
+        }
+      },
+      "source": "Contabilidad analítica (sintética)"
+    },
+    {
+      "id": "v154",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "Cuatro segmentos con necesidades y rentabilidad muy distintas",
+      "message_type": "comparison",
+      "visual": {
+        "type": "table",
+        "title": "Perfil por segmento",
+        "columns": [
+          {
+            "label": "Segmento"
+          },
+          {
+            "label": "Clientes (miles)",
+            "kind": "number"
+          },
+          {
+            "label": "Margen por cliente (€)",
+            "kind": "number"
+          },
+          {
+            "label": "Productos por cliente",
+            "kind": "number"
+          },
+          {
+            "label": "Canal principal"
+          }
+        ],
+        "rows": [
+          [
+            "Digitales jóvenes",
+            820,
+            64,
+            1.6,
+            "App"
+          ],
+          [
+            "Familias",
+            1240,
+            212,
+            3.1,
+            "App y oficina"
+          ],
+          [
+            "Senior",
+            960,
+            248,
+            2.7,
+            "Oficina"
+          ],
+          [
+            "Banca personal",
+            310,
+            690,
+            4.8,
+            "Gestor"
+          ]
+        ]
+      },
+      "source": "CRM (sintético)"
+    },
+    {
+      "id": "v155",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "La propuesta para digitales jóvenes se apoya en tres palancas",
+      "message_type": "hierarchy",
+      "visual": {
+        "type": "tree",
+        "data": {
+          "root": {
+            "label": "Vinculación de digitales jóvenes",
+            "children": [
+              {
+                "label": "Nómina",
+                "sub": "Bonificación de 50 €",
+                "highlight": true
+              },
+              {
+                "label": "Ahorro",
+                "sub": "Huchas automáticas"
+              },
+              {
+                "label": "Vivienda",
+                "sub": "Hipoteca joven"
+              }
+            ]
+          }
+        }
+      },
+      "source": "Diseño de la propuesta (sintético)"
+    },
+    {
+      "id": "v156",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "Domiciliar la nómina triplica el margen de un cliente joven",
+      "message_type": "single_number",
+      "visual": {
+        "type": "kpi",
+        "data": {
+          "items": [
+            {
+              "value": "×3",
+              "label": "margen anual con nómina frente a sin nómina",
+              "note": "64 € frente a 195 € al año"
+            }
+          ]
+        }
+      },
+      "source": "Contabilidad analítica (sintética)"
+    },
+    {
+      "id": "v157",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "La segmentación cambia tres decisiones comerciales",
+      "message_type": "argument",
+      "visual": {
+        "type": "bullets",
+        "data": {
+          "points": [
+            "Precio de la cuenta por segmento y no por producto",
+            "Gestor remoto para familias con más de tres productos",
+            "Campañas de nómina centradas en clientes de 25 a 35 años"
+          ]
+        }
+      },
+      "source": "Plan comercial (sintético)"
+    }
+  ]
+}

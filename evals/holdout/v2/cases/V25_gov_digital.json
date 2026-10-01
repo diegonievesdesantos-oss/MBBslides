@@ -1,0 +1,269 @@
+{
+  "meta": {
+    "title": "Digital public services platform",
+    "deck_type": "strategy_deck",
+    "theme": "graphite"
+  },
+  "eval": {
+    "purpose": "Holdout v2: public sector, architecture and operating model"
+  },
+  "slides": [
+    {
+      "id": "v146",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "Citizens reach 14 agencies through 14 separate portals today",
+      "message_type": "structure",
+      "visual": {
+        "type": "architecture",
+        "data": {
+          "layers": [
+            {
+              "label": "Citizens",
+              "items": [
+                "Web",
+                "Mobile",
+                "Offices",
+                "Phone"
+              ]
+            },
+            {
+              "label": "Portals",
+              "items": [
+                "Tax",
+                "Health",
+                "Benefits",
+                "Transport",
+                "Housing",
+                "9 others"
+              ]
+            },
+            {
+              "label": "Back office",
+              "items": [
+                "14 case systems",
+                "Paper archives"
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Synthetic data (holdout v2)"
+    },
+    {
+      "id": "v147",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "The shared platform gives every service the same five building blocks",
+      "message_type": "structure",
+      "visual": {
+        "type": "architecture",
+        "data": {
+          "layers": [
+            {
+              "label": "Front door",
+              "items": [
+                {
+                  "label": "One citizen app",
+                  "change": "new",
+                  "emphasis": true
+                },
+                "Assisted digital"
+              ],
+              "emphasis": true
+            },
+            {
+              "label": "Shared services",
+              "items": [
+                {
+                  "label": "Digital identity",
+                  "change": "new"
+                },
+                {
+                  "label": "Payments",
+                  "change": "changed"
+                },
+                "Notifications",
+                "Document wallet"
+              ]
+            },
+            {
+              "label": "Agency services",
+              "items": [
+                "Tax",
+                "Benefits",
+                "Health",
+                "Licences"
+              ]
+            },
+            {
+              "label": "Data exchange",
+              "items": [
+                {
+                  "label": "Once-only principle",
+                  "change": "new"
+                },
+                "Registers"
+              ]
+            },
+            {
+              "label": "Infrastructure",
+              "items": [
+                "Government cloud",
+                "Security operations"
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Synthetic data (holdout v2)"
+    },
+    {
+      "id": "v148",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "A central team owns the platform; agencies own their services",
+      "message_type": "structure",
+      "visual": {
+        "type": "operating_model",
+        "data": {
+          "layers": [
+            {
+              "label": "Platform team",
+              "items": [
+                "Product owners",
+                "Engineers",
+                "Design system"
+              ],
+              "emphasis": true
+            },
+            {
+              "label": "Agency teams",
+              "items": [
+                "Service owners",
+                "Case workers",
+                "Policy"
+              ]
+            },
+            {
+              "label": "Governance",
+              "items": [
+                "Service standard",
+                "Spending controls",
+                "Assessments"
+              ]
+            }
+          ],
+          "pillars": [
+            {
+              "label": "Security"
+            },
+            {
+              "label": "Accessibility"
+            }
+          ]
+        }
+      },
+      "source": "Synthetic data (holdout v2)"
+    },
+    {
+      "id": "v149",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "The programme is led by a digital board with three delivery tracks",
+      "message_type": "hierarchy",
+      "visual": {
+        "type": "org_chart",
+        "data": {
+          "root": {
+            "label": "Digital board",
+            "sub": "Minister for Digital (chair)",
+            "children": [
+              {
+                "label": "Platform",
+                "sub": "Chief technology officer",
+                "highlight": true
+              },
+              {
+                "label": "Services",
+                "sub": "Director of services"
+              },
+              {
+                "label": "Adoption",
+                "sub": "Director of channels"
+              }
+            ]
+          }
+        }
+      },
+      "source": "Synthetic data (holdout v2)"
+    },
+    {
+      "id": "v150",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "Digital take-up varies from 22% to 91% across services",
+      "message_type": "ranking",
+      "visual": {
+        "type": "bar",
+        "title": "Share of transactions completed online",
+        "unit": "%",
+        "data": {
+          "categories": [
+            "Tax returns",
+            "Vehicle tax",
+            "Passports",
+            "Benefits",
+            "Housing",
+            "Licences"
+          ],
+          "series": [
+            {
+              "name": "Online",
+              "values": [
+                91,
+                84,
+                66,
+                41,
+                29,
+                22
+              ]
+            }
+          ]
+        },
+        "highlight": [
+          "Housing",
+          "Licences"
+        ]
+      },
+      "source": "Synthetic data (holdout v2)"
+    },
+    {
+      "id": "v151",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "Services move up three maturity levels, most are at the bottom today",
+      "message_type": "hierarchy",
+      "visual": {
+        "type": "pyramid",
+        "data": {
+          "levels": [
+            {
+              "label": "End-to-end digital",
+              "text": "4 services today"
+            },
+            {
+              "label": "Online form, manual back office",
+              "text": "21 services"
+            },
+            {
+              "label": "Paper or phone only",
+              "text": "38 services"
+            }
+          ]
+        }
+      },
+      "source": "Synthetic data (holdout v2)"
+    }
+  ]
+}

@@ -1,0 +1,191 @@
+{
+  "meta": {
+    "title": "Secondary education reform",
+    "deck_type": "board_update",
+    "theme": "meridian"
+  },
+  "eval": {
+    "purpose": "Holdout v2: public sector education"
+  },
+  "slides": [
+    {
+      "id": "v068",
+      "kind": "exec_summary",
+      "purpose": "Give the whole answer",
+      "headline": "Targeted tutoring in 120 schools closes a third of the attainment gap",
+      "visual": {
+        "type": "statements",
+        "data": {
+          "items": [
+            {
+              "title": "The gap opened in 2020 and has not closed",
+              "text": "Disadvantaged pupils are 14 months behind at age 16."
+            },
+            {
+              "title": "Tutoring works when it is frequent and small-group",
+              "text": "Three sessions a week, groups of three or fewer."
+            },
+            {
+              "title": "120 schools hold 60% of the affected pupils",
+              "text": "Concentrating funding there doubles the effect per pound."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "v069",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "The attainment gap widened in 2020 and has stayed at 14 months",
+      "message_type": "trend",
+      "visual": {
+        "type": "line",
+        "title": "Attainment gap at 16",
+        "unit": "months of learning",
+        "data": {
+          "categories": [
+            "2018",
+            "2019",
+            "2020",
+            "2021",
+            "2022",
+            "2023",
+            "2024",
+            "2025"
+          ],
+          "series": [
+            {
+              "name": "Gap",
+              "values": [
+                10.2,
+                10.0,
+                12.9,
+                14.1,
+                14.3,
+                14.0,
+                14.2,
+                13.9
+              ]
+            }
+          ]
+        }
+      },
+      "source": "National pupil database (synthetic)"
+    },
+    {
+      "id": "v070",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "Support is tiered: most pupils need classroom changes, few need intensive tutoring",
+      "message_type": "hierarchy",
+      "visual": {
+        "type": "pyramid",
+        "data": {
+          "levels": [
+            {
+              "label": "Intensive tutoring",
+              "text": "8% of pupils, 3 sessions a week"
+            },
+            {
+              "label": "Small-group catch-up",
+              "text": "22% of pupils, weekly"
+            },
+            {
+              "label": "Better classroom teaching",
+              "text": "All pupils, teacher training"
+            }
+          ]
+        }
+      },
+      "source": "Programme design (synthetic)"
+    },
+    {
+      "id": "v071",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "Schools with the largest gaps also have the most vacancies",
+      "message_type": "comparison",
+      "visual": {
+        "type": "table",
+        "title": "Schools by gap band",
+        "columns": [
+          {
+            "label": "Gap band"
+          },
+          {
+            "label": "Schools",
+            "kind": "number"
+          },
+          {
+            "label": "Affected pupils (k)",
+            "kind": "number"
+          },
+          {
+            "label": "Teacher vacancies (%)",
+            "kind": "number"
+          }
+        ],
+        "rows": [
+          [
+            "Over 18 months",
+            120,
+            41,
+            9.8
+          ],
+          [
+            "12–18 months",
+            340,
+            21,
+            6.1
+          ],
+          [
+            "Under 12 months",
+            1240,
+            7,
+            3.2
+          ]
+        ]
+      },
+      "source": "School census (synthetic)"
+    },
+    {
+      "id": "v072",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "Tutoring costs £1,150 per pupil per year",
+      "message_type": "single_number",
+      "visual": {
+        "type": "kpi",
+        "data": {
+          "items": [
+            {
+              "value": "£1,150",
+              "label": "cost per tutored pupil, per year",
+              "note": "Half the cost of repeating a year"
+            }
+          ]
+        }
+      },
+      "source": "Programme budget (synthetic)"
+    },
+    {
+      "id": "v073",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "Funding must follow three rules to reach the right pupils",
+      "message_type": "argument",
+      "visual": {
+        "type": "bullets",
+        "data": {
+          "points": [
+            "Allocate by number of disadvantaged pupils, not by school size",
+            "Require tutors to be trained and quality-assured",
+            "Publish attainment data per school every year"
+          ]
+        }
+      },
+      "source": "Programme design (synthetic)"
+    }
+  ]
+}

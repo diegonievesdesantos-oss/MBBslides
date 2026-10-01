@@ -1,0 +1,217 @@
+{
+  "meta": {
+    "title": "Airline network review",
+    "deck_type": "board_update",
+    "theme": "meridian"
+  },
+  "eval": {
+    "purpose": "Holdout v2: board strategy, airline"
+  },
+  "slides": [
+    {
+      "id": "v001",
+      "kind": "exec_summary",
+      "purpose": "Give the whole answer",
+      "headline": "Closing three loss-making routes and adding two leisure routes lifts margin by 2.4 points",
+      "visual": {
+        "type": "statements",
+        "data": {
+          "items": [
+            {
+              "title": "Six routes lose money every season",
+              "text": "Load factors below 68% on all six; fuel and slot costs rose 14%."
+            },
+            {
+              "title": "Leisure demand is outgrowing business travel",
+              "text": "Leisure bookings +11% a year since 2023, business +2%."
+            },
+            {
+              "title": "Redeploying aircraft adds €38M of operating profit",
+              "text": "Two new leisure routes absorb the freed capacity from April."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "v002",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "Leisure bookings grew 11% a year while business travel stalled",
+      "message_type": "trend",
+      "visual": {
+        "type": "line",
+        "title": "Bookings by segment",
+        "unit": "index 2022 = 100",
+        "data": {
+          "categories": [
+            "2022",
+            "2023",
+            "2024",
+            "2025"
+          ],
+          "series": [
+            {
+              "name": "Leisure",
+              "values": [
+                100,
+                112,
+                123,
+                137
+              ]
+            },
+            {
+              "name": "Business",
+              "values": [
+                100,
+                101,
+                103,
+                106
+              ]
+            }
+          ]
+        },
+        "highlight": [
+          "Leisure"
+        ]
+      },
+      "commentary": {
+        "points": [
+          "Leisure now **58%** of passengers",
+          "Business yields fell 4% in real terms"
+        ]
+      },
+      "source": "Synthetic data (holdout v2)"
+    },
+    {
+      "id": "v003",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "Six routes lost money in every season of 2025",
+      "message_type": "comparison",
+      "visual": {
+        "type": "table",
+        "title": "Route profitability, 2025",
+        "columns": [
+          {
+            "label": "Route"
+          },
+          {
+            "label": "Load factor (%)",
+            "kind": "number"
+          },
+          {
+            "label": "Yield (€/pax)",
+            "kind": "number"
+          },
+          {
+            "label": "Operating result (€M)",
+            "kind": "number"
+          }
+        ],
+        "rows": [
+          [
+            "MAD–LYS",
+            64,
+            88,
+            -6.1
+          ],
+          [
+            "MAD–TLS",
+            61,
+            92,
+            -5.4
+          ],
+          [
+            "BCN–NTE",
+            66,
+            79,
+            -4.2
+          ],
+          [
+            "VLC–BSL",
+            63,
+            85,
+            -3.9
+          ],
+          [
+            "SVQ–BRU",
+            67,
+            90,
+            -2.8
+          ],
+          [
+            "AGP–GVA",
+            65,
+            101,
+            -2.1
+          ]
+        ]
+      },
+      "source": "Synthetic data (holdout v2)"
+    },
+    {
+      "id": "v004",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "Closing the six routes frees 4 aircraft for the summer schedule",
+      "message_type": "single_number",
+      "visual": {
+        "type": "kpi",
+        "data": {
+          "items": [
+            {
+              "value": "4",
+              "label": "aircraft redeployed from April",
+              "note": "Equivalent to 9% of narrow-body capacity"
+            }
+          ]
+        }
+      },
+      "source": "Synthetic data (holdout v2)"
+    },
+    {
+      "id": "v005",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "Redeployment adds €38M of operating profit in the first full year",
+      "message_type": "change_bridge",
+      "visual": {
+        "type": "waterfall",
+        "title": "Operating profit impact",
+        "unit": "€M",
+        "data": {
+          "steps": [
+            {
+              "label": "Losses avoided",
+              "value": 24.5
+            },
+            {
+              "label": "New leisure routes",
+              "value": 21.0
+            },
+            {
+              "label": "Exit costs",
+              "value": -4.5
+            },
+            {
+              "label": "Lost connecting traffic",
+              "value": -3.0
+            },
+            {
+              "label": "Net impact",
+              "type": "total"
+            }
+          ]
+        }
+      },
+      "source": "Synthetic data (holdout v2)"
+    },
+    {
+      "id": "v006",
+      "kind": "statement",
+      "text": "Approve the network change before the winter schedule filing in October",
+      "support": "Slots must be returned by 15 October to avoid penalties."
+    }
+  ]
+}

@@ -1,0 +1,219 @@
+{
+  "meta": {
+    "title": "Revisión comercial B2B",
+    "deck_type": "board_update",
+    "theme": "graphite"
+  },
+  "eval": {
+    "purpose": "Holdout v2: sales, Spanish"
+  },
+  "slides": [
+    {
+      "id": "v031",
+      "kind": "exec_summary",
+      "purpose": "Give the whole answer",
+      "headline": "Concentrar la fuerza de ventas en 400 cuentas clave añade 26 M€ de margen",
+      "visual": {
+        "type": "statements",
+        "data": {
+          "items": [
+            {
+              "title": "El 18% de las cuentas genera el 71% del margen",
+              "text": "Las 400 cuentas clave crecen al 9%, el resto al 1%."
+            },
+            {
+              "title": "Los comerciales dedican el 55% del tiempo a cuentas pequeñas",
+              "text": "Visitas presenciales a clientes que compran por la web."
+            },
+            {
+              "title": "Un modelo por niveles libera 38 comerciales",
+              "text": "Las cuentas pequeñas pasan a venta interna y canal digital."
+            },
+            {
+              "title": "El margen adicional llega en 18 meses",
+              "text": "26 M€ de margen bruto con el mismo coste comercial."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "v032",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "El 18% de las cuentas genera el 71% del margen",
+      "message_type": "composition",
+      "visual": {
+        "type": "stacked_100",
+        "title": "Peso por segmento de cliente",
+        "unit": "% del total",
+        "data": {
+          "categories": [
+            "Cuentas",
+            "Margen"
+          ],
+          "series": [
+            {
+              "name": "Clave",
+              "values": [
+                18,
+                71
+              ]
+            },
+            {
+              "name": "Medianas",
+              "values": [
+                27,
+                21
+              ]
+            },
+            {
+              "name": "Pequeñas",
+              "values": [
+                55,
+                8
+              ]
+            }
+          ]
+        }
+      },
+      "source": "CRM y facturación (sintéticos)"
+    },
+    {
+      "id": "v033",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "Los comerciales dedican el 55% de su tiempo a cuentas que aportan el 8% del margen",
+      "message_type": "single_number",
+      "visual": {
+        "type": "kpi",
+        "data": {
+          "items": [
+            {
+              "value": "55%",
+              "label": "del tiempo comercial en cuentas pequeñas",
+              "note": "Encuesta de actividad, 120 comerciales"
+            }
+          ]
+        }
+      },
+      "source": "Encuesta de actividad (sintética)"
+    },
+    {
+      "id": "v034",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "El modelo por niveles asigna un canal distinto a cada segmento",
+      "message_type": "comparison",
+      "columns": [
+        {
+          "title": "Cuentas clave",
+          "points": [
+            "Gestor dedicado",
+            "Plan de cuenta anual",
+            "Visitas mensuales"
+          ],
+          "emphasis": true
+        },
+        {
+          "title": "Cuentas medianas",
+          "points": [
+            "Comercial de zona",
+            "Revisión trimestral",
+            "Ofertas a medida"
+          ]
+        },
+        {
+          "title": "Cuentas pequeñas",
+          "points": [
+            "Venta interna",
+            "Portal web",
+            "Promociones automáticas"
+          ]
+        }
+      ],
+      "source": "Diseño del modelo (sintético)"
+    },
+    {
+      "id": "v035",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "La nueva organización comercial tiene tres capas y dos funciones de soporte",
+      "message_type": "structure",
+      "visual": {
+        "type": "operating_model",
+        "data": {
+          "layers": [
+            {
+              "label": "Cuentas clave",
+              "items": [
+                "Gestores de cuenta",
+                "Equipos de oferta"
+              ],
+              "emphasis": true
+            },
+            {
+              "label": "Zona",
+              "items": [
+                "Comerciales de zona",
+                "Técnicos preventa",
+                "Jefes de zona"
+              ]
+            },
+            {
+              "label": "Venta interna",
+              "items": [
+                "Televenta",
+                "Portal",
+                "Marketing automático"
+              ]
+            }
+          ],
+          "pillars": [
+            {
+              "label": "Precios"
+            },
+            {
+              "label": "Operaciones de ventas"
+            }
+          ]
+        }
+      },
+      "source": "Diseño del modelo (sintético)"
+    },
+    {
+      "id": "v036",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "El despliegue termina en junio con todas las zonas migradas",
+      "message_type": "sequence",
+      "visual": {
+        "type": "timeline",
+        "data": {
+          "events": [
+            {
+              "date": "Ene",
+              "text": "Piloto en Levante"
+            },
+            {
+              "date": "Mar",
+              "text": "Norte y Centro"
+            },
+            {
+              "date": "May",
+              "text": "Sur y Canarias"
+            },
+            {
+              "date": "Jun",
+              "text": "Revisión de cuotas"
+            }
+          ]
+        },
+        "highlight": [
+          0
+        ]
+      },
+      "source": "Plan de despliegue (sintético)"
+    }
+  ]
+}

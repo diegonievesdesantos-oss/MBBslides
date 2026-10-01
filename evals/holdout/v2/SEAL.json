@@ -1,0 +1,48 @@
+{
+  "suite": "holdout_v2",
+  "sealed_at": "2026-10-01T08:56Z",
+  "sealed_at_engine_commit": "a2f4dbcf373459df55311d66460373c53979770a",
+  "sealed_before": "any v1.4 engine, metric or profile change (the engine at sealing time is v1.3.3)",
+  "protocol": "docs/EVALS.md#holdout-v2-protocol",
+  "status": "sealed — not run",
+  "decks": 26,
+  "authorship": "Written by the same agent that develops the engine. This is SEALED evaluation data, not a truly externally authored blind benchmark.",
+  "authoring_notes": [
+    "26 decks, 157 slides: board, financial, operations, transformation, market, product, sales, public sector, NGO; 10 in Spanish, 16 in English; themes meridian, harbor, graphite.",
+    "Validated with `cpe plan` and `cpe lint` only (no build, no render, no composition score). Lint storyline/headline errors were left as authored.",
+    "The author had seen the v1.3.3 regression weak slides (comparison, process, KPI hero, text exhibit) before writing these cases."
+  ],
+  "rules": [
+    "Never baselined, never in the normal development loop, never in CI on every commit.",
+    "Run once per release candidate on a clean, frozen engine commit (cpe eval --suite holdout_v2 --release-candidate).",
+    "Failures found here go to the NEXT development cycle; no tuning in the same cycle."
+  ],
+  "files": {
+    "V01_airline_board.json": "da8def2efef8cb5ba2298f7dd8f7cb2f2193c67d1a32820a67892caa0064454e",
+    "V02_banco_resultados.json": "a96a5f710b43b7cbd6d311aa3b74f2b5437f288637a577df58b55a8eaeb236c5",
+    "V03_plant_operations.json": "615be97ef56c684be72f48e3395f9087c5bbf13fd316fd75dc811c4bb8ffebb2",
+    "V04_sanidad_listas.json": "7901996ab5d52bfeec0849cc4e62e51f6e0c6a164ce08dd8169ea7a38488fadf",
+    "V05_saas_product.json": "e94b6736195e5316ecf7b06eb262d5c6fa63ce12d2128117e4b8ff1eb9461366",
+    "V06_ventas_b2b.json": "36e73ba6bf4ffe4196ab5ae6caf412343e59693c5a26f8eeeeb2d734a0c9cdfc",
+    "V07_energy_market.json": "eb71dec98e4c79c6c0648314dd0b40f722cbdf3d2cfdf06e43d0829d7df55a6e",
+    "V08_insurer_transformation.json": "a263af0078927c93a9f59f1c12c14fe7ce238ca554d0f4a199d15536da32e667",
+    "V09_retail_moda.json": "8f6a01c396412f09ab0b1a5213d48fe4cc8a7a08cf042b2e16f2a4c9d5eb17dc",
+    "V10_pharma_portfolio.json": "a1203bada35de846d308e514489c16e85a801c2a7b28b38c40c470e43523096a",
+    "V11_last_mile.json": "743e5eb47fe1fcd1ac28c92320af93b396436e8d577cd01ef7f58fb91acf3ee8",
+    "V12_education_reform.json": "7965e91e782b5b127a91fca167cfe7a6dee122fb6635f9503eb5ab2eae99b2e7",
+    "V13_telco_fibra.json": "c6f512e1e1a64f5e1a37acbe142dffd79ee506d75a7b190f3827a9aca99110ff",
+    "V14_cfo_cash.json": "2c6d6a164d0209e6421e6001fc8ed26f86141235004e9345c6b0cb97b95a603f",
+    "V15_hoteles.json": "02b17ba935916b66f0ca5afa76e3cae9cecfc5748be8dca542d6df047342d077",
+    "V16_auto_supply.json": "f7193ed21f49a8181bd0d4058b8699d01fac1fb4aff98d24197c5e95168ecbc5",
+    "V17_gran_consumo.json": "29f5ff169724f66729a76fab784f6c7caead5b6cf9c198f2b0b49f1c21d8c71a",
+    "V18_water_utility.json": "bd9dca2c40ce05c8391d9e43ea6414ac4552d3f99ebbeb7c2d1ff38d38b7ec6b",
+    "V19_startup_consejo.json": "dc24af89c91afaa53957d5f8a48521cfd4b9e79e387bb0236832b55957038f93",
+    "V20_bank_core_it.json": "9d89235869bb7e531638fddda7f75a852bd561108aaa18f845b1f5b74882737b",
+    "V21_cooperativa_agro.json": "9f95ed751972c5ccefe951cecc0381fb5b19d0f8802d01f8cd5935d72ef69d78",
+    "V22_people_attrition.json": "6f3020efdb438d7bb7d481dd8f216abe01a12d1ef3447abb29d9a0d80f86ca5c",
+    "V23_real_estate.json": "f399a59de8c0781a1c3f056b116b274ee6e10aa5ad361ddd3f83a91090e171cc",
+    "V24_ngo_programme.json": "6db02f24fb7ab7cc5fdca58bd9db45efc9bf4b45751e395e069621744bb6103f",
+    "V25_gov_digital.json": "3224f296190536ed721398501d2ab526e041cc513ed8b1ab75723a119e206d23",
+    "V26_banca_segmentos.json": "a6fec3db2f776ec95344e35e9e31c29e12d1951a43427a286c2b842744f25eb8"
+  }
+}

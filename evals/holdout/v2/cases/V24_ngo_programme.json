@@ -1,0 +1,213 @@
+{
+  "meta": {
+    "title": "Clean cooking programme review",
+    "deck_type": "strategy_deck",
+    "theme": "harbor"
+  },
+  "eval": {
+    "purpose": "Holdout v2: NGO programme evaluation"
+  },
+  "slides": [
+    {
+      "id": "v140",
+      "kind": "statement",
+      "text": "The clean cooking programme works where stoves are maintained and fails where they are not"
+    },
+    {
+      "id": "v141",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "Results after three years are mixed across the four regions",
+      "message_type": "kpi_dashboard",
+      "visual": {
+        "type": "kpi",
+        "data": {
+          "items": [
+            {
+              "value": "182k",
+              "label": "stoves distributed"
+            },
+            {
+              "value": "64%",
+              "label": "still in use after 2 years",
+              "delta": "target 80%",
+              "trend": "down",
+              "good": "up"
+            },
+            {
+              "value": "−38%",
+              "label": "household smoke exposure",
+              "trend": "down",
+              "good": "down"
+            }
+          ]
+        }
+      },
+      "source": "Programme monitoring (synthetic)"
+    },
+    {
+      "id": "v142",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "Usage after two years ranges from 41% to 83% across regions",
+      "message_type": "ranking",
+      "visual": {
+        "type": "bar",
+        "title": "Stoves still in use after two years",
+        "unit": "% of stoves",
+        "data": {
+          "categories": [
+            "Region A",
+            "Region B",
+            "Region C",
+            "Region D"
+          ],
+          "series": [
+            {
+              "name": "In use",
+              "values": [
+                83,
+                72,
+                58,
+                41
+              ]
+            }
+          ]
+        },
+        "highlight": [
+          "Region D"
+        ]
+      },
+      "source": "Programme monitoring (synthetic)"
+    },
+    {
+      "id": "v143",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "Regions with local repair agents keep twice as many stoves in use",
+      "message_type": "comparison",
+      "columns": [
+        {
+          "title": "With repair agents",
+          "points": [
+            "Usage 79%",
+            "Repairs within 5 days",
+            "Spare parts stocked locally"
+          ],
+          "emphasis": true
+        },
+        {
+          "title": "Without repair agents",
+          "points": [
+            "Usage 47%",
+            "Repairs take 6 weeks",
+            "Parts shipped from the capital"
+          ]
+        }
+      ],
+      "source": "Field survey n=2,400 (synthetic)"
+    },
+    {
+      "id": "v144",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "A stove's life cycle has four stages; maintenance is where it breaks down",
+      "message_type": "process",
+      "visual": {
+        "type": "process",
+        "data": {
+          "steps": [
+            {
+              "title": "Distribution",
+              "text": "Subsidised sale"
+            },
+            {
+              "title": "Training",
+              "text": "One household visit"
+            },
+            {
+              "title": "Use",
+              "text": "Daily cooking"
+            },
+            {
+              "title": "Maintenance",
+              "text": "No local repair today"
+            },
+            {
+              "title": "Replacement",
+              "text": "After 5 years"
+            }
+          ]
+        },
+        "highlight": [
+          3
+        ]
+      },
+      "source": "Programme design (synthetic)"
+    },
+    {
+      "id": "v145",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "Repair agents are rolled out to the two weakest regions first",
+      "message_type": "plan",
+      "visual": {
+        "type": "gantt",
+        "data": {
+          "periods": [
+            "Q1",
+            "Q2",
+            "Q3",
+            "Q4",
+            "Q5",
+            "Q6"
+          ],
+          "rows": [
+            {
+              "label": "Region D",
+              "bars": [
+                {
+                  "start": 0,
+                  "end": 2,
+                  "label": "Recruit and train 60 agents",
+                  "highlight": true
+                }
+              ]
+            },
+            {
+              "label": "Region C",
+              "bars": [
+                {
+                  "start": 1,
+                  "end": 3,
+                  "label": "Recruit and train 45 agents"
+                }
+              ]
+            },
+            {
+              "label": "Regions A–B",
+              "bars": [
+                {
+                  "start": 3,
+                  "end": 6,
+                  "label": "Extend to existing agents"
+                }
+              ]
+            },
+            {
+              "label": "Spare parts",
+              "bars": [
+                {
+                  "start": 0,
+                  "end": 6,
+                  "label": "Local depots"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Programme plan (synthetic)"
+    }
+  ]
+}

@@ -1,0 +1,251 @@
+{
+  "meta": {
+    "title": "Working capital programme",
+    "deck_type": "board_update",
+    "theme": "meridian"
+  },
+  "eval": {
+    "purpose": "Holdout v2: financial, working capital"
+  },
+  "slides": [
+    {
+      "id": "v080",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "€310M of cash is tied up above the industry benchmark",
+      "message_type": "single_number",
+      "visual": {
+        "type": "kpi",
+        "data": {
+          "items": [
+            {
+              "value": "€310M",
+              "label": "excess working capital vs benchmark",
+              "delta": "+€45M in 12 months",
+              "trend": "up",
+              "good": "down"
+            }
+          ]
+        }
+      },
+      "source": "Synthetic data (holdout v2)"
+    },
+    {
+      "id": "v081",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "Inventory days rose for six quarters while receivables held flat",
+      "message_type": "trend",
+      "visual": {
+        "type": "line",
+        "title": "Working capital days",
+        "unit": "days",
+        "data": {
+          "categories": [
+            "Q1 24",
+            "Q2 24",
+            "Q3 24",
+            "Q4 24",
+            "Q1 25",
+            "Q2 25"
+          ],
+          "series": [
+            {
+              "name": "Inventory",
+              "values": [
+                62,
+                65,
+                69,
+                72,
+                74,
+                78
+              ]
+            },
+            {
+              "name": "Receivables",
+              "values": [
+                48,
+                47,
+                49,
+                48,
+                48,
+                49
+              ]
+            },
+            {
+              "name": "Payables",
+              "values": [
+                51,
+                50,
+                49,
+                50,
+                48,
+                47
+              ]
+            }
+          ]
+        },
+        "highlight": [
+          "Inventory"
+        ]
+      },
+      "source": "Synthetic data (holdout v2)"
+    },
+    {
+      "id": "v082",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "Inventory explains €190M of the €310M gap",
+      "message_type": "change_bridge",
+      "visual": {
+        "type": "waterfall",
+        "title": "Excess working capital by driver",
+        "unit": "€M",
+        "data": {
+          "steps": [
+            {
+              "label": "Inventory",
+              "value": 190
+            },
+            {
+              "label": "Receivables",
+              "value": 70
+            },
+            {
+              "label": "Payables",
+              "value": 50
+            },
+            {
+              "label": "Total gap",
+              "type": "total"
+            }
+          ]
+        }
+      },
+      "source": "Synthetic data (holdout v2)"
+    },
+    {
+      "id": "v083",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "Slow-moving stock sits in three categories",
+      "message_type": "comparison",
+      "visual": {
+        "type": "table",
+        "title": "Inventory above 180 days",
+        "columns": [
+          {
+            "label": "Category"
+          },
+          {
+            "label": "Value (€M)",
+            "kind": "number"
+          },
+          {
+            "label": "Days on hand",
+            "kind": "number"
+          },
+          {
+            "label": "Share of slow stock (%)",
+            "kind": "number"
+          }
+        ],
+        "rows": [
+          [
+            "Spare parts",
+            64,
+            410,
+            41
+          ],
+          [
+            "Packaging",
+            38,
+            260,
+            24
+          ],
+          [
+            "Seasonal SKUs",
+            29,
+            220,
+            19
+          ],
+          [
+            "Raw materials",
+            16,
+            195,
+            10
+          ],
+          [
+            "Other",
+            9,
+            190,
+            6
+          ]
+        ]
+      },
+      "source": "Synthetic data (holdout v2)"
+    },
+    {
+      "id": "v084",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "Four targets track the programme",
+      "message_type": "kpi_dashboard",
+      "visual": {
+        "type": "kpi",
+        "data": {
+          "items": [
+            {
+              "value": "−20",
+              "label": "inventory days by 2027"
+            },
+            {
+              "value": "−5",
+              "label": "receivable days"
+            },
+            {
+              "value": "+8",
+              "label": "payable days"
+            },
+            {
+              "value": "€240M",
+              "label": "cash released"
+            }
+          ],
+          "style": "grid"
+        }
+      },
+      "source": "Synthetic data (holdout v2)"
+    },
+    {
+      "id": "v085",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "Each category runs the same three-step review every month",
+      "message_type": "process",
+      "visual": {
+        "type": "process",
+        "data": {
+          "steps": [
+            {
+              "title": "Flag",
+              "text": "SKUs over 180 days"
+            },
+            {
+              "title": "Decide",
+              "text": "Sell, return or write off"
+            },
+            {
+              "title": "Prevent",
+              "text": "Reset reorder points"
+            }
+          ]
+        },
+        "highlight": [
+          1
+        ]
+      },
+      "source": "Synthetic data (holdout v2)"
+    }
+  ]
+}

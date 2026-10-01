@@ -1,0 +1,287 @@
+{
+  "meta": {
+    "title": "Claims transformation",
+    "deck_type": "strategy_deck",
+    "theme": "harbor"
+  },
+  "eval": {
+    "purpose": "Holdout v2: transformation, insurance"
+  },
+  "slides": [
+    {
+      "id": "v043",
+      "kind": "statement",
+      "text": "Claims handling is our largest cost and our weakest customer moment",
+      "support": "Fixing it is the core of the three-year plan."
+    },
+    {
+      "id": "v044",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "Settling a motor claim takes 23 days on average",
+      "message_type": "single_number",
+      "visual": {
+        "type": "kpi",
+        "data": {
+          "items": [
+            {
+              "value": "23",
+              "label": "days to settle a motor claim",
+              "delta": "+5 days vs market",
+              "trend": "up",
+              "good": "down"
+            }
+          ]
+        }
+      },
+      "source": "Synthetic data (holdout v2)"
+    },
+    {
+      "id": "v045",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "Seven hand-offs slow the claim between notification and payment",
+      "message_type": "process",
+      "visual": {
+        "type": "process",
+        "data": {
+          "steps": [
+            {
+              "title": "Notify",
+              "points": [
+                "Phone or web",
+                "18% incomplete"
+              ]
+            },
+            {
+              "title": "Triage",
+              "points": [
+                "Manual",
+                "2 days"
+              ]
+            },
+            {
+              "title": "Assess",
+              "points": [
+                "Field adjuster",
+                "9 days"
+              ]
+            },
+            {
+              "title": "Approve",
+              "points": [
+                "Two signatures",
+                "4 days"
+              ]
+            },
+            {
+              "title": "Repair",
+              "points": [
+                "Network garage",
+                "6 days"
+              ]
+            },
+            {
+              "title": "Pay",
+              "points": [
+                "Weekly batch",
+                "2 days"
+              ]
+            }
+          ]
+        },
+        "highlight": [
+          2
+        ]
+      },
+      "source": "Synthetic data (holdout v2)"
+    },
+    {
+      "id": "v046",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "The target platform automates triage and assessment on a shared data layer",
+      "message_type": "structure",
+      "visual": {
+        "type": "architecture",
+        "data": {
+          "layers": [
+            {
+              "label": "Channels",
+              "items": [
+                "App",
+                "Web",
+                "Broker portal"
+              ]
+            },
+            {
+              "label": "Claims engine",
+              "items": [
+                {
+                  "label": "Auto triage",
+                  "change": "new"
+                },
+                {
+                  "label": "Photo assessment",
+                  "change": "new",
+                  "emphasis": true
+                },
+                "Payments"
+              ],
+              "emphasis": true
+            },
+            {
+              "label": "Data",
+              "items": [
+                {
+                  "label": "Claims data lake",
+                  "change": "changed"
+                },
+                "Fraud scores"
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Synthetic data (holdout v2)"
+    },
+    {
+      "id": "v047",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "Automation saves €64M a year from 2028",
+      "message_type": "change_bridge",
+      "visual": {
+        "type": "waterfall",
+        "title": "Run-rate savings",
+        "unit": "€M",
+        "data": {
+          "steps": [
+            {
+              "label": "Triage",
+              "value": 12
+            },
+            {
+              "label": "Assessment",
+              "value": 31
+            },
+            {
+              "label": "Leakage",
+              "value": 27
+            },
+            {
+              "label": "Platform cost",
+              "value": -6
+            },
+            {
+              "label": "Net savings",
+              "type": "total"
+            }
+          ]
+        }
+      },
+      "source": "Synthetic data (holdout v2)"
+    },
+    {
+      "id": "v048",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "Photo assessment goes live first, triage follows in 2027",
+      "message_type": "plan",
+      "visual": {
+        "type": "gantt",
+        "data": {
+          "periods": [
+            "H1 26",
+            "H2 26",
+            "H1 27",
+            "H2 27",
+            "H1 28"
+          ],
+          "rows": [
+            {
+              "label": "Assessment",
+              "bars": [
+                {
+                  "start": 0,
+                  "end": 2,
+                  "label": "Photo assessment",
+                  "highlight": true
+                }
+              ]
+            },
+            {
+              "label": "Triage",
+              "bars": [
+                {
+                  "start": 1,
+                  "end": 3,
+                  "label": "Rules + model"
+                }
+              ]
+            },
+            {
+              "label": "Payments",
+              "bars": [
+                {
+                  "start": 2,
+                  "end": 4,
+                  "label": "Daily payments"
+                }
+              ]
+            },
+            {
+              "label": "Data",
+              "bars": [
+                {
+                  "start": 0,
+                  "end": 4,
+                  "label": "Claims data lake"
+                }
+              ]
+            },
+            {
+              "label": "Change",
+              "bars": [
+                {
+                  "start": 1,
+                  "end": 5,
+                  "label": "Adjuster reskilling"
+                }
+              ]
+            }
+          ],
+          "today": 0.5
+        }
+      },
+      "source": "Synthetic data (holdout v2)"
+    },
+    {
+      "id": "v049",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "In-house build gives more control; a platform partner is faster",
+      "message_type": "comparison",
+      "columns": [
+        {
+          "title": "Build in-house",
+          "points": [
+            "36 months",
+            "€48M",
+            "Full control of models"
+          ]
+        },
+        {
+          "title": "Platform partner",
+          "points": [
+            "18 months",
+            "€41M",
+            "Shared roadmap"
+          ],
+          "emphasis": true
+        }
+      ],
+      "source": "Synthetic data (holdout v2)"
+    }
+  ]
+}

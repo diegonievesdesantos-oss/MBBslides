@@ -1,0 +1,283 @@
+{
+  "meta": {
+    "title": "Water network investment plan",
+    "deck_type": "strategy_deck",
+    "theme": "harbor"
+  },
+  "eval": {
+    "purpose": "Holdout v2: public utility, regulation"
+  },
+  "slides": [
+    {
+      "id": "v104",
+      "kind": "statement",
+      "text": "Leakage, not demand, is the main threat to supply security in the next decade"
+    },
+    {
+      "id": "v105",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "Leakage is a quarter of all water put into the network",
+      "message_type": "composition",
+      "visual": {
+        "type": "donut",
+        "title": "Water put into supply, 2025",
+        "unit": "Ml/day",
+        "data": {
+          "categories": [
+            "Households",
+            "Business",
+            "Leakage",
+            "Operational use"
+          ],
+          "series": [
+            {
+              "name": "Volume",
+              "values": [
+                412,
+                148,
+                196,
+                24
+              ]
+            }
+          ]
+        },
+        "highlight": [
+          "Leakage"
+        ]
+      },
+      "source": "Synthetic data (holdout v2)"
+    },
+    {
+      "id": "v106",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "Twelve zones lose more than 30% of their supply",
+      "message_type": "comparison",
+      "visual": {
+        "type": "table",
+        "title": "Zones with the highest leakage",
+        "columns": [
+          {
+            "label": "Zone"
+          },
+          {
+            "label": "Leakage (%)",
+            "kind": "number"
+          },
+          {
+            "label": "Mains age (years)",
+            "kind": "number"
+          },
+          {
+            "label": "Bursts per 100 km",
+            "kind": "number"
+          }
+        ],
+        "rows": [
+          [
+            "North 3",
+            38,
+            71,
+            42
+          ],
+          [
+            "North 7",
+            36,
+            68,
+            39
+          ],
+          [
+            "Central 2",
+            35,
+            74,
+            37
+          ],
+          [
+            "East 1",
+            34,
+            62,
+            35
+          ],
+          [
+            "East 5",
+            33,
+            59,
+            31
+          ],
+          [
+            "South 4",
+            33,
+            66,
+            33
+          ],
+          [
+            "South 9",
+            32,
+            70,
+            30
+          ],
+          [
+            "West 2",
+            32,
+            58,
+            29
+          ],
+          [
+            "West 6",
+            31,
+            61,
+            28
+          ],
+          [
+            "Central 8",
+            31,
+            64,
+            27
+          ],
+          [
+            "North 1",
+            30,
+            57,
+            26
+          ],
+          [
+            "East 3",
+            30,
+            55,
+            25
+          ]
+        ]
+      },
+      "source": "Synthetic data (holdout v2)"
+    },
+    {
+      "id": "v107",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "Leakage reduction comes from three levers, mains replacement the largest",
+      "message_type": "hierarchy",
+      "visual": {
+        "type": "driver_tree",
+        "data": {
+          "root": {
+            "label": "Leakage reduction to 2035",
+            "value": 80,
+            "children": [
+              {
+                "label": "Mains replacement",
+                "value": 42,
+                "highlight": true,
+                "children": [
+                  {
+                    "label": "Cast iron",
+                    "value": 30
+                  },
+                  {
+                    "label": "Asbestos cement",
+                    "value": 12
+                  }
+                ]
+              },
+              {
+                "label": "Pressure management",
+                "value": 23
+              },
+              {
+                "label": "Find and fix",
+                "value": 15
+              }
+            ]
+          }
+        },
+        "format": {
+          "suffix": " Ml/d"
+        }
+      },
+      "source": "Synthetic data (holdout v2)"
+    },
+    {
+      "id": "v108",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "Mains replacement starts in the twelve worst zones",
+      "message_type": "plan",
+      "visual": {
+        "type": "gantt",
+        "data": {
+          "periods": [
+            "2026",
+            "2027",
+            "2028",
+            "2029",
+            "2030"
+          ],
+          "rows": [
+            {
+              "label": "Mains – worst zones",
+              "bars": [
+                {
+                  "start": 0,
+                  "end": 3,
+                  "label": "12 zones",
+                  "highlight": true
+                }
+              ]
+            },
+            {
+              "label": "Mains – others",
+              "bars": [
+                {
+                  "start": 2,
+                  "end": 5,
+                  "label": "28 zones"
+                }
+              ]
+            },
+            {
+              "label": "Pressure",
+              "bars": [
+                {
+                  "start": 0,
+                  "end": 2,
+                  "label": "PRV upgrades"
+                }
+              ]
+            },
+            {
+              "label": "Find and fix",
+              "bars": [
+                {
+                  "start": 0,
+                  "end": 5,
+                  "label": "Acoustic loggers"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Synthetic data (holdout v2)"
+    },
+    {
+      "id": "v109",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "The plan costs £1.1bn over five years",
+      "message_type": "single_number",
+      "visual": {
+        "type": "kpi",
+        "data": {
+          "items": [
+            {
+              "value": "£1.1bn",
+              "label": "capital investment, 2026–2030",
+              "note": "£48 per household per year"
+            }
+          ]
+        }
+      },
+      "source": "Synthetic data (holdout v2)"
+    }
+  ]
+}

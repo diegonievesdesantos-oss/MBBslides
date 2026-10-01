@@ -1,0 +1,225 @@
+{
+  "meta": {
+    "title": "Despliegue de fibra rural",
+    "deck_type": "strategy_deck",
+    "theme": "graphite"
+  },
+  "eval": {
+    "purpose": "Holdout v2: telecom, Spanish"
+  },
+  "slides": [
+    {
+      "id": "v074",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "1,3 millones de hogares rurales siguen sin fibra",
+      "message_type": "single_number",
+      "visual": {
+        "type": "kpi",
+        "data": {
+          "items": [
+            {
+              "value": "1,3 M",
+              "label": "hogares rurales sin fibra",
+              "note": "El 14% del total del país"
+            }
+          ]
+        }
+      },
+      "source": "Censo de cobertura (sintético)"
+    },
+    {
+      "id": "v075",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "Las zonas sin fibra se concentran en dos comunidades",
+      "message_type": "composition",
+      "visual": {
+        "type": "mekko",
+        "title": "Hogares sin fibra por comunidad y tipo de núcleo",
+        "unit": "% de hogares; anchura = hogares (miles)",
+        "data": {
+          "order": [
+            "Disperso",
+            "Núcleo pequeño",
+            "Núcleo mediano"
+          ],
+          "columns": [
+            {
+              "label": "Castilla y León",
+              "total": 410,
+              "parts": {
+                "Disperso": 52,
+                "Núcleo pequeño": 33,
+                "Núcleo mediano": 15
+              }
+            },
+            {
+              "label": "Galicia",
+              "total": 360,
+              "parts": {
+                "Disperso": 61,
+                "Núcleo pequeño": 28,
+                "Núcleo mediano": 11
+              }
+            },
+            {
+              "label": "Andalucía",
+              "total": 240,
+              "parts": {
+                "Disperso": 30,
+                "Núcleo pequeño": 41,
+                "Núcleo mediano": 29
+              }
+            },
+            {
+              "label": "Resto",
+              "total": 290,
+              "parts": {
+                "Disperso": 34,
+                "Núcleo pequeño": 38,
+                "Núcleo mediano": 28
+              }
+            }
+          ]
+        },
+        "highlight": [
+          "Disperso"
+        ]
+      },
+      "source": "Censo de cobertura (sintético)"
+    },
+    {
+      "id": "v076",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "La red compartida reduce la inversión a la mitad",
+      "message_type": "comparison",
+      "columns": [
+        {
+          "title": "Red propia",
+          "points": [
+            "Inversión 1.200 M€",
+            "Cobertura 100% en 2030",
+            "Control total"
+          ]
+        },
+        {
+          "title": "Red compartida",
+          "points": [
+            "Inversión 640 M€",
+            "Cobertura 100% en 2029",
+            "Acuerdo mayorista"
+          ],
+          "emphasis": true
+        }
+      ],
+      "source": "Plan técnico (sintético)"
+    },
+    {
+      "id": "v077",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "El coste por hogar baja de 920 € a 490 € con la red compartida",
+      "message_type": "change_bridge",
+      "visual": {
+        "type": "waterfall",
+        "title": "Coste por hogar conectado",
+        "unit": "€",
+        "data": {
+          "steps": [
+            {
+              "label": "Red propia",
+              "value": 920,
+              "type": "total"
+            },
+            {
+              "label": "Zanjas compartidas",
+              "value": -210
+            },
+            {
+              "label": "Postes existentes",
+              "value": -150
+            },
+            {
+              "label": "Compras conjuntas",
+              "value": -70
+            },
+            {
+              "label": "Red compartida",
+              "type": "total"
+            }
+          ]
+        }
+      },
+      "source": "Plan técnico (sintético)"
+    },
+    {
+      "id": "v078",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "El despliegue cubre las cuatro zonas en tres años",
+      "message_type": "plan",
+      "visual": {
+        "type": "gantt",
+        "data": {
+          "periods": [
+            "2026",
+            "2027",
+            "2028",
+            "2029"
+          ],
+          "rows": [
+            {
+              "label": "Castilla y León",
+              "bars": [
+                {
+                  "start": 0,
+                  "end": 2,
+                  "label": "Fase 1",
+                  "highlight": true
+                }
+              ]
+            },
+            {
+              "label": "Galicia",
+              "bars": [
+                {
+                  "start": 1,
+                  "end": 3,
+                  "label": "Fase 2"
+                }
+              ]
+            },
+            {
+              "label": "Andalucía",
+              "bars": [
+                {
+                  "start": 1,
+                  "end": 3,
+                  "label": "Fase 2"
+                }
+              ]
+            },
+            {
+              "label": "Resto",
+              "bars": [
+                {
+                  "start": 2,
+                  "end": 4,
+                  "label": "Fase 3"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Plan de despliegue (sintético)"
+    },
+    {
+      "id": "v079",
+      "kind": "statement",
+      "text": "Firmar el acuerdo de red compartida antes de la convocatoria de ayudas de marzo"
+    }
+  ]
+}

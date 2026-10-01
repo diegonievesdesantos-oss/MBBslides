@@ -1,0 +1,196 @@
+{
+  "meta": {
+    "title": "Consejo de administración, startup de pagos",
+    "deck_type": "board_update",
+    "theme": "graphite"
+  },
+  "eval": {
+    "purpose": "Holdout v2: startup board, Spanish"
+  },
+  "slides": [
+    {
+      "id": "v110",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "El trimestre cierra por encima del plan en ingresos y por debajo en caja",
+      "message_type": "kpi_dashboard",
+      "visual": {
+        "type": "kpi",
+        "data": {
+          "items": [
+            {
+              "value": "4,2 M€",
+              "label": "ingresos del trimestre",
+              "delta": "+12% vs plan",
+              "trend": "up",
+              "good": "up"
+            },
+            {
+              "value": "18 meses",
+              "label": "caja disponible",
+              "delta": "−3 meses vs plan",
+              "trend": "down",
+              "good": "up"
+            },
+            {
+              "value": "1.340",
+              "label": "comercios activos",
+              "delta": "+210",
+              "trend": "up",
+              "good": "up"
+            },
+            {
+              "value": "0,38%",
+              "label": "tasa de fraude",
+              "delta": "−0,05 pp",
+              "trend": "down",
+              "good": "down"
+            },
+            {
+              "value": "92",
+              "label": "empleados",
+              "delta": "+14",
+              "trend": "up"
+            }
+          ]
+        }
+      },
+      "source": "Cuadro de mando (sintético)"
+    },
+    {
+      "id": "v111",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "Los ingresos crecen un 9% al mes en el último semestre",
+      "message_type": "trend",
+      "visual": {
+        "type": "column",
+        "title": "Ingresos mensuales",
+        "unit": "miles de €",
+        "data": {
+          "categories": [
+            "Abr",
+            "May",
+            "Jun",
+            "Jul",
+            "Ago",
+            "Sep"
+          ],
+          "series": [
+            {
+              "name": "Ingresos",
+              "values": [
+                1010,
+                1090,
+                1180,
+                1290,
+                1400,
+                1510
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Contabilidad (sintética)"
+    },
+    {
+      "id": "v112",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "El coste de captación se duplicó en comercio electrónico",
+      "message_type": "ranking",
+      "visual": {
+        "type": "bar",
+        "title": "Coste de captación por canal",
+        "unit": "€ por comercio",
+        "data": {
+          "categories": [
+            "E-commerce",
+            "Restauración",
+            "Retail físico",
+            "Servicios"
+          ],
+          "series": [
+            {
+              "name": "CAC",
+              "values": [
+                1840,
+                720,
+                650,
+                480
+              ]
+            }
+          ]
+        },
+        "highlight": [
+          "E-commerce"
+        ]
+      },
+      "source": "CRM (sintético)"
+    },
+    {
+      "id": "v113",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "Dos opciones para alargar la caja hasta la ronda serie B",
+      "message_type": "comparison",
+      "columns": [
+        {
+          "title": "Frenar contratación",
+          "points": [
+            "+5 meses de caja",
+            "Retrasa producto 2 trimestres",
+            "Sin dilución"
+          ]
+        },
+        {
+          "title": "Deuda venture",
+          "points": [
+            "+8 meses de caja",
+            "10 M€ al 11%",
+            "Covenants de ingresos"
+          ],
+          "emphasis": true
+        }
+      ],
+      "source": "Dirección financiera (sintética)"
+    },
+    {
+      "id": "v114",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "La ronda serie B sigue cuatro pasos hasta el cierre en junio",
+      "message_type": "process",
+      "visual": {
+        "type": "process",
+        "data": {
+          "steps": [
+            {
+              "title": "Materiales",
+              "text": "Feb"
+            },
+            {
+              "title": "Primeras reuniones",
+              "text": "Mar"
+            },
+            {
+              "title": "Term sheet",
+              "text": "Abr"
+            },
+            {
+              "title": "Cierre",
+              "text": "Jun"
+            }
+          ]
+        }
+      },
+      "source": "Plan de financiación (sintético)"
+    },
+    {
+      "id": "v115",
+      "kind": "statement",
+      "text": "Pedimos al consejo aprobar la línea de deuda venture de 10 M€",
+      "support": "Sin ella, la caja cae por debajo de 12 meses en enero."
+    }
+  ]
+}

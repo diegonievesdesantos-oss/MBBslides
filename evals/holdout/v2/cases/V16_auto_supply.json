@@ -1,0 +1,304 @@
+{
+  "meta": {
+    "title": "Supplier risk review",
+    "deck_type": "strategy_deck",
+    "theme": "graphite"
+  },
+  "eval": {
+    "purpose": "Holdout v2: operations, automotive"
+  },
+  "slides": [
+    {
+      "id": "v092",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "Five suppliers combine high spend with high disruption risk",
+      "message_type": "positioning",
+      "visual": {
+        "type": "matrix_2x2",
+        "data": {
+          "x_label": "Disruption risk",
+          "y_label": "Annual spend",
+          "quadrants": [
+            "Monitor",
+            "Act now",
+            "Ignore",
+            "Diversify"
+          ],
+          "focus": "TR",
+          "items": [
+            {
+              "label": "Chips A",
+              "x": 0.85,
+              "y": 0.82
+            },
+            {
+              "label": "Castings B",
+              "x": 0.72,
+              "y": 0.65
+            },
+            {
+              "label": "Harness C",
+              "x": 0.66,
+              "y": 0.78
+            },
+            {
+              "label": "Glass D",
+              "x": 0.3,
+              "y": 0.6
+            },
+            {
+              "label": "Tyres E",
+              "x": 0.25,
+              "y": 0.35
+            },
+            {
+              "label": "Seats F",
+              "x": 0.78,
+              "y": 0.55
+            },
+            {
+              "label": "Paint G",
+              "x": 0.4,
+              "y": 0.25
+            },
+            {
+              "label": "Battery H",
+              "x": 0.9,
+              "y": 0.9
+            }
+          ]
+        }
+      },
+      "source": "Synthetic data (holdout v2)"
+    },
+    {
+      "id": "v093",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "Single-source parts make up a third of production value",
+      "message_type": "comparison",
+      "visual": {
+        "type": "table",
+        "title": "Sourcing by commodity",
+        "columns": [
+          {
+            "label": "Commodity"
+          },
+          {
+            "label": "Spend (€M)",
+            "kind": "number"
+          },
+          {
+            "label": "Suppliers",
+            "kind": "number"
+          },
+          {
+            "label": "Single-sourced (%)",
+            "kind": "number"
+          },
+          {
+            "label": "Region"
+          }
+        ],
+        "rows": [
+          [
+            "Battery cells",
+            820,
+            2,
+            64,
+            "Asia"
+          ],
+          [
+            "Semiconductors",
+            410,
+            3,
+            58,
+            "Asia"
+          ],
+          [
+            "Castings",
+            290,
+            5,
+            31,
+            "Europe"
+          ],
+          [
+            "Wire harness",
+            240,
+            4,
+            22,
+            "N. Africa"
+          ],
+          [
+            "Seats",
+            210,
+            3,
+            18,
+            "Europe"
+          ],
+          [
+            "Glass",
+            150,
+            4,
+            12,
+            "Europe"
+          ],
+          [
+            "Tyres",
+            120,
+            5,
+            0,
+            "Europe"
+          ]
+        ]
+      },
+      "source": "Synthetic data (holdout v2)"
+    },
+    {
+      "id": "v094",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "A four-week battery outage would stop 38,000 vehicles",
+      "message_type": "single_number",
+      "visual": {
+        "type": "kpi",
+        "data": {
+          "items": [
+            {
+              "value": "38,000",
+              "label": "vehicles lost in a four-week battery cell outage",
+              "note": "€1.4bn of revenue at risk"
+            }
+          ]
+        }
+      },
+      "source": "Synthetic data (holdout v2)"
+    },
+    {
+      "id": "v095",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "Dual-sourcing a commodity takes five steps and 14 months",
+      "message_type": "process",
+      "visual": {
+        "type": "process",
+        "data": {
+          "steps": [
+            {
+              "title": "Specify",
+              "points": [
+                "Freeze interfaces",
+                "1 month"
+              ]
+            },
+            {
+              "title": "Source",
+              "points": [
+                "RFQ to 6 suppliers",
+                "3 months"
+              ]
+            },
+            {
+              "title": "Validate",
+              "points": [
+                "PPAP samples",
+                "5 months"
+              ]
+            },
+            {
+              "title": "Ramp",
+              "points": [
+                "20% volume",
+                "3 months"
+              ]
+            },
+            {
+              "title": "Balance",
+              "points": [
+                "Target 60/40",
+                "2 months"
+              ]
+            }
+          ]
+        },
+        "highlight": [
+          2
+        ]
+      },
+      "source": "Synthetic data (holdout v2)"
+    },
+    {
+      "id": "v096",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "Dual-sourcing the top three commodities halves revenue at risk",
+      "message_type": "trend",
+      "visual": {
+        "type": "bar",
+        "title": "Revenue at risk from a four-week outage",
+        "unit": "€bn",
+        "data": {
+          "categories": [
+            "Today",
+            "After batteries",
+            "After chips",
+            "After castings"
+          ],
+          "series": [
+            {
+              "name": "At risk",
+              "values": [
+                3.1,
+                2.1,
+                1.7,
+                1.5
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Synthetic data (holdout v2)"
+    },
+    {
+      "id": "v097",
+      "section": "K1",
+      "purpose": "Holdout v2 case",
+      "headline": "Supplier risk is managed in three lines of defence",
+      "message_type": "structure",
+      "visual": {
+        "type": "operating_model",
+        "data": {
+          "layers": [
+            {
+              "label": "Monitoring",
+              "items": [
+                "Risk feeds",
+                "Supplier scorecards",
+                "Inventory alerts"
+              ]
+            },
+            {
+              "label": "Mitigation",
+              "items": [
+                "Dual sourcing",
+                "Safety stock",
+                "Design for flexibility"
+              ],
+              "emphasis": true
+            },
+            {
+              "label": "Response",
+              "items": [
+                "War room",
+                "Allocation rules",
+                "Customer communication"
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Synthetic data (holdout v2)"
+    }
+  ]
+}
