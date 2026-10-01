@@ -164,6 +164,7 @@ MEANING = {
     ("ratio", "low"): "the headline does not dominate the body text",
     ("edges", "high"): "ragged alignment",
     ("proof", "low"): "the headline's proof is not visible",
+    ("integrity", "low"): "the slide is broken: a visual QA error or a chart that cannot encode its data",
 }
 
 FLAG_OF = {
@@ -171,7 +172,7 @@ FLAG_OF = {
     ("empty", "high"): "DEAD_SPACE", ("ink", "low"): "SPARSE", ("ink", "high"): "OVERDENSE",
     ("offcentre", "high"): "OFF_BALANCE", ("emphasis", "low"): "NO_FOCAL_POINT", ("emphasis", "high"): "NOISY_EMPHASIS",
     ("regions", "high"): "NOISY_EMPHASIS", ("ratio", "low"): "WEAK_HIERARCHY", ("edges", "high"): "RAGGED_ALIGNMENT",
-    ("proof", "low"): "PROOF_NOT_VISIBLE",
+    ("proof", "low"): "PROOF_NOT_VISIBLE", ("integrity", "low"): "BROKEN_EXHIBIT",
 }
 
 

@@ -1,5 +1,10 @@
 # Adding human evaluators to a round (r3 and later)
 
+> **Owner decision (2026-10-01):** one expert rater (the owner, an experienced strategy consultant)
+> is the human-evidence standard. r3 is closed and development data since v1.7. Additional raters
+> are optional: the tools below remain for future rounds, and their results are reported per rater
+> and pooled.
+
 Human evidence so far comes from **one** evaluator. Round r3 (v1.4.0 vs v1.5.0rc1, 38 pairs + 4
 repeats) is reopened so that **2–4 more people** vote on exactly the same pairs. The pairs are not
 changed. Its key has been in the repository since `0b1556b`, so additional evaluators must **not**

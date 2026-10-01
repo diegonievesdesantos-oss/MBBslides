@@ -464,6 +464,14 @@ def cmd_measure(a):
     manifests = json.loads((d / "build_manifest.json").read_text())
     pngs = sorted(str(p) for p in (d / "renders").glob("slide-*.png"))
     comps = measure_deck(str(d / f"{a.name}.pdf"), pngs, resolved, manifests, theme_for(resolved.get("meta", {})))
+    # integrity from the CURRENT checks on the stored render (not the run's own, possibly older, QA)
+    from .design.tokens import theme_for as _tf
+    from .qa import geometry, render_checks
+    from .qa.composition import apply_integrity
+
+    issues = geometry.check(str(d / f"{a.name}.pptx"), manifests, _tf(resolved.get("meta", {})), resolved.get("_profile") or {})
+    issues += render_checks.check(str(d / f"{a.name}.pdf"), str(d / f"{a.name}.pptx"), manifests, pngs)[0]
+    apply_integrity(comps, issues, manifests)
     out = {"deck_score": round(sum(c.score for c in comps) / len(comps), 1) if comps else None, "slides": [c.to_dict() for c in comps]}
     (d / "composition_measure.json").write_text(json.dumps(out, indent=2))
     for c in comps:

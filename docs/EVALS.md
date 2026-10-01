@@ -12,18 +12,22 @@
 | JET corporate template | development | since v1.3 |
 | **external holdout** (`.private/holdouts/external/`) | potential validation | **AWAITING INPUT** — docs/EXTERNAL_HOLDOUT_PROTOCOL.md |
 | **unseen corporate template** (`.private/holdouts/corporate_unseen/<name>/`) | potential validation | **AWAITING USER-SUPPLIED TEMPLATE** |
-| human round **r3** (v1.4.0 vs v1.5.0rc1, built after the v1.5 freeze) | independent, **1 rater so far** | open for raters 2–4 via voting packages (docs/HUMAN_EVALUATORS.md); not used for calibration |
+| human round **r3** (v1.4.0 vs v1.5.0rc1, built after the v1.5 freeze) | blind result for v1.5 preserved (`VALIDATION_v1.5.json`, 1 expert rater); **development data since v1.7** | used for the integrity metric and the KPI decision |
 
-### v1.6 status of the remaining v1.5 debts
+### Evidence standard and the v1.5 debts (decided in v1.7)
 
-| debt | decision rule | status |
+**Owner decision (2026-10-01): one expert rater is the human-evidence standard.** The owner is an
+experienced strategy consultant; their blind votes are the reference the system should imitate.
+Results are labelled "expert single-rater": between-rater agreement cannot be measured, so nothing
+is called multi-rater or consensus. Additional raters remain welcome (voting packages,
+docs/HUMAN_EVALUATORS.md) but are not awaited. r3 is closed and development data.
+
+| debt | decision | status |
 |---|---|---|
-| KPI-dashboard profile | promote to `human_supported_multi_rater` only with ≥ 3 raters on r3 KPI pairs agreeing beyond chance; otherwise stays provisional | **waiting for r3 raters 2–4** |
-| waterfall scorer blind spot (r3: people prefer v1.5 waterfalls both scored 100) | study label placement, zero crossing, negative totals, connector geometry, bar proportions on r3 waterfalls **after** r3 is closed and marked development data | **waiting for r3 raters 2–4** |
-| derived proof across exhibits | explicit single quantities only (KPI, total row, waterfall start/end, one-value series), one binary operation between two exhibits, ambiguity → unproven | **done in v1.6** (`qa/proof.py:derive_across`) |
-| absolute archetype gates (mean ≥ 70, ≤ 25% below floor) | enforce only with: gate-eligible coverage, multi-rater human evidence, the external-holdout distribution and an inspection of their false positives | **stay provisional** — two of the four conditions need external input |
-
-r3 is open for more raters and **not** development data yet: nothing in v1.6 was tuned on it.
+| waterfall scorer blind spot | critical `integrity` metric: a broken slide (content off-slide / colliding / overflowing, chart that cannot encode its data) cannot score well | **done** — r3 agreement 5/10 → 9/10, no false positive (docs/WATERFALL_SCORER_STUDY.md) |
+| KPI-dashboard profile | 4–2 expert decisive votes over r2 + r3, 5 ties: not a pattern | **stays provisional** |
+| derived proof across exhibits | explicit single quantities, one operation, ambiguity → unproven | **done** (v1.6) |
+| absolute archetype gates | need the external-holdout distribution and a false-positive inspection | **stay provisional** (external holdout awaiting input) |
 
 Kendall τ between score gaps and human preference is reported as **directional agreement only**
 (does a bigger score gap go with a clearer human preference?). With one rater and ~40 pairs its

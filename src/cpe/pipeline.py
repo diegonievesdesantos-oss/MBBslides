@@ -73,6 +73,7 @@ def run(spec: dict, out_dir: str | Path, max_iter: int = 3, do_render: bool = Tr
                 # the render is the ground truth for line breaks: drop the model-based duplicates
                 issues = [i for i in issues if i["code"] not in ("HEADLINE_WIDOW", "HEADLINE_LINES")] + r_issues
                 comp = composition.measure_deck(render_info["pdf"], render_info["pngs"], resolved, manifests, theme)
+                composition.apply_integrity(comp, issues, manifests)  # a broken slide cannot score well (v1.7)
                 advice = composition.advice_from(comp)  # editorial preference: never part of hard QA
                 from .brand.rules import deck_advice
 

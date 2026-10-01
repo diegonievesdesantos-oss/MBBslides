@@ -504,6 +504,40 @@ def spans_with_line_starts(page) -> list[dict]:
     return out
 
 
+# v1.7: composition fitness must not reward a BROKEN slide (human round r3, expert rater: v1.4
+# waterfalls with negative totals — bars missing, labels off the slide — scored 100 while QA had
+# already flagged them). Broken = content lost, outside or overlapping, or a chart that cannot encode
+# its data. Other QA errors (contrast, small type, palette) still fail the QA gate but are not
+# "broken": on r3 the expert tied every pair whose only difference was low contrast.
+BROKEN_CODES = {"OFF_SLIDE", "OUTSIDE_ZONE", "TEXT_OVERFLOW", "TEXT_COLLISION", "LABEL_COLLISION", "CONNECTOR_THROUGH_TEXT", "PLACEHOLDER_TEXT",
+                "RENDER_OFF_SLIDE", "RENDER_TEXT_SPILL", "RENDER_TEXT_COLLISION", "RENDER_LABEL_TRUNCATED", "WATERFALL_NEGATIVE"}
+
+
+def integrity_issues(issues: list[dict], slide_id: str) -> list[str]:
+    return sorted({i["code"] for i in issues or [] if i.get("slide") == slide_id and i.get("code") in BROKEN_CODES
+                   and (i.get("level") == "error" or i.get("code") == "WATERFALL_NEGATIVE")})
+
+
+def apply_integrity(comps: list["SlideComposition"], issues: list[dict], manifests: list[dict] | None = None) -> None:
+    """Re-score every measured slide with the observed `integrity` (1 intact, 0 broken)."""
+    warn = list(issues or [])
+    for m in manifests or []:  # painter warnings (e.g. WATERFALL_NEGATIVE) live in the manifest
+        warn += [{"slide": m.get("slide_id"), "level": "warning", "code": w.get("code")} for w in m.get("warnings") or []]
+    for sc in comps:
+        bad = integrity_issues(warn, sc.slide_id)
+        sc.observed["integrity"] = 0.0 if bad else 1.0
+        sc.raw["integrity_issues"] = bad
+        f = fitness(sc.archetype, sc.observed)
+        if f["score"] is None:
+            continue
+        sc.score = f["score"]
+        sc.fitness, sc.deviations = f["per_metric"], f["deviations"]
+        sc.attribution = f.get("attribution") or {}
+        for d in sc.deviations:
+            if d["flag"] and d["fitness"] < FLAG_BELOW and d["flag"] not in sc.flags:
+                sc.flags.append(d["flag"])
+
+
 def measure_deck(pdf_path: str, pngs: list[str], resolved: dict, manifests: list[dict], theme) -> list[SlideComposition]:
     import pymupdf
 

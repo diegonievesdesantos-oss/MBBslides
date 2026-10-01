@@ -303,8 +303,8 @@ density profile (board / standard / analytical / status). Themes: `meridian`, `g
   (`.private/holdouts/corporate_unseen/<name>/`).
 - Derived-number proof covers bounded single-series arithmetic only; figures that need several
   exhibits, subsets or text-stated numbers stay unproven (by design).
-- Human evidence so far is **one rater** (r2, now development data). r1 still awaits votes; r3
-  (v1.4 vs v1.5) awaits votes. Single-rater support is directional, not consensus.
+- Human evidence comes from **one expert rater** by design (owner decision): r2 and r3 are blind
+  results of that rater, both now development data. Between-rater agreement is not measured.
 - Holdout v2 was written by the same agent that develops the engine and is development-known since
   v1.5; no externally authored holdout exists yet (`.private/holdouts/external/`).
 - KPI dashboards: the engine and the metric were fixed on development data; their profile is still

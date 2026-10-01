@@ -237,3 +237,32 @@ def test_fact_model_on_spanish_excel_case():
     txt = next(f for f in fm["facts"] if "resolución" in f["claim"])
     assert [v["value"] for v in txt["values"]] == [2.1, 4.6]  # Spanish decimal comma
     assert next(f for f in fm["facts"] if "30.000" in f["claim"])["values"][0]["value"] == 30000  # Spanish thousands
+
+
+# ── v1.7: integrity metric (waterfall scorer blind spot, r3) ─────────────────────────────────────
+
+def test_broken_slide_cannot_score_well():
+    from cpe.qa.archetypes import fitness
+    from cpe.qa.composition import BROKEN_CODES, integrity_issues
+
+    ok = {"utilization": 0.9, "empty": 0.1, "ink": 0.15, "offcentre": 0.05, "emphasis": 0.2, "regions": 2, "ratio": 2.0, "edges": 3, "proof": 1.0}
+    good = fitness("waterfall", {**ok, "integrity": 1.0})["score"]
+    broken = fitness("waterfall", {**ok, "integrity": 0.0})
+    assert good >= 99 and good - broken["score"] >= 30 and broken["worst_critical"] == 0.0
+    issues = [{"slide": "w1", "level": "error", "code": "OFF_SLIDE"}, {"slide": "k1", "level": "error", "code": "LOW_CONTRAST"},
+              {"slide": "w2", "level": "warning", "code": "WATERFALL_NEGATIVE"}, {"slide": "h1", "level": "error", "code": "HEADLINE_TOPIC"}]
+    assert integrity_issues(issues, "w1") == ["OFF_SLIDE"] and integrity_issues(issues, "w2") == ["WATERFALL_NEGATIVE"]
+    assert integrity_issues(issues, "k1") == [] and integrity_issues(issues, "h1") == []  # contrast / authoring are not "broken"
+    assert "LOW_CONTRAST" not in BROKEN_CODES
+
+
+def test_r3_is_development_data_with_blind_result_preserved():
+    from cpe import human
+
+    rd = ROOT / "evals" / "human_reference" / "rounds" / "r3"
+    st = human.read_status(rd)
+    assert st["used_for_calibration"] is True and "expert" in st["evidence_standard"]
+    v = json.loads((rd / "VALIDATION_v1.5.json").read_text())
+    assert (v["challenger_wins"], v["baseline_wins"], v["ties"]) == (9, 1, 28)
+    prof = json.loads((ROOT / "src" / "cpe" / "qa" / "archetype_profiles.json").read_text())
+    assert prof["base"]["integrity"]["w"] >= 10 and prof["archetypes"]["kpi_dashboard"]["metrics"]["utilization"]["status"] == "provisional"

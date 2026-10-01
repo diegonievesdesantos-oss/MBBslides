@@ -2,6 +2,14 @@
 
 ## Unreleased — 1.7.0.dev0: consulting intelligence (development)
 
+- **Evidence standard (owner decision):** one expert rater. r3 closed (blind v1.5 result preserved
+  in `VALIDATION_v1.5.json`) and marked development data.
+- **Waterfall scorer blind spot fixed:** new critical `integrity` metric — a broken slide (content
+  off-slide, colliding or overflowing; a chart that cannot encode its data) cannot score well. On r3
+  scorer–expert agreement 5/10 → 9/10 (waterfalls 7/7), no false positive on tied pairs; `cpe
+  measure` uses the current checks. docs/WATERFALL_SCORER_STUDY.md. KPI-dashboard profile stays
+  provisional (4–2 expert votes, 5 ties).
+
 - `src/cpe/reasoning/` + `cpe reason facts | check | ghost | trace | eval`: structured fact model
   (cell ranges, periods with basis — actual / estimate / budget / forecast —, units, derived
   changes with lineage), business-question object, hypotheses, insights, storyline candidates,

@@ -13,7 +13,8 @@
   "regions": {"range": [0, 5], "soft": 4, "w": 4, "why": "Many separate accent masses compete; a highlighted series repeats, so only many masses are noise.", "last_changed": "1.2.0"},
   "ratio": {"range": [1.35, 9.0], "soft": 0.5, "w": 10, "why": "The headline should dominate the body type.", "last_changed": "1.2.0"},
   "edges": {"range": [0, 5], "soft": 6, "w": 6, "why": "Few unrelated left edges.", "last_changed": "1.2.0"},
-  "proof": {"range": [0.5, 1.0], "soft": 0.5, "w": 14, "why": "Headline numbers / highlighted items visible in the exhibit.", "last_changed": "1.2.0"}
+  "proof": {"range": [0.5, 1.0], "soft": 0.5, "w": 14, "why": "Headline numbers / highlighted items visible in the exhibit.", "last_changed": "1.2.0"},
+  "integrity": {"range": [1.0, 1.0], "soft": 1.0, "w": 16, "why": "The exhibit must say what the data says: a slide with a visual QA error or a chart that cannot encode its data (labels off the slide, missing negative bars) is broken whatever its layout. Found by human round r3 (expert rater): v1.4 waterfalls with negative totals scored 100.", "last_changed": "1.7.0"}
  },
  "archetypes": {
   "statement": {

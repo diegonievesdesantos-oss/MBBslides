@@ -15,7 +15,25 @@ Rules (docs/COMPOSITION_SCORING.md#governance):
 
 ---
 
-## 1.5.0
+## 1.7.0
+
+Evidence standard (owner decision, 2026-10-01): human evidence comes from **one expert rater**
+(an experienced strategy consultant). Statuses based on it stay `human_supported_single_rater`;
+nothing is labelled multi-rater or consensus. r3 was marked development data before this change.
+
+### base.integrity (new critical metric, weight 16, range 1–1)
+- **Reason.** A broken slide must not score well. docs/WATERFALL_SCORER_STUDY.md.
+- **Evidence.** r3 (expert, development data): scorer–expert agreement on decisive pairs 5/10 →
+  9/10, waterfalls 7/7, no new false positive on the 28 tied pairs.
+- **Status.** human_supported_single_rater. Development scores unchanged (no broken slides).
+
+### kpi_dashboard: stays provisional
+- **Evidence.** Expert decisive votes on KPI dashboards over r2 and r3: 4 for the newer engine, 2
+  for the older, 5 ties. Process and comparison were promoted on 8/8 and 7/7; 4–2 is not a
+  pattern. Most v1.5 KPI refinements were invisible to the expert (4 of 7 r3 pairs tied).
+- **Range unchanged.** Revisit with KPI pairs in a future round.
+
+
 
 Status changes driven by human round r2 (blind, **one evaluator**, 38 pairs + 2 repeats, v1.3.3 vs
 v1.4 engine on the sealed holdout v2 decks). r2 was marked development data

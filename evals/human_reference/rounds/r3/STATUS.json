@@ -3,10 +3,16 @@
   "created": "2026-10-01",
   "purpose": "v1.4.0 (430176d) vs v1.5.0rc1 (455408a/8641270): KPI dashboards, long statements, waterfall edge cases; 25 pairs on content written after the v1.5 freeze + 13 on holdout-v2 decks (development-known for v1.5); both renders scored by the frozen v1.5 scorer",
   "blind": false,
-  "used_for_calibration": false,
-  "status": "open for additional evaluators via the voting package ONLY (the key is in the repository since 0b1556b); evaluator 1 voted blind on 2026-10-01; not used for calibration",
+  "used_for_calibration": true,
+  "status": "development data (used for calibration)",
   "key": "revealed",
   "closed": "2026-10-01",
-  "additional_evaluators": "docs/HUMAN_EVALUATORS.md — `cpe human package evals/human_reference/rounds/r3 -o r3_voting.zip`; import returned files with `cpe human import`",
-  "target_evaluators": "3–5 in total"
+  "calibration_changes": [
+    {
+      "change": "v1.7: owner decision — one expert rater is the human-evidence standard; r3 closed to more raters and used for the waterfall scorer study (integrity metric) and the KPI-dashboard profile decision",
+      "date": "2026-10-01"
+    }
+  ],
+  "evidence_standard": "one expert rater (owner decision, 2026-10-01): the owner is an experienced strategy consultant; results are labelled 'expert single-rater', never multi-rater or consensus",
+  "historical_validation": "report.json (1 expert rater, blind): v1.5 vs v1.4 9/1/28 — the blind result for v1.5.0rc1, preserved"
 }
