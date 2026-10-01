@@ -56,6 +56,14 @@ Example decks are development material and regression fixtures, not evidence of 
 
 <!-- metrics:end -->
 
+## Status — v1.6.0rc1: awaiting external validation
+
+v1.6 adds the infrastructure for evidence the developer cannot produce: voting packages for more
+human raters on round r3, a sealed run-once external holdout, and unseen corporate templates
+([docs/EXTERNAL_HOLDOUT_PROTOCOL.md](docs/EXTERNAL_HOLDOUT_PROTOCOL.md),
+[docs/HUMAN_EVALUATORS.md](docs/HUMAN_EVALUATORS.md)). All three are awaiting input. v1.7 work
+(source-to-deck reasoning) continues on `main`; external runs use the `v1.6.0rc1` tag.
+
 ## What's new in v1.5 (release candidate) — human alignment and real failure modes
 
 A small release driven by the first blind human round (r2: one evaluator preferred v1.4 in 35 of
@@ -281,13 +289,13 @@ density profile (board / standard / analytical / status). Themes: `meridian`, `g
   ratios get colours and fonts only, and the report says so.
 - Brand inference has been validated on one real corporate template (which is now development
   data) and on synthetic templates; an unseen corporate template is awaited
-  (`.private/holdouts/v15_corporate/`).
+  (`.private/holdouts/corporate_unseen/<name>/`).
 - Derived-number proof covers bounded single-series arithmetic only; figures that need several
   exhibits, subsets or text-stated numbers stay unproven (by design).
 - Human evidence so far is **one rater** (r2, now development data). r1 still awaits votes; r3
   (v1.4 vs v1.5) awaits votes. Single-rater support is directional, not consensus.
 - Holdout v2 was written by the same agent that develops the engine and is development-known since
-  v1.5; no externally authored holdout exists yet (`.private/holdouts/v15_external/`).
+  v1.5; no externally authored holdout exists yet (`.private/holdouts/external/`).
 - KPI dashboards: the engine and the metric were fixed on development data; their profile is still
   provisional and only r3 can say whether the corrected scores match human judgement.
 - Maps are editable *tile maps* (cartograms), not choropleth maps with real borders.

@@ -116,7 +116,8 @@ def candidate_pairs(name: str, base_root: Path, chal_root: Path) -> list[dict]:
 
 
 def build_round(out_dir: str | Path, pairs_spec: list[tuple[str, str, str]], n: int = 40, repeats: int = 2, seed: int = 7,
-                quotas: dict | None = None, purpose: str = "", key_out: str | Path | None = None, private_key: bool = True) -> dict:
+                quotas: dict | None = None, purpose: str = "", key_out: str | Path | None = None, private_key: bool = True,
+                identical_controls: int = 0) -> dict:
     """pairs_spec: [(comparison name, baseline root, challenger root)]. Samples up to n pairs
     (balanced across comparisons), plus `repeats` side-swapped duplicates for consistency.
     `quotas` {archetype: k} (v1.4, round r2): first take k pairs of each named archetype, then fill
@@ -162,7 +163,19 @@ def build_round(out_dir: str | Path, pairs_spec: list[tuple[str, str, str]], n: 
         key[pid] = {"comparison": c["comparison"], "deck": c["deck"], "slide": c["slide"], "baseline": names["baseline"], "challenger": names["challenger"],
                     "archetype": c["challenger"]["archetype"], "baseline_score": c["baseline"]["score"], "challenger_score": c["challenger"]["score"],
                     "baseline_layout": c["baseline"]["layout"], "challenger_layout": c["challenger"]["layout"], "control": bool(c.get("control"))}
-    for j, src in enumerate(rng.sample(pairs, min(repeats, len(pairs)))):
+    # v1.6: identical-image controls — the same render twice under two random names. The rational
+    # answer is "tie"; the tie rate estimates evaluator noise. Never part of the preference statistics.
+    pool = [c for p_ in pools for c in p_] + chosen
+    for j, c in enumerate(rng.sample(pool, min(identical_controls, len(pool)))):
+        pid = f"c{j + 1:03d}"
+        a, b = secrets.token_hex(6) + ".png", secrets.token_hex(6) + ".png"
+        for nm in (a, b):
+            shutil.copy(c["challenger"]["png"], out / "img" / nm)
+        pairs.append({"id": pid, "images": [a, b]})
+        key[pid] = {"comparison": "identical control", "deck": c["deck"], "slide": c["slide"], "baseline": a, "challenger": b,
+                    "archetype": c["challenger"]["archetype"], "baseline_score": c["challenger"]["score"], "challenger_score": c["challenger"]["score"],
+                    "baseline_layout": c["challenger"]["layout"], "challenger_layout": c["challenger"]["layout"], "control": True, "identical_control": True}
+    for j, src in enumerate(rng.sample([p_ for p_ in pairs if p_["id"].startswith("p")], min(repeats, len(chosen)))):
         pid = f"r{j + 1:03d}"
         pairs.append({"id": pid, "images": list(reversed(src["images"]))})
         key[pid] = {**key[src["id"]], "repeat_of": src["id"]}
@@ -225,13 +238,67 @@ def done_pairs(round_dir: Path, evaluator: str) -> list[str]:
 
 
 def import_votes(round_dir: str | Path, path: str | Path) -> int:
-    """Import votes collected elsewhere: JSONL lines {evaluator, pair, left, right, choice}."""
+    """Import votes collected elsewhere: JSONL lines {evaluator, pair, left, right, choice}. A file
+    returned from a voting package (votes/<evaluator>.jsonl, lines without "evaluator") takes the
+    evaluator id from its file name. Lines already present for that evaluator are skipped."""
     n = 0
-    for line in _read(Path(path)).splitlines():
+    path = Path(path)
+    for line in _read(path).splitlines():
         if line.strip():
-            record_vote(Path(round_dir), json.loads(line))
+            v = json.loads(line)
+            v.setdefault("evaluator", path.stem)
+            if v["pair"] in done_pairs(Path(round_dir), v["evaluator"]):
+                continue
+            record_vote(Path(round_dir), v)
             n += 1
     return n
+
+
+def package_round(round_dir: str | Path, out_zip: str | Path) -> dict:
+    """A self-contained voting package for evaluators who must NOT receive the repository (the key of
+    a closed round is in its history): the evaluator bundle + a stdlib-only server + instructions.
+    Refuses to include anything but the bundle."""
+    import zipfile
+
+    rd = Path(round_dir)
+    files = [rd / "pairs.json", rd / "index.html", *sorted((rd / "img").glob("*.png"))]
+    out = Path(out_zip)
+    out.parent.mkdir(parents=True, exist_ok=True)
+    server = (Path(__file__).parent / "vote_server.py").read_text(encoding="utf-8")
+    with zipfile.ZipFile(out, "w", zipfile.ZIP_DEFLATED) as z:
+        for f in files:
+            z.write(f, f"{rd.name}/{f.relative_to(rd).as_posix()}")
+        z.writestr(f"{rd.name}/votes/.keep", "")
+        z.writestr(f"{rd.name}/vote_server.py", server)
+        z.writestr(f"{rd.name}/VOTAR_WINDOWS.bat", "@echo off\r\ncd /d %~dp0\r\nstart http://127.0.0.1:8765\r\npy vote_server.py\r\npause\r\n")
+        z.writestr(f"{rd.name}/LEEME_README.txt", PACKAGE_README)
+    names = zipfile.ZipFile(out).namelist()
+    assert not any(n.endswith(("key.json", "key.sha256", "STATUS.json", "PURPOSE.txt", "report.json", "report.md")) for n in names)
+    return {"zip": str(out), "files": len(names), "images": len(files) - 2}
+
+
+PACKAGE_README = """Blind slide comparison — voting package / Paquete de votación
+
+ES
+1. Descomprime esta carpeta en cualquier sitio (por ejemplo, el Escritorio).
+2. Windows: doble clic en VOTAR_WINDOWS.bat (abre el navegador y arranca el servidor).
+   Mac/Linux: abre una terminal en la carpeta y ejecuta:  python3 vote_server.py
+   y abre http://127.0.0.1:8765
+   (Necesitas Python 3.8 o superior. No hace falta instalar nada más.)
+3. Pon un identificador anónimo (o deja el sugerido) y pulsa Start.
+4. En cada pareja elige la slide que comunica mejor su mensaje (claridad, jerarquía, uso del
+   espacio; no la redacción), o Tie si no ves diferencia. Algunas parejas se repiten o son
+   iguales a propósito: vota lo que veas.
+5. Al terminar ("Done — thank you") cierra la ventana negra del servidor.
+6. Envía de vuelta el archivo que hay en la carpeta votes/ (se llama <tu-id>.jsonl).
+No compartas tus votos con otros evaluadores antes de que voten.
+
+EN
+1. Unzip anywhere. 2. Windows: double-click VOTAR_WINDOWS.bat; macOS/Linux: python3 vote_server.py
+and open http://127.0.0.1:8765 (Python 3.8+, nothing else). 3. Choose an anonymous id, Start.
+4. Pick the slide that communicates its message better, or Tie. 5. Close the server window when done.
+6. Send back the file in votes/ (<your-id>.jsonl). Do not discuss your votes with other evaluators first.
+"""
 
 
 def serve(round_dir: str | Path, port: int = 8765, host: str = "127.0.0.1") -> None:
@@ -444,6 +511,8 @@ def report(round_dir: str | Path, key_file: str | Path | None = None) -> dict:
         if v["pair"] in key:
             last[(v["evaluator"], v["pair"])] = v
     votes = list(last.values())
+    ident = [v for v in votes if key[v["pair"]].get("identical_control")]
+    votes = [v for v in votes if not key[v["pair"]].get("identical_control")]
     main = [v for v in votes if not key[v["pair"]].get("repeat_of")]
 
     def summary(vs):
@@ -477,7 +546,17 @@ def report(round_dir: str | Path, key_file: str | Path | None = None) -> dict:
         orig = next((w for w in main if w["pair"] == key[v["pair"]]["repeat_of"] and w["evaluator"] == v["evaluator"]), None)
         if orig:
             cons.append(outcome(v, key) == outcome(orig, key))
-    res["self_consistency"] = {"repeated_pairs": len(cons), "consistent": sum(cons)}
+    res["self_consistency"] = {"repeated_pairs": len(cons), "consistent": sum(cons),
+                               "note": "WITHIN-rater: the same person on a side-swapped repeat; not between-rater agreement"}
+    if res.get("inter_rater") and "note" not in res["inter_rater"]:
+        res["inter_rater"]["note"] = "BETWEEN-rater: different people on the same pair"
+    # identical-image controls: evaluator noise, reported, never used to drop a rater
+    if any(k.get("identical_control") for k in key.values()):
+        ties = [v for v in ident if v["choice"] == "tie"]
+        res["identical_controls"] = {"pairs": sum(1 for k in key.values() if k.get("identical_control")), "votes": len(ident),
+                                     "tie_rate": round(len(ties) / len(ident), 3) if ident else None, "ci95": list(wilson(len(ties), len(ident))),
+                                     "by_rater": {e: round(sum(1 for v in ident if v["evaluator"] == e and v["choice"] == "tie") /
+                                                           max(1, sum(1 for v in ident if v["evaluator"] == e)), 3) for e in sorted({v["evaluator"] for v in ident})}}
     # v1.5: every rater on their own, then pooled (above). Pooled votes of one rater are ONE rater.
     res["by_rater"] = {}
     for e in sorted({v["evaluator"] for v in votes}):

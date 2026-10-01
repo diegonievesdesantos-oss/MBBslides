@@ -4,7 +4,9 @@
   "purpose": "v1.4.0 (430176d) vs v1.5.0rc1 (455408a/8641270): KPI dashboards, long statements, waterfall edge cases; 25 pairs on content written after the v1.5 freeze + 13 on holdout-v2 decks (development-known for v1.5); both renders scored by the frozen v1.5 scorer",
   "blind": false,
   "used_for_calibration": false,
-  "status": "votes received (1 evaluator); voting closed, key revealed; not used for calibration — single-rater blind evidence for v1.5.0rc1",
+  "status": "open for additional evaluators via the voting package ONLY (the key is in the repository since 0b1556b); evaluator 1 voted blind on 2026-10-01; not used for calibration",
   "key": "revealed",
-  "closed": "2026-10-01"
+  "closed": "2026-10-01",
+  "additional_evaluators": "docs/HUMAN_EVALUATORS.md — `cpe human package evals/human_reference/rounds/r3 -o r3_voting.zip`; import returned files with `cpe human import`",
+  "target_evaluators": "3–5 in total"
 }

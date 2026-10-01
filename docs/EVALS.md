@@ -1,6 +1,6 @@
 # Evaluation — independent signals that are never merged
 
-## v1.5: what is development data and what could still validate it
+## v1.5–v1.6: what is development data and what could still validate it
 
 | data | status for v1.5 | why |
 |---|---|---|
@@ -10,9 +10,20 @@
 | human round **r2** | **development** (since `mark-used`, v1.5) | its votes drove the KPI-dashboard diagnosis and the profile statuses. Its blind result for **v1.4** is preserved in `rounds/r2/VALIDATION_v1.4.json` (single rater) |
 | **holdout v2** | **development-known** | blind for v1.4 (run once); its findings (KPI dashboards, waterfall negatives, long statements, derived numbers) drove v1.5. Any v1.5 run is labelled development-known, never "unseen" |
 | JET corporate template | development | since v1.3 |
-| **external holdout** (`.private/holdouts/v15_external/`) | potential validation | **AWAITING INPUT** — docs/EXTERNAL_HOLDOUT_PROTOCOL.md |
-| **unseen corporate template** (`.private/holdouts/v15_corporate/`) | potential validation | **AWAITING USER-SUPPLIED TEMPLATE** |
-| human round **r3** (built after the v1.5 freeze, private key) | potential validation | awaiting votes |
+| **external holdout** (`.private/holdouts/external/`) | potential validation | **AWAITING INPUT** — docs/EXTERNAL_HOLDOUT_PROTOCOL.md |
+| **unseen corporate template** (`.private/holdouts/corporate_unseen/<name>/`) | potential validation | **AWAITING USER-SUPPLIED TEMPLATE** |
+| human round **r3** (v1.4.0 vs v1.5.0rc1, built after the v1.5 freeze) | independent, **1 rater so far** | open for raters 2–4 via voting packages (docs/HUMAN_EVALUATORS.md); not used for calibration |
+
+### v1.6 status of the remaining v1.5 debts
+
+| debt | decision rule | status |
+|---|---|---|
+| KPI-dashboard profile | promote to `human_supported_multi_rater` only with ≥ 3 raters on r3 KPI pairs agreeing beyond chance; otherwise stays provisional | **waiting for r3 raters 2–4** |
+| waterfall scorer blind spot (r3: people prefer v1.5 waterfalls both scored 100) | study label placement, zero crossing, negative totals, connector geometry, bar proportions on r3 waterfalls **after** r3 is closed and marked development data | **waiting for r3 raters 2–4** |
+| derived proof across exhibits | explicit single quantities only (KPI, total row, waterfall start/end, one-value series), one binary operation between two exhibits, ambiguity → unproven | **done in v1.6** (`qa/proof.py:derive_across`) |
+| absolute archetype gates (mean ≥ 70, ≤ 25% below floor) | enforce only with: gate-eligible coverage, multi-rater human evidence, the external-holdout distribution and an inspection of their false positives | **stay provisional** — two of the four conditions need external input |
+
+r3 is open for more raters and **not** development data yet: nothing in v1.6 was tuned on it.
 
 Kendall τ between score gaps and human preference is reported as **directional agreement only**
 (does a bigger score gap go with a clearer human preference?). With one rater and ~40 pairs its

@@ -258,3 +258,109 @@ def derive(q: dict, series: list[dict]) -> dict:
     rec.update(status="derived_proof", operation=op, series=s.get("name"), operands=[_fmt(x, s) for x in operands],
                normalized_result=round(res, 6), tolerance=round(tol, 6))
     return rec
+
+
+# ── v1.6: lineage across exhibits ────────────────────────────────────────────────────────────────
+#
+# A headline figure may combine numbers shown in DIFFERENT exhibits: "€40M contribution" over a
+# chart of revenue (€120M) and a table of cost (€80M); "Online is 31% of sales" over a segment KPI
+# and a total. Only explicit SINGLE quantities qualify (a KPI value, a total row of a table, a
+# waterfall start/end total, a one-value series) — never every number on the slide — and only one
+# binary operation between quantities of two different exhibits:
+#     a + b · |a − b|            same kind and currency
+#     a ÷ b × 100  (share)       same kind, a < b, money/plain only
+#     a ÷ b        (ratio, ×)    same kind
+# The ambiguity rule of `derive` applies: two different families matching → unknown.
+MAX_SCALARS = 10
+TOTAL_RE = re.compile(r"\b(total|totals|sum|grand total|overall|todo|totales)\b", re.IGNORECASE)
+
+
+def _scalar_from_text(text: str, label: str, unit_hint: str = "") -> dict | None:
+    qs = headline_quantities(f"{text} {unit_hint}".strip() if not re.search(r"[€$£%]", str(text)) else str(text))
+    if len(qs) != 1:
+        return None
+    q = qs[0]
+    return {"label": label, "kind": q["kind"], "currency": q["currency"], "value": q["value"], "raw": str(text)}
+
+
+def slide_scalars(slide: dict) -> list[dict]:
+    """Named single quantities of a slide, each tagged with the exhibit it comes from."""
+    out = []
+    exs = [slide.get("visual")] + list(slide.get("exhibits") or [])
+    for i, ex in enumerate(exs):
+        if not isinstance(ex, dict):
+            continue
+        d = ex.get("data") if isinstance(ex.get("data"), dict) else ex
+        u = unit_of(ex.get("unit", ""))
+        t = ex.get("type")
+        for it in d.get("items") or []:  # KPI cards / hero
+            if isinstance(it, dict) and it.get("value") is not None:
+                s = _scalar_from_text(str(it["value"]), str(it.get("label", "value")))
+                if s:
+                    out.append({**s, "exhibit": i})
+        if t in ("waterfall", "bridge") and d.get("steps"):
+            w = next((x for x in slide_series({"visual": ex}) if x.get("waterfall")), None)
+            if w:
+                sc = u["scale"] or 1.0
+                for lab, v in (("start total", w["waterfall"]["start"]), ("end total", w["waterfall"]["end"])):
+                    out.append({"label": lab, "kind": u["kind"], "currency": u["currency"], "value": abs(v) * sc, "raw": f"{v:g}", "exhibit": i})
+        for s_ in d.get("series") or []:
+            vals = _values(s_.get("values"))
+            if len(vals) == 1:
+                out.append({"label": s_.get("name", "series"), "kind": u["kind"], "currency": u["currency"], "value": abs(vals[0]) * (u["scale"] or 1.0),
+                            "raw": f"{vals[0]:g}", "exhibit": i})
+        if ex.get("rows") and ex.get("columns"):
+            for r in ex["rows"]:
+                if isinstance(r, list) and r and TOTAL_RE.search(str(r[0])):
+                    for j, c in enumerate(ex["columns"]):
+                        if j and j < len(r) and isinstance(c, dict) and c.get("kind") == "number":
+                            cu = unit_of(c.get("label", ""))
+                            v = _values([r[j]])
+                            if v:
+                                out.append({"label": f"{r[0]} · {c.get('label', '')}", "kind": cu["kind"], "currency": cu["currency"],
+                                            "value": abs(v[0]) * (cu["scale"] or 1.0), "raw": str(r[j]), "exhibit": i})
+    return out
+
+
+def derive_across(q: dict, scalars: list[dict]) -> dict:
+    """Prove a headline quantity from two single quantities of two different exhibits."""
+    rec = {"headline_value": q["raw"], "status": "unknown"}
+    if q["kind"] == "plain" and q["value"] < 10:
+        rec["reason"] = "small plain number: too likely to match by coincidence"
+        return rec
+    if len({s["exhibit"] for s in scalars}) < 2:
+        rec["reason"] = "fewer than two exhibits with single quantities"
+        return rec
+    if len(scalars) > MAX_SCALARS:
+        rec["reason"] = f"more than {MAX_SCALARS} single quantities: combinations would prove anything"
+        return rec
+    tol = 0.5 * 10 ** (-q["decimals"]) * (q["scale"] or 1.0) + REL_TOL * q["value"]
+    hits = []
+    for a in scalars:
+        for b in scalars:
+            if a is b or a["exhibit"] == b["exhibit"] or a["kind"] != b["kind"] or a["currency"] != b["currency"]:
+                continue
+            cands = []
+            if q["kind"] == a["kind"] and (q["kind"] != "money" or q["currency"] == a["currency"]):
+                cands += [("sum across exhibits", a["value"] + b["value"]), ("difference across exhibits", abs(a["value"] - b["value"]))]
+            if q["kind"] == "pct" and a["kind"] in ("money", "plain") and b["value"] and a["value"] < b["value"]:
+                cands.append(("share across exhibits", a["value"] / b["value"] * 100))
+            if q["kind"] == "x" and b["value"]:
+                cands.append(("ratio across exhibits", a["value"] / b["value"]))
+            for op, res in cands:
+                if abs(res - q["value"]) <= tol:
+                    hits.append((op, res, a, b))
+    if not hits:
+        rec["reason"] = "no cross-exhibit derivation matches within tolerance"
+        return rec
+    fams = {h[0] for h in hits}
+    pairs = {frozenset((id(h[2]), id(h[3]))) for h in hits}
+    if len(fams) > 1 or len(pairs) > 1:
+        rec["reason"] = f"ambiguous: {len(hits)} cross-exhibit derivations match"
+        rec["candidates"] = sorted(fams)
+        return rec
+    op, res, a, b = hits[0]
+    rec.update(status="derived_proof", operation=op, lineage=[{"exhibit": a["exhibit"], "label": a["label"], "raw": a["raw"]},
+                                                              {"exhibit": b["exhibit"], "label": b["label"], "raw": b["raw"]}],
+               normalized_result=round(res, 6), tolerance=round(tol, 6))
+    return rec

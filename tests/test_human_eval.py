@@ -90,7 +90,7 @@ def test_report_statistics(round_dir):
     lo, hi = r["challenger_preference_ci95"]
     assert 0.65 < lo < 0.75 and hi == 1.0  # Wilson interval stays honest at small n
     assert r["inter_rater"]["percent_agreement"] == 1.0
-    assert r["self_consistency"] == {"repeated_pairs": 2, "consistent": 2}
+    assert {k: r["self_consistency"][k] for k in ("repeated_pairs", "consistent")} == {"repeated_pairs": 2, "consistent": 2}
     assert r["score_agreement"]["rate"] == 1.0  # challenger also has the higher automatic score here
     assert "Wilson" in human.to_markdown(r)
 

@@ -325,15 +325,15 @@ def test_intake_status_never_substitutes(tmp_path, monkeypatch):
     (tmp_path / "ext" / "decks").mkdir(parents=True)
     (tmp_path / "ext" / "decks" / "d.json").write_text("{}")
     assert "NOT INDEPENDENT" in ph.external_status(tmp_path / "ext")["status"]  # no attested outside author
-    (tmp_path / "corp").mkdir()
-    (tmp_path / "corp" / "template.pptx").write_bytes(b"known")
+    (tmp_path / "corp" / "acme").mkdir(parents=True)  # v1.6 layout: one folder per unseen template
+    (tmp_path / "corp" / "acme" / "template.pptx").write_bytes(b"known")
     monkeypatch.setattr(ph, "known_development_hashes", lambda: {hashlib.sha256(b"known").hexdigest()})
     assert "REFUSED" in ph.corporate_status(tmp_path / "corp")["status"]
 
 
 def test_ci_never_runs_private_or_human_validation():
     ci = (ROOT / ".github" / "workflows" / "ci.yml").read_text()
-    for forbidden in ("holdout v15", "v15-external", "v15-corporate", "holdout private", "holdout external", "human report", "holdout_v2"):
+    for forbidden in ("holdout v15", "v15-external", "v15-corporate", "external-run", "corporate-run", "external-seal", "holdout private", "holdout external", "human report", "holdout_v2"):
         assert forbidden not in ci, forbidden
 
 
@@ -361,4 +361,6 @@ def test_holdout_v2_is_history_for_v15():
     assert holdout_v2_historical(old)
     block = render_block({"holdout": {"v2": old}})
     assert "development-known since v1.5" in block and "157 authored / 158 measured" in block and "unseen" not in block
-    assert not holdout_v2_historical({"provenance": {"engine_version": "1.5.0rc1"}})
+    from cpe import __version__
+
+    assert not holdout_v2_historical({"provenance": {"engine_version": __version__}})

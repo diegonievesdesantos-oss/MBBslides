@@ -367,6 +367,11 @@ def measure(png_path: str, spans: list[dict], slide: dict, manifest: dict, theme
         else:  # (v1.5) arithmetic lineage: sum / difference / ratio / % change / pp / share of a visible series
             series = slide_series(slide) if series is None else series
             rec = derive(q, series) if q else {"status": "unknown", "reason": "unit not parsed"}
+            if q and rec["status"] == "unknown":  # v1.6: two single quantities of two exhibits
+                from .proof import derive_across, slide_scalars
+
+                across = derive_across(q, slide_scalars(slide))
+                rec = across if across["status"] != "unknown" else rec
         rec.setdefault("headline_value", f"{v:g}{unit}")
         proofs.append(rec)
         checks.append(rec["status"] != "unknown")

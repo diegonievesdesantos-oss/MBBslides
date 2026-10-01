@@ -1,5 +1,33 @@
 # Changelog
 
+## 1.6.0rc1 — External validation infrastructure (awaiting external input)
+
+v1.6 answers *does the existing engine generalise?* It adds almost no rendering functionality on
+purpose. **No v1.6 validation claim exists yet**: the three inputs that would make one (raters 2–4
+on r3, an externally authored holdout, an unseen corporate template) must come from outside.
+The engine is frozen at the `v1.6.0rc1` tag for those runs; v1.7 development continues on `main`.
+
+- **Human, multi-rater.** `cpe human package` builds a self-contained voting package (bundle +
+  stdlib-only server + Windows launcher + instructions, never a key) — r3's key is in the
+  repository, so new raters vote from the package, not the repo. `cpe human import` takes the
+  returned `votes/<id>.jsonl` (idempotent). Reports separate WITHIN-rater self-consistency from
+  BETWEEN-rater agreement. New rounds: `--identical-controls K` (same image twice; tie rate =
+  evaluator noise, reported per rater, never used to drop anyone). r3 reopened for raters 2–4,
+  pairs unchanged (docs/HUMAN_EVALUATORS.md).
+- **External holdout.** `.private/holdouts/external/` with attested provenance;
+  `cpe holdout external-seal` (hashes, never rewritten) and `external-run` (refuses unsealed or
+  edited decks, a dirty engine, and a second run per engine version). Author brief for the
+  external author (docs/EXTERNAL_AUTHOR_BRIEF.md).
+- **Unseen corporate templates.** `.private/holdouts/corporate_unseen/<name>/template.pptx`, any
+  number; known development templates refused by hash; run once per engine version.
+- **Derived proof across exhibits** (development): a headline figure may combine two explicit
+  single quantities of two different exhibits (KPI value, table total row, waterfall start/end,
+  one-value series) with one operation (sum, difference, share, ratio); never more than 10
+  candidates, ambiguity → unproven; lineage recorded.
+- **Not done, by rule:** KPI-dashboard profile and the waterfall scorer blind spot wait for r3's
+  additional raters (r3 is not development data yet); absolute gates stay provisional until the
+  external-holdout distribution exists (docs/EVALS.md, "v1.6 status").
+
 ## 1.5.0rc1 — Human alignment, real failure modes, independent evidence pending
 
 A deliberately small release. It ends as a **release candidate awaiting external validation**: the

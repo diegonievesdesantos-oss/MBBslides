@@ -290,7 +290,7 @@ def cmd_human(a):
             specs.append((name, base, chal))
         quotas = {q.split("=")[0]: int(q.split("=")[1]) for q in (a.quota or [])}
         r = human.build_round(a.out, specs, n=a.n, repeats=a.repeats, seed=a.seed, quotas=quotas or None, purpose=a.purpose or "",
-                              key_out=a.key_out, private_key=not a.key_in_round)
+                              key_out=a.key_out, private_key=not a.key_in_round, identical_controls=a.identical_controls)
         _p(f"round {a.out}: {r['pairs']} pairs {r['by_comparison']} · key {r['key']} · serve it with `cpe human serve {a.out}`")
     elif a.human_cmd == "serve":
         human.serve(a.round, port=a.port, host=a.host)
@@ -314,6 +314,9 @@ def cmd_human(a):
         _p(json.dumps(st, indent=2))
         if a.record:
             human.record_status(a.round)
+    elif a.human_cmd == "package":
+        r = human.package_round(a.round, a.out)
+        _p(f"voting package {r['zip']}: {r['images']} images, no key — send it to evaluators instead of the repository")
     elif a.human_cmd == "close":
         st = human.close_round(a.round, a.key)
         _p(f"{a.round}: voting closed, key revealed ({st['status']})")
@@ -330,12 +333,16 @@ def cmd_holdout(a):
         for name, st in (("external", private_holdout.external_status()), ("corporate", private_holdout.corporate_status())):
             _p(f"{st['status']}" + "".join(f"\n    {k}: {v}" for k, v in st.items() if k != "status"))
         return 0
-    if a.which in ("v15-external", "v15-corporate"):
-        r = (private_holdout.run_v15_external if a.which == "v15-external" else private_holdout.run_v15_corporate)(a.out, record=a.record)
+    if a.which == "external-seal":
+        seal = private_holdout.seal_external()
+        _p(f"sealed {len(seal['files'])} decks at {seal['sealed_at']} — do not render or open them until the frozen run")
+        return 0
+    if a.which in ("external-run", "corporate-run"):
+        r = (private_holdout.run_external_holdout if a.which == "external-run" else private_holdout.run_corporate_unseen)(a.out, record=a.record)
         if not r.get("ran"):
             _p(r["status"] + "".join(f"\n    {k}: {v}" for k, v in r.items() if k not in ("status", "ran")))
             return 0
-        _p(json.dumps({k: v for k, v in r.items() if k not in ("archetypes",)}, default=str))
+        _p(json.dumps({k: v for k, v in r.items() if k not in ("archetypes", "provenance")}, default=str))
         return 0
     if a.which == "external":
         r = private_holdout.run_external(a.root, a.out, record=a.record)
@@ -463,14 +470,16 @@ def main(argv=None) -> int:
     h.add_argument("--quota", action="append", help="ARCHETYPE=K: sample K pairs of this archetype first (the rest are controls)"); h.add_argument("--purpose")
     h.add_argument("--key-out", help="where the private key goes (default .private/human_reference/keys/<round>/key.json)")
     h.add_argument("--key-in-round", action="store_true", help="legacy (≤ v1.4): write key.json inside the round")
+    h.add_argument("--identical-controls", type=int, default=0, help="add K identical-image control pairs (evaluator noise)")
     h.set_defaults(f=cmd_human)
     h = hs.add_parser("serve"); h.add_argument("round"); h.add_argument("--port", type=int, default=8765); h.add_argument("--host", default="127.0.0.1"); h.set_defaults(f=cmd_human)
     h = hs.add_parser("import"); h.add_argument("round"); h.add_argument("votes"); h.set_defaults(f=cmd_human)
     h = hs.add_parser("report"); h.add_argument("round"); h.add_argument("--key", help="private key.json of the round"); h.add_argument("--record", action="store_true"); h.set_defaults(f=cmd_human)
+    h = hs.add_parser("package"); h.add_argument("round"); h.add_argument("-o", "--out", required=True); h.set_defaults(f=cmd_human)
     h = hs.add_parser("close"); h.add_argument("round"); h.add_argument("--key"); h.set_defaults(f=cmd_human)
     h = hs.add_parser("status"); h.add_argument("round"); h.add_argument("--record", action="store_true"); h.set_defaults(f=cmd_human)
     h = hs.add_parser("mark-used"); h.add_argument("round"); h.add_argument("--change", required=True, help="what the votes were used to change"); h.set_defaults(f=cmd_human)
-    s = sub.add_parser("holdout"); s.add_argument("which", choices=["private", "external", "intake", "v15-external", "v15-corporate"]); s.add_argument("--root"); s.add_argument("-o", "--out"); s.add_argument("--record", action="store_true"); s.set_defaults(f=cmd_holdout)
+    s = sub.add_parser("holdout"); s.add_argument("which", choices=["private", "external", "intake", "external-seal", "external-run", "corporate-run"]); s.add_argument("--root"); s.add_argument("-o", "--out"); s.add_argument("--record", action="store_true"); s.set_defaults(f=cmd_holdout)
     s = sub.add_parser("quality"); s.add_argument("report", help="eval_report.json"); s.add_argument("--check", action="store_true", help="exit 1 on an enforced gate failure")
     s.set_defaults(f=cmd_quality)
     s = sub.add_parser("results"); s.add_argument("what", choices=["readme", "verify"]); s.add_argument("--check", action="store_true"); s.set_defaults(f=cmd_results)

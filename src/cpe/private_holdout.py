@@ -235,41 +235,33 @@ def run_external(root: str | Path | None = None, out: str | Path | None = None, 
     return summary
 
 
-# ── v1.5 intake: independent evidence that only someone else can supply ───────────────────────────
+# ── external validation intake (v1.5, generalised in v1.6) ───────────────────────────────────────
 #
-#   .private/holdouts/v15_external/decks/*.json     decks written by someone OTHER than the developer
-#   .private/holdouts/v15_external/PROVENANCE.json  {"author_role": "...", "authored_by_developer": false,
-#                                                    "engine_renders_seen_by_author": false, "received": "YYYY-MM-DD"}
-#   .private/holdouts/v15_corporate/template.pptx   a corporate template never used in development
+#   .private/holdouts/external/decks/*.json          decks written by someone OTHER than the developer
+#   .private/holdouts/external/PROVENANCE.json       attested outside authorship (see the protocol)
+#   .private/holdouts/external/SEAL.json             written by `cpe holdout external-seal` (hashes)
+#   .private/holdouts/corporate_unseen/<name>/template.pptx   templates never used in development
 #
-#   cpe holdout intake                 status of both (never runs anything)
-#   cpe holdout v15-external [--record]
-#   cpe holdout v15-corporate [--record]
+#   cpe holdout intake                         status of both (never runs anything)
+#   cpe holdout external-seal                  hash and seal the received decks (before any render)
+#   cpe holdout external-run [--record]        run ONCE per engine version, on the sealed decks
+#   cpe holdout corporate-run [--record]       run every unseen template once per engine version
 #
-# The runners refuse when the intake is missing, when the external provenance does not attest an
-# outside author, or when the corporate template is a known development template (JET): a
-# self-authored deck or a reused template is never presented as independent evidence.
+# Order (docs/EXTERNAL_HOLDOUT_PROTOCOL.md): author → receive → hash → seal → do not render →
+# freeze engine → run once → report → no same-version tuning. The runners refuse missing
+# provenance, a broken seal, a second run on the same engine version, and known development
+# templates (JET): a self-authored deck or a reused template is never presented as independent.
 
-V15_EXTERNAL = DEFAULT_ROOT / "v15_external"
-V15_CORPORATE = DEFAULT_ROOT / "v15_corporate"
+EXTERNAL = DEFAULT_ROOT / "external"
+CORPORATE_UNSEEN = DEFAULT_ROOT / "corporate_unseen"
 KNOWN_DEVELOPMENT = DEFAULT_ROOT / "KNOWN_DEVELOPMENT.sha256"  # hashes only, private
+RUNS = DEFAULT_ROOT / "RUNS.json"  # which engine version ran which intake (run-once guard)
 
 
 def _sha256(p: Path) -> str:
     import hashlib
 
     return hashlib.sha256(p.read_bytes()).hexdigest()
-
-
-def known_development_hashes() -> set[str]:
-    """Templates already used in development: every template.pptx under .private/holdouts outside
-    the v1.5 corporate intake, plus the recorded hash list."""
-    out = set()
-    if KNOWN_DEVELOPMENT.exists():
-        out |= {line.split()[0] for line in KNOWN_DEVELOPMENT.read_text().splitlines() if line.strip()}
-    if DEFAULT_ROOT.exists():
-        out |= {_sha256(t) for t in DEFAULT_ROOT.glob("*/template.pptx") if t.parent.name != V15_CORPORATE.name}
-    return out
 
 
 def _rel(p: Path) -> str:
@@ -279,50 +271,130 @@ def _rel(p: Path) -> str:
         return str(p)
 
 
-def external_status(root: Path = V15_EXTERNAL) -> dict:
-    decks = sorted((root / "decks").glob("*.json")) if (root / "decks").exists() else []
+def known_development_hashes() -> set[str]:
+    """Templates already used in development: every template.pptx under .private/holdouts outside
+    the unseen-template intake, plus the recorded hash list."""
+    out = set()
+    if KNOWN_DEVELOPMENT.exists():
+        out |= {line.split()[0] for line in KNOWN_DEVELOPMENT.read_text().splitlines() if line.strip()}
+    if DEFAULT_ROOT.exists():
+        out |= {_sha256(t) for t in DEFAULT_ROOT.glob("*/template.pptx")}
+    return out
+
+
+def _decks(root: Path) -> list[Path]:
+    return sorted((root / "decks").glob("*.json")) if (root / "decks").exists() else []
+
+
+def seal_external(root: Path = EXTERNAL) -> dict:
+    decks = _decks(root)
+    if not decks:
+        raise SystemExit("nothing to seal: no decks in " + _rel(root / "decks"))
+    if (root / "SEAL.json").exists():
+        raise SystemExit("already sealed: a seal is never rewritten (add new decks as a new holdout)")
+    seal = {"sealed_at": __import__("time").strftime("%Y-%m-%dT%H:%M:%S"), "files": {d.name: _sha256(d) for d in decks},
+            "provenance_sha256": _sha256(root / "PROVENANCE.json") if (root / "PROVENANCE.json").exists() else None}
+    (root / "SEAL.json").write_text(json.dumps(seal, indent=2) + "\n")
+    return seal
+
+
+def _seal_ok(root: Path) -> tuple[bool, str]:
+    f = root / "SEAL.json"
+    if not f.exists():
+        return False, "not sealed (run `cpe holdout external-seal` before anything else)"
+    seal = json.loads(f.read_text())
+    now = {d.name: _sha256(d) for d in _decks(root)}
+    if now != seal["files"]:
+        return False, "seal broken: decks were added, removed or edited after sealing"
+    return True, "seal verified"
+
+
+def _already_ran(kind: str) -> str | None:
+    from . import __version__
+
+    runs = json.loads(RUNS.read_text()) if RUNS.exists() else {}
+    return runs.get(kind, {}).get(__version__)
+
+
+def _mark_ran(kind: str, commit: str | None) -> None:
+    from . import __version__
+
+    runs = json.loads(RUNS.read_text()) if RUNS.exists() else {}
+    runs.setdefault(kind, {})[__version__] = commit or "unknown"
+    RUNS.parent.mkdir(parents=True, exist_ok=True)
+    RUNS.write_text(json.dumps(runs, indent=2) + "\n")
+
+
+def external_status(root: Path = EXTERNAL) -> dict:
+    decks = _decks(root)
     prov_f = root / "PROVENANCE.json"
     prov = json.loads(prov_f.read_text(encoding="utf-8")) if prov_f.exists() else None
     if not decks:
         return {"status": "EXTERNAL HOLDOUT: AWAITING INPUT", "folder": _rel(root) + "/decks/", "decks": 0,
-                "how": "docs/EXTERNAL_HOLDOUT_PROTOCOL.md"}
+                "how": "docs/EXTERNAL_HOLDOUT_PROTOCOL.md (author brief: docs/EXTERNAL_AUTHOR_BRIEF.md)"}
     if not prov or prov.get("authored_by_developer") is not False or prov.get("engine_renders_seen_by_author") is not False:
         return {"status": "EXTERNAL HOLDOUT: PROVENANCE MISSING OR NOT INDEPENDENT", "decks": len(decks),
                 "how": "PROVENANCE.json must attest authored_by_developer=false and engine_renders_seen_by_author=false"}
+    ok, why = _seal_ok(root)
+    if not ok:
+        return {"status": "EXTERNAL HOLDOUT: RECEIVED, NOT SEALED" if "not sealed" in why else "EXTERNAL HOLDOUT: SEAL BROKEN", "decks": len(decks), "why": why}
     return {"status": "EXTERNAL HOLDOUT: READY", "decks": len(decks), "received": prov.get("received")}
 
 
-def corporate_status(root: Path = V15_CORPORATE) -> dict:
-    tpl = root / "template.pptx"
-    if not tpl.exists():
-        return {"status": "UNSEEN CORPORATE TEMPLATE: AWAITING USER-SUPPLIED TEMPLATE", "folder": _rel(root) + "/",
-                "command": "scripts/cpe holdout v15-corporate --record"}
-    if _sha256(tpl) in known_development_hashes():
-        return {"status": "UNSEEN CORPORATE TEMPLATE: REFUSED — this template was already used in development (not unseen)"}
-    return {"status": "UNSEEN CORPORATE TEMPLATE: READY"}
+def _templates(root: Path) -> list[Path]:
+    return sorted(p for p in root.glob("*") if (p / "template.pptx").exists()) if root.exists() else []
 
 
-def run_v15_external(out: str | Path | None = None, record: bool = False) -> dict:
-    st = external_status()
+def corporate_status(root: Path = CORPORATE_UNSEEN) -> dict:
+    tpls = _templates(root)
+    if not tpls:
+        return {"status": "UNSEEN CORPORATE TEMPLATE: AWAITING USER-SUPPLIED TEMPLATE", "folder": _rel(root) + "/<name>/template.pptx",
+                "command": "scripts/cpe holdout corporate-run --record"}
+    known = known_development_hashes()
+    refused = [t.name for t in tpls if _sha256(t / "template.pptx") in known]
+    if refused:
+        return {"status": "UNSEEN CORPORATE TEMPLATE: REFUSED — already used in development (not unseen)", "refused": refused}
+    return {"status": "UNSEEN CORPORATE TEMPLATE: READY", "templates": len(tpls)}
+
+
+def run_external_holdout(out: str | Path | None = None, record: bool = False, root: Path = EXTERNAL) -> dict:
+    from .environment import provenance
+
+    st = external_status(root)
     if not st["status"].endswith("READY"):
         return {**st, "ran": False}
-    r = run_external(V15_EXTERNAL / "decks", out or DEFAULT_OUT / "v15_external", record=False)
-    r["evidence"] = "external holdout (independently authored, provenance attested)"
+    prev = _already_ran("external")
+    if prev:
+        return {"status": f"EXTERNAL HOLDOUT: ALREADY RUN for this engine version (commit {prev[:10]}) — run once, report, no same-version tuning", "ran": False}
+    pv = provenance()
+    if pv.get("evaluated_source_dirty"):
+        return {"status": "EXTERNAL HOLDOUT: REFUSED — engine not frozen (evaluated source is dirty); commit first", "ran": False}
+    r = run_external(root / "decks", out or DEFAULT_OUT / "external", record=False)
+    r["evidence"] = "external holdout (independently authored, provenance attested, sealed)"
+    r["provenance"] = pv
+    _mark_ran("external", pv.get("evaluated_source_commit"))
     if record:
         from .evals import record_result
 
-        record_result("holdout_v15_external", r)
+        record_result("holdout_external", r)
     return {**r, "ran": True}
 
 
-def run_v15_corporate(out: str | Path | None = None, record: bool = False) -> dict:
-    st = corporate_status()
+def run_corporate_unseen(out: str | Path | None = None, record: bool = False, root: Path = CORPORATE_UNSEEN) -> dict:
+    st = corporate_status(root)
     if not st["status"].endswith("READY"):
         return {**st, "ran": False}
-    out = Path(out) if out else DEFAULT_OUT / "v15_corporate"
-    s = run_one(V15_CORPORATE, out)
+    prev = _already_ran("corporate_unseen")
+    if prev:
+        return {"status": f"UNSEEN CORPORATE TEMPLATE: ALREADY RUN for this engine version (commit {prev[:10]})", "ran": False}
+    from .environment import provenance
+
+    pv = provenance()
+    out = Path(out) if out else DEFAULT_OUT / "corporate_unseen"
+    results = {f"unseen_template_{chr(65 + i)}": run_one(t, out) for i, t in enumerate(_templates(root))}  # anonymised labels
+    _mark_ran("corporate_unseen", pv.get("evaluated_source_commit"))
     if record:
         from .evals import record_result
 
-        record_result("holdout_v15_corporate", {"summary": "unseen corporate template (sanitized aggregates)", "corporate_template": s})
-    return {"status": "ran", "ran": True, "corporate_template": s}
+        record_result("holdout_corporate_unseen", {"summary": "unseen corporate templates (sanitized aggregates)", "templates": results, "provenance": pv})
+    return {"status": "ran", "ran": True, "templates": results}

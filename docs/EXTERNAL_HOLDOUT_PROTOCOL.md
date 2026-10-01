@@ -1,97 +1,88 @@
-# External holdout and unseen corporate template — intake protocol (v1.5)
+# External validation intake — protocol (v1.6)
 
-v1.5 has **no independent evidence of its own yet**. Everything the developer (human or agent) can
-see or write is development data: the regression suite, the archetype battery, the example decks,
-round r2 after `mark-used`, the holdout v2 findings, and the JET template. Two kinds of evidence can
-only come from someone else; this document is how to hand them over.
+v1.6 asks one question: **does the existing engine generalise outside data authored, inspected
+or calibrated by its own development loop?** Everything the developer (human or agent) has seen or
+written is development data (docs/EVALS.md, first table). Three kinds of evidence can only come
+from someone else:
 
+| evidence | status | where |
+|---|---|---|
+| additional human raters on r3 | **AWAITING EXTERNAL INPUT** | docs/HUMAN_EVALUATORS.md |
+| external deck holdout | **EXTERNAL HOLDOUT: AWAITING INPUT** | `.private/holdouts/external/` |
+| unseen corporate template(s) | **UNSEEN CORPORATE TEMPLATE: AWAITING USER-SUPPLIED TEMPLATE** | `.private/holdouts/corporate_unseen/<name>/` |
+
+`scripts/cpe holdout intake` prints the current status. It never runs anything.
+
+## The frozen engine
+
+External evidence is collected on the **v1.6 release candidate**, tagged `v1.6.0rc1` in git.
+Development of v1.7 continues on `main`; it never touches the v1.6 tag. To run intake on the
+frozen engine:
+
+```bash
+git worktree add ../mbbslides-v16 v1.6.0rc1
+cp -r .private ../mbbslides-v16/          # intake folders are gitignored: copy them across
+cd ../mbbslides-v16 && scripts/cpe holdout intake
 ```
-EXTERNAL HOLDOUT: AWAITING INPUT
-UNSEEN CORPORATE TEMPLATE: AWAITING USER-SUPPLIED TEMPLATE
-```
-
-`scripts/cpe holdout intake` prints the current status of both. It never runs anything.
 
 ## 1. External deck holdout
 
-**What qualifies.** Deck specs (`*.json`, the public spec format, docs/SPEC_REFERENCE.md) written
-by a person who
+**Who may author it.** A human consultant, another team member, or another AI agent with **no
+access to MBBslides internals** (not the agent developing it), or an external benchmark. Give the
+author docs/EXTERNAL_AUTHOR_BRIEF.md and docs/SPEC_REFERENCE.md — nothing else: no regression
+slides, no holdout-v2 failures, no profile details.
 
-- is not the developer of the engine and did not ask the developer (or its agent) to draft them;
-- has not seen renders of the v1.5 engine while writing;
-- writes realistic consulting content: real headlines with a claim, the evidence they would put on
-  a slide, any archetype mix. Bad decks are fine — they are evidence too.
-
-10–30 decks, 6–15 slides each, is enough to report per-archetype numbers with coverage labels.
-Anonymize anything confidential before handing it over (names, figures may be scaled).
-
-**Where it goes** (gitignored, never pushed):
+**Strict order.**
 
 ```
-.private/holdouts/v15_external/
+AUTHOR CASES → RECEIVE FILES → PLACE IN .private/holdouts/external/ → SEAL (hashes)
+→ DO NOT RENDER OR OPEN IN THE ENGINE → RUN ONCE ON THE FROZEN TAG → REPORT
+→ NO SAME-VERSION TUNING; failures become development items of the next version
+```
+
+```
+.private/holdouts/external/
     decks/*.json
-    PROVENANCE.json
+    PROVENANCE.json        authored_by_developer: false, engine_renders_seen_by_author: false
+    SEAL.json              written by external-seal (never rewritten)
 ```
-
-```json
-{
-  "author_role": "e.g. strategy consultant, 6 years",
-  "authored_by_developer": false,
-  "engine_renders_seen_by_author": false,
-  "received": "YYYY-MM-DD",
-  "notes": "how the decks were written (from real projects, anonymized / from scratch)"
-}
-```
-
-The runner refuses to run without a `PROVENANCE.json` attesting both `false` values: a deck the
-developer wrote is never presented as external, whatever it is called.
-
-**How it runs** (on the frozen release candidate only; never in CI):
 
 ```bash
-scripts/cpe holdout intake                       # → EXTERNAL HOLDOUT: READY
-scripts/cpe holdout v15-external --record        # private_results/v15_external/ + sanitized aggregate in latest.json
+scripts/cpe holdout external-seal               # immediately on arrival
+scripts/cpe holdout external-run --record       # on the frozen tag; refuses a second run per engine version
 ```
 
-**Rules.**
+The runner refuses: missing or non-independent provenance, an unsealed or broken seal, a dirty
+engine, a second run for the same engine version. Only sanitized aggregates are recorded; deck
+names, text, numbers and renders stay in `private_results/` and are never committed. After the run
+the decks are development-known for the next cycle.
 
-- Run once per release candidate, on a clean, frozen commit. The engine is not tuned on the
-  results in the same cycle; findings become development items for the next version.
-- Only sanitized aggregates are recorded (counts, scores, archetype n/mean/min). Deck names,
-  headlines, text, numbers and renders stay in `private_results/` and are never committed.
-- After the run the decks are **development-known** for the next cycle and must be described so.
+## 2. Unseen corporate template(s)
 
-## 2. Unseen corporate template
-
-**What qualifies.** A real corporate PowerPoint template (`.pptx` / `.potx` saved as `.pptx`) that
-has never been used in this project's development. JET is development data since v1.3 and is
-refused automatically (its hash is in `.private/holdouts/KNOWN_DEVELOPMENT.sha256`, hashes only).
-Optionally a human-written brand guide and `expectations.json` (claims transcribed from it:
-fonts, colours, layouts), as in `.private/holdouts/jet/`.
-
-**Where it goes** (gitignored, never pushed):
+**What qualifies.** A real corporate PowerPoint template never used in this project's
+development. JET is development data permanently and is refused automatically (hash list in
+`.private/holdouts/KNOWN_DEVELOPMENT.sha256`). One template is the v1.6 minimum; 3–5 different
+ones are the v1.8 target. Optionally a human-written brand guide and `expectations.json`.
 
 ```
-.private/holdouts/v15_corporate/
+.private/holdouts/corporate_unseen/<name>/
     template.pptx
     brand_spec.*          (optional)
     expectations.json     (optional)
 ```
 
-**How it runs:**
-
 ```bash
-scripts/cpe holdout intake                       # → UNSEEN CORPORATE TEMPLATE: READY
-scripts/cpe holdout v15-corporate --record
+scripts/cpe holdout corporate-run --record      # on the frozen tag, once per engine version
 ```
 
-Outputs go to `private_results/v15_corporate/`. Nothing from the template — PPTX, logos, assets,
-XML, renders, screenshots, text, brand guide — is ever committed; only the sanitized summary
-(counts and rates: masters, layouts, classification confidence, font conflict yes/no, test-deck QA
-verdict and composition, agreement with the brand guide) is recorded.
+No manual brand correction before the first run. Measured: masters, layouts, layout-family
+confidence, font inference and theme-vs-observed conflicts, palette, reserved artwork, placeholder
+semantics, native / adaptive / fallback layout rate of a representative deck, visual QA, font
+warnings, render failures. Nothing from the template — PPTX, logos, assets, XML, renders,
+screenshots, text, brand guide — is ever committed; only the sanitized summary.
 
 ## What CI does
 
 Nothing of this. GitHub Actions never sees `.private/`, has no secrets for it, and does not run
-`holdout v15-*`, `holdout private`, `holdout external`, the sealed holdout v2 or any human report
+`holdout external-*`, `corporate-run`, `holdout private`, the sealed holdout v2 or any human report
 (`tests/test_v15.py::test_ci_never_runs_private_or_human_validation`).
