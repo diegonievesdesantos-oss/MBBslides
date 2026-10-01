@@ -28,13 +28,13 @@ All commands: `scripts/cpe <command>` from the skill folder (or `python -m cpe` 
 Requirements: Python ≥3.10, `pip install -r requirements.txt`, LibreOffice **with Impress**
 (`libreoffice-impress`) for rendering, Liberation Sans fonts (Arial metrics).
 
-### Raw material → deck (reasoning protocol 1.1, v1.7 development)
+### Raw material → deck (reasoning protocol 1.2, v1.7 development)
 
 When the input is raw business material rather than a ready storyline, follow
 `docs/REASONING_PROTOCOL.md` **before** writing a deck spec: `cpe reason facts sources/ -o work/`
 builds a traceable fact model; you write `project.json` (business question), `hypotheses.json`,
 `insights.json`, `storyline.json` (≥ 2 governing-thought candidates, plus a `decision` frame: levers
-that add up to the stated total and gap to target, the current plan tested, costed options, approvable
+that add up to the stated total and gap to target, the current plan tested, options costed on the same basis, approvable
 asks, gates and KPIs, problem before solution) and `deck_plan.json` (why each
 slide exists); `cpe reason check work/ --enrich` blocks the deck on any invented number, wrong source,
 arithmetic error or claim resting on a rejected hypothesis. You may create hypotheses, insights and

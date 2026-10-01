@@ -2,7 +2,14 @@
 
 ## Unreleased — 1.7.0.dev0: consulting intelligence (development)
 
-- **Experiment 02 / round s2 (voting pending):** four harder development cases (set 02, written after
+- **s2 voted (expert, blind): protocol 1.1 wins 3–1** (almacén, SaaS, tiendas). The baseline won
+  packaging; the owner corrected one repeat as a mis-click.
+  - The expert praised decision-ready closes: approvable asks, owners, dated gates, fallbacks.
+  - The one loss was options compared on different bases (risk charged to one option only). The case
+    author's reference made the same error and is marked contested.
+  - **Protocol 1.2 adds OPTIONS_DIFFERENT_BASIS** (`cost_components` per option).
+  - The voting page now swaps the sides of a repeat relative to its original. Before, the swap was random.
+- **Experiment 02 / round s2:** four harder development cases (set 02, written after
   protocol 1.1 was frozen); baseline agent vs agent with protocol 1.1.
   - Automatic yardstick: 3/3 conclusions for both systems in every case.
   - Untraced numbers: protocol 19, baseline 46.

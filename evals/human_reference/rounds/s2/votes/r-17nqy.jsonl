@@ -4,3 +4,4 @@
 {"pair": "p004", "left": "deb02b1957cc.md", "right": "d96842ba45f4.md", "choice": "right", "ms": 6931, "ts": "2026-10-01T19:30:49"}
 {"pair": "r001", "left": "4ee2b9c91a3f.md", "right": "a949f037355c.md", "choice": "right", "ms": 7200, "ts": "2026-10-01T19:30:56"}
 {"pair": "p001", "left": "a949f037355c.md", "right": "4ee2b9c91a3f.md", "choice": "left", "ms": 2262, "ts": "2026-10-01T19:30:59"}
+{"pair": "r002", "left": "ab8d08085155.md", "right": "87aba0291e0b.md", "choice": "right", "ms": null, "ts": "2026-10-01T20:05:00", "correction": "owner correction after voting: the r002 click was a mistake; intended the same storyline as p002 (87aba0291e0b.md, whose text the owner quoted as their choice)"}

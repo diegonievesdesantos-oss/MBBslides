@@ -2,8 +2,23 @@
   "round": "s2",
   "created": "2026-10-01",
   "purpose": "blind A/B of storylines",
-  "blind": true,
-  "used_for_calibration": false,
-  "status": "awaiting human votes",
-  "key": "private"
+  "blind": false,
+  "used_for_calibration": true,
+  "status": "complete — 1 expert evaluator, 4 decisive votes, protocol 1.1 wins 3–1; key revealed",
+  "key": "revealed",
+  "closed": "2026-10-01",
+  "evidence_standard": "expert single rater (owner decision, docs/HUMAN_EVALUATORS.md)",
+  "validity_note": "vote times were 2–58 s; the owner states the storylines had been read before voting and the round is valid. One repeat (r002) was corrected by the owner as a mis-click (recorded as a second line with a 'correction' field; the last vote counts).",
+  "data_status": "DEVELOPMENT DATA from protocol 1.2 on (the feedback shaped the same-basis option check)",
+  "result": {
+    "agent_protocol_1.1": [
+      "x2_almacen_valencia_es",
+      "x2_saas_retention",
+      "x2_tiendas_proximidad_es"
+    ],
+    "agent_baseline": [
+      "x2_packaging_supplier"
+    ]
+  },
+  "feedback": "FEEDBACK.md"
 }

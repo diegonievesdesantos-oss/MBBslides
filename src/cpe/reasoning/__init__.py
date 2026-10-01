@@ -23,5 +23,5 @@ the agent and checked here. Hard factuality failures block the deck (reasoning_r
 Protocol and critic roles: docs/REASONING_PROTOCOL.md. The protocol version is recorded in every
 artifact the tools write, so a source-to-deck result is reproducible as engine + protocol + model.
 """
-PROTOCOL_VERSION = "1.1"
+PROTOCOL_VERSION = "1.2"
 ARTIFACTS = ("project.json", "source_manifest.json", "facts.json", "hypotheses.json", "insights.json", "storyline.json", "deck_plan.json", "deck.json")

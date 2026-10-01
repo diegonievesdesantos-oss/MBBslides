@@ -1,7 +1,7 @@
-# Reasoning protocol 1.1 — from raw sources to a deck plan
+# Reasoning protocol 1.2 — from raw sources to a deck plan
 
 *The thinking layer of MBBslides is part of the product, so it is versioned like code.*
-`reasoning_protocol: 1.1` is recorded in every artifact `cpe reason` writes and in every
+`reasoning_protocol: 1.2` is recorded in every artifact `cpe reason` writes and in every
 source-to-deck evaluation, together with the agent/model and skill version that produced the work.
 Engine performance (deterministic code) and agent + engine system performance are reported apart.
 
@@ -98,7 +98,8 @@ the problem first. A storyline needs both.
   "gap":          {"value": 0.1, "unit": "PP", "how_closed": "…"},
   "current_plan": {"statement": "budgeted +25% electronics growth", "verdict": "holds|partly|does_not_hold",
                    "facts": ["…"], "cost_if_kept": {"value": 0.7, "unit": "PP"}},
-  "options":      [{"id": "O1", "statement": "…", "cost": {"value": …, "unit": "…"}, "facts": ["…"], "chosen": true}],
+  "options":      [{"id": "O1", "statement": "…", "cost": {"value": …, "unit": "…"}, "facts": ["…"], "chosen": true,
+                    "cost_components": {"price": …, "switching": …, "risk": …}}],
   "asks":         [{"statement": "…", "type": "approve|reject|reallocate|stop|commission", "owner": "…"}],
   "gates":        [{"statement": "…", "criterion": "…", "when": "…"}],
   "kpis":         [{"name": "…", "target": "…", "cadence": "monthly"}]
@@ -115,6 +116,7 @@ the problem first. A storyline needs both.
 | UNCERTAINTY_UNMARKED | warning | upper bounds and assumptions carry what to validate before committing |
 | CURRENT_PLAN_NOT_TESTED / _UNSUPPORTED | warning | does the plan / budget in force hold, and what does keeping it cost? |
 | OPTIONS_NOT_COMPARED / OPTION_UNCOSTED | warning | at least two options (keeping the current plan counts), each costed |
+| OPTIONS_DIFFERENT_BASIS (1.2) | warning | every option carries the same `cost_components`: a risk or cost charged to one option is charged to every option it touches (0 only if it truly does not apply) |
 | ASK_MISSING / ASK_DEFERRED | warning | an approvable close — `commission` alone is an assignment for later |
 | GATES_MISSING / KPIS_MISSING | warning | governance: validation gate, approval criterion, tracking KPI |
 | SOLUTION_BEFORE_PROBLEM | warning | problem or risk first (key-line `role`) |
@@ -125,6 +127,13 @@ The benchmark reports a `decision` dimension (elements present, no score). `cpe 
 JSON, and they are not verdicts. The frame is a checklist for the PARTNER REVIEW critic: a warning is
 a question to answer ("no option was costed: is there really only one?"), not something to fill in mechanically.
 
+### 1.2 — options on the same basis
+
+From round s2 (`evals/human_reference/rounds/s2/FEEDBACK.md`), where the protocol won 3–1. Its one loss
+was a logic error the checks could not see. The single-plant stoppage risk was charged to the 100%
+option only, although the 70/30 option still put 70% of the volume on that plant. Options now declare
+their cost components, and options compared on different components are flagged.
+
 ## Critic roles
 
 Each critic writes structured findings into `work/critique.json`:
@@ -134,7 +143,7 @@ Each critic writes structured findings into `work/critique.json`:
 |---|---|
 | FACT CHECKER | Is every important claim grounded? (the deterministic check runs first) |
 | PARTNER REVIEW | Is this the answer a senior client needs? Does it test the current plan, cost the options, and close with something approvable today? |
-| RED TEAM | What contradicts this storyline? Which rejected or unresolved hypothesis could be true? |
+| RED TEAM | What contradicts this storyline? Which rejected or unresolved hypothesis could be true? Is each risk and cost applied to every option it touches (1.2)? |
 | EDITOR | Can any slide be deleted, merged or moved to the appendix? |
 | DATA-VIZ REVIEW | Is each visual encoding appropriate for its message and data? |
 

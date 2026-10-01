@@ -764,7 +764,7 @@ function ask(){const sug='r-'+Math.random().toString(36).slice(2,7);app.innerHTM
 document.getElementById('go').onclick=()=>{const v=document.getElementById('eid').value.trim().replace(/[^A-Za-z0-9_-]/g,'');if(!v)return;ev=v;setId(v);begin()}}
 async function begin(first){document.getElementById('who').textContent='evaluator '+ev;const r=rng(ev);
 const st=await (await fetch('state?evaluator='+encodeURIComponent(ev))).json();const done=new Set(st.done);
-order=shuffle(data.pairs.map(p=>({...p,images:(r()<0.5?[...p.images]:[...p.images].reverse())})),r).filter(p=>!done.has(p.id));
+const seen={};order=shuffle(data.pairs.map(p=>{const k=[...p.images].sort().join('|');const im=seen[k]?[...seen[k]].reverse():(r()<0.5?[...p.images]:[...p.images].reverse());seen[k]=seen[k]||im;return {...p,images:im}}),r).filter(p=>!done.has(p.id));
 if(first){const k=order.findIndex(p=>p.id===first);if(k>0)order.unshift(order.splice(k,1)[0])}i=0;show()}
 async function undo(){if(!ev||busy)return;busy=true;try{const r=await fetch('undo',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({evaluator:ev})});
 const j=await r.json();if(j.pair){await begin(j.pair)}else alert('Nothing to undo / Nada que deshacer')}catch(e){alert('Undo failed (is the server running?)')}busy=false}

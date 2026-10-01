@@ -31,7 +31,8 @@ def _case(name: str, project: dict, reference: dict) -> Path:
     (d / "sources").mkdir(parents=True, exist_ok=True)
     (d / "project.json").write_text(json.dumps(project, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     reference = {"status": "development", "authored_by": AUTHORED, "set": "02", **reference}
-    (d / "reference.json").write_text(json.dumps(reference, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    if not (d / "reference.json").exists():  # references are edited in place after review (e.g. packaging C3, contested in s2)
+        (d / "reference.json").write_text(json.dumps(reference, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     return d / "sources"
 
 

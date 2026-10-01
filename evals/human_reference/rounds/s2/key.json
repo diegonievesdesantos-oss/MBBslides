@@ -1,0 +1,70 @@
+{
+  "p001": {
+    "comparison": "agent_baseline->agent_protocol_1.1",
+    "deck": "x2_almacen_valencia_es",
+    "slide": "storyline",
+    "baseline": "4ee2b9c91a3f.md",
+    "challenger": "a949f037355c.md",
+    "archetype": "storyline",
+    "baseline_score": null,
+    "challenger_score": null,
+    "control": false
+  },
+  "p002": {
+    "comparison": "agent_baseline->agent_protocol_1.1",
+    "deck": "x2_packaging_supplier",
+    "slide": "storyline",
+    "baseline": "87aba0291e0b.md",
+    "challenger": "ab8d08085155.md",
+    "archetype": "storyline",
+    "baseline_score": null,
+    "challenger_score": null,
+    "control": false
+  },
+  "p003": {
+    "comparison": "agent_baseline->agent_protocol_1.1",
+    "deck": "x2_saas_retention",
+    "slide": "storyline",
+    "baseline": "d8c98deb8f40.md",
+    "challenger": "d0e617d42567.md",
+    "archetype": "storyline",
+    "baseline_score": null,
+    "challenger_score": null,
+    "control": false
+  },
+  "p004": {
+    "comparison": "agent_baseline->agent_protocol_1.1",
+    "deck": "x2_tiendas_proximidad_es",
+    "slide": "storyline",
+    "baseline": "deb02b1957cc.md",
+    "challenger": "d96842ba45f4.md",
+    "archetype": "storyline",
+    "baseline_score": null,
+    "challenger_score": null,
+    "control": false
+  },
+  "r001": {
+    "comparison": "agent_baseline->agent_protocol_1.1",
+    "deck": "x2_almacen_valencia_es",
+    "slide": "storyline",
+    "baseline": "4ee2b9c91a3f.md",
+    "challenger": "a949f037355c.md",
+    "archetype": "storyline",
+    "baseline_score": null,
+    "challenger_score": null,
+    "control": false,
+    "repeat_of": "p001"
+  },
+  "r002": {
+    "comparison": "agent_baseline->agent_protocol_1.1",
+    "deck": "x2_packaging_supplier",
+    "slide": "storyline",
+    "baseline": "87aba0291e0b.md",
+    "challenger": "ab8d08085155.md",
+    "archetype": "storyline",
+    "baseline_score": null,
+    "challenger_score": null,
+    "control": false,
+    "repeat_of": "p002"
+  }
+}

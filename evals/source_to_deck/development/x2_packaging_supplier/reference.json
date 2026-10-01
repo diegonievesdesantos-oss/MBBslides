@@ -74,19 +74,26 @@
       "description": "Dual source 70/30 (≈€1.8M a year with a backup supplier) beats the single supplier (≈€1.5M after expected disruption)",
       "any_of": [
         [
+          "same basis"
+        ],
+        [
+          "both options"
+        ],
+        [
+          "scaled",
+          "share"
+        ],
+        [
           "70/30"
         ],
         [
           "dual"
         ],
         [
-          "two suppliers"
-        ],
-        [
-          "70%",
-          "30%"
+          "continuity"
         ]
-      ]
+      ],
+      "contested": "Expert reviewer (s2): the 70/30 conclusion carries the case author's own error — stoppage risk was charged only to the 100% option, although 70/30 still leaves 70% of volume on one plant and the incumbent's cover starts after two weeks. With risk scaled by Supplier B's share, the full move with continuity safeguards is at least as defensible. C3 is not used as a pass/fail conclusion; the requirement is that options are compared on the same basis."
     }
   ],
   "traps": [
@@ -134,5 +141,5 @@
     "MPO"
   ],
   "reference_governing_thought": "Moving all packaging to Supplier B saves about €1.5M a year, not €3.0M, once rush freight is taken out and the single plant's stoppage risk is priced in; a 70/30 split saves about €1.8M and keeps a second plant as backup.",
-  "notes": "Single supplier: 12% × 23.9 = 2.87; expected disruption (1.6 + 2.4) / 3 = 1.33 a year (historical frequency, so an estimate); net ≈ 1.5; one-off €0.8M. 70/30: 9% × 16.73 = 1.51 + 4% × 7.17 = 0.29 = 1.79; one-off €0.5M."
+  "notes": "Single supplier: 12% × 23.9 = 2.87; expected disruption (1.6 + 2.4) / 3 = 1.33 a year (historical frequency, so an estimate); net ≈ 1.5; one-off €0.8M. 70/30: 9% × 16.73 = 1.51 + 4% × 7.17 = 0.29 = 1.79; one-off €0.5M. C3 contested after s2 (see required_conclusions.C3.contested)."
 }

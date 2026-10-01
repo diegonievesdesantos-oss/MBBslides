@@ -179,7 +179,7 @@ def test_benchmark_catches_traps(work):
 def test_reasoning_protocol_is_versioned():
     from cpe.reasoning import PROTOCOL_VERSION
 
-    assert PROTOCOL_VERSION == "1.1"
+    assert PROTOCOL_VERSION == "1.2"
     assert json.loads((RUN / "facts.json").read_text())["protocol"] == "1.0"  # a stored run keeps the protocol it was produced under
     assert "development run — NOT evidence" in (RUN / "RUN.json").read_text()
     for d in ("development", "sealed", "external"):
@@ -335,7 +335,7 @@ def _good_frame():
 
 def test_decision_frame_clean_and_missing():
     from cpe.reasoning.decision import check_decision, decision_summary
-    assert [i["code"] for i in check_decision(_good_frame(), _dec_facts())] == []
+    assert [i["code"] for i in check_decision(_good_frame(), _dec_facts())] == ["OPTION_COMPONENTS_MISSING"]
     s = decision_summary(_good_frame(), [])
     assert s["levers_quantified"] == 3 and s["approvable_asks"] == 1 and s["current_plan_tested"] and s["problem_first"]
     sl = _good_frame(); sl.pop("decision")
@@ -437,3 +437,20 @@ def test_conflicts_ignore_rows_columns_parts_and_rounding():
     assert detect_conflicts(facts) == []
     real = [tv("F1", "Total", "Revenue 2025", 1460, "EUR_M"), tx("F2", "The forecast showed revenue of €1,500M in 2025", 1500, "EUR_M")]
     assert len(detect_conflicts(real)) == 1
+
+
+def test_vote_page_swaps_sides_of_repeats():
+    from cpe import human
+    js = human.PAGE if hasattr(human, "PAGE") else open(human.__file__, encoding="utf-8").read()
+    assert "seen[k]?[...seen[k]].reverse()" in js  # a repeat is shown with the sides of its original swapped
+
+
+def test_options_compared_on_the_same_basis():
+    from cpe.reasoning.decision import check_decision
+    sl = _good_frame()
+    sl["decision"]["options"] = [{"id": "O1", "statement": "100% B", "cost": {"value": 1.5, "unit": "EUR_M"}, "cost_components": {"price": 2.9, "switching": -0.3, "risk": -1.3}},
+                                 {"id": "O2", "statement": "70/30", "cost": {"value": 1.8, "unit": "EUR_M"}, "cost_components": {"price": 1.8, "switching": -0.2}}]
+    issues = check_decision(sl, _dec_facts())
+    assert [(i["code"], i["ref"]) for i in issues] == [("OPTIONS_DIFFERENT_BASIS", "O2")] and "risk" in issues[0]["message"]
+    sl["decision"]["options"][1]["cost_components"]["risk"] = -0.9
+    assert check_decision(sl, _dec_facts()) == []

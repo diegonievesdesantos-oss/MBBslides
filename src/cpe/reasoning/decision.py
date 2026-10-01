@@ -22,7 +22,8 @@ impact no cited fact supports is an UNSUPPORTED_NUMBER); the rest are warnings f
       "identified":   {"value": 1.4, "unit": "PP"},
       "gap":          {"value": 0.1, "unit": "PP", "how_closed": …},
       "current_plan": {"statement": …, "verdict": "holds|partly|does_not_hold", "facts": [...], "cost_if_kept": {…}},
-      "options":      [{"id": "O1", "statement": …, "cost": {"value": …, "unit": …}, "facts": [...], "chosen": true}],
+      "options":      [{"id": "O1", "statement": …, "cost": {"value": …, "unit": …}, "facts": [...], "chosen": true,
+                        "cost_components": {"price": …, "switching": …, "risk": …}}],   (1.2: same keys for every option)
       "asks":         [{"statement": …, "type": "approve|reject|reallocate|stop|commission", "owner": …}],
       "gates":        [{"statement": …, "criterion": …, "when": …}],
       "kpis":         [{"name": …, "target": …, "cadence": …}]
@@ -129,6 +130,18 @@ def check_decision(sl: dict | None, facts: dict, project: dict | None = None) ->
     for o in opts:
         if not o.get("cost"):
             out.append(_issue("warning", "OPTION_UNCOSTED", o.get("id") or o.get("statement", "")[:30], "option without a cost / impact"))
+    # 1.2 (s2): options compared on the SAME basis — a risk or cost charged to one option and not to
+    # another it also applies to decides the comparison (packaging: stoppage risk on 100% only, not on 70/30)
+    comps = {o.get("id") or str(n): set((o.get("cost_components") or {}).keys()) for n, o in enumerate(opts)}
+    if len(opts) >= 2:
+        if not any(comps.values()):
+            out.append(_issue("info", "OPTION_COMPONENTS_MISSING", "options", "list each option's cost_components (price, switching, risk, …) so they are compared on the same basis"))
+        else:
+            allc = set().union(*comps.values())
+            for oid, c in comps.items():
+                if c != allc:
+                    out.append(_issue("warning", "OPTIONS_DIFFERENT_BASIS", oid, f"missing {', '.join(sorted(allc - c))} that another option is charged: "
+                                      "apply each cost and risk to every option it touches (0 if it truly does not apply)"))
     asks = d.get("asks") or []
     if not asks:
         out.append(_issue("warning", "ASK_MISSING", "asks", "no decision asked of the audience"))
@@ -174,7 +187,7 @@ def decision_summary(sl: dict | None, issues: list[dict]) -> dict:
 
 DECISION_CODES = {"DECISION_FRAME_MISSING", "LEVER_UNQUANTIFIED", "UNCERTAINTY_UNMARKED", "GAP_NOT_STATED", "OVERCLAIM_BOUND", "CURRENT_PLAN_NOT_TESTED",
                   "CURRENT_PLAN_UNSUPPORTED", "OPTIONS_NOT_COMPARED", "OPTION_UNCOSTED", "ASK_MISSING", "ASK_DEFERRED", "GATES_MISSING", "KPIS_MISSING",
-                  "SOLUTION_BEFORE_PROBLEM", "KEYLINE_WITHOUT_NUMBERS"}
+                  "SOLUTION_BEFORE_PROBLEM", "KEYLINE_WITHOUT_NUMBERS", "OPTIONS_DIFFERENT_BASIS", "OPTION_COMPONENTS_MISSING"}
 
 
 # ── the same signals in any storyline.md (heuristic, bilingual) ────────────────────────────────
