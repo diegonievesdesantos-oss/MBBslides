@@ -43,9 +43,10 @@ scripts/cpe human build-text -o evals/human_reference/rounds/s1 --kind storyline
 scripts/cpe human package evals/human_reference/rounds/s1 -o s1_voting.zip
 ```
 
-Same blinding, private key, voting package, per-rater and pooled statistics as slide rounds. No
-storyline round exists yet: it needs two systems (e.g. agent with protocol 1.0 vs without) run
-on cases that are not development data.
+Same blinding, private key, voting package, per-rater and pooled statistics as slide rounds. Round
+`s1` (expert, protocol 1.0 vs no protocol, development cases) was 2–2 and produced the decision
+frame of protocol 1.1 (`rounds/s1/FEEDBACK.md`); it is now development data. The next storyline
+round needs cases that 1.1 has not seen.
 
 ## Conflicts and critics
 

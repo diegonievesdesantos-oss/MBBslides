@@ -179,8 +179,8 @@ def test_benchmark_catches_traps(work):
 def test_reasoning_protocol_is_versioned():
     from cpe.reasoning import PROTOCOL_VERSION
 
-    assert PROTOCOL_VERSION == "1.0"
-    assert json.loads((RUN / "facts.json").read_text())["protocol"] == PROTOCOL_VERSION
+    assert PROTOCOL_VERSION == "1.1"
+    assert json.loads((RUN / "facts.json").read_text())["protocol"] == "1.0"  # a stored run keeps the protocol it was produced under
     assert "development run — NOT evidence" in (RUN / "RUN.json").read_text()
     for d in ("development", "sealed", "external"):
         assert (ROOT / "evals" / "source_to_deck" / d).is_dir()
@@ -309,3 +309,67 @@ def test_spanish_thousands_in_headline_numbers():
     from cpe.qa.proof import headline_quantities
 
     assert headline_quantities("pasamos de 820.000 a 770.000 clientes")[0]["value"] == 820000
+
+
+# ── protocol 1.1: decision frame (from the s1 expert feedback) ─────────────────────────────────
+
+def _dec_facts():
+    return {f"F{i}": {"id": f"F{i}", "values": [{"value": v, "unit": u}]} for i, (v, u) in
+            enumerate([(1.5, "PP"), (0.9, "PP"), (0.3, "PP"), (0.2, "PP"), (0.7, "PP"), (17.4, "EUR_M")], start=1)}
+
+
+def _good_frame():
+    return {"governing_thought": "Approve a plan that recovers about 1.4 pp of the 1.5 pp target",
+            "key_line": [{"id": "K1", "message": "Mix cost 1.5 pp", "role": "problem"}, {"id": "K2", "message": "Three levers add 1.4 pp", "role": "solution"}],
+            "decision": {"target": {"value": 1.5, "unit": "PP", "facts": ["F1"]},
+                         "levers": [{"id": "L1", "statement": "reprice", "impact": {"value": 0.9, "unit": "PP"}, "facts": ["F2"], "bound": "upper", "validate": "Q1 price test"},
+                                    {"id": "L2", "statement": "rates", "impact": {"value": 0.3, "unit": "PP"}, "facts": ["F3"], "bound": "point"},
+                                    {"id": "L3", "statement": "recovery", "impact": {"value": 0.2, "unit": "PP"}, "facts": ["F4"]}],
+                         "identified": {"value": 1.4, "unit": "PP"}, "gap": {"value": 0.1, "unit": "PP", "how_closed": "further levers"},
+                         "current_plan": {"statement": "+25% electronics", "verdict": "does_not_hold", "facts": ["F5"], "cost_if_kept": {"value": 0.7, "unit": "PP"}},
+                         "options": [{"id": "O1", "statement": "keep budget", "cost": {"value": 0.7, "unit": "PP"}}, {"id": "O2", "statement": "conditional growth", "cost": {"value": 0, "unit": "PP"}, "chosen": True}],
+                         "asks": [{"statement": "approve the plan", "type": "approve", "owner": "CFO"}],
+                         "gates": [{"statement": "price test", "criterion": "volume loss < 5%", "when": "Q1 2027"}],
+                         "kpis": [{"name": "gross margin", "target": "27.9%", "cadence": "monthly"}]}}
+
+
+def test_decision_frame_clean_and_missing():
+    from cpe.reasoning.decision import check_decision, decision_summary
+    assert [i["code"] for i in check_decision(_good_frame(), _dec_facts())] == []
+    s = decision_summary(_good_frame(), [])
+    assert s["levers_quantified"] == 3 and s["approvable_asks"] == 1 and s["current_plan_tested"] and s["problem_first"]
+    sl = _good_frame(); sl.pop("decision")
+    assert [i["code"] for i in check_decision(sl, _dec_facts())] == ["DECISION_FRAME_MISSING"]
+
+
+def test_decision_numbers_must_reconcile_and_be_grounded():
+    from cpe.reasoning.decision import check_decision
+    sl = _good_frame(); sl["decision"]["identified"]["value"] = 1.6
+    codes = [(i["code"], i["ref"], i["hard"]) for i in check_decision(sl, _dec_facts())]
+    assert ("ARITHMETIC_ERROR", "identified", True) in codes
+    sl = _good_frame(); sl["decision"]["gap"]["value"] = 0.3
+    assert any(i["code"] == "ARITHMETIC_ERROR" and i["ref"] == "gap" for i in check_decision(sl, _dec_facts()))
+    sl = _good_frame(); sl["decision"].pop("gap")
+    assert any(i["code"] == "GAP_NOT_STATED" for i in check_decision(sl, _dec_facts()))
+    sl = _good_frame(); sl["decision"]["levers"][1]["impact"]["value"] = 0.4; sl["decision"]["identified"]["value"] = 1.5; sl["decision"].pop("gap")
+    assert any(i["code"] == "UNSUPPORTED_NUMBER" and i["hard"] for i in check_decision(sl, _dec_facts()))
+
+
+def test_decision_thinking_warnings():
+    from cpe.reasoning.decision import check_decision
+    sl = _good_frame(); d = sl["decision"]
+    d["asks"] = [{"statement": "commission a margin bridge", "type": "commission"}]
+    d["options"] = d["options"][:1]; d.pop("current_plan"); d.pop("gates"); d.pop("kpis")
+    d["levers"][0].pop("validate")
+    sl["governing_thought"] = "Approve a plan that recovers 1.4 pp"
+    sl["key_line"] = list(reversed(sl["key_line"]))
+    codes = {i["code"] for i in check_decision(sl, _dec_facts())}
+    assert {"ASK_DEFERRED", "OPTIONS_NOT_COMPARED", "CURRENT_PLAN_NOT_TESTED", "GATES_MISSING", "KPIS_MISSING",
+            "UNCERTAINTY_UNMARKED", "OVERCLAIM_BOUND", "SOLUTION_BEFORE_PROBLEM"} <= codes
+    assert not any(i["hard"] for i in check_decision(sl, _dec_facts()))
+
+
+def test_decision_signals_text():
+    from cpe.reasoning.decision import decision_signals_text
+    s = decision_signals_text("The €17M is an upper bound; validate elasticity. Do not approve the 20% increase. Commission a study.")
+    assert s["upper_bound"] == 1 and s["to_validate"] >= 1 and s["current_plan_challenged"] >= 1 and s["deferred_ask"] >= 1

@@ -1,7 +1,7 @@
 # Source-to-deck experiment 01 — does the reasoning protocol change the storyline?
 
 **Date** 2026-10-01 · **Status** development (cases written by the developing agent) · **Human
-verdict pending** (round s1).
+verdict: 2–2** (round s1, one expert, blind). See "Human verdict" below.
 
 ## Design
 
@@ -45,6 +45,22 @@ every stopping criterion met, critic findings recorded for all five roles.
 - **B wrote fewer numbers** (110 vs 180 in total), and in two cases fewer slides than allowed.
 - **Whether B's storylines are better or worse for a client is a human judgement** — the blind
   round `s1` asks exactly that.
+
+## Human verdict (s1)
+
+The expert voted blind: **2–2**, with self-consistency 2/2.
+- B (protocol) won churn_es and margin_recovery.
+- A (no protocol) won plant_capacity_es and promo_effectiveness.
+
+Their written feedback, mapped after unblinding (`evals/human_reference/rounds/s1/FEEDBACK.md`), splits the strengths:
+- **B has numeric discipline**: figures reconcile, the gap to the target is admitted, levers are
+  quantified separately, there is governance, and it makes no overclaim.
+- **A thinks about the decision**: it challenges the current plan, costs the options, marks upper
+  bounds and what to validate, closes with approvable proposals, and puts the problem first.
+
+B lost where its close was an assignment ("commission a margin bridge", "estimate the programme's cost").
+The protocol made the storyline verifiable but did not make it ask for a decision. Protocol 1.1 adds the
+decision frame for that (docs/REASONING_PROTOCOL.md). Whether 1.1 wins needs a new round on unseen cases.
 
 ## Evaluator fixes found by this experiment
 

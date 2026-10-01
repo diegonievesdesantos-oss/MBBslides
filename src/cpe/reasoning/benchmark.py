@@ -23,6 +23,7 @@ from pathlib import Path
 
 from ..qa.proof import headline_quantities
 from . import PROTOCOL_VERSION
+from .decision import decision_signals_text, decision_summary
 from .checks import _load, check_work
 from .grounding import fact_scalars
 
@@ -154,14 +155,16 @@ def evaluate(case_dir: str | Path, work_dir: str | Path, run_meta: dict | None =
                   "by_code": {c: sum(1 for i in issues if i["hard"] and i["code"] == c) for c in sorted({i["code"] for i in issues if i["hard"]})}}
     return {"protocol": PROTOCOL_VERSION, "case": case.name, "run": run_meta or {}, "factuality": factuality, "fact_grounding": fact_grounding,
             "insight_quality": insight_quality, "storyline": storyline, "slide_architecture": architecture, "headlines": headlines,
-            "visual_intent": visual_intent, "reasoning_check_status": chk["status"],
+            "visual_intent": visual_intent, "decision": decision_summary(sl, issues), "reasoning_check_status": chk["status"],
             "note": "dimensions are separate on purpose; there is no total score"}
 
 
 def to_markdown(r: dict) -> str:
     L = [f"# Source-to-deck evaluation — {r['case']}", "", f"_protocol {r['protocol']}_ · run: {json.dumps(r['run'])}", "",
          f"**Factuality (hard gate): {r['factuality']['status']}** — {r['factuality']['hard_failures']} hard failures {r['factuality']['by_code'] or ''}", ""]
-    for dim in ("fact_grounding", "insight_quality", "storyline", "slide_architecture", "headlines", "visual_intent"):
+    for dim in ("fact_grounding", "insight_quality", "storyline", "decision", "slide_architecture", "headlines", "visual_intent"):
+        if dim not in r:
+            continue
         L += [f"## {dim.replace('_', ' ')}", ""]
         for k, v in r[dim].items():
             L.append(f"- {k}: {json.dumps(v, ensure_ascii=False) if isinstance(v, (dict, list)) else v}")
@@ -210,4 +213,4 @@ def evaluate_text(case_dir: str | Path, md_path: str | Path) -> dict:
     return {"case": case.name, "governing_thought": sl["governing_thought"], "key_line_points": len(sl["key_line"]), "slides": len(sl["outline"]),
             "max_slides": json.loads((case / "project.json").read_text(encoding="utf-8")).get("max_slides"),
             "conclusions": concl, "conclusions_reached": f"{sum(concl.values())}/{len(concl)}", "traps_triggered": traps,
-            "numbers": len(nums), "untraced_numbers": untraced}
+            "numbers": len(nums), "untraced_numbers": untraced, "decision_signals": decision_signals_text(sl["text"])}

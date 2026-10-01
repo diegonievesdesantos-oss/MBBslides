@@ -2,8 +2,22 @@
   "round": "s1",
   "created": "2026-10-01",
   "purpose": "blind A/B of storylines",
-  "blind": true,
-  "used_for_calibration": false,
-  "status": "awaiting human votes",
-  "key": "private"
+  "blind": false,
+  "used_for_calibration": true,
+  "status": "complete — 1 expert evaluator, 4 decisive votes, 2–2; key revealed",
+  "key": "revealed",
+  "closed": "2026-10-01",
+  "evidence_standard": "expert single rater (owner decision, docs/HUMAN_EVALUATORS.md)",
+  "data_status": "DEVELOPMENT DATA from protocol 1.1 on: the votes and the expert's written feedback shaped the decision frame (docs/REASONING_PROTOCOL.md)",
+  "result": {
+    "agent_protocol_1.0": [
+      "churn_es",
+      "margin_recovery"
+    ],
+    "agent_baseline": [
+      "plant_capacity_es",
+      "promo_effectiveness"
+    ]
+  },
+  "feedback": "FEEDBACK.md"
 }

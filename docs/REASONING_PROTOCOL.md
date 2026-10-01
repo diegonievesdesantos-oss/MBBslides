@@ -1,7 +1,7 @@
-# Reasoning protocol 1.0 — from raw sources to a deck plan
+# Reasoning protocol 1.1 — from raw sources to a deck plan
 
 *The thinking layer of MBBslides is part of the product, so it is versioned like code.*
-`reasoning_protocol: 1.0` is recorded in every artifact `cpe reason` writes and in every
+`reasoning_protocol: 1.1` is recorded in every artifact `cpe reason` writes and in every
 source-to-deck evaluation, together with the agent/model and skill version that produced the work.
 Engine performance (deterministic code) and agent + engine system performance are reported apart.
 
@@ -19,7 +19,7 @@ short rationales and critic findings — never hidden reasoning traces.
 | `source_manifest.json`, `facts.json` | `cpe reason facts` | sources with hashes; atomic facts with values, unit, period, basis and exact location; derived changes with lineage |
 | `hypotheses.json` | agent | `{id, statement, status: supported|rejected|unresolved, supporting_facts, contradicting_facts, confidence, implication}` |
 | `insights.json` | agent | `{id, statement, facts, hypotheses, materiality: high|medium|low, decision_relevance, caveat?, contradicting_facts?}` |
-| `storyline.json` | agent | `{framework, framework_rationale, candidates: [{text, scores, insights}], governing_thought, key_line: [{id, message, insights, role}]}` |
+| `storyline.json` | agent | `{framework, framework_rationale, candidates: [{text, scores, insights}], governing_thought, key_line: [{id, message, insights, role}], decision}` |
 | `deck_plan.json` | agent | `{slides: [{id, priority: core|support|appendix, role?, key_line, purpose, decision_role, headline, insights, facts, message_type, archetype, reason_to_exist, why_not_merge?}]}` |
 | `ghost_deck.md` | `cpe reason ghost` | the argument from headlines alone |
 | `deck.json` | agent (render spec) | slides cite facts: `evidence: [{"fact": "F0012", "claim": …}]` |
@@ -65,6 +65,9 @@ work back (e.g. a critic finding reopens the storyline).
 8. **Choose** the governing thought; build the key line (2–5 MECE points, each backed by
    insights); choose the framework that fits the question (SCR, CII, PDS, DRI, MPO, CGT, HEC) and
    say why. The argument comes first; the framework is a tool.
+8b. **Decision frame** (1.1) — write `storyline.json["decision"]` (see below): target, levers with
+   their impact, identified total and gap, the current plan tested, options with their cost, asks,
+   gates, KPIs. Key-line roles put the problem or risk before the solution.
 9. **Ghost deck** — write `deck_plan.json`: what deserves a slide, what merges, what goes to the
    appendix, what is omitted. Every slide states its reason to exist; two core slides on one
    key-line point state why they are not one. Then `cpe reason ghost`.
@@ -77,6 +80,51 @@ work back (e.g. a critic finding reopens the storyline).
 
 Then: `cpe reason check work/` → render (`cpe run work/deck.json`) → visual QA → review.
 
+## Decision frame (1.1)
+
+Added after the first expert storyline round (`evals/human_reference/rounds/s1/FEEDBACK.md`). That round
+was 2–2. The evaluator praised the protocol run for **numeric discipline**: figures reconcile, the gap
+to the target is admitted, every lever is quantified, there is governance, and it does not overclaim.
+They praised the no-protocol run for **thinking about the decision**: it challenges the current plan,
+costs the options, marks upper bounds and what to validate, closes with approvable proposals, and puts
+the problem first. A storyline needs both.
+
+```json
+"decision": {
+  "target":       {"value": 1.5, "unit": "PP", "facts": ["F0003"]},
+  "levers":       [{"id": "L1", "statement": "…", "impact": {"value": 0.9, "unit": "PP"}, "facts": ["C0002"],
+                    "bound": "point|upper|lower|range", "validate": "price test on the top 200 references, Q1 2027"}],
+  "identified":   {"value": 1.4, "unit": "PP"},
+  "gap":          {"value": 0.1, "unit": "PP", "how_closed": "…"},
+  "current_plan": {"statement": "budgeted +25% electronics growth", "verdict": "holds|partly|does_not_hold",
+                   "facts": ["…"], "cost_if_kept": {"value": 0.7, "unit": "PP"}},
+  "options":      [{"id": "O1", "statement": "…", "cost": {"value": …, "unit": "…"}, "facts": ["…"], "chosen": true}],
+  "asks":         [{"statement": "…", "type": "approve|reject|reallocate|stop|commission", "owner": "…"}],
+  "gates":        [{"statement": "…", "criterion": "…", "when": "…"}],
+  "kpis":         [{"name": "…", "target": "…", "cadence": "monthly"}]
+}
+```
+
+| check | level | asks for |
+|---|---|---|
+| levers ≠ `identified`, `gap` ≠ target − identified (to one unit of the last digit shown) | **hard** ARITHMETIC_ERROR | figures that reconcile |
+| lever impact not grounded in the facts it cites | **hard** UNSUPPORTED_NUMBER | a defensible lever |
+| GAP_NOT_STATED | warning | say what is missing to reach the target |
+| LEVER_UNQUANTIFIED | warning | every lever quantified separately |
+| OVERCLAIM_BOUND | warning | an upper bound is not stated as certain in the governing thought |
+| UNCERTAINTY_UNMARKED | warning | upper bounds and assumptions carry what to validate before committing |
+| CURRENT_PLAN_NOT_TESTED / _UNSUPPORTED | warning | does the plan / budget in force hold, and what does keeping it cost? |
+| OPTIONS_NOT_COMPARED / OPTION_UNCOSTED | warning | at least two options (keeping the current plan counts), each costed |
+| ASK_MISSING / ASK_DEFERRED | warning | an approvable close — `commission` alone is an assignment for later |
+| GATES_MISSING / KPIS_MISSING | warning | governance: validation gate, approval criterion, tracking KPI |
+| SOLUTION_BEFORE_PROBLEM | warning | problem or risk first (key-line `role`) |
+| KEYLINE_WITHOUT_NUMBERS | info | the storyline stands alone with data |
+
+The benchmark reports a `decision` dimension (elements present, no score). `cpe reason eval-text` reports
+`decision_signals` for any storyline.md. These are lexical cues for comparing systems that write no
+JSON, and they are not verdicts. The frame is a checklist for the PARTNER REVIEW critic: a warning is
+a question to answer ("no option was costed: is there really only one?"), not something to fill in mechanically.
+
 ## Critic roles
 
 Each critic writes structured findings into `work/critique.json`:
@@ -85,14 +133,14 @@ Each critic writes structured findings into `work/critique.json`:
 | critic | question |
 |---|---|
 | FACT CHECKER | Is every important claim grounded? (the deterministic check runs first) |
-| PARTNER REVIEW | Is this the answer a senior client needs, and is the ask clear? |
+| PARTNER REVIEW | Is this the answer a senior client needs? Does it test the current plan, cost the options, and close with something approvable today? |
 | RED TEAM | What contradicts this storyline? Which rejected or unresolved hypothesis could be true? |
 | EDITOR | Can any slide be deleted, merged or moved to the appendix? |
 | DATA-VIZ REVIEW | Is each visual encoding appropriate for its message and data? |
 
 ## Stopping criteria
 
-Stop iterating when: no hard factual error · storyline checks pass · ghost-deck checks pass · no
+Stop iterating when: no hard factual error (decision-frame arithmetic included) · storyline checks pass · ghost-deck checks pass · no
 unsupported headline · visual QA passes · composition passes · no unresolved high-severity critic
 finding. `cpe reason check` reports the first four; render QA the next two. Avoid endless
 self-review: two critique rounds without new high-severity findings end the loop.

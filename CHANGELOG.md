@@ -2,6 +2,19 @@
 
 ## Unreleased — 1.7.0.dev0: consulting intelligence (development)
 
+- **s1 voted (expert, blind storyline A/B): 2–2.** The protocol run won churn and margin; the run without
+  the protocol won plant and promo. Written feedback mapped after unblinding
+  (`evals/human_reference/rounds/s1/FEEDBACK.md`): the protocol run has numeric discipline and
+  governance; the run without it thinks about the decision. s1 is now development data.
+- **Reasoning protocol 1.1, decision frame** (`storyline.json["decision"]`, `cpe.reasoning.decision`):
+  - target, quantified levers, identified total and gap, the current plan tested, costed options,
+    approvable asks, gates and KPIs;
+  - hard: lever arithmetic and lever-impact grounding;
+  - warnings: gap not stated, unquantified lever, upper bound stated as certain, uncertainty without
+    what to validate, current plan untested, options not compared, deferred close, no gates or KPIs,
+    solution before problem;
+  - the benchmark gains a `decision` dimension, and `eval-text` gains `decision_signals`.
+
 - **Experiment 01 (docs/S2D_EXPERIMENT_01.md):** 4 development cases, independent agents without
   (A) and with (B) the reasoning protocol. Substance tie (3/3 conclusions, 0 traps each); B
   verifiable (every number a fact or a recomputed formula), fewer untraced numbers. Blind

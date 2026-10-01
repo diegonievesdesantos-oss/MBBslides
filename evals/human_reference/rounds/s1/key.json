@@ -1,0 +1,70 @@
+{
+  "p001": {
+    "comparison": "agent_baseline->agent_protocol_1.0",
+    "deck": "churn_es",
+    "slide": "storyline",
+    "baseline": "83498313bd96.md",
+    "challenger": "025558638d93.md",
+    "archetype": "storyline",
+    "baseline_score": null,
+    "challenger_score": null,
+    "control": false
+  },
+  "p002": {
+    "comparison": "agent_baseline->agent_protocol_1.0",
+    "deck": "margin_recovery",
+    "slide": "storyline",
+    "baseline": "1e5217de1bee.md",
+    "challenger": "669fb86686a5.md",
+    "archetype": "storyline",
+    "baseline_score": null,
+    "challenger_score": null,
+    "control": false
+  },
+  "p003": {
+    "comparison": "agent_baseline->agent_protocol_1.0",
+    "deck": "plant_capacity_es",
+    "slide": "storyline",
+    "baseline": "d31316452456.md",
+    "challenger": "5cf901d939f2.md",
+    "archetype": "storyline",
+    "baseline_score": null,
+    "challenger_score": null,
+    "control": false
+  },
+  "p004": {
+    "comparison": "agent_baseline->agent_protocol_1.0",
+    "deck": "promo_effectiveness",
+    "slide": "storyline",
+    "baseline": "827f280ab2ee.md",
+    "challenger": "7f6051024b42.md",
+    "archetype": "storyline",
+    "baseline_score": null,
+    "challenger_score": null,
+    "control": false
+  },
+  "r001": {
+    "comparison": "agent_baseline->agent_protocol_1.0",
+    "deck": "churn_es",
+    "slide": "storyline",
+    "baseline": "83498313bd96.md",
+    "challenger": "025558638d93.md",
+    "archetype": "storyline",
+    "baseline_score": null,
+    "challenger_score": null,
+    "control": false,
+    "repeat_of": "p001"
+  },
+  "r002": {
+    "comparison": "agent_baseline->agent_protocol_1.0",
+    "deck": "margin_recovery",
+    "slide": "storyline",
+    "baseline": "1e5217de1bee.md",
+    "challenger": "669fb86686a5.md",
+    "archetype": "storyline",
+    "baseline_score": null,
+    "challenger_score": null,
+    "control": false,
+    "repeat_of": "p002"
+  }
+}

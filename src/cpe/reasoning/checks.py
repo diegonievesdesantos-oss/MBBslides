@@ -22,6 +22,7 @@ import re
 from pathlib import Path
 
 from . import PROTOCOL_VERSION
+from .decision import check_decision
 from .grounding import ground_numbers
 
 CAUSAL = re.compile(r"\b(because|driven by|due to|caused by|causes|explains?|explained by|as a result of|porque|debido a|impulsad[oa] por|explica|causad[oa])\b", re.I)
@@ -476,7 +477,7 @@ def check_work(work_dir: str | Path, sources_dir: str | Path | None = None) -> d
         "facts": check_facts(fm, Path(sources_dir) if sources_dir else None) + computed_issues,
         "hypotheses": check_hypotheses(hy, facts),
         "insights": check_insights(ins, facts, hyps, source_text),
-        "storyline": check_storyline(sl, insights, facts, hyps, project),
+        "storyline": check_storyline(sl, insights, facts, hyps, project) + check_decision(sl, facts, project),
         "deck_plan": check_deck_plan(dp, sl, insights, facts, project),
         "deck": factcheck_deck(deck, facts),
     }
