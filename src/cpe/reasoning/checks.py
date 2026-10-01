@@ -22,6 +22,7 @@ import re
 from pathlib import Path
 
 from . import PROTOCOL_VERSION
+from .analysis import check_analyses
 from .decision import check_decision
 from .grounding import ground_numbers
 
@@ -69,7 +70,7 @@ def check_project(p: dict | None) -> list[dict]:
 
 # ── facts ────────────────────────────────────────────────────────────────────────────────────────
 
-def check_facts(fm: dict | None, sources_dir: Path | None = None) -> list[dict]:
+def check_facts(fm: dict | None, sources_dir: Path | None = None, work_dir: Path | None = None) -> list[dict]:
     if not fm:
         return [_issue("error", "FACTS_MISSING", "facts.json", None, "No fact model: run `cpe reason facts`")]
     out, ids = [], set()
@@ -79,6 +80,10 @@ def check_facts(fm: dict | None, sources_dir: Path | None = None) -> list[dict]:
         # v1.8: against the RAW content of each file (every way a number can be read), not a fresh
         # re-extraction — an extractor upgrade must not turn an old, true fact into a fabrication
         source_numbers = {p.name: raw_numbers(p) for p in Path(sources_dir).rglob("*") if p.is_file() and not p.name.startswith(".")}
+    if work_dir is not None and source_numbers is not None:
+        from .analysis import output_tables
+
+        source_numbers.update({name: raw_numbers(p) for p, name in output_tables(work_dir)})
     for f in fm["facts"]:
         if f["id"] in ids:
             out.append(_issue("error", "FACT_DUPLICATE_ID", "facts.json", f["id"], "duplicate fact id"))
@@ -615,7 +620,7 @@ def check_work(work_dir: str | Path, sources_dir: str | Path | None = None) -> d
         "project": check_project(project),
         "conflicts": check_conflicts(work, fm, dp_used),
         "critique": check_critique(_load(work, "critique.json")),
-        "facts": check_facts(fm, Path(sources_dir) if sources_dir else None) + computed_issues,
+        "facts": check_facts(fm, Path(sources_dir) if sources_dir else None, work) + computed_issues + check_analyses(work, sources_dir),
         "hypotheses": check_hypotheses(hy, facts),
         "insights": check_insights(ins, facts, hyps, source_text),
         "storyline": check_storyline(sl, insights, facts, hyps, project) + check_decision(sl, facts, project),

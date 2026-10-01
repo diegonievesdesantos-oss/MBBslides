@@ -235,8 +235,12 @@ def build_fact_model(paths: list[str | Path]) -> dict:
         n[0] += 1
         return f"F{n[0]:04d}"
 
-    facts = []
+    facts, datasets = [], []
     for t in inv["tables"]:
+        if len(t["rows"]) > DATASET_ROWS:  # row-level data: summarised by an analysis script, not read cell by cell
+            datasets.append({"file": t["source"], "loc": t["loc"], "rows": len(t["rows"]), "columns": [str(h) for h in t["header"]],
+                             "note": "row-level dataset: aggregate it with `cpe reason analyze` to get citable facts"})
+            continue
         facts += _table_facts(t, next_id)
     by_sentence: dict = {}  # one text fact per sentence, with every number it states
     for f in inv["facts"]:
@@ -260,11 +264,13 @@ def build_fact_model(paths: list[str | Path]) -> dict:
         facts.append({"id": next_id(), "claim": ctx, "values": vals,
                       "source": {"file": src, "loc": loc}, "fact_type": "text_statement", "confidence": 0.8})
     stats = {"sources": len(inv["sources"]), "tables": len(inv["tables"]), "facts": len(facts),
-             "by_type": {k: sum(1 for f in facts if f["fact_type"] == k) for k in ("table_value", "derived_change", "text_statement")}}
+             "by_type": {k: sum(1 for f in facts if f["fact_type"] == k) for k in ("table_value", "derived_change", "text_statement")},
+             "datasets": datasets}
     return {"protocol": PROTOCOL_VERSION, "facts": facts, "stats": stats, "blocks": inv["blocks"]}
 
 
-EXTRACTOR_VERSION = "1.8"  # bump when extraction changes what facts or values are produced
+EXTRACTOR_VERSION = "1.8"
+DATASET_ROWS = 150  # a table longer than this is row-level data, not a report table  # bump when extraction changes what facts or values are produced
 
 
 def fact_key(f: dict) -> tuple:
@@ -321,7 +327,15 @@ def write_fact_model(sources_dir: str | Path, work_dir: str | Path) -> dict:
     work = Path(work_dir)
     work.mkdir(parents=True, exist_ok=True)
     (work / "source_manifest.json").write_text(json.dumps(source_manifest(paths), indent=2) + "\n", encoding="utf-8")
-    fm = build_fact_model(paths)
+    from .analysis import output_tables
+
+    extra = output_tables(work)  # tables written by recorded analysis scripts (v1.8)
+    fm = build_fact_model(paths + [p for p, _ in extra])
+    rename = {p.name: name for p, name in extra}
+    for f in fm["facts"]:
+        if f["source"].get("file") in rename and not any(q.name == f["source"]["file"] for q in paths):
+            f["source"]["file"] = rename[f["source"]["file"]]
+            f["source"]["kind"] = "analysis"
     blocks = fm.pop("blocks")
     prev = work / "facts.json"
     if prev.exists():  # re-extraction keeps the ids the agent's artifacts already cite (v1.8)

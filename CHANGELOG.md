@@ -2,6 +2,13 @@
 
 ## Unreleased — 1.7.0.dev0: consulting intelligence (development)
 
+- **Protocol 1.3, row-level data:**
+  - `cpe reason analyze work/ script.py --sources …` runs the agent's analysis script twice and records
+    script, input and output hashes in `analysis.json`;
+  - the output tables become citable facts with lineage;
+  - tables longer than 150 rows are listed as datasets, not read cell by cell;
+  - hard gates ANALYSIS_STALE and ANALYSIS_NOT_REPRODUCIBLE.
+
 - **First external case (round s3, private).**
   - The owner supplied a corporate business case, kept under `.private/`; no content is in the repository.
   - Blind storyline A/B: protocol 1.2 preferred, 1/1, consistent on the side-swapped repeat.

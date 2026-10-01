@@ -1,7 +1,7 @@
-# Reasoning protocol 1.2 — from raw sources to a deck plan
+# Reasoning protocol 1.3 — from raw sources to a deck plan
 
 *The thinking layer of MBBslides is part of the product, so it is versioned like code.*
-`reasoning_protocol: 1.2` is recorded in every artifact `cpe reason` writes and in every
+`reasoning_protocol: 1.3` is recorded in every artifact `cpe reason` writes and in every
 source-to-deck evaluation, together with the agent/model and skill version that produced the work.
 Engine performance (deterministic code) and agent + engine system performance are reported apart.
 
@@ -69,6 +69,14 @@ work back (e.g. a critic finding reopens the storyline).
 
 1. **Extract facts** — `cpe reason facts sources/ -o work/`. Read `facts.json`; note conflicts
    (same KPI, different values or periods), forecast vs actual, units.
+1b. **Analyse row-level data** (1.3):
+   - A table longer than 150 rows (orders, CRM, ledger) is listed under `facts.json` → `stats.datasets`, not read cell by cell.
+   - Write a script that reads `$CPE_SOURCES` and writes CSV tables to `$CPE_OUT`. Keep them small and labelled, one measure per column.
+   - Run `cpe reason analyze work/ script.py --sources sources/`. It runs the script twice, records hashes in `work/analysis.json` and fails if the two runs differ.
+   - Then re-run `cpe reason facts`: the output tables become facts (`analysis/<script>/<file>`), citable like any other.
+   - Check the data before trusting it: duplicates, double-loaded batches, test rows, time zones, units.
+   - Record what you cleaned and why in the script.
+   - The check blocks a deck whose analysis outputs no longer match their script or inputs (ANALYSIS_STALE, ANALYSIS_NOT_REPRODUCIBLE).
 2. **Business question** — write `project.json`. If the brief is ambiguous, infer a working
    question and list it under `inferred`; do not continue without a question.
 3. **Hypotheses** — 3–6 competing explanations / answers, including the one management believes.

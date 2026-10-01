@@ -385,6 +385,12 @@ def cmd_reason(a):
         ghost.write_ghost(a.work)
         _p(checks.report_markdown(r))
         return 1 if r["status"] == "blocked" else 0
+    if a.reason_cmd == "analyze":
+        from .reasoning.analysis import run_analysis
+
+        e = run_analysis(a.work, a.script, a.sources)
+        _p(f"analysis {e['name']}: {len(e['outputs'])} tables ({', '.join(e['outputs'])}), reproducible {e['reproducible']} → re-run `cpe reason facts` to cite them")
+        return 0 if e["reproducible"] else 1
     if a.reason_cmd == "ghost":
         _p(ghost.write_ghost(a.work).read_text(encoding="utf-8"))
         return 0
@@ -548,6 +554,8 @@ def main(argv=None) -> int:
     r = rs.add_parser("check"); r.add_argument("work"); r.add_argument("--sources"); r.add_argument("--enrich", action="store_true",
                                                                                                     help="fill deck.json evidence from the cited facts first"); r.set_defaults(f=cmd_reason)
     r = rs.add_parser("ghost"); r.add_argument("work"); r.set_defaults(f=cmd_reason)
+    r = rs.add_parser("analyze", help="run an analysis script over row-level sources; its CSV outputs become citable facts")
+    r.add_argument("work"); r.add_argument("script"); r.add_argument("--sources", required=True); r.set_defaults(f=cmd_reason)
     r = rs.add_parser("trace"); r.add_argument("work"); r.add_argument("text"); r.add_argument("--json", action="store_true"); r.set_defaults(f=cmd_reason)
     r = rs.add_parser("eval-text", help="any system's storyline.md vs the case reference (conclusions, traps, untraced numbers)")
     r.add_argument("case"); r.add_argument("storyline"); r.set_defaults(f=cmd_reason)

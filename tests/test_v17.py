@@ -179,7 +179,7 @@ def test_benchmark_catches_traps(work):
 def test_reasoning_protocol_is_versioned():
     from cpe.reasoning import PROTOCOL_VERSION
 
-    assert PROTOCOL_VERSION == "1.2"
+    assert PROTOCOL_VERSION == "1.3"
     assert json.loads((RUN / "facts.json").read_text())["protocol"] == "1.0"  # a stored run keeps the protocol it was produced under
     assert "development run — NOT evidence" in (RUN / "RUN.json").read_text()
     for d in ("development", "sealed", "external"):
@@ -634,3 +634,34 @@ def test_decimal_comma_documents_and_markdown_tables(tmp_path):
     assert "line 5" in locs  # the line the table starts on
     assert detect_unit("Pedidos/semana") == "" and detect_unit("Año ant.") == "" and detect_unit("Tiempo (min)") == "MINUTES"
     assert detect_unit("Horas perdidas 2025") == "HOURS"
+
+
+# ── v1.8: row-level data through recorded analysis scripts ──
+
+def test_row_level_data_via_recorded_analysis(tmp_path):
+    from cpe.reasoning.analysis import check_analyses, run_analysis
+    from cpe.reasoning.checks import check_facts
+    from cpe.reasoning.facts import write_fact_model
+    src, work = tmp_path / "sources", tmp_path / "work"
+    src.mkdir()
+    rows = "\n".join(f"{i},{'A' if i % 3 else 'B'},{10 + i % 7}" for i in range(400))
+    (src / "orders.csv").write_text("order_id,store,minutes\n" + rows + "\n", encoding="utf-8")
+    fm = write_fact_model(src, work)
+    assert fm["stats"]["datasets"][0]["rows"] == 400 and fm["stats"]["facts"] == 0  # not read cell by cell
+    script = tmp_path / "by_store.py"
+    script.write_text(
+        "import csv, os, collections\n"
+        "rows = list(csv.DictReader(open(os.path.join(os.environ['CPE_SOURCES'], 'orders.csv'))))\n"
+        "agg = collections.defaultdict(list)\n"
+        "for r in rows: agg[r['store']].append(float(r['minutes']))\n"
+        "with open(os.path.join(os.environ['CPE_OUT'], 'minutes_by_store.csv'), 'w') as f:\n"
+        "    f.write('store,orders,avg_minutes\\n')\n"
+        "    for k in sorted(agg): f.write(f'{k},{len(agg[k])},{sum(agg[k]) / len(agg[k]):.2f}\\n')\n", encoding="utf-8")
+    e = run_analysis(work, script, src)
+    assert e["reproducible"] and list(e["outputs"]) == ["minutes_by_store.csv"]
+    fm = write_fact_model(src, work)
+    files = {f["source"]["file"] for f in fm["facts"]}
+    assert files == {"analysis/by_store/minutes_by_store.csv"}
+    assert check_facts(fm, src, work) == [] and check_analyses(work, src) == []
+    (work / "analysis" / "out" / "by_store" / "minutes_by_store.csv").write_text("store,orders,avg_minutes\nA,999,1.00\n")
+    assert {i["code"] for i in check_analyses(work, src)} == {"ANALYSIS_STALE"}
