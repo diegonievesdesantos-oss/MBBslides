@@ -6,6 +6,7 @@
   },
   "storyline": {
     "framework": "SCR",
+    "collection": true,
     "governing_thought": "Each operating_model slide is judged on what it is trying to be",
     "key_line": [
       {
@@ -214,7 +215,7 @@
       "source": "Batería de pruebas (sintética)"
     },
     {
-      "headline": "Six layers from strategy to infrastructure",
+      "headline": "The operating model runs on six layers, from strategy to infrastructure",
       "message_type": "structure",
       "visual": {
         "type": "layers",

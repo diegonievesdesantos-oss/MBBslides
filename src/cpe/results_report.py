@@ -23,6 +23,10 @@ def _f(v, nd=1):
     return "—" if v is None else (f"{v:.{nd}f}" if isinstance(v, float) else str(v))
 
 
+def _verdict(v):
+    return "—" if v is None else ("passed" if v else "FAILED")
+
+
 def _pct(v):
     return "—" if v is None else f"{round(100 * v)}%"
 
@@ -53,11 +57,15 @@ def render_block(data: dict) -> str:
          f"| archetypes gate-eligible (n ≥ 8) | {len(cov.get('gate_eligible') or [])} of {cov.get('of', 17)} |",
          f"| archetypes not healthy | {', '.join(gates.get('not_healthy') or []) or 'none'} |",
          f"| QA errors (visual / authoring lint) | {_f(o.get('qa_errors_visual'))} / {_f(reg.get('qa_errors_authoring'))} |",
-         f"| slides · decks | {_f(reg.get('slides_measured'))} · {_f(reg.get('cases_total'))} |", ""]
+         f"| slides authored · resolved · measured · decks | {_f(reg.get('slides_authored'))} · {_f(reg.get('slides_resolved'))} · "
+         f"{_f(reg.get('slides_measured'))} · {_f(reg.get('cases_total'))} |",
+         f"| visual QA · authoring QA · benchmark | {_verdict(reg.get('visual_qa_passed'))} · {_verdict(reg.get('authoring_qa_passed'))} · "
+         f"{_verdict(reg.get('benchmark_passed'))} |", ""]
     L += ["| other signal | what it measures | current |", "|---|---|---|"]
     if v2.get("suite_composition") is not None:
         vo = v2.get("overall") or {}
-        L.append(f"| **Holdout v2** | sealed, never tuned on, run once per release candidate ({v2.get('cases_total')} decks, {v2.get('slides_measured')} slides) | "
+        L.append(f"| **Holdout v2** | sealed at v1.4, run once (v1.4.0); development-known since v1.5 ({v2.get('cases_total')} decks, "
+                 f"{_f(v2.get('slides_authored'))} authored / {_f(v2.get('slides_measured'))} measured slides) | "
                  f"overall {_f(v2.get('suite_composition'))} · macro {_f(vo.get('macro_archetype_score'))} · P10 {_f((v2.get('distribution') or {}).get('p10'))} · "
                  f"weakest {vo.get('weakest_archetype')} {_f(vo.get('weakest_archetype_score'))} |")
     else:
@@ -89,7 +97,9 @@ def render_block(data: dict) -> str:
             L.append(f"| `{name}` | {'PASSED' if c.get('qa_passed') else 'FAILED'} · {_f(c.get('qa_errors'))} errors · {_f(c.get('qa_warnings'))} warnings | "
                      f"{_f(c.get('qa_score'))} | {_f(c.get('composition'))} |")
     pv = reg.get("provenance") or {}
-    L += ["", f"<sub>engine {data.get('version')} · evaluated commit `{(pv.get('evaluated_commit') or '?')[:10]}`{' (DIRTY)' if pv.get('dirty') else ''} · "
+    src_dirty = pv.get("evaluated_source_dirty", pv.get("dirty"))
+    L += ["", f"<sub>engine {data.get('version')} · evaluated source commit `{(pv.get('evaluated_source_commit') or pv.get('evaluated_commit') or '?')[:10]}`"
+          f"{' (evaluated source DIRTY: not release truth)' if src_dirty else ''} · "
           f"{env.get('libreoffice', '?')} · fontconfig {env.get('fontconfig', '?')} · container `{env.get('container_image') or 'none'}` · "
           f"render fingerprint `{env.get('fingerprint', '?')}`</sub>", "", END]
     return "\n".join(L)

@@ -140,7 +140,60 @@ def _ink_grid(png_path: str, band: Box, focus_rgbs: list[tuple[int, int, int]]):
                 wsum += w
     com = (wx / wsum, wy / wsum) if wsum else (0.5, 0.5)
     _mark_rules(crop, grid)
-    return grid, dark / max(1, total), focus / max(1, ink), com, _components(egrid), _components(agrid)
+    return grid, dark / max(1, total), focus / max(1, ink), com, _components(egrid), _components(agrid), _occupancy(crop, grid)
+
+
+def _occupancy(crop, grid) -> list[list[int]]:
+    """(v1.5) What the composition OCCUPIES, for utilization and dead space — not the same as ink:
+
+    * a visible filled panel (a KPI card, a tinted band) occupies its area even when its fill is
+      too light to count as ink — the reader sees the card, not only the text inside it;
+    * an isolated thin VERTICAL line running through otherwise empty cells (a separator drawn to
+      the foot of the slide under a strip of figures) does not make that empty space "used".
+    Found by the r2 scorer–human disagreement on KPI dashboards (docs/KPI_DASHBOARD_DIAGNOSIS.md);
+    horizontal rules keep their v1.2 meaning (they structure the rows they separate)."""
+    from collections import Counter
+
+    cw, ch = crop.size
+    ny, nx = len(grid), len(grid[0])
+    small = crop.resize((max(1, cw // 4), max(1, ch // 4)))
+    pixels = small.get_flattened_data() if hasattr(small, "get_flattened_data") else small.getdata()
+    bg = Counter(pixels).most_common(1)[0][0]  # the page colour actually drawn
+    px = small.load()
+    sw, sh = small.size
+    occ = [row[:] for row in grid]
+    # panels: ≥ 60% of the cell differs from the page colour, but is not ink
+    for j in range(ny):
+        y0, y1 = int(j * sh / ny), max(int(j * sh / ny) + 1, int((j + 1) * sh / ny))
+        for i in range(nx):
+            if occ[j][i]:
+                continue
+            x0, x1 = int(i * sw / nx), max(int(i * sw / nx) + 1, int((i + 1) * sw / nx))
+            n = diff = 0
+            for y in range(y0, min(y1, sh)):
+                for x in range(x0, min(x1, sw)):
+                    n += 1
+                    r, g, b = px[x, y]
+                    if max(abs(r - bg[0]), abs(g - bg[1]), abs(b - bg[2])) >= 6:
+                        diff += 1
+            if n and diff / n >= 0.6:
+                occ[j][i] = 1
+    # isolated vertical lines: a run of ≥ 6 occupied cells in one column whose left and right
+    # neighbours are all empty — a separator crossing empty space, not content
+    for i in range(nx):
+        j = 0
+        while j < ny:
+            if not occ[j][i]:
+                j += 1
+                continue
+            k = j
+            while k < ny and occ[k][i] and not (i > 0 and occ[k][i - 1]) and not (i < nx - 1 and occ[k][i + 1]):
+                k += 1
+            if k - j >= 6:
+                for r in range(j, k):
+                    occ[r][i] = 0
+            j = max(k, j + 1)
+    return occ
 
 
 def _mark_rules(crop, grid) -> None:
@@ -253,15 +306,15 @@ def measure(png_path: str, spans: list[dict], slide: dict, manifest: dict, theme
     sid = manifest.get("slide_id") or slide.get("id", "?")
     band = Box(GRID.margin_l, GRID.body_y, GRID.content_w, GRID.body_bottom - GRID.body_y)
     focus_cols = [hex_to_rgb(theme.c("primary")), hex_to_rgb(theme.c("highlight"))]
-    grid, coverage, emph_share, (cx, cy), regions, accent_regions = _ink_grid(png_path, band, focus_cols)
+    grid, coverage, emph_share, (cx, cy), regions, accent_regions, occ = _ink_grid(png_path, band, focus_cols)
     ny, nx = len(grid), len(grid[0])
     sc = SlideComposition(sid)
-    # dead space
-    empty = _largest_empty_rect(grid) / (nx * ny)
+    # dead space (on occupancy: panels occupy, isolated separators do not)
+    empty = _largest_empty_rect(occ) / (nx * ny)
     sc.raw["largest_empty_share"] = round(empty, 3)
     sc.metrics["dead_space"] = max(0.0, min(1.0, 1 - (empty - 0.18) / 0.4))
     # utilization
-    bb = _bbox(grid)
+    bb = _bbox(occ)
     util = 0.0 if bb is None else ((bb[2] - bb[0] + 1) * (bb[3] - bb[1] + 1)) / (nx * ny)
     sc.raw["utilization"] = round(util, 3)
     sc.metrics["utilization"] = _band(0.75, 1.0, util, 0.5)
@@ -297,8 +350,27 @@ def measure(png_path: str, spans: list[dict], slide: dict, manifest: dict, theme
             if ex.get("_rows_total"):
                 counts.add(float(ex["_rows_total"]))
     checks = []
-    for v, unit in hnums:
-        checks.append(any(abs(v - b) <= max(0.051, 0.01 * v) for b in body_nums) or v in counts or _scaled_match(v, unit, body_nums))
+    from .proof import derive, headline_quantities, slide_series
+
+    hq = headline_quantities(head)
+    series = None
+    proofs = []
+    for i, (v, unit) in enumerate(hnums):
+        q = next((x for x in hq if abs(x["value"] / (x["scale"] or 1) - v) < 1e-9), None)
+        rounding = 0.5 * 10 ** (-q["decimals"]) if q else 0.0  # "21%" is proven by 21.4: the headline rounds
+        if any(abs(v - b) <= max(0.051, 0.01 * v, rounding) for b in body_nums):
+            rec = {"status": "direct"}
+        elif v in counts:
+            rec = {"status": "count"}
+        elif _scaled_match(v, unit, body_nums):
+            rec = {"status": "scaled"}
+        else:  # (v1.5) arithmetic lineage: sum / difference / ratio / % change / pp / share of a visible series
+            series = slide_series(slide) if series is None else series
+            rec = derive(q, series) if q else {"status": "unknown", "reason": "unit not parsed"}
+        rec.setdefault("headline_value", f"{v:g}{unit}")
+        proofs.append(rec)
+        checks.append(rec["status"] != "unknown")
+    sc.raw["proof"] = proofs
     hls = []
     for ex in [slide.get("visual")] + list(slide.get("exhibits") or []):
         if isinstance(ex, dict):

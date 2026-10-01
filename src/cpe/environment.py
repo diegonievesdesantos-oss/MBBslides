@@ -113,11 +113,17 @@ def installed_font_families() -> list[str]:
 
 
 def git_commit() -> str | None:
+    """HEAD, suffixed "-dirty" only when the EVALUATED SOURCE changed (engine, cases, profiles…).
+    Result files written by a run (RESULT_PATHS) do not make it dirty (v1.5)."""
     c = _run(["git", "-C", str(ROOT), "rev-parse", "HEAD"])
     if not re.fullmatch(r"[0-9a-f]{40}", c or ""):
         return None
-    dirty = _run(["git", "-C", str(ROOT), "status", "--porcelain", "--untracked-files=no"])
-    return c + ("-dirty" if dirty else "")
+    return c + ("-dirty" if dirty_paths() else "")
+
+
+def working_tree_dirty() -> bool:
+    """Any tracked change at all, results included (reported, never used as release truth)."""
+    return bool(_run(["git", "-C", str(ROOT), "status", "--porcelain", "--untracked-files=no"]))
 
 
 # Files a results run WRITES (and the docs that quote it): a change here does not make the evaluated
@@ -147,6 +153,9 @@ def provenance() -> dict:
     dp = dirty_paths() if commit else []
     return {
         "evaluated_commit": commit, "git_tree": tree or None, "dirty": bool(dp) or commit is None, "dirty_paths": dp[:20],
+        # v1.5 terminology: the source the numbers describe vs the checkout they were written from
+        "evaluated_source_commit": commit, "evaluated_source_dirty": bool(dp) or commit is None,
+        "working_tree_commit": commit, "working_tree_dirty": working_tree_dirty() if commit else None,
         "engine_version": __version__, "container_image": os.environ.get("CPE_CONTAINER_IMAGE"), "container_digest": os.environ.get("CPE_CONTAINER_DIGEST"),
         "eval_timestamp_utc": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
     }

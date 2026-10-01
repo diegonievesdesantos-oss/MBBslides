@@ -1,5 +1,23 @@
 # Evaluation — independent signals that are never merged
 
+## v1.5: what is development data and what could still validate it
+
+| data | status for v1.5 | why |
+|---|---|---|
+| regression suite, archetype battery, `11_render_edges` | development | visible, drives changes |
+| example decks (Alvora, Gallery, Kestrel) | development | QA fixtures |
+| robustness seeds | development | development slides |
+| human round **r2** | **development** (since `mark-used`, v1.5) | its votes drove the KPI-dashboard diagnosis and the profile statuses. Its blind result for **v1.4** is preserved in `rounds/r2/VALIDATION_v1.4.json` (single rater) |
+| **holdout v2** | **development-known** | blind for v1.4 (run once); its findings (KPI dashboards, waterfall negatives, long statements, derived numbers) drove v1.5. Any v1.5 run is labelled development-known, never "unseen" |
+| JET corporate template | development | since v1.3 |
+| **external holdout** (`.private/holdouts/v15_external/`) | potential validation | **AWAITING INPUT** — docs/EXTERNAL_HOLDOUT_PROTOCOL.md |
+| **unseen corporate template** (`.private/holdouts/v15_corporate/`) | potential validation | **AWAITING USER-SUPPLIED TEMPLATE** |
+| human round **r3** (built after the v1.5 freeze, private key) | potential validation | awaiting votes |
+
+Kendall τ between score gaps and human preference is reported as **directional agreement only**
+(does a bigger score gap go with a clearer human preference?). With one rater and ~40 pairs its
+interval is wide; it is never a target to optimise.
+
 ```
 DEVELOPMENT (regression + battery + examples + robustness)  ≠  SEALED HOLDOUT  ≠  HUMAN EVALUATION
 ```
@@ -36,6 +54,14 @@ material and QA fixtures (`--suite examples`), **not** evidence of generalisatio
 | per archetype: n, mean, median, min, P10, flags, coverage, health | |
 | `absolute_floor_breaches`, `not_healthy` | absolute expectations not met (below) |
 
+**QA verdicts (v1.5)** are three, never merged: `visual_qa_passed` (no error on the rendered
+slides: overflow, collision, off-slide, contrast…), `authoring_qa_passed` (no error in the writing:
+storyline, headline wording, intent — `qa/report.py:is_authoring`) and `benchmark_passed` (the suite
+gate plus both). A case written to trip authoring lint declares `"eval": {"lint_stress": true}` and
+is excluded from the authoring verdict, not from the suite. Slide counts are reported three ways:
+**authored** (in the specs), **resolved** (after dividers / agenda / splits) and **measured**
+(with a composition score) — e.g. holdout v2: 157 authored, 158 measured.
+
 **Coverage** decides how much a number may claim (`evals/archetype_gates.json`):
 n < 5 → `INSUFFICIENT COVERAGE` (reported, never gated, never "healthy"); 5 ≤ n < 8 → provisional;
 n ≥ 8 → gate-eligible. The 17-deck **archetype battery** (`scripts/make_archetype_battery.py`, 8–12
@@ -69,9 +95,19 @@ baseline). The CI job `quality_profile` renders the battery and runs `cpe qualit
 headline +20%, body text +25% (translation length), process +2 steps, table ×1.5 rows, chart +2
 series, "€1.2M" → "€1,200,000", one source → three, +1 list/KPI/column item. Measured per variant:
 score delta, layout change, ≥ 2 pt font drop, new visual QA errors, new flags. **Catastrophic** = a
-drop ≥ 25 points or a new visual QA error. Reported: median and P90 drop, catastrophic rate —
-separate from the composition score. CI job `robustness` fails if catastrophic variants exceed
-`evals/robustness/baseline.json`.
+drop ≥ 25 points or a new visual QA error.
+
+Reported (v1.5) globally, per perturbation and per archetype: median / P90 / P95 / max drop,
+meaningful-drop rate (≥ 5), large-drop rate (≥ 10), new-visual-error rate, font-drop rate,
+layout-change rate, **layout change with a meaningful drop** rate, new-flag rate. A layout change
+alone is not bad — re-composing for more content is the point.
+
+| gate | status |
+|---|---|
+| no variant gains a visual QA error (vs baseline) | enforced (CI) |
+| catastrophic variants ≤ baseline | enforced (CI) |
+| variants (coverage) ≥ baseline | enforced (CI) |
+| P90 drop ≤ baseline + 3 · large-drop rate, font-drop rate, layout-change-with-drop rate ≤ baseline + 5 pp | provisional (reported) |
 
 ## Holdout v2 protocol
 
@@ -124,6 +160,16 @@ scripts/cpe human mark-used evals/human_reference/rounds/r1 --change "…"
 
 - Blinding: random image names, left/right and pair order randomised per evaluator, no version,
   layout or score on the page; `key.json` is never served.
+- **Private key (v1.5, new rounds).** The evaluator bundle (`STATUS.json`, `pairs.json`,
+  `index.html`, `img/`, `votes/`, `key.sha256`) never contains the key: it lives in
+  `.private/human_reference/keys/<round>/key.json` (gitignored), with the round's purpose. The bundle
+  carries only a SHA-256 commitment, checked whenever the key is used:
+  `cpe human report <round> --key <key.json>` (the report is written next to the key while the round
+  is open), `cpe human close <round> --key …` reveals it after voting. A test asserts the bundle has
+  no version, role, layout, score or mapping. r1 and r2 keep their historical layout (key in the round).
+- **Several raters (r3).** Each rater is reported alone (`by_rater`: preference, ties, left share,
+  self-consistency) and pooled; Fleiss' κ needs ≥ 2 raters on shared pairs; a rater who votes a pair
+  twice counts once (the last vote) — never as two raters.
 - **Statistics** (`report`): preference with a Wilson 95% interval, ties, per comparison and
   archetype, left/right bias, self-consistency on side-swapped repeats, inter-rater agreement
   (Fleiss' κ); v1.4 adds per-pair **scorer/human agreement** (agree / disagree / tie, overall and by
@@ -149,7 +195,12 @@ slide win. Profile changes follow `evals/profile_changes.md`.
 archetypes, absolute gates), `examples`, `robustness`, `holdout.v2` / `holdout.v1_historical`,
 `human_reference.rounds.{r1,r2}`, `development_private`, `environment`. Each release signal carries
 `provenance` (`evaluated_commit`, `git_tree`, `dirty`, engine version, container digest,
-environment fingerprint, UTC timestamp of the run). The README block is generated from it
+environment fingerprint, UTC timestamp of the run). v1.5 names the two commits apart:
+`evaluated_source_commit` / `evaluated_source_dirty` (the engine, cases and profiles the numbers
+describe — dirty only if one of THOSE changed) and `working_tree_commit` / `working_tree_dirty` (the
+checkout the results were written from; result files such as `latest.json` or the README make it
+dirty, never the evaluated source). The README footer shows the evaluated source commit and says
+"DIRTY" only when the evaluated source was. The README block is generated from it
 (`cpe results readme`, checked in CI) and `cpe results verify` (CI) fails unless every release
 signal was evaluated on a clean commit whose engine inputs equal HEAD's — see
 docs/REPRODUCIBILITY.md#release-workflow.

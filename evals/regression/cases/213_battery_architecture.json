@@ -6,6 +6,7 @@
   },
   "storyline": {
     "framework": "SCR",
+    "collection": true,
     "governing_thought": "Each architecture slide is judged on what it is trying to be",
     "key_line": [
       {
@@ -118,7 +119,7 @@
       "source": "Battery fixture (synthetic)"
     },
     {
-      "headline": "Five layers and twenty components in the current landscape",
+      "headline": "The current landscape has five layers and twenty components",
       "message_type": "structure",
       "visual": {
         "type": "architecture",

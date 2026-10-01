@@ -1,0 +1,206 @@
+{
+  "meta": {
+    "title": "Render edge cases",
+    "deck_type": "strategy_deck",
+    "theme": "meridian"
+  },
+  "storyline": {
+    "framework": "SCR",
+    "governing_thought": "Edge cases must render inside their zones",
+    "key_line": [
+      {
+        "id": "K1",
+        "role": "situation",
+        "message": "Edge cases"
+      },
+      {
+        "id": "K2",
+        "role": "resolution",
+        "message": "Fixed"
+      }
+    ]
+  },
+  "eval": {
+    "purpose": "v1.5 minimised reproductions of the v1.4 holdout render findings: waterfalls with negative totals (labels/connectors below the zone, OUTSIDE_ZONE) and long statements (RENDER_TEXT_SPILL)"
+  },
+  "slides": [
+    {
+      "id": "re01",
+      "section": "K1",
+      "purpose": "Eval case",
+      "headline": "El plan mejora el resultado de la red en 21 M€",
+      "message_type": "change_bridge",
+      "source": "Eval fixture (synthetic)",
+      "visual": {
+        "type": "waterfall",
+        "title": "Bridge",
+        "unit": "M€",
+        "data": {
+          "steps": [
+            {
+              "label": "2025",
+              "value": -4,
+              "type": "total"
+            },
+            {
+              "label": "Cierres de tiendas",
+              "value": 9
+            },
+            {
+              "label": "Reformas integrales",
+              "value": 14
+            },
+            {
+              "label": "Traspaso al canal online",
+              "value": 5
+            },
+            {
+              "label": "Costes de cierre",
+              "value": -7
+            },
+            {
+              "label": "2027",
+              "type": "total"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "re02",
+      "section": "K1",
+      "purpose": "Eval case",
+      "headline": "Losses widen from €3M to €12M as volumes fall",
+      "message_type": "change_bridge",
+      "source": "Eval fixture (synthetic)",
+      "visual": {
+        "type": "waterfall",
+        "title": "Bridge",
+        "unit": "€M",
+        "data": {
+          "steps": [
+            {
+              "label": "2024",
+              "value": -3,
+              "type": "total"
+            },
+            {
+              "label": "Volume",
+              "value": -6
+            },
+            {
+              "label": "Price",
+              "value": 2
+            },
+            {
+              "label": "Costs",
+              "value": -5
+            },
+            {
+              "label": "2025",
+              "type": "total"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "re03",
+      "section": "K1",
+      "purpose": "Eval case",
+      "headline": "The business stays loss-making despite €8M of savings",
+      "message_type": "change_bridge",
+      "source": "Eval fixture (synthetic)",
+      "visual": {
+        "type": "waterfall",
+        "title": "Bridge",
+        "unit": "€M",
+        "data": {
+          "steps": [
+            {
+              "label": "Start",
+              "value": -15,
+              "type": "total"
+            },
+            {
+              "label": "Procurement savings",
+              "value": 5
+            },
+            {
+              "label": "Overheads",
+              "value": 3
+            },
+            {
+              "label": "Inflation",
+              "value": -2
+            },
+            {
+              "label": "End",
+              "type": "total"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "re04",
+      "section": "K1",
+      "purpose": "Eval case",
+      "headline": "Cash turns positive as operations add €30M",
+      "message_type": "change_bridge",
+      "source": "Eval fixture (synthetic)",
+      "visual": {
+        "type": "waterfall",
+        "title": "Bridge",
+        "unit": "€M",
+        "data": {
+          "steps": [
+            {
+              "label": "2024",
+              "value": -25,
+              "type": "total"
+            },
+            {
+              "label": "Operating improvement",
+              "value": 30
+            },
+            {
+              "label": "Working capital",
+              "value": 12
+            },
+            {
+              "label": "Capex",
+              "value": -2
+            },
+            {
+              "label": "2025",
+              "type": "total"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "re05",
+      "kind": "statement",
+      "text": "The clean cooking programme works where stoves are maintained and fails where they are not"
+    },
+    {
+      "id": "re06",
+      "kind": "statement",
+      "text": "El programa funciona allí donde las cocinas reciben mantenimiento y fracasa allí donde nadie las repara, por lo que la red de técnicos locales es la primera prioridad"
+    },
+    {
+      "id": "re07",
+      "kind": "statement",
+      "text": "We should consolidate the three regional distribution centres into one national hub before the 2027 peak season, because every quarter of delay adds cost, complexity and customer complaints that the business can no longer absorb",
+      "support": "The business case, risks and phasing follow in the next sections."
+    },
+    {
+      "id": "re08",
+      "kind": "statement",
+      "text": "Recommendation: approve the pilot",
+      "support": "A short statement with a long support line that explains the context, the decision requested, the budget of €14M, the timing of the first results and who will own the programme from January onwards."
+    }
+  ]
+}

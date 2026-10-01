@@ -30,8 +30,9 @@ def test_catastrophic_changes_are_detected_and_gated_against_baseline():
             {"seed": "t", "perturbation": "more_items", "seed_score": 95, "score": 55, "delta": -40, "layout_change": True, "font_drop": 0, "new_visual_qa": [], "new_flags": [], "catastrophic": True}]
     s = robustness.summarize(rows)
     assert s["catastrophic"] == 2 and s["variants"] == 3 and s["p90_drop"] > 20
-    assert robustness.compare(s, {"catastrophic": 1, "variants": 3}) == ["catastrophic variants 1 → 2"]
-    assert robustness.compare(s, {"catastrophic": 2, "variants": 3}) == []
+    # v1.5 also enforces "no new visual QA error" against the baseline (here: 1 recorded)
+    assert robustness.compare(s, {"catastrophic": 1, "variants": 3, "new_visual_errors": 1}) == ["catastrophic variants 1 → 2"]
+    assert robustness.compare(s, {"catastrophic": 2, "variants": 3, "new_visual_errors": 1}) == []
     assert "composition" not in s  # a separate signal, never folded into the score
 
 
@@ -166,7 +167,10 @@ def test_r2_quotas_keep_rounds_separate():
     import inspect
 
     assert "quotas" in inspect.signature(human.build_round).parameters
-    assert not (ROOT / "evals" / "human_reference" / "rounds" / "r2" / "votes").exists() or not any((ROOT / "evals" / "human_reference" / "rounds" / "r2" / "votes").iterdir())
+    # r2 now holds the votes of its single evaluator (v1.5); r1 still has none
+    r2_votes = [f for f in (ROOT / "evals" / "human_reference" / "rounds" / "r2" / "votes").glob("*.jsonl")]
+    assert len(r2_votes) == 1
+    assert not list((ROOT / "evals" / "human_reference" / "rounds" / "r1" / "votes").glob("*.jsonl"))
 
 
 # ── engine and metric fixes found by the battery / robustness ───────────────────────────────────

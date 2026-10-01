@@ -230,7 +230,9 @@ def lint_storyline(spec: dict) -> list[dict]:
     content = [s for s in slides if s.get("kind", "content") == "content"]
     # exec summary present and early
     es_idx = next((i for i, s in enumerate(slides) if s.get("kind") == "exec_summary"), None)
-    if len(content) >= 5 and es_idx is None:
+    # a declared slide COLLECTION (the archetype battery: variations of one archetype) is not a
+    # storyline and needs no executive summary; every other storyline rule still applies
+    if len(content) >= 5 and es_idx is None and not st.get("collection"):
         out.append(issue("error", "STORY_NO_EXEC_SUMMARY", "Decks with ≥5 content slides need an executive summary (answer first)"))
     elif es_idx is not None and es_idx > 2:
         out.append(issue("warning", "STORY_EXEC_LATE", "Executive summary should be slide 2-3 (answer first)"))

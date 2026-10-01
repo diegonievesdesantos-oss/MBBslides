@@ -6,6 +6,7 @@
   },
   "storyline": {
     "framework": "SCR",
+    "collection": true,
     "governing_thought": "Each text_exhibit slide is judged on what it is trying to be",
     "key_line": [
       {
@@ -42,7 +43,7 @@
       "source": "Battery fixture (synthetic)"
     },
     {
-      "headline": "Three reasons to act before the summer",
+      "headline": "We should act before the summer, for three reasons",
       "message_type": "argument",
       "visual": {
         "type": "bullets",
@@ -60,7 +61,7 @@
       "source": "Battery fixture (synthetic)"
     },
     {
-      "headline": "The case for change in one paragraph",
+      "headline": "The case for change fits in one paragraph",
       "message_type": "argument",
       "visual": {
         "type": "bullets",
@@ -111,7 +112,7 @@
       "source": "Battery fixture (synthetic)"
     },
     {
-      "headline": "Five risks to the plan and how we mitigate them",
+      "headline": "Five risks could delay the plan; each has a mitigation",
       "message_type": "argument",
       "visual": {
         "type": "bullets",
@@ -222,7 +223,7 @@
       "source": "Battery fixture (synthetic)"
     },
     {
-      "headline": "Lessons from the pilot",
+      "headline": "The pilot shows what works in stores",
       "message_type": "argument",
       "visual": {
         "type": "bullets",

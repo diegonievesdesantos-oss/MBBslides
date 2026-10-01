@@ -6,6 +6,7 @@
   },
   "storyline": {
     "framework": "SCR",
+    "collection": true,
     "governing_thought": "Each waterfall slide is judged on what it is trying to be",
     "key_line": [
       {
@@ -338,7 +339,7 @@
       "source": "Batería de pruebas (sintética)"
     },
     {
-      "headline": "Revenue per customer up $38 from price, down $12 from churn mix",
+      "headline": "Revenue per customer rose $38 from price and fell $12 from churn mix",
       "message_type": "change_bridge",
       "visual": {
         "type": "waterfall",

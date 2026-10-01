@@ -6,6 +6,7 @@
   },
   "storyline": {
     "framework": "SCR",
+    "collection": true,
     "governing_thought": "Each table slide is judged on what it is trying to be",
     "key_line": [
       {

@@ -13,7 +13,10 @@ A round directory holds
     pairs.json   what the PAGE sees: pair id + two anonymous image names. No version, layout,
                  score or side meaning.
     key.json     what the REPORT sees: which image is baseline / challenger, the comparison,
-                 slide and scores. The server never serves it.
+                 slide and scores. The server never serves it. Since v1.5 a new round keeps it
+                 OUTSIDE the bundle, in .private/human_reference/keys/<round>/key.json (gitignored);
+                 the bundle carries only key.sha256, a commitment checked when the key is used.
+                 `cpe human close` reveals the key into the round once voting is over.
     img/         the renders under random names
     votes/       one JSONL per anonymous evaluator: {pair, left, right, choice: left|right|tie, ms, ts}
 
@@ -37,18 +40,54 @@ import shutil
 import time
 from pathlib import Path
 
-ROUNDS = Path(__file__).resolve().parents[2] / "evals" / "human_reference" / "rounds"
+ROOT = Path(__file__).resolve().parents[2]
+ROUNDS = ROOT / "evals" / "human_reference" / "rounds"
+KEYS = ROOT / ".private" / "human_reference" / "keys"
+# what an evaluator receives; nothing in it may reveal version, role, layout, score or mapping
+BUNDLE = ("STATUS.json", "pairs.json", "index.html", "img", "votes", "key.sha256")
+
+
+def _read(p: Path) -> str:
+    return Path(p).read_text(encoding="utf-8")
+
+
+def _write(p: Path, text: str) -> None:
+    Path(p).write_text(text, encoding="utf-8")
+
+
+def default_key_path(round_dir: str | Path) -> Path:
+    return KEYS / Path(round_dir).name / "key.json"
+
+
+def key_path(round_dir: str | Path, key: str | Path | None = None) -> Path:
+    """The key of a round: an explicit path, a revealed/legacy key.json in the round (r1, r2), or
+    the private default location."""
+    if key:
+        return Path(key)
+    rd = Path(round_dir)
+    return rd / "key.json" if (rd / "key.json").exists() else default_key_path(rd)
+
+
+def load_key(round_dir: str | Path, key: str | Path | None = None) -> dict:
+    kp = key_path(round_dir, key)
+    if not kp.exists():
+        raise SystemExit(f"no key for {Path(round_dir).name}: expected {kp} (pass --key PATH)")
+    raw = kp.read_bytes()
+    commit = Path(round_dir) / "key.sha256"
+    if commit.exists() and hashlib.sha256(raw).hexdigest() != _read(commit).split()[0]:
+        raise SystemExit(f"{kp} does not match the round's key.sha256 commitment")
+    return json.loads(raw.decode("utf-8"))
 
 
 # ── building a round ────────────────────────────────────────────────────────────
 
 def _run_slides(run_dir: Path) -> dict:
     """slide id → {png, score, archetype} for a pipeline output directory."""
-    res = json.loads((run_dir / "resolved.json").read_text())
-    rep = json.loads((run_dir / "qa_report.json").read_text()) if (run_dir / "qa_report.json").exists() else {}
+    res = json.loads((run_dir / "resolved.json").read_text(encoding="utf-8"))
+    rep = json.loads((run_dir / "qa_report.json").read_text(encoding="utf-8")) if (run_dir / "qa_report.json").exists() else {}
     comp = {c["slide_id"]: c for c in (rep.get("composition") or {}).get("slides", [])}
     if (run_dir / "composition_measure.json").exists():  # re-measured with ONE scorer (cpe measure): comparable across engine versions
-        comp = {c["slide_id"]: c for c in json.loads((run_dir / "composition_measure.json").read_text())["slides"]}
+        comp = {c["slide_id"]: c for c in json.loads((run_dir / "composition_measure.json").read_text(encoding="utf-8"))["slides"]}
     pngs = sorted((run_dir / "renders").glob("slide-*.png"))
     out = {}
     for s, png in zip(res["slides"], pngs):
@@ -77,7 +116,7 @@ def candidate_pairs(name: str, base_root: Path, chal_root: Path) -> list[dict]:
 
 
 def build_round(out_dir: str | Path, pairs_spec: list[tuple[str, str, str]], n: int = 40, repeats: int = 2, seed: int = 7,
-                quotas: dict | None = None, purpose: str = "") -> dict:
+                quotas: dict | None = None, purpose: str = "", key_out: str | Path | None = None, private_key: bool = True) -> dict:
     """pairs_spec: [(comparison name, baseline root, challenger root)]. Samples up to n pairs
     (balanced across comparisons), plus `repeats` side-swapped duplicates for consistency.
     `quotas` {archetype: k} (v1.4, round r2): first take k pairs of each named archetype, then fill
@@ -130,12 +169,33 @@ def build_round(out_dir: str | Path, pairs_spec: list[tuple[str, str, str]], n: 
     comparisons = sorted({k["comparison"] for k in key.values()})
     meta = {"created": time.strftime("%Y-%m-%d"), "pairs": len(pairs),  # comparison names stay in key.json: they would unblind
             "instructions": "Which slide communicates its message better? Judge clarity, hierarchy and use of space — not the wording. Pick A, B or Tie."}
-    (out / "pairs.json").write_text(json.dumps({"meta": meta, "pairs": pairs}, indent=2))
-    (out / "key.json").write_text(json.dumps(key, indent=2))
-    (out / "index.html").write_text(PAGE)
-    write_status(out, {"round": out.name, "created": meta["created"], "purpose": purpose, "blind": True, "used_for_calibration": False,
-                       "status": "awaiting human votes"})
-    return {"pairs": len(pairs), "by_comparison": {n_: sum(1 for k in key.values() if k["comparison"] == n_) for n_ in comparisons}}
+    _write(out / "pairs.json", json.dumps({"meta": meta, "pairs": pairs}, indent=2))
+    key_doc = json.dumps(key, indent=2)
+    if private_key:  # v1.5: the key never sits next to what evaluators receive
+        kp = Path(key_out) if key_out else default_key_path(out)
+        kp.parent.mkdir(parents=True, exist_ok=True)
+        _write(kp, key_doc)
+        _write(kp.parent / "PURPOSE.txt", purpose + "\n")  # the purpose names the versions compared
+        _write(out / "key.sha256", hashlib.sha256(key_doc.encode("utf-8")).hexdigest() + "  key.json\n")
+    else:
+        _write(out / "key.json", key_doc)
+    _write(out / "index.html", PAGE)
+    write_status(out, {"round": out.name, "created": meta["created"], "purpose": "blind A/B round" if private_key else purpose, "blind": True,
+                       "used_for_calibration": False, "status": "awaiting human votes", "key": "private" if private_key else "in round"})
+    return {"pairs": len(pairs), "key": str(kp) if private_key else str(out / "key.json"),
+            "by_comparison": {n_: sum(1 for k in key.values() if k["comparison"] == n_) for n_ in comparisons}}
+
+
+def close_round(round_dir: str | Path, key: str | Path | None = None) -> dict:
+    """End voting and reveal the key into the round (after which the round is no longer blind
+    for anyone who reads the repository)."""
+    rd = Path(round_dir)
+    k = load_key(rd, key)  # verifies the commitment
+    _write(rd / "key.json", json.dumps(k, indent=2))
+    st = read_status(rd)
+    st.update(blind=False, key="revealed", closed=time.strftime("%Y-%m-%d"), status=st.get("status", "") + "; voting closed, key revealed")
+    write_status(rd, st)
+    return st
 
 
 # ── collecting votes ────────────────────────────────────────────────────────────
@@ -145,7 +205,7 @@ def _valid_evaluator(e: str) -> bool:
 
 
 def record_vote(round_dir: Path, vote: dict) -> None:
-    pairs = {p["id"]: p for p in json.loads((round_dir / "pairs.json").read_text())["pairs"]}
+    pairs = {p["id"]: p for p in json.loads(_read(round_dir / "pairs.json"))["pairs"]}
     e = str(vote.get("evaluator", ""))
     if not _valid_evaluator(e) or vote.get("pair") not in pairs or vote.get("choice") not in ("left", "right", "tie"):
         raise ValueError("invalid vote")
@@ -154,19 +214,20 @@ def record_vote(round_dir: Path, vote: dict) -> None:
         raise ValueError("images do not match the pair")
     rec = {k: vote.get(k) for k in ("pair", "left", "right", "choice", "ms")}
     rec["ts"] = time.strftime("%Y-%m-%dT%H:%M:%S")
-    with open(round_dir / "votes" / f"{e}.jsonl", "a") as f:
+    (round_dir / "votes").mkdir(exist_ok=True)  # git does not keep empty folders
+    with open(round_dir / "votes" / f"{e}.jsonl", "a", encoding="utf-8") as f:
         f.write(json.dumps(rec) + "\n")
 
 
 def done_pairs(round_dir: Path, evaluator: str) -> list[str]:
     f = round_dir / "votes" / f"{evaluator}.jsonl"
-    return [json.loads(line)["pair"] for line in f.read_text().splitlines() if line.strip()] if f.exists() else []
+    return [json.loads(line)["pair"] for line in _read(f).splitlines() if line.strip()] if f.exists() else []
 
 
 def import_votes(round_dir: str | Path, path: str | Path) -> int:
     """Import votes collected elsewhere: JSONL lines {evaluator, pair, left, right, choice}."""
     n = 0
-    for line in Path(path).read_text().splitlines():
+    for line in _read(Path(path)).splitlines():
         if line.strip():
             record_vote(Path(round_dir), json.loads(line))
             n += 1
@@ -195,9 +256,9 @@ def serve(round_dir: str | Path, port: int = 8765, host: str = "127.0.0.1") -> N
         def do_GET(self):
             u = urlparse(self.path)
             if u.path in ("/", "/index.html"):
-                return self._send(200, (root / "index.html").read_text(), "text/html; charset=utf-8")
+                return self._send(200, _read(root / "index.html"), "text/html; charset=utf-8")
             if u.path == "/pairs.json":
-                return self._send(200, (root / "pairs.json").read_text())
+                return self._send(200, _read(root / "pairs.json"))
             if u.path == "/state":
                 e = (parse_qs(u.query).get("evaluator") or [""])[0]
                 return self._send(200, json.dumps({"done": done_pairs(root, e) if _valid_evaluator(e) else []}))
@@ -258,7 +319,7 @@ def _load_votes(round_dir: Path) -> list[dict]:
     out = []
     for f in sorted((round_dir / "votes").glob("*.jsonl")):
         latest = {}
-        for line in f.read_text().splitlines():
+        for line in f.read_text(encoding="utf-8").splitlines():
             if line.strip():
                 v = json.loads(line)
                 latest[v["pair"]] = v  # a re-vote replaces the earlier one
@@ -270,11 +331,11 @@ def _load_votes(round_dir: Path) -> list[dict]:
 
 def read_status(round_dir: Path) -> dict:
     f = Path(round_dir) / "STATUS.json"
-    return json.loads(f.read_text()) if f.exists() else {"round": Path(round_dir).name, "blind": True, "used_for_calibration": False}
+    return json.loads(f.read_text(encoding="utf-8")) if f.exists() else {"round": Path(round_dir).name, "blind": True, "used_for_calibration": False}
 
 
 def write_status(round_dir: Path, st: dict) -> None:
-    (Path(round_dir) / "STATUS.json").write_text(json.dumps(st, indent=2) + "\n")
+    (Path(round_dir) / "STATUS.json").write_text(json.dumps(st, indent=2) + "\n", encoding="utf-8")
 
 
 def mark_used_for_calibration(round_dir: str | Path, change: str) -> dict:
@@ -373,10 +434,16 @@ def outcome(v: dict, key: dict) -> str:
     return "challenger" if picked == key[v["pair"]]["challenger"] else "baseline"
 
 
-def report(round_dir: str | Path) -> dict:
+def report(round_dir: str | Path, key_file: str | Path | None = None) -> dict:
     rd = Path(round_dir)
-    key = json.loads((rd / "key.json").read_text())
-    votes = [v for v in _load_votes(rd) if v["pair"] in key]
+    key = load_key(rd, key_file)
+    # one vote per (evaluator, pair): a re-vote replaces the earlier one, so several clicks by the
+    # same person never count as several raters
+    last: dict[tuple, dict] = {}
+    for v in _load_votes(rd):
+        if v["pair"] in key:
+            last[(v["evaluator"], v["pair"])] = v
+    votes = list(last.values())
     main = [v for v in votes if not key[v["pair"]].get("repeat_of")]
 
     def summary(vs):
@@ -411,6 +478,15 @@ def report(round_dir: str | Path) -> dict:
         if orig:
             cons.append(outcome(v, key) == outcome(orig, key))
     res["self_consistency"] = {"repeated_pairs": len(cons), "consistent": sum(cons)}
+    # v1.5: every rater on their own, then pooled (above). Pooled votes of one rater are ONE rater.
+    res["by_rater"] = {}
+    for e in sorted({v["evaluator"] for v in votes}):
+        mine = [v for v in main if v["evaluator"] == e]
+        d = [v for v in mine if v["choice"] != "tie"]
+        rc = [outcome(v, key) == outcome(o, key) for v in votes if v["evaluator"] == e and key[v["pair"]].get("repeat_of")
+              for o in mine if o["pair"] == key[v["pair"]]["repeat_of"]]
+        res["by_rater"][e] = {**summary(mine), "left_share": round(sum(1 for v in d if v["choice"] == "left") / len(d), 3) if d else None,
+                              "self_consistency": {"repeated_pairs": len(rc), "consistent": sum(rc)}}
     # v1.4: per-pair scorer/human agreement, its correlation with the score gap, and its status
     verdicts = pair_verdicts(main, key)
     dec_v = [v for v in verdicts if v["agreement"] != "tie"]
@@ -469,7 +545,7 @@ def record(r: dict, path: Path | None = None) -> None:
     from .evals import LATEST
 
     path = path or LATEST
-    data = json.loads(path.read_text()) if path.exists() else {}
+    data = json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
     hr = data.setdefault("human_reference", {})
     hr.pop("status", None)
     hr.pop("round", None)
@@ -481,7 +557,7 @@ def record(r: dict, path: Path | None = None) -> None:
                                  "left_bias", "method")},
         "blind": st.get("blind", True), "used_for_calibration": st.get("used_for_calibration", False),
         "status": "votes received" if r.get("comparisons") else "awaiting human votes"}
-    path.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n")
+    path.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
 
 def record_status(round_dir: str | Path, path: Path | None = None) -> None:
@@ -490,15 +566,15 @@ def record_status(round_dir: str | Path, path: Path | None = None) -> None:
 
     path = path or LATEST
     rd = Path(round_dir)
-    data = json.loads(path.read_text()) if path.exists() else {}
+    data = json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
     hr = data.setdefault("human_reference", {})
     for k in ("status", "round", "pairs"):
         hr.pop(k, None)
     st = read_status(rd)
-    n = len(json.loads((rd / "pairs.json").read_text())["pairs"])
+    n = len(json.loads((rd / "pairs.json").read_text(encoding="utf-8"))["pairs"])
     hr.setdefault("rounds", {})[rd.name] = {"pairs": n, "blind": st.get("blind", True), "used_for_calibration": st.get("used_for_calibration", False),
                                             "status": f"{st.get('status', 'awaiting human votes')} — {n} blind pairs built, 0 votes"}
-    path.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n")
+    path.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
 
 PAGE = r"""<!doctype html>

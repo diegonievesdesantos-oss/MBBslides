@@ -615,71 +615,84 @@ def waterfall(p: Painter, box: Box, ex: dict) -> dict:
     steps = ex["data"]["steps"]
     f = fmt_spec(ex)
     theme = p.theme
-    labels, base, up, down, tot, kinds, running = [], [], [], [], [], [], 0.0
-    ends = []
+    # every bar is a span [a, b] on the value axis; totals span from zero, deltas from the running total
+    labels, spans, kinds, vals, ends, running = [], [], [], [], [], 0.0
     for st in steps:
         k = st.get("type", "delta")
         labels.append(str(st["label"]))
         if k in ("total", "subtotal"):
             v = float(st["value"]) if st.get("value") is not None else running
             running = v
-            base.append(0.0)
-            up.append(0.0)
-            down.append(0.0)
-            tot.append(v)
+            spans.append((min(0.0, v), max(0.0, v)))
             kinds.append("total")
-            ends.append(v)
         else:
             v = float(st["value"])
             start = running
             running = start + v
-            lo_ = min(start, running)
-            base.append(lo_)
-            up.append(v if v > 0 else 0.0)
-            down.append(-v if v < 0 else 0.0)
-            tot.append(0.0)
+            spans.append((min(start, running), max(start, running)))
             kinds.append("up" if v >= 0 else "down")
-            ends.append(running)
-    if min(base) < 0 or min(ends) < 0:
-        p.warn("WATERFALL_NEGATIVE", "Running total crosses zero; waterfall base rendering assumes positive totals.")
+        vals.append(v)
+        ends.append(running)
     n = len(labels)
-    vmax = max(max(b + u + d + t for b, u, d, t in zip(base, up, down, tot)), 0)
+    vmax = max(0.0, max(b for _, b in spans))
+    vmin = min(0.0, min(a for a, _ in spans))
     lo = 0.0
-    totals = [t for t in tot if t]
-    deltas = [u + d for u, d, k in zip(up, down, kinds) if k != "total"]
+    totals = [abs(v) for v, k in zip(vals, kinds) if k == "total" and v]
+    deltas = [b - a for (a, b), k in zip(spans, kinds) if k != "total"]
     trunc = ex.get("truncate_axis")
     if trunc is None:  # auto: deltas would be slivers next to the totals
-        trunc = bool(totals) and min(totals) > 0 and bool(deltas) and max(deltas) < 0.12 * max(totals)
-    if trunc:
-        lows = [b for b, k in zip(base, kinds) if k != "total"]
+        trunc = bool(totals) and vmin >= 0 and min(totals) > 0 and bool(deltas) and max(deltas) < 0.12 * max(totals)
+    if trunc and vmin >= 0:
+        lows = [a for (a, _), k in zip(spans, kinds) if k != "total"]
         rng = vmax - min(lows)
         _, _, st = nice_scale(0, rng, 4)
         lo = max(0.0, (min(lows) - 0.6 * rng) // st * st)
-    _, hi, step = nice_scale(lo, vmax, 5, include_zero=True)
     if lo:
         step = nice_scale(0, vmax - lo, 5)[2]
         hi = lo + math.ceil((vmax - lo) / step) * step
+    else:
+        lo, hi, step = nice_scale(vmin, vmax, 5, include_zero=True)
+        lo = min(lo, vmin)
+    truncated = lo > 0
     # proof: the headline quotes the total change → print it above the end total
     from ..core.headline import numbers_in
 
-    first_total = tot[0] if kinds and kinds[0] == "total" else None  # a start→end bridge only
+    first_total = vals[0] if kinds and kinds[0] == "total" else None  # a start→end bridge only
     wf_delta = (ends[-1] - first_total) if first_total is not None and kinds[-1] == "total" else None
     proof = wf_delta is not None and any(abs(abs(wf_delta) - v) <= max(0.51, 0.01 * v) and abs(v - abs(ends[-1])) > 0.5 for v, _ in numbers_in(ex.get("_headline") or ""))
+    # head room for value labels above positive bars, foot room for labels under negative totals
     hi += step * (0.4 if not proof else 1.0)
+    if vmin < 0:
+        lo -= step * 0.4
     slot_w = plot_box.w / n
     cat_h, _ = _cat_label_height(p, labels, slot_w)
     fy = 0.02
     fh = 1 - fy - cat_h / plot_box.h
     geom = PlotGeom(plot_box, 0.0, fy, 1.0, fh, lo, hi, n, gap=ex.get("gap", 45) / 100)
 
+    # stacked columns: an invisible base, then the visible span. Positive and negative values stack
+    # separately from zero, so a span crossing zero is drawn as a positive and a negative part.
+    off = lo if truncated else 0.0
+    base, parts = [], {c: ([0.0] * n, [0.0] * n) for c in ("total", "up", "down")}
+    for i, ((a, b), k) in enumerate(zip(spans, kinds)):
+        a, b = a - off, b - off
+        pos, neg = parts[k]
+        if a >= 0:
+            base.append(a)
+            pos[i] = b - a
+        elif b <= 0:
+            base.append(b)
+            neg[i] = a - b
+        else:
+            base.append(0.0)
+            pos[i], neg[i] = b, a
     cd = CategoryChartData()
     cd.categories = labels
-    b_adj = [max(0.0, b - lo) if lo else b for b in base]
-    t_adj = [t - lo if (t and lo) else t for t in tot]
-    cd.add_series("Base", b_adj)
-    cd.add_series("Total", t_adj)
-    cd.add_series("Increase", up)
-    cd.add_series("Decrease", down)
+    cd.add_series("Base", base)
+    names = {"total": "Total", "up": "Increase", "down": "Decrease"}
+    for c in ("total", "up", "down"):
+        cd.add_series(names[c], parts[c][0])
+        cd.add_series(names[c] + " (below zero)", parts[c][1])
     gf = p.slide.shapes.add_chart(XL_CHART_TYPE.COLUMN_STACKED, E(plot_box.x), E(plot_box.y), E(plot_box.w), E(plot_box.h), cd)
     gf.name = p._name("chart")
     chart = gf.chart
@@ -691,63 +704,67 @@ def waterfall(p: Painter, box: Box, ex: dict) -> dict:
     plot = chart.plots[0]
     _gap_overlap(plot, int(geom.gap * 100), 100)
     va, ca = chart.value_axis, chart.category_axis
-    va.minimum_scale, va.maximum_scale, va.major_unit = 0, hi - lo, step
+    va.minimum_scale, va.maximum_scale, va.major_unit = lo - off, hi - off, step
     va.visible = False
     va.has_major_gridlines = False
     ca.major_tick_mark = XL_TICK_MARK.NONE
     ca.tick_label_position = XL_TICK_LABEL_POSITION.LOW
     _font(ca.tick_labels, p, "chart_axis", color="text")
     _style_axis_line(ca, theme.c("rule"))
-    s_base, s_tot, s_up, s_down = plot.series
+    s_base, *coloured = plot.series
     _fill(s_base, None)
     s_base.format.line.fill.background()
-    col_total = theme.c(ex.get("total_color", "primary"))
     neutral_deltas = ex.get("delta_colors") == "neutral"
-    _fill(s_tot, col_total)
-    _fill(s_up, theme.c("secondary" if neutral_deltas else "positive"))
-    _fill(s_down, theme.c("secondary" if neutral_deltas else "negative"))
+    colours = {"total": theme.c(ex.get("total_color", "primary")), "up": theme.c("secondary" if neutral_deltas else "positive"),
+               "down": theme.c("secondary" if neutral_deltas else "negative")}
+    series = dict(zip([(c, s) for c in ("total", "up", "down") for s in (0, 1)], coloured))
+    for (c, _), s in series.items():
+        _fill(s, colours[c])
     hl = _highlight_idx(ex, labels)
     for i in hl:
-        for s in (s_up, s_down):
-            _fill(s.points[i], theme.c("highlight"))
-    # overlays: value labels + connectors
-    run = []
+        for (c, _), s in series.items():
+            if c != "total":
+                _fill(s.points[i], theme.c("highlight"))
+    # overlays: value labels (above a bar; under a negative total) kept inside the plot frame
+    lab_h = 0.26
+    top_lim, bot_lim = plot_box.y + 0.02, geom.inner.b - 0.02
+    run, label_tops = [], []
     for i in range(n):
-        top = (base[i] + up[i] + down[i]) if kinds[i] != "total" else tot[i]
-        run.append(top)
-        if kinds[i] == "total":
-            val, plus = tot[i], False
+        a, b = spans[i]
+        run.append(b)
+        plus = kinds[i] != "total"
+        label = fmt(vals[i], f, plus=plus)
+        if kinds[i] == "total" and vals[i] < 0:
+            y = min(geom.v(a) + 0.03, bot_lim - lab_h)
+            anchor = "top"
         else:
-            val = up[i] if kinds[i] == "up" else -down[i]
-            plus = True
-        label = fmt(val, f, plus=plus)
-        y = geom.v(top)
-        p.text(Box(geom.c(i) - geom.slot() / 2, y - 0.29, geom.slot(), 0.26), label, role="chart", bold=kinds[i] == "total", align="center", anchor="bottom", fit=False, kind="label")
+            y = max(geom.v(b) - 0.03 - lab_h, top_lim)
+            anchor = "bottom"
+        label_tops.append(y)
+        p.text(Box(geom.c(i) - geom.slot() / 2, y, geom.slot(), lab_h), label, role="chart", bold=kinds[i] == "total", align="center", anchor=anchor, fit=False, kind="label")
     if proof:
         i = n - 1
-        y = geom.v(tot[i])
         txt = f"{fmt(wf_delta, f, plus=True)} vs {labels[0]}"
         w = p.text_w(txt, "annotation", bold=True) + 0.1
         x = min(max(geom.c(i) - w / 2, plot_box.x), plot_box.r - w)  # stay inside the zone
-        # sit above every value label the text spans horizontally
+        # sit above every value label and bar the text spans horizontally
         covered = [k for k in range(n) if geom.c(k) + geom.slot() / 2 > x and geom.c(k) - geom.slot() / 2 < x + w]
-        y = min(geom.v(run[k]) for k in covered) - 0.29
-        y = max(plot_box.y + 0.26, y)
+        y = min(min(geom.v(run[k]), label_tops[k]) for k in covered) - 0.03
+        y = max(top_lim + 0.27, y)
         p.text(Box(x, y - 0.27, w, 0.26), txt, role="annotation", bold=True, color="negative" if wf_delta < 0 else "positive",
                align="right" if x + w >= plot_box.r - 0.01 else "center", anchor="bottom", fit=False, kind="label")
     bw = geom.bar_w()
     for i in range(n - 1):
-        level = ends[i]
-        y = geom.v(level)
+        y = geom.v(ends[i])
         p.line(geom.c(i) + bw / 2, y, geom.c(i + 1) - bw / 2, y, color="neutral", width=LINES["hairline"], kind="connector")
-    if lo:  # truncated axis: draw a break on every total bar so the eye is not misled
+    if truncated:  # truncated axis: draw a break on every total bar so the eye is not misled
         from pptx.enum.shapes import MSO_SHAPE
 
         yb = geom.inner.b - min(0.35, geom.inner.h * 0.08)
         for i in range(n):
             if kinds[i] == "total":
                 p.shape(MSO_SHAPE.PARALLELOGRAM, Box(geom.c(i) - bw / 2 - 0.06, yb - 0.045, bw + 0.12, 0.09), fill="background", kind="marker")
-    return {"type": "waterfall", "steps": n, "end": ends[-1], "axis_truncated": bool(lo)}
+    return {"type": "waterfall", "steps": n, "end": ends[-1], "axis_truncated": truncated, "crosses_zero": vmin < 0}
 
 
 # ---------------------------------------------------------------------------

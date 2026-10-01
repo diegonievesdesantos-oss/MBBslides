@@ -29,12 +29,10 @@ from pathlib import Path
 
 from . import __version__
 from .pipeline import run
+from .qa.report import qa_semantics  # QA errors about the WRITING vs the rendered slide (v1.5)
 from .spec import load_spec
 
 TOLERANCE = 2.0
-# QA errors about the WRITING (storyline, headline wording) rather than the rendered slide: counted
-# apart in reports so authoring lint in fixture decks does not read as a visual defect
-AUTHORING_CODES = ("STORY_", "HEADLINE_")
 ROOT = Path(__file__).resolve().parents[2]
 LATEST = ROOT / "evals" / "results" / "latest.json"
 
@@ -58,13 +56,17 @@ def run_case(path: Path, out_dir: Path, compose: bool = True, name: str | None =
     try:
         spec = load_spec(path)
         res["purpose"] = (spec.get("eval") or {}).get("purpose", "")
+        # a lint-stress case is written to trip authoring lint: its authoring errors are expected
+        res["lint_stress"] = bool((spec.get("eval") or {}).get("lint_stress"))
         rep = run(spec, out_dir / res["case"], max_iter=max_iter, verbose=False, compose=compose)
         comp = rep.get("composition") or {}
         res.update(
             ok=bool(rep.get("artifacts", {}).get("pngs")),
             qa_passed=rep["passed"],
             qa_errors=rep["counts"]["error"],
-            qa_errors_authoring=sum(1 for i in rep.get("issues") or [] if i.get("level") == "error" and str(i.get("code", "")).startswith(AUTHORING_CODES)),
+            qa_errors_authoring=qa_semantics(rep.get("issues"))["errors_authoring"],
+            visual_qa_passed=qa_semantics(rep.get("issues"))["visual_qa_passed"],
+            authoring_qa_passed=qa_semantics(rep.get("issues"))["authoring_qa_passed"],
             qa_warnings=rep["counts"]["warning"],
             qa_score=rep["deck_score"],
             composition=comp.get("deck_score"),
@@ -72,6 +74,8 @@ def run_case(path: Path, out_dir: Path, compose: bool = True, name: str | None =
             slides={s["slide_id"]: {"score": s["score"], "archetype": s.get("archetype"), "flags": s["flags"], "v1": s.get("score_v1"),
                     "attribution": s.get("attribution") or {}} for s in comp.get("slides", [])},
             pending=len(rep.get("pending_actions") or []),
+            slides_authored=len(spec.get("slides") or []),
+            slides_resolved=_resolved_count(out_dir / res["case"]),
         )
         if not res["ok"]:
             res["error"] = "not rendered"
@@ -80,6 +84,14 @@ def run_case(path: Path, out_dir: Path, compose: bool = True, name: str | None =
         res["trace"] = traceback.format_exc()[-2000:]
     res["seconds"] = round(time.time() - t0, 1)
     return res
+
+
+def _resolved_count(run_dir: Path) -> int | None:
+    """Slides after resolution (dividers, agenda, splits added by the engine)."""
+    f = run_dir / "resolved.json"
+    if not f.exists():
+        return None
+    return len(json.loads(f.read_text(encoding="utf-8")).get("slides") or [])
 
 
 def compare(results: list[dict], baseline: dict, tolerance: float = TOLERANCE) -> tuple[list[str], list[str]]:
@@ -141,6 +153,10 @@ def _aggregate(results: list[dict]) -> dict:
         "suite_composition_v1": round(sum(v1) / len(v1), 1) if v1 else None,
         "flag_counts": dict(sorted(flags.items(), key=lambda kv: -kv[1])),
         "by_archetype": {k: {"slides": len(v), "mean": round(sum(v) / len(v), 1)} for k, v in sorted(arche.items())},
+        # authored = slides in the specs; resolved = after the engine adds dividers/agenda/splits;
+        # measured = slides with a composition score. They differ legitimately (v1.5 reporting)
+        "slides_authored": sum(r.get("slides_authored") or 0 for r in results),
+        "slides_resolved": sum(r.get("slides_resolved") or 0 for r in results),
         "slides_measured": sum(len(r.get("slides") or {}) for r in results),
         "qa_errors": sum(r.get("qa_errors") or 0 for r in results),
         "qa_errors_authoring": sum(r.get("qa_errors_authoring") or 0 for r in results),
@@ -230,6 +246,11 @@ def run_suite(cases_dir: str | Path | None, out_dir: str | Path, baseline_path: 
     summary["improvements"] = improvements
     summary["environment_notes"] = env_notes
     summary["passed"] = all(r.get("ok") for r in results) and not (cfg["gate"] and regressions)
+    # three separate verdicts (v1.5): rendered slides, writing, and the benchmark as a whole
+    ok = [r for r in results if r.get("ok")]
+    summary["visual_qa_passed"] = bool(ok) and all(r.get("visual_qa_passed") for r in ok)
+    summary["authoring_qa_passed"] = bool(ok) and all(r.get("authoring_qa_passed") for r in ok if not r.get("lint_stress"))
+    summary["benchmark_passed"] = summary["passed"] and summary["visual_qa_passed"] and summary["authoring_qa_passed"]
     if update_baseline and baseline_path:
         slim = {"suite_composition": summary["suite_composition"], "environment_fingerprint": env["fingerprint"], "engine_version": __version__,
                 "archetype_counts": {a: st["n"] for a, st in summary["quality"]["archetypes"].items()},
@@ -250,12 +271,14 @@ def run_suite(cases_dir: str | Path | None, out_dir: str | Path, baseline_path: 
 
 
 def _slim(summary: dict) -> dict:
-    keep = ("suite_composition", "suite_composition_v1", "slides_measured", "qa_errors", "qa_errors_authoring", "qa_warnings", "cases_ok", "cases_total", "by_archetype", "flag_counts", "passed")
+    keep = ("suite_composition", "suite_composition_v1", "slides_measured", "qa_errors", "qa_errors_authoring", "qa_warnings", "cases_ok", "cases_total", "by_archetype", "flag_counts", "passed",
+            "visual_qa_passed", "authoring_qa_passed", "benchmark_passed", "slides_authored", "slides_resolved")
     from .qa.composition import SCORE_NAME
 
     out = {"metric": summary.get("metric") or SCORE_NAME, **{k: summary.get(k) for k in keep}}
     out["cases"] = {r["case"]: {"composition": r.get("composition"), "qa_score": r.get("qa_score"), "qa_errors": r.get("qa_errors"),
-                                "qa_warnings": r.get("qa_warnings"), "qa_passed": r.get("qa_passed")} for r in summary["cases"]}
+                                "qa_warnings": r.get("qa_warnings"), "qa_passed": r.get("qa_passed"),
+                                "visual_qa_passed": r.get("visual_qa_passed"), "authoring_qa_passed": r.get("authoring_qa_passed")} for r in summary["cases"]}
     q = summary.get("quality") or {}
     if q:
         out["overall"] = {k: q.get(k) for k in ("overall_score", "slide_mean", "macro_archetype_score", "weakest_archetype", "weakest_archetype_score",

@@ -28,7 +28,7 @@ def round_dir(tmp_path):
         _fake_run(root, "deck1", ["s1", "s2", "s3", "same"], col)
         _fake_run(root, "deck2", ["t1", "t2"], col)
     out = tmp_path / "round"
-    r = human.build_round(out, [("v1->v2", str(base), str(chal))], n=6, repeats=1)
+    r = human.build_round(out, [("v1->v2", str(base), str(chal))], n=6, repeats=1, private_key=False)  # legacy layout: key.json in the round
     assert r["pairs"] == 6  # 5 differing slides + 1 repeat; the identical slide is skipped
     return out
 

@@ -44,7 +44,7 @@
   },
   "kpi_dashboard": {
    "why": "Several KPIs read as a set: fill the band evenly, emphasis bounded so the tiles do not all shout. A set of 3–5 figures shown as cards needs air like a KPI hero (utilization from 0.5, empty up to 0.36); a dense grid still fills the band.",
-   "evidence": {"development": "v1.4 archetype battery (8 dashboard slides, 202_battery_kpi_dashboard.json) after the KPI-card fix", "human": "none yet — r2 samples kpi_dashboard pairs to test this change"},
+   "evidence": {"development": "v1.4 archetype battery (8 dashboard slides, 202_battery_kpi_dashboard.json) after the KPI-card fix", "human": "r2 (blind, one evaluator): 2/3 preferred v1.4; strongest scorer-human disagreement of r2 (p034, scorer −26.2 against the human choice). Still provisional."},
    "metrics": {
     "empty": {"range": [0.0, 0.36], "soft": 0.3, "w": 14, "last_changed": "1.4.0", "status": "provisional"},
     "ink": {"range": [0.04, 0.3], "soft": 0.1, "w": 8, "last_changed": "1.2.0"},
@@ -108,20 +108,20 @@
   },
   "comparison": {
    "why": "Columns compared side by side should use the width and stay balanced. Comparison columns are TEXT: the same density expectations as a text exhibit (utilization from 0.55, empty up to 0.35), balance weighted higher.",
-   "evidence": {"development": "v1.4 archetype battery (10 comparison slides, 208_battery_comparison.json) after the joint-column composition fix", "human": "none yet — r2 samples comparison pairs to test this change"},
+   "evidence": {"development": "v1.4 archetype battery (10 comparison slides, 208_battery_comparison.json) after the joint-column composition fix", "human": "r2 (blind, ONE evaluator): 7/7 decisive votes preferred v1.4 (pairs on sealed holdout v2 decks). Directional support, not multi-rater validation."},
    "metrics": {
-    "utilization": {"range": [0.55, 1.0], "soft": 0.35, "w": 12, "last_changed": "1.4.0", "status": "provisional"},
-    "empty": {"range": [0.0, 0.35], "soft": 0.3, "w": 14, "last_changed": "1.4.0", "status": "provisional"},
+    "utilization": {"range": [0.55, 1.0], "soft": 0.35, "w": 12, "last_changed": "1.4.0", "status": "human_supported_single_rater", "status_since": "1.5.0"},
+    "empty": {"range": [0.0, 0.35], "soft": 0.3, "w": 14, "last_changed": "1.4.0", "status": "human_supported_single_rater", "status_since": "1.5.0"},
     "offcentre": {"range": [0.0, 0.1], "soft": 0.25, "w": 12, "last_changed": "1.2.0"},
     "edges": {"range": [0, 6], "soft": 8, "w": 10, "last_changed": "1.2.0"}
    }
   },
   "process": {
    "why": "Steps read left to right across the width. With few, short steps the sequence is a BAND (like a timeline): vertical air above and below a centred band is inherent; the failures are a band glued under the headline (empty) or off-balance (offcentre).",
-   "evidence": {"development": "v1.4 archetype battery (10 process slides, evals/regression/cases/209_battery_process.json) after the adaptive-composition fix", "human": "none yet — r2 samples process pairs to test this change"},
+   "evidence": {"development": "v1.4 archetype battery (10 process slides, evals/regression/cases/209_battery_process.json) after the adaptive-composition fix", "human": "r2 (blind, ONE evaluator): 8/8 decisive votes preferred v1.4 (pairs on sealed holdout v2 decks). Directional support, not multi-rater validation."},
    "metrics": {
-    "utilization": {"range": [0.5, 1.0], "soft": 0.35, "w": 12, "last_changed": "1.4.0", "status": "provisional"},
-    "empty": {"range": [0.0, 0.36], "soft": 0.3, "w": 14, "last_changed": "1.4.0", "status": "provisional"},
+    "utilization": {"range": [0.5, 1.0], "soft": 0.35, "w": 12, "last_changed": "1.4.0", "status": "human_supported_single_rater", "status_since": "1.5.0"},
+    "empty": {"range": [0.0, 0.36], "soft": 0.3, "w": 14, "last_changed": "1.4.0", "status": "human_supported_single_rater", "status_since": "1.5.0"},
     "edges": {"range": [0, 8], "soft": 10, "w": 6, "last_changed": "1.2.0"}
    }
   },

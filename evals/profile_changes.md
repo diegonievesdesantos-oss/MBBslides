@@ -15,6 +15,40 @@ Rules (docs/COMPOSITION_SCORING.md#governance):
 
 ---
 
+## 1.5.0
+
+Status changes driven by human round r2 (blind, **one evaluator**, 38 pairs + 2 repeats, v1.3.3 vs
+v1.4 engine on the sealed holdout v2 decks). r2 was marked development data
+(`rounds/r2/STATUS.json`) in the same change; its blind v1.4 result is preserved in
+`rounds/r2/VALIDATION_v1.4.json`. No range below changed.
+
+### process.utilization / process.empty: provisional → human_supported_single_rater
+- **Evidence.** Engine: v1.4 adaptive composition (mean 42.1 → 50.5 before any profile change, on the
+  battery). Development: 12 process slides in the regression suite. Human: r2 process pairs 8/8
+  decisive votes for v1.4, 0 ties.
+- **Limitation.** One rater, n = 8. Directional support for the "band" expectation, not
+  multi-rater validation. Absolute gates (mean floor 70, 25% below floor) are NOT promoted: they
+  measure something else and still need calibration.
+
+### comparison.utilization / comparison.empty: provisional → human_supported_single_rater
+- **Evidence.** Engine: joint column composition (48.2 → 66.3 before any profile change). Development:
+  11 comparison slides. Human: r2 comparison pairs 7/7 decisive votes for v1.4.
+- **Limitation.** One rater, n = 7.
+
+### kpi_dashboard: stays provisional
+- **Evidence.** Human: 2/3 for v1.4 (n too small), and the strongest scorer–human disagreement of
+  r2 (p034: v1.4 scored 26.2 points lower, the evaluator preferred it). Diagnosis and any change:
+  docs/KPI_DASHBOARD_DIAGNOSIS.md.
+- **Range unchanged.** After the measurement fix below, a centred row of KPI cards occupies exactly
+  50% of the body — the lower edge of the provisional range; under the original 0.70 it would score
+  ≈ 74. One rater, 2/3: not enough to decide. Round r3 includes KPI-dashboard pairs.
+
+### Not a range change: occupancy measurement (utilization / empty)
+- Visible filled panels (≠ the page colour) count as occupied area; isolated thin vertical lines
+  running through empty cells do not. Measurement correction found by the r2 disagreement p034
+  (separators made a top strip look full; light cards were invisible). Effect on r2 renders
+  (development data): agreement 33/34 → 35/35, no slide −3 or worse. `qa/composition.py:_occupancy`.
+
 ## 1.4.0
 
 All three changes are **provisional** — no human votes exist yet. Round r2 samples

@@ -168,18 +168,40 @@ def statement(p: Painter, box: Box, data: dict) -> None:
         if data.get("attribution"):
             p.text(Box(box.x, box.y + box.h * 0.76, box.w, 0.5), "— " + data["attribution"], role="body", color="text_muted")
         return
-    # the bar, the statement and its support form ONE block, set on the optical centre of the zone
-    th, _ = p.measure(text, "headline", box.w, size=30)
+    # the bar, the statement and its support form ONE block, set on the optical centre of the zone.
+    # Fallback ladder: measure (with a margin for renderer metrics) → narrower/wider measure →
+    # optical placement → smaller type down to a readability floor → no longer a statement: set as
+    # body text with a warning (never clipped).
     sup = data.get("support")
-    sh = p.measure(sup, "body", box.w * 0.85, size=14)[0] if sup else 0.0
+    sup_w = box.w * 0.85
     gap = 0.35 if sup else 0.0
-    group = 0.27 + th + gap + sh
+    bar = 0.27
+    chosen = None
+    for sz in STATEMENT_SIZES:
+        th, lines = p.measure(text, "headline", box.w * STATEMENT_MEASURE, size=sz)
+        sh = p.measure(sup, "body", sup_w * STATEMENT_MEASURE, size=14)[0] if sup else 0.0
+        group = bar + th * STATEMENT_LEADING + gap + sh * STATEMENT_LEADING
+        if lines <= STATEMENT_MAX_LINES and group <= box.h * 0.9:
+            chosen = (sz, th * STATEMENT_LEADING, sh * STATEMENT_LEADING, group)
+            break
+    if chosen is None:
+        p.warn("STATEMENT_TOO_LONG", f"Statement of {len(text.split())} words does not read as a statement at ≥ {STATEMENT_SIZES[-1]} pt; set as body text. Shorten it or move the reasoning to the support line.")
+        paras = [Para(text, bold=True, color="primary")] + ([Para(sup, color="text_muted")] if sup else [])
+        p.text(box, paras, role="body", size=18, floor=12, anchor="middle", record="statement")
+        return
+    sz, th, sh, group = chosen
     top = box.y + max(0.0, (box.h - group) * 0.42)
     p.rect(Box(box.x, top, 0.9, 0.07), fill="highlight")
-    p.text(Box(box.x, top + 0.27, box.w, min(box.b - top - 0.27, th + 0.15)), text, role="headline", size=30, record="statement")
+    p.text(Box(box.x, top + bar, box.w, min(box.b - top - bar, th + 0.1)), text, role="headline", size=sz, floor=STATEMENT_SIZES[-1], record="statement")
     if sup:
-        y = top + 0.27 + th + gap
-        p.text(Box(box.x, y, box.w * 0.85, min(box.b - y, sh + 0.15)), sup, role="body", size=14, color="text_muted")
+        y = top + bar + th + gap
+        p.text(Box(box.x, y, sup_w, min(box.b - y, sh + 0.1)), sup, role="body", size=14, color="text_muted")
+
+
+STATEMENT_SIZES = (30, 28, 26, 24, 22)  # 22 pt: still clearly display type over 14 pt support
+STATEMENT_MEASURE = 0.92  # wrap against 92% of the width: renderer metrics differ from ours
+STATEMENT_LEADING = 1.1
+STATEMENT_MAX_LINES = 4
 
 
 # ---------------------------------------------------------------------------
@@ -351,18 +373,43 @@ def kpis(p: Painter, box: Box, data: dict) -> None:
                 p.line(xl, c.y + 0.05, xl, c.b - 0.05, color="gridline", width=LINES["rule"])
             _kpi(p, c, it)
         return
-    # a KPI set that IS the slide: one card per figure (v1.4) — the dashboard pattern — with the
-    # figure, delta and label centred in the card; cards are as tall as the content needs plus air,
-    # bounded, and the row sits on the optical centre
+    # a KPI set that IS the slide: one card per figure (v1.4) — the dashboard pattern. v1.5: the
+    # arrangement follows the content (one row while the figures stay large enough, 3+2 / rows of 3
+    # when they would not), card height follows what the cards hold, text contrast is computed
+    # against the card fill
+    rows = _kpi_rows(p, box, items)
+    gap_x, gap_y = GRID.gutter * 2, SPACING["L"]
+    per_row = max(len(r) for r in rows)
+    cw = (box.w - gap_x * (per_row - 1)) / per_row
     inner = cw - 2 * SPACING["M"]
-    k, need = pick_scale(lambda k: max(_kpi_geom(p, inner, it, k)["h"] for it in items), box.h, fill=0.5, cap=1.5)
-    ch = min(box.h * 0.72, max(need + 2 * SPACING["L"], min(2.6, box.h * 0.55)))
-    y = optical_top(box, ch)
-    for i, it in enumerate(items):
-        c = Box(box.x + i * (cw + GRID.gutter * 2), y, cw, ch)
-        p.rect(c, fill="surface")
-        g = _kpi_geom(p, inner, it, k)
-        _kpi(p, Box(c.x + SPACING["M"], c.y + (ch - g["h"]) / 2, inner, g["h"] + 0.05), it, k=k)
+    fill_share = 0.5 if len(rows) == 1 else 0.78
+    k, need = pick_scale(lambda k: max(_kpi_geom(p, inner, it, k)["h"] for it in items), box.h / len(rows), fill=fill_share, cap=1.5)
+    ch = max(need + 2 * SPACING["L"], min(2.6, box.h * 0.55) if len(rows) == 1 else 0)
+    ch = min(ch, (box.h - gap_y * (len(rows) - 1)) / len(rows))
+    total = ch * len(rows) + gap_y * (len(rows) - 1)
+    y = optical_top(box, total)
+    for r, row in enumerate(rows):
+        x0 = box.x + (box.w - (len(row) * cw + (len(row) - 1) * gap_x)) / 2  # a short last row is centred
+        for i, it in enumerate(row):
+            c = Box(x0 + i * (cw + gap_x), y + r * (ch + gap_y), cw, ch)
+            p.rect(c, fill="surface")
+            g = _kpi_geom(p, inner, it, k)
+            _kpi(p, Box(c.x + SPACING["M"], c.y + (ch - g["h"]) / 2, inner, g["h"] + 0.05), it, k=k, on="surface")
+
+
+def _kpi_rows(p: Painter, box: Box, items: list) -> list[list]:
+    """One row of cards while every figure stays legible at full size; otherwise 3 per row
+    (5 → 3 + 2, 6 → 3 + 3, …). Driven by measured widths, not by the count alone."""
+    n = len(items)
+    if n <= 3:
+        return [items]
+    cw = (box.w - GRID.gutter * 2 * (n - 1)) / n - 2 * SPACING["M"]
+    vs = p.style("kpi_value")["size"]
+    widest = max(p.text_w(str(it.get("value", "")), "kpi_value", size=vs) for it in items)
+    longest_label = max(p.measure(it.get("label", ""), "kpi_label", cw)[1] for it in items)
+    if n <= 4 or (n == 5 and widest <= cw and longest_label <= 2):
+        return [items]
+    return [items[i:i + 3] for i in range(0, n, 3)]
 
 
 def kpi_hero(p: Painter, box: Box, it: dict) -> None:
@@ -399,19 +446,27 @@ def kpi_hero(p: Painter, box: Box, it: dict) -> None:
         p.text(Box(nx, top + max(0.0, (group - nh) / 2), box.r - nx, nh + 0.1), note, role="body", size=18, record="kpi hero note")
 
 
-def _kpi(p: Painter, c: Box, it: dict, big: bool = False, k: float = 1.0) -> None:
+def _kpi(p: Painter, c: Box, it: dict, big: bool = False, k: float = 1.0, on: str | None = None) -> None:
+    """One KPI. `on`: the fill token it sits on — every text colour is then made legible against
+    that fill (deltas, muted labels), not against the page."""
     g = _kpi_geom(p, c.w, it, k, big=big)
+    bg = p.color(on) if on else None
+
+    def col(token, size, bold=False):
+        return p.legible(token, size, bold, bg=bg) if bg else token
+
     val = str(it.get("value", ""))
-    p.text(Box(c.x, c.y, c.w, g["vh"]), val, role="kpi_value", size=g["vs"], max_lines=1, color=it.get("color", "primary"), record=f"kpi {val}")
+    p.text(Box(c.x, c.y, c.w, g["vh"]), val, role="kpi_value", size=g["vs"], max_lines=1, color=col(it.get("color", "primary"), g["vs"], True), record=f"kpi {val}")
     y = c.y + g["vh"]
     if it.get("delta"):
-        txt, col = _trend(it)
-        p.text(Box(c.x, y, c.w, g["dh"]), txt, role="kpi_label", size=g["ds"], bold=True, color=col, max_lines=1)
+        txt, dcol = _trend(it)
+        p.text(Box(c.x, y, c.w, g["dh"]), txt, role="kpi_label", size=g["ds"], bold=True, color=col(dcol, g["ds"], True), max_lines=1)
         y += g["dh"]
-    p.text(Box(c.x, y, c.w, min(c.b - y, g["lh"] + 0.05)), it.get("label", ""), role="kpi_label", size=g["ls"], record="kpi label")
+    p.text(Box(c.x, y, c.w, min(c.b - y, g["lh"] + 0.05)), it.get("label", ""), role="kpi_label", size=g["ls"],
+           color=col("text_muted", g["ls"]) if bg else None, record="kpi label")
     y += g["lh"] + 0.08
     if it.get("note") and c.b - y > 0.25:
-        p.text(Box(c.x, y, c.w, c.b - y), it["note"], role="body", size=g["ns"], record="kpi note")
+        p.text(Box(c.x, y, c.w, c.b - y), it["note"], role="body", size=g["ns"], color=col("text", g["ns"]) if bg else None, record="kpi note")
 
 
 def _column_geom(p: Painter, w: float, data: dict, k: float) -> dict:

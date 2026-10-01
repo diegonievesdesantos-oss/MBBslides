@@ -54,6 +54,24 @@ Example decks are development material and regression fixtures, not evidence of 
 
 <!-- metrics:end -->
 
+## What's new in v1.5 (release candidate) — human alignment and real failure modes
+
+A small release driven by the first blind human round (r2: one evaluator preferred v1.4 in 35 of
+36 decisive votes). **v1.5.0rc1 awaits external validation**: an externally authored holdout, an
+unseen corporate template and human round r3 can only come from someone else
+([docs/EXTERNAL_HOLDOUT_PROTOCOL.md](docs/EXTERNAL_HOLDOUT_PROTOCOL.md)).
+
+- r2 preserved as the single-rater blind validation of v1.4, then marked development data; process
+  and comparison profiles now `human_supported_single_rater`, KPI dashboards still provisional.
+- **KPI dashboards** diagnosed ([docs/KPI_DASHBOARD_DIAGNOSIS.md](docs/KPI_DASHBOARD_DIAGNOSIS.md)):
+  the metric misread separators and card panels; the engine now arranges cards by measured width
+  and keeps every figure legible on its card.
+- **Derived-number proof**: "€61M" over 24 + 19 + 18, "−18%" over 100 → 82 — deterministic,
+  unit-aware, conservative (ambiguous = unproven), with provenance.
+- **Waterfalls below zero** and **long statements** render inside their zones.
+- Visual / authoring / benchmark QA verdicts apart; robustness drop distribution and instability
+  rates; private keys for future human rounds; clearer provenance.
+
 ## What's new in v1.4 — generalisation and visual intelligence
 
 The question of this release: *does MBBslides make good editorial decisions on slides it has never
@@ -232,6 +250,8 @@ density profile (board / standard / analytical / status). Themes: `meridian`, `g
 | [docs/EVALS.md](docs/EVALS.md) | quality profile, absolute gates, robustness, sealed holdout v2 protocol, human A/B statistics |
 | [docs/COMPOSITION_SCORING.md](docs/COMPOSITION_SCORING.md) | archetypes, expected profiles, fitness, attribution, profile governance, hard QA vs preference |
 | [docs/ARCHETYPE_DIAGNOSIS.md](docs/ARCHETYPE_DIAGNOSIS.md) | v1.4 weak-archetype diagnosis: metric vs engine decisions, engine-vs-scorer on the holdout |
+| [docs/KPI_DASHBOARD_DIAGNOSIS.md](docs/KPI_DASHBOARD_DIAGNOSIS.md) | v1.5 KPI-dashboard study: the r2 disagreement, engine vs metric, before/after |
+| [docs/EXTERNAL_HOLDOUT_PROTOCOL.md](docs/EXTERNAL_HOLDOUT_PROTOCOL.md) | how to hand over an external holdout or an unseen corporate template |
 | [docs/BRAND_INGESTION.md](docs/BRAND_INGESTION.md) | corporate template intelligence and layout matching |
 | [docs/REPRODUCIBILITY.md](docs/REPRODUCIBILITY.md) | pinned environment, manifest, reproducibility test, provenance and release workflow, CI |
 | [evals/](evals/) | the suites, baseline and results |
@@ -258,16 +278,16 @@ density profile (board / standard / analytical / status). Themes: `meridian`, `g
 - Brand templates must be 16:9 for their masters to be used (10 in pages are rescaled). Other
   ratios get colours and fonts only, and the report says so.
 - Brand inference has been validated on one real corporate template (which is now development
-  data) and on synthetic templates; a new unseen corporate template is needed to measure how it
-  generalises.
-- The proof check does not yet recognise derived headline numbers (a sum, a ratio) as proven; it
-  causes most of the lowest-scoring holdout slides.
-- Human-preference results depend on the votes collected; rounds r1 and r2 are built and awaiting
-  votes. Three v1.4 profile changes (process, comparison, KPI dashboard) are provisional until r2
-  is voted.
-- Holdout v2 was written by the same agent that develops the engine (sealed before the work, but
-  not externally authored); an externally written holdout (`cpe holdout external`) is the next step.
-- KPI dashboards are the weakest archetype on development and holdout data.
+  data) and on synthetic templates; an unseen corporate template is awaited
+  (`.private/holdouts/v15_corporate/`).
+- Derived-number proof covers bounded single-series arithmetic only; figures that need several
+  exhibits, subsets or text-stated numbers stay unproven (by design).
+- Human evidence so far is **one rater** (r2, now development data). r1 still awaits votes; r3
+  (v1.4 vs v1.5) awaits votes. Single-rater support is directional, not consensus.
+- Holdout v2 was written by the same agent that develops the engine and is development-known since
+  v1.5; no externally authored holdout exists yet (`.private/holdouts/v15_external/`).
+- KPI dashboards: the engine and the metric were fixed on development data; their profile is still
+  provisional and only r3 can say whether the corrected scores match human judgement.
 - Maps are editable *tile maps* (cartograms), not choropleth maps with real borders.
 - Composition fitness is a heuristic calibrated on the development set; the holdout, the 2×2
   engine-vs-scorer comparison and the human A/B rounds exist to tell how well it generalises. It

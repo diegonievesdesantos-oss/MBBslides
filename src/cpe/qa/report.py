@@ -17,6 +17,25 @@ LAYER_OF = {
     "geometry": {"OFF_SLIDE", "OUTSIDE_SAFE_AREA", "OUTSIDE_ZONE", "TEXT_OVERFLOW", "TEXT_COLLISION", "CONNECTOR_THROUGH_TEXT", "FONT_TOO_SMALL", "FONT_FAMILY", "COLOR_OFF_PALETTE", "LOW_CONTRAST", "PLACEHOLDER_TEXT", "HEADLINE_LINES", "HEADLINE_WIDOW", "MISALIGNED", "SHAPE_COUNT", "TINY_ELEMENT", "EMPTY_ZONE", "FIT_SHRUNK", "LABEL_COLLISION", "WATERFALL_NEGATIVE", "PIE_TOO_MANY"},
 }
 
+# v1.5 QA semantics: errors about the WRITING (storyline, headline wording, intent, spec) vs errors
+# about the rendered slide. HEADLINE_LINES / HEADLINE_WIDOW are how the headline renders: visual.
+AUTHORING_PREFIXES = ("STORY_", "HEADLINE_", "INTENT_", "SPEC_")
+VISUAL_HEADLINE_CODES = {"HEADLINE_LINES", "HEADLINE_WIDOW"}
+
+
+def is_authoring(code: str) -> bool:
+    code = str(code or "")
+    return code.startswith(AUTHORING_PREFIXES) and code not in VISUAL_HEADLINE_CODES
+
+
+def qa_semantics(issues: list[dict]) -> dict:
+    """visual_qa_passed: no error on the rendered slides. authoring_qa_passed: no error in the
+    writing. `passed` (the deck gate) still requires both."""
+    errs = [i for i in issues or [] if i.get("level") == "error"]
+    a = sum(1 for i in errs if is_authoring(i.get("code")))
+    return {"visual_qa_passed": len(errs) - a == 0, "authoring_qa_passed": a == 0, "errors_visual": len(errs) - a, "errors_authoring": a}
+
+
 # The questions of the semantic-visual review (answered by the agent looking at the PNGs)
 REVIEW_QUESTIONS = [
     ("one_idea", "Does the slide communicate ONE clear idea?"),

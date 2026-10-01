@@ -56,8 +56,8 @@ Each entry is a target range, a softness (how fast fitness decays outside the ra
 | waterfall | 0.78–1 (w14) | 0–0.25 (w16) | 0.03–0.4 (w6) | 0–0.12 (w8) | 0.05–1 (w8) | 0–5 (w4) | 1.35–9 (w10) | 0–5 (w6) | 0.5–1 (w14) |
 | table | 0.75–1 (w16) | 0–0.2 (w20) | 0.02–0.32 (w6) | 0–0.14 (w6) | — | 0–5 (w4) | 1.35–9 (w10) | 0–5 (w6) | 0.5–1 (w14) |
 | matrix | 0.65–1 (w12) | 0–0.32 (w12) | 0.04–0.28 (w6) | 0–0.1 (w14) | 0.05–1 (w8) | 0–5 (w4) | 1.35–9 (w10) | 0–5 (w6) | 0.5–1 (w14) |
-| comparison | 0.55–1 (w12) † | 0–0.35 (w14) † | 0.06–0.3 (w8) | 0–0.1 (w12) | 0.05–1 (w8) | 0–5 (w4) | 1.35–9 (w10) | 0–6 (w10) | 0.5–1 (w14) |
-| process | 0.5–1 (w12) † | 0–0.36 (w14) † | 0.06–0.3 (w8) | 0–0.12 (w8) | 0.05–1 (w8) | 0–5 (w4) | 1.35–9 (w10) | 0–8 (w6) | 0.5–1 (w14) |
+| comparison | 0.55–1 (w12) ‡ | 0–0.35 (w14) ‡ | 0.06–0.3 (w8) | 0–0.1 (w12) | 0.05–1 (w8) | 0–5 (w4) | 1.35–9 (w10) | 0–6 (w10) | 0.5–1 (w14) |
+| process | 0.5–1 (w12) ‡ | 0–0.36 (w14) ‡ | 0.06–0.3 (w8) | 0–0.12 (w8) | 0.05–1 (w8) | 0–5 (w4) | 1.35–9 (w10) | 0–8 (w6) | 0.5–1 (w14) |
 | roadmap | 0.78–1 (w16) | 0–0.28 (w12) | 0.04–0.3 (w6) | 0–0.12 (w8) | 0.05–1 (w8) | 0–5 (w4) | 1.35–9 (w10) | 0–5 (w6) | 0.5–1 (w14) |
 | timeline | 0.35–1 (w10) | 0–0.5 (w10) | 0.01–0.25 (w6) | 0–0.18 (w6) | 0.05–1 (w8) | 0–5 (w4) | 1.35–9 (w10) | 0–5 (w6) | 0.5–1 (w14) |
 | operating_model | 0.78–1 (w14) | 0–0.22 (w14) | 0.06–0.4 (w8) | 0–0.35 (w3) | 0.05–1 (w8) | 0–5 (w4) | 1.35–9 (w10) | 0–10 (w4) | 0.5–1 (w14) |
@@ -66,7 +66,13 @@ Each entry is a target range, a softness (how fast fitness decays outside the ra
 | segmentation | 0.72–1 (w12) | 0–0.28 (w14) | 0.06–0.3 (w8) | 0–0.12 (w8) | 0.05–1 (w8) | 0–5 (w4) | 1.35–9 (w10) | 0–5 (w6) | 0.5–1 (w14) |
 | text_exhibit | 0.55–1 (w12) | 0–0.4 (w14) | 0.03–0.25 (w8) | 0–0.12 (w8) | 0–0.5 (w2) | 0–4 (w2) | 1.35–9 (w10) | 0–5 (w6) | 0.5–1 (w14) |
 
-† provisional (v1.4, no human evidence yet; round r2 tests it).
+† provisional (v1.4; human evidence too small — kpi_dashboard 2/3 in r2, one rater; round r3 tests it).
+‡ human_supported_single_rater (v1.5): blind round r2, one evaluator — process 8/8, comparison 7/7
+decisive votes for the v1.4 composition. Directional support, not multi-rater validation.
+
+Since v1.5 `utilization` and `empty` are measured on an **occupancy** grid: visible filled panels
+(cards, step headers — anything distinct from the page colour) count as occupied, isolated thin
+vertical lines through empty space do not (docs/KPI_DASHBOARD_DIAGNOSIS.md).
 
 The ranges live in data — `src/cpe/qa/archetype_profiles.json` — with, per archetype, *why*, the
 development and human evidence, and per metric the version that last changed it (and `provisional`

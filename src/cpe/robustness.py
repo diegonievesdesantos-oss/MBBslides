@@ -32,6 +32,11 @@ ROOT = Path(__file__).resolve().parents[2]
 SEEDS = ROOT / "evals" / "robustness" / "seeds.json"
 BASELINE = ROOT / "evals" / "robustness" / "baseline.json"
 CATASTROPHIC_DROP = 25.0
+MEANINGFUL_DROP = 5.0  # v1.5 signals: a drop a reader would notice …
+LARGE_DROP = 10.0  # … and one that changes the verdict on a slide
+# provisional relative gates (v1.5): reported against the baseline, not yet failing CI — the
+# tolerances are engineering guesses until a few releases show the natural variation
+PROVISIONAL_TOLERANCE = {"p90_drop": 3.0, "large_drop_rate": 0.05, "font_drop_rate": 0.05, "layout_change_with_quality_drop_rate": 0.05}
 VISUAL_QA = ("TEXT_OVERFLOW", "TEXT_COLLISION", "RENDER_TEXT_COLLISION", "RENDER_TEXT_SPILL", "RENDER_OFF_SLIDE", "RENDER_LABEL_TRUNCATED", "RENDER_SMALL_TEXT")
 
 LONGER = " across all regions, with the largest effect in the second half of the year"
@@ -214,7 +219,8 @@ def _slide_facts(run_dir: Path, rep: dict) -> dict:
     out = {}
     for sid, c in comp.items():
         sizes = (c.get("raw") or {}).get("body_font_sizes") or []
-        out[sid] = {"score": c["score"], "flags": c["flags"], "layout": layouts.get(sid), "min_font": min(sizes) if sizes else None, "visual_qa": qa.get(sid, [])}
+        out[sid] = {"score": c["score"], "flags": c["flags"], "layout": layouts.get(sid), "min_font": min(sizes) if sizes else None, "visual_qa": qa.get(sid, []),
+                    "archetype": c.get("archetype")}
     return out
 
 
@@ -240,7 +246,7 @@ def run(out_dir: str | Path, seeds_path: Path = SEEDS) -> dict:
             delta = round(v["score"] - base["score"], 1)
             new_qa = sorted(set(v["visual_qa"]) - set(base["visual_qa"]))
             font_drop = (base["min_font"] - v["min_font"]) if base["min_font"] and v["min_font"] else 0
-            rows.append({"seed": name, "perturbation": n, "seed_score": base["score"], "score": v["score"], "delta": delta,
+            rows.append({"seed": name, "perturbation": n, "archetype": base.get("archetype"), "seed_score": base["score"], "score": v["score"], "delta": delta,
                          "layout_change": v["layout"] != base["layout"], "font_drop": font_drop, "new_visual_qa": new_qa,
                          "new_flags": sorted(set(v["flags"]) - set(base["flags"])),
                          "catastrophic": delta <= -CATASTROPHIC_DROP or bool(new_qa)})
@@ -251,37 +257,60 @@ def run(out_dir: str | Path, seeds_path: Path = SEEDS) -> dict:
     return summary
 
 
-def summarize(rows: list[dict]) -> dict:
+def _signals(ok: list[dict]) -> dict:
+    """Drop distribution and instability rates of a set of variants. A layout change alone is not
+    bad (re-composing for more content is the point); a layout change WITH a meaningful drop is."""
     from .quality import percentile
 
-    ok = [r for r in rows if "delta" in r]
+    n = len(ok)
     drops = [max(0.0, -r["delta"]) for r in ok]
+
+    def rate(k):
+        return round(k / n, 3) if n else None
+
+    return {
+        "n": n, "median_drop": percentile(drops, 50), "p90_drop": percentile(drops, 90), "p95_drop": percentile(drops, 95),
+        "max_drop": max(drops) if drops else None,
+        "meaningful_drop_rate": rate(sum(1 for d in drops if d >= MEANINGFUL_DROP)),
+        "large_drop_rate": rate(sum(1 for d in drops if d >= LARGE_DROP)),
+        "new_visual_error_rate": rate(sum(1 for r in ok if r["new_visual_qa"])),
+        "font_drop_rate": rate(sum(1 for r in ok if r["font_drop"] >= 2)),
+        "layout_change_rate": rate(sum(1 for r in ok if r["layout_change"])),
+        "layout_change_with_quality_drop_rate": rate(sum(1 for r in ok if r["layout_change"] and -r["delta"] >= MEANINGFUL_DROP)),
+        "new_flag_rate": rate(sum(1 for r in ok if r["new_flags"])),
+        "catastrophic": sum(1 for r in ok if r["catastrophic"]),
+    }
+
+
+def summarize(rows: list[dict]) -> dict:
+    ok = [r for r in rows if "delta" in r]
     cat = [r for r in ok if r["catastrophic"]]
-    by: dict = {}
+    g = _signals(ok)
+    by_p, by_a = {}, {}
     for r in ok:
-        b = by.setdefault(r["perturbation"], {"n": 0, "drops": [], "catastrophic": 0, "layout_changes": 0})
-        b["n"] += 1
-        b["drops"].append(max(0.0, -r["delta"]))
-        b["catastrophic"] += int(r["catastrophic"])
-        b["layout_changes"] += int(r["layout_change"])
+        by_p.setdefault(r["perturbation"], []).append(r)
+        by_a.setdefault(r.get("archetype") or "?", []).append(r)
     return {
         "variants": len(ok), "seeds": len({r["seed"] for r in ok}),
-        "median_drop": percentile(drops, 50), "p90_drop": percentile(drops, 90),
-        "catastrophic": len(cat), "catastrophic_rate": round(len(cat) / len(ok), 3) if ok else None,
-        "layout_change_rate": round(sum(r["layout_change"] for r in ok) / len(ok), 3) if ok else None,
-        "font_drop_rate": round(sum(1 for r in ok if r["font_drop"] >= 2) / len(ok), 3) if ok else None,
-        "by_perturbation": {k: {"n": v["n"], "median_drop": percentile(v["drops"], 50), "p90_drop": percentile(v["drops"], 90),
-                                "catastrophic": v["catastrophic"], "layout_changes": v["layout_changes"]} for k, v in sorted(by.items())},
+        **{k: v for k, v in g.items() if k != "n"},
+        "catastrophic_rate": round(len(cat) / len(ok), 3) if ok else None,
+        "new_visual_errors": sum(1 for r in ok if r["new_visual_qa"]),
+        "by_perturbation": {k: {**_signals(v), "layout_changes": sum(1 for r in v if r["layout_change"])} for k, v in sorted(by_p.items())},
+        "by_archetype": {k: _signals(v) for k, v in sorted(by_a.items())},
         "catastrophic_cases": [f"{r['seed']} · {r['perturbation']}: {r['seed_score']} → {r['score']}" + (f" (new QA {', '.join(r['new_visual_qa'])})" if r["new_visual_qa"] else "")
                                for r in cat],
-        "definition": f"catastrophic = composition drop ≥ {CATASTROPHIC_DROP:g} points or a new visual QA error; separate from the composition score",
+        "definition": f"catastrophic = composition drop ≥ {CATASTROPHIC_DROP:g} points or a new visual QA error; meaningful drop ≥ {MEANINGFUL_DROP:g}; "
+                      f"large drop ≥ {LARGE_DROP:g}; separate from the composition score",
         "rows": rows,
     }
 
 
 def compare(summary: dict, baseline: dict) -> list[str]:
-    """CI gate: no more catastrophic variants than the recorded baseline."""
+    """CI gate (enforced): no new visual QA error on any variant, no more catastrophic variants than
+    the baseline, no loss of coverage."""
     out = []
+    if summary.get("new_visual_errors", 0) > baseline.get("new_visual_errors", 0):
+        out.append(f"variants with a new visual QA error {baseline.get('new_visual_errors', 0)} → {summary['new_visual_errors']}")
     if summary["catastrophic"] > baseline.get("catastrophic", 0):
         out.append(f"catastrophic variants {baseline.get('catastrophic', 0)} → {summary['catastrophic']}")
     if summary["variants"] < baseline.get("variants", 0):
@@ -289,12 +318,29 @@ def compare(summary: dict, baseline: dict) -> list[str]:
     return out
 
 
+def provisional_breaches(summary: dict, baseline: dict) -> list[str]:
+    """Relative gates that are reported, not enforced (v1.5): P90 drop, large-drop rate, font
+    drops and layout instability may not grow beyond a tolerance over the baseline."""
+    out = []
+    for k, tol in PROVISIONAL_TOLERANCE.items():
+        b, v = baseline.get(k), summary.get(k)
+        if b is not None and v is not None and v > b + tol:
+            out.append(f"{k} {b} → {v} (tolerance +{tol:g}) — provisional")
+    return out
+
+
 def to_markdown(s: dict) -> str:
     L = ["# Robustness (metamorphic) report", "", f"_{s['definition']}_", "",
-         f"Seeds {s['seeds']} · variants {s['variants']} · median drop {s['median_drop']} · P90 drop {s['p90_drop']} · "
-         f"catastrophic {s['catastrophic']} ({s['catastrophic_rate']}) · layout changes {s['layout_change_rate']} · font drops ≥2pt {s['font_drop_rate']}", "",
-         "| perturbation | n | median drop | P90 drop | catastrophic | layout changes |", "|---|---|---|---|---|---|"]
-    L += [f"| {k} | {v['n']} | {v['median_drop']} | {v['p90_drop']} | {v['catastrophic']} | {v['layout_changes']} |" for k, v in s["by_perturbation"].items()]
+         f"Seeds {s['seeds']} · variants {s['variants']} · median drop {s['median_drop']} · P90 {s['p90_drop']} · P95 {s.get('p95_drop')} · max {s.get('max_drop')} · "
+         f"catastrophic {s['catastrophic']} ({s['catastrophic_rate']}) · new visual errors {s.get('new_visual_errors')}", "",
+         f"Rates: meaningful drop (≥{MEANINGFUL_DROP:g}) {s.get('meaningful_drop_rate')} · large drop (≥{LARGE_DROP:g}) {s.get('large_drop_rate')} · "
+         f"font drop ≥2pt {s['font_drop_rate']} · layout change {s['layout_change_rate']} (with a meaningful drop {s.get('layout_change_with_quality_drop_rate')}) · "
+         f"new flag {s.get('new_flag_rate')}", ""]
+    cols = ("n", "median_drop", "p90_drop", "max_drop", "large_drop_rate", "font_drop_rate", "layout_change_rate", "layout_change_with_quality_drop_rate", "catastrophic")
+    for title, block in (("perturbation", s["by_perturbation"]), ("archetype", s.get("by_archetype") or {})):
+        L += [f"| {title} | " + " | ".join(c.replace("_", " ") for c in cols) + " |", "|---" * (len(cols) + 1) + "|"]
+        L += [f"| {k} | " + " | ".join(str(v.get(c)) for c in cols) + " |" for k, v in block.items()]
+        L.append("")
     if s["catastrophic_cases"]:
-        L += ["", "## Catastrophic variants", ""] + [f"- {c}" for c in s["catastrophic_cases"]]
+        L += ["## Catastrophic variants", ""] + [f"- {c}" for c in s["catastrophic_cases"]]
     return "\n".join(L) + "\n"

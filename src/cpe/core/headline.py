@@ -53,12 +53,16 @@ VERBS = {
     "runs", "run", "ran", "manages", "manage", "oversees", "oversee", "owns", "own", "sets", "set", "covers", "cover",
     "removes", "remove", "gate", "gates", "cuts", "rose", "secures", "secure", "lose", "loses", "arrive", "arrives",
     "ramp", "ramps", "offers", "delivered", "delivering", "review", "ask", "asks", "asked", "approve", "decide",
+    "rate", "rates", "rated", "beat", "beats", "track", "tracks", "tracked", "turn", "turns", "turned", "lists", "told",
+    "heard", "fit", "fits", "mitigate", "mitigates", "taught", "teaches",
     # Spanish
     "es", "son", "fue", "fueron", "está", "están", "ha", "han", "será", "serán", "debe", "deben", "puede", "pueden",
     "crece", "crecen", "creció", "cae", "caen", "cayó", "sube", "suben", "subió", "representa", "representan", "explica",
     "explican", "genera", "generan", "supera", "superan", "requiere", "requieren", "concentra", "concentran", "permite",
     "permiten", "aporta", "aportan", "duplica", "alcanza", "alcanzó", "lidera", "lideran", "mantiene", "necesita",
     "ofrece", "reduce", "mejora", "amplía", "entrar", "priorizar", "invertir", "recomendamos", "se",
+    "baja", "bajan", "bajó", "mejoran", "mejoró", "empeora", "empeoran", "cubre", "cubren", "varía", "varían", "tiene",
+    "tienen", "tarda", "tardan", "culmina", "culminan", "crecimos", "toca",
 }
 
 VAGUE = {

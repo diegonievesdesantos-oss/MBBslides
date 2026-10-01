@@ -1,5 +1,75 @@
 # Changelog
 
+## 1.5.0rc1 — Human alignment, real failure modes, independent evidence pending
+
+A deliberately small release. It ends as a **release candidate awaiting external validation**: the
+independent evidence that could confirm it (an externally authored holdout, an unseen corporate
+template, human round r3) can only come from someone else. Nothing below is independent evidence
+for v1.5 (docs/EVALS.md, first table).
+
+### Governance
+- Round r2's blind result is preserved as the **single-rater blind validation of v1.4.0**
+  (`rounds/r2/VALIDATION_v1.4.json`: 35/1/2, 97.2% [85.8–99.5], scorer agreement 33/34; a test
+  recomputes it from the hashed votes). r2 was then marked **development data** (`mark-used`).
+- Profiles: process and comparison `utilization`/`empty` → `human_supported_single_rater` (8/8 and
+  7/7 decisive votes, one rater). kpi_dashboard stays `provisional`, range unchanged. Absolute
+  gates (mean ≥ 70, ≤ 25% below floor) stay provisional. `evals/profile_changes.md`.
+
+### KPI dashboards (docs/KPI_DASHBOARD_DIAGNOSIS.md)
+- r2's largest disagreement (p034, −26.2) was the **metric**: separators extended the "used" area;
+  light card panels were invisible. New occupancy measurement (`qa/composition.py:_occupancy`):
+  panels count as occupied, isolated thin lines do not. r2 re-measured (development data): 35/35.
+- Engine: cards arranged by measured width (one row up to 4, 5 when legible, else rows of 3,
+  centred short last row), height from content, every text colour made legible against the card
+  fill (the holdout's 2.8:1 delta). Development KPI dashboards 77.5 → 98.6.
+
+### Derived-number proof (qa/proof.py)
+- Deterministic, unit-aware arithmetic lineage: sum, sum of the 2/3 largest, difference, ratio,
+  percent change, percentage-point change, part ÷ total, waterfall increases / decreases / net
+  change. €/$/£, k/M/bn, %, pp, bps, ×; never across currencies or kinds. Tolerance = the headline's
+  written precision + 0.5%. No subset search; plain integers < 10 never derived; different kinds of
+  derivation matching one figure → "ambiguous", not proven. Machine-readable provenance per figure.
+  The direct match now honours the headline's rounding.
+
+### Render fixes (minimised repros in `evals/regression/cases/11_render_edges.json`)
+- **Waterfall**: running totals and totals below zero / crossing zero (were drawn off-slide, labels
+  at y = 18–66 in). Every bar is a span; positive and negative parts stack from zero; labels above
+  positive bars and under negative totals, clamped inside the plot frame; zero line on the axis.
+  `WATERFALL_NEGATIVE` is no longer emitted.
+- **Statement**: fallback ladder — measure with a renderer margin → 30/28/26/24/22 pt (22 = floor)
+  → optical placement → if it still does not read as a statement, set as body text with a
+  `STATEMENT_TOO_LONG` warning. Never clipped.
+- **QA measurement**: rendered spans are measured on visible glyphs; a trailing space's advance at
+  a line break was reported as `RENDER_TEXT_SPILL`.
+
+### QA semantics, reporting, provenance
+- `visual_qa_passed`, `authoring_qa_passed`, `benchmark_passed` reported separately; lint-stress
+  cases declare `eval.lint_stress`. Slides authored / resolved / measured reported apart.
+- Benchmark specs made editorially valid: the archetype battery is a declared slide
+  **collection** (no executive-summary rule; every other storyline rule applies), its 11 real topic
+  headlines were rewritten as claims, and the headline lint's verb lexicon gained common verbs it
+  missed ("rate", "beat", "bajó", "tiene", "cubre", …). Lint coverage is unchanged
+  ("Lessons from the pilot" is still a topic).
+- Provenance names `evaluated_source_commit`/`evaluated_source_dirty` and
+  `working_tree_commit`/`working_tree_dirty`; result files never make the evaluated source "dirty".
+
+### Human evaluation
+- Private-key architecture for new rounds: key in `.private/human_reference/keys/<round>/`,
+  SHA-256 commitment in the bundle, `cpe human report --key`, `cpe human close`; test that the
+  bundle reveals no version, role, layout, score or mapping. r1/r2 history untouched.
+- Per-rater and pooled statistics; a rater voting twice counts once. Windows: UTF-8 everywhere,
+  `votes/` created on demand (the "Vote not saved" bug of the first r2 session).
+
+### Robustness
+- Median / P90 / P95 / max drop, meaningful (≥ 5) and large (≥ 10) drop rates, new-visual-error,
+  font-drop, layout-change and layout-change-with-drop, new-flag rates — global, per perturbation,
+  per archetype. Enforced: no new visual QA error, no catastrophic variant, no coverage loss.
+  Provisional relative gates for P90, large drops, font drops, layout instability.
+
+### Intake (awaiting input)
+- `cpe holdout intake | v15-external | v15-corporate` and docs/EXTERNAL_HOLDOUT_PROTOCOL.md.
+  External decks need attested outside authorship; a known development template (JET) is refused.
+
 ## 1.4.0 — Generalisation and visual intelligence
 
 Engine frozen at `430176d`; every number below was evaluated on that clean commit

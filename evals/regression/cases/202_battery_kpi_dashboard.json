@@ -6,6 +6,7 @@
   },
   "storyline": {
     "framework": "SCR",
+    "collection": true,
     "governing_thought": "Each kpi_dashboard slide is judged on what it is trying to be",
     "key_line": [
       {
@@ -26,7 +27,7 @@
   },
   "slides": [
     {
-      "headline": "Growth, margin and cash all beat the plan except cash",
+      "headline": "Growth and margin beat the plan; cash falls short",
       "message_type": "kpi_dashboard",
       "visual": {
         "type": "kpi",
@@ -225,7 +226,7 @@
       "source": "Battery fixture (synthetic)"
     },
     {
-      "headline": "Customer metrics: more customers, fewer complaints",
+      "headline": "Customers grow and complaints fall on every metric",
       "message_type": "kpi_dashboard",
       "visual": {
         "type": "kpi",
@@ -264,7 +265,7 @@
       "source": "Battery fixture (synthetic)"
     },
     {
-      "headline": "Indicadores de seguridad laboral en mínimos históricos",
+      "headline": "La seguridad laboral alcanza mínimos históricos",
       "message_type": "kpi_dashboard",
       "visual": {
         "type": "kpi",

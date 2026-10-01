@@ -124,8 +124,8 @@ class Painter:
         from ..design.tokens import contrast_ratio, interpolate
 
         c = self.color(token)
-        if token not in ("highlight", "secondary", "positive", "negative", "warning", "neutral"):
-            return c
+        if bg is None and token not in ("highlight", "secondary", "positive", "negative", "warning", "neutral"):
+            return c  # on the page background, body colours are designed to contrast
         bg = bg or self.color("background")
         need = 3.0 if (size >= 18 or (size >= 14 and bold)) else 4.5
         k = 0

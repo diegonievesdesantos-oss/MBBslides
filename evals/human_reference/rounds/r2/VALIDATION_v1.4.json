@@ -1,0 +1,89 @@
+{
+  "_doc": "Historical blind result of round r2 — the independent single-rater validation of v1.4.0. Frozen before r2 was used for v1.5 development; tests recompute it from the votes and fail if it changes.",
+  "validates": "engine v1.4.0 (430176d) vs v1.3.3 (a2f4dbc) on the sealed holdout v2 decks, both scored by the v1.4 scorer",
+  "evidence_class": "single-rater blind validation (1 evaluator)",
+  "blind_at_vote_time": true,
+  "frozen_on": "2026-10-01",
+  "result": {
+    "evaluators": 1,
+    "comparisons": 38,
+    "challenger_wins": 35,
+    "baseline_wins": 1,
+    "ties": 2,
+    "challenger_preference": 0.972,
+    "challenger_preference_ci95": [
+      0.858,
+      0.995
+    ],
+    "ties_as_half": 0.947
+  },
+  "scorer_agreement": {
+    "agree": 33,
+    "decisive_pairs": 34,
+    "rate": 0.971,
+    "ci95": [
+      0.851,
+      0.995
+    ]
+  },
+  "kendall_tau_b": 0.143,
+  "kendall_ci95": [
+    -0.236,
+    0.428
+  ],
+  "left_bias": {
+    "left_share": 0.5,
+    "ci95": [
+      0.345,
+      0.655
+    ]
+  },
+  "self_consistency": {
+    "repeated_pairs": 2,
+    "consistent": 1
+  },
+  "by_archetype": {
+    "comparison": {
+      "challenger_wins": 7,
+      "baseline_wins": 0,
+      "ties": 0
+    },
+    "hierarchy": {
+      "challenger_wins": 1,
+      "baseline_wins": 0,
+      "ties": 1
+    },
+    "kpi_dashboard": {
+      "challenger_wins": 2,
+      "baseline_wins": 1,
+      "ties": 0
+    },
+    "kpi_hero": {
+      "challenger_wins": 5,
+      "baseline_wins": 0,
+      "ties": 1
+    },
+    "process": {
+      "challenger_wins": 8,
+      "baseline_wins": 0,
+      "ties": 0
+    },
+    "roadmap": {
+      "challenger_wins": 6,
+      "baseline_wins": 0,
+      "ties": 0
+    },
+    "text_exhibit": {
+      "challenger_wins": 6,
+      "baseline_wins": 0,
+      "ties": 0
+    }
+  },
+  "hashes": {
+    "votes": {
+      "r-17nqy.jsonl": "9b6685f8447ef40b065d395ed881b86fe7ff4d0215751fc62c1beb2cc3577837"
+    },
+    "key.json": "b8818aa42f01087ee0684bbd448b3fac15a97893282be2cb4af0c22167cfb733",
+    "pairs.json": "be88c9cb22d3a859e984f59e5980c0486dc6a39e9afe9d07c677addee43c2ebf"
+  }
+}

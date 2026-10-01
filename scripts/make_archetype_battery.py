@@ -41,7 +41,7 @@ class Deck:
 
     def write(self) -> Path:
         spec = {"meta": {"title": f"Battery: {self.archetype}", "deck_type": "strategy_deck", "theme": THEMES[self.idx % 3]},
-                "storyline": {"framework": "SCR", "governing_thought": f"Each {self.archetype} slide is judged on what it is trying to be",
+                "storyline": {"framework": "SCR", "collection": True, "governing_thought": f"Each {self.archetype} slide is judged on what it is trying to be",
                               "key_line": [{"id": "K1", "role": "situation", "message": "Variations of one archetype"},
                                            {"id": "K2", "role": "resolution", "message": "Composition must hold across them"}]},
                 "eval": {"purpose": f"Archetype battery ({self.archetype}): {self.purpose}", "battery": self.archetype}, "slides": self.slides}
@@ -137,7 +137,7 @@ def build() -> list[Path]:
         return [kpi("12%", "crecimiento" if es_ else "revenue growth", delta="+2 pp" if es_ else "+2 pts", trend="up", good="up"),
                 kpi("18.5%" if not es_ else "18,5%", "margen EBIT" if es_ else "EBIT margin", delta="+0.4 pts" if not es_ else "+0,4 pp", trend="up", good="up"),
                 kpi("€210M", "caja libre" if es_ else "free cash flow", delta="−€15M", trend="down", good="up")]
-    d.add(content("Growth, margin and cash all beat the plan except cash", {"type": "kpi", "data": {"items": k3()}}, mt="kpi_dashboard"))
+    d.add(content("Growth and margin beat the plan; cash falls short", {"type": "kpi", "data": {"items": k3()}}, mt="kpi_dashboard"))
     d.add(content("Crecimiento y margen mejoran; la caja empeora por el inventario", {"type": "kpi", "data": {"items": k3(True)}}, mt="kpi_dashboard"), es=True)
     d.add(content("Four operating KPIs improved in the quarter", {"type": "kpi", "data": {"style": "grid", "items": [kpi("96.1%", "on-time delivery", delta="+1.8 pts", trend="up", good="up"),
           kpi("3.2 days", "order lead time", delta="−0.6 days", trend="down", good="down"), kpi("0.8%", "return rate", delta="−0.1 pts", trend="down", good="down"),
@@ -147,10 +147,10 @@ def build() -> list[Path]:
     d.add(content("Six KPIs show a business that grows but consumes cash", {"type": "kpi", "data": {"style": "grid", "items": [kpi("+14%", "revenue"), kpi("+9%", "gross profit"),
           kpi("−3 pts", "gross margin", trend="down", good="up"), kpi("€-42M", "operating cash flow", trend="down", good="up"), kpi("71 days", "inventory", trend="up", good="down"),
           kpi("2.9x", "leverage", trend="up", good="down")]}}, mt="kpi_dashboard"))
-    d.add(content("Customer metrics: more customers, fewer complaints", {"type": "kpi", "data": {"items": [kpi("2.4M", "active customers", delta="+310k", trend="up", good="up",
+    d.add(content("Customers grow and complaints fall on every metric", {"type": "kpi", "data": {"items": [kpi("2.4M", "active customers", delta="+310k", trend="up", good="up",
           note="Mostly app sign-ups"), kpi("1.1%", "complaint rate", delta="−0.4 pts", trend="down", good="down", note="Fewer billing errors"),
           kpi("38 s", "average wait time", delta="−12 s", trend="down", good="down", note="Callback service live")]}}, mt="kpi_dashboard"))
-    d.add(content("Indicadores de seguridad laboral en mínimos históricos", {"type": "kpi", "data": {"style": "grid", "items": [kpi("0,9", "índice de frecuencia"),
+    d.add(content("La seguridad laboral alcanza mínimos históricos", {"type": "kpi", "data": {"style": "grid", "items": [kpi("0,9", "índice de frecuencia"),
           kpi("0", "accidentes graves"), kpi("12.400", "horas de formación"), kpi("98%", "auditorías superadas")]}}, mt="kpi_dashboard"), es=True)
     d.add(content("Pipeline, win rate and deal size all moved the right way", {"type": "kpi", "data": {"items": [kpi("$412M", "qualified pipeline", delta="+22%", trend="up", good="up"),
           kpi("27%", "win rate", delta="+3 pts", trend="up", good="up"), kpi("$186k", "average deal", delta="+$21k", trend="up", good="up"),
@@ -247,7 +247,7 @@ def build() -> list[Path]:
     d.add(content("La caja generada cubre la inversión y el dividendo", {"type": "waterfall", "title": "Flujo de caja 2025", "unit": "M€", "data": {"steps": [
         {"label": "EBITDA", "value": 640, "type": "total"}, {"label": "Circulante", "value": -85}, {"label": "Impuestos", "value": -110}, {"label": "Inversión", "value": -230},
         {"label": "Dividendo", "value": -120}, {"label": "Caja neta", "type": "total"}]}}, mt="change_bridge"), es=True)
-    d.add(content("Revenue per customer up $38 from price, down $12 from churn mix", {"type": "waterfall", "title": "Revenue per customer", "unit": "$", "data": {"steps": [
+    d.add(content("Revenue per customer rose $38 from price and fell $12 from churn mix", {"type": "waterfall", "title": "Revenue per customer", "unit": "$", "data": {"steps": [
         {"label": "2024", "value": 412, "type": "total"}, {"label": "Price", "value": 38}, {"label": "Upsell", "value": 19}, {"label": "Churn mix", "value": -12},
         {"label": "Discounts", "value": -9}, {"label": "2025", "type": "total"}]}}, mt="change_bridge"))
     d.add(content("Gross margin to net profit: where the 42 points go", {"type": "waterfall", "title": "From gross margin to net margin", "unit": "% of revenue", "data": {"steps": [
@@ -454,7 +454,7 @@ def build() -> list[Path]:
     d.add(content("El modelo operativo de compras tiene cuatro capas", {"type": "operating_model", "data": {"layers": [lay("Estrategia", ["Categorías", "Riesgo de proveedor"]),
           lay("Negociación", ["Compradores de categoría", "Licitaciones"], emphasis=True), lay("Operación", ["Pedidos", "Facturas", "Pagos"]), lay("Datos", ["Gasto", "Contratos"])]}},
           mt="structure"), es=True)
-    d.add(content("Six layers from strategy to infrastructure", {"type": "layers", "data": {"layers": [lay("Strategy", ["Portfolio", "Capital allocation"]),
+    d.add(content("The operating model runs on six layers, from strategy to infrastructure", {"type": "layers", "data": {"layers": [lay("Strategy", ["Portfolio", "Capital allocation"]),
           lay("Commercial", ["Marketing", "Sales", "Pricing"]), lay("Operations", ["Plants", "Logistics", "Quality"], emphasis=True), lay("Support", ["Finance", "HR", "Legal"]),
           lay("Technology", ["ERP", "MES", "Data"]), lay("Infrastructure", ["Cloud", "Network"])]}}, mt="structure"))
     d.add(content("Each layer lists who does what in the new structure", {"type": "operating_model", "data": {"layers": [
@@ -482,7 +482,7 @@ def build() -> list[Path]:
     d.add(content("The target architecture adds an API layer between channels and core", {"type": "architecture", "data": {"layers": [lay("Channels", ["Mobile", "Web", "Branch", "Partners"]),
           lay("Integration", [item("API gateway", "new", True), item("Event bus", "new")], emphasis=True), lay("Core", ["Deposits", "Loans", "Cards"]),
           lay("Data", [item("Customer master", "changed"), "Analytics"])]}}, mt="structure"))
-    d.add(content("Five layers and twenty components in the current landscape", {"type": "architecture", "data": {"layers": [
+    d.add(content("The current landscape has five layers and twenty components", {"type": "architecture", "data": {"layers": [
           lay("Experience", ["Web shop", "App", "Call centre", "Stores", "Marketplace"]), lay("Commerce", ["Catalogue", "Pricing", "Promotions", "Basket"]),
           lay("Fulfilment", ["OMS", "WMS", "TMS", "Returns"]), lay("Enterprise", ["ERP", "HR", "Finance", "Procurement"]), lay("Data", ["Lake", "BI", "ML platform"])]}}, mt="structure"))
     d.add(content("La plataforma de datos tiene cuatro capas", {"type": "architecture", "data": {"layers": [lay("Consumo", ["Cuadros de mando", "Modelos"]),
@@ -568,7 +568,7 @@ def build() -> list[Path]:
     d.add(content("La penetración del servicio varía del 12% al 48% entre comunidades", {"type": "tile_map", "title": "Penetración del servicio", "unit": "% de hogares",
           "highlight": ["EX", "CN"], "data": {"preset": "spain", "values": {"GA": 21, "AS": 24, "CB": 28, "PV": 44, "NA": 41, "CL": 19, "RI": 33, "AR": 30, "CT": 46, "MD": 48, "EX": 12,
           "CM": 17, "VC": 35, "IB": 39, "AN": 22, "MC": 25, "CN": 14}}}, mt="geography"), es=True)
-    d.add(content("Six customer segments by size and profitability", {"type": "mekko", "title": "Revenue by segment and margin band", "unit": "% of segment; width = revenue (€M)",
+    d.add(content("Six customer segments differ by size and profitability", {"type": "mekko", "title": "Revenue by segment and margin band", "unit": "% of segment; width = revenue (€M)",
           "data": {"order": ["High margin", "Medium margin", "Low margin"], "columns": [{"label": s, "total": t, "parts": dict(zip(["High margin", "Medium margin", "Low margin"], p))}
           for s, t, p in [("Grocers", 120, [20, 50, 30]), ("Hotels", 85, [45, 35, 20]), ("Hospitals", 60, [10, 40, 50]), ("Schools", 45, [5, 35, 60]), ("Offices", 70, [40, 40, 20]),
           ("Airlines", 30, [60, 30, 10])]]}}, mt="composition"))
@@ -581,9 +581,9 @@ def build() -> list[Path]:
     # ── text_exhibit ────────────────────────────────────────────────────────
     d = Deck("tx", "text_exhibit", "one argument / three bullets / long paragraph / short narrative / quote-like / Spanish", 16)
     d.add(content("Only one argument is needed: the contract expires in March", {"type": "bullets", "data": {"points": ["The supplier contract expires in March and cannot be extended"]}}, mt="argument"))
-    d.add(content("Three reasons to act before the summer", {"type": "bullets", "data": {"points": ["Prices rise 8% in July", "Two competitors are already switching", "The tender takes four months"]}},
+    d.add(content("We should act before the summer, for three reasons", {"type": "bullets", "data": {"points": ["Prices rise 8% in July", "Two competitors are already switching", "The tender takes four months"]}},
           mt="argument"))
-    d.add(content("The case for change in one paragraph", {"type": "bullets", "data": {"points": [
+    d.add(content("The case for change fits in one paragraph", {"type": "bullets", "data": {"points": [
           "Our cost base grew 9% a year for five years while revenue grew 4%, and the gap is now structural: two thirds of the increase comes from overheads that do not scale "
           "with volume, from duplicated regional functions, and from IT systems that were never integrated after the last three acquisitions. Without a reset, operating margin "
           "falls below 5% by 2027, below the level at which we can fund the investment the strategy requires."]}}, mt="argument"))
@@ -591,7 +591,7 @@ def build() -> list[Path]:
           "Datos de ventas diarios, no semanales", "Libertad para ajustar precios sin aprobación central"]}}, mt="argument"), es=True)
     d.add(content("What customers told us", {"type": "bullets", "data": {"points": ["“I do not mind paying more if it arrives when you say it will.”",
           "“The app is fine; the problem is when something goes wrong.”"]}}, mt="argument"))
-    d.add(content("Five risks to the plan and how we mitigate them", {"type": "bullets", "data": {"points": ["Supplier delays: dual-source the two critical components",
+    d.add(content("Five risks could delay the plan; each has a mitigation", {"type": "bullets", "data": {"points": ["Supplier delays: dual-source the two critical components",
           "Union opposition: early consultation and a no-redundancy guarantee for 2026", "IT readiness: freeze other projects during the ERP cut-over",
           "Customer churn during migration: dedicated retention team", "Cost overrun: 15% contingency released only by the steering committee"]}}, mt="argument"))
     d.add(content("La historia en breve: crecimos rápido y ahora toca consolidar", {"type": "bullets", "data": {"points": [
@@ -611,7 +611,7 @@ def build() -> list[Path]:
           "Communication: head-office emails arrive after customers have already asked about promotions"]}}, mt="argument"))
     d.add(content("Two conditions must hold before we sign", {"type": "bullets", "data": {"points": ["Due diligence confirms the €40M of synergies",
           "The regulator clears the deal without remedies"]}}, mt="argument"))
-    d.add(content("Lessons from the pilot", {"type": "bullets", "data": {"points": ["Stores with a dedicated lead improved twice as fast",
+    d.add(content("The pilot shows what works in stores", {"type": "bullets", "data": {"points": ["Stores with a dedicated lead improved twice as fast",
           "Daily data mattered more than the pricing algorithm", "Staff accepted the change once they saw their own results"]}}, mt="argument",
           commentary={"points": ["Roll out with the same three conditions"]}))
     decks.append(d)

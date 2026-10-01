@@ -6,6 +6,7 @@
   },
   "storyline": {
     "framework": "SCR",
+    "collection": true,
     "governing_thought": "Each segmentation slide is judged on what it is trying to be",
     "key_line": [
       {
@@ -341,7 +342,7 @@
       "source": "Batería de pruebas (sintética)"
     },
     {
-      "headline": "Six customer segments by size and profitability",
+      "headline": "Six customer segments differ by size and profitability",
       "message_type": "composition",
       "visual": {
         "type": "mekko",

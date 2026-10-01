@@ -30,15 +30,21 @@ from .geometry import _parse_name
 
 
 def _spans(page) -> list[dict]:
+    """Rendered text spans. The box is the union of the visible glyphs: a line broken after a space
+    keeps that trailing space in the PDF span, and its advance may cross the frame without any ink
+    leaving it (v1.5: this was reported as RENDER_TEXT_SPILL)."""
     out = []
-    d = page.get_text("dict")
+    d = page.get_text("rawdict")
     for block in d.get("blocks", []):
         for line in block.get("lines", []):
             for sp in line.get("spans", []):
-                t = sp.get("text", "")
-                if not t.strip():
+                chars = sp.get("chars", [])
+                t = "".join(c["c"] for c in chars)
+                ink = [c["bbox"] for c in chars if c["c"].strip()]
+                if not ink:
                     continue
-                x0, y0, x1, y1 = sp["bbox"]
+                x0, x1 = min(b[0] for b in ink), max(b[2] for b in ink)
+                _, y0, _, y1 = sp["bbox"]
                 out.append({"text": t, "box": Box(x0 / 72, y0 / 72, (x1 - x0) / 72, (y1 - y0) / 72), "size": sp.get("size", 0), "origin_y": sp.get("origin", (0, y1))[1] / 72, "dir": line.get("dir", (1, 0))})
     return out
 

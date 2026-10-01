@@ -233,3 +233,96 @@ def run_external(root: str | Path | None = None, out: str | Path | None = None, 
 
         record_result("holdout_external", summary)
     return summary
+
+
+# ── v1.5 intake: independent evidence that only someone else can supply ───────────────────────────
+#
+#   .private/holdouts/v15_external/decks/*.json     decks written by someone OTHER than the developer
+#   .private/holdouts/v15_external/PROVENANCE.json  {"author_role": "...", "authored_by_developer": false,
+#                                                    "engine_renders_seen_by_author": false, "received": "YYYY-MM-DD"}
+#   .private/holdouts/v15_corporate/template.pptx   a corporate template never used in development
+#
+#   cpe holdout intake                 status of both (never runs anything)
+#   cpe holdout v15-external [--record]
+#   cpe holdout v15-corporate [--record]
+#
+# The runners refuse when the intake is missing, when the external provenance does not attest an
+# outside author, or when the corporate template is a known development template (JET): a
+# self-authored deck or a reused template is never presented as independent evidence.
+
+V15_EXTERNAL = DEFAULT_ROOT / "v15_external"
+V15_CORPORATE = DEFAULT_ROOT / "v15_corporate"
+KNOWN_DEVELOPMENT = DEFAULT_ROOT / "KNOWN_DEVELOPMENT.sha256"  # hashes only, private
+
+
+def _sha256(p: Path) -> str:
+    import hashlib
+
+    return hashlib.sha256(p.read_bytes()).hexdigest()
+
+
+def known_development_hashes() -> set[str]:
+    """Templates already used in development: every template.pptx under .private/holdouts outside
+    the v1.5 corporate intake, plus the recorded hash list."""
+    out = set()
+    if KNOWN_DEVELOPMENT.exists():
+        out |= {line.split()[0] for line in KNOWN_DEVELOPMENT.read_text().splitlines() if line.strip()}
+    if DEFAULT_ROOT.exists():
+        out |= {_sha256(t) for t in DEFAULT_ROOT.glob("*/template.pptx") if t.parent.name != V15_CORPORATE.name}
+    return out
+
+
+def _rel(p: Path) -> str:
+    try:
+        return str(p.relative_to(ROOT))
+    except ValueError:
+        return str(p)
+
+
+def external_status(root: Path = V15_EXTERNAL) -> dict:
+    decks = sorted((root / "decks").glob("*.json")) if (root / "decks").exists() else []
+    prov_f = root / "PROVENANCE.json"
+    prov = json.loads(prov_f.read_text(encoding="utf-8")) if prov_f.exists() else None
+    if not decks:
+        return {"status": "EXTERNAL HOLDOUT: AWAITING INPUT", "folder": _rel(root) + "/decks/", "decks": 0,
+                "how": "docs/EXTERNAL_HOLDOUT_PROTOCOL.md"}
+    if not prov or prov.get("authored_by_developer") is not False or prov.get("engine_renders_seen_by_author") is not False:
+        return {"status": "EXTERNAL HOLDOUT: PROVENANCE MISSING OR NOT INDEPENDENT", "decks": len(decks),
+                "how": "PROVENANCE.json must attest authored_by_developer=false and engine_renders_seen_by_author=false"}
+    return {"status": "EXTERNAL HOLDOUT: READY", "decks": len(decks), "received": prov.get("received")}
+
+
+def corporate_status(root: Path = V15_CORPORATE) -> dict:
+    tpl = root / "template.pptx"
+    if not tpl.exists():
+        return {"status": "UNSEEN CORPORATE TEMPLATE: AWAITING USER-SUPPLIED TEMPLATE", "folder": _rel(root) + "/",
+                "command": "scripts/cpe holdout v15-corporate --record"}
+    if _sha256(tpl) in known_development_hashes():
+        return {"status": "UNSEEN CORPORATE TEMPLATE: REFUSED — this template was already used in development (not unseen)"}
+    return {"status": "UNSEEN CORPORATE TEMPLATE: READY"}
+
+
+def run_v15_external(out: str | Path | None = None, record: bool = False) -> dict:
+    st = external_status()
+    if not st["status"].endswith("READY"):
+        return {**st, "ran": False}
+    r = run_external(V15_EXTERNAL / "decks", out or DEFAULT_OUT / "v15_external", record=False)
+    r["evidence"] = "external holdout (independently authored, provenance attested)"
+    if record:
+        from .evals import record_result
+
+        record_result("holdout_v15_external", r)
+    return {**r, "ran": True}
+
+
+def run_v15_corporate(out: str | Path | None = None, record: bool = False) -> dict:
+    st = corporate_status()
+    if not st["status"].endswith("READY"):
+        return {**st, "ran": False}
+    out = Path(out) if out else DEFAULT_OUT / "v15_corporate"
+    s = run_one(V15_CORPORATE, out)
+    if record:
+        from .evals import record_result
+
+        record_result("holdout_v15_corporate", {"summary": "unseen corporate template (sanitized aggregates)", "corporate_template": s})
+    return {"status": "ran", "ran": True, "corporate_template": s}
