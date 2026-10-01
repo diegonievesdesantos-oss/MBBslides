@@ -3,6 +3,13 @@
   "seeds": 22,
   "catastrophic": 0,
   "catastrophic_rate": 0.0,
+  "new_visual_errors": 0,
   "median_drop": 0.0,
-  "p90_drop": 0.0
+  "p90_drop": 0.0,
+  "p95_drop": 0.1,
+  "max_drop": 3.6,
+  "large_drop_rate": 0.0,
+  "font_drop_rate": 0.038,
+  "layout_change_rate": 0.103,
+  "layout_change_with_quality_drop_rate": 0.0
 }

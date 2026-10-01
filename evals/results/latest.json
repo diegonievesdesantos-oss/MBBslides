@@ -1,246 +1,314 @@
 {
-  "version": "1.4.0",
+  "version": "1.5.0rc1",
   "regression": {
     "metric": "archetype-fitness composition score",
-    "suite_composition": 92.8,
-    "suite_composition_v1": 83.9,
-    "slides_measured": 194,
-    "qa_errors": 41,
-    "qa_errors_authoring": 41,
-    "qa_warnings": 302,
-    "cases_ok": 27,
-    "cases_total": 27,
+    "suite_composition": 95.1,
+    "suite_composition_v1": 84.7,
+    "slides_measured": 202,
+    "qa_errors": 0,
+    "qa_errors_authoring": 0,
+    "qa_warnings": 312,
+    "cases_ok": 28,
+    "cases_total": 28,
     "flag_counts": {
-      "UNDERUSED_CANVAS": 28,
+      "UNDERUSED_CANVAS": 19,
       "OFF_BALANCE": 11,
       "DEAD_SPACE": 5,
-      "PROOF_NOT_VISIBLE": 3,
       "NO_FOCAL_POINT": 3,
-      "OVERDENSE": 3
+      "OVERDENSE": 3,
+      "PROOF_NOT_VISIBLE": 1
     },
     "passed": true,
+    "visual_qa_passed": true,
+    "authoring_qa_passed": true,
+    "benchmark_passed": true,
+    "slides_authored": 199,
+    "slides_resolved": 202,
     "cases": {
       "01_sparse_content": {
         "composition": 98.5,
         "qa_score": 94.5,
         "qa_errors": 0,
         "qa_warnings": 6,
-        "qa_passed": true
+        "qa_passed": true,
+        "visual_qa_passed": true,
+        "authoring_qa_passed": true
       },
       "02_text_overload": {
         "composition": 100.0,
         "qa_score": 93.3,
         "qa_errors": 0,
         "qa_warnings": 5,
-        "qa_passed": true
+        "qa_passed": true,
+        "visual_qa_passed": true,
+        "authoring_qa_passed": true
       },
       "03_tables": {
         "composition": 99.1,
         "qa_score": 94.3,
         "qa_errors": 0,
         "qa_warnings": 5,
-        "qa_passed": true
+        "qa_passed": true,
+        "visual_qa_passed": true,
+        "authoring_qa_passed": true
       },
       "04_charts_stress": {
-        "composition": 87.5,
+        "composition": 94.7,
         "qa_score": 94.5,
         "qa_errors": 0,
         "qa_warnings": 6,
-        "qa_passed": true
+        "qa_passed": true,
+        "visual_qa_passed": true,
+        "authoring_qa_passed": true
       },
       "05_spanish": {
-        "composition": 97.9,
+        "composition": 97.7,
         "qa_score": 98.0,
         "qa_errors": 0,
         "qa_warnings": 2,
-        "qa_passed": true
+        "qa_passed": true,
+        "visual_qa_passed": true,
+        "authoring_qa_passed": true
       },
       "06_diagrams_dense": {
-        "composition": 97.9,
+        "composition": 98.2,
         "qa_score": 93.0,
         "qa_errors": 0,
         "qa_warnings": 8,
-        "qa_passed": true
+        "qa_passed": true,
+        "visual_qa_passed": true,
+        "authoring_qa_passed": true
       },
       "07_waterfalls": {
-        "composition": 76.5,
+        "composition": 98.3,
         "qa_score": 96.0,
         "qa_errors": 0,
         "qa_warnings": 3,
-        "qa_passed": true
+        "qa_passed": true,
+        "visual_qa_passed": true,
+        "authoring_qa_passed": true
       },
       "08_headlines_structure": {
         "composition": 94.2,
         "qa_score": 97.0,
         "qa_errors": 0,
         "qa_warnings": 3,
-        "qa_passed": true
+        "qa_passed": true,
+        "visual_qa_passed": true,
+        "authoring_qa_passed": true
       },
       "09_numbers_currencies": {
         "composition": 85.4,
         "qa_score": 98.3,
         "qa_errors": 0,
         "qa_warnings": 1,
-        "qa_passed": true
+        "qa_passed": true,
+        "visual_qa_passed": true,
+        "authoring_qa_passed": true
       },
       "10_archetypes": {
-        "composition": 93.9,
+        "composition": 94.9,
         "qa_score": 91.6,
         "qa_errors": 0,
         "qa_warnings": 21,
-        "qa_passed": true
+        "qa_passed": true,
+        "visual_qa_passed": true,
+        "authoring_qa_passed": true
+      },
+      "11_render_edges": {
+        "composition": 98.2,
+        "qa_score": 96.5,
+        "qa_errors": 0,
+        "qa_warnings": 8,
+        "qa_passed": true,
+        "visual_qa_passed": true,
+        "authoring_qa_passed": true
       },
       "200_battery_statement": {
-        "composition": 99.6,
+        "composition": 99.7,
         "qa_score": 100.0,
         "qa_errors": 0,
         "qa_warnings": 2,
-        "qa_passed": true
+        "qa_passed": true,
+        "visual_qa_passed": true,
+        "authoring_qa_passed": true
       },
       "201_battery_kpi_hero": {
-        "composition": 97.3,
-        "qa_score": 91.0,
-        "qa_errors": 3,
+        "composition": 97.5,
+        "qa_score": 95.0,
+        "qa_errors": 0,
         "qa_warnings": 13,
-        "qa_passed": false
+        "qa_passed": true,
+        "visual_qa_passed": true,
+        "authoring_qa_passed": true
       },
       "202_battery_kpi_dashboard": {
-        "composition": 77.5,
-        "qa_score": 78.8,
-        "qa_errors": 6,
-        "qa_warnings": 18,
-        "qa_passed": false
+        "composition": 98.6,
+        "qa_score": 90.8,
+        "qa_errors": 0,
+        "qa_warnings": 19,
+        "qa_passed": true,
+        "visual_qa_passed": true,
+        "authoring_qa_passed": true
       },
       "203_battery_executive_summary": {
         "composition": 88.8,
         "qa_score": 98.6,
         "qa_errors": 0,
         "qa_warnings": 4,
-        "qa_passed": true
+        "qa_passed": true,
+        "visual_qa_passed": true,
+        "authoring_qa_passed": true
       },
       "204_battery_chart": {
         "composition": 96.7,
         "qa_score": 94.2,
-        "qa_errors": 1,
+        "qa_errors": 0,
         "qa_warnings": 12,
-        "qa_passed": false
+        "qa_passed": true,
+        "visual_qa_passed": true,
+        "authoring_qa_passed": true
       },
       "205_battery_waterfall": {
         "composition": 93.5,
-        "qa_score": 90.4,
-        "qa_errors": 3,
-        "qa_warnings": 12,
-        "qa_passed": false
+        "qa_score": 94.4,
+        "qa_errors": 0,
+        "qa_warnings": 13,
+        "qa_passed": true,
+        "visual_qa_passed": true,
+        "authoring_qa_passed": true
       },
       "206_battery_table": {
         "composition": 95.9,
-        "qa_score": 91.9,
-        "qa_errors": 2,
+        "qa_score": 93.9,
+        "qa_errors": 0,
         "qa_warnings": 14,
-        "qa_passed": false
+        "qa_passed": true,
+        "visual_qa_passed": true,
+        "authoring_qa_passed": true
       },
       "207_battery_matrix": {
         "composition": 98.7,
         "qa_score": 92.5,
-        "qa_errors": 1,
+        "qa_errors": 0,
         "qa_warnings": 16,
-        "qa_passed": false
+        "qa_passed": true,
+        "visual_qa_passed": true,
+        "authoring_qa_passed": true
       },
       "208_battery_comparison": {
         "composition": 84.8,
         "qa_score": 94.8,
-        "qa_errors": 1,
+        "qa_errors": 0,
         "qa_warnings": 12,
-        "qa_passed": false
+        "qa_passed": true,
+        "visual_qa_passed": true,
+        "authoring_qa_passed": true
       },
       "209_battery_process": {
-        "composition": 83.5,
-        "qa_score": 84.8,
-        "qa_errors": 3,
+        "composition": 86.5,
+        "qa_score": 88.8,
+        "qa_errors": 0,
         "qa_warnings": 27,
-        "qa_passed": false
+        "qa_passed": true,
+        "visual_qa_passed": true,
+        "authoring_qa_passed": true
       },
       "210_battery_roadmap": {
         "composition": 92.7,
         "qa_score": 91.4,
-        "qa_errors": 1,
+        "qa_errors": 0,
         "qa_warnings": 18,
-        "qa_passed": false
+        "qa_passed": true,
+        "visual_qa_passed": true,
+        "authoring_qa_passed": true
       },
       "211_battery_timeline": {
         "composition": 99.1,
-        "qa_score": 89.5,
-        "qa_errors": 2,
+        "qa_score": 92.0,
+        "qa_errors": 0,
         "qa_warnings": 17,
-        "qa_passed": false
+        "qa_passed": true,
+        "visual_qa_passed": true,
+        "authoring_qa_passed": true
       },
       "212_battery_operating_model": {
         "composition": 98.7,
-        "qa_score": 85.2,
-        "qa_errors": 4,
+        "qa_score": 92.8,
+        "qa_errors": 0,
         "qa_warnings": 15,
-        "qa_passed": false
+        "qa_passed": true,
+        "visual_qa_passed": true,
+        "authoring_qa_passed": true
       },
       "213_battery_architecture": {
-        "composition": 88.4,
-        "qa_score": 89.6,
-        "qa_errors": 3,
+        "composition": 91.2,
+        "qa_score": 93.6,
+        "qa_errors": 0,
         "qa_warnings": 16,
-        "qa_passed": false
+        "qa_passed": true,
+        "visual_qa_passed": true,
+        "authoring_qa_passed": true
       },
       "214_battery_hierarchy": {
-        "composition": 92.6,
+        "composition": 95.1,
         "qa_score": 92.2,
-        "qa_errors": 1,
+        "qa_errors": 0,
         "qa_warnings": 18,
-        "qa_passed": false
+        "qa_passed": true,
+        "visual_qa_passed": true,
+        "authoring_qa_passed": true
       },
       "215_battery_segmentation": {
         "composition": 98.0,
-        "qa_score": 91.6,
-        "qa_errors": 2,
+        "qa_score": 94.1,
+        "qa_errors": 0,
         "qa_warnings": 12,
-        "qa_passed": false
+        "qa_passed": true,
+        "visual_qa_passed": true,
+        "authoring_qa_passed": true
       },
       "216_battery_text_exhibit": {
         "composition": 87.6,
-        "qa_score": 83.2,
-        "qa_errors": 8,
+        "qa_score": 94.8,
+        "qa_errors": 0,
         "qa_warnings": 16,
-        "qa_passed": false
+        "qa_passed": true,
+        "visual_qa_passed": true,
+        "authoring_qa_passed": true
       }
     },
     "overall": {
-      "overall_score": 92.8,
-      "slide_mean": 92.7,
-      "macro_archetype_score": 92.4,
-      "weakest_archetype": "kpi_dashboard",
-      "weakest_archetype_score": 79.8,
-      "weakest_archetype_n": 9,
-      "weakest_covered_archetype": "kpi_dashboard",
-      "weakest_covered_archetype_score": 79.8,
-      "share_slides_above_90": 0.768,
-      "share_slides_above_80": 0.866,
-      "share_slides_above_70": 0.928,
-      "qa_errors": 41,
+      "overall_score": 95.1,
+      "slide_mean": 94.5,
+      "macro_archetype_score": 94.4,
+      "weakest_archetype": "comparison",
+      "weakest_archetype_score": 84.6,
+      "weakest_archetype_n": 11,
+      "weakest_covered_archetype": "comparison",
+      "weakest_covered_archetype_score": 84.6,
+      "share_slides_above_90": 0.817,
+      "share_slides_above_80": 0.911,
+      "share_slides_above_70": 0.965,
+      "qa_errors": 0,
       "qa_errors_visual": 0
     },
     "distribution": {
-      "n": 194,
-      "min": 49.4,
-      "p10": 75.4,
-      "p25": 91.7,
-      "median": 98.5,
+      "n": 202,
+      "min": 53.4,
+      "p10": 80.1,
+      "p25": 94.1,
+      "median": 98.7,
       "p75": 100.0,
       "p90": 100.0
     },
     "archetypes": {
       "architecture": {
         "n": 9,
-        "mean": 91.4,
-        "median": 99.8,
-        "min": 49.4,
-        "p10": 78.1,
+        "mean": 94.0,
+        "median": 100.0,
+        "min": 57.9,
+        "p10": 84.9,
         "flags": {
           "NO_FOCAL_POINT": 1,
           "UNDERUSED_CANVAS": 1
@@ -252,18 +320,17 @@
       },
       "chart": {
         "n": 18,
-        "mean": 94.2,
+        "mean": 95.8,
         "median": 99.7,
-        "min": 50.6,
-        "p10": 79.3,
+        "min": 75.0,
+        "p10": 80.6,
         "flags": {
           "DEAD_SPACE": 2,
-          "PROOF_NOT_VISIBLE": 1,
           "UNDERUSED_CANVAS": 1,
           "OFF_BALANCE": 1
         },
         "coverage": "gate_eligible",
-        "share_below_floor": 0.056,
+        "share_below_floor": 0.0,
         "health": "HEALTHY",
         "gate_status": "enforced: min_floor"
       },
@@ -299,37 +366,35 @@
       },
       "hierarchy": {
         "n": 10,
-        "mean": 93.2,
-        "median": 97.3,
-        "min": 67.6,
-        "p10": 83.0,
+        "mean": 95.6,
+        "median": 99.8,
+        "min": 77.6,
+        "p10": 84.0,
         "flags": {
           "OFF_BALANCE": 2,
           "UNDERUSED_CANVAS": 1
         },
         "coverage": "gate_eligible",
-        "share_below_floor": 0.1,
+        "share_below_floor": 0.0,
         "health": "HEALTHY",
         "gate_status": "enforced: min_floor"
       },
       "kpi_dashboard": {
         "n": 9,
-        "mean": 79.8,
-        "median": 71.2,
-        "min": 61.6,
-        "p10": 61.7,
-        "flags": {
-          "UNDERUSED_CANVAS": 5
-        },
+        "mean": 98.5,
+        "median": 98.5,
+        "min": 96.8,
+        "p10": 98.0,
+        "flags": {},
         "coverage": "gate_eligible",
-        "share_below_floor": 0.444,
-        "health": "NOT HEALTHY",
+        "share_below_floor": 0.0,
+        "health": "HEALTHY",
         "gate_status": "enforced: min_floor"
       },
       "kpi_hero": {
         "n": 12,
-        "mean": 97.4,
-        "median": 97.8,
+        "mean": 97.5,
+        "median": 97.9,
         "min": 94.2,
         "p10": 95.8,
         "flags": {
@@ -368,12 +433,12 @@
       },
       "process": {
         "n": 12,
-        "mean": 81.0,
-        "median": 80.8,
+        "mean": 84.7,
+        "median": 85.7,
         "min": 55.1,
-        "p10": 62.7,
+        "p10": 66.9,
         "flags": {
-          "UNDERUSED_CANVAS": 7,
+          "UNDERUSED_CANVAS": 3,
           "DEAD_SPACE": 1
         },
         "coverage": "gate_eligible",
@@ -411,11 +476,11 @@
         "gate_status": "enforced: min_floor"
       },
       "statement": {
-        "n": 15,
+        "n": 19,
         "mean": 99.8,
         "median": 100.0,
-        "min": 97.7,
-        "p10": 99.2,
+        "min": 98.2,
+        "p10": 99.5,
         "flags": {},
         "coverage": "gate_eligible",
         "share_below_floor": 0.0,
@@ -466,31 +531,23 @@
         "gate_status": "enforced: min_floor"
       },
       "waterfall": {
-        "n": 13,
-        "mean": 90.6,
-        "median": 96.1,
-        "min": 56.5,
-        "p10": 79.3,
+        "n": 17,
+        "mean": 94.5,
+        "median": 96.6,
+        "min": 78.5,
+        "p10": 85.4,
         "flags": {
-          "PROOF_NOT_VISIBLE": 1,
           "DEAD_SPACE": 1,
           "OFF_BALANCE": 1
         },
         "coverage": "gate_eligible",
-        "share_below_floor": 0.077,
+        "share_below_floor": 0.0,
         "health": "HEALTHY",
         "gate_status": "enforced: min_floor"
       }
     },
     "absolute_gates": {
       "breaches": [
-        {
-          "archetype": "kpi_dashboard",
-          "rule": "too_many_slides_below_floor",
-          "value": 0.444,
-          "floor": 0.25,
-          "enforced": false
-        },
         {
           "archetype": "text_exhibit",
           "rule": "too_many_slides_below_floor",
@@ -500,7 +557,6 @@
         }
       ],
       "not_healthy": [
-        "kpi_dashboard",
         "text_exhibit"
       ],
       "coverage": {
@@ -533,18 +589,22 @@
     },
     "environment_fingerprint": "f98cee49d123ed5f",
     "engine": {
-      "version": "1.4.0",
-      "commit": "430176dacf55c050fd92e3beb6b9e8fbdb13f0db"
+      "version": "1.5.0rc1",
+      "commit": "864127011f332c967d58acd8067a332b11397c6e"
     },
     "provenance": {
-      "evaluated_commit": "430176dacf55c050fd92e3beb6b9e8fbdb13f0db",
-      "git_tree": "4a5f1c04f3bf52c8bbf5277f91c9d500a2f55b3c",
+      "evaluated_commit": "864127011f332c967d58acd8067a332b11397c6e",
+      "git_tree": "80804cc3cc5839e954357d356e09aae44c57c0fc",
       "dirty": false,
       "dirty_paths": [],
-      "engine_version": "1.4.0",
+      "evaluated_source_commit": "864127011f332c967d58acd8067a332b11397c6e",
+      "evaluated_source_dirty": false,
+      "working_tree_commit": "864127011f332c967d58acd8067a332b11397c6e",
+      "working_tree_dirty": false,
+      "engine_version": "1.5.0rc1",
       "container_image": "mbbslides-visual:1.3",
       "container_digest": "sha256:bb5bbbdd55bcec5db567781c63574da1a4b2fc4504446d6fea23f5197f59d278",
-      "eval_timestamp_utc": "2026-10-01T10:03:44Z",
+      "eval_timestamp_utc": "2026-10-01T11:56:29Z",
       "environment_fingerprint": "f98cee49d123ed5f",
       "release_truth": true
     }
@@ -658,9 +718,9 @@
       "Inter": "Inter|/usr/share/fonts/opentype/inter/Inter-Regular.otf",
       "Segoe UI": "DejaVu Sans|/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
     },
-    "cpe_version": "1.4.0",
+    "cpe_version": "1.5.0rc1",
     "container_image": "mbbslides-visual:1.3@sha256:bb5bbbdd55bcec5db567781c63574da1a4b2fc4504446d6fea23f5197f59d278",
-    "commit": "430176dacf55c050fd92e3beb6b9e8fbdb13f0db-dirty",
+    "commit": "864127011f332c967d58acd8067a332b11397c6e",
     "fingerprint": "f98cee49d123ed5f"
   },
   "holdout": {
@@ -1353,7 +1413,9 @@
         "PROOF_NOT_VISIBLE causes 7 of the 8 slides below 62: derived headline numbers (sums, differences, ratios) are still not recognised as proven",
         "OUTSIDE_ZONE ×2 on a Spanish waterfall; RENDER_TEXT_SPILL on a long statement",
         "Not tuned in this cycle (docs/EVALS.md#holdout-v2-protocol)"
-      ]
+      ],
+      "slides_authored": 157,
+      "status_v1_5": "blind result of v1.4.0 (run once); development-known for v1.5 — its findings drove the v1.5 KPI, waterfall, statement and derived-proof work. Not re-run as evidence for v1.5."
     }
   },
   "human_reference": {
@@ -1464,16 +1526,22 @@
           ]
         },
         "method": "Preference = challenger wins / decisive votes, Wilson 95% interval (ties excluded; ties-as-half also shown). Agreement: percent agreement and Fleiss' kappa over {baseline, challenger, tie} on pairs rated by ≥2 evaluators. Human preference is an independent signal and is never part of the automatic composition score.",
+        "blind": false,
+        "used_for_calibration": true,
+        "status": "development data since v1.5 (mark-used); blind single-rater validation of v1.4 preserved in rounds/r2/VALIDATION_v1.4.json"
+      },
+      "r3": {
+        "pairs": 42,
         "blind": true,
         "used_for_calibration": false,
-        "status": "votes received"
+        "status": "awaiting human votes — 42 blind pairs built, 0 votes"
       }
     }
   },
   "examples": {
     "metric": "archetype-fitness composition score",
-    "suite_composition": 99.5,
-    "suite_composition_v1": 92.7,
+    "suite_composition": 99.6,
+    "suite_composition_v1": 93.1,
     "slides_measured": 43,
     "qa_errors": 0,
     "qa_errors_authoring": 0,
@@ -1482,39 +1550,50 @@
     "cases_total": 3,
     "flag_counts": {},
     "passed": true,
+    "visual_qa_passed": true,
+    "authoring_qa_passed": true,
+    "benchmark_passed": true,
+    "slides_authored": 50,
+    "slides_resolved": 50,
     "cases": {
       "alvora": {
         "composition": 99.8,
         "qa_score": 99.8,
         "qa_errors": 0,
         "qa_warnings": 0,
-        "qa_passed": true
+        "qa_passed": true,
+        "visual_qa_passed": true,
+        "authoring_qa_passed": true
       },
       "gallery": {
-        "composition": 99.1,
+        "composition": 99.6,
         "qa_score": 99.8,
         "qa_errors": 0,
         "qa_warnings": 0,
-        "qa_passed": true
+        "qa_passed": true,
+        "visual_qa_passed": true,
+        "authoring_qa_passed": true
       },
       "alvora_on_kestrel": {
         "composition": 99.5,
         "qa_score": 99.7,
         "qa_errors": 0,
         "qa_warnings": 0,
-        "qa_passed": true
+        "qa_passed": true,
+        "visual_qa_passed": true,
+        "authoring_qa_passed": true
       }
     },
     "overall": {
-      "overall_score": 99.5,
-      "slide_mean": 99.4,
-      "macro_archetype_score": 99.4,
-      "weakest_archetype": "hierarchy",
-      "weakest_archetype_score": 94.3,
+      "overall_score": 99.6,
+      "slide_mean": 99.6,
+      "macro_archetype_score": 99.7,
+      "weakest_archetype": "process",
+      "weakest_archetype_score": 98.8,
       "weakest_archetype_n": 2,
       "weakest_covered_archetype": "chart",
       "weakest_covered_archetype_score": 99.0,
-      "share_slides_above_90": 0.977,
+      "share_slides_above_90": 1.0,
       "share_slides_above_80": 1.0,
       "share_slides_above_70": 1.0,
       "qa_errors": 0,
@@ -1522,9 +1601,9 @@
     },
     "distribution": {
       "n": 43,
-      "min": 89.9,
-      "p10": 98.5,
-      "p25": 99.6,
+      "min": 96.9,
+      "p10": 98.7,
+      "p25": 99.8,
       "median": 100.0,
       "p75": 100.0,
       "p90": 100.0
@@ -1580,10 +1659,10 @@
       },
       "hierarchy": {
         "n": 2,
-        "mean": 94.3,
-        "median": 94.3,
-        "min": 89.9,
-        "p10": 90.8,
+        "mean": 99.4,
+        "median": 99.4,
+        "min": 98.8,
+        "p10": 98.9,
         "flags": {},
         "coverage": "INSUFFICIENT COVERAGE",
         "share_below_floor": 0.0,
@@ -1747,18 +1826,22 @@
     },
     "environment_fingerprint": "f98cee49d123ed5f",
     "engine": {
-      "version": "1.4.0",
-      "commit": "430176dacf55c050fd92e3beb6b9e8fbdb13f0db-dirty"
+      "version": "1.5.0rc1",
+      "commit": "864127011f332c967d58acd8067a332b11397c6e"
     },
     "provenance": {
-      "evaluated_commit": "430176dacf55c050fd92e3beb6b9e8fbdb13f0db",
-      "git_tree": "4a5f1c04f3bf52c8bbf5277f91c9d500a2f55b3c",
+      "evaluated_commit": "864127011f332c967d58acd8067a332b11397c6e",
+      "git_tree": "80804cc3cc5839e954357d356e09aae44c57c0fc",
       "dirty": false,
       "dirty_paths": [],
-      "engine_version": "1.4.0",
+      "evaluated_source_commit": "864127011f332c967d58acd8067a332b11397c6e",
+      "evaluated_source_dirty": false,
+      "working_tree_commit": "864127011f332c967d58acd8067a332b11397c6e",
+      "working_tree_dirty": true,
+      "engine_version": "1.5.0rc1",
       "container_image": "mbbslides-visual:1.3",
       "container_digest": "sha256:bb5bbbdd55bcec5db567781c63574da1a4b2fc4504446d6fea23f5197f59d278",
-      "eval_timestamp_utc": "2026-10-01T10:07:45Z",
+      "eval_timestamp_utc": "2026-10-01T12:00:35Z",
       "environment_fingerprint": "f98cee49d123ed5f",
       "release_truth": true
     }
@@ -1794,15 +1877,32 @@
     "seeds": 22,
     "median_drop": 0.0,
     "p90_drop": 0.0,
+    "p95_drop": 0.1,
+    "max_drop": 3.6,
+    "meaningful_drop_rate": 0.0,
+    "large_drop_rate": 0.0,
+    "new_visual_error_rate": 0.0,
+    "font_drop_rate": 0.038,
+    "layout_change_rate": 0.103,
+    "layout_change_with_quality_drop_rate": 0.0,
+    "new_flag_rate": 0.0,
     "catastrophic": 0,
     "catastrophic_rate": 0.0,
-    "layout_change_rate": 0.103,
-    "font_drop_rate": 0.038,
+    "new_visual_errors": 0,
     "by_perturbation": {
       "full_numbers": {
         "n": 4,
         "median_drop": 0.0,
         "p90_drop": 2.5,
+        "p95_drop": 3.1,
+        "max_drop": 3.6,
+        "meaningful_drop_rate": 0.0,
+        "large_drop_rate": 0.0,
+        "new_visual_error_rate": 0.0,
+        "font_drop_rate": 0.0,
+        "layout_change_rate": 0.25,
+        "layout_change_with_quality_drop_rate": 0.0,
+        "new_flag_rate": 0.0,
         "catastrophic": 0,
         "layout_changes": 1
       },
@@ -1810,6 +1910,15 @@
         "n": 22,
         "median_drop": 0.0,
         "p90_drop": 0.0,
+        "p95_drop": 0.0,
+        "max_drop": 3.6,
+        "meaningful_drop_rate": 0.0,
+        "large_drop_rate": 0.0,
+        "new_visual_error_rate": 0.0,
+        "font_drop_rate": 0.0,
+        "layout_change_rate": 0.136,
+        "layout_change_with_quality_drop_rate": 0.0,
+        "new_flag_rate": 0.0,
         "catastrophic": 0,
         "layout_changes": 3
       },
@@ -1817,6 +1926,15 @@
         "n": 10,
         "median_drop": 0.0,
         "p90_drop": 0.5,
+        "p95_drop": 1.0,
+        "max_drop": 1.4,
+        "meaningful_drop_rate": 0.0,
+        "large_drop_rate": 0.0,
+        "new_visual_error_rate": 0.0,
+        "font_drop_rate": 0.1,
+        "layout_change_rate": 0.2,
+        "layout_change_with_quality_drop_rate": 0.0,
+        "new_flag_rate": 0.0,
         "catastrophic": 0,
         "layout_changes": 2
       },
@@ -1824,6 +1942,15 @@
         "n": 2,
         "median_drop": 0.0,
         "p90_drop": 0.0,
+        "p95_drop": 0.0,
+        "max_drop": 0.0,
+        "meaningful_drop_rate": 0.0,
+        "large_drop_rate": 0.0,
+        "new_visual_error_rate": 0.0,
+        "font_drop_rate": 0.0,
+        "layout_change_rate": 0.0,
+        "layout_change_with_quality_drop_rate": 0.0,
+        "new_flag_rate": 0.0,
         "catastrophic": 0,
         "layout_changes": 0
       },
@@ -1831,6 +1958,15 @@
         "n": 3,
         "median_drop": 0.0,
         "p90_drop": 0.0,
+        "p95_drop": 0.0,
+        "max_drop": 0.0,
+        "meaningful_drop_rate": 0.0,
+        "large_drop_rate": 0.0,
+        "new_visual_error_rate": 0.0,
+        "font_drop_rate": 0.0,
+        "layout_change_rate": 0.333,
+        "layout_change_with_quality_drop_rate": 0.0,
+        "new_flag_rate": 0.0,
         "catastrophic": 0,
         "layout_changes": 1
       },
@@ -1838,6 +1974,15 @@
         "n": 21,
         "median_drop": 0.0,
         "p90_drop": 0.0,
+        "p95_drop": 0.0,
+        "max_drop": 0.0,
+        "meaningful_drop_rate": 0.0,
+        "large_drop_rate": 0.0,
+        "new_visual_error_rate": 0.0,
+        "font_drop_rate": 0.0,
+        "layout_change_rate": 0.0,
+        "layout_change_with_quality_drop_rate": 0.0,
+        "new_flag_rate": 0.0,
         "catastrophic": 0,
         "layout_changes": 0
       },
@@ -1845,6 +1990,15 @@
         "n": 2,
         "median_drop": 0.0,
         "p90_drop": 0.0,
+        "p95_drop": 0.0,
+        "max_drop": 0.0,
+        "meaningful_drop_rate": 0.0,
+        "large_drop_rate": 0.0,
+        "new_visual_error_rate": 0.0,
+        "font_drop_rate": 0.5,
+        "layout_change_rate": 0.5,
+        "layout_change_with_quality_drop_rate": 0.0,
+        "new_flag_rate": 0.0,
         "catastrophic": 0,
         "layout_changes": 1
       },
@@ -1852,22 +2006,266 @@
         "n": 14,
         "median_drop": 0.0,
         "p90_drop": 0.0,
+        "p95_drop": 0.0,
+        "max_drop": 0.0,
+        "meaningful_drop_rate": 0.0,
+        "large_drop_rate": 0.0,
+        "new_visual_error_rate": 0.0,
+        "font_drop_rate": 0.071,
+        "layout_change_rate": 0.0,
+        "layout_change_with_quality_drop_rate": 0.0,
+        "new_flag_rate": 0.0,
         "catastrophic": 0,
         "layout_changes": 0
       }
     },
+    "by_archetype": {
+      "architecture": {
+        "n": 2,
+        "median_drop": 0.0,
+        "p90_drop": 0.0,
+        "p95_drop": 0.0,
+        "max_drop": 0.0,
+        "meaningful_drop_rate": 0.0,
+        "large_drop_rate": 0.0,
+        "new_visual_error_rate": 0.0,
+        "font_drop_rate": 0.0,
+        "layout_change_rate": 0.0,
+        "layout_change_with_quality_drop_rate": 0.0,
+        "new_flag_rate": 0.0,
+        "catastrophic": 0
+      },
+      "chart": {
+        "n": 10,
+        "median_drop": 0.0,
+        "p90_drop": 0.0,
+        "p95_drop": 0.0,
+        "max_drop": 0.0,
+        "meaningful_drop_rate": 0.0,
+        "large_drop_rate": 0.0,
+        "new_visual_error_rate": 0.0,
+        "font_drop_rate": 0.0,
+        "layout_change_rate": 0.2,
+        "layout_change_with_quality_drop_rate": 0.0,
+        "new_flag_rate": 0.0,
+        "catastrophic": 0
+      },
+      "comparison": {
+        "n": 8,
+        "median_drop": 0.0,
+        "p90_drop": 0.1,
+        "p95_drop": 0.3,
+        "max_drop": 0.4,
+        "meaningful_drop_rate": 0.0,
+        "large_drop_rate": 0.0,
+        "new_visual_error_rate": 0.0,
+        "font_drop_rate": 0.0,
+        "layout_change_rate": 0.25,
+        "layout_change_with_quality_drop_rate": 0.0,
+        "new_flag_rate": 0.0,
+        "catastrophic": 0
+      },
+      "executive_summary": {
+        "n": 3,
+        "median_drop": 0.0,
+        "p90_drop": 1.1,
+        "p95_drop": 1.3,
+        "max_drop": 1.4,
+        "meaningful_drop_rate": 0.0,
+        "large_drop_rate": 0.0,
+        "new_visual_error_rate": 0.0,
+        "font_drop_rate": 0.0,
+        "layout_change_rate": 0.0,
+        "layout_change_with_quality_drop_rate": 0.0,
+        "new_flag_rate": 0.0,
+        "catastrophic": 0
+      },
+      "hierarchy": {
+        "n": 3,
+        "median_drop": 0.0,
+        "p90_drop": 0.0,
+        "p95_drop": 0.0,
+        "max_drop": 0.0,
+        "meaningful_drop_rate": 0.0,
+        "large_drop_rate": 0.0,
+        "new_visual_error_rate": 0.0,
+        "font_drop_rate": 0.0,
+        "layout_change_rate": 0.0,
+        "layout_change_with_quality_drop_rate": 0.0,
+        "new_flag_rate": 0.0,
+        "catastrophic": 0
+      },
+      "kpi_dashboard": {
+        "n": 9,
+        "median_drop": 0.0,
+        "p90_drop": 0.0,
+        "p95_drop": 0.0,
+        "max_drop": 0.0,
+        "meaningful_drop_rate": 0.0,
+        "large_drop_rate": 0.0,
+        "new_visual_error_rate": 0.0,
+        "font_drop_rate": 0.0,
+        "layout_change_rate": 0.0,
+        "layout_change_with_quality_drop_rate": 0.0,
+        "new_flag_rate": 0.0,
+        "catastrophic": 0
+      },
+      "kpi_hero": {
+        "n": 5,
+        "median_drop": 0.0,
+        "p90_drop": 0.0,
+        "p95_drop": 0.0,
+        "max_drop": 0.0,
+        "meaningful_drop_rate": 0.0,
+        "large_drop_rate": 0.0,
+        "new_visual_error_rate": 0.0,
+        "font_drop_rate": 0.2,
+        "layout_change_rate": 0.0,
+        "layout_change_with_quality_drop_rate": 0.0,
+        "new_flag_rate": 0.0,
+        "catastrophic": 0
+      },
+      "matrix": {
+        "n": 4,
+        "median_drop": 0.0,
+        "p90_drop": 0.0,
+        "p95_drop": 0.0,
+        "max_drop": 0.0,
+        "meaningful_drop_rate": 0.0,
+        "large_drop_rate": 0.0,
+        "new_visual_error_rate": 0.0,
+        "font_drop_rate": 0.0,
+        "layout_change_rate": 0.0,
+        "layout_change_with_quality_drop_rate": 0.0,
+        "new_flag_rate": 0.0,
+        "catastrophic": 0
+      },
+      "process": {
+        "n": 8,
+        "median_drop": 0.0,
+        "p90_drop": 0.0,
+        "p95_drop": 0.0,
+        "max_drop": 0.0,
+        "meaningful_drop_rate": 0.0,
+        "large_drop_rate": 0.0,
+        "new_visual_error_rate": 0.0,
+        "font_drop_rate": 0.25,
+        "layout_change_rate": 0.25,
+        "layout_change_with_quality_drop_rate": 0.0,
+        "new_flag_rate": 0.0,
+        "catastrophic": 0
+      },
+      "roadmap": {
+        "n": 2,
+        "median_drop": 0.0,
+        "p90_drop": 0.0,
+        "p95_drop": 0.0,
+        "max_drop": 0.0,
+        "meaningful_drop_rate": 0.0,
+        "large_drop_rate": 0.0,
+        "new_visual_error_rate": 0.0,
+        "font_drop_rate": 0.0,
+        "layout_change_rate": 0.0,
+        "layout_change_with_quality_drop_rate": 0.0,
+        "new_flag_rate": 0.0,
+        "catastrophic": 0
+      },
+      "segmentation": {
+        "n": 2,
+        "median_drop": 0.0,
+        "p90_drop": 0.0,
+        "p95_drop": 0.0,
+        "max_drop": 0.0,
+        "meaningful_drop_rate": 0.0,
+        "large_drop_rate": 0.0,
+        "new_visual_error_rate": 0.0,
+        "font_drop_rate": 0.0,
+        "layout_change_rate": 0.0,
+        "layout_change_with_quality_drop_rate": 0.0,
+        "new_flag_rate": 0.0,
+        "catastrophic": 0
+      },
+      "table": {
+        "n": 6,
+        "median_drop": 0.0,
+        "p90_drop": 0.0,
+        "p95_drop": 0.0,
+        "max_drop": 0.0,
+        "meaningful_drop_rate": 0.0,
+        "large_drop_rate": 0.0,
+        "new_visual_error_rate": 0.0,
+        "font_drop_rate": 0.0,
+        "layout_change_rate": 0.0,
+        "layout_change_with_quality_drop_rate": 0.0,
+        "new_flag_rate": 0.0,
+        "catastrophic": 0
+      },
+      "text_exhibit": {
+        "n": 8,
+        "median_drop": 0.0,
+        "p90_drop": 0.0,
+        "p95_drop": 0.0,
+        "max_drop": 0.0,
+        "meaningful_drop_rate": 0.0,
+        "large_drop_rate": 0.0,
+        "new_visual_error_rate": 0.0,
+        "font_drop_rate": 0.0,
+        "layout_change_rate": 0.0,
+        "layout_change_with_quality_drop_rate": 0.0,
+        "new_flag_rate": 0.0,
+        "catastrophic": 0
+      },
+      "timeline": {
+        "n": 4,
+        "median_drop": 0.0,
+        "p90_drop": 0.0,
+        "p95_drop": 0.0,
+        "max_drop": 0.0,
+        "meaningful_drop_rate": 0.0,
+        "large_drop_rate": 0.0,
+        "new_visual_error_rate": 0.0,
+        "font_drop_rate": 0.0,
+        "layout_change_rate": 0.0,
+        "layout_change_with_quality_drop_rate": 0.0,
+        "new_flag_rate": 0.0,
+        "catastrophic": 0
+      },
+      "waterfall": {
+        "n": 4,
+        "median_drop": 1.8,
+        "p90_drop": 3.6,
+        "p95_drop": 3.6,
+        "max_drop": 3.6,
+        "meaningful_drop_rate": 0.0,
+        "large_drop_rate": 0.0,
+        "new_visual_error_rate": 0.0,
+        "font_drop_rate": 0.0,
+        "layout_change_rate": 0.5,
+        "layout_change_with_quality_drop_rate": 0.0,
+        "new_flag_rate": 0.0,
+        "catastrophic": 0
+      }
+    },
     "catastrophic_cases": [],
-    "definition": "catastrophic = composition drop ≥ 25 points or a new visual QA error; separate from the composition score",
+    "definition": "catastrophic = composition drop ≥ 25 points or a new visual QA error; meaningful drop ≥ 5; large drop ≥ 10; separate from the composition score",
     "provenance": {
-      "evaluated_commit": "430176dacf55c050fd92e3beb6b9e8fbdb13f0db",
-      "git_tree": "4a5f1c04f3bf52c8bbf5277f91c9d500a2f55b3c",
+      "evaluated_commit": "864127011f332c967d58acd8067a332b11397c6e",
+      "git_tree": "80804cc3cc5839e954357d356e09aae44c57c0fc",
       "dirty": false,
       "dirty_paths": [],
-      "engine_version": "1.4.0",
+      "evaluated_source_commit": "864127011f332c967d58acd8067a332b11397c6e",
+      "evaluated_source_dirty": false,
+      "working_tree_commit": "864127011f332c967d58acd8067a332b11397c6e",
+      "working_tree_dirty": true,
+      "engine_version": "1.5.0rc1",
       "container_image": "mbbslides-visual:1.3",
       "container_digest": "sha256:bb5bbbdd55bcec5db567781c63574da1a4b2fc4504446d6fea23f5197f59d278",
-      "eval_timestamp_utc": "2026-10-01T10:11:16Z",
+      "eval_timestamp_utc": "2026-10-01T12:04:16Z",
       "release_truth": true
     }
+  },
+  "intake_v1_5": {
+    "external_holdout": "EXTERNAL HOLDOUT: AWAITING INPUT (.private/holdouts/v15_external/, docs/EXTERNAL_HOLDOUT_PROTOCOL.md)",
+    "unseen_corporate_template": "UNSEEN CORPORATE TEMPLATE: AWAITING USER-SUPPLIED TEMPLATE (.private/holdouts/v15_corporate/template.pptx; scripts/cpe holdout v15-corporate --record)"
   }
 }

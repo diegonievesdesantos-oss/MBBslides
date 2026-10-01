@@ -23,22 +23,24 @@ Independent signals, never combined into one number ([why](docs/EVALS.md)). A me
 
 | measure | value |
 |---|---|
-| overall (mean of decks, historical continuity) | 92.8 |
-| macro archetype (each archetype weighs the same) | **92.4** |
-| weakest archetype | **kpi_dashboard 79.8** |
-| P10 slide | **75.4** (median 98.5) |
-| slides ≥ 80 / ≥ 70 | 87% / 93% |
+| overall (mean of decks, historical continuity) | 95.1 |
+| macro archetype (each archetype weighs the same) | **94.4** |
+| weakest archetype | **comparison 84.6** |
+| P10 slide | **80.1** (median 98.7) |
+| slides ≥ 80 / ≥ 70 | 91% / 96% |
 | archetypes gate-eligible (n ≥ 8) | 17 of 17 |
-| archetypes not healthy | kpi_dashboard, text_exhibit |
-| QA errors (visual / authoring lint) | 0 / 41 |
-| slides · decks | 194 · 27 |
+| archetypes not healthy | text_exhibit |
+| QA errors (visual / authoring lint) | 0 / 0 |
+| slides authored · resolved · measured · decks | 199 · 202 · 202 · 28 |
+| visual QA · authoring QA · benchmark | passed · passed · passed |
 
 | other signal | what it measures | current |
 |---|---|---|
-| **Holdout v2** | sealed, never tuned on, run once per release candidate (26 decks, 158 slides) | overall 91.4 · macro 91.8 · P10 74.5 · weakest kpi_dashboard 71.6 |
+| **Holdout v2** | blind result of v1.4.0 (run once); development-known since v1.5, not re-run (26 decks, 157 authored / 158 measured slides) | overall 91.4 · macro 91.8 · P10 74.5 · weakest kpi_dashboard 71.6 |
 | **Robustness** | small content perturbations of development seeds (78 variants) | median drop 0.0 · P90 drop 0.0 · catastrophic 0 (0%) |
 | **Human r1** | blind A/B votes (`cpe human`) | awaiting human votes — 40 blind pairs built, 0 votes |
-| **Human r2** | blind A/B votes (38 votes, 1 evaluators) | challenger preferred 0.97 (95% CI 0.86–0.99) · scorer agrees 0.97 |
+| **Human r2** | blind A/B votes (38 votes, 1 evaluator) — development data since v1.5; blind validation of v1.4 preserved | challenger preferred 0.97 (95% CI 0.86–0.99) · scorer agrees 0.97 |
+| **Human r3** | blind A/B votes (`cpe human`) | awaiting human votes — 42 blind pairs built, 0 votes |
 | Holdout v1 (retired) | H01–H05, development-known since v1.3 | last blind result 81.0 (v1.2); engine e3b63e1; later runs (this v1.3 re-run included) are development evidence |
 | Private corporate template — **development data, not a holdout** | brand-ingest understanding of a real corporate template (sanitized) | development data since v1.3 (its v1.2 findings drove the fixes, so it is no longer a holdout): 1 master(s), 54 layouts, 32% classified with confidence ≥ 0.5; font conflict detected; test deck QA passed; agreement with the human brand spec 21/22 |
 
@@ -47,10 +49,10 @@ Example decks are development material and regression fixtures, not evidence of 
 | example deck | QA gate | QA score | archetype-fitness composition score |
 |---|---|---|---|
 | `alvora` | PASSED · 0 errors · 0 warnings | 99.8 | 99.8 |
-| `gallery` | PASSED · 0 errors · 0 warnings | 99.8 | 99.1 |
+| `gallery` | PASSED · 0 errors · 0 warnings | 99.8 | 99.6 |
 | `alvora_on_kestrel` | PASSED · 0 errors · 0 warnings | 99.7 | 99.5 |
 
-<sub>engine 1.4.0 · evaluated commit `430176dacf` · LibreOffice 24.2.7.2 420(Build:2) · fontconfig 2.15.0 · container `mbbslides-visual:1.3@sha256:bb5bbbdd55bcec5db567781c63574da1a4b2fc4504446d6fea23f5197f59d278` · render fingerprint `f98cee49d123ed5f`</sub>
+<sub>engine 1.5.0rc1 · evaluated source commit `864127011f` · LibreOffice 24.2.7.2 420(Build:2) · fontconfig 2.15.0 · container `mbbslides-visual:1.3@sha256:bb5bbbdd55bcec5db567781c63574da1a4b2fc4504446d6fea23f5197f59d278` · render fingerprint `f98cee49d123ed5f`</sub>
 
 <!-- metrics:end -->
 
