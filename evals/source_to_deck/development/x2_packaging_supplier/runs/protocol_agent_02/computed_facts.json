@@ -1,0 +1,181 @@
+{
+ "protocol": "1.1",
+ "facts": [
+  {
+   "id": "C0001",
+   "claim": "Full move: 12% on price-eligible spend (25 EUR M less 1.1 EUR M rush freight) saves 2.87 EUR M per year",
+   "formula": "F0056 * F0054 / 100",
+   "values": [
+    {
+     "value": 2.868,
+     "unit": "EUR_M"
+    }
+   ]
+  },
+  {
+   "id": "C0002",
+   "claim": "Procurement's 3.0 EUR M per year overstates the gross price saving by 0.13 EUR M because it applies 12% to rush freight",
+   "formula": "F0059 - C0001",
+   "values": [
+    {
+     "value": 0.132,
+     "unit": "EUR_M"
+    }
+   ]
+  },
+  {
+   "id": "C0003",
+   "claim": "Full move, three-year commitment: gross price saving 2026-2028 less 0.8 EUR M one-off switching cost",
+   "formula": "C0001 * 3 - F0065",
+   "values": [
+    {
+     "value": 7.804,
+     "unit": "EUR_M"
+    }
+   ]
+  },
+  {
+   "id": "C0004",
+   "claim": "Supplier B's two force-majeure stoppages in the last three years (9 and 14 days) would have cost 4.0 EUR M of gross margin with all volume on Supplier B",
+   "formula": "F0061 + 2.4",
+   "values": [
+    {
+     "value": 4.0,
+     "unit": "EUR_M"
+    }
+   ]
+  },
+  {
+   "id": "C0005",
+   "claim": "Average annual gross-margin exposure if Supplier B's stoppage record repeats under single sourcing",
+   "formula": "C0004 / 3",
+   "values": [
+    {
+     "value": 1.333,
+     "unit": "EUR_M"
+    }
+   ]
+  },
+  {
+   "id": "C0006",
+   "claim": "Partial move, Supplier B at 70% of volume with a 9% price reduction: annual saving",
+   "formula": "F0056 * F0051 / 100 * F0052 / 100",
+   "values": [
+    {
+     "value": 1.5057,
+     "unit": "EUR_M"
+    }
+   ]
+  },
+  {
+   "id": "C0007",
+   "claim": "Partial move, incumbent kept at 30% of volume with its offered 4% price reduction: annual saving",
+   "formula": "F0056 * 30 / 100 * 4 / 100",
+   "values": [
+    {
+     "value": 0.2868,
+     "unit": "EUR_M"
+    }
+   ]
+  },
+  {
+   "id": "C0008",
+   "claim": "Partial move 70/30: total annual price saving",
+   "formula": "C0006 + C0007",
+   "values": [
+    {
+     "value": 1.7925,
+     "unit": "EUR_M"
+    }
+   ]
+  },
+  {
+   "id": "C0009",
+   "claim": "Partial move 70/30, 2026-2028: price saving less 0.5 EUR M one-off switching cost",
+   "formula": "C0008 * 3 - 0.5",
+   "values": [
+    {
+     "value": 4.8775,
+     "unit": "EUR_M"
+    }
+   ]
+  },
+  {
+   "id": "C0010",
+   "claim": "Full move 2026-2028 after switching cost and a repeat of Supplier B's stoppage record",
+   "formula": "C0003 - C0004",
+   "values": [
+    {
+     "value": 3.804,
+     "unit": "EUR_M"
+    }
+   ]
+  },
+  {
+   "id": "C0011",
+   "claim": "Extra three-year saving of the full move over the 70/30 split, before stoppage risk: the stoppage loss at which the full move stops paying",
+   "formula": "C0003 - C0009",
+   "values": [
+    {
+     "value": 2.9265,
+     "unit": "EUR_M"
+    }
+   ]
+  },
+  {
+   "id": "C0012",
+   "claim": "Incremental annual price saving of the full move over the 70/30 split",
+   "formula": "C0001 - C0008",
+   "values": [
+    {
+     "value": 1.0755,
+     "unit": "EUR_M"
+    }
+   ]
+  },
+  {
+   "id": "C0013",
+   "claim": "Rush freight in the five 2025 months the invoices flag as 'passed through: our forecast errors'",
+   "formula": "F0010 + F0022 + F0034 + F0038 + F0042",
+   "values": [
+    {
+     "value": 0.65,
+     "unit": "EUR_M"
+    }
+   ]
+  },
+  {
+   "id": "C0014",
+   "claim": "Share of 2025 rush freight in months flagged as caused by our own forecast errors",
+   "formula": "C0013 / 1.1 * 100",
+   "values": [
+    {
+     "value": 59.09,
+     "unit": "PCT"
+    }
+   ]
+  },
+  {
+   "id": "C0015",
+   "claim": "Gap between procurement's claimed 3.0 EUR M per year and the recommended 70/30 split's annual saving",
+   "formula": "F0059 - C0008",
+   "values": [
+    {
+     "value": 1.2075,
+     "unit": "EUR_M"
+    }
+   ]
+  },
+  {
+   "id": "C0016",
+   "claim": "Cost over 2026-2028 of keeping procurement's full-move plan instead of the 70/30 split, if Supplier B's stoppage record repeats",
+   "formula": "C0009 - C0010",
+   "values": [
+    {
+     "value": 1.0735,
+     "unit": "EUR_M"
+    }
+   ]
+  }
+ ]
+}

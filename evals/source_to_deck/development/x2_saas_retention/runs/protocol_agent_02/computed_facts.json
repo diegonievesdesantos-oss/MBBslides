@@ -1,0 +1,323 @@
+{
+ "facts": [
+  {
+   "id": "C0001",
+   "claim": "Net new ARR 2024 = closing minus opening ARR",
+   "formula": "F0006 - F0002",
+   "values": [
+    {
+     "value": 10.4,
+     "unit": "EUR_M"
+    }
+   ]
+  },
+  {
+   "id": "C0002",
+   "claim": "Net new ARR 2025 = closing minus opening ARR",
+   "formula": "F0012 - F0008",
+   "values": [
+    {
+     "value": 4.8,
+     "unit": "EUR_M"
+    }
+   ]
+  },
+  {
+   "id": "C0003",
+   "claim": "Fall in net new ARR from 2024 to 2025",
+   "formula": "C0001 - C0002",
+   "values": [
+    {
+     "value": 5.6,
+     "unit": "EUR_M"
+    }
+   ]
+  },
+  {
+   "id": "C0004",
+   "claim": "Increase in churned ARR 2025 vs 2024",
+   "formula": "F0011 - F0005",
+   "values": [
+    {
+     "value": 4.5,
+     "unit": "EUR_M"
+    }
+   ]
+  },
+  {
+   "id": "C0005",
+   "claim": "Decline in expansion ARR 2025 vs 2024",
+   "formula": "F0004 - F0010",
+   "values": [
+    {
+     "value": 1.3,
+     "unit": "EUR_M"
+    }
+   ]
+  },
+  {
+   "id": "C0006",
+   "claim": "Change in new-logo ARR 2025 vs 2024",
+   "formula": "F0009 - F0003",
+   "values": [
+    {
+     "value": 0.2,
+     "unit": "EUR_M"
+    }
+   ]
+  },
+  {
+   "id": "C0007",
+   "claim": "Share of the fall in net new ARR explained by higher churn",
+   "formula": "C0004 / C0003 * 100",
+   "values": [
+    {
+     "value": 80.4,
+     "unit": "PCT"
+    }
+   ]
+  },
+  {
+   "id": "C0008",
+   "claim": "First-year churn 2025 had the cohort churned at the 2024 first-year rate of 12%",
+   "formula": "F0045 * F0063 / 100",
+   "values": [
+    {
+     "value": 2.2,
+     "unit": "EUR_M"
+    }
+   ]
+  },
+  {
+   "id": "C0009",
+   "claim": "Excess first-year churn in 2025 above the 2024 first-year rate",
+   "formula": "F0046 - C0008",
+   "values": [
+    {
+     "value": 2.5,
+     "unit": "EUR_M"
+    }
+   ]
+  },
+  {
+   "id": "C0010",
+   "claim": "Share of 2025 churned ARR coming from customers onboarded in the previous 12 months",
+   "formula": "F0046 / F0052 * 100",
+   "values": [
+    {
+     "value": 60.3,
+     "unit": "PCT"
+    }
+   ]
+  },
+  {
+   "id": "C0011",
+   "claim": "Rise in first-year churn rate 2025 vs 2024",
+   "formula": "F0047 - F0063",
+   "values": [
+    {
+     "value": 14,
+     "unit": "PP"
+    }
+   ]
+  },
+  {
+   "id": "C0012",
+   "claim": "Pipeline created 2024 (sum of quarters)",
+   "formula": "sum(F0014, F0018, F0022, F0026)",
+   "values": [
+    {
+     "value": 38.9,
+     "unit": "EUR_M"
+    }
+   ]
+  },
+  {
+   "id": "C0013",
+   "claim": "Pipeline created 2025 (sum of quarters)",
+   "formula": "sum(F0030, F0034, F0038, F0042)",
+   "values": [
+    {
+     "value": 45.9,
+     "unit": "EUR_M"
+    }
+   ]
+  },
+  {
+   "id": "C0014",
+   "claim": "Growth in pipeline created 2025 vs 2024",
+   "formula": "(C0013 - C0012) / C0012 * 100",
+   "values": [
+    {
+     "value": 18.0,
+     "unit": "PCT"
+    }
+   ]
+  },
+  {
+   "id": "C0015",
+   "claim": "Deals won 2024 (sum of quarters)",
+   "formula": "sum(F0016, F0020, F0024, F0028)",
+   "values": [
+    {
+     "value": 175,
+     "unit": "COUNT"
+    }
+   ]
+  },
+  {
+   "id": "C0016",
+   "claim": "Deals won 2025 (sum of quarters)",
+   "formula": "sum(F0032, F0036, F0040, F0044)",
+   "values": [
+    {
+     "value": 193,
+     "unit": "COUNT"
+    }
+   ]
+  },
+  {
+   "id": "C0017",
+   "claim": "Average new ARR per deal won 2024 (EUR k)",
+   "formula": "F0003 / C0015 * 1000",
+   "values": [
+    {
+     "value": 53.7,
+     "unit": "EUR_K"
+    }
+   ]
+  },
+  {
+   "id": "C0018",
+   "claim": "Average new ARR per deal won 2025 (EUR k)",
+   "formula": "F0009 / C0016 * 1000",
+   "values": [
+    {
+     "value": 49.7,
+     "unit": "EUR_K"
+    }
+   ]
+  },
+  {
+   "id": "C0019",
+   "claim": "Full-year capacity of 30 fully productive AEs at 300 EUR k each (EUR M) - the CRO's 9 EUR M assumes no ramp",
+   "formula": "30 * F0065 / 1000",
+   "values": [
+    {
+     "value": 9.0,
+     "unit": "EUR_M"
+    }
+   ]
+  },
+  {
+   "id": "C0020",
+   "claim": "Upper bound of 2026 new ARR from 30 AEs hired in Q1 2026, given A001",
+   "formula": "30 * F0065 / 1000 * A001 / 12",
+   "values": [
+    {
+     "value": 4.5,
+     "unit": "EUR_M"
+    }
+   ]
+  },
+  {
+   "id": "C0021",
+   "claim": "Shortfall of the 30-AE plan versus the 9 EUR M promised for 2026",
+   "formula": "C0019 - C0020",
+   "values": [
+    {
+     "value": 4.5,
+     "unit": "EUR_M"
+    }
+   ]
+  },
+  {
+   "id": "C0022",
+   "claim": "Fully loaded cost per AE per year (EUR M)",
+   "formula": "3.6 / 30",
+   "values": [
+    {
+     "value": 0.12,
+     "unit": "EUR_M"
+    }
+   ]
+  },
+  {
+   "id": "C0023",
+   "claim": "Upper bound of 2026 new ARR from a first wave of 10 AEs hired in Q1 2026, given A001",
+   "formula": "A003 * F0065 / 1000 * A001 / 12",
+   "values": [
+    {
+     "value": 1.5,
+     "unit": "EUR_M"
+    }
+   ]
+  },
+  {
+   "id": "C0024",
+   "claim": "Annual cost of a first wave of 10 AEs (EUR M)",
+   "formula": "A003 * C0022",
+   "values": [
+    {
+     "value": 1.2,
+     "unit": "EUR_M"
+    }
+   ]
+  },
+  {
+   "id": "C0025",
+   "claim": "Annual cost of the retention-first plan: restore the onboarding team (reverse the 0.8 EUR M cut) plus 10 AEs (0.8 = annual saving of the onboarding cut, F0061)",
+   "formula": "0.8 + C0024",
+   "values": [
+    {
+     "value": 2.0,
+     "unit": "EUR_M"
+    }
+   ]
+  },
+  {
+   "id": "C0026",
+   "claim": "Exit interviews 2025: share of churned customers citing a competitor or price (17% + 14%)",
+   "formula": "17 + 14",
+   "values": [
+    {
+     "value": 31,
+     "unit": "PCT"
+    }
+   ]
+  },
+  {
+   "id": "C0027",
+   "claim": "Annual budget freed versus the CRO plan by the retention-first plan",
+   "formula": "3.6 - C0025",
+   "values": [
+    {
+     "value": 1.6,
+     "unit": "EUR_M"
+    }
+   ]
+  },
+  {
+   "id": "C0028",
+   "claim": "Identified 2026 net new ARR uplift of the retention-first plan (L1 + L2 + L3)",
+   "formula": "C0009 + C0005 + C0023",
+   "values": [
+    {
+     "value": 5.3,
+     "unit": "EUR_M"
+    }
+   ]
+  },
+  {
+   "id": "C0029",
+   "claim": "Remaining gap to the 2024 net new ARR level",
+   "formula": "C0003 - C0028",
+   "values": [
+    {
+     "value": 0.3,
+     "unit": "EUR_M"
+    }
+   ]
+  }
+ ]
+}

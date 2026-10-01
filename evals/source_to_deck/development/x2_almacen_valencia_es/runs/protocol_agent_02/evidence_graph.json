@@ -1,0 +1,1467 @@
+{
+  "nodes": {
+    "S:almacenes_2025.xlsx": {
+      "id": "S:almacenes_2025.xlsx",
+      "kind": "source",
+      "label": "almacenes_2025.xlsx"
+    },
+    "F0001": {
+      "id": "F0001",
+      "kind": "fact",
+      "label": "Madrid — Coste fijo 2025 (M€): 5.8 EUR_M",
+      "source": {
+        "file": "almacenes_2025.xlsx",
+        "sheet": "Costes",
+        "range": "B2",
+        "loc": "sheet Costes"
+      }
+    },
+    "F0002": {
+      "id": "F0002",
+      "kind": "fact",
+      "label": "Madrid — Coste variable 2025 (M€): 6 EUR_M",
+      "source": {
+        "file": "almacenes_2025.xlsx",
+        "sheet": "Costes",
+        "range": "C2",
+        "loc": "sheet Costes"
+      }
+    },
+    "F0003": {
+      "id": "F0003",
+      "kind": "fact",
+      "label": "Madrid — Pedidos 2025 (miles): 1,500",
+      "source": {
+        "file": "almacenes_2025.xlsx",
+        "sheet": "Costes",
+        "range": "D2",
+        "loc": "sheet Costes"
+      }
+    },
+    "F0004": {
+      "id": "F0004",
+      "kind": "fact",
+      "label": "Madrid — Coste variable por pedido (€): 4 EUR",
+      "source": {
+        "file": "almacenes_2025.xlsx",
+        "sheet": "Costes",
+        "range": "E2",
+        "loc": "sheet Costes"
+      }
+    },
+    "F0005": {
+      "id": "F0005",
+      "kind": "fact",
+      "label": "Madrid — Plantilla: 210",
+      "source": {
+        "file": "almacenes_2025.xlsx",
+        "sheet": "Costes",
+        "range": "F2",
+        "loc": "sheet Costes"
+      }
+    },
+    "F0006": {
+      "id": "F0006",
+      "kind": "fact",
+      "label": "Valencia — Coste fijo 2025 (M€): 2.6 EUR_M",
+      "source": {
+        "file": "almacenes_2025.xlsx",
+        "sheet": "Costes",
+        "range": "B3",
+        "loc": "sheet Costes"
+      }
+    },
+    "F0007": {
+      "id": "F0007",
+      "kind": "fact",
+      "label": "Valencia — Coste variable 2025 (M€): 1.5 EUR_M",
+      "source": {
+        "file": "almacenes_2025.xlsx",
+        "sheet": "Costes",
+        "range": "C3",
+        "loc": "sheet Costes"
+      }
+    },
+    "F0008": {
+      "id": "F0008",
+      "kind": "fact",
+      "label": "Valencia — Pedidos 2025 (miles): 375",
+      "source": {
+        "file": "almacenes_2025.xlsx",
+        "sheet": "Costes",
+        "range": "D3",
+        "loc": "sheet Costes"
+      }
+    },
+    "F0009": {
+      "id": "F0009",
+      "kind": "fact",
+      "label": "Valencia — Coste variable por pedido (€): 4 EUR",
+      "source": {
+        "file": "almacenes_2025.xlsx",
+        "sheet": "Costes",
+        "range": "E3",
+        "loc": "sheet Costes"
+      }
+    },
+    "F0010": {
+      "id": "F0010",
+      "kind": "fact",
+      "label": "Valencia — Plantilla: 64",
+      "source": {
+        "file": "almacenes_2025.xlsx",
+        "sheet": "Costes",
+        "range": "F3",
+        "loc": "sheet Costes"
+      }
+    },
+    "F0011": {
+      "id": "F0011",
+      "kind": "fact",
+      "label": "Sevilla — Coste fijo 2025 (M€): 2.1 EUR_M",
+      "source": {
+        "file": "almacenes_2025.xlsx",
+        "sheet": "Costes",
+        "range": "B4",
+        "loc": "sheet Costes"
+      }
+    },
+    "F0012": {
+      "id": "F0012",
+      "kind": "fact",
+      "label": "Sevilla — Coste variable 2025 (M€): 1.4 EUR_M",
+      "source": {
+        "file": "almacenes_2025.xlsx",
+        "sheet": "Costes",
+        "range": "C4",
+        "loc": "sheet Costes"
+      }
+    },
+    "F0013": {
+      "id": "F0013",
+      "kind": "fact",
+      "label": "Sevilla — Pedidos 2025 (miles): 350",
+      "source": {
+        "file": "almacenes_2025.xlsx",
+        "sheet": "Costes",
+        "range": "D4",
+        "loc": "sheet Costes"
+      }
+    },
+    "F0014": {
+      "id": "F0014",
+      "kind": "fact",
+      "label": "Sevilla — Coste variable por pedido (€): 4 EUR",
+      "source": {
+        "file": "almacenes_2025.xlsx",
+        "sheet": "Costes",
+        "range": "E4",
+        "loc": "sheet Costes"
+      }
+    },
+    "F0015": {
+      "id": "F0015",
+      "kind": "fact",
+      "label": "Sevilla — Plantilla: 58",
+      "source": {
+        "file": "almacenes_2025.xlsx",
+        "sheet": "Costes",
+        "range": "F4",
+        "loc": "sheet Costes"
+      }
+    },
+    "F0016": {
+      "id": "F0016",
+      "kind": "fact",
+      "label": "Total — Coste fijo 2025 (M€): 10.5 EUR_M",
+      "source": {
+        "file": "almacenes_2025.xlsx",
+        "sheet": "Costes",
+        "range": "B5",
+        "loc": "sheet Costes"
+      }
+    },
+    "F0017": {
+      "id": "F0017",
+      "kind": "fact",
+      "label": "Total — Coste variable 2025 (M€): 8.9 EUR_M",
+      "source": {
+        "file": "almacenes_2025.xlsx",
+        "sheet": "Costes",
+        "range": "C5",
+        "loc": "sheet Costes"
+      }
+    },
+    "F0018": {
+      "id": "F0018",
+      "kind": "fact",
+      "label": "Total — Pedidos 2025 (miles): 2,225",
+      "source": {
+        "file": "almacenes_2025.xlsx",
+        "sheet": "Costes",
+        "range": "D5",
+        "loc": "sheet Costes"
+      }
+    },
+    "F0019": {
+      "id": "F0019",
+      "kind": "fact",
+      "label": "Total — Coste variable por pedido (€): 4 EUR",
+      "source": {
+        "file": "almacenes_2025.xlsx",
+        "sheet": "Costes",
+        "range": "E5",
+        "loc": "sheet Costes"
+      }
+    },
+    "F0020": {
+      "id": "F0020",
+      "kind": "fact",
+      "label": "Total — Plantilla: 332",
+      "source": {
+        "file": "almacenes_2025.xlsx",
+        "sheet": "Costes",
+        "range": "F5",
+        "loc": "sheet Costes"
+      }
+    },
+    "F0021": {
+      "id": "F0021",
+      "kind": "fact",
+      "label": "Madrid — Capacidad (miles de pedidos/año): 1,800 YEARS",
+      "source": {
+        "file": "almacenes_2025.xlsx",
+        "sheet": "Capacidad",
+        "range": "B2",
+        "loc": "sheet Capacidad"
+      }
+    },
+    "F0022": {
+      "id": "F0022",
+      "kind": "fact",
+      "label": "Madrid — Pedidos 2025 (miles): 1,500",
+      "source": {
+        "file": "almacenes_2025.xlsx",
+        "sheet": "Capacidad",
+        "range": "C2",
+        "loc": "sheet Capacidad"
+      }
+    },
+    "F0023": {
+      "id": "F0023",
+      "kind": "fact",
+      "label": "Madrid — Capacidad libre (miles): 300",
+      "source": {
+        "file": "almacenes_2025.xlsx",
+        "sheet": "Capacidad",
+        "range": "D2",
+        "loc": "sheet Capacidad"
+      }
+    },
+    "F0024": {
+      "id": "F0024",
+      "kind": "fact",
+      "label": "Madrid — Utilización (%): 83 PCT",
+      "source": {
+        "file": "almacenes_2025.xlsx",
+        "sheet": "Capacidad",
+        "range": "E2",
+        "loc": "sheet Capacidad"
+      }
+    },
+    "F0025": {
+      "id": "F0025",
+      "kind": "fact",
+      "label": "Valencia — Capacidad (miles de pedidos/año): 450 YEARS",
+      "source": {
+        "file": "almacenes_2025.xlsx",
+        "sheet": "Capacidad",
+        "range": "B3",
+        "loc": "sheet Capacidad"
+      }
+    },
+    "F0026": {
+      "id": "F0026",
+      "kind": "fact",
+      "label": "Valencia — Pedidos 2025 (miles): 375",
+      "source": {
+        "file": "almacenes_2025.xlsx",
+        "sheet": "Capacidad",
+        "range": "C3",
+        "loc": "sheet Capacidad"
+      }
+    },
+    "F0027": {
+      "id": "F0027",
+      "kind": "fact",
+      "label": "Valencia — Capacidad libre (miles): 75",
+      "source": {
+        "file": "almacenes_2025.xlsx",
+        "sheet": "Capacidad",
+        "range": "D3",
+        "loc": "sheet Capacidad"
+      }
+    },
+    "F0028": {
+      "id": "F0028",
+      "kind": "fact",
+      "label": "Valencia — Utilización (%): 83 PCT",
+      "source": {
+        "file": "almacenes_2025.xlsx",
+        "sheet": "Capacidad",
+        "range": "E3",
+        "loc": "sheet Capacidad"
+      }
+    },
+    "F0029": {
+      "id": "F0029",
+      "kind": "fact",
+      "label": "Sevilla — Capacidad (miles de pedidos/año): 420 YEARS",
+      "source": {
+        "file": "almacenes_2025.xlsx",
+        "sheet": "Capacidad",
+        "range": "B4",
+        "loc": "sheet Capacidad"
+      }
+    },
+    "F0030": {
+      "id": "F0030",
+      "kind": "fact",
+      "label": "Sevilla — Pedidos 2025 (miles): 350",
+      "source": {
+        "file": "almacenes_2025.xlsx",
+        "sheet": "Capacidad",
+        "range": "C4",
+        "loc": "sheet Capacidad"
+      }
+    },
+    "F0031": {
+      "id": "F0031",
+      "kind": "fact",
+      "label": "Sevilla — Capacidad libre (miles): 70",
+      "source": {
+        "file": "almacenes_2025.xlsx",
+        "sheet": "Capacidad",
+        "range": "D4",
+        "loc": "sheet Capacidad"
+      }
+    },
+    "F0032": {
+      "id": "F0032",
+      "kind": "fact",
+      "label": "Sevilla — Utilización (%): 83 PCT",
+      "source": {
+        "file": "almacenes_2025.xlsx",
+        "sheet": "Capacidad",
+        "range": "E4",
+        "loc": "sheet Capacidad"
+      }
+    },
+    "S:informe_finanzas_red.pdf": {
+      "id": "S:informe_finanzas_red.pdf",
+      "kind": "source",
+      "label": "informe_finanzas_red.pdf"
+    },
+    "F0033": {
+      "id": "F0033",
+      "kind": "fact",
+      "label": "El coste de cierre de Valencia (indemnizaciones, penalización del contrato de alquiler y desmantelamiento) asciende a 3,2 millones de euros.",
+      "source": {
+        "file": "informe_finanzas_red.pdf",
+        "loc": "p.1"
+      }
+    },
+    "F0034": {
+      "id": "F0034",
+      "kind": "fact",
+      "label": "La estimación de 1,5 millones de euros de Operaciones no incluye la penalización del alquiler.",
+      "source": {
+        "file": "informe_finanzas_red.pdf",
+        "loc": "p.1"
+      }
+    },
+    "F0035": {
+      "id": "F0035",
+      "kind": "fact",
+      "label": "El alquiler de Valencia (1,2 millones de euros al año, incluido en el coste fijo) vence en diciembre de 2026.",
+      "source": {
+        "file": "informe_finanzas_red.pdf",
+        "loc": "p.1"
+      }
+    },
+    "F0036": {
+      "id": "F0036",
+      "kind": "fact",
+      "label": "El propietario ofrece renovar cinco años con un 25% de descuento.",
+      "source": {
+        "file": "informe_finanzas_red.pdf",
+        "loc": "p.1"
+      }
+    },
+    "F0037": {
+      "id": "F0037",
+      "kind": "fact",
+      "label": "Los clientes de Levante suponen el 18% de los ingresos del grupo: 74 millones de euros de 412 millones de euros en 2025.",
+      "source": {
+        "file": "informe_finanzas_red.pdf",
+        "loc": "p.1"
+      }
+    },
+    "F0038": {
+      "id": "F0038",
+      "kind": "fact",
+      "label": "El margen de contribución medio es del 22%.",
+      "source": {
+        "file": "informe_finanzas_red.pdf",
+        "loc": "p.1"
+      }
+    },
+    "F0039": {
+      "id": "F0039",
+      "kind": "fact",
+      "label": "Desde Madrid, el 34% de los pedidos de Levante pasaría de entrega en 24 horas a 48 horas.",
+      "source": {
+        "file": "informe_finanzas_red.pdf",
+        "loc": "p.1"
+      }
+    },
+    "F0040": {
+      "id": "F0040",
+      "kind": "fact",
+      "label": "En la encuesta de clientes de 2025, el 40% de los clientes con entrega a 48 horas declara que se plantearía cambiar de proveedor.",
+      "source": {
+        "file": "informe_finanzas_red.pdf",
+        "loc": "p.1"
+      }
+    },
+    "F0041": {
+      "id": "F0041",
+      "kind": "fact",
+      "label": "Otros datos: la rotación de la plantilla de almacén fue del 11% en 2025, frente al 9% en 2024.",
+      "source": {
+        "file": "informe_finanzas_red.pdf",
+        "loc": "p.1"
+      }
+    },
+    "S:propuesta_operaciones.md": {
+      "id": "S:propuesta_operaciones.md",
+      "kind": "source",
+      "label": "propuesta_operaciones.md"
+    },
+    "F0042": {
+      "id": "F0042",
+      "kind": "fact",
+      "label": "Valencia nos costó 4,1 M€ en 2025 (coste fijo más variable).",
+      "source": {
+        "file": "propuesta_operaciones.md",
+        "loc": "line 3"
+      }
+    },
+    "F0043": {
+      "id": "F0043",
+      "kind": "fact",
+      "label": "Cerrándolo ahorramos esos 4,1 M€ al año.",
+      "source": {
+        "file": "propuesta_operaciones.md",
+        "loc": "line 3"
+      }
+    },
+    "F0044": {
+      "id": "F0044",
+      "kind": "fact",
+      "label": "El coste de cierre estimado es de 1,5 M€.",
+      "source": {
+        "file": "propuesta_operaciones.md",
+        "loc": "line 5"
+      }
+    },
+    "S:computed": {
+      "id": "S:computed",
+      "kind": "source",
+      "label": "computed"
+    },
+    "C0001": {
+      "id": "C0001",
+      "kind": "derived_fact",
+      "label": "Coste total de Valencia 2025 = fijo 2,6 + variable 1,5 = 4,1 M€ (coincide con la cifra de Operaciones)",
+      "source": {
+        "file": "computed",
+        "loc": "F0006 + F0007"
+      }
+    },
+    "C0002": {
+      "id": "C0002",
+      "kind": "derived_fact",
+      "label": "Pedidos que Madrid tendría que servir tras el cierre (base 2025): 1.500 + 375 = 1.875 mil",
+      "source": {
+        "file": "computed",
+        "loc": "F0022 + F0026"
+      }
+    },
+    "C0003": {
+      "id": "C0003",
+      "kind": "derived_fact",
+      "label": "Madrid se quedaría 75 mil pedidos por encima de su capacidad de 1.800 mil (la capacidad libre es 300 mil frente a 375 mil de Valencia)",
+      "source": {
+        "file": "computed",
+        "loc": "C0002 - F0021"
+      }
+    },
+    "C0004": {
+      "id": "C0004",
+      "kind": "derived_fact",
+      "label": "Coste variable que se traslada a Madrid: 375 mil pedidos a 4 € = 1,5 M€",
+      "source": {
+        "file": "computed",
+        "loc": "F0026 * F0004 / 1000"
+      }
+    },
+    "C0008": {
+      "id": "C0008",
+      "kind": "fact",
+      "label": "Ingresos de Levante que pasarían a 48 h: 34% de 74 M€ = 25,2 M€",
+      "source": {
+        "file": "computed",
+        "loc": "74 * 34 / 100"
+      }
+    },
+    "C0009": {
+      "id": "C0009",
+      "kind": "derived_fact",
+      "label": "Ingresos en riesgo (cota superior): 40% de los clientes a 48 h se plantearía cambiar → 10,1 M€",
+      "source": {
+        "file": "computed",
+        "loc": "C0008 * 40 / 100"
+      }
+    },
+    "C0010": {
+      "id": "C0010",
+      "kind": "derived_fact",
+      "label": "Margen de contribución en riesgo (cota superior): 22% de 10,1 M€ = 2,2 M€ al año",
+      "source": {
+        "file": "computed",
+        "loc": "C0009 * F0038 / 100"
+      }
+    },
+    "C0012": {
+      "id": "C0012",
+      "kind": "derived_fact",
+      "label": "Infraestimación del coste de cierre por Operaciones: 3,2 − 1,5 = 1,7 M€ (sobre todo la penalización del alquiler, que Operaciones no incluye)",
+      "source": {
+        "file": "computed",
+        "loc": "F0033 - F0044"
+      }
+    },
+    "C0014": {
+      "id": "C0014",
+      "kind": "derived_fact",
+      "label": "Ahorro anual de renovar el alquiler de Valencia con un 25% de descuento: 25% de 1,2 M€ = 0,3 M€",
+      "source": {
+        "file": "computed",
+        "loc": "F0035 * F0036 / 100"
+      }
+    },
+    "C0015": {
+      "id": "C0015",
+      "kind": "derived_fact",
+      "label": "Ahorro acumulado de la renovación en los cinco años del contrato: 1,5 M€",
+      "source": {
+        "file": "computed",
+        "loc": "C0014 * 5"
+      }
+    },
+    "C0021": {
+      "id": "C0021",
+      "kind": "derived_fact",
+      "label": "Alquiler anual de Valencia tras la renovación con un 25% de descuento: 1,2 − 0,3 = 0,9 M€",
+      "source": {
+        "file": "computed",
+        "loc": "F0035 - C0014"
+      }
+    },
+    "H1": {
+      "id": "H1",
+      "kind": "hypothesis",
+      "label": "Cerrar Valencia ahorra unos 4,1 M€ al año (tesis de Operaciones)",
+      "status": "rejected"
+    },
+    "H2": {
+      "id": "H2",
+      "kind": "hypothesis",
+      "label": "Madrid tiene capacidad libre suficiente para absorber los pedidos de Levante",
+      "status": "rejected"
+    },
+    "H3": {
+      "id": "H3",
+      "kind": "hypothesis",
+      "label": "El coste de cierre es de 1,5 M€",
+      "status": "rejected"
+    },
+    "H4": {
+      "id": "H4",
+      "kind": "hypothesis",
+      "label": "El servicio al cliente no se verá afectado por servir Levante desde Madrid",
+      "status": "rejected"
+    },
+    "H5": {
+      "id": "H5",
+      "kind": "hypothesis",
+      "label": "Mantener Valencia y renovar el alquiler con descuento es mejor opción económica que cerrar",
+      "status": "supported"
+    },
+    "H6": {
+      "id": "H6",
+      "kind": "hypothesis",
+      "label": "El aumento de rotación de plantilla (11% en 2025 frente a 9% en 2024) es un argumento relevante para cerrar Valencia",
+      "status": "unresolved"
+    },
+    "I1": {
+      "id": "I1",
+      "kind": "insight",
+      "label": "Los 4,1 M€ de Operaciones son el coste bruto de Valencia, no un ahorro: al trasladar 1,5 M€ de coste variable a Madrid y sumar 1,9 M€ de transporte y 0,6 M€ de turno adicional, el cierre ahorra como máximo 0,1 M€ al año, y −0,18 M€ si Madrid paga horas extra."
+    },
+    "I2": {
+      "id": "I2",
+      "kind": "insight",
+      "label": "Madrid no puede absorber Levante con su capacidad actual: tiene 300 mil pedidos libres frente a 375 mil de Valencia, le faltan 75 mil, y con la previsión de +6% llegaría en 2026 al 88% de utilización incluso sin Levante y al 97% con Levante y turno adicional."
+    },
+    "I3": {
+      "id": "I3",
+      "kind": "insight",
+      "label": "El cierre cuesta 3,2 M€, no 1,5 M€: Operaciones omite la penalización del alquiler (1,7 M€ de diferencia), y con un ahorro neto de 0,1 M€ al año se tardarían 32 años en recuperarlo."
+    },
+    "I4": {
+      "id": "I4",
+      "kind": "insight",
+      "label": "El cierre pone en riesgo el servicio: el 34% de los pedidos de Levante pasaría de 24 h a 48 h, y con el 40% de esos clientes dispuesto a plantearse cambiar, hay hasta 10,1 M€ de ingresos y 2,2 M€ de margen al año en riesgo, más que cualquier ahorro operativo del cierre."
+    },
+    "I5": {
+      "id": "I5",
+      "kind": "insight",
+      "label": "La alternativa está en el alquiler: vence en diciembre de 2026 y el propietario ofrece renovar cinco años con un 25% de descuento, lo que ahorra 0,3 M€ al año (1,5 M€ en cinco años), 0,2 M€ más al año que el mejor caso del cierre, sin coste de cierre ni riesgo de servicio."
+    },
+    "I6": {
+      "id": "I6",
+      "kind": "insight",
+      "label": "La rotación de la plantilla de almacén (11% en 2025 frente a 9% en 2024) y la auditoría de Sevilla no informan la decisión sobre Valencia."
+    },
+    "GT": {
+      "id": "GT",
+      "kind": "governing_thought",
+      "label": "Rechazar el cierre de Valencia: los 4,1 M€ de ahorro prometidos son el coste bruto del almacén y, neto de transporte, turno adicional y coste variable trasladado a Madrid, el cierre ahorra como máximo 0,1 M€ al año, cuesta 3,2 M€ y arriesga hasta 2,2 M€ de margen anual; en su lugar, renovar el alquiler con un 25% de descuento antes de diciembre de 2026, que ahorra 0,3 M€ al año."
+    },
+    "K1": {
+      "id": "K1",
+      "kind": "key_line",
+      "label": "La propuesta no ahorra lo que promete: de 4,1 M€ brutos quedan como máximo 0,1 M€ al año, y Madrid no tiene capacidad para absorber los 375 mil pedidos de Levante sin un turno adicional."
+    },
+    "K2": {
+      "id": "K2",
+      "kind": "key_line",
+      "label": "Y su coste y su riesgo son mayores de lo presentado: el cierre cuesta 3,2 M€ (no 1,5 M€) y pone en riesgo hasta 2,2 M€ de margen anual al pasar el 34% de los pedidos de Levante a 48 h."
+    },
+    "K3": {
+      "id": "K3",
+      "kind": "key_line",
+      "label": "La mejor opción es mantener Valencia y renovar su alquiler con un 25% de descuento antes de que venza en diciembre de 2026: 0,3 M€ al año sin coste de cierre ni riesgo de servicio."
+    },
+    "SL:S1": {
+      "id": "SL:S1",
+      "kind": "slide",
+      "label": "Valencia: por qué no cerrar y qué hacer en su lugar",
+      "priority": "core",
+      "reason": "Portada del consejo"
+    },
+    "SL:S2": {
+      "id": "SL:S2",
+      "kind": "slide",
+      "label": "Recomendamos rechazar el cierre: ahorra como máximo 0,1 M€ al año (estimado) frente a los 4,1 M€ prometidos; renovar el alquiler con descuento ahorra 0,3 M€",
+      "priority": "core",
+      "reason": "El consejo necesita la respuesta y la petición antes del detalle"
+    },
+    "SL:S3": {
+      "id": "SL:S3",
+      "kind": "slide",
+      "label": "Los 4,1 M€ son el coste bruto de Valencia: tras trasladar 1,5 M€ de coste variable y sumar 1,9 M€ de transporte y 0,6 M€ de turno (estimados por Operaciones), el ahorro neto es como máximo 0,1 M€",
+      "priority": "core",
+      "reason": "Es el error central de la propuesta y requiere el puente de 4,1 a 0,1 M€"
+    },
+    "SL:S4": {
+      "id": "SL:S4",
+      "kind": "slide",
+      "label": "Madrid no puede absorber Levante: tiene 300 mil pedidos libres frente a 375 mil, y con la previsión de +6% (estimada) llegaría en 2026 al 88% de utilización incluso sin Levante",
+      "priority": "core",
+      "reason": "La viabilidad operativa es un argumento distinto de la economía y refuta otra afirmación de la propuesta"
+    },
+    "SL:S5": {
+      "id": "SL:S5",
+      "kind": "slide",
+      "label": "El cierre cuesta 3,2 M€, no 1,5 M€: con un ahorro estimado de 0,1 M€ al año se tardarían 32 años en recuperarlo",
+      "priority": "core",
+      "reason": "La inversión de cierre está infraestimada en 1,7 M€ y define el payback"
+    },
+    "SL:S6": {
+      "id": "SL:S6",
+      "kind": "slide",
+      "label": "El 34% de los pedidos de Levante pasaría a 48 h: hasta 2,2 M€ de margen al año en riesgo, más que cualquier ahorro del cierre",
+      "priority": "core",
+      "reason": "Refuta que el servicio no se verá afectado y es el riesgo de mayor tamaño"
+    },
+    "SL:S7": {
+      "id": "SL:S7",
+      "kind": "slide",
+      "label": "Renovar el alquiler con un 25% de descuento ahorra 0,3 M€ al año sin coste de cierre ni riesgo de servicio, unos 0,2 M€ más que el mejor caso estimado del cierre",
+      "priority": "core",
+      "reason": "El consejo pidió qué hacer si no se cierra; compara las tres opciones costadas"
+    },
+    "SL:S8": {
+      "id": "SL:S8",
+      "kind": "slide",
+      "label": "Hoy pedimos rechazar el cierre y aprobar la renovación del alquiler, a firmar antes de su vencimiento en diciembre de 2026",
+      "priority": "core",
+      "reason": "Cierra con peticiones aprobables, hitos y KPIs"
+    }
+  },
+  "edges": [
+    [
+      "A001",
+      "I1"
+    ],
+    [
+      "A001",
+      "SL:S3"
+    ],
+    [
+      "A002",
+      "I1"
+    ],
+    [
+      "A002",
+      "SL:S3"
+    ],
+    [
+      "A005",
+      "I2"
+    ],
+    [
+      "C0001",
+      "H1"
+    ],
+    [
+      "C0001",
+      "I1"
+    ],
+    [
+      "C0001",
+      "SL:S3"
+    ],
+    [
+      "C0002",
+      "C0003"
+    ],
+    [
+      "C0003",
+      "I2"
+    ],
+    [
+      "C0003",
+      "SL:S4"
+    ],
+    [
+      "C0004",
+      "I1"
+    ],
+    [
+      "C0004",
+      "SL:S3"
+    ],
+    [
+      "C0005",
+      "H5"
+    ],
+    [
+      "C0005",
+      "I1"
+    ],
+    [
+      "C0005",
+      "I3"
+    ],
+    [
+      "C0005",
+      "I5"
+    ],
+    [
+      "C0005",
+      "SL:S2"
+    ],
+    [
+      "C0005",
+      "SL:S3"
+    ],
+    [
+      "C0005",
+      "SL:S5"
+    ],
+    [
+      "C0005",
+      "SL:S7"
+    ],
+    [
+      "C0006",
+      "I1"
+    ],
+    [
+      "C0006",
+      "SL:S3"
+    ],
+    [
+      "C0007",
+      "I1"
+    ],
+    [
+      "C0007",
+      "SL:S3"
+    ],
+    [
+      "C0008",
+      "C0009"
+    ],
+    [
+      "C0008",
+      "I4"
+    ],
+    [
+      "C0009",
+      "C0010"
+    ],
+    [
+      "C0009",
+      "I4"
+    ],
+    [
+      "C0009",
+      "SL:S6"
+    ],
+    [
+      "C0010",
+      "H5"
+    ],
+    [
+      "C0010",
+      "I4"
+    ],
+    [
+      "C0010",
+      "SL:S2"
+    ],
+    [
+      "C0010",
+      "SL:S6"
+    ],
+    [
+      "C0011",
+      "I4"
+    ],
+    [
+      "C0012",
+      "I3"
+    ],
+    [
+      "C0012",
+      "SL:S5"
+    ],
+    [
+      "C0013",
+      "I3"
+    ],
+    [
+      "C0013",
+      "SL:S5"
+    ],
+    [
+      "C0014",
+      "C0015"
+    ],
+    [
+      "C0014",
+      "C0021"
+    ],
+    [
+      "C0014",
+      "H5"
+    ],
+    [
+      "C0014",
+      "I5"
+    ],
+    [
+      "C0014",
+      "SL:S2"
+    ],
+    [
+      "C0014",
+      "SL:S7"
+    ],
+    [
+      "C0014",
+      "SL:S8"
+    ],
+    [
+      "C0015",
+      "I5"
+    ],
+    [
+      "C0015",
+      "SL:S7"
+    ],
+    [
+      "C0016",
+      "I2"
+    ],
+    [
+      "C0017",
+      "I2"
+    ],
+    [
+      "C0018",
+      "I2"
+    ],
+    [
+      "C0018",
+      "SL:S4"
+    ],
+    [
+      "C0020",
+      "I2"
+    ],
+    [
+      "C0020",
+      "SL:S4"
+    ],
+    [
+      "C0021",
+      "I5"
+    ],
+    [
+      "C0021",
+      "SL:S8"
+    ],
+    [
+      "C0022",
+      "H5"
+    ],
+    [
+      "C0022",
+      "I5"
+    ],
+    [
+      "C0022",
+      "SL:S7"
+    ],
+    [
+      "F0004",
+      "C0004"
+    ],
+    [
+      "F0006",
+      "C0001"
+    ],
+    [
+      "F0007",
+      "C0001"
+    ],
+    [
+      "F0021",
+      "C0003"
+    ],
+    [
+      "F0022",
+      "C0002"
+    ],
+    [
+      "F0023",
+      "H2"
+    ],
+    [
+      "F0023",
+      "I2"
+    ],
+    [
+      "F0023",
+      "SL:S4"
+    ],
+    [
+      "F0026",
+      "C0002"
+    ],
+    [
+      "F0026",
+      "C0004"
+    ],
+    [
+      "F0026",
+      "I2"
+    ],
+    [
+      "F0026",
+      "SL:S4"
+    ],
+    [
+      "F0033",
+      "C0012"
+    ],
+    [
+      "F0033",
+      "I3"
+    ],
+    [
+      "F0033",
+      "SL:S2"
+    ],
+    [
+      "F0033",
+      "SL:S5"
+    ],
+    [
+      "F0033",
+      "SL:S7"
+    ],
+    [
+      "F0034",
+      "I3"
+    ],
+    [
+      "F0035",
+      "C0014"
+    ],
+    [
+      "F0035",
+      "C0021"
+    ],
+    [
+      "F0035",
+      "H5"
+    ],
+    [
+      "F0035",
+      "I5"
+    ],
+    [
+      "F0035",
+      "SL:S7"
+    ],
+    [
+      "F0035",
+      "SL:S8"
+    ],
+    [
+      "F0036",
+      "C0014"
+    ],
+    [
+      "F0036",
+      "H5"
+    ],
+    [
+      "F0036",
+      "I5"
+    ],
+    [
+      "F0036",
+      "SL:S7"
+    ],
+    [
+      "F0037",
+      "I4"
+    ],
+    [
+      "F0037",
+      "SL:S6"
+    ],
+    [
+      "F0038",
+      "C0010"
+    ],
+    [
+      "F0038",
+      "I4"
+    ],
+    [
+      "F0038",
+      "SL:S6"
+    ],
+    [
+      "F0039",
+      "I4"
+    ],
+    [
+      "F0039",
+      "SL:S6"
+    ],
+    [
+      "F0040",
+      "I4"
+    ],
+    [
+      "F0040",
+      "SL:S6"
+    ],
+    [
+      "F0041",
+      "H6"
+    ],
+    [
+      "F0041",
+      "I6"
+    ],
+    [
+      "F0042",
+      "H1"
+    ],
+    [
+      "F0042",
+      "I1"
+    ],
+    [
+      "F0042",
+      "SL:S2"
+    ],
+    [
+      "F0042",
+      "SL:S3"
+    ],
+    [
+      "F0044",
+      "C0012"
+    ],
+    [
+      "F0044",
+      "H3"
+    ],
+    [
+      "F0044",
+      "I3"
+    ],
+    [
+      "F0044",
+      "SL:S5"
+    ],
+    [
+      "H5",
+      "I5"
+    ],
+    [
+      "I1",
+      "K1"
+    ],
+    [
+      "I1",
+      "SL:S2"
+    ],
+    [
+      "I1",
+      "SL:S3"
+    ],
+    [
+      "I2",
+      "K1"
+    ],
+    [
+      "I2",
+      "SL:S4"
+    ],
+    [
+      "I3",
+      "K2"
+    ],
+    [
+      "I3",
+      "SL:S2"
+    ],
+    [
+      "I3",
+      "SL:S5"
+    ],
+    [
+      "I4",
+      "K2"
+    ],
+    [
+      "I4",
+      "SL:S2"
+    ],
+    [
+      "I4",
+      "SL:S6"
+    ],
+    [
+      "I5",
+      "K3"
+    ],
+    [
+      "I5",
+      "SL:S2"
+    ],
+    [
+      "I5",
+      "SL:S7"
+    ],
+    [
+      "I5",
+      "SL:S8"
+    ],
+    [
+      "K1",
+      "GT"
+    ],
+    [
+      "K1",
+      "SL:S3"
+    ],
+    [
+      "K1",
+      "SL:S4"
+    ],
+    [
+      "K2",
+      "GT"
+    ],
+    [
+      "K2",
+      "SL:S5"
+    ],
+    [
+      "K2",
+      "SL:S6"
+    ],
+    [
+      "K3",
+      "GT"
+    ],
+    [
+      "K3",
+      "SL:S7"
+    ],
+    [
+      "S:almacenes_2025.xlsx",
+      "F0001"
+    ],
+    [
+      "S:almacenes_2025.xlsx",
+      "F0002"
+    ],
+    [
+      "S:almacenes_2025.xlsx",
+      "F0003"
+    ],
+    [
+      "S:almacenes_2025.xlsx",
+      "F0004"
+    ],
+    [
+      "S:almacenes_2025.xlsx",
+      "F0005"
+    ],
+    [
+      "S:almacenes_2025.xlsx",
+      "F0006"
+    ],
+    [
+      "S:almacenes_2025.xlsx",
+      "F0007"
+    ],
+    [
+      "S:almacenes_2025.xlsx",
+      "F0008"
+    ],
+    [
+      "S:almacenes_2025.xlsx",
+      "F0009"
+    ],
+    [
+      "S:almacenes_2025.xlsx",
+      "F0010"
+    ],
+    [
+      "S:almacenes_2025.xlsx",
+      "F0011"
+    ],
+    [
+      "S:almacenes_2025.xlsx",
+      "F0012"
+    ],
+    [
+      "S:almacenes_2025.xlsx",
+      "F0013"
+    ],
+    [
+      "S:almacenes_2025.xlsx",
+      "F0014"
+    ],
+    [
+      "S:almacenes_2025.xlsx",
+      "F0015"
+    ],
+    [
+      "S:almacenes_2025.xlsx",
+      "F0016"
+    ],
+    [
+      "S:almacenes_2025.xlsx",
+      "F0017"
+    ],
+    [
+      "S:almacenes_2025.xlsx",
+      "F0018"
+    ],
+    [
+      "S:almacenes_2025.xlsx",
+      "F0019"
+    ],
+    [
+      "S:almacenes_2025.xlsx",
+      "F0020"
+    ],
+    [
+      "S:almacenes_2025.xlsx",
+      "F0021"
+    ],
+    [
+      "S:almacenes_2025.xlsx",
+      "F0022"
+    ],
+    [
+      "S:almacenes_2025.xlsx",
+      "F0023"
+    ],
+    [
+      "S:almacenes_2025.xlsx",
+      "F0024"
+    ],
+    [
+      "S:almacenes_2025.xlsx",
+      "F0025"
+    ],
+    [
+      "S:almacenes_2025.xlsx",
+      "F0026"
+    ],
+    [
+      "S:almacenes_2025.xlsx",
+      "F0027"
+    ],
+    [
+      "S:almacenes_2025.xlsx",
+      "F0028"
+    ],
+    [
+      "S:almacenes_2025.xlsx",
+      "F0029"
+    ],
+    [
+      "S:almacenes_2025.xlsx",
+      "F0030"
+    ],
+    [
+      "S:almacenes_2025.xlsx",
+      "F0031"
+    ],
+    [
+      "S:almacenes_2025.xlsx",
+      "F0032"
+    ],
+    [
+      "S:computed",
+      "C0001"
+    ],
+    [
+      "S:computed",
+      "C0002"
+    ],
+    [
+      "S:computed",
+      "C0003"
+    ],
+    [
+      "S:computed",
+      "C0004"
+    ],
+    [
+      "S:computed",
+      "C0008"
+    ],
+    [
+      "S:computed",
+      "C0009"
+    ],
+    [
+      "S:computed",
+      "C0010"
+    ],
+    [
+      "S:computed",
+      "C0012"
+    ],
+    [
+      "S:computed",
+      "C0014"
+    ],
+    [
+      "S:computed",
+      "C0015"
+    ],
+    [
+      "S:computed",
+      "C0021"
+    ],
+    [
+      "S:informe_finanzas_red.pdf",
+      "F0033"
+    ],
+    [
+      "S:informe_finanzas_red.pdf",
+      "F0034"
+    ],
+    [
+      "S:informe_finanzas_red.pdf",
+      "F0035"
+    ],
+    [
+      "S:informe_finanzas_red.pdf",
+      "F0036"
+    ],
+    [
+      "S:informe_finanzas_red.pdf",
+      "F0037"
+    ],
+    [
+      "S:informe_finanzas_red.pdf",
+      "F0038"
+    ],
+    [
+      "S:informe_finanzas_red.pdf",
+      "F0039"
+    ],
+    [
+      "S:informe_finanzas_red.pdf",
+      "F0040"
+    ],
+    [
+      "S:informe_finanzas_red.pdf",
+      "F0041"
+    ],
+    [
+      "S:propuesta_operaciones.md",
+      "F0042"
+    ],
+    [
+      "S:propuesta_operaciones.md",
+      "F0043"
+    ],
+    [
+      "S:propuesta_operaciones.md",
+      "F0044"
+    ]
+  ]
+}

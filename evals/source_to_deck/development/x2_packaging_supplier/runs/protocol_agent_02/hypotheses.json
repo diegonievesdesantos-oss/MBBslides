@@ -1,0 +1,106 @@
+{
+ "protocol": "1.1",
+ "hypotheses": [
+  {
+   "id": "H1",
+   "statement": "Moving 100% of packaging to Supplier B saves 3.0 EUR M per year (procurement's case, management belief)",
+   "status": "rejected",
+   "supporting_facts": [
+    "F0058",
+    "F0059"
+   ],
+   "contradicting_facts": [
+    "F0055",
+    "F0056",
+    "C0001",
+    "C0002",
+    "F0065",
+    "C0004"
+   ],
+   "confidence": 0.85,
+   "implication": "The proposal's headline saving cannot be approved as stated; the real gross saving is 2.87 EUR M a year before switching cost and stoppage risk"
+  },
+  {
+   "id": "H2",
+   "statement": "The 12% price reduction applies to the full 25 EUR M packaging spend",
+   "status": "rejected",
+   "supporting_facts": [
+    "F0057"
+   ],
+   "contradicting_facts": [
+    "F0055",
+    "F0056"
+   ],
+   "confidence": 0.9,
+   "implication": "The saving base is 23.9 EUR M, not 25 EUR M"
+  },
+  {
+   "id": "H3",
+   "statement": "Single-sourcing on Supplier B's single plant creates a continuity risk as large as the extra saving the full move brings",
+   "status": "supported",
+   "supporting_facts": [
+    "F0060",
+    "F0061",
+    "C0004",
+    "C0011",
+    "F0063"
+   ],
+   "contradicting_facts": [],
+   "confidence": 0.7,
+   "implication": "The decision is a risk trade-off, not a pure price decision; a second source is worth keeping",
+   "rationale": "Based on two historical stoppages; small sample"
+  },
+  {
+   "id": "H4",
+   "statement": "A 70/30 split between Supplier B and the incumbent captures most of the saving at lower risk and is the best risk-adjusted option",
+   "status": "supported",
+   "supporting_facts": [
+    "F0051",
+    "F0052",
+    "F0064",
+    "C0008",
+    "C0009",
+    "C0010",
+    "F0063"
+   ],
+   "contradicting_facts": [
+    "C0011"
+   ],
+   "confidence": 0.65,
+   "implication": "Recommend the 70/30 split instead of the 100% move",
+   "rationale": "The full move earns 2.93 EUR M more over three years before risk; that advantage holds only if Supplier B has at most one stoppage of 14 days or less in 2026-2028. Two stoppages, as in the last three years, reverse it."
+  },
+  {
+   "id": "H5",
+   "statement": "Rush freight is an incumbent performance problem that would disappear by moving volume to Supplier B",
+   "status": "rejected",
+   "supporting_facts": [],
+   "contradicting_facts": [
+    "F0010",
+    "F0022",
+    "F0034",
+    "F0038",
+    "F0042",
+    "C0013",
+    "C0014",
+    "F0055"
+   ],
+   "confidence": 0.7,
+   "implication": "Rush freight (1.1 EUR M) must be attacked through our own demand forecasting, not supplier choice"
+  },
+  {
+   "id": "H6",
+   "statement": "The incumbent could backstop Supplier B quickly enough in a stoppage if all volume moved to Supplier B",
+   "status": "rejected",
+   "supporting_facts": [
+    "F0063"
+   ],
+   "contradicting_facts": [
+    "F0060",
+    "F0063"
+   ],
+   "confidence": 0.65,
+   "implication": "After a full move, a 9-14 day stoppage would be largely uncovered: the incumbent covers at most 60% and only at two weeks' notice"
+  }
+ ]
+}

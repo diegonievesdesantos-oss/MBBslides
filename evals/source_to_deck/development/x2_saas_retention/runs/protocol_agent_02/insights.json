@@ -1,0 +1,162 @@
+{
+ "insights": [
+  {
+   "id": "I1",
+   "statement": "Net new ARR fell \u20ac5.6M (from \u20ac10.4M to \u20ac4.8M) and higher churn explains 80.4% of the fall: churned ARR rose \u20ac4.5M (from 3.3 to 7.8) while new-logo ARR rose \u20ac0.2M",
+   "facts": [
+    "C0001",
+    "C0002",
+    "C0003",
+    "C0004",
+    "C0007",
+    "C0006",
+    "F0005",
+    "F0011"
+   ],
+   "hypotheses": [
+    "H2"
+   ],
+   "refutes": [
+    "H1"
+   ],
+   "materiality": "high",
+   "decision_relevance": "The slowdown is a retention problem; a sales-hiring answer targets the part of the bridge that did not break"
+  },
+  {
+   "id": "I2",
+   "statement": "Expansion ARR fell \u20ac1.3M (from 4.3 to 3.0), the second leak in the bridge; new and expansion together barely moved while churn more than doubled",
+   "facts": [
+    "F0004",
+    "F0010",
+    "C0005",
+    "F0005",
+    "F0011"
+   ],
+   "hypotheses": [
+    "H2"
+   ],
+   "materiality": "medium",
+   "decision_relevance": "Expansion recovery is a second lever, owned by customer success, not by new AEs",
+   "caveat": "No source explains the expansion decline directly (H6 unresolved)"
+  },
+  {
+   "id": "I3",
+   "statement": "The sales engine did not break: pipeline created grew 18.0% (\u20ac38.9M to \u20ac45.9M), deals won rose from 175 to 193 and win rate held at 23% to 24%",
+   "facts": [
+    "C0012",
+    "C0013",
+    "C0014",
+    "C0015",
+    "C0016",
+    "F0015",
+    "F0019",
+    "F0043"
+   ],
+   "hypotheses": [],
+   "refutes": [
+    "H1"
+   ],
+   "materiality": "high",
+   "decision_relevance": "There is no evidence that a lack of sellers capped 2025 growth, so 30 extra AEs are not the obvious fix"
+  },
+  {
+   "id": "I4",
+   "statement": "Price pressure is real but marginal: average new ARR per deal slipped from \u20ac53.7k to \u20ac49.7k and price is cited in 34% of lost deals, yet only 31% of churned customers cite a competitor or price",
+   "facts": [
+    "C0017",
+    "C0018",
+    "F0054",
+    "C0026",
+    "F0064"
+   ],
+   "hypotheses": [],
+   "refutes": [
+    "H1"
+   ],
+   "materiality": "medium",
+   "decision_relevance": "Pricing deserves monitoring, not the 2026 budget",
+   "caveat": "Lost-deal reasons are sales-reported"
+  },
+  {
+   "id": "I5",
+   "statement": "The leak is concentrated in new customers: customers onboarded in the previous 12 months churned 26% in 2025 versus 12% in 2024 (+14 pp), and supplied 60.3% of churned ARR (\u20ac4.7M of \u20ac7.8M) while mature customers churned 9%",
+   "facts": [
+    "F0047",
+    "F0063",
+    "C0011",
+    "F0046",
+    "F0052",
+    "C0010",
+    "F0050"
+   ],
+   "hypotheses": [
+    "H2",
+    "H3"
+   ],
+   "materiality": "high",
+   "decision_relevance": "Fixing the first year of the customer life is where the money is"
+  },
+  {
+   "id": "I6",
+   "statement": "The first-year churn spike follows the February 2025 onboarding cut that saved \u20ac0.8M a year: median time to first value rose from 21 to 48 days and 58% of churned customers say they never fully implemented; excess first-year churn above the 2024 rate cost \u20ac2.5M of ARR",
+   "facts": [
+    "F0061",
+    "F0062",
+    "F0064",
+    "C0008",
+    "C0009"
+   ],
+   "hypotheses": [
+    "H3"
+   ],
+   "materiality": "high",
+   "decision_relevance": "A \u20ac0.8M saving cost about \u20ac2.5M of ARR; reversing it is the highest-return use of the 2026 budget",
+   "caveat": "Causality inferred from timing and exit interviews, not from a controlled test"
+  },
+  {
+   "id": "I7",
+   "statement": "The CRO's \u20ac9M equals 30 AEs at full \u20ac300k productivity for a whole year; with a 9-month ramp, Q1 hires deliver at most \u20ac4.5M in 2026, a \u20ac4.5M shortfall, for \u20ac3.6M a year",
+   "facts": [
+    "F0058",
+    "F0065",
+    "C0019",
+    "C0020",
+    "C0021",
+    "A001"
+   ],
+   "hypotheses": [],
+   "refutes": [
+    "H5"
+   ],
+   "materiality": "high",
+   "decision_relevance": "The plan as proposed does not hold; the board would be buying half the promised ARR, and new customers would flow into an onboarding team that cannot retain them",
+   "caveat": "\u20ac4.5M is an upper bound that relies on assumption A001 (linear ramp from a mid-Q1 start)"
+  },
+  {
+   "id": "I8",
+   "statement": "A retention-first plan costs \u20ac2.0M a year (restore onboarding for \u20ac0.8M plus 10 AEs for \u20ac1.2M), frees \u20ac1.6M versus the CRO plan, and identifies up to \u20ac5.3M of the \u20ac5.6M needed to restore 2024 net new ARR",
+   "facts": [
+    "F0061",
+    "C0022",
+    "C0024",
+    "C0025",
+    "C0027",
+    "C0009",
+    "C0005",
+    "C0023",
+    "C0028",
+    "C0003",
+    "A001",
+    "A002",
+    "A003"
+   ],
+   "hypotheses": [
+    "H2",
+    "H3"
+   ],
+   "materiality": "high",
+   "decision_relevance": "This is the approvable alternative: more ARR per euro, with hiring wave 2 released only when retention is fixed",
+   "caveat": "All three levers are upper bounds to validate (A001, A002, H6)"
+  }
+ ]
+}

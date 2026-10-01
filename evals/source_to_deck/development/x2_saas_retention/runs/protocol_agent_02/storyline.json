@@ -1,0 +1,285 @@
+{
+ "framework": "SCR",
+ "framework_rationale": "The board must approve or amend a specific budget request; Situation-Complication-Resolution puts the diagnosis (a retention problem) before testing the CRO plan and proposing the alternative, so the problem comes before the solution",
+ "candidates": [
+  {
+   "text": "Growth slowed because we lost customers, not deals: higher churn explains 80.4% of the \u20ac5.6M fall in net new ARR, concentrated in first-year customers after the onboarding cut. Fund retention first (restore onboarding, \u20ac0.8M) with a gated first wave of 10 AEs, for \u20ac2.0M a year instead of \u20ac3.6M, rather than 30 AEs whose 2026 yield is at most an estimated \u20ac4.5M, not the \u20ac9M promised.",
+   "scores": {
+    "answers_question": 2,
+    "supported": 2,
+    "specific": 2,
+    "decision_oriented": 2,
+    "non_trivial": 2,
+    "covers_storyline": 2
+   },
+   "insights": [
+    "I1",
+    "I5",
+    "I6",
+    "I7",
+    "I8"
+   ]
+  },
+  {
+   "text": "Approve the CRO plan but phase it: hire 30 AEs over 2026 and add a pricing response to the new competitor.",
+   "scores": {
+    "answers_question": 1,
+    "supported": 0,
+    "specific": 1,
+    "decision_oriented": 2,
+    "non_trivial": 0,
+    "covers_storyline": 0
+   },
+   "insights": [
+    "I4",
+    "I7"
+   ]
+  },
+  {
+   "text": "The slowdown is a retention problem; freeze growth investment until churn is back to 2024 levels.",
+   "scores": {
+    "answers_question": 2,
+    "supported": 1,
+    "specific": 1,
+    "decision_oriented": 1,
+    "non_trivial": 1,
+    "covers_storyline": 1
+   },
+   "insights": [
+    "I1",
+    "I5",
+    "I6"
+   ]
+  }
+ ],
+ "governing_thought": "Growth slowed because we lost customers, not deals: higher churn explains 80.4% of the \u20ac5.6M fall in net new ARR, concentrated in first-year customers after the onboarding cut. Fund retention first (restore onboarding, \u20ac0.8M) with a gated first wave of 10 AEs, for \u20ac2.0M a year instead of \u20ac3.6M, rather than 30 AEs whose 2026 yield is at most an estimated \u20ac4.5M, not the \u20ac9M promised.",
+ "key_line": [
+  {
+   "id": "K1",
+   "role": "problem",
+   "message": "Growth slowed because churn more than doubled to \u20ac7.8M and explains 80.4% of the \u20ac5.6M fall in net new ARR; the sales engine kept growing pipeline 18.0% at a stable win rate",
+   "insights": [
+    "I1",
+    "I2",
+    "I3",
+    "I4"
+   ]
+  },
+  {
+   "id": "K2",
+   "role": "cause",
+   "message": "The leak sits in the first year: new customers churned 26% versus 12% in 2024 after onboarding was cut to save \u20ac0.8M, costing \u20ac2.5M of ARR",
+   "insights": [
+    "I5",
+    "I6"
+   ]
+  },
+  {
+   "id": "K3",
+   "role": "risk",
+   "message": "The 30-AE plan does not hold: with a 9-month ramp it yields at most \u20ac4.5M in 2026, not \u20ac9M, for \u20ac3.6M a year, and pours new customers into the leak",
+   "insights": [
+    "I7"
+   ]
+  },
+  {
+   "id": "K4",
+   "role": "solution",
+   "message": "A retention-first plan for \u20ac2.0M a year identifies up to \u20ac5.3M of the \u20ac5.6M needed, with AE wave 2 gated on retention",
+   "insights": [
+    "I8"
+   ]
+  }
+ ],
+ "decision": {
+  "target": {
+   "value": 5.6,
+   "unit": "EUR_M",
+   "facts": [
+    "C0003"
+   ],
+   "statement": "Restore net new ARR to its 2024 level (\u20ac10.4M), i.e. recover the \u20ac5.6M lost in 2025 (inferred target; no 2026 target in the sources)"
+  },
+  "levers": [
+   {
+    "id": "L1",
+    "statement": "Restore the onboarding team to its pre-cut size and bring first-year churn back to the 2024 rate of 12%",
+    "impact": {
+     "value": 2.5,
+     "unit": "EUR_M"
+    },
+    "facts": [
+     "C0009",
+     "F0047",
+     "F0063",
+     "A002"
+    ],
+    "bound": "upper",
+    "validate": "Time to first value back to 21 days and 90-day churn of the Q1-Q2 2026 cohort, reviewed at the June 2026 board"
+   },
+   {
+    "id": "L2",
+    "statement": "Recover expansion ARR to the 2024 level through customer-success led adoption of customers who never fully implemented",
+    "impact": {
+     "value": 1.3,
+     "unit": "EUR_M"
+    },
+    "facts": [
+     "C0005"
+    ],
+    "bound": "upper",
+    "validate": "Root cause of the expansion decline (H6 unresolved): expansion pipeline from implemented accounts by end Q2 2026"
+   },
+   {
+    "id": "L3",
+    "statement": "Hire a first wave of 10 AEs in Q1 2026",
+    "impact": {
+     "value": 1.5,
+     "unit": "EUR_M"
+    },
+    "facts": [
+     "C0023",
+     "F0065",
+     "A001",
+     "A003"
+    ],
+    "bound": "upper",
+    "validate": "Ramp curve of the 2025 AE hires (A001) before offer letters; month-6 productivity of wave 1"
+   }
+  ],
+  "identified": {
+   "value": 5.3,
+   "unit": "EUR_M",
+   "facts": [
+    "C0028"
+   ]
+  },
+  "gap": {
+   "value": 0.3,
+   "unit": "EUR_M",
+   "facts": [
+    "C0029"
+   ],
+   "how_closed": "Not closed with evidence in 2026: candidates are reducing the 9% churn of mature customers and AE wave 2, released only if gate G1 is met; we state the gap rather than overclaim, and all three levers are upper bounds"
+  },
+  "current_plan": {
+   "statement": "CRO proposal: hire 30 account executives in Q1 2026 for \u20ac3.6M a year, promised to add \u20ac9M of new ARR in 2026",
+   "verdict": "does_not_hold",
+   "facts": [
+    "F0058",
+    "F0065",
+    "C0019",
+    "C0020",
+    "C0021",
+    "C0004"
+   ],
+   "cost_if_kept": {
+    "value": 4.5,
+    "unit": "EUR_M",
+    "facts": [
+     "C0021"
+    ],
+    "statement": "at least \u20ac4.5M of the promised \u20ac9M new ARR would not materialise in 2026, while the \u20ac2.5M first-year churn leak stays open"
+   }
+  },
+  "options": [
+   {
+    "id": "O1",
+    "statement": "Keep the CRO plan: 30 AEs in Q1 2026 (at most \u20ac4.5M new ARR in 2026, churn untouched)",
+    "cost": {
+     "value": 3.6,
+     "unit": "EUR_M"
+    },
+    "facts": [
+     "F0058",
+     "C0020"
+    ],
+    "chosen": false
+   },
+   {
+    "id": "O2",
+    "statement": "Retention first: restore onboarding (\u20ac0.8M) plus a first wave of 10 AEs (\u20ac1.2M), AE wave 2 gated",
+    "cost": {
+     "value": 2.0,
+     "unit": "EUR_M"
+    },
+    "facts": [
+     "C0025",
+     "F0061",
+     "C0024"
+    ],
+    "chosen": true
+   },
+   {
+    "id": "O3",
+    "statement": "Restore onboarding only, no new AEs in 2026",
+    "cost": {
+     "value": 0.8,
+     "unit": "EUR_M"
+    },
+    "facts": [
+     "F0061"
+    ],
+    "chosen": false
+   }
+  ],
+  "asks": [
+   {
+    "statement": "Reject the 30-AE hiring plan as proposed (\u20ac3.6M a year, \u20ac9M of 2026 new ARR not achievable)",
+    "type": "reject",
+    "owner": "Board"
+   },
+   {
+    "statement": "Approve \u20ac0.8M a year to restore the onboarding team to its pre-cut size from Q1 2026",
+    "type": "approve",
+    "owner": "CEO / VP Customer Success"
+   },
+   {
+    "statement": "Approve a first wave of 10 AEs (\u20ac1.2M a year) in Q1 2026",
+    "type": "approve",
+    "owner": "CRO"
+   },
+   {
+    "statement": "Reallocate the remaining \u20ac1.6M of the requested budget to a reserve released for AE wave 2 only when gate G1 is met",
+    "type": "reallocate",
+    "owner": "CFO"
+   }
+  ],
+  "gates": [
+   {
+    "id": "G1",
+    "statement": "Release AE wave 2",
+    "criterion": "Median time to first value at or below 21 days and annualised first-year churn of the 2026 cohort at or below 12%, and wave-1 AEs on the ramp assumed in A001",
+    "when": "June 2026 board"
+   },
+   {
+    "id": "G2",
+    "statement": "Confirm the expansion lever",
+    "criterion": "Expansion pipeline from implemented accounts on track for the 2024 expansion level",
+    "when": "End Q2 2026"
+   }
+  ],
+  "kpis": [
+   {
+    "name": "First-year (cohort) churn rate",
+    "target": "12% or below (2024 level), from 26%",
+    "cadence": "monthly"
+   },
+   {
+    "name": "Median time to first value",
+    "target": "21 days or below, from 48",
+    "cadence": "monthly"
+   },
+   {
+    "name": "Net new ARR (ARR bridge: new, expansion, churn)",
+    "target": "\u20ac10.4M run-rate (2024 level)",
+    "cadence": "quarterly"
+   },
+   {
+    "name": "New ARR per AE versus ramp curve",
+    "target": "\u20ac300k per year at month 9",
+    "cadence": "monthly"
+   }
+  ]
+ }
+}

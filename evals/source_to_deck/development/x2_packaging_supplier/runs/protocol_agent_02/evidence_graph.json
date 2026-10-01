@@ -1,0 +1,1886 @@
+{
+  "nodes": {
+    "S:invoices_2025.csv": {
+      "id": "S:invoices_2025.csv",
+      "kind": "source",
+      "label": "invoices_2025.csv"
+    },
+    "F0001": {
+      "id": "F0001",
+      "kind": "fact",
+      "label": "2025-01 · Incumbent — invoiced_eur_m: 1,444 EUR",
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "C2",
+        "loc": "sheet"
+      }
+    },
+    "F0002": {
+      "id": "F0002",
+      "kind": "fact",
+      "label": "2025-01 · Incumbent — of_which_rush_freight_eur_m: 0.05 EUR",
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "D2",
+        "loc": "sheet"
+      }
+    },
+    "F0003": {
+      "id": "F0003",
+      "kind": "fact",
+      "label": "2025-01 · Supplier B — invoiced_eur_m: 598 EUR",
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "C3",
+        "loc": "sheet"
+      }
+    },
+    "F0004": {
+      "id": "F0004",
+      "kind": "fact",
+      "label": "2025-01 · Supplier B — of_which_rush_freight_eur_m: 0 EUR",
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "D3",
+        "loc": "sheet"
+      }
+    },
+    "F0005": {
+      "id": "F0005",
+      "kind": "fact",
+      "label": "2025-02 · Incumbent — invoiced_eur_m: 1,434 EUR",
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "C4",
+        "loc": "sheet"
+      }
+    },
+    "F0006": {
+      "id": "F0006",
+      "kind": "fact",
+      "label": "2025-02 · Incumbent — of_which_rush_freight_eur_m: 0.04 EUR",
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "D4",
+        "loc": "sheet"
+      }
+    },
+    "F0007": {
+      "id": "F0007",
+      "kind": "fact",
+      "label": "2025-02 · Supplier B — invoiced_eur_m: 598 EUR",
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "C5",
+        "loc": "sheet"
+      }
+    },
+    "F0008": {
+      "id": "F0008",
+      "kind": "fact",
+      "label": "2025-02 · Supplier B — of_which_rush_freight_eur_m: 0 EUR",
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "D5",
+        "loc": "sheet"
+      }
+    },
+    "F0009": {
+      "id": "F0009",
+      "kind": "fact",
+      "label": "2025-03 · Incumbent · rush freight passed through: our forecast errors — invoiced_eur_m: 1,514 EUR",
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "C6",
+        "loc": "sheet"
+      }
+    },
+    "F0010": {
+      "id": "F0010",
+      "kind": "fact",
+      "label": "2025-03 · Incumbent · rush freight passed through: our forecast errors — of_which_rush_freight_eur_m: 0.12 EUR",
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "D6",
+        "loc": "sheet"
+      }
+    },
+    "F0011": {
+      "id": "F0011",
+      "kind": "fact",
+      "label": "2025-03 · Supplier B — invoiced_eur_m: 598 EUR",
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "C7",
+        "loc": "sheet"
+      }
+    },
+    "F0012": {
+      "id": "F0012",
+      "kind": "fact",
+      "label": "2025-03 · Supplier B — of_which_rush_freight_eur_m: 0 EUR",
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "D7",
+        "loc": "sheet"
+      }
+    },
+    "F0013": {
+      "id": "F0013",
+      "kind": "fact",
+      "label": "2025-04 · Incumbent — invoiced_eur_m: 1,474 EUR",
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "C8",
+        "loc": "sheet"
+      }
+    },
+    "F0014": {
+      "id": "F0014",
+      "kind": "fact",
+      "label": "2025-04 · Incumbent — of_which_rush_freight_eur_m: 0.08 EUR",
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "D8",
+        "loc": "sheet"
+      }
+    },
+    "F0015": {
+      "id": "F0015",
+      "kind": "fact",
+      "label": "2025-04 · Supplier B — invoiced_eur_m: 598 EUR",
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "C9",
+        "loc": "sheet"
+      }
+    },
+    "F0016": {
+      "id": "F0016",
+      "kind": "fact",
+      "label": "2025-04 · Supplier B — of_which_rush_freight_eur_m: 0 EUR",
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "D9",
+        "loc": "sheet"
+      }
+    },
+    "F0017": {
+      "id": "F0017",
+      "kind": "fact",
+      "label": "2025-05 · Incumbent — invoiced_eur_m: 1,454 EUR",
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "C10",
+        "loc": "sheet"
+      }
+    },
+    "F0018": {
+      "id": "F0018",
+      "kind": "fact",
+      "label": "2025-05 · Incumbent — of_which_rush_freight_eur_m: 0.06 EUR",
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "D10",
+        "loc": "sheet"
+      }
+    },
+    "F0019": {
+      "id": "F0019",
+      "kind": "fact",
+      "label": "2025-05 · Supplier B — invoiced_eur_m: 598 EUR",
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "C11",
+        "loc": "sheet"
+      }
+    },
+    "F0020": {
+      "id": "F0020",
+      "kind": "fact",
+      "label": "2025-05 · Supplier B — of_which_rush_freight_eur_m: 0 EUR",
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "D11",
+        "loc": "sheet"
+      }
+    },
+    "F0021": {
+      "id": "F0021",
+      "kind": "fact",
+      "label": "2025-06 · Incumbent · rush freight passed through: our forecast errors — invoiced_eur_m: 1,544 EUR",
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "C12",
+        "loc": "sheet"
+      }
+    },
+    "F0022": {
+      "id": "F0022",
+      "kind": "fact",
+      "label": "2025-06 · Incumbent · rush freight passed through: our forecast errors — of_which_rush_freight_eur_m: 0.15 EUR",
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "D12",
+        "loc": "sheet"
+      }
+    },
+    "F0023": {
+      "id": "F0023",
+      "kind": "fact",
+      "label": "2025-06 · Supplier B — invoiced_eur_m: 598 EUR",
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "C13",
+        "loc": "sheet"
+      }
+    },
+    "F0024": {
+      "id": "F0024",
+      "kind": "fact",
+      "label": "2025-06 · Supplier B — of_which_rush_freight_eur_m: 0 EUR",
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "D13",
+        "loc": "sheet"
+      }
+    },
+    "F0025": {
+      "id": "F0025",
+      "kind": "fact",
+      "label": "2025-07 · Incumbent — invoiced_eur_m: 1,484 EUR",
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "C14",
+        "loc": "sheet"
+      }
+    },
+    "F0026": {
+      "id": "F0026",
+      "kind": "fact",
+      "label": "2025-07 · Incumbent — of_which_rush_freight_eur_m: 0.09 EUR",
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "D14",
+        "loc": "sheet"
+      }
+    },
+    "F0027": {
+      "id": "F0027",
+      "kind": "fact",
+      "label": "2025-07 · Supplier B — invoiced_eur_m: 598 EUR",
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "C15",
+        "loc": "sheet"
+      }
+    },
+    "F0028": {
+      "id": "F0028",
+      "kind": "fact",
+      "label": "2025-07 · Supplier B — of_which_rush_freight_eur_m: 0 EUR",
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "D15",
+        "loc": "sheet"
+      }
+    },
+    "F0029": {
+      "id": "F0029",
+      "kind": "fact",
+      "label": "2025-08 · Incumbent — invoiced_eur_m: 1,424 EUR",
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "C16",
+        "loc": "sheet"
+      }
+    },
+    "F0030": {
+      "id": "F0030",
+      "kind": "fact",
+      "label": "2025-08 · Incumbent — of_which_rush_freight_eur_m: 0.03 EUR",
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "D16",
+        "loc": "sheet"
+      }
+    },
+    "F0031": {
+      "id": "F0031",
+      "kind": "fact",
+      "label": "2025-08 · Supplier B — invoiced_eur_m: 598 EUR",
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "C17",
+        "loc": "sheet"
+      }
+    },
+    "F0032": {
+      "id": "F0032",
+      "kind": "fact",
+      "label": "2025-08 · Supplier B — of_which_rush_freight_eur_m: 0 EUR",
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "D17",
+        "loc": "sheet"
+      }
+    },
+    "F0033": {
+      "id": "F0033",
+      "kind": "fact",
+      "label": "2025-09 · Incumbent · rush freight passed through: our forecast errors — invoiced_eur_m: 1,534 EUR",
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "C18",
+        "loc": "sheet"
+      }
+    },
+    "F0034": {
+      "id": "F0034",
+      "kind": "fact",
+      "label": "2025-09 · Incumbent · rush freight passed through: our forecast errors — of_which_rush_freight_eur_m: 0.14 EUR",
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "D18",
+        "loc": "sheet"
+      }
+    },
+    "F0035": {
+      "id": "F0035",
+      "kind": "fact",
+      "label": "2025-09 · Supplier B — invoiced_eur_m: 598 EUR",
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "C19",
+        "loc": "sheet"
+      }
+    },
+    "F0036": {
+      "id": "F0036",
+      "kind": "fact",
+      "label": "2025-09 · Supplier B — of_which_rush_freight_eur_m: 0 EUR",
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "D19",
+        "loc": "sheet"
+      }
+    },
+    "F0037": {
+      "id": "F0037",
+      "kind": "fact",
+      "label": "2025-10 · Incumbent · rush freight passed through: our forecast errors — invoiced_eur_m: 1,504 EUR",
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "C20",
+        "loc": "sheet"
+      }
+    },
+    "F0038": {
+      "id": "F0038",
+      "kind": "fact",
+      "label": "2025-10 · Incumbent · rush freight passed through: our forecast errors — of_which_rush_freight_eur_m: 0.11 EUR",
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "D20",
+        "loc": "sheet"
+      }
+    },
+    "F0039": {
+      "id": "F0039",
+      "kind": "fact",
+      "label": "2025-10 · Supplier B — invoiced_eur_m: 598 EUR",
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "C21",
+        "loc": "sheet"
+      }
+    },
+    "F0040": {
+      "id": "F0040",
+      "kind": "fact",
+      "label": "2025-10 · Supplier B — of_which_rush_freight_eur_m: 0 EUR",
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "D21",
+        "loc": "sheet"
+      }
+    },
+    "F0041": {
+      "id": "F0041",
+      "kind": "fact",
+      "label": "2025-11 · Incumbent · rush freight passed through: our forecast errors — invoiced_eur_m: 1,524 EUR",
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "C22",
+        "loc": "sheet"
+      }
+    },
+    "F0042": {
+      "id": "F0042",
+      "kind": "fact",
+      "label": "2025-11 · Incumbent · rush freight passed through: our forecast errors — of_which_rush_freight_eur_m: 0.13 EUR",
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "D22",
+        "loc": "sheet"
+      }
+    },
+    "F0043": {
+      "id": "F0043",
+      "kind": "fact",
+      "label": "2025-11 · Supplier B — invoiced_eur_m: 598 EUR",
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "C23",
+        "loc": "sheet"
+      }
+    },
+    "F0044": {
+      "id": "F0044",
+      "kind": "fact",
+      "label": "2025-11 · Supplier B — of_which_rush_freight_eur_m: 0 EUR",
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "D23",
+        "loc": "sheet"
+      }
+    },
+    "F0045": {
+      "id": "F0045",
+      "kind": "fact",
+      "label": "2025-12 · Incumbent — invoiced_eur_m: 1,494 EUR",
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "C24",
+        "loc": "sheet"
+      }
+    },
+    "F0046": {
+      "id": "F0046",
+      "kind": "fact",
+      "label": "2025-12 · Incumbent — of_which_rush_freight_eur_m: 0.1 EUR",
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "D24",
+        "loc": "sheet"
+      }
+    },
+    "F0047": {
+      "id": "F0047",
+      "kind": "fact",
+      "label": "2025-12 · Supplier B — invoiced_eur_m: 592 EUR",
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "C25",
+        "loc": "sheet"
+      }
+    },
+    "F0048": {
+      "id": "F0048",
+      "kind": "fact",
+      "label": "2025-12 · Supplier B — of_which_rush_freight_eur_m: 0 EUR",
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "D25",
+        "loc": "sheet"
+      }
+    },
+    "S:procurement_proposal.docx": {
+      "id": "S:procurement_proposal.docx",
+      "kind": "source",
+      "label": "procurement_proposal.docx"
+    },
+    "F0049": {
+      "id": "F0049",
+      "kind": "fact",
+      "label": "row 2 — Share of our volume with Supplier B: 30",
+      "source": {
+        "file": "procurement_proposal.docx",
+        "sheet": "table at 5",
+        "range": "A2",
+        "loc": "table at 5"
+      }
+    },
+    "F0050": {
+      "id": "F0050",
+      "kind": "fact",
+      "label": "row 2 — Price reduction (%): 0 PCT",
+      "source": {
+        "file": "procurement_proposal.docx",
+        "sheet": "table at 5",
+        "range": "B2",
+        "loc": "table at 5"
+      }
+    },
+    "F0051": {
+      "id": "F0051",
+      "kind": "fact",
+      "label": "row 3 — Share of our volume with Supplier B: 70",
+      "source": {
+        "file": "procurement_proposal.docx",
+        "sheet": "table at 5",
+        "range": "A3",
+        "loc": "table at 5"
+      }
+    },
+    "F0052": {
+      "id": "F0052",
+      "kind": "fact",
+      "label": "row 3 — Price reduction (%): 9 PCT",
+      "source": {
+        "file": "procurement_proposal.docx",
+        "sheet": "table at 5",
+        "range": "B3",
+        "loc": "table at 5"
+      }
+    },
+    "F0053": {
+      "id": "F0053",
+      "kind": "fact",
+      "label": "row 4 — Share of our volume with Supplier B: 100",
+      "source": {
+        "file": "procurement_proposal.docx",
+        "sheet": "table at 5",
+        "range": "A4",
+        "loc": "table at 5"
+      }
+    },
+    "F0054": {
+      "id": "F0054",
+      "kind": "fact",
+      "label": "row 4 — Price reduction (%): 12 PCT",
+      "source": {
+        "file": "procurement_proposal.docx",
+        "sheet": "table at 5",
+        "range": "B4",
+        "loc": "table at 5"
+      }
+    },
+    "S:finance_note.md": {
+      "id": "S:finance_note.md",
+      "kind": "source",
+      "label": "finance_note.md"
+    },
+    "F0055": {
+      "id": "F0055",
+      "kind": "fact",
+      "label": "The 25 EUR M packaging spend includes 1.1 EUR M of rush freight invoiced by the incumbent;",
+      "source": {
+        "file": "finance_note.md",
+        "loc": "line 3"
+      }
+    },
+    "F0056": {
+      "id": "F0056",
+      "kind": "fact",
+      "label": "Packaging spend excluding rush freight: 23.9 EUR M.",
+      "source": {
+        "file": "finance_note.md",
+        "loc": "line 4"
+      }
+    },
+    "F0057": {
+      "id": "F0057",
+      "kind": "fact",
+      "label": "Packaging spend was 25 EUR M in 2025, with the volume split between the incumbent (70%) and Supplier B (30%).",
+      "source": {
+        "file": "procurement_proposal.docx",
+        "loc": "para 2"
+      }
+    },
+    "F0058": {
+      "id": "F0058",
+      "kind": "fact",
+      "label": "Supplier B offers a 12% price reduction if it receives 100% of our volume under a three-year commitment.",
+      "source": {
+        "file": "procurement_proposal.docx",
+        "loc": "para 3"
+      }
+    },
+    "F0059": {
+      "id": "F0059",
+      "kind": "fact",
+      "label": "This saves 3.0 EUR M per year.",
+      "source": {
+        "file": "procurement_proposal.docx",
+        "loc": "para 3"
+      }
+    },
+    "S:supply_risk_review.pdf": {
+      "id": "S:supply_risk_review.pdf",
+      "kind": "source",
+      "label": "supply_risk_review.pdf"
+    },
+    "F0060": {
+      "id": "F0060",
+      "kind": "fact",
+      "label": "It declared two force-majeure stoppages in the last three years, of 9 and 14 days.",
+      "source": {
+        "file": "supply_risk_review.pdf",
+        "loc": "p.1"
+      }
+    },
+    "F0061": {
+      "id": "F0061",
+      "kind": "fact",
+      "label": "A 9-day packaging stoppage would cost us 1.6 EUR M of gross margin;",
+      "source": {
+        "file": "supply_risk_review.pdf",
+        "loc": "p.1"
+      }
+    },
+    "F0062": {
+      "id": "F0062",
+      "kind": "fact",
+      "label": "a 14-day stoppage 2.4 EUR M.",
+      "source": {
+        "file": "supply_risk_review.pdf",
+        "loc": "p.1"
+      }
+    },
+    "F0063": {
+      "id": "F0063",
+      "kind": "fact",
+      "label": "The incumbent operates two plants and can cover up to 60% of our volume at two weeks' notice.",
+      "source": {
+        "file": "supply_risk_review.pdf",
+        "loc": "p.1"
+      }
+    },
+    "F0064": {
+      "id": "F0064",
+      "kind": "fact",
+      "label": "If kept at 30% of our volume, the incumbent has offered a 4% price reduction on that volume.",
+      "source": {
+        "file": "supply_risk_review.pdf",
+        "loc": "p.1"
+      }
+    },
+    "F0065": {
+      "id": "F0065",
+      "kind": "fact",
+      "label": "Switching costs (tooling and line qualification): 0.8 EUR M one-off for a full move, 0.5 EUR M for a partial move.",
+      "source": {
+        "file": "supply_risk_review.pdf",
+        "loc": "p.1"
+      }
+    },
+    "S:computed": {
+      "id": "S:computed",
+      "kind": "source",
+      "label": "computed"
+    },
+    "C0001": {
+      "id": "C0001",
+      "kind": "derived_fact",
+      "label": "Full move: 12% on price-eligible spend (25 EUR M less 1.1 EUR M rush freight) saves 2.87 EUR M per year",
+      "source": {
+        "file": "computed",
+        "loc": "F0056 * F0054 / 100"
+      }
+    },
+    "C0002": {
+      "id": "C0002",
+      "kind": "derived_fact",
+      "label": "Procurement's 3.0 EUR M per year overstates the gross price saving by 0.13 EUR M because it applies 12% to rush freight",
+      "source": {
+        "file": "computed",
+        "loc": "F0059 - C0001"
+      }
+    },
+    "C0003": {
+      "id": "C0003",
+      "kind": "derived_fact",
+      "label": "Full move, three-year commitment: gross price saving 2026-2028 less 0.8 EUR M one-off switching cost",
+      "source": {
+        "file": "computed",
+        "loc": "C0001 * 3 - F0065"
+      }
+    },
+    "C0004": {
+      "id": "C0004",
+      "kind": "derived_fact",
+      "label": "Supplier B's two force-majeure stoppages in the last three years (9 and 14 days) would have cost 4.0 EUR M of gross margin with all volume on Supplier B",
+      "source": {
+        "file": "computed",
+        "loc": "F0061 + 2.4"
+      }
+    },
+    "C0005": {
+      "id": "C0005",
+      "kind": "derived_fact",
+      "label": "Average annual gross-margin exposure if Supplier B's stoppage record repeats under single sourcing",
+      "source": {
+        "file": "computed",
+        "loc": "C0004 / 3"
+      }
+    },
+    "C0006": {
+      "id": "C0006",
+      "kind": "derived_fact",
+      "label": "Partial move, Supplier B at 70% of volume with a 9% price reduction: annual saving",
+      "source": {
+        "file": "computed",
+        "loc": "F0056 * F0051 / 100 * F0052 / 100"
+      }
+    },
+    "C0007": {
+      "id": "C0007",
+      "kind": "derived_fact",
+      "label": "Partial move, incumbent kept at 30% of volume with its offered 4% price reduction: annual saving",
+      "source": {
+        "file": "computed",
+        "loc": "F0056 * 30 / 100 * 4 / 100"
+      }
+    },
+    "C0008": {
+      "id": "C0008",
+      "kind": "derived_fact",
+      "label": "Partial move 70/30: total annual price saving",
+      "source": {
+        "file": "computed",
+        "loc": "C0006 + C0007"
+      }
+    },
+    "C0009": {
+      "id": "C0009",
+      "kind": "derived_fact",
+      "label": "Partial move 70/30, 2026-2028: price saving less 0.5 EUR M one-off switching cost",
+      "source": {
+        "file": "computed",
+        "loc": "C0008 * 3 - 0.5"
+      }
+    },
+    "C0010": {
+      "id": "C0010",
+      "kind": "derived_fact",
+      "label": "Full move 2026-2028 after switching cost and a repeat of Supplier B's stoppage record",
+      "source": {
+        "file": "computed",
+        "loc": "C0003 - C0004"
+      }
+    },
+    "C0011": {
+      "id": "C0011",
+      "kind": "derived_fact",
+      "label": "Extra three-year saving of the full move over the 70/30 split, before stoppage risk: the stoppage loss at which the full move stops paying",
+      "source": {
+        "file": "computed",
+        "loc": "C0003 - C0009"
+      }
+    },
+    "C0012": {
+      "id": "C0012",
+      "kind": "derived_fact",
+      "label": "Incremental annual price saving of the full move over the 70/30 split",
+      "source": {
+        "file": "computed",
+        "loc": "C0001 - C0008"
+      }
+    },
+    "C0013": {
+      "id": "C0013",
+      "kind": "derived_fact",
+      "label": "Rush freight in the five 2025 months the invoices flag as 'passed through: our forecast errors'",
+      "source": {
+        "file": "computed",
+        "loc": "F0010 + F0022 + F0034 + F0038 + F0042"
+      }
+    },
+    "C0014": {
+      "id": "C0014",
+      "kind": "derived_fact",
+      "label": "Share of 2025 rush freight in months flagged as caused by our own forecast errors",
+      "source": {
+        "file": "computed",
+        "loc": "C0013 / 1.1 * 100"
+      }
+    },
+    "C0015": {
+      "id": "C0015",
+      "kind": "derived_fact",
+      "label": "Gap between procurement's claimed 3.0 EUR M per year and the recommended 70/30 split's annual saving",
+      "source": {
+        "file": "computed",
+        "loc": "F0059 - C0008"
+      }
+    },
+    "C0016": {
+      "id": "C0016",
+      "kind": "derived_fact",
+      "label": "Cost over 2026-2028 of keeping procurement's full-move plan instead of the 70/30 split, if Supplier B's stoppage record repeats",
+      "source": {
+        "file": "computed",
+        "loc": "C0009 - C0010"
+      }
+    },
+    "H1": {
+      "id": "H1",
+      "kind": "hypothesis",
+      "label": "Moving 100% of packaging to Supplier B saves 3.0 EUR M per year (procurement's case, management belief)",
+      "status": "rejected"
+    },
+    "H2": {
+      "id": "H2",
+      "kind": "hypothesis",
+      "label": "The 12% price reduction applies to the full 25 EUR M packaging spend",
+      "status": "rejected"
+    },
+    "H3": {
+      "id": "H3",
+      "kind": "hypothesis",
+      "label": "Single-sourcing on Supplier B's single plant creates a continuity risk as large as the extra saving the full move brings",
+      "status": "supported"
+    },
+    "H4": {
+      "id": "H4",
+      "kind": "hypothesis",
+      "label": "A 70/30 split between Supplier B and the incumbent captures most of the saving at lower risk and is the best risk-adjusted option",
+      "status": "supported"
+    },
+    "H5": {
+      "id": "H5",
+      "kind": "hypothesis",
+      "label": "Rush freight is an incumbent performance problem that would disappear by moving volume to Supplier B",
+      "status": "rejected"
+    },
+    "H6": {
+      "id": "H6",
+      "kind": "hypothesis",
+      "label": "The incumbent could backstop Supplier B quickly enough in a stoppage if all volume moved to Supplier B",
+      "status": "rejected"
+    },
+    "I1": {
+      "id": "I1",
+      "kind": "insight",
+      "label": "Procurement's €3.0M a year applies 12% to the full €25M, including €1.1M of rush freight the price cut does not touch: the real gross saving of the full move is €2.87M a year, and €7.80M over 2026-2028 after the €0.8M switching cost"
+    },
+    "I2": {
+      "id": "I2",
+      "kind": "insight",
+      "label": "Supplier B runs a single plant and stopped twice in three years (9 and 14 days); with all volume on it, a repeat would cost €4.0M of gross margin, more than the €2.93M the full move earns over a 70/30 split in 2026-2028, because the incumbent can only cover up to 60% of volume at two weeks' notice"
+    },
+    "I3": {
+      "id": "I3",
+      "kind": "insight",
+      "label": "A 70/30 split (Supplier B 9% on 70% of volume, incumbent 4% on the 30% it keeps) saves €1.79M a year and €4.88M over 2026-2028 after €0.5M switching, against €3.80M for the full move once a repeat of Supplier B's stoppages is counted"
+    },
+    "I4": {
+      "id": "I4",
+      "kind": "insight",
+      "label": "Rush freight is our forecasting problem, not a supplier problem: €0.65M of the €1.1M (59%) sits in months the invoices flag as 'our forecast errors', and neither supplier offer reduces it"
+    },
+    "GT": {
+      "id": "GT",
+      "kind": "governing_thought",
+      "label": "Reject the 100% move to Supplier B and approve a 70/30 split instead: the full move's real saving is €2.87M a year, not €3.0M, and a repeat of Supplier B's two stoppages (€4.0M) would wipe out the €2.93M it adds over the split, which saves €1.79M a year, nets €4.88M over 2026-2028 and keeps a second plant."
+    },
+    "K1": {
+      "id": "K1",
+      "kind": "key_line",
+      "label": "Procurement's €3.0M a year is overstated: 12% cannot apply to €1.1M of rush freight, so the full move saves €2.87M a year gross, €7.80M over 2026-2028 after €0.8M switching"
+    },
+    "K2": {
+      "id": "K2",
+      "kind": "key_line",
+      "label": "Single-sourcing on Supplier B's one plant is the bigger issue: its two stoppages in three years would cost €4.0M with all volume on it, more than the €2.93M the full move adds over a 70/30 split"
+    },
+    "K3": {
+      "id": "K3",
+      "kind": "key_line",
+      "label": "A 70/30 split saves €1.79M a year and nets €4.88M over 2026-2028, ahead of the full move's €3.80M once stoppage risk is counted"
+    },
+    "K4": {
+      "id": "K4",
+      "kind": "key_line",
+      "label": "The remaining gap to €3.0M sits in our own forecasting: €0.65M of €1.1M rush freight falls in months flagged as our forecast errors"
+    },
+    "SL:S1": {
+      "id": "SL:S1",
+      "kind": "slide",
+      "label": "Packaging supplier consolidation: is a single supplier worth it?",
+      "priority": "core",
+      "reason": "Opens the board item"
+    },
+    "SL:S2": {
+      "id": "SL:S2",
+      "kind": "slide",
+      "label": "Reject the 100% move to Supplier B and approve a 70/30 split: €1.79M a year, €4.88M net over 2026-2028, with a second plant kept",
+      "priority": "core",
+      "reason": "Board members read the answer first"
+    },
+    "SL:S3": {
+      "id": "SL:S3",
+      "kind": "slide",
+      "label": "Procurement's €3.0M a year is really €2.87M: the 12% cut cannot apply to €1.1M of rush freight",
+      "priority": "core",
+      "reason": "Shows the proposal's arithmetic does not hold before any risk is counted"
+    },
+    "SL:S4": {
+      "id": "SL:S4",
+      "kind": "slide",
+      "label": "Supplier B's single plant stopped twice in three years; a repeat would cost €4.0M, more than the €2.93M the full move adds over a 70/30 split",
+      "priority": "core",
+      "reason": "This is the trade-off that decides between full and partial consolidation"
+    },
+    "SL:S5": {
+      "id": "SL:S5",
+      "kind": "slide",
+      "label": "A 70/30 split nets €4.88M over 2026-2028, ahead of €3.80M for the full move once stoppage risk is counted",
+      "priority": "core",
+      "reason": "Gives the board the approvable alternative with each option costed"
+    },
+    "SL:S6": {
+      "id": "SL:S6",
+      "kind": "slide",
+      "label": "The gap to €3.0M is ours to close: €0.65M of €1.1M rush freight falls in months flagged as our own forecast errors",
+      "priority": "core",
+      "reason": "Answers 'what about the rest of the saving?' and assigns the lever to demand planning, not procurement"
+    },
+    "SL:S7": {
+      "id": "SL:S7",
+      "kind": "slide",
+      "label": "Today: reject the full move, approve the 70/30 split and €0.5M switching budget, commission the rush-freight review",
+      "priority": "core",
+      "reason": "Turns the recommendation into decisions with owners, gates and KPIs"
+    }
+  },
+  "edges": [
+    [
+      "C0001",
+      "C0002"
+    ],
+    [
+      "C0001",
+      "C0003"
+    ],
+    [
+      "C0001",
+      "C0012"
+    ],
+    [
+      "C0001",
+      "I1"
+    ],
+    [
+      "C0001",
+      "SL:S3"
+    ],
+    [
+      "C0002",
+      "I1"
+    ],
+    [
+      "C0002",
+      "SL:S3"
+    ],
+    [
+      "C0003",
+      "C0010"
+    ],
+    [
+      "C0003",
+      "C0011"
+    ],
+    [
+      "C0003",
+      "I1"
+    ],
+    [
+      "C0003",
+      "I2"
+    ],
+    [
+      "C0003",
+      "SL:S5"
+    ],
+    [
+      "C0004",
+      "C0005"
+    ],
+    [
+      "C0004",
+      "C0010"
+    ],
+    [
+      "C0004",
+      "H3"
+    ],
+    [
+      "C0004",
+      "I2"
+    ],
+    [
+      "C0004",
+      "SL:S4"
+    ],
+    [
+      "C0006",
+      "C0008"
+    ],
+    [
+      "C0006",
+      "I3"
+    ],
+    [
+      "C0007",
+      "C0008"
+    ],
+    [
+      "C0007",
+      "I3"
+    ],
+    [
+      "C0008",
+      "C0009"
+    ],
+    [
+      "C0008",
+      "C0012"
+    ],
+    [
+      "C0008",
+      "C0015"
+    ],
+    [
+      "C0008",
+      "H4"
+    ],
+    [
+      "C0008",
+      "I3"
+    ],
+    [
+      "C0008",
+      "SL:S2"
+    ],
+    [
+      "C0008",
+      "SL:S5"
+    ],
+    [
+      "C0008",
+      "SL:S7"
+    ],
+    [
+      "C0009",
+      "C0011"
+    ],
+    [
+      "C0009",
+      "C0016"
+    ],
+    [
+      "C0009",
+      "H4"
+    ],
+    [
+      "C0009",
+      "I2"
+    ],
+    [
+      "C0009",
+      "I3"
+    ],
+    [
+      "C0009",
+      "SL:S2"
+    ],
+    [
+      "C0009",
+      "SL:S5"
+    ],
+    [
+      "C0010",
+      "C0016"
+    ],
+    [
+      "C0010",
+      "H4"
+    ],
+    [
+      "C0010",
+      "I3"
+    ],
+    [
+      "C0010",
+      "SL:S5"
+    ],
+    [
+      "C0011",
+      "H3"
+    ],
+    [
+      "C0011",
+      "I2"
+    ],
+    [
+      "C0011",
+      "SL:S4"
+    ],
+    [
+      "C0013",
+      "C0014"
+    ],
+    [
+      "C0013",
+      "I4"
+    ],
+    [
+      "C0013",
+      "SL:S6"
+    ],
+    [
+      "C0014",
+      "I4"
+    ],
+    [
+      "C0014",
+      "SL:S6"
+    ],
+    [
+      "F0010",
+      "C0013"
+    ],
+    [
+      "F0010",
+      "I4"
+    ],
+    [
+      "F0022",
+      "C0013"
+    ],
+    [
+      "F0022",
+      "I4"
+    ],
+    [
+      "F0034",
+      "C0013"
+    ],
+    [
+      "F0034",
+      "I4"
+    ],
+    [
+      "F0038",
+      "C0013"
+    ],
+    [
+      "F0038",
+      "I4"
+    ],
+    [
+      "F0042",
+      "C0013"
+    ],
+    [
+      "F0042",
+      "I4"
+    ],
+    [
+      "F0049",
+      "I2"
+    ],
+    [
+      "F0049",
+      "I3"
+    ],
+    [
+      "F0049",
+      "SL:S2"
+    ],
+    [
+      "F0049",
+      "SL:S4"
+    ],
+    [
+      "F0049",
+      "SL:S5"
+    ],
+    [
+      "F0051",
+      "C0006"
+    ],
+    [
+      "F0051",
+      "H4"
+    ],
+    [
+      "F0051",
+      "I2"
+    ],
+    [
+      "F0051",
+      "I3"
+    ],
+    [
+      "F0051",
+      "SL:S2"
+    ],
+    [
+      "F0051",
+      "SL:S4"
+    ],
+    [
+      "F0051",
+      "SL:S5"
+    ],
+    [
+      "F0052",
+      "C0006"
+    ],
+    [
+      "F0052",
+      "H4"
+    ],
+    [
+      "F0052",
+      "I3"
+    ],
+    [
+      "F0054",
+      "C0001"
+    ],
+    [
+      "F0054",
+      "I1"
+    ],
+    [
+      "F0054",
+      "SL:S3"
+    ],
+    [
+      "F0055",
+      "I1"
+    ],
+    [
+      "F0055",
+      "I4"
+    ],
+    [
+      "F0055",
+      "SL:S3"
+    ],
+    [
+      "F0055",
+      "SL:S6"
+    ],
+    [
+      "F0055",
+      "SL:S7"
+    ],
+    [
+      "F0056",
+      "C0001"
+    ],
+    [
+      "F0056",
+      "C0006"
+    ],
+    [
+      "F0056",
+      "C0007"
+    ],
+    [
+      "F0056",
+      "I1"
+    ],
+    [
+      "F0056",
+      "SL:S3"
+    ],
+    [
+      "F0057",
+      "H2"
+    ],
+    [
+      "F0057",
+      "I2"
+    ],
+    [
+      "F0057",
+      "I3"
+    ],
+    [
+      "F0057",
+      "SL:S2"
+    ],
+    [
+      "F0058",
+      "H1"
+    ],
+    [
+      "F0058",
+      "I1"
+    ],
+    [
+      "F0058",
+      "SL:S2"
+    ],
+    [
+      "F0059",
+      "C0002"
+    ],
+    [
+      "F0059",
+      "C0015"
+    ],
+    [
+      "F0059",
+      "H1"
+    ],
+    [
+      "F0059",
+      "I1"
+    ],
+    [
+      "F0059",
+      "SL:S3"
+    ],
+    [
+      "F0059",
+      "SL:S6"
+    ],
+    [
+      "F0060",
+      "H3"
+    ],
+    [
+      "F0060",
+      "I2"
+    ],
+    [
+      "F0060",
+      "SL:S4"
+    ],
+    [
+      "F0061",
+      "C0004"
+    ],
+    [
+      "F0061",
+      "H3"
+    ],
+    [
+      "F0061",
+      "I2"
+    ],
+    [
+      "F0061",
+      "SL:S4"
+    ],
+    [
+      "F0063",
+      "H3"
+    ],
+    [
+      "F0063",
+      "H4"
+    ],
+    [
+      "F0063",
+      "H6"
+    ],
+    [
+      "F0063",
+      "I2"
+    ],
+    [
+      "F0063",
+      "SL:S4"
+    ],
+    [
+      "F0064",
+      "H4"
+    ],
+    [
+      "F0064",
+      "I3"
+    ],
+    [
+      "F0065",
+      "C0003"
+    ],
+    [
+      "F0065",
+      "I1"
+    ],
+    [
+      "F0065",
+      "I3"
+    ],
+    [
+      "F0065",
+      "SL:S5"
+    ],
+    [
+      "F0065",
+      "SL:S7"
+    ],
+    [
+      "H3",
+      "I2"
+    ],
+    [
+      "H4",
+      "I3"
+    ],
+    [
+      "I1",
+      "K1"
+    ],
+    [
+      "I1",
+      "SL:S2"
+    ],
+    [
+      "I1",
+      "SL:S3"
+    ],
+    [
+      "I2",
+      "K2"
+    ],
+    [
+      "I2",
+      "SL:S2"
+    ],
+    [
+      "I2",
+      "SL:S4"
+    ],
+    [
+      "I3",
+      "K3"
+    ],
+    [
+      "I3",
+      "SL:S2"
+    ],
+    [
+      "I3",
+      "SL:S5"
+    ],
+    [
+      "I3",
+      "SL:S7"
+    ],
+    [
+      "I4",
+      "K4"
+    ],
+    [
+      "I4",
+      "SL:S6"
+    ],
+    [
+      "I4",
+      "SL:S7"
+    ],
+    [
+      "K1",
+      "GT"
+    ],
+    [
+      "K1",
+      "SL:S3"
+    ],
+    [
+      "K2",
+      "GT"
+    ],
+    [
+      "K2",
+      "SL:S4"
+    ],
+    [
+      "K3",
+      "GT"
+    ],
+    [
+      "K3",
+      "SL:S5"
+    ],
+    [
+      "K4",
+      "GT"
+    ],
+    [
+      "K4",
+      "SL:S6"
+    ],
+    [
+      "S:computed",
+      "C0001"
+    ],
+    [
+      "S:computed",
+      "C0002"
+    ],
+    [
+      "S:computed",
+      "C0003"
+    ],
+    [
+      "S:computed",
+      "C0004"
+    ],
+    [
+      "S:computed",
+      "C0005"
+    ],
+    [
+      "S:computed",
+      "C0006"
+    ],
+    [
+      "S:computed",
+      "C0007"
+    ],
+    [
+      "S:computed",
+      "C0008"
+    ],
+    [
+      "S:computed",
+      "C0009"
+    ],
+    [
+      "S:computed",
+      "C0010"
+    ],
+    [
+      "S:computed",
+      "C0011"
+    ],
+    [
+      "S:computed",
+      "C0012"
+    ],
+    [
+      "S:computed",
+      "C0013"
+    ],
+    [
+      "S:computed",
+      "C0014"
+    ],
+    [
+      "S:computed",
+      "C0015"
+    ],
+    [
+      "S:computed",
+      "C0016"
+    ],
+    [
+      "S:finance_note.md",
+      "F0055"
+    ],
+    [
+      "S:finance_note.md",
+      "F0056"
+    ],
+    [
+      "S:invoices_2025.csv",
+      "F0001"
+    ],
+    [
+      "S:invoices_2025.csv",
+      "F0002"
+    ],
+    [
+      "S:invoices_2025.csv",
+      "F0003"
+    ],
+    [
+      "S:invoices_2025.csv",
+      "F0004"
+    ],
+    [
+      "S:invoices_2025.csv",
+      "F0005"
+    ],
+    [
+      "S:invoices_2025.csv",
+      "F0006"
+    ],
+    [
+      "S:invoices_2025.csv",
+      "F0007"
+    ],
+    [
+      "S:invoices_2025.csv",
+      "F0008"
+    ],
+    [
+      "S:invoices_2025.csv",
+      "F0009"
+    ],
+    [
+      "S:invoices_2025.csv",
+      "F0010"
+    ],
+    [
+      "S:invoices_2025.csv",
+      "F0011"
+    ],
+    [
+      "S:invoices_2025.csv",
+      "F0012"
+    ],
+    [
+      "S:invoices_2025.csv",
+      "F0013"
+    ],
+    [
+      "S:invoices_2025.csv",
+      "F0014"
+    ],
+    [
+      "S:invoices_2025.csv",
+      "F0015"
+    ],
+    [
+      "S:invoices_2025.csv",
+      "F0016"
+    ],
+    [
+      "S:invoices_2025.csv",
+      "F0017"
+    ],
+    [
+      "S:invoices_2025.csv",
+      "F0018"
+    ],
+    [
+      "S:invoices_2025.csv",
+      "F0019"
+    ],
+    [
+      "S:invoices_2025.csv",
+      "F0020"
+    ],
+    [
+      "S:invoices_2025.csv",
+      "F0021"
+    ],
+    [
+      "S:invoices_2025.csv",
+      "F0022"
+    ],
+    [
+      "S:invoices_2025.csv",
+      "F0023"
+    ],
+    [
+      "S:invoices_2025.csv",
+      "F0024"
+    ],
+    [
+      "S:invoices_2025.csv",
+      "F0025"
+    ],
+    [
+      "S:invoices_2025.csv",
+      "F0026"
+    ],
+    [
+      "S:invoices_2025.csv",
+      "F0027"
+    ],
+    [
+      "S:invoices_2025.csv",
+      "F0028"
+    ],
+    [
+      "S:invoices_2025.csv",
+      "F0029"
+    ],
+    [
+      "S:invoices_2025.csv",
+      "F0030"
+    ],
+    [
+      "S:invoices_2025.csv",
+      "F0031"
+    ],
+    [
+      "S:invoices_2025.csv",
+      "F0032"
+    ],
+    [
+      "S:invoices_2025.csv",
+      "F0033"
+    ],
+    [
+      "S:invoices_2025.csv",
+      "F0034"
+    ],
+    [
+      "S:invoices_2025.csv",
+      "F0035"
+    ],
+    [
+      "S:invoices_2025.csv",
+      "F0036"
+    ],
+    [
+      "S:invoices_2025.csv",
+      "F0037"
+    ],
+    [
+      "S:invoices_2025.csv",
+      "F0038"
+    ],
+    [
+      "S:invoices_2025.csv",
+      "F0039"
+    ],
+    [
+      "S:invoices_2025.csv",
+      "F0040"
+    ],
+    [
+      "S:invoices_2025.csv",
+      "F0041"
+    ],
+    [
+      "S:invoices_2025.csv",
+      "F0042"
+    ],
+    [
+      "S:invoices_2025.csv",
+      "F0043"
+    ],
+    [
+      "S:invoices_2025.csv",
+      "F0044"
+    ],
+    [
+      "S:invoices_2025.csv",
+      "F0045"
+    ],
+    [
+      "S:invoices_2025.csv",
+      "F0046"
+    ],
+    [
+      "S:invoices_2025.csv",
+      "F0047"
+    ],
+    [
+      "S:invoices_2025.csv",
+      "F0048"
+    ],
+    [
+      "S:procurement_proposal.docx",
+      "F0049"
+    ],
+    [
+      "S:procurement_proposal.docx",
+      "F0050"
+    ],
+    [
+      "S:procurement_proposal.docx",
+      "F0051"
+    ],
+    [
+      "S:procurement_proposal.docx",
+      "F0052"
+    ],
+    [
+      "S:procurement_proposal.docx",
+      "F0053"
+    ],
+    [
+      "S:procurement_proposal.docx",
+      "F0054"
+    ],
+    [
+      "S:procurement_proposal.docx",
+      "F0057"
+    ],
+    [
+      "S:procurement_proposal.docx",
+      "F0058"
+    ],
+    [
+      "S:procurement_proposal.docx",
+      "F0059"
+    ],
+    [
+      "S:supply_risk_review.pdf",
+      "F0060"
+    ],
+    [
+      "S:supply_risk_review.pdf",
+      "F0061"
+    ],
+    [
+      "S:supply_risk_review.pdf",
+      "F0062"
+    ],
+    [
+      "S:supply_risk_review.pdf",
+      "F0063"
+    ],
+    [
+      "S:supply_risk_review.pdf",
+      "F0064"
+    ],
+    [
+      "S:supply_risk_review.pdf",
+      "F0065"
+    ]
+  ]
+}

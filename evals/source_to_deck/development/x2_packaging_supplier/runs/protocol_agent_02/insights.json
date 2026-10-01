@@ -1,0 +1,96 @@
+{
+ "protocol": "1.1",
+ "insights": [
+  {
+   "id": "I1",
+   "statement": "Procurement's \u20ac3.0M a year applies 12% to the full \u20ac25M, including \u20ac1.1M of rush freight the price cut does not touch: the real gross saving of the full move is \u20ac2.87M a year, and \u20ac7.80M over 2026-2028 after the \u20ac0.8M switching cost",
+   "facts": [
+    "F0055",
+    "F0056",
+    "F0054",
+    "F0059",
+    "C0001",
+    "C0002",
+    "F0065",
+    "C0003",
+    "F0058"
+   ],
+   "hypotheses": [],
+   "refutes": [
+    "H1",
+    "H2"
+   ],
+   "materiality": "high",
+   "decision_relevance": "The saving the board is asked to approve is overstated before risk is even counted"
+  },
+  {
+   "id": "I2",
+   "statement": "Supplier B runs a single plant and stopped twice in three years (9 and 14 days); with all volume on it, a repeat would cost \u20ac4.0M of gross margin, more than the \u20ac2.93M the full move earns over a 70/30 split in 2026-2028, because the incumbent can only cover up to 60% of volume at two weeks' notice",
+   "facts": [
+    "F0060",
+    "F0061",
+    "C0004",
+    "C0011",
+    "F0063",
+    "C0003",
+    "C0009",
+    "F0049",
+    "F0051",
+    "F0057"
+   ],
+   "hypotheses": [
+    "H3"
+   ],
+   "refutes": [
+    "H6"
+   ],
+   "materiality": "high",
+   "decision_relevance": "The incremental 1.08 EUR M a year of the full move is bought with an uncovered continuity risk",
+   "caveat": "Two events is a small sample: a single 14-day stoppage (2.4 EUR M) would not by itself reverse the comparison; stoppage losses under the 70/30 split are not quantified in the sources"
+  },
+  {
+   "id": "I3",
+   "statement": "A 70/30 split (Supplier B 9% on 70% of volume, incumbent 4% on the 30% it keeps) saves \u20ac1.79M a year and \u20ac4.88M over 2026-2028 after \u20ac0.5M switching, against \u20ac3.80M for the full move once a repeat of Supplier B's stoppages is counted",
+   "facts": [
+    "F0051",
+    "F0052",
+    "F0064",
+    "C0006",
+    "C0007",
+    "C0008",
+    "F0065",
+    "C0009",
+    "C0010",
+    "F0049",
+    "F0057"
+   ],
+   "hypotheses": [
+    "H4"
+   ],
+   "materiality": "high",
+   "decision_relevance": "Gives the board an approvable alternative that keeps 62% of the gross saving and a second plant",
+   "caveat": "Requires the incumbent's 4% offer and Supplier B's 9% tier to be confirmed in writing"
+  },
+  {
+   "id": "I4",
+   "statement": "Rush freight is our forecasting problem, not a supplier problem: \u20ac0.65M of the \u20ac1.1M (59%) sits in months the invoices flag as 'our forecast errors', and neither supplier offer reduces it",
+   "facts": [
+    "F0055",
+    "C0013",
+    "C0014",
+    "F0010",
+    "F0022",
+    "F0034",
+    "F0038",
+    "F0042"
+   ],
+   "hypotheses": [],
+   "refutes": [
+    "H5"
+   ],
+   "materiality": "medium",
+   "decision_relevance": "The 1.1 EUR M is the only further lever toward procurement's 3.0 EUR M target and sits with demand planning",
+   "caveat": "Upper bound; the achievable reduction is not sized in the sources"
+  }
+ ]
+}

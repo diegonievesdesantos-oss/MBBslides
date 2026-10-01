@@ -1,0 +1,222 @@
+{
+ "framework": "SCR",
+ "framework_rationale": "El consejo debe aprobar o rechazar una propuesta concreta; Situación (propuesta de 4,1 M€) – Complicación (el ahorro no existe y el riesgo sí) – Resolución (renovar el alquiler) pone el problema antes de la solución y termina en una petición aprobable.",
+ "candidates": [
+  {
+   "text": "Rechazar el cierre de Valencia: los 4,1 M€ de ahorro prometidos son el coste bruto del almacén y, neto de transporte, turno adicional y coste variable trasladado a Madrid, el cierre ahorra como máximo 0,1 M€ al año, cuesta 3,2 M€ y arriesga hasta 2,2 M€ de margen anual; en su lugar, renovar el alquiler con un 25% de descuento antes de diciembre de 2026, que ahorra 0,3 M€ al año.",
+   "scores": {
+    "answers_question": 2,
+    "supported": 2,
+    "specific": 2,
+    "decision_oriented": 2,
+    "non_trivial": 2,
+    "covers_storyline": 2
+   },
+   "insights": [
+    "I1",
+    "I2",
+    "I3",
+    "I4",
+    "I5"
+   ]
+  },
+  {
+   "text": "El cierre de Valencia no ahorra lo que promete y pone en riesgo el servicio en Levante; hay que estudiarlo mejor antes de decidir.",
+   "scores": {
+    "answers_question": 1,
+    "supported": 2,
+    "specific": 0,
+    "decision_oriented": 0,
+    "non_trivial": 1,
+    "covers_storyline": 1
+   },
+   "insights": [
+    "I1",
+    "I4"
+   ]
+  },
+  {
+   "text": "Cerrar Valencia solo cuando Madrid tenga un turno adicional, para capturar el ahorro de 0,1 M€ al año.",
+   "scores": {
+    "answers_question": 1,
+    "supported": 1,
+    "specific": 2,
+    "decision_oriented": 2,
+    "non_trivial": 1,
+    "covers_storyline": 0
+   },
+   "insights": [
+    "I1",
+    "I2"
+   ]
+  }
+ ],
+ "governing_thought": "Rechazar el cierre de Valencia: los 4,1 M€ de ahorro prometidos son el coste bruto del almacén y, neto de transporte, turno adicional y coste variable trasladado a Madrid, el cierre ahorra como máximo 0,1 M€ al año, cuesta 3,2 M€ y arriesga hasta 2,2 M€ de margen anual; en su lugar, renovar el alquiler con un 25% de descuento antes de diciembre de 2026, que ahorra 0,3 M€ al año.",
+ "key_line": [
+  {
+   "id": "K1",
+   "role": "problem",
+   "message": "La propuesta no ahorra lo que promete: de 4,1 M€ brutos quedan como máximo 0,1 M€ al año, y Madrid no tiene capacidad para absorber los 375 mil pedidos de Levante sin un turno adicional.",
+   "insights": [
+    "I1",
+    "I2"
+   ]
+  },
+  {
+   "id": "K2",
+   "role": "risk",
+   "message": "Y su coste y su riesgo son mayores de lo presentado: el cierre cuesta 3,2 M€ (no 1,5 M€) y pone en riesgo hasta 2,2 M€ de margen anual al pasar el 34% de los pedidos de Levante a 48 h.",
+   "insights": [
+    "I3",
+    "I4"
+   ]
+  },
+  {
+   "id": "K3",
+   "role": "solution",
+   "message": "La mejor opción es mantener Valencia y renovar su alquiler con un 25% de descuento antes de que venza en diciembre de 2026: 0,3 M€ al año sin coste de cierre ni riesgo de servicio.",
+   "insights": [
+    "I5"
+   ]
+  }
+ ],
+ "decision": {
+  "target": {
+   "value": 4.1,
+   "unit": "EUR_M",
+   "facts": [
+    "F0042"
+   ],
+   "statement": "Ahorro anual que la propuesta de Operaciones promete al consejo"
+  },
+  "levers": [
+   {
+    "id": "L1",
+    "statement": "Renovar el alquiler de Valencia cinco años con un 25% de descuento",
+    "impact": {
+     "value": 0.3,
+     "unit": "EUR_M"
+    },
+    "facts": [
+     "C0014"
+    ],
+    "bound": "point",
+    "validate": "Confirmar por escrito la oferta del propietario (25%, cinco años) y firmar antes del vencimiento en diciembre de 2026"
+   }
+  ],
+  "identified": {
+   "value": 0.3,
+   "unit": "EUR_M"
+  },
+  "gap": {
+   "value": 3.8,
+   "unit": "EUR_M",
+   "how_closed": "No se cierra y no debe perseguirse por la vía del cierre: los 4,1 M€ eran coste bruto, no un ahorro alcanzable (el cierre deja como máximo 0,1 M€). Las fuentes no contienen otras palancas cuantificadas; se encarga a Operaciones y Finanzas un plan de eficiencia de la red con objetivo propio para el primer trimestre de 2027."
+  },
+  "current_plan": {
+   "statement": "Propuesta de Operaciones: cerrar Valencia en 2026 y servir Levante desde Madrid, con 4,1 M€ de ahorro anual y 1,5 M€ de coste de cierre",
+   "verdict": "does_not_hold",
+   "facts": [
+    "C0005",
+    "C0007",
+    "C0003",
+    "F0033",
+    "C0010"
+   ],
+   "cost_if_kept": {
+    "value": 3.2,
+    "unit": "EUR_M",
+    "statement": "Coste de cierre único, para un ahorro neto de como máximo 0,1 M€ al año y hasta 2,2 M€ de margen anual en riesgo"
+   }
+  },
+  "options": [
+   {
+    "id": "O1",
+    "statement": "Cerrar Valencia y servir Levante desde Madrid (propuesta de Operaciones): 3,2 M€ de coste de cierre, ahorro neto entre −0,18 y 0,1 M€ al año, hasta 2,2 M€ de margen en riesgo",
+    "cost": {
+     "value": 3.2,
+     "unit": "EUR_M"
+    },
+    "facts": [
+     "F0033",
+     "C0005",
+     "C0007",
+     "C0010"
+    ],
+    "chosen": false
+   },
+   {
+    "id": "O2",
+    "statement": "Mantener Valencia y renovar el alquiler cinco años con un 25% de descuento: sin coste de cierre, ahorro de 0,3 M€ al año",
+    "cost": {
+     "value": 0,
+     "unit": "EUR_M"
+    },
+    "facts": [
+     "C0014",
+     "F0035",
+     "F0036"
+    ],
+    "chosen": true
+   },
+   {
+    "id": "O3",
+    "statement": "Mantener Valencia sin renegociar: sin coste de cierre, pero renuncia a 0,3 M€ de ahorro anual",
+    "cost": {
+     "value": 0.3,
+     "unit": "EUR_M"
+    },
+    "facts": [
+     "C0014"
+    ],
+    "chosen": false
+   }
+  ],
+  "asks": [
+   {
+    "statement": "Rechazar la propuesta de cerrar el almacén de Valencia en 2026",
+    "type": "reject",
+    "owner": "Consejero delegado"
+   },
+   {
+    "statement": "Aprobar la renovación del alquiler de Valencia cinco años con un 25% de descuento (alquiler de 0,9 M€ al año) y mandatar su firma antes de diciembre de 2026",
+    "type": "approve",
+    "owner": "Director financiero"
+   },
+   {
+    "statement": "Encargar un plan de capacidad de Madrid para 2026, que con la previsión de +6% supera el umbral de horas extra del 85%",
+    "type": "commission",
+    "owner": "Director de operaciones"
+   }
+  ],
+  "gates": [
+   {
+    "statement": "Firma de la renovación del alquiler",
+    "criterion": "Descuento de al menos el 25% sobre 1,2 M€ y plazo de cinco años, confirmado por escrito",
+    "when": "Antes del vencimiento en diciembre de 2026"
+   },
+   {
+    "statement": "Cualquier propuesta futura de cierre o consolidación vuelve al consejo solo si",
+    "criterion": "Ahorro neto positivo tras transporte, capacidad, coste variable trasladado, coste de cierre completo y margen en riesgo, validado por Finanzas",
+    "when": "En cada propuesta"
+   }
+  ],
+  "kpis": [
+   {
+    "name": "Alquiler anual de Valencia",
+    "target": "0,9 M€ a partir de 2027",
+    "cadence": "annual"
+   },
+   {
+    "name": "Utilización de Madrid",
+    "target": "Por debajo del 85% (umbral de horas extra)",
+    "cadence": "monthly"
+   },
+   {
+    "name": "Pedidos de Levante entregados en 24 h",
+    "target": "Mantener el nivel de 2025",
+    "cadence": "monthly"
+   }
+  ]
+ }
+}

@@ -1,0 +1,230 @@
+{
+ "protocol": "1.1",
+ "conflicts": [
+  {
+   "id": "X001",
+   "type": "value_mismatch",
+   "measure": [
+    "coste"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0001",
+     "value": 5.8,
+     "unit": "EUR_M",
+     "basis": "actual",
+     "source": "almacenes_2025.xlsx"
+    },
+    {
+     "fact": "F0002",
+     "value": 6.0,
+     "unit": "EUR_M",
+     "basis": "actual",
+     "source": "almacenes_2025.xlsx"
+    }
+   ],
+   "resolution": "No es un conflicto: coste fijo y coste variable de Madrid son medidas distintas que se suman."
+  },
+  {
+   "id": "X002",
+   "type": "value_mismatch",
+   "measure": [
+    "coste"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0006",
+     "value": 2.6,
+     "unit": "EUR_M",
+     "basis": "actual",
+     "source": "almacenes_2025.xlsx"
+    },
+    {
+     "fact": "F0007",
+     "value": 1.5,
+     "unit": "EUR_M",
+     "basis": "actual",
+     "source": "almacenes_2025.xlsx"
+    }
+   ],
+   "resolution": "No es un conflicto: coste fijo (2,6) y variable (1,5) de Valencia son componentes que suman 4,1 M€ (C0001)."
+  },
+  {
+   "id": "X003",
+   "type": "value_mismatch",
+   "measure": [
+    "coste"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0006",
+     "value": 2.6,
+     "unit": "EUR_M",
+     "basis": "actual",
+     "source": "almacenes_2025.xlsx"
+    },
+    {
+     "fact": "F0042",
+     "value": 4.1,
+     "unit": "EUR_M",
+     "basis": "actual",
+     "source": "propuesta_operaciones.md"
+    }
+   ],
+   "resolution": "Consistente: los 4,1 M€ de Operaciones son la suma de fijo 2,6 + variable 1,5 (C0001); el error de Operaciones no es la cifra sino tratarla entera como ahorro."
+  },
+  {
+   "id": "X004",
+   "type": "value_mismatch",
+   "measure": [
+    "coste"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0007",
+     "value": 1.5,
+     "unit": "EUR_M",
+     "basis": "actual",
+     "source": "almacenes_2025.xlsx"
+    },
+    {
+     "fact": "F0042",
+     "value": 4.1,
+     "unit": "EUR_M",
+     "basis": "actual",
+     "source": "propuesta_operaciones.md"
+    }
+   ],
+   "resolution": "Consistente: 4,1 M€ = 2,6 fijo + 1,5 variable (C0001)."
+  },
+  {
+   "id": "X005",
+   "type": "value_mismatch",
+   "measure": [
+    "coste"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0011",
+     "value": 2.1,
+     "unit": "EUR_M",
+     "basis": "actual",
+     "source": "almacenes_2025.xlsx"
+    },
+    {
+     "fact": "F0012",
+     "value": 1.4,
+     "unit": "EUR_M",
+     "basis": "actual",
+     "source": "almacenes_2025.xlsx"
+    }
+   ],
+   "resolution": "No es un conflicto: coste fijo y variable de Sevilla son medidas distintas."
+  },
+  {
+   "id": "X006",
+   "type": "value_mismatch",
+   "measure": [
+    "coste"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0016",
+     "value": 10.5,
+     "unit": "EUR_M",
+     "basis": "actual",
+     "source": "almacenes_2025.xlsx"
+    },
+    {
+     "fact": "F0017",
+     "value": 8.9,
+     "unit": "EUR_M",
+     "basis": "actual",
+     "source": "almacenes_2025.xlsx"
+    }
+   ],
+   "resolution": "No es un conflicto: totales de coste fijo y variable de la red son medidas distintas."
+  },
+  {
+   "id": "X007",
+   "type": "value_mismatch",
+   "measure": [
+    "coste"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0016",
+     "value": 10.5,
+     "unit": "EUR_M",
+     "basis": "actual",
+     "source": "almacenes_2025.xlsx"
+    },
+    {
+     "fact": "F0042",
+     "value": 4.1,
+     "unit": "EUR_M",
+     "basis": "actual",
+     "source": "propuesta_operaciones.md"
+    }
+   ],
+   "resolution": "No es un conflicto: 10,5 M€ es el coste fijo de toda la red; 4,1 M€ es el coste total de Valencia."
+  },
+  {
+   "id": "X008",
+   "type": "value_mismatch",
+   "measure": [
+    "coste"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0017",
+     "value": 8.9,
+     "unit": "EUR_M",
+     "basis": "actual",
+     "source": "almacenes_2025.xlsx"
+    },
+    {
+     "fact": "F0042",
+     "value": 4.1,
+     "unit": "EUR_M",
+     "basis": "actual",
+     "source": "propuesta_operaciones.md"
+    }
+   ],
+   "resolution": "No es un conflicto: 8,9 M€ es el coste variable de la red; 4,1 M€ es el coste total de Valencia."
+  },
+  {
+   "id": "X009",
+   "type": "forecast_vs_actual",
+   "measure": [
+    "clientes"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0037",
+     "value": 18.0,
+     "unit": "PCT",
+     "basis": "actual",
+     "source": "informe_finanzas_red.pdf"
+    },
+    {
+     "fact": "F0040",
+     "value": 40.0,
+     "unit": "PCT",
+     "basis": "plan",
+     "source": "informe_finanzas_red.pdf"
+    }
+   ],
+   "resolution": "No es un conflicto: 18% es el peso de Levante en ingresos (real 2025); 40% es la proporción de clientes a 48 h que se plantearía cambiar (encuesta 2025). Se usan juntos solo como cota superior del riesgo (C0009)."
+  }
+ ]
+}

@@ -1,0 +1,29 @@
+{
+ "protocol": "1.1",
+ "project": "Tiendas de proximidad en pérdidas (caso de desarrollo, set 02)",
+ "audience": [
+  "Consejero delegado",
+  "Directora financiera",
+  "Director de expansión"
+ ],
+ "decision": "Decidir qué hacer con las 40 tiendas de proximidad en pérdidas (la dirección financiera propone cerrarlas todas en 2026)",
+ "question": "¿Qué hacemos con las 40 tiendas de proximidad en pérdidas y cuánto mejora realmente el EBITDA?",
+ "horizon": "2026-2027",
+ "scope": [
+  "Formato proximidad, España"
+ ],
+ "language": "es",
+ "deck_type": "board_presentation",
+ "max_slides": 9,
+ "constraints": [
+  "Solo formato proximidad en España",
+  "Máximo 9 slides"
+ ],
+ "assumptions": [
+  "El EBITDA por tienda del Excel incluye coste central asignado que no desaparece al cerrar (nota del controller)"
+ ],
+ "inferred": [
+  "constraints",
+  "assumptions"
+ ]
+}

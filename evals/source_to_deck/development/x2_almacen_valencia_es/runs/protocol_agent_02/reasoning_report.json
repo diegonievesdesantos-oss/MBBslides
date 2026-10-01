@@ -1,0 +1,157 @@
+{
+  "protocol": "1.1",
+  "status": "pass",
+  "stopping_criteria": {
+    "no_hard_factual_errors": true,
+    "storyline_passes": true,
+    "ghost_deck_passes": true,
+    "no_unsupported_headlines": true,
+    "no_unresolved_high_critic_finding": true,
+    "no_unresolved_conflict_in_use": true
+  },
+  "counts": {
+    "error": 0,
+    "warning": 8,
+    "info": 3
+  },
+  "hard_failures": 0,
+  "information_economy": {
+    "facts_available": 71,
+    "facts_used": 35,
+    "facts_appendix": 0,
+    "facts_omitted": 36,
+    "slides": 8,
+    "core": 8,
+    "support": 0,
+    "appendix": 0,
+    "note": "omitting facts is expected: decision relevance, not coverage, is the goal"
+  },
+  "stages": {
+    "project": {
+      "errors": 0,
+      "warnings": 0
+    },
+    "conflicts": {
+      "errors": 0,
+      "warnings": 0
+    },
+    "critique": {
+      "errors": 0,
+      "warnings": 0
+    },
+    "facts": {
+      "errors": 0,
+      "warnings": 0
+    },
+    "hypotheses": {
+      "errors": 0,
+      "warnings": 0
+    },
+    "insights": {
+      "errors": 0,
+      "warnings": 0
+    },
+    "storyline": {
+      "errors": 0,
+      "warnings": 0
+    },
+    "deck_plan": {
+      "errors": 0,
+      "warnings": 7
+    },
+    "deck": {
+      "errors": 0,
+      "warnings": 1
+    }
+  },
+  "issues": [
+    {
+      "level": "info",
+      "code": "PROJECT_INFERRED",
+      "artifact": "project.json",
+      "ref": "constraints",
+      "message": "'constraints' was inferred, not given: confirm it at the storyline checkpoint",
+      "hard": false
+    },
+    {
+      "level": "info",
+      "code": "PROJECT_INFERRED",
+      "artifact": "project.json",
+      "ref": "assumptions",
+      "message": "'assumptions' was inferred, not given: confirm it at the storyline checkpoint",
+      "hard": false
+    },
+    {
+      "level": "warning",
+      "code": "ASSUMPTION_IN_HEADLINE",
+      "artifact": "deck_plan.json",
+      "ref": "S2",
+      "message": "€0,1 M rests on an assumption (C0005): say so on the slide",
+      "hard": false
+    },
+    {
+      "level": "warning",
+      "code": "ASSUMPTION_IN_HEADLINE",
+      "artifact": "deck_plan.json",
+      "ref": "S3",
+      "message": "€1,9 M rests on an assumption (A001): say so on the slide",
+      "hard": false
+    },
+    {
+      "level": "warning",
+      "code": "ASSUMPTION_IN_HEADLINE",
+      "artifact": "deck_plan.json",
+      "ref": "S3",
+      "message": "€0,6 M rests on an assumption (A002): say so on the slide",
+      "hard": false
+    },
+    {
+      "level": "warning",
+      "code": "ASSUMPTION_IN_HEADLINE",
+      "artifact": "deck_plan.json",
+      "ref": "S3",
+      "message": "€0,1 M rests on an assumption (C0005): say so on the slide",
+      "hard": false
+    },
+    {
+      "level": "warning",
+      "code": "ASSUMPTION_IN_HEADLINE",
+      "artifact": "deck_plan.json",
+      "ref": "S4",
+      "message": "+6% rests on an assumption (A005): say so on the slide",
+      "hard": false
+    },
+    {
+      "level": "warning",
+      "code": "ASSUMPTION_IN_HEADLINE",
+      "artifact": "deck_plan.json",
+      "ref": "S4",
+      "message": "88% rests on an assumption (C0020): say so on the slide",
+      "hard": false
+    },
+    {
+      "level": "warning",
+      "code": "ASSUMPTION_IN_HEADLINE",
+      "artifact": "deck_plan.json",
+      "ref": "S5",
+      "message": "€0,1 M rests on an assumption (C0005): say so on the slide",
+      "hard": false
+    },
+    {
+      "level": "info",
+      "code": "ASSUMPTION_IN_HEADLINE",
+      "artifact": "deck_plan.json",
+      "ref": "S7",
+      "message": "€0,2 M rests on an assumption (C0022): say so on the slide",
+      "hard": false
+    },
+    {
+      "level": "warning",
+      "code": "DECK_MISSING",
+      "artifact": "deck.json",
+      "ref": null,
+      "message": "No deck.json yet",
+      "hard": false
+    }
+  ]
+}

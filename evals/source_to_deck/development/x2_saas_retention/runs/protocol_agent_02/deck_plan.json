@@ -1,0 +1,209 @@
+{
+ "slides": [
+  {
+   "id": "S1",
+   "priority": "core",
+   "role": "title",
+   "purpose": "Frame the decision",
+   "decision_role": "context",
+   "headline": "2026 growth investment: fix retention before adding sales capacity",
+   "insights": [],
+   "facts": [],
+   "message_type": "title",
+   "archetype": "title",
+   "reason_to_exist": "Board deck opener naming the decision",
+   "why_not_merge": "Title slide: frames the decision, carries no argument"
+  },
+  {
+   "id": "S2",
+   "priority": "core",
+   "role": "exec_summary",
+   "purpose": "Answer first: diagnosis, plan test, recommendation and asks",
+   "decision_role": "answer",
+   "headline": "Churn, not sales, cut net new ARR by \u20ac5.6M; we recommend a retention-first plan at an estimated \u20ac2.0M a year instead of \u20ac3.6M for 30 AEs",
+   "insights": [
+    "I1",
+    "I7",
+    "I8"
+   ],
+   "facts": [
+    "C0003",
+    "C0025",
+    "F0058"
+   ],
+   "message_type": "recommendation",
+   "archetype": "executive_summary",
+   "reason_to_exist": "Gives the board the answer and the asks on one page",
+   "why_not_merge": "Executive summary: the answer and asks on one page for a board that may read only this slide",
+   "assumptions_note": "Figures depending on A001 (AE ramp), A002 (cohort size) or A003 (wave size) are marked as estimates / upper bounds on the slide"
+  },
+  {
+   "id": "S3",
+   "priority": "core",
+   "key_line": "K1",
+   "purpose": "Show where the slowdown came from in the ARR bridge",
+   "decision_role": "diagnosis",
+   "headline": "Higher churn explains 80.4% of the \u20ac5.6M fall in net new ARR; new-logo ARR still grew \u20ac0.2M",
+   "insights": [
+    "I1",
+    "I2"
+   ],
+   "facts": [
+    "C0001",
+    "C0002",
+    "C0003",
+    "C0004",
+    "C0005",
+    "C0006",
+    "C0007"
+   ],
+   "message_type": "change",
+   "archetype": "waterfall",
+   "reason_to_exist": "The core diagnosis: the bridge shows the problem is churn and expansion, not acquisition"
+  },
+  {
+   "id": "S4",
+   "priority": "core",
+   "key_line": "K1",
+   "purpose": "Test the CRO's price-competitor diagnosis against the funnel",
+   "decision_role": "refute current belief",
+   "headline": "The sales engine did not break: pipeline grew 18.0%, deals won rose from 175 to 193 and only 31% of churned customers cite a competitor or price",
+   "insights": [
+    "I3",
+    "I4"
+   ],
+   "facts": [
+    "C0014",
+    "C0015",
+    "C0016",
+    "C0026",
+    "F0015",
+    "F0043"
+   ],
+   "message_type": "comparison",
+   "archetype": "chart",
+   "reason_to_exist": "Rejects the management hypothesis that the CRO plan rests on",
+   "why_not_merge": "S3 shows where ARR was lost; S4 refutes the competing explanation the budget request is built on, and the board needs both to drop the price story"
+  },
+  {
+   "id": "S5",
+   "priority": "core",
+   "key_line": "K2",
+   "purpose": "Locate the leak by cohort",
+   "decision_role": "diagnosis",
+   "headline": "First-year customers churned 26% versus 12% in 2024 and supplied 60.3% of churned ARR; mature customers churned 9%",
+   "insights": [
+    "I5"
+   ],
+   "facts": [
+    "F0047",
+    "F0063",
+    "C0011",
+    "C0010",
+    "F0050",
+    "F0046",
+    "F0052"
+   ],
+   "message_type": "comparison",
+   "archetype": "chart",
+   "reason_to_exist": "Shows the leak is in the first year, which points to onboarding"
+  },
+  {
+   "id": "S6",
+   "priority": "core",
+   "key_line": "K2",
+   "purpose": "Link the leak to the onboarding cut and size its cost",
+   "decision_role": "root cause",
+   "headline": "Cutting onboarding saved \u20ac0.8M but more than doubled time to first value (21 to 48 days) and cost about \u20ac2.5M of ARR",
+   "insights": [
+    "I6"
+   ],
+   "facts": [
+    "F0061",
+    "F0062",
+    "F0064",
+    "C0008",
+    "C0009"
+   ],
+   "message_type": "cause",
+   "archetype": "cause_effect",
+   "reason_to_exist": "Root cause and its economics: the lever L1",
+   "why_not_merge": "S5 locates the leak (where); S6 explains it and prices it (why and how much), which is what the approve-\u20ac0.8M ask rests on"
+  },
+  {
+   "id": "S7",
+   "priority": "core",
+   "key_line": "K3",
+   "purpose": "Test the plan in force",
+   "decision_role": "test current plan",
+   "headline": "30 AEs hired in Q1 deliver at most an estimated \u20ac4.5M in 2026, not \u20ac9M, because new AEs need 9 months to reach \u20ac300k (assumes a linear ramp)",
+   "insights": [
+    "I7"
+   ],
+   "facts": [
+    "F0058",
+    "F0065",
+    "C0019",
+    "C0020",
+    "C0021",
+    "A001"
+   ],
+   "message_type": "comparison",
+   "archetype": "chart",
+   "reason_to_exist": "The board is asked to approve this plan; it must see that the promise does not hold",
+   "assumptions_note": "Figures depending on A001 (AE ramp), A002 (cohort size) or A003 (wave size) are marked as estimates / upper bounds on the slide"
+  },
+  {
+   "id": "S8",
+   "priority": "core",
+   "key_line": "K4",
+   "purpose": "Compare costed options and show levers versus the target",
+   "decision_role": "options",
+   "headline": "Retention first costs an estimated \u20ac2.0M versus \u20ac3.6M and identifies up to \u20ac5.3M of the \u20ac5.6M needed, leaving an estimated \u20ac0.3M gap (levers are upper bounds)",
+   "insights": [
+    "I8"
+   ],
+   "facts": [
+    "C0025",
+    "C0027",
+    "C0009",
+    "C0005",
+    "C0023",
+    "C0028",
+    "C0029",
+    "C0003",
+    "F0058",
+    "F0061",
+    "C0024",
+    "A003"
+   ],
+   "message_type": "comparison",
+   "archetype": "table",
+   "reason_to_exist": "Costed options and the lever bridge to the target, with the gap stated",
+   "assumptions_note": "Figures depending on A001 (AE ramp), A002 (cohort size) or A003 (wave size) are marked as estimates / upper bounds on the slide"
+  },
+  {
+   "id": "S9",
+   "priority": "core",
+   "role": "next_steps",
+   "purpose": "Approvable asks, gates and KPIs",
+   "decision_role": "asks",
+   "headline": "Decisions today: reject 30 AEs, approve \u20ac0.8M for onboarding and a first wave of 10 AEs (our sizing), hold an estimated \u20ac1.6M until first-year churn is back at 12%",
+   "insights": [
+    "I8"
+   ],
+   "facts": [
+    "F0058",
+    "A003",
+    "F0061",
+    "C0027",
+    "F0063"
+   ],
+   "message_type": "recommendation",
+   "archetype": "roadmap",
+   "reason_to_exist": "Closes with what the board approves today and how it will be governed",
+   "why_not_merge": "Next steps: approvable asks, gates and KPIs; distinct from S8, which compares options",
+   "assumptions_note": "Figures depending on A001 (AE ramp), A002 (cohort size) or A003 (wave size) are marked as estimates / upper bounds on the slide"
+  }
+ ]
+}

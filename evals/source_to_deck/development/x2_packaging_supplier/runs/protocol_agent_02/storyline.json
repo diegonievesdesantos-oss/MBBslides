@@ -1,0 +1,257 @@
+{
+ "protocol": "1.1",
+ "framework": "SCR",
+ "framework_rationale": "The board is asked to approve a specific proposal; Situation-Complication-Resolution lets us state the proposal, show where its saving and risk case break (problem and risk first), then resolve with an approvable alternative.",
+ "candidates": [
+  {
+   "text": "Reject the 100% move to Supplier B and approve a 70/30 split: the full move's real saving is \u20ac2.87M a year, not \u20ac3.0M, and a repeat of Supplier B's two stoppages (\u20ac4.0M) would wipe out the \u20ac2.93M it adds over the split, which nets \u20ac4.88M over 2026-2028 and keeps a second plant",
+   "scores": {
+    "answers_question": 2,
+    "supported": 2,
+    "specific": 2,
+    "decision_oriented": 2,
+    "non_trivial": 2,
+    "covers_storyline": 2
+   },
+   "insights": [
+    "I1",
+    "I2",
+    "I3"
+   ]
+  },
+  {
+   "text": "Approve the move to Supplier B but correct the saving to \u20ac2.87M a year and add a business-continuity plan",
+   "scores": {
+    "answers_question": 2,
+    "supported": 1,
+    "specific": 2,
+    "decision_oriented": 2,
+    "non_trivial": 1,
+    "covers_storyline": 1
+   },
+   "insights": [
+    "I1",
+    "I2"
+   ]
+  },
+  {
+   "text": "Keep both suppliers as today until the rush-freight problem is solved",
+   "scores": {
+    "answers_question": 1,
+    "supported": 1,
+    "specific": 1,
+    "decision_oriented": 1,
+    "non_trivial": 1,
+    "covers_storyline": 1
+   },
+   "insights": [
+    "I4"
+   ]
+  }
+ ],
+ "governing_thought": "Reject the 100% move to Supplier B and approve a 70/30 split instead: the full move's real saving is \u20ac2.87M a year, not \u20ac3.0M, and a repeat of Supplier B's two stoppages (\u20ac4.0M) would wipe out the \u20ac2.93M it adds over the split, which saves \u20ac1.79M a year, nets \u20ac4.88M over 2026-2028 and keeps a second plant.",
+ "key_line": [
+  {
+   "id": "K1",
+   "role": "problem",
+   "message": "Procurement's \u20ac3.0M a year is overstated: 12% cannot apply to \u20ac1.1M of rush freight, so the full move saves \u20ac2.87M a year gross, \u20ac7.80M over 2026-2028 after \u20ac0.8M switching",
+   "insights": [
+    "I1"
+   ]
+  },
+  {
+   "id": "K2",
+   "role": "risk",
+   "message": "Single-sourcing on Supplier B's one plant is the bigger issue: its two stoppages in three years would cost \u20ac4.0M with all volume on it, more than the \u20ac2.93M the full move adds over a 70/30 split",
+   "insights": [
+    "I2"
+   ]
+  },
+  {
+   "id": "K3",
+   "role": "solution",
+   "message": "A 70/30 split saves \u20ac1.79M a year and nets \u20ac4.88M over 2026-2028, ahead of the full move's \u20ac3.80M once stoppage risk is counted",
+   "insights": [
+    "I3"
+   ]
+  },
+  {
+   "id": "K4",
+   "role": "action",
+   "message": "The remaining gap to \u20ac3.0M sits in our own forecasting: \u20ac0.65M of \u20ac1.1M rush freight falls in months flagged as our forecast errors",
+   "insights": [
+    "I4"
+   ]
+  }
+ ],
+ "decision": {
+  "target": {
+   "value": 3.0,
+   "unit": "EUR_M",
+   "facts": [
+    "F0059"
+   ],
+   "statement": "Procurement's claimed annual saving from packaging sourcing"
+  },
+  "levers": [
+   {
+    "id": "L1",
+    "statement": "Move Supplier B to 70% of volume at its 9% price tier",
+    "impact": {
+     "value": 1.51,
+     "unit": "EUR_M"
+    },
+    "facts": [
+     "C0006"
+    ],
+    "bound": "point",
+    "validate": "Supplier B confirms the 9% tier at 70% for 2026-2028 in writing, before contract signature (Q4 2026)"
+   },
+   {
+    "id": "L2",
+    "statement": "Keep the incumbent at 30% of volume with its offered 4% price reduction",
+    "impact": {
+     "value": 0.29,
+     "unit": "EUR_M"
+    },
+    "facts": [
+     "C0007"
+    ],
+    "bound": "point",
+    "validate": "Incumbent's 4% offer at 30% volume confirmed in a 2026-2028 contract (Q4 2026)"
+   }
+  ],
+  "identified": {
+   "value": 1.79,
+   "unit": "EUR_M",
+   "facts": [
+    "C0008"
+   ]
+  },
+  "gap": {
+   "value": 1.21,
+   "unit": "EUR_M",
+   "facts": [
+    "C0015"
+   ],
+   "how_closed": "Not closed by price: the extra \u20ac1.08M a year (C0012) is only available through 100% single sourcing, which a repeat of Supplier B's stoppages (\u20ac1.33M a year on average, C0005) outweighs. The only further lever is rush freight (\u20ac1.1M a year, F0055), driven by our own forecast errors; its reducible share is an upper bound to be sized by a demand-planning review before any of it is booked."
+  },
+  "current_plan": {
+   "statement": "Procurement proposal: move 100% of packaging to Supplier B from January 2026 under a three-year commitment, saving \u20ac3.0M a year",
+   "verdict": "does_not_hold",
+   "facts": [
+    "F0059",
+    "C0001",
+    "C0002",
+    "C0004",
+    "C0010",
+    "C0016"
+   ],
+   "cost_if_kept": {
+    "value": 1.07,
+    "unit": "EUR_M",
+    "facts": [
+     "C0016"
+    ],
+    "statement": "Three-year shortfall versus the 70/30 split if Supplier B's stoppage record repeats (\u20ac3.80M vs \u20ac4.88M net), plus an uncovered single-plant exposure"
+   }
+  },
+  "options": [
+   {
+    "id": "O0",
+    "statement": "Keep today's 70/30 incumbent/Supplier B split without renegotiation: no saving, no switching cost",
+    "cost": {
+     "value": 0,
+     "unit": "EUR_M"
+    },
+    "facts": [
+     "F0050"
+    ],
+    "chosen": false
+   },
+   {
+    "id": "O1",
+    "statement": "Procurement's full move to Supplier B: \u20ac7.80M net over 2026-2028 before risk, \u20ac3.80M if the stoppage record repeats; one-off switching cost \u20ac0.8M",
+    "cost": {
+     "value": 0.8,
+     "unit": "EUR_M"
+    },
+    "facts": [
+     "F0065",
+     "C0003",
+     "C0010"
+    ],
+    "chosen": false
+   },
+   {
+    "id": "O2",
+    "statement": "Flip to 70% Supplier B / 30% incumbent: \u20ac4.88M net over 2026-2028, second plant retained; one-off switching cost \u20ac0.5M",
+    "cost": {
+     "value": 0.5,
+     "unit": "EUR_M"
+    },
+    "facts": [
+     "F0065",
+     "C0009"
+    ],
+    "chosen": true
+   }
+  ],
+  "asks": [
+   {
+    "statement": "Reject procurement's proposal to move 100% of packaging to Supplier B",
+    "type": "reject",
+    "owner": "COO, CFO, CPO"
+   },
+   {
+    "statement": "Approve a 70% Supplier B / 30% incumbent split for 2026-2028, with a \u20ac0.5M one-off switching budget",
+    "type": "approve",
+    "owner": "CFO (budget), CPO (contracts)"
+   },
+   {
+    "statement": "Commission a demand-planning review to size and cut the \u20ac1.1M of rush freight",
+    "type": "commission",
+    "owner": "COO"
+   }
+  ],
+  "gates": [
+   {
+    "statement": "Contract gate",
+    "criterion": "Supplier B 9% tier at 70% and incumbent 4% at 30% both signed for 2026-2028; otherwise return to the board",
+    "when": "Before contract signature, Q4 2026"
+   },
+   {
+    "statement": "Continuity gate",
+    "criterion": "Incumbent ramp-up plan to cover Supplier B's share in a stoppage tested, and Supplier B force-majeure root causes reviewed",
+    "when": "Q1 2027"
+   },
+   {
+    "statement": "Revisit single sourcing",
+    "criterion": "Reconsider 100% Supplier B only if it qualifies a second plant or the continuity plan covers a 14-day stoppage",
+    "when": "Contract review, 2028"
+   }
+  ],
+  "kpis": [
+   {
+    "name": "Realised annual price saving vs plan",
+    "target": "\u20ac1.79M a year",
+    "cadence": "quarterly"
+   },
+   {
+    "name": "Rush freight invoiced",
+    "target": "Below 2025 level of \u20ac1.1M a year, trending down",
+    "cadence": "monthly"
+   },
+   {
+    "name": "Supplier stoppage days and uncovered volume",
+    "target": "Zero uncovered days",
+    "cadence": "monthly"
+   },
+   {
+    "name": "Volume share by supplier",
+    "target": "70% Supplier B / 30% incumbent",
+    "cadence": "quarterly"
+   }
+  ]
+ }
+}

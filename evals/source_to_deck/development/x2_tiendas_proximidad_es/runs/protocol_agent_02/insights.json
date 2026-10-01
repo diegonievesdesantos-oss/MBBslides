@@ -1,0 +1,141 @@
+{
+ "protocol": "1.1",
+ "insights": [
+  {
+   "id": "I1",
+   "statement": "Cerrar las 40 tiendas mejora el EBITDA en 1.596 k€, no en 5.196 k€: 3.600 k€ son coste central asignado que se reparte entre el resto de la red.",
+   "facts": [
+    "F0248",
+    "F0249",
+    "C0001",
+    "F0247"
+   ],
+   "hypotheses": [],
+   "refutes": [
+    "H1"
+   ],
+   "materiality": "high",
+   "decision_relevance": "La promesa de la propuesta financiera triplica la mejora real; la decisión debe tomarse sobre EBITDA antes de coste central."
+  },
+  {
+   "id": "I2",
+   "statement": "Toda la pérdida antes de coste central está en el grupo A (1.920 k€), con un alquiler del 14,5% de ventas sin gastos comunes y del 16% con ellos, frente al 9% de la red.",
+   "facts": [
+    "C0002",
+    "F0094",
+    "F0250",
+    "F0241"
+   ],
+   "hypotheses": [
+    "H2"
+   ],
+   "materiality": "high",
+   "decision_relevance": "El problema es el alquiler de 22 tiendas, no el formato."
+  },
+  {
+   "id": "I3",
+   "statement": "El grupo B aporta 324 k€ antes de coste central (10 k€ por tienda de 2023 y 28 k€ por tienda de 2024) y sus ventas por m² crecen un 11% al año: cerrarlo empeora el EBITDA.",
+   "facts": [
+    "C0003",
+    "C0006",
+    "C0007",
+    "F0253",
+    "F0244"
+   ],
+   "hypotheses": [
+    "H3"
+   ],
+   "refutes": [
+    "H1"
+   ],
+   "materiality": "high",
+   "decision_relevance": "Las 18 tiendas B deben mantenerse.",
+   "caveat": "Las tiendas de 2024 aparecen con mejor contribución que las de 2023; con un año de datos no se puede separar tendencia de diferencias de ubicación."
+  },
+  {
+   "id": "I4",
+   "statement": "Las 15 tiendas A con ruptura en 2026 pierden 100 k€ cada una antes de coste central: cerrarlas cuesta 1.500 k€ y mejora el EBITDA en 1.500 k€ al año, con recuperación en 1,0 años.",
+   "facts": [
+    "C0004",
+    "C0008",
+    "C0009",
+    "C0013",
+    "F0251",
+    "F0241"
+   ],
+   "hypotheses": [
+    "H2"
+   ],
+   "materiality": "high",
+   "decision_relevance": "Es la palanca principal y debe aprobarse ya para no perder la ventana de 2026."
+  },
+  {
+   "id": "I5",
+   "statement": "El coste de cierre de la propuesta (10.000 k€) está sobrestimado en 2.250 k€: con la ruptura de 15 contratos el coste realista de cerrar las 40 es 7.750 k€, con recuperación de 4,9 años.",
+   "facts": [
+    "F0256",
+    "F0251",
+    "F0252",
+    "C0010",
+    "C0011",
+    "C0012",
+    "F0247"
+   ],
+   "hypotheses": [],
+   "refutes": [
+    "H4"
+   ],
+   "materiality": "medium",
+   "decision_relevance": "Incluso con el coste corregido, cerrar las 40 gasta 6.250 k€ más que cerrar las 15 para una mejora casi igual."
+  },
+  {
+   "id": "I6",
+   "statement": "Las 7 tiendas A sin ruptura pierden 60 k€ cada una antes de coste central; para equilibrio necesitan una rebaja de 5,2 puntos de ventas (alquiler al 9,3%), y 5 propietarios aceptan negociar: hasta 300 k€ de mejora.",
+   "facts": [
+    "C0005",
+    "C0014",
+    "C0015",
+    "C0016",
+    "A001",
+    "F0250"
+   ],
+   "hypotheses": [],
+   "materiality": "medium",
+   "decision_relevance": "Renegociar es más barato que cerrar a 250 k€ por tienda; si fracasa, cerrar al vencimiento.",
+   "caveat": "Hipótesis H5 sin resolver: 300 k€ es un máximo, depende de la rebaja que se firme."
+  },
+  {
+   "id": "I7",
+   "statement": "Las 2 tiendas A sin ruptura ni negociación pierden 120 k€ al año antes de coste central; cerrarlas cuesta 500 k€.",
+   "facts": [
+    "C0017",
+    "C0018"
+   ],
+   "hypotheses": [
+    "H2"
+   ],
+   "materiality": "low",
+   "decision_relevance": "Decisión menor: cerrar con recuperación en torno a cuatro años o esperar a una ventana de ruptura."
+  },
+  {
+   "id": "I8",
+   "statement": "Resolver las 22 tiendas A identifica hasta 1.920 k€ de mejora; la brecha de 3.276 k€ frente a la mejora prometida no se recupera cerrando tiendas: es coste central reasignado neto de la contribución de B.",
+   "facts": [
+    "C0019",
+    "C0020",
+    "F0248",
+    "F0249",
+    "C0003",
+    "F0241"
+   ],
+   "hypotheses": [
+    "H2"
+   ],
+   "refutes": [
+    "H1"
+   ],
+   "materiality": "high",
+   "decision_relevance": "Fija la expectativa correcta de EBITDA para el consejo y separa la decisión de tiendas de la revisión del coste central."
+  }
+ ]
+}

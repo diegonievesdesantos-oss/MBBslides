@@ -1,0 +1,101 @@
+{
+  "protocol": "1.1",
+  "case": "x2_saas_retention",
+  "run": {
+    "engine": "1.7.0.dev0",
+    "reasoning_protocol": "1.1",
+    "model": "Claude subagent",
+    "skill": "protocol 1.1",
+    "author": "developing agent"
+  },
+  "factuality": {
+    "hard_failures": 0,
+    "status": "PASS",
+    "by_code": {}
+  },
+  "fact_grounding": {
+    "critical_fact_recall": 1.0,
+    "critical_facts": "4/4",
+    "facts": 86,
+    "fabricated_facts": 0,
+    "fact_precision": 1.0,
+    "traceable": 1.0,
+    "arithmetic_errors": 0
+  },
+  "insight_quality": {
+    "insights": 8,
+    "supported": 8,
+    "unsupported": 0,
+    "material_conclusion_coverage": "3/3",
+    "conclusions": {
+      "C1": true,
+      "C2": true,
+      "C3": true
+    },
+    "restating_facts": 0,
+    "causal_overclaims": 0,
+    "with_decision_relevance": 8
+  },
+  "storyline": {
+    "governing_thought": "Growth slowed because we lost customers, not deals: higher churn explains 80.4% of the €5.6M fall in net new ARR, concentrated in first-year customers after the onboarding cut. Fund retention first (restore onboarding, €0.8M) with a gated first wave of 10 AEs, for €2.0M a year instead of €3.6M, rather than 30 AEs whose 2026 yield is at most an estimated €4.5M, not the €9M promised.",
+    "candidates_compared": 3,
+    "framework": "SCR",
+    "framework_acceptable": true,
+    "answer_first": true,
+    "key_line_points": 4,
+    "unsupported_key_line_points": 0,
+    "mece_overlaps": 0,
+    "traps_triggered": [],
+    "errors": 0
+  },
+  "slide_architecture": {
+    "slides": 9,
+    "core": 9,
+    "appendix": 0,
+    "max_slides": 9,
+    "within_length": true,
+    "required_messages_on_core_slides": "3/3",
+    "orphan_slides": 0,
+    "duplicates": 0,
+    "unjustified_extra_slides": 0,
+    "information_economy": {
+      "facts_available": 97,
+      "facts_used": 50,
+      "facts_appendix": 0,
+      "facts_omitted": 47,
+      "slides": 9,
+      "core": 9,
+      "support": 0,
+      "appendix": 0,
+      "note": "omitting facts is expected: decision relevance, not coverage, is the goal"
+    }
+  },
+  "headlines": {
+    "headlines": 8,
+    "conclusion_rate": 1.0,
+    "numbers_proven_rate": 1.0,
+    "mean_words": 24.1
+  },
+  "visual_intent": {
+    "slides_with_intent": 9,
+    "mismatches": 0,
+    "accuracy": 1.0
+  },
+  "decision": {
+    "frame": true,
+    "levers": 3,
+    "levers_quantified": 3,
+    "gap_stated": true,
+    "current_plan_tested": true,
+    "options_costed": 3,
+    "approvable_asks": 4,
+    "deferred_asks": 0,
+    "bounds_marked": 3,
+    "gates": 2,
+    "kpis": 4,
+    "problem_first": true,
+    "warnings": []
+  },
+  "reasoning_check_status": "pass",
+  "note": "dimensions are separate on purpose; there is no total score"
+}

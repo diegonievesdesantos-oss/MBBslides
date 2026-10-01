@@ -183,7 +183,7 @@ def tiendas() -> None:
              "any_of": [["15 tiendas"], ["selectiv"], ["ruptura", "contrato"]]}],
         "traps": [
             {"id": "T1", "description": "Aceptar que cerrar mejora el EBITDA 5,2 M€", "forbidden": [["mejora", "5,2 m€"], ["ahorr", "5,2 m€"], ["mejorar el ebitda en 5,2"]]},
-            {"id": "T2", "description": "Recomendar cerrar las 40", "forbidden": [["cerrar las 40"], ["cierre de las 40"], ["cerrar todas"]]}],
+            {"id": "T2", "description": "Recomendar cerrar las 40 (terms v2: 'cerrar las 40' alone matched storylines that refute it)", "forbidden": [["recomendamos cerrar las 40"], ["proponemos cerrar las 40"], ["aprobar el cierre de las 40"], ["cerrar todas las tiendas en 2026"]]}],
         "acceptable_frameworks": ["SCR", "PDS", "DRI", "CII", "MPO"],
         "reference_governing_thought": "Cerrar las 40 tiendas mejora el EBITDA unos 1,6 M€, no 5,2, porque 3,6 M€ de costes centrales se quedan y las 18 aperturas recientes ya cubren sus costes propios; cerrar solo las 15 con ruptura de contrato en 2026 captura 1,5 M€ al año con un coste recuperado en un año.",
         "notes": "Grupo A con ruptura: 15 × (−190 + 90) = −1.500 k€; resto A: 7 × (−150 + 90) = −420; grupo B: 10 × (−80 + 90) + 8 × (−62 + 90) = +324. Cerrar todas: 1.920 − 324 = 1.596 k€. Coste de cierre: 15 × 100 + 25 × 250 = 7.750 k€ (la DF usa 10 M€). Alquiler/ventas del grupo A: 16% con gastos comunes, 14,5% sin ellos (conflicto de base)."})

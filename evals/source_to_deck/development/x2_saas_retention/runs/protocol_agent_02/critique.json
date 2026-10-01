@@ -1,0 +1,94 @@
+{
+ "findings": [
+  {
+   "critic": "FACT CHECKER",
+   "finding": "The CRO's \u20ac9M and the AE ramp are text statements (confidence 0.8); the \u20ac4.5M upper bound depends on assumption A001",
+   "artifact": "insights.json",
+   "ref": "I7",
+   "severity": "medium",
+   "action": "Marked \u20ac4.5M as 'at most', cited A001 and its validation step",
+   "resolved": true
+  },
+  {
+   "critic": "FACT CHECKER",
+   "finding": "'Growth slowed from 25% to 9%' in the brief; the source says 9.2%",
+   "artifact": "storyline.md",
+   "ref": "title",
+   "severity": "low",
+   "action": "Use 9.2% from F0057 where growth is quoted",
+   "resolved": true
+  },
+  {
+   "critic": "PARTNER REVIEW",
+   "finding": "First draft only rejected the CRO plan; the board needs an approvable alternative, a cost comparison and a way to say yes to some hiring",
+   "artifact": "storyline.json",
+   "ref": "decision.options",
+   "severity": "high",
+   "action": "Added three costed options (3.6 / 2.0 / \u20ac0.8M), asks of type reject/approve/reallocate, gate G1 for AE wave 2",
+   "resolved": true
+  },
+  {
+   "critic": "PARTNER REVIEW",
+   "finding": "No 2026 target exists in the sources; without one the levers cannot be judged sufficient",
+   "artifact": "storyline.json",
+   "ref": "decision.target",
+   "severity": "medium",
+   "action": "Inferred target = recover the \u20ac5.6M fall in net new ARR (2024 level), flagged as inferred in project.json; gap of \u20ac0.3M stated",
+   "resolved": true
+  },
+  {
+   "critic": "RED TEAM",
+   "finding": "The onboarding-cut causality (H3) is inferred from timing and exit interviews; mature customers also churn 9% and no pre-2025 mature churn rate is available",
+   "artifact": "hypotheses.json",
+   "ref": "H3",
+   "severity": "medium",
+   "action": "Confidence 0.7, caveat on I6, L1 marked upper bound with a June 2026 validation gate before more money is released",
+   "resolved": true
+  },
+  {
+   "critic": "RED TEAM",
+   "finding": "Price pressure is not zero: average deal size fell from \u20ac53.7k to \u20ac49.7k and price is 34% of lost deals; the CRO could be partly right on acquisition",
+   "artifact": "insights.json",
+   "ref": "I4",
+   "severity": "medium",
+   "action": "Kept as an explicit insight on S4 ('real but marginal'), with pricing monitored rather than funded",
+   "resolved": true
+  },
+  {
+   "critic": "RED TEAM",
+   "finding": "Restoring onboarding in 2026 will only partly save the 2025 cohort already in its first year; L1 may arrive late",
+   "artifact": "storyline.json",
+   "ref": "L1",
+   "severity": "medium",
+   "action": "L1 marked upper bound and A002 states the cohort assumption; gap stated rather than closed",
+   "resolved": true
+  },
+  {
+   "critic": "EDITOR",
+   "finding": "S3 and S4 both serve K1, and S5 and S6 both serve K2; could merge to 7 slides",
+   "artifact": "deck_plan.json",
+   "ref": "S4,S6",
+   "severity": "low",
+   "action": "Kept: S4 refutes the belief the budget request rests on; S6 prices the root cause behind the \u20ac0.8M ask; why_not_merge recorded. Deck stays at the 9-slide maximum",
+   "resolved": true
+  },
+  {
+   "critic": "DATA-VIZ REVIEW",
+   "finding": "ARR bridge should be a 2024 vs 2025 waterfall of new, expansion and churn, not two stacked bars; AE plan should show promised 9 vs at-most \u20ac4.5M as two bars with the ramp annotated",
+   "artifact": "deck_plan.json",
+   "ref": "S3,S7",
+   "severity": "low",
+   "action": "Archetypes set to waterfall and bar_comparison",
+   "resolved": true
+  },
+  {
+   "critic": "EDITOR",
+   "finding": "Round 2: check reports DECK_MISSING (no deck.json) and ASSUMPTION_IN_HEADLINE infos on S2, S7, S8, S9",
+   "artifact": "deck_plan.json",
+   "ref": "S2,S7,S8,S9",
+   "severity": "low",
+   "action": "Rendering is out of scope for this storyline deliverable, so DECK_MISSING is answered rather than fixed; assumption-dependent headline figures are worded as 'estimated' / 'at most' / 'up to' and assumptions A001-A003 are named on the slides. No new high-severity finding in round 2: loop stops",
+   "resolved": true
+  }
+ ]
+}

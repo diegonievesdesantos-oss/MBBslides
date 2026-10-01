@@ -1,0 +1,83 @@
+# Source-to-deck evaluation — x2_tiendas_proximidad_es
+
+_protocol 1.1_ · run: {"engine": "1.7.0.dev0", "reasoning_protocol": "1.1", "model": "Claude subagent", "skill": "protocol 1.1", "author": "developing agent"}
+
+**Factuality (hard gate): PASS** — 0 hard failures 
+
+## fact grounding
+
+- critical_fact_recall: 0.25
+- critical_facts: 1/4
+- facts: 275
+- fabricated_facts: 0
+- fact_precision: 1.0
+- traceable: 1.0
+- arithmetic_errors: 0
+
+## insight quality
+
+- insights: 8
+- supported: 8
+- unsupported: 0
+- material_conclusion_coverage: 3/3
+- conclusions: {"C1": true, "C2": true, "C3": true}
+- restating_facts: 0
+- causal_overclaims: 0
+- with_decision_relevance: 8
+
+## storyline
+
+- governing_thought: Cerrar las 40 tiendas mejoraría el EBITDA en 1.596 k€, no en 5.196 k€, y costaría 7.750 k€; proponemos cerrar en 2026 solo las 15 tiendas A con ruptura (coste 1.500 k€, +1.500 k€ de EBITDA al año), renegociar el alquiler de las otras 7 A y mantener las 18 tiendas B, que ya aportan 324 k€.
+- candidates_compared: 3
+- framework: SCR
+- framework_acceptable: True
+- answer_first: True
+- key_line_points: 3
+- unsupported_key_line_points: 0
+- mece_overlaps: 0
+- traps_triggered: []
+- errors: 0
+
+## decision
+
+- frame: True
+- levers: 3
+- levers_quantified: 3
+- gap_stated: True
+- current_plan_tested: True
+- options_costed: 4
+- approvable_asks: 4
+- deferred_asks: 0
+- bounds_marked: 2
+- gates: 3
+- kpis: 4
+- problem_first: True
+- warnings: []
+
+## slide architecture
+
+- slides: 9
+- core: 9
+- appendix: 0
+- max_slides: 9
+- within_length: True
+- required_messages_on_core_slides: 3/3
+- orphan_slides: 0
+- duplicates: 0
+- unjustified_extra_slides: 0
+- information_economy: {"facts_available": 280, "facts_used": 33, "facts_appendix": 0, "facts_omitted": 247, "slides": 9, "core": 9, "support": 0, "appendix": 0, "note": "omitting facts is expected: decision relevance, not coverage, is the goal"}
+
+## headlines
+
+- headlines: 8
+- conclusion_rate: 1.0
+- numbers_proven_rate: 1.0
+- mean_words: 25.2
+
+## visual intent
+
+- slides_with_intent: 9
+- mismatches: 0
+- accuracy: 1.0
+
+_dimensions are separate on purpose; there is no total score_

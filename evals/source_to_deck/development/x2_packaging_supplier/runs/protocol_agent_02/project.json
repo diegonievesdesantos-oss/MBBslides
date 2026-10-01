@@ -1,0 +1,15 @@
+{
+  "protocol": "1.1",
+  "project": "Packaging supplier consolidation (development case, set 02)",
+  "audience": ["COO", "CFO", "Chief procurement officer"],
+  "decision": "Approve or reject procurement's proposal to move all packaging spend to Supplier B from 2026",
+  "question": "Should we consolidate packaging on a single supplier, and what is the real saving?",
+  "horizon": "2026-2028",
+  "scope": ["Packaging for the food division"],
+  "deck_type": "board_presentation",
+  "language": "en",
+  "max_slides": 8,
+  "constraints": ["Supplier B's 12% price reduction requires 100% of volume under a three-year commitment", "Board deck of at most 8 slides"],
+  "assumptions": ["Price-eligible spend splits in line with the 70/30 volume split (2025 invoices excluding rush freight confirm this)", "Rush freight (our forecast errors) is not removed by changing supplier"],
+  "inferred": ["constraints", "assumptions", "Saving is measured per year against the 2025 base and over the three-year commitment 2026-2028"]
+}

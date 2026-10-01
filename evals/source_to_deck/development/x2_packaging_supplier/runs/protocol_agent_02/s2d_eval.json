@@ -1,0 +1,101 @@
+{
+  "protocol": "1.1",
+  "case": "x2_packaging_supplier",
+  "run": {
+    "engine": "1.7.0.dev0",
+    "reasoning_protocol": "1.1",
+    "model": "Claude subagent",
+    "skill": "protocol 1.1",
+    "author": "developing agent"
+  },
+  "factuality": {
+    "hard_failures": 0,
+    "status": "PASS",
+    "by_code": {}
+  },
+  "fact_grounding": {
+    "critical_fact_recall": 1.0,
+    "critical_facts": "4/4",
+    "facts": 81,
+    "fabricated_facts": 0,
+    "fact_precision": 1.0,
+    "traceable": 1.0,
+    "arithmetic_errors": 0
+  },
+  "insight_quality": {
+    "insights": 4,
+    "supported": 4,
+    "unsupported": 0,
+    "material_conclusion_coverage": "3/3",
+    "conclusions": {
+      "C1": true,
+      "C2": true,
+      "C3": true
+    },
+    "restating_facts": 0,
+    "causal_overclaims": 0,
+    "with_decision_relevance": 4
+  },
+  "storyline": {
+    "governing_thought": "Reject the 100% move to Supplier B and approve a 70/30 split instead: the full move's real saving is €2.87M a year, not €3.0M, and a repeat of Supplier B's two stoppages (€4.0M) would wipe out the €2.93M it adds over the split, which saves €1.79M a year, nets €4.88M over 2026-2028 and keeps a second plant.",
+    "candidates_compared": 3,
+    "framework": "SCR",
+    "framework_acceptable": true,
+    "answer_first": true,
+    "key_line_points": 4,
+    "unsupported_key_line_points": 0,
+    "mece_overlaps": 0,
+    "traps_triggered": [],
+    "errors": 0
+  },
+  "slide_architecture": {
+    "slides": 7,
+    "core": 7,
+    "appendix": 0,
+    "max_slides": 8,
+    "within_length": true,
+    "required_messages_on_core_slides": "3/3",
+    "orphan_slides": 0,
+    "duplicates": 0,
+    "unjustified_extra_slides": 0,
+    "information_economy": {
+      "facts_available": 84,
+      "facts_used": 31,
+      "facts_appendix": 0,
+      "facts_omitted": 53,
+      "slides": 7,
+      "core": 7,
+      "support": 0,
+      "appendix": 0,
+      "note": "omitting facts is expected: decision relevance, not coverage, is the goal"
+    }
+  },
+  "headlines": {
+    "headlines": 6,
+    "conclusion_rate": 1.0,
+    "numbers_proven_rate": 1.0,
+    "mean_words": 20.8
+  },
+  "visual_intent": {
+    "slides_with_intent": 7,
+    "mismatches": 0,
+    "accuracy": 1.0
+  },
+  "decision": {
+    "frame": true,
+    "levers": 2,
+    "levers_quantified": 2,
+    "gap_stated": true,
+    "current_plan_tested": true,
+    "options_costed": 3,
+    "approvable_asks": 2,
+    "deferred_asks": 1,
+    "bounds_marked": 0,
+    "gates": 3,
+    "kpis": 4,
+    "problem_first": true,
+    "warnings": []
+  },
+  "reasoning_check_status": "pass",
+  "note": "dimensions are separate on purpose; there is no total score"
+}

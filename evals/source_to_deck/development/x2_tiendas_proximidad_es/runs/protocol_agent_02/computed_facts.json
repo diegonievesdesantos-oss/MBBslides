@@ -1,0 +1,258 @@
+{
+ "protocol": "1.1",
+ "facts": [
+  {
+   "id": "C0001",
+   "claim": "Mejora real de EBITDA si se cierran las 40 tiendas: pérdida reportada menos coste central que no desaparece",
+   "formula": "abs(F0248) - F0249",
+   "values": [
+    {
+     "value": 1596,
+     "unit": "EUR_K"
+    }
+   ]
+  },
+  {
+   "id": "C0002",
+   "claim": "EBITDA del grupo A antes de coste central (pérdida de cuatro paredes)",
+   "formula": "F0242 + F0243",
+   "values": [
+    {
+     "value": -1920,
+     "unit": "EUR_K"
+    }
+   ]
+  },
+  {
+   "id": "C0003",
+   "claim": "EBITDA del grupo B antes de coste central (contribución positiva)",
+   "formula": "F0245 + F0246",
+   "values": [
+    {
+     "value": 324,
+     "unit": "EUR_K"
+    }
+   ]
+  },
+  {
+   "id": "C0004",
+   "claim": "EBITDA antes de coste central por tienda A con ruptura en 2026",
+   "formula": "F0005 + F0006",
+   "values": [
+    {
+     "value": -100,
+     "unit": "EUR_K"
+    }
+   ]
+  },
+  {
+   "id": "C0005",
+   "claim": "EBITDA antes de coste central por tienda A sin ruptura",
+   "formula": "F0095 + F0096",
+   "values": [
+    {
+     "value": -60,
+     "unit": "EUR_K"
+    }
+   ]
+  },
+  {
+   "id": "C0006",
+   "claim": "EBITDA antes de coste central por tienda B abierta en 2023",
+   "formula": "F0137 + F0138",
+   "values": [
+    {
+     "value": 10,
+     "unit": "EUR_K"
+    }
+   ]
+  },
+  {
+   "id": "C0007",
+   "claim": "EBITDA antes de coste central por tienda B abierta en 2024",
+   "formula": "F0197 + F0198",
+   "values": [
+    {
+     "value": 28,
+     "unit": "EUR_K"
+    }
+   ]
+  },
+  {
+   "id": "C0008",
+   "claim": "Mejora anual de EBITDA al cerrar las 15 tiendas A con ruptura",
+   "formula": "abs(C0004) * 15",
+   "values": [
+    {
+     "value": 1500,
+     "unit": "EUR_K"
+    }
+   ]
+  },
+  {
+   "id": "C0009",
+   "claim": "Coste de cerrar las 15 tiendas A con ruptura en 2026 (100 k€ por tienda)",
+   "formula": "15 * 100",
+   "values": [
+    {
+     "value": 1500,
+     "unit": "EUR_K"
+    }
+   ]
+  },
+  {
+   "id": "C0010",
+   "claim": "Coste realista de cerrar las 40 tiendas: 15 con ruptura a 100 k€ y 25 sin ruptura a 250 k€",
+   "formula": "15 * 100 + 25 * 250",
+   "values": [
+    {
+     "value": 7750,
+     "unit": "EUR_K"
+    }
+   ]
+  },
+  {
+   "id": "C0011",
+   "claim": "Sobreestimación del coste de cierre en la propuesta financiera (10 M€ frente a coste realista)",
+   "formula": "10000 - C0010",
+   "values": [
+    {
+     "value": 2250,
+     "unit": "EUR_K"
+    }
+   ]
+  },
+  {
+   "id": "C0012",
+   "claim": "Años de recuperación del cierre de las 40 tiendas",
+   "formula": "C0010 / C0001",
+   "values": [
+    {
+     "value": 4.9,
+     "unit": "YEARS"
+    }
+   ]
+  },
+  {
+   "id": "C0013",
+   "claim": "Años de recuperación del cierre de las 15 tiendas con ruptura",
+   "formula": "C0009 / C0008",
+   "values": [
+    {
+     "value": 1.0,
+     "unit": "YEARS"
+    }
+   ]
+  },
+  {
+   "id": "C0014",
+   "claim": "Rebaja de alquiler necesaria para equilibrio de una tienda A sin ruptura, en puntos de ventas",
+   "formula": "abs(C0005) / F0093 * 100",
+   "values": [
+    {
+     "value": 5.2,
+     "unit": "PP"
+    }
+   ]
+  },
+  {
+   "id": "C0015",
+   "claim": "Alquiler/ventas objetivo tras la rebaja para equilibrio de una tienda A sin ruptura",
+   "formula": "F0094 - C0014",
+   "values": [
+    {
+     "value": 9.3,
+     "unit": "PCT"
+    }
+   ]
+  },
+  {
+   "id": "C0016",
+   "claim": "Mejora máxima de EBITDA si las 5 tiendas en negociación llegan a equilibrio",
+   "formula": "abs(C0005) * A001",
+   "values": [
+    {
+     "value": 300,
+     "unit": "EUR_K"
+    }
+   ]
+  },
+  {
+   "id": "C0017",
+   "claim": "Pérdida antes de coste central de las 2 tiendas A sin ruptura ni negociación",
+   "formula": "abs(C0005) * 2",
+   "values": [
+    {
+     "value": 120,
+     "unit": "EUR_K"
+    }
+   ]
+  },
+  {
+   "id": "C0018",
+   "claim": "Coste de cerrar las 2 tiendas A sin ruptura ni negociación (250 k€ cada una)",
+   "formula": "2 * 250",
+   "values": [
+    {
+     "value": 500,
+     "unit": "EUR_K"
+    }
+   ]
+  },
+  {
+   "id": "C0019",
+   "claim": "Mejora identificada si se resuelven las 22 tiendas del grupo A",
+   "formula": "C0008 + C0016 + C0017",
+   "values": [
+    {
+     "value": 1920,
+     "unit": "EUR_K"
+    }
+   ]
+  },
+  {
+   "id": "C0020",
+   "claim": "Brecha entre la mejora prometida (5.196 k€) y la mejora identificada",
+   "formula": "abs(F0248) - C0019",
+   "values": [
+    {
+     "value": 3276,
+     "unit": "EUR_K"
+    }
+   ]
+  },
+  {
+   "id": "C0021",
+   "claim": "Coste extra de cierre del plan de cerrar las 40 frente a cerrar solo las 15 con ruptura",
+   "formula": "C0010 - C0009",
+   "values": [
+    {
+     "value": 6250,
+     "unit": "EUR_K"
+    }
+   ]
+  },
+  {
+   "id": "C0022",
+   "claim": "Coste de cerrar las 22 tiendas del grupo A (15 con ruptura y 7 sin ruptura)",
+   "formula": "15 * 100 + 7 * 250",
+   "values": [
+    {
+     "value": 3250,
+     "unit": "EUR_K"
+    }
+   ]
+  },
+  {
+   "id": "C0023",
+   "claim": "Mejora máxima de las 7 tiendas A sin ruptura (5 renegociadas y 2 resueltas)",
+   "formula": "C0016 + C0017",
+   "values": [
+    {
+     "value": 420,
+     "unit": "EUR_K"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,20 @@
+{
+  "protocol": "1.1",
+  "sources": [
+    {
+      "file": "informe_inmobiliario.pdf",
+      "sha256": "693ac5daaa3824e9be5dfcb1cd2cf14fd21050c9c2bbe0a2da4e63fcbbaa5fd1",
+      "bytes": 2373
+    },
+    {
+      "file": "propuesta_direccion_financiera.md",
+      "sha256": "01d70ab672cfe2f9476c3180b3037be3743ea31f28210886c34040f1ab64b0f2",
+      "bytes": 255
+    },
+    {
+      "file": "tiendas_proximidad_2025.xlsx",
+      "sha256": "54c044addadcabceef7bb342cb22b58e3543576bd82932fdc4b6e0c0de00d578",
+      "bytes": 7604
+    }
+  ]
+}

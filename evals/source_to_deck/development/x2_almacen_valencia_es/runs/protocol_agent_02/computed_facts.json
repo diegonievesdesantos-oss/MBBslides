@@ -1,0 +1,246 @@
+{
+ "facts": [
+  {
+   "id": "C0001",
+   "claim": "Coste total de Valencia 2025 = fijo 2,6 + variable 1,5 = 4,1 M€ (coincide con la cifra de Operaciones)",
+   "formula": "F0006 + F0007",
+   "values": [
+    {
+     "value": 4.1,
+     "unit": "EUR_M"
+    }
+   ]
+  },
+  {
+   "id": "C0002",
+   "claim": "Pedidos que Madrid tendría que servir tras el cierre (base 2025): 1.500 + 375 = 1.875 mil",
+   "formula": "F0022 + F0026",
+   "values": [
+    {
+     "value": 1875,
+     "unit": ""
+    }
+   ]
+  },
+  {
+   "id": "C0003",
+   "claim": "Madrid se quedaría 75 mil pedidos por encima de su capacidad de 1.800 mil (la capacidad libre es 300 mil frente a 375 mil de Valencia)",
+   "formula": "C0002 - F0021",
+   "values": [
+    {
+     "value": 75,
+     "unit": ""
+    }
+   ]
+  },
+  {
+   "id": "C0004",
+   "claim": "Coste variable que se traslada a Madrid: 375 mil pedidos a 4 € = 1,5 M€",
+   "formula": "F0026 * F0004 / 1000",
+   "values": [
+    {
+     "value": 1.5,
+     "unit": "EUR_M"
+    }
+   ]
+  },
+  {
+   "id": "C0005",
+   "claim": "Ahorro neto anual del cierre en el mejor caso (sin prima de horas extra): 4,1 − 1,5 variable trasladado − 0,6 turno − 1,9 transporte = 0,1 M€",
+   "formula": "C0001 - C0004 - A002 - A001",
+   "values": [
+    {
+     "value": 0.1,
+     "unit": "EUR_M"
+    }
+   ]
+  },
+  {
+   "id": "C0006",
+   "claim": "Prima de horas extra si los pedidos por encima del 85% de 1.800 mil se pagan a 4,8 €: (1.875 − 1.530) × 0,8 € = 0,28 M€",
+   "formula": "(C0002 - F0021 * 0.85) * (A004 - F0004) / 1000",
+   "values": [
+    {
+     "value": 0.276,
+     "unit": "EUR_M"
+    }
+   ]
+  },
+  {
+   "id": "C0007",
+   "claim": "Ahorro neto anual del cierre en el peor caso operativo: 0,1 − 0,28 = −0,18 M€ (el cierre costaría dinero)",
+   "formula": "C0005 - C0006",
+   "values": [
+    {
+     "value": -0.176,
+     "unit": "EUR_M"
+    }
+   ]
+  },
+  {
+   "id": "C0008",
+   "claim": "Ingresos de Levante que pasarían a 48 h: 34% de 74 M€ = 25,2 M€",
+   "formula": "74 * 34 / 100",
+   "values": [
+    {
+     "value": 25.16,
+     "unit": "EUR_M"
+    }
+   ]
+  },
+  {
+   "id": "C0009",
+   "claim": "Ingresos en riesgo (cota superior): 40% de los clientes a 48 h se plantearía cambiar → 10,1 M€",
+   "formula": "C0008 * 40 / 100",
+   "values": [
+    {
+     "value": 10.064,
+     "unit": "EUR_M"
+    }
+   ]
+  },
+  {
+   "id": "C0010",
+   "claim": "Margen de contribución en riesgo (cota superior): 22% de 10,1 M€ = 2,2 M€ al año",
+   "formula": "C0009 * F0038 / 100",
+   "values": [
+    {
+     "value": 2.214,
+     "unit": "EUR_M"
+    }
+   ]
+  },
+  {
+   "id": "C0011",
+   "claim": "Resultado anual del cierre en el mejor caso operativo si se materializa toda la pérdida de clientes: 0,1 − 2,2 = −2,1 M€",
+   "formula": "C0005 - C0010",
+   "values": [
+    {
+     "value": -2.114,
+     "unit": "EUR_M"
+    }
+   ]
+  },
+  {
+   "id": "C0012",
+   "claim": "Infraestimación del coste de cierre por Operaciones: 3,2 − 1,5 = 1,7 M€ (sobre todo la penalización del alquiler, que Operaciones no incluye)",
+   "formula": "F0033 - F0044",
+   "values": [
+    {
+     "value": 1.7,
+     "unit": "EUR_M"
+    }
+   ]
+  },
+  {
+   "id": "C0013",
+   "claim": "Años de recuperación del coste de cierre de 3,2 M€ con el ahorro neto del mejor caso de 0,1 M€/año: 32 años",
+   "formula": "F0033 / C0005",
+   "values": [
+    {
+     "value": 32,
+     "unit": "YEARS"
+    }
+   ]
+  },
+  {
+   "id": "C0014",
+   "claim": "Ahorro anual de renovar el alquiler de Valencia con un 25% de descuento: 25% de 1,2 M€ = 0,3 M€",
+   "formula": "F0035 * F0036 / 100",
+   "values": [
+    {
+     "value": 0.3,
+     "unit": "EUR_M"
+    }
+   ]
+  },
+  {
+   "id": "C0015",
+   "claim": "Ahorro acumulado de la renovación en los cinco años del contrato: 1,5 M€",
+   "formula": "C0014 * 5",
+   "values": [
+    {
+     "value": 1.5,
+     "unit": "EUR_M"
+    }
+   ]
+  },
+  {
+   "id": "C0016",
+   "claim": "Pedidos 2026 previstos de Madrid + Levante con +6%: 1.875 × 1,06 = 1.987,5 mil",
+   "formula": "C0002 * (1 + A005 / 100)",
+   "values": [
+    {
+     "value": 1987.5,
+     "unit": ""
+    }
+   ]
+  },
+  {
+   "id": "C0017",
+   "claim": "Capacidad de Madrid con turno adicional: 1.800 + 250 = 2.050 mil pedidos",
+   "formula": "F0021 + A003",
+   "values": [
+    {
+     "value": 2050,
+     "unit": ""
+    }
+   ]
+  },
+  {
+   "id": "C0018",
+   "claim": "Utilización de Madrid en 2026 con Levante y turno adicional: 1.987,5 / 2.050 = 97%",
+   "formula": "C0016 / C0017 * 100",
+   "values": [
+    {
+     "value": 97,
+     "unit": "PCT"
+    }
+   ]
+  },
+  {
+   "id": "C0019",
+   "claim": "Brecha entre el ahorro prometido por Operaciones (4,1 M€) y el ahorro neto real del mejor caso (0,1 M€): 4,0 M€",
+   "formula": "F0042 - C0005",
+   "values": [
+    {
+     "value": 4.0,
+     "unit": "EUR_M"
+    }
+   ]
+  },
+  {
+   "id": "C0020",
+   "claim": "Utilización prevista de Madrid en 2026 sin Levante: 1.500 × 1,06 / 1.800 = 88%, por encima del umbral de horas extra del 85%",
+   "formula": "F0022 * (1 + A005 / 100) / F0021 * 100",
+   "values": [
+    {
+     "value": 88.3,
+     "unit": "PCT"
+    }
+   ]
+  },
+  {
+   "id": "C0021",
+   "claim": "Alquiler anual de Valencia tras la renovación con un 25% de descuento: 1,2 − 0,3 = 0,9 M€",
+   "formula": "F0035 - C0014",
+   "values": [
+    {
+     "value": 0.9,
+     "unit": "EUR_M"
+    }
+   ]
+  },
+  {
+   "id": "C0022",
+   "claim": "Diferencia anual entre renovar el alquiler (0,3 M€) y el ahorro neto del cierre en el mejor caso (0,1 M€): 0,2 M€ a favor de renovar",
+   "formula": "C0014 - C0005",
+   "values": [
+    {
+     "value": 0.2,
+     "unit": "EUR_M"
+    }
+   ]
+  }
+ ]
+}

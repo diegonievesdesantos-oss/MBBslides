@@ -1,0 +1,15 @@
+{
+  "reasoning_protocol": "1.1",
+  "project": "Red logística: cierre del almacén de Valencia",
+  "audience": ["Consejero delegado", "Director financiero", "Director de operaciones"],
+  "decision": "Aprobar o rechazar la propuesta de Operaciones de cerrar el almacén de Valencia en 2026",
+  "question": "¿Debemos cerrar el almacén de Valencia y servir Levante desde Madrid? Si no, ¿qué hacemos?",
+  "horizon": "2026-2027",
+  "scope": ["Red de almacenes España: Madrid, Valencia, Sevilla"],
+  "constraints": ["Máximo 9 diapositivas", "Solo datos de las tres fuentes entregadas"],
+  "assumptions": ["Los datos de la hoja Notas de almacenes_2025.xlsx (transporte, turno adicional, horas extra, previsión 2026) se registran como supuestos citados (A001–A005) porque la extracción automática no los convirtió en hechos"],
+  "max_slides": 9,
+  "language": "es",
+  "deck_type": "board_presentation",
+  "inferred": ["constraints", "assumptions"]
+}

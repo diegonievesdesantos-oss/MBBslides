@@ -107,16 +107,19 @@
     },
     {
       "id": "T2",
-      "description": "Recomendar cerrar las 40",
+      "description": "Recomendar cerrar las 40 (terms v2: 'cerrar las 40' alone matched storylines that refute it)",
       "forbidden": [
         [
-          "cerrar las 40"
+          "recomendamos cerrar las 40"
         ],
         [
-          "cierre de las 40"
+          "proponemos cerrar las 40"
         ],
         [
-          "cerrar todas"
+          "aprobar el cierre de las 40"
+        ],
+        [
+          "cerrar todas las tiendas en 2026"
         ]
       ]
     }

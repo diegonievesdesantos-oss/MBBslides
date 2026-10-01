@@ -1,0 +1,25 @@
+{
+  "protocol": "1.1",
+  "sources": [
+    {
+      "file": "arr_bridge.csv",
+      "sha256": "2edc63958405c41914439c85391ab673e04db546c90ff03ef1d6bda49f13d5df",
+      "bytes": 150
+    },
+    {
+      "file": "board_pack_Q4_2025.pdf",
+      "sha256": "4a63210cc394e813e6d439bb5428eb9bb8bfa45dc098490568e5c5d87ea8e309",
+      "bytes": 1960
+    },
+    {
+      "file": "crm_export.xlsx",
+      "sha256": "c05b729aeef52f3c1792f0fa54e0d358cdf8c29cf59f923f18596ef060e34f76",
+      "bytes": 6346
+    },
+    {
+      "file": "customer_success_notes.md",
+      "sha256": "88ba3e435153510c2fe851a42a6f5283a67cf5f1250ac641ef039990d2108692",
+      "bytes": 564
+    }
+  ]
+}

@@ -1,0 +1,1488 @@
+{
+  "protocol": "1.1",
+  "facts": [
+    {
+      "id": "F0001",
+      "claim": "row 2 — year: 2,024 YEARS",
+      "values": [
+        {
+          "value": 2024.0,
+          "unit": "YEARS",
+          "period": null,
+          "basis": null,
+          "label": "row 2",
+          "column": "year"
+        }
+      ],
+      "source": {
+        "file": "arr_bridge.csv",
+        "sheet": null,
+        "range": "A2",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0002",
+      "claim": "row 2 — opening_arr_eur_m: 41.6 EUR",
+      "values": [
+        {
+          "value": 41.6,
+          "unit": "EUR",
+          "period": null,
+          "basis": null,
+          "label": "row 2",
+          "column": "opening_arr_eur_m"
+        }
+      ],
+      "source": {
+        "file": "arr_bridge.csv",
+        "sheet": null,
+        "range": "B2",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0003",
+      "claim": "row 2 — new_arr_eur_m: 9.4 EUR",
+      "values": [
+        {
+          "value": 9.4,
+          "unit": "EUR",
+          "period": null,
+          "basis": null,
+          "label": "row 2",
+          "column": "new_arr_eur_m"
+        }
+      ],
+      "source": {
+        "file": "arr_bridge.csv",
+        "sheet": null,
+        "range": "C2",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0004",
+      "claim": "row 2 — expansion_arr_eur_m: 4.3 EUR",
+      "values": [
+        {
+          "value": 4.3,
+          "unit": "EUR",
+          "period": null,
+          "basis": null,
+          "label": "row 2",
+          "column": "expansion_arr_eur_m"
+        }
+      ],
+      "source": {
+        "file": "arr_bridge.csv",
+        "sheet": null,
+        "range": "D2",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0005",
+      "claim": "row 2 — churned_arr_eur_m: 3.3 EUR",
+      "values": [
+        {
+          "value": 3.3,
+          "unit": "EUR",
+          "period": null,
+          "basis": null,
+          "label": "row 2",
+          "column": "churned_arr_eur_m"
+        }
+      ],
+      "source": {
+        "file": "arr_bridge.csv",
+        "sheet": null,
+        "range": "E2",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0006",
+      "claim": "row 2 — closing_arr_eur_m: 52 EUR",
+      "values": [
+        {
+          "value": 52.0,
+          "unit": "EUR",
+          "period": null,
+          "basis": null,
+          "label": "row 2",
+          "column": "closing_arr_eur_m"
+        }
+      ],
+      "source": {
+        "file": "arr_bridge.csv",
+        "sheet": null,
+        "range": "F2",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0007",
+      "claim": "row 3 — year: 2,025 YEARS",
+      "values": [
+        {
+          "value": 2025.0,
+          "unit": "YEARS",
+          "period": null,
+          "basis": null,
+          "label": "row 3",
+          "column": "year"
+        }
+      ],
+      "source": {
+        "file": "arr_bridge.csv",
+        "sheet": null,
+        "range": "A3",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0008",
+      "claim": "row 3 — opening_arr_eur_m: 52 EUR",
+      "values": [
+        {
+          "value": 52.0,
+          "unit": "EUR",
+          "period": null,
+          "basis": null,
+          "label": "row 3",
+          "column": "opening_arr_eur_m"
+        }
+      ],
+      "source": {
+        "file": "arr_bridge.csv",
+        "sheet": null,
+        "range": "B3",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0009",
+      "claim": "row 3 — new_arr_eur_m: 9.6 EUR",
+      "values": [
+        {
+          "value": 9.6,
+          "unit": "EUR",
+          "period": null,
+          "basis": null,
+          "label": "row 3",
+          "column": "new_arr_eur_m"
+        }
+      ],
+      "source": {
+        "file": "arr_bridge.csv",
+        "sheet": null,
+        "range": "C3",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0010",
+      "claim": "row 3 — expansion_arr_eur_m: 3 EUR",
+      "values": [
+        {
+          "value": 3.0,
+          "unit": "EUR",
+          "period": null,
+          "basis": null,
+          "label": "row 3",
+          "column": "expansion_arr_eur_m"
+        }
+      ],
+      "source": {
+        "file": "arr_bridge.csv",
+        "sheet": null,
+        "range": "D3",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0011",
+      "claim": "row 3 — churned_arr_eur_m: 7.8 EUR",
+      "values": [
+        {
+          "value": 7.8,
+          "unit": "EUR",
+          "period": null,
+          "basis": null,
+          "label": "row 3",
+          "column": "churned_arr_eur_m"
+        }
+      ],
+      "source": {
+        "file": "arr_bridge.csv",
+        "sheet": null,
+        "range": "E3",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0012",
+      "claim": "row 3 — closing_arr_eur_m: 56.8 EUR",
+      "values": [
+        {
+          "value": 56.8,
+          "unit": "EUR",
+          "period": null,
+          "basis": null,
+          "label": "row 3",
+          "column": "closing_arr_eur_m"
+        }
+      ],
+      "source": {
+        "file": "arr_bridge.csv",
+        "sheet": null,
+        "range": "F3",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0013",
+      "claim": "row 2 — Quarter: 12,024",
+      "values": [
+        {
+          "value": 12024.0,
+          "unit": "",
+          "period": null,
+          "basis": null,
+          "label": "row 2",
+          "column": "Quarter"
+        }
+      ],
+      "source": {
+        "file": "crm_export.xlsx",
+        "sheet": "Funnel",
+        "range": "A2",
+        "loc": "sheet Funnel"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0014",
+      "claim": "row 2 — Pipeline created (EUR M): 9.1 EUR_M",
+      "values": [
+        {
+          "value": 9.1,
+          "unit": "EUR_M",
+          "period": null,
+          "basis": null,
+          "label": "row 2",
+          "column": "Pipeline created (EUR M)"
+        }
+      ],
+      "source": {
+        "file": "crm_export.xlsx",
+        "sheet": "Funnel",
+        "range": "B2",
+        "loc": "sheet Funnel"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0015",
+      "claim": "row 2 — Win rate (%): 24 PCT",
+      "values": [
+        {
+          "value": 24.0,
+          "unit": "PCT",
+          "period": null,
+          "basis": null,
+          "label": "row 2",
+          "column": "Win rate (%)"
+        }
+      ],
+      "source": {
+        "file": "crm_export.xlsx",
+        "sheet": "Funnel",
+        "range": "C2",
+        "loc": "sheet Funnel"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0016",
+      "claim": "row 2 — Deals won: 41",
+      "values": [
+        {
+          "value": 41.0,
+          "unit": "",
+          "period": null,
+          "basis": null,
+          "label": "row 2",
+          "column": "Deals won"
+        }
+      ],
+      "source": {
+        "file": "crm_export.xlsx",
+        "sheet": "Funnel",
+        "range": "D2",
+        "loc": "sheet Funnel"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0017",
+      "claim": "row 3 — Quarter: 22,024",
+      "values": [
+        {
+          "value": 22024.0,
+          "unit": "",
+          "period": null,
+          "basis": null,
+          "label": "row 3",
+          "column": "Quarter"
+        }
+      ],
+      "source": {
+        "file": "crm_export.xlsx",
+        "sheet": "Funnel",
+        "range": "A3",
+        "loc": "sheet Funnel"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0018",
+      "claim": "row 3 — Pipeline created (EUR M): 9.6 EUR_M",
+      "values": [
+        {
+          "value": 9.6,
+          "unit": "EUR_M",
+          "period": null,
+          "basis": null,
+          "label": "row 3",
+          "column": "Pipeline created (EUR M)"
+        }
+      ],
+      "source": {
+        "file": "crm_export.xlsx",
+        "sheet": "Funnel",
+        "range": "B3",
+        "loc": "sheet Funnel"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0019",
+      "claim": "row 3 — Win rate (%): 25 PCT",
+      "values": [
+        {
+          "value": 25.0,
+          "unit": "PCT",
+          "period": null,
+          "basis": null,
+          "label": "row 3",
+          "column": "Win rate (%)"
+        }
+      ],
+      "source": {
+        "file": "crm_export.xlsx",
+        "sheet": "Funnel",
+        "range": "C3",
+        "loc": "sheet Funnel"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0020",
+      "claim": "row 3 — Deals won: 44",
+      "values": [
+        {
+          "value": 44.0,
+          "unit": "",
+          "period": null,
+          "basis": null,
+          "label": "row 3",
+          "column": "Deals won"
+        }
+      ],
+      "source": {
+        "file": "crm_export.xlsx",
+        "sheet": "Funnel",
+        "range": "D3",
+        "loc": "sheet Funnel"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0021",
+      "claim": "row 4 — Quarter: 32,024",
+      "values": [
+        {
+          "value": 32024.0,
+          "unit": "",
+          "period": null,
+          "basis": null,
+          "label": "row 4",
+          "column": "Quarter"
+        }
+      ],
+      "source": {
+        "file": "crm_export.xlsx",
+        "sheet": "Funnel",
+        "range": "A4",
+        "loc": "sheet Funnel"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0022",
+      "claim": "row 4 — Pipeline created (EUR M): 9.8 EUR_M",
+      "values": [
+        {
+          "value": 9.8,
+          "unit": "EUR_M",
+          "period": null,
+          "basis": null,
+          "label": "row 4",
+          "column": "Pipeline created (EUR M)"
+        }
+      ],
+      "source": {
+        "file": "crm_export.xlsx",
+        "sheet": "Funnel",
+        "range": "B4",
+        "loc": "sheet Funnel"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0023",
+      "claim": "row 4 — Win rate (%): 24 PCT",
+      "values": [
+        {
+          "value": 24.0,
+          "unit": "PCT",
+          "period": null,
+          "basis": null,
+          "label": "row 4",
+          "column": "Win rate (%)"
+        }
+      ],
+      "source": {
+        "file": "crm_export.xlsx",
+        "sheet": "Funnel",
+        "range": "C4",
+        "loc": "sheet Funnel"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0024",
+      "claim": "row 4 — Deals won: 43",
+      "values": [
+        {
+          "value": 43.0,
+          "unit": "",
+          "period": null,
+          "basis": null,
+          "label": "row 4",
+          "column": "Deals won"
+        }
+      ],
+      "source": {
+        "file": "crm_export.xlsx",
+        "sheet": "Funnel",
+        "range": "D4",
+        "loc": "sheet Funnel"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0025",
+      "claim": "row 5 — Quarter: 42,024",
+      "values": [
+        {
+          "value": 42024.0,
+          "unit": "",
+          "period": null,
+          "basis": null,
+          "label": "row 5",
+          "column": "Quarter"
+        }
+      ],
+      "source": {
+        "file": "crm_export.xlsx",
+        "sheet": "Funnel",
+        "range": "A5",
+        "loc": "sheet Funnel"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0026",
+      "claim": "row 5 — Pipeline created (EUR M): 10.4 EUR_M",
+      "values": [
+        {
+          "value": 10.4,
+          "unit": "EUR_M",
+          "period": null,
+          "basis": null,
+          "label": "row 5",
+          "column": "Pipeline created (EUR M)"
+        }
+      ],
+      "source": {
+        "file": "crm_export.xlsx",
+        "sheet": "Funnel",
+        "range": "B5",
+        "loc": "sheet Funnel"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0027",
+      "claim": "row 5 — Win rate (%): 24 PCT",
+      "values": [
+        {
+          "value": 24.0,
+          "unit": "PCT",
+          "period": null,
+          "basis": null,
+          "label": "row 5",
+          "column": "Win rate (%)"
+        }
+      ],
+      "source": {
+        "file": "crm_export.xlsx",
+        "sheet": "Funnel",
+        "range": "C5",
+        "loc": "sheet Funnel"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0028",
+      "claim": "row 5 — Deals won: 47",
+      "values": [
+        {
+          "value": 47.0,
+          "unit": "",
+          "period": null,
+          "basis": null,
+          "label": "row 5",
+          "column": "Deals won"
+        }
+      ],
+      "source": {
+        "file": "crm_export.xlsx",
+        "sheet": "Funnel",
+        "range": "D5",
+        "loc": "sheet Funnel"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0029",
+      "claim": "row 6 — Quarter: 12,025",
+      "values": [
+        {
+          "value": 12025.0,
+          "unit": "",
+          "period": null,
+          "basis": null,
+          "label": "row 6",
+          "column": "Quarter"
+        }
+      ],
+      "source": {
+        "file": "crm_export.xlsx",
+        "sheet": "Funnel",
+        "range": "A6",
+        "loc": "sheet Funnel"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0030",
+      "claim": "row 6 — Pipeline created (EUR M): 10.9 EUR_M",
+      "values": [
+        {
+          "value": 10.9,
+          "unit": "EUR_M",
+          "period": null,
+          "basis": null,
+          "label": "row 6",
+          "column": "Pipeline created (EUR M)"
+        }
+      ],
+      "source": {
+        "file": "crm_export.xlsx",
+        "sheet": "Funnel",
+        "range": "B6",
+        "loc": "sheet Funnel"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0031",
+      "claim": "row 6 — Win rate (%): 23 PCT",
+      "values": [
+        {
+          "value": 23.0,
+          "unit": "PCT",
+          "period": null,
+          "basis": null,
+          "label": "row 6",
+          "column": "Win rate (%)"
+        }
+      ],
+      "source": {
+        "file": "crm_export.xlsx",
+        "sheet": "Funnel",
+        "range": "C6",
+        "loc": "sheet Funnel"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0032",
+      "claim": "row 6 — Deals won: 46",
+      "values": [
+        {
+          "value": 46.0,
+          "unit": "",
+          "period": null,
+          "basis": null,
+          "label": "row 6",
+          "column": "Deals won"
+        }
+      ],
+      "source": {
+        "file": "crm_export.xlsx",
+        "sheet": "Funnel",
+        "range": "D6",
+        "loc": "sheet Funnel"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0033",
+      "claim": "row 7 — Quarter: 22,025",
+      "values": [
+        {
+          "value": 22025.0,
+          "unit": "",
+          "period": null,
+          "basis": null,
+          "label": "row 7",
+          "column": "Quarter"
+        }
+      ],
+      "source": {
+        "file": "crm_export.xlsx",
+        "sheet": "Funnel",
+        "range": "A7",
+        "loc": "sheet Funnel"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0034",
+      "claim": "row 7 — Pipeline created (EUR M): 11.3 EUR_M",
+      "values": [
+        {
+          "value": 11.3,
+          "unit": "EUR_M",
+          "period": null,
+          "basis": null,
+          "label": "row 7",
+          "column": "Pipeline created (EUR M)"
+        }
+      ],
+      "source": {
+        "file": "crm_export.xlsx",
+        "sheet": "Funnel",
+        "range": "B7",
+        "loc": "sheet Funnel"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0035",
+      "claim": "row 7 — Win rate (%): 24 PCT",
+      "values": [
+        {
+          "value": 24.0,
+          "unit": "PCT",
+          "period": null,
+          "basis": null,
+          "label": "row 7",
+          "column": "Win rate (%)"
+        }
+      ],
+      "source": {
+        "file": "crm_export.xlsx",
+        "sheet": "Funnel",
+        "range": "C7",
+        "loc": "sheet Funnel"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0036",
+      "claim": "row 7 — Deals won: 49",
+      "values": [
+        {
+          "value": 49.0,
+          "unit": "",
+          "period": null,
+          "basis": null,
+          "label": "row 7",
+          "column": "Deals won"
+        }
+      ],
+      "source": {
+        "file": "crm_export.xlsx",
+        "sheet": "Funnel",
+        "range": "D7",
+        "loc": "sheet Funnel"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0037",
+      "claim": "row 8 — Quarter: 32,025",
+      "values": [
+        {
+          "value": 32025.0,
+          "unit": "",
+          "period": null,
+          "basis": null,
+          "label": "row 8",
+          "column": "Quarter"
+        }
+      ],
+      "source": {
+        "file": "crm_export.xlsx",
+        "sheet": "Funnel",
+        "range": "A8",
+        "loc": "sheet Funnel"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0038",
+      "claim": "row 8 — Pipeline created (EUR M): 11.6 EUR_M",
+      "values": [
+        {
+          "value": 11.6,
+          "unit": "EUR_M",
+          "period": null,
+          "basis": null,
+          "label": "row 8",
+          "column": "Pipeline created (EUR M)"
+        }
+      ],
+      "source": {
+        "file": "crm_export.xlsx",
+        "sheet": "Funnel",
+        "range": "B8",
+        "loc": "sheet Funnel"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0039",
+      "claim": "row 8 — Win rate (%): 23 PCT",
+      "values": [
+        {
+          "value": 23.0,
+          "unit": "PCT",
+          "period": null,
+          "basis": null,
+          "label": "row 8",
+          "column": "Win rate (%)"
+        }
+      ],
+      "source": {
+        "file": "crm_export.xlsx",
+        "sheet": "Funnel",
+        "range": "C8",
+        "loc": "sheet Funnel"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0040",
+      "claim": "row 8 — Deals won: 48",
+      "values": [
+        {
+          "value": 48.0,
+          "unit": "",
+          "period": null,
+          "basis": null,
+          "label": "row 8",
+          "column": "Deals won"
+        }
+      ],
+      "source": {
+        "file": "crm_export.xlsx",
+        "sheet": "Funnel",
+        "range": "D8",
+        "loc": "sheet Funnel"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0041",
+      "claim": "row 9 — Quarter: 42,025",
+      "values": [
+        {
+          "value": 42025.0,
+          "unit": "",
+          "period": null,
+          "basis": null,
+          "label": "row 9",
+          "column": "Quarter"
+        }
+      ],
+      "source": {
+        "file": "crm_export.xlsx",
+        "sheet": "Funnel",
+        "range": "A9",
+        "loc": "sheet Funnel"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0042",
+      "claim": "row 9 — Pipeline created (EUR M): 12.1 EUR_M",
+      "values": [
+        {
+          "value": 12.1,
+          "unit": "EUR_M",
+          "period": null,
+          "basis": null,
+          "label": "row 9",
+          "column": "Pipeline created (EUR M)"
+        }
+      ],
+      "source": {
+        "file": "crm_export.xlsx",
+        "sheet": "Funnel",
+        "range": "B9",
+        "loc": "sheet Funnel"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0043",
+      "claim": "row 9 — Win rate (%): 23 PCT",
+      "values": [
+        {
+          "value": 23.0,
+          "unit": "PCT",
+          "period": null,
+          "basis": null,
+          "label": "row 9",
+          "column": "Win rate (%)"
+        }
+      ],
+      "source": {
+        "file": "crm_export.xlsx",
+        "sheet": "Funnel",
+        "range": "C9",
+        "loc": "sheet Funnel"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0044",
+      "claim": "row 9 — Deals won: 50",
+      "values": [
+        {
+          "value": 50.0,
+          "unit": "",
+          "period": null,
+          "basis": null,
+          "label": "row 9",
+          "column": "Deals won"
+        }
+      ],
+      "source": {
+        "file": "crm_export.xlsx",
+        "sheet": "Funnel",
+        "range": "D9",
+        "loc": "sheet Funnel"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0045",
+      "claim": "Onboarded in the previous 12 months — ARR at start of 2025 (EUR M): 18.2 EUR_M",
+      "values": [
+        {
+          "value": 18.2,
+          "unit": "EUR_M",
+          "period": "2025",
+          "basis": "actual",
+          "label": "Onboarded in the previous 12 months",
+          "column": "ARR at start of 2025 (EUR M)"
+        }
+      ],
+      "source": {
+        "file": "crm_export.xlsx",
+        "sheet": "Cohorts",
+        "range": "B2",
+        "loc": "sheet Cohorts"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0046",
+      "claim": "Onboarded in the previous 12 months — ARR churned in 2025 (EUR M): 4.7 EUR_M",
+      "values": [
+        {
+          "value": 4.7,
+          "unit": "EUR_M",
+          "period": "2025",
+          "basis": "actual",
+          "label": "Onboarded in the previous 12 months",
+          "column": "ARR churned in 2025 (EUR M)"
+        }
+      ],
+      "source": {
+        "file": "crm_export.xlsx",
+        "sheet": "Cohorts",
+        "range": "C2",
+        "loc": "sheet Cohorts"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0047",
+      "claim": "Onboarded in the previous 12 months — Churn rate 2025 (%): 26 PCT",
+      "values": [
+        {
+          "value": 26.0,
+          "unit": "PCT",
+          "period": "2025",
+          "basis": "actual",
+          "label": "Onboarded in the previous 12 months",
+          "column": "Churn rate 2025 (%)"
+        }
+      ],
+      "source": {
+        "file": "crm_export.xlsx",
+        "sheet": "Cohorts",
+        "range": "D2",
+        "loc": "sheet Cohorts"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0048",
+      "claim": "Customers for more than 12 months — ARR at start of 2025 (EUR M): 33.8 EUR_M",
+      "values": [
+        {
+          "value": 33.8,
+          "unit": "EUR_M",
+          "period": "2025",
+          "basis": "actual",
+          "label": "Customers for more than 12 months",
+          "column": "ARR at start of 2025 (EUR M)"
+        }
+      ],
+      "source": {
+        "file": "crm_export.xlsx",
+        "sheet": "Cohorts",
+        "range": "B3",
+        "loc": "sheet Cohorts"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0049",
+      "claim": "Customers for more than 12 months — ARR churned in 2025 (EUR M): 3.1 EUR_M",
+      "values": [
+        {
+          "value": 3.1,
+          "unit": "EUR_M",
+          "period": "2025",
+          "basis": "actual",
+          "label": "Customers for more than 12 months",
+          "column": "ARR churned in 2025 (EUR M)"
+        }
+      ],
+      "source": {
+        "file": "crm_export.xlsx",
+        "sheet": "Cohorts",
+        "range": "C3",
+        "loc": "sheet Cohorts"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0050",
+      "claim": "Customers for more than 12 months — Churn rate 2025 (%): 9 PCT",
+      "values": [
+        {
+          "value": 9.0,
+          "unit": "PCT",
+          "period": "2025",
+          "basis": "actual",
+          "label": "Customers for more than 12 months",
+          "column": "Churn rate 2025 (%)"
+        }
+      ],
+      "source": {
+        "file": "crm_export.xlsx",
+        "sheet": "Cohorts",
+        "range": "D3",
+        "loc": "sheet Cohorts"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0051",
+      "claim": "Total — ARR at start of 2025 (EUR M): 52 EUR_M",
+      "values": [
+        {
+          "value": 52.0,
+          "unit": "EUR_M",
+          "period": "2025",
+          "basis": "actual",
+          "label": "Total",
+          "column": "ARR at start of 2025 (EUR M)"
+        }
+      ],
+      "source": {
+        "file": "crm_export.xlsx",
+        "sheet": "Cohorts",
+        "range": "B4",
+        "loc": "sheet Cohorts"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0052",
+      "claim": "Total — ARR churned in 2025 (EUR M): 7.8 EUR_M",
+      "values": [
+        {
+          "value": 7.8,
+          "unit": "EUR_M",
+          "period": "2025",
+          "basis": "actual",
+          "label": "Total",
+          "column": "ARR churned in 2025 (EUR M)"
+        }
+      ],
+      "source": {
+        "file": "crm_export.xlsx",
+        "sheet": "Cohorts",
+        "range": "C4",
+        "loc": "sheet Cohorts"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0053",
+      "claim": "Total — Churn rate 2025 (%): 15 PCT",
+      "values": [
+        {
+          "value": 15.0,
+          "unit": "PCT",
+          "period": "2025",
+          "basis": "actual",
+          "label": "Total",
+          "column": "Churn rate 2025 (%)"
+        }
+      ],
+      "source": {
+        "file": "crm_export.xlsx",
+        "sheet": "Cohorts",
+        "range": "D4",
+        "loc": "sheet Cohorts"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0054",
+      "claim": "Price — Share of lost deals 2025 (%): 34 PCT",
+      "values": [
+        {
+          "value": 34.0,
+          "unit": "PCT",
+          "period": "2025",
+          "basis": "actual",
+          "label": "Price",
+          "column": "Share of lost deals 2025 (%)"
+        }
+      ],
+      "source": {
+        "file": "crm_export.xlsx",
+        "sheet": "Lost deals",
+        "range": "B2",
+        "loc": "sheet Lost deals"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0055",
+      "claim": "No decision — Share of lost deals 2025 (%): 41 PCT",
+      "values": [
+        {
+          "value": 41.0,
+          "unit": "PCT",
+          "period": "2025",
+          "basis": "actual",
+          "label": "No decision",
+          "column": "Share of lost deals 2025 (%)"
+        }
+      ],
+      "source": {
+        "file": "crm_export.xlsx",
+        "sheet": "Lost deals",
+        "range": "B3",
+        "loc": "sheet Lost deals"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0056",
+      "claim": "Competitor — Share of lost deals 2025 (%): 25 PCT",
+      "values": [
+        {
+          "value": 25.0,
+          "unit": "PCT",
+          "period": "2025",
+          "basis": "actual",
+          "label": "Competitor",
+          "column": "Share of lost deals 2025 (%)"
+        }
+      ],
+      "source": {
+        "file": "crm_export.xlsx",
+        "sheet": "Lost deals",
+        "range": "B4",
+        "loc": "sheet Lost deals"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0057",
+      "claim": "CFO: ARR closed 2025 at 56.8 EUR M, up 9.2%, against 25% growth in 2024.",
+      "values": [
+        {
+          "value": 56.8,
+          "unit": "EUR_M",
+          "raw": "56.8 EUR",
+          "period": "2025",
+          "basis": "actual"
+        },
+        {
+          "value": 9.2,
+          "unit": "PCT",
+          "raw": "9.2%",
+          "period": "2025",
+          "basis": "actual"
+        },
+        {
+          "value": 25.0,
+          "unit": "PCT",
+          "raw": "25%",
+          "period": "2024",
+          "basis": "actual"
+        }
+      ],
+      "source": {
+        "file": "board_pack_Q4_2025.pdf",
+        "loc": "p.1"
+      },
+      "fact_type": "text_statement",
+      "confidence": 0.8
+    },
+    {
+      "id": "F0058",
+      "claim": "We propose to hire 30 account executives in Q1 2026 (3.6 EUR M per year fully loaded), which will add 9 EUR M of new ARR in 2026.",
+      "values": [
+        {
+          "value": 30.0,
+          "unit": "",
+          "raw": "30",
+          "period": "2026-Q1",
+          "basis": "actual"
+        },
+        {
+          "value": 3.6,
+          "unit": "EUR_M",
+          "raw": "3.6 EUR",
+          "period": "2026-Q1",
+          "basis": "actual"
+        },
+        {
+          "value": 9.0,
+          "unit": "EUR_M",
+          "raw": "9 EUR",
+          "period": "2026",
+          "basis": "actual"
+        }
+      ],
+      "source": {
+        "file": "board_pack_Q4_2025.pdf",
+        "loc": "p.1"
+      },
+      "fact_type": "text_statement",
+      "confidence": 0.8
+    },
+    {
+      "id": "F0059",
+      "claim": "Marketing: website traffic rose 31% in 2025 and the brand was shortlisted for two industry awards.",
+      "values": [
+        {
+          "value": 31.0,
+          "unit": "PCT",
+          "raw": "31%",
+          "period": "2025",
+          "basis": "actual"
+        }
+      ],
+      "source": {
+        "file": "board_pack_Q4_2025.pdf",
+        "loc": "p.1"
+      },
+      "fact_type": "text_statement",
+      "confidence": 0.8
+    },
+    {
+      "id": "F0060",
+      "claim": "HR: engineering headcount grew from 88 to 97.",
+      "values": [
+        {
+          "value": 88.0,
+          "unit": "",
+          "raw": "88",
+          "period": null,
+          "basis": null
+        },
+        {
+          "value": 97.0,
+          "unit": "",
+          "raw": "97",
+          "period": null,
+          "basis": null
+        }
+      ],
+      "source": {
+        "file": "board_pack_Q4_2025.pdf",
+        "loc": "p.1"
+      },
+      "fact_type": "text_statement",
+      "confidence": 0.8
+    },
+    {
+      "id": "F0061",
+      "claim": "The onboarding team was reduced from 14 to 6 people in February 2025 (saving 0.8 EUR M per year).",
+      "values": [
+        {
+          "value": 14.0,
+          "unit": "",
+          "raw": "14",
+          "period": "2025",
+          "basis": "actual"
+        },
+        {
+          "value": 0.8,
+          "unit": "EUR_M",
+          "raw": "0.8 EUR",
+          "period": "2025",
+          "basis": "actual"
+        }
+      ],
+      "source": {
+        "file": "customer_success_notes.md",
+        "loc": "line 3"
+      },
+      "fact_type": "text_statement",
+      "confidence": 0.8
+    },
+    {
+      "id": "F0062",
+      "claim": "Median time to first value rose from 21 days in 2024 to 48 days in 2025.",
+      "values": [
+        {
+          "value": 21.0,
+          "unit": "DAYS",
+          "raw": "21",
+          "period": "2024",
+          "basis": "actual"
+        },
+        {
+          "value": 48.0,
+          "unit": "DAYS",
+          "raw": "48",
+          "period": "2025",
+          "basis": "actual"
+        }
+      ],
+      "source": {
+        "file": "customer_success_notes.md",
+        "loc": "line 4"
+      },
+      "fact_type": "text_statement",
+      "confidence": 0.8
+    },
+    {
+      "id": "F0063",
+      "claim": "In 2024, first-year customers churned 12%.",
+      "values": [
+        {
+          "value": 12.0,
+          "unit": "PCT",
+          "raw": "12%",
+          "period": "2024",
+          "basis": "actual"
+        }
+      ],
+      "source": {
+        "file": "customer_success_notes.md",
+        "loc": "line 5"
+      },
+      "fact_type": "text_statement",
+      "confidence": 0.8
+    },
+    {
+      "id": "F0064",
+      "claim": "Exit interviews 2025 (64 churned customers): 58% say they never fully implemented the product, 17% moved to a competitor, 14% cite price.",
+      "values": [
+        {
+          "value": 64.0,
+          "unit": "",
+          "raw": "64",
+          "period": "2025",
+          "basis": "actual"
+        },
+        {
+          "value": 58.0,
+          "unit": "PCT",
+          "raw": "58%",
+          "period": "2025",
+          "basis": "actual"
+        },
+        {
+          "value": 17.0,
+          "unit": "PCT",
+          "raw": "17%",
+          "period": "2025",
+          "basis": "actual"
+        },
+        {
+          "value": 14.0,
+          "unit": "PCT",
+          "raw": "14%",
+          "period": "2025",
+          "basis": "actual"
+        }
+      ],
+      "source": {
+        "file": "customer_success_notes.md",
+        "loc": "line 6"
+      },
+      "fact_type": "text_statement",
+      "confidence": 0.8
+    },
+    {
+      "id": "F0065",
+      "claim": "New account executives reach full productivity (300 EUR k of new ARR per year) after 9 months.",
+      "values": [
+        {
+          "value": 300.0,
+          "unit": "EUR_K",
+          "raw": "300 EUR",
+          "period": null,
+          "basis": null
+        }
+      ],
+      "source": {
+        "file": "customer_success_notes.md",
+        "loc": "line 7"
+      },
+      "fact_type": "text_statement",
+      "confidence": 0.8
+    }
+  ],
+  "stats": {
+    "sources": 4,
+    "tables": 4,
+    "facts": 65,
+    "by_type": {
+      "table_value": 56,
+      "derived_change": 0,
+      "text_statement": 9
+    }
+  }
+}

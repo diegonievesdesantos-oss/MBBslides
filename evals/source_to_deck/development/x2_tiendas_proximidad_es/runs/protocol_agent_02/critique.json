@@ -1,0 +1,77 @@
+{
+ "protocol": "1.1",
+ "findings": [
+  {
+   "critic": "FACT CHECKER",
+   "finding": "El hecho '5 de las 7 tiendas restantes aceptan negociar' no fue extraído por la herramienta; se usa como supuesto A001 con cita literal y validación",
+   "artifact": "assumptions.json",
+   "ref": "A001",
+   "severity": "medium",
+   "action": "Marcar L2 como cota superior y exigir acuerdos firmados",
+   "resolved": true
+  },
+  {
+   "critic": "FACT CHECKER",
+   "finding": "El 16% de alquiler (PDF) y el 14,5% (Excel) no son un conflicto: el primero incluye gastos comunes",
+   "artifact": "insights.json",
+   "ref": "I2",
+   "severity": "low",
+   "action": "Indicar la base de cada cifra en I2",
+   "resolved": true
+  },
+  {
+   "critic": "PARTNER REVIEW",
+   "finding": "El consejo esperaba 5,2 M€; hay que decir explícitamente que la brecha de 3.276 k€ no se cierra con tiendas",
+   "artifact": "storyline.json",
+   "ref": "decision.gap",
+   "severity": "high",
+   "action": "Brecha y cómo se aborda en S8 y petición de reexpresar el objetivo",
+   "resolved": true
+  },
+  {
+   "critic": "PARTNER REVIEW",
+   "finding": "La propuesta actual debe probarse y costearse, no solo descartarse",
+   "artifact": "storyline.json",
+   "ref": "decision.current_plan",
+   "severity": "medium",
+   "action": "Coste realista 7.750 k€, recuperación 4,9 años, 6.250 k€ de coste extra; 4 opciones costeadas",
+   "resolved": true
+  },
+  {
+   "critic": "RED TEAM",
+   "finding": "Si el coste central sí se pudiera reducir al cerrar (p. ej. logística variable), la mejora de cerrar sería mayor. La nota del controller dice que no desaparece, pero no desglosa qué parte es variable",
+   "artifact": "hypotheses.json",
+   "ref": "H1",
+   "severity": "medium",
+   "action": "Petición a la directora financiera de revisar el coste central por separado; no cambia la recomendación porque B sigue aportando 324 k€ antes de coste central",
+   "resolved": true
+  },
+  {
+   "critic": "RED TEAM",
+   "finding": "Las tiendas B podrían no alcanzar el equilibrio en su cuarto año; se apoya en una regla de red y en un crecimiento del 11% de ventas por m²",
+   "artifact": "insights.json",
+   "ref": "I3",
+   "severity": "medium",
+   "action": "Puerta de maduración de B a cierre de 2027",
+   "resolved": true
+  },
+  {
+   "critic": "EDITOR",
+   "finding": "S3 y S4 podrían fusionarse en una sola slide de 'la propuesta no se sostiene'",
+   "artifact": "deck_plan.json",
+   "ref": "S4",
+   "severity": "low",
+   "action": "Se mantienen separadas por mezclar k€ anuales y k€ únicos; why_not_merge documentado",
+   "resolved": true
+  },
+  {
+   "critic": "DATA-VIZ REVIEW",
+   "finding": "S7 compara opciones con coste único y mejora anual: una tabla con recuperación en años es más clara que barras dobles",
+   "artifact": "deck_plan.json",
+   "ref": "S7",
+   "severity": "low",
+   "action": "Arquetipo tabla",
+   "resolved": true
+  }
+ ]
+}

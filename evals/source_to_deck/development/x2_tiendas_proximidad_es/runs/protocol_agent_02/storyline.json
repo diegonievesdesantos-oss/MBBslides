@@ -1,0 +1,284 @@
+{
+ "protocol": "1.1",
+ "framework": "SCR",
+ "framework_rationale": "El consejo tiene sobre la mesa una propuesta concreta (cerrar las 40); SCR permite partir de esa propuesta, mostrar por qué su cifra no se sostiene y llegar a una alternativa costeada y aprobable.",
+ "candidates": [
+  {
+   "text": "Cerrar las 40 tiendas mejoraría el EBITDA en 1.596 k€, no en 5.196 k€, y costaría 7.750 k€; proponemos cerrar en 2026 solo las 15 tiendas A con ruptura (coste 1.500 k€, +1.500 k€ de EBITDA al año), renegociar el alquiler de las otras 7 A y mantener las 18 tiendas B, que ya aportan 324 k€.",
+   "scores": {
+    "answers_question": 2,
+    "supported": 2,
+    "specific": 2,
+    "decision_oriented": 2,
+    "non_trivial": 2,
+    "covers_storyline": 2
+   },
+   "insights": [
+    "I1",
+    "I3",
+    "I4",
+    "I5"
+   ]
+  },
+  {
+   "text": "La propuesta de cerrar las 40 tiendas sobrestima la mejora de EBITDA: el coste central asignado no desaparece al cerrar.",
+   "scores": {
+    "answers_question": 1,
+    "supported": 2,
+    "specific": 1,
+    "decision_oriented": 0,
+    "non_trivial": 2,
+    "covers_storyline": 1
+   },
+   "insights": [
+    "I1"
+   ]
+  },
+  {
+   "text": "Mantener todas las tiendas y renegociar alquileres del grupo A.",
+   "scores": {
+    "answers_question": 1,
+    "supported": 1,
+    "specific": 1,
+    "decision_oriented": 1,
+    "non_trivial": 1,
+    "covers_storyline": 1
+   },
+   "insights": [
+    "I2",
+    "I6"
+   ]
+  }
+ ],
+ "governing_thought": "Cerrar las 40 tiendas mejoraría el EBITDA en 1.596 k€, no en 5.196 k€, y costaría 7.750 k€; proponemos cerrar en 2026 solo las 15 tiendas A con ruptura (coste 1.500 k€, +1.500 k€ de EBITDA al año), renegociar el alquiler de las otras 7 A y mantener las 18 tiendas B, que ya aportan 324 k€.",
+ "key_line": [
+  {
+   "id": "K1",
+   "role": "problem",
+   "message": "La propuesta de cerrar las 40 tiendas promete 5.196 k€ pero solo mejora el EBITDA en 1.596 k€, con un coste realista de 7.750 k€ (no 10.000 k€) y recuperación en 4,9 años.",
+   "insights": [
+    "I1",
+    "I5",
+    "I8"
+   ]
+  },
+  {
+   "id": "K2",
+   "role": "diagnosis",
+   "message": "La pérdida real está en el alquiler de las 22 tiendas A (−1.920 k€ antes de coste central); las 18 tiendas B ya aportan 324 k€ y crecen un 11% al año.",
+   "insights": [
+    "I2",
+    "I3"
+   ]
+  },
+  {
+   "id": "K3",
+   "role": "solution",
+   "message": "Cerrar en 2026 las 15 tiendas A con ruptura (+1.500 k€ al año por 1.500 k€) y renegociar las 7 restantes (hasta 300 k€ más) captura hasta 1.920 k€, más que cerrar las 40.",
+   "insights": [
+    "I4",
+    "I6",
+    "I7",
+    "I8"
+   ]
+  }
+ ],
+ "decision": {
+  "target": {
+   "value": 5196,
+   "unit": "EUR_K",
+   "facts": [
+    "F0248",
+    "F0254",
+    "F0255"
+   ],
+   "statement": "Mejora de EBITDA prometida por la propuesta de la dirección financiera"
+  },
+  "levers": [
+   {
+    "id": "L1",
+    "statement": "Cerrar en 2026 las 15 tiendas A con ventana de ruptura",
+    "impact": {
+     "value": 1500,
+     "unit": "EUR_K"
+    },
+    "facts": [
+     "C0008"
+    ],
+    "bound": "point",
+    "validate": "Confirmar con jurídico las 15 ventanas de ruptura y su coste de 100 k€ antes de notificar"
+   },
+   {
+    "id": "L2",
+    "statement": "Renegociar el alquiler de las 5 tiendas A cuyos propietarios aceptan negociar (objetivo: alquiler ≤9,3% de ventas)",
+    "impact": {
+     "value": 300,
+     "unit": "EUR_K"
+    },
+    "facts": [
+     "C0016"
+    ],
+    "bound": "upper",
+    "validate": "Rebajas firmadas con los 5 propietarios; si no alcanzan el equilibrio, cerrar al vencimiento"
+   },
+   {
+    "id": "L3",
+    "statement": "Resolver las 2 tiendas A sin ruptura ni negociación (cerrar por 500 k€ o esperar a su ventana de ruptura)",
+    "impact": {
+     "value": 120,
+     "unit": "EUR_K"
+    },
+    "facts": [
+     "C0017"
+    ],
+    "bound": "upper",
+    "validate": "Calcular fecha de vencimiento de los 2 contratos y comparar con el coste de 500 k€"
+   }
+  ],
+  "identified": {
+   "value": 1920,
+   "unit": "EUR_K",
+   "facts": [
+    "C0019"
+   ]
+  },
+  "gap": {
+   "value": 3276,
+   "unit": "EUR_K",
+   "facts": [
+    "C0020"
+   ],
+   "how_closed": "No se cierra con decisiones de tiendas: 3.600 k€ son coste central (sistemas, logística, compras) que se reasigna al resto de la red y el grupo B aporta 324 k€. Reducir ese coste central exige un programa aparte; el consejo debe corregir la expectativa de 5,2 M€."
+  },
+  "current_plan": {
+   "statement": "Propuesta de la dirección financiera: cerrar las 40 tiendas en 2026 con +5,2 M€ de EBITDA y 10 M€ de coste",
+   "verdict": "does_not_hold",
+   "facts": [
+    "C0001",
+    "C0003",
+    "C0010",
+    "C0021"
+   ],
+   "cost_if_kept": {
+    "value": 6250,
+    "unit": "EUR_K",
+    "statement": "Coste de cierre adicional frente a cerrar solo las 15 con ruptura, además de perder los 324 k€ anuales del grupo B"
+   }
+  },
+  "options": [
+   {
+    "id": "O1",
+    "statement": "Cerrar las 40 tiendas en 2026 (propuesta actual): +1.596 k€ de EBITDA al año",
+    "cost": {
+     "value": 7750,
+     "unit": "EUR_K"
+    },
+    "facts": [
+     "C0010",
+     "C0001"
+    ],
+    "chosen": false
+   },
+   {
+    "id": "O2",
+    "statement": "Cerrar las 22 tiendas A y mantener las B: +1.920 k€ al año",
+    "cost": {
+     "value": 3250,
+     "unit": "EUR_K"
+    },
+    "facts": [
+     "C0022",
+     "C0002"
+    ],
+    "chosen": false
+   },
+   {
+    "id": "O3",
+    "statement": "Cerrar las 15 tiendas A con ruptura, renegociar las 7 A restantes, mantener las 18 B: +1.500 k€ seguros y hasta +1.920 k€",
+    "cost": {
+     "value": 1500,
+     "unit": "EUR_K"
+    },
+    "facts": [
+     "C0009",
+     "C0008",
+     "C0019"
+    ],
+    "chosen": true
+   },
+   {
+    "id": "O4",
+    "statement": "No hacer nada: se mantienen 1.920 k€ de pérdida antes de coste central en el grupo A",
+    "cost": {
+     "value": 0,
+     "unit": "EUR_K"
+    },
+    "facts": [
+     "C0002"
+    ],
+    "chosen": false
+   }
+  ],
+  "asks": [
+   {
+    "statement": "Aprobar el cierre en 2026 de las 15 tiendas A con ventana de ruptura y un presupuesto de cierre de 1.500 k€",
+    "type": "approve",
+    "owner": "Consejero delegado / Directora financiera"
+   },
+   {
+    "statement": "Rechazar el cierre de las 18 tiendas B y de las 7 tiendas A sin ruptura en 2026",
+    "type": "reject",
+    "owner": "Consejo"
+   },
+   {
+    "statement": "Mandatar a la dirección inmobiliaria para firmar rebajas de alquiler con los 5 propietarios dispuestos (objetivo alquiler ≤9,3% de ventas)",
+    "type": "approve",
+    "owner": "Director de expansión / Dirección inmobiliaria"
+   },
+   {
+    "statement": "Reexpresar el EBITDA objetivo del plan sin los 3.600 k€ de coste central y abrir una revisión separada de ese coste",
+    "type": "reallocate",
+    "owner": "Directora financiera"
+   }
+  ],
+  "gates": [
+   {
+    "statement": "Puerta de renegociación de las 5 tiendas A",
+    "criterion": "Alquiler firmado ≤9,3% de ventas (equilibrio antes de coste central); si no, cerrar al vencimiento o en la siguiente ventana",
+    "when": "Fin de T1 2026"
+   },
+   {
+    "statement": "Puerta de maduración del grupo B",
+    "criterion": "Contribución antes de coste central positiva y ventas por m² creciendo; las tiendas deben cubrir también el coste central en su cuarto año",
+    "when": "Cierre de 2027"
+   },
+   {
+    "statement": "Puerta de las 2 tiendas A sin negociación",
+    "criterion": "Cerrar si el coste de 250 k€ por tienda se recupera antes que la fecha de vencimiento",
+    "when": "Presupuesto 2027"
+   }
+  ],
+  "kpis": [
+   {
+    "name": "EBITDA antes de coste central del formato proximidad",
+    "target": "Mejora de +1.500 k€ frente a 2025 tras cerrar las 15 tiendas",
+    "cadence": "mensual"
+   },
+   {
+    "name": "Alquiler / ventas de las 7 tiendas A restantes",
+    "target": "≤9,3% sin gastos comunes",
+    "cadence": "trimestral"
+   },
+   {
+    "name": "Ventas por m² del grupo B",
+    "target": "Crecimiento ≥11% anual",
+    "cadence": "trimestral"
+   },
+   {
+    "name": "Coste de cierre ejecutado",
+    "target": "≤1.500 k€ para las 15 tiendas",
+    "cadence": "mensual"
+   }
+  ]
+ }
+}

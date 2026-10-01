@@ -1,0 +1,4675 @@
+{
+ "protocol": "1.1",
+ "conflicts": [
+  {
+   "id": "X001",
+   "type": "value_mismatch",
+   "measure": [
+    "ventas"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0135",
+     "value": 900.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0195",
+     "value": 820.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X002",
+   "type": "value_mismatch",
+   "measure": [
+    "ventas"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0135",
+     "value": 900.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0201",
+     "value": 820.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X003",
+   "type": "value_mismatch",
+   "measure": [
+    "ventas"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0135",
+     "value": 900.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0207",
+     "value": 820.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X004",
+   "type": "value_mismatch",
+   "measure": [
+    "ventas"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0135",
+     "value": 900.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0213",
+     "value": 820.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X005",
+   "type": "value_mismatch",
+   "measure": [
+    "ventas"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0135",
+     "value": 900.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0219",
+     "value": 820.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X006",
+   "type": "value_mismatch",
+   "measure": [
+    "ventas"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0135",
+     "value": 900.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0225",
+     "value": 820.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X007",
+   "type": "value_mismatch",
+   "measure": [
+    "ventas"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0135",
+     "value": 900.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0231",
+     "value": 820.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X008",
+   "type": "value_mismatch",
+   "measure": [
+    "ventas"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0135",
+     "value": 900.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0237",
+     "value": 820.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X009",
+   "type": "value_mismatch",
+   "measure": [
+    "ebitda"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0137",
+     "value": -80.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0197",
+     "value": -62.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X010",
+   "type": "value_mismatch",
+   "measure": [
+    "ebitda"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0137",
+     "value": -80.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0203",
+     "value": -62.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X011",
+   "type": "value_mismatch",
+   "measure": [
+    "ebitda"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0137",
+     "value": -80.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0209",
+     "value": -62.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X012",
+   "type": "value_mismatch",
+   "measure": [
+    "ebitda"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0137",
+     "value": -80.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0215",
+     "value": -62.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X013",
+   "type": "value_mismatch",
+   "measure": [
+    "ebitda"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0137",
+     "value": -80.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0221",
+     "value": -62.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X014",
+   "type": "value_mismatch",
+   "measure": [
+    "ebitda"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0137",
+     "value": -80.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0227",
+     "value": -62.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X015",
+   "type": "value_mismatch",
+   "measure": [
+    "ebitda"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0137",
+     "value": -80.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0233",
+     "value": -62.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X016",
+   "type": "value_mismatch",
+   "measure": [
+    "ebitda"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0137",
+     "value": -80.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0239",
+     "value": -62.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X017",
+   "type": "value_mismatch",
+   "measure": [
+    "ventas"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0141",
+     "value": 900.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0195",
+     "value": 820.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X018",
+   "type": "value_mismatch",
+   "measure": [
+    "ventas"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0141",
+     "value": 900.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0201",
+     "value": 820.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X019",
+   "type": "value_mismatch",
+   "measure": [
+    "ventas"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0141",
+     "value": 900.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0207",
+     "value": 820.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X020",
+   "type": "value_mismatch",
+   "measure": [
+    "ventas"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0141",
+     "value": 900.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0213",
+     "value": 820.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X021",
+   "type": "value_mismatch",
+   "measure": [
+    "ventas"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0141",
+     "value": 900.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0219",
+     "value": 820.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X022",
+   "type": "value_mismatch",
+   "measure": [
+    "ventas"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0141",
+     "value": 900.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0225",
+     "value": 820.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X023",
+   "type": "value_mismatch",
+   "measure": [
+    "ventas"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0141",
+     "value": 900.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0231",
+     "value": 820.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X024",
+   "type": "value_mismatch",
+   "measure": [
+    "ventas"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0141",
+     "value": 900.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0237",
+     "value": 820.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X025",
+   "type": "value_mismatch",
+   "measure": [
+    "ebitda"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0143",
+     "value": -80.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0197",
+     "value": -62.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X026",
+   "type": "value_mismatch",
+   "measure": [
+    "ebitda"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0143",
+     "value": -80.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0203",
+     "value": -62.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X027",
+   "type": "value_mismatch",
+   "measure": [
+    "ebitda"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0143",
+     "value": -80.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0209",
+     "value": -62.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X028",
+   "type": "value_mismatch",
+   "measure": [
+    "ebitda"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0143",
+     "value": -80.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0215",
+     "value": -62.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X029",
+   "type": "value_mismatch",
+   "measure": [
+    "ebitda"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0143",
+     "value": -80.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0221",
+     "value": -62.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X030",
+   "type": "value_mismatch",
+   "measure": [
+    "ebitda"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0143",
+     "value": -80.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0227",
+     "value": -62.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X031",
+   "type": "value_mismatch",
+   "measure": [
+    "ebitda"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0143",
+     "value": -80.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0233",
+     "value": -62.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X032",
+   "type": "value_mismatch",
+   "measure": [
+    "ebitda"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0143",
+     "value": -80.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0239",
+     "value": -62.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X033",
+   "type": "value_mismatch",
+   "measure": [
+    "ventas"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0147",
+     "value": 900.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0195",
+     "value": 820.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X034",
+   "type": "value_mismatch",
+   "measure": [
+    "ventas"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0147",
+     "value": 900.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0201",
+     "value": 820.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X035",
+   "type": "value_mismatch",
+   "measure": [
+    "ventas"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0147",
+     "value": 900.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0207",
+     "value": 820.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X036",
+   "type": "value_mismatch",
+   "measure": [
+    "ventas"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0147",
+     "value": 900.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0213",
+     "value": 820.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X037",
+   "type": "value_mismatch",
+   "measure": [
+    "ventas"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0147",
+     "value": 900.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0219",
+     "value": 820.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X038",
+   "type": "value_mismatch",
+   "measure": [
+    "ventas"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0147",
+     "value": 900.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0225",
+     "value": 820.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X039",
+   "type": "value_mismatch",
+   "measure": [
+    "ventas"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0147",
+     "value": 900.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0231",
+     "value": 820.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X040",
+   "type": "value_mismatch",
+   "measure": [
+    "ventas"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0147",
+     "value": 900.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0237",
+     "value": 820.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X041",
+   "type": "value_mismatch",
+   "measure": [
+    "ebitda"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0149",
+     "value": -80.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0197",
+     "value": -62.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X042",
+   "type": "value_mismatch",
+   "measure": [
+    "ebitda"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0149",
+     "value": -80.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0203",
+     "value": -62.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X043",
+   "type": "value_mismatch",
+   "measure": [
+    "ebitda"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0149",
+     "value": -80.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0209",
+     "value": -62.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X044",
+   "type": "value_mismatch",
+   "measure": [
+    "ebitda"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0149",
+     "value": -80.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0215",
+     "value": -62.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X045",
+   "type": "value_mismatch",
+   "measure": [
+    "ebitda"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0149",
+     "value": -80.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0221",
+     "value": -62.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X046",
+   "type": "value_mismatch",
+   "measure": [
+    "ebitda"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0149",
+     "value": -80.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0227",
+     "value": -62.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X047",
+   "type": "value_mismatch",
+   "measure": [
+    "ebitda"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0149",
+     "value": -80.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0233",
+     "value": -62.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X048",
+   "type": "value_mismatch",
+   "measure": [
+    "ebitda"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0149",
+     "value": -80.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0239",
+     "value": -62.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X049",
+   "type": "value_mismatch",
+   "measure": [
+    "ventas"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0153",
+     "value": 900.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0195",
+     "value": 820.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X050",
+   "type": "value_mismatch",
+   "measure": [
+    "ventas"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0153",
+     "value": 900.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0201",
+     "value": 820.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X051",
+   "type": "value_mismatch",
+   "measure": [
+    "ventas"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0153",
+     "value": 900.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0207",
+     "value": 820.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X052",
+   "type": "value_mismatch",
+   "measure": [
+    "ventas"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0153",
+     "value": 900.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0213",
+     "value": 820.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X053",
+   "type": "value_mismatch",
+   "measure": [
+    "ventas"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0153",
+     "value": 900.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0219",
+     "value": 820.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X054",
+   "type": "value_mismatch",
+   "measure": [
+    "ventas"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0153",
+     "value": 900.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0225",
+     "value": 820.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X055",
+   "type": "value_mismatch",
+   "measure": [
+    "ventas"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0153",
+     "value": 900.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0231",
+     "value": 820.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X056",
+   "type": "value_mismatch",
+   "measure": [
+    "ventas"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0153",
+     "value": 900.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0237",
+     "value": 820.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X057",
+   "type": "value_mismatch",
+   "measure": [
+    "ebitda"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0155",
+     "value": -80.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0197",
+     "value": -62.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X058",
+   "type": "value_mismatch",
+   "measure": [
+    "ebitda"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0155",
+     "value": -80.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0203",
+     "value": -62.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X059",
+   "type": "value_mismatch",
+   "measure": [
+    "ebitda"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0155",
+     "value": -80.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0209",
+     "value": -62.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X060",
+   "type": "value_mismatch",
+   "measure": [
+    "ebitda"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0155",
+     "value": -80.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0215",
+     "value": -62.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X061",
+   "type": "value_mismatch",
+   "measure": [
+    "ebitda"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0155",
+     "value": -80.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0221",
+     "value": -62.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X062",
+   "type": "value_mismatch",
+   "measure": [
+    "ebitda"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0155",
+     "value": -80.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0227",
+     "value": -62.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X063",
+   "type": "value_mismatch",
+   "measure": [
+    "ebitda"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0155",
+     "value": -80.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0233",
+     "value": -62.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X064",
+   "type": "value_mismatch",
+   "measure": [
+    "ebitda"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0155",
+     "value": -80.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0239",
+     "value": -62.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X065",
+   "type": "value_mismatch",
+   "measure": [
+    "ventas"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0159",
+     "value": 900.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0195",
+     "value": 820.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X066",
+   "type": "value_mismatch",
+   "measure": [
+    "ventas"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0159",
+     "value": 900.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0201",
+     "value": 820.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X067",
+   "type": "value_mismatch",
+   "measure": [
+    "ventas"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0159",
+     "value": 900.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0207",
+     "value": 820.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X068",
+   "type": "value_mismatch",
+   "measure": [
+    "ventas"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0159",
+     "value": 900.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0213",
+     "value": 820.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X069",
+   "type": "value_mismatch",
+   "measure": [
+    "ventas"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0159",
+     "value": 900.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0219",
+     "value": 820.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X070",
+   "type": "value_mismatch",
+   "measure": [
+    "ventas"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0159",
+     "value": 900.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0225",
+     "value": 820.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X071",
+   "type": "value_mismatch",
+   "measure": [
+    "ventas"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0159",
+     "value": 900.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0231",
+     "value": 820.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X072",
+   "type": "value_mismatch",
+   "measure": [
+    "ventas"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0159",
+     "value": 900.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0237",
+     "value": 820.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X073",
+   "type": "value_mismatch",
+   "measure": [
+    "ebitda"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0161",
+     "value": -80.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0197",
+     "value": -62.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X074",
+   "type": "value_mismatch",
+   "measure": [
+    "ebitda"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0161",
+     "value": -80.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0203",
+     "value": -62.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X075",
+   "type": "value_mismatch",
+   "measure": [
+    "ebitda"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0161",
+     "value": -80.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0209",
+     "value": -62.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X076",
+   "type": "value_mismatch",
+   "measure": [
+    "ebitda"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0161",
+     "value": -80.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0215",
+     "value": -62.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X077",
+   "type": "value_mismatch",
+   "measure": [
+    "ebitda"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0161",
+     "value": -80.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0221",
+     "value": -62.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X078",
+   "type": "value_mismatch",
+   "measure": [
+    "ebitda"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0161",
+     "value": -80.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0227",
+     "value": -62.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X079",
+   "type": "value_mismatch",
+   "measure": [
+    "ebitda"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0161",
+     "value": -80.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0233",
+     "value": -62.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X080",
+   "type": "value_mismatch",
+   "measure": [
+    "ebitda"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0161",
+     "value": -80.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0239",
+     "value": -62.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X081",
+   "type": "value_mismatch",
+   "measure": [
+    "ventas"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0165",
+     "value": 900.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0195",
+     "value": 820.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X082",
+   "type": "value_mismatch",
+   "measure": [
+    "ventas"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0165",
+     "value": 900.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0201",
+     "value": 820.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X083",
+   "type": "value_mismatch",
+   "measure": [
+    "ventas"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0165",
+     "value": 900.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0207",
+     "value": 820.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X084",
+   "type": "value_mismatch",
+   "measure": [
+    "ventas"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0165",
+     "value": 900.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0213",
+     "value": 820.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X085",
+   "type": "value_mismatch",
+   "measure": [
+    "ventas"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0165",
+     "value": 900.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0219",
+     "value": 820.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X086",
+   "type": "value_mismatch",
+   "measure": [
+    "ventas"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0165",
+     "value": 900.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0225",
+     "value": 820.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X087",
+   "type": "value_mismatch",
+   "measure": [
+    "ventas"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0165",
+     "value": 900.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0231",
+     "value": 820.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X088",
+   "type": "value_mismatch",
+   "measure": [
+    "ventas"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0165",
+     "value": 900.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0237",
+     "value": 820.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X089",
+   "type": "value_mismatch",
+   "measure": [
+    "ebitda"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0167",
+     "value": -80.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0197",
+     "value": -62.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X090",
+   "type": "value_mismatch",
+   "measure": [
+    "ebitda"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0167",
+     "value": -80.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0203",
+     "value": -62.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X091",
+   "type": "value_mismatch",
+   "measure": [
+    "ebitda"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0167",
+     "value": -80.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0209",
+     "value": -62.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X092",
+   "type": "value_mismatch",
+   "measure": [
+    "ebitda"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0167",
+     "value": -80.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0215",
+     "value": -62.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X093",
+   "type": "value_mismatch",
+   "measure": [
+    "ebitda"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0167",
+     "value": -80.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0221",
+     "value": -62.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X094",
+   "type": "value_mismatch",
+   "measure": [
+    "ebitda"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0167",
+     "value": -80.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0227",
+     "value": -62.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X095",
+   "type": "value_mismatch",
+   "measure": [
+    "ebitda"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0167",
+     "value": -80.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0233",
+     "value": -62.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X096",
+   "type": "value_mismatch",
+   "measure": [
+    "ebitda"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0167",
+     "value": -80.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0239",
+     "value": -62.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X097",
+   "type": "value_mismatch",
+   "measure": [
+    "ventas"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0171",
+     "value": 900.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0195",
+     "value": 820.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X098",
+   "type": "value_mismatch",
+   "measure": [
+    "ventas"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0171",
+     "value": 900.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0201",
+     "value": 820.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X099",
+   "type": "value_mismatch",
+   "measure": [
+    "ventas"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0171",
+     "value": 900.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0207",
+     "value": 820.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X100",
+   "type": "value_mismatch",
+   "measure": [
+    "ventas"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0171",
+     "value": 900.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0213",
+     "value": 820.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X101",
+   "type": "value_mismatch",
+   "measure": [
+    "ventas"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0171",
+     "value": 900.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0219",
+     "value": 820.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X102",
+   "type": "value_mismatch",
+   "measure": [
+    "ventas"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0171",
+     "value": 900.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0225",
+     "value": 820.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X103",
+   "type": "value_mismatch",
+   "measure": [
+    "ventas"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0171",
+     "value": 900.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0231",
+     "value": 820.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X104",
+   "type": "value_mismatch",
+   "measure": [
+    "ventas"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0171",
+     "value": 900.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0237",
+     "value": 820.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X105",
+   "type": "value_mismatch",
+   "measure": [
+    "ebitda"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0173",
+     "value": -80.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0197",
+     "value": -62.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X106",
+   "type": "value_mismatch",
+   "measure": [
+    "ebitda"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0173",
+     "value": -80.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0203",
+     "value": -62.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X107",
+   "type": "value_mismatch",
+   "measure": [
+    "ebitda"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0173",
+     "value": -80.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0209",
+     "value": -62.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X108",
+   "type": "value_mismatch",
+   "measure": [
+    "ebitda"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0173",
+     "value": -80.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0215",
+     "value": -62.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X109",
+   "type": "value_mismatch",
+   "measure": [
+    "ebitda"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0173",
+     "value": -80.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0221",
+     "value": -62.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X110",
+   "type": "value_mismatch",
+   "measure": [
+    "ebitda"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0173",
+     "value": -80.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0227",
+     "value": -62.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X111",
+   "type": "value_mismatch",
+   "measure": [
+    "ebitda"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0173",
+     "value": -80.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0233",
+     "value": -62.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X112",
+   "type": "value_mismatch",
+   "measure": [
+    "ebitda"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0173",
+     "value": -80.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0239",
+     "value": -62.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X113",
+   "type": "value_mismatch",
+   "measure": [
+    "ventas"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0177",
+     "value": 900.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0195",
+     "value": 820.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X114",
+   "type": "value_mismatch",
+   "measure": [
+    "ventas"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0177",
+     "value": 900.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0201",
+     "value": 820.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X115",
+   "type": "value_mismatch",
+   "measure": [
+    "ventas"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0177",
+     "value": 900.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0207",
+     "value": 820.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X116",
+   "type": "value_mismatch",
+   "measure": [
+    "ventas"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0177",
+     "value": 900.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0213",
+     "value": 820.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X117",
+   "type": "value_mismatch",
+   "measure": [
+    "ventas"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0177",
+     "value": 900.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0219",
+     "value": 820.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X118",
+   "type": "value_mismatch",
+   "measure": [
+    "ventas"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0177",
+     "value": 900.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0225",
+     "value": 820.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X119",
+   "type": "value_mismatch",
+   "measure": [
+    "ventas"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0177",
+     "value": 900.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0231",
+     "value": 820.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X120",
+   "type": "value_mismatch",
+   "measure": [
+    "ventas"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0177",
+     "value": 900.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0237",
+     "value": 820.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X121",
+   "type": "value_mismatch",
+   "measure": [
+    "ebitda"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0179",
+     "value": -80.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0197",
+     "value": -62.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X122",
+   "type": "value_mismatch",
+   "measure": [
+    "ebitda"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0179",
+     "value": -80.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0203",
+     "value": -62.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X123",
+   "type": "value_mismatch",
+   "measure": [
+    "ebitda"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0179",
+     "value": -80.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0209",
+     "value": -62.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X124",
+   "type": "value_mismatch",
+   "measure": [
+    "ebitda"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0179",
+     "value": -80.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0215",
+     "value": -62.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X125",
+   "type": "value_mismatch",
+   "measure": [
+    "ebitda"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0179",
+     "value": -80.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0221",
+     "value": -62.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X126",
+   "type": "value_mismatch",
+   "measure": [
+    "ebitda"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0179",
+     "value": -80.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0227",
+     "value": -62.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X127",
+   "type": "value_mismatch",
+   "measure": [
+    "ebitda"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0179",
+     "value": -80.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0233",
+     "value": -62.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X128",
+   "type": "value_mismatch",
+   "measure": [
+    "ebitda"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0179",
+     "value": -80.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0239",
+     "value": -62.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X129",
+   "type": "value_mismatch",
+   "measure": [
+    "ventas"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0183",
+     "value": 900.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0195",
+     "value": 820.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X130",
+   "type": "value_mismatch",
+   "measure": [
+    "ventas"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0183",
+     "value": 900.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0201",
+     "value": 820.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X131",
+   "type": "value_mismatch",
+   "measure": [
+    "ventas"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0183",
+     "value": 900.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0207",
+     "value": 820.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X132",
+   "type": "value_mismatch",
+   "measure": [
+    "ventas"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0183",
+     "value": 900.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0213",
+     "value": 820.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X133",
+   "type": "value_mismatch",
+   "measure": [
+    "ventas"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0183",
+     "value": 900.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0219",
+     "value": 820.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X134",
+   "type": "value_mismatch",
+   "measure": [
+    "ventas"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0183",
+     "value": 900.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0225",
+     "value": 820.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X135",
+   "type": "value_mismatch",
+   "measure": [
+    "ventas"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0183",
+     "value": 900.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0231",
+     "value": 820.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X136",
+   "type": "value_mismatch",
+   "measure": [
+    "ventas"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0183",
+     "value": 900.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0237",
+     "value": 820.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X137",
+   "type": "value_mismatch",
+   "measure": [
+    "ebitda"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0185",
+     "value": -80.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0197",
+     "value": -62.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X138",
+   "type": "value_mismatch",
+   "measure": [
+    "ebitda"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0185",
+     "value": -80.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0203",
+     "value": -62.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X139",
+   "type": "value_mismatch",
+   "measure": [
+    "ebitda"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0185",
+     "value": -80.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0209",
+     "value": -62.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X140",
+   "type": "value_mismatch",
+   "measure": [
+    "ebitda"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0185",
+     "value": -80.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0215",
+     "value": -62.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X141",
+   "type": "value_mismatch",
+   "measure": [
+    "ebitda"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0185",
+     "value": -80.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0221",
+     "value": -62.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X142",
+   "type": "value_mismatch",
+   "measure": [
+    "ebitda"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0185",
+     "value": -80.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0227",
+     "value": -62.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X143",
+   "type": "value_mismatch",
+   "measure": [
+    "ebitda"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0185",
+     "value": -80.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0233",
+     "value": -62.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X144",
+   "type": "value_mismatch",
+   "measure": [
+    "ebitda"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0185",
+     "value": -80.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0239",
+     "value": -62.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X145",
+   "type": "value_mismatch",
+   "measure": [
+    "ventas"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0189",
+     "value": 900.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0195",
+     "value": 820.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X146",
+   "type": "value_mismatch",
+   "measure": [
+    "ventas"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0189",
+     "value": 900.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0201",
+     "value": 820.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X147",
+   "type": "value_mismatch",
+   "measure": [
+    "ventas"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0189",
+     "value": 900.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0207",
+     "value": 820.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X148",
+   "type": "value_mismatch",
+   "measure": [
+    "ventas"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0189",
+     "value": 900.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0213",
+     "value": 820.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X149",
+   "type": "value_mismatch",
+   "measure": [
+    "ventas"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0189",
+     "value": 900.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0219",
+     "value": 820.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X150",
+   "type": "value_mismatch",
+   "measure": [
+    "ventas"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0189",
+     "value": 900.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0225",
+     "value": 820.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X151",
+   "type": "value_mismatch",
+   "measure": [
+    "ventas"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0189",
+     "value": 900.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0231",
+     "value": 820.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X152",
+   "type": "value_mismatch",
+   "measure": [
+    "ventas"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0189",
+     "value": 900.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0237",
+     "value": 820.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X153",
+   "type": "value_mismatch",
+   "measure": [
+    "ebitda"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0191",
+     "value": -80.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0197",
+     "value": -62.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X154",
+   "type": "value_mismatch",
+   "measure": [
+    "ebitda"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0191",
+     "value": -80.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0203",
+     "value": -62.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X155",
+   "type": "value_mismatch",
+   "measure": [
+    "ebitda"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0191",
+     "value": -80.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0209",
+     "value": -62.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X156",
+   "type": "value_mismatch",
+   "measure": [
+    "ebitda"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0191",
+     "value": -80.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0215",
+     "value": -62.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X157",
+   "type": "value_mismatch",
+   "measure": [
+    "ebitda"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0191",
+     "value": -80.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0221",
+     "value": -62.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X158",
+   "type": "value_mismatch",
+   "measure": [
+    "ebitda"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0191",
+     "value": -80.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0227",
+     "value": -62.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X159",
+   "type": "value_mismatch",
+   "measure": [
+    "ebitda"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0191",
+     "value": -80.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0233",
+     "value": -62.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X160",
+   "type": "value_mismatch",
+   "measure": [
+    "ebitda"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0191",
+     "value": -80.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0239",
+     "value": -62.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "not_a_conflict",
+    "rationale": "Son tiendas distintas (aperturas B de 2023 frente a 2024) en filas diferentes del Excel; ambos valores son correctos y no se comparan como el mismo KPI."
+   }
+  },
+  {
+   "id": "X161",
+   "type": "value_mismatch",
+   "measure": [
+    "ebitda"
+   ],
+   "period": "2025",
+   "facts": [
+    {
+     "fact": "F0248",
+     "value": -5196.0,
+     "unit": "EUR_K",
+     "basis": "actual",
+     "source": "tiendas_proximidad_2025.xlsx"
+    },
+    {
+     "fact": "F0254",
+     "value": 5.2,
+     "unit": "EUR_M",
+     "basis": "actual",
+     "source": "propuesta_direccion_financiera.md"
+    }
+   ],
+   "resolution": {
+    "status": "resolved",
+    "decision": "same_value",
+    "chosen_fact": "F0248",
+    "rationale": "Misma magnitud con distinto signo y redondeo: la propuesta expresa la pérdida de −5.196 k€ como 'perdieron 5,2 M€'. Se usa F0248 (Excel, detalle)."
+   }
+  }
+ ]
+}

@@ -1,0 +1,58 @@
+{
+  "meta": {
+    "created": "2026-10-01",
+    "pairs": 6,
+    "kind": "text",
+    "instructions": "Which storyline would you take to the client? Judge the answer, the logic, the prioritisation and how useful it is for the decision \u2014 not the wording."
+  },
+  "pairs": [
+    {
+      "id": "p001",
+      "images": [
+        "a949f037355c.md",
+        "4ee2b9c91a3f.md"
+      ],
+      "context": "e3d7313114ca.md"
+    },
+    {
+      "id": "p002",
+      "images": [
+        "ab8d08085155.md",
+        "87aba0291e0b.md"
+      ],
+      "context": "72542f319c16.md"
+    },
+    {
+      "id": "p003",
+      "images": [
+        "d8c98deb8f40.md",
+        "d0e617d42567.md"
+      ],
+      "context": "96e17cea53f5.md"
+    },
+    {
+      "id": "p004",
+      "images": [
+        "d96842ba45f4.md",
+        "deb02b1957cc.md"
+      ],
+      "context": "e103c8e0ad80.md"
+    },
+    {
+      "id": "r001",
+      "images": [
+        "4ee2b9c91a3f.md",
+        "a949f037355c.md"
+      ],
+      "context": "e3d7313114ca.md"
+    },
+    {
+      "id": "r002",
+      "images": [
+        "87aba0291e0b.md",
+        "ab8d08085155.md"
+      ],
+      "context": "72542f319c16.md"
+    }
+  ]
+}

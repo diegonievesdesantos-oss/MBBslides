@@ -1,0 +1,11 @@
+{
+  "status": "development run — NOT evidence",
+  "date": "2026-10-01",
+  "experiment": "02 (round s2)",
+  "model": "Claude (independent subagent of the developing session, fresh context; exact model per session metadata)",
+  "isolation": "instructed to read only its copy of brief + sources; not technically enforced",
+  "cases_author": "developing agent, case set 02 (written after protocol 1.1 was frozen)",
+  "engine_commit": "220d8cb",
+  "system": "B — protocol agent: brief + sources + docs/REASONING_PROTOCOL.md 1.1 + cpe reason facts/check/ghost",
+  "reasoning_protocol": "1.1"
+}

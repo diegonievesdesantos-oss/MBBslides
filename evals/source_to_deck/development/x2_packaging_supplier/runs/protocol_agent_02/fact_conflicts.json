@@ -1,0 +1,25 @@
+{
+ "protocol": "1.1",
+ "conflicts": [],
+ "resolutions": [
+  {
+   "issue": "Invoice amounts in invoices_2025.csv (column invoiced_eur_m) extracted as EUR with thousands separators (e.g. F0001 1,444 EUR instead of 1.444 EUR M)",
+   "facts": [
+    "F0001",
+    "F0003"
+   ],
+   "resolution": "Not used in any headline; source values are EUR M. Manual reconciliation: incumbent 17.828 + Supplier B 7.170 = 24.998 EUR M (= 25 EUR M, F0057); rush freight sums to 1.10 EUR M (= F0055).",
+   "status": "resolved"
+  },
+  {
+   "issue": "25 EUR M total spend (F0057, procurement) vs 23.9 EUR M price-eligible spend (F0056, finance)",
+   "facts": [
+    "F0055",
+    "F0056",
+    "F0057"
+   ],
+   "resolution": "Not a conflict: same total, different basis. The 12% reduction applies to 23.9 EUR M (excludes 1.1 EUR M rush freight). 23.9 EUR M used as saving base.",
+   "status": "resolved"
+  }
+ ]
+}

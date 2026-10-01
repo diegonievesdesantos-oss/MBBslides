@@ -1,0 +1,15 @@
+{
+  "protocol": "1.1",
+  "project": "B2B software: growth slowdown and the 2026 investment plan (development case, set 02)",
+  "audience": ["CEO", "CFO", "Board"],
+  "decision": "Approve the 2026 growth investment (the CRO proposes hiring 30 account executives)",
+  "question": "Why did ARR growth slow from 25% to 9%, and where should the 2026 growth budget go?",
+  "horizon": "2026",
+  "scope": ["Mid-market SaaS, Europe"],
+  "deck_type": "board_presentation",
+  "language": "en",
+  "max_slides": 9,
+  "constraints": ["Board presentation, at most 9 slides", "Only the four supplied sources may be used"],
+  "assumptions": ["2026 target inferred as restoring net new ARR to its 2024 level (no 2026 target in the sources)"],
+  "inferred": ["constraints", "assumptions", "2026 target (restore 2024 net new ARR)"]
+}

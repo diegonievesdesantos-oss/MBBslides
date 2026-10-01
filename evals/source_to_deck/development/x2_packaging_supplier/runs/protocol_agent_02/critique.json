@@ -1,0 +1,95 @@
+{
+ "protocol": "1.1",
+ "findings": [
+  {
+   "critic": "FACT CHECKER",
+   "finding": "Procurement's \u20ac3.0M applies 12% to \u20ac25M including \u20ac1.1M rush freight; the defensible figure is \u20ac2.87M a year (C0001). All headline numbers now trace to F/C ids; the check reports no unsupported number.",
+   "artifact": "insights.json",
+   "ref": "I1",
+   "severity": "high",
+   "action": "Replaced \u20ac3.0M with \u20ac2.87M gross and \u20ac7.80M net 3-year; kept \u20ac3.0M only as the claim being tested",
+   "resolved": true
+  },
+  {
+   "critic": "FACT CHECKER",
+   "finding": "The fact extractor read the invoice column invoiced_eur_m as EUR with thousands separators (1.444 -> 1,444 EUR). Monthly invoice totals are therefore not used in any headline; only rush-freight values (parsed correctly) and finance's 23.9 / 1.1 EUR M are used.",
+   "artifact": "facts.json",
+   "ref": "F0001",
+   "severity": "medium",
+   "action": "Recorded in fact_conflicts.json; manual reconciliation: incumbent 17.83 + Supplier B 7.17 = 25.0 EUR M, rush freight sums to 1.10 EUR M, consistent with finance note",
+   "resolved": true
+  },
+  {
+   "critic": "PARTNER REVIEW",
+   "finding": "A pure 'reject' would leave the board without an approvable alternative and leave \u20ac1.79M a year on the table.",
+   "artifact": "storyline.json",
+   "ref": "decision",
+   "severity": "high",
+   "action": "Added costed options (status quo, full move, 70/30), asks with owners, three gates and four KPIs; the current plan is tested and its cost if kept (\u20ac1.07M over three years under repeat stoppages) stated",
+   "resolved": true
+  },
+  {
+   "critic": "PARTNER REVIEW",
+   "finding": "The gap of \u20ac1.21M a year to procurement's \u20ac3.0M must be admitted, not hidden.",
+   "artifact": "storyline.json",
+   "ref": "decision.gap",
+   "severity": "medium",
+   "action": "Gap stated with how it could be closed (rush freight via forecasting, upper bound to be sized) and why price cannot close it",
+   "resolved": true
+  },
+  {
+   "critic": "RED TEAM",
+   "finding": "The risk case rests on two historical stoppages; a single 14-day stoppage (\u20ac2.4M) would NOT erase the full move's \u20ac2.93M advantage. If Supplier B has a credible fix for its force-majeure causes, the full move could be right.",
+   "artifact": "insights.json",
+   "ref": "I2",
+   "severity": "high",
+   "action": "Caveat added to I2 and hypothesis H4 rationale; continuity gate (Q1 2027) and 2028 revisit gate make the single-sourcing option reopenable on evidence (second plant or tested coverage of a 14-day stoppage)",
+   "resolved": true
+  },
+  {
+   "critic": "RED TEAM",
+   "finding": "The 70/30 split still leaves 70% of volume on Supplier B's single plant; its stoppage loss is not quantified in the sources.",
+   "artifact": "insights.json",
+   "ref": "I3",
+   "severity": "medium",
+   "action": "Stated as a caveat; the incumbent already producing 30% across two plants and able to cover up to 60% is a materially better position than starting from zero; continuity gate tests the ramp-up",
+   "resolved": true
+  },
+  {
+   "critic": "RED TEAM",
+   "finding": "Volume breaks might be negotiable (e.g. 9% at 70% could be improved); options use only quoted terms.",
+   "artifact": "storyline.json",
+   "ref": "decision.levers",
+   "severity": "low",
+   "action": "Kept quoted terms only (no invented data); contract gate requires written confirmation",
+   "resolved": true
+  },
+  {
+   "critic": "EDITOR",
+   "finding": "Rush-freight slide (S6) could be cut, but without it the board asks where the rest of the \u20ac3.0M went; kept as core but short.",
+   "artifact": "deck_plan.json",
+   "ref": "S6",
+   "severity": "low",
+   "action": "Kept; 7 slides within the 8-slide limit",
+   "resolved": true
+  },
+  {
+   "critic": "EDITOR",
+   "finding": "No slide-level deck.json yet (render spec); scope of this pass is storyline and deck plan.",
+   "artifact": "deck.json",
+   "ref": "",
+   "severity": "low",
+   "action": "Answered: render spec is out of scope for this storyline deliverable",
+   "resolved": true
+  },
+  {
+   "critic": "DATA-VIZ REVIEW",
+   "finding": "S3 is a change from \u20ac3.0M claimed to \u20ac2.87M gross to \u20ac7.80M net over three years: waterfall fits. S4 compares \u20ac4.0M stoppage exposure with \u20ac2.93M extra saving: two-bar chart. S5 compares three options on net 3-year value and risk: table. S6 shows monthly rush freight with flagged months highlighted: column chart.",
+   "artifact": "deck_plan.json",
+   "ref": "S3-S6",
+   "severity": "low",
+   "action": "Archetypes aligned with message types",
+   "resolved": true
+  }
+ ]
+}

@@ -1,0 +1,83 @@
+{
+  "protocol": "1.1",
+  "blocks": [
+    {
+      "source": "informe_finanzas_red.pdf",
+      "loc": "p.1",
+      "kind": "text",
+      "text": "Informe de Finanzas sobre la red logística - noviembre 2025."
+    },
+    {
+      "source": "informe_finanzas_red.pdf",
+      "loc": "p.1",
+      "kind": "text",
+      "text": "El coste de cierre de Valencia (indemnizaciones, penalización del contrato de alquiler y desmantelamiento) asciende a 3,2 millones de euros. La estimación de 1,5 millones de euros de Operaciones no incluye la penalización del alquiler."
+    },
+    {
+      "source": "informe_finanzas_red.pdf",
+      "loc": "p.1",
+      "kind": "text",
+      "text": "El alquiler de Valencia (1,2 millones de euros al año, incluido en el coste fijo) vence en diciembre de 2026. El propietario ofrece renovar cinco años con un 25% de descuento."
+    },
+    {
+      "source": "informe_finanzas_red.pdf",
+      "loc": "p.1",
+      "kind": "text",
+      "text": "Los clientes de Levante suponen el 18% de los ingresos del grupo: 74 millones de euros de 412 millones de euros en 2025. El margen de contribución medio es del 22%."
+    },
+    {
+      "source": "informe_finanzas_red.pdf",
+      "loc": "p.1",
+      "kind": "text",
+      "text": "Desde Madrid, el 34% de los pedidos de Levante pasaría de entrega en 24 horas a 48 horas."
+    },
+    {
+      "source": "informe_finanzas_red.pdf",
+      "loc": "p.1",
+      "kind": "text",
+      "text": "En la encuesta de clientes de 2025, el 40% de los clientes con entrega a 48 horas declara que se plantearía cambiar de proveedor."
+    },
+    {
+      "source": "informe_finanzas_red.pdf",
+      "loc": "p.1",
+      "kind": "text",
+      "text": "Otros datos: la rotación de la plantilla de almacén fue del 11% en 2025, frente al 9% en 2024."
+    },
+    {
+      "source": "propuesta_operaciones.md",
+      "loc": "line 1",
+      "kind": "heading",
+      "text": "Propuesta de Operaciones — red logística 2026"
+    },
+    {
+      "source": "propuesta_operaciones.md",
+      "loc": "line 3",
+      "kind": "text",
+      "text": "Valencia nos costó 4,1 M€ en 2025 (coste fijo más variable). Cerrándolo ahorramos esos 4,1 M€ al año."
+    },
+    {
+      "source": "propuesta_operaciones.md",
+      "loc": "line 4",
+      "kind": "text",
+      "text": "Madrid tiene capacidad libre suficiente para absorber los pedidos de Levante."
+    },
+    {
+      "source": "propuesta_operaciones.md",
+      "loc": "line 5",
+      "kind": "text",
+      "text": "El coste de cierre estimado es de 1,5 M€."
+    },
+    {
+      "source": "propuesta_operaciones.md",
+      "loc": "line 6",
+      "kind": "text",
+      "text": "El servicio al cliente no se verá afectado."
+    },
+    {
+      "source": "propuesta_operaciones.md",
+      "loc": "line 7",
+      "kind": "text",
+      "text": "Recordatorio: la auditoría de seguridad de Sevilla se cerró sin incidencias."
+    }
+  ]
+}

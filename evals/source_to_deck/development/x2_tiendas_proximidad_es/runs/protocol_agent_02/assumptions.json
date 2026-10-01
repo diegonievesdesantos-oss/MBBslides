@@ -1,0 +1,18 @@
+{
+ "protocol": "1.1",
+ "assumptions": [
+  {
+   "id": "A001",
+   "statement": "5 de las 7 tiendas A sin ruptura tienen propietarios que han aceptado negociar una rebaja de alquiler (informe inmobiliario, p.1; el extractor no lo convirtió en hecho)",
+   "values": [
+    {
+     "value": 5,
+     "unit": ""
+    }
+   ],
+   "rationale": "Cita literal del informe de la dirección inmobiliaria: 'Los propietarios de 5 de las 7 tiendas restantes del grupo A han aceptado negociar una rebaja de alquiler.' Aceptar negociar no garantiza la rebaja: la mejora de 300 k€ es un máximo.",
+   "owner": "Dirección inmobiliaria",
+   "validate": "Acuerdos firmados con los 5 propietarios antes de cierre de 2026 T1"
+  }
+ ]
+}

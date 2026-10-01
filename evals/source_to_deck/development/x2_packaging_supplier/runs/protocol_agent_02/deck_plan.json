@@ -1,0 +1,153 @@
+{
+ "protocol": "1.1",
+ "slides": [
+  {
+   "id": "S1",
+   "priority": "core",
+   "role": "title",
+   "purpose": "Frame the decision",
+   "decision_role": "context",
+   "headline": "Packaging supplier consolidation: is a single supplier worth it?",
+   "insights": [],
+   "facts": [],
+   "message_type": "title",
+   "archetype": "title",
+   "reason_to_exist": "Opens the board item",
+   "why_not_merge": "Framing slides (title, executive summary, next steps) carry no key-line point; each has a distinct job: open, answer up front, close with approvable asks"
+  },
+  {
+   "id": "S2",
+   "priority": "core",
+   "role": "exec_summary",
+   "purpose": "Give the answer and the asks up front",
+   "decision_role": "answer",
+   "headline": "Reject the 100% move to Supplier B and approve a 70/30 split: \u20ac1.79M a year, \u20ac4.88M net over 2026-2028, with a second plant kept",
+   "insights": [
+    "I1",
+    "I2",
+    "I3"
+   ],
+   "facts": [
+    "C0008",
+    "C0009",
+    "F0057",
+    "F0058",
+    "F0051",
+    "F0049"
+   ],
+   "message_type": "recommendation",
+   "archetype": "executive_summary",
+   "reason_to_exist": "Board members read the answer first",
+   "why_not_merge": "Framing slides (title, executive summary, next steps) carry no key-line point; each has a distinct job: open, answer up front, close with approvable asks"
+  },
+  {
+   "id": "S3",
+   "priority": "core",
+   "key_line": "K1",
+   "purpose": "Correct the saving the board is asked to approve",
+   "decision_role": "problem",
+   "headline": "Procurement's \u20ac3.0M a year is really \u20ac2.87M: the 12% cut cannot apply to \u20ac1.1M of rush freight",
+   "insights": [
+    "I1"
+   ],
+   "facts": [
+    "F0059",
+    "F0055",
+    "F0056",
+    "F0054",
+    "C0001",
+    "C0002"
+   ],
+   "message_type": "change",
+   "archetype": "waterfall",
+   "reason_to_exist": "Shows the proposal's arithmetic does not hold before any risk is counted"
+  },
+  {
+   "id": "S4",
+   "priority": "core",
+   "key_line": "K2",
+   "purpose": "Quantify the single-plant risk against the extra saving",
+   "decision_role": "risk",
+   "headline": "Supplier B's single plant stopped twice in three years; a repeat would cost \u20ac4.0M, more than the \u20ac2.93M the full move adds over a 70/30 split",
+   "insights": [
+    "I2"
+   ],
+   "facts": [
+    "F0060",
+    "F0061",
+    "C0004",
+    "C0011",
+    "F0063",
+    "F0049",
+    "F0051"
+   ],
+   "message_type": "comparison",
+   "archetype": "chart",
+   "reason_to_exist": "This is the trade-off that decides between full and partial consolidation"
+  },
+  {
+   "id": "S5",
+   "priority": "core",
+   "key_line": "K3",
+   "purpose": "Compare the costed options",
+   "decision_role": "solution",
+   "headline": "A 70/30 split nets \u20ac4.88M over 2026-2028, ahead of \u20ac3.80M for the full move once stoppage risk is counted",
+   "insights": [
+    "I3"
+   ],
+   "facts": [
+    "C0008",
+    "C0009",
+    "C0010",
+    "C0003",
+    "F0065",
+    "F0049",
+    "F0051"
+   ],
+   "message_type": "ranking",
+   "archetype": "table",
+   "reason_to_exist": "Gives the board the approvable alternative with each option costed"
+  },
+  {
+   "id": "S6",
+   "priority": "core",
+   "key_line": "K4",
+   "purpose": "Show where the remaining gap to \u20ac3.0M can come from",
+   "decision_role": "gap",
+   "headline": "The gap to \u20ac3.0M is ours to close: \u20ac0.65M of \u20ac1.1M rush freight falls in months flagged as our own forecast errors",
+   "insights": [
+    "I4"
+   ],
+   "facts": [
+    "F0059",
+    "F0055",
+    "C0013",
+    "C0014"
+   ],
+   "message_type": "composition",
+   "archetype": "chart",
+   "reason_to_exist": "Answers 'what about the rest of the saving?' and assigns the lever to demand planning, not procurement"
+  },
+  {
+   "id": "S7",
+   "priority": "core",
+   "role": "next_steps",
+   "purpose": "Close with approvable asks, gates and KPIs",
+   "decision_role": "ask",
+   "headline": "Today: reject the full move, approve the 70/30 split and \u20ac0.5M switching budget, commission the rush-freight review",
+   "insights": [
+    "I3",
+    "I4"
+   ],
+   "facts": [
+    "F0065",
+    "F0055",
+    "C0008"
+   ],
+   "message_type": "recommendation",
+   "archetype": "statement",
+   "reason_to_exist": "Turns the recommendation into decisions with owners, gates and KPIs",
+   "why_not_merge": "Framing slides (title, executive summary, next steps) carry no key-line point; each has a distinct job: open, answer up front, close with approvable asks"
+  }
+ ]
+}

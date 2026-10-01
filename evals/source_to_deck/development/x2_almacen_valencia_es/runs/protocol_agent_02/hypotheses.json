@@ -1,0 +1,95 @@
+{
+ "hypotheses": [
+  {
+   "id": "H1",
+   "statement": "Cerrar Valencia ahorra unos 4,1 M€ al año (tesis de Operaciones)",
+   "status": "rejected",
+   "supporting_facts": [
+    "F0042",
+    "C0001"
+   ],
+   "contradicting_facts": [
+    "C0004",
+    "C0005",
+    "C0007",
+    "A001",
+    "A002",
+    "C0019"
+   ],
+   "confidence": 0.9,
+   "implication": "El caso económico del cierre no se sostiene: 4,1 M€ es coste bruto, no ahorro."
+  },
+  {
+   "id": "H2",
+   "statement": "Madrid tiene capacidad libre suficiente para absorber los pedidos de Levante",
+   "status": "rejected",
+   "supporting_facts": [
+    "F0023"
+   ],
+   "contradicting_facts": [
+    "F0026",
+    "C0003",
+    "C0020",
+    "C0018"
+   ],
+   "confidence": 0.9,
+   "implication": "Absorber Levante exige un turno adicional y horas extra; la holgura en 2026 sería mínima."
+  },
+  {
+   "id": "H3",
+   "statement": "El coste de cierre es de 1,5 M€",
+   "status": "rejected",
+   "supporting_facts": [
+    "F0044"
+   ],
+   "contradicting_facts": [
+    "F0033",
+    "F0034",
+    "C0012"
+   ],
+   "confidence": 0.85,
+   "implication": "El coste de cierre real es 3,2 M€ e incluye la penalización del alquiler."
+  },
+  {
+   "id": "H4",
+   "statement": "El servicio al cliente no se verá afectado por servir Levante desde Madrid",
+   "status": "rejected",
+   "supporting_facts": [],
+   "contradicting_facts": [
+    "F0039",
+    "F0040",
+    "C0009",
+    "C0010"
+   ],
+   "confidence": 0.8,
+   "implication": "Un tercio de los pedidos de Levante pasaría a 48 h, con hasta 2,2 M€ de margen anual en riesgo."
+  },
+  {
+   "id": "H5",
+   "statement": "Mantener Valencia y renovar el alquiler con descuento es mejor opción económica que cerrar",
+   "status": "supported",
+   "supporting_facts": [
+    "F0035",
+    "F0036",
+    "C0014",
+    "C0005",
+    "C0022",
+    "C0010"
+   ],
+   "contradicting_facts": [],
+   "confidence": 0.75,
+   "implication": "La alternativa es renovar el alquiler antes de diciembre de 2026: 0,3 M€ al año sin coste de cierre ni riesgo de servicio."
+  },
+  {
+   "id": "H6",
+   "statement": "El aumento de rotación de plantilla (11% en 2025 frente a 9% en 2024) es un argumento relevante para cerrar Valencia",
+   "status": "unresolved",
+   "supporting_facts": [
+    "F0041"
+   ],
+   "contradicting_facts": [],
+   "confidence": 0.3,
+   "implication": "El dato es de toda la red, no de Valencia; no se usa en la recomendación."
+  }
+ ]
+}

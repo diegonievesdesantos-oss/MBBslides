@@ -1,0 +1,202 @@
+{
+ "protocol": "1.1",
+ "slides": [
+  {
+   "id": "S1",
+   "priority": "core",
+   "role": "title",
+   "purpose": "Encuadrar la decisión",
+   "decision_role": "context",
+   "headline": "Tiendas de proximidad en pérdidas: qué cerrar y cuánto mejora realmente el EBITDA",
+   "insights": [],
+   "facts": [],
+   "message_type": "title",
+   "archetype": "title",
+   "reason_to_exist": "Portada",
+   "why_not_merge": "Portada, resumen ejecutivo y peticiones cumplen funciones distintas (encuadre, respuesta, cierre aprobable) y no pertenecen a un punto de la línea argumental"
+  },
+  {
+   "id": "S2",
+   "priority": "core",
+   "role": "exec_summary",
+   "purpose": "Respuesta completa en una página",
+   "decision_role": "recommendation",
+   "headline": "Cerrar las 40 tiendas mejora el EBITDA en 1.596 k€, no en 5.196 k€: cerrar solo las 15 A con ruptura logra 1.500 k€ por 1.500 k€ de coste",
+   "insights": [
+    "I1",
+    "I4"
+   ],
+   "facts": [
+    "C0001",
+    "F0248",
+    "C0008",
+    "C0009",
+    "F0247"
+   ],
+   "message_type": "recommendation",
+   "archetype": "executive_summary",
+   "reason_to_exist": "El consejo necesita la respuesta y la petición antes del detalle",
+   "why_not_merge": "Portada, resumen ejecutivo y peticiones cumplen funciones distintas (encuadre, respuesta, cierre aprobable) y no pertenecen a un punto de la línea argumental"
+  },
+  {
+   "id": "S3",
+   "priority": "core",
+   "key_line": "K1",
+   "purpose": "Corregir la cifra de la propuesta",
+   "decision_role": "problem",
+   "headline": "De la pérdida de 5.196 k€, 3.600 k€ son coste central que no desaparece: cerrar las 40 solo mejora el EBITDA en 1.596 k€",
+   "insights": [
+    "I1"
+   ],
+   "facts": [
+    "F0248",
+    "F0249",
+    "C0001",
+    "F0247"
+   ],
+   "message_type": "change",
+   "archetype": "waterfall",
+   "reason_to_exist": "Es el error central de la propuesta y cambia la decisión"
+  },
+  {
+   "id": "S4",
+   "priority": "core",
+   "key_line": "K1",
+   "purpose": "Corregir el coste y el retorno de la propuesta",
+   "decision_role": "problem",
+   "headline": "Cerrar las 40 cuesta 7.750 k€ (no 10.000 k€) y tarda 4,9 años en recuperarse",
+   "insights": [
+    "I5"
+   ],
+   "facts": [
+    "C0010",
+    "C0011",
+    "C0012",
+    "F0256",
+    "F0247"
+   ],
+   "message_type": "comparison",
+   "archetype": "chart",
+   "reason_to_exist": "El retorno de la opción propuesta es lo que el consejo aprobaría",
+   "why_not_merge": "S3 corrige el beneficio y S4 el coste: juntos saturan una sola gráfica de cascada con unidades distintas (k€ anuales frente a k€ únicos)"
+  },
+  {
+   "id": "S5",
+   "priority": "core",
+   "key_line": "K2",
+   "purpose": "Localizar la pérdida real",
+   "decision_role": "diagnosis",
+   "headline": "Toda la pérdida antes de coste central está en las 22 tiendas A (−1.920 k€), con alquiler del 14,5% de ventas frente al 9% de la red",
+   "insights": [
+    "I2"
+   ],
+   "facts": [
+    "C0002",
+    "F0094",
+    "F0250",
+    "F0241"
+   ],
+   "message_type": "ranking",
+   "archetype": "chart",
+   "reason_to_exist": "Muestra que el problema es el alquiler de un grupo, no el formato"
+  },
+  {
+   "id": "S6",
+   "priority": "core",
+   "key_line": "K2",
+   "purpose": "Proteger el grupo B",
+   "decision_role": "diagnosis",
+   "headline": "Las 18 tiendas B ya aportan 324 k€ antes de coste central y crecen un 11% al año: cerrarlas empeora el EBITDA",
+   "insights": [
+    "I3"
+   ],
+   "facts": [
+    "C0003",
+    "C0006",
+    "C0007",
+    "F0253",
+    "F0244"
+   ],
+   "message_type": "comparison",
+   "archetype": "chart",
+   "reason_to_exist": "Rechazar el cierre de B es una de las peticiones al consejo",
+   "why_not_merge": "A y B piden decisiones opuestas (cerrar frente a mantener); cada grupo necesita su propia evidencia"
+  },
+  {
+   "id": "S7",
+   "priority": "core",
+   "key_line": "K3",
+   "purpose": "Comparar opciones costeadas",
+   "decision_role": "solution",
+   "headline": "Cerrar solo las 15 A con ruptura logra +1.500 k€ al año por 1.500 k€ (recuperación en 1,0 años), frente a 7.750 k€ por cerrar las 40",
+   "insights": [
+    "I4",
+    "I5"
+   ],
+   "facts": [
+    "C0008",
+    "C0009",
+    "C0013",
+    "C0010",
+    "C0001",
+    "F0247",
+    "F0241"
+   ],
+   "message_type": "comparison",
+   "archetype": "table",
+   "reason_to_exist": "Es la decisión que se pide aprobar"
+  },
+  {
+   "id": "S8",
+   "priority": "core",
+   "key_line": "K3",
+   "purpose": "Resolver las 7 A sin ruptura y la brecha",
+   "decision_role": "solution",
+   "headline": "Si prosperan las negociaciones (supuesto: 5 propietarios aceptan rebaja), las 7 A restantes añaden hasta 420 k€; aun así, los 1.920 k€ identificados dejan 3.276 k€ de la promesa que solo puede venir del coste central",
+   "insights": [
+    "I6",
+    "I7",
+    "I8"
+   ],
+   "facts": [
+    "C0016",
+    "C0017",
+    "C0019",
+    "C0020",
+    "C0014",
+    "C0015",
+    "C0023",
+    "F0241",
+    "A001"
+   ],
+   "message_type": "change",
+   "archetype": "waterfall",
+   "reason_to_exist": "Cuantifica las palancas inciertas y fija la expectativa correcta",
+   "why_not_merge": "S7 es la decisión segura de 2026; S8 son palancas con cota superior y puertas de validación"
+  },
+  {
+   "id": "S9",
+   "priority": "core",
+   "role": "next_steps",
+   "purpose": "Peticiones aprobables, puertas y KPIs",
+   "decision_role": "ask",
+   "headline": "Aprobar hoy: cierre de 15 tiendas A por 1.500 k€, mandato de renegociación y no cerrar las 18 tiendas del grupo B",
+   "insights": [
+    "I4",
+    "I3",
+    "I6"
+   ],
+   "facts": [
+    "C0009",
+    "C0003",
+    "C0016",
+    "F0244",
+    "F0241"
+   ],
+   "message_type": "recommendation",
+   "archetype": "statement",
+   "reason_to_exist": "Cierre aprobable",
+   "why_not_merge": "Portada, resumen ejecutivo y peticiones cumplen funciones distintas (encuadre, respuesta, cierre aprobable) y no pertenecen a un punto de la línea argumental"
+  }
+ ]
+}

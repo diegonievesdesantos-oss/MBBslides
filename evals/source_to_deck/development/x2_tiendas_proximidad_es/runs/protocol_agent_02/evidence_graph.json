@@ -1,0 +1,4916 @@
+{
+  "nodes": {
+    "S:tiendas_proximidad_2025.xlsx": {
+      "id": "S:tiendas_proximidad_2025.xlsx",
+      "kind": "source",
+      "label": "tiendas_proximidad_2025.xlsx"
+    },
+    "F0001": {
+      "id": "F0001",
+      "kind": "fact",
+      "label": "A · sí — Tienda: 1",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "A2",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0002": {
+      "id": "F0002",
+      "kind": "fact",
+      "label": "A · sí — Año de apertura: 2,014 YEARS",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "C2",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0003": {
+      "id": "F0003",
+      "kind": "fact",
+      "label": "A · sí — Ventas 2025 (k€): 1,100 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "D2",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0004": {
+      "id": "F0004",
+      "kind": "fact",
+      "label": "A · sí — Alquiler / ventas (%): 14.5 PCT",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "E2",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0005": {
+      "id": "F0005",
+      "kind": "fact",
+      "label": "A · sí — EBITDA 2025 (k€): -190 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "F2",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0006": {
+      "id": "F0006",
+      "kind": "fact",
+      "label": "A · sí — Coste central asignado (k€): 90 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "G2",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0007": {
+      "id": "F0007",
+      "kind": "fact",
+      "label": "A · sí — Tienda: 2",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "A3",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0008": {
+      "id": "F0008",
+      "kind": "fact",
+      "label": "A · sí — Año de apertura: 2,015 YEARS",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "C3",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0009": {
+      "id": "F0009",
+      "kind": "fact",
+      "label": "A · sí — Ventas 2025 (k€): 1,100 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "D3",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0010": {
+      "id": "F0010",
+      "kind": "fact",
+      "label": "A · sí — Alquiler / ventas (%): 14.5 PCT",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "E3",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0011": {
+      "id": "F0011",
+      "kind": "fact",
+      "label": "A · sí — EBITDA 2025 (k€): -190 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "F3",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0012": {
+      "id": "F0012",
+      "kind": "fact",
+      "label": "A · sí — Coste central asignado (k€): 90 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "G3",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0013": {
+      "id": "F0013",
+      "kind": "fact",
+      "label": "A · sí — Tienda: 3",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "A4",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0014": {
+      "id": "F0014",
+      "kind": "fact",
+      "label": "A · sí — Año de apertura: 2,016 YEARS",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "C4",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0015": {
+      "id": "F0015",
+      "kind": "fact",
+      "label": "A · sí — Ventas 2025 (k€): 1,100 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "D4",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0016": {
+      "id": "F0016",
+      "kind": "fact",
+      "label": "A · sí — Alquiler / ventas (%): 14.5 PCT",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "E4",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0017": {
+      "id": "F0017",
+      "kind": "fact",
+      "label": "A · sí — EBITDA 2025 (k€): -190 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "F4",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0018": {
+      "id": "F0018",
+      "kind": "fact",
+      "label": "A · sí — Coste central asignado (k€): 90 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "G4",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0019": {
+      "id": "F0019",
+      "kind": "fact",
+      "label": "A · sí — Tienda: 4",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "A5",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0020": {
+      "id": "F0020",
+      "kind": "fact",
+      "label": "A · sí — Año de apertura: 2,017 YEARS",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "C5",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0021": {
+      "id": "F0021",
+      "kind": "fact",
+      "label": "A · sí — Ventas 2025 (k€): 1,100 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "D5",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0022": {
+      "id": "F0022",
+      "kind": "fact",
+      "label": "A · sí — Alquiler / ventas (%): 14.5 PCT",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "E5",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0023": {
+      "id": "F0023",
+      "kind": "fact",
+      "label": "A · sí — EBITDA 2025 (k€): -190 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "F5",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0024": {
+      "id": "F0024",
+      "kind": "fact",
+      "label": "A · sí — Coste central asignado (k€): 90 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "G5",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0025": {
+      "id": "F0025",
+      "kind": "fact",
+      "label": "A · sí — Tienda: 5",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "A6",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0026": {
+      "id": "F0026",
+      "kind": "fact",
+      "label": "A · sí — Año de apertura: 2,018 YEARS",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "C6",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0027": {
+      "id": "F0027",
+      "kind": "fact",
+      "label": "A · sí — Ventas 2025 (k€): 1,100 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "D6",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0028": {
+      "id": "F0028",
+      "kind": "fact",
+      "label": "A · sí — Alquiler / ventas (%): 14.5 PCT",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "E6",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0029": {
+      "id": "F0029",
+      "kind": "fact",
+      "label": "A · sí — EBITDA 2025 (k€): -190 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "F6",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0030": {
+      "id": "F0030",
+      "kind": "fact",
+      "label": "A · sí — Coste central asignado (k€): 90 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "G6",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0031": {
+      "id": "F0031",
+      "kind": "fact",
+      "label": "A · sí — Tienda: 6",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "A7",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0032": {
+      "id": "F0032",
+      "kind": "fact",
+      "label": "A · sí — Año de apertura: 2,019 YEARS",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "C7",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0033": {
+      "id": "F0033",
+      "kind": "fact",
+      "label": "A · sí — Ventas 2025 (k€): 1,100 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "D7",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0034": {
+      "id": "F0034",
+      "kind": "fact",
+      "label": "A · sí — Alquiler / ventas (%): 14.5 PCT",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "E7",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0035": {
+      "id": "F0035",
+      "kind": "fact",
+      "label": "A · sí — EBITDA 2025 (k€): -190 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "F7",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0036": {
+      "id": "F0036",
+      "kind": "fact",
+      "label": "A · sí — Coste central asignado (k€): 90 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "G7",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0037": {
+      "id": "F0037",
+      "kind": "fact",
+      "label": "A · sí — Tienda: 7",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "A8",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0038": {
+      "id": "F0038",
+      "kind": "fact",
+      "label": "A · sí — Año de apertura: 2,014 YEARS",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "C8",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0039": {
+      "id": "F0039",
+      "kind": "fact",
+      "label": "A · sí — Ventas 2025 (k€): 1,100 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "D8",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0040": {
+      "id": "F0040",
+      "kind": "fact",
+      "label": "A · sí — Alquiler / ventas (%): 14.5 PCT",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "E8",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0041": {
+      "id": "F0041",
+      "kind": "fact",
+      "label": "A · sí — EBITDA 2025 (k€): -190 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "F8",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0042": {
+      "id": "F0042",
+      "kind": "fact",
+      "label": "A · sí — Coste central asignado (k€): 90 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "G8",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0043": {
+      "id": "F0043",
+      "kind": "fact",
+      "label": "A · sí — Tienda: 8",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "A9",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0044": {
+      "id": "F0044",
+      "kind": "fact",
+      "label": "A · sí — Año de apertura: 2,015 YEARS",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "C9",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0045": {
+      "id": "F0045",
+      "kind": "fact",
+      "label": "A · sí — Ventas 2025 (k€): 1,100 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "D9",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0046": {
+      "id": "F0046",
+      "kind": "fact",
+      "label": "A · sí — Alquiler / ventas (%): 14.5 PCT",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "E9",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0047": {
+      "id": "F0047",
+      "kind": "fact",
+      "label": "A · sí — EBITDA 2025 (k€): -190 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "F9",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0048": {
+      "id": "F0048",
+      "kind": "fact",
+      "label": "A · sí — Coste central asignado (k€): 90 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "G9",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0049": {
+      "id": "F0049",
+      "kind": "fact",
+      "label": "A · sí — Tienda: 9",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "A10",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0050": {
+      "id": "F0050",
+      "kind": "fact",
+      "label": "A · sí — Año de apertura: 2,016 YEARS",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "C10",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0051": {
+      "id": "F0051",
+      "kind": "fact",
+      "label": "A · sí — Ventas 2025 (k€): 1,100 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "D10",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0052": {
+      "id": "F0052",
+      "kind": "fact",
+      "label": "A · sí — Alquiler / ventas (%): 14.5 PCT",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "E10",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0053": {
+      "id": "F0053",
+      "kind": "fact",
+      "label": "A · sí — EBITDA 2025 (k€): -190 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "F10",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0054": {
+      "id": "F0054",
+      "kind": "fact",
+      "label": "A · sí — Coste central asignado (k€): 90 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "G10",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0055": {
+      "id": "F0055",
+      "kind": "fact",
+      "label": "A · sí — Tienda: 10",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "A11",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0056": {
+      "id": "F0056",
+      "kind": "fact",
+      "label": "A · sí — Año de apertura: 2,017 YEARS",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "C11",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0057": {
+      "id": "F0057",
+      "kind": "fact",
+      "label": "A · sí — Ventas 2025 (k€): 1,100 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "D11",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0058": {
+      "id": "F0058",
+      "kind": "fact",
+      "label": "A · sí — Alquiler / ventas (%): 14.5 PCT",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "E11",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0059": {
+      "id": "F0059",
+      "kind": "fact",
+      "label": "A · sí — EBITDA 2025 (k€): -190 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "F11",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0060": {
+      "id": "F0060",
+      "kind": "fact",
+      "label": "A · sí — Coste central asignado (k€): 90 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "G11",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0061": {
+      "id": "F0061",
+      "kind": "fact",
+      "label": "A · sí — Tienda: 11",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "A12",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0062": {
+      "id": "F0062",
+      "kind": "fact",
+      "label": "A · sí — Año de apertura: 2,018 YEARS",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "C12",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0063": {
+      "id": "F0063",
+      "kind": "fact",
+      "label": "A · sí — Ventas 2025 (k€): 1,100 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "D12",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0064": {
+      "id": "F0064",
+      "kind": "fact",
+      "label": "A · sí — Alquiler / ventas (%): 14.5 PCT",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "E12",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0065": {
+      "id": "F0065",
+      "kind": "fact",
+      "label": "A · sí — EBITDA 2025 (k€): -190 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "F12",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0066": {
+      "id": "F0066",
+      "kind": "fact",
+      "label": "A · sí — Coste central asignado (k€): 90 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "G12",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0067": {
+      "id": "F0067",
+      "kind": "fact",
+      "label": "A · sí — Tienda: 12",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "A13",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0068": {
+      "id": "F0068",
+      "kind": "fact",
+      "label": "A · sí — Año de apertura: 2,019 YEARS",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "C13",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0069": {
+      "id": "F0069",
+      "kind": "fact",
+      "label": "A · sí — Ventas 2025 (k€): 1,100 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "D13",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0070": {
+      "id": "F0070",
+      "kind": "fact",
+      "label": "A · sí — Alquiler / ventas (%): 14.5 PCT",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "E13",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0071": {
+      "id": "F0071",
+      "kind": "fact",
+      "label": "A · sí — EBITDA 2025 (k€): -190 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "F13",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0072": {
+      "id": "F0072",
+      "kind": "fact",
+      "label": "A · sí — Coste central asignado (k€): 90 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "G13",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0073": {
+      "id": "F0073",
+      "kind": "fact",
+      "label": "A · sí — Tienda: 13",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "A14",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0074": {
+      "id": "F0074",
+      "kind": "fact",
+      "label": "A · sí — Año de apertura: 2,014 YEARS",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "C14",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0075": {
+      "id": "F0075",
+      "kind": "fact",
+      "label": "A · sí — Ventas 2025 (k€): 1,100 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "D14",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0076": {
+      "id": "F0076",
+      "kind": "fact",
+      "label": "A · sí — Alquiler / ventas (%): 14.5 PCT",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "E14",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0077": {
+      "id": "F0077",
+      "kind": "fact",
+      "label": "A · sí — EBITDA 2025 (k€): -190 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "F14",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0078": {
+      "id": "F0078",
+      "kind": "fact",
+      "label": "A · sí — Coste central asignado (k€): 90 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "G14",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0079": {
+      "id": "F0079",
+      "kind": "fact",
+      "label": "A · sí — Tienda: 14",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "A15",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0080": {
+      "id": "F0080",
+      "kind": "fact",
+      "label": "A · sí — Año de apertura: 2,015 YEARS",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "C15",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0081": {
+      "id": "F0081",
+      "kind": "fact",
+      "label": "A · sí — Ventas 2025 (k€): 1,100 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "D15",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0082": {
+      "id": "F0082",
+      "kind": "fact",
+      "label": "A · sí — Alquiler / ventas (%): 14.5 PCT",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "E15",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0083": {
+      "id": "F0083",
+      "kind": "fact",
+      "label": "A · sí — EBITDA 2025 (k€): -190 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "F15",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0084": {
+      "id": "F0084",
+      "kind": "fact",
+      "label": "A · sí — Coste central asignado (k€): 90 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "G15",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0085": {
+      "id": "F0085",
+      "kind": "fact",
+      "label": "A · sí — Tienda: 15",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "A16",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0086": {
+      "id": "F0086",
+      "kind": "fact",
+      "label": "A · sí — Año de apertura: 2,016 YEARS",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "C16",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0087": {
+      "id": "F0087",
+      "kind": "fact",
+      "label": "A · sí — Ventas 2025 (k€): 1,100 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "D16",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0088": {
+      "id": "F0088",
+      "kind": "fact",
+      "label": "A · sí — Alquiler / ventas (%): 14.5 PCT",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "E16",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0089": {
+      "id": "F0089",
+      "kind": "fact",
+      "label": "A · sí — EBITDA 2025 (k€): -190 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "F16",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0090": {
+      "id": "F0090",
+      "kind": "fact",
+      "label": "A · sí — Coste central asignado (k€): 90 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "G16",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0091": {
+      "id": "F0091",
+      "kind": "fact",
+      "label": "A · no — Tienda: 16",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "A17",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0092": {
+      "id": "F0092",
+      "kind": "fact",
+      "label": "A · no — Año de apertura: 2,012 YEARS",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "C17",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0093": {
+      "id": "F0093",
+      "kind": "fact",
+      "label": "A · no — Ventas 2025 (k€): 1,150 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "D17",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0094": {
+      "id": "F0094",
+      "kind": "fact",
+      "label": "A · no — Alquiler / ventas (%): 14.5 PCT",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "E17",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0095": {
+      "id": "F0095",
+      "kind": "fact",
+      "label": "A · no — EBITDA 2025 (k€): -150 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "F17",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0096": {
+      "id": "F0096",
+      "kind": "fact",
+      "label": "A · no — Coste central asignado (k€): 90 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "G17",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0097": {
+      "id": "F0097",
+      "kind": "fact",
+      "label": "A · no — Tienda: 17",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "A18",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0098": {
+      "id": "F0098",
+      "kind": "fact",
+      "label": "A · no — Año de apertura: 2,013 YEARS",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "C18",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0099": {
+      "id": "F0099",
+      "kind": "fact",
+      "label": "A · no — Ventas 2025 (k€): 1,150 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "D18",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0100": {
+      "id": "F0100",
+      "kind": "fact",
+      "label": "A · no — Alquiler / ventas (%): 14.5 PCT",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "E18",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0101": {
+      "id": "F0101",
+      "kind": "fact",
+      "label": "A · no — EBITDA 2025 (k€): -150 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "F18",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0102": {
+      "id": "F0102",
+      "kind": "fact",
+      "label": "A · no — Coste central asignado (k€): 90 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "G18",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0103": {
+      "id": "F0103",
+      "kind": "fact",
+      "label": "A · no — Tienda: 18",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "A19",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0104": {
+      "id": "F0104",
+      "kind": "fact",
+      "label": "A · no — Año de apertura: 2,014 YEARS",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "C19",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0105": {
+      "id": "F0105",
+      "kind": "fact",
+      "label": "A · no — Ventas 2025 (k€): 1,150 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "D19",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0106": {
+      "id": "F0106",
+      "kind": "fact",
+      "label": "A · no — Alquiler / ventas (%): 14.5 PCT",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "E19",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0107": {
+      "id": "F0107",
+      "kind": "fact",
+      "label": "A · no — EBITDA 2025 (k€): -150 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "F19",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0108": {
+      "id": "F0108",
+      "kind": "fact",
+      "label": "A · no — Coste central asignado (k€): 90 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "G19",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0109": {
+      "id": "F0109",
+      "kind": "fact",
+      "label": "A · no — Tienda: 19",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "A20",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0110": {
+      "id": "F0110",
+      "kind": "fact",
+      "label": "A · no — Año de apertura: 2,015 YEARS",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "C20",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0111": {
+      "id": "F0111",
+      "kind": "fact",
+      "label": "A · no — Ventas 2025 (k€): 1,150 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "D20",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0112": {
+      "id": "F0112",
+      "kind": "fact",
+      "label": "A · no — Alquiler / ventas (%): 14.5 PCT",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "E20",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0113": {
+      "id": "F0113",
+      "kind": "fact",
+      "label": "A · no — EBITDA 2025 (k€): -150 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "F20",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0114": {
+      "id": "F0114",
+      "kind": "fact",
+      "label": "A · no — Coste central asignado (k€): 90 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "G20",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0115": {
+      "id": "F0115",
+      "kind": "fact",
+      "label": "A · no — Tienda: 20",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "A21",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0116": {
+      "id": "F0116",
+      "kind": "fact",
+      "label": "A · no — Año de apertura: 2,016 YEARS",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "C21",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0117": {
+      "id": "F0117",
+      "kind": "fact",
+      "label": "A · no — Ventas 2025 (k€): 1,150 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "D21",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0118": {
+      "id": "F0118",
+      "kind": "fact",
+      "label": "A · no — Alquiler / ventas (%): 14.5 PCT",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "E21",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0119": {
+      "id": "F0119",
+      "kind": "fact",
+      "label": "A · no — EBITDA 2025 (k€): -150 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "F21",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0120": {
+      "id": "F0120",
+      "kind": "fact",
+      "label": "A · no — Coste central asignado (k€): 90 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "G21",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0121": {
+      "id": "F0121",
+      "kind": "fact",
+      "label": "A · no — Tienda: 21",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "A22",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0122": {
+      "id": "F0122",
+      "kind": "fact",
+      "label": "A · no — Año de apertura: 2,012 YEARS",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "C22",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0123": {
+      "id": "F0123",
+      "kind": "fact",
+      "label": "A · no — Ventas 2025 (k€): 1,150 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "D22",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0124": {
+      "id": "F0124",
+      "kind": "fact",
+      "label": "A · no — Alquiler / ventas (%): 14.5 PCT",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "E22",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0125": {
+      "id": "F0125",
+      "kind": "fact",
+      "label": "A · no — EBITDA 2025 (k€): -150 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "F22",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0126": {
+      "id": "F0126",
+      "kind": "fact",
+      "label": "A · no — Coste central asignado (k€): 90 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "G22",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0127": {
+      "id": "F0127",
+      "kind": "fact",
+      "label": "A · no — Tienda: 22",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "A23",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0128": {
+      "id": "F0128",
+      "kind": "fact",
+      "label": "A · no — Año de apertura: 2,013 YEARS",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "C23",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0129": {
+      "id": "F0129",
+      "kind": "fact",
+      "label": "A · no — Ventas 2025 (k€): 1,150 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "D23",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0130": {
+      "id": "F0130",
+      "kind": "fact",
+      "label": "A · no — Alquiler / ventas (%): 14.5 PCT",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "E23",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0131": {
+      "id": "F0131",
+      "kind": "fact",
+      "label": "A · no — EBITDA 2025 (k€): -150 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "F23",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0132": {
+      "id": "F0132",
+      "kind": "fact",
+      "label": "A · no — Coste central asignado (k€): 90 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "G23",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0133": {
+      "id": "F0133",
+      "kind": "fact",
+      "label": "B · no — Tienda: 23",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "A24",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0134": {
+      "id": "F0134",
+      "kind": "fact",
+      "label": "B · no — Año de apertura: 2,023 YEARS",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "C24",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0135": {
+      "id": "F0135",
+      "kind": "fact",
+      "label": "B · no — Ventas 2025 (k€): 900 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "D24",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0136": {
+      "id": "F0136",
+      "kind": "fact",
+      "label": "B · no — Alquiler / ventas (%): 9 PCT",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "E24",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0137": {
+      "id": "F0137",
+      "kind": "fact",
+      "label": "B · no — EBITDA 2025 (k€): -80 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "F24",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0138": {
+      "id": "F0138",
+      "kind": "fact",
+      "label": "B · no — Coste central asignado (k€): 90 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "G24",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0139": {
+      "id": "F0139",
+      "kind": "fact",
+      "label": "B · no — Tienda: 24",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "A25",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0140": {
+      "id": "F0140",
+      "kind": "fact",
+      "label": "B · no — Año de apertura: 2,023 YEARS",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "C25",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0141": {
+      "id": "F0141",
+      "kind": "fact",
+      "label": "B · no — Ventas 2025 (k€): 900 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "D25",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0142": {
+      "id": "F0142",
+      "kind": "fact",
+      "label": "B · no — Alquiler / ventas (%): 9 PCT",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "E25",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0143": {
+      "id": "F0143",
+      "kind": "fact",
+      "label": "B · no — EBITDA 2025 (k€): -80 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "F25",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0144": {
+      "id": "F0144",
+      "kind": "fact",
+      "label": "B · no — Coste central asignado (k€): 90 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "G25",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0145": {
+      "id": "F0145",
+      "kind": "fact",
+      "label": "B · no — Tienda: 25",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "A26",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0146": {
+      "id": "F0146",
+      "kind": "fact",
+      "label": "B · no — Año de apertura: 2,023 YEARS",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "C26",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0147": {
+      "id": "F0147",
+      "kind": "fact",
+      "label": "B · no — Ventas 2025 (k€): 900 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "D26",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0148": {
+      "id": "F0148",
+      "kind": "fact",
+      "label": "B · no — Alquiler / ventas (%): 9 PCT",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "E26",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0149": {
+      "id": "F0149",
+      "kind": "fact",
+      "label": "B · no — EBITDA 2025 (k€): -80 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "F26",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0150": {
+      "id": "F0150",
+      "kind": "fact",
+      "label": "B · no — Coste central asignado (k€): 90 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "G26",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0151": {
+      "id": "F0151",
+      "kind": "fact",
+      "label": "B · no — Tienda: 26",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "A27",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0152": {
+      "id": "F0152",
+      "kind": "fact",
+      "label": "B · no — Año de apertura: 2,023 YEARS",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "C27",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0153": {
+      "id": "F0153",
+      "kind": "fact",
+      "label": "B · no — Ventas 2025 (k€): 900 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "D27",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0154": {
+      "id": "F0154",
+      "kind": "fact",
+      "label": "B · no — Alquiler / ventas (%): 9 PCT",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "E27",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0155": {
+      "id": "F0155",
+      "kind": "fact",
+      "label": "B · no — EBITDA 2025 (k€): -80 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "F27",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0156": {
+      "id": "F0156",
+      "kind": "fact",
+      "label": "B · no — Coste central asignado (k€): 90 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "G27",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0157": {
+      "id": "F0157",
+      "kind": "fact",
+      "label": "B · no — Tienda: 27",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "A28",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0158": {
+      "id": "F0158",
+      "kind": "fact",
+      "label": "B · no — Año de apertura: 2,023 YEARS",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "C28",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0159": {
+      "id": "F0159",
+      "kind": "fact",
+      "label": "B · no — Ventas 2025 (k€): 900 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "D28",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0160": {
+      "id": "F0160",
+      "kind": "fact",
+      "label": "B · no — Alquiler / ventas (%): 9 PCT",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "E28",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0161": {
+      "id": "F0161",
+      "kind": "fact",
+      "label": "B · no — EBITDA 2025 (k€): -80 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "F28",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0162": {
+      "id": "F0162",
+      "kind": "fact",
+      "label": "B · no — Coste central asignado (k€): 90 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "G28",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0163": {
+      "id": "F0163",
+      "kind": "fact",
+      "label": "B · no — Tienda: 28",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "A29",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0164": {
+      "id": "F0164",
+      "kind": "fact",
+      "label": "B · no — Año de apertura: 2,023 YEARS",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "C29",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0165": {
+      "id": "F0165",
+      "kind": "fact",
+      "label": "B · no — Ventas 2025 (k€): 900 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "D29",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0166": {
+      "id": "F0166",
+      "kind": "fact",
+      "label": "B · no — Alquiler / ventas (%): 9 PCT",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "E29",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0167": {
+      "id": "F0167",
+      "kind": "fact",
+      "label": "B · no — EBITDA 2025 (k€): -80 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "F29",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0168": {
+      "id": "F0168",
+      "kind": "fact",
+      "label": "B · no — Coste central asignado (k€): 90 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "G29",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0169": {
+      "id": "F0169",
+      "kind": "fact",
+      "label": "B · no — Tienda: 29",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "A30",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0170": {
+      "id": "F0170",
+      "kind": "fact",
+      "label": "B · no — Año de apertura: 2,023 YEARS",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "C30",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0171": {
+      "id": "F0171",
+      "kind": "fact",
+      "label": "B · no — Ventas 2025 (k€): 900 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "D30",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0172": {
+      "id": "F0172",
+      "kind": "fact",
+      "label": "B · no — Alquiler / ventas (%): 9 PCT",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "E30",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0173": {
+      "id": "F0173",
+      "kind": "fact",
+      "label": "B · no — EBITDA 2025 (k€): -80 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "F30",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0174": {
+      "id": "F0174",
+      "kind": "fact",
+      "label": "B · no — Coste central asignado (k€): 90 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "G30",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0175": {
+      "id": "F0175",
+      "kind": "fact",
+      "label": "B · no — Tienda: 30",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "A31",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0176": {
+      "id": "F0176",
+      "kind": "fact",
+      "label": "B · no — Año de apertura: 2,023 YEARS",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "C31",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0177": {
+      "id": "F0177",
+      "kind": "fact",
+      "label": "B · no — Ventas 2025 (k€): 900 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "D31",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0178": {
+      "id": "F0178",
+      "kind": "fact",
+      "label": "B · no — Alquiler / ventas (%): 9 PCT",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "E31",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0179": {
+      "id": "F0179",
+      "kind": "fact",
+      "label": "B · no — EBITDA 2025 (k€): -80 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "F31",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0180": {
+      "id": "F0180",
+      "kind": "fact",
+      "label": "B · no — Coste central asignado (k€): 90 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "G31",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0181": {
+      "id": "F0181",
+      "kind": "fact",
+      "label": "B · no — Tienda: 31",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "A32",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0182": {
+      "id": "F0182",
+      "kind": "fact",
+      "label": "B · no — Año de apertura: 2,023 YEARS",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "C32",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0183": {
+      "id": "F0183",
+      "kind": "fact",
+      "label": "B · no — Ventas 2025 (k€): 900 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "D32",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0184": {
+      "id": "F0184",
+      "kind": "fact",
+      "label": "B · no — Alquiler / ventas (%): 9 PCT",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "E32",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0185": {
+      "id": "F0185",
+      "kind": "fact",
+      "label": "B · no — EBITDA 2025 (k€): -80 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "F32",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0186": {
+      "id": "F0186",
+      "kind": "fact",
+      "label": "B · no — Coste central asignado (k€): 90 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "G32",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0187": {
+      "id": "F0187",
+      "kind": "fact",
+      "label": "B · no — Tienda: 32",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "A33",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0188": {
+      "id": "F0188",
+      "kind": "fact",
+      "label": "B · no — Año de apertura: 2,023 YEARS",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "C33",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0189": {
+      "id": "F0189",
+      "kind": "fact",
+      "label": "B · no — Ventas 2025 (k€): 900 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "D33",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0190": {
+      "id": "F0190",
+      "kind": "fact",
+      "label": "B · no — Alquiler / ventas (%): 9 PCT",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "E33",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0191": {
+      "id": "F0191",
+      "kind": "fact",
+      "label": "B · no — EBITDA 2025 (k€): -80 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "F33",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0192": {
+      "id": "F0192",
+      "kind": "fact",
+      "label": "B · no — Coste central asignado (k€): 90 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "G33",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0193": {
+      "id": "F0193",
+      "kind": "fact",
+      "label": "B · no — Tienda: 33",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "A34",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0194": {
+      "id": "F0194",
+      "kind": "fact",
+      "label": "B · no — Año de apertura: 2,024 YEARS",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "C34",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0195": {
+      "id": "F0195",
+      "kind": "fact",
+      "label": "B · no — Ventas 2025 (k€): 820 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "D34",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0196": {
+      "id": "F0196",
+      "kind": "fact",
+      "label": "B · no — Alquiler / ventas (%): 9 PCT",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "E34",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0197": {
+      "id": "F0197",
+      "kind": "fact",
+      "label": "B · no — EBITDA 2025 (k€): -62 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "F34",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0198": {
+      "id": "F0198",
+      "kind": "fact",
+      "label": "B · no — Coste central asignado (k€): 90 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "G34",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0199": {
+      "id": "F0199",
+      "kind": "fact",
+      "label": "B · no — Tienda: 34",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "A35",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0200": {
+      "id": "F0200",
+      "kind": "fact",
+      "label": "B · no — Año de apertura: 2,024 YEARS",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "C35",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0201": {
+      "id": "F0201",
+      "kind": "fact",
+      "label": "B · no — Ventas 2025 (k€): 820 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "D35",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0202": {
+      "id": "F0202",
+      "kind": "fact",
+      "label": "B · no — Alquiler / ventas (%): 9 PCT",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "E35",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0203": {
+      "id": "F0203",
+      "kind": "fact",
+      "label": "B · no — EBITDA 2025 (k€): -62 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "F35",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0204": {
+      "id": "F0204",
+      "kind": "fact",
+      "label": "B · no — Coste central asignado (k€): 90 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "G35",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0205": {
+      "id": "F0205",
+      "kind": "fact",
+      "label": "B · no — Tienda: 35",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "A36",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0206": {
+      "id": "F0206",
+      "kind": "fact",
+      "label": "B · no — Año de apertura: 2,024 YEARS",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "C36",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0207": {
+      "id": "F0207",
+      "kind": "fact",
+      "label": "B · no — Ventas 2025 (k€): 820 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "D36",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0208": {
+      "id": "F0208",
+      "kind": "fact",
+      "label": "B · no — Alquiler / ventas (%): 9 PCT",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "E36",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0209": {
+      "id": "F0209",
+      "kind": "fact",
+      "label": "B · no — EBITDA 2025 (k€): -62 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "F36",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0210": {
+      "id": "F0210",
+      "kind": "fact",
+      "label": "B · no — Coste central asignado (k€): 90 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "G36",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0211": {
+      "id": "F0211",
+      "kind": "fact",
+      "label": "B · no — Tienda: 36",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "A37",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0212": {
+      "id": "F0212",
+      "kind": "fact",
+      "label": "B · no — Año de apertura: 2,024 YEARS",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "C37",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0213": {
+      "id": "F0213",
+      "kind": "fact",
+      "label": "B · no — Ventas 2025 (k€): 820 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "D37",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0214": {
+      "id": "F0214",
+      "kind": "fact",
+      "label": "B · no — Alquiler / ventas (%): 9 PCT",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "E37",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0215": {
+      "id": "F0215",
+      "kind": "fact",
+      "label": "B · no — EBITDA 2025 (k€): -62 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "F37",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0216": {
+      "id": "F0216",
+      "kind": "fact",
+      "label": "B · no — Coste central asignado (k€): 90 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "G37",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0217": {
+      "id": "F0217",
+      "kind": "fact",
+      "label": "B · no — Tienda: 37",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "A38",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0218": {
+      "id": "F0218",
+      "kind": "fact",
+      "label": "B · no — Año de apertura: 2,024 YEARS",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "C38",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0219": {
+      "id": "F0219",
+      "kind": "fact",
+      "label": "B · no — Ventas 2025 (k€): 820 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "D38",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0220": {
+      "id": "F0220",
+      "kind": "fact",
+      "label": "B · no — Alquiler / ventas (%): 9 PCT",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "E38",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0221": {
+      "id": "F0221",
+      "kind": "fact",
+      "label": "B · no — EBITDA 2025 (k€): -62 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "F38",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0222": {
+      "id": "F0222",
+      "kind": "fact",
+      "label": "B · no — Coste central asignado (k€): 90 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "G38",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0223": {
+      "id": "F0223",
+      "kind": "fact",
+      "label": "B · no — Tienda: 38",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "A39",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0224": {
+      "id": "F0224",
+      "kind": "fact",
+      "label": "B · no — Año de apertura: 2,024 YEARS",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "C39",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0225": {
+      "id": "F0225",
+      "kind": "fact",
+      "label": "B · no — Ventas 2025 (k€): 820 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "D39",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0226": {
+      "id": "F0226",
+      "kind": "fact",
+      "label": "B · no — Alquiler / ventas (%): 9 PCT",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "E39",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0227": {
+      "id": "F0227",
+      "kind": "fact",
+      "label": "B · no — EBITDA 2025 (k€): -62 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "F39",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0228": {
+      "id": "F0228",
+      "kind": "fact",
+      "label": "B · no — Coste central asignado (k€): 90 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "G39",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0229": {
+      "id": "F0229",
+      "kind": "fact",
+      "label": "B · no — Tienda: 39",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "A40",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0230": {
+      "id": "F0230",
+      "kind": "fact",
+      "label": "B · no — Año de apertura: 2,024 YEARS",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "C40",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0231": {
+      "id": "F0231",
+      "kind": "fact",
+      "label": "B · no — Ventas 2025 (k€): 820 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "D40",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0232": {
+      "id": "F0232",
+      "kind": "fact",
+      "label": "B · no — Alquiler / ventas (%): 9 PCT",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "E40",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0233": {
+      "id": "F0233",
+      "kind": "fact",
+      "label": "B · no — EBITDA 2025 (k€): -62 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "F40",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0234": {
+      "id": "F0234",
+      "kind": "fact",
+      "label": "B · no — Coste central asignado (k€): 90 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "G40",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0235": {
+      "id": "F0235",
+      "kind": "fact",
+      "label": "B · no — Tienda: 40",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "A41",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0236": {
+      "id": "F0236",
+      "kind": "fact",
+      "label": "B · no — Año de apertura: 2,024 YEARS",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "C41",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0237": {
+      "id": "F0237",
+      "kind": "fact",
+      "label": "B · no — Ventas 2025 (k€): 820 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "D41",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0238": {
+      "id": "F0238",
+      "kind": "fact",
+      "label": "B · no — Alquiler / ventas (%): 9 PCT",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "E41",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0239": {
+      "id": "F0239",
+      "kind": "fact",
+      "label": "B · no — EBITDA 2025 (k€): -62 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "F41",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0240": {
+      "id": "F0240",
+      "kind": "fact",
+      "label": "B · no — Coste central asignado (k€): 90 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "G41",
+        "loc": "sheet Tiendas"
+      }
+    },
+    "F0241": {
+      "id": "F0241",
+      "kind": "fact",
+      "label": "A - alquiler alto — Tiendas: 22",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Resumen",
+        "range": "B2",
+        "loc": "sheet Resumen"
+      }
+    },
+    "F0242": {
+      "id": "F0242",
+      "kind": "fact",
+      "label": "A - alquiler alto — EBITDA 2025 (k€): -3,900 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Resumen",
+        "range": "C2",
+        "loc": "sheet Resumen"
+      }
+    },
+    "F0243": {
+      "id": "F0243",
+      "kind": "fact",
+      "label": "A - alquiler alto — Coste central asignado (k€): 1,980 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Resumen",
+        "range": "D2",
+        "loc": "sheet Resumen"
+      }
+    },
+    "F0244": {
+      "id": "F0244",
+      "kind": "fact",
+      "label": "B - aperturas 2023-2024 — Tiendas: 18",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Resumen",
+        "range": "B3",
+        "loc": "sheet Resumen"
+      }
+    },
+    "F0245": {
+      "id": "F0245",
+      "kind": "fact",
+      "label": "B - aperturas 2023-2024 — EBITDA 2025 (k€): -1,296 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Resumen",
+        "range": "C3",
+        "loc": "sheet Resumen"
+      }
+    },
+    "F0246": {
+      "id": "F0246",
+      "kind": "fact",
+      "label": "B - aperturas 2023-2024 — Coste central asignado (k€): 1,620 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Resumen",
+        "range": "D3",
+        "loc": "sheet Resumen"
+      }
+    },
+    "F0247": {
+      "id": "F0247",
+      "kind": "fact",
+      "label": "Total — Tiendas: 40",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Resumen",
+        "range": "B4",
+        "loc": "sheet Resumen"
+      }
+    },
+    "F0248": {
+      "id": "F0248",
+      "kind": "fact",
+      "label": "Total — EBITDA 2025 (k€): -5,196 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Resumen",
+        "range": "C4",
+        "loc": "sheet Resumen"
+      }
+    },
+    "F0249": {
+      "id": "F0249",
+      "kind": "fact",
+      "label": "Total — Coste central asignado (k€): 3,600 EUR_K",
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Resumen",
+        "range": "D4",
+        "loc": "sheet Resumen"
+      }
+    },
+    "S:informe_inmobiliario.pdf": {
+      "id": "S:informe_inmobiliario.pdf",
+      "kind": "source",
+      "label": "informe_inmobiliario.pdf"
+    },
+    "F0250": {
+      "id": "F0250",
+      "kind": "fact",
+      "label": "El alquiler de las tiendas del grupo A supone un 16% de sus ventas (incluidos gastos comunes), frente al 9% de media de la red.",
+      "source": {
+        "file": "informe_inmobiliario.pdf",
+        "loc": "p.1"
+      }
+    },
+    "F0251": {
+      "id": "F0251",
+      "kind": "fact",
+      "label": "15 contratos del grupo A tienen ventana de ruptura en 2026: cerrarlas cuesta 100.000 euros por tienda.",
+      "source": {
+        "file": "informe_inmobiliario.pdf",
+        "loc": "p.1"
+      }
+    },
+    "F0252": {
+      "id": "F0252",
+      "kind": "fact",
+      "label": "Cerrar una tienda sin ruptura cuesta 250.000 euros (penalización e indemnizaciones).",
+      "source": {
+        "file": "informe_inmobiliario.pdf",
+        "loc": "p.1"
+      }
+    },
+    "F0253": {
+      "id": "F0253",
+      "kind": "fact",
+      "label": "Sus ventas por metro cuadrado crecen un 11% al año.",
+      "source": {
+        "file": "informe_inmobiliario.pdf",
+        "loc": "p.1"
+      }
+    },
+    "S:propuesta_direccion_financiera.md": {
+      "id": "S:propuesta_direccion_financiera.md",
+      "kind": "source",
+      "label": "propuesta_direccion_financiera.md"
+    },
+    "F0254": {
+      "id": "F0254",
+      "kind": "fact",
+      "label": "Las 40 tiendas de proximidad perdieron 5,2 M€ de EBITDA en 2025.",
+      "source": {
+        "file": "propuesta_direccion_financiera.md",
+        "loc": "line 3"
+      }
+    },
+    "F0255": {
+      "id": "F0255",
+      "kind": "fact",
+      "label": "Proponemos cerrarlas todas en 2026: el EBITDA del grupo mejora en 5,2 M€.",
+      "source": {
+        "file": "propuesta_direccion_financiera.md",
+        "loc": "line 4"
+      }
+    },
+    "F0256": {
+      "id": "F0256",
+      "kind": "fact",
+      "label": "Coste de cierre estimado: 250 k€ por tienda, 10 M€ en total.",
+      "source": {
+        "file": "propuesta_direccion_financiera.md",
+        "loc": "line 5"
+      }
+    },
+    "S:computed": {
+      "id": "S:computed",
+      "kind": "source",
+      "label": "computed"
+    },
+    "C0001": {
+      "id": "C0001",
+      "kind": "derived_fact",
+      "label": "Mejora real de EBITDA si se cierran las 40 tiendas: pérdida reportada menos coste central que no desaparece",
+      "source": {
+        "file": "computed",
+        "loc": "abs(F0248) - F0249"
+      }
+    },
+    "C0002": {
+      "id": "C0002",
+      "kind": "derived_fact",
+      "label": "EBITDA del grupo A antes de coste central (pérdida de cuatro paredes)",
+      "source": {
+        "file": "computed",
+        "loc": "F0242 + F0243"
+      }
+    },
+    "C0003": {
+      "id": "C0003",
+      "kind": "derived_fact",
+      "label": "EBITDA del grupo B antes de coste central (contribución positiva)",
+      "source": {
+        "file": "computed",
+        "loc": "F0245 + F0246"
+      }
+    },
+    "C0004": {
+      "id": "C0004",
+      "kind": "derived_fact",
+      "label": "EBITDA antes de coste central por tienda A con ruptura en 2026",
+      "source": {
+        "file": "computed",
+        "loc": "F0005 + F0006"
+      }
+    },
+    "C0005": {
+      "id": "C0005",
+      "kind": "derived_fact",
+      "label": "EBITDA antes de coste central por tienda A sin ruptura",
+      "source": {
+        "file": "computed",
+        "loc": "F0095 + F0096"
+      }
+    },
+    "C0006": {
+      "id": "C0006",
+      "kind": "derived_fact",
+      "label": "EBITDA antes de coste central por tienda B abierta en 2023",
+      "source": {
+        "file": "computed",
+        "loc": "F0137 + F0138"
+      }
+    },
+    "C0007": {
+      "id": "C0007",
+      "kind": "derived_fact",
+      "label": "EBITDA antes de coste central por tienda B abierta en 2024",
+      "source": {
+        "file": "computed",
+        "loc": "F0197 + F0198"
+      }
+    },
+    "C0008": {
+      "id": "C0008",
+      "kind": "derived_fact",
+      "label": "Mejora anual de EBITDA al cerrar las 15 tiendas A con ruptura",
+      "source": {
+        "file": "computed",
+        "loc": "abs(C0004) * 15"
+      }
+    },
+    "C0009": {
+      "id": "C0009",
+      "kind": "fact",
+      "label": "Coste de cerrar las 15 tiendas A con ruptura en 2026 (100 k€ por tienda)",
+      "source": {
+        "file": "computed",
+        "loc": "15 * 100"
+      }
+    },
+    "C0010": {
+      "id": "C0010",
+      "kind": "fact",
+      "label": "Coste realista de cerrar las 40 tiendas: 15 con ruptura a 100 k€ y 25 sin ruptura a 250 k€",
+      "source": {
+        "file": "computed",
+        "loc": "15 * 100 + 25 * 250"
+      }
+    },
+    "C0011": {
+      "id": "C0011",
+      "kind": "derived_fact",
+      "label": "Sobreestimación del coste de cierre en la propuesta financiera (10 M€ frente a coste realista)",
+      "source": {
+        "file": "computed",
+        "loc": "10000 - C0010"
+      }
+    },
+    "C0012": {
+      "id": "C0012",
+      "kind": "derived_fact",
+      "label": "Años de recuperación del cierre de las 40 tiendas",
+      "source": {
+        "file": "computed",
+        "loc": "C0010 / C0001"
+      }
+    },
+    "C0013": {
+      "id": "C0013",
+      "kind": "derived_fact",
+      "label": "Años de recuperación del cierre de las 15 tiendas con ruptura",
+      "source": {
+        "file": "computed",
+        "loc": "C0009 / C0008"
+      }
+    },
+    "C0014": {
+      "id": "C0014",
+      "kind": "derived_fact",
+      "label": "Rebaja de alquiler necesaria para equilibrio de una tienda A sin ruptura, en puntos de ventas",
+      "source": {
+        "file": "computed",
+        "loc": "abs(C0005) / F0093 * 100"
+      }
+    },
+    "C0015": {
+      "id": "C0015",
+      "kind": "derived_fact",
+      "label": "Alquiler/ventas objetivo tras la rebaja para equilibrio de una tienda A sin ruptura",
+      "source": {
+        "file": "computed",
+        "loc": "F0094 - C0014"
+      }
+    },
+    "C0017": {
+      "id": "C0017",
+      "kind": "derived_fact",
+      "label": "Pérdida antes de coste central de las 2 tiendas A sin ruptura ni negociación",
+      "source": {
+        "file": "computed",
+        "loc": "abs(C0005) * 2"
+      }
+    },
+    "C0018": {
+      "id": "C0018",
+      "kind": "fact",
+      "label": "Coste de cerrar las 2 tiendas A sin ruptura ni negociación (250 k€ cada una)",
+      "source": {
+        "file": "computed",
+        "loc": "2 * 250"
+      }
+    },
+    "C0021": {
+      "id": "C0021",
+      "kind": "derived_fact",
+      "label": "Coste extra de cierre del plan de cerrar las 40 frente a cerrar solo las 15 con ruptura",
+      "source": {
+        "file": "computed",
+        "loc": "C0010 - C0009"
+      }
+    },
+    "C0022": {
+      "id": "C0022",
+      "kind": "fact",
+      "label": "Coste de cerrar las 22 tiendas del grupo A (15 con ruptura y 7 sin ruptura)",
+      "source": {
+        "file": "computed",
+        "loc": "15 * 100 + 7 * 250"
+      }
+    },
+    "H1": {
+      "id": "H1",
+      "kind": "hypothesis",
+      "label": "Cerrar las 40 tiendas mejora el EBITDA del grupo en 5,2 M€ (tesis de la dirección financiera)",
+      "status": "rejected"
+    },
+    "H2": {
+      "id": "H2",
+      "kind": "hypothesis",
+      "label": "Las pérdidas del grupo A son estructurales por un alquiler excesivo",
+      "status": "supported"
+    },
+    "H3": {
+      "id": "H3",
+      "kind": "hypothesis",
+      "label": "Las tiendas del grupo B son aperturas en maduración que ya cubren sus costes directos",
+      "status": "supported"
+    },
+    "H4": {
+      "id": "H4",
+      "kind": "hypothesis",
+      "label": "El coste de cierre es de 10 M€ (250 k€ por tienda)",
+      "status": "rejected"
+    },
+    "H5": {
+      "id": "H5",
+      "kind": "hypothesis",
+      "label": "Renegociar el alquiler puede llevar a equilibrio a las tiendas A sin ruptura",
+      "status": "unresolved"
+    },
+    "I1": {
+      "id": "I1",
+      "kind": "insight",
+      "label": "Cerrar las 40 tiendas mejora el EBITDA en 1.596 k€, no en 5.196 k€: 3.600 k€ son coste central asignado que se reparte entre el resto de la red."
+    },
+    "I2": {
+      "id": "I2",
+      "kind": "insight",
+      "label": "Toda la pérdida antes de coste central está en el grupo A (1.920 k€), con un alquiler del 14,5% de ventas sin gastos comunes y del 16% con ellos, frente al 9% de la red."
+    },
+    "I3": {
+      "id": "I3",
+      "kind": "insight",
+      "label": "El grupo B aporta 324 k€ antes de coste central (10 k€ por tienda de 2023 y 28 k€ por tienda de 2024) y sus ventas por m² crecen un 11% al año: cerrarlo empeora el EBITDA."
+    },
+    "I4": {
+      "id": "I4",
+      "kind": "insight",
+      "label": "Las 15 tiendas A con ruptura en 2026 pierden 100 k€ cada una antes de coste central: cerrarlas cuesta 1.500 k€ y mejora el EBITDA en 1.500 k€ al año, con recuperación en 1,0 años."
+    },
+    "I5": {
+      "id": "I5",
+      "kind": "insight",
+      "label": "El coste de cierre de la propuesta (10.000 k€) está sobrestimado en 2.250 k€: con la ruptura de 15 contratos el coste realista de cerrar las 40 es 7.750 k€, con recuperación de 4,9 años."
+    },
+    "I6": {
+      "id": "I6",
+      "kind": "insight",
+      "label": "Las 7 tiendas A sin ruptura pierden 60 k€ cada una antes de coste central; para equilibrio necesitan una rebaja de 5,2 puntos de ventas (alquiler al 9,3%), y 5 propietarios aceptan negociar: hasta 300 k€ de mejora."
+    },
+    "I7": {
+      "id": "I7",
+      "kind": "insight",
+      "label": "Las 2 tiendas A sin ruptura ni negociación pierden 120 k€ al año antes de coste central; cerrarlas cuesta 500 k€."
+    },
+    "I8": {
+      "id": "I8",
+      "kind": "insight",
+      "label": "Resolver las 22 tiendas A identifica hasta 1.920 k€ de mejora; la brecha de 3.276 k€ frente a la mejora prometida no se recupera cerrando tiendas: es coste central reasignado neto de la contribución de B."
+    },
+    "GT": {
+      "id": "GT",
+      "kind": "governing_thought",
+      "label": "Cerrar las 40 tiendas mejoraría el EBITDA en 1.596 k€, no en 5.196 k€, y costaría 7.750 k€; proponemos cerrar en 2026 solo las 15 tiendas A con ruptura (coste 1.500 k€, +1.500 k€ de EBITDA al año), renegociar el alquiler de las otras 7 A y mantener las 18 tiendas B, que ya aportan 324 k€."
+    },
+    "K1": {
+      "id": "K1",
+      "kind": "key_line",
+      "label": "La propuesta de cerrar las 40 tiendas promete 5.196 k€ pero solo mejora el EBITDA en 1.596 k€, con un coste realista de 7.750 k€ (no 10.000 k€) y recuperación en 4,9 años."
+    },
+    "K2": {
+      "id": "K2",
+      "kind": "key_line",
+      "label": "La pérdida real está en el alquiler de las 22 tiendas A (−1.920 k€ antes de coste central); las 18 tiendas B ya aportan 324 k€ y crecen un 11% al año."
+    },
+    "K3": {
+      "id": "K3",
+      "kind": "key_line",
+      "label": "Cerrar en 2026 las 15 tiendas A con ruptura (+1.500 k€ al año por 1.500 k€) y renegociar las 7 restantes (hasta 300 k€ más) captura hasta 1.920 k€, más que cerrar las 40."
+    },
+    "SL:S1": {
+      "id": "SL:S1",
+      "kind": "slide",
+      "label": "Tiendas de proximidad en pérdidas: qué cerrar y cuánto mejora realmente el EBITDA",
+      "priority": "core",
+      "reason": "Portada"
+    },
+    "SL:S2": {
+      "id": "SL:S2",
+      "kind": "slide",
+      "label": "Cerrar las 40 tiendas mejora el EBITDA en 1.596 k€, no en 5.196 k€: cerrar solo las 15 A con ruptura logra 1.500 k€ por 1.500 k€ de coste",
+      "priority": "core",
+      "reason": "El consejo necesita la respuesta y la petición antes del detalle"
+    },
+    "SL:S3": {
+      "id": "SL:S3",
+      "kind": "slide",
+      "label": "De la pérdida de 5.196 k€, 3.600 k€ son coste central que no desaparece: cerrar las 40 solo mejora el EBITDA en 1.596 k€",
+      "priority": "core",
+      "reason": "Es el error central de la propuesta y cambia la decisión"
+    },
+    "SL:S4": {
+      "id": "SL:S4",
+      "kind": "slide",
+      "label": "Cerrar las 40 cuesta 7.750 k€ (no 10.000 k€) y tarda 4,9 años en recuperarse",
+      "priority": "core",
+      "reason": "El retorno de la opción propuesta es lo que el consejo aprobaría"
+    },
+    "SL:S5": {
+      "id": "SL:S5",
+      "kind": "slide",
+      "label": "Toda la pérdida antes de coste central está en las 22 tiendas A (−1.920 k€), con alquiler del 14,5% de ventas frente al 9% de la red",
+      "priority": "core",
+      "reason": "Muestra que el problema es el alquiler de un grupo, no el formato"
+    },
+    "SL:S6": {
+      "id": "SL:S6",
+      "kind": "slide",
+      "label": "Las 18 tiendas B ya aportan 324 k€ antes de coste central y crecen un 11% al año: cerrarlas empeora el EBITDA",
+      "priority": "core",
+      "reason": "Rechazar el cierre de B es una de las peticiones al consejo"
+    },
+    "SL:S7": {
+      "id": "SL:S7",
+      "kind": "slide",
+      "label": "Cerrar solo las 15 A con ruptura logra +1.500 k€ al año por 1.500 k€ (recuperación en 1,0 años), frente a 7.750 k€ por cerrar las 40",
+      "priority": "core",
+      "reason": "Es la decisión que se pide aprobar"
+    },
+    "SL:S8": {
+      "id": "SL:S8",
+      "kind": "slide",
+      "label": "Si prosperan las negociaciones (supuesto: 5 propietarios aceptan rebaja), las 7 A restantes añaden hasta 420 k€; aun así, los 1.920 k€ identificados dejan 3.276 k€ de la promesa que solo puede venir del coste central",
+      "priority": "core",
+      "reason": "Cuantifica las palancas inciertas y fija la expectativa correcta"
+    },
+    "SL:S9": {
+      "id": "SL:S9",
+      "kind": "slide",
+      "label": "Aprobar hoy: cierre de 15 tiendas A por 1.500 k€, mandato de renegociación y no cerrar las 18 tiendas del grupo B",
+      "priority": "core",
+      "reason": "Cierre aprobable"
+    }
+  },
+  "edges": [
+    [
+      "A001",
+      "H5"
+    ],
+    [
+      "A001",
+      "I6"
+    ],
+    [
+      "A001",
+      "SL:S8"
+    ],
+    [
+      "C0001",
+      "C0012"
+    ],
+    [
+      "C0001",
+      "I1"
+    ],
+    [
+      "C0001",
+      "SL:S2"
+    ],
+    [
+      "C0001",
+      "SL:S3"
+    ],
+    [
+      "C0001",
+      "SL:S7"
+    ],
+    [
+      "C0002",
+      "H2"
+    ],
+    [
+      "C0002",
+      "I2"
+    ],
+    [
+      "C0002",
+      "SL:S5"
+    ],
+    [
+      "C0003",
+      "H3"
+    ],
+    [
+      "C0003",
+      "I3"
+    ],
+    [
+      "C0003",
+      "I8"
+    ],
+    [
+      "C0003",
+      "SL:S6"
+    ],
+    [
+      "C0003",
+      "SL:S9"
+    ],
+    [
+      "C0004",
+      "C0008"
+    ],
+    [
+      "C0004",
+      "H2"
+    ],
+    [
+      "C0004",
+      "I4"
+    ],
+    [
+      "C0005",
+      "C0014"
+    ],
+    [
+      "C0005",
+      "C0017"
+    ],
+    [
+      "C0005",
+      "H2"
+    ],
+    [
+      "C0005",
+      "I6"
+    ],
+    [
+      "C0006",
+      "H3"
+    ],
+    [
+      "C0006",
+      "I3"
+    ],
+    [
+      "C0006",
+      "SL:S6"
+    ],
+    [
+      "C0007",
+      "H3"
+    ],
+    [
+      "C0007",
+      "I3"
+    ],
+    [
+      "C0007",
+      "SL:S6"
+    ],
+    [
+      "C0008",
+      "C0013"
+    ],
+    [
+      "C0008",
+      "I4"
+    ],
+    [
+      "C0008",
+      "SL:S2"
+    ],
+    [
+      "C0008",
+      "SL:S7"
+    ],
+    [
+      "C0009",
+      "C0013"
+    ],
+    [
+      "C0009",
+      "C0021"
+    ],
+    [
+      "C0009",
+      "I4"
+    ],
+    [
+      "C0009",
+      "SL:S2"
+    ],
+    [
+      "C0009",
+      "SL:S7"
+    ],
+    [
+      "C0009",
+      "SL:S9"
+    ],
+    [
+      "C0010",
+      "C0011"
+    ],
+    [
+      "C0010",
+      "C0012"
+    ],
+    [
+      "C0010",
+      "C0021"
+    ],
+    [
+      "C0010",
+      "I5"
+    ],
+    [
+      "C0010",
+      "SL:S4"
+    ],
+    [
+      "C0010",
+      "SL:S7"
+    ],
+    [
+      "C0011",
+      "I5"
+    ],
+    [
+      "C0011",
+      "SL:S4"
+    ],
+    [
+      "C0012",
+      "I5"
+    ],
+    [
+      "C0012",
+      "SL:S4"
+    ],
+    [
+      "C0013",
+      "I4"
+    ],
+    [
+      "C0013",
+      "SL:S7"
+    ],
+    [
+      "C0014",
+      "C0015"
+    ],
+    [
+      "C0014",
+      "H5"
+    ],
+    [
+      "C0014",
+      "I6"
+    ],
+    [
+      "C0014",
+      "SL:S8"
+    ],
+    [
+      "C0015",
+      "H5"
+    ],
+    [
+      "C0015",
+      "I6"
+    ],
+    [
+      "C0015",
+      "SL:S8"
+    ],
+    [
+      "C0016",
+      "I6"
+    ],
+    [
+      "C0016",
+      "SL:S8"
+    ],
+    [
+      "C0016",
+      "SL:S9"
+    ],
+    [
+      "C0017",
+      "I7"
+    ],
+    [
+      "C0017",
+      "SL:S8"
+    ],
+    [
+      "C0018",
+      "I7"
+    ],
+    [
+      "C0019",
+      "I8"
+    ],
+    [
+      "C0019",
+      "SL:S8"
+    ],
+    [
+      "C0020",
+      "I8"
+    ],
+    [
+      "C0020",
+      "SL:S8"
+    ],
+    [
+      "C0023",
+      "SL:S8"
+    ],
+    [
+      "F0005",
+      "C0004"
+    ],
+    [
+      "F0006",
+      "C0004"
+    ],
+    [
+      "F0093",
+      "C0014"
+    ],
+    [
+      "F0094",
+      "C0015"
+    ],
+    [
+      "F0094",
+      "H2"
+    ],
+    [
+      "F0094",
+      "I2"
+    ],
+    [
+      "F0094",
+      "SL:S5"
+    ],
+    [
+      "F0095",
+      "C0005"
+    ],
+    [
+      "F0096",
+      "C0005"
+    ],
+    [
+      "F0136",
+      "H3"
+    ],
+    [
+      "F0137",
+      "C0006"
+    ],
+    [
+      "F0138",
+      "C0006"
+    ],
+    [
+      "F0197",
+      "C0007"
+    ],
+    [
+      "F0198",
+      "C0007"
+    ],
+    [
+      "F0241",
+      "I2"
+    ],
+    [
+      "F0241",
+      "I4"
+    ],
+    [
+      "F0241",
+      "I8"
+    ],
+    [
+      "F0241",
+      "SL:S5"
+    ],
+    [
+      "F0241",
+      "SL:S7"
+    ],
+    [
+      "F0241",
+      "SL:S8"
+    ],
+    [
+      "F0241",
+      "SL:S9"
+    ],
+    [
+      "F0242",
+      "C0002"
+    ],
+    [
+      "F0243",
+      "C0002"
+    ],
+    [
+      "F0244",
+      "I3"
+    ],
+    [
+      "F0244",
+      "SL:S6"
+    ],
+    [
+      "F0244",
+      "SL:S9"
+    ],
+    [
+      "F0245",
+      "C0003"
+    ],
+    [
+      "F0246",
+      "C0003"
+    ],
+    [
+      "F0247",
+      "I1"
+    ],
+    [
+      "F0247",
+      "I5"
+    ],
+    [
+      "F0247",
+      "SL:S2"
+    ],
+    [
+      "F0247",
+      "SL:S3"
+    ],
+    [
+      "F0247",
+      "SL:S4"
+    ],
+    [
+      "F0247",
+      "SL:S7"
+    ],
+    [
+      "F0248",
+      "C0001"
+    ],
+    [
+      "F0248",
+      "H1"
+    ],
+    [
+      "F0248",
+      "I1"
+    ],
+    [
+      "F0248",
+      "I8"
+    ],
+    [
+      "F0248",
+      "SL:S2"
+    ],
+    [
+      "F0248",
+      "SL:S3"
+    ],
+    [
+      "F0249",
+      "C0001"
+    ],
+    [
+      "F0249",
+      "I1"
+    ],
+    [
+      "F0249",
+      "I8"
+    ],
+    [
+      "F0249",
+      "SL:S3"
+    ],
+    [
+      "F0250",
+      "H2"
+    ],
+    [
+      "F0250",
+      "H5"
+    ],
+    [
+      "F0250",
+      "I2"
+    ],
+    [
+      "F0250",
+      "I6"
+    ],
+    [
+      "F0250",
+      "SL:S5"
+    ],
+    [
+      "F0251",
+      "I4"
+    ],
+    [
+      "F0251",
+      "I5"
+    ],
+    [
+      "F0252",
+      "I5"
+    ],
+    [
+      "F0253",
+      "H3"
+    ],
+    [
+      "F0253",
+      "I3"
+    ],
+    [
+      "F0253",
+      "SL:S6"
+    ],
+    [
+      "F0254",
+      "H1"
+    ],
+    [
+      "F0255",
+      "H1"
+    ],
+    [
+      "F0256",
+      "H4"
+    ],
+    [
+      "F0256",
+      "I5"
+    ],
+    [
+      "F0256",
+      "SL:S4"
+    ],
+    [
+      "H2",
+      "I2"
+    ],
+    [
+      "H2",
+      "I4"
+    ],
+    [
+      "H2",
+      "I7"
+    ],
+    [
+      "H2",
+      "I8"
+    ],
+    [
+      "H3",
+      "I3"
+    ],
+    [
+      "I1",
+      "K1"
+    ],
+    [
+      "I1",
+      "SL:S2"
+    ],
+    [
+      "I1",
+      "SL:S3"
+    ],
+    [
+      "I2",
+      "K2"
+    ],
+    [
+      "I2",
+      "SL:S5"
+    ],
+    [
+      "I3",
+      "K2"
+    ],
+    [
+      "I3",
+      "SL:S6"
+    ],
+    [
+      "I3",
+      "SL:S9"
+    ],
+    [
+      "I4",
+      "K3"
+    ],
+    [
+      "I4",
+      "SL:S2"
+    ],
+    [
+      "I4",
+      "SL:S7"
+    ],
+    [
+      "I4",
+      "SL:S9"
+    ],
+    [
+      "I5",
+      "K1"
+    ],
+    [
+      "I5",
+      "SL:S4"
+    ],
+    [
+      "I5",
+      "SL:S7"
+    ],
+    [
+      "I6",
+      "K3"
+    ],
+    [
+      "I6",
+      "SL:S8"
+    ],
+    [
+      "I6",
+      "SL:S9"
+    ],
+    [
+      "I7",
+      "K3"
+    ],
+    [
+      "I7",
+      "SL:S8"
+    ],
+    [
+      "I8",
+      "K1"
+    ],
+    [
+      "I8",
+      "K3"
+    ],
+    [
+      "I8",
+      "SL:S8"
+    ],
+    [
+      "K1",
+      "GT"
+    ],
+    [
+      "K1",
+      "SL:S3"
+    ],
+    [
+      "K1",
+      "SL:S4"
+    ],
+    [
+      "K2",
+      "GT"
+    ],
+    [
+      "K2",
+      "SL:S5"
+    ],
+    [
+      "K2",
+      "SL:S6"
+    ],
+    [
+      "K3",
+      "GT"
+    ],
+    [
+      "K3",
+      "SL:S7"
+    ],
+    [
+      "K3",
+      "SL:S8"
+    ],
+    [
+      "S:computed",
+      "C0001"
+    ],
+    [
+      "S:computed",
+      "C0002"
+    ],
+    [
+      "S:computed",
+      "C0003"
+    ],
+    [
+      "S:computed",
+      "C0004"
+    ],
+    [
+      "S:computed",
+      "C0005"
+    ],
+    [
+      "S:computed",
+      "C0006"
+    ],
+    [
+      "S:computed",
+      "C0007"
+    ],
+    [
+      "S:computed",
+      "C0008"
+    ],
+    [
+      "S:computed",
+      "C0009"
+    ],
+    [
+      "S:computed",
+      "C0010"
+    ],
+    [
+      "S:computed",
+      "C0011"
+    ],
+    [
+      "S:computed",
+      "C0012"
+    ],
+    [
+      "S:computed",
+      "C0013"
+    ],
+    [
+      "S:computed",
+      "C0014"
+    ],
+    [
+      "S:computed",
+      "C0015"
+    ],
+    [
+      "S:computed",
+      "C0017"
+    ],
+    [
+      "S:computed",
+      "C0018"
+    ],
+    [
+      "S:computed",
+      "C0021"
+    ],
+    [
+      "S:computed",
+      "C0022"
+    ],
+    [
+      "S:informe_inmobiliario.pdf",
+      "F0250"
+    ],
+    [
+      "S:informe_inmobiliario.pdf",
+      "F0251"
+    ],
+    [
+      "S:informe_inmobiliario.pdf",
+      "F0252"
+    ],
+    [
+      "S:informe_inmobiliario.pdf",
+      "F0253"
+    ],
+    [
+      "S:propuesta_direccion_financiera.md",
+      "F0254"
+    ],
+    [
+      "S:propuesta_direccion_financiera.md",
+      "F0255"
+    ],
+    [
+      "S:propuesta_direccion_financiera.md",
+      "F0256"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0001"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0002"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0003"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0004"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0005"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0006"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0007"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0008"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0009"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0010"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0011"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0012"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0013"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0014"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0015"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0016"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0017"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0018"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0019"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0020"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0021"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0022"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0023"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0024"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0025"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0026"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0027"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0028"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0029"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0030"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0031"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0032"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0033"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0034"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0035"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0036"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0037"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0038"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0039"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0040"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0041"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0042"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0043"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0044"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0045"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0046"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0047"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0048"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0049"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0050"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0051"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0052"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0053"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0054"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0055"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0056"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0057"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0058"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0059"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0060"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0061"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0062"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0063"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0064"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0065"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0066"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0067"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0068"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0069"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0070"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0071"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0072"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0073"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0074"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0075"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0076"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0077"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0078"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0079"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0080"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0081"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0082"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0083"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0084"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0085"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0086"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0087"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0088"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0089"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0090"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0091"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0092"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0093"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0094"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0095"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0096"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0097"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0098"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0099"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0100"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0101"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0102"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0103"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0104"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0105"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0106"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0107"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0108"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0109"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0110"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0111"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0112"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0113"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0114"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0115"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0116"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0117"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0118"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0119"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0120"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0121"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0122"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0123"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0124"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0125"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0126"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0127"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0128"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0129"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0130"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0131"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0132"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0133"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0134"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0135"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0136"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0137"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0138"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0139"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0140"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0141"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0142"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0143"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0144"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0145"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0146"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0147"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0148"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0149"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0150"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0151"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0152"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0153"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0154"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0155"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0156"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0157"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0158"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0159"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0160"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0161"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0162"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0163"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0164"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0165"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0166"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0167"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0168"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0169"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0170"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0171"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0172"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0173"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0174"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0175"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0176"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0177"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0178"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0179"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0180"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0181"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0182"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0183"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0184"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0185"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0186"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0187"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0188"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0189"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0190"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0191"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0192"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0193"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0194"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0195"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0196"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0197"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0198"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0199"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0200"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0201"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0202"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0203"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0204"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0205"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0206"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0207"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0208"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0209"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0210"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0211"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0212"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0213"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0214"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0215"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0216"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0217"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0218"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0219"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0220"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0221"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0222"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0223"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0224"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0225"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0226"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0227"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0228"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0229"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0230"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0231"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0232"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0233"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0234"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0235"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0236"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0237"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0238"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0239"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0240"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0241"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0242"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0243"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0244"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0245"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0246"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0247"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0248"
+    ],
+    [
+      "S:tiendas_proximidad_2025.xlsx",
+      "F0249"
+    ]
+  ]
+}

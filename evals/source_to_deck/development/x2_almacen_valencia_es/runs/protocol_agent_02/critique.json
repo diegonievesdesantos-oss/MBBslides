@@ -1,0 +1,94 @@
+{
+ "findings": [
+  {
+   "critic": "FACT CHECKER",
+   "finding": "Los datos de transporte, turno adicional, horas extra y previsión 2026 (hoja Notas) no fueron extraídos como hechos",
+   "artifact": "computed_facts.json",
+   "ref": "A001-A005",
+   "severity": "high",
+   "action": "Registrados como supuestos citando hoja y fila de almacenes_2025.xlsx; usados solo vía cálculos",
+   "resolved": true
+  },
+  {
+   "critic": "FACT CHECKER",
+   "finding": "El ingreso en riesgo multiplica tres porcentajes de la misma fuente; puede leerse como pérdida cierta",
+   "artifact": "insights.json",
+   "ref": "I4",
+   "severity": "medium",
+   "action": "Etiquetado como cota superior ('hasta') con validación con clientes",
+   "resolved": true
+  },
+  {
+   "critic": "PARTNER REVIEW",
+   "finding": "Rechazar sin alternativa deja al consejo sin respuesta a '¿qué hacemos?'",
+   "artifact": "storyline.json",
+   "ref": "K3",
+   "severity": "high",
+   "action": "Añadida opción de renovación del alquiler con plazo (diciembre de 2026) y petición de aprobación",
+   "resolved": true
+  },
+  {
+   "critic": "PARTNER REVIEW",
+   "finding": "El objetivo de 4,1 M€ no se alcanza con ninguna palanca: brecha de 3,8 M€",
+   "artifact": "storyline.json",
+   "ref": "decision.gap",
+   "severity": "medium",
+   "action": "Se declara abiertamente que la brecha no es real (era coste bruto) y se encarga un plan de eficiencia con objetivo propio",
+   "resolved": true
+  },
+  {
+   "critic": "RED TEAM",
+   "finding": "Con un turno adicional el umbral del 85% podría recalcularse y no habría prima de horas extra: el cierre ahorraría 0,1 M€",
+   "artifact": "insights.json",
+   "ref": "I1",
+   "severity": "medium",
+   "action": "Se usa el mejor caso (0,1 M€) en la idea principal; la conclusión se mantiene porque 0,1 < 0,3 de la renovación y el payback es de 32 años",
+   "resolved": true
+  },
+  {
+   "critic": "RED TEAM",
+   "finding": "Si el propietario retira la oferta del 25%, la opción elegida pierde su ahorro",
+   "artifact": "storyline.json",
+   "ref": "decision.gates",
+   "severity": "medium",
+   "action": "Hito de firma antes del vencimiento; aun sin descuento, mantener Valencia (O3) domina al cierre",
+   "resolved": true
+  },
+  {
+   "critic": "EDITOR",
+   "finding": "S4 (capacidad) y S3 (economía) podrían fusionarse",
+   "artifact": "deck_plan.json",
+   "ref": "S4",
+   "severity": "low",
+   "action": "Se mantienen separadas: refutan dos afirmaciones distintas de la propuesta; 8 diapositivas, dentro del máximo de 9",
+   "resolved": true
+  },
+  {
+   "critic": "EDITOR",
+   "finding": "Rotación de plantilla y auditoría de Sevilla no aportan a la decisión",
+   "artifact": "insights.json",
+   "ref": "I6",
+   "severity": "low",
+   "action": "Omitidas del deck",
+   "resolved": true
+  },
+  {
+   "critic": "DATA-VIZ REVIEW",
+   "finding": "El puente de 4,1 a 0,1 M€ necesita cascada; el riesgo de servicio, embudo 74 → 25,2 → 10,1 → 2,2 M€",
+   "artifact": "deck_plan.json",
+   "ref": "S3,S6",
+   "severity": "low",
+   "action": "Arquetipos waterfall y funnel asignados; tabla de opciones en S7",
+   "resolved": true
+  },
+  {
+   "critic": "FACT CHECKER",
+   "finding": "ASSUMPTION_IN_HEADLINE en S2–S5: las cifras de transporte (1,9 M€), turno (0,6 M€) y previsión (+6%) proceden de la hoja Notas de almacenes_2025.xlsx, registradas como supuestos A001–A005 porque no se extrajeron como hechos",
+   "artifact": "deck_plan.json",
+   "ref": "S2,S3,S4,S5",
+   "severity": "low",
+   "action": "Titulares marcados como 'estimado'; cada diapositiva llevará nota de fuente 'almacenes_2025.xlsx, hoja Notas'. No es un supuesto del equipo sino un dato de Operaciones sin extracción automática",
+   "resolved": true
+  }
+ ]
+}

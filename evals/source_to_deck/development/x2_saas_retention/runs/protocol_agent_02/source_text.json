@@ -1,0 +1,77 @@
+{
+  "protocol": "1.1",
+  "blocks": [
+    {
+      "source": "board_pack_Q4_2025.pdf",
+      "loc": "p.1",
+      "kind": "text",
+      "text": "Board pack Q4 2025 - extract."
+    },
+    {
+      "source": "board_pack_Q4_2025.pdf",
+      "loc": "p.1",
+      "kind": "text",
+      "text": "CFO: ARR closed 2025 at 56.8 EUR M, up 9.2%, against 25% growth in 2024."
+    },
+    {
+      "source": "board_pack_Q4_2025.pdf",
+      "loc": "p.1",
+      "kind": "text",
+      "text": "CRO: growth slowed because a new competitor is undercutting us on price. We propose to hire 30 account executives in Q1 2026 (3.6 EUR M per year fully loaded), which will add 9 EUR M of new ARR in 2026."
+    },
+    {
+      "source": "board_pack_Q4_2025.pdf",
+      "loc": "p.1",
+      "kind": "text",
+      "text": "Marketing: website traffic rose 31% in 2025 and the brand was shortlisted for two industry awards."
+    },
+    {
+      "source": "board_pack_Q4_2025.pdf",
+      "loc": "p.1",
+      "kind": "text",
+      "text": "HR: engineering headcount grew from 88 to 97."
+    },
+    {
+      "source": "customer_success_notes.md",
+      "loc": "line 1",
+      "kind": "heading",
+      "text": "Customer success — notes for the planning cycle"
+    },
+    {
+      "source": "customer_success_notes.md",
+      "loc": "line 3",
+      "kind": "text",
+      "text": "The onboarding team was reduced from 14 to 6 people in February 2025 (saving 0.8 EUR M per year)."
+    },
+    {
+      "source": "customer_success_notes.md",
+      "loc": "line 4",
+      "kind": "text",
+      "text": "Median time to first value rose from 21 days in 2024 to 48 days in 2025."
+    },
+    {
+      "source": "customer_success_notes.md",
+      "loc": "line 5",
+      "kind": "text",
+      "text": "In 2024, first-year customers churned 12%."
+    },
+    {
+      "source": "customer_success_notes.md",
+      "loc": "line 6",
+      "kind": "text",
+      "text": "Exit interviews 2025 (64 churned customers): 58% say they never fully implemented the product, 17% moved to a competitor, 14% cite price."
+    },
+    {
+      "source": "customer_success_notes.md",
+      "loc": "line 7",
+      "kind": "text",
+      "text": "New account executives reach full productivity (300 EUR k of new ARR per year) after 9 months."
+    },
+    {
+      "source": "customer_success_notes.md",
+      "loc": "line 8",
+      "kind": "text",
+      "text": "The support ticket backlog was cleared in November."
+    }
+  ]
+}

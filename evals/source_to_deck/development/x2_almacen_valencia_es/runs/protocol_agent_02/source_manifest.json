@@ -1,0 +1,20 @@
+{
+  "protocol": "1.1",
+  "sources": [
+    {
+      "file": "almacenes_2025.xlsx",
+      "sha256": "99c2fa12efdc73067dd93b03900c258d760a4e2cec73ef406c27083f022c5983",
+      "bytes": 6500
+    },
+    {
+      "file": "informe_finanzas_red.pdf",
+      "sha256": "e937c0bdc51fbee0fbc168134a10c4575eb579dd78827326effa51d2924299e6",
+      "bytes": 2695
+    },
+    {
+      "file": "propuesta_operaciones.md",
+      "sha256": "431ef5255b19fbca48141967760c1475815bf93c36fe168445a76cc20e7ba08f",
+      "bytes": 418
+    }
+  ]
+}

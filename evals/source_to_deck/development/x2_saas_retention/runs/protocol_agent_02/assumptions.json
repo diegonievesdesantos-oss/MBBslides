@@ -1,0 +1,43 @@
+{
+ "assumptions": [
+  {
+   "id": "A001",
+   "statement": "An account executive hired in Q1 2026 delivers the equivalent of 6 fully productive months in 2026 (average start mid-February, linear ramp to full productivity over 9 months: 1.5 full months + 9 ramp months at 50%)",
+   "values": [
+    {
+     "value": 6,
+     "unit": "MONTHS"
+    }
+   ],
+   "rationale": "The CS notes give 9 months to full productivity (F0065) but no ramp curve or start dates; a linear ramp from a mid-Q1 start is the neutral reading and is generous versus a back-loaded hiring plan",
+   "owner": "CRO with CFO",
+   "validate": "Actual start dates and month-by-month new ARR of the 2025 AE hires, before the wave-1 offer letters"
+  },
+  {
+   "id": "A002",
+   "statement": "The first-year cohort entering 2026 carries about the same ARR at risk as the 2025 first-year cohort (\u20ac18.2M), so restoring the 2024 first-year churn rate of 12% saves about the same \u20ac2.5M",
+   "values": [
+    {
+     "value": 18.2,
+     "unit": "EUR_M"
+    }
+   ],
+   "rationale": "New ARR was flat (9.4 to \u20ac9.6M), so the cohort size should be similar; the effect is an upper bound because onboarding restored in Q1 helps the 2025 cohort only partly",
+   "owner": "VP Customer Success",
+   "validate": "Time to first value and 90-day churn of the Q1-Q2 2026 cohort, reviewed at the June board"
+  },
+  {
+   "id": "A003",
+   "statement": "First hiring wave sized at 10 account executives (one third of the CRO request), a decision parameter rather than a data point",
+   "values": [
+    {
+     "value": 10,
+     "unit": "COUNT"
+    }
+   ],
+   "rationale": "Keeps new-logo capacity growing while the onboarding team is rebuilt; no source shows that sales capacity bound 2025 growth (H4 unresolved), so the remaining 20 are held behind gate G1",
+   "owner": "CRO with CFO",
+   "validate": "Gate G1 at the June 2026 board decides wave 2"
+  }
+ ]
+}

@@ -1,0 +1,114 @@
+{
+ "insights": [
+  {
+   "id": "I1",
+   "statement": "Los 4,1 M€ de Operaciones son el coste bruto de Valencia, no un ahorro: al trasladar 1,5 M€ de coste variable a Madrid y sumar 1,9 M€ de transporte y 0,6 M€ de turno adicional, el cierre ahorra como máximo 0,1 M€ al año, y −0,18 M€ si Madrid paga horas extra.",
+   "facts": [
+    "F0042",
+    "C0001",
+    "C0004",
+    "A001",
+    "A002",
+    "C0005",
+    "C0006",
+    "C0007"
+   ],
+   "hypotheses": [],
+   "refutes": [
+    "H1"
+   ],
+   "materiality": "high",
+   "decision_relevance": "Elimina el caso económico de la propuesta que el consejo debe aprobar o rechazar.",
+   "caveat": "El rango depende de si el umbral del 85% de horas extra se recalcula con el turno adicional (A004)."
+  },
+  {
+   "id": "I2",
+   "statement": "Madrid no puede absorber Levante con su capacidad actual: tiene 300 mil pedidos libres frente a 375 mil de Valencia, le faltan 75 mil, y con la previsión de +6% llegaría en 2026 al 88% de utilización incluso sin Levante y al 97% con Levante y turno adicional.",
+   "facts": [
+    "F0023",
+    "F0026",
+    "C0003",
+    "A005",
+    "C0020",
+    "C0016",
+    "C0017",
+    "C0018"
+   ],
+   "hypotheses": [],
+   "refutes": [
+    "H2"
+   ],
+   "materiality": "high",
+   "decision_relevance": "El cierre no es viable sin inversión en capacidad y dejaría a la red sin holgura en 2026.",
+   "caveat": "La previsión de +6% es un dato previsto, no real."
+  },
+  {
+   "id": "I3",
+   "statement": "El cierre cuesta 3,2 M€, no 1,5 M€: Operaciones omite la penalización del alquiler (1,7 M€ de diferencia), y con un ahorro neto de 0,1 M€ al año se tardarían 32 años en recuperarlo.",
+   "facts": [
+    "F0033",
+    "F0034",
+    "F0044",
+    "C0012",
+    "C0005",
+    "C0013"
+   ],
+   "hypotheses": [],
+   "refutes": [
+    "H3"
+   ],
+   "materiality": "high",
+   "decision_relevance": "Aun en el mejor caso, la inversión de cierre no se recupera en el horizonte de decisión."
+  },
+  {
+   "id": "I4",
+   "statement": "El cierre pone en riesgo el servicio: el 34% de los pedidos de Levante pasaría de 24 h a 48 h, y con el 40% de esos clientes dispuesto a plantearse cambiar, hay hasta 10,1 M€ de ingresos y 2,2 M€ de margen al año en riesgo, más que cualquier ahorro operativo del cierre.",
+   "facts": [
+    "F0037",
+    "F0039",
+    "F0040",
+    "F0038",
+    "C0008",
+    "C0009",
+    "C0010",
+    "C0011"
+   ],
+   "hypotheses": [],
+   "refutes": [
+    "H4"
+   ],
+   "materiality": "high",
+   "decision_relevance": "El riesgo comercial supera al ahorro: en el escenario de pérdida, el cierre resta 2,1 M€ al año.",
+   "caveat": "Cota superior: 'se plantearía cambiar' no equivale a cambiar; validar con los 20 mayores clientes de Levante."
+  },
+  {
+   "id": "I5",
+   "statement": "La alternativa está en el alquiler: vence en diciembre de 2026 y el propietario ofrece renovar cinco años con un 25% de descuento, lo que ahorra 0,3 M€ al año (1,5 M€ en cinco años), 0,2 M€ más al año que el mejor caso del cierre, sin coste de cierre ni riesgo de servicio.",
+   "facts": [
+    "F0035",
+    "F0036",
+    "C0014",
+    "C0015",
+    "C0021",
+    "C0005",
+    "C0022"
+   ],
+   "hypotheses": [
+    "H5"
+   ],
+   "materiality": "high",
+   "decision_relevance": "Da al consejo una opción aprobable hoy y con plazo: firmar antes del vencimiento.",
+   "caveat": "Hay que confirmar por escrito las condiciones de la oferta del propietario."
+  },
+  {
+   "id": "I6",
+   "statement": "La rotación de la plantilla de almacén (11% en 2025 frente a 9% en 2024) y la auditoría de Sevilla no informan la decisión sobre Valencia.",
+   "facts": [
+    "F0041"
+   ],
+   "hypotheses": [],
+   "materiality": "low",
+   "decision_relevance": "Se excluyen del argumento para no distraer al consejo."
+  }
+ ]
+}

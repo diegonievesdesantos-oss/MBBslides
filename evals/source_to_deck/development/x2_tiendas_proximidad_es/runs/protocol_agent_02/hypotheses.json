@@ -1,0 +1,84 @@
+{
+ "protocol": "1.1",
+ "hypotheses": [
+  {
+   "id": "H1",
+   "statement": "Cerrar las 40 tiendas mejora el EBITDA del grupo en 5,2 M€ (tesis de la dirección financiera)",
+   "status": "rejected",
+   "supporting_facts": [
+    "F0254",
+    "F0255",
+    "F0248"
+   ],
+   "contradicting_facts": [
+    "F0249",
+    "C0001",
+    "C0003"
+   ],
+   "confidence": 0.9,
+   "implication": "La mejora real de cerrar las 40 es 1.596 k€: 3.600 k€ de coste central se reasignan al resto de la red."
+  },
+  {
+   "id": "H2",
+   "statement": "Las pérdidas del grupo A son estructurales por un alquiler excesivo",
+   "status": "supported",
+   "supporting_facts": [
+    "F0250",
+    "F0094",
+    "C0002",
+    "C0004",
+    "C0005"
+   ],
+   "contradicting_facts": [],
+   "confidence": 0.8,
+   "implication": "El grupo A pierde 1.920 k€ antes de coste central: hay que cerrar o renegociar alquiler."
+  },
+  {
+   "id": "H3",
+   "statement": "Las tiendas del grupo B son aperturas en maduración que ya cubren sus costes directos",
+   "status": "supported",
+   "supporting_facts": [
+    "C0003",
+    "C0006",
+    "C0007",
+    "F0253",
+    "F0136"
+   ],
+   "contradicting_facts": [
+    "F0245"
+   ],
+   "confidence": 0.75,
+   "rationale": "El EBITDA negativo de B (F0245) se debe íntegramente al coste central asignado: antes de él aportan 324 k€.",
+   "implication": "Cerrar B destruiría 324 k€ de EBITDA al año y costaría 250 k€ por tienda."
+  },
+  {
+   "id": "H4",
+   "statement": "El coste de cierre es de 10 M€ (250 k€ por tienda)",
+   "status": "rejected",
+   "supporting_facts": [
+    "F0256"
+   ],
+   "contradicting_facts": [
+    "F0251",
+    "F0252",
+    "C0010"
+   ],
+   "confidence": 0.85,
+   "implication": "Con la ventana de ruptura de 15 contratos, el coste realista de cerrar las 40 es 7.750 k€, y cerrar las 15 cuesta 1.500 k€."
+  },
+  {
+   "id": "H5",
+   "statement": "Renegociar el alquiler puede llevar a equilibrio a las tiendas A sin ruptura",
+   "status": "unresolved",
+   "supporting_facts": [
+    "A001",
+    "C0014",
+    "C0015",
+    "F0250"
+   ],
+   "contradicting_facts": [],
+   "confidence": 0.5,
+   "implication": "Hace falta una rebaja de 5,2 puntos de ventas (alquiler al 9,3%, cerca del 9% de la red); la aceptación a negociar no garantiza la rebaja."
+  }
+ ]
+}

@@ -1,0 +1,5654 @@
+{
+  "protocol": "1.1",
+  "facts": [
+    {
+      "id": "F0001",
+      "claim": "A · sí — Tienda: 1",
+      "values": [
+        {
+          "value": 1.0,
+          "unit": "",
+          "period": null,
+          "basis": null,
+          "label": "A · sí",
+          "column": "Tienda"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "A2",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0002",
+      "claim": "A · sí — Año de apertura: 2,014 YEARS",
+      "values": [
+        {
+          "value": 2014.0,
+          "unit": "YEARS",
+          "period": null,
+          "basis": null,
+          "label": "A · sí",
+          "column": "Año de apertura"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "C2",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0003",
+      "claim": "A · sí — Ventas 2025 (k€): 1,100 EUR_K",
+      "values": [
+        {
+          "value": 1100.0,
+          "unit": "EUR_K",
+          "period": "2025",
+          "basis": "actual",
+          "label": "A · sí",
+          "column": "Ventas 2025 (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "D2",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0004",
+      "claim": "A · sí — Alquiler / ventas (%): 14.5 PCT",
+      "values": [
+        {
+          "value": 14.5,
+          "unit": "PCT",
+          "period": null,
+          "basis": null,
+          "label": "A · sí",
+          "column": "Alquiler / ventas (%)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "E2",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0005",
+      "claim": "A · sí — EBITDA 2025 (k€): -190 EUR_K",
+      "values": [
+        {
+          "value": -190.0,
+          "unit": "EUR_K",
+          "period": "2025",
+          "basis": "actual",
+          "label": "A · sí",
+          "column": "EBITDA 2025 (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "F2",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0006",
+      "claim": "A · sí — Coste central asignado (k€): 90 EUR_K",
+      "values": [
+        {
+          "value": 90.0,
+          "unit": "EUR_K",
+          "period": null,
+          "basis": null,
+          "label": "A · sí",
+          "column": "Coste central asignado (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "G2",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0007",
+      "claim": "A · sí — Tienda: 2",
+      "values": [
+        {
+          "value": 2.0,
+          "unit": "",
+          "period": null,
+          "basis": null,
+          "label": "A · sí",
+          "column": "Tienda"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "A3",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0008",
+      "claim": "A · sí — Año de apertura: 2,015 YEARS",
+      "values": [
+        {
+          "value": 2015.0,
+          "unit": "YEARS",
+          "period": null,
+          "basis": null,
+          "label": "A · sí",
+          "column": "Año de apertura"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "C3",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0009",
+      "claim": "A · sí — Ventas 2025 (k€): 1,100 EUR_K",
+      "values": [
+        {
+          "value": 1100.0,
+          "unit": "EUR_K",
+          "period": "2025",
+          "basis": "actual",
+          "label": "A · sí",
+          "column": "Ventas 2025 (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "D3",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0010",
+      "claim": "A · sí — Alquiler / ventas (%): 14.5 PCT",
+      "values": [
+        {
+          "value": 14.5,
+          "unit": "PCT",
+          "period": null,
+          "basis": null,
+          "label": "A · sí",
+          "column": "Alquiler / ventas (%)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "E3",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0011",
+      "claim": "A · sí — EBITDA 2025 (k€): -190 EUR_K",
+      "values": [
+        {
+          "value": -190.0,
+          "unit": "EUR_K",
+          "period": "2025",
+          "basis": "actual",
+          "label": "A · sí",
+          "column": "EBITDA 2025 (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "F3",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0012",
+      "claim": "A · sí — Coste central asignado (k€): 90 EUR_K",
+      "values": [
+        {
+          "value": 90.0,
+          "unit": "EUR_K",
+          "period": null,
+          "basis": null,
+          "label": "A · sí",
+          "column": "Coste central asignado (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "G3",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0013",
+      "claim": "A · sí — Tienda: 3",
+      "values": [
+        {
+          "value": 3.0,
+          "unit": "",
+          "period": null,
+          "basis": null,
+          "label": "A · sí",
+          "column": "Tienda"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "A4",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0014",
+      "claim": "A · sí — Año de apertura: 2,016 YEARS",
+      "values": [
+        {
+          "value": 2016.0,
+          "unit": "YEARS",
+          "period": null,
+          "basis": null,
+          "label": "A · sí",
+          "column": "Año de apertura"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "C4",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0015",
+      "claim": "A · sí — Ventas 2025 (k€): 1,100 EUR_K",
+      "values": [
+        {
+          "value": 1100.0,
+          "unit": "EUR_K",
+          "period": "2025",
+          "basis": "actual",
+          "label": "A · sí",
+          "column": "Ventas 2025 (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "D4",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0016",
+      "claim": "A · sí — Alquiler / ventas (%): 14.5 PCT",
+      "values": [
+        {
+          "value": 14.5,
+          "unit": "PCT",
+          "period": null,
+          "basis": null,
+          "label": "A · sí",
+          "column": "Alquiler / ventas (%)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "E4",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0017",
+      "claim": "A · sí — EBITDA 2025 (k€): -190 EUR_K",
+      "values": [
+        {
+          "value": -190.0,
+          "unit": "EUR_K",
+          "period": "2025",
+          "basis": "actual",
+          "label": "A · sí",
+          "column": "EBITDA 2025 (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "F4",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0018",
+      "claim": "A · sí — Coste central asignado (k€): 90 EUR_K",
+      "values": [
+        {
+          "value": 90.0,
+          "unit": "EUR_K",
+          "period": null,
+          "basis": null,
+          "label": "A · sí",
+          "column": "Coste central asignado (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "G4",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0019",
+      "claim": "A · sí — Tienda: 4",
+      "values": [
+        {
+          "value": 4.0,
+          "unit": "",
+          "period": null,
+          "basis": null,
+          "label": "A · sí",
+          "column": "Tienda"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "A5",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0020",
+      "claim": "A · sí — Año de apertura: 2,017 YEARS",
+      "values": [
+        {
+          "value": 2017.0,
+          "unit": "YEARS",
+          "period": null,
+          "basis": null,
+          "label": "A · sí",
+          "column": "Año de apertura"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "C5",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0021",
+      "claim": "A · sí — Ventas 2025 (k€): 1,100 EUR_K",
+      "values": [
+        {
+          "value": 1100.0,
+          "unit": "EUR_K",
+          "period": "2025",
+          "basis": "actual",
+          "label": "A · sí",
+          "column": "Ventas 2025 (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "D5",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0022",
+      "claim": "A · sí — Alquiler / ventas (%): 14.5 PCT",
+      "values": [
+        {
+          "value": 14.5,
+          "unit": "PCT",
+          "period": null,
+          "basis": null,
+          "label": "A · sí",
+          "column": "Alquiler / ventas (%)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "E5",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0023",
+      "claim": "A · sí — EBITDA 2025 (k€): -190 EUR_K",
+      "values": [
+        {
+          "value": -190.0,
+          "unit": "EUR_K",
+          "period": "2025",
+          "basis": "actual",
+          "label": "A · sí",
+          "column": "EBITDA 2025 (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "F5",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0024",
+      "claim": "A · sí — Coste central asignado (k€): 90 EUR_K",
+      "values": [
+        {
+          "value": 90.0,
+          "unit": "EUR_K",
+          "period": null,
+          "basis": null,
+          "label": "A · sí",
+          "column": "Coste central asignado (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "G5",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0025",
+      "claim": "A · sí — Tienda: 5",
+      "values": [
+        {
+          "value": 5.0,
+          "unit": "",
+          "period": null,
+          "basis": null,
+          "label": "A · sí",
+          "column": "Tienda"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "A6",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0026",
+      "claim": "A · sí — Año de apertura: 2,018 YEARS",
+      "values": [
+        {
+          "value": 2018.0,
+          "unit": "YEARS",
+          "period": null,
+          "basis": null,
+          "label": "A · sí",
+          "column": "Año de apertura"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "C6",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0027",
+      "claim": "A · sí — Ventas 2025 (k€): 1,100 EUR_K",
+      "values": [
+        {
+          "value": 1100.0,
+          "unit": "EUR_K",
+          "period": "2025",
+          "basis": "actual",
+          "label": "A · sí",
+          "column": "Ventas 2025 (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "D6",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0028",
+      "claim": "A · sí — Alquiler / ventas (%): 14.5 PCT",
+      "values": [
+        {
+          "value": 14.5,
+          "unit": "PCT",
+          "period": null,
+          "basis": null,
+          "label": "A · sí",
+          "column": "Alquiler / ventas (%)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "E6",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0029",
+      "claim": "A · sí — EBITDA 2025 (k€): -190 EUR_K",
+      "values": [
+        {
+          "value": -190.0,
+          "unit": "EUR_K",
+          "period": "2025",
+          "basis": "actual",
+          "label": "A · sí",
+          "column": "EBITDA 2025 (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "F6",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0030",
+      "claim": "A · sí — Coste central asignado (k€): 90 EUR_K",
+      "values": [
+        {
+          "value": 90.0,
+          "unit": "EUR_K",
+          "period": null,
+          "basis": null,
+          "label": "A · sí",
+          "column": "Coste central asignado (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "G6",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0031",
+      "claim": "A · sí — Tienda: 6",
+      "values": [
+        {
+          "value": 6.0,
+          "unit": "",
+          "period": null,
+          "basis": null,
+          "label": "A · sí",
+          "column": "Tienda"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "A7",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0032",
+      "claim": "A · sí — Año de apertura: 2,019 YEARS",
+      "values": [
+        {
+          "value": 2019.0,
+          "unit": "YEARS",
+          "period": null,
+          "basis": null,
+          "label": "A · sí",
+          "column": "Año de apertura"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "C7",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0033",
+      "claim": "A · sí — Ventas 2025 (k€): 1,100 EUR_K",
+      "values": [
+        {
+          "value": 1100.0,
+          "unit": "EUR_K",
+          "period": "2025",
+          "basis": "actual",
+          "label": "A · sí",
+          "column": "Ventas 2025 (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "D7",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0034",
+      "claim": "A · sí — Alquiler / ventas (%): 14.5 PCT",
+      "values": [
+        {
+          "value": 14.5,
+          "unit": "PCT",
+          "period": null,
+          "basis": null,
+          "label": "A · sí",
+          "column": "Alquiler / ventas (%)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "E7",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0035",
+      "claim": "A · sí — EBITDA 2025 (k€): -190 EUR_K",
+      "values": [
+        {
+          "value": -190.0,
+          "unit": "EUR_K",
+          "period": "2025",
+          "basis": "actual",
+          "label": "A · sí",
+          "column": "EBITDA 2025 (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "F7",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0036",
+      "claim": "A · sí — Coste central asignado (k€): 90 EUR_K",
+      "values": [
+        {
+          "value": 90.0,
+          "unit": "EUR_K",
+          "period": null,
+          "basis": null,
+          "label": "A · sí",
+          "column": "Coste central asignado (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "G7",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0037",
+      "claim": "A · sí — Tienda: 7",
+      "values": [
+        {
+          "value": 7.0,
+          "unit": "",
+          "period": null,
+          "basis": null,
+          "label": "A · sí",
+          "column": "Tienda"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "A8",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0038",
+      "claim": "A · sí — Año de apertura: 2,014 YEARS",
+      "values": [
+        {
+          "value": 2014.0,
+          "unit": "YEARS",
+          "period": null,
+          "basis": null,
+          "label": "A · sí",
+          "column": "Año de apertura"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "C8",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0039",
+      "claim": "A · sí — Ventas 2025 (k€): 1,100 EUR_K",
+      "values": [
+        {
+          "value": 1100.0,
+          "unit": "EUR_K",
+          "period": "2025",
+          "basis": "actual",
+          "label": "A · sí",
+          "column": "Ventas 2025 (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "D8",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0040",
+      "claim": "A · sí — Alquiler / ventas (%): 14.5 PCT",
+      "values": [
+        {
+          "value": 14.5,
+          "unit": "PCT",
+          "period": null,
+          "basis": null,
+          "label": "A · sí",
+          "column": "Alquiler / ventas (%)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "E8",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0041",
+      "claim": "A · sí — EBITDA 2025 (k€): -190 EUR_K",
+      "values": [
+        {
+          "value": -190.0,
+          "unit": "EUR_K",
+          "period": "2025",
+          "basis": "actual",
+          "label": "A · sí",
+          "column": "EBITDA 2025 (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "F8",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0042",
+      "claim": "A · sí — Coste central asignado (k€): 90 EUR_K",
+      "values": [
+        {
+          "value": 90.0,
+          "unit": "EUR_K",
+          "period": null,
+          "basis": null,
+          "label": "A · sí",
+          "column": "Coste central asignado (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "G8",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0043",
+      "claim": "A · sí — Tienda: 8",
+      "values": [
+        {
+          "value": 8.0,
+          "unit": "",
+          "period": null,
+          "basis": null,
+          "label": "A · sí",
+          "column": "Tienda"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "A9",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0044",
+      "claim": "A · sí — Año de apertura: 2,015 YEARS",
+      "values": [
+        {
+          "value": 2015.0,
+          "unit": "YEARS",
+          "period": null,
+          "basis": null,
+          "label": "A · sí",
+          "column": "Año de apertura"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "C9",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0045",
+      "claim": "A · sí — Ventas 2025 (k€): 1,100 EUR_K",
+      "values": [
+        {
+          "value": 1100.0,
+          "unit": "EUR_K",
+          "period": "2025",
+          "basis": "actual",
+          "label": "A · sí",
+          "column": "Ventas 2025 (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "D9",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0046",
+      "claim": "A · sí — Alquiler / ventas (%): 14.5 PCT",
+      "values": [
+        {
+          "value": 14.5,
+          "unit": "PCT",
+          "period": null,
+          "basis": null,
+          "label": "A · sí",
+          "column": "Alquiler / ventas (%)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "E9",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0047",
+      "claim": "A · sí — EBITDA 2025 (k€): -190 EUR_K",
+      "values": [
+        {
+          "value": -190.0,
+          "unit": "EUR_K",
+          "period": "2025",
+          "basis": "actual",
+          "label": "A · sí",
+          "column": "EBITDA 2025 (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "F9",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0048",
+      "claim": "A · sí — Coste central asignado (k€): 90 EUR_K",
+      "values": [
+        {
+          "value": 90.0,
+          "unit": "EUR_K",
+          "period": null,
+          "basis": null,
+          "label": "A · sí",
+          "column": "Coste central asignado (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "G9",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0049",
+      "claim": "A · sí — Tienda: 9",
+      "values": [
+        {
+          "value": 9.0,
+          "unit": "",
+          "period": null,
+          "basis": null,
+          "label": "A · sí",
+          "column": "Tienda"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "A10",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0050",
+      "claim": "A · sí — Año de apertura: 2,016 YEARS",
+      "values": [
+        {
+          "value": 2016.0,
+          "unit": "YEARS",
+          "period": null,
+          "basis": null,
+          "label": "A · sí",
+          "column": "Año de apertura"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "C10",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0051",
+      "claim": "A · sí — Ventas 2025 (k€): 1,100 EUR_K",
+      "values": [
+        {
+          "value": 1100.0,
+          "unit": "EUR_K",
+          "period": "2025",
+          "basis": "actual",
+          "label": "A · sí",
+          "column": "Ventas 2025 (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "D10",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0052",
+      "claim": "A · sí — Alquiler / ventas (%): 14.5 PCT",
+      "values": [
+        {
+          "value": 14.5,
+          "unit": "PCT",
+          "period": null,
+          "basis": null,
+          "label": "A · sí",
+          "column": "Alquiler / ventas (%)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "E10",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0053",
+      "claim": "A · sí — EBITDA 2025 (k€): -190 EUR_K",
+      "values": [
+        {
+          "value": -190.0,
+          "unit": "EUR_K",
+          "period": "2025",
+          "basis": "actual",
+          "label": "A · sí",
+          "column": "EBITDA 2025 (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "F10",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0054",
+      "claim": "A · sí — Coste central asignado (k€): 90 EUR_K",
+      "values": [
+        {
+          "value": 90.0,
+          "unit": "EUR_K",
+          "period": null,
+          "basis": null,
+          "label": "A · sí",
+          "column": "Coste central asignado (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "G10",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0055",
+      "claim": "A · sí — Tienda: 10",
+      "values": [
+        {
+          "value": 10.0,
+          "unit": "",
+          "period": null,
+          "basis": null,
+          "label": "A · sí",
+          "column": "Tienda"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "A11",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0056",
+      "claim": "A · sí — Año de apertura: 2,017 YEARS",
+      "values": [
+        {
+          "value": 2017.0,
+          "unit": "YEARS",
+          "period": null,
+          "basis": null,
+          "label": "A · sí",
+          "column": "Año de apertura"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "C11",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0057",
+      "claim": "A · sí — Ventas 2025 (k€): 1,100 EUR_K",
+      "values": [
+        {
+          "value": 1100.0,
+          "unit": "EUR_K",
+          "period": "2025",
+          "basis": "actual",
+          "label": "A · sí",
+          "column": "Ventas 2025 (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "D11",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0058",
+      "claim": "A · sí — Alquiler / ventas (%): 14.5 PCT",
+      "values": [
+        {
+          "value": 14.5,
+          "unit": "PCT",
+          "period": null,
+          "basis": null,
+          "label": "A · sí",
+          "column": "Alquiler / ventas (%)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "E11",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0059",
+      "claim": "A · sí — EBITDA 2025 (k€): -190 EUR_K",
+      "values": [
+        {
+          "value": -190.0,
+          "unit": "EUR_K",
+          "period": "2025",
+          "basis": "actual",
+          "label": "A · sí",
+          "column": "EBITDA 2025 (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "F11",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0060",
+      "claim": "A · sí — Coste central asignado (k€): 90 EUR_K",
+      "values": [
+        {
+          "value": 90.0,
+          "unit": "EUR_K",
+          "period": null,
+          "basis": null,
+          "label": "A · sí",
+          "column": "Coste central asignado (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "G11",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0061",
+      "claim": "A · sí — Tienda: 11",
+      "values": [
+        {
+          "value": 11.0,
+          "unit": "",
+          "period": null,
+          "basis": null,
+          "label": "A · sí",
+          "column": "Tienda"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "A12",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0062",
+      "claim": "A · sí — Año de apertura: 2,018 YEARS",
+      "values": [
+        {
+          "value": 2018.0,
+          "unit": "YEARS",
+          "period": null,
+          "basis": null,
+          "label": "A · sí",
+          "column": "Año de apertura"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "C12",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0063",
+      "claim": "A · sí — Ventas 2025 (k€): 1,100 EUR_K",
+      "values": [
+        {
+          "value": 1100.0,
+          "unit": "EUR_K",
+          "period": "2025",
+          "basis": "actual",
+          "label": "A · sí",
+          "column": "Ventas 2025 (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "D12",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0064",
+      "claim": "A · sí — Alquiler / ventas (%): 14.5 PCT",
+      "values": [
+        {
+          "value": 14.5,
+          "unit": "PCT",
+          "period": null,
+          "basis": null,
+          "label": "A · sí",
+          "column": "Alquiler / ventas (%)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "E12",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0065",
+      "claim": "A · sí — EBITDA 2025 (k€): -190 EUR_K",
+      "values": [
+        {
+          "value": -190.0,
+          "unit": "EUR_K",
+          "period": "2025",
+          "basis": "actual",
+          "label": "A · sí",
+          "column": "EBITDA 2025 (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "F12",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0066",
+      "claim": "A · sí — Coste central asignado (k€): 90 EUR_K",
+      "values": [
+        {
+          "value": 90.0,
+          "unit": "EUR_K",
+          "period": null,
+          "basis": null,
+          "label": "A · sí",
+          "column": "Coste central asignado (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "G12",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0067",
+      "claim": "A · sí — Tienda: 12",
+      "values": [
+        {
+          "value": 12.0,
+          "unit": "",
+          "period": null,
+          "basis": null,
+          "label": "A · sí",
+          "column": "Tienda"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "A13",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0068",
+      "claim": "A · sí — Año de apertura: 2,019 YEARS",
+      "values": [
+        {
+          "value": 2019.0,
+          "unit": "YEARS",
+          "period": null,
+          "basis": null,
+          "label": "A · sí",
+          "column": "Año de apertura"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "C13",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0069",
+      "claim": "A · sí — Ventas 2025 (k€): 1,100 EUR_K",
+      "values": [
+        {
+          "value": 1100.0,
+          "unit": "EUR_K",
+          "period": "2025",
+          "basis": "actual",
+          "label": "A · sí",
+          "column": "Ventas 2025 (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "D13",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0070",
+      "claim": "A · sí — Alquiler / ventas (%): 14.5 PCT",
+      "values": [
+        {
+          "value": 14.5,
+          "unit": "PCT",
+          "period": null,
+          "basis": null,
+          "label": "A · sí",
+          "column": "Alquiler / ventas (%)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "E13",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0071",
+      "claim": "A · sí — EBITDA 2025 (k€): -190 EUR_K",
+      "values": [
+        {
+          "value": -190.0,
+          "unit": "EUR_K",
+          "period": "2025",
+          "basis": "actual",
+          "label": "A · sí",
+          "column": "EBITDA 2025 (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "F13",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0072",
+      "claim": "A · sí — Coste central asignado (k€): 90 EUR_K",
+      "values": [
+        {
+          "value": 90.0,
+          "unit": "EUR_K",
+          "period": null,
+          "basis": null,
+          "label": "A · sí",
+          "column": "Coste central asignado (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "G13",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0073",
+      "claim": "A · sí — Tienda: 13",
+      "values": [
+        {
+          "value": 13.0,
+          "unit": "",
+          "period": null,
+          "basis": null,
+          "label": "A · sí",
+          "column": "Tienda"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "A14",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0074",
+      "claim": "A · sí — Año de apertura: 2,014 YEARS",
+      "values": [
+        {
+          "value": 2014.0,
+          "unit": "YEARS",
+          "period": null,
+          "basis": null,
+          "label": "A · sí",
+          "column": "Año de apertura"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "C14",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0075",
+      "claim": "A · sí — Ventas 2025 (k€): 1,100 EUR_K",
+      "values": [
+        {
+          "value": 1100.0,
+          "unit": "EUR_K",
+          "period": "2025",
+          "basis": "actual",
+          "label": "A · sí",
+          "column": "Ventas 2025 (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "D14",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0076",
+      "claim": "A · sí — Alquiler / ventas (%): 14.5 PCT",
+      "values": [
+        {
+          "value": 14.5,
+          "unit": "PCT",
+          "period": null,
+          "basis": null,
+          "label": "A · sí",
+          "column": "Alquiler / ventas (%)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "E14",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0077",
+      "claim": "A · sí — EBITDA 2025 (k€): -190 EUR_K",
+      "values": [
+        {
+          "value": -190.0,
+          "unit": "EUR_K",
+          "period": "2025",
+          "basis": "actual",
+          "label": "A · sí",
+          "column": "EBITDA 2025 (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "F14",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0078",
+      "claim": "A · sí — Coste central asignado (k€): 90 EUR_K",
+      "values": [
+        {
+          "value": 90.0,
+          "unit": "EUR_K",
+          "period": null,
+          "basis": null,
+          "label": "A · sí",
+          "column": "Coste central asignado (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "G14",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0079",
+      "claim": "A · sí — Tienda: 14",
+      "values": [
+        {
+          "value": 14.0,
+          "unit": "",
+          "period": null,
+          "basis": null,
+          "label": "A · sí",
+          "column": "Tienda"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "A15",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0080",
+      "claim": "A · sí — Año de apertura: 2,015 YEARS",
+      "values": [
+        {
+          "value": 2015.0,
+          "unit": "YEARS",
+          "period": null,
+          "basis": null,
+          "label": "A · sí",
+          "column": "Año de apertura"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "C15",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0081",
+      "claim": "A · sí — Ventas 2025 (k€): 1,100 EUR_K",
+      "values": [
+        {
+          "value": 1100.0,
+          "unit": "EUR_K",
+          "period": "2025",
+          "basis": "actual",
+          "label": "A · sí",
+          "column": "Ventas 2025 (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "D15",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0082",
+      "claim": "A · sí — Alquiler / ventas (%): 14.5 PCT",
+      "values": [
+        {
+          "value": 14.5,
+          "unit": "PCT",
+          "period": null,
+          "basis": null,
+          "label": "A · sí",
+          "column": "Alquiler / ventas (%)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "E15",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0083",
+      "claim": "A · sí — EBITDA 2025 (k€): -190 EUR_K",
+      "values": [
+        {
+          "value": -190.0,
+          "unit": "EUR_K",
+          "period": "2025",
+          "basis": "actual",
+          "label": "A · sí",
+          "column": "EBITDA 2025 (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "F15",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0084",
+      "claim": "A · sí — Coste central asignado (k€): 90 EUR_K",
+      "values": [
+        {
+          "value": 90.0,
+          "unit": "EUR_K",
+          "period": null,
+          "basis": null,
+          "label": "A · sí",
+          "column": "Coste central asignado (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "G15",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0085",
+      "claim": "A · sí — Tienda: 15",
+      "values": [
+        {
+          "value": 15.0,
+          "unit": "",
+          "period": null,
+          "basis": null,
+          "label": "A · sí",
+          "column": "Tienda"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "A16",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0086",
+      "claim": "A · sí — Año de apertura: 2,016 YEARS",
+      "values": [
+        {
+          "value": 2016.0,
+          "unit": "YEARS",
+          "period": null,
+          "basis": null,
+          "label": "A · sí",
+          "column": "Año de apertura"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "C16",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0087",
+      "claim": "A · sí — Ventas 2025 (k€): 1,100 EUR_K",
+      "values": [
+        {
+          "value": 1100.0,
+          "unit": "EUR_K",
+          "period": "2025",
+          "basis": "actual",
+          "label": "A · sí",
+          "column": "Ventas 2025 (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "D16",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0088",
+      "claim": "A · sí — Alquiler / ventas (%): 14.5 PCT",
+      "values": [
+        {
+          "value": 14.5,
+          "unit": "PCT",
+          "period": null,
+          "basis": null,
+          "label": "A · sí",
+          "column": "Alquiler / ventas (%)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "E16",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0089",
+      "claim": "A · sí — EBITDA 2025 (k€): -190 EUR_K",
+      "values": [
+        {
+          "value": -190.0,
+          "unit": "EUR_K",
+          "period": "2025",
+          "basis": "actual",
+          "label": "A · sí",
+          "column": "EBITDA 2025 (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "F16",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0090",
+      "claim": "A · sí — Coste central asignado (k€): 90 EUR_K",
+      "values": [
+        {
+          "value": 90.0,
+          "unit": "EUR_K",
+          "period": null,
+          "basis": null,
+          "label": "A · sí",
+          "column": "Coste central asignado (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "G16",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0091",
+      "claim": "A · no — Tienda: 16",
+      "values": [
+        {
+          "value": 16.0,
+          "unit": "",
+          "period": null,
+          "basis": null,
+          "label": "A · no",
+          "column": "Tienda"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "A17",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0092",
+      "claim": "A · no — Año de apertura: 2,012 YEARS",
+      "values": [
+        {
+          "value": 2012.0,
+          "unit": "YEARS",
+          "period": null,
+          "basis": null,
+          "label": "A · no",
+          "column": "Año de apertura"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "C17",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0093",
+      "claim": "A · no — Ventas 2025 (k€): 1,150 EUR_K",
+      "values": [
+        {
+          "value": 1150.0,
+          "unit": "EUR_K",
+          "period": "2025",
+          "basis": "actual",
+          "label": "A · no",
+          "column": "Ventas 2025 (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "D17",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0094",
+      "claim": "A · no — Alquiler / ventas (%): 14.5 PCT",
+      "values": [
+        {
+          "value": 14.5,
+          "unit": "PCT",
+          "period": null,
+          "basis": null,
+          "label": "A · no",
+          "column": "Alquiler / ventas (%)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "E17",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0095",
+      "claim": "A · no — EBITDA 2025 (k€): -150 EUR_K",
+      "values": [
+        {
+          "value": -150.0,
+          "unit": "EUR_K",
+          "period": "2025",
+          "basis": "actual",
+          "label": "A · no",
+          "column": "EBITDA 2025 (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "F17",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0096",
+      "claim": "A · no — Coste central asignado (k€): 90 EUR_K",
+      "values": [
+        {
+          "value": 90.0,
+          "unit": "EUR_K",
+          "period": null,
+          "basis": null,
+          "label": "A · no",
+          "column": "Coste central asignado (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "G17",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0097",
+      "claim": "A · no — Tienda: 17",
+      "values": [
+        {
+          "value": 17.0,
+          "unit": "",
+          "period": null,
+          "basis": null,
+          "label": "A · no",
+          "column": "Tienda"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "A18",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0098",
+      "claim": "A · no — Año de apertura: 2,013 YEARS",
+      "values": [
+        {
+          "value": 2013.0,
+          "unit": "YEARS",
+          "period": null,
+          "basis": null,
+          "label": "A · no",
+          "column": "Año de apertura"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "C18",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0099",
+      "claim": "A · no — Ventas 2025 (k€): 1,150 EUR_K",
+      "values": [
+        {
+          "value": 1150.0,
+          "unit": "EUR_K",
+          "period": "2025",
+          "basis": "actual",
+          "label": "A · no",
+          "column": "Ventas 2025 (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "D18",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0100",
+      "claim": "A · no — Alquiler / ventas (%): 14.5 PCT",
+      "values": [
+        {
+          "value": 14.5,
+          "unit": "PCT",
+          "period": null,
+          "basis": null,
+          "label": "A · no",
+          "column": "Alquiler / ventas (%)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "E18",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0101",
+      "claim": "A · no — EBITDA 2025 (k€): -150 EUR_K",
+      "values": [
+        {
+          "value": -150.0,
+          "unit": "EUR_K",
+          "period": "2025",
+          "basis": "actual",
+          "label": "A · no",
+          "column": "EBITDA 2025 (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "F18",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0102",
+      "claim": "A · no — Coste central asignado (k€): 90 EUR_K",
+      "values": [
+        {
+          "value": 90.0,
+          "unit": "EUR_K",
+          "period": null,
+          "basis": null,
+          "label": "A · no",
+          "column": "Coste central asignado (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "G18",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0103",
+      "claim": "A · no — Tienda: 18",
+      "values": [
+        {
+          "value": 18.0,
+          "unit": "",
+          "period": null,
+          "basis": null,
+          "label": "A · no",
+          "column": "Tienda"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "A19",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0104",
+      "claim": "A · no — Año de apertura: 2,014 YEARS",
+      "values": [
+        {
+          "value": 2014.0,
+          "unit": "YEARS",
+          "period": null,
+          "basis": null,
+          "label": "A · no",
+          "column": "Año de apertura"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "C19",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0105",
+      "claim": "A · no — Ventas 2025 (k€): 1,150 EUR_K",
+      "values": [
+        {
+          "value": 1150.0,
+          "unit": "EUR_K",
+          "period": "2025",
+          "basis": "actual",
+          "label": "A · no",
+          "column": "Ventas 2025 (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "D19",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0106",
+      "claim": "A · no — Alquiler / ventas (%): 14.5 PCT",
+      "values": [
+        {
+          "value": 14.5,
+          "unit": "PCT",
+          "period": null,
+          "basis": null,
+          "label": "A · no",
+          "column": "Alquiler / ventas (%)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "E19",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0107",
+      "claim": "A · no — EBITDA 2025 (k€): -150 EUR_K",
+      "values": [
+        {
+          "value": -150.0,
+          "unit": "EUR_K",
+          "period": "2025",
+          "basis": "actual",
+          "label": "A · no",
+          "column": "EBITDA 2025 (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "F19",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0108",
+      "claim": "A · no — Coste central asignado (k€): 90 EUR_K",
+      "values": [
+        {
+          "value": 90.0,
+          "unit": "EUR_K",
+          "period": null,
+          "basis": null,
+          "label": "A · no",
+          "column": "Coste central asignado (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "G19",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0109",
+      "claim": "A · no — Tienda: 19",
+      "values": [
+        {
+          "value": 19.0,
+          "unit": "",
+          "period": null,
+          "basis": null,
+          "label": "A · no",
+          "column": "Tienda"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "A20",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0110",
+      "claim": "A · no — Año de apertura: 2,015 YEARS",
+      "values": [
+        {
+          "value": 2015.0,
+          "unit": "YEARS",
+          "period": null,
+          "basis": null,
+          "label": "A · no",
+          "column": "Año de apertura"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "C20",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0111",
+      "claim": "A · no — Ventas 2025 (k€): 1,150 EUR_K",
+      "values": [
+        {
+          "value": 1150.0,
+          "unit": "EUR_K",
+          "period": "2025",
+          "basis": "actual",
+          "label": "A · no",
+          "column": "Ventas 2025 (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "D20",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0112",
+      "claim": "A · no — Alquiler / ventas (%): 14.5 PCT",
+      "values": [
+        {
+          "value": 14.5,
+          "unit": "PCT",
+          "period": null,
+          "basis": null,
+          "label": "A · no",
+          "column": "Alquiler / ventas (%)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "E20",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0113",
+      "claim": "A · no — EBITDA 2025 (k€): -150 EUR_K",
+      "values": [
+        {
+          "value": -150.0,
+          "unit": "EUR_K",
+          "period": "2025",
+          "basis": "actual",
+          "label": "A · no",
+          "column": "EBITDA 2025 (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "F20",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0114",
+      "claim": "A · no — Coste central asignado (k€): 90 EUR_K",
+      "values": [
+        {
+          "value": 90.0,
+          "unit": "EUR_K",
+          "period": null,
+          "basis": null,
+          "label": "A · no",
+          "column": "Coste central asignado (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "G20",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0115",
+      "claim": "A · no — Tienda: 20",
+      "values": [
+        {
+          "value": 20.0,
+          "unit": "",
+          "period": null,
+          "basis": null,
+          "label": "A · no",
+          "column": "Tienda"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "A21",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0116",
+      "claim": "A · no — Año de apertura: 2,016 YEARS",
+      "values": [
+        {
+          "value": 2016.0,
+          "unit": "YEARS",
+          "period": null,
+          "basis": null,
+          "label": "A · no",
+          "column": "Año de apertura"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "C21",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0117",
+      "claim": "A · no — Ventas 2025 (k€): 1,150 EUR_K",
+      "values": [
+        {
+          "value": 1150.0,
+          "unit": "EUR_K",
+          "period": "2025",
+          "basis": "actual",
+          "label": "A · no",
+          "column": "Ventas 2025 (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "D21",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0118",
+      "claim": "A · no — Alquiler / ventas (%): 14.5 PCT",
+      "values": [
+        {
+          "value": 14.5,
+          "unit": "PCT",
+          "period": null,
+          "basis": null,
+          "label": "A · no",
+          "column": "Alquiler / ventas (%)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "E21",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0119",
+      "claim": "A · no — EBITDA 2025 (k€): -150 EUR_K",
+      "values": [
+        {
+          "value": -150.0,
+          "unit": "EUR_K",
+          "period": "2025",
+          "basis": "actual",
+          "label": "A · no",
+          "column": "EBITDA 2025 (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "F21",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0120",
+      "claim": "A · no — Coste central asignado (k€): 90 EUR_K",
+      "values": [
+        {
+          "value": 90.0,
+          "unit": "EUR_K",
+          "period": null,
+          "basis": null,
+          "label": "A · no",
+          "column": "Coste central asignado (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "G21",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0121",
+      "claim": "A · no — Tienda: 21",
+      "values": [
+        {
+          "value": 21.0,
+          "unit": "",
+          "period": null,
+          "basis": null,
+          "label": "A · no",
+          "column": "Tienda"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "A22",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0122",
+      "claim": "A · no — Año de apertura: 2,012 YEARS",
+      "values": [
+        {
+          "value": 2012.0,
+          "unit": "YEARS",
+          "period": null,
+          "basis": null,
+          "label": "A · no",
+          "column": "Año de apertura"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "C22",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0123",
+      "claim": "A · no — Ventas 2025 (k€): 1,150 EUR_K",
+      "values": [
+        {
+          "value": 1150.0,
+          "unit": "EUR_K",
+          "period": "2025",
+          "basis": "actual",
+          "label": "A · no",
+          "column": "Ventas 2025 (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "D22",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0124",
+      "claim": "A · no — Alquiler / ventas (%): 14.5 PCT",
+      "values": [
+        {
+          "value": 14.5,
+          "unit": "PCT",
+          "period": null,
+          "basis": null,
+          "label": "A · no",
+          "column": "Alquiler / ventas (%)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "E22",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0125",
+      "claim": "A · no — EBITDA 2025 (k€): -150 EUR_K",
+      "values": [
+        {
+          "value": -150.0,
+          "unit": "EUR_K",
+          "period": "2025",
+          "basis": "actual",
+          "label": "A · no",
+          "column": "EBITDA 2025 (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "F22",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0126",
+      "claim": "A · no — Coste central asignado (k€): 90 EUR_K",
+      "values": [
+        {
+          "value": 90.0,
+          "unit": "EUR_K",
+          "period": null,
+          "basis": null,
+          "label": "A · no",
+          "column": "Coste central asignado (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "G22",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0127",
+      "claim": "A · no — Tienda: 22",
+      "values": [
+        {
+          "value": 22.0,
+          "unit": "",
+          "period": null,
+          "basis": null,
+          "label": "A · no",
+          "column": "Tienda"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "A23",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0128",
+      "claim": "A · no — Año de apertura: 2,013 YEARS",
+      "values": [
+        {
+          "value": 2013.0,
+          "unit": "YEARS",
+          "period": null,
+          "basis": null,
+          "label": "A · no",
+          "column": "Año de apertura"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "C23",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0129",
+      "claim": "A · no — Ventas 2025 (k€): 1,150 EUR_K",
+      "values": [
+        {
+          "value": 1150.0,
+          "unit": "EUR_K",
+          "period": "2025",
+          "basis": "actual",
+          "label": "A · no",
+          "column": "Ventas 2025 (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "D23",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0130",
+      "claim": "A · no — Alquiler / ventas (%): 14.5 PCT",
+      "values": [
+        {
+          "value": 14.5,
+          "unit": "PCT",
+          "period": null,
+          "basis": null,
+          "label": "A · no",
+          "column": "Alquiler / ventas (%)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "E23",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0131",
+      "claim": "A · no — EBITDA 2025 (k€): -150 EUR_K",
+      "values": [
+        {
+          "value": -150.0,
+          "unit": "EUR_K",
+          "period": "2025",
+          "basis": "actual",
+          "label": "A · no",
+          "column": "EBITDA 2025 (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "F23",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0132",
+      "claim": "A · no — Coste central asignado (k€): 90 EUR_K",
+      "values": [
+        {
+          "value": 90.0,
+          "unit": "EUR_K",
+          "period": null,
+          "basis": null,
+          "label": "A · no",
+          "column": "Coste central asignado (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "G23",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0133",
+      "claim": "B · no — Tienda: 23",
+      "values": [
+        {
+          "value": 23.0,
+          "unit": "",
+          "period": null,
+          "basis": null,
+          "label": "B · no",
+          "column": "Tienda"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "A24",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0134",
+      "claim": "B · no — Año de apertura: 2,023 YEARS",
+      "values": [
+        {
+          "value": 2023.0,
+          "unit": "YEARS",
+          "period": null,
+          "basis": null,
+          "label": "B · no",
+          "column": "Año de apertura"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "C24",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0135",
+      "claim": "B · no — Ventas 2025 (k€): 900 EUR_K",
+      "values": [
+        {
+          "value": 900.0,
+          "unit": "EUR_K",
+          "period": "2025",
+          "basis": "actual",
+          "label": "B · no",
+          "column": "Ventas 2025 (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "D24",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0136",
+      "claim": "B · no — Alquiler / ventas (%): 9 PCT",
+      "values": [
+        {
+          "value": 9.0,
+          "unit": "PCT",
+          "period": null,
+          "basis": null,
+          "label": "B · no",
+          "column": "Alquiler / ventas (%)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "E24",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0137",
+      "claim": "B · no — EBITDA 2025 (k€): -80 EUR_K",
+      "values": [
+        {
+          "value": -80.0,
+          "unit": "EUR_K",
+          "period": "2025",
+          "basis": "actual",
+          "label": "B · no",
+          "column": "EBITDA 2025 (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "F24",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0138",
+      "claim": "B · no — Coste central asignado (k€): 90 EUR_K",
+      "values": [
+        {
+          "value": 90.0,
+          "unit": "EUR_K",
+          "period": null,
+          "basis": null,
+          "label": "B · no",
+          "column": "Coste central asignado (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "G24",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0139",
+      "claim": "B · no — Tienda: 24",
+      "values": [
+        {
+          "value": 24.0,
+          "unit": "",
+          "period": null,
+          "basis": null,
+          "label": "B · no",
+          "column": "Tienda"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "A25",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0140",
+      "claim": "B · no — Año de apertura: 2,023 YEARS",
+      "values": [
+        {
+          "value": 2023.0,
+          "unit": "YEARS",
+          "period": null,
+          "basis": null,
+          "label": "B · no",
+          "column": "Año de apertura"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "C25",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0141",
+      "claim": "B · no — Ventas 2025 (k€): 900 EUR_K",
+      "values": [
+        {
+          "value": 900.0,
+          "unit": "EUR_K",
+          "period": "2025",
+          "basis": "actual",
+          "label": "B · no",
+          "column": "Ventas 2025 (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "D25",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0142",
+      "claim": "B · no — Alquiler / ventas (%): 9 PCT",
+      "values": [
+        {
+          "value": 9.0,
+          "unit": "PCT",
+          "period": null,
+          "basis": null,
+          "label": "B · no",
+          "column": "Alquiler / ventas (%)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "E25",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0143",
+      "claim": "B · no — EBITDA 2025 (k€): -80 EUR_K",
+      "values": [
+        {
+          "value": -80.0,
+          "unit": "EUR_K",
+          "period": "2025",
+          "basis": "actual",
+          "label": "B · no",
+          "column": "EBITDA 2025 (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "F25",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0144",
+      "claim": "B · no — Coste central asignado (k€): 90 EUR_K",
+      "values": [
+        {
+          "value": 90.0,
+          "unit": "EUR_K",
+          "period": null,
+          "basis": null,
+          "label": "B · no",
+          "column": "Coste central asignado (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "G25",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0145",
+      "claim": "B · no — Tienda: 25",
+      "values": [
+        {
+          "value": 25.0,
+          "unit": "",
+          "period": null,
+          "basis": null,
+          "label": "B · no",
+          "column": "Tienda"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "A26",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0146",
+      "claim": "B · no — Año de apertura: 2,023 YEARS",
+      "values": [
+        {
+          "value": 2023.0,
+          "unit": "YEARS",
+          "period": null,
+          "basis": null,
+          "label": "B · no",
+          "column": "Año de apertura"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "C26",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0147",
+      "claim": "B · no — Ventas 2025 (k€): 900 EUR_K",
+      "values": [
+        {
+          "value": 900.0,
+          "unit": "EUR_K",
+          "period": "2025",
+          "basis": "actual",
+          "label": "B · no",
+          "column": "Ventas 2025 (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "D26",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0148",
+      "claim": "B · no — Alquiler / ventas (%): 9 PCT",
+      "values": [
+        {
+          "value": 9.0,
+          "unit": "PCT",
+          "period": null,
+          "basis": null,
+          "label": "B · no",
+          "column": "Alquiler / ventas (%)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "E26",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0149",
+      "claim": "B · no — EBITDA 2025 (k€): -80 EUR_K",
+      "values": [
+        {
+          "value": -80.0,
+          "unit": "EUR_K",
+          "period": "2025",
+          "basis": "actual",
+          "label": "B · no",
+          "column": "EBITDA 2025 (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "F26",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0150",
+      "claim": "B · no — Coste central asignado (k€): 90 EUR_K",
+      "values": [
+        {
+          "value": 90.0,
+          "unit": "EUR_K",
+          "period": null,
+          "basis": null,
+          "label": "B · no",
+          "column": "Coste central asignado (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "G26",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0151",
+      "claim": "B · no — Tienda: 26",
+      "values": [
+        {
+          "value": 26.0,
+          "unit": "",
+          "period": null,
+          "basis": null,
+          "label": "B · no",
+          "column": "Tienda"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "A27",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0152",
+      "claim": "B · no — Año de apertura: 2,023 YEARS",
+      "values": [
+        {
+          "value": 2023.0,
+          "unit": "YEARS",
+          "period": null,
+          "basis": null,
+          "label": "B · no",
+          "column": "Año de apertura"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "C27",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0153",
+      "claim": "B · no — Ventas 2025 (k€): 900 EUR_K",
+      "values": [
+        {
+          "value": 900.0,
+          "unit": "EUR_K",
+          "period": "2025",
+          "basis": "actual",
+          "label": "B · no",
+          "column": "Ventas 2025 (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "D27",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0154",
+      "claim": "B · no — Alquiler / ventas (%): 9 PCT",
+      "values": [
+        {
+          "value": 9.0,
+          "unit": "PCT",
+          "period": null,
+          "basis": null,
+          "label": "B · no",
+          "column": "Alquiler / ventas (%)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "E27",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0155",
+      "claim": "B · no — EBITDA 2025 (k€): -80 EUR_K",
+      "values": [
+        {
+          "value": -80.0,
+          "unit": "EUR_K",
+          "period": "2025",
+          "basis": "actual",
+          "label": "B · no",
+          "column": "EBITDA 2025 (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "F27",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0156",
+      "claim": "B · no — Coste central asignado (k€): 90 EUR_K",
+      "values": [
+        {
+          "value": 90.0,
+          "unit": "EUR_K",
+          "period": null,
+          "basis": null,
+          "label": "B · no",
+          "column": "Coste central asignado (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "G27",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0157",
+      "claim": "B · no — Tienda: 27",
+      "values": [
+        {
+          "value": 27.0,
+          "unit": "",
+          "period": null,
+          "basis": null,
+          "label": "B · no",
+          "column": "Tienda"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "A28",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0158",
+      "claim": "B · no — Año de apertura: 2,023 YEARS",
+      "values": [
+        {
+          "value": 2023.0,
+          "unit": "YEARS",
+          "period": null,
+          "basis": null,
+          "label": "B · no",
+          "column": "Año de apertura"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "C28",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0159",
+      "claim": "B · no — Ventas 2025 (k€): 900 EUR_K",
+      "values": [
+        {
+          "value": 900.0,
+          "unit": "EUR_K",
+          "period": "2025",
+          "basis": "actual",
+          "label": "B · no",
+          "column": "Ventas 2025 (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "D28",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0160",
+      "claim": "B · no — Alquiler / ventas (%): 9 PCT",
+      "values": [
+        {
+          "value": 9.0,
+          "unit": "PCT",
+          "period": null,
+          "basis": null,
+          "label": "B · no",
+          "column": "Alquiler / ventas (%)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "E28",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0161",
+      "claim": "B · no — EBITDA 2025 (k€): -80 EUR_K",
+      "values": [
+        {
+          "value": -80.0,
+          "unit": "EUR_K",
+          "period": "2025",
+          "basis": "actual",
+          "label": "B · no",
+          "column": "EBITDA 2025 (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "F28",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0162",
+      "claim": "B · no — Coste central asignado (k€): 90 EUR_K",
+      "values": [
+        {
+          "value": 90.0,
+          "unit": "EUR_K",
+          "period": null,
+          "basis": null,
+          "label": "B · no",
+          "column": "Coste central asignado (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "G28",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0163",
+      "claim": "B · no — Tienda: 28",
+      "values": [
+        {
+          "value": 28.0,
+          "unit": "",
+          "period": null,
+          "basis": null,
+          "label": "B · no",
+          "column": "Tienda"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "A29",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0164",
+      "claim": "B · no — Año de apertura: 2,023 YEARS",
+      "values": [
+        {
+          "value": 2023.0,
+          "unit": "YEARS",
+          "period": null,
+          "basis": null,
+          "label": "B · no",
+          "column": "Año de apertura"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "C29",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0165",
+      "claim": "B · no — Ventas 2025 (k€): 900 EUR_K",
+      "values": [
+        {
+          "value": 900.0,
+          "unit": "EUR_K",
+          "period": "2025",
+          "basis": "actual",
+          "label": "B · no",
+          "column": "Ventas 2025 (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "D29",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0166",
+      "claim": "B · no — Alquiler / ventas (%): 9 PCT",
+      "values": [
+        {
+          "value": 9.0,
+          "unit": "PCT",
+          "period": null,
+          "basis": null,
+          "label": "B · no",
+          "column": "Alquiler / ventas (%)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "E29",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0167",
+      "claim": "B · no — EBITDA 2025 (k€): -80 EUR_K",
+      "values": [
+        {
+          "value": -80.0,
+          "unit": "EUR_K",
+          "period": "2025",
+          "basis": "actual",
+          "label": "B · no",
+          "column": "EBITDA 2025 (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "F29",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0168",
+      "claim": "B · no — Coste central asignado (k€): 90 EUR_K",
+      "values": [
+        {
+          "value": 90.0,
+          "unit": "EUR_K",
+          "period": null,
+          "basis": null,
+          "label": "B · no",
+          "column": "Coste central asignado (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "G29",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0169",
+      "claim": "B · no — Tienda: 29",
+      "values": [
+        {
+          "value": 29.0,
+          "unit": "",
+          "period": null,
+          "basis": null,
+          "label": "B · no",
+          "column": "Tienda"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "A30",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0170",
+      "claim": "B · no — Año de apertura: 2,023 YEARS",
+      "values": [
+        {
+          "value": 2023.0,
+          "unit": "YEARS",
+          "period": null,
+          "basis": null,
+          "label": "B · no",
+          "column": "Año de apertura"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "C30",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0171",
+      "claim": "B · no — Ventas 2025 (k€): 900 EUR_K",
+      "values": [
+        {
+          "value": 900.0,
+          "unit": "EUR_K",
+          "period": "2025",
+          "basis": "actual",
+          "label": "B · no",
+          "column": "Ventas 2025 (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "D30",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0172",
+      "claim": "B · no — Alquiler / ventas (%): 9 PCT",
+      "values": [
+        {
+          "value": 9.0,
+          "unit": "PCT",
+          "period": null,
+          "basis": null,
+          "label": "B · no",
+          "column": "Alquiler / ventas (%)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "E30",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0173",
+      "claim": "B · no — EBITDA 2025 (k€): -80 EUR_K",
+      "values": [
+        {
+          "value": -80.0,
+          "unit": "EUR_K",
+          "period": "2025",
+          "basis": "actual",
+          "label": "B · no",
+          "column": "EBITDA 2025 (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "F30",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0174",
+      "claim": "B · no — Coste central asignado (k€): 90 EUR_K",
+      "values": [
+        {
+          "value": 90.0,
+          "unit": "EUR_K",
+          "period": null,
+          "basis": null,
+          "label": "B · no",
+          "column": "Coste central asignado (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "G30",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0175",
+      "claim": "B · no — Tienda: 30",
+      "values": [
+        {
+          "value": 30.0,
+          "unit": "",
+          "period": null,
+          "basis": null,
+          "label": "B · no",
+          "column": "Tienda"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "A31",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0176",
+      "claim": "B · no — Año de apertura: 2,023 YEARS",
+      "values": [
+        {
+          "value": 2023.0,
+          "unit": "YEARS",
+          "period": null,
+          "basis": null,
+          "label": "B · no",
+          "column": "Año de apertura"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "C31",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0177",
+      "claim": "B · no — Ventas 2025 (k€): 900 EUR_K",
+      "values": [
+        {
+          "value": 900.0,
+          "unit": "EUR_K",
+          "period": "2025",
+          "basis": "actual",
+          "label": "B · no",
+          "column": "Ventas 2025 (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "D31",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0178",
+      "claim": "B · no — Alquiler / ventas (%): 9 PCT",
+      "values": [
+        {
+          "value": 9.0,
+          "unit": "PCT",
+          "period": null,
+          "basis": null,
+          "label": "B · no",
+          "column": "Alquiler / ventas (%)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "E31",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0179",
+      "claim": "B · no — EBITDA 2025 (k€): -80 EUR_K",
+      "values": [
+        {
+          "value": -80.0,
+          "unit": "EUR_K",
+          "period": "2025",
+          "basis": "actual",
+          "label": "B · no",
+          "column": "EBITDA 2025 (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "F31",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0180",
+      "claim": "B · no — Coste central asignado (k€): 90 EUR_K",
+      "values": [
+        {
+          "value": 90.0,
+          "unit": "EUR_K",
+          "period": null,
+          "basis": null,
+          "label": "B · no",
+          "column": "Coste central asignado (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "G31",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0181",
+      "claim": "B · no — Tienda: 31",
+      "values": [
+        {
+          "value": 31.0,
+          "unit": "",
+          "period": null,
+          "basis": null,
+          "label": "B · no",
+          "column": "Tienda"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "A32",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0182",
+      "claim": "B · no — Año de apertura: 2,023 YEARS",
+      "values": [
+        {
+          "value": 2023.0,
+          "unit": "YEARS",
+          "period": null,
+          "basis": null,
+          "label": "B · no",
+          "column": "Año de apertura"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "C32",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0183",
+      "claim": "B · no — Ventas 2025 (k€): 900 EUR_K",
+      "values": [
+        {
+          "value": 900.0,
+          "unit": "EUR_K",
+          "period": "2025",
+          "basis": "actual",
+          "label": "B · no",
+          "column": "Ventas 2025 (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "D32",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0184",
+      "claim": "B · no — Alquiler / ventas (%): 9 PCT",
+      "values": [
+        {
+          "value": 9.0,
+          "unit": "PCT",
+          "period": null,
+          "basis": null,
+          "label": "B · no",
+          "column": "Alquiler / ventas (%)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "E32",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0185",
+      "claim": "B · no — EBITDA 2025 (k€): -80 EUR_K",
+      "values": [
+        {
+          "value": -80.0,
+          "unit": "EUR_K",
+          "period": "2025",
+          "basis": "actual",
+          "label": "B · no",
+          "column": "EBITDA 2025 (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "F32",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0186",
+      "claim": "B · no — Coste central asignado (k€): 90 EUR_K",
+      "values": [
+        {
+          "value": 90.0,
+          "unit": "EUR_K",
+          "period": null,
+          "basis": null,
+          "label": "B · no",
+          "column": "Coste central asignado (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "G32",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0187",
+      "claim": "B · no — Tienda: 32",
+      "values": [
+        {
+          "value": 32.0,
+          "unit": "",
+          "period": null,
+          "basis": null,
+          "label": "B · no",
+          "column": "Tienda"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "A33",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0188",
+      "claim": "B · no — Año de apertura: 2,023 YEARS",
+      "values": [
+        {
+          "value": 2023.0,
+          "unit": "YEARS",
+          "period": null,
+          "basis": null,
+          "label": "B · no",
+          "column": "Año de apertura"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "C33",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0189",
+      "claim": "B · no — Ventas 2025 (k€): 900 EUR_K",
+      "values": [
+        {
+          "value": 900.0,
+          "unit": "EUR_K",
+          "period": "2025",
+          "basis": "actual",
+          "label": "B · no",
+          "column": "Ventas 2025 (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "D33",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0190",
+      "claim": "B · no — Alquiler / ventas (%): 9 PCT",
+      "values": [
+        {
+          "value": 9.0,
+          "unit": "PCT",
+          "period": null,
+          "basis": null,
+          "label": "B · no",
+          "column": "Alquiler / ventas (%)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "E33",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0191",
+      "claim": "B · no — EBITDA 2025 (k€): -80 EUR_K",
+      "values": [
+        {
+          "value": -80.0,
+          "unit": "EUR_K",
+          "period": "2025",
+          "basis": "actual",
+          "label": "B · no",
+          "column": "EBITDA 2025 (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "F33",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0192",
+      "claim": "B · no — Coste central asignado (k€): 90 EUR_K",
+      "values": [
+        {
+          "value": 90.0,
+          "unit": "EUR_K",
+          "period": null,
+          "basis": null,
+          "label": "B · no",
+          "column": "Coste central asignado (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "G33",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0193",
+      "claim": "B · no — Tienda: 33",
+      "values": [
+        {
+          "value": 33.0,
+          "unit": "",
+          "period": null,
+          "basis": null,
+          "label": "B · no",
+          "column": "Tienda"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "A34",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0194",
+      "claim": "B · no — Año de apertura: 2,024 YEARS",
+      "values": [
+        {
+          "value": 2024.0,
+          "unit": "YEARS",
+          "period": null,
+          "basis": null,
+          "label": "B · no",
+          "column": "Año de apertura"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "C34",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0195",
+      "claim": "B · no — Ventas 2025 (k€): 820 EUR_K",
+      "values": [
+        {
+          "value": 820.0,
+          "unit": "EUR_K",
+          "period": "2025",
+          "basis": "actual",
+          "label": "B · no",
+          "column": "Ventas 2025 (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "D34",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0196",
+      "claim": "B · no — Alquiler / ventas (%): 9 PCT",
+      "values": [
+        {
+          "value": 9.0,
+          "unit": "PCT",
+          "period": null,
+          "basis": null,
+          "label": "B · no",
+          "column": "Alquiler / ventas (%)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "E34",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0197",
+      "claim": "B · no — EBITDA 2025 (k€): -62 EUR_K",
+      "values": [
+        {
+          "value": -62.0,
+          "unit": "EUR_K",
+          "period": "2025",
+          "basis": "actual",
+          "label": "B · no",
+          "column": "EBITDA 2025 (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "F34",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0198",
+      "claim": "B · no — Coste central asignado (k€): 90 EUR_K",
+      "values": [
+        {
+          "value": 90.0,
+          "unit": "EUR_K",
+          "period": null,
+          "basis": null,
+          "label": "B · no",
+          "column": "Coste central asignado (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "G34",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0199",
+      "claim": "B · no — Tienda: 34",
+      "values": [
+        {
+          "value": 34.0,
+          "unit": "",
+          "period": null,
+          "basis": null,
+          "label": "B · no",
+          "column": "Tienda"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "A35",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0200",
+      "claim": "B · no — Año de apertura: 2,024 YEARS",
+      "values": [
+        {
+          "value": 2024.0,
+          "unit": "YEARS",
+          "period": null,
+          "basis": null,
+          "label": "B · no",
+          "column": "Año de apertura"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "C35",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0201",
+      "claim": "B · no — Ventas 2025 (k€): 820 EUR_K",
+      "values": [
+        {
+          "value": 820.0,
+          "unit": "EUR_K",
+          "period": "2025",
+          "basis": "actual",
+          "label": "B · no",
+          "column": "Ventas 2025 (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "D35",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0202",
+      "claim": "B · no — Alquiler / ventas (%): 9 PCT",
+      "values": [
+        {
+          "value": 9.0,
+          "unit": "PCT",
+          "period": null,
+          "basis": null,
+          "label": "B · no",
+          "column": "Alquiler / ventas (%)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "E35",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0203",
+      "claim": "B · no — EBITDA 2025 (k€): -62 EUR_K",
+      "values": [
+        {
+          "value": -62.0,
+          "unit": "EUR_K",
+          "period": "2025",
+          "basis": "actual",
+          "label": "B · no",
+          "column": "EBITDA 2025 (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "F35",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0204",
+      "claim": "B · no — Coste central asignado (k€): 90 EUR_K",
+      "values": [
+        {
+          "value": 90.0,
+          "unit": "EUR_K",
+          "period": null,
+          "basis": null,
+          "label": "B · no",
+          "column": "Coste central asignado (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "G35",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0205",
+      "claim": "B · no — Tienda: 35",
+      "values": [
+        {
+          "value": 35.0,
+          "unit": "",
+          "period": null,
+          "basis": null,
+          "label": "B · no",
+          "column": "Tienda"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "A36",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0206",
+      "claim": "B · no — Año de apertura: 2,024 YEARS",
+      "values": [
+        {
+          "value": 2024.0,
+          "unit": "YEARS",
+          "period": null,
+          "basis": null,
+          "label": "B · no",
+          "column": "Año de apertura"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "C36",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0207",
+      "claim": "B · no — Ventas 2025 (k€): 820 EUR_K",
+      "values": [
+        {
+          "value": 820.0,
+          "unit": "EUR_K",
+          "period": "2025",
+          "basis": "actual",
+          "label": "B · no",
+          "column": "Ventas 2025 (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "D36",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0208",
+      "claim": "B · no — Alquiler / ventas (%): 9 PCT",
+      "values": [
+        {
+          "value": 9.0,
+          "unit": "PCT",
+          "period": null,
+          "basis": null,
+          "label": "B · no",
+          "column": "Alquiler / ventas (%)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "E36",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0209",
+      "claim": "B · no — EBITDA 2025 (k€): -62 EUR_K",
+      "values": [
+        {
+          "value": -62.0,
+          "unit": "EUR_K",
+          "period": "2025",
+          "basis": "actual",
+          "label": "B · no",
+          "column": "EBITDA 2025 (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "F36",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0210",
+      "claim": "B · no — Coste central asignado (k€): 90 EUR_K",
+      "values": [
+        {
+          "value": 90.0,
+          "unit": "EUR_K",
+          "period": null,
+          "basis": null,
+          "label": "B · no",
+          "column": "Coste central asignado (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "G36",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0211",
+      "claim": "B · no — Tienda: 36",
+      "values": [
+        {
+          "value": 36.0,
+          "unit": "",
+          "period": null,
+          "basis": null,
+          "label": "B · no",
+          "column": "Tienda"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "A37",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0212",
+      "claim": "B · no — Año de apertura: 2,024 YEARS",
+      "values": [
+        {
+          "value": 2024.0,
+          "unit": "YEARS",
+          "period": null,
+          "basis": null,
+          "label": "B · no",
+          "column": "Año de apertura"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "C37",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0213",
+      "claim": "B · no — Ventas 2025 (k€): 820 EUR_K",
+      "values": [
+        {
+          "value": 820.0,
+          "unit": "EUR_K",
+          "period": "2025",
+          "basis": "actual",
+          "label": "B · no",
+          "column": "Ventas 2025 (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "D37",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0214",
+      "claim": "B · no — Alquiler / ventas (%): 9 PCT",
+      "values": [
+        {
+          "value": 9.0,
+          "unit": "PCT",
+          "period": null,
+          "basis": null,
+          "label": "B · no",
+          "column": "Alquiler / ventas (%)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "E37",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0215",
+      "claim": "B · no — EBITDA 2025 (k€): -62 EUR_K",
+      "values": [
+        {
+          "value": -62.0,
+          "unit": "EUR_K",
+          "period": "2025",
+          "basis": "actual",
+          "label": "B · no",
+          "column": "EBITDA 2025 (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "F37",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0216",
+      "claim": "B · no — Coste central asignado (k€): 90 EUR_K",
+      "values": [
+        {
+          "value": 90.0,
+          "unit": "EUR_K",
+          "period": null,
+          "basis": null,
+          "label": "B · no",
+          "column": "Coste central asignado (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "G37",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0217",
+      "claim": "B · no — Tienda: 37",
+      "values": [
+        {
+          "value": 37.0,
+          "unit": "",
+          "period": null,
+          "basis": null,
+          "label": "B · no",
+          "column": "Tienda"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "A38",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0218",
+      "claim": "B · no — Año de apertura: 2,024 YEARS",
+      "values": [
+        {
+          "value": 2024.0,
+          "unit": "YEARS",
+          "period": null,
+          "basis": null,
+          "label": "B · no",
+          "column": "Año de apertura"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "C38",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0219",
+      "claim": "B · no — Ventas 2025 (k€): 820 EUR_K",
+      "values": [
+        {
+          "value": 820.0,
+          "unit": "EUR_K",
+          "period": "2025",
+          "basis": "actual",
+          "label": "B · no",
+          "column": "Ventas 2025 (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "D38",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0220",
+      "claim": "B · no — Alquiler / ventas (%): 9 PCT",
+      "values": [
+        {
+          "value": 9.0,
+          "unit": "PCT",
+          "period": null,
+          "basis": null,
+          "label": "B · no",
+          "column": "Alquiler / ventas (%)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "E38",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0221",
+      "claim": "B · no — EBITDA 2025 (k€): -62 EUR_K",
+      "values": [
+        {
+          "value": -62.0,
+          "unit": "EUR_K",
+          "period": "2025",
+          "basis": "actual",
+          "label": "B · no",
+          "column": "EBITDA 2025 (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "F38",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0222",
+      "claim": "B · no — Coste central asignado (k€): 90 EUR_K",
+      "values": [
+        {
+          "value": 90.0,
+          "unit": "EUR_K",
+          "period": null,
+          "basis": null,
+          "label": "B · no",
+          "column": "Coste central asignado (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "G38",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0223",
+      "claim": "B · no — Tienda: 38",
+      "values": [
+        {
+          "value": 38.0,
+          "unit": "",
+          "period": null,
+          "basis": null,
+          "label": "B · no",
+          "column": "Tienda"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "A39",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0224",
+      "claim": "B · no — Año de apertura: 2,024 YEARS",
+      "values": [
+        {
+          "value": 2024.0,
+          "unit": "YEARS",
+          "period": null,
+          "basis": null,
+          "label": "B · no",
+          "column": "Año de apertura"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "C39",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0225",
+      "claim": "B · no — Ventas 2025 (k€): 820 EUR_K",
+      "values": [
+        {
+          "value": 820.0,
+          "unit": "EUR_K",
+          "period": "2025",
+          "basis": "actual",
+          "label": "B · no",
+          "column": "Ventas 2025 (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "D39",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0226",
+      "claim": "B · no — Alquiler / ventas (%): 9 PCT",
+      "values": [
+        {
+          "value": 9.0,
+          "unit": "PCT",
+          "period": null,
+          "basis": null,
+          "label": "B · no",
+          "column": "Alquiler / ventas (%)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "E39",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0227",
+      "claim": "B · no — EBITDA 2025 (k€): -62 EUR_K",
+      "values": [
+        {
+          "value": -62.0,
+          "unit": "EUR_K",
+          "period": "2025",
+          "basis": "actual",
+          "label": "B · no",
+          "column": "EBITDA 2025 (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "F39",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0228",
+      "claim": "B · no — Coste central asignado (k€): 90 EUR_K",
+      "values": [
+        {
+          "value": 90.0,
+          "unit": "EUR_K",
+          "period": null,
+          "basis": null,
+          "label": "B · no",
+          "column": "Coste central asignado (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "G39",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0229",
+      "claim": "B · no — Tienda: 39",
+      "values": [
+        {
+          "value": 39.0,
+          "unit": "",
+          "period": null,
+          "basis": null,
+          "label": "B · no",
+          "column": "Tienda"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "A40",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0230",
+      "claim": "B · no — Año de apertura: 2,024 YEARS",
+      "values": [
+        {
+          "value": 2024.0,
+          "unit": "YEARS",
+          "period": null,
+          "basis": null,
+          "label": "B · no",
+          "column": "Año de apertura"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "C40",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0231",
+      "claim": "B · no — Ventas 2025 (k€): 820 EUR_K",
+      "values": [
+        {
+          "value": 820.0,
+          "unit": "EUR_K",
+          "period": "2025",
+          "basis": "actual",
+          "label": "B · no",
+          "column": "Ventas 2025 (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "D40",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0232",
+      "claim": "B · no — Alquiler / ventas (%): 9 PCT",
+      "values": [
+        {
+          "value": 9.0,
+          "unit": "PCT",
+          "period": null,
+          "basis": null,
+          "label": "B · no",
+          "column": "Alquiler / ventas (%)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "E40",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0233",
+      "claim": "B · no — EBITDA 2025 (k€): -62 EUR_K",
+      "values": [
+        {
+          "value": -62.0,
+          "unit": "EUR_K",
+          "period": "2025",
+          "basis": "actual",
+          "label": "B · no",
+          "column": "EBITDA 2025 (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "F40",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0234",
+      "claim": "B · no — Coste central asignado (k€): 90 EUR_K",
+      "values": [
+        {
+          "value": 90.0,
+          "unit": "EUR_K",
+          "period": null,
+          "basis": null,
+          "label": "B · no",
+          "column": "Coste central asignado (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "G40",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0235",
+      "claim": "B · no — Tienda: 40",
+      "values": [
+        {
+          "value": 40.0,
+          "unit": "",
+          "period": null,
+          "basis": null,
+          "label": "B · no",
+          "column": "Tienda"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "A41",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0236",
+      "claim": "B · no — Año de apertura: 2,024 YEARS",
+      "values": [
+        {
+          "value": 2024.0,
+          "unit": "YEARS",
+          "period": null,
+          "basis": null,
+          "label": "B · no",
+          "column": "Año de apertura"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "C41",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0237",
+      "claim": "B · no — Ventas 2025 (k€): 820 EUR_K",
+      "values": [
+        {
+          "value": 820.0,
+          "unit": "EUR_K",
+          "period": "2025",
+          "basis": "actual",
+          "label": "B · no",
+          "column": "Ventas 2025 (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "D41",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0238",
+      "claim": "B · no — Alquiler / ventas (%): 9 PCT",
+      "values": [
+        {
+          "value": 9.0,
+          "unit": "PCT",
+          "period": null,
+          "basis": null,
+          "label": "B · no",
+          "column": "Alquiler / ventas (%)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "E41",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0239",
+      "claim": "B · no — EBITDA 2025 (k€): -62 EUR_K",
+      "values": [
+        {
+          "value": -62.0,
+          "unit": "EUR_K",
+          "period": "2025",
+          "basis": "actual",
+          "label": "B · no",
+          "column": "EBITDA 2025 (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "F41",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0240",
+      "claim": "B · no — Coste central asignado (k€): 90 EUR_K",
+      "values": [
+        {
+          "value": 90.0,
+          "unit": "EUR_K",
+          "period": null,
+          "basis": null,
+          "label": "B · no",
+          "column": "Coste central asignado (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Tiendas",
+        "range": "G41",
+        "loc": "sheet Tiendas"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0241",
+      "claim": "A - alquiler alto — Tiendas: 22",
+      "values": [
+        {
+          "value": 22.0,
+          "unit": "",
+          "period": null,
+          "basis": null,
+          "label": "A - alquiler alto",
+          "column": "Tiendas"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Resumen",
+        "range": "B2",
+        "loc": "sheet Resumen"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0242",
+      "claim": "A - alquiler alto — EBITDA 2025 (k€): -3,900 EUR_K",
+      "values": [
+        {
+          "value": -3900.0,
+          "unit": "EUR_K",
+          "period": "2025",
+          "basis": "actual",
+          "label": "A - alquiler alto",
+          "column": "EBITDA 2025 (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Resumen",
+        "range": "C2",
+        "loc": "sheet Resumen"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0243",
+      "claim": "A - alquiler alto — Coste central asignado (k€): 1,980 EUR_K",
+      "values": [
+        {
+          "value": 1980.0,
+          "unit": "EUR_K",
+          "period": null,
+          "basis": null,
+          "label": "A - alquiler alto",
+          "column": "Coste central asignado (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Resumen",
+        "range": "D2",
+        "loc": "sheet Resumen"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0244",
+      "claim": "B - aperturas 2023-2024 — Tiendas: 18",
+      "values": [
+        {
+          "value": 18.0,
+          "unit": "",
+          "period": null,
+          "basis": null,
+          "label": "B - aperturas 2023-2024",
+          "column": "Tiendas"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Resumen",
+        "range": "B3",
+        "loc": "sheet Resumen"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0245",
+      "claim": "B - aperturas 2023-2024 — EBITDA 2025 (k€): -1,296 EUR_K",
+      "values": [
+        {
+          "value": -1296.0,
+          "unit": "EUR_K",
+          "period": "2025",
+          "basis": "actual",
+          "label": "B - aperturas 2023-2024",
+          "column": "EBITDA 2025 (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Resumen",
+        "range": "C3",
+        "loc": "sheet Resumen"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0246",
+      "claim": "B - aperturas 2023-2024 — Coste central asignado (k€): 1,620 EUR_K",
+      "values": [
+        {
+          "value": 1620.0,
+          "unit": "EUR_K",
+          "period": null,
+          "basis": null,
+          "label": "B - aperturas 2023-2024",
+          "column": "Coste central asignado (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Resumen",
+        "range": "D3",
+        "loc": "sheet Resumen"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0247",
+      "claim": "Total — Tiendas: 40",
+      "values": [
+        {
+          "value": 40.0,
+          "unit": "",
+          "period": null,
+          "basis": null,
+          "label": "Total",
+          "column": "Tiendas"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Resumen",
+        "range": "B4",
+        "loc": "sheet Resumen"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0248",
+      "claim": "Total — EBITDA 2025 (k€): -5,196 EUR_K",
+      "values": [
+        {
+          "value": -5196.0,
+          "unit": "EUR_K",
+          "period": "2025",
+          "basis": "actual",
+          "label": "Total",
+          "column": "EBITDA 2025 (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Resumen",
+        "range": "C4",
+        "loc": "sheet Resumen"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0249",
+      "claim": "Total — Coste central asignado (k€): 3,600 EUR_K",
+      "values": [
+        {
+          "value": 3600.0,
+          "unit": "EUR_K",
+          "period": null,
+          "basis": null,
+          "label": "Total",
+          "column": "Coste central asignado (k€)"
+        }
+      ],
+      "source": {
+        "file": "tiendas_proximidad_2025.xlsx",
+        "sheet": "Resumen",
+        "range": "D4",
+        "loc": "sheet Resumen"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0250",
+      "claim": "El alquiler de las tiendas del grupo A supone un 16% de sus ventas (incluidos gastos comunes), frente al 9% de media de la red.",
+      "values": [
+        {
+          "value": 16.0,
+          "unit": "PCT",
+          "raw": "16%",
+          "period": null,
+          "basis": null
+        },
+        {
+          "value": 9.0,
+          "unit": "PCT",
+          "raw": "9%",
+          "period": null,
+          "basis": null
+        }
+      ],
+      "source": {
+        "file": "informe_inmobiliario.pdf",
+        "loc": "p.1"
+      },
+      "fact_type": "text_statement",
+      "confidence": 0.8
+    },
+    {
+      "id": "F0251",
+      "claim": "15 contratos del grupo A tienen ventana de ruptura en 2026: cerrarlas cuesta 100.000 euros por tienda.",
+      "values": [
+        {
+          "value": 15.0,
+          "unit": "",
+          "raw": "15",
+          "period": "2026",
+          "basis": "actual"
+        },
+        {
+          "value": 100000.0,
+          "unit": "EUR",
+          "raw": "100.000",
+          "period": "2026",
+          "basis": "actual"
+        }
+      ],
+      "source": {
+        "file": "informe_inmobiliario.pdf",
+        "loc": "p.1"
+      },
+      "fact_type": "text_statement",
+      "confidence": 0.8
+    },
+    {
+      "id": "F0252",
+      "claim": "Cerrar una tienda sin ruptura cuesta 250.000 euros (penalización e indemnizaciones).",
+      "values": [
+        {
+          "value": 250000.0,
+          "unit": "EUR",
+          "raw": "250.000",
+          "period": null,
+          "basis": null
+        }
+      ],
+      "source": {
+        "file": "informe_inmobiliario.pdf",
+        "loc": "p.1"
+      },
+      "fact_type": "text_statement",
+      "confidence": 0.8
+    },
+    {
+      "id": "F0253",
+      "claim": "Sus ventas por metro cuadrado crecen un 11% al año.",
+      "values": [
+        {
+          "value": 11.0,
+          "unit": "PCT",
+          "raw": "11%",
+          "period": null,
+          "basis": null
+        }
+      ],
+      "source": {
+        "file": "informe_inmobiliario.pdf",
+        "loc": "p.1"
+      },
+      "fact_type": "text_statement",
+      "confidence": 0.8
+    },
+    {
+      "id": "F0254",
+      "claim": "Las 40 tiendas de proximidad perdieron 5,2 M€ de EBITDA en 2025.",
+      "values": [
+        {
+          "value": 40.0,
+          "unit": "",
+          "raw": "40",
+          "period": "2025",
+          "basis": "actual"
+        },
+        {
+          "value": 5.2,
+          "unit": "EUR_M",
+          "raw": "5,2 M",
+          "period": "2025",
+          "basis": "actual"
+        }
+      ],
+      "source": {
+        "file": "propuesta_direccion_financiera.md",
+        "loc": "line 3"
+      },
+      "fact_type": "text_statement",
+      "confidence": 0.8
+    },
+    {
+      "id": "F0255",
+      "claim": "Proponemos cerrarlas todas en 2026: el EBITDA del grupo mejora en 5,2 M€.",
+      "values": [
+        {
+          "value": 5.2,
+          "unit": "EUR_M",
+          "raw": "5,2 M",
+          "period": "2026",
+          "basis": "actual"
+        }
+      ],
+      "source": {
+        "file": "propuesta_direccion_financiera.md",
+        "loc": "line 4"
+      },
+      "fact_type": "text_statement",
+      "confidence": 0.8
+    },
+    {
+      "id": "F0256",
+      "claim": "Coste de cierre estimado: 250 k€ por tienda, 10 M€ en total.",
+      "values": [
+        {
+          "value": 250.0,
+          "unit": "EUR_K",
+          "raw": "250 k",
+          "period": null,
+          "basis": null
+        },
+        {
+          "value": 10.0,
+          "unit": "EUR_M",
+          "raw": "10 M",
+          "period": null,
+          "basis": null
+        }
+      ],
+      "source": {
+        "file": "propuesta_direccion_financiera.md",
+        "loc": "line 5"
+      },
+      "fact_type": "text_statement",
+      "confidence": 0.8
+    }
+  ],
+  "stats": {
+    "sources": 3,
+    "tables": 3,
+    "facts": 256,
+    "by_type": {
+      "table_value": 249,
+      "derived_change": 0,
+      "text_statement": 7
+    }
+  }
+}
