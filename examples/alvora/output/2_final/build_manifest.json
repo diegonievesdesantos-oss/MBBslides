@@ -297,7 +297,7 @@
         "base_pt": 30.0,
         "chosen_pt": 30.0,
         "need_h": 0.487,
-        "box_h": 0.62,
+        "box_h": 0.563,
         "lines": 1,
         "overflow": false
       },
@@ -319,7 +319,7 @@
         "base_pt": 30.0,
         "chosen_pt": 30.0,
         "need_h": 0.487,
-        "box_h": 0.62,
+        "box_h": 0.563,
         "lines": 1,
         "overflow": false
       },
@@ -341,7 +341,7 @@
         "base_pt": 30.0,
         "chosen_pt": 30.0,
         "need_h": 0.487,
-        "box_h": 0.62,
+        "box_h": 0.563,
         "lines": 1,
         "overflow": false
       },
@@ -363,7 +363,7 @@
         "base_pt": 30.0,
         "chosen_pt": 30.0,
         "need_h": 0.487,
-        "box_h": 0.62,
+        "box_h": 0.563,
         "lines": 1,
         "overflow": false
       },
@@ -1168,7 +1168,7 @@
         "base_pt": 11.5,
         "chosen_pt": 11.5,
         "need_h": 0.187,
-        "box_h": 0.62,
+        "box_h": 0.7,
         "lines": 1,
         "overflow": false
       },
@@ -1179,7 +1179,7 @@
         "base_pt": 11.5,
         "chosen_pt": 11.5,
         "need_h": 0.187,
-        "box_h": 0.62,
+        "box_h": 0.7,
         "lines": 1,
         "overflow": false
       },
@@ -1190,7 +1190,7 @@
         "base_pt": 11.5,
         "chosen_pt": 11.5,
         "need_h": 0.187,
-        "box_h": 0.62,
+        "box_h": 0.7,
         "lines": 1,
         "overflow": false
       },
@@ -1201,7 +1201,7 @@
         "base_pt": 11.5,
         "chosen_pt": 11.5,
         "need_h": 0.187,
-        "box_h": 0.62,
+        "box_h": 0.7,
         "lines": 1,
         "overflow": false
       },
@@ -1212,7 +1212,7 @@
         "base_pt": 11.5,
         "chosen_pt": 11.5,
         "need_h": 0.187,
-        "box_h": 0.62,
+        "box_h": 0.7,
         "lines": 1,
         "overflow": false
       },
@@ -1223,7 +1223,7 @@
         "base_pt": 11.5,
         "chosen_pt": 11.5,
         "need_h": 0.187,
-        "box_h": 0.62,
+        "box_h": 0.7,
         "lines": 1,
         "overflow": false
       }

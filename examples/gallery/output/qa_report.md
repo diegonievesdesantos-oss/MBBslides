@@ -1,6 +1,6 @@
 # QA report
 
-**Verdict:** ✅ PASSED · **Deck score:** 99.8/100 · errors 0 · warnings 0 · info 6
+**Verdict:** ✅ PASSED · **Deck score:** 99.8/100 · errors 0 · warnings 0 · info 5
 
 ## Iterations (generate → render → inspect → patch)
 
@@ -27,7 +27,7 @@
 | g13 | 99 | 0 | 0 |
 | g14 | 100 | 0 | 0 |
 | g15 | 100 | 0 | 0 |
-| g16 | 99 | 0 | 0 |
+| g16 | 100 | 0 | 0 |
 | g17 | 100 | 0 | 0 |
 | g18 | 100 | 0 | 0 |
 | g19 | 100 | 0 | 0 |
@@ -55,7 +55,4 @@
 
 ### g25
 - **info** `VIS_BETTER_OPTION` — 'bar' fits a composition message better than 'donut' (sorted bars compare parts more precisely than angles)
-
-### g16
-- **info** `RENDER_UNBALANCED` — 20/32 body cells empty next to dense content: check balance
 

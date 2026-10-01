@@ -1226,9 +1226,7 @@
           ]
         }
       },
-      "source": "KPI tracker (illustrative)",
-      "layout": "kpi_grid",
-      "_composed": true
+      "source": "KPI tracker (illustrative)"
     },
     {
       "id": "g23",

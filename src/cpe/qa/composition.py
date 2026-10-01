@@ -233,11 +233,15 @@ def _scaled_match(v: float, unit: str, body_nums: set) -> bool:
     """(v1.4) "€1.2bn" in the headline is proven by "1,210" in an exhibit in €M: the same number at
     another scale (×1000 / ÷1000), within the precision the headline was written with."""
     u = (unit or "").lower().strip("€$£¥%. ")
-    if u not in SCALE_UNITS:
+    if u in SCALE_UNITS:
+        factors = (1000.0, 0.001)
+    elif not u and v >= 10_000 and float(v).is_integer():  # "€61,000,000" proven by "61" in an exhibit in €M
+        factors = (1e-3, 1e-6, 1e-9)
+    else:
         return False
     dec = len(repr(float(v)).split(".")[1].rstrip("0")) if "." in repr(float(v)) else 0
     half = 0.5 * 10 ** (-dec)
-    for f in (1000.0, 0.001):
+    for f in factors:
         if any(abs(v * f - b) <= max(half * f, 0.01 * v * f) for b in body_nums):
             return True
     return False

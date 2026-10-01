@@ -1,0 +1,96 @@
+{
+ "_doc": [
+  "Seeds of the metamorphic robustness suite (src/cpe/robustness.py): valid DEVELOPMENT slides of the regression suite, one or two per archetype.",
+  "Perturbations are generated from them at run time; nothing here comes from the sealed holdout."
+ ],
+ "seeds": [
+  {
+   "case": "209_battery_process",
+   "slide": "pr02"
+  },
+  {
+   "case": "209_battery_process",
+   "slide": "pr07"
+  },
+  {
+   "case": "208_battery_comparison",
+   "slide": "cp02"
+  },
+  {
+   "case": "208_battery_comparison",
+   "slide": "cp05"
+  },
+  {
+   "case": "201_battery_kpi_hero",
+   "slide": "kh03"
+  },
+  {
+   "case": "202_battery_kpi_dashboard",
+   "slide": "kd01"
+  },
+  {
+   "case": "202_battery_kpi_dashboard",
+   "slide": "kd03"
+  },
+  {
+   "case": "206_battery_table",
+   "slide": "tb05"
+  },
+  {
+   "case": "206_battery_table",
+   "slide": "tb07"
+  },
+  {
+   "case": "204_battery_chart",
+   "slide": "ch01"
+  },
+  {
+   "case": "204_battery_chart",
+   "slide": "ch03"
+  },
+  {
+   "case": "204_battery_chart",
+   "slide": "ch08"
+  },
+  {
+   "case": "216_battery_text_exhibit",
+   "slide": "tx02"
+  },
+  {
+   "case": "216_battery_text_exhibit",
+   "slide": "tx06"
+  },
+  {
+   "case": "211_battery_timeline",
+   "slide": "tl02"
+  },
+  {
+   "case": "203_battery_executive_summary",
+   "slide": "es02"
+  },
+  {
+   "case": "205_battery_waterfall",
+   "slide": "wf02"
+  },
+  {
+   "case": "213_battery_architecture",
+   "slide": "ar02"
+  },
+  {
+   "case": "210_battery_roadmap",
+   "slide": "rm02"
+  },
+  {
+   "case": "215_battery_segmentation",
+   "slide": "sg01"
+  },
+  {
+   "case": "214_battery_hierarchy",
+   "slide": "hi03"
+  },
+  {
+   "case": "207_battery_matrix",
+   "slide": "mx02"
+  }
+ ]
+}

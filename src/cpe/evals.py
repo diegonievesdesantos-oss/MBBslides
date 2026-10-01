@@ -40,7 +40,10 @@ LATEST = ROOT / "evals" / "results" / "latest.json"
 
 SUITES = {
     "regression": {"cases": "evals/regression/cases", "baseline": "evals/regression/baseline.json", "gate": True},
-    "holdout": {"cases": "evals/holdout/public", "baseline": None, "gate": False},
+    # retired: H01–H05 were inspected during v1.2–v1.3 — development-known, run for history only
+    "holdout_v1": {"cases": "evals/holdout/public", "baseline": None, "gate": False, "retired": True},
+    # sealed v1.4 holdout: release candidates only, clean frozen engine, seal verified, never baselined
+    "holdout_v2": {"cases": "evals/holdout/v2/cases", "baseline": None, "gate": False, "sealed": "evals/holdout/v2/SEAL.json"},
     "examples": {"cases": None, "baseline": None, "gate": True, "decks": {
         "alvora": "examples/alvora/deck.json",
         "gallery": "examples/gallery/deck.json",
@@ -147,8 +150,47 @@ def _aggregate(results: list[dict]) -> dict:
     }
 
 
+class HoldoutGuard(RuntimeError):
+    pass
+
+
+def verify_seal(seal_path: Path) -> list[str]:
+    """Files that do not match the seal (changed, missing or added). Empty = intact."""
+    import hashlib
+
+    seal = json.loads(seal_path.read_text(encoding="utf-8"))
+    d = seal_path.parent / "cases"
+    have = {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in d.glob("*.json")}
+    bad = [f"changed: {n}" for n, h in seal["files"].items() if n in have and have[n] != h]
+    bad += [f"missing: {n}" for n in seal["files"] if n not in have]
+    bad += [f"not sealed: {n}" for n in have if n not in seal["files"]]
+    return bad
+
+
+def _guard_holdout_v2(release_candidate: bool, match: str | None, update_baseline: bool, rerun_reason: str | None) -> dict:
+    from . import environment
+
+    cfg = SUITES["holdout_v2"]
+    if not release_candidate:
+        raise HoldoutGuard("holdout v2 runs only for a release candidate (--release-candidate): it is never part of the development loop")
+    if match or update_baseline:
+        raise HoldoutGuard("holdout v2 runs whole and is never baselined")
+    bad = verify_seal(ROOT / cfg["sealed"])
+    if bad:
+        raise HoldoutGuard("holdout v2 seal broken: " + "; ".join(bad))
+    prov = environment.provenance()
+    if prov["dirty"]:
+        raise HoldoutGuard("holdout v2 needs a FROZEN engine: commit everything and run on the clean commit")
+    prev = (json.loads(LATEST.read_text()).get("holdout") or {}).get("v2") if LATEST.exists() else None
+    if prev and (prev.get("provenance") or {}).get("engine_version") == __version__ and (prev.get("provenance") or {}).get("evaluated_commit") != prov["evaluated_commit"] and not rerun_reason:
+        raise HoldoutGuard(f"holdout v2 was already run for {__version__} on {prev['provenance']['evaluated_commit'][:10]}: a second run on a "
+                           "different engine is tuning against it. Record failures for the next cycle; pass --rerun-reason only for a non-engine cause")
+    return json.loads((ROOT / cfg["sealed"]).read_text())
+
+
 def run_suite(cases_dir: str | Path | None, out_dir: str | Path, baseline_path: str | Path | None = None, update_baseline: bool = False, compose: bool = True,
-              tolerance: float = TOLERANCE, suite: str = "regression", record: bool = False, match: str | None = None) -> dict:
+              tolerance: float = TOLERANCE, suite: str = "regression", record: bool = False, match: str | None = None,
+              release_candidate: bool = False, allow_dirty: bool = False, rerun_reason: str | None = None) -> dict:
     from . import environment
 
     if suite not in SUITES:
@@ -164,6 +206,7 @@ def run_suite(cases_dir: str | Path | None, out_dir: str | Path, baseline_path: 
     results = []
     if match and (record or update_baseline):
         raise ValueError("--match runs a subset: it cannot record results or update the baseline")
+    seal = _guard_holdout_v2(release_candidate, match, update_baseline, rerun_reason) if suite == "holdout_v2" else None
     for name, c in _cases(suite, cases_dir, match):
         r = run_case(c, out, compose=compose, name=name, max_iter=3 if suite == "examples" else 2)
         results.append(r)
@@ -196,10 +239,13 @@ def run_suite(cases_dir: str | Path | None, out_dir: str | Path, baseline_path: 
     (out / "eval_report.json").write_text(json.dumps(summary, indent=2, ensure_ascii=False))
     (out / "eval_report.md").write_text(to_markdown(summary))
     (out / "archetype_diagnostics.md").write_text(quality.diagnostics_markdown(results, summary["quality"], f"Archetype diagnostics — {suite}"))
-    if suite != "holdout_v2":  # sealed holdout renders are not opened during development
+    if suite != "holdout_v2":  # the sealed holdout's renders are not turned into review sheets
         quality.archetype_sheets(results, out, out / "archetype_sheets")
+    if seal:
+        summary["seal"] = {"sealed_at": seal.get("sealed_at"), "sealed_at_engine_commit": seal.get("sealed_at_engine_commit"), "files": len(seal["files"]),
+                           "verified": True, "rerun_reason": rerun_reason}
     if record:
-        record_result(suite, summary)
+        record_result(suite, summary, allow_dirty=allow_dirty)
     return summary
 
 
@@ -226,24 +272,45 @@ def _slim(summary: dict) -> dict:
     return out
 
 
-def record_result(section: str, summary: dict, path: Path = LATEST) -> dict:
-    """Write one signal into evals/results/latest.json — the single source of truth for current numbers."""
+class DirtyEvaluation(RuntimeError):
+    pass
+
+
+def record_result(section: str, summary: dict, path: Path = LATEST, allow_dirty: bool = False) -> dict:
+    """Write one signal into evals/results/latest.json — the single source of truth for current numbers.
+
+    v1.4 provenance: every recorded section carries the IMMUTABLE commit it was evaluated on
+    (`provenance.evaluated_commit`, `dirty: false`). A run on a dirty tree cannot become release
+    truth: recording it raises unless `allow_dirty` (development), and then it is marked
+    `release_truth: false` and `cpe results verify` fails until it is re-run on a clean commit."""
+    from . import environment
+
+    prov = (summary.get("environment") or {}).get("provenance") or environment.provenance()
+    if prov.get("dirty") and not allow_dirty and section != "human_reference":  # votes do not depend on the engine commit
+        raise DirtyEvaluation(f"evaluated on a dirty tree ({', '.join(prov.get('dirty_paths') or []) or 'no commit'}): commit the engine first, "
+                              "re-run on the clean commit, then record (or pass --allow-dirty for a development record)")
     data = json.loads(path.read_text()) if path.exists() else {}
     data["version"] = __version__
+    prov = {**prov, "release_truth": not prov.get("dirty")}
     if section in ("regression", "examples"):
         data[section] = _slim(summary)
-    elif section == "holdout":
-        data.setdefault("holdout", {})["public"] = _slim(summary)
-    elif section == "holdout_private":  # sanitized aggregates only
-        data.setdefault("holdout", {})["private"] = summary
+        data[section]["provenance"] = prov
+    elif section == "holdout_v2":
+        data.setdefault("holdout", {})["v2"] = {**_slim(summary), "provenance": prov, "seal": summary.get("seal")}
+    elif section == "holdout_v1":
+        data.setdefault("holdout", {})["v1_historical"] = {**_slim(summary), "provenance": prov}
+    elif section == "holdout_external":  # sanitized aggregates only
+        data.setdefault("holdout", {})["external"] = {**summary, "provenance": prov}
+    elif section == "holdout_private":  # sanitized aggregates only; the corporate template is DEVELOPMENT data since v1.3
+        data["development_private"] = {**summary, "provenance": prov}
     else:
-        data[section] = summary
+        data[section] = {**summary, "provenance": prov} if isinstance(summary, dict) else summary
     if "environment" in summary:
         env = dict(summary["environment"])
         env.pop("installed_font_families", None)
+        env.pop("provenance", None)
         data["environment"] = env
-    data.setdefault("holdout", {}).setdefault("public", None)
-    data["holdout"].setdefault("private", {"status": "private corporate holdouts run outside the public repo; only sanitized aggregates are recorded here"})
+    data.setdefault("holdout", {})
     data.setdefault("human_reference", {"status": "no votes imported yet"})
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n")
@@ -254,7 +321,7 @@ def to_markdown(s: dict) -> str:
     L = [f"# Visual-quality eval report — {s['suite']}", ""]
     L.append(f"**Verdict:** {'✅ PASSED' if s['passed'] else '❌ FAILED'} · **Composition (archetype fitness):** {s['suite_composition']}/100 · "
              f"v1.1 universal score: {s.get('suite_composition_v1')} · slides measured: {s['slides_measured']}")
-    if s["suite"] == "holdout":
+    if s["suite"].startswith("holdout"):
         L += ["", "> Holdout: reported, never gated, never baselined. Do not tune weights, thresholds or archetype profiles on these cases (docs/EVALS.md)."]
     L.append("")
     for n in s.get("environment_notes") or []:

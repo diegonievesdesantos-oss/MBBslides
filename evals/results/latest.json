@@ -274,7 +274,7 @@
     "fingerprint": "f98cee49d123ed5f"
   },
   "holdout": {
-    "public": {
+    "v1_historical": {
       "metric": "archetype-fitness composition score",
       "suite_composition": 81.2,
       "suite_composition_v1": 79.2,
@@ -396,33 +396,7 @@
         "version": "1.3.0.dev0",
         "commit": "4f9976d2e727b870505afd9cf1c45d21e1ac2e90-dirty"
       },
-      "note": "v1.3 re-run. These cases were reviewed visually during v1.2, so they are no longer blind: the v1.2 result (81.0, rules frozen at e3b63e1) is the last unbiased holdout number (CHANGELOG 1.2.0). New sealed cases are needed for v1.4."
-    },
-    "private": {
-      "summary": "development data since v1.3 (its v1.2 findings drove the fixes, so it is no longer a holdout): 1 master(s), 54 layouts, 32% classified with confidence ≥ 0.5; font conflict detected; test deck QA passed; agreement with the human brand spec 21/22",
-      "holdouts": {
-        "corporate_template_A": {
-          "masters": 1,
-          "layouts": 54,
-          "example_slides": 63,
-          "layouts_classified_confidence_ge_0_5": 0.315,
-          "layout_families": 10,
-          "rescaled": true,
-          "masters_used": true,
-          "font_conflict_detected": true,
-          "corporate_font_installed": true,
-          "template_pages_rendered": 63,
-          "test_deck_qa_passed": true,
-          "test_deck_qa_errors": 0,
-          "test_deck_composition": 99.8,
-          "corporate_modes": {
-            "native": 1,
-            "adaptive": 11
-          },
-          "spec_agreement": "21/22",
-          "spec_weighted_agreement": 0.969
-        }
-      }
+      "note": "retired H01–H05 (development-known since v1.3); last blind result 81.0 at v1.2 (engine e3b63e1); this v1.3 re-run is development evidence"
     }
   },
   "human_reference": {
@@ -530,6 +504,32 @@
     "engine": {
       "version": "1.3.3",
       "commit": "8216a5d18a1b41268b484626dc469851d0da3e3b-dirty"
+    }
+  },
+  "development_private": {
+    "summary": "development data since v1.3 (its v1.2 findings drove the fixes, so it is no longer a holdout): 1 master(s), 54 layouts, 32% classified with confidence ≥ 0.5; font conflict detected; test deck QA passed; agreement with the human brand spec 21/22",
+    "holdouts": {
+      "corporate_template_A": {
+        "masters": 1,
+        "layouts": 54,
+        "example_slides": 63,
+        "layouts_classified_confidence_ge_0_5": 0.315,
+        "layout_families": 10,
+        "rescaled": true,
+        "masters_used": true,
+        "font_conflict_detected": true,
+        "corporate_font_installed": true,
+        "template_pages_rendered": 63,
+        "test_deck_qa_passed": true,
+        "test_deck_qa_errors": 0,
+        "test_deck_composition": 99.8,
+        "corporate_modes": {
+          "native": 1,
+          "adaptive": 11
+        },
+        "spec_agreement": "21/22",
+        "spec_weighted_agreement": 0.969
+      }
     }
   }
 }

@@ -6,7 +6,9 @@ name: CI
 # fontconfig / FreeType / HarfBuzz / FriBiDi / font versions, locked Python packages), the same
 # image contributors use locally through scripts/cpe-docker. See docs/REPRODUCIBILITY.md.
 #
-# Private corporate holdouts (.private/) never run here: they are not in the repository.
+# Private corporate material (.private/) never runs here: it is not in the repository. The sealed
+# holdout (the v1.4 sealed suite) never runs here either: it is run once per release candidate, by hand,
+# on a frozen engine — running it on every commit would turn it into development data.
 
 on:
   push:
@@ -29,6 +31,8 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0 # provenance check needs the evaluated commit
       - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: "3.12"
@@ -36,6 +40,10 @@ jobs:
       - run: ruff check src tests scripts
       - name: README numbers match evals/results/latest.json (single source of truth)
         run: PYTHONPATH=src python -m cpe results readme --check
+      - name: Recorded results are release truth (clean evaluated commit, engine unchanged since)
+        run: PYTHONPATH=src python -m cpe results verify
+      - name: Archetype battery cases are generated from scripts/make_archetype_battery.py
+        run: python scripts/make_archetype_battery.py --check
 
   package:
     runs-on: ubuntu-24.04
@@ -123,6 +131,60 @@ jobs:
             ci_out/**/composition.md
             ci_out/*/eval_report.md
             ci_out/*/eval_report.json
+
+  quality_profile:
+    # Absolute expectations per archetype on the balanced battery (evals/archetype_gates.json):
+    # a relative baseline cannot catch "bad then, equally bad now". Diagnostics and contact sheets
+    # of weak archetypes are uploaded with the run.
+    needs: image
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+      packages: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: docker/login-action@dbcb813823bdd20940b903addbd779551569679f # v4.6.0
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - run: docker pull "$IMAGE"
+      - name: Render the archetype battery
+        run: CPE_IMAGE=$IMAGE scripts/cpe-docker eval --suite regression --match battery -o ci_out/battery
+      - name: Quality profile and absolute archetype gates
+        run: CPE_IMAGE=$IMAGE scripts/cpe-docker quality ci_out/battery/eval_report.json --check
+      - if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: quality-profile
+          path: |
+            ci_out/battery/eval_report.md
+            ci_out/battery/archetype_diagnostics.md
+            ci_out/battery/archetype_sheets/*.png
+
+  robustness:
+    # Metamorphic robustness: small content perturbations of development seeds. Fails when more
+    # variants collapse (≥25-point drop or a new visual QA error) than evals/robustness/baseline.json.
+    needs: image
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+      packages: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: docker/login-action@dbcb813823bdd20940b903addbd779551569679f # v4.6.0
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - run: docker pull "$IMAGE"
+      - name: Robustness vs baseline
+        run: CPE_IMAGE=$IMAGE scripts/cpe-docker robustness -o ci_out/robustness
+      - if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: robustness
+          path: ci_out/robustness/robustness_report.*
 
   reproducibility:
     needs: image

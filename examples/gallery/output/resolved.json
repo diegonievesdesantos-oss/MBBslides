@@ -1613,8 +1613,6 @@
         "_headline": "Wave 1 already cut cost per drop by 3% and overtime by a fifth"
       },
       "source": "KPI tracker (illustrative)",
-      "layout": "kpi_grid",
-      "_composed": true,
       "kind": "content",
       "_plan": {
         "visuals": [
@@ -1625,7 +1623,9 @@
         ],
         "layout": {
           "id": "kpi_grid",
-          "why": "explicit in spec"
+          "why": "best available fit",
+          "score": 50.0,
+          "alternatives": []
         },
         "fit": {
           "words": 14

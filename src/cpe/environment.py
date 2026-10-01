@@ -120,6 +120,38 @@ def git_commit() -> str | None:
     return c + ("-dirty" if dirty else "")
 
 
+# Files a results run WRITES (and the docs that quote it): a change here does not make the evaluated
+# source dirty. Everything else tracked — engine, layouts, profiles, eval cases, image recipe — does.
+RESULT_PATHS = ("evals/results/", "evals/regression/baseline.json", "evals/robustness/baseline.json", "README.md", "CHANGELOG.md", "docs/",
+                "evals/human_reference/rounds/")
+# What determines the numbers: if none of these changed between the evaluated commit and HEAD, the
+# recorded results still describe HEAD (results_report.verify_provenance).
+ENGINE_PATHS = ("src", "docker", "requirements.lock", "pyproject.toml", "evals/regression/cases", "evals/archetype_gates.json", "evals/robustness/seeds.json",
+                "evals/holdout", "examples/alvora/deck.json", "examples/gallery/deck.json", "examples/brand", "scripts/cpe-docker")
+
+
+def dirty_paths() -> list[str]:
+    out = _run(["git", "-C", str(ROOT), "diff", "--name-only", "HEAD"]) or ""  # staged + unstaged changes to tracked files
+    paths = [line.strip() for line in out.splitlines() if line.strip()]
+    return [p for p in paths if not p.startswith(RESULT_PATHS)]
+
+
+def provenance() -> dict:
+    """Where a set of numbers comes from: the immutable source it was evaluated on, the image, the
+    environment, and when the evaluation ran (run metadata only — never used inside a render)."""
+    import datetime
+
+    c = _run(["git", "-C", str(ROOT), "rev-parse", "HEAD"])
+    commit = c if re.fullmatch(r"[0-9a-f]{40}", c or "") else None
+    tree = _run(["git", "-C", str(ROOT), "rev-parse", "HEAD^{tree}"]) if commit else None
+    dp = dirty_paths() if commit else []
+    return {
+        "evaluated_commit": commit, "git_tree": tree or None, "dirty": bool(dp) or commit is None, "dirty_paths": dp[:20],
+        "engine_version": __version__, "container_image": os.environ.get("CPE_CONTAINER_IMAGE"), "container_digest": os.environ.get("CPE_CONTAINER_DIGEST"),
+        "eval_timestamp_utc": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+    }
+
+
 def container_image() -> str | None:
     img = os.environ.get("CPE_CONTAINER_IMAGE")
     if not img:
@@ -144,6 +176,8 @@ def manifest() -> dict:
         "commit": git_commit(),
     }
     env["fingerprint"] = fingerprint(env)
+    env["provenance"] = provenance()
+    env["provenance"]["environment_fingerprint"] = env["fingerprint"]
     return env
 
 

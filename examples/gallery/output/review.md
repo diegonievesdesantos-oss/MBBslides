@@ -352,7 +352,7 @@ Open each PNG, answer the questions (0 = no, 1 = partly, 2 = yes), and write
 
 - **Headline:** Wave 1 already cut cost per drop by 3% and overtime by a fifth
 - **Purpose:** Show KPIs
-- **Layout:** `kpi_grid` — explicit in spec
+- **Layout:** `kpi_grid` — best available fit
 - **Visual:** `kpi` — explicit in spec
 
   - [ ] Does the slide communicate ONE clear idea?

@@ -47,6 +47,8 @@ def _run_slides(run_dir: Path) -> dict:
     res = json.loads((run_dir / "resolved.json").read_text())
     rep = json.loads((run_dir / "qa_report.json").read_text()) if (run_dir / "qa_report.json").exists() else {}
     comp = {c["slide_id"]: c for c in (rep.get("composition") or {}).get("slides", [])}
+    if (run_dir / "composition_measure.json").exists():  # re-measured with ONE scorer (cpe measure): comparable across engine versions
+        comp = {c["slide_id"]: c for c in json.loads((run_dir / "composition_measure.json").read_text())["slides"]}
     pngs = sorted((run_dir / "renders").glob("slide-*.png"))
     out = {}
     for s, png in zip(res["slides"], pngs):
@@ -74,9 +76,12 @@ def candidate_pairs(name: str, base_root: Path, chal_root: Path) -> list[dict]:
     return out
 
 
-def build_round(out_dir: str | Path, pairs_spec: list[tuple[str, str, str]], n: int = 40, repeats: int = 2, seed: int = 7) -> dict:
+def build_round(out_dir: str | Path, pairs_spec: list[tuple[str, str, str]], n: int = 40, repeats: int = 2, seed: int = 7,
+                quotas: dict | None = None, purpose: str = "") -> dict:
     """pairs_spec: [(comparison name, baseline root, challenger root)]. Samples up to n pairs
-    (balanced across comparisons), plus `repeats` side-swapped duplicates for consistency."""
+    (balanced across comparisons), plus `repeats` side-swapped duplicates for consistency.
+    `quotas` {archetype: k} (v1.4, round r2): first take k pairs of each named archetype, then fill
+    the rest from the other archetypes (control cases) — balanced where the engine changed most."""
     out = Path(out_dir)
     if (out / "votes").exists() and any((out / "votes").iterdir()):
         raise SystemExit(f"{out} already has votes: build a new round instead of overwriting one")
@@ -85,8 +90,20 @@ def build_round(out_dir: str | Path, pairs_spec: list[tuple[str, str, str]], n: 
     for p in pools:
         rng.shuffle(p)
     chosen: list[dict] = []
+    if quotas:
+        flat = [c for p in pools for c in p]
+        for arch, k in quotas.items():
+            take = [c for c in flat if c["challenger"]["archetype"] == arch][:k]
+            chosen += take
+            flat = [c for c in flat if c not in take]
+        rest = [c for c in flat if c["challenger"]["archetype"] not in quotas]
+        while len(chosen) < n - repeats and rest:
+            chosen.append(rest.pop())
+        for c in chosen:
+            c["control"] = c["challenger"]["archetype"] not in quotas
     while len(chosen) < n - repeats and any(pools):
         for p in pools:
+            p[:] = [c for c in p if c not in chosen]
             if p and len(chosen) < n - repeats:
                 chosen.append(p.pop())
     (out / "img").mkdir(parents=True, exist_ok=True)
@@ -105,7 +122,7 @@ def build_round(out_dir: str | Path, pairs_spec: list[tuple[str, str, str]], n: 
         pairs.append({"id": pid, "images": [a, b]})
         key[pid] = {"comparison": c["comparison"], "deck": c["deck"], "slide": c["slide"], "baseline": names["baseline"], "challenger": names["challenger"],
                     "archetype": c["challenger"]["archetype"], "baseline_score": c["baseline"]["score"], "challenger_score": c["challenger"]["score"],
-                    "baseline_layout": c["baseline"]["layout"], "challenger_layout": c["challenger"]["layout"]}
+                    "baseline_layout": c["baseline"]["layout"], "challenger_layout": c["challenger"]["layout"], "control": bool(c.get("control"))}
     for j, src in enumerate(rng.sample(pairs, min(repeats, len(pairs)))):
         pid = f"r{j + 1:03d}"
         pairs.append({"id": pid, "images": list(reversed(src["images"]))})
@@ -116,6 +133,8 @@ def build_round(out_dir: str | Path, pairs_spec: list[tuple[str, str, str]], n: 
     (out / "pairs.json").write_text(json.dumps({"meta": meta, "pairs": pairs}, indent=2))
     (out / "key.json").write_text(json.dumps(key, indent=2))
     (out / "index.html").write_text(PAGE)
+    write_status(out, {"round": out.name, "created": meta["created"], "purpose": purpose, "blind": True, "used_for_calibration": False,
+                       "status": "awaiting human votes"})
     return {"pairs": len(pairs), "by_comparison": {n_: sum(1 for k in key.values() if k["comparison"] == n_) for n_ in comparisons}}
 
 
@@ -247,6 +266,106 @@ def _load_votes(round_dir: Path) -> list[dict]:
     return out
 
 
+# ── round status: a round that has been used to change the engine is development data ──────────
+
+def read_status(round_dir: Path) -> dict:
+    f = Path(round_dir) / "STATUS.json"
+    return json.loads(f.read_text()) if f.exists() else {"round": Path(round_dir).name, "blind": True, "used_for_calibration": False}
+
+
+def write_status(round_dir: Path, st: dict) -> None:
+    (Path(round_dir) / "STATUS.json").write_text(json.dumps(st, indent=2) + "\n")
+
+
+def mark_used_for_calibration(round_dir: str | Path, change: str) -> dict:
+    """Once a round's votes drive an engine or profile change, it can no longer validate that
+    engine: it becomes development data (and says so in every report)."""
+    st = read_status(Path(round_dir))
+    st.update(blind=False, used_for_calibration=True, status="development data (used for calibration)")
+    st.setdefault("calibration_changes", []).append({"change": change, "date": time.strftime("%Y-%m-%d")})
+    write_status(Path(round_dir), st)
+    return st
+
+
+def kendall_tau_b(x: list[float], y: list[float]) -> float | None:
+    """Kendall's tau-b (handles ties on both sides, e.g. human outcomes in {-1, 0, +1})."""
+    n = len(x)
+    if n < 3:
+        return None
+    conc = disc = tx = ty = 0
+    for i in range(n):
+        for j in range(i + 1, n):
+            dx, dy = x[i] - x[j], y[i] - y[j]
+            if dx == 0 and dy == 0:
+                continue
+            if dx == 0:
+                tx += 1
+            elif dy == 0:
+                ty += 1
+            elif (dx > 0) == (dy > 0):
+                conc += 1
+            else:
+                disc += 1
+    den = math.sqrt((conc + disc + tx) * (conc + disc + ty))
+    return round((conc - disc) / den, 3) if den else None
+
+
+def bootstrap_ci(x: list[float], y: list[float], stat=kendall_tau_b, b: int = 2000, seed: int = 11) -> list:
+    """Percentile bootstrap 95% interval (resampling pairs); honest width for small n."""
+    if len(x) < 5:
+        return [None, None]
+    rng = random.Random(seed)
+    vals = []
+    for _ in range(b):
+        idx = [rng.randrange(len(x)) for _ in x]
+        v = stat([x[i] for i in idx], [y[i] for i in idx])
+        if v is not None:
+            vals.append(v)
+    vals.sort()
+    return [round(vals[int(0.025 * len(vals))], 3), round(vals[int(0.975 * len(vals)) - 1], 3)] if vals else [None, None]
+
+
+def pair_verdicts(votes: list[dict], key: dict, min_gap: float = 1.0) -> list[dict]:
+    """Per pair: automatic scores, human majority, and whether the scorer agrees with people.
+    human_pref: +1 challenger, −1 baseline, 0 tie/split. agreement: agree | disagree | tie
+    (humans tied, or the scorer sees no meaningful difference)."""
+    by: dict[str, list[str]] = {}
+    for v in votes:
+        by.setdefault(v["pair"], []).append(outcome(v, key))
+    out = []
+    for pid, os_ in sorted(by.items()):
+        k = key[pid]
+        cw, bw = os_.count("challenger"), os_.count("baseline")
+        pref = 1 if cw > bw else -1 if bw > cw else 0
+        bs, cs = k.get("baseline_score"), k.get("challenger_score")
+        delta = round(cs - bs, 1) if bs is not None and cs is not None else None
+        if pref == 0 or delta is None or abs(delta) < min_gap:
+            ag = "tie"
+        else:
+            ag = "agree" if (delta > 0) == (pref > 0) else "disagree"
+        out.append({"pair": pid, "archetype": k.get("archetype"), "deck": k.get("deck"), "slide": k.get("slide"), "baseline_score": bs, "challenger_score": cs,
+                    "score_delta": delta, "votes": len(os_), "challenger_votes": cw, "baseline_votes": bw, "human_pref": pref, "agreement": ag,
+                    "control": k.get("control", False), "images": {"baseline": k.get("baseline"), "challenger": k.get("challenger")}})
+    return out
+
+
+def disagreements_markdown(verdicts: list[dict], round_name: str, strong: float = 10.0) -> str:
+    """The cases worth more than the mean: the scorer strongly prefers one slide, people the other."""
+    rows = [v for v in verdicts if v["agreement"] == "disagree"]
+    rows.sort(key=lambda v: -abs(v["score_delta"] or 0))
+    L = [f"# Scorer vs human disagreements — round {round_name}", "",
+         f"Pairs where the automatic scorer and the human majority disagree, strongest score gap first (≥ {strong:g} points marked **strong**). "
+         "Look for PATTERNS (an archetype, a metric, whitespace, density) — never add an exception for one slide (docs/EVALS.md#calibration).", ""]
+    if not rows:
+        L.append("_No disagreements (or no votes yet)._")
+    else:
+        L += ["| pair | archetype | deck / slide | baseline score | challenger score | Δ | humans (challenger–baseline) | |", "|---|---|---|---|---|---|---|---|"]
+        for v in rows:
+            L.append(f"| {v['pair']} | {v['archetype']} | {v['deck']}/{v['slide']} | {v['baseline_score']} | {v['challenger_score']} | {v['score_delta']:+} | "
+                     f"{v['challenger_votes']}–{v['baseline_votes']} | {'**strong**' if abs(v['score_delta']) >= strong else ''} |")
+    return "\n".join(L) + "\n"
+
+
 def outcome(v: dict, key: dict) -> str:
     if v["choice"] == "tie":
         return "tie"
@@ -292,6 +411,25 @@ def report(round_dir: str | Path) -> dict:
         if orig:
             cons.append(outcome(v, key) == outcome(orig, key))
     res["self_consistency"] = {"repeated_pairs": len(cons), "consistent": sum(cons)}
+    # v1.4: per-pair scorer/human agreement, its correlation with the score gap, and its status
+    verdicts = pair_verdicts(main, key)
+    dec_v = [v for v in verdicts if v["agreement"] != "tie"]
+    ag = sum(1 for v in dec_v if v["agreement"] == "agree")
+    xs = [v["score_delta"] for v in verdicts if v["score_delta"] is not None]
+    ys = [v["human_pref"] for v in verdicts if v["score_delta"] is not None]
+    bins = {}
+    for lo, hi, name in ((0, 5, "|Δ| < 5"), (5, 15, "5 ≤ |Δ| < 15"), (15, 999, "|Δ| ≥ 15")):
+        sel = [v for v in dec_v if lo <= abs(v["score_delta"]) < hi]
+        k = sum(1 for v in sel if v["agreement"] == "agree")
+        bins[name] = {"pairs": len(sel), "agree": k, "rate": round(k / len(sel), 3) if sel else None, "ci95": list(wilson(k, len(sel)))}
+    res["pair_agreement"] = {"pairs_with_votes": len(verdicts), "decisive_pairs": len(dec_v), "agree": ag, "disagree": len(dec_v) - ag,
+                             "ties": len(verdicts) - len(dec_v), "rate": round(ag / len(dec_v), 3) if dec_v else None, "ci95": list(wilson(ag, len(dec_v))),
+                             "by_score_gap": bins}
+    res["score_human_correlation"] = {"method": "Kendall tau-b between score delta (challenger − baseline) and human majority (+1/0/−1), percentile bootstrap 95% CI",
+                                      "n": len(xs), "tau_b": kendall_tau_b(xs, ys), "ci95": bootstrap_ci(xs, ys)}
+    res["controls"] = summary([v for v in main if key[v["pair"]].get("control")]) if any(k.get("control") for k in key.values()) else None
+    res["status"] = read_status(rd)
+    res["verdicts"] = verdicts
     res["method"] = ("Preference = challenger wins / decisive votes, Wilson 95% interval (ties excluded; ties-as-half also shown). "
                      "Agreement: percent agreement and Fleiss' kappa over {baseline, challenger, tie} on pairs rated by ≥2 evaluators. "
                      "Human preference is an independent signal and is never part of the automatic composition score.")
@@ -311,16 +449,56 @@ def to_markdown(r: dict) -> str:
     L += ["", f"**Does the automatic score agree with people?** {sa['agree']}/{sa['decisive_votes_with_score_gap']} decisive votes (rate {sa['rate']}, 95% CI {sa['ci95'][0]}–{sa['ci95'][1]})",
           f"**Left-side bias:** left chosen in {r['left_bias']['left_share']} of decisive votes (95% CI {r['left_bias']['ci95'][0]}–{r['left_bias']['ci95'][1]})",
           f"**Inter-rater:** {json.dumps(r['inter_rater'])}", f"**Self-consistency on repeated pairs:** {r['self_consistency']['consistent']}/{r['self_consistency']['repeated_pairs']}",
+          ]
+    pa = r.get("pair_agreement") or {}
+    if pa:
+        L += ["", f"**When the scorer prefers one slide, do people agree?** {pa['agree']}/{pa['decisive_pairs']} decisive pairs (rate {pa['rate']}, 95% CI {pa['ci95'][0]}–{pa['ci95'][1]}); "
+              f"{pa['ties']} ties or no meaningful score gap", "", "| score gap | pairs | agree | rate | 95% CI |", "|---|---|---|---|---|"]
+        L += [f"| {k} | {v['pairs']} | {v['agree']} | {v['rate']} | {v['ci95'][0]}–{v['ci95'][1]} |" for k, v in pa["by_score_gap"].items()]
+        c = r["score_human_correlation"]
+        L += ["", f"**Score gap vs human preference:** Kendall τ-b {c['tau_b']} (95% CI {c['ci95'][0]}–{c['ci95'][1]}, n={c['n']} pairs). "
+              "With n this small, read the interval, not the point estimate."]
+    st = r.get("status") or {}
+    L += ["", f"**Round status:** {'BLIND — independent validation' if st.get('blind', True) else 'DEVELOPMENT DATA — used for calibration, not unbiased validation'}",
           "", f"_Method:_ {r['method']}"]
     return "\n".join(L) + "\n"
 
 
-def record(r: dict) -> None:
-    from .evals import record_result
+def record(r: dict, path: Path | None = None) -> None:
+    """Human results go to latest.json under human_reference.rounds.<round>, never into the score."""
+    from .evals import LATEST
 
-    record_result("human_reference", {k: r[k] for k in ("round", "evaluators", "comparisons", "challenger_wins", "baseline_wins", "ties",
-                                                         "challenger_preference", "challenger_preference_ci95", "ties_as_half", "by_comparison",
-                                                         "score_agreement", "inter_rater", "method")})
+    path = path or LATEST
+    data = json.loads(path.read_text()) if path.exists() else {}
+    hr = data.setdefault("human_reference", {})
+    hr.pop("status", None)
+    hr.pop("round", None)
+    hr.pop("pairs", None)
+    st = r.get("status") or {}
+    hr.setdefault("rounds", {})[r["round"]] = {
+        **{k: r.get(k) for k in ("evaluators", "comparisons", "challenger_wins", "baseline_wins", "ties", "challenger_preference", "challenger_preference_ci95",
+                                 "ties_as_half", "by_comparison", "score_agreement", "pair_agreement", "score_human_correlation", "inter_rater", "self_consistency",
+                                 "left_bias", "method")},
+        "blind": st.get("blind", True), "used_for_calibration": st.get("used_for_calibration", False),
+        "status": "votes received" if r.get("comparisons") else "awaiting human votes"}
+    path.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n")
+
+
+def record_status(round_dir: str | Path, path: Path | None = None) -> None:
+    """Record a round that has no votes yet (status only): never invents numbers."""
+    from .evals import LATEST
+
+    path = path or LATEST
+    rd = Path(round_dir)
+    data = json.loads(path.read_text()) if path.exists() else {}
+    hr = data.setdefault("human_reference", {})
+    for k in ("status", "round", "pairs"):
+        hr.pop(k, None)
+    st = read_status(rd)
+    n = len(json.loads((rd / "pairs.json").read_text())["pairs"])
+    hr.setdefault("rounds", {})[rd.name] = {"pairs": n, "blind": st.get("blind", True), "used_for_calibration": st.get("used_for_calibration", False),
+                                            "status": f"{st.get('status', 'awaiting human votes')} — {n} blind pairs built, 0 votes"}
+    path.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n")
 
 
 PAGE = r"""<!doctype html>

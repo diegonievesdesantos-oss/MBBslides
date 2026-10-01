@@ -50,14 +50,14 @@ Each entry is a target range, a softness (how fast fitness decays outside the ra
 |---|---|---|---|---|---|---|---|---|---|
 | statement | 0.15–0.75 (w6) | 0–0.8 (w4) | 0.01–0.12 (w6) | 0–0.25 (w4) | — | 0–3 (w2) | — | 0–5 (w6) | — |
 | kpi_hero | 0.25–0.95 (w8) | 0–0.5 (w12) | 0.02–0.2 (w6) | 0–0.22 (w10) | 0.1–1 (w12) | 0–2 (w4) | 1.35–9 (w10) | 0–5 (w6) | 0.5–1 (w14) |
-| kpi_dashboard | 0.7–1 (w12) | 0–0.3 (w14) | 0.04–0.3 (w8) | 0–0.12 (w8) | 0.05–0.7 (w6) | 0–6 (w4) | 1.35–9 (w10) | 0–5 (w6) | 0.5–1 (w14) |
+| kpi_dashboard | 0.5–1 (w12) † | 0–0.36 (w14) † | 0.04–0.3 (w8) | 0–0.12 (w8) | 0.05–0.7 (w6) | 0–6 (w4) | 1.35–9 (w10) | 0–5 (w6) | 0.5–1 (w14) |
 | executive_summary | 0.5–1 (w12) | 0–0.32 (w14) | 0.02–0.35 (w8) | 0–0.1 (w12) | — | 0–6 (w2) | 1.35–9 (w10) | 0–6 (w10) | — |
 | chart | 0.72–1 (w12) | 0–0.28 (w16) | 0.01–0.45 (w6) | 0–0.12 (w8) | 0.05–1 (w8) | 0–5 (w4) | 1.35–9 (w10) | 0–5 (w6) | 0.5–1 (w14) |
 | waterfall | 0.78–1 (w14) | 0–0.25 (w16) | 0.03–0.4 (w6) | 0–0.12 (w8) | 0.05–1 (w8) | 0–5 (w4) | 1.35–9 (w10) | 0–5 (w6) | 0.5–1 (w14) |
 | table | 0.75–1 (w16) | 0–0.2 (w20) | 0.02–0.32 (w6) | 0–0.14 (w6) | — | 0–5 (w4) | 1.35–9 (w10) | 0–5 (w6) | 0.5–1 (w14) |
 | matrix | 0.65–1 (w12) | 0–0.32 (w12) | 0.04–0.28 (w6) | 0–0.1 (w14) | 0.05–1 (w8) | 0–5 (w4) | 1.35–9 (w10) | 0–5 (w6) | 0.5–1 (w14) |
-| comparison | 0.72–1 (w12) | 0–0.28 (w14) | 0.06–0.3 (w8) | 0–0.1 (w12) | 0.05–1 (w8) | 0–5 (w4) | 1.35–9 (w10) | 0–6 (w10) | 0.5–1 (w14) |
-| process | 0.72–1 (w12) | 0–0.28 (w14) | 0.06–0.3 (w8) | 0–0.12 (w8) | 0.05–1 (w8) | 0–5 (w4) | 1.35–9 (w10) | 0–8 (w6) | 0.5–1 (w14) |
+| comparison | 0.55–1 (w12) † | 0–0.35 (w14) † | 0.06–0.3 (w8) | 0–0.1 (w12) | 0.05–1 (w8) | 0–5 (w4) | 1.35–9 (w10) | 0–6 (w10) | 0.5–1 (w14) |
+| process | 0.5–1 (w12) † | 0–0.36 (w14) † | 0.06–0.3 (w8) | 0–0.12 (w8) | 0.05–1 (w8) | 0–5 (w4) | 1.35–9 (w10) | 0–8 (w6) | 0.5–1 (w14) |
 | roadmap | 0.78–1 (w16) | 0–0.28 (w12) | 0.04–0.3 (w6) | 0–0.12 (w8) | 0.05–1 (w8) | 0–5 (w4) | 1.35–9 (w10) | 0–5 (w6) | 0.5–1 (w14) |
 | timeline | 0.35–1 (w10) | 0–0.5 (w10) | 0.01–0.25 (w6) | 0–0.18 (w6) | 0.05–1 (w8) | 0–5 (w4) | 1.35–9 (w10) | 0–5 (w6) | 0.5–1 (w14) |
 | operating_model | 0.78–1 (w14) | 0–0.22 (w14) | 0.06–0.4 (w8) | 0–0.35 (w3) | 0.05–1 (w8) | 0–5 (w4) | 1.35–9 (w10) | 0–10 (w4) | 0.5–1 (w14) |
@@ -66,8 +66,29 @@ Each entry is a target range, a softness (how fast fitness decays outside the ra
 | segmentation | 0.72–1 (w12) | 0–0.28 (w14) | 0.06–0.3 (w8) | 0–0.12 (w8) | 0.05–1 (w8) | 0–5 (w4) | 1.35–9 (w10) | 0–5 (w6) | 0.5–1 (w14) |
 | text_exhibit | 0.55–1 (w12) | 0–0.4 (w14) | 0.03–0.25 (w8) | 0–0.12 (w8) | 0–0.5 (w2) | 0–4 (w2) | 1.35–9 (w10) | 0–5 (w6) | 0.5–1 (w14) |
 
-Profile changes after v1.2 are listed in CHANGELOG.md with their reason (1.3.2: executive summary,
-after explicit human feedback that short summaries read better as one compact, centred block).
+† provisional (v1.4, no human evidence yet; round r2 tests it).
+
+The ranges live in data — `src/cpe/qa/archetype_profiles.json` — with, per archetype, *why*, the
+development and human evidence, and per metric the version that last changed it (and `provisional`
+when no human evidence exists). Every change is recorded in `evals/profile_changes.md`; tests fail if
+the file and the changelog disagree, or if the file is not in its one-metric-per-line canonical
+format (calibration changes must be readable diffs).
+
+### Governance (v1.4)
+
+1. A low score is a question, not a reason: render the archetype's contact sheet, read the
+   attribution (§4), compare with accepted development slides.
+2. Decide which of these is wrong: the **metric** (it measures something else than intended), the
+   **profile** (the expectation does not fit what the archetype is), the **layout / component**, the
+   **content adaptation**, or the **candidate selection** — and fix that one, engine first.
+3. A profile change needs a design reason and development evidence, is `provisional` until human
+   votes exist, and is never made on the sealed holdout.
+4. Human votes calibrate patterns across many pairs, never a single slide.
+
+v1.4 decisions (docs/ARCHETYPE_DIAGNOSIS.md): engine fixes for text, process, comparison, KPI and
+gantt components; metric fixes for `ratio` (figures with units) and `proof` (scaled numbers);
+semantic reclassification (one short argument / short quotes → statement; one-row flow → process);
+provisional profile changes for process, comparison and kpi_dashboard.
 
 ## 4. Fitness
 
@@ -76,6 +97,12 @@ Per metric: 1 inside the range, decaying linearly to 0 at `soft` outside it.
 ```
 score = 100 × [ 0.7 × weighted mean fitness  +  0.3 × worst fitness among the critical metrics (weight ≥ 10) ]
 ```
+
+**Attribution (v1.4).** Every score explains itself (`attribution` per slide in `qa_report.json`
+and eval reports): for each metric the expected range, observed value, fitness, weight and the
+points it costs — `(1 − 0.3)·100·w·(1 − f)/Σw`, plus `0.3·100·(1 − f)` charged to the worst critical
+metric. The penalties sum to 100 − score (tested). Per-archetype means of these penalties are the
+first table of `archetype_diagnostics.md`.
 
 A plain mean lets many "fine" metrics dilute one severe failure (half the slide empty, the proof
 invisible). Composition quality is bounded by its worst failure, so the worst critical metric
@@ -106,9 +133,10 @@ comparison "universal-score selection vs archetype selection".
    file existed and was never run while setting these numbers; private corporate holdouts were run
    only after the rules were frozen.
 
-Known weakness found by the holdout (input for v1.3, deliberately not tuned in v1.2): headline
-numbers that are *derived* (a sum of the steps, a conversion ratio) are not recognised as proven,
-so `PROOF_NOT_VISIBLE` fires on slides whose exhibit does support the claim.
+Known weakness found by the v1.2 holdout: headline numbers that are *derived* (a sum of the steps,
+a conversion ratio) are not recognised as proven. v1.4 fixed the scaled case ("€1.2bn" proven by
+"1,210" in €M; "€61,000,000" by "61") found by the battery and the robustness suite; true derived
+numbers (sums, ratios) remain a known limitation.
 
 ## 6. Hard QA vs composition
 

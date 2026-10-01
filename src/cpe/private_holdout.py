@@ -188,3 +188,48 @@ def run(root: str | Path | None = None, out: str | Path | None = None, record: b
                 + (f"; agreement with the human brand spec {s['spec_agreement']}" if s.get("spec_agreement") else ""))
         record_result("holdout_private", {"summary": line, "holdouts": results})
     return res
+
+
+# ── external deck holdouts (v1.4) ────────────────────────────────────────────────────────────────
+#
+#   .private/holdouts/decks/*.json      deck specs (anonymized corporate examples, specs written by
+#                                       someone else) — never in the repository
+#   cpe holdout external [--root .private/holdouts/decks] [-o private_results/external] [--record]
+#
+# Runs each deck through the frozen engine, writes everything to private_results/external/
+# (git-ignored), and returns a SANITIZED summary: counts, scores and per-archetype aggregates only —
+# no deck names, headlines, text, numbers from the decks or renders. Never baselined.
+
+DECKS_ROOT = ROOT / ".private" / "holdouts" / "decks"
+
+
+def run_external(root: str | Path | None = None, out: str | Path | None = None, record: bool = False) -> dict:
+    from . import quality
+    from .evals import run_case
+
+    root = Path(root) if root else DECKS_ROOT
+    out = Path(out) if out else DEFAULT_OUT / "external"
+    decks = sorted(root.glob("*.json")) if root.exists() else []
+    if not decks:
+        return {"status": "skipped", "reason": f"{root} not present or empty (external holdouts live outside the repository)"}
+    out.mkdir(parents=True, exist_ok=True)
+    results = []
+    for i, d in enumerate(decks):
+        r = run_case(d, out, name=f"deck_{i + 1:02d}")  # anonymous names in every artefact
+        results.append(r)
+    comps = [r["composition"] for r in results if r.get("composition") is not None]
+    prof = quality.profile(results, deck_mean=round(sum(comps) / len(comps), 1) if comps else None)
+    (out / "external_report.json").write_text(json.dumps({"cases": results, "quality": prof}, indent=2, ensure_ascii=False))
+    summary = {
+        "status": "run", "decks": len(results), "built": sum(1 for r in results if r.get("ok")),
+        "slides": prof["distribution"]["n"], "overall": prof["overall_score"], "macro_archetype": prof["macro_archetype_score"],
+        "p10": prof["distribution"]["p10"], "weakest_archetype": prof["weakest_archetype"], "weakest_archetype_score": prof["weakest_archetype_score"],
+        "qa_errors": sum(r.get("qa_errors") or 0 for r in results),
+        "archetypes": {a: {"n": s["n"], "mean": s["mean"], "min": s["min"]} for a, s in prof["archetypes"].items()},
+        "note": "sanitized aggregates of decks kept outside the repository; never baselined, never tuned on in the same cycle",
+    }
+    if record:
+        from .evals import record_result
+
+        record_result("holdout_external", summary)
+    return summary

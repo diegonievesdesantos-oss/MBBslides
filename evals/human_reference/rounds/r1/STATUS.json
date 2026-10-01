@@ -1,0 +1,8 @@
+{
+  "round": "r1",
+  "created": "2026-09-30",
+  "purpose": "v1.1.1 universal score vs v1.2 archetype fitness (3 comparisons): does archetype-aware composition produce slides people prefer?",
+  "blind": true,
+  "used_for_calibration": false,
+  "status": "awaiting human votes"
+}

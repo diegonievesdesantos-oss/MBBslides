@@ -54,17 +54,51 @@ Observed: pixel-identical renders, run to run and between the local environment 
 container once FriBiDi was aligned. No tolerance is needed, so none is used. PDF bytes are not
 compared (LibreOffice stamps a date and document id); everything the engine reads from the PDF is.
 
+## Provenance (v1.4)
+
+Every recorded release signal in `evals/results/latest.json` carries `provenance`:
+`evaluated_commit`, `git_tree`, `dirty` (+ the dirty paths), `engine_version`, `container_image` /
+`container_digest`, `environment_fingerprint` and `eval_timestamp_utc` (run metadata only — never
+used inside a render). A run on a dirty tree cannot become release truth: `--record` refuses it
+(`--allow-dirty` records it as `release_truth: false` for development, and verification then fails).
+Files that a results run *writes* (`evals/results/`, baselines, README/CHANGELOG/docs, human rounds)
+do not make the source dirty; everything that determines the numbers does
+(`environment.ENGINE_PATHS`: `src/`, `docker/`, `requirements.lock`, `pyproject.toml`, eval cases,
+gates, robustness seeds, holdout, example specs).
+
+### Release workflow
+
+```
+CODE FREEZE: commit C (engine, version, eval cases, example outputs)
+      ↓  on the clean checkout of C, inside the image:
+cpe eval --suite regression --update-baseline --record     (provenance: evaluated_commit = C, dirty = false)
+cpe eval --suite examples --record
+cpe robustness --update-baseline --record
+cpe eval --suite holdout_v2 --release-candidate --record   (ONCE)
+cpe human build … (r2) ; cpe human status … --record
+cpe results readme
+      ↓
+RESULTS SNAPSHOT: commit R (latest.json, baselines, README, CHANGELOG, docs, human round)
+```
+
+`latest.json` lives in R but declares C. CI (`cpe results verify`) checks that every release signal
+was evaluated on a clean commit present in history and that no engine input changed between C and
+HEAD — results may be committed later, the engine may not.
+
 ## Changing the environment deliberately
 
-Bump `SNAPSHOT` and the pins together, rebuild, run `scripts/cpe-docker eval --suite regression
---update-baseline --record` and `--suite examples --record`, and commit the image definition, the
-baseline and `latest.json` in the same commit. The fingerprint change makes the reason visible.
+Bump `SNAPSHOT` and the pins together, rebuild, commit the image definition (commit C), then
+follow the release workflow above on C. The fingerprint change makes the reason visible.
 
 ## CI (`.github/workflows/ci.yml`)
 
 Runner pinned to `ubuntu-24.04`; actions on the Node 24 runtime pinned to commit SHAs
 (checkout v7.0.1, setup-python v7.0.0, upload-artifact v7.0.1, buildx v4.4.1, build-push v7.4.0,
-login v4.6.0 — versions checked at implementation time). Jobs: `lint` (ruff + README metrics
-consistency), `package` (wheel builds and works outside the checkout), `image` (builds the visual
-environment once and publishes it to GHCR), `tests`, `regression` (regression suite + example
-decks), `reproducibility` (render-twice checks + environment check) — all rendering inside the image.
+login v4.6.0 — versions checked at implementation time). Jobs: `lint` (ruff, README metrics
+consistency, results provenance, battery generator up to date), `package` (wheel builds and works
+outside the checkout), `image` (builds the visual environment once and publishes it to GHCR),
+`tests`, `regression` (regression suite vs baseline + absolute archetype gates + example decks),
+`quality_profile` (archetype battery → quality profile, absolute gates, diagnostics and contact
+sheets as artifacts), `robustness` (metamorphic suite vs its baseline), `reproducibility`
+(render-twice checks + environment check) — all rendering inside the image. The sealed holdout
+never runs in CI.

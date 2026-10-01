@@ -62,7 +62,7 @@
       "ink_coverage": 0.229
     },
     "s10": {
-      "ink_coverage": 0.219
+      "ink_coverage": 0.237
     },
     "s11": {
       "ink_coverage": 0.111
@@ -78,7 +78,7 @@
       "warnings": 0,
       "score": 99.8,
       "patches": [],
-      "seconds": 5.9
+      "seconds": 5.1
     }
   ],
   "pending_actions": [],
@@ -132,6 +132,78 @@
           "edges": 1.0
         },
         "deviations": [],
+        "attribution": {
+          "utilization": {
+            "expected": [
+              0.5,
+              1.0
+            ],
+            "observed": 0.865,
+            "fitness": 1.0,
+            "weight": 12,
+            "penalty": 0.0
+          },
+          "empty": {
+            "expected": [
+              0.0,
+              0.32
+            ],
+            "observed": 0.154,
+            "fitness": 1.0,
+            "weight": 14,
+            "penalty": 0.0
+          },
+          "ink": {
+            "expected": [
+              0.02,
+              0.35
+            ],
+            "observed": 0.049,
+            "fitness": 1.0,
+            "weight": 8,
+            "penalty": 0.0
+          },
+          "offcentre": {
+            "expected": [
+              0.0,
+              0.1
+            ],
+            "observed": 0.093,
+            "fitness": 1.0,
+            "weight": 12,
+            "penalty": 0.0
+          },
+          "regions": {
+            "expected": [
+              0,
+              6
+            ],
+            "observed": 0.0,
+            "fitness": 1.0,
+            "weight": 2,
+            "penalty": 0.0
+          },
+          "ratio": {
+            "expected": [
+              1.35,
+              9.0
+            ],
+            "observed": 1.571,
+            "fitness": 1.0,
+            "weight": 10,
+            "penalty": 0.0
+          },
+          "edges": {
+            "expected": [
+              0,
+              6
+            ],
+            "observed": 3.0,
+            "fitness": 1.0,
+            "weight": 10,
+            "penalty": 0.0
+          }
+        },
         "flags": [],
         "score_v1": 98.2,
         "flags_v1": [],
@@ -208,6 +280,98 @@
             "flag": "OFF_BALANCE"
           }
         ],
+        "attribution": {
+          "utilization": {
+            "expected": [
+              0.72,
+              1.0
+            ],
+            "observed": 1.0,
+            "fitness": 1.0,
+            "weight": 12,
+            "penalty": 0.0
+          },
+          "empty": {
+            "expected": [
+              0.0,
+              0.28
+            ],
+            "observed": 0.178,
+            "fitness": 1.0,
+            "weight": 16,
+            "penalty": 0.0
+          },
+          "ink": {
+            "expected": [
+              0.01,
+              0.45
+            ],
+            "observed": 0.115,
+            "fitness": 1.0,
+            "weight": 6,
+            "penalty": 0.0
+          },
+          "offcentre": {
+            "expected": [
+              0.0,
+              0.12
+            ],
+            "observed": 0.179,
+            "fitness": 0.805,
+            "weight": 8,
+            "penalty": 1.3
+          },
+          "emphasis": {
+            "expected": [
+              0.05,
+              1.0
+            ],
+            "observed": 0.326,
+            "fitness": 1.0,
+            "weight": 8,
+            "penalty": 0.0
+          },
+          "regions": {
+            "expected": [
+              0,
+              5
+            ],
+            "observed": 5.0,
+            "fitness": 1.0,
+            "weight": 4,
+            "penalty": 0.0
+          },
+          "ratio": {
+            "expected": [
+              1.35,
+              9.0
+            ],
+            "observed": 1.834,
+            "fitness": 1.0,
+            "weight": 10,
+            "penalty": 0.0
+          },
+          "edges": {
+            "expected": [
+              0,
+              5
+            ],
+            "observed": 2.0,
+            "fitness": 1.0,
+            "weight": 6,
+            "penalty": 0.0
+          },
+          "proof": {
+            "expected": [
+              0.5,
+              1.0
+            ],
+            "observed": 0.667,
+            "fitness": 1.0,
+            "weight": 14,
+            "penalty": 0.0
+          }
+        },
         "flags": [],
         "score_v1": 89.2,
         "flags_v1": [],
@@ -249,10 +413,10 @@
         "score": 99.0,
         "observed": {
           "utilization": 0.91,
-          "empty": 0.127,
+          "empty": 0.132,
           "ink": 0.12,
-          "offcentre": 0.163,
-          "emphasis": 0.288,
+          "offcentre": 0.166,
+          "emphasis": 0.289,
           "regions": 0.0,
           "ratio": 2.0,
           "edges": 4.0,
@@ -262,7 +426,7 @@
           "utilization": 1.0,
           "empty": 1.0,
           "ink": 1.0,
-          "offcentre": 0.855,
+          "offcentre": 0.846,
           "emphasis": 1.0,
           "regions": 1.0,
           "ratio": 1.0,
@@ -272,25 +436,117 @@
         "deviations": [
           {
             "metric": "offcentre",
-            "value": 0.163,
+            "value": 0.166,
             "expected": [
               0.0,
               0.12
             ],
             "direction": "high",
-            "fitness": 0.855,
+            "fitness": 0.846,
             "weight": 8,
             "meaning": "visual weight is off-balance",
             "flag": "OFF_BALANCE"
           }
         ],
+        "attribution": {
+          "utilization": {
+            "expected": [
+              0.72,
+              1.0
+            ],
+            "observed": 0.91,
+            "fitness": 1.0,
+            "weight": 12,
+            "penalty": 0.0
+          },
+          "empty": {
+            "expected": [
+              0.0,
+              0.28
+            ],
+            "observed": 0.132,
+            "fitness": 1.0,
+            "weight": 16,
+            "penalty": 0.0
+          },
+          "ink": {
+            "expected": [
+              0.01,
+              0.45
+            ],
+            "observed": 0.12,
+            "fitness": 1.0,
+            "weight": 6,
+            "penalty": 0.0
+          },
+          "offcentre": {
+            "expected": [
+              0.0,
+              0.12
+            ],
+            "observed": 0.166,
+            "fitness": 0.846,
+            "weight": 8,
+            "penalty": 1.03
+          },
+          "emphasis": {
+            "expected": [
+              0.05,
+              1.0
+            ],
+            "observed": 0.289,
+            "fitness": 1.0,
+            "weight": 8,
+            "penalty": 0.0
+          },
+          "regions": {
+            "expected": [
+              0,
+              5
+            ],
+            "observed": 0.0,
+            "fitness": 1.0,
+            "weight": 4,
+            "penalty": 0.0
+          },
+          "ratio": {
+            "expected": [
+              1.35,
+              9.0
+            ],
+            "observed": 2.0,
+            "fitness": 1.0,
+            "weight": 10,
+            "penalty": 0.0
+          },
+          "edges": {
+            "expected": [
+              0,
+              5
+            ],
+            "observed": 4.0,
+            "fitness": 1.0,
+            "weight": 6,
+            "penalty": 0.0
+          },
+          "proof": {
+            "expected": [
+              0.5,
+              1.0
+            ],
+            "observed": 1.0,
+            "fitness": 1.0,
+            "weight": 14,
+            "penalty": 0.0
+          }
+        },
         "flags": [],
-        "score_v1": 97.2,
+        "score_v1": 97.1,
         "flags_v1": [],
         "metrics": {
           "dead_space": 1.0,
           "utilization": 1.0,
-          "balance": 0.715,
+          "balance": 0.71,
           "density": 1.0,
           "emphasis": 1.0,
           "evidence": 1.0,
@@ -298,14 +554,14 @@
           "alignment": 1.0
         },
         "raw": {
-          "largest_empty_share": 0.127,
+          "largest_empty_share": 0.132,
           "utilization": 0.91,
           "center_of_mass": [
             0.462,
-            0.709
+            0.712
           ],
           "ink_coverage": 0.12,
-          "emphasis_share": 0.288,
+          "emphasis_share": 0.289,
           "focus_regions": 1,
           "accent_regions": 0,
           "proof_checks": "2/2",
@@ -346,6 +602,98 @@
           "proof": 1.0
         },
         "deviations": [],
+        "attribution": {
+          "utilization": {
+            "expected": [
+              0.72,
+              1.0
+            ],
+            "observed": 0.981,
+            "fitness": 1.0,
+            "weight": 12,
+            "penalty": 0.0
+          },
+          "empty": {
+            "expected": [
+              0.0,
+              0.28
+            ],
+            "observed": 0.115,
+            "fitness": 1.0,
+            "weight": 14,
+            "penalty": 0.0
+          },
+          "ink": {
+            "expected": [
+              0.06,
+              0.3
+            ],
+            "observed": 0.061,
+            "fitness": 1.0,
+            "weight": 8,
+            "penalty": 0.0
+          },
+          "offcentre": {
+            "expected": [
+              0.0,
+              0.12
+            ],
+            "observed": 0.087,
+            "fitness": 1.0,
+            "weight": 8,
+            "penalty": 0.0
+          },
+          "emphasis": {
+            "expected": [
+              0.05,
+              1.0
+            ],
+            "observed": 0.095,
+            "fitness": 1.0,
+            "weight": 8,
+            "penalty": 0.0
+          },
+          "regions": {
+            "expected": [
+              0,
+              5
+            ],
+            "observed": 0.0,
+            "fitness": 1.0,
+            "weight": 4,
+            "penalty": 0.0
+          },
+          "ratio": {
+            "expected": [
+              1.35,
+              9.0
+            ],
+            "observed": 1.834,
+            "fitness": 1.0,
+            "weight": 10,
+            "penalty": 0.0
+          },
+          "edges": {
+            "expected": [
+              0,
+              5
+            ],
+            "observed": 3.0,
+            "fitness": 1.0,
+            "weight": 6,
+            "penalty": 0.0
+          },
+          "proof": {
+            "expected": [
+              0.5,
+              1.0
+            ],
+            "observed": 1.0,
+            "fitness": 1.0,
+            "weight": 14,
+            "penalty": 0.0
+          }
+        },
         "flags": [],
         "score_v1": 99.1,
         "flags_v1": [],
@@ -422,6 +770,98 @@
             "flag": "OFF_BALANCE"
           }
         ],
+        "attribution": {
+          "utilization": {
+            "expected": [
+              0.78,
+              1.0
+            ],
+            "observed": 0.992,
+            "fitness": 1.0,
+            "weight": 14,
+            "penalty": 0.0
+          },
+          "empty": {
+            "expected": [
+              0.0,
+              0.25
+            ],
+            "observed": 0.203,
+            "fitness": 1.0,
+            "weight": 16,
+            "penalty": 0.0
+          },
+          "ink": {
+            "expected": [
+              0.03,
+              0.4
+            ],
+            "observed": 0.084,
+            "fitness": 1.0,
+            "weight": 6,
+            "penalty": 0.0
+          },
+          "offcentre": {
+            "expected": [
+              0.0,
+              0.12
+            ],
+            "observed": 0.135,
+            "fitness": 0.952,
+            "weight": 8,
+            "penalty": 0.31
+          },
+          "emphasis": {
+            "expected": [
+              0.05,
+              1.0
+            ],
+            "observed": 0.595,
+            "fitness": 1.0,
+            "weight": 8,
+            "penalty": 0.0
+          },
+          "regions": {
+            "expected": [
+              0,
+              5
+            ],
+            "observed": 2.0,
+            "fitness": 1.0,
+            "weight": 4,
+            "penalty": 0.0
+          },
+          "ratio": {
+            "expected": [
+              1.35,
+              9.0
+            ],
+            "observed": 1.834,
+            "fitness": 1.0,
+            "weight": 10,
+            "penalty": 0.0
+          },
+          "edges": {
+            "expected": [
+              0,
+              5
+            ],
+            "observed": 2.0,
+            "fitness": 1.0,
+            "weight": 6,
+            "penalty": 0.0
+          },
+          "proof": {
+            "expected": [
+              0.5,
+              1.0
+            ],
+            "observed": 0.75,
+            "fitness": 1.0,
+            "weight": 14,
+            "penalty": 0.0
+          }
+        },
         "flags": [],
         "score_v1": 90.4,
         "flags_v1": [],
@@ -481,6 +921,78 @@
           "edges": 1.0
         },
         "deviations": [],
+        "attribution": {
+          "utilization": {
+            "expected": [
+              0.75,
+              1.0
+            ],
+            "observed": 1.0,
+            "fitness": 1.0,
+            "weight": 16,
+            "penalty": 0.0
+          },
+          "empty": {
+            "expected": [
+              0.0,
+              0.2
+            ],
+            "observed": 0.077,
+            "fitness": 1.0,
+            "weight": 20,
+            "penalty": 0.0
+          },
+          "ink": {
+            "expected": [
+              0.02,
+              0.32
+            ],
+            "observed": 0.098,
+            "fitness": 1.0,
+            "weight": 6,
+            "penalty": 0.0
+          },
+          "offcentre": {
+            "expected": [
+              0.0,
+              0.14
+            ],
+            "observed": 0.075,
+            "fitness": 1.0,
+            "weight": 6,
+            "penalty": 0.0
+          },
+          "regions": {
+            "expected": [
+              0,
+              5
+            ],
+            "observed": 0.0,
+            "fitness": 1.0,
+            "weight": 4,
+            "penalty": 0.0
+          },
+          "ratio": {
+            "expected": [
+              1.35,
+              9.0
+            ],
+            "observed": 1.691,
+            "fitness": 1.0,
+            "weight": 10,
+            "penalty": 0.0
+          },
+          "edges": {
+            "expected": [
+              0,
+              5
+            ],
+            "observed": 1.0,
+            "fitness": 1.0,
+            "weight": 6,
+            "penalty": 0.0
+          }
+        },
         "flags": [],
         "score_v1": 93.8,
         "flags_v1": [],
@@ -556,6 +1068,98 @@
             "flag": "SPARSE"
           }
         ],
+        "attribution": {
+          "utilization": {
+            "expected": [
+              0.65,
+              1.0
+            ],
+            "observed": 0.973,
+            "fitness": 1.0,
+            "weight": 12,
+            "penalty": 0.0
+          },
+          "empty": {
+            "expected": [
+              0.0,
+              0.32
+            ],
+            "observed": 0.294,
+            "fitness": 1.0,
+            "weight": 12,
+            "penalty": 0.0
+          },
+          "ink": {
+            "expected": [
+              0.04,
+              0.28
+            ],
+            "observed": 0.04,
+            "fitness": 0.996,
+            "weight": 6,
+            "penalty": 0.02
+          },
+          "offcentre": {
+            "expected": [
+              0.0,
+              0.1
+            ],
+            "observed": 0.082,
+            "fitness": 1.0,
+            "weight": 14,
+            "penalty": 0.0
+          },
+          "emphasis": {
+            "expected": [
+              0.05,
+              1.0
+            ],
+            "observed": 0.484,
+            "fitness": 1.0,
+            "weight": 8,
+            "penalty": 0.0
+          },
+          "regions": {
+            "expected": [
+              0,
+              5
+            ],
+            "observed": 1.0,
+            "fitness": 1.0,
+            "weight": 4,
+            "penalty": 0.0
+          },
+          "ratio": {
+            "expected": [
+              1.35,
+              9.0
+            ],
+            "observed": 1.834,
+            "fitness": 1.0,
+            "weight": 10,
+            "penalty": 0.0
+          },
+          "edges": {
+            "expected": [
+              0,
+              5
+            ],
+            "observed": 2.0,
+            "fitness": 1.0,
+            "weight": 6,
+            "penalty": 0.0
+          },
+          "proof": {
+            "expected": [
+              0.5,
+              1.0
+            ],
+            "observed": 1.0,
+            "fitness": 1.0,
+            "weight": 14,
+            "penalty": 0.0
+          }
+        },
         "flags": [],
         "score_v1": 89.9,
         "flags_v1": [],
@@ -616,6 +1220,88 @@
           "edges": 1.0
         },
         "deviations": [],
+        "attribution": {
+          "utilization": {
+            "expected": [
+              0.78,
+              1.0
+            ],
+            "observed": 0.981,
+            "fitness": 1.0,
+            "weight": 14,
+            "penalty": 0.0
+          },
+          "empty": {
+            "expected": [
+              0.0,
+              0.22
+            ],
+            "observed": 0.032,
+            "fitness": 1.0,
+            "weight": 14,
+            "penalty": 0.0
+          },
+          "ink": {
+            "expected": [
+              0.06,
+              0.4
+            ],
+            "observed": 0.212,
+            "fitness": 1.0,
+            "weight": 8,
+            "penalty": 0.0
+          },
+          "offcentre": {
+            "expected": [
+              0.0,
+              0.35
+            ],
+            "observed": 0.276,
+            "fitness": 1.0,
+            "weight": 3,
+            "penalty": 0.0
+          },
+          "emphasis": {
+            "expected": [
+              0.05,
+              1.0
+            ],
+            "observed": 0.377,
+            "fitness": 1.0,
+            "weight": 8,
+            "penalty": 0.0
+          },
+          "regions": {
+            "expected": [
+              0,
+              5
+            ],
+            "observed": 1.0,
+            "fitness": 1.0,
+            "weight": 4,
+            "penalty": 0.0
+          },
+          "ratio": {
+            "expected": [
+              1.35,
+              9.0
+            ],
+            "observed": 1.834,
+            "fitness": 1.0,
+            "weight": 10,
+            "penalty": 0.0
+          },
+          "edges": {
+            "expected": [
+              0,
+              10
+            ],
+            "observed": 3.0,
+            "fitness": 1.0,
+            "weight": 4,
+            "penalty": 0.0
+          }
+        },
         "flags": [],
         "score_v1": 93.1,
         "flags_v1": [],
@@ -652,13 +1338,13 @@
         "slide_id": "s10",
         "archetype": "roadmap",
         "archetype_why": "main exhibit is a gantt",
-        "score": 100.0,
+        "score": 99.9,
         "observed": {
-          "utilization": 0.904,
-          "empty": 0.096,
-          "ink": 0.216,
-          "offcentre": 0.122,
-          "emphasis": 0.231,
+          "utilization": 1.0,
+          "empty": 0.054,
+          "ink": 0.235,
+          "offcentre": 0.125,
+          "emphasis": 0.217,
           "regions": 1.0,
           "ratio": 1.911,
           "edges": 0.0
@@ -667,7 +1353,7 @@
           "utilization": 1.0,
           "empty": 1.0,
           "ink": 1.0,
-          "offcentre": 0.995,
+          "offcentre": 0.985,
           "emphasis": 1.0,
           "regions": 1.0,
           "ratio": 1.0,
@@ -676,25 +1362,107 @@
         "deviations": [
           {
             "metric": "offcentre",
-            "value": 0.122,
+            "value": 0.125,
             "expected": [
               0.0,
               0.12
             ],
             "direction": "high",
-            "fitness": 0.995,
+            "fitness": 0.985,
             "weight": 8,
             "meaning": "visual weight is off-balance",
             "flag": "OFF_BALANCE"
           }
         ],
+        "attribution": {
+          "utilization": {
+            "expected": [
+              0.78,
+              1.0
+            ],
+            "observed": 1.0,
+            "fitness": 1.0,
+            "weight": 16,
+            "penalty": 0.0
+          },
+          "empty": {
+            "expected": [
+              0.0,
+              0.28
+            ],
+            "observed": 0.054,
+            "fitness": 1.0,
+            "weight": 12,
+            "penalty": 0.0
+          },
+          "ink": {
+            "expected": [
+              0.04,
+              0.3
+            ],
+            "observed": 0.235,
+            "fitness": 1.0,
+            "weight": 6,
+            "penalty": 0.0
+          },
+          "offcentre": {
+            "expected": [
+              0.0,
+              0.12
+            ],
+            "observed": 0.125,
+            "fitness": 0.985,
+            "weight": 8,
+            "penalty": 0.12
+          },
+          "emphasis": {
+            "expected": [
+              0.05,
+              1.0
+            ],
+            "observed": 0.217,
+            "fitness": 1.0,
+            "weight": 8,
+            "penalty": 0.0
+          },
+          "regions": {
+            "expected": [
+              0,
+              5
+            ],
+            "observed": 1.0,
+            "fitness": 1.0,
+            "weight": 4,
+            "penalty": 0.0
+          },
+          "ratio": {
+            "expected": [
+              1.35,
+              9.0
+            ],
+            "observed": 1.911,
+            "fitness": 1.0,
+            "weight": 10,
+            "penalty": 0.0
+          },
+          "edges": {
+            "expected": [
+              0,
+              5
+            ],
+            "observed": 0.0,
+            "fitness": 1.0,
+            "weight": 6,
+            "penalty": 0.0
+          }
+        },
         "flags": [],
-        "score_v1": 95.6,
+        "score_v1": 95.5,
         "flags_v1": [],
         "metrics": {
           "dead_space": 1.0,
           "utilization": 1.0,
-          "balance": 0.928,
+          "balance": 0.924,
           "density": 1.0,
           "emphasis": 0.95,
           "evidence": 0.8,
@@ -702,14 +1470,14 @@
           "alignment": 1.0
         },
         "raw": {
-          "largest_empty_share": 0.096,
-          "utilization": 0.904,
+          "largest_empty_share": 0.054,
+          "utilization": 1.0,
           "center_of_mass": [
-            0.622,
-            0.412
+            0.625,
+            0.46
           ],
-          "ink_coverage": 0.216,
-          "emphasis_share": 0.231,
+          "ink_coverage": 0.235,
+          "emphasis_share": 0.217,
           "focus_regions": 4,
           "accent_regions": 1,
           "proof_checks": "0/0",
@@ -750,6 +1518,98 @@
           "proof": 1.0
         },
         "deviations": [],
+        "attribution": {
+          "utilization": {
+            "expected": [
+              0.78,
+              1.0
+            ],
+            "observed": 1.0,
+            "fitness": 1.0,
+            "weight": 14,
+            "penalty": 0.0
+          },
+          "empty": {
+            "expected": [
+              0.0,
+              0.25
+            ],
+            "observed": 0.195,
+            "fitness": 1.0,
+            "weight": 16,
+            "penalty": 0.0
+          },
+          "ink": {
+            "expected": [
+              0.03,
+              0.4
+            ],
+            "observed": 0.102,
+            "fitness": 1.0,
+            "weight": 6,
+            "penalty": 0.0
+          },
+          "offcentre": {
+            "expected": [
+              0.0,
+              0.12
+            ],
+            "observed": 0.059,
+            "fitness": 1.0,
+            "weight": 8,
+            "penalty": 0.0
+          },
+          "emphasis": {
+            "expected": [
+              0.05,
+              1.0
+            ],
+            "observed": 0.549,
+            "fitness": 1.0,
+            "weight": 8,
+            "penalty": 0.0
+          },
+          "regions": {
+            "expected": [
+              0,
+              5
+            ],
+            "observed": 0.0,
+            "fitness": 1.0,
+            "weight": 4,
+            "penalty": 0.0
+          },
+          "ratio": {
+            "expected": [
+              1.35,
+              9.0
+            ],
+            "observed": 1.691,
+            "fitness": 1.0,
+            "weight": 10,
+            "penalty": 0.0
+          },
+          "edges": {
+            "expected": [
+              0,
+              5
+            ],
+            "observed": 1.0,
+            "fitness": 1.0,
+            "weight": 6,
+            "penalty": 0.0
+          },
+          "proof": {
+            "expected": [
+              0.5,
+              1.0
+            ],
+            "observed": 0.667,
+            "fitness": 1.0,
+            "weight": 14,
+            "penalty": 0.0
+          }
+        },
         "flags": [],
         "score_v1": 92.6,
         "flags_v1": [],
@@ -809,6 +1669,78 @@
           "edges": 1.0
         },
         "deviations": [],
+        "attribution": {
+          "utilization": {
+            "expected": [
+              0.75,
+              1.0
+            ],
+            "observed": 0.981,
+            "fitness": 1.0,
+            "weight": 16,
+            "penalty": 0.0
+          },
+          "empty": {
+            "expected": [
+              0.0,
+              0.2
+            ],
+            "observed": 0.135,
+            "fitness": 1.0,
+            "weight": 20,
+            "penalty": 0.0
+          },
+          "ink": {
+            "expected": [
+              0.02,
+              0.32
+            ],
+            "observed": 0.032,
+            "fitness": 1.0,
+            "weight": 6,
+            "penalty": 0.0
+          },
+          "offcentre": {
+            "expected": [
+              0.0,
+              0.14
+            ],
+            "observed": 0.052,
+            "fitness": 1.0,
+            "weight": 6,
+            "penalty": 0.0
+          },
+          "regions": {
+            "expected": [
+              0,
+              5
+            ],
+            "observed": 0.0,
+            "fitness": 1.0,
+            "weight": 4,
+            "penalty": 0.0
+          },
+          "ratio": {
+            "expected": [
+              1.35,
+              9.0
+            ],
+            "observed": 1.516,
+            "fitness": 1.0,
+            "weight": 10,
+            "penalty": 0.0
+          },
+          "edges": {
+            "expected": [
+              0,
+              5
+            ],
+            "observed": 2.0,
+            "fitness": 1.0,
+            "weight": 6,
+            "penalty": 0.0
+          }
+        },
         "flags": [],
         "score_v1": 92.9,
         "flags_v1": [],
@@ -918,12 +1850,12 @@
             "layout": "kpi_strip_exhibit_commentary",
             "variant": {},
             "default": false,
-            "score": 92.9,
+            "score": 91.9,
             "archetype": "chart",
             "flags": [],
             "errors": 0,
             "verdict": "ok",
-            "adjusted": 92.9
+            "adjusted": 91.9
           }
         ]
       },
