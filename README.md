@@ -5,15 +5,24 @@
 
 ![Demo deck: 12 slides generated, rendered and QA-checked by the engine](examples/alvora/output/2_final/contact_sheet.png)
 
-**Raw files → storyline → native PPTX → visual QA → corrected deck.**
+**Raw data and documents → traceable facts → decision storyline → native PPTX → visual QA → corrected deck.**
 
-MBBslides turns notes, documents, PDFs, spreadsheets and analyses into a **native, editable
-PowerPoint** built the way strategy consultants build decks: an explicit storyline, one message
-per slide with conclusion headlines, and visuals chosen by the message. It then renders the deck,
-measures its visual quality, and corrects what it can. The pass/fail verdict is computed by code.
+MBBslides turns raw material into a **native, editable PowerPoint** built the way strategy
+consultants build decks. Raw material means data exports, ERP and CRM extracts, documents, memos
+and contradictory opinions. The engine builds the deck as follows:
+- a fact model traceable to source cells, with recorded analyses of row-level data;
+- tested hypotheses;
+- a storyline that ends in an approvable decision (owners, amounts, dates, gates);
+- one message per slide with a conclusion headline, and visuals chosen by the message.
 
-> **v1.2** makes visual quality *reproducible, archetype-aware and independently evaluable*, and
-> understands real corporate PowerPoint systems — every master, layout, font and convention.
+It then renders the deck, measures its visual quality and corrects what it can. **Every number a
+reader sees must come from a cited fact.** The pass/fail verdicts are computed by code.
+
+> **v1.7.1** (current): source-to-deck reasoning, protocol 1.4.
+> - Accepted by the expert evaluator on a real external case taken from raw ERP data to an 8-slide
+>   Spanish board deck.
+> - Strict factuality on every table cell and chart value.
+> - Spanish and other decimal-comma number formats throughout.
 
 <!-- metrics:start (generated from evals/results/latest.json by `cpe results readme`; do not edit) -->
 
@@ -52,28 +61,67 @@ Example decks are development material and regression fixtures, not evidence of 
 | `gallery` | PASSED · 0 errors · 0 warnings | 99.8 | 99.6 |
 | `alvora_on_kestrel` | PASSED · 0 errors · 0 warnings | 99.7 | 99.5 |
 
-<sub>engine 1.7.0 · evaluated source commit `2461f892dd` · LibreOffice 24.2.7.2 420(Build:2) · fontconfig 2.15.0 · container `mbbslides-visual:1.3@sha256:bb5bbbdd55bcec5db567781c63574da1a4b2fc4504446d6fea23f5197f59d278` · render fingerprint `f98cee49d123ed5f`</sub>
+<sub>engine 1.7.1 · evaluated source commit `c47ccd0acf` · LibreOffice 24.2.7.2 420(Build:2) · fontconfig 2.15.0 · container `mbbslides-visual:1.3@sha256:bb5bbbdd55bcec5db567781c63574da1a4b2fc4504446d6fea23f5197f59d278` · render fingerprint `f98cee49d123ed5f`</sub>
 
 <!-- metrics:end -->
 
-## In development — v1.7 consulting intelligence
+## What's new in v1.7 / 1.7.1: from raw material to a decision deck
 
-The next problem is upstream of rendering: building the RIGHT deck from raw material. `cpe reason`
-turns sources into a traceable fact model and checks every reasoning artifact the agent writes
-(business question, hypotheses, insights, storyline candidates, slide architecture) with hard
-factuality gates; `cpe reason trace` explains any sentence down to source cells; a source-to-deck
-benchmark reports grounding, insight, storyline, architecture, headline and visual-intent
-dimensions separately ([docs/REASONING_PROTOCOL.md](docs/REASONING_PROTOCOL.md),
-[docs/SOURCE_TO_DECK.md](docs/SOURCE_TO_DECK.md)). One development case exists; sealed and
-external cases do not yet — nothing here is evidence of reasoning quality yet.
+v1.7 moves upstream of rendering, to building the **right** deck. The agent may write hypotheses,
+insights and wording; **it never creates a fact**. Every artifact it writes is checked by code
+([docs/REASONING_PROTOCOL.md](docs/REASONING_PROTOCOL.md), protocol 1.4).
 
-## Status — v1.6.0rc1: awaiting external validation
+- **Fact model** (`cpe reason facts`):
+  - reads Excel, CSV, PDF, Word and markdown, including decimal-comma documents and messy tables;
+  - each fact has its value, unit, period, basis and exact location;
+  - fact ids stay stable across extractor versions;
+  - conflicting sources are listed for resolution.
+- **Row-level data** (`cpe reason analyze`): the agent's analysis scripts run twice and their inputs
+  and outputs are hashed; their tables become citable facts. Stale or non-reproducible analyses
+  block the deck.
+- **Reasoning artifacts with deterministic checks:**
+  - business question, hypotheses and insights;
+  - storyline with a **decision frame**: target, quantified levers, gap, current plan tested,
+    options costed on the same basis, approvable asks, gates, KPIs;
+  - deck plan, ghost deck, five critics, stopping criteria.
+- **Hard factuality gates.** The deck is blocked when:
+  - a fact is fabricated (checked against the raw files);
+  - a number is unsupported anywhere on a slide: headline, text, KPI, **table cell**, **chart value**;
+  - the source is wrong, or there is an arithmetic error;
+  - a claim rests on a rejected hypothesis.
+  
+  Dates, deadlines and durations are never checked: **traceability never costs the reader content**.
+- **Decision-deck visuals:**
+  - estimates and upper bounds marked on the number itself (`~2,0`, `≤4,5`);
+  - waterfall target lines, muted bridges with a highlight, KPI + commentary layouts;
+  - native Spanish number formats, including chart labels (`meta.language`).
+- `cpe reason trace` explains any sentence down to source cells; `cpe reason eval` benchmarks
+  grounding, insight, storyline, architecture, headlines and visual intent separately
+  ([docs/SOURCE_TO_DECK.md](docs/SOURCE_TO_DECK.md)).
 
-v1.6 adds the infrastructure for evidence the developer cannot produce: voting packages for more
-human raters on round r3, a sealed run-once external holdout, and unseen corporate templates
-([docs/EXTERNAL_HOLDOUT_PROTOCOL.md](docs/EXTERNAL_HOLDOUT_PROTOCOL.md),
-[docs/HUMAN_EVALUATORS.md](docs/HUMAN_EVALUATORS.md)). All three are awaiting input. v1.7 work
-(source-to-deck reasoning) continues on `main`; external runs use the `release/v1.6.0rc1` branch.
+**Human evidence for the reasoning layer** (one expert rater, blind storyline A/B, protocol vs the
+same agent without it). External cases are kept private; only aggregates are published.
+
+| round | cases | result |
+|---|---|---|
+| s1 | 4 development | 2–2 → decision frame (protocol 1.1) |
+| s2 | 4 harder development | **3–1 for the protocol** → options on the same basis (1.2) |
+| s3 | 1 external business case | **1–0 for the protocol** |
+| s4 | 5 external raw-data cases | 1–4 against protocol 1.3 → "traceability never costs content" (1.4) |
+| acceptance | 1 external raw-data case, end to end, protocol 1.4 | 8-slide Spanish board deck, reasoning PASS, QA 0 errors, deck 98.1; judged "perfect" |
+
+Protocol 1.4 has not yet been through a blind multi-case round. Open items are in
+[docs/DEBT_V17.md](docs/DEBT_V17.md). Experiments: [S2D_EXPERIMENT_01](docs/S2D_EXPERIMENT_01.md),
+[S2D_EXPERIMENT_02](docs/S2D_EXPERIMENT_02.md).
+
+## Status
+
+`main` and the `release/v1.7.1` branch (`release/v1.7.0`, `release/v1.6.0rc1` before it).
+External evidence still awaited, from v1.6:
+- an externally authored slide holdout;
+- an unseen corporate template;
+- more human raters ([docs/EXTERNAL_HOLDOUT_PROTOCOL.md](docs/EXTERNAL_HOLDOUT_PROTOCOL.md),
+  [docs/HUMAN_EVALUATORS.md](docs/HUMAN_EVALUATORS.md)).
 
 ## What's new in v1.5 (release candidate) — human alignment and real failure modes
 
@@ -155,6 +203,8 @@ see [CHANGELOG.md](CHANGELOG.md).
 ## How it works
 
 ```
+SOURCES → FACTS (+ recorded analyses) → QUESTION → HYPOTHESES → INSIGHTS → STORYLINE + DECISION FRAME
+        → DECK PLAN → CRITICS → reason check (hard factuality gates)
 INPUT → UNDERSTAND → STORYLINE → SLIDE INTENT → VISUAL ENCODING → LAYOUT CANDIDATES
       → COMPOSITION CANDIDATES → RENDER → COMPOSITION SCORING → BEST CANDIDATE
       → PPTX → RENDER → QA (content · geometry · render · composition) → PATCH → FINAL PPTX
@@ -201,6 +251,21 @@ scripts/cpe review out/review.json          # 6. semantic visual review
 scripts/cpe patch deck.json patches.json && scripts/cpe run deck.json -o out/   # 7. iterate
 ```
 
+From raw material (reasoning protocol 1.4, [docs/REASONING_PROTOCOL.md](docs/REASONING_PROTOCOL.md)):
+
+```bash
+scripts/cpe reason facts case/sources -o case/work                  # traceable fact model (+ datasets listed)
+scripts/cpe reason analyze case/work scripts/by_store.py --sources case/sources   # row-level data → citable tables
+scripts/cpe reason facts case/sources -o case/work                  # re-run: analysis outputs become facts (ids kept)
+#   … the agent writes project, hypotheses, insights, computed facts, storyline (+ decision frame), deck plan, critique
+scripts/cpe reason check case/work --sources case/sources           # every artifact + hard factuality gates
+scripts/cpe reason ghost case/work                                  # the argument from headlines alone
+#   … the agent writes deck.json citing fact ids in evidence
+scripts/cpe reason check case/work --sources case/sources --enrich  # every number on every slide grounded
+scripts/cpe run case/work/deck.json -o out/                         # render + visual QA as below
+scripts/cpe reason trace case/work "Cerrar los tres restaría 158 k€"  # why is this sentence in the deck?
+```
+
 Corporate identity:
 
 ```bash
@@ -245,7 +310,9 @@ Other commands: `plan`, `build`, `render`, `qa`, `recommend <message_type>`, `ca
 Code and documentation are in English. The engine is **bilingual (English / Spanish)** for content:
 the headline lint (verbs, topic nouns, vague words), the number check (durations and identifiers
 such as "24 months" / "24 meses", "wave 1" / "fase 1", decimal commas such as "4,1%"), the storyline
-lint and the ingestion number parser understand both languages.
+lint and the ingestion number parser understand both languages. Documents written with decimal
+commas are detected, and dates are never read as quantities. With `meta.language: "es"`, every number
+in the deck is formatted the Spanish way (1.066,5 · 2,67x), chart labels included.
 
 ## Deck types
 
@@ -266,7 +333,7 @@ density profile (board / standard / analytical / status). Themes: `meridian`, `g
 | [CHANGELOG.md](CHANGELOG.md) | release notes |
 | [docs/VISUAL_GUIDE.md](docs/VISUAL_GUIDE.md) | every exhibit type, its data shape and rules |
 | [docs/SPEC_REFERENCE.md](docs/SPEC_REFERENCE.md) | deck spec and patch reference |
-| [docs/LAYOUT_CATALOG.md](docs/LAYOUT_CATALOG.md) | 43 layouts in 16 families |
+| [docs/LAYOUT_CATALOG.md](docs/LAYOUT_CATALOG.md) | 44 layouts in 16 families |
 | [docs/QA_CODES.md](docs/QA_CODES.md) | every QA code, its severity and remedy |
 | [docs/EVALS.md](docs/EVALS.md) | quality profile, absolute gates, robustness, sealed holdout v2 protocol, human A/B statistics |
 | [docs/COMPOSITION_SCORING.md](docs/COMPOSITION_SCORING.md) | archetypes, expected profiles, fitness, attribution, profile governance, hard QA vs preference |
@@ -274,6 +341,10 @@ density profile (board / standard / analytical / status). Themes: `meridian`, `g
 | [docs/KPI_DASHBOARD_DIAGNOSIS.md](docs/KPI_DASHBOARD_DIAGNOSIS.md) | v1.5 KPI-dashboard study: the r2 disagreement, engine vs metric, before/after |
 | [docs/EXTERNAL_HOLDOUT_PROTOCOL.md](docs/EXTERNAL_HOLDOUT_PROTOCOL.md) | how to hand over an external holdout or an unseen corporate template |
 | [docs/BRAND_INGESTION.md](docs/BRAND_INGESTION.md) | corporate template intelligence and layout matching |
+| [docs/REASONING_PROTOCOL.md](docs/REASONING_PROTOCOL.md) | reasoning protocol 1.4: artifacts, passes, decision frame, critics, hard gates |
+| [docs/SOURCE_TO_DECK.md](docs/SOURCE_TO_DECK.md) | source-to-deck benchmark and human evaluation of storylines |
+| [docs/S2D_EXPERIMENT_02.md](docs/S2D_EXPERIMENT_02.md) | experiments, human rounds s2–s4, end-to-end decks, acceptance test |
+| [docs/DEBT_V17.md](docs/DEBT_V17.md) | open findings after v1.7.1 |
 | [docs/REPRODUCIBILITY.md](docs/REPRODUCIBILITY.md) | pinned environment, manifest, reproducibility test, provenance and release workflow, CI |
 | [evals/](evals/) | the suites, baseline and results |
 
@@ -314,6 +385,10 @@ density profile (board / standard / analytical / status). Themes: `meridian`, `g
   engine-vs-scorer comparison and the human A/B rounds exist to tell how well it generalises. It
   does not replace a visual review.
 - Storyline quality depends on the agent; the engine structures and checks it, it does not invent it.
+- Reasoning protocol 1.4 was accepted on one real case, not in a blind multi-case round. Human
+  evidence for the reasoning layer is one rater over small rounds (s1–s4).
+- A table cell holding a real cited value in the wrong row or column is not caught; cell-to-fact
+  binding is planned for v1.8 ([docs/DEBT_V17.md](docs/DEBT_V17.md)).
 
 ## License
 
