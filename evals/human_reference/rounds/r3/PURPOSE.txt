@@ -1,0 +1,1 @@
+v1.4.0 (430176d) vs v1.5.0rc1 (455408a/8641270): KPI dashboards, long statements, waterfall edge cases; 25 pairs on content written after the v1.5 freeze + 13 on holdout-v2 decks (development-known for v1.5); both renders scored by the frozen v1.5 scorer

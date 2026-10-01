@@ -66,6 +66,14 @@ for v1.5 (docs/EVALS.md, first table).
   per archetype. Enforced: no new visual QA error, no catastrophic variant, no coverage loss.
   Provisional relative gates for P90, large drops, font drops, layout instability.
 
+### Human round r3 (voted after the freeze; single rater)
+- 38 blind pairs + 4 repeats, v1.4.0 vs v1.5.0rc1, one evaluator: v1.5 preferred 9, v1.4 1,
+  **28 ties** (decisive preference 0.90, 95% CI 0.60–0.98; ties-as-half 0.61); 4/4 repeats
+  consistent; left share 0.50. Waterfalls 7–0 (5 ties); KPI dashboards 2–1 (4 ties); long
+  statements 19 ties — the statement change is not visible to this rater. Fresh content 8–0;
+  holdout-v2 content (development-known) 1–1. Scorer agrees on 5 of 6 decisive pairs; Kendall
+  τ-b 0.37 [−0.22, 0.83] (directional only). Not used for calibration.
+
 ### Intake (awaiting input)
 - `cpe holdout intake | v15-external | v15-corporate` and docs/EXTERNAL_HOLDOUT_PROTOCOL.md.
   External decks need attested outside authorship; a known development template (JET) is refused.

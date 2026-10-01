@@ -1,9 +1,10 @@
 {
   "round": "r3",
   "created": "2026-10-01",
-  "purpose": "blind A/B round",
-  "blind": true,
+  "purpose": "v1.4.0 (430176d) vs v1.5.0rc1 (455408a/8641270): KPI dashboards, long statements, waterfall edge cases; 25 pairs on content written after the v1.5 freeze + 13 on holdout-v2 decks (development-known for v1.5); both renders scored by the frozen v1.5 scorer",
+  "blind": false,
   "used_for_calibration": false,
-  "status": "awaiting human votes",
-  "key": "private"
+  "status": "votes received (1 evaluator); voting closed, key revealed; not used for calibration — single-rater blind evidence for v1.5.0rc1",
+  "key": "revealed",
+  "closed": "2026-10-01"
 }

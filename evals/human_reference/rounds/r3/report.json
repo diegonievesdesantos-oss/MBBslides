@@ -1,0 +1,906 @@
+{
+  "round": "r3",
+  "evaluators": 1,
+  "comparisons": 38,
+  "challenger_wins": 9,
+  "baseline_wins": 1,
+  "ties": 28,
+  "challenger_preference": 0.9,
+  "challenger_preference_ci95": [
+    0.596,
+    0.982
+  ],
+  "ties_as_half": 0.605,
+  "by_comparison": {
+    "v1.4.0->v1.5.0rc1 fresh content": {
+      "comparisons": 25,
+      "challenger_wins": 8,
+      "baseline_wins": 0,
+      "ties": 17,
+      "challenger_preference": 1.0,
+      "challenger_preference_ci95": [
+        0.676,
+        1.0
+      ],
+      "ties_as_half": 0.66
+    },
+    "v1.4.0->v1.5.0rc1 holdout-v2 content (development-known)": {
+      "comparisons": 13,
+      "challenger_wins": 1,
+      "baseline_wins": 1,
+      "ties": 11,
+      "challenger_preference": 0.5,
+      "challenger_preference_ci95": [
+        0.095,
+        0.905
+      ],
+      "ties_as_half": 0.5
+    }
+  },
+  "by_archetype": {
+    "kpi_dashboard": {
+      "comparisons": 7,
+      "challenger_wins": 2,
+      "baseline_wins": 1,
+      "ties": 4,
+      "challenger_preference": 0.667,
+      "challenger_preference_ci95": [
+        0.208,
+        0.939
+      ],
+      "ties_as_half": 0.571
+    },
+    "statement": {
+      "comparisons": 19,
+      "challenger_wins": 0,
+      "baseline_wins": 0,
+      "ties": 19,
+      "challenger_preference": null,
+      "challenger_preference_ci95": [
+        null,
+        null
+      ],
+      "ties_as_half": 0.5
+    },
+    "waterfall": {
+      "comparisons": 12,
+      "challenger_wins": 7,
+      "baseline_wins": 0,
+      "ties": 5,
+      "challenger_preference": 1.0,
+      "challenger_preference_ci95": [
+        0.646,
+        1.0
+      ],
+      "ties_as_half": 0.792
+    }
+  },
+  "score_agreement": {
+    "decisive_votes_with_score_gap": 6,
+    "agree": 5,
+    "rate": 0.833,
+    "ci95": [
+      0.436,
+      0.97
+    ]
+  },
+  "left_bias": {
+    "left_share": 0.5,
+    "ci95": [
+      0.237,
+      0.763
+    ]
+  },
+  "inter_rater": {
+    "note": "one evaluator: agreement needs \u22652"
+  },
+  "self_consistency": {
+    "repeated_pairs": 4,
+    "consistent": 4
+  },
+  "by_rater": {
+    "r-17nqy": {
+      "comparisons": 38,
+      "challenger_wins": 9,
+      "baseline_wins": 1,
+      "ties": 28,
+      "challenger_preference": 0.9,
+      "challenger_preference_ci95": [
+        0.596,
+        0.982
+      ],
+      "ties_as_half": 0.605,
+      "left_share": 0.5,
+      "self_consistency": {
+        "repeated_pairs": 4,
+        "consistent": 4
+      }
+    }
+  },
+  "pair_agreement": {
+    "pairs_with_votes": 38,
+    "decisive_pairs": 6,
+    "agree": 5,
+    "disagree": 1,
+    "ties": 32,
+    "rate": 0.833,
+    "ci95": [
+      0.436,
+      0.97
+    ],
+    "by_score_gap": {
+      "|\u0394| < 5": {
+        "pairs": 3,
+        "agree": 2,
+        "rate": 0.667,
+        "ci95": [
+          0.208,
+          0.939
+        ]
+      },
+      "5 \u2264 |\u0394| < 15": {
+        "pairs": 1,
+        "agree": 1,
+        "rate": 1.0,
+        "ci95": [
+          0.207,
+          1.0
+        ]
+      },
+      "|\u0394| \u2265 15": {
+        "pairs": 2,
+        "agree": 2,
+        "rate": 1.0,
+        "ci95": [
+          0.342,
+          1.0
+        ]
+      }
+    }
+  },
+  "score_human_correlation": {
+    "method": "Kendall tau-b between score delta (challenger \u2212 baseline) and human majority (+1/0/\u22121), percentile bootstrap 95% CI",
+    "n": 38,
+    "tau_b": 0.372,
+    "ci95": [
+      -0.219,
+      0.825
+    ]
+  },
+  "controls": null,
+  "status": {
+    "round": "r3",
+    "created": "2026-10-01",
+    "purpose": "blind A/B round",
+    "blind": false,
+    "used_for_calibration": false,
+    "status": "awaiting human votes; voting closed, key revealed",
+    "key": "revealed",
+    "closed": "2026-10-01"
+  },
+  "verdicts": [
+    {
+      "pair": "p001",
+      "archetype": "statement",
+      "deck": "statements",
+      "slide": "st02",
+      "baseline_score": 100.0,
+      "challenger_score": 100.0,
+      "score_delta": 0.0,
+      "votes": 1,
+      "challenger_votes": 0,
+      "baseline_votes": 0,
+      "human_pref": 0,
+      "agreement": "tie",
+      "control": false,
+      "images": {
+        "baseline": "cc31f51cc71e.png",
+        "challenger": "c180b3cb87cf.png"
+      }
+    },
+    {
+      "pair": "p002",
+      "archetype": "waterfall",
+      "deck": "V09_retail_moda",
+      "slide": "v053",
+      "baseline_score": 99.9,
+      "challenger_score": 97.2,
+      "score_delta": -2.7,
+      "votes": 1,
+      "challenger_votes": 1,
+      "baseline_votes": 0,
+      "human_pref": 1,
+      "agreement": "disagree",
+      "control": false,
+      "images": {
+        "baseline": "93e75e9a1951.png",
+        "challenger": "12193bcaf45b.png"
+      }
+    },
+    {
+      "pair": "p003",
+      "archetype": "kpi_dashboard",
+      "deck": "kpi_dashboards",
+      "slide": "kp02",
+      "baseline_score": 98.8,
+      "challenger_score": 98.8,
+      "score_delta": 0.0,
+      "votes": 1,
+      "challenger_votes": 0,
+      "baseline_votes": 0,
+      "human_pref": 0,
+      "agreement": "tie",
+      "control": false,
+      "images": {
+        "baseline": "d70bd1f22157.png",
+        "challenger": "a4e8f947dab7.png"
+      }
+    },
+    {
+      "pair": "p004",
+      "archetype": "statement",
+      "deck": "V21_cooperativa_agro",
+      "slide": "v127",
+      "baseline_score": 100.0,
+      "challenger_score": 100.0,
+      "score_delta": 0.0,
+      "votes": 1,
+      "challenger_votes": 0,
+      "baseline_votes": 0,
+      "human_pref": 0,
+      "agreement": "tie",
+      "control": false,
+      "images": {
+        "baseline": "e652e17c8b1a.png",
+        "challenger": "2cbfdebe2054.png"
+      }
+    },
+    {
+      "pair": "p005",
+      "archetype": "waterfall",
+      "deck": "waterfalls",
+      "slide": "wa02",
+      "baseline_score": 99.8,
+      "challenger_score": 100.0,
+      "score_delta": 0.2,
+      "votes": 1,
+      "challenger_votes": 1,
+      "baseline_votes": 0,
+      "human_pref": 1,
+      "agreement": "tie",
+      "control": false,
+      "images": {
+        "baseline": "986c0becb486.png",
+        "challenger": "3bd68d52cba4.png"
+      }
+    },
+    {
+      "pair": "p006",
+      "archetype": "kpi_dashboard",
+      "deck": "V19_startup_consejo",
+      "slide": "v110",
+      "baseline_score": 99.1,
+      "challenger_score": 99.9,
+      "score_delta": 0.8,
+      "votes": 1,
+      "challenger_votes": 0,
+      "baseline_votes": 1,
+      "human_pref": -1,
+      "agreement": "tie",
+      "control": false,
+      "images": {
+        "baseline": "2e933899bd29.png",
+        "challenger": "46ed325b9978.png"
+      }
+    },
+    {
+      "pair": "p007",
+      "archetype": "kpi_dashboard",
+      "deck": "kpi_dashboards",
+      "slide": "kp04",
+      "baseline_score": 98.3,
+      "challenger_score": 100.0,
+      "score_delta": 1.7,
+      "votes": 1,
+      "challenger_votes": 1,
+      "baseline_votes": 0,
+      "human_pref": 1,
+      "agreement": "agree",
+      "control": false,
+      "images": {
+        "baseline": "0d059deb7a99.png",
+        "challenger": "f86973322faf.png"
+      }
+    },
+    {
+      "pair": "p008",
+      "archetype": "statement",
+      "deck": "V13_telco_fibra",
+      "slide": "v079",
+      "baseline_score": 100.0,
+      "challenger_score": 100.0,
+      "score_delta": 0.0,
+      "votes": 1,
+      "challenger_votes": 0,
+      "baseline_votes": 0,
+      "human_pref": 0,
+      "agreement": "tie",
+      "control": false,
+      "images": {
+        "baseline": "0801940dd167.png",
+        "challenger": "0c084e1cfbd3.png"
+      }
+    },
+    {
+      "pair": "p009",
+      "archetype": "statement",
+      "deck": "statements",
+      "slide": "st01",
+      "baseline_score": 100.0,
+      "challenger_score": 100.0,
+      "score_delta": 0.0,
+      "votes": 1,
+      "challenger_votes": 0,
+      "baseline_votes": 0,
+      "human_pref": 0,
+      "agreement": "tie",
+      "control": false,
+      "images": {
+        "baseline": "62fc0495c41c.png",
+        "challenger": "2f87deca9194.png"
+      }
+    },
+    {
+      "pair": "p010",
+      "archetype": "statement",
+      "deck": "V08_insurer_transformation",
+      "slide": "v043",
+      "baseline_score": 100.0,
+      "challenger_score": 100.0,
+      "score_delta": 0.0,
+      "votes": 1,
+      "challenger_votes": 0,
+      "baseline_votes": 0,
+      "human_pref": 0,
+      "agreement": "tie",
+      "control": false,
+      "images": {
+        "baseline": "1837781d6dad.png",
+        "challenger": "b533f1953f94.png"
+      }
+    },
+    {
+      "pair": "p011",
+      "archetype": "statement",
+      "deck": "statements",
+      "slide": "st03",
+      "baseline_score": 100.0,
+      "challenger_score": 100.0,
+      "score_delta": 0.0,
+      "votes": 1,
+      "challenger_votes": 0,
+      "baseline_votes": 0,
+      "human_pref": 0,
+      "agreement": "tie",
+      "control": false,
+      "images": {
+        "baseline": "f0d913c05fd7.png",
+        "challenger": "e1314b412cd2.png"
+      }
+    },
+    {
+      "pair": "p012",
+      "archetype": "statement",
+      "deck": "V18_water_utility",
+      "slide": "v104",
+      "baseline_score": 100.0,
+      "challenger_score": 100.0,
+      "score_delta": 0.0,
+      "votes": 1,
+      "challenger_votes": 0,
+      "baseline_votes": 0,
+      "human_pref": 0,
+      "agreement": "tie",
+      "control": false,
+      "images": {
+        "baseline": "7c6b59cc10b0.png",
+        "challenger": "51354db9b403.png"
+      }
+    },
+    {
+      "pair": "p013",
+      "archetype": "waterfall",
+      "deck": "waterfalls",
+      "slide": "wa09",
+      "baseline_score": 94.3,
+      "challenger_score": 94.3,
+      "score_delta": 0.0,
+      "votes": 1,
+      "challenger_votes": 0,
+      "baseline_votes": 0,
+      "human_pref": 0,
+      "agreement": "tie",
+      "control": false,
+      "images": {
+        "baseline": "f51ef584edf8.png",
+        "challenger": "d9b915bdf60f.png"
+      }
+    },
+    {
+      "pair": "p014",
+      "archetype": "statement",
+      "deck": "V19_startup_consejo",
+      "slide": "v115",
+      "baseline_score": 100.0,
+      "challenger_score": 100.0,
+      "score_delta": 0.0,
+      "votes": 1,
+      "challenger_votes": 0,
+      "baseline_votes": 0,
+      "human_pref": 0,
+      "agreement": "tie",
+      "control": false,
+      "images": {
+        "baseline": "e96a9253509b.png",
+        "challenger": "2b25bc2c0972.png"
+      }
+    },
+    {
+      "pair": "p015",
+      "archetype": "waterfall",
+      "deck": "waterfalls",
+      "slide": "wa07",
+      "baseline_score": 100.0,
+      "challenger_score": 100.0,
+      "score_delta": 0.0,
+      "votes": 1,
+      "challenger_votes": 1,
+      "baseline_votes": 0,
+      "human_pref": 1,
+      "agreement": "tie",
+      "control": false,
+      "images": {
+        "baseline": "20f7fd6c81e1.png",
+        "challenger": "dda9d01afa8e.png"
+      }
+    },
+    {
+      "pair": "p016",
+      "archetype": "waterfall",
+      "deck": "V20_bank_core_it",
+      "slide": "v120",
+      "baseline_score": 85.2,
+      "challenger_score": 85.2,
+      "score_delta": 0.0,
+      "votes": 1,
+      "challenger_votes": 0,
+      "baseline_votes": 0,
+      "human_pref": 0,
+      "agreement": "tie",
+      "control": false,
+      "images": {
+        "baseline": "f49346e2ccc7.png",
+        "challenger": "e48c0c2ca78e.png"
+      }
+    },
+    {
+      "pair": "p017",
+      "archetype": "kpi_dashboard",
+      "deck": "kpi_dashboards",
+      "slide": "kp12",
+      "baseline_score": 98.5,
+      "challenger_score": 98.5,
+      "score_delta": 0.0,
+      "votes": 1,
+      "challenger_votes": 0,
+      "baseline_votes": 0,
+      "human_pref": 0,
+      "agreement": "tie",
+      "control": false,
+      "images": {
+        "baseline": "00513a29d62c.png",
+        "challenger": "2e8e3e263416.png"
+      }
+    },
+    {
+      "pair": "p018",
+      "archetype": "statement",
+      "deck": "V10_pharma_portfolio",
+      "slide": "v061",
+      "baseline_score": 100.0,
+      "challenger_score": 100.0,
+      "score_delta": 0.0,
+      "votes": 1,
+      "challenger_votes": 0,
+      "baseline_votes": 0,
+      "human_pref": 0,
+      "agreement": "tie",
+      "control": false,
+      "images": {
+        "baseline": "80de5d946df3.png",
+        "challenger": "5b3bbfa16bf7.png"
+      }
+    },
+    {
+      "pair": "p019",
+      "archetype": "statement",
+      "deck": "statements",
+      "slide": "st07",
+      "baseline_score": 100.0,
+      "challenger_score": 100.0,
+      "score_delta": 0.0,
+      "votes": 1,
+      "challenger_votes": 0,
+      "baseline_votes": 0,
+      "human_pref": 0,
+      "agreement": "tie",
+      "control": false,
+      "images": {
+        "baseline": "2b4c5d62671a.png",
+        "challenger": "f974aa181ed8.png"
+      }
+    },
+    {
+      "pair": "p020",
+      "archetype": "statement",
+      "deck": "V01_airline_board",
+      "slide": "v006",
+      "baseline_score": 100.0,
+      "challenger_score": 100.0,
+      "score_delta": 0.0,
+      "votes": 1,
+      "challenger_votes": 0,
+      "baseline_votes": 0,
+      "human_pref": 0,
+      "agreement": "tie",
+      "control": false,
+      "images": {
+        "baseline": "ab3bd99c7220.png",
+        "challenger": "57d674af755a.png"
+      }
+    },
+    {
+      "pair": "p021",
+      "archetype": "kpi_dashboard",
+      "deck": "kpi_dashboards",
+      "slide": "kp11",
+      "baseline_score": 98.3,
+      "challenger_score": 99.7,
+      "score_delta": 1.4,
+      "votes": 1,
+      "challenger_votes": 1,
+      "baseline_votes": 0,
+      "human_pref": 1,
+      "agreement": "agree",
+      "control": false,
+      "images": {
+        "baseline": "97780ea00812.png",
+        "challenger": "e77c94fc7ccf.png"
+      }
+    },
+    {
+      "pair": "p022",
+      "archetype": "statement",
+      "deck": "V04_sanidad_listas",
+      "slide": "v019",
+      "baseline_score": 100.0,
+      "challenger_score": 100.0,
+      "score_delta": 0.0,
+      "votes": 1,
+      "challenger_votes": 0,
+      "baseline_votes": 0,
+      "human_pref": 0,
+      "agreement": "tie",
+      "control": false,
+      "images": {
+        "baseline": "8da57e8b22c8.png",
+        "challenger": "3a5f64c4601e.png"
+      }
+    },
+    {
+      "pair": "p023",
+      "archetype": "waterfall",
+      "deck": "waterfalls",
+      "slide": "wa03",
+      "baseline_score": 92.7,
+      "challenger_score": 100.0,
+      "score_delta": 7.3,
+      "votes": 1,
+      "challenger_votes": 1,
+      "baseline_votes": 0,
+      "human_pref": 1,
+      "agreement": "agree",
+      "control": false,
+      "images": {
+        "baseline": "cfa9ec1372e2.png",
+        "challenger": "3b8ac3270e94.png"
+      }
+    },
+    {
+      "pair": "p024",
+      "archetype": "kpi_dashboard",
+      "deck": "V05_saas_product",
+      "slide": "v025",
+      "baseline_score": 98.3,
+      "challenger_score": 98.3,
+      "score_delta": 0.0,
+      "votes": 1,
+      "challenger_votes": 0,
+      "baseline_votes": 0,
+      "human_pref": 0,
+      "agreement": "tie",
+      "control": false,
+      "images": {
+        "baseline": "915aa69fb6cf.png",
+        "challenger": "4a3e5964c731.png"
+      }
+    },
+    {
+      "pair": "p025",
+      "archetype": "waterfall",
+      "deck": "waterfalls",
+      "slide": "wa06",
+      "baseline_score": 99.8,
+      "challenger_score": 99.8,
+      "score_delta": 0.0,
+      "votes": 1,
+      "challenger_votes": 0,
+      "baseline_votes": 0,
+      "human_pref": 0,
+      "agreement": "tie",
+      "control": false,
+      "images": {
+        "baseline": "9045201f129e.png",
+        "challenger": "b9c683995106.png"
+      }
+    },
+    {
+      "pair": "p026",
+      "archetype": "statement",
+      "deck": "V24_ngo_programme",
+      "slide": "v140",
+      "baseline_score": 100.0,
+      "challenger_score": 100.0,
+      "score_delta": 0.0,
+      "votes": 1,
+      "challenger_votes": 0,
+      "baseline_votes": 0,
+      "human_pref": 0,
+      "agreement": "tie",
+      "control": false,
+      "images": {
+        "baseline": "e36c28be8c91.png",
+        "challenger": "448d1260392b.png"
+      }
+    },
+    {
+      "pair": "p027",
+      "archetype": "waterfall",
+      "deck": "waterfalls",
+      "slide": "wa05",
+      "baseline_score": 89.4,
+      "challenger_score": 89.4,
+      "score_delta": 0.0,
+      "votes": 1,
+      "challenger_votes": 0,
+      "baseline_votes": 0,
+      "human_pref": 0,
+      "agreement": "tie",
+      "control": false,
+      "images": {
+        "baseline": "6a0d7d7fa937.png",
+        "challenger": "c6b9b6bbd438.png"
+      }
+    },
+    {
+      "pair": "p028",
+      "archetype": "statement",
+      "deck": "statements",
+      "slide": "st08",
+      "baseline_score": 100.0,
+      "challenger_score": 100.0,
+      "score_delta": 0.0,
+      "votes": 1,
+      "challenger_votes": 0,
+      "baseline_votes": 0,
+      "human_pref": 0,
+      "agreement": "tie",
+      "control": false,
+      "images": {
+        "baseline": "68ae09210188.png",
+        "challenger": "c95bc10105fb.png"
+      }
+    },
+    {
+      "pair": "p029",
+      "archetype": "waterfall",
+      "deck": "waterfalls",
+      "slide": "wa08",
+      "baseline_score": 75.0,
+      "challenger_score": 75.0,
+      "score_delta": 0.0,
+      "votes": 1,
+      "challenger_votes": 0,
+      "baseline_votes": 0,
+      "human_pref": 0,
+      "agreement": "tie",
+      "control": false,
+      "images": {
+        "baseline": "c707562ec750.png",
+        "challenger": "8a0a775e7b87.png"
+      }
+    },
+    {
+      "pair": "p030",
+      "archetype": "waterfall",
+      "deck": "waterfalls",
+      "slide": "wa10",
+      "baseline_score": 52.5,
+      "challenger_score": 100.0,
+      "score_delta": 47.5,
+      "votes": 1,
+      "challenger_votes": 1,
+      "baseline_votes": 0,
+      "human_pref": 1,
+      "agreement": "agree",
+      "control": false,
+      "images": {
+        "baseline": "d6fe891fd506.png",
+        "challenger": "eb3da3e5fbc1.png"
+      }
+    },
+    {
+      "pair": "p031",
+      "archetype": "statement",
+      "deck": "statements",
+      "slide": "st05",
+      "baseline_score": 100.0,
+      "challenger_score": 100.0,
+      "score_delta": 0.0,
+      "votes": 1,
+      "challenger_votes": 0,
+      "baseline_votes": 0,
+      "human_pref": 0,
+      "agreement": "tie",
+      "control": false,
+      "images": {
+        "baseline": "977a065b9d39.png",
+        "challenger": "e956612429a4.png"
+      }
+    },
+    {
+      "pair": "p032",
+      "archetype": "kpi_dashboard",
+      "deck": "kpi_dashboards",
+      "slide": "kp08",
+      "baseline_score": 99.2,
+      "challenger_score": 99.2,
+      "score_delta": 0.0,
+      "votes": 1,
+      "challenger_votes": 0,
+      "baseline_votes": 0,
+      "human_pref": 0,
+      "agreement": "tie",
+      "control": false,
+      "images": {
+        "baseline": "3c052b851274.png",
+        "challenger": "62d127ca3120.png"
+      }
+    },
+    {
+      "pair": "p033",
+      "archetype": "statement",
+      "deck": "statements",
+      "slide": "st09",
+      "baseline_score": 98.2,
+      "challenger_score": 98.7,
+      "score_delta": 0.5,
+      "votes": 1,
+      "challenger_votes": 0,
+      "baseline_votes": 0,
+      "human_pref": 0,
+      "agreement": "tie",
+      "control": false,
+      "images": {
+        "baseline": "051ede9488e8.png",
+        "challenger": "f529d7b5a2c0.png"
+      }
+    },
+    {
+      "pair": "p034",
+      "archetype": "statement",
+      "deck": "statements",
+      "slide": "st06",
+      "baseline_score": 100.0,
+      "challenger_score": 100.0,
+      "score_delta": 0.0,
+      "votes": 1,
+      "challenger_votes": 0,
+      "baseline_votes": 0,
+      "human_pref": 0,
+      "agreement": "tie",
+      "control": false,
+      "images": {
+        "baseline": "553eb60aa3ad.png",
+        "challenger": "9903e342afd3.png"
+      }
+    },
+    {
+      "pair": "p035",
+      "archetype": "statement",
+      "deck": "statements",
+      "slide": "st04",
+      "baseline_score": 100.0,
+      "challenger_score": 100.0,
+      "score_delta": 0.0,
+      "votes": 1,
+      "challenger_votes": 0,
+      "baseline_votes": 0,
+      "human_pref": 0,
+      "agreement": "tie",
+      "control": false,
+      "images": {
+        "baseline": "decbcc45d162.png",
+        "challenger": "96c727668425.png"
+      }
+    },
+    {
+      "pair": "p036",
+      "archetype": "waterfall",
+      "deck": "waterfalls",
+      "slide": "wa01",
+      "baseline_score": 52.3,
+      "challenger_score": 88.8,
+      "score_delta": 36.5,
+      "votes": 1,
+      "challenger_votes": 1,
+      "baseline_votes": 0,
+      "human_pref": 1,
+      "agreement": "agree",
+      "control": false,
+      "images": {
+        "baseline": "ec755158d418.png",
+        "challenger": "98edc3b3d7c0.png"
+      }
+    },
+    {
+      "pair": "p037",
+      "archetype": "waterfall",
+      "deck": "waterfalls",
+      "slide": "wa04",
+      "baseline_score": 100.0,
+      "challenger_score": 100.0,
+      "score_delta": 0.0,
+      "votes": 1,
+      "challenger_votes": 1,
+      "baseline_votes": 0,
+      "human_pref": 1,
+      "agreement": "tie",
+      "control": false,
+      "images": {
+        "baseline": "11ac259bafca.png",
+        "challenger": "3ba575b377af.png"
+      }
+    },
+    {
+      "pair": "p038",
+      "archetype": "statement",
+      "deck": "statements",
+      "slide": "st10",
+      "baseline_score": 100.0,
+      "challenger_score": 100.0,
+      "score_delta": 0.0,
+      "votes": 1,
+      "challenger_votes": 0,
+      "baseline_votes": 0,
+      "human_pref": 0,
+      "agreement": "tie",
+      "control": false,
+      "images": {
+        "baseline": "b39d259a2e7d.png",
+        "challenger": "4eb138f7a018.png"
+      }
+    }
+  ],
+  "method": "Preference = challenger wins / decisive votes, Wilson 95% interval (ties excluded; ties-as-half also shown). Agreement: percent agreement and Fleiss' kappa over {baseline, challenger, tie} on pairs rated by \u22652 evaluators. Human preference is an independent signal and is never part of the automatic composition score."
+}
