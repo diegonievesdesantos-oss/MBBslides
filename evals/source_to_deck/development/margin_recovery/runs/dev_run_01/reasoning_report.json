@@ -1,0 +1,83 @@
+{
+  "protocol": "1.0",
+  "status": "pass",
+  "stopping_criteria": {
+    "no_hard_factual_errors": true,
+    "storyline_passes": true,
+    "ghost_deck_passes": true,
+    "no_unsupported_headlines": true
+  },
+  "counts": {
+    "error": 0,
+    "warning": 0,
+    "info": 3
+  },
+  "hard_failures": 0,
+  "information_economy": {
+    "facts_available": 58,
+    "facts_used": 21,
+    "facts_appendix": 15,
+    "facts_omitted": 22,
+    "slides": 9,
+    "core": 7,
+    "support": 1,
+    "appendix": 1,
+    "note": "omitting facts is expected: decision relevance, not coverage, is the goal"
+  },
+  "stages": {
+    "project": {
+      "errors": 0,
+      "warnings": 0
+    },
+    "facts": {
+      "errors": 0,
+      "warnings": 0
+    },
+    "hypotheses": {
+      "errors": 0,
+      "warnings": 0
+    },
+    "insights": {
+      "errors": 0,
+      "warnings": 0
+    },
+    "storyline": {
+      "errors": 0,
+      "warnings": 0
+    },
+    "deck_plan": {
+      "errors": 0,
+      "warnings": 0
+    },
+    "deck": {
+      "errors": 0,
+      "warnings": 0
+    }
+  },
+  "issues": [
+    {
+      "level": "info",
+      "code": "HYPOTHESIS_TENSION",
+      "artifact": "hypotheses.json",
+      "ref": "H3",
+      "message": "supported despite contradicting facts: say why in the rationale",
+      "hard": false
+    },
+    {
+      "level": "info",
+      "code": "ASSUMPTION_IN_HEADLINE",
+      "artifact": "deck_plan.json",
+      "ref": "s07",
+      "message": "3 pp rests on an assumption (A001): say so on the slide",
+      "hard": false
+    },
+    {
+      "level": "info",
+      "code": "ASSUMPTION_IN_HEADLINE",
+      "artifact": "deck_plan.json",
+      "ref": "s07",
+      "message": "0.6 pp rests on an assumption (C0006): say so on the slide",
+      "hard": false
+    }
+  ]
+}

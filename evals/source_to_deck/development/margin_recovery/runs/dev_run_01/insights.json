@@ -1,0 +1,95 @@
+{
+  "insights": [
+    {
+      "id": "I1",
+      "statement": "Mix explains 1.45 pp of the 1.9 pp gross-margin decline: electronics rose from 13.2% to 19.9% of sales at an 11.5% margin",
+      "facts": [
+        "C0004",
+        "F0045",
+        "C0001",
+        "C0002",
+        "F0031"
+      ],
+      "hypotheses": [
+        "H2"
+      ],
+      "materiality": "high",
+      "decision_relevance": "The recovery plan must target electronics mix and margin, not volume"
+    },
+    {
+      "id": "I2",
+      "statement": "Revenue grew 7.4% to €1,460M, so the volume explanation does not hold",
+      "facts": [
+        "F0044",
+        "F0041"
+      ],
+      "refutes": [
+        "H1"
+      ],
+      "materiality": "high",
+      "decision_relevance": "Rules out a volume-led plan"
+    },
+    {
+      "id": "I3",
+      "statement": "Within categories margins slipped only 0.45 pp, led by apparel (−1 pp) and grocery and electronics (−0.5 pp each)",
+      "facts": [
+        "C0005",
+        "F0039",
+        "F0027",
+        "F0033"
+      ],
+      "hypotheses": [
+        "H3"
+      ],
+      "materiality": "medium",
+      "decision_relevance": "Secondary lever after mix",
+      "contradicting_facts": [
+        "F0021"
+      ],
+      "caveat": "Fresh held its 34% margin"
+    },
+    {
+      "id": "I4",
+      "statement": "Freight cost rose €9M (+23.7%) after the new carrier contract, a profit gap outside gross margin",
+      "facts": [
+        "F0003",
+        "F0047"
+      ],
+      "hypotheses": [
+        "H4"
+      ],
+      "materiality": "medium",
+      "decision_relevance": "Needs a separate procurement action; it does not count toward the margin target"
+    },
+    {
+      "id": "I5",
+      "statement": "Electronics sells 6% below the main competitor; 3 pp more electronics margin would add about 0.6 pp to group margin",
+      "facts": [
+        "F0050",
+        "C0006",
+        "A001"
+      ],
+      "hypotheses": [
+        "H5"
+      ],
+      "materiality": "high",
+      "decision_relevance": "Fastest lever toward the 1.5 pp target",
+      "caveat": "0.6 pp assumes half of the price gap converts into margin"
+    },
+    {
+      "id": "I6",
+      "statement": "The 1.5 pp target by 2027 needs electronics repricing plus mix steering; store labour stays out of scope",
+      "facts": [
+        "F0048",
+        "C0006",
+        "C0004"
+      ],
+      "hypotheses": [
+        "H2",
+        "H5"
+      ],
+      "materiality": "high",
+      "decision_relevance": "Defines the plan the board is asked to approve"
+    }
+  ]
+}

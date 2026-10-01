@@ -15,12 +15,13 @@ from someone else:
 
 ## The frozen engine
 
-External evidence is collected on the **v1.6 release candidate**, tagged `v1.6.0rc1` in git.
-Development of v1.7 continues on `main`; it never touches the v1.6 tag. To run intake on the
-frozen engine:
+External evidence is collected on the **v1.6 release candidate**: branch `release/v1.6.0rc1`
+(commit `0c20ce7`; engine commit `f7e96d3`). Development of v1.7 continues on `main` and never
+touches that branch. To run intake on the frozen engine:
 
 ```bash
-git worktree add ../mbbslides-v16 v1.6.0rc1
+git fetch origin release/v1.6.0rc1
+git worktree add ../mbbslides-v16 origin/release/v1.6.0rc1
 cp -r .private ../mbbslides-v16/          # intake folders are gitignored: copy them across
 cd ../mbbslides-v16 && scripts/cpe holdout intake
 ```

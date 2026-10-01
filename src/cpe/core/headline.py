@@ -54,7 +54,8 @@ VERBS = {
     "removes", "remove", "gate", "gates", "cuts", "rose", "secures", "secure", "lose", "loses", "arrive", "arrives",
     "ramp", "ramps", "offers", "delivered", "delivering", "review", "ask", "asks", "asked", "approve", "decide",
     "rate", "rates", "rated", "beat", "beats", "track", "tracks", "tracked", "turn", "turns", "turned", "lists", "told",
-    "heard", "fit", "fits", "mitigate", "mitigates", "taught", "teaches",
+    "heard", "fit", "fits", "mitigate", "mitigates", "taught", "teaches", "recover", "recovers", "recovered", "sells", "sell",
+    "combine", "combines", "serve", "serves", "handle", "handles", "explained",
     # Spanish
     "es", "son", "fue", "fueron", "está", "están", "ha", "han", "será", "serán", "debe", "deben", "puede", "pueden",
     "crece", "crecen", "creció", "cae", "caen", "cayó", "sube", "suben", "subió", "representa", "representan", "explica",

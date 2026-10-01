@@ -1,11 +1,27 @@
 # Changelog
 
+## Unreleased — 1.7.0.dev0: consulting intelligence (development)
+
+- `src/cpe/reasoning/` + `cpe reason facts | check | ghost | trace | eval`: structured fact model
+  (cell ranges, periods with basis — actual / estimate / budget / forecast —, units, derived
+  changes with lineage), business-question object, hypotheses, insights, storyline candidates,
+  deck plan (slide architecture), computed facts (formulas recomputed) and explicit assumptions.
+- Hard factuality gates: fabricated fact, unsupported number (insight, governing thought, plan or
+  deck headline), wrong source attribution, arithmetic error, claim resting on a rejected hypothesis.
+- Evidence graph and `trace`: any sentence → insight → facts → source cells.
+- Source-to-deck benchmark (`evals/source_to_deck/{development,sealed,external}`), dimensions
+  reported separately; one development case (margin recovery) with traps; one development run by
+  the developing agent (not evidence). docs/REASONING_PROTOCOL.md (protocol 1.0: 12 passes, 5
+  critic roles, stopping criteria), docs/SOURCE_TO_DECK.md.
+- Ingest: numbers in prose are read whole ("2026" was split into "202" + "6"). Headline lint verb
+  lexicon: recover, sell, combine, serve, handle.
+
 ## 1.6.0rc1 — External validation infrastructure (awaiting external input)
 
 v1.6 answers *does the existing engine generalise?* It adds almost no rendering functionality on
 purpose. **No v1.6 validation claim exists yet**: the three inputs that would make one (raters 2–4
 on r3, an externally authored holdout, an unseen corporate template) must come from outside.
-The engine is frozen at the `v1.6.0rc1` tag for those runs; v1.7 development continues on `main`.
+The engine is frozen on the `release/v1.6.0rc1` branch for those runs; v1.7 development continues on `main`.
 
 - **Human, multi-rater.** `cpe human package` builds a self-contained voting package (bundle +
   stdlib-only server + Windows launcher + instructions, never a key) — r3's key is in the

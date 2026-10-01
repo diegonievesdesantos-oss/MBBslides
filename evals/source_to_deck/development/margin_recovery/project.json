@@ -1,0 +1,12 @@
+{
+  "project": "Margin recovery (development case)",
+  "audience": ["CEO", "CFO"],
+  "decision": "Approve the 2027 gross-margin recovery plan",
+  "question": "What is driving the gross-margin decline and which actions recover 1.5 pp fastest?",
+  "horizon": "2027",
+  "scope": ["Group retail, all categories"],
+  "constraints": ["No cuts to store labour"],
+  "language": "en",
+  "deck_type": "board_presentation",
+  "max_slides": 10
+}

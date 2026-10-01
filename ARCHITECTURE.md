@@ -242,3 +242,15 @@ deck.json → plan → compose ─┬─ candidates: layouts × variants × corp
   `cpe eval --update-baseline` and commit the baseline with the case.
 - **New language:** extend the lexicons in `core/headline.py` (`VERBS`, `GENERIC_NOUNS`,
   `VAGUE`, `DURATION_RE`) and the stopwords in `core/storyline.py`.
+
+
+## Reasoning layer (v1.7, in development)
+
+`src/cpe/reasoning/` makes the agent's thinking observable: `facts.py` (sources → atomic facts with
+period, basis, unit and cell ranges; derived changes), `grounding.py` (is a number grounded in the
+facts a sentence cites — directly or by one bounded operation?), `checks.py` (validators for
+project, facts, computed facts, assumptions, hypotheses, insights, storyline, deck plan and the
+render spec; hard factuality gates; stopping criteria), `graph.py` (evidence graph and `trace`),
+`ghost.py` (ghost deck, evidence enrichment), `benchmark.py` (source-to-deck dimensions, no total).
+The deterministic engine stays model-agnostic; the protocol (docs/REASONING_PROTOCOL.md) is
+versioned and recorded with every run.

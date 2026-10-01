@@ -56,13 +56,24 @@ Example decks are development material and regression fixtures, not evidence of 
 
 <!-- metrics:end -->
 
+## In development — v1.7 consulting intelligence
+
+The next problem is upstream of rendering: building the RIGHT deck from raw material. `cpe reason`
+turns sources into a traceable fact model and checks every reasoning artifact the agent writes
+(business question, hypotheses, insights, storyline candidates, slide architecture) with hard
+factuality gates; `cpe reason trace` explains any sentence down to source cells; a source-to-deck
+benchmark reports grounding, insight, storyline, architecture, headline and visual-intent
+dimensions separately ([docs/REASONING_PROTOCOL.md](docs/REASONING_PROTOCOL.md),
+[docs/SOURCE_TO_DECK.md](docs/SOURCE_TO_DECK.md)). One development case exists; sealed and
+external cases do not yet — nothing here is evidence of reasoning quality yet.
+
 ## Status — v1.6.0rc1: awaiting external validation
 
 v1.6 adds the infrastructure for evidence the developer cannot produce: voting packages for more
 human raters on round r3, a sealed run-once external holdout, and unseen corporate templates
 ([docs/EXTERNAL_HOLDOUT_PROTOCOL.md](docs/EXTERNAL_HOLDOUT_PROTOCOL.md),
 [docs/HUMAN_EVALUATORS.md](docs/HUMAN_EVALUATORS.md)). All three are awaiting input. v1.7 work
-(source-to-deck reasoning) continues on `main`; external runs use the `v1.6.0rc1` tag.
+(source-to-deck reasoning) continues on `main`; external runs use the `release/v1.6.0rc1` branch.
 
 ## What's new in v1.5 (release candidate) — human alignment and real failure modes
 

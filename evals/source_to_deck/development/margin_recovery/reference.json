@@ -1,0 +1,28 @@
+{
+  "status": "development",
+  "authored_by": "developing agent (synthetic case; visible, tunable)",
+  "critical_facts": [
+    {"id": "R1", "description": "Group revenue FY2024", "value": 1360, "unit": "€M"},
+    {"id": "R2", "description": "Group revenue FY2025", "value": 1460, "unit": "€M"},
+    {"id": "R3", "description": "Electronics revenue FY2025", "value": 290, "unit": "€M"},
+    {"id": "R4", "description": "Electronics gross margin FY2025", "value": 11.5, "unit": "%"},
+    {"id": "R5", "description": "Group gross margin FY2025", "value": 26.4, "unit": "%"},
+    {"id": "R6", "description": "Freight cost FY2025", "value": 47, "unit": "€M"}
+  ],
+  "required_conclusions": [
+    {"id": "C1", "description": "The decline is mainly category mix: low-margin electronics grew from 13% to 20% of sales",
+     "any_of": [["mix", "electronics"], ["mezcla", "electrónica"]]},
+    {"id": "C2", "description": "Freight cost inflation is a second, smaller driver (€38M → €47M)", "any_of": [["freight"], ["transporte"]]},
+    {"id": "C3", "description": "Recovery must act on electronics margin / mix (e.g. pricing below competitors), not on store labour",
+     "any_of": [["electronics", "pric"], ["electronics", "margin", "recover"], ["mix", "recover"]]}
+  ],
+  "traps": [
+    {"id": "T1", "description": "Accepting the sales director's 'volume fell' explanation (revenue grew 7%)",
+     "forbidden": [["volume", "fell"], ["volume", "decline"], ["sold less"], ["lower volume"], ["volume", "drop"]]},
+    {"id": "T2", "description": "Using the €1,500M FY2025 forecast as actual revenue", "forbidden": [["revenue"]], "numbers": ["€1,500M"]},
+    {"id": "T3", "description": "Recommending store-labour cuts (excluded by the brief)", "forbidden": [["cut", "store labour"], ["reduce", "store labour"]]}
+  ],
+  "acceptable_frameworks": ["SCR", "DRI", "PDS", "CII"],
+  "reference_governing_thought": "Gross margin fell 1.9 pp because sales shifted to low-margin electronics; repricing electronics and steering mix can recover 1.5 pp by 2027 without touching store labour.",
+  "notes": "Multiple good decks exist; never match wording. Mix effect ≈ 1.4 pp of the 1.9 pp decline at constant category margins."
+}

@@ -1,0 +1,69 @@
+{
+  "hypotheses": [
+    {
+      "id": "H1",
+      "statement": "Margin fell because volume fell (sales director)",
+      "status": "rejected",
+      "supporting_facts": [],
+      "contradicting_facts": [
+        "F0044",
+        "F0041"
+      ],
+      "confidence": 0.05,
+      "implication": "A volume plan would not fix margin"
+    },
+    {
+      "id": "H2",
+      "statement": "Margin fell because sales shifted to low-margin electronics",
+      "status": "supported",
+      "supporting_facts": [
+        "F0029",
+        "F0031",
+        "C0002",
+        "C0004"
+      ],
+      "contradicting_facts": [],
+      "confidence": 0.85,
+      "implication": "The plan must act on electronics margin and mix"
+    },
+    {
+      "id": "H3",
+      "statement": "Category margins eroded across the board (price or cost of goods)",
+      "status": "supported",
+      "supporting_facts": [
+        "C0005",
+        "F0027",
+        "F0033",
+        "F0039"
+      ],
+      "contradicting_facts": [
+        "F0021"
+      ],
+      "confidence": 0.6,
+      "implication": "A secondary lever: within-category margin explains 0.45 pp"
+    },
+    {
+      "id": "H4",
+      "statement": "Freight inflation is eroding profit",
+      "status": "supported",
+      "supporting_facts": [
+        "F0003",
+        "F0047"
+      ],
+      "contradicting_facts": [],
+      "confidence": 0.8,
+      "implication": "Freight sits in operating costs: it hurts profit, not gross margin"
+    },
+    {
+      "id": "H5",
+      "statement": "Electronics is under-priced against the market",
+      "status": "supported",
+      "supporting_facts": [
+        "F0050"
+      ],
+      "contradicting_facts": [],
+      "confidence": 0.6,
+      "implication": "Repricing electronics is the fastest margin lever"
+    }
+  ]
+}

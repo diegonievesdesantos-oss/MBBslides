@@ -1,0 +1,16 @@
+{
+  "assumptions": [
+    {
+      "id": "A001",
+      "statement": "Repricing toward the main competitor adds 3 pp to electronics gross margin (half of the 6% price gap)",
+      "values": [
+        {
+          "value": 3,
+          "unit": "PP"
+        }
+      ],
+      "rationale": "Pricing team: prices 6% below competitor on top 200 references (F0050); half assumed to convert into margin",
+      "owner": "to validate with the pricing team"
+    }
+  ]
+}

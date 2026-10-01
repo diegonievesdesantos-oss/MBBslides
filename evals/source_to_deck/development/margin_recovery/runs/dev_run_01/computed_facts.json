@@ -1,0 +1,88 @@
+{
+  "facts": [
+    {
+      "id": "C0001",
+      "claim": "Electronics share of revenue FY2024",
+      "formula": "F0028 / F0040 * 100",
+      "values": [
+        {
+          "value": 13.2,
+          "unit": "PCT",
+          "period": "FY2024"
+        }
+      ]
+    },
+    {
+      "id": "C0002",
+      "claim": "Electronics share of revenue FY2025",
+      "formula": "F0029 / F0041 * 100",
+      "values": [
+        {
+          "value": 19.9,
+          "unit": "PCT",
+          "period": "FY2025"
+        }
+      ]
+    },
+    {
+      "id": "C0003",
+      "claim": "FY2025 gross margin at FY2024 category margins (mix only)",
+      "formula": "(F0017*F0018 + F0023*F0024 + F0029*F0030 + F0035*F0036) / F0041",
+      "values": [
+        {
+          "value": 26.85,
+          "unit": "PCT",
+          "period": "FY2025"
+        }
+      ]
+    },
+    {
+      "id": "C0004",
+      "claim": "Mix effect on group gross margin FY2024\u2192FY2025",
+      "formula": "F0042 - C0003",
+      "values": [
+        {
+          "value": 1.45,
+          "unit": "PP",
+          "period": "FY2024\u2192FY2025"
+        }
+      ]
+    },
+    {
+      "id": "C0005",
+      "claim": "Within-category margin effect FY2024\u2192FY2025",
+      "formula": "C0003 - F0043",
+      "values": [
+        {
+          "value": 0.45,
+          "unit": "PP",
+          "period": "FY2024\u2192FY2025"
+        }
+      ]
+    },
+    {
+      "id": "C0006",
+      "claim": "Group margin gain if electronics margin rises 3 pp (assumption: 3 pp from repricing toward the competitor)",
+      "formula": "F0029 * A001 / F0041",
+      "values": [
+        {
+          "value": 0.6,
+          "unit": "PP",
+          "period": "FY2025 base"
+        }
+      ]
+    },
+    {
+      "id": "C0007",
+      "claim": "Gap between group and electronics gross margin FY2025",
+      "formula": "F0043 - F0031",
+      "values": [
+        {
+          "value": 14.9,
+          "unit": "PP",
+          "period": "FY2025"
+        }
+      ]
+    }
+  ]
+}

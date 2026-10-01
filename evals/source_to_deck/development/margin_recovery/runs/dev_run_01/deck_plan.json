@@ -1,0 +1,158 @@
+{
+  "slides": [
+    {
+      "id": "s01",
+      "priority": "support",
+      "role": "title",
+      "headline": "Margin recovery plan 2027",
+      "reason_to_exist": "cover"
+    },
+    {
+      "id": "s02",
+      "priority": "core",
+      "role": "exec_summary",
+      "headline": "Gross margin fell 1.9 pp mainly on electronics mix; repricing and mix steering recover 1.5 pp by 2027",
+      "insights": [
+        "I1",
+        "I5",
+        "I6"
+      ],
+      "message_type": "summary",
+      "archetype": "executive_summary",
+      "reason_to_exist": "answer first for the CEO and CFO"
+    },
+    {
+      "id": "s03",
+      "priority": "core",
+      "key_line": "K1",
+      "headline": "Gross margin fell 1.9 pp even though revenue grew 7.4%",
+      "facts": [
+        "F0045",
+        "F0044"
+      ],
+      "insights": [
+        "I2"
+      ],
+      "message_type": "kpi",
+      "archetype": "kpi_dashboard",
+      "purpose": "kill the volume explanation",
+      "decision_role": "rules out a volume plan",
+      "reason_to_exist": "the board heard the volume story and must see it is wrong"
+    },
+    {
+      "id": "s04",
+      "priority": "core",
+      "key_line": "K1",
+      "headline": "Mix explains 1.45 pp of the 1.9 pp gross-margin decline",
+      "facts": [
+        "C0004",
+        "C0005",
+        "F0042",
+        "F0043"
+      ],
+      "insights": [
+        "I1",
+        "I3"
+      ],
+      "message_type": "change_bridge",
+      "archetype": "waterfall",
+      "reason_to_exist": "decomposes the decline into mix and within-category effects",
+      "why_not_merge": "s03 shows the symptom against revenue; s04 decomposes it — one slide would carry two messages"
+    },
+    {
+      "id": "s05",
+      "priority": "core",
+      "key_line": "K1",
+      "headline": "Electronics rose from 13.2% to 19.9% of sales at an 11.5% margin",
+      "facts": [
+        "C0001",
+        "C0002",
+        "F0031",
+        "F0043"
+      ],
+      "insights": [
+        "I1"
+      ],
+      "message_type": "composition",
+      "archetype": "chart",
+      "reason_to_exist": "shows WHERE the mix moved",
+      "why_not_merge": "the bridge (s04) quantifies the effect; this shows its cause in the category mix"
+    },
+    {
+      "id": "s06",
+      "priority": "core",
+      "key_line": "K2",
+      "headline": "Freight cost rose €9M (+23.7%) after the new carrier contract",
+      "facts": [
+        "F0003",
+        "F0001",
+        "F0002"
+      ],
+      "insights": [
+        "I4"
+      ],
+      "message_type": "trend",
+      "archetype": "chart",
+      "reason_to_exist": "separates a profit issue from the margin target"
+    },
+    {
+      "id": "s07",
+      "priority": "core",
+      "key_line": "K3",
+      "headline": "Electronics sells 6% below the main competitor; if repricing adds 3 pp there, the group gains 0.6 pp",
+      "facts": [
+        "F0050",
+        "C0006",
+        "A001"
+      ],
+      "insights": [
+        "I5"
+      ],
+      "message_type": "kpi",
+      "archetype": "kpi_dashboard",
+      "reason_to_exist": "sizes the fastest lever"
+    },
+    {
+      "id": "s08",
+      "priority": "core",
+      "key_line": "K3",
+      "headline": "Repricing electronics and steering mix recover 1.5 pp by 2027 without touching store labour",
+      "facts": [
+        "F0048"
+      ],
+      "insights": [
+        "I6"
+      ],
+      "message_type": "recommendation",
+      "archetype": "statement",
+      "reason_to_exist": "the decision asked of the board",
+      "why_not_merge": "s07 sizes one lever; s08 is the ask"
+    },
+    {
+      "id": "s09",
+      "priority": "appendix",
+      "headline": "Electronics has the lowest margin of the four categories in both years",
+      "facts": [
+        "F0016",
+        "F0017",
+        "F0018",
+        "F0019",
+        "F0022",
+        "F0023",
+        "F0024",
+        "F0025",
+        "F0028",
+        "F0029",
+        "F0030",
+        "F0031",
+        "F0034",
+        "F0035",
+        "F0036",
+        "F0037"
+      ],
+      "message_type": "comparison",
+      "archetype": "table",
+      "reason_to_exist": "backup for questions on any category"
+    }
+  ]
+}

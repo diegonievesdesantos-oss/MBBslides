@@ -24,6 +24,7 @@ Rendering commands:
   holdout    `holdout private`: corporate templates in .private/holdouts; `holdout external`: deck specs in
              .private/holdouts/decks (never in the repo; skipped if absent; sanitized aggregates only)
   quality    eval_report.json → quality profile (macro archetype, P10, weakest, coverage, absolute gates); --check for CI
+  reason     source-to-deck reasoning (v1.7): facts | check | ghost | trace | eval  (docs/REASONING_PROTOCOL.md)
   results    `results readme [--check]`: regenerate the README metrics block from evals/results/latest.json
 Reference:
   catalog    layout library (markdown)        themes    available themes
@@ -358,6 +359,44 @@ def cmd_holdout(a):
     return 0
 
 
+def cmd_reason(a):
+    """Source-to-deck reasoning artifacts (v1.7): facts, checks, ghost deck, trace, benchmark."""
+    from .reasoning import benchmark, checks, facts, ghost, graph
+
+    if a.reason_cmd == "facts":
+        fm = facts.write_fact_model(a.sources, a.out)
+        _p(f"{fm['stats']['facts']} facts from {fm['stats']['sources']} sources ({fm['stats']['by_type']}) → {a.out}/facts.json")
+        return 0
+    if a.reason_cmd == "check":
+        if a.enrich:
+            ghost.enrich_evidence(a.work)
+        r = checks.check_work(a.work, a.sources)
+        Path(a.work, "reasoning_report.json").write_text(json.dumps(r, indent=2, ensure_ascii=False), encoding="utf-8")
+        Path(a.work, "reasoning_report.md").write_text(checks.report_markdown(r), encoding="utf-8")
+        graph.save_graph(a.work)
+        ghost.write_ghost(a.work)
+        _p(checks.report_markdown(r))
+        return 1 if r["status"] == "blocked" else 0
+    if a.reason_cmd == "ghost":
+        _p(ghost.write_ghost(a.work).read_text(encoding="utf-8"))
+        return 0
+    if a.reason_cmd == "trace":
+        t = graph.trace(a.work, a.text)
+        _p(json.dumps(t, indent=2, ensure_ascii=False) if a.json else graph.trace_markdown(t))
+        return 0 if t.get("match") else 1
+    if a.reason_cmd == "eval":
+        from . import __version__
+        from .reasoning import PROTOCOL_VERSION
+
+        meta = {"engine": __version__, "reasoning_protocol": PROTOCOL_VERSION, "model": a.model, "skill": a.skill, "author": a.author}
+        r = benchmark.evaluate(a.case, a.work, meta)
+        Path(a.work, "s2d_eval.json").write_text(json.dumps(r, indent=2, ensure_ascii=False), encoding="utf-8")
+        Path(a.work, "s2d_eval.md").write_text(benchmark.to_markdown(r), encoding="utf-8")
+        _p(benchmark.to_markdown(r))
+        return 1 if r["factuality"]["status"] == "FAIL" else 0
+    return 2
+
+
 def cmd_quality(a):
     """Quality profile of an eval report: distribution, archetype health, absolute gates."""
     from . import quality
@@ -480,6 +519,14 @@ def main(argv=None) -> int:
     h = hs.add_parser("status"); h.add_argument("round"); h.add_argument("--record", action="store_true"); h.set_defaults(f=cmd_human)
     h = hs.add_parser("mark-used"); h.add_argument("round"); h.add_argument("--change", required=True, help="what the votes were used to change"); h.set_defaults(f=cmd_human)
     s = sub.add_parser("holdout"); s.add_argument("which", choices=["private", "external", "intake", "external-seal", "external-run", "corporate-run"]); s.add_argument("--root"); s.add_argument("-o", "--out"); s.add_argument("--record", action="store_true"); s.set_defaults(f=cmd_holdout)
+    s = sub.add_parser("reason", help="source-to-deck reasoning artifacts (v1.7)"); rs = s.add_subparsers(dest="reason_cmd", required=True)
+    r = rs.add_parser("facts"); r.add_argument("sources"); r.add_argument("-o", "--out", required=True); r.set_defaults(f=cmd_reason)
+    r = rs.add_parser("check"); r.add_argument("work"); r.add_argument("--sources"); r.add_argument("--enrich", action="store_true",
+                                                                                                    help="fill deck.json evidence from the cited facts first"); r.set_defaults(f=cmd_reason)
+    r = rs.add_parser("ghost"); r.add_argument("work"); r.set_defaults(f=cmd_reason)
+    r = rs.add_parser("trace"); r.add_argument("work"); r.add_argument("text"); r.add_argument("--json", action="store_true"); r.set_defaults(f=cmd_reason)
+    r = rs.add_parser("eval"); r.add_argument("case"); r.add_argument("work"); r.add_argument("--model", default="unrecorded"); r.add_argument("--skill", default="unrecorded")
+    r.add_argument("--author", default="unrecorded", help="who produced the work (agent/session/person)"); r.set_defaults(f=cmd_reason)
     s = sub.add_parser("quality"); s.add_argument("report", help="eval_report.json"); s.add_argument("--check", action="store_true", help="exit 1 on an enforced gate failure")
     s.set_defaults(f=cmd_quality)
     s = sub.add_parser("results"); s.add_argument("what", choices=["readme", "verify"]); s.add_argument("--check", action="store_true"); s.set_defaults(f=cmd_results)

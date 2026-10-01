@@ -1,0 +1,720 @@
+{
+  "meta": {
+    "title": "Margin recovery plan 2027",
+    "subtitle": "Board discussion — development case",
+    "client": "Development case (synthetic)",
+    "date": "FY2025",
+    "deck_type": "board_presentation",
+    "theme": "meridian",
+    "reasoning_protocol": "1.0"
+  },
+  "storyline": {
+    "framework": "PDS",
+    "audience": "CEO and CFO",
+    "decision_sought": "Approve the 2027 gross-margin recovery plan",
+    "governing_thought": "Gross margin fell 1.9 pp mainly because sales shifted to low-margin electronics; repricing electronics and steering mix recover the 1.5 pp target by 2027 without touching store labour",
+    "key_line": [
+      {
+        "id": "K1",
+        "role": "diagnosis",
+        "message": "The decline is mix, not volume: electronics went from 13.2% to 19.9% of sales at less than half the group margin"
+      },
+      {
+        "id": "K2",
+        "role": "complication",
+        "message": "Freight inflation opens a separate €9M profit gap"
+      },
+      {
+        "id": "K3",
+        "role": "solution",
+        "message": "Repricing electronics and steering mix recover 1.5 pp by 2027 without touching store labour"
+      }
+    ]
+  },
+  "slides": [
+    {
+      "id": "s01",
+      "kind": "cover"
+    },
+    {
+      "id": "s02",
+      "kind": "exec_summary",
+      "headline": "Gross margin fell 1.9 pp mainly on electronics mix; repricing and mix steering recover 1.5 pp by 2027",
+      "visual": {
+        "type": "statements",
+        "data": {
+          "style": "scr",
+          "items": [
+            {
+              "label": "Situation",
+              "title": "Revenue grew 7.4% but gross margin fell 1.9 pp",
+              "text": "Volume is not the problem: sales rose to €1,460M."
+            },
+            {
+              "label": "Complication",
+              "title": "Mix explains 1.45 pp of the decline",
+              "text": "Electronics rose from 13.2% to 19.9% of sales at an 11.5% margin; freight adds a separate €9M profit gap."
+            },
+            {
+              "label": "Resolution",
+              "title": "Reprice electronics and steer mix",
+              "text": "Electronics sells 6% below the main competitor; with mix steering this recovers the 1.5 pp target by 2027, store labour untouched."
+            }
+          ]
+        }
+      },
+      "evidence": [
+        {
+          "fact": "F0045",
+          "claim": "Total — gross margin: 28.3 → 26.4 (FY2024→FY2025), change -1.9 pp",
+          "values": [
+            -1.9000000000000021
+          ],
+          "source": "pnl_by_category.csv"
+        },
+        {
+          "fact": "F0044",
+          "claim": "Total — revenue: 1,360 → 1,460 (FY2024→FY2025), change 100 (+7.4%)",
+          "values": [
+            100.0,
+            7.352941176470589
+          ],
+          "source": "pnl_by_category.csv"
+        },
+        {
+          "fact": "C0004",
+          "claim": "Mix effect on group gross margin FY2024→FY2025",
+          "values": [
+            1.45
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "C0001",
+          "claim": "Electronics share of revenue FY2024",
+          "values": [
+            13.2
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "C0002",
+          "claim": "Electronics share of revenue FY2025",
+          "values": [
+            19.9
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "F0031",
+          "claim": "Electronics — Gross margin FY2025 (%): 11.5 PCT",
+          "values": [
+            11.5
+          ],
+          "source": "pnl_by_category.csv"
+        },
+        {
+          "fact": "F0003",
+          "claim": "Freight — value: 38 → 47 (FY2024→FY2025), change 9 (+23.7%)",
+          "values": [
+            9.0,
+            23.684210526315788
+          ],
+          "source": "operating_costs.csv"
+        },
+        {
+          "fact": "F0050",
+          "claim": "Pricing team: electronics prices are 6% below the main competitor on the top 200 references.",
+          "values": [
+            6.0,
+            200.0
+          ],
+          "source": "meeting_notes.md"
+        },
+        {
+          "fact": "F0048",
+          "claim": "CFO: the board wants a plan that recovers 1.5 pp of gross margin by 2027 without cutting store labour.",
+          "values": [
+            1.5,
+            202.0
+          ],
+          "source": "meeting_notes.md"
+        }
+      ],
+      "source": "Source: pnl_by_category.csv (FY2024–FY2025 management accounts)",
+      "purpose": "Answer first"
+    },
+    {
+      "id": "s03",
+      "section": "K1",
+      "purpose": "Kill the volume explanation",
+      "headline": "Gross margin fell 1.9 pp even though revenue grew 7.4%",
+      "message_type": "composition_change",
+      "visual": {
+        "type": "kpi",
+        "data": {
+          "items": [
+            {
+              "value": "€1,460M",
+              "label": "revenue FY2025",
+              "delta": "+7.4%",
+              "trend": "up",
+              "good": "up"
+            },
+            {
+              "value": "26.4%",
+              "label": "gross margin FY2025",
+              "delta": "−1.9 pp",
+              "trend": "down",
+              "good": "up"
+            }
+          ]
+        }
+      },
+      "evidence": [
+        {
+          "fact": "F0045",
+          "claim": "Total — gross margin: 28.3 → 26.4 (FY2024→FY2025), change -1.9 pp",
+          "values": [
+            -1.9000000000000021
+          ],
+          "source": "pnl_by_category.csv"
+        },
+        {
+          "fact": "F0044",
+          "claim": "Total — revenue: 1,360 → 1,460 (FY2024→FY2025), change 100 (+7.4%)",
+          "values": [
+            100.0,
+            7.352941176470589
+          ],
+          "source": "pnl_by_category.csv"
+        },
+        {
+          "fact": "F0041",
+          "claim": "Total — Revenue FY2025 (€M): 1,460 EUR_M",
+          "values": [
+            1460.0
+          ],
+          "source": "pnl_by_category.csv"
+        },
+        {
+          "fact": "F0043",
+          "claim": "Total — Gross margin FY2025 (%): 26.4 PCT",
+          "values": [
+            26.4
+          ],
+          "source": "pnl_by_category.csv"
+        }
+      ],
+      "source": "Source: pnl_by_category.csv (FY2024–FY2025 management accounts)"
+    },
+    {
+      "id": "s04",
+      "section": "K1",
+      "purpose": "Decompose the decline",
+      "headline": "Mix explains 1.45 pp of the 1.9 pp gross-margin decline",
+      "message_type": "change_bridge",
+      "visual": {
+        "type": "waterfall",
+        "title": "Group gross margin",
+        "unit": "%",
+        "data": {
+          "steps": [
+            {
+              "label": "FY2024",
+              "value": 28.3,
+              "type": "total"
+            },
+            {
+              "label": "Category mix",
+              "value": -1.45
+            },
+            {
+              "label": "Within-category margins",
+              "value": -0.45
+            },
+            {
+              "label": "FY2025",
+              "type": "total"
+            }
+          ]
+        }
+      },
+      "evidence": [
+        {
+          "fact": "C0004",
+          "claim": "Mix effect on group gross margin FY2024→FY2025",
+          "values": [
+            1.45
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "C0005",
+          "claim": "Within-category margin effect FY2024→FY2025",
+          "values": [
+            0.45
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "F0042",
+          "claim": "Total — Gross margin FY2024 (%): 28.3 PCT",
+          "values": [
+            28.3
+          ],
+          "source": "pnl_by_category.csv"
+        },
+        {
+          "fact": "F0043",
+          "claim": "Total — Gross margin FY2025 (%): 26.4 PCT",
+          "values": [
+            26.4
+          ],
+          "source": "pnl_by_category.csv"
+        }
+      ],
+      "source": "Source: pnl_by_category.csv (FY2024–FY2025 management accounts); mix effect at FY2024 category margins"
+    },
+    {
+      "id": "s05",
+      "section": "K1",
+      "purpose": "Show where the mix moved",
+      "headline": "Electronics rose from 13.2% to 19.9% of sales at an 11.5% margin",
+      "message_type": "comparison",
+      "visual": {
+        "type": "column",
+        "title": "Electronics share of group revenue",
+        "unit": "%",
+        "data": {
+          "categories": [
+            "FY2024",
+            "FY2025"
+          ],
+          "series": [
+            {
+              "name": "Electronics share",
+              "values": [
+                13.2,
+                19.9
+              ]
+            }
+          ]
+        }
+      },
+      "commentary": {
+        "points": [
+          "Electronics margin 11.5% vs 26.4% for the group",
+          "Electronics revenue €180M → €290M"
+        ]
+      },
+      "evidence": [
+        {
+          "fact": "C0001",
+          "claim": "Electronics share of revenue FY2024",
+          "values": [
+            13.2
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "C0002",
+          "claim": "Electronics share of revenue FY2025",
+          "values": [
+            19.9
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "F0031",
+          "claim": "Electronics — Gross margin FY2025 (%): 11.5 PCT",
+          "values": [
+            11.5
+          ],
+          "source": "pnl_by_category.csv"
+        },
+        {
+          "fact": "F0043",
+          "claim": "Total — Gross margin FY2025 (%): 26.4 PCT",
+          "values": [
+            26.4
+          ],
+          "source": "pnl_by_category.csv"
+        },
+        {
+          "fact": "F0028",
+          "claim": "Electronics — Revenue FY2024 (€M): 180 EUR_M",
+          "values": [
+            180.0
+          ],
+          "source": "pnl_by_category.csv"
+        },
+        {
+          "fact": "F0029",
+          "claim": "Electronics — Revenue FY2025 (€M): 290 EUR_M",
+          "values": [
+            290.0
+          ],
+          "source": "pnl_by_category.csv"
+        }
+      ],
+      "source": "Source: pnl_by_category.csv (FY2024–FY2025 management accounts)"
+    },
+    {
+      "id": "s06",
+      "section": "K2",
+      "purpose": "Separate the freight problem",
+      "headline": "Freight cost rose €9M (+23.7%) after the new carrier contract",
+      "message_type": "trend",
+      "visual": {
+        "type": "column",
+        "title": "Freight cost",
+        "unit": "€M",
+        "data": {
+          "categories": [
+            "FY2024",
+            "FY2025"
+          ],
+          "series": [
+            {
+              "name": "Freight",
+              "values": [
+                38,
+                47
+              ]
+            }
+          ]
+        }
+      },
+      "evidence": [
+        {
+          "fact": "F0003",
+          "claim": "Freight — value: 38 → 47 (FY2024→FY2025), change 9 (+23.7%)",
+          "values": [
+            9.0,
+            23.684210526315788
+          ],
+          "source": "operating_costs.csv"
+        },
+        {
+          "fact": "F0001",
+          "claim": "Freight — FY2024 (€M): 38 EUR_M",
+          "values": [
+            38.0
+          ],
+          "source": "operating_costs.csv"
+        },
+        {
+          "fact": "F0002",
+          "claim": "Freight — FY2025 (€M): 47 EUR_M",
+          "values": [
+            47.0
+          ],
+          "source": "operating_costs.csv"
+        },
+        {
+          "fact": "F0047",
+          "claim": "Supply chain lead: freight rates rose 24% after the new carrier contract signed in March 2025.",
+          "values": [
+            24.0,
+            202.0
+          ],
+          "source": "meeting_notes.md"
+        }
+      ],
+      "source": "Source: operating_costs.csv; meeting_notes.md"
+    },
+    {
+      "id": "s07",
+      "section": "K3",
+      "purpose": "Size the fastest lever",
+      "headline": "Electronics sells 6% below the main competitor; if repricing adds 3 pp there, the group gains 0.6 pp",
+      "message_type": "single_number",
+      "visual": {
+        "type": "kpi",
+        "data": {
+          "items": [
+            {
+              "value": "−6%",
+              "label": "electronics price vs main competitor (top 200 references)"
+            },
+            {
+              "value": "+3 pp",
+              "label": "electronics margin from repricing (assumption A001)"
+            },
+            {
+              "value": "+0.6 pp",
+              "label": "group gross margin"
+            }
+          ]
+        }
+      },
+      "evidence": [
+        {
+          "fact": "F0050",
+          "claim": "Pricing team: electronics prices are 6% below the main competitor on the top 200 references.",
+          "values": [
+            6.0,
+            200.0
+          ],
+          "source": "meeting_notes.md"
+        },
+        {
+          "fact": "C0006",
+          "claim": "Group margin gain if electronics margin rises 3 pp (assumption: 3 pp from repricing toward the competitor)",
+          "values": [
+            0.6
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "A001",
+          "claim": "Repricing toward the main competitor adds 3 pp to electronics gross margin (half of the 6% price gap)",
+          "values": [
+            3
+          ],
+          "source": "assumptions.json"
+        }
+      ],
+      "source": "Source: meeting_notes.md (pricing team); assumption A001 to validate"
+    },
+    {
+      "id": "s08",
+      "kind": "statement",
+      "section": "K3",
+      "headline": "Decision requested",
+      "text": "Repricing electronics and steering mix recover 1.5 pp of gross margin by 2027 without touching store labour",
+      "support": "Freight (€9M) is handled separately through the carrier contract.",
+      "evidence": [
+        {
+          "fact": "F0048",
+          "claim": "CFO: the board wants a plan that recovers 1.5 pp of gross margin by 2027 without cutting store labour.",
+          "values": [
+            1.5,
+            202.0
+          ],
+          "source": "meeting_notes.md"
+        },
+        {
+          "fact": "C0006",
+          "claim": "Group margin gain if electronics margin rises 3 pp (assumption: 3 pp from repricing toward the competitor)",
+          "values": [
+            0.6
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "C0004",
+          "claim": "Mix effect on group gross margin FY2024→FY2025",
+          "values": [
+            1.45
+          ],
+          "source": "computed"
+        }
+      ]
+    },
+    {
+      "id": "s09",
+      "kind": "appendix_divider",
+      "title": "Appendix"
+    },
+    {
+      "id": "s10",
+      "purpose": "Backup",
+      "headline": "Electronics has the lowest margin of the four categories in both years",
+      "message_type": "comparison",
+      "visual": {
+        "type": "table",
+        "columns": [
+          {
+            "label": "Category"
+          },
+          {
+            "label": "Revenue FY2024, €M",
+            "kind": "number"
+          },
+          {
+            "label": "Revenue FY2025, €M",
+            "kind": "number"
+          },
+          {
+            "label": "Gross margin FY2024, %",
+            "kind": "number"
+          },
+          {
+            "label": "Gross margin FY2025, %",
+            "kind": "number"
+          }
+        ],
+        "rows": [
+          [
+            "Fresh",
+            "420",
+            "410",
+            "34.0",
+            "34.0"
+          ],
+          [
+            "Grocery",
+            "610",
+            "625",
+            "26.0",
+            "25.5"
+          ],
+          [
+            "Electronics",
+            "180",
+            "290",
+            "12.0",
+            "11.5"
+          ],
+          [
+            "Apparel",
+            "150",
+            "135",
+            "41.0",
+            "40.0"
+          ],
+          [
+            "Total",
+            "1,360",
+            "1,460",
+            "28.3",
+            "26.4"
+          ]
+        ]
+      },
+      "evidence": [
+        {
+          "fact": "F0016",
+          "claim": "Fresh — Revenue FY2024 (€M): 420 EUR_M",
+          "values": [
+            420.0
+          ],
+          "source": "pnl_by_category.csv"
+        },
+        {
+          "fact": "F0017",
+          "claim": "Fresh — Revenue FY2025 (€M): 410 EUR_M",
+          "values": [
+            410.0
+          ],
+          "source": "pnl_by_category.csv"
+        },
+        {
+          "fact": "F0018",
+          "claim": "Fresh — Gross margin FY2024 (%): 34 PCT",
+          "values": [
+            34.0
+          ],
+          "source": "pnl_by_category.csv"
+        },
+        {
+          "fact": "F0019",
+          "claim": "Fresh — Gross margin FY2025 (%): 34 PCT",
+          "values": [
+            34.0
+          ],
+          "source": "pnl_by_category.csv"
+        },
+        {
+          "fact": "F0022",
+          "claim": "Grocery — Revenue FY2024 (€M): 610 EUR_M",
+          "values": [
+            610.0
+          ],
+          "source": "pnl_by_category.csv"
+        },
+        {
+          "fact": "F0023",
+          "claim": "Grocery — Revenue FY2025 (€M): 625 EUR_M",
+          "values": [
+            625.0
+          ],
+          "source": "pnl_by_category.csv"
+        },
+        {
+          "fact": "F0024",
+          "claim": "Grocery — Gross margin FY2024 (%): 26 PCT",
+          "values": [
+            26.0
+          ],
+          "source": "pnl_by_category.csv"
+        },
+        {
+          "fact": "F0025",
+          "claim": "Grocery — Gross margin FY2025 (%): 25.5 PCT",
+          "values": [
+            25.5
+          ],
+          "source": "pnl_by_category.csv"
+        },
+        {
+          "fact": "F0028",
+          "claim": "Electronics — Revenue FY2024 (€M): 180 EUR_M",
+          "values": [
+            180.0
+          ],
+          "source": "pnl_by_category.csv"
+        },
+        {
+          "fact": "F0029",
+          "claim": "Electronics — Revenue FY2025 (€M): 290 EUR_M",
+          "values": [
+            290.0
+          ],
+          "source": "pnl_by_category.csv"
+        },
+        {
+          "fact": "F0030",
+          "claim": "Electronics — Gross margin FY2024 (%): 12 PCT",
+          "values": [
+            12.0
+          ],
+          "source": "pnl_by_category.csv"
+        },
+        {
+          "fact": "F0031",
+          "claim": "Electronics — Gross margin FY2025 (%): 11.5 PCT",
+          "values": [
+            11.5
+          ],
+          "source": "pnl_by_category.csv"
+        },
+        {
+          "fact": "F0034",
+          "claim": "Apparel — Revenue FY2024 (€M): 150 EUR_M",
+          "values": [
+            150.0
+          ],
+          "source": "pnl_by_category.csv"
+        },
+        {
+          "fact": "F0035",
+          "claim": "Apparel — Revenue FY2025 (€M): 135 EUR_M",
+          "values": [
+            135.0
+          ],
+          "source": "pnl_by_category.csv"
+        },
+        {
+          "fact": "F0036",
+          "claim": "Apparel — Gross margin FY2024 (%): 41 PCT",
+          "values": [
+            41.0
+          ],
+          "source": "pnl_by_category.csv"
+        },
+        {
+          "fact": "F0037",
+          "claim": "Apparel — Gross margin FY2025 (%): 40 PCT",
+          "values": [
+            40.0
+          ],
+          "source": "pnl_by_category.csv"
+        }
+      ],
+      "source": "Source: pnl_by_category.csv (FY2024–FY2025 management accounts)"
+    }
+  ]
+}

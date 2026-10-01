@@ -1,0 +1,1237 @@
+{
+  "protocol": "1.0",
+  "facts": [
+    {
+      "id": "F0001",
+      "claim": "Freight — FY2024 (€M): 38 EUR_M",
+      "values": [
+        {
+          "value": 38.0,
+          "unit": "EUR_M",
+          "period": "FY2024",
+          "basis": "actual",
+          "label": "Freight",
+          "column": "FY2024 (€M)"
+        }
+      ],
+      "source": {
+        "file": "operating_costs.csv",
+        "sheet": null,
+        "range": "B2",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0002",
+      "claim": "Freight — FY2025 (€M): 47 EUR_M",
+      "values": [
+        {
+          "value": 47.0,
+          "unit": "EUR_M",
+          "period": "FY2025",
+          "basis": "actual",
+          "label": "Freight",
+          "column": "FY2025 (€M)"
+        }
+      ],
+      "source": {
+        "file": "operating_costs.csv",
+        "sheet": null,
+        "range": "C2",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0003",
+      "claim": "Freight — value: 38 → 47 (FY2024→FY2025), change 9 (+23.7%)",
+      "values": [
+        {
+          "value": 9.0,
+          "unit": "EUR_M",
+          "period": "FY2024→FY2025",
+          "label": "Freight",
+          "kind": "change"
+        },
+        {
+          "value": 23.684210526315788,
+          "unit": "PCT",
+          "period": "FY2024→FY2025",
+          "label": "Freight",
+          "kind": "relative_change"
+        }
+      ],
+      "source": {
+        "file": "operating_costs.csv",
+        "sheet": null,
+        "range": "B2:C2",
+        "loc": "sheet"
+      },
+      "fact_type": "derived_change",
+      "confidence": 1.0,
+      "derived_from": [
+        "F0001",
+        "F0002"
+      ],
+      "operation": "last − first"
+    },
+    {
+      "id": "F0004",
+      "claim": "Store labour — FY2024 (€M): 150 EUR_M",
+      "values": [
+        {
+          "value": 150.0,
+          "unit": "EUR_M",
+          "period": "FY2024",
+          "basis": "actual",
+          "label": "Store labour",
+          "column": "FY2024 (€M)"
+        }
+      ],
+      "source": {
+        "file": "operating_costs.csv",
+        "sheet": null,
+        "range": "B3",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0005",
+      "claim": "Store labour — FY2025 (€M): 152 EUR_M",
+      "values": [
+        {
+          "value": 152.0,
+          "unit": "EUR_M",
+          "period": "FY2025",
+          "basis": "actual",
+          "label": "Store labour",
+          "column": "FY2025 (€M)"
+        }
+      ],
+      "source": {
+        "file": "operating_costs.csv",
+        "sheet": null,
+        "range": "C3",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0006",
+      "claim": "Store labour — value: 150 → 152 (FY2024→FY2025), change 2 (+1.3%)",
+      "values": [
+        {
+          "value": 2.0,
+          "unit": "EUR_M",
+          "period": "FY2024→FY2025",
+          "label": "Store labour",
+          "kind": "change"
+        },
+        {
+          "value": 1.3333333333333335,
+          "unit": "PCT",
+          "period": "FY2024→FY2025",
+          "label": "Store labour",
+          "kind": "relative_change"
+        }
+      ],
+      "source": {
+        "file": "operating_costs.csv",
+        "sheet": null,
+        "range": "B3:C3",
+        "loc": "sheet"
+      },
+      "fact_type": "derived_change",
+      "confidence": 1.0,
+      "derived_from": [
+        "F0004",
+        "F0005"
+      ],
+      "operation": "last − first"
+    },
+    {
+      "id": "F0007",
+      "claim": "Marketing — FY2024 (€M): 40 EUR_M",
+      "values": [
+        {
+          "value": 40.0,
+          "unit": "EUR_M",
+          "period": "FY2024",
+          "basis": "actual",
+          "label": "Marketing",
+          "column": "FY2024 (€M)"
+        }
+      ],
+      "source": {
+        "file": "operating_costs.csv",
+        "sheet": null,
+        "range": "B4",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0008",
+      "claim": "Marketing — FY2025 (€M): 41 EUR_M",
+      "values": [
+        {
+          "value": 41.0,
+          "unit": "EUR_M",
+          "period": "FY2025",
+          "basis": "actual",
+          "label": "Marketing",
+          "column": "FY2025 (€M)"
+        }
+      ],
+      "source": {
+        "file": "operating_costs.csv",
+        "sheet": null,
+        "range": "C4",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0009",
+      "claim": "Marketing — value: 40 → 41 (FY2024→FY2025), change 1 (+2.5%)",
+      "values": [
+        {
+          "value": 1.0,
+          "unit": "EUR_M",
+          "period": "FY2024→FY2025",
+          "label": "Marketing",
+          "kind": "change"
+        },
+        {
+          "value": 2.5,
+          "unit": "PCT",
+          "period": "FY2024→FY2025",
+          "label": "Marketing",
+          "kind": "relative_change"
+        }
+      ],
+      "source": {
+        "file": "operating_costs.csv",
+        "sheet": null,
+        "range": "B4:C4",
+        "loc": "sheet"
+      },
+      "fact_type": "derived_change",
+      "confidence": 1.0,
+      "derived_from": [
+        "F0007",
+        "F0008"
+      ],
+      "operation": "last − first"
+    },
+    {
+      "id": "F0010",
+      "claim": "Rent — FY2024 (€M): 70 EUR_M",
+      "values": [
+        {
+          "value": 70.0,
+          "unit": "EUR_M",
+          "period": "FY2024",
+          "basis": "actual",
+          "label": "Rent",
+          "column": "FY2024 (€M)"
+        }
+      ],
+      "source": {
+        "file": "operating_costs.csv",
+        "sheet": null,
+        "range": "B5",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0011",
+      "claim": "Rent — FY2025 (€M): 71 EUR_M",
+      "values": [
+        {
+          "value": 71.0,
+          "unit": "EUR_M",
+          "period": "FY2025",
+          "basis": "actual",
+          "label": "Rent",
+          "column": "FY2025 (€M)"
+        }
+      ],
+      "source": {
+        "file": "operating_costs.csv",
+        "sheet": null,
+        "range": "C5",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0012",
+      "claim": "Rent — value: 70 → 71 (FY2024→FY2025), change 1 (+1.4%)",
+      "values": [
+        {
+          "value": 1.0,
+          "unit": "EUR_M",
+          "period": "FY2024→FY2025",
+          "label": "Rent",
+          "kind": "change"
+        },
+        {
+          "value": 1.4285714285714286,
+          "unit": "PCT",
+          "period": "FY2024→FY2025",
+          "label": "Rent",
+          "kind": "relative_change"
+        }
+      ],
+      "source": {
+        "file": "operating_costs.csv",
+        "sheet": null,
+        "range": "B5:C5",
+        "loc": "sheet"
+      },
+      "fact_type": "derived_change",
+      "confidence": 1.0,
+      "derived_from": [
+        "F0010",
+        "F0011"
+      ],
+      "operation": "last − first"
+    },
+    {
+      "id": "F0013",
+      "claim": "Total operating costs — FY2024 (€M): 298 EUR_M",
+      "values": [
+        {
+          "value": 298.0,
+          "unit": "EUR_M",
+          "period": "FY2024",
+          "basis": "actual",
+          "label": "Total operating costs",
+          "column": "FY2024 (€M)"
+        }
+      ],
+      "source": {
+        "file": "operating_costs.csv",
+        "sheet": null,
+        "range": "B6",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0014",
+      "claim": "Total operating costs — FY2025 (€M): 311 EUR_M",
+      "values": [
+        {
+          "value": 311.0,
+          "unit": "EUR_M",
+          "period": "FY2025",
+          "basis": "actual",
+          "label": "Total operating costs",
+          "column": "FY2025 (€M)"
+        }
+      ],
+      "source": {
+        "file": "operating_costs.csv",
+        "sheet": null,
+        "range": "C6",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0015",
+      "claim": "Total operating costs — value: 298 → 311 (FY2024→FY2025), change 13 (+4.4%)",
+      "values": [
+        {
+          "value": 13.0,
+          "unit": "EUR_M",
+          "period": "FY2024→FY2025",
+          "label": "Total operating costs",
+          "kind": "change"
+        },
+        {
+          "value": 4.3624161073825505,
+          "unit": "PCT",
+          "period": "FY2024→FY2025",
+          "label": "Total operating costs",
+          "kind": "relative_change"
+        }
+      ],
+      "source": {
+        "file": "operating_costs.csv",
+        "sheet": null,
+        "range": "B6:C6",
+        "loc": "sheet"
+      },
+      "fact_type": "derived_change",
+      "confidence": 1.0,
+      "derived_from": [
+        "F0013",
+        "F0014"
+      ],
+      "operation": "last − first"
+    },
+    {
+      "id": "F0016",
+      "claim": "Fresh — Revenue FY2024 (€M): 420 EUR_M",
+      "values": [
+        {
+          "value": 420.0,
+          "unit": "EUR_M",
+          "period": "FY2024",
+          "basis": "actual",
+          "label": "Fresh",
+          "column": "Revenue FY2024 (€M)"
+        }
+      ],
+      "source": {
+        "file": "pnl_by_category.csv",
+        "sheet": null,
+        "range": "B2",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0017",
+      "claim": "Fresh — Revenue FY2025 (€M): 410 EUR_M",
+      "values": [
+        {
+          "value": 410.0,
+          "unit": "EUR_M",
+          "period": "FY2025",
+          "basis": "actual",
+          "label": "Fresh",
+          "column": "Revenue FY2025 (€M)"
+        }
+      ],
+      "source": {
+        "file": "pnl_by_category.csv",
+        "sheet": null,
+        "range": "C2",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0018",
+      "claim": "Fresh — Gross margin FY2024 (%): 34 PCT",
+      "values": [
+        {
+          "value": 34.0,
+          "unit": "PCT",
+          "period": "FY2024",
+          "basis": "actual",
+          "label": "Fresh",
+          "column": "Gross margin FY2024 (%)"
+        }
+      ],
+      "source": {
+        "file": "pnl_by_category.csv",
+        "sheet": null,
+        "range": "D2",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0019",
+      "claim": "Fresh — Gross margin FY2025 (%): 34 PCT",
+      "values": [
+        {
+          "value": 34.0,
+          "unit": "PCT",
+          "period": "FY2025",
+          "basis": "actual",
+          "label": "Fresh",
+          "column": "Gross margin FY2025 (%)"
+        }
+      ],
+      "source": {
+        "file": "pnl_by_category.csv",
+        "sheet": null,
+        "range": "E2",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0020",
+      "claim": "Fresh — revenue: 420 → 410 (FY2024→FY2025), change -10 (-2.4%)",
+      "values": [
+        {
+          "value": -10.0,
+          "unit": "EUR_M",
+          "period": "FY2024→FY2025",
+          "label": "Fresh",
+          "kind": "change"
+        },
+        {
+          "value": -2.380952380952381,
+          "unit": "PCT",
+          "period": "FY2024→FY2025",
+          "label": "Fresh",
+          "kind": "relative_change"
+        }
+      ],
+      "source": {
+        "file": "pnl_by_category.csv",
+        "sheet": null,
+        "range": "B2:C2",
+        "loc": "sheet"
+      },
+      "fact_type": "derived_change",
+      "confidence": 1.0,
+      "derived_from": [
+        "F0016",
+        "F0017"
+      ],
+      "operation": "last − first"
+    },
+    {
+      "id": "F0021",
+      "claim": "Fresh — gross margin: 34 → 34 (FY2024→FY2025), change 0 pp",
+      "values": [
+        {
+          "value": 0.0,
+          "unit": "PP",
+          "period": "FY2024→FY2025",
+          "label": "Fresh",
+          "kind": "change"
+        }
+      ],
+      "source": {
+        "file": "pnl_by_category.csv",
+        "sheet": null,
+        "range": "D2:E2",
+        "loc": "sheet"
+      },
+      "fact_type": "derived_change",
+      "confidence": 1.0,
+      "derived_from": [
+        "F0018",
+        "F0019"
+      ],
+      "operation": "last − first"
+    },
+    {
+      "id": "F0022",
+      "claim": "Grocery — Revenue FY2024 (€M): 610 EUR_M",
+      "values": [
+        {
+          "value": 610.0,
+          "unit": "EUR_M",
+          "period": "FY2024",
+          "basis": "actual",
+          "label": "Grocery",
+          "column": "Revenue FY2024 (€M)"
+        }
+      ],
+      "source": {
+        "file": "pnl_by_category.csv",
+        "sheet": null,
+        "range": "B3",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0023",
+      "claim": "Grocery — Revenue FY2025 (€M): 625 EUR_M",
+      "values": [
+        {
+          "value": 625.0,
+          "unit": "EUR_M",
+          "period": "FY2025",
+          "basis": "actual",
+          "label": "Grocery",
+          "column": "Revenue FY2025 (€M)"
+        }
+      ],
+      "source": {
+        "file": "pnl_by_category.csv",
+        "sheet": null,
+        "range": "C3",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0024",
+      "claim": "Grocery — Gross margin FY2024 (%): 26 PCT",
+      "values": [
+        {
+          "value": 26.0,
+          "unit": "PCT",
+          "period": "FY2024",
+          "basis": "actual",
+          "label": "Grocery",
+          "column": "Gross margin FY2024 (%)"
+        }
+      ],
+      "source": {
+        "file": "pnl_by_category.csv",
+        "sheet": null,
+        "range": "D3",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0025",
+      "claim": "Grocery — Gross margin FY2025 (%): 25.5 PCT",
+      "values": [
+        {
+          "value": 25.5,
+          "unit": "PCT",
+          "period": "FY2025",
+          "basis": "actual",
+          "label": "Grocery",
+          "column": "Gross margin FY2025 (%)"
+        }
+      ],
+      "source": {
+        "file": "pnl_by_category.csv",
+        "sheet": null,
+        "range": "E3",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0026",
+      "claim": "Grocery — revenue: 610 → 625 (FY2024→FY2025), change 15 (+2.5%)",
+      "values": [
+        {
+          "value": 15.0,
+          "unit": "EUR_M",
+          "period": "FY2024→FY2025",
+          "label": "Grocery",
+          "kind": "change"
+        },
+        {
+          "value": 2.459016393442623,
+          "unit": "PCT",
+          "period": "FY2024→FY2025",
+          "label": "Grocery",
+          "kind": "relative_change"
+        }
+      ],
+      "source": {
+        "file": "pnl_by_category.csv",
+        "sheet": null,
+        "range": "B3:C3",
+        "loc": "sheet"
+      },
+      "fact_type": "derived_change",
+      "confidence": 1.0,
+      "derived_from": [
+        "F0022",
+        "F0023"
+      ],
+      "operation": "last − first"
+    },
+    {
+      "id": "F0027",
+      "claim": "Grocery — gross margin: 26 → 25.5 (FY2024→FY2025), change -0.5 pp",
+      "values": [
+        {
+          "value": -0.5,
+          "unit": "PP",
+          "period": "FY2024→FY2025",
+          "label": "Grocery",
+          "kind": "change"
+        }
+      ],
+      "source": {
+        "file": "pnl_by_category.csv",
+        "sheet": null,
+        "range": "D3:E3",
+        "loc": "sheet"
+      },
+      "fact_type": "derived_change",
+      "confidence": 1.0,
+      "derived_from": [
+        "F0024",
+        "F0025"
+      ],
+      "operation": "last − first"
+    },
+    {
+      "id": "F0028",
+      "claim": "Electronics — Revenue FY2024 (€M): 180 EUR_M",
+      "values": [
+        {
+          "value": 180.0,
+          "unit": "EUR_M",
+          "period": "FY2024",
+          "basis": "actual",
+          "label": "Electronics",
+          "column": "Revenue FY2024 (€M)"
+        }
+      ],
+      "source": {
+        "file": "pnl_by_category.csv",
+        "sheet": null,
+        "range": "B4",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0029",
+      "claim": "Electronics — Revenue FY2025 (€M): 290 EUR_M",
+      "values": [
+        {
+          "value": 290.0,
+          "unit": "EUR_M",
+          "period": "FY2025",
+          "basis": "actual",
+          "label": "Electronics",
+          "column": "Revenue FY2025 (€M)"
+        }
+      ],
+      "source": {
+        "file": "pnl_by_category.csv",
+        "sheet": null,
+        "range": "C4",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0030",
+      "claim": "Electronics — Gross margin FY2024 (%): 12 PCT",
+      "values": [
+        {
+          "value": 12.0,
+          "unit": "PCT",
+          "period": "FY2024",
+          "basis": "actual",
+          "label": "Electronics",
+          "column": "Gross margin FY2024 (%)"
+        }
+      ],
+      "source": {
+        "file": "pnl_by_category.csv",
+        "sheet": null,
+        "range": "D4",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0031",
+      "claim": "Electronics — Gross margin FY2025 (%): 11.5 PCT",
+      "values": [
+        {
+          "value": 11.5,
+          "unit": "PCT",
+          "period": "FY2025",
+          "basis": "actual",
+          "label": "Electronics",
+          "column": "Gross margin FY2025 (%)"
+        }
+      ],
+      "source": {
+        "file": "pnl_by_category.csv",
+        "sheet": null,
+        "range": "E4",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0032",
+      "claim": "Electronics — revenue: 180 → 290 (FY2024→FY2025), change 110 (+61.1%)",
+      "values": [
+        {
+          "value": 110.0,
+          "unit": "EUR_M",
+          "period": "FY2024→FY2025",
+          "label": "Electronics",
+          "kind": "change"
+        },
+        {
+          "value": 61.111111111111114,
+          "unit": "PCT",
+          "period": "FY2024→FY2025",
+          "label": "Electronics",
+          "kind": "relative_change"
+        }
+      ],
+      "source": {
+        "file": "pnl_by_category.csv",
+        "sheet": null,
+        "range": "B4:C4",
+        "loc": "sheet"
+      },
+      "fact_type": "derived_change",
+      "confidence": 1.0,
+      "derived_from": [
+        "F0028",
+        "F0029"
+      ],
+      "operation": "last − first"
+    },
+    {
+      "id": "F0033",
+      "claim": "Electronics — gross margin: 12 → 11.5 (FY2024→FY2025), change -0.5 pp",
+      "values": [
+        {
+          "value": -0.5,
+          "unit": "PP",
+          "period": "FY2024→FY2025",
+          "label": "Electronics",
+          "kind": "change"
+        }
+      ],
+      "source": {
+        "file": "pnl_by_category.csv",
+        "sheet": null,
+        "range": "D4:E4",
+        "loc": "sheet"
+      },
+      "fact_type": "derived_change",
+      "confidence": 1.0,
+      "derived_from": [
+        "F0030",
+        "F0031"
+      ],
+      "operation": "last − first"
+    },
+    {
+      "id": "F0034",
+      "claim": "Apparel — Revenue FY2024 (€M): 150 EUR_M",
+      "values": [
+        {
+          "value": 150.0,
+          "unit": "EUR_M",
+          "period": "FY2024",
+          "basis": "actual",
+          "label": "Apparel",
+          "column": "Revenue FY2024 (€M)"
+        }
+      ],
+      "source": {
+        "file": "pnl_by_category.csv",
+        "sheet": null,
+        "range": "B5",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0035",
+      "claim": "Apparel — Revenue FY2025 (€M): 135 EUR_M",
+      "values": [
+        {
+          "value": 135.0,
+          "unit": "EUR_M",
+          "period": "FY2025",
+          "basis": "actual",
+          "label": "Apparel",
+          "column": "Revenue FY2025 (€M)"
+        }
+      ],
+      "source": {
+        "file": "pnl_by_category.csv",
+        "sheet": null,
+        "range": "C5",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0036",
+      "claim": "Apparel — Gross margin FY2024 (%): 41 PCT",
+      "values": [
+        {
+          "value": 41.0,
+          "unit": "PCT",
+          "period": "FY2024",
+          "basis": "actual",
+          "label": "Apparel",
+          "column": "Gross margin FY2024 (%)"
+        }
+      ],
+      "source": {
+        "file": "pnl_by_category.csv",
+        "sheet": null,
+        "range": "D5",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0037",
+      "claim": "Apparel — Gross margin FY2025 (%): 40 PCT",
+      "values": [
+        {
+          "value": 40.0,
+          "unit": "PCT",
+          "period": "FY2025",
+          "basis": "actual",
+          "label": "Apparel",
+          "column": "Gross margin FY2025 (%)"
+        }
+      ],
+      "source": {
+        "file": "pnl_by_category.csv",
+        "sheet": null,
+        "range": "E5",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0038",
+      "claim": "Apparel — revenue: 150 → 135 (FY2024→FY2025), change -15 (-10.0%)",
+      "values": [
+        {
+          "value": -15.0,
+          "unit": "EUR_M",
+          "period": "FY2024→FY2025",
+          "label": "Apparel",
+          "kind": "change"
+        },
+        {
+          "value": -10.0,
+          "unit": "PCT",
+          "period": "FY2024→FY2025",
+          "label": "Apparel",
+          "kind": "relative_change"
+        }
+      ],
+      "source": {
+        "file": "pnl_by_category.csv",
+        "sheet": null,
+        "range": "B5:C5",
+        "loc": "sheet"
+      },
+      "fact_type": "derived_change",
+      "confidence": 1.0,
+      "derived_from": [
+        "F0034",
+        "F0035"
+      ],
+      "operation": "last − first"
+    },
+    {
+      "id": "F0039",
+      "claim": "Apparel — gross margin: 41 → 40 (FY2024→FY2025), change -1 pp",
+      "values": [
+        {
+          "value": -1.0,
+          "unit": "PP",
+          "period": "FY2024→FY2025",
+          "label": "Apparel",
+          "kind": "change"
+        }
+      ],
+      "source": {
+        "file": "pnl_by_category.csv",
+        "sheet": null,
+        "range": "D5:E5",
+        "loc": "sheet"
+      },
+      "fact_type": "derived_change",
+      "confidence": 1.0,
+      "derived_from": [
+        "F0036",
+        "F0037"
+      ],
+      "operation": "last − first"
+    },
+    {
+      "id": "F0040",
+      "claim": "Total — Revenue FY2024 (€M): 1,360 EUR_M",
+      "values": [
+        {
+          "value": 1360.0,
+          "unit": "EUR_M",
+          "period": "FY2024",
+          "basis": "actual",
+          "label": "Total",
+          "column": "Revenue FY2024 (€M)"
+        }
+      ],
+      "source": {
+        "file": "pnl_by_category.csv",
+        "sheet": null,
+        "range": "B6",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0041",
+      "claim": "Total — Revenue FY2025 (€M): 1,460 EUR_M",
+      "values": [
+        {
+          "value": 1460.0,
+          "unit": "EUR_M",
+          "period": "FY2025",
+          "basis": "actual",
+          "label": "Total",
+          "column": "Revenue FY2025 (€M)"
+        }
+      ],
+      "source": {
+        "file": "pnl_by_category.csv",
+        "sheet": null,
+        "range": "C6",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0042",
+      "claim": "Total — Gross margin FY2024 (%): 28.3 PCT",
+      "values": [
+        {
+          "value": 28.3,
+          "unit": "PCT",
+          "period": "FY2024",
+          "basis": "actual",
+          "label": "Total",
+          "column": "Gross margin FY2024 (%)"
+        }
+      ],
+      "source": {
+        "file": "pnl_by_category.csv",
+        "sheet": null,
+        "range": "D6",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0043",
+      "claim": "Total — Gross margin FY2025 (%): 26.4 PCT",
+      "values": [
+        {
+          "value": 26.4,
+          "unit": "PCT",
+          "period": "FY2025",
+          "basis": "actual",
+          "label": "Total",
+          "column": "Gross margin FY2025 (%)"
+        }
+      ],
+      "source": {
+        "file": "pnl_by_category.csv",
+        "sheet": null,
+        "range": "E6",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0044",
+      "claim": "Total — revenue: 1,360 → 1,460 (FY2024→FY2025), change 100 (+7.4%)",
+      "values": [
+        {
+          "value": 100.0,
+          "unit": "EUR_M",
+          "period": "FY2024→FY2025",
+          "label": "Total",
+          "kind": "change"
+        },
+        {
+          "value": 7.352941176470589,
+          "unit": "PCT",
+          "period": "FY2024→FY2025",
+          "label": "Total",
+          "kind": "relative_change"
+        }
+      ],
+      "source": {
+        "file": "pnl_by_category.csv",
+        "sheet": null,
+        "range": "B6:C6",
+        "loc": "sheet"
+      },
+      "fact_type": "derived_change",
+      "confidence": 1.0,
+      "derived_from": [
+        "F0040",
+        "F0041"
+      ],
+      "operation": "last − first"
+    },
+    {
+      "id": "F0045",
+      "claim": "Total — gross margin: 28.3 → 26.4 (FY2024→FY2025), change -1.9 pp",
+      "values": [
+        {
+          "value": -1.9000000000000021,
+          "unit": "PP",
+          "period": "FY2024→FY2025",
+          "label": "Total",
+          "kind": "change"
+        }
+      ],
+      "source": {
+        "file": "pnl_by_category.csv",
+        "sheet": null,
+        "range": "D6:E6",
+        "loc": "sheet"
+      },
+      "fact_type": "derived_change",
+      "confidence": 1.0,
+      "derived_from": [
+        "F0042",
+        "F0043"
+      ],
+      "operation": "last − first"
+    },
+    {
+      "id": "F0046",
+      "claim": "electronics is now our fastest-growing category and the 2026 budget assumes another 25% growth.",
+      "values": [
+        {
+          "value": 25.0,
+          "unit": "PCT",
+          "raw": "25%",
+          "period": "2026",
+          "basis": "budget"
+        }
+      ],
+      "source": {
+        "file": "meeting_notes.md",
+        "loc": "line 6"
+      },
+      "fact_type": "text_statement",
+      "confidence": 0.8
+    },
+    {
+      "id": "F0047",
+      "claim": "Supply chain lead: freight rates rose 24% after the new carrier contract signed in March 2025.",
+      "values": [
+        {
+          "value": 24.0,
+          "unit": "PCT",
+          "raw": "24%",
+          "period": "2025",
+          "basis": "actual"
+        }
+      ],
+      "source": {
+        "file": "meeting_notes.md",
+        "loc": "line 7"
+      },
+      "fact_type": "text_statement",
+      "confidence": 0.8
+    },
+    {
+      "id": "F0048",
+      "claim": "CFO: the board wants a plan that recovers 1.5 pp of gross margin by 2027 without cutting store labour.",
+      "values": [
+        {
+          "value": 1.5,
+          "unit": "PP",
+          "raw": "1.5 pp",
+          "period": "2027",
+          "basis": "plan"
+        }
+      ],
+      "source": {
+        "file": "meeting_notes.md",
+        "loc": "line 8"
+      },
+      "fact_type": "text_statement",
+      "confidence": 0.8
+    },
+    {
+      "id": "F0049",
+      "claim": "The FY2025E forecast presented in January showed revenue of €1,500M;",
+      "values": [
+        {
+          "value": 1500.0,
+          "unit": "EUR_M",
+          "raw": "€1,500M",
+          "period": "FY2025",
+          "basis": "estimate"
+        }
+      ],
+      "source": {
+        "file": "meeting_notes.md",
+        "loc": "line 9"
+      },
+      "fact_type": "text_statement",
+      "confidence": 0.8
+    },
+    {
+      "id": "F0050",
+      "claim": "Pricing team: electronics prices are 6% below the main competitor on the top 200 references.",
+      "values": [
+        {
+          "value": 6.0,
+          "unit": "PCT",
+          "raw": "6%",
+          "period": null,
+          "basis": null
+        },
+        {
+          "value": 200.0,
+          "unit": "",
+          "raw": "200",
+          "period": null,
+          "basis": null
+        }
+      ],
+      "source": {
+        "file": "meeting_notes.md",
+        "loc": "line 10"
+      },
+      "fact_type": "text_statement",
+      "confidence": 0.8
+    }
+  ],
+  "stats": {
+    "sources": 3,
+    "tables": 2,
+    "facts": 50,
+    "by_type": {
+      "table_value": 30,
+      "derived_change": 15,
+      "text_statement": 5
+    }
+  }
+}

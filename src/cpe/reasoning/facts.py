@@ -1,0 +1,196 @@
+"""Structured fact model: sources → atomic, traceable facts.
+
+Each fact is ONE claim with its values, period, unit and an exact source location (file, sheet,
+A1 range or line). Table cells become `table_value` facts; numeric sentences become `text_statement`
+facts (lower confidence: the number's meaning comes from prose); rows with two or more periods get
+`derived_change` facts (absolute and relative change, with lineage to the cells they come from).
+Nothing is interpreted beyond what the source says — insights are the agent's job.
+"""
+from __future__ import annotations
+
+import hashlib
+import json
+import re
+from pathlib import Path
+
+from . import PROTOCOL_VERSION
+
+PERIOD_RE = re.compile(
+    r"\b(?:(?P<fy>FY|CY)\s?'?(?P<fyy>\d{2}|\d{4})(?P<fs>[EABF])?|(?P<q>Q[1-4])\s?'?(?P<qy>\d{2}|\d{4})?|(?P<h>H[12])\s?'?(?P<hy>\d{2}|\d{4})?"
+    r"|(?P<y>(?:19|20)\d{2})(?P<ys>[EABF])?|(?P<w>YTD|LTM|TTM|run[- ]rate))\b", re.IGNORECASE)
+BASIS_WORDS = {"budget": "budget", "presupuesto": "budget", "forecast": "forecast", "previsión": "forecast", "plan": "plan",
+               "actual": "actual", "real": "actual", "estimate": "estimate", "est.": "estimate"}
+SUFFIX_BASIS = {"E": "estimate", "A": "actual", "B": "budget", "F": "forecast"}
+UNIT_RE = re.compile(r"(€|\$|£|eur|usd|gbp)\s?(m|mn|bn|k|million|billion|thousand)?|\b(m|mn|bn|k)\s?(€|\$|£|eur|usd)|%|\bpp\b|\bbps\b|\bdays?\b|\bmonths?\b|\byears?\b",
+                     re.IGNORECASE)
+
+
+def detect_period(text: str) -> dict | None:
+    """'FY25E' → {'period': 'FY2025', 'basis': 'estimate'}; 'Q3 2025' → {'period': '2025-Q3'}; 'YTD' → {'period': 'YTD'}."""
+    t = str(text or "")
+    m = PERIOD_RE.search(t)
+    if not m:
+        return None
+    g = m.groupdict()
+
+    def yy(s):
+        return None if not s else (int(s) + 2000 if len(s) == 2 else int(s))
+
+    basis = next((b for w, b in BASIS_WORDS.items() if w in t.lower()), None)
+    if g["fy"]:
+        out = {"period": f"{g['fy'].upper()}{yy(g['fyy'])}", "basis": SUFFIX_BASIS.get((g["fs"] or "").upper(), basis or "actual")}
+    elif g["q"]:
+        out = {"period": f"{yy(g['qy'])}-{g['q'].upper()}" if g["qy"] else g["q"].upper(), "basis": basis or "actual"}
+    elif g["h"]:
+        out = {"period": f"{yy(g['hy'])}-{g['h'].upper()}" if g["hy"] else g["h"].upper(), "basis": basis or "actual"}
+    elif g["y"]:
+        out = {"period": g["y"], "basis": SUFFIX_BASIS.get((g["ys"] or "").upper(), basis or "actual")}
+    else:
+        out = {"period": g["w"].upper().replace(" ", "-"), "basis": basis or "actual"}
+    return out
+
+
+def detect_unit(text: str) -> str:
+    """Normalised unit token of a header / label: 'EUR_M', 'USD_K', 'PCT', 'PP', 'BPS', 'DAYS', '' …"""
+    t = str(text or "")
+    m = UNIT_RE.search(t)
+    if not m:
+        return ""
+    s = m.group(0).lower().replace(" ", "")
+    cur = "EUR" if ("€" in s or "eur" in s) else "USD" if ("$" in s or "usd" in s) else "GBP" if ("£" in s or "gbp" in s) else None
+    scale = "BN" if ("bn" in s or "billion" in s) else "M" if re.search(r"m(n|illion)?$|^m", s.replace("€", "").replace("$", "").replace("£", "").replace("eur", "")
+                                                                      .replace("usd", "").replace("gbp", "")) else "K" if ("k" in s or "thousand" in s) else ""
+    if cur:
+        return f"{cur}_{scale}" if scale else cur
+    if s == "%":
+        return "PCT"
+    if s == "pp":
+        return "PP"
+    if s == "bps":
+        return "BPS"
+    return s.upper().rstrip("S") + "S" if s.startswith(("day", "month", "year")) else s.upper()
+
+
+def unit_from_raw(raw: str) -> str:
+    """Unit of a number as written in prose: '€1,500M' → EUR_M, '24%' → PCT, '$3.2bn' → USD_BN."""
+    r = str(raw or "").strip().lower()
+    cur = "EUR" if ("€" in r or "eur" in r) else "USD" if ("$" in r or "usd" in r) else "GBP" if ("£" in r or "gbp" in r) else None
+    suf = re.sub(r"[\d\s.,+\-−€$£]", "", r).replace("eur", "").replace("usd", "").replace("gbp", "")
+    if suf == "%":
+        return "PCT"
+    if suf in ("pp", "bps"):
+        return suf.upper()
+    scale = {"m": "M", "mn": "M", "million": "M", "bn": "BN", "billion": "BN", "k": "K", "thousand": "K"}.get(suf, "")
+    if cur:
+        return f"{cur}_{scale}" if scale else cur
+    return scale and f"PLAIN_{scale}"
+
+
+def _col(j: int) -> str:
+    s = ""
+    j += 1
+    while j:
+        j, r = divmod(j - 1, 26)
+        s = chr(65 + r) + s
+    return s
+
+
+def _fmt(v: float) -> str:
+    return f"{v:,.2f}".rstrip("0").rstrip(".") if not float(v).is_integer() else f"{int(v):,}"
+
+
+def _sha(p: Path) -> str:
+    return hashlib.sha256(p.read_bytes()).hexdigest()
+
+
+def source_manifest(paths: list[Path]) -> dict:
+    return {"protocol": PROTOCOL_VERSION, "sources": [{"file": p.name, "sha256": _sha(p), "bytes": p.stat().st_size} for p in paths]}
+
+
+def _table_facts(t: dict, next_id) -> list[dict]:
+    facts = []
+    header = [str(h) for h in t["header"]]
+    numeric = set(t["numeric_columns"])
+    label_cols = [j for j in range(len(header)) if j not in numeric]
+    sheet = t["loc"].replace("sheet", "").strip() or None
+    table_unit = detect_unit(" ".join(header))
+    for i, row in enumerate(t["rows"]):
+        label = " · ".join(str(row[j]) for j in label_cols if j < len(row) and str(row[j]).strip()) or f"row {i + 2}"
+        cells = {}
+        for j in sorted(numeric):
+            if j >= len(row) or row[j] is None or row[j] == "":
+                continue
+            v = float(row[j])
+            per = detect_period(header[j])
+            unit = detect_unit(header[j]) or detect_unit(label) or table_unit
+            fid = next_id()
+            rng = f"{_col(j)}{i + 2}"
+            facts.append({"id": fid, "claim": f"{label} — {header[j]}: {_fmt(v)}{(' ' + unit) if unit else ''}",
+                          "values": [{"value": v, "unit": unit, "period": (per or {}).get("period"), "basis": (per or {}).get("basis"), "label": label,
+                                      "column": header[j]}],
+                          "source": {"file": t["source"], "sheet": sheet, "range": rng, "loc": t["loc"]}, "fact_type": "table_value", "confidence": 1.0})
+            cells[j] = facts[-1]
+        groups: dict = {}  # one measure observed in several periods: "Revenue FY2024 (€M)" + "Revenue FY2025 (€M)"
+        for j, f in cells.items():
+            v = f["values"][0]
+            if v["period"]:
+                measure = re.sub(r"\s+", " ", re.sub(r"\(.*?\)", "", PERIOD_RE.sub("", header[j]))).strip(" -–·") or "value"
+                groups.setdefault((measure.lower(), v["unit"], v["basis"]), []).append(f)
+        for (measure, _, _), fs in groups.items():
+            if len(fs) < 2:
+                continue
+            a, b = fs[0], fs[-1]
+            va, vb = a["values"][0], b["values"][0]
+            d = vb["value"] - va["value"]
+            pct_unit = va["unit"] == "PCT"
+            per = f"{va['period']}→{vb['period']}"
+            vals = [{"value": d, "unit": "PP" if pct_unit else va["unit"], "period": per, "label": label, "kind": "change"}]
+            if va["value"] and not pct_unit:
+                vals.append({"value": d / abs(va["value"]) * 100, "unit": "PCT", "period": per, "label": label, "kind": "relative_change"})
+            name = measure
+            facts.append({"id": next_id(), "claim": f"{label} — {name}: {_fmt(va['value'])} → {_fmt(vb['value'])} ({per}), change {_fmt(d)}"
+                          + (f" ({d / abs(va['value']) * 100:+.1f}%)" if va["value"] and not pct_unit else (" pp" if pct_unit else "")),
+                          "values": vals, "source": {"file": t["source"], "sheet": sheet, "range": f"{a['source']['range']}:{b['source']['range']}", "loc": t["loc"]},
+                          "fact_type": "derived_change", "confidence": 1.0, "derived_from": [a["id"], b["id"]], "operation": "last − first"})
+    return facts
+
+
+def build_fact_model(paths: list[str | Path]) -> dict:
+    """Read sources and return {"protocol", "facts": [...], "stats": {...}}."""
+    from ..ingest.readers import ingest
+
+    paths = [Path(p) for p in paths]
+    inv = ingest(paths)
+    n = [0]
+
+    def next_id():
+        n[0] += 1
+        return f"F{n[0]:04d}"
+
+    facts = []
+    for t in inv["tables"]:
+        facts += _table_facts(t, next_id)
+    by_sentence: dict = {}  # one text fact per sentence, with every number it states
+    for f in inv["facts"]:
+        by_sentence.setdefault((f["source"], f["loc"], f["context"]), []).append(f)
+    for (src, loc, ctx), fs in by_sentence.items():
+        per = detect_period(ctx)
+        facts.append({"id": next_id(), "claim": ctx, "values": [{"value": f["value"], "unit": unit_from_raw(f["raw"]), "raw": f["raw"],
+                                                                "period": (per or {}).get("period"), "basis": (per or {}).get("basis")} for f in fs],
+                      "source": {"file": src, "loc": loc}, "fact_type": "text_statement", "confidence": 0.8})
+    stats = {"sources": len(inv["sources"]), "tables": len(inv["tables"]), "facts": len(facts),
+             "by_type": {k: sum(1 for f in facts if f["fact_type"] == k) for k in ("table_value", "derived_change", "text_statement")}}
+    return {"protocol": PROTOCOL_VERSION, "facts": facts, "stats": stats, "blocks": inv["blocks"]}
+
+
+def write_fact_model(sources_dir: str | Path, work_dir: str | Path) -> dict:
+    src = Path(sources_dir)
+    paths = sorted(p for p in src.rglob("*") if p.is_file() and not p.name.startswith("."))
+    work = Path(work_dir)
+    work.mkdir(parents=True, exist_ok=True)
+    (work / "source_manifest.json").write_text(json.dumps(source_manifest(paths), indent=2) + "\n", encoding="utf-8")
+    fm = build_fact_model(paths)
+    blocks = fm.pop("blocks")
+    (work / "facts.json").write_text(json.dumps(fm, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    (work / "source_text.json").write_text(json.dumps({"protocol": PROTOCOL_VERSION, "blocks": blocks}, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    return fm

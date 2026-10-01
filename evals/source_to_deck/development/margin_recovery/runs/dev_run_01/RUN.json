@@ -1,0 +1,10 @@
+{
+  "status": "development run — NOT evidence",
+  "author": "the developing agent, in the same session that wrote the case and the checks",
+  "reasoning_protocol": "1.0",
+  "engine": "1.6.0rc1 + v1.7 reasoning layer (development)",
+  "model": "Claude (developing session; exact model per session metadata, not recorded in the repository)",
+  "skill": "SKILL.md (v1.6) + docs/REASONING_PROTOCOL.md 1.0",
+  "purpose": "show that the full chain runs end to end and that every artifact is checkable; the case, the reference and the run share one author, so the scores say nothing about reasoning quality",
+  "render": "cpe run deck.json → 10 slides, 0 QA errors, 1 warning (HEADLINE_TWO_MESSAGES on the executive summary)"
+}

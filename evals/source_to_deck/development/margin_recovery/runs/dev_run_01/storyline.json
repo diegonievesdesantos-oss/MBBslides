@@ -1,0 +1,82 @@
+{
+  "framework": "PDS",
+  "framework_rationale": "The question asks what drives the decline and which actions fix it: problem, diagnosis, solution.",
+  "candidates": [
+    {
+      "text": "Gross margin fell 1.9 pp mainly because sales shifted to low-margin electronics; repricing electronics and steering mix recover the 1.5 pp target by 2027 without touching store labour",
+      "scores": {
+        "answers_question": 2,
+        "supported": 2,
+        "specific": 2,
+        "decision_oriented": 2,
+        "non_trivial": 2,
+        "coverage": 2
+      },
+      "insights": [
+        "I1",
+        "I5",
+        "I6"
+      ]
+    },
+    {
+      "text": "Margin is under pressure from volume and costs; broad cost discipline is needed",
+      "scores": {
+        "answers_question": 1,
+        "supported": 0,
+        "specific": 0,
+        "decision_oriented": 1,
+        "non_trivial": 0,
+        "coverage": 1
+      },
+      "insights": [
+        "I4"
+      ],
+      "rejected_because": "rests on the volume hypothesis (rejected) and ignores mix"
+    },
+    {
+      "text": "Electronics growth dilutes margin; slow electronics growth",
+      "scores": {
+        "answers_question": 1,
+        "supported": 2,
+        "specific": 1,
+        "decision_oriented": 1,
+        "non_trivial": 1,
+        "coverage": 1
+      },
+      "insights": [
+        "I1"
+      ],
+      "rejected_because": "gives up the fastest-growing category instead of fixing its margin"
+    }
+  ],
+  "governing_thought": "Gross margin fell 1.9 pp mainly because sales shifted to low-margin electronics; repricing electronics and steering mix recover the 1.5 pp target by 2027 without touching store labour",
+  "key_line": [
+    {
+      "id": "K1",
+      "role": "diagnosis",
+      "message": "The decline is mix, not volume: electronics went from 13.2% to 19.9% of sales at less than half the group margin",
+      "insights": [
+        "I1",
+        "I2",
+        "I3"
+      ]
+    },
+    {
+      "id": "K2",
+      "role": "complication",
+      "message": "Freight inflation opens a separate €9M profit gap",
+      "insights": [
+        "I4"
+      ]
+    },
+    {
+      "id": "K3",
+      "role": "solution",
+      "message": "Repricing electronics and steering mix recover 1.5 pp by 2027 without touching store labour",
+      "insights": [
+        "I5",
+        "I6"
+      ]
+    }
+  ]
+}

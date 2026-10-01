@@ -21,7 +21,8 @@ from pathlib import Path
 from lxml import etree
 
 FACT_RE = re.compile(
-    r"(?P<raw>(?:[€$£]\s?)?[-−+]?\d{1,3}(?:[,.\s]\d{3})*(?:[.,]\d+)?\s?(?:%|pp|bps|x|bn|billion|mn|million|m|k|thousand|€|eur|usd)?)",
+    # v1.7: a number starts at a digit boundary and takes all its digits ("2026" was read as "202" + "6")
+    r"(?P<raw>(?:[€$£]\s?)?[-−+]?(?<![\d.,])\d+(?:[,.\s]\d{3}(?!\d))*(?:[.,]\d+)?(?:\s?(?:%|pp|bps|x|bn|billion|mn|million|m|k|thousand|€|eur|usd)(?![a-z]))?)",
     re.IGNORECASE,
 )
 SENT_RE = re.compile(r"(?<=[.!?;])\s+")
