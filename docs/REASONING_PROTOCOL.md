@@ -35,11 +35,16 @@ short rationales and critic findings — never hidden reasoning traces.
 - `computed_facts.json`: `{"facts": [{"id": "C0001", "claim": …, "formula": "F0029 / F0041 * 100",
   "values": [{"value": 19.9, "unit": "PCT"}]}]}` — the formula uses fact ids (`F…`, `C…`, `A…`),
   numbers, `+ − × ÷`, `sum()` and `abs()`; it is recomputed and must match the stated value.
+  A bare id is the fact's first value; `F0062[1]` is its second value (0-based), for sentences that
+  state several numbers ("of 9 and 14 days, costing 1.6 and 2.4 EUR M").
 - `assumptions.json`: `{"assumptions": [{"id": "A001", "statement": …, "values": [{"value": 3,
   "unit": "PP"}], "rationale": …, "owner": …}]}`.
 - `deck_plan.json`: each slide's `key_line` is ONE key-line id; the executive summary is
   `"role": "exec_summary"` (no key line); `title`, `divider`, `next_steps` are the other roles.
-- Units: `EUR_M`, `USD_BN`, `PCT`, `PP`, `DAYS`, `HOURS`, … (as `facts.json` writes them).
+- Units: `EUR_M`, `USD_BN`, `PCT`, `PP`, `DAYS`, `HOURS`, … (as `facts.json` writes them). In prose, money
+  may be written `€7.8M`, `7.8 EUR M` or `EUR 7.8M`; `€2.868M` is a decimal; `23–24%` is two percentages.
+- `fact_conflicts.json`: `{"conflicts": [{"facts": [{"fact": "F0012"}, {"fact": "F0040"}], "type": …, "resolution": "…"}]}`
+  (plain ids in `facts` are accepted).
 - **Every number a reader sees on a slide is grounded (v1.8):**
   - This covers the headline, body text, KPIs, table cells, chart data, commentary and takeaways.
   - Each number must be a value of a fact the slide cites in `evidence`, or one operation on two of

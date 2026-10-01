@@ -1,0 +1,95 @@
+{
+  "protocol": "1.2",
+  "blocks": [
+    {
+      "source": "finance_note.md",
+      "loc": "line 1",
+      "kind": "heading",
+      "text": "Finance note"
+    },
+    {
+      "source": "finance_note.md",
+      "loc": "line 3",
+      "kind": "text",
+      "text": "The 25 EUR M packaging spend includes 1.1 EUR M of rush freight invoiced by the incumbent; a unit-price reduction does not apply to it."
+    },
+    {
+      "source": "finance_note.md",
+      "loc": "line 4",
+      "kind": "text",
+      "text": "Packaging spend excluding rush freight: 23.9 EUR M."
+    },
+    {
+      "source": "finance_note.md",
+      "loc": "line 5",
+      "kind": "text",
+      "text": "Unrelated: the energy contract for the Zaragoza plant was renewed in September."
+    },
+    {
+      "source": "procurement_proposal.docx",
+      "loc": "para 1",
+      "kind": "heading",
+      "text": "Procurement proposal: packaging 2026-2028"
+    },
+    {
+      "source": "procurement_proposal.docx",
+      "loc": "para 2",
+      "kind": "text",
+      "text": "Packaging spend was 25 EUR M in 2025, with the volume split between the incumbent (70%) and Supplier B (30%)."
+    },
+    {
+      "source": "procurement_proposal.docx",
+      "loc": "para 3",
+      "kind": "text",
+      "text": "Supplier B offers a 12% price reduction if it receives 100% of our volume under a three-year commitment. This saves 3.0 EUR M per year."
+    },
+    {
+      "source": "procurement_proposal.docx",
+      "loc": "para 4",
+      "kind": "text",
+      "text": "Supplier B volume breaks (price reduction by share of our volume):"
+    },
+    {
+      "source": "procurement_proposal.docx",
+      "loc": "para 6",
+      "kind": "text",
+      "text": "We recommend approving the move to a single supplier from January 2026."
+    },
+    {
+      "source": "supply_risk_review.pdf",
+      "loc": "p.1",
+      "kind": "text",
+      "text": "Supply risk review - packaging."
+    },
+    {
+      "source": "supply_risk_review.pdf",
+      "loc": "p.1",
+      "kind": "text",
+      "text": "Supplier B operates a single plant. It declared two force-majeure stoppages in the last three years, of 9 and 14 days."
+    },
+    {
+      "source": "supply_risk_review.pdf",
+      "loc": "p.1",
+      "kind": "text",
+      "text": "A 9-day packaging stoppage would cost us 1.6 EUR M of gross margin; a 14-day stoppage 2.4 EUR M."
+    },
+    {
+      "source": "supply_risk_review.pdf",
+      "loc": "p.1",
+      "kind": "text",
+      "text": "The incumbent operates two plants and can cover up to 60% of our volume at two weeks' notice."
+    },
+    {
+      "source": "supply_risk_review.pdf",
+      "loc": "p.1",
+      "kind": "text",
+      "text": "If kept at 30% of our volume, the incumbent has offered a 4% price reduction on that volume."
+    },
+    {
+      "source": "supply_risk_review.pdf",
+      "loc": "p.1",
+      "kind": "text",
+      "text": "Switching costs (tooling and line qualification): 0.8 EUR M one-off for a full move, 0.5 EUR M for a partial move."
+    }
+  ]
+}

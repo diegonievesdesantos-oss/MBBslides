@@ -43,7 +43,9 @@ def _num(raw, dot_decimal: bool = False) -> tuple[float | None, str]:
         core = core.replace(",", "") if core.rfind(".") > core.rfind(",") else core.replace(".", "").replace(",", ".")
     elif core.count(",") == 1 and len(core.split(",")[1]) != 3:
         core = core.replace(",", ".")
-    elif not dot_decimal and not core.count(",") and re.fullmatch(r"[-+]?\d{1,3}(?:\.\d{3})+", core):
+    elif core.count(",") == 1 and re.fullmatch(r"[-+]?0,\d+", core):
+        core = core.replace(",", ".")  # "0,048": a decimal
+    elif not dot_decimal and not core.count(",") and not re.match(r"[-+]?0\.", core) and re.fullmatch(r"[-+]?\d{1,3}(?:\.\d{3})+", core):
         core = core.replace(".", "")  # Spanish thousands: "30.000", "1.250.000" (v1.7; a 3-decimal figure is rare in prose)
     else:
         core = core.replace(",", "")

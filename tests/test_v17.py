@@ -565,3 +565,40 @@ def test_table_cells_marked_as_bounds_stay_numbers(tmp_path):
     out = next(tmp_path.rglob("*.pptx"))
     cells = [c.text for sl in Presentation(str(out)).slides for sh in sl.shapes if sh.has_table for r in sh.table.rows for c in r.cells]
     assert "~2.0" in cells and "≤4.5" in cells and "3.6" in cells
+
+
+def test_agent_reported_parsing_bugs_set_02():
+    from cpe.ingest.readers import _num as rnum
+    from cpe.qa.proof import headline_quantities
+    from cpe.reasoning.facts import detect_period, detect_unit
+    assert [q["value"] for q in headline_quantities("ahorra 0,048 M€ y 0.106 M€")] == [48000.0, 106000.0]
+    assert [q["value"] for q in headline_quantities("30.000 clientes")] == [30000.0]
+    assert rnum("0,048")[0] == 0.048 and rnum("30.000")[0] == 30000
+    assert detect_unit("Capacidad (miles de pedidos/año)") != "YEARS"
+    assert (detect_period("encuesta 2025: se plantearía cambiar") or {}).get("basis") != "plan"
+
+
+def test_agent_reported_grounding_bugs_protocol_12_rerun():
+    from cpe.reasoning.checks import _safe_eval, check_computed
+    from cpe.reasoning.grounding import ground_numbers
+    f9 = {"id": "F9", "values": [{"value": 7.8, "unit": "EUR_M"}]}
+    for t in ("7.8 EUR M churned", "EUR 7.8M churned", "€7.8M churned"):
+        assert [g["status"] for g in ground_numbers(t, [f9])] == ["grounded"], t
+    c = {"id": "C1", "values": [{"value": 2.868, "unit": "EUR_M"}]}
+    assert [g["status"] for g in ground_numbers("a gross saving of €2.868M", [c])] == ["grounded"]
+    wr = [{"id": "F1", "values": [{"value": 23, "unit": "PCT"}]}, {"id": "F2", "values": [{"value": 24, "unit": "PCT"}]}]
+    assert {g["status"] for g in ground_numbers("win rate held at 23–24%", wr)} == {"grounded"}
+    assert [g["status"] for g in ground_numbers("back to 10.4 in 2026", [{"id": "C2", "values": [{"value": 10.4, "unit": "EUR_M"}]}])] == ["grounded"]
+    facts = {"F0062": {"id": "F0062", "values": [{"value": 14, "unit": "DAYS"}, {"value": 2.4, "unit": "EUR_M"}]},
+             "F0061": {"id": "F0061", "values": [{"value": 1.6, "unit": "EUR_M"}]}}
+    issues, good = check_computed({"facts": [{"id": "C0001", "formula": "F0061 + F0062[1]", "values": [{"value": 4.0, "unit": "EUR_M"}]}]}, facts)
+    assert issues == [] and good["C0001"]["derived_from"] == ["F0061", "F0062"]
+    assert _safe_eval("F62[1] * 2", {"F62": [14.0, 2.4]}) == 4.8
+
+
+def test_conflicts_file_accepts_plain_ids_and_reports_bad_shapes(tmp_path):
+    from cpe.reasoning.checks import check_conflicts
+    (tmp_path / "fact_conflicts.json").write_text(json.dumps({"conflicts": [{"facts": ["F1", "F2"], "resolution": "x"}]}))
+    assert check_conflicts(tmp_path, {"facts": []}, set()) == []
+    (tmp_path / "fact_conflicts.json").write_text(json.dumps({"conflicts": [{"facts": [3, 4]}, "X001"]}))
+    assert [i["code"] for i in check_conflicts(tmp_path, {"facts": []}, set())] == ["CONFLICT_FORMAT", "CONFLICT_FORMAT"]

@@ -7,6 +7,8 @@ never every number in the sources.
 """
 from __future__ import annotations
 
+import re
+
 from ..qa.proof import REL_TOL, headline_quantities
 
 SCALE = {"K": 1e3, "M": 1e6, "BN": 1e9}
@@ -52,15 +54,31 @@ def _ops(a: dict, b: dict, q: dict):
         yield "ratio", a["value"] / b["value"]
 
 
+def spell_ranges(t: str) -> str:
+    """'23–25%' is 23% and 25%; '2024-25' is a period, not 25."""
+    t = re.sub(r"\b((?:19|20)\d{2})\s?[-–/]\s?\d{2}\b", r"\1", t)
+    return re.sub(r"(\d+(?:[.,]\d+)?)\s?[–-]\s?(\d+(?:[.,]\d+)?)\s?%", r"\1% to \2%", t)
+
+
+def _unit_scale(s: dict) -> float:
+    """The scale a fact's value was multiplied by (EUR_M → 1e6), to compare a bare number as written."""
+    try:
+        return s["value"] / float(s["raw"]) if float(s["raw"]) else 1.0
+    except (ValueError, ZeroDivisionError):
+        return 1.0
+
+
 def ground_numbers(text: str, facts: list[dict], max_pairs_facts: int = 12) -> list[dict]:
     """Per number in `text`: {"number", "status": grounded|derived|unsupported, "facts": [...]}.
     `facts` must be the facts the sentence CITES, not the whole fact base."""
     scal = fact_scalars(facts)
     out = []
+    text = spell_ranges(text)
     for q in headline_quantities(text):
         tol = 0.5 * 10 ** (-q["decimals"]) * (q["scale"] or 1.0) + REL_TOL * q["value"]
-        direct = [s for s in scal if s["kind"] == q["kind"] and (q["kind"] != "money" or q["currency"] in (None, s["currency"]))
-                  and abs(s["value"] - q["value"]) <= tol]
+        direct = [s for s in scal if (s["kind"] == q["kind"] or q["kind"] == "plain") and (q["kind"] != "money" or q["currency"] in (None, s["currency"]))
+                  and abs((s["value"] / (1.0 if q["kind"] != "plain" else _unit_scale(s)) if q["kind"] == "plain" else s["value"]) - q["value"]) <= tol]
+        # a bare number ("10.4") may name a fact in its own unit (€10.4M): compared as written
         if direct:
             real = [s for s in direct if not s.get("assumption")]
             out.append({"number": q["raw"], "status": "grounded" if real else "assumption", "facts": sorted({s["fact"] for s in (real or direct)})})

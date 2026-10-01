@@ -99,3 +99,34 @@ the totals row of the appendix table on s10.
 
 Gaps 1–4 are factuality gaps, and 1 and 3 mattered most. A deck can pass every check with an unchecked
 number in a table cell, and an extractor upgrade breaks old runs. They are the first items for v1.8.
+
+## Protocol 1.2 rerun (development check, same cases)
+
+Four new independent agents, protocol 1.2, frozen engine copy (`runs/protocol_agent_03_p12/`). These
+cases were already used in s2, so this is a development check, not evidence.
+
+| case | conclusions | traps | untraced | options on the same basis |
+|---|---|---|---|---|
+| almacén | 3/3 | 0 | 2 / 51 | yes (2 options, 8 components) |
+| SaaS | 3/3 | 0 | 2 / 77 | yes (3 options, 4 components) |
+| tiendas | 3/3 | 0 | 15 / 66 | yes (4 options, 4 components) |
+| packaging | 3/3 | 0 | 3 / 35 | yes (3 options, risk scaled by volume share) |
+
+- **The s2 packaging error does not recur.** Stoppage risk is charged to every option by its share of
+  volume on Supplier B (100%: €4.0M, 70/30: €2.8M, status quo: €1.2M over three years). With that
+  basis, full consolidation with a continuity safeguard comes out ahead. This is the same answer as
+  the run the expert preferred, and the break-even risk (2.4× history) is made a gate.
+- **The agents reported these tool problems, now fixed with tests:**
+  - "0,048" and "€2.868M" were read as thousands;
+  - "7.8 EUR M" and "EUR 7.8M" were not read as money;
+  - "23–24%" did not ground;
+  - a bare "10.4" did not match €10.4M;
+  - formulas could not pick a fact's second value (now `F0062[1]`);
+  - "/año" in a header became a YEARS unit;
+  - "plantilla" and "plantearía" set a "plan" basis, while "propose" did not;
+  - a malformed conflicts file crashed the check;
+  - SLIDE_MERGE grouped the title and summary slides.
+- **Still open:**
+  - prose-vs-prose conflicts without a period are not detected (closure cost 1.5 vs 3.2 M€);
+  - no unit conversion in formulas;
+  - numbers written in words ("two stoppages") are not extracted.

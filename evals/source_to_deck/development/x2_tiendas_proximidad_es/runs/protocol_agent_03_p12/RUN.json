@@ -1,0 +1,10 @@
+{
+  "status": "development run — NOT evidence (cases already used in s2)",
+  "date": "2026-10-01",
+  "experiment": "02b: protocol 1.2 rerun",
+  "model": "Claude (independent subagent; exact model per session metadata)",
+  "isolation": "instructed; not enforced",
+  "engine_commit": "f4ee7f9 (frozen copy of src at 704886d used by the agents)",
+  "system": "B — protocol agent, docs/REASONING_PROTOCOL.md 1.2",
+  "reasoning_protocol": "1.2"
+}

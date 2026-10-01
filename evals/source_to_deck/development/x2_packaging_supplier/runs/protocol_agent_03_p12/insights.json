@@ -1,0 +1,125 @@
+{
+  "insights": [
+    {
+      "id": "I1",
+      "statement": "The €3.0M a year claim is 12% of the full €25M spend, but €1.1M of that spend is rush freight that no unit-price cut touches, so the gross price lever is €2.87M a year",
+      "facts": [
+        "F0055",
+        "F0056",
+        "F0059",
+        "F0054",
+        "C0003",
+        "C0004"
+      ],
+      "hypotheses": [
+        "H2"
+      ],
+      "refutes": [
+        "H1"
+      ],
+      "materiality": "medium",
+      "decision_relevance": "Sets the correct gross base for every option"
+    },
+    {
+      "id": "I2",
+      "statement": "Rush freight is our problem, not the supplier's: €0.65M of the €1.1M falls in five months flagged as our forecast errors, so it survives any supplier choice",
+      "facts": [
+        "C0001",
+        "C0020",
+        "F0055"
+      ],
+      "hypotheses": [
+        "H2"
+      ],
+      "materiality": "low",
+      "decision_relevance": "Separate forecasting lever outside this decision; not counted in any option"
+    },
+    {
+      "id": "I3",
+      "statement": "If Supplier B's last two stoppages recur, they cost €4.0M over 2026-2028 at full exposure, 46% of the €8.6M three-year gross saving of full consolidation",
+      "facts": [
+        "F0060",
+        "F0061",
+        "F0062",
+        "C0008",
+        "C0006",
+        "C0021"
+      ],
+      "hypotheses": [
+        "H3"
+      ],
+      "materiality": "high",
+      "decision_relevance": "The risk is the largest cost in the case and must be charged to every option",
+      "caveat": "Two-event history (A001); linear exposure (A002)"
+    },
+    {
+      "id": "I4",
+      "statement": "Costed on the same three components (price, switching, stoppage risk by Supplier B share), full consolidation nets €3.8M over three years, against €2.08M for a 70/30 split and a net cost of €1.2M for the status quo",
+      "facts": [
+        "C0011",
+        "C0012",
+        "C0010",
+        "C0013",
+        "C0006",
+        "C0007",
+        "C0008",
+        "C0009",
+        "F0065",
+        "F0057",
+        "F0051",
+        "F0049"
+      ],
+      "hypotheses": [
+        "H3"
+      ],
+      "refutes": [
+        "H4",
+        "H5"
+      ],
+      "materiality": "high",
+      "decision_relevance": "Ranks the options: consolidation still wins on expected value"
+    },
+    {
+      "id": "I5",
+      "statement": "Full consolidation stays ahead of a 70/30 split unless three-year stoppage cost exceeds €9.76M, 2.4x history; but it leaves no second source, and the incumbent can cover 60% of volume only at two weeks' notice",
+      "facts": [
+        "C0015",
+        "C0016",
+        "C0008",
+        "F0063",
+        "F0057",
+        "F0051",
+        "F0049"
+      ],
+      "hypotheses": [
+        "H3"
+      ],
+      "refutes": [
+        "H4"
+      ],
+      "materiality": "medium",
+      "decision_relevance": "The choice is robust on expected value; the residual exposure is a tail risk to contract away",
+      "caveat": "H6 unresolved: whether a standby agreement with the incumbent is obtainable"
+    },
+    {
+      "id": "I6",
+      "statement": "The real saving of full consolidation is €1.27M a year (€3.8M over three years), not €3.0M a year (€9.0M): €5.2M of the claimed saving will not materialise",
+      "facts": [
+        "C0011",
+        "C0017",
+        "C0018",
+        "C0019",
+        "F0059"
+      ],
+      "hypotheses": [
+        "H2",
+        "H3"
+      ],
+      "refutes": [
+        "H1"
+      ],
+      "materiality": "high",
+      "decision_relevance": "The budget must book 3.804 EUR M over 2026-2028, not 9.0"
+    }
+  ]
+}

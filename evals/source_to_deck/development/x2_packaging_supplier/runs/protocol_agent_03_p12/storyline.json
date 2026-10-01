@@ -1,0 +1,284 @@
+{
+  "framework": "SCR",
+  "framework_rationale": "The board faces a yes/no on a proposal whose number is wrong: Situation (claim), Complication (overstated base and unpriced single-plant risk), Resolution (options compared on one basis, then a gated approval). Problem comes before solution.",
+  "candidates": [
+    {
+      "text": "Approve full consolidation on Supplier B, but at an expected saving of about €3.8M over 2026-2028 (€1.27M a year), not the €9.0M claimed, and sign only once a continuity safeguard covers its single plant",
+      "scores": {
+        "answers_question": 2,
+        "supported": 2,
+        "specific": 2,
+        "decision_oriented": 2,
+        "non_trivial": 2,
+        "covers_storyline": 2
+      },
+      "insights": [
+        "I4",
+        "I6",
+        "I5"
+      ]
+    },
+    {
+      "text": "Reject the proposal: the single-plant risk outweighs a saving far smaller than claimed; keep a 70/30 split",
+      "scores": {
+        "answers_question": 2,
+        "supported": 0,
+        "specific": 1,
+        "decision_oriented": 2,
+        "non_trivial": 1,
+        "covers_storyline": 1
+      },
+      "insights": [
+        "I3",
+        "I5"
+      ]
+    },
+    {
+      "text": "Approve the proposal as submitted: €3.0M a year from a 12% price reduction",
+      "scores": {
+        "answers_question": 1,
+        "supported": 0,
+        "specific": 1,
+        "decision_oriented": 2,
+        "non_trivial": 0,
+        "covers_storyline": 0
+      },
+      "insights": [
+        "I1"
+      ]
+    }
+  ],
+  "governing_thought": "Approve full consolidation on Supplier B, but at an expected saving of about €3.8M over 2026-2028 (€1.27M a year), not the €9.0M claimed, and sign only once a continuity safeguard covers its single plant",
+  "key_line": [
+    {
+      "id": "K1",
+      "role": "problem",
+      "message": "The €3.0M a year claim is overstated: the 12% applies to €23.9M, not €25M, and the case omits switching cost and stoppage risk",
+      "insights": [
+        "I1",
+        "I2",
+        "I6"
+      ]
+    },
+    {
+      "id": "K2",
+      "role": "risk",
+      "message": "Supplier B's single plant is the largest cost in the case: a repeat of its two stoppages costs €4.0M over three years at full exposure, and it hits every option by its Supplier B share",
+      "insights": [
+        "I3"
+      ]
+    },
+    {
+      "id": "K3",
+      "role": "options",
+      "message": "On the same basis full consolidation still wins: €3.8M net over three years against €2.08M for 70/30 and a €1.2M net cost for the status quo, and it stays ahead unless stoppages cost 2.4x history",
+      "insights": [
+        "I4",
+        "I5"
+      ]
+    },
+    {
+      "id": "K4",
+      "role": "solution",
+      "message": "Approve full consolidation with the budget restated to €3.8M and the three-year commitment gated on a continuity safeguard",
+      "insights": [
+        "I6",
+        "I5"
+      ]
+    }
+  ],
+  "decision": {
+    "target": {
+      "value": 9.0,
+      "unit": "EUR_M",
+      "facts": [
+        "C0017"
+      ],
+      "note": "Saving claimed by procurement over 2026-2028 (3.0 EUR M a year)"
+    },
+    "levers": [
+      {
+        "id": "L1",
+        "statement": "12% price reduction on the 23.9 EUR M spend excluding rush freight, three years",
+        "impact": {
+          "value": 8.6,
+          "unit": "EUR_M"
+        },
+        "facts": [
+          "C0006"
+        ],
+        "bound": "point",
+        "validate": "Confirm in the contract that the 12% applies to all SKUs at 2025 volumes (A004)"
+      },
+      {
+        "id": "L2",
+        "statement": "One-off switching cost (tooling and line qualification) for a full move",
+        "impact": {
+          "value": -0.8,
+          "unit": "EUR_M"
+        },
+        "facts": [
+          "F0065"
+        ],
+        "bound": "point",
+        "validate": "Tooling quote and qualification plan before signing"
+      },
+      {
+        "id": "L3",
+        "statement": "Expected Supplier B stoppage cost at full exposure if the last three years recur",
+        "impact": {
+          "value": -4.0,
+          "unit": "EUR_M"
+        },
+        "facts": [
+          "C0008"
+        ],
+        "bound": "range",
+        "validate": "Plant risk audit of Supplier B and force-majeure clause before signing (A001, A002); break-even is €9.76M over three years"
+      }
+    ],
+    "identified": {
+      "value": 3.8,
+      "unit": "EUR_M"
+    },
+    "gap": {
+      "value": 5.2,
+      "unit": "EUR_M",
+      "how_closed": "Not closable: it is an overstatement, not a shortfall. About €0.4M comes from applying the 12% to rush freight for three years, €0.8M from omitted switching cost and €4.0M from unpriced stoppage risk. The budget is restated to €3.8M; rush freight (€1.1M a year, our own forecast errors) is a separate lever outside this decision.",
+      "facts": [
+        "C0018",
+        "C0023",
+        "F0065",
+        "C0008"
+      ]
+    },
+    "current_plan": {
+      "statement": "Procurement proposal: move 100% of packaging to Supplier B from January 2026, saving 3.0 EUR M a year",
+      "verdict": "partly",
+      "facts": [
+        "F0058",
+        "F0059",
+        "C0011",
+        "C0018"
+      ],
+      "cost_if_kept": {
+        "value": 5.2,
+        "unit": "EUR_M"
+      },
+      "note": "The direction holds (best option on expected value); the number does not: booking €9.0M leaves a €5.2M hole over three years"
+    },
+    "options": [
+      {
+        "id": "O1",
+        "statement": "100% Supplier B (proposal), three-year commitment",
+        "cost": {
+          "value": -3.8,
+          "unit": "EUR_M"
+        },
+        "facts": [
+          "C0006",
+          "F0065",
+          "C0008",
+          "C0011"
+        ],
+        "chosen": true,
+        "cost_components": {
+          "price_saving": -8.6,
+          "switching": 0.8,
+          "stoppage_risk": 4.0
+        }
+      },
+      {
+        "id": "O2",
+        "statement": "70% Supplier B / 30% incumbent (9% from Supplier B, 4% from incumbent)",
+        "cost": {
+          "value": -2.08,
+          "unit": "EUR_M"
+        },
+        "facts": [
+          "C0007",
+          "F0065",
+          "C0009",
+          "C0012"
+        ],
+        "chosen": false,
+        "cost_components": {
+          "price_saving": -5.38,
+          "switching": 0.5,
+          "stoppage_risk": 2.8
+        }
+      },
+      {
+        "id": "O3",
+        "statement": "Status quo: 30% Supplier B / 70% incumbent",
+        "cost": {
+          "value": 1.2,
+          "unit": "EUR_M"
+        },
+        "facts": [
+          "F0050",
+          "C0010",
+          "C0013"
+        ],
+        "chosen": false,
+        "cost_components": {
+          "price_saving": 0,
+          "switching": 0,
+          "stoppage_risk": 1.2
+        }
+      }
+    ],
+    "options_note": "Cost = three-year net cost over 2026-2028 (negative = net saving) = price_saving + switching + stoppage_risk, the same three components for every option. Stoppage risk is charged to every option in proportion to its Supplier B share (A002). Rush freight (€1.1M a year) is identical in all options and excluded.",
+    "asks": [
+      {
+        "statement": "Approve moving all packaging volume to Supplier B from 2026, subject to the continuity gate",
+        "type": "approve",
+        "owner": "COO and CFO"
+      },
+      {
+        "statement": "Restate the 2026-2028 budgeted saving from €9.0M to €3.8M (€1.27M a year)",
+        "type": "approve",
+        "owner": "CFO"
+      },
+      {
+        "statement": "Reject the €3.0M a year figure as the basis of the business case",
+        "type": "reject",
+        "owner": "CFO"
+      },
+      {
+        "statement": "Negotiate a continuity safeguard (force-majeure compensation or safety stock at Supplier B, standby agreement with the incumbent) before signing the three-year commitment",
+        "type": "commission",
+        "owner": "Chief procurement officer"
+      }
+    ],
+    "gates": [
+      {
+        "statement": "Continuity gate before signing the three-year commitment",
+        "criterion": "A contractual safeguard covers a stoppage of at least 14 days; if none is obtainable, fall back to 70/30 (O2), which keeps the incumbent's two plants",
+        "when": "Before contract signature, Q4 2026"
+      },
+      {
+        "statement": "Risk re-test",
+        "criterion": "If the Supplier B plant audit points to three-year stoppage exposure above €9.76M, switch to 70/30",
+        "when": "With the plant audit, before signature"
+      }
+    ],
+    "kpis": [
+      {
+        "name": "Realised price saving",
+        "target": "€2.87M a year",
+        "cadence": "quarterly"
+      },
+      {
+        "name": "Supplier B stoppage days not covered",
+        "target": "zero",
+        "cadence": "monthly"
+      },
+      {
+        "name": "Rush freight",
+        "target": "below the 2025 level of €1.1M",
+        "cadence": "monthly"
+      }
+    ]
+  }
+}

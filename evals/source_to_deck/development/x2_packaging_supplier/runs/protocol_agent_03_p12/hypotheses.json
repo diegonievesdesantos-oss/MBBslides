@@ -1,0 +1,102 @@
+{
+  "hypotheses": [
+    {
+      "id": "H1",
+      "statement": "Management view: moving 100% of packaging to Supplier B saves 3.0 EUR M a year",
+      "status": "rejected",
+      "supporting_facts": [
+        "F0058",
+        "F0059"
+      ],
+      "contradicting_facts": [
+        "F0055",
+        "F0056",
+        "C0003",
+        "C0008",
+        "F0065",
+        "C0019"
+      ],
+      "confidence": 0.85,
+      "implication": "The business case must be restated before any budget books the saving"
+    },
+    {
+      "id": "H2",
+      "statement": "The proposal applies the 12% to the full 25 EUR M, including 1.1 EUR M of rush freight that no unit-price reduction touches",
+      "status": "supported",
+      "supporting_facts": [
+        "F0055",
+        "F0056",
+        "F0057",
+        "C0001",
+        "C0003",
+        "C0004"
+      ],
+      "contradicting_facts": [],
+      "confidence": 0.9,
+      "implication": "The gross price lever is 2.868 EUR M a year, not 3.0"
+    },
+    {
+      "id": "H3",
+      "statement": "Supplier B's single-plant risk erodes a material part of the saving once volume is concentrated",
+      "status": "supported",
+      "supporting_facts": [
+        "F0060",
+        "F0061",
+        "F0062",
+        "C0008",
+        "C0021"
+      ],
+      "contradicting_facts": [],
+      "confidence": 0.7,
+      "implication": "Expected stoppage cost must be charged to every option in proportion to its Supplier B share"
+    },
+    {
+      "id": "H4",
+      "statement": "A 70/30 split (Supplier B / incumbent) delivers more risk-adjusted value than 100% Supplier B",
+      "status": "rejected",
+      "supporting_facts": [
+        "F0063",
+        "F0064",
+        "C0009"
+      ],
+      "contradicting_facts": [
+        "C0011",
+        "C0012",
+        "C0014",
+        "C0015",
+        "C0016"
+      ],
+      "confidence": 0.7,
+      "implication": "70/30 is a resilience premium of about 1.7 EUR M over three years, worth it only if stoppage cost runs at more than 2.4x history"
+    },
+    {
+      "id": "H5",
+      "statement": "Keeping the status quo (30% Supplier B) is the safe, no-cost option",
+      "status": "rejected",
+      "supporting_facts": [
+        "F0057"
+      ],
+      "contradicting_facts": [
+        "F0050",
+        "C0010",
+        "C0013",
+        "C0022"
+      ],
+      "confidence": 0.8,
+      "implication": "The status quo forgoes all price saving and still carries 1.2 EUR M of expected stoppage cost"
+    },
+    {
+      "id": "H6",
+      "statement": "The incumbent can absorb a Supplier B stoppage, so concentration risk is mitigable",
+      "status": "unresolved",
+      "supporting_facts": [
+        "F0063"
+      ],
+      "contradicting_facts": [
+        "F0060"
+      ],
+      "confidence": 0.4,
+      "implication": "Cover needs two weeks' notice while past stoppages lasted 9-14 days, and under 100% Supplier B the relationship would lapse: a standby agreement is a gate, not a given"
+    }
+  ]
+}

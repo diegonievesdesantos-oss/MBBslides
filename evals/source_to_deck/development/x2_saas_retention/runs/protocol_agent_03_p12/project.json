@@ -1,0 +1,30 @@
+{
+  "protocol": "1.2",
+  "audience": [
+    "CEO",
+    "CFO",
+    "Board"
+  ],
+  "decision": "Approve the 2026 growth investment (the CRO proposes hiring 30 account executives)",
+  "question": "Why did ARR growth slow from 25% to 9%, and where should the 2026 growth budget go?",
+  "horizon": "2026",
+  "scope": [
+    "Mid-market SaaS, Europe"
+  ],
+  "language": "en",
+  "deck_type": "board_presentation",
+  "max_slides": 9,
+  "constraints": [
+    "Only the four sources supplied; no market data beyond the board pack",
+    "9 slides maximum"
+  ],
+  "assumptions": [
+    "Growth target for 2026 is not stated: working target = recover the 2025 fall in net new ARR (back to the 2024 level)",
+    "2024 first-year churn (12%) is measured on the same ARR basis as the 2025 cohort rate (26%)"
+  ],
+  "inferred": [
+    "constraints",
+    "assumptions",
+    "working target (recover 2024 net new ARR)"
+  ]
+}

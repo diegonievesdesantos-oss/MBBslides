@@ -167,7 +167,16 @@ def _safe_eval(formula: str, env: dict) -> float:
         if isinstance(n, ast.Name):
             if n.id not in env:
                 raise KeyError(n.id)
-            return env[n.id]
+            v = env[n.id]
+            return v[0] if isinstance(v, list) else v
+        if isinstance(n, ast.Subscript) and isinstance(n.value, ast.Name):  # F0062[1]: the fact's second value (0-based)
+            if n.value.id not in env:
+                raise KeyError(n.value.id)
+            i = n.slice.value if isinstance(n.slice, ast.Constant) else None
+            v = env[n.value.id]
+            if not isinstance(i, int) or not isinstance(v, list) or not 0 <= i < len(v):
+                raise ValueError(f"{n.value.id}[{i}]: no such value")
+            return v[i]
         if isinstance(n, ast.Call) and isinstance(n.func, ast.Name) and n.func.id in ("sum", "abs") and not n.keywords:
             vals = [ev(a) for a in n.args]
             return sum(vals) if n.func.id == "sum" else abs(vals[0])
@@ -183,8 +192,8 @@ def check_computed(cf: dict | None, facts: dict) -> tuple[list[dict], dict]:
     out, good = [], {}
     for f in (cf or {}).get("facts") or []:
         fid = f.get("id", "?")
-        env = {k: float(v["values"][0]["value"]) for k, v in facts.items() if v.get("values")}
-        env.update({k: float(v["values"][0]["value"]) for k, v in good.items()})
+        env = {k: [float(x["value"]) for x in v["values"]] for k, v in facts.items() if v.get("values")}
+        env.update({k: [float(x["value"]) for x in v["values"]] for k, v in good.items()})
         try:
             res = _safe_eval(f["formula"], env)
         except KeyError as e:
@@ -199,7 +208,7 @@ def check_computed(cf: dict | None, facts: dict) -> tuple[list[dict], dict]:
             continue
         import re as _re
 
-        deps = sorted(set(_re.findall(r"\b(?:[FC]\d{4}|A\d{3})\b", f["formula"])))
+        deps = sorted(set(_re.findall(r"\b(?:[FC]\d{4}|A\d{3})\b", f["formula"])))  # F0062[1] cites F0062
         rests = [d for d in deps if (facts.get(d) or good.get(d) or {}).get("fact_type") == "assumption" or (good.get(d) or {}).get("rests_on_assumptions")]
         good[fid] = {**f, "fact_type": "computed", "derived_from": deps, "source": {"file": "computed", "loc": f["formula"]}, "confidence": 1.0,
                      **({"rests_on_assumptions": rests} if rests else {})}
@@ -391,6 +400,8 @@ def check_deck_plan(dp: dict | None, storyline: dict | None, insights: dict, fac
     for s in core:
         by_kl.setdefault(s.get("key_line"), []).append(s)
     for kid, ss in by_kl.items():
+        if kid is None:  # title, executive summary, next steps: not argument slides
+            continue
         for s in ss[1:] if len(ss) > 1 else []:
             if not s.get("why_not_merge"):
                 out.append(_issue("warning", "SLIDE_MERGE", "deck_plan.json", s.get("id"), f"{len(ss)} core slides on {kid}: say why they are not one"))
@@ -519,7 +530,7 @@ def factcheck_deck(deck: dict | None, facts: dict) -> list[dict]:
                 if val is None:
                     continue
             if kind == "text":
-                for g in ground_numbers(_deck_text(val), cited):
+                for g in ground_numbers(val, cited):
                     if g["status"] == "unsupported":
                         out.append(_issue("error", "UNSUPPORTED_NUMBER", "deck.json", f"{sid}:{path}", f"{g['number']} not grounded in the slide's cited facts", hard=True))
             elif not _value_grounded(val, cited):
@@ -541,8 +552,14 @@ def check_conflicts(work: Path, fm: dict | None, used: set[str]) -> list[dict]:
         return []
     found = detect_conflicts(fm.get("facts") or [])
     recorded = _load(work, "fact_conflicts.json") or {}
-    res = {tuple(sorted(x["fact"] for x in c["facts"])): c.get("resolution") for c in recorded.get("conflicts") or []}
-    out = []
+    out, res = [], {}
+    for c in recorded.get("conflicts") or []:
+        ids = [x.get("fact") if isinstance(x, dict) else x for x in c.get("facts") or []] if isinstance(c, dict) else []
+        if not ids or not all(isinstance(x, str) for x in ids):
+            out.append(_issue("error", "CONFLICT_FORMAT", "fact_conflicts.json", None,
+                              'each conflict is {"facts": [{"fact": "F0012"}, …], "resolution": "…"}'))
+            continue
+        res[tuple(sorted(ids))] = c.get("resolution")
     for c in found:
         key = tuple(sorted(x["fact"] for x in c["facts"]))
         if res.get(key):

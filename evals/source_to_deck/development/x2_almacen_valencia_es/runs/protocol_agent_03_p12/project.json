@@ -1,0 +1,15 @@
+{
+  "reasoning_protocol": "1.2",
+  "project": "Red logística: cierre del almacén de Valencia",
+  "audience": ["Consejero delegado", "Director financiero", "Director de operaciones"],
+  "decision": "Aprobar o rechazar la propuesta de Operaciones de cerrar el almacén de Valencia en 2026",
+  "question": "¿Debemos cerrar el almacén de Valencia y servir Levante desde Madrid? Si no, ¿qué hacemos?",
+  "horizon": "2026-2027",
+  "scope": ["Red de almacenes España: Madrid, Valencia, Sevilla"],
+  "constraints": ["El alquiler de Valencia vence en diciembre de 2026 (F0039): la decisión debe tomarse antes", "Sin datos de ingresos por pedido ni de abandono real de clientes: solo encuesta de intención"],
+  "assumptions": ["A001: ingresos de Levante proporcionales a sus pedidos", "A002: costes fijos, transporte y turno de 2025 se mantienen en 2026-2027", "A003: el umbral de horas extra del 85% se aplica a la capacidad ampliada de Madrid", "A004: la intención de cambio de proveedor de la encuesta es un techo de pérdida"],
+  "language": "es",
+  "deck_type": "board_presentation",
+  "max_slides": 9,
+  "inferred": ["constraints", "assumptions"]
+}

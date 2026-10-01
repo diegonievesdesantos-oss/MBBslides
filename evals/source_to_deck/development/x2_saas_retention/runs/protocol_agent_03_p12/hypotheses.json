@@ -1,0 +1,91 @@
+{
+  "hypotheses": [
+    {
+      "id": "H1",
+      "statement": "Management view (CRO): growth slowed because a new competitor is undercutting us on price and taking new deals",
+      "status": "rejected",
+      "supporting_facts": [
+        "F0044",
+        "F0046"
+      ],
+      "contradicting_facts": [
+        "F0012",
+        "F0033",
+        "F0002",
+        "F0007",
+        "C0015",
+        "C0016",
+        "F0054"
+      ],
+      "confidence": 0.85,
+      "implication": "New-business losses to price do not explain the slowdown: win rate held at 23-24% and new ARR rose; only 17% of churned customers left for a competitor and 14% cite price. A price response or more sales capacity does not address the cause."
+    },
+    {
+      "id": "H2",
+      "statement": "Growth slowed because churn rose, concentrated in first-year customers after the February 2025 onboarding cut",
+      "status": "supported",
+      "supporting_facts": [
+        "F0004",
+        "F0009",
+        "C0004",
+        "F0037",
+        "F0040",
+        "F0053",
+        "C0007",
+        "C0010",
+        "F0051",
+        "F0052",
+        "F0054"
+      ],
+      "contradicting_facts": [],
+      "confidence": 0.8,
+      "implication": "Retention, especially onboarding of new customers, is the first lever; the causal link to the onboarding cut rests on timing and exit interviews, not a controlled test."
+    },
+    {
+      "id": "H3",
+      "statement": "Growth slowed because sales capacity or pipeline was insufficient",
+      "status": "rejected",
+      "supporting_facts": [],
+      "contradicting_facts": [
+        "C0013",
+        "C0014",
+        "F0012",
+        "F0033",
+        "C0006",
+        "C0015",
+        "C0016"
+      ],
+      "confidence": 0.75,
+      "implication": "Adding account executives treats a constraint the data does not show; pipeline grew and deals won rose while new ARR was flat."
+    },
+    {
+      "id": "H4",
+      "statement": "Expansion ARR fell for the same reason as churn: customers who never fully implement the product do not expand",
+      "status": "unresolved",
+      "supporting_facts": [
+        "F0003",
+        "F0008",
+        "F0054"
+      ],
+      "contradicting_facts": [],
+      "confidence": 0.4,
+      "implication": "If true, fixing onboarding also recovers part of the 1.3 EUR M expansion decline; no account-level expansion data is available to test it."
+    },
+    {
+      "id": "H5",
+      "statement": "Hiring 30 account executives in Q1 2026 will add 9 EUR M of new ARR in 2026, as the CRO states",
+      "status": "rejected",
+      "supporting_facts": [
+        "F0048"
+      ],
+      "contradicting_facts": [
+        "F0055",
+        "C0017",
+        "C0018",
+        "A001"
+      ],
+      "confidence": 0.8,
+      "implication": "9 EUR M is the full-productivity run-rate of 30 AEs at 300 EUR k each; with a 9-month ramp the 2026 contribution is lower and depends on ramp shape and pipeline."
+    }
+  ]
+}

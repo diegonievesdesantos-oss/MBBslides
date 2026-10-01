@@ -1,0 +1,56 @@
+{
+  "assumptions": [
+    {
+      "id": "A001",
+      "statement": "Supplier B's force-majeure stoppages over 2026-2028 repeat the last three years: two events, of 9 and 14 days",
+      "values": [
+        {
+          "value": 2,
+          "unit": "COUNT"
+        }
+      ],
+      "rationale": "Only history available (supply risk review); a two-event sample is small, so the break-even C0015 is shown",
+      "owner": "Chief procurement officer (validate with Supplier B's plant risk audit before signing)"
+    },
+    {
+      "id": "A002",
+      "statement": "Stoppage cost scales with the share of volume on Supplier B; no incumbent cover is credited because cover needs two weeks' notice and stoppages last 9-14 days",
+      "values": [
+        {
+          "value": 70,
+          "unit": "PCT"
+        },
+        {
+          "value": 30,
+          "unit": "PCT"
+        }
+      ],
+      "rationale": "Applies the same risk to every option in proportion to its Supplier B exposure (protocol 1.2)",
+      "owner": "COO"
+    },
+    {
+      "id": "A003",
+      "statement": "The 1.1 EUR M rush freight persists in every option and no unit-price reduction applies to it",
+      "values": [
+        {
+          "value": 1.1,
+          "unit": "EUR_M"
+        }
+      ],
+      "rationale": "Finance note; the freight comes from our own forecast errors, not supplier pricing",
+      "owner": "CFO"
+    },
+    {
+      "id": "A004",
+      "statement": "The 2025 spend base excluding rush freight (23.9 EUR M) holds flat over 2026-2028",
+      "values": [
+        {
+          "value": 23.9,
+          "unit": "EUR_M"
+        }
+      ],
+      "rationale": "No volume or price forecast in the sources",
+      "owner": "CFO"
+    }
+  ]
+}

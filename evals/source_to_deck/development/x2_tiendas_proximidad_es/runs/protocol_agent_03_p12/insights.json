@@ -1,0 +1,128 @@
+{
+ "insights": [
+  {
+   "id": "I1",
+   "statement": "La mejora prometida de 5,2 M€ no existe: de la pérdida de 5.196 k€, 3.600 k€ (69,3%) es coste central asignado que no desaparece al cerrar; cerrar las 40 mejora el EBITDA solo 1.596 k€ al año",
+   "facts": [
+    "F0215",
+    "F0208",
+    "F0209",
+    "F0217",
+    "C0001",
+    "C0017",
+    "C0032",
+    "F0207"
+   ],
+   "hypotheses": [],
+   "refutes": [
+    "H1"
+   ],
+   "materiality": "high",
+   "decision_relevance": "Invalida la base económica de la propuesta de cierre total"
+  },
+  {
+   "id": "I2",
+   "statement": "El grupo A pierde 1.920 k€ antes de coste central porque paga un alquiler del 16% de sus ventas frente al 9% de la red (7 pp más); el problema es el contrato, no el formato",
+   "facts": [
+    "C0002",
+    "F0210",
+    "C0018"
+   ],
+   "hypotheses": [
+    "H2"
+   ],
+   "materiality": "high",
+   "decision_relevance": "Toda la pérdida evitable está en las 22 tiendas A",
+   "caveat": "El excel mide el alquiler sin gastos comunes (14,5%); el 16% del informe inmobiliario los incluye: misma realidad, distinta base"
+  },
+  {
+   "id": "I3",
+   "statement": "El grupo B ya aporta 324 k€ antes de coste central (10 k€ por tienda de 2023, 28 k€ por tienda de 2024) y sus ventas por m2 crecen un 11% al año: cerrarlo resta EBITDA y cuesta 4.500 k€",
+   "facts": [
+    "C0003",
+    "C0015",
+    "C0016",
+    "F0213",
+    "C0010",
+    "F0204"
+   ],
+   "hypotheses": [
+    "H3"
+   ],
+   "materiality": "high",
+   "decision_relevance": "Las 18 tiendas B deben quedar fuera de cualquier cierre",
+   "caveat": "La red sitúa el equilibrio en el cuarto año; no hay dato de margen para cuantificar la rampa"
+  },
+  {
+   "id": "I4",
+   "statement": "Las 15 tiendas A con ruptura en 2026 pierden 1.500 k€ al año y cerrarlas cuesta 1.500 k€: se recupera en 1 año",
+   "facts": [
+    "C0006",
+    "C0008",
+    "C0013",
+    "C0031",
+    "A001",
+    "F0211"
+   ],
+   "hypotheses": [
+    "H6"
+   ],
+   "materiality": "high",
+   "decision_relevance": "Cierre aprobable hoy, con ventana que caduca en 2026"
+  },
+  {
+   "id": "I5",
+   "statement": "Las 7 tiendas A sin ruptura pierden 420 k€ al año y cerrarlas costaría 1.750 k€ (4,2 años de recuperación); los propietarios de 5 aceptan negociar rebaja, así que negociar va antes que cerrar",
+   "facts": [
+    "C0007",
+    "C0009",
+    "C0014"
+   ],
+   "hypotheses": [
+    "H5"
+   ],
+   "materiality": "medium",
+   "decision_relevance": "Define la segunda fase y su criterio de cierre"
+  },
+  {
+   "id": "I6",
+   "statement": "La propuesta sobrestima el coste de cierre total: 10 M€ frente a 7.750 k€ reales, al aplicar 250 k€ a todas las tiendas cuando 15 contratos tienen ruptura en 2026 a 100 k€",
+   "facts": [
+    "F0216",
+    "C0011",
+    "C0008",
+    "C0009",
+    "C0010",
+    "F0211",
+    "A001"
+   ],
+   "hypotheses": [],
+   "refutes": [
+    "H4"
+   ],
+   "materiality": "medium",
+   "decision_relevance": "Corrige la base de costes con la que se comparan las opciones"
+  },
+  {
+   "id": "I7",
+   "statement": "Con la misma base 2026-2027 (cierres, pérdida directa mantenida, contribución de B perdida y 7.200 k€ de coste central que permanece en todas), el cierre selectivo cuesta 9.540 k€ frente a 15.598 k€ del cierre total, 11.040 k€ de no hacer nada y 10.450 k€ de cerrar todo A",
+   "facts": [
+    "C0023",
+    "C0024",
+    "C0025",
+    "C0026",
+    "C0022",
+    "C0030"
+   ],
+   "hypotheses": [
+    "H6"
+   ],
+   "materiality": "high",
+   "decision_relevance": "Elige la opción",
+   "caveat": "Cerrar las 40 da 96 k€ más de EBITDA anual que el cierre selectivo, a cambio de 6.250 k€ más de coste de cierre",
+   "contradicting_facts": [
+    "C0028"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,16 @@
+{
+  "assumptions": [
+    {
+      "id": "A001",
+      "statement": "Share of a full year of productivity an AE hired at the start of Q1 2026 delivers in 2026: linear ramp to full productivity over 9 months (average 50%) then 3 months at full productivity = 7.5 of 12 months",
+      "values": [
+        {
+          "value": 0.625,
+          "unit": ""
+        }
+      ],
+      "rationale": "Source states full productivity (300 EUR k/yr) is reached after 9 months; the ramp shape is not given, linear is a neutral midpoint (0% during ramp would give 0.25, full from day one 1.0). Upper end also requires all 30 hired on 1 January and enough pipeline.",
+      "owner": "CRO with CFO, validate on the 2025 AE hiring cohort"
+    }
+  ]
+}

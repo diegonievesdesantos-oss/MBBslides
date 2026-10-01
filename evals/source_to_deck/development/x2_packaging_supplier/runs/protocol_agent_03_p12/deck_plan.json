@@ -1,0 +1,173 @@
+{
+  "slides": [
+    {
+      "id": "S1",
+      "priority": "core",
+      "role": "title",
+      "purpose": "Frame the decision",
+      "decision_role": "context",
+      "headline": "Packaging supplier consolidation: approve Supplier B, at the real saving",
+      "insights": [],
+      "facts": [],
+      "message_type": "title",
+      "archetype": "title",
+      "reason_to_exist": "Board deck opener"
+    },
+    {
+      "id": "S2",
+      "priority": "core",
+      "role": "exec_summary",
+      "purpose": "Answer first",
+      "decision_role": "recommendation",
+      "headline": "Approve full consolidation on Supplier B at €3.8M over 2026-2028, not €9.0M, gated on a continuity safeguard",
+      "insights": [
+        "I6",
+        "I4",
+        "I5"
+      ],
+      "facts": [
+        "C0011",
+        "C0017"
+      ],
+      "message_type": "recommendation",
+      "archetype": "statement",
+      "reason_to_exist": "The board reads the answer and the ask on one page",
+      "why_not_merge": "Executive summary: answer and asks up front; S7 carries the full gates and KPIs"
+    },
+    {
+      "id": "S3",
+      "priority": "core",
+      "key_line": "K1",
+      "purpose": "Show why the claimed number is wrong",
+      "decision_role": "problem",
+      "headline": "The €3.0M a year claim falls to €1.27M once rush freight, switching and stoppage risk are counted",
+      "insights": [
+        "I1",
+        "I6"
+      ],
+      "facts": [
+        "F0059",
+        "C0003",
+        "C0019",
+        "F0055",
+        "C0004",
+        "F0065",
+        "C0008"
+      ],
+      "message_type": "change",
+      "archetype": "waterfall",
+      "reason_to_exist": "Bridges the claimed to the real saving; the core of 'what is the real saving'"
+    },
+    {
+      "id": "S4",
+      "priority": "core",
+      "key_line": "K2",
+      "purpose": "Quantify the single-plant risk",
+      "decision_role": "risk",
+      "headline": "Supplier B's single plant is the biggest cost: two repeat stoppages would take €4.0M, 46% of the three-year gross saving",
+      "insights": [
+        "I3"
+      ],
+      "facts": [
+        "C0008",
+        "C0006",
+        "C0021",
+        "F0061",
+        "F0062",
+        "F0060"
+      ],
+      "message_type": "risk",
+      "archetype": "bar",
+      "reason_to_exist": "The risk the proposal omits; it drives the option comparison"
+    },
+    {
+      "id": "S5",
+      "priority": "core",
+      "key_line": "K3",
+      "purpose": "Compare options on one basis",
+      "decision_role": "options",
+      "headline": "Full consolidation beats a 70/30 split by €1.73M over three years even after charging each option its share of stoppage risk",
+      "insights": [
+        "I4"
+      ],
+      "facts": [
+        "C0011",
+        "C0012",
+        "C0013",
+        "C0014",
+        "C0006",
+        "C0007",
+        "C0008",
+        "C0009",
+        "C0010",
+        "F0065",
+        "F0057",
+        "F0049"
+      ],
+      "message_type": "comparison",
+      "archetype": "table",
+      "reason_to_exist": "The decision itself: options costed on identical components"
+    },
+    {
+      "id": "S6",
+      "priority": "support",
+      "key_line": "K3",
+      "purpose": "Stress-test the ranking",
+      "decision_role": "options",
+      "headline": "The ranking flips only if stoppages cost more than €9.76M over three years, 2.4x history",
+      "insights": [
+        "I5"
+      ],
+      "facts": [
+        "C0015",
+        "C0016",
+        "C0008",
+        "F0063"
+      ],
+      "message_type": "sensitivity",
+      "archetype": "line",
+      "reason_to_exist": "Answers the red-team objection that a two-event history is thin",
+      "why_not_merge": "S5 shows expected value; S6 shows how far the risk assumption can move before the answer flips. Merged, the table would carry two messages"
+    },
+    {
+      "id": "S7",
+      "priority": "core",
+      "key_line": "K4",
+      "role": "next_steps",
+      "purpose": "Close with approvable asks",
+      "decision_role": "asks",
+      "headline": "Approve the move, restate the budget to €3.8M, and sign only once a continuity safeguard is in place",
+      "insights": [
+        "I6",
+        "I5"
+      ],
+      "facts": [
+        "C0011",
+        "C0017",
+        "C0015"
+      ],
+      "message_type": "recommendation",
+      "archetype": "statement",
+      "reason_to_exist": "Asks, gates and KPIs the board approves today"
+    },
+    {
+      "id": "S8",
+      "priority": "appendix",
+      "key_line": "K1",
+      "purpose": "Isolate the rush-freight lever",
+      "decision_role": "context",
+      "headline": "Appendix: €0.65M of the €1.1M rush freight comes from our own forecast errors, a separate lever",
+      "insights": [
+        "I2"
+      ],
+      "facts": [
+        "C0001",
+        "C0020",
+        "F0055"
+      ],
+      "message_type": "composition",
+      "archetype": "table",
+      "reason_to_exist": "Explains why rush freight is excluded from every option and points to a separate saving"
+    }
+  ]
+}

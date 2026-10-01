@@ -1,0 +1,37 @@
+{
+  "protocol": "1.2",
+  "conflicts": [
+    {
+      "id": "X001",
+      "type": "forecast_vs_actual",
+      "measure": [
+        "clientes"
+      ],
+      "period": "2025",
+      "facts": [
+        {
+          "fact": "F0041",
+          "value": 18.0,
+          "unit": "PCT",
+          "basis": "actual",
+          "source": "informe_finanzas_red.pdf"
+        },
+        {
+          "fact": "F0044",
+          "value": 40.0,
+          "unit": "PCT",
+          "basis": "plan",
+          "source": "informe_finanzas_red.pdf"
+        }
+      ],
+      "resolution": {
+        "status": "not_a_conflict",
+        "rationale": "No es la misma magnitud: F0041 es el peso de Levante en los ingresos (18%, real 2025) y F0044 es la intención de cambio de proveedor en la encuesta 2025 (40%). Ambos son datos reales de 2025; la base 'plan' es un error de extracción ('plantearía').",
+        "use": [
+          "F0041",
+          "F0044"
+        ]
+      }
+    }
+  ]
+}

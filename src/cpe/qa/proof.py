@@ -40,9 +40,10 @@ REL_TOL = 0.005
 
 def _num(raw: str) -> float | None:
     s = raw.replace("−", "-").replace("–", "-").strip()
-    s = s.replace(",", ".") if re.search(r"\d,\d{1,2}(?!\d)", s) else s.replace(",", "")
+    lead0 = re.search(r"(?<![\d.,])0[.,]\d", s)  # "0,048" / "0.048": a decimal, never a thousands group
+    s = s.replace(",", ".") if (lead0 or re.search(r"\d,\d{1,2}(?!\d)", s)) else s.replace(",", "")
     s = re.sub(r"[^\d.\-+]", "", s)
-    if re.fullmatch(r"[-+]?\d{1,3}(?:\.\d{3})+", s):
+    if not lead0 and re.fullmatch(r"[-+]?\d{1,3}(?:\.\d{3})+", s):
         s = s.replace(".", "")  # Spanish thousands "820.000" (same rule as ingest; 3-decimal figures are rare in headlines)
     try:
         return float(s)
@@ -51,7 +52,7 @@ def _num(raw: str) -> float | None:
 
 
 def _decimals(raw: str) -> int:
-    m = re.search(r"[.,](\d{1,2})(?!\d)", raw)
+    m = re.search(r"(?<![\d.,])0[.,](\d+)", raw) or re.search(r"[.,](\d{1,2})(?!\d)", raw)
     return len(m.group(1)) if m else 0
 
 
@@ -85,15 +86,26 @@ def headline_quantities(text: str) -> list[dict]:
         prev = before.rstrip().split(" ")[-1].lower() if before.strip() else ""
         if prev in ("wave", "waves", "phase", "step", "stage", "q", "h", "fy", "tier", "level", "option", "scenario", "ola", "fase", "hub", "top"):
             continue
-        v = _num(re.sub(r"[a-zA-Z%]+$", "", raw))
+        suffix = re.sub(r"[-−+\d.,\s€$£]", "", raw).lower()
+        scale_word = re.match(r"\s*(?:eur|usd|gbp)?\s*(m|mn|bn|k|million|billion|millones)\b", rest, re.I)
+        core = re.sub(r"[a-zA-Z%€$£\s]+", "", raw)
+        if re.fullmatch(r"[-+−]?\d{1,3}\.\d{3}", core) and (suffix in SCALES or scale_word):
+            v = float(core.replace("−", "-"))  # "€2.868M", "2.868 EUR M": a decimal before a scale, not thousands
+            dec3 = True
+        else:
+            dec3 = False
+            v = _num(re.sub(r"[a-zA-Z%]+$", "", raw))
         if v is None:
             continue
-        suffix = re.sub(r"[-−+\d.,\s]", "", raw).lower()
         word = re.match(r"\s*(bps|pts|points|puntos|pp)\b", rest, re.IGNORECASE)
         cur = next((CURRENCIES[c] for c in ("€", "$", "£") if before.endswith(c) or before.endswith(c + " ") or rest.lstrip().startswith(c)), None)
-        if cur is None:  # "100 EUR", "500 euros", "3 USD" (v1.7)
-            w = re.match(r"\s*(eur|euros?|usd|dollars?|gbp|pounds?)\b", rest, re.I)
+        if cur is None:  # "100 EUR", "500 euros", "3 USD" (v1.7), "EUR 7.8M" (v1.8)
+            w = re.match(r"\s*(eur|euros?|usd|dollars?|gbp|pounds?)\b", rest, re.I) or re.search(r"\b(eur|usd|gbp)\s*$", before, re.I)
             cur = {"e": "EUR", "u": "USD", "d": "USD", "g": "GBP", "p": "GBP"}[w.group(1)[0].lower()] if w else None
+        if suffix not in SCALES and cur:  # "7.8 EUR M": the scale comes after the currency word
+            sw = re.match(r"\s*(?:eur|euros?|usd|gbp)\s*(m|mn|bn|k)\b", rest, re.I)
+            if sw:
+                suffix = sw.group(1).lower()
         if suffix == "" and 1900 <= v <= 2100 and float(v).is_integer():
             continue
         if suffix == "pp" or (word and word.group(1).lower() in ("pp", "pts", "points", "puntos")):
@@ -108,7 +120,7 @@ def headline_quantities(text: str) -> list[dict]:
             scale = SCALES.get(suffix, 1.0)
             kind = "money" if cur else "plain"
         out.append({"raw": raw if not cur else f"{'€' if cur == 'EUR' else '$' if cur == 'USD' else '£'}{raw}", "value": abs(v) * scale, "kind": kind,
-                    "currency": cur, "decimals": _decimals(raw), "scale": scale})
+                    "currency": cur, "decimals": 3 if dec3 else _decimals(raw), "scale": scale})
     return out
 
 

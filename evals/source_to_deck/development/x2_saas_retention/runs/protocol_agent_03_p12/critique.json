@@ -1,0 +1,94 @@
+{
+  "findings": [
+    {
+      "critic": "FACT CHECKER",
+      "finding": "Board-pack style 'X EUR M' and '23-24%' were not recognised by the grounding check; all money is written as €XM and ranges spelled out so every number is traced to a cited fact.",
+      "artifact": "insights.json",
+      "ref": "I1",
+      "severity": "medium",
+      "action": "Rewrote number formats; check passes with no UNSUPPORTED_NUMBER",
+      "resolved": true
+    },
+    {
+      "critic": "FACT CHECKER",
+      "finding": "The 2024 first-year churn rate (12%) comes from CS notes, not the CRM cohort table; the 14 PP rise and the €2.5M excess churn depend on it being on the same ARR basis.",
+      "artifact": "insights.json",
+      "ref": "I5",
+      "severity": "medium",
+      "action": "Caveat on I3/I5, lever L1 marked upper bound with validation; assumption listed in project.json",
+      "resolved": true
+    },
+    {
+      "critic": "PARTNER REVIEW",
+      "finding": "Board needs a decision today, not a study: the storyline must test the CRO plan, cost options, and end with approvable asks.",
+      "artifact": "storyline.json",
+      "ref": "decision",
+      "severity": "high",
+      "action": "Added current_plan test (does_not_hold), three costed options, approve/reject asks, gates and KPIs",
+      "resolved": true
+    },
+    {
+      "critic": "PARTNER REVIEW",
+      "finding": "No growth target is given; a gap without a target is meaningless.",
+      "artifact": "project.json",
+      "ref": "assumptions",
+      "severity": "medium",
+      "action": "Working target inferred (recover the €5.6M net new ARR fall) and flagged for confirmation at the storyline checkpoint",
+      "resolved": true
+    },
+    {
+      "critic": "RED TEAM",
+      "finding": "Same basis check: the excess first-year churn risk was first charged only to the CRO plan. It touches every option: O2 and O3 carry it too if the onboarding fix fails, and O1/O3 add more new customers into onboarding.",
+      "artifact": "storyline.json",
+      "ref": "decision.options",
+      "severity": "high",
+      "action": "All options carry the same four components (AE opex, onboarding opex, excess churn, ramp shortfall); O2 and O3 both show 0 excess churn on the same conditional basis with the residual risk noted on both; O1 exposure flagged as a lower bound; O3 onboarding capacity risk noted",
+      "resolved": true
+    },
+    {
+      "critic": "RED TEAM",
+      "finding": "Competitive pressure is real at the margin: price is cited in 34% of lost deals and pipeline grew faster than new ARR. If the competitor is shrinking deal sizes, sales capacity may matter more than shown.",
+      "artifact": "insights.json",
+      "ref": "I2",
+      "severity": "medium",
+      "action": "Kept as caveat and contradicting fact on I2; AE envelope pre-approved rather than rejected outright, released at the gate",
+      "resolved": true
+    },
+    {
+      "critic": "RED TEAM",
+      "finding": "Gating the AE hire delays sales capacity: if retention recovers fast, O2 gives up part of the 2026 AE contribution versus O3.",
+      "artifact": "storyline.json",
+      "ref": "O2",
+      "severity": "medium",
+      "action": "Trade-off stated in O2 note and gap how_closed; gap admitted as mostly 2027",
+      "resolved": true
+    },
+    {
+      "critic": "RED TEAM",
+      "finding": "Causality onboarding cut -> churn rests on timing and exit interviews (H2 confidence 0.8), not a controlled test.",
+      "artifact": "hypotheses.json",
+      "ref": "H2",
+      "severity": "medium",
+      "action": "Caveat on I4; KPI and gate measure whether churn responds before AE money is released",
+      "resolved": true
+    },
+    {
+      "critic": "EDITOR",
+      "finding": "Two slides on K1 and two on K2: each pair carries a distinct message (where vs why-not-sales; where churn sits vs why and what it cost). Marketing traffic and engineering headcount facts are irrelevant to the decision and omitted.",
+      "artifact": "deck_plan.json",
+      "ref": "S3,S5",
+      "severity": "low",
+      "action": "why_not_merge stated; 9 slides within max",
+      "resolved": true
+    },
+    {
+      "critic": "DATA-VIZ REVIEW",
+      "finding": "ARR bridge and lever sizing are changes: waterfalls. Funnel is a trend: line with callouts. Options on four components: table, not chart.",
+      "artifact": "deck_plan.json",
+      "ref": "S2,S3,S7,S8",
+      "severity": "low",
+      "action": "Archetypes set accordingly",
+      "resolved": true
+    }
+  ]
+}

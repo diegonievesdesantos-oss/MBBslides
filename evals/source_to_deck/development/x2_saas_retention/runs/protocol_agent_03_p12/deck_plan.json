@@ -1,0 +1,210 @@
+{
+  "slides": [
+    {
+      "id": "S1",
+      "priority": "core",
+      "role": "exec_summary",
+      "purpose": "State the answer and the ask up front",
+      "decision_role": "frames the decision",
+      "headline": "Growth slowed because churn rose, not because sales slowed: restore onboarding now (€0.8M) and gate the €3.6M AE hire on retention",
+      "insights": [
+        "I1",
+        "I5",
+        "I6"
+      ],
+      "facts": [
+        "F0051",
+        "F0048",
+        "C0004"
+      ],
+      "message_type": "recommendation",
+      "archetype": "executive_summary",
+      "reason_to_exist": "Board reads the answer and the asks on one page"
+    },
+    {
+      "id": "S2",
+      "priority": "core",
+      "key_line": "K1",
+      "purpose": "Locate the slowdown in the ARR bridge",
+      "decision_role": "tests where growth was lost",
+      "headline": "Net new ARR fell by €5.6M: churn rose by €4.5M and expansion fell by €1.3M while new ARR grew by €0.2M",
+      "insights": [
+        "I1"
+      ],
+      "facts": [
+        "C0001",
+        "C0002",
+        "C0003",
+        "C0004",
+        "C0005",
+        "C0006",
+        "F0002",
+        "F0007",
+        "F0004",
+        "F0009",
+        "F0003",
+        "F0008"
+      ],
+      "message_type": "change",
+      "archetype": "waterfall",
+      "reason_to_exist": "The single exhibit that relocates the problem from sales to retention"
+    },
+    {
+      "id": "S3",
+      "priority": "core",
+      "key_line": "K1",
+      "purpose": "Test the CRO's competitor-price diagnosis",
+      "decision_role": "rejects the premise of the current plan",
+      "headline": "The sales engine held: pipeline rose from €38.9M to €45.9M, win rate stayed between 23% and 24%, and only 17% of churned customers left for a competitor",
+      "insights": [
+        "I2",
+        "I4"
+      ],
+      "facts": [
+        "C0013",
+        "C0014",
+        "F0012",
+        "F0033",
+        "F0054",
+        "F0044"
+      ],
+      "message_type": "comparison",
+      "archetype": "chart",
+      "reason_to_exist": "The current plan rests on this diagnosis; the board needs to see it tested",
+      "why_not_merge": "S2 shows where ARR was lost; S3 disproves the alternative explanation the plan relies on. Merging would bury the test of the current plan."
+    },
+    {
+      "id": "S4",
+      "priority": "core",
+      "key_line": "K2",
+      "purpose": "Show churn concentration in first-year customers",
+      "decision_role": "pinpoints the lever",
+      "headline": "First-year customers churned 26% of ARR versus 9% for mature ones and produced 60.3% of churned ARR",
+      "insights": [
+        "I3"
+      ],
+      "facts": [
+        "F0037",
+        "F0040",
+        "C0010",
+        "C0011",
+        "F0053",
+        "C0007"
+      ],
+      "message_type": "comparison",
+      "archetype": "chart",
+      "reason_to_exist": "Shows the problem is onboarding of new customers, not the installed base"
+    },
+    {
+      "id": "S5",
+      "priority": "core",
+      "key_line": "K2",
+      "purpose": "Link the churn to the onboarding cut and price the saving",
+      "decision_role": "identifies a reversible root cause",
+      "headline": "Cutting onboarding from 14 to 6 saved €0.8M but time to first value rose from 21 to 48 days and excess first-year churn cost about €2.5M",
+      "insights": [
+        "I4",
+        "I5"
+      ],
+      "facts": [
+        "F0051",
+        "F0052",
+        "F0054",
+        "C0009",
+        "C0008"
+      ],
+      "message_type": "cause",
+      "archetype": "timeline_with_kpis",
+      "reason_to_exist": "Turns the diagnosis into a costed, reversible decision",
+      "why_not_merge": "S4 shows where churn sits; S5 shows why and what it cost. One slide would carry two exhibits and two messages."
+    },
+    {
+      "id": "S6",
+      "priority": "core",
+      "key_line": "K3",
+      "purpose": "Test the current plan's 2026 number",
+      "decision_role": "tests the plan in force",
+      "headline": "The CRO's €9M is a full-productivity run-rate: assuming a linear 9-month ramp, 30 AEs add about €5.6M in 2026, €3.4M short, for €3.6M a year",
+      "insights": [
+        "I6",
+        "I7"
+      ],
+      "facts": [
+        "F0048",
+        "F0055",
+        "C0017",
+        "C0018",
+        "C0019",
+        "A001",
+        "F0037"
+      ],
+      "message_type": "comparison",
+      "archetype": "chart",
+      "reason_to_exist": "The board is asked to approve this number"
+    },
+    {
+      "id": "S7",
+      "priority": "core",
+      "key_line": "K4",
+      "purpose": "Compare options on the same cost and risk components",
+      "decision_role": "chooses between options",
+      "headline": "Restoring onboarding first costs €0.8M against €3.6M for the CRO plan and €4.4M for doing both, and removes the €2.5M churn exposure",
+      "insights": [
+        "I5",
+        "I6"
+      ],
+      "facts": [
+        "F0051",
+        "F0048",
+        "C0009",
+        "C0019"
+      ],
+      "message_type": "comparison",
+      "archetype": "table",
+      "reason_to_exist": "Same-basis comparison of the three options the board can choose"
+    },
+    {
+      "id": "S8",
+      "priority": "core",
+      "key_line": "K4",
+      "purpose": "Size the levers against the target and admit the gap",
+      "decision_role": "shows what the recommendation delivers",
+      "headline": "Retention levers recover up to €3.8M of the €5.6M lost; gated AE hiring closes the remaining €1.8M, mostly in 2027",
+      "insights": [
+        "I5",
+        "I8"
+      ],
+      "facts": [
+        "C0003",
+        "C0009",
+        "C0005",
+        "C0020",
+        "C0021"
+      ],
+      "message_type": "change",
+      "archetype": "waterfall",
+      "reason_to_exist": "Reconciles levers to the target and states the gap honestly",
+      "why_not_merge": "S7 chooses the option; S8 shows what it delivers and what it leaves open."
+    },
+    {
+      "id": "S9",
+      "priority": "core",
+      "role": "next_steps",
+      "purpose": "Approvable asks, gate and KPIs",
+      "decision_role": "closes with decisions",
+      "headline": "Board asks today: approve €0.8M for onboarding, reject the Q1 30-AE hire, pre-approve the €3.6M AE envelope behind a Q2 retention gate",
+      "insights": [
+        "I5",
+        "I6"
+      ],
+      "facts": [
+        "F0051",
+        "F0048"
+      ],
+      "message_type": "recommendation",
+      "archetype": "roadmap",
+      "reason_to_exist": "Turns the recommendation into decisions, a gate and tracking KPIs",
+      "why_not_merge": "The executive summary states the answer; this slide lists the decisions, gate and KPIs the board approves. Merging would overload the opening page."
+    }
+  ]
+}

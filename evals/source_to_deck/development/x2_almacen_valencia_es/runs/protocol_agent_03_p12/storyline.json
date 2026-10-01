@@ -1,0 +1,295 @@
+{
+ "framework": "SCR",
+ "framework_rationale": "El consejo debe aprobar o rechazar una propuesta concreta: situación (propuesta de cierre con 4,1 M€ de ahorro), complicación (el ahorro no existe y el riesgo es alto) y resolución (rechazar y renovar el alquiler). Va del problema a la solución.",
+ "candidates": [
+  {
+   "text": "Rechazar el cierre de Valencia: el ahorro recurrente real es de 0,1 M€ al año como máximo (no 4,1 M€), el cierre cuesta 3,2 M€ y pone en riesgo hasta 2,2 M€ de margen anual; renovar el alquiler con un 25% de descuento ahorra 0,3 M€ al año sin riesgo de servicio.",
+   "scores": {
+    "answers_question": 2,
+    "supported": 2,
+    "specific": 2,
+    "decision_oriented": 2,
+    "non_trivial": 2,
+    "covers_storyline": 2
+   },
+   "insights": [
+    "I1",
+    "I3",
+    "I4",
+    "I5"
+   ]
+  },
+  {
+   "text": "El cierre de Valencia no ahorra lo que promete y debería revisarse.",
+   "scores": {
+    "answers_question": 1,
+    "supported": 2,
+    "specific": 0,
+    "decision_oriented": 1,
+    "non_trivial": 1,
+    "covers_storyline": 1
+   },
+   "insights": [
+    "I1"
+   ]
+  },
+  {
+   "text": "Aplazar el cierre de Valencia hasta disponer de un turno adicional en Madrid.",
+   "scores": {
+    "answers_question": 1,
+    "supported": 1,
+    "specific": 1,
+    "decision_oriented": 2,
+    "non_trivial": 1,
+    "covers_storyline": 0
+   },
+   "insights": [
+    "I2"
+   ]
+  }
+ ],
+ "governing_thought": "Rechazar el cierre de Valencia: el ahorro recurrente real es de 0,1 M€ al año como máximo (no 4,1 M€), el cierre cuesta 3,2 M€ y pone en riesgo hasta 2,2 M€ de margen anual; renovar el alquiler con un 25% de descuento ahorra 0,3 M€ al año sin riesgo de servicio.",
+ "key_line": [
+  {
+   "id": "K1",
+   "message": "El ahorro prometido no existe: de 4,1 M€ quedan 0,1 M€ al año antes de horas extra, frente a un coste de cierre de 3,2 M€ que no se recupera",
+   "insights": [
+    "I1",
+    "I3"
+   ],
+   "role": "problem"
+  },
+  {
+   "id": "K2",
+   "message": "El cierre añade riesgo: Madrid no tiene capacidad para Levante y hasta 2,2 M€ de margen anual quedan expuestos por el paso a 48 horas",
+   "insights": [
+    "I2",
+    "I4",
+    "I6"
+   ],
+   "role": "risk"
+  },
+  {
+   "id": "K3",
+   "message": "Mantener Valencia y renovar el alquiler con un 25% de descuento ahorra 0,3 M€ al año sin coste de cierre ni riesgo de servicio",
+   "insights": [
+    "I5"
+   ],
+   "role": "solution"
+  }
+ ],
+ "critique": {
+  "red_team": "Ver critique.json",
+  "partner_review": "Ver critique.json"
+ },
+ "decision": {
+  "target": {
+   "value": 4.1,
+   "unit": "EUR_M",
+   "facts": [
+    "F0047"
+   ],
+   "note": "Ahorro anual prometido por Operaciones; se contrasta con el ahorro real del cierre"
+  },
+  "levers": [
+   {
+    "id": "L1",
+    "statement": "Coste fijo de Valencia eliminado (incluye el alquiler de 1,2 M€)",
+    "impact": {
+     "value": 2.6,
+     "unit": "EUR_M"
+    },
+    "facts": [
+     "F0006"
+    ],
+    "bound": "upper",
+    "validate": "Confirmar que todo el coste fijo es evitable y no hay costes residuales"
+   },
+   {
+    "id": "L2",
+    "statement": "Transporte adicional para servir Levante desde Madrid",
+    "impact": {
+     "value": -1.9,
+     "unit": "EUR_M"
+    },
+    "facts": [
+     "F0035"
+    ],
+    "bound": "point",
+    "validate": "Ofertas de transportistas (A002)"
+   },
+   {
+    "id": "L3",
+    "statement": "Turno adicional en Madrid, necesario porque faltan 75 mil pedidos de capacidad",
+    "impact": {
+     "value": -0.6,
+     "unit": "EUR_M"
+    },
+    "facts": [
+     "F0034",
+     "C0002"
+    ],
+    "bound": "point",
+    "validate": "Plan de turnos de Operaciones"
+   },
+   {
+    "id": "L4",
+    "statement": "Sobrecoste de horas extra en Madrid por encima del 85% de utilización",
+    "impact": {
+     "value": -0.11,
+     "unit": "EUR_M"
+    },
+    "facts": [
+     "C0006"
+    ],
+    "bound": "lower",
+    "validate": "Cálculo del umbral con tres turnos (A003)"
+   }
+  ],
+  "identified": {
+   "value": -0.01,
+   "unit": "EUR_M",
+   "facts": [
+    "C0008"
+   ]
+  },
+  "gap": {
+   "value": 4.11,
+   "unit": "EUR_M",
+   "how_closed": "No se cierra: el ahorro de 4,1 M€ cuenta 1,5 M€ de coste variable que se traslada a Madrid y omite transporte, turno y horas extra. La alternativa realista es renovar el alquiler (0,3 M€ al año)."
+  },
+  "current_plan": {
+   "statement": "Propuesta de Operaciones: cerrar Valencia en 2026 y servir Levante desde Madrid, con 4,1 M€ de ahorro anual y 1,5 M€ de coste de cierre",
+   "verdict": "does_not_hold",
+   "facts": [
+    "F0047",
+    "F0048",
+    "F0037",
+    "C0008",
+    "C0002",
+    "C0013"
+   ],
+   "cost_if_kept": {
+    "value": 2.22,
+    "unit": "EUR_M",
+    "facts": [
+     "C0024"
+    ],
+    "note": "Coste anual en el peor caso (margen en riesgo más pérdida neta recurrente), además de 3,2 M€ puntuales"
+   }
+  },
+  "options": [
+   {
+    "id": "O1",
+    "statement": "Cerrar Valencia y servir Levante desde Madrid (propuesta de Operaciones)",
+    "cost": {
+     "value": 2.22,
+     "unit": "EUR_M",
+     "basis": "coste anual en el peor caso más 3,2 M€ puntuales"
+    },
+    "facts": [
+     "F0006",
+     "F0035",
+     "F0034",
+     "C0006",
+     "F0037",
+     "C0013",
+     "C0024"
+    ],
+    "chosen": false,
+    "cost_components": {
+     "coste_fijo_valencia": -2.6,
+     "coste_variable_pedidos": 0,
+     "transporte_levante": 1.9,
+     "turno_adicional_madrid": 0.6,
+     "horas_extra_madrid": 0.106,
+     "descuento_alquiler": 0,
+     "coste_cierre_puntual": 3.2,
+     "margen_en_riesgo": 2.214
+    }
+   },
+   {
+    "id": "O2",
+    "statement": "Mantener Valencia y renovar el alquiler cinco años con un 25% de descuento",
+    "cost": {
+     "value": -0.3,
+     "unit": "EUR_M",
+     "basis": "ahorro anual frente a hoy, sin coste puntual"
+    },
+    "facts": [
+     "F0039",
+     "F0040",
+     "C0014"
+    ],
+    "chosen": true,
+    "cost_components": {
+     "coste_fijo_valencia": 0,
+     "coste_variable_pedidos": 0,
+     "transporte_levante": 0,
+     "turno_adicional_madrid": 0,
+     "horas_extra_madrid": 0,
+     "descuento_alquiler": -0.3,
+     "coste_cierre_puntual": 0,
+     "margen_en_riesgo": 0
+    }
+   }
+  ],
+  "basis_note": "Componentes anuales en M€ sobre volúmenes reales de 2025 (positivo = coste). Con la previsión de 2026 ambas opciones pagan horas extra en Madrid: 0,196 M€ cerrando y 0,048 M€ manteniendo Valencia (C0023, C0021).",
+  "asks": [
+   {
+    "statement": "Rechazar la propuesta de cerrar el almacén de Valencia en 2026",
+    "type": "reject",
+    "owner": "Consejero delegado"
+   },
+   {
+    "statement": "Aprobar la renovación del alquiler de Valencia por cinco años con un 25% de descuento, negociando una cláusula de salida, antes del vencimiento de diciembre de 2026",
+    "type": "approve",
+    "owner": "Director financiero"
+   },
+   {
+    "statement": "Encargar un plan de capacidad de Madrid para 2027 ante el crecimiento previsto del 6%",
+    "type": "commission",
+    "owner": "Director de operaciones"
+   }
+  ],
+  "gates": [
+   {
+    "statement": "Firma de la renovación",
+    "criterion": "Descuento no inferior al 25% y cláusula de salida negociada",
+    "when": "Antes de diciembre de 2026"
+   },
+   {
+    "statement": "Revisión de cualquier futura propuesta de cierre",
+    "criterion": "Ahorro neto recurrente positivo tras transporte, turno y horas extra, y abandono real de clientes a 48 h medido",
+    "when": "Con el plan de capacidad 2027"
+   },
+   {
+    "statement": "Decisión sobre capacidad en Madrid",
+    "criterion": "Utilización de Madrid por encima del 85% durante dos meses seguidos",
+    "when": "Seguimiento mensual en 2026-2027"
+   }
+  ],
+  "kpis": [
+   {
+    "name": "Utilización de Madrid",
+    "target": "85% o menos",
+    "cadence": "monthly"
+   },
+   {
+    "name": "Pedidos de Levante entregados en 24 h",
+    "target": "Mantener el nivel de 2025",
+    "cadence": "monthly"
+   },
+   {
+    "name": "Coste por pedido de la red",
+    "target": "4 € por pedido o menos",
+    "cadence": "monthly"
+   },
+   {
+    "name": "Coste fijo de Valencia",
+    "target": "Reducción de 0,3 M€ anual tras la renovación",
+    "cadence": "quarterly"
+   }
+  ]
+ }
+}

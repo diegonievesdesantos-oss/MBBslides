@@ -1,0 +1,112 @@
+{
+ "findings": [
+  {
+   "critic": "FACT CHECKER",
+   "finding": "El coste de ruptura de 100 k€ (F0211) no se puede citar en fórmula: el motor toma el primer valor del hecho (15 contratos). Se re-expresa en k€ como supuesto A001 trazado a F0211.",
+   "artifact": "computed_facts.json",
+   "ref": "C0008",
+   "severity": "medium",
+   "action": "Supuesto A001 con fuente y validación; titular de S3 marca el supuesto",
+   "resolved": true
+  },
+  {
+   "critic": "FACT CHECKER",
+   "finding": "La afirmación de que el coste central no desaparece al cerrar es texto sin número en la nota del controller y no aparece como hecho; solo F0217 (90 k€ incluidos) es citable.",
+   "artifact": "insights.json",
+   "ref": "I1",
+   "severity": "medium",
+   "action": "Citar F0217 y F0209; mencionar la nota del controller como fuente en la diapositiva",
+   "resolved": true
+  },
+  {
+   "critic": "PARTNER REVIEW",
+   "finding": "El consejo necesita saber qué gana respecto a la propuesta vigente: el cierre total da 96 k€ más de EBITDA anual que el selectivo (C0028). Hay que decirlo, no esconderlo.",
+   "artifact": "insights.json",
+   "ref": "I7",
+   "severity": "high",
+   "action": "Caveat en I7 y mención en S6: 96 k€ más al año a cambio de 6.250 k€ más de cierre y de renunciar a la rampa de B",
+   "resolved": true
+  },
+  {
+   "critic": "PARTNER REVIEW",
+   "finding": "La brecha frente a los 5.196 k€ prometidos (3.276 k€) debe admitirse y explicarse; no es alcanzable cerrando tiendas.",
+   "artifact": "storyline.json",
+   "ref": "decision.gap",
+   "severity": "medium",
+   "action": "gap.how_closed explica el coste central y la contribución de B; KPI de coste central total",
+   "resolved": true
+  },
+  {
+   "critic": "PARTNER REVIEW",
+   "finding": "El cierre debe ser aprobable hoy: asks de rechazo, aprobación y mandato, con umbrales y fechas.",
+   "artifact": "storyline.json",
+   "ref": "decision.asks",
+   "severity": "medium",
+   "action": "Cuatro asks (reject/approve) y tres gates con criterio y fecha",
+   "resolved": true
+  },
+  {
+   "critic": "RED TEAM",
+   "finding": "Las opciones deben compararse en la misma base: el coste central que permanece (7.200 k€ en dos años) se carga a las cuatro opciones; la contribución de B perdida se carga a O1, y la pérdida directa mantenida a O0 y O2. Los cuatro componentes están en todas las opciones (0 solo donde no aplican).",
+   "artifact": "storyline.json",
+   "ref": "decision.options",
+   "severity": "high",
+   "action": "cost_components idénticos en O0-O3; sumas verificadas en C0023-C0026",
+   "resolved": true
+  },
+  {
+   "critic": "RED TEAM",
+   "finding": "Riesgo de negociación de alquiler (H5 sin resolver): si las 5 negociaciones fracasan, O2 mantiene 420 k€ de pérdida al año; está cargado en O2 (840 k€ en dos años) como cota superior, y O3 lo evita pagando 1.750 k€ más de cierre.",
+   "artifact": "storyline.json",
+   "ref": "O2",
+   "severity": "medium",
+   "action": "Gate de junio de 2026 con cierre en la siguiente ventana si no hay acuerdo",
+   "resolved": true
+  },
+  {
+   "critic": "RED TEAM",
+   "finding": "La rampa de B no está cuantificada (no hay margen); A003 la mantiene plana, lo que perjudica a O0, O2 y O3 por igual y favorece a O1. El sesgo va contra la recomendación, no a favor.",
+   "artifact": "assumptions.json",
+   "ref": "A003",
+   "severity": "low",
+   "action": "Gate de revisión de B a cierre de 2026",
+   "resolved": true
+  },
+  {
+   "critic": "RED TEAM",
+   "finding": "¿Desaparece realmente cero coste central al cerrar? La nota del controller lo afirma; si parte fuera evitable, la mejora de todas las opciones de cierre subiría. Sin dato, se mantiene la lectura de la fuente.",
+   "artifact": "insights.json",
+   "ref": "I1",
+   "severity": "low",
+   "action": "KPI de coste central total; plan de reducción aparte",
+   "resolved": true
+  },
+  {
+   "critic": "EDITOR",
+   "finding": "S3 (coste de cierre) y S5 (rampa de B) podrían ir al apéndice; se mantienen como support porque cada una responde a una objeción directa del consejo (10 M€ de la propuesta; 'B también pierde').",
+   "artifact": "deck_plan.json",
+   "ref": "S3,S5",
+   "severity": "low",
+   "action": "why_not_merge documentado; 8 diapositivas, por debajo del máximo de 9",
+   "resolved": true
+  },
+  {
+   "critic": "DATA-VIZ REVIEW",
+   "finding": "S2 es un puente (5.196 → -3.600 → 1.596): cascada adecuada. S6 compara cuatro opciones con cuatro componentes: tabla o barras apiladas con los componentes en el mismo orden.",
+   "artifact": "deck_plan.json",
+   "ref": "S2,S6",
+   "severity": "low",
+   "action": "Arquetipos ajustados (waterfall, table)",
+   "resolved": true
+  },
+  {
+   "critic": "FACT CHECKER",
+   "finding": "Aviso ASSUMPTION_IN_HEADLINE en S3 y S6: las cifras dependen de A001, que solo re-expresa en k€ los 100.000 € por tienda de F0211 (limitación del motor con hechos de varios valores), no una estimación propia. Los titulares ya dicen 'supuesto' y la diapositiva citará F0211 como fuente.",
+   "artifact": "deck_plan.json",
+   "ref": "S3,S6",
+   "severity": "low",
+   "action": "Respondido: se mantiene la mención del supuesto en el titular y la nota de fuente",
+   "resolved": true
+  }
+ ]
+}

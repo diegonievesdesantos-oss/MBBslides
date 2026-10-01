@@ -1,0 +1,156 @@
+{
+  "insights": [
+    {
+      "id": "I1",
+      "statement": "ARR growth fell from 25% to 9.2% because net new ARR fell by €5.6M (€10.4M to €4.8M): churned ARR rose by €4.5M (€3.3M to €7.8M) and expansion fell by €1.3M, while new ARR rose by €0.2M (€9.4M to €9.6M).",
+      "facts": [
+        "F0047",
+        "C0001",
+        "C0002",
+        "C0003",
+        "C0004",
+        "F0004",
+        "F0009",
+        "C0005",
+        "C0006",
+        "F0002",
+        "F0007"
+      ],
+      "hypotheses": [
+        "H2"
+      ],
+      "refutes": [
+        "H1",
+        "H3"
+      ],
+      "materiality": "high",
+      "decision_relevance": "The slowdown is a retention and expansion problem; the CRO's proposal addresses new sales, which did not fall."
+    },
+    {
+      "id": "I2",
+      "statement": "The sales engine did not weaken: pipeline created rose from €38.9M to €45.9M, the win rate held between 23% and 24% every quarter and deals won rose from 175 to 193; the slowdown did not come from new sales, so it cannot come from price competition in new deals.",
+      "facts": [
+        "C0013",
+        "C0014",
+        "F0012",
+        "F0015",
+        "F0033",
+        "C0015",
+        "C0016",
+        "F0002",
+        "F0007",
+        "C0006"
+      ],
+      "hypotheses": [],
+      "refutes": [
+        "H1",
+        "H3"
+      ],
+      "materiality": "high",
+      "decision_relevance": "Tests and rejects the diagnosis behind the 30-AE request.",
+      "caveat": "Price is still the stated reason for 34% of lost deals and pipeline grew faster than new ARR; competitive pressure exists at the margin but is not what changed between 2024 and 2025.",
+      "contradicting_facts": [
+        "F0044"
+      ]
+    },
+    {
+      "id": "I3",
+      "statement": "Churn is a first-year problem: customers onboarded in the previous 12 months churned 26% of ARR versus 9% for mature customers; they held 35% of opening ARR but 60.3% of churned ARR, and first-year churn rose 14 PP from 12% in 2024.",
+      "facts": [
+        "F0037",
+        "F0040",
+        "C0011",
+        "C0010",
+        "C0007",
+        "F0053"
+      ],
+      "hypotheses": [
+        "H2"
+      ],
+      "materiality": "high",
+      "decision_relevance": "Points the 2026 budget at onboarding of new customers rather than at the installed base or at new sales.",
+      "caveat": "The 2024 first-year rate comes from CS notes and is assumed to be on the same ARR basis."
+    },
+    {
+      "id": "I4",
+      "statement": "The onboarding cut is the most likely cause: the team went from 14 to 6 people in February 2025, median time to first value rose from 21 to 48 days, and 58% of the 64 churned customers interviewed never fully implemented the product versus 17% who moved to a competitor and 14% who cite price.",
+      "facts": [
+        "F0051",
+        "F0052",
+        "F0054"
+      ],
+      "hypotheses": [
+        "H2"
+      ],
+      "refutes": [
+        "H1"
+      ],
+      "materiality": "high",
+      "decision_relevance": "Identifies a reversible management decision as the root cause.",
+      "caveat": "Causality rests on timing and exit interviews; no controlled comparison exists."
+    },
+    {
+      "id": "I5",
+      "statement": "The onboarding saving was a false economy: it saved €0.8M a year while first-year churn above the 2024 rate cost about €2.5M of ARR in 2025.",
+      "facts": [
+        "F0051",
+        "C0008",
+        "C0009",
+        "F0035",
+        "F0053",
+        "F0036"
+      ],
+      "hypotheses": [
+        "H2"
+      ],
+      "materiality": "high",
+      "decision_relevance": "Restoring the team is the cheapest growth lever available, roughly three times its cost in ARR in year one.",
+      "caveat": "2.5 EUR M is an upper bound for what reversing the cut recovers: it assumes first-year churn returns fully to 12%."
+    },
+    {
+      "id": "I6",
+      "statement": "The CRO's €9M is the full-productivity run-rate of 30 AEs at €300k each; with a 9-month ramp, a Q1 hire delivers about €5.6M of new ARR in 2026, €3.4M short of the promise, for €3.6M a year.",
+      "facts": [
+        "F0048",
+        "F0055",
+        "C0017",
+        "C0018",
+        "C0019",
+        "A001"
+      ],
+      "hypotheses": [],
+      "refutes": [
+        "H5"
+      ],
+      "materiality": "high",
+      "decision_relevance": "The 2026 budget should not book 9 EUR M of AE-driven new ARR.",
+      "caveat": "5.6 EUR M itself is an upper end: it assumes a linear ramp, all hires in place on 1 January and enough pipeline."
+    },
+    {
+      "id": "I7",
+      "statement": "New customers won by extra AEs would enter an onboarding that loses 26% of first-year ARR, so hiring before fixing onboarding buys ARR that leaks within a year.",
+      "facts": [
+        "F0037",
+        "C0018"
+      ],
+      "hypotheses": [
+        "H2"
+      ],
+      "materiality": "medium",
+      "decision_relevance": "Sequencing: retention fix before, or at least alongside, sales capacity."
+    },
+    {
+      "id": "I8",
+      "statement": "Expansion ARR fell by €1.3M (€4.3M to €3.0M); a link to poor implementation is plausible but untested, so the expansion lever is an upper bound.",
+      "facts": [
+        "F0003",
+        "F0008",
+        "C0005"
+      ],
+      "hypotheses": [],
+      "materiality": "medium",
+      "decision_relevance": "Second retention lever; needs account-level validation before it is booked.",
+      "caveat": "Rests on unresolved hypothesis H4."
+    }
+  ]
+}

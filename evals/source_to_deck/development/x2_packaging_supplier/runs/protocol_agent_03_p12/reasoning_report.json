@@ -1,0 +1,101 @@
+{
+  "protocol": "1.2",
+  "status": "pass",
+  "stopping_criteria": {
+    "no_hard_factual_errors": true,
+    "storyline_passes": true,
+    "ghost_deck_passes": true,
+    "no_unsupported_headlines": true,
+    "no_unresolved_high_critic_finding": true,
+    "no_unresolved_conflict_in_use": true
+  },
+  "counts": {
+    "error": 0,
+    "warning": 1,
+    "info": 3
+  },
+  "hard_failures": 0,
+  "information_economy": {
+    "facts_available": 92,
+    "facts_used": 29,
+    "facts_appendix": 2,
+    "facts_omitted": 61,
+    "slides": 8,
+    "core": 6,
+    "support": 1,
+    "appendix": 1,
+    "note": "omitting facts is expected: decision relevance, not coverage, is the goal"
+  },
+  "stages": {
+    "project": {
+      "errors": 0,
+      "warnings": 0
+    },
+    "conflicts": {
+      "errors": 0,
+      "warnings": 0
+    },
+    "critique": {
+      "errors": 0,
+      "warnings": 0
+    },
+    "facts": {
+      "errors": 0,
+      "warnings": 0
+    },
+    "hypotheses": {
+      "errors": 0,
+      "warnings": 0
+    },
+    "insights": {
+      "errors": 0,
+      "warnings": 0
+    },
+    "storyline": {
+      "errors": 0,
+      "warnings": 0
+    },
+    "deck_plan": {
+      "errors": 0,
+      "warnings": 0
+    },
+    "deck": {
+      "errors": 0,
+      "warnings": 1
+    }
+  },
+  "issues": [
+    {
+      "level": "info",
+      "code": "PROJECT_INFERRED",
+      "artifact": "project.json",
+      "ref": "working_question",
+      "message": "'working_question' was inferred, not given: confirm it at the storyline checkpoint",
+      "hard": false
+    },
+    {
+      "level": "info",
+      "code": "PROJECT_INFERRED",
+      "artifact": "project.json",
+      "ref": "comparison_basis",
+      "message": "'comparison_basis' was inferred, not given: confirm it at the storyline checkpoint",
+      "hard": false
+    },
+    {
+      "level": "info",
+      "code": "PROJECT_INFERRED",
+      "artifact": "project.json",
+      "ref": "options_considered",
+      "message": "'options_considered' was inferred, not given: confirm it at the storyline checkpoint",
+      "hard": false
+    },
+    {
+      "level": "warning",
+      "code": "DECK_MISSING",
+      "artifact": "deck.json",
+      "ref": null,
+      "message": "No deck.json yet",
+      "hard": false
+    }
+  ]
+}

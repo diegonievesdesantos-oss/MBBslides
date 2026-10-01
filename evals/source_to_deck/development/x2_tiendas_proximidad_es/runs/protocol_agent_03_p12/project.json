@@ -1,0 +1,17 @@
+{
+  "protocol": "1.2",
+  "audience": ["Consejero delegado", "Directora financiera", "Director de expansión"],
+  "decision": "Decidir qué hacer con las 40 tiendas de proximidad en pérdidas (la dirección financiera propone cerrarlas todas en 2026)",
+  "question": "¿Qué hacemos con las 40 tiendas de proximidad en pérdidas y cuánto mejora realmente el EBITDA?",
+  "horizon": "2026-2027",
+  "scope": ["Formato proximidad, España"],
+  "language": "es",
+  "deck_type": "board_presentation",
+  "max_slides": 9,
+  "constraints": ["Solo datos de las tres fuentes entregadas (excel de tiendas 2025, informe inmobiliario, propuesta de la dirección financiera)"],
+  "assumptions": [
+    "Los cierres se ejecutan a principios de 2026 y su efecto se mide sobre dos años (2026-2027)",
+    "La contribución de las tiendas del grupo B se mantiene en el nivel de 2025 (conservador: sus ventas por m2 crecen un 11% al año)"
+  ],
+  "inferred": ["constraints", "assumptions", "working question: medir la mejora de EBITDA sin el coste central asignado, que no desaparece al cerrar"]
+}

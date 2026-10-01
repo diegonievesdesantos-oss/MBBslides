@@ -1,0 +1,1462 @@
+{
+  "protocol": "1.2",
+  "facts": [
+    {
+      "id": "F0001",
+      "claim": "2025-01 · Incumbent — invoiced_eur_m: 1.44 EUR_M",
+      "values": [
+        {
+          "value": 1.444,
+          "unit": "EUR_M",
+          "period": null,
+          "basis": null,
+          "label": "2025-01 · Incumbent",
+          "column": "invoiced_eur_m"
+        }
+      ],
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "C2",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0002",
+      "claim": "2025-01 · Incumbent — of_which_rush_freight_eur_m: 0.05 EUR_M",
+      "values": [
+        {
+          "value": 0.05,
+          "unit": "EUR_M",
+          "period": null,
+          "basis": null,
+          "label": "2025-01 · Incumbent",
+          "column": "of_which_rush_freight_eur_m"
+        }
+      ],
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "D2",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0003",
+      "claim": "2025-01 · Supplier B — invoiced_eur_m: 0.6 EUR_M",
+      "values": [
+        {
+          "value": 0.598,
+          "unit": "EUR_M",
+          "period": null,
+          "basis": null,
+          "label": "2025-01 · Supplier B",
+          "column": "invoiced_eur_m"
+        }
+      ],
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "C3",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0004",
+      "claim": "2025-01 · Supplier B — of_which_rush_freight_eur_m: 0 EUR_M",
+      "values": [
+        {
+          "value": 0.0,
+          "unit": "EUR_M",
+          "period": null,
+          "basis": null,
+          "label": "2025-01 · Supplier B",
+          "column": "of_which_rush_freight_eur_m"
+        }
+      ],
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "D3",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0005",
+      "claim": "2025-02 · Incumbent — invoiced_eur_m: 1.43 EUR_M",
+      "values": [
+        {
+          "value": 1.434,
+          "unit": "EUR_M",
+          "period": null,
+          "basis": null,
+          "label": "2025-02 · Incumbent",
+          "column": "invoiced_eur_m"
+        }
+      ],
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "C4",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0006",
+      "claim": "2025-02 · Incumbent — of_which_rush_freight_eur_m: 0.04 EUR_M",
+      "values": [
+        {
+          "value": 0.04,
+          "unit": "EUR_M",
+          "period": null,
+          "basis": null,
+          "label": "2025-02 · Incumbent",
+          "column": "of_which_rush_freight_eur_m"
+        }
+      ],
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "D4",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0007",
+      "claim": "2025-02 · Supplier B — invoiced_eur_m: 0.6 EUR_M",
+      "values": [
+        {
+          "value": 0.598,
+          "unit": "EUR_M",
+          "period": null,
+          "basis": null,
+          "label": "2025-02 · Supplier B",
+          "column": "invoiced_eur_m"
+        }
+      ],
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "C5",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0008",
+      "claim": "2025-02 · Supplier B — of_which_rush_freight_eur_m: 0 EUR_M",
+      "values": [
+        {
+          "value": 0.0,
+          "unit": "EUR_M",
+          "period": null,
+          "basis": null,
+          "label": "2025-02 · Supplier B",
+          "column": "of_which_rush_freight_eur_m"
+        }
+      ],
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "D5",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0009",
+      "claim": "2025-03 · Incumbent · rush freight passed through: our forecast errors — invoiced_eur_m: 1.51 EUR_M",
+      "values": [
+        {
+          "value": 1.514,
+          "unit": "EUR_M",
+          "period": null,
+          "basis": null,
+          "label": "2025-03 · Incumbent · rush freight passed through: our forecast errors",
+          "column": "invoiced_eur_m"
+        }
+      ],
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "C6",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0010",
+      "claim": "2025-03 · Incumbent · rush freight passed through: our forecast errors — of_which_rush_freight_eur_m: 0.12 EUR_M",
+      "values": [
+        {
+          "value": 0.12,
+          "unit": "EUR_M",
+          "period": null,
+          "basis": null,
+          "label": "2025-03 · Incumbent · rush freight passed through: our forecast errors",
+          "column": "of_which_rush_freight_eur_m"
+        }
+      ],
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "D6",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0011",
+      "claim": "2025-03 · Supplier B — invoiced_eur_m: 0.6 EUR_M",
+      "values": [
+        {
+          "value": 0.598,
+          "unit": "EUR_M",
+          "period": null,
+          "basis": null,
+          "label": "2025-03 · Supplier B",
+          "column": "invoiced_eur_m"
+        }
+      ],
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "C7",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0012",
+      "claim": "2025-03 · Supplier B — of_which_rush_freight_eur_m: 0 EUR_M",
+      "values": [
+        {
+          "value": 0.0,
+          "unit": "EUR_M",
+          "period": null,
+          "basis": null,
+          "label": "2025-03 · Supplier B",
+          "column": "of_which_rush_freight_eur_m"
+        }
+      ],
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "D7",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0013",
+      "claim": "2025-04 · Incumbent — invoiced_eur_m: 1.47 EUR_M",
+      "values": [
+        {
+          "value": 1.474,
+          "unit": "EUR_M",
+          "period": null,
+          "basis": null,
+          "label": "2025-04 · Incumbent",
+          "column": "invoiced_eur_m"
+        }
+      ],
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "C8",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0014",
+      "claim": "2025-04 · Incumbent — of_which_rush_freight_eur_m: 0.08 EUR_M",
+      "values": [
+        {
+          "value": 0.08,
+          "unit": "EUR_M",
+          "period": null,
+          "basis": null,
+          "label": "2025-04 · Incumbent",
+          "column": "of_which_rush_freight_eur_m"
+        }
+      ],
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "D8",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0015",
+      "claim": "2025-04 · Supplier B — invoiced_eur_m: 0.6 EUR_M",
+      "values": [
+        {
+          "value": 0.598,
+          "unit": "EUR_M",
+          "period": null,
+          "basis": null,
+          "label": "2025-04 · Supplier B",
+          "column": "invoiced_eur_m"
+        }
+      ],
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "C9",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0016",
+      "claim": "2025-04 · Supplier B — of_which_rush_freight_eur_m: 0 EUR_M",
+      "values": [
+        {
+          "value": 0.0,
+          "unit": "EUR_M",
+          "period": null,
+          "basis": null,
+          "label": "2025-04 · Supplier B",
+          "column": "of_which_rush_freight_eur_m"
+        }
+      ],
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "D9",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0017",
+      "claim": "2025-05 · Incumbent — invoiced_eur_m: 1.45 EUR_M",
+      "values": [
+        {
+          "value": 1.454,
+          "unit": "EUR_M",
+          "period": null,
+          "basis": null,
+          "label": "2025-05 · Incumbent",
+          "column": "invoiced_eur_m"
+        }
+      ],
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "C10",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0018",
+      "claim": "2025-05 · Incumbent — of_which_rush_freight_eur_m: 0.06 EUR_M",
+      "values": [
+        {
+          "value": 0.06,
+          "unit": "EUR_M",
+          "period": null,
+          "basis": null,
+          "label": "2025-05 · Incumbent",
+          "column": "of_which_rush_freight_eur_m"
+        }
+      ],
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "D10",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0019",
+      "claim": "2025-05 · Supplier B — invoiced_eur_m: 0.6 EUR_M",
+      "values": [
+        {
+          "value": 0.598,
+          "unit": "EUR_M",
+          "period": null,
+          "basis": null,
+          "label": "2025-05 · Supplier B",
+          "column": "invoiced_eur_m"
+        }
+      ],
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "C11",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0020",
+      "claim": "2025-05 · Supplier B — of_which_rush_freight_eur_m: 0 EUR_M",
+      "values": [
+        {
+          "value": 0.0,
+          "unit": "EUR_M",
+          "period": null,
+          "basis": null,
+          "label": "2025-05 · Supplier B",
+          "column": "of_which_rush_freight_eur_m"
+        }
+      ],
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "D11",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0021",
+      "claim": "2025-06 · Incumbent · rush freight passed through: our forecast errors — invoiced_eur_m: 1.54 EUR_M",
+      "values": [
+        {
+          "value": 1.544,
+          "unit": "EUR_M",
+          "period": null,
+          "basis": null,
+          "label": "2025-06 · Incumbent · rush freight passed through: our forecast errors",
+          "column": "invoiced_eur_m"
+        }
+      ],
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "C12",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0022",
+      "claim": "2025-06 · Incumbent · rush freight passed through: our forecast errors — of_which_rush_freight_eur_m: 0.15 EUR_M",
+      "values": [
+        {
+          "value": 0.15,
+          "unit": "EUR_M",
+          "period": null,
+          "basis": null,
+          "label": "2025-06 · Incumbent · rush freight passed through: our forecast errors",
+          "column": "of_which_rush_freight_eur_m"
+        }
+      ],
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "D12",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0023",
+      "claim": "2025-06 · Supplier B — invoiced_eur_m: 0.6 EUR_M",
+      "values": [
+        {
+          "value": 0.598,
+          "unit": "EUR_M",
+          "period": null,
+          "basis": null,
+          "label": "2025-06 · Supplier B",
+          "column": "invoiced_eur_m"
+        }
+      ],
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "C13",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0024",
+      "claim": "2025-06 · Supplier B — of_which_rush_freight_eur_m: 0 EUR_M",
+      "values": [
+        {
+          "value": 0.0,
+          "unit": "EUR_M",
+          "period": null,
+          "basis": null,
+          "label": "2025-06 · Supplier B",
+          "column": "of_which_rush_freight_eur_m"
+        }
+      ],
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "D13",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0025",
+      "claim": "2025-07 · Incumbent — invoiced_eur_m: 1.48 EUR_M",
+      "values": [
+        {
+          "value": 1.484,
+          "unit": "EUR_M",
+          "period": null,
+          "basis": null,
+          "label": "2025-07 · Incumbent",
+          "column": "invoiced_eur_m"
+        }
+      ],
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "C14",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0026",
+      "claim": "2025-07 · Incumbent — of_which_rush_freight_eur_m: 0.09 EUR_M",
+      "values": [
+        {
+          "value": 0.09,
+          "unit": "EUR_M",
+          "period": null,
+          "basis": null,
+          "label": "2025-07 · Incumbent",
+          "column": "of_which_rush_freight_eur_m"
+        }
+      ],
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "D14",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0027",
+      "claim": "2025-07 · Supplier B — invoiced_eur_m: 0.6 EUR_M",
+      "values": [
+        {
+          "value": 0.598,
+          "unit": "EUR_M",
+          "period": null,
+          "basis": null,
+          "label": "2025-07 · Supplier B",
+          "column": "invoiced_eur_m"
+        }
+      ],
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "C15",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0028",
+      "claim": "2025-07 · Supplier B — of_which_rush_freight_eur_m: 0 EUR_M",
+      "values": [
+        {
+          "value": 0.0,
+          "unit": "EUR_M",
+          "period": null,
+          "basis": null,
+          "label": "2025-07 · Supplier B",
+          "column": "of_which_rush_freight_eur_m"
+        }
+      ],
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "D15",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0029",
+      "claim": "2025-08 · Incumbent — invoiced_eur_m: 1.42 EUR_M",
+      "values": [
+        {
+          "value": 1.424,
+          "unit": "EUR_M",
+          "period": null,
+          "basis": null,
+          "label": "2025-08 · Incumbent",
+          "column": "invoiced_eur_m"
+        }
+      ],
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "C16",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0030",
+      "claim": "2025-08 · Incumbent — of_which_rush_freight_eur_m: 0.03 EUR_M",
+      "values": [
+        {
+          "value": 0.03,
+          "unit": "EUR_M",
+          "period": null,
+          "basis": null,
+          "label": "2025-08 · Incumbent",
+          "column": "of_which_rush_freight_eur_m"
+        }
+      ],
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "D16",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0031",
+      "claim": "2025-08 · Supplier B — invoiced_eur_m: 0.6 EUR_M",
+      "values": [
+        {
+          "value": 0.598,
+          "unit": "EUR_M",
+          "period": null,
+          "basis": null,
+          "label": "2025-08 · Supplier B",
+          "column": "invoiced_eur_m"
+        }
+      ],
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "C17",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0032",
+      "claim": "2025-08 · Supplier B — of_which_rush_freight_eur_m: 0 EUR_M",
+      "values": [
+        {
+          "value": 0.0,
+          "unit": "EUR_M",
+          "period": null,
+          "basis": null,
+          "label": "2025-08 · Supplier B",
+          "column": "of_which_rush_freight_eur_m"
+        }
+      ],
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "D17",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0033",
+      "claim": "2025-09 · Incumbent · rush freight passed through: our forecast errors — invoiced_eur_m: 1.53 EUR_M",
+      "values": [
+        {
+          "value": 1.534,
+          "unit": "EUR_M",
+          "period": null,
+          "basis": null,
+          "label": "2025-09 · Incumbent · rush freight passed through: our forecast errors",
+          "column": "invoiced_eur_m"
+        }
+      ],
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "C18",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0034",
+      "claim": "2025-09 · Incumbent · rush freight passed through: our forecast errors — of_which_rush_freight_eur_m: 0.14 EUR_M",
+      "values": [
+        {
+          "value": 0.14,
+          "unit": "EUR_M",
+          "period": null,
+          "basis": null,
+          "label": "2025-09 · Incumbent · rush freight passed through: our forecast errors",
+          "column": "of_which_rush_freight_eur_m"
+        }
+      ],
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "D18",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0035",
+      "claim": "2025-09 · Supplier B — invoiced_eur_m: 0.6 EUR_M",
+      "values": [
+        {
+          "value": 0.598,
+          "unit": "EUR_M",
+          "period": null,
+          "basis": null,
+          "label": "2025-09 · Supplier B",
+          "column": "invoiced_eur_m"
+        }
+      ],
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "C19",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0036",
+      "claim": "2025-09 · Supplier B — of_which_rush_freight_eur_m: 0 EUR_M",
+      "values": [
+        {
+          "value": 0.0,
+          "unit": "EUR_M",
+          "period": null,
+          "basis": null,
+          "label": "2025-09 · Supplier B",
+          "column": "of_which_rush_freight_eur_m"
+        }
+      ],
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "D19",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0037",
+      "claim": "2025-10 · Incumbent · rush freight passed through: our forecast errors — invoiced_eur_m: 1.5 EUR_M",
+      "values": [
+        {
+          "value": 1.504,
+          "unit": "EUR_M",
+          "period": null,
+          "basis": null,
+          "label": "2025-10 · Incumbent · rush freight passed through: our forecast errors",
+          "column": "invoiced_eur_m"
+        }
+      ],
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "C20",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0038",
+      "claim": "2025-10 · Incumbent · rush freight passed through: our forecast errors — of_which_rush_freight_eur_m: 0.11 EUR_M",
+      "values": [
+        {
+          "value": 0.11,
+          "unit": "EUR_M",
+          "period": null,
+          "basis": null,
+          "label": "2025-10 · Incumbent · rush freight passed through: our forecast errors",
+          "column": "of_which_rush_freight_eur_m"
+        }
+      ],
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "D20",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0039",
+      "claim": "2025-10 · Supplier B — invoiced_eur_m: 0.6 EUR_M",
+      "values": [
+        {
+          "value": 0.598,
+          "unit": "EUR_M",
+          "period": null,
+          "basis": null,
+          "label": "2025-10 · Supplier B",
+          "column": "invoiced_eur_m"
+        }
+      ],
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "C21",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0040",
+      "claim": "2025-10 · Supplier B — of_which_rush_freight_eur_m: 0 EUR_M",
+      "values": [
+        {
+          "value": 0.0,
+          "unit": "EUR_M",
+          "period": null,
+          "basis": null,
+          "label": "2025-10 · Supplier B",
+          "column": "of_which_rush_freight_eur_m"
+        }
+      ],
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "D21",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0041",
+      "claim": "2025-11 · Incumbent · rush freight passed through: our forecast errors — invoiced_eur_m: 1.52 EUR_M",
+      "values": [
+        {
+          "value": 1.524,
+          "unit": "EUR_M",
+          "period": null,
+          "basis": null,
+          "label": "2025-11 · Incumbent · rush freight passed through: our forecast errors",
+          "column": "invoiced_eur_m"
+        }
+      ],
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "C22",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0042",
+      "claim": "2025-11 · Incumbent · rush freight passed through: our forecast errors — of_which_rush_freight_eur_m: 0.13 EUR_M",
+      "values": [
+        {
+          "value": 0.13,
+          "unit": "EUR_M",
+          "period": null,
+          "basis": null,
+          "label": "2025-11 · Incumbent · rush freight passed through: our forecast errors",
+          "column": "of_which_rush_freight_eur_m"
+        }
+      ],
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "D22",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0043",
+      "claim": "2025-11 · Supplier B — invoiced_eur_m: 0.6 EUR_M",
+      "values": [
+        {
+          "value": 0.598,
+          "unit": "EUR_M",
+          "period": null,
+          "basis": null,
+          "label": "2025-11 · Supplier B",
+          "column": "invoiced_eur_m"
+        }
+      ],
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "C23",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0044",
+      "claim": "2025-11 · Supplier B — of_which_rush_freight_eur_m: 0 EUR_M",
+      "values": [
+        {
+          "value": 0.0,
+          "unit": "EUR_M",
+          "period": null,
+          "basis": null,
+          "label": "2025-11 · Supplier B",
+          "column": "of_which_rush_freight_eur_m"
+        }
+      ],
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "D23",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0045",
+      "claim": "2025-12 · Incumbent — invoiced_eur_m: 1.49 EUR_M",
+      "values": [
+        {
+          "value": 1.494,
+          "unit": "EUR_M",
+          "period": null,
+          "basis": null,
+          "label": "2025-12 · Incumbent",
+          "column": "invoiced_eur_m"
+        }
+      ],
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "C24",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0046",
+      "claim": "2025-12 · Incumbent — of_which_rush_freight_eur_m: 0.1 EUR_M",
+      "values": [
+        {
+          "value": 0.1,
+          "unit": "EUR_M",
+          "period": null,
+          "basis": null,
+          "label": "2025-12 · Incumbent",
+          "column": "of_which_rush_freight_eur_m"
+        }
+      ],
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "D24",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0047",
+      "claim": "2025-12 · Supplier B — invoiced_eur_m: 0.59 EUR_M",
+      "values": [
+        {
+          "value": 0.592,
+          "unit": "EUR_M",
+          "period": null,
+          "basis": null,
+          "label": "2025-12 · Supplier B",
+          "column": "invoiced_eur_m"
+        }
+      ],
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "C25",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0048",
+      "claim": "2025-12 · Supplier B — of_which_rush_freight_eur_m: 0 EUR_M",
+      "values": [
+        {
+          "value": 0.0,
+          "unit": "EUR_M",
+          "period": null,
+          "basis": null,
+          "label": "2025-12 · Supplier B",
+          "column": "of_which_rush_freight_eur_m"
+        }
+      ],
+      "source": {
+        "file": "invoices_2025.csv",
+        "sheet": null,
+        "range": "D25",
+        "loc": "sheet"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0049",
+      "claim": "row 2 — Share of our volume with Supplier B: 30",
+      "values": [
+        {
+          "value": 30.0,
+          "unit": "",
+          "period": null,
+          "basis": null,
+          "label": "row 2",
+          "column": "Share of our volume with Supplier B"
+        }
+      ],
+      "source": {
+        "file": "procurement_proposal.docx",
+        "sheet": "table at 5",
+        "range": "A2",
+        "loc": "table at 5"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0050",
+      "claim": "row 2 — Price reduction (%): 0 PCT",
+      "values": [
+        {
+          "value": 0.0,
+          "unit": "PCT",
+          "period": null,
+          "basis": null,
+          "label": "row 2",
+          "column": "Price reduction (%)"
+        }
+      ],
+      "source": {
+        "file": "procurement_proposal.docx",
+        "sheet": "table at 5",
+        "range": "B2",
+        "loc": "table at 5"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0051",
+      "claim": "row 3 — Share of our volume with Supplier B: 70",
+      "values": [
+        {
+          "value": 70.0,
+          "unit": "",
+          "period": null,
+          "basis": null,
+          "label": "row 3",
+          "column": "Share of our volume with Supplier B"
+        }
+      ],
+      "source": {
+        "file": "procurement_proposal.docx",
+        "sheet": "table at 5",
+        "range": "A3",
+        "loc": "table at 5"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0052",
+      "claim": "row 3 — Price reduction (%): 9 PCT",
+      "values": [
+        {
+          "value": 9.0,
+          "unit": "PCT",
+          "period": null,
+          "basis": null,
+          "label": "row 3",
+          "column": "Price reduction (%)"
+        }
+      ],
+      "source": {
+        "file": "procurement_proposal.docx",
+        "sheet": "table at 5",
+        "range": "B3",
+        "loc": "table at 5"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0053",
+      "claim": "row 4 — Share of our volume with Supplier B: 100",
+      "values": [
+        {
+          "value": 100.0,
+          "unit": "",
+          "period": null,
+          "basis": null,
+          "label": "row 4",
+          "column": "Share of our volume with Supplier B"
+        }
+      ],
+      "source": {
+        "file": "procurement_proposal.docx",
+        "sheet": "table at 5",
+        "range": "A4",
+        "loc": "table at 5"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0054",
+      "claim": "row 4 — Price reduction (%): 12 PCT",
+      "values": [
+        {
+          "value": 12.0,
+          "unit": "PCT",
+          "period": null,
+          "basis": null,
+          "label": "row 4",
+          "column": "Price reduction (%)"
+        }
+      ],
+      "source": {
+        "file": "procurement_proposal.docx",
+        "sheet": "table at 5",
+        "range": "B4",
+        "loc": "table at 5"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0055",
+      "claim": "The 25 EUR M packaging spend includes 1.1 EUR M of rush freight invoiced by the incumbent;",
+      "values": [
+        {
+          "value": 25.0,
+          "unit": "EUR_M",
+          "raw": "25 EUR",
+          "period": null,
+          "basis": null
+        },
+        {
+          "value": 1.1,
+          "unit": "EUR_M",
+          "raw": "1.1 EUR",
+          "period": null,
+          "basis": null
+        }
+      ],
+      "source": {
+        "file": "finance_note.md",
+        "loc": "line 3"
+      },
+      "fact_type": "text_statement",
+      "confidence": 0.8
+    },
+    {
+      "id": "F0056",
+      "claim": "Packaging spend excluding rush freight: 23.9 EUR M.",
+      "values": [
+        {
+          "value": 23.9,
+          "unit": "EUR_M",
+          "raw": "23.9 EUR",
+          "period": null,
+          "basis": null
+        }
+      ],
+      "source": {
+        "file": "finance_note.md",
+        "loc": "line 4"
+      },
+      "fact_type": "text_statement",
+      "confidence": 0.8
+    },
+    {
+      "id": "F0057",
+      "claim": "Packaging spend was 25 EUR M in 2025, with the volume split between the incumbent (70%) and Supplier B (30%).",
+      "values": [
+        {
+          "value": 25.0,
+          "unit": "EUR_M",
+          "raw": "25 EUR",
+          "period": "2025",
+          "basis": "actual"
+        },
+        {
+          "value": 70.0,
+          "unit": "PCT",
+          "raw": "70%",
+          "period": "2025",
+          "basis": "actual"
+        },
+        {
+          "value": 30.0,
+          "unit": "PCT",
+          "raw": "30%",
+          "period": "2025",
+          "basis": "actual"
+        }
+      ],
+      "source": {
+        "file": "procurement_proposal.docx",
+        "loc": "para 2"
+      },
+      "fact_type": "text_statement",
+      "confidence": 0.8
+    },
+    {
+      "id": "F0058",
+      "claim": "Supplier B offers a 12% price reduction if it receives 100% of our volume under a three-year commitment.",
+      "values": [
+        {
+          "value": 12.0,
+          "unit": "PCT",
+          "raw": "12%",
+          "period": null,
+          "basis": null
+        },
+        {
+          "value": 100.0,
+          "unit": "PCT",
+          "raw": "100%",
+          "period": null,
+          "basis": null
+        }
+      ],
+      "source": {
+        "file": "procurement_proposal.docx",
+        "loc": "para 3"
+      },
+      "fact_type": "text_statement",
+      "confidence": 0.8
+    },
+    {
+      "id": "F0059",
+      "claim": "This saves 3.0 EUR M per year.",
+      "values": [
+        {
+          "value": 3.0,
+          "unit": "EUR_M",
+          "raw": "3.0 EUR",
+          "period": null,
+          "basis": null
+        }
+      ],
+      "source": {
+        "file": "procurement_proposal.docx",
+        "loc": "para 3"
+      },
+      "fact_type": "text_statement",
+      "confidence": 0.8
+    },
+    {
+      "id": "F0060",
+      "claim": "It declared two force-majeure stoppages in the last three years, of 9 and 14 days.",
+      "values": [
+        {
+          "value": 14.0,
+          "unit": "DAYS",
+          "raw": "14",
+          "period": null,
+          "basis": null
+        }
+      ],
+      "source": {
+        "file": "supply_risk_review.pdf",
+        "loc": "p.1"
+      },
+      "fact_type": "text_statement",
+      "confidence": 0.8
+    },
+    {
+      "id": "F0061",
+      "claim": "A 9-day packaging stoppage would cost us 1.6 EUR M of gross margin;",
+      "values": [
+        {
+          "value": 1.6,
+          "unit": "EUR_M",
+          "raw": "1.6 EUR",
+          "period": null,
+          "basis": null
+        }
+      ],
+      "source": {
+        "file": "supply_risk_review.pdf",
+        "loc": "p.1"
+      },
+      "fact_type": "text_statement",
+      "confidence": 0.8
+    },
+    {
+      "id": "F0062",
+      "claim": "a 14-day stoppage 2.4 EUR M.",
+      "values": [
+        {
+          "value": 14.0,
+          "unit": "",
+          "raw": "14",
+          "period": null,
+          "basis": null
+        },
+        {
+          "value": 2.4,
+          "unit": "EUR_M",
+          "raw": "2.4 EUR",
+          "period": null,
+          "basis": null
+        }
+      ],
+      "source": {
+        "file": "supply_risk_review.pdf",
+        "loc": "p.1"
+      },
+      "fact_type": "text_statement",
+      "confidence": 0.8
+    },
+    {
+      "id": "F0063",
+      "claim": "The incumbent operates two plants and can cover up to 60% of our volume at two weeks' notice.",
+      "values": [
+        {
+          "value": 60.0,
+          "unit": "PCT",
+          "raw": "60%",
+          "period": null,
+          "basis": null
+        }
+      ],
+      "source": {
+        "file": "supply_risk_review.pdf",
+        "loc": "p.1"
+      },
+      "fact_type": "text_statement",
+      "confidence": 0.8
+    },
+    {
+      "id": "F0064",
+      "claim": "If kept at 30% of our volume, the incumbent has offered a 4% price reduction on that volume.",
+      "values": [
+        {
+          "value": 30.0,
+          "unit": "PCT",
+          "raw": "30%",
+          "period": null,
+          "basis": null
+        },
+        {
+          "value": 4.0,
+          "unit": "PCT",
+          "raw": "4%",
+          "period": null,
+          "basis": null
+        }
+      ],
+      "source": {
+        "file": "supply_risk_review.pdf",
+        "loc": "p.1"
+      },
+      "fact_type": "text_statement",
+      "confidence": 0.8
+    },
+    {
+      "id": "F0065",
+      "claim": "Switching costs (tooling and line qualification): 0.8 EUR M one-off for a full move, 0.5 EUR M for a partial move.",
+      "values": [
+        {
+          "value": 0.8,
+          "unit": "EUR_M",
+          "raw": "0.8 EUR",
+          "period": null,
+          "basis": null
+        },
+        {
+          "value": 0.5,
+          "unit": "EUR_M",
+          "raw": "0.5 EUR",
+          "period": null,
+          "basis": null
+        }
+      ],
+      "source": {
+        "file": "supply_risk_review.pdf",
+        "loc": "p.1"
+      },
+      "fact_type": "text_statement",
+      "confidence": 0.8
+    }
+  ],
+  "stats": {
+    "sources": 4,
+    "tables": 2,
+    "facts": 65,
+    "by_type": {
+      "table_value": 54,
+      "derived_change": 0,
+      "text_statement": 11
+    }
+  },
+  "extractor": "1.8"
+}

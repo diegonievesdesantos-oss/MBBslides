@@ -20,7 +20,8 @@ PERIOD_RE = re.compile(
     r"|(?P<y>(?:19|20)\d{2})(?P<ys>[EABF])?|(?P<w>YTD|LTM|TTM|run[- ]rate))\b", re.IGNORECASE)
 BASIS_WORDS = {"budget": "budget", "presupuesto": "budget", "forecast": "forecast", "previsión": "forecast", "prevista": "forecast",
                "previsto": "forecast", "projected": "forecast", "proyectad": "forecast", "expected": "forecast", "target": "target",
-               "objetivo": "target", "plan": "plan", "actual": "actual", "real": "actual", "estimate": "estimate", "est.": "estimate"}
+               "objetivo": "target", "plan": "plan", "propose": "plan", "proposes": "plan", "proposal": "plan", "proponemos": "plan",
+               "propone": "plan", "propuesta": "plan", "actual": "actual", "real": "actual", "estimate": "estimate", "est.": "estimate"}
 SUFFIX_BASIS = {"E": "estimate", "A": "actual", "B": "budget", "F": "forecast"}
 UNIT_RE = re.compile(r"(€|\$|£|eur|usd|gbp)\s?(m|mn|bn|k|million|billion|thousand)?|\b(m|mn|bn|k)\s?(€|\$|£|eur|usd)|%|\bpp\b|\bbps\b|\bdays?\b|\bmonths?\b|\byears?\b",
                      re.IGNORECASE)
@@ -37,7 +38,7 @@ def detect_period(text: str) -> dict | None:
     def yy(s):
         return None if not s else (int(s) + 2000 if len(s) == 2 else int(s))
 
-    basis = next((b for w, b in BASIS_WORDS.items() if w in t.lower()), None)
+    basis = next((b for w, b in BASIS_WORDS.items() if re.search(rf"(?<![a-záéíóúñ]){re.escape(w)}(?![a-záéíóúñ])", t.lower())), None)  # "plan", not "plantilla"
     if g["fy"]:
         out = {"period": f"{g['fy'].upper()}{yy(g['fyy'])}", "basis": SUFFIX_BASIS.get((g["fs"] or "").upper(), basis or "actual")}
     elif g["q"]:
@@ -54,6 +55,7 @@ def detect_period(text: str) -> dict | None:
 def detect_unit(text: str) -> str:
     """Normalised unit token of a header / label: 'EUR_M', 'USD_K', 'PCT', 'PP', 'BPS', 'DAYS', '' …"""
     t = str(text or "").replace("_", " ")  # "opening_arr_eur_m"
+    t = re.sub(r"\s*(/\s*(año|year|yr|mes|month)|per (year|month|annum)|al año|a year|al mes|por año)\b", "", t, flags=re.I)  # a rate, not the unit
     m = UNIT_RE.search(t)
     if not m:
         w = next((UNIT_WORDS[x] for x in re.findall(r"[a-záéíóúñ]+", t.lower()) if x in UNIT_WORDS and UNIT_WORDS[x] != "PP"), "")

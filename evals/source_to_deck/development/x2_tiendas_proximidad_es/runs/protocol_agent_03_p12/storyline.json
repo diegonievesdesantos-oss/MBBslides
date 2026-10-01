@@ -1,0 +1,53 @@
+{
+ "framework": "SCR",
+ "framework_rationale": "El consejo tiene sobre la mesa una propuesta concreta (cerrar las 40). Situación-complicación-resolución permite primero corregir la cifra que la sostiene (5,2 M€), después mostrar dónde está la pérdida real y terminar con una alternativa costada y aprobable.",
+ "candidates": [
+  {"text": "No cerremos las 40 tiendas: la mejora real es de 1.596 k€, no 5,2 M€. Cerremos en 2026 las 15 tiendas A con ruptura (1.500 k€ de mejora anual por 1.500 k€ de coste), negociemos el alquiler de las 7 restantes y mantengamos las 18 de B, que ya aportan 324 k€.", "scores": {"answers_question": 2, "supported_by_evidence": 2, "specific": 2, "decision_oriented": 2, "non_trivial": 2, "covers_storyline": 2}, "insights": ["I1", "I3", "I4", "I5"]},
+  {"text": "Cerrar las 40 tiendas mejora el EBITDA mucho menos de lo previsto; conviene revisar la propuesta tienda a tienda.", "scores": {"answers_question": 1, "supported_by_evidence": 2, "specific": 0, "decision_oriented": 1, "non_trivial": 1, "covers_storyline": 1}, "insights": ["I1"]},
+  {"text": "Cerrar las 22 tiendas del grupo A y mantener B: mejora de 1.920 k€ al año por 3.250 k€.", "scores": {"answers_question": 2, "supported_by_evidence": 2, "specific": 2, "decision_oriented": 2, "non_trivial": 1, "covers_storyline": 1}, "insights": ["I2", "I5"]}
+ ],
+ "governing_thought": "No cerremos las 40 tiendas: la mejora real de EBITDA es de 1.596 k€, no 5,2 M€. Cerremos en 2026 las 15 tiendas A con ruptura (1.500 k€ de mejora anual por 1.500 k€ de cierre), negociemos el alquiler de las 7 restantes antes de cerrarlas y mantengamos las 18 tiendas B, que ya aportan 324 k€.",
+ "key_line": [
+  {"id": "K1", "role": "problem", "message": "La propuesta sobrevalora el ahorro: 3.600 k€ de los 5.196 k€ de pérdida son coste central que no desaparece, y el cierre total cuesta 7.750 k€, no 10 M€", "insights": ["I1", "I6"]},
+  {"id": "K2", "role": "diagnosis", "message": "La pérdida evitable está solo en el grupo A (1.920 k€, alquiler del 16% frente al 9%); el grupo B aporta 324 k€ y está en rampa", "insights": ["I2", "I3"]},
+  {"id": "K3", "role": "solution", "message": "Cerrar las 15 tiendas A con ruptura se recupera en 1 año y, en la misma base 2026-2027, cuesta 9.540 k€ frente a 15.598 k€ del cierre total", "insights": ["I4", "I7"]},
+  {"id": "K4", "role": "next_steps", "message": "Para las 7 tiendas A sin ruptura, negociar primero: cerrarlas cuesta 1.750 k€ para evitar 420 k€ al año", "insights": ["I5"]}
+ ],
+ "decision": {
+  "target": {"value": 5196, "unit": "EUR_K", "facts": ["F0208", "F0215"], "statement": "Mejora de EBITDA anual que promete la propuesta financiera (pérdida 2025 de las 40 tiendas)"},
+  "levers": [
+   {"id": "L1", "statement": "Cerrar en 2026 las 15 tiendas A con ventana de ruptura", "impact": {"value": 1500, "unit": "EUR_K"}, "facts": ["C0031", "C0006"], "bound": "point", "validate": "Confirmar coste de ruptura (100 k€/tienda) contrato a contrato y fecha de cada ventana"},
+   {"id": "L2", "statement": "Rebaja de alquiler (5 propietarios dispuestos) o cierre posterior de las 7 tiendas A sin ruptura", "impact": {"value": 420, "unit": "EUR_K"}, "facts": ["C0007"], "bound": "upper", "validate": "Resultado de la negociación con los 5 propietarios antes de 30-06-2026; 420 k€ solo si la pérdida directa se elimina por completo"}
+  ],
+  "identified": {"value": 1920, "unit": "EUR_K", "facts": ["C0033"]},
+  "gap": {"value": 3276, "unit": "EUR_K", "facts": ["C0027"], "how_closed": "No se cierra con estas tiendas: son 3.600 k€ de coste central que se quedan en la red en cualquier opción menos los 324 k€ que ya aporta B. Reducir ese coste central es otra palanca (sistemas, logística, compras) fuera del alcance de este caso"},
+  "current_plan": {"statement": "Propuesta de la dirección financiera: cerrar las 40 tiendas en 2026, con +5,2 M€ de EBITDA y 10 M€ de coste", "verdict": "does_not_hold", "facts": ["F0215", "F0216", "C0001", "C0011", "C0021"], "cost_if_kept": {"value": 6058, "unit": "EUR_K", "facts": ["C0030"], "statement": "Coste adicional 2026-2027 frente al cierre selectivo, en la misma base"}},
+  "options": [
+   {"id": "O0", "statement": "Mantener las 40 tiendas", "cost": {"value": 11040, "unit": "EUR_K"}, "facts": ["C0023"], "chosen": false, "ebitda_improvement": {"value": 0, "unit": "EUR_K"},
+    "cost_components": {"cierre": 0, "perdida_directa_mantenida_2a": 3840, "contribucion_B_perdida_2a": 0, "coste_central_que_permanece_2a": 7200}},
+   {"id": "O1", "statement": "Cerrar las 40 tiendas (propuesta financiera)", "cost": {"value": 15598, "unit": "EUR_K"}, "facts": ["C0024"], "chosen": false, "ebitda_improvement": {"value": 1596, "unit": "EUR_K"},
+    "cost_components": {"cierre": 7750, "perdida_directa_mantenida_2a": 0, "contribucion_B_perdida_2a": 648, "coste_central_que_permanece_2a": 7200}},
+   {"id": "O2", "statement": "Cerrar las 15 tiendas A con ruptura, negociar las 7 A restantes, mantener las 18 B", "cost": {"value": 9540, "unit": "EUR_K"}, "facts": ["C0025"], "chosen": true, "ebitda_improvement": {"value": 1500, "unit": "EUR_K"},
+    "cost_components": {"cierre": 1500, "perdida_directa_mantenida_2a": 840, "contribucion_B_perdida_2a": 0, "coste_central_que_permanece_2a": 7200}},
+   {"id": "O3", "statement": "Cerrar las 22 tiendas A ya en 2026, mantener las 18 B", "cost": {"value": 10450, "unit": "EUR_K"}, "facts": ["C0026"], "chosen": false, "ebitda_improvement": {"value": 1920, "unit": "EUR_K"},
+    "cost_components": {"cierre": 3250, "perdida_directa_mantenida_2a": 0, "contribucion_B_perdida_2a": 0, "coste_central_que_permanece_2a": 7200}}
+  ],
+  "asks": [
+   {"statement": "Rechazar el cierre de las 40 tiendas tal como está planteado", "type": "reject", "owner": "Consejero delegado"},
+   {"statement": "Aprobar el cierre en 2026 de las 15 tiendas A con ventana de ruptura (1.500 k€)", "type": "approve", "owner": "Directora financiera"},
+   {"statement": "Aprobar el mandato de negociación de rebaja de alquiler para las 7 tiendas A sin ruptura, con cierre si no hay acuerdo", "type": "approve", "owner": "Dirección inmobiliaria"},
+   {"statement": "Mantener abiertas las 18 tiendas B y seguir su rampa", "type": "approve", "owner": "Director de expansión"}
+  ],
+  "gates": [
+   {"statement": "Coste de ruptura confirmado por contrato", "criterion": "Coste real de cierre de las 15 tiendas no superior a 1.500 k€", "when": "Antes de notificar la ruptura, T1 2026"},
+   {"statement": "Resultado de la negociación de alquiler en las 7 tiendas A sin ruptura", "criterion": "Tienda que no llegue a contribución directa positiva tras la rebaja pasa a la lista de cierre de su próxima ventana", "when": "30-06-2026"},
+   {"statement": "Revisión de la rampa del grupo B", "criterion": "Contribución antes de coste central por tienda B no inferior a la de 2025 (10 k€ para 2023, 28 k€ para 2024)", "when": "Cierre de 2026"}
+  ],
+  "kpis": [
+   {"name": "EBITDA antes de coste central del formato proximidad", "target": "mejora de 1.500 k€ anual tras los 15 cierres", "cadence": "monthly"},
+   {"name": "Alquiler / ventas de las tiendas A que siguen abiertas", "target": "convergencia hacia la media de la red", "cadence": "quarterly"},
+   {"name": "Ventas por m2 y contribución por tienda del grupo B", "target": "crecimiento sostenido (11% anual en 2025)", "cadence": "quarterly"},
+   {"name": "Coste central total (no asignado)", "target": "no crece al cerrar tiendas; plan de reducción aparte", "cadence": "quarterly"}
+  ]
+ }
+}

@@ -1,0 +1,2034 @@
+{
+  "nodes": {
+    "S:arr_bridge.csv": {
+      "id": "S:arr_bridge.csv",
+      "kind": "source",
+      "label": "arr_bridge.csv"
+    },
+    "F0001": {
+      "id": "F0001",
+      "kind": "fact",
+      "label": "2024 — opening_arr_eur_m: 41.6 EUR_M",
+      "source": {
+        "file": "arr_bridge.csv",
+        "sheet": null,
+        "range": "B2",
+        "loc": "sheet"
+      }
+    },
+    "F0002": {
+      "id": "F0002",
+      "kind": "fact",
+      "label": "2024 — new_arr_eur_m: 9.4 EUR_M",
+      "source": {
+        "file": "arr_bridge.csv",
+        "sheet": null,
+        "range": "C2",
+        "loc": "sheet"
+      }
+    },
+    "F0003": {
+      "id": "F0003",
+      "kind": "fact",
+      "label": "2024 — expansion_arr_eur_m: 4.3 EUR_M",
+      "source": {
+        "file": "arr_bridge.csv",
+        "sheet": null,
+        "range": "D2",
+        "loc": "sheet"
+      }
+    },
+    "F0004": {
+      "id": "F0004",
+      "kind": "fact",
+      "label": "2024 — churned_arr_eur_m: 3.3 EUR_M",
+      "source": {
+        "file": "arr_bridge.csv",
+        "sheet": null,
+        "range": "E2",
+        "loc": "sheet"
+      }
+    },
+    "F0005": {
+      "id": "F0005",
+      "kind": "fact",
+      "label": "2024 — closing_arr_eur_m: 52 EUR_M",
+      "source": {
+        "file": "arr_bridge.csv",
+        "sheet": null,
+        "range": "F2",
+        "loc": "sheet"
+      }
+    },
+    "F0006": {
+      "id": "F0006",
+      "kind": "fact",
+      "label": "2025 — opening_arr_eur_m: 52 EUR_M",
+      "source": {
+        "file": "arr_bridge.csv",
+        "sheet": null,
+        "range": "B3",
+        "loc": "sheet"
+      }
+    },
+    "F0007": {
+      "id": "F0007",
+      "kind": "fact",
+      "label": "2025 — new_arr_eur_m: 9.6 EUR_M",
+      "source": {
+        "file": "arr_bridge.csv",
+        "sheet": null,
+        "range": "C3",
+        "loc": "sheet"
+      }
+    },
+    "F0008": {
+      "id": "F0008",
+      "kind": "fact",
+      "label": "2025 — expansion_arr_eur_m: 3 EUR_M",
+      "source": {
+        "file": "arr_bridge.csv",
+        "sheet": null,
+        "range": "D3",
+        "loc": "sheet"
+      }
+    },
+    "F0009": {
+      "id": "F0009",
+      "kind": "fact",
+      "label": "2025 — churned_arr_eur_m: 7.8 EUR_M",
+      "source": {
+        "file": "arr_bridge.csv",
+        "sheet": null,
+        "range": "E3",
+        "loc": "sheet"
+      }
+    },
+    "F0010": {
+      "id": "F0010",
+      "kind": "fact",
+      "label": "2025 — closing_arr_eur_m: 56.8 EUR_M",
+      "source": {
+        "file": "arr_bridge.csv",
+        "sheet": null,
+        "range": "F3",
+        "loc": "sheet"
+      }
+    },
+    "S:crm_export.xlsx": {
+      "id": "S:crm_export.xlsx",
+      "kind": "source",
+      "label": "crm_export.xlsx"
+    },
+    "F0011": {
+      "id": "F0011",
+      "kind": "fact",
+      "label": "Q1 2024 — Pipeline created (EUR M): 9.1 EUR_M",
+      "source": {
+        "file": "crm_export.xlsx",
+        "sheet": "Funnel",
+        "range": "B2",
+        "loc": "sheet Funnel"
+      }
+    },
+    "F0012": {
+      "id": "F0012",
+      "kind": "fact",
+      "label": "Q1 2024 — Win rate (%): 24 PCT",
+      "source": {
+        "file": "crm_export.xlsx",
+        "sheet": "Funnel",
+        "range": "C2",
+        "loc": "sheet Funnel"
+      }
+    },
+    "F0013": {
+      "id": "F0013",
+      "kind": "fact",
+      "label": "Q1 2024 — Deals won: 41",
+      "source": {
+        "file": "crm_export.xlsx",
+        "sheet": "Funnel",
+        "range": "D2",
+        "loc": "sheet Funnel"
+      }
+    },
+    "F0014": {
+      "id": "F0014",
+      "kind": "fact",
+      "label": "Q2 2024 — Pipeline created (EUR M): 9.6 EUR_M",
+      "source": {
+        "file": "crm_export.xlsx",
+        "sheet": "Funnel",
+        "range": "B3",
+        "loc": "sheet Funnel"
+      }
+    },
+    "F0015": {
+      "id": "F0015",
+      "kind": "fact",
+      "label": "Q2 2024 — Win rate (%): 25 PCT",
+      "source": {
+        "file": "crm_export.xlsx",
+        "sheet": "Funnel",
+        "range": "C3",
+        "loc": "sheet Funnel"
+      }
+    },
+    "F0016": {
+      "id": "F0016",
+      "kind": "fact",
+      "label": "Q2 2024 — Deals won: 44",
+      "source": {
+        "file": "crm_export.xlsx",
+        "sheet": "Funnel",
+        "range": "D3",
+        "loc": "sheet Funnel"
+      }
+    },
+    "F0017": {
+      "id": "F0017",
+      "kind": "fact",
+      "label": "Q3 2024 — Pipeline created (EUR M): 9.8 EUR_M",
+      "source": {
+        "file": "crm_export.xlsx",
+        "sheet": "Funnel",
+        "range": "B4",
+        "loc": "sheet Funnel"
+      }
+    },
+    "F0018": {
+      "id": "F0018",
+      "kind": "fact",
+      "label": "Q3 2024 — Win rate (%): 24 PCT",
+      "source": {
+        "file": "crm_export.xlsx",
+        "sheet": "Funnel",
+        "range": "C4",
+        "loc": "sheet Funnel"
+      }
+    },
+    "F0019": {
+      "id": "F0019",
+      "kind": "fact",
+      "label": "Q3 2024 — Deals won: 43",
+      "source": {
+        "file": "crm_export.xlsx",
+        "sheet": "Funnel",
+        "range": "D4",
+        "loc": "sheet Funnel"
+      }
+    },
+    "F0020": {
+      "id": "F0020",
+      "kind": "fact",
+      "label": "Q4 2024 — Pipeline created (EUR M): 10.4 EUR_M",
+      "source": {
+        "file": "crm_export.xlsx",
+        "sheet": "Funnel",
+        "range": "B5",
+        "loc": "sheet Funnel"
+      }
+    },
+    "F0021": {
+      "id": "F0021",
+      "kind": "fact",
+      "label": "Q4 2024 — Win rate (%): 24 PCT",
+      "source": {
+        "file": "crm_export.xlsx",
+        "sheet": "Funnel",
+        "range": "C5",
+        "loc": "sheet Funnel"
+      }
+    },
+    "F0022": {
+      "id": "F0022",
+      "kind": "fact",
+      "label": "Q4 2024 — Deals won: 47",
+      "source": {
+        "file": "crm_export.xlsx",
+        "sheet": "Funnel",
+        "range": "D5",
+        "loc": "sheet Funnel"
+      }
+    },
+    "F0023": {
+      "id": "F0023",
+      "kind": "fact",
+      "label": "Q1 2025 — Pipeline created (EUR M): 10.9 EUR_M",
+      "source": {
+        "file": "crm_export.xlsx",
+        "sheet": "Funnel",
+        "range": "B6",
+        "loc": "sheet Funnel"
+      }
+    },
+    "F0024": {
+      "id": "F0024",
+      "kind": "fact",
+      "label": "Q1 2025 — Win rate (%): 23 PCT",
+      "source": {
+        "file": "crm_export.xlsx",
+        "sheet": "Funnel",
+        "range": "C6",
+        "loc": "sheet Funnel"
+      }
+    },
+    "F0025": {
+      "id": "F0025",
+      "kind": "fact",
+      "label": "Q1 2025 — Deals won: 46",
+      "source": {
+        "file": "crm_export.xlsx",
+        "sheet": "Funnel",
+        "range": "D6",
+        "loc": "sheet Funnel"
+      }
+    },
+    "F0026": {
+      "id": "F0026",
+      "kind": "fact",
+      "label": "Q2 2025 — Pipeline created (EUR M): 11.3 EUR_M",
+      "source": {
+        "file": "crm_export.xlsx",
+        "sheet": "Funnel",
+        "range": "B7",
+        "loc": "sheet Funnel"
+      }
+    },
+    "F0027": {
+      "id": "F0027",
+      "kind": "fact",
+      "label": "Q2 2025 — Win rate (%): 24 PCT",
+      "source": {
+        "file": "crm_export.xlsx",
+        "sheet": "Funnel",
+        "range": "C7",
+        "loc": "sheet Funnel"
+      }
+    },
+    "F0028": {
+      "id": "F0028",
+      "kind": "fact",
+      "label": "Q2 2025 — Deals won: 49",
+      "source": {
+        "file": "crm_export.xlsx",
+        "sheet": "Funnel",
+        "range": "D7",
+        "loc": "sheet Funnel"
+      }
+    },
+    "F0029": {
+      "id": "F0029",
+      "kind": "fact",
+      "label": "Q3 2025 — Pipeline created (EUR M): 11.6 EUR_M",
+      "source": {
+        "file": "crm_export.xlsx",
+        "sheet": "Funnel",
+        "range": "B8",
+        "loc": "sheet Funnel"
+      }
+    },
+    "F0030": {
+      "id": "F0030",
+      "kind": "fact",
+      "label": "Q3 2025 — Win rate (%): 23 PCT",
+      "source": {
+        "file": "crm_export.xlsx",
+        "sheet": "Funnel",
+        "range": "C8",
+        "loc": "sheet Funnel"
+      }
+    },
+    "F0031": {
+      "id": "F0031",
+      "kind": "fact",
+      "label": "Q3 2025 — Deals won: 48",
+      "source": {
+        "file": "crm_export.xlsx",
+        "sheet": "Funnel",
+        "range": "D8",
+        "loc": "sheet Funnel"
+      }
+    },
+    "F0032": {
+      "id": "F0032",
+      "kind": "fact",
+      "label": "Q4 2025 — Pipeline created (EUR M): 12.1 EUR_M",
+      "source": {
+        "file": "crm_export.xlsx",
+        "sheet": "Funnel",
+        "range": "B9",
+        "loc": "sheet Funnel"
+      }
+    },
+    "F0033": {
+      "id": "F0033",
+      "kind": "fact",
+      "label": "Q4 2025 — Win rate (%): 23 PCT",
+      "source": {
+        "file": "crm_export.xlsx",
+        "sheet": "Funnel",
+        "range": "C9",
+        "loc": "sheet Funnel"
+      }
+    },
+    "F0034": {
+      "id": "F0034",
+      "kind": "fact",
+      "label": "Q4 2025 — Deals won: 50",
+      "source": {
+        "file": "crm_export.xlsx",
+        "sheet": "Funnel",
+        "range": "D9",
+        "loc": "sheet Funnel"
+      }
+    },
+    "F0035": {
+      "id": "F0035",
+      "kind": "fact",
+      "label": "Onboarded in the previous 12 months — ARR at start of 2025 (EUR M): 18.2 EUR_M",
+      "source": {
+        "file": "crm_export.xlsx",
+        "sheet": "Cohorts",
+        "range": "B2",
+        "loc": "sheet Cohorts"
+      }
+    },
+    "F0036": {
+      "id": "F0036",
+      "kind": "fact",
+      "label": "Onboarded in the previous 12 months — ARR churned in 2025 (EUR M): 4.7 EUR_M",
+      "source": {
+        "file": "crm_export.xlsx",
+        "sheet": "Cohorts",
+        "range": "C2",
+        "loc": "sheet Cohorts"
+      }
+    },
+    "F0037": {
+      "id": "F0037",
+      "kind": "fact",
+      "label": "Onboarded in the previous 12 months — Churn rate 2025 (%): 26 PCT",
+      "source": {
+        "file": "crm_export.xlsx",
+        "sheet": "Cohorts",
+        "range": "D2",
+        "loc": "sheet Cohorts"
+      }
+    },
+    "F0038": {
+      "id": "F0038",
+      "kind": "fact",
+      "label": "Customers for more than 12 months — ARR at start of 2025 (EUR M): 33.8 EUR_M",
+      "source": {
+        "file": "crm_export.xlsx",
+        "sheet": "Cohorts",
+        "range": "B3",
+        "loc": "sheet Cohorts"
+      }
+    },
+    "F0039": {
+      "id": "F0039",
+      "kind": "fact",
+      "label": "Customers for more than 12 months — ARR churned in 2025 (EUR M): 3.1 EUR_M",
+      "source": {
+        "file": "crm_export.xlsx",
+        "sheet": "Cohorts",
+        "range": "C3",
+        "loc": "sheet Cohorts"
+      }
+    },
+    "F0040": {
+      "id": "F0040",
+      "kind": "fact",
+      "label": "Customers for more than 12 months — Churn rate 2025 (%): 9 PCT",
+      "source": {
+        "file": "crm_export.xlsx",
+        "sheet": "Cohorts",
+        "range": "D3",
+        "loc": "sheet Cohorts"
+      }
+    },
+    "F0041": {
+      "id": "F0041",
+      "kind": "fact",
+      "label": "Total — ARR at start of 2025 (EUR M): 52 EUR_M",
+      "source": {
+        "file": "crm_export.xlsx",
+        "sheet": "Cohorts",
+        "range": "B4",
+        "loc": "sheet Cohorts"
+      }
+    },
+    "F0042": {
+      "id": "F0042",
+      "kind": "fact",
+      "label": "Total — ARR churned in 2025 (EUR M): 7.8 EUR_M",
+      "source": {
+        "file": "crm_export.xlsx",
+        "sheet": "Cohorts",
+        "range": "C4",
+        "loc": "sheet Cohorts"
+      }
+    },
+    "F0043": {
+      "id": "F0043",
+      "kind": "fact",
+      "label": "Total — Churn rate 2025 (%): 15 PCT",
+      "source": {
+        "file": "crm_export.xlsx",
+        "sheet": "Cohorts",
+        "range": "D4",
+        "loc": "sheet Cohorts"
+      }
+    },
+    "F0044": {
+      "id": "F0044",
+      "kind": "fact",
+      "label": "Price — Share of lost deals 2025 (%): 34 PCT",
+      "source": {
+        "file": "crm_export.xlsx",
+        "sheet": "Lost deals",
+        "range": "B2",
+        "loc": "sheet Lost deals"
+      }
+    },
+    "F0045": {
+      "id": "F0045",
+      "kind": "fact",
+      "label": "No decision — Share of lost deals 2025 (%): 41 PCT",
+      "source": {
+        "file": "crm_export.xlsx",
+        "sheet": "Lost deals",
+        "range": "B3",
+        "loc": "sheet Lost deals"
+      }
+    },
+    "F0046": {
+      "id": "F0046",
+      "kind": "fact",
+      "label": "Competitor — Share of lost deals 2025 (%): 25 PCT",
+      "source": {
+        "file": "crm_export.xlsx",
+        "sheet": "Lost deals",
+        "range": "B4",
+        "loc": "sheet Lost deals"
+      }
+    },
+    "S:board_pack_Q4_2025.pdf": {
+      "id": "S:board_pack_Q4_2025.pdf",
+      "kind": "source",
+      "label": "board_pack_Q4_2025.pdf"
+    },
+    "F0047": {
+      "id": "F0047",
+      "kind": "fact",
+      "label": "CFO: ARR closed 2025 at 56.8 EUR M, up 9.2%, against 25% growth in 2024.",
+      "source": {
+        "file": "board_pack_Q4_2025.pdf",
+        "loc": "p.1"
+      }
+    },
+    "F0048": {
+      "id": "F0048",
+      "kind": "fact",
+      "label": "We propose to hire 30 account executives in Q1 2026 (3.6 EUR M per year fully loaded), which will add 9 EUR M of new ARR in 2026.",
+      "source": {
+        "file": "board_pack_Q4_2025.pdf",
+        "loc": "p.1"
+      }
+    },
+    "F0049": {
+      "id": "F0049",
+      "kind": "fact",
+      "label": "Marketing: website traffic rose 31% in 2025 and the brand was shortlisted for two industry awards.",
+      "source": {
+        "file": "board_pack_Q4_2025.pdf",
+        "loc": "p.1"
+      }
+    },
+    "F0050": {
+      "id": "F0050",
+      "kind": "fact",
+      "label": "HR: engineering headcount grew from 88 to 97.",
+      "source": {
+        "file": "board_pack_Q4_2025.pdf",
+        "loc": "p.1"
+      }
+    },
+    "S:customer_success_notes.md": {
+      "id": "S:customer_success_notes.md",
+      "kind": "source",
+      "label": "customer_success_notes.md"
+    },
+    "F0051": {
+      "id": "F0051",
+      "kind": "fact",
+      "label": "The onboarding team was reduced from 14 to 6 people in February 2025 (saving 0.8 EUR M per year).",
+      "source": {
+        "file": "customer_success_notes.md",
+        "loc": "line 3"
+      }
+    },
+    "F0052": {
+      "id": "F0052",
+      "kind": "fact",
+      "label": "Median time to first value rose from 21 days in 2024 to 48 days in 2025.",
+      "source": {
+        "file": "customer_success_notes.md",
+        "loc": "line 4"
+      }
+    },
+    "F0053": {
+      "id": "F0053",
+      "kind": "fact",
+      "label": "In 2024, first-year customers churned 12%.",
+      "source": {
+        "file": "customer_success_notes.md",
+        "loc": "line 5"
+      }
+    },
+    "F0054": {
+      "id": "F0054",
+      "kind": "fact",
+      "label": "Exit interviews 2025 (64 churned customers): 58% say they never fully implemented the product, 17% moved to a competitor, 14% cite price.",
+      "source": {
+        "file": "customer_success_notes.md",
+        "loc": "line 6"
+      }
+    },
+    "F0055": {
+      "id": "F0055",
+      "kind": "fact",
+      "label": "New account executives reach full productivity (300 EUR k of new ARR per year) after 9 months.",
+      "source": {
+        "file": "customer_success_notes.md",
+        "loc": "line 7"
+      }
+    },
+    "S:computed": {
+      "id": "S:computed",
+      "kind": "source",
+      "label": "computed"
+    },
+    "C0001": {
+      "id": "C0001",
+      "kind": "derived_fact",
+      "label": "Net new ARR 2024 (closing minus opening)",
+      "source": {
+        "file": "computed",
+        "loc": "F0005 - F0001"
+      }
+    },
+    "C0002": {
+      "id": "C0002",
+      "kind": "derived_fact",
+      "label": "Net new ARR 2025 (closing minus opening)",
+      "source": {
+        "file": "computed",
+        "loc": "F0010 - F0006"
+      }
+    },
+    "C0003": {
+      "id": "C0003",
+      "kind": "derived_fact",
+      "label": "Fall in net new ARR 2024 to 2025",
+      "source": {
+        "file": "computed",
+        "loc": "C0001 - C0002"
+      }
+    },
+    "C0004": {
+      "id": "C0004",
+      "kind": "derived_fact",
+      "label": "Increase in churned ARR 2024 to 2025",
+      "source": {
+        "file": "computed",
+        "loc": "F0009 - F0004"
+      }
+    },
+    "C0005": {
+      "id": "C0005",
+      "kind": "derived_fact",
+      "label": "Decline in expansion ARR 2024 to 2025",
+      "source": {
+        "file": "computed",
+        "loc": "F0003 - F0008"
+      }
+    },
+    "C0006": {
+      "id": "C0006",
+      "kind": "derived_fact",
+      "label": "Change in new ARR 2024 to 2025",
+      "source": {
+        "file": "computed",
+        "loc": "F0007 - F0002"
+      }
+    },
+    "C0007": {
+      "id": "C0007",
+      "kind": "derived_fact",
+      "label": "First-year churn rate change, 2024 to 2025",
+      "source": {
+        "file": "computed",
+        "loc": "F0037 - F0053"
+      }
+    },
+    "C0008": {
+      "id": "C0008",
+      "kind": "derived_fact",
+      "label": "First-year cohort churn at the 2024 rate (12%) on the 2025 cohort ARR",
+      "source": {
+        "file": "computed",
+        "loc": "F0035 * F0053 / 100"
+      }
+    },
+    "C0009": {
+      "id": "C0009",
+      "kind": "derived_fact",
+      "label": "Excess first-year churned ARR in 2025 versus the 2024 rate",
+      "source": {
+        "file": "computed",
+        "loc": "F0036 - C0008"
+      }
+    },
+    "C0010": {
+      "id": "C0010",
+      "kind": "derived_fact",
+      "label": "Share of 2025 churned ARR coming from first-year customers",
+      "source": {
+        "file": "computed",
+        "loc": "F0036 / F0042 * 100"
+      }
+    },
+    "C0011": {
+      "id": "C0011",
+      "kind": "derived_fact",
+      "label": "Share of start-of-2025 ARR held by first-year customers",
+      "source": {
+        "file": "computed",
+        "loc": "F0035 / F0041 * 100"
+      }
+    },
+    "C0013": {
+      "id": "C0013",
+      "kind": "derived_fact",
+      "label": "Pipeline created 2024 (sum of quarters)",
+      "source": {
+        "file": "computed",
+        "loc": "sum(F0011, F0014, F0017, F0020)"
+      }
+    },
+    "C0014": {
+      "id": "C0014",
+      "kind": "derived_fact",
+      "label": "Pipeline created 2025 (sum of quarters)",
+      "source": {
+        "file": "computed",
+        "loc": "sum(F0023, F0026, F0029, F0032)"
+      }
+    },
+    "C0015": {
+      "id": "C0015",
+      "kind": "derived_fact",
+      "label": "Deals won 2024 (sum of quarters)",
+      "source": {
+        "file": "computed",
+        "loc": "sum(F0013, F0016, F0019, F0022)"
+      }
+    },
+    "C0016": {
+      "id": "C0016",
+      "kind": "derived_fact",
+      "label": "Deals won 2025 (sum of quarters)",
+      "source": {
+        "file": "computed",
+        "loc": "sum(F0025, F0028, F0031, F0034)"
+      }
+    },
+    "C0017": {
+      "id": "C0017",
+      "kind": "derived_fact",
+      "label": "Run-rate new ARR of 30 fully productive AEs (30 x 300 EUR k)",
+      "source": {
+        "file": "computed",
+        "loc": "F0048 * F0055 / 1000"
+      }
+    },
+    "C0020": {
+      "id": "C0020",
+      "kind": "derived_fact",
+      "label": "Retention levers identified for 2026 (first-year churn back to 2024 rate + expansion back to 2024 level)",
+      "source": {
+        "file": "computed",
+        "loc": "C0009 + C0005"
+      }
+    },
+    "C0021": {
+      "id": "C0021",
+      "kind": "derived_fact",
+      "label": "Remaining gap to the working target after retention levers",
+      "source": {
+        "file": "computed",
+        "loc": "C0003 - C0020"
+      }
+    },
+    "H1": {
+      "id": "H1",
+      "kind": "hypothesis",
+      "label": "Management view (CRO): growth slowed because a new competitor is undercutting us on price and taking new deals",
+      "status": "rejected"
+    },
+    "H2": {
+      "id": "H2",
+      "kind": "hypothesis",
+      "label": "Growth slowed because churn rose, concentrated in first-year customers after the February 2025 onboarding cut",
+      "status": "supported"
+    },
+    "H3": {
+      "id": "H3",
+      "kind": "hypothesis",
+      "label": "Growth slowed because sales capacity or pipeline was insufficient",
+      "status": "rejected"
+    },
+    "H4": {
+      "id": "H4",
+      "kind": "hypothesis",
+      "label": "Expansion ARR fell for the same reason as churn: customers who never fully implement the product do not expand",
+      "status": "unresolved"
+    },
+    "H5": {
+      "id": "H5",
+      "kind": "hypothesis",
+      "label": "Hiring 30 account executives in Q1 2026 will add 9 EUR M of new ARR in 2026, as the CRO states",
+      "status": "rejected"
+    },
+    "I1": {
+      "id": "I1",
+      "kind": "insight",
+      "label": "ARR growth fell from 25% to 9.2% because net new ARR fell by €5.6M (€10.4M to €4.8M): churned ARR rose by €4.5M (€3.3M to €7.8M) and expansion fell by €1.3M, while new ARR rose by €0.2M (€9.4M to €9.6M)."
+    },
+    "I2": {
+      "id": "I2",
+      "kind": "insight",
+      "label": "The sales engine did not weaken: pipeline created rose from €38.9M to €45.9M, the win rate held between 23% and 24% every quarter and deals won rose from 175 to 193; the slowdown did not come from new sales, so it cannot come from price competition in new deals."
+    },
+    "I3": {
+      "id": "I3",
+      "kind": "insight",
+      "label": "Churn is a first-year problem: customers onboarded in the previous 12 months churned 26% of ARR versus 9% for mature customers; they held 35% of opening ARR but 60.3% of churned ARR, and first-year churn rose 14 PP from 12% in 2024."
+    },
+    "I4": {
+      "id": "I4",
+      "kind": "insight",
+      "label": "The onboarding cut is the most likely cause: the team went from 14 to 6 people in February 2025, median time to first value rose from 21 to 48 days, and 58% of the 64 churned customers interviewed never fully implemented the product versus 17% who moved to a competitor and 14% who cite price."
+    },
+    "I5": {
+      "id": "I5",
+      "kind": "insight",
+      "label": "The onboarding saving was a false economy: it saved €0.8M a year while first-year churn above the 2024 rate cost about €2.5M of ARR in 2025."
+    },
+    "I6": {
+      "id": "I6",
+      "kind": "insight",
+      "label": "The CRO's €9M is the full-productivity run-rate of 30 AEs at €300k each; with a 9-month ramp, a Q1 hire delivers about €5.6M of new ARR in 2026, €3.4M short of the promise, for €3.6M a year."
+    },
+    "I7": {
+      "id": "I7",
+      "kind": "insight",
+      "label": "New customers won by extra AEs would enter an onboarding that loses 26% of first-year ARR, so hiring before fixing onboarding buys ARR that leaks within a year."
+    },
+    "I8": {
+      "id": "I8",
+      "kind": "insight",
+      "label": "Expansion ARR fell by €1.3M (€4.3M to €3.0M); a link to poor implementation is plausible but untested, so the expansion lever is an upper bound."
+    },
+    "GT": {
+      "id": "GT",
+      "kind": "governing_thought",
+      "label": "ARR growth fell to 9.2% because rising churn and weaker expansion cut net new ARR by €5.6M while new sales held; the 2026 budget should first reverse the €0.8M onboarding cut, which lost about €2.5M of ARR, and release the €3.6M AE hire only once first-year churn recovers."
+    },
+    "K1": {
+      "id": "K1",
+      "kind": "key_line",
+      "label": "Net new ARR fell by €5.6M because churn rose by €4.5M and expansion fell by €1.3M; new sales held, win rate stayed between 23% and 24%."
+    },
+    "K2": {
+      "id": "K2",
+      "kind": "key_line",
+      "label": "First-year churn more than doubled from 12% to 26% after the onboarding team was cut from 14 to 6; the €0.8M saving cost about €2.5M of ARR."
+    },
+    "K3": {
+      "id": "K3",
+      "kind": "key_line",
+      "label": "The 30-AE plan books €9M that the 9-month ramp cannot deliver in 2026 (about €5.6M) and feeds new customers into an onboarding that loses 26% of them."
+    },
+    "K4": {
+      "id": "K4",
+      "kind": "key_line",
+      "label": "Restore onboarding now and release AE hiring at a retention gate: retention levers worth up to €3.8M, with the €1.8M gap closed by gated AE hiring."
+    },
+    "SL:S1": {
+      "id": "SL:S1",
+      "kind": "slide",
+      "label": "Growth slowed because churn rose, not because sales slowed: restore onboarding now (€0.8M) and gate the €3.6M AE hire on retention",
+      "priority": "core",
+      "reason": "Board reads the answer and the asks on one page"
+    },
+    "SL:S2": {
+      "id": "SL:S2",
+      "kind": "slide",
+      "label": "Net new ARR fell by €5.6M: churn rose by €4.5M and expansion fell by €1.3M while new ARR grew by €0.2M",
+      "priority": "core",
+      "reason": "The single exhibit that relocates the problem from sales to retention"
+    },
+    "SL:S3": {
+      "id": "SL:S3",
+      "kind": "slide",
+      "label": "The sales engine held: pipeline rose from €38.9M to €45.9M, win rate stayed between 23% and 24%, and only 17% of churned customers left for a competitor",
+      "priority": "core",
+      "reason": "The current plan rests on this diagnosis; the board needs to see it tested"
+    },
+    "SL:S4": {
+      "id": "SL:S4",
+      "kind": "slide",
+      "label": "First-year customers churned 26% of ARR versus 9% for mature ones and produced 60.3% of churned ARR",
+      "priority": "core",
+      "reason": "Shows the problem is onboarding of new customers, not the installed base"
+    },
+    "SL:S5": {
+      "id": "SL:S5",
+      "kind": "slide",
+      "label": "Cutting onboarding from 14 to 6 saved €0.8M but time to first value rose from 21 to 48 days and excess first-year churn cost about €2.5M",
+      "priority": "core",
+      "reason": "Turns the diagnosis into a costed, reversible decision"
+    },
+    "SL:S6": {
+      "id": "SL:S6",
+      "kind": "slide",
+      "label": "The CRO's €9M is a full-productivity run-rate: assuming a linear 9-month ramp, 30 AEs add about €5.6M in 2026, €3.4M short, for €3.6M a year",
+      "priority": "core",
+      "reason": "The board is asked to approve this number"
+    },
+    "SL:S7": {
+      "id": "SL:S7",
+      "kind": "slide",
+      "label": "Restoring onboarding first costs €0.8M against €3.6M for the CRO plan and €4.4M for doing both, and removes the €2.5M churn exposure",
+      "priority": "core",
+      "reason": "Same-basis comparison of the three options the board can choose"
+    },
+    "SL:S8": {
+      "id": "SL:S8",
+      "kind": "slide",
+      "label": "Retention levers recover up to €3.8M of the €5.6M lost; gated AE hiring closes the remaining €1.8M, mostly in 2027",
+      "priority": "core",
+      "reason": "Reconciles levers to the target and states the gap honestly"
+    },
+    "SL:S9": {
+      "id": "SL:S9",
+      "kind": "slide",
+      "label": "Board asks today: approve €0.8M for onboarding, reject the Q1 30-AE hire, pre-approve the €3.6M AE envelope behind a Q2 retention gate",
+      "priority": "core",
+      "reason": "Turns the recommendation into decisions, a gate and tracking KPIs"
+    }
+  },
+  "edges": [
+    [
+      "A001",
+      "I6"
+    ],
+    [
+      "A001",
+      "SL:S6"
+    ],
+    [
+      "C0001",
+      "C0003"
+    ],
+    [
+      "C0001",
+      "I1"
+    ],
+    [
+      "C0001",
+      "SL:S2"
+    ],
+    [
+      "C0002",
+      "C0003"
+    ],
+    [
+      "C0002",
+      "I1"
+    ],
+    [
+      "C0002",
+      "SL:S2"
+    ],
+    [
+      "C0003",
+      "C0021"
+    ],
+    [
+      "C0003",
+      "I1"
+    ],
+    [
+      "C0003",
+      "SL:S2"
+    ],
+    [
+      "C0003",
+      "SL:S8"
+    ],
+    [
+      "C0004",
+      "H2"
+    ],
+    [
+      "C0004",
+      "I1"
+    ],
+    [
+      "C0004",
+      "SL:S1"
+    ],
+    [
+      "C0004",
+      "SL:S2"
+    ],
+    [
+      "C0005",
+      "C0020"
+    ],
+    [
+      "C0005",
+      "I1"
+    ],
+    [
+      "C0005",
+      "I8"
+    ],
+    [
+      "C0005",
+      "SL:S2"
+    ],
+    [
+      "C0005",
+      "SL:S8"
+    ],
+    [
+      "C0006",
+      "I1"
+    ],
+    [
+      "C0006",
+      "I2"
+    ],
+    [
+      "C0006",
+      "SL:S2"
+    ],
+    [
+      "C0007",
+      "H2"
+    ],
+    [
+      "C0007",
+      "I3"
+    ],
+    [
+      "C0007",
+      "SL:S4"
+    ],
+    [
+      "C0008",
+      "C0009"
+    ],
+    [
+      "C0008",
+      "I5"
+    ],
+    [
+      "C0008",
+      "SL:S5"
+    ],
+    [
+      "C0009",
+      "C0020"
+    ],
+    [
+      "C0009",
+      "I5"
+    ],
+    [
+      "C0009",
+      "SL:S5"
+    ],
+    [
+      "C0009",
+      "SL:S7"
+    ],
+    [
+      "C0009",
+      "SL:S8"
+    ],
+    [
+      "C0010",
+      "H2"
+    ],
+    [
+      "C0010",
+      "I3"
+    ],
+    [
+      "C0010",
+      "SL:S4"
+    ],
+    [
+      "C0011",
+      "I3"
+    ],
+    [
+      "C0011",
+      "SL:S4"
+    ],
+    [
+      "C0013",
+      "I2"
+    ],
+    [
+      "C0013",
+      "SL:S3"
+    ],
+    [
+      "C0014",
+      "I2"
+    ],
+    [
+      "C0014",
+      "SL:S3"
+    ],
+    [
+      "C0015",
+      "I2"
+    ],
+    [
+      "C0016",
+      "I2"
+    ],
+    [
+      "C0017",
+      "I6"
+    ],
+    [
+      "C0017",
+      "SL:S6"
+    ],
+    [
+      "C0018",
+      "I6"
+    ],
+    [
+      "C0018",
+      "I7"
+    ],
+    [
+      "C0018",
+      "SL:S6"
+    ],
+    [
+      "C0019",
+      "I6"
+    ],
+    [
+      "C0019",
+      "SL:S6"
+    ],
+    [
+      "C0019",
+      "SL:S7"
+    ],
+    [
+      "C0020",
+      "C0021"
+    ],
+    [
+      "C0020",
+      "SL:S8"
+    ],
+    [
+      "C0021",
+      "SL:S8"
+    ],
+    [
+      "F0001",
+      "C0001"
+    ],
+    [
+      "F0002",
+      "C0006"
+    ],
+    [
+      "F0002",
+      "I1"
+    ],
+    [
+      "F0002",
+      "I2"
+    ],
+    [
+      "F0002",
+      "SL:S2"
+    ],
+    [
+      "F0003",
+      "C0005"
+    ],
+    [
+      "F0003",
+      "H4"
+    ],
+    [
+      "F0003",
+      "I8"
+    ],
+    [
+      "F0003",
+      "SL:S2"
+    ],
+    [
+      "F0004",
+      "C0004"
+    ],
+    [
+      "F0004",
+      "H2"
+    ],
+    [
+      "F0004",
+      "I1"
+    ],
+    [
+      "F0004",
+      "SL:S2"
+    ],
+    [
+      "F0005",
+      "C0001"
+    ],
+    [
+      "F0006",
+      "C0002"
+    ],
+    [
+      "F0007",
+      "C0006"
+    ],
+    [
+      "F0007",
+      "I1"
+    ],
+    [
+      "F0007",
+      "I2"
+    ],
+    [
+      "F0007",
+      "SL:S2"
+    ],
+    [
+      "F0008",
+      "C0005"
+    ],
+    [
+      "F0008",
+      "H4"
+    ],
+    [
+      "F0008",
+      "I8"
+    ],
+    [
+      "F0008",
+      "SL:S2"
+    ],
+    [
+      "F0009",
+      "C0004"
+    ],
+    [
+      "F0009",
+      "H2"
+    ],
+    [
+      "F0009",
+      "I1"
+    ],
+    [
+      "F0009",
+      "SL:S2"
+    ],
+    [
+      "F0010",
+      "C0002"
+    ],
+    [
+      "F0011",
+      "C0013"
+    ],
+    [
+      "F0012",
+      "I2"
+    ],
+    [
+      "F0012",
+      "SL:S3"
+    ],
+    [
+      "F0013",
+      "C0015"
+    ],
+    [
+      "F0014",
+      "C0013"
+    ],
+    [
+      "F0015",
+      "I2"
+    ],
+    [
+      "F0016",
+      "C0015"
+    ],
+    [
+      "F0017",
+      "C0013"
+    ],
+    [
+      "F0019",
+      "C0015"
+    ],
+    [
+      "F0020",
+      "C0013"
+    ],
+    [
+      "F0022",
+      "C0015"
+    ],
+    [
+      "F0023",
+      "C0014"
+    ],
+    [
+      "F0025",
+      "C0016"
+    ],
+    [
+      "F0026",
+      "C0014"
+    ],
+    [
+      "F0028",
+      "C0016"
+    ],
+    [
+      "F0029",
+      "C0014"
+    ],
+    [
+      "F0031",
+      "C0016"
+    ],
+    [
+      "F0032",
+      "C0014"
+    ],
+    [
+      "F0033",
+      "I2"
+    ],
+    [
+      "F0033",
+      "SL:S3"
+    ],
+    [
+      "F0034",
+      "C0016"
+    ],
+    [
+      "F0035",
+      "C0008"
+    ],
+    [
+      "F0035",
+      "C0011"
+    ],
+    [
+      "F0035",
+      "I5"
+    ],
+    [
+      "F0036",
+      "C0009"
+    ],
+    [
+      "F0036",
+      "C0010"
+    ],
+    [
+      "F0036",
+      "I5"
+    ],
+    [
+      "F0037",
+      "C0007"
+    ],
+    [
+      "F0037",
+      "H2"
+    ],
+    [
+      "F0037",
+      "I3"
+    ],
+    [
+      "F0037",
+      "I7"
+    ],
+    [
+      "F0037",
+      "SL:S4"
+    ],
+    [
+      "F0037",
+      "SL:S6"
+    ],
+    [
+      "F0040",
+      "H2"
+    ],
+    [
+      "F0040",
+      "I3"
+    ],
+    [
+      "F0040",
+      "SL:S4"
+    ],
+    [
+      "F0041",
+      "C0011"
+    ],
+    [
+      "F0042",
+      "C0010"
+    ],
+    [
+      "F0044",
+      "H1"
+    ],
+    [
+      "F0044",
+      "SL:S3"
+    ],
+    [
+      "F0046",
+      "H1"
+    ],
+    [
+      "F0047",
+      "I1"
+    ],
+    [
+      "F0048",
+      "C0017"
+    ],
+    [
+      "F0048",
+      "H5"
+    ],
+    [
+      "F0048",
+      "I6"
+    ],
+    [
+      "F0048",
+      "SL:S1"
+    ],
+    [
+      "F0048",
+      "SL:S6"
+    ],
+    [
+      "F0048",
+      "SL:S7"
+    ],
+    [
+      "F0048",
+      "SL:S9"
+    ],
+    [
+      "F0051",
+      "H2"
+    ],
+    [
+      "F0051",
+      "I4"
+    ],
+    [
+      "F0051",
+      "I5"
+    ],
+    [
+      "F0051",
+      "SL:S1"
+    ],
+    [
+      "F0051",
+      "SL:S5"
+    ],
+    [
+      "F0051",
+      "SL:S7"
+    ],
+    [
+      "F0051",
+      "SL:S9"
+    ],
+    [
+      "F0052",
+      "H2"
+    ],
+    [
+      "F0052",
+      "I4"
+    ],
+    [
+      "F0052",
+      "SL:S5"
+    ],
+    [
+      "F0053",
+      "C0007"
+    ],
+    [
+      "F0053",
+      "C0008"
+    ],
+    [
+      "F0053",
+      "H2"
+    ],
+    [
+      "F0053",
+      "I3"
+    ],
+    [
+      "F0053",
+      "I5"
+    ],
+    [
+      "F0053",
+      "SL:S4"
+    ],
+    [
+      "F0054",
+      "H2"
+    ],
+    [
+      "F0054",
+      "H4"
+    ],
+    [
+      "F0054",
+      "I4"
+    ],
+    [
+      "F0054",
+      "SL:S3"
+    ],
+    [
+      "F0054",
+      "SL:S5"
+    ],
+    [
+      "F0055",
+      "C0017"
+    ],
+    [
+      "F0055",
+      "I6"
+    ],
+    [
+      "F0055",
+      "SL:S6"
+    ],
+    [
+      "H2",
+      "I1"
+    ],
+    [
+      "H2",
+      "I3"
+    ],
+    [
+      "H2",
+      "I4"
+    ],
+    [
+      "H2",
+      "I5"
+    ],
+    [
+      "H2",
+      "I7"
+    ],
+    [
+      "I1",
+      "K1"
+    ],
+    [
+      "I1",
+      "SL:S1"
+    ],
+    [
+      "I1",
+      "SL:S2"
+    ],
+    [
+      "I2",
+      "K1"
+    ],
+    [
+      "I2",
+      "SL:S3"
+    ],
+    [
+      "I3",
+      "K2"
+    ],
+    [
+      "I3",
+      "SL:S4"
+    ],
+    [
+      "I4",
+      "K2"
+    ],
+    [
+      "I4",
+      "SL:S3"
+    ],
+    [
+      "I4",
+      "SL:S5"
+    ],
+    [
+      "I5",
+      "K2"
+    ],
+    [
+      "I5",
+      "K4"
+    ],
+    [
+      "I5",
+      "SL:S1"
+    ],
+    [
+      "I5",
+      "SL:S5"
+    ],
+    [
+      "I5",
+      "SL:S7"
+    ],
+    [
+      "I5",
+      "SL:S8"
+    ],
+    [
+      "I5",
+      "SL:S9"
+    ],
+    [
+      "I6",
+      "K3"
+    ],
+    [
+      "I6",
+      "K4"
+    ],
+    [
+      "I6",
+      "SL:S1"
+    ],
+    [
+      "I6",
+      "SL:S6"
+    ],
+    [
+      "I6",
+      "SL:S7"
+    ],
+    [
+      "I6",
+      "SL:S9"
+    ],
+    [
+      "I7",
+      "K3"
+    ],
+    [
+      "I7",
+      "SL:S6"
+    ],
+    [
+      "I8",
+      "K4"
+    ],
+    [
+      "I8",
+      "SL:S8"
+    ],
+    [
+      "K1",
+      "GT"
+    ],
+    [
+      "K1",
+      "SL:S2"
+    ],
+    [
+      "K1",
+      "SL:S3"
+    ],
+    [
+      "K2",
+      "GT"
+    ],
+    [
+      "K2",
+      "SL:S4"
+    ],
+    [
+      "K2",
+      "SL:S5"
+    ],
+    [
+      "K3",
+      "GT"
+    ],
+    [
+      "K3",
+      "SL:S6"
+    ],
+    [
+      "K4",
+      "GT"
+    ],
+    [
+      "K4",
+      "SL:S7"
+    ],
+    [
+      "K4",
+      "SL:S8"
+    ],
+    [
+      "S:arr_bridge.csv",
+      "F0001"
+    ],
+    [
+      "S:arr_bridge.csv",
+      "F0002"
+    ],
+    [
+      "S:arr_bridge.csv",
+      "F0003"
+    ],
+    [
+      "S:arr_bridge.csv",
+      "F0004"
+    ],
+    [
+      "S:arr_bridge.csv",
+      "F0005"
+    ],
+    [
+      "S:arr_bridge.csv",
+      "F0006"
+    ],
+    [
+      "S:arr_bridge.csv",
+      "F0007"
+    ],
+    [
+      "S:arr_bridge.csv",
+      "F0008"
+    ],
+    [
+      "S:arr_bridge.csv",
+      "F0009"
+    ],
+    [
+      "S:arr_bridge.csv",
+      "F0010"
+    ],
+    [
+      "S:board_pack_Q4_2025.pdf",
+      "F0047"
+    ],
+    [
+      "S:board_pack_Q4_2025.pdf",
+      "F0048"
+    ],
+    [
+      "S:board_pack_Q4_2025.pdf",
+      "F0049"
+    ],
+    [
+      "S:board_pack_Q4_2025.pdf",
+      "F0050"
+    ],
+    [
+      "S:computed",
+      "C0001"
+    ],
+    [
+      "S:computed",
+      "C0002"
+    ],
+    [
+      "S:computed",
+      "C0003"
+    ],
+    [
+      "S:computed",
+      "C0004"
+    ],
+    [
+      "S:computed",
+      "C0005"
+    ],
+    [
+      "S:computed",
+      "C0006"
+    ],
+    [
+      "S:computed",
+      "C0007"
+    ],
+    [
+      "S:computed",
+      "C0008"
+    ],
+    [
+      "S:computed",
+      "C0009"
+    ],
+    [
+      "S:computed",
+      "C0010"
+    ],
+    [
+      "S:computed",
+      "C0011"
+    ],
+    [
+      "S:computed",
+      "C0013"
+    ],
+    [
+      "S:computed",
+      "C0014"
+    ],
+    [
+      "S:computed",
+      "C0015"
+    ],
+    [
+      "S:computed",
+      "C0016"
+    ],
+    [
+      "S:computed",
+      "C0017"
+    ],
+    [
+      "S:computed",
+      "C0020"
+    ],
+    [
+      "S:computed",
+      "C0021"
+    ],
+    [
+      "S:crm_export.xlsx",
+      "F0011"
+    ],
+    [
+      "S:crm_export.xlsx",
+      "F0012"
+    ],
+    [
+      "S:crm_export.xlsx",
+      "F0013"
+    ],
+    [
+      "S:crm_export.xlsx",
+      "F0014"
+    ],
+    [
+      "S:crm_export.xlsx",
+      "F0015"
+    ],
+    [
+      "S:crm_export.xlsx",
+      "F0016"
+    ],
+    [
+      "S:crm_export.xlsx",
+      "F0017"
+    ],
+    [
+      "S:crm_export.xlsx",
+      "F0018"
+    ],
+    [
+      "S:crm_export.xlsx",
+      "F0019"
+    ],
+    [
+      "S:crm_export.xlsx",
+      "F0020"
+    ],
+    [
+      "S:crm_export.xlsx",
+      "F0021"
+    ],
+    [
+      "S:crm_export.xlsx",
+      "F0022"
+    ],
+    [
+      "S:crm_export.xlsx",
+      "F0023"
+    ],
+    [
+      "S:crm_export.xlsx",
+      "F0024"
+    ],
+    [
+      "S:crm_export.xlsx",
+      "F0025"
+    ],
+    [
+      "S:crm_export.xlsx",
+      "F0026"
+    ],
+    [
+      "S:crm_export.xlsx",
+      "F0027"
+    ],
+    [
+      "S:crm_export.xlsx",
+      "F0028"
+    ],
+    [
+      "S:crm_export.xlsx",
+      "F0029"
+    ],
+    [
+      "S:crm_export.xlsx",
+      "F0030"
+    ],
+    [
+      "S:crm_export.xlsx",
+      "F0031"
+    ],
+    [
+      "S:crm_export.xlsx",
+      "F0032"
+    ],
+    [
+      "S:crm_export.xlsx",
+      "F0033"
+    ],
+    [
+      "S:crm_export.xlsx",
+      "F0034"
+    ],
+    [
+      "S:crm_export.xlsx",
+      "F0035"
+    ],
+    [
+      "S:crm_export.xlsx",
+      "F0036"
+    ],
+    [
+      "S:crm_export.xlsx",
+      "F0037"
+    ],
+    [
+      "S:crm_export.xlsx",
+      "F0038"
+    ],
+    [
+      "S:crm_export.xlsx",
+      "F0039"
+    ],
+    [
+      "S:crm_export.xlsx",
+      "F0040"
+    ],
+    [
+      "S:crm_export.xlsx",
+      "F0041"
+    ],
+    [
+      "S:crm_export.xlsx",
+      "F0042"
+    ],
+    [
+      "S:crm_export.xlsx",
+      "F0043"
+    ],
+    [
+      "S:crm_export.xlsx",
+      "F0044"
+    ],
+    [
+      "S:crm_export.xlsx",
+      "F0045"
+    ],
+    [
+      "S:crm_export.xlsx",
+      "F0046"
+    ],
+    [
+      "S:customer_success_notes.md",
+      "F0051"
+    ],
+    [
+      "S:customer_success_notes.md",
+      "F0052"
+    ],
+    [
+      "S:customer_success_notes.md",
+      "F0053"
+    ],
+    [
+      "S:customer_success_notes.md",
+      "F0054"
+    ],
+    [
+      "S:customer_success_notes.md",
+      "F0055"
+    ]
+  ]
+}

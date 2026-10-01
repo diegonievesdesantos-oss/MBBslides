@@ -1,0 +1,224 @@
+{
+  "facts": [
+    {
+      "id": "C0001",
+      "claim": "Net new ARR 2024 (closing minus opening)",
+      "formula": "F0005 - F0001",
+      "values": [
+        {
+          "value": 10.4,
+          "unit": "EUR_M"
+        }
+      ]
+    },
+    {
+      "id": "C0002",
+      "claim": "Net new ARR 2025 (closing minus opening)",
+      "formula": "F0010 - F0006",
+      "values": [
+        {
+          "value": 4.8,
+          "unit": "EUR_M"
+        }
+      ]
+    },
+    {
+      "id": "C0003",
+      "claim": "Fall in net new ARR 2024 to 2025",
+      "formula": "C0001 - C0002",
+      "values": [
+        {
+          "value": 5.6,
+          "unit": "EUR_M"
+        }
+      ]
+    },
+    {
+      "id": "C0004",
+      "claim": "Increase in churned ARR 2024 to 2025",
+      "formula": "F0009 - F0004",
+      "values": [
+        {
+          "value": 4.5,
+          "unit": "EUR_M"
+        }
+      ]
+    },
+    {
+      "id": "C0005",
+      "claim": "Decline in expansion ARR 2024 to 2025",
+      "formula": "F0003 - F0008",
+      "values": [
+        {
+          "value": 1.3,
+          "unit": "EUR_M"
+        }
+      ]
+    },
+    {
+      "id": "C0006",
+      "claim": "Change in new ARR 2024 to 2025",
+      "formula": "F0007 - F0002",
+      "values": [
+        {
+          "value": 0.2,
+          "unit": "EUR_M"
+        }
+      ]
+    },
+    {
+      "id": "C0007",
+      "claim": "First-year churn rate change, 2024 to 2025",
+      "formula": "F0037 - F0053",
+      "values": [
+        {
+          "value": 14,
+          "unit": "PP"
+        }
+      ]
+    },
+    {
+      "id": "C0008",
+      "claim": "First-year cohort churn at the 2024 rate (12%) on the 2025 cohort ARR",
+      "formula": "F0035 * F0053 / 100",
+      "values": [
+        {
+          "value": 2.184,
+          "unit": "EUR_M"
+        }
+      ]
+    },
+    {
+      "id": "C0009",
+      "claim": "Excess first-year churned ARR in 2025 versus the 2024 rate",
+      "formula": "F0036 - C0008",
+      "values": [
+        {
+          "value": 2.516,
+          "unit": "EUR_M"
+        }
+      ]
+    },
+    {
+      "id": "C0010",
+      "claim": "Share of 2025 churned ARR coming from first-year customers",
+      "formula": "F0036 / F0042 * 100",
+      "values": [
+        {
+          "value": 60.3,
+          "unit": "PCT"
+        }
+      ]
+    },
+    {
+      "id": "C0011",
+      "claim": "Share of start-of-2025 ARR held by first-year customers",
+      "formula": "F0035 / F0041 * 100",
+      "values": [
+        {
+          "value": 35.0,
+          "unit": "PCT"
+        }
+      ]
+    },
+    {
+      "id": "C0013",
+      "claim": "Pipeline created 2024 (sum of quarters)",
+      "formula": "sum(F0011, F0014, F0017, F0020)",
+      "values": [
+        {
+          "value": 38.9,
+          "unit": "EUR_M"
+        }
+      ]
+    },
+    {
+      "id": "C0014",
+      "claim": "Pipeline created 2025 (sum of quarters)",
+      "formula": "sum(F0023, F0026, F0029, F0032)",
+      "values": [
+        {
+          "value": 45.9,
+          "unit": "EUR_M"
+        }
+      ]
+    },
+    {
+      "id": "C0015",
+      "claim": "Deals won 2024 (sum of quarters)",
+      "formula": "sum(F0013, F0016, F0019, F0022)",
+      "values": [
+        {
+          "value": 175,
+          "unit": ""
+        }
+      ]
+    },
+    {
+      "id": "C0016",
+      "claim": "Deals won 2025 (sum of quarters)",
+      "formula": "sum(F0025, F0028, F0031, F0034)",
+      "values": [
+        {
+          "value": 193,
+          "unit": ""
+        }
+      ]
+    },
+    {
+      "id": "C0017",
+      "claim": "Run-rate new ARR of 30 fully productive AEs (30 x 300 EUR k)",
+      "formula": "F0048 * F0055 / 1000",
+      "values": [
+        {
+          "value": 9.0,
+          "unit": "EUR_M"
+        }
+      ]
+    },
+    {
+      "id": "C0018",
+      "claim": "Realistic 2026 new ARR from 30 AEs hired in Q1, given the 9-month ramp (A001)",
+      "formula": "C0017 * A001",
+      "values": [
+        {
+          "value": 5.625,
+          "unit": "EUR_M"
+        }
+      ]
+    },
+    {
+      "id": "C0019",
+      "claim": "Shortfall of the CRO's 9 EUR M 2026 promise (= 30 AEs x 300 EUR k full run-rate) versus the ramp-adjusted estimate",
+      "formula": "C0017 - C0018",
+      "values": [
+        {
+          "value": 3.375,
+          "unit": "EUR_M"
+        }
+      ]
+    },
+    {
+      "id": "C0020",
+      "claim": "Retention levers identified for 2026 (first-year churn back to 2024 rate + expansion back to 2024 level)",
+      "formula": "C0009 + C0005",
+      "values": [
+        {
+          "value": 3.816,
+          "unit": "EUR_M"
+        }
+      ]
+    },
+    {
+      "id": "C0021",
+      "claim": "Remaining gap to the working target after retention levers",
+      "formula": "C0003 - C0020",
+      "values": [
+        {
+          "value": 1.784,
+          "unit": "EUR_M"
+        }
+      ]
+    }
+  ]
+}

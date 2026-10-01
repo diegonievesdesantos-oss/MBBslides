@@ -1,0 +1,31 @@
+{
+  "protocol": "1.2",
+  "conflicts": [],
+  "resolutions": [
+    {
+      "kpi": "2025 packaging spend",
+      "facts": [
+        "F0057",
+        "F0055",
+        "C0002"
+      ],
+      "resolution": "Consistent: invoices sum to 24.998 EUR M = 25 EUR M stated; used 23.9 EUR M (F0056) as the price-reducible base"
+    },
+    {
+      "kpi": "Annual saving of full consolidation",
+      "facts": [
+        "F0059",
+        "C0003"
+      ],
+      "resolution": "Not a data conflict but a basis error: 3.0 EUR M = 12% of 25 EUR M including rush freight; 2.868 EUR M on 23.9 EUR M is retained"
+    },
+    {
+      "kpi": "Supplier B volume share",
+      "facts": [
+        "F0057",
+        "C0002"
+      ],
+      "resolution": "Proposal states 30%; 2025 invoices give Supplier B 7.17 of 25.0 EUR M by value, close to 30%; the volume share stated in the proposal is used"
+    }
+  ]
+}

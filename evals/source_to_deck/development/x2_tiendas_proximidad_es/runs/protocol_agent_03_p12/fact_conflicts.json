@@ -1,0 +1,84 @@
+{
+ "protocol": "1.2",
+ "conflicts": [
+  {
+   "id": "FC1",
+   "facts": [
+    {
+     "fact": "F0214"
+    },
+    {
+     "fact": "F0208"
+    }
+   ],
+   "kpi": "Pérdida de EBITDA 2025 de las 40 tiendas",
+   "values": [
+    "5,2 M€",
+    "5.196 k€"
+   ],
+   "resolution": "Mismo dato redondeado; se usa 5.196 k€ (excel, F0208). La diferencia relevante no es de cifra sino de base: incluye 3.600 k€ de coste central asignado (F0209).",
+   "resolved": true,
+   "chosen": "F0208"
+  },
+  {
+   "id": "FC2",
+   "facts": [
+    {
+     "fact": "F0216"
+    },
+    {
+     "fact": "F0211"
+    },
+    {
+     "fact": "F0212"
+    }
+   ],
+   "kpi": "Coste de cierre por tienda",
+   "values": [
+    "250 k€ para todas (propuesta)",
+    "100.000 € con ruptura / 250.000 € sin ruptura (informe inmobiliario)"
+   ],
+   "resolution": "Prevalece el informe inmobiliario, fuente propietaria del dato contractual: 100 k€ para las 15 con ruptura en 2026, 250 k€ para el resto. Coste total de cerrar las 40: 7.750 k€ (C0011), no 10 M€.",
+   "resolved": true,
+   "chosen": "F0211"
+  },
+  {
+   "id": "FC3",
+   "facts": [
+    {
+     "fact": "F0003"
+    },
+    {
+     "fact": "F0210"
+    }
+   ],
+   "kpi": "Alquiler / ventas del grupo A",
+   "values": [
+    "14,5% (excel)",
+    "16% (informe inmobiliario)"
+   ],
+   "resolution": "No es un conflicto sino distinta base: el excel mide sin gastos comunes (nota del controller) y el informe los incluye. Se usa 16% frente al 9% de la red porque ambos están en la misma base del informe.",
+   "resolved": true,
+   "chosen": "F0210"
+  },
+  {
+   "id": "FC4",
+   "facts": [
+    {
+     "fact": "F0215"
+    },
+    {
+     "fact": "C0032"
+    }
+   ],
+   "kpi": "Mejora de EBITDA al cerrar las 40 tiendas",
+   "values": [
+    "5,2 M€ (propuesta)",
+    "1.596 k€ (sin coste central, que no desaparece)"
+   ],
+   "resolution": "Se usa 1.596 k€: la nota del controller indica que el coste central asignado no desaparece al cerrar y se reparte entre el resto de la red.",
+   "resolved": true,
+   "chosen": "C0032"
+  }
+ ]
+}

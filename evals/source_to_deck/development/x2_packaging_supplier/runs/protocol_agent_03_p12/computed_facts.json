@@ -1,0 +1,257 @@
+{
+  "facts": [
+    {
+      "id": "C0001",
+      "claim": "Rush freight invoiced by the incumbent in 2025 totals 1.1 EUR M",
+      "formula": "sum(F0002,F0006,F0010,F0014,F0018,F0022,F0026,F0030,F0034,F0038,F0042,F0046)",
+      "values": [
+        {
+          "value": 1.1,
+          "unit": "EUR_M"
+        }
+      ]
+    },
+    {
+      "id": "C0002",
+      "claim": "Total 2025 packaging invoices (both suppliers) total 25.0 EUR M",
+      "formula": "sum(F0001,F0005,F0009,F0013,F0017,F0021,F0025,F0029,F0033,F0037,F0041,F0045,F0003,F0007,F0011,F0015,F0019,F0023,F0027,F0031,F0035,F0039,F0043,F0047)",
+      "values": [
+        {
+          "value": 24.998,
+          "unit": "EUR_M"
+        }
+      ]
+    },
+    {
+      "id": "C0003",
+      "claim": "Annual price saving of 100% Supplier B: 12% on the 23.9 EUR M spend excluding rush freight",
+      "formula": "F0056 * F0054 / 100",
+      "values": [
+        {
+          "value": 2.868,
+          "unit": "EUR_M"
+        }
+      ]
+    },
+    {
+      "id": "C0004",
+      "claim": "Overstatement of the proposal's 3.0 EUR M annual saving (12% applied to rush freight)",
+      "formula": "F0059 - C0003",
+      "values": [
+        {
+          "value": 0.132,
+          "unit": "EUR_M"
+        }
+      ]
+    },
+    {
+      "id": "C0005",
+      "claim": "Annual price saving of 70/30: 9% on 70% of volume with Supplier B plus incumbent's 4% on the 30% it keeps, on 23.9 EUR M",
+      "formula": "F0056 * (F0051 * F0052 + 30 * 4) / 10000",
+      "values": [
+        {
+          "value": 1.7925,
+          "unit": "EUR_M"
+        }
+      ]
+    },
+    {
+      "id": "C0006",
+      "claim": "Three-year (2026-2028) price saving of 100% Supplier B",
+      "formula": "C0003 * 3",
+      "values": [
+        {
+          "value": 8.604,
+          "unit": "EUR_M"
+        }
+      ]
+    },
+    {
+      "id": "C0007",
+      "claim": "Three-year (2026-2028) price saving of 70/30",
+      "formula": "C0005 * 3",
+      "values": [
+        {
+          "value": 5.3775,
+          "unit": "EUR_M"
+        }
+      ]
+    },
+    {
+      "id": "C0008",
+      "claim": "Expected three-year stoppage cost at 100% exposure if the last three years' stoppages (9 and 14 days) recur (2.4 EUR M is the 14-day cost stated in F0062)",
+      "formula": "F0061 + 2.4",
+      "values": [
+        {
+          "value": 4.0,
+          "unit": "EUR_M"
+        }
+      ]
+    },
+    {
+      "id": "C0009",
+      "claim": "Expected three-year stoppage cost with 70% of volume on Supplier B",
+      "formula": "C0008 * 0.7",
+      "values": [
+        {
+          "value": 2.8,
+          "unit": "EUR_M"
+        }
+      ]
+    },
+    {
+      "id": "C0010",
+      "claim": "Expected three-year stoppage cost with 30% of volume on Supplier B (status quo)",
+      "formula": "C0008 * 0.3",
+      "values": [
+        {
+          "value": 1.2,
+          "unit": "EUR_M"
+        }
+      ]
+    },
+    {
+      "id": "C0011",
+      "claim": "Three-year net value of 100% Supplier B: price saving minus 0.8 EUR M switching minus expected stoppage cost",
+      "formula": "C0006 - 0.8 - C0008",
+      "values": [
+        {
+          "value": 3.804,
+          "unit": "EUR_M"
+        }
+      ]
+    },
+    {
+      "id": "C0012",
+      "claim": "Three-year net value of 70/30: price saving minus 0.5 EUR M switching minus expected stoppage cost",
+      "formula": "C0007 - 0.5 - C0009",
+      "values": [
+        {
+          "value": 2.0775,
+          "unit": "EUR_M"
+        }
+      ]
+    },
+    {
+      "id": "C0013",
+      "claim": "Three-year net value of the status quo: no price saving, no switching, expected stoppage cost on 30%",
+      "formula": "0 - C0010",
+      "values": [
+        {
+          "value": -1.2,
+          "unit": "EUR_M"
+        }
+      ]
+    },
+    {
+      "id": "C0014",
+      "claim": "Advantage of 100% Supplier B over 70/30 over three years",
+      "formula": "C0011 - C0012",
+      "values": [
+        {
+          "value": 1.7265,
+          "unit": "EUR_M"
+        }
+      ]
+    },
+    {
+      "id": "C0015",
+      "claim": "Three-year full-exposure stoppage cost at which 70/30 would match 100% Supplier B (break-even)",
+      "formula": "(C0006 - C0007 - 0.3) / 0.3",
+      "values": [
+        {
+          "value": 9.755,
+          "unit": "EUR_M"
+        }
+      ]
+    },
+    {
+      "id": "C0016",
+      "claim": "Break-even stoppage cost as a multiple of the historical 4.0 EUR M",
+      "formula": "C0015 / C0008",
+      "values": [
+        {
+          "value": 2.43875,
+          "unit": "X"
+        }
+      ]
+    },
+    {
+      "id": "C0017",
+      "claim": "Three-year saving claimed by the proposal (3.0 EUR M a year)",
+      "formula": "F0059 * 3",
+      "values": [
+        {
+          "value": 9.0,
+          "unit": "EUR_M"
+        }
+      ]
+    },
+    {
+      "id": "C0018",
+      "claim": "Gap between the claimed three-year saving and the risk-adjusted net of 100% Supplier B",
+      "formula": "C0017 - C0011",
+      "values": [
+        {
+          "value": 5.196,
+          "unit": "EUR_M"
+        }
+      ]
+    },
+    {
+      "id": "C0019",
+      "claim": "Risk-adjusted annual net saving of 100% Supplier B (three-year net divided by three)",
+      "formula": "C0011 / 3",
+      "values": [
+        {
+          "value": 1.268,
+          "unit": "EUR_M"
+        }
+      ]
+    },
+    {
+      "id": "C0020",
+      "claim": "Rush freight in the five months flagged as caused by our forecast errors",
+      "formula": "sum(F0010,F0022,F0034,F0038,F0042)",
+      "values": [
+        {
+          "value": 0.65,
+          "unit": "EUR_M"
+        }
+      ]
+    },
+    {
+      "id": "C0021",
+      "claim": "Expected stoppage cost as a share of the three-year gross price saving of 100% Supplier B",
+      "formula": "C0008 / C0006 * 100",
+      "values": [
+        {
+          "value": 46.49,
+          "unit": "PCT"
+        }
+      ]
+    },
+    {
+      "id": "C0022",
+      "claim": "Advantage of 100% Supplier B over the status quo over three years",
+      "formula": "C0011 - C0013",
+      "values": [
+        {
+          "value": 5.004,
+          "unit": "EUR_M"
+        }
+      ]
+    },
+    {
+      "id": "C0023",
+      "claim": "Three-year overstatement from applying the 12% to rush freight",
+      "formula": "C0004 * 3",
+      "values": [
+        {
+          "value": 0.396,
+          "unit": "EUR_M"
+        }
+      ]
+    }
+  ]
+}

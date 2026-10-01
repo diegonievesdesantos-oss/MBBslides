@@ -1,0 +1,25 @@
+{
+  "protocol": "1.2",
+  "sources": [
+    {
+      "file": "finance_note.md",
+      "sha256": "3b6822b3d1ff3adc4ea4d7bce9a984b94c6073815ddb769b192ae685b8222a6d",
+      "bytes": 290
+    },
+    {
+      "file": "invoices_2025.csv",
+      "sha256": "d8d938f426ed2487624a150034d06df20300884ef77985f2ceb568b61fdb66d9",
+      "bytes": 1023
+    },
+    {
+      "file": "procurement_proposal.docx",
+      "sha256": "1bdd35b93f9b0c19084e53482976ed232f9cb7a7a6e48b1f8d6f6c2c71636a9f",
+      "bytes": 1259
+    },
+    {
+      "file": "supply_risk_review.pdf",
+      "sha256": "400b843ad4e4dc7b306962b9413a7fe90c4e97ccde238f0be319c8eadb0ee39f",
+      "bytes": 2229
+    }
+  ]
+}

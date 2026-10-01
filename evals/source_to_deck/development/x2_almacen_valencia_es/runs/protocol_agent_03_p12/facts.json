@@ -1,0 +1,1080 @@
+{
+  "protocol": "1.2",
+  "facts": [
+    {
+      "id": "F0001",
+      "claim": "Madrid — Coste fijo 2025 (M€): 5.8 EUR_M",
+      "values": [
+        {
+          "value": 5.8,
+          "unit": "EUR_M",
+          "period": "2025",
+          "basis": "actual",
+          "label": "Madrid",
+          "column": "Coste fijo 2025 (M€)"
+        }
+      ],
+      "source": {
+        "file": "almacenes_2025.xlsx",
+        "sheet": "Costes",
+        "range": "B2",
+        "loc": "sheet Costes"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0002",
+      "claim": "Madrid — Coste variable 2025 (M€): 6 EUR_M",
+      "values": [
+        {
+          "value": 6.0,
+          "unit": "EUR_M",
+          "period": "2025",
+          "basis": "actual",
+          "label": "Madrid",
+          "column": "Coste variable 2025 (M€)"
+        }
+      ],
+      "source": {
+        "file": "almacenes_2025.xlsx",
+        "sheet": "Costes",
+        "range": "C2",
+        "loc": "sheet Costes"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0003",
+      "claim": "Madrid — Pedidos 2025 (miles): 1,500",
+      "values": [
+        {
+          "value": 1500.0,
+          "unit": "",
+          "period": "2025",
+          "basis": "actual",
+          "label": "Madrid",
+          "column": "Pedidos 2025 (miles)"
+        }
+      ],
+      "source": {
+        "file": "almacenes_2025.xlsx",
+        "sheet": "Costes",
+        "range": "D2",
+        "loc": "sheet Costes"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0004",
+      "claim": "Madrid — Coste variable por pedido (€): 4 EUR",
+      "values": [
+        {
+          "value": 4.0,
+          "unit": "EUR",
+          "period": null,
+          "basis": null,
+          "label": "Madrid",
+          "column": "Coste variable por pedido (€)"
+        }
+      ],
+      "source": {
+        "file": "almacenes_2025.xlsx",
+        "sheet": "Costes",
+        "range": "E2",
+        "loc": "sheet Costes"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0005",
+      "claim": "Madrid — Plantilla: 210",
+      "values": [
+        {
+          "value": 210.0,
+          "unit": "",
+          "period": null,
+          "basis": null,
+          "label": "Madrid",
+          "column": "Plantilla"
+        }
+      ],
+      "source": {
+        "file": "almacenes_2025.xlsx",
+        "sheet": "Costes",
+        "range": "F2",
+        "loc": "sheet Costes"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0006",
+      "claim": "Valencia — Coste fijo 2025 (M€): 2.6 EUR_M",
+      "values": [
+        {
+          "value": 2.6,
+          "unit": "EUR_M",
+          "period": "2025",
+          "basis": "actual",
+          "label": "Valencia",
+          "column": "Coste fijo 2025 (M€)"
+        }
+      ],
+      "source": {
+        "file": "almacenes_2025.xlsx",
+        "sheet": "Costes",
+        "range": "B3",
+        "loc": "sheet Costes"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0007",
+      "claim": "Valencia — Coste variable 2025 (M€): 1.5 EUR_M",
+      "values": [
+        {
+          "value": 1.5,
+          "unit": "EUR_M",
+          "period": "2025",
+          "basis": "actual",
+          "label": "Valencia",
+          "column": "Coste variable 2025 (M€)"
+        }
+      ],
+      "source": {
+        "file": "almacenes_2025.xlsx",
+        "sheet": "Costes",
+        "range": "C3",
+        "loc": "sheet Costes"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0008",
+      "claim": "Valencia — Pedidos 2025 (miles): 375",
+      "values": [
+        {
+          "value": 375.0,
+          "unit": "",
+          "period": "2025",
+          "basis": "actual",
+          "label": "Valencia",
+          "column": "Pedidos 2025 (miles)"
+        }
+      ],
+      "source": {
+        "file": "almacenes_2025.xlsx",
+        "sheet": "Costes",
+        "range": "D3",
+        "loc": "sheet Costes"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0009",
+      "claim": "Valencia — Coste variable por pedido (€): 4 EUR",
+      "values": [
+        {
+          "value": 4.0,
+          "unit": "EUR",
+          "period": null,
+          "basis": null,
+          "label": "Valencia",
+          "column": "Coste variable por pedido (€)"
+        }
+      ],
+      "source": {
+        "file": "almacenes_2025.xlsx",
+        "sheet": "Costes",
+        "range": "E3",
+        "loc": "sheet Costes"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0010",
+      "claim": "Valencia — Plantilla: 64",
+      "values": [
+        {
+          "value": 64.0,
+          "unit": "",
+          "period": null,
+          "basis": null,
+          "label": "Valencia",
+          "column": "Plantilla"
+        }
+      ],
+      "source": {
+        "file": "almacenes_2025.xlsx",
+        "sheet": "Costes",
+        "range": "F3",
+        "loc": "sheet Costes"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0011",
+      "claim": "Sevilla — Coste fijo 2025 (M€): 2.1 EUR_M",
+      "values": [
+        {
+          "value": 2.1,
+          "unit": "EUR_M",
+          "period": "2025",
+          "basis": "actual",
+          "label": "Sevilla",
+          "column": "Coste fijo 2025 (M€)"
+        }
+      ],
+      "source": {
+        "file": "almacenes_2025.xlsx",
+        "sheet": "Costes",
+        "range": "B4",
+        "loc": "sheet Costes"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0012",
+      "claim": "Sevilla — Coste variable 2025 (M€): 1.4 EUR_M",
+      "values": [
+        {
+          "value": 1.4,
+          "unit": "EUR_M",
+          "period": "2025",
+          "basis": "actual",
+          "label": "Sevilla",
+          "column": "Coste variable 2025 (M€)"
+        }
+      ],
+      "source": {
+        "file": "almacenes_2025.xlsx",
+        "sheet": "Costes",
+        "range": "C4",
+        "loc": "sheet Costes"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0013",
+      "claim": "Sevilla — Pedidos 2025 (miles): 350",
+      "values": [
+        {
+          "value": 350.0,
+          "unit": "",
+          "period": "2025",
+          "basis": "actual",
+          "label": "Sevilla",
+          "column": "Pedidos 2025 (miles)"
+        }
+      ],
+      "source": {
+        "file": "almacenes_2025.xlsx",
+        "sheet": "Costes",
+        "range": "D4",
+        "loc": "sheet Costes"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0014",
+      "claim": "Sevilla — Coste variable por pedido (€): 4 EUR",
+      "values": [
+        {
+          "value": 4.0,
+          "unit": "EUR",
+          "period": null,
+          "basis": null,
+          "label": "Sevilla",
+          "column": "Coste variable por pedido (€)"
+        }
+      ],
+      "source": {
+        "file": "almacenes_2025.xlsx",
+        "sheet": "Costes",
+        "range": "E4",
+        "loc": "sheet Costes"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0015",
+      "claim": "Sevilla — Plantilla: 58",
+      "values": [
+        {
+          "value": 58.0,
+          "unit": "",
+          "period": null,
+          "basis": null,
+          "label": "Sevilla",
+          "column": "Plantilla"
+        }
+      ],
+      "source": {
+        "file": "almacenes_2025.xlsx",
+        "sheet": "Costes",
+        "range": "F4",
+        "loc": "sheet Costes"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0016",
+      "claim": "Total — Coste fijo 2025 (M€): 10.5 EUR_M",
+      "values": [
+        {
+          "value": 10.5,
+          "unit": "EUR_M",
+          "period": "2025",
+          "basis": "actual",
+          "label": "Total",
+          "column": "Coste fijo 2025 (M€)"
+        }
+      ],
+      "source": {
+        "file": "almacenes_2025.xlsx",
+        "sheet": "Costes",
+        "range": "B5",
+        "loc": "sheet Costes"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0017",
+      "claim": "Total — Coste variable 2025 (M€): 8.9 EUR_M",
+      "values": [
+        {
+          "value": 8.9,
+          "unit": "EUR_M",
+          "period": "2025",
+          "basis": "actual",
+          "label": "Total",
+          "column": "Coste variable 2025 (M€)"
+        }
+      ],
+      "source": {
+        "file": "almacenes_2025.xlsx",
+        "sheet": "Costes",
+        "range": "C5",
+        "loc": "sheet Costes"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0018",
+      "claim": "Total — Pedidos 2025 (miles): 2,225",
+      "values": [
+        {
+          "value": 2225.0,
+          "unit": "",
+          "period": "2025",
+          "basis": "actual",
+          "label": "Total",
+          "column": "Pedidos 2025 (miles)"
+        }
+      ],
+      "source": {
+        "file": "almacenes_2025.xlsx",
+        "sheet": "Costes",
+        "range": "D5",
+        "loc": "sheet Costes"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0019",
+      "claim": "Total — Coste variable por pedido (€): 4 EUR",
+      "values": [
+        {
+          "value": 4.0,
+          "unit": "EUR",
+          "period": null,
+          "basis": null,
+          "label": "Total",
+          "column": "Coste variable por pedido (€)"
+        }
+      ],
+      "source": {
+        "file": "almacenes_2025.xlsx",
+        "sheet": "Costes",
+        "range": "E5",
+        "loc": "sheet Costes"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0020",
+      "claim": "Total — Plantilla: 332",
+      "values": [
+        {
+          "value": 332.0,
+          "unit": "",
+          "period": null,
+          "basis": null,
+          "label": "Total",
+          "column": "Plantilla"
+        }
+      ],
+      "source": {
+        "file": "almacenes_2025.xlsx",
+        "sheet": "Costes",
+        "range": "F5",
+        "loc": "sheet Costes"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0021",
+      "claim": "Madrid — Capacidad (miles de pedidos/año): 1,800 YEARS",
+      "values": [
+        {
+          "value": 1800.0,
+          "unit": "YEARS",
+          "period": null,
+          "basis": null,
+          "label": "Madrid",
+          "column": "Capacidad (miles de pedidos/año)"
+        }
+      ],
+      "source": {
+        "file": "almacenes_2025.xlsx",
+        "sheet": "Capacidad",
+        "range": "B2",
+        "loc": "sheet Capacidad"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0022",
+      "claim": "Madrid — Pedidos 2025 (miles): 1,500",
+      "values": [
+        {
+          "value": 1500.0,
+          "unit": "",
+          "period": "2025",
+          "basis": "actual",
+          "label": "Madrid",
+          "column": "Pedidos 2025 (miles)"
+        }
+      ],
+      "source": {
+        "file": "almacenes_2025.xlsx",
+        "sheet": "Capacidad",
+        "range": "C2",
+        "loc": "sheet Capacidad"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0023",
+      "claim": "Madrid — Capacidad libre (miles): 300",
+      "values": [
+        {
+          "value": 300.0,
+          "unit": "",
+          "period": null,
+          "basis": null,
+          "label": "Madrid",
+          "column": "Capacidad libre (miles)"
+        }
+      ],
+      "source": {
+        "file": "almacenes_2025.xlsx",
+        "sheet": "Capacidad",
+        "range": "D2",
+        "loc": "sheet Capacidad"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0024",
+      "claim": "Madrid — Utilización (%): 83 PCT",
+      "values": [
+        {
+          "value": 83.0,
+          "unit": "PCT",
+          "period": null,
+          "basis": null,
+          "label": "Madrid",
+          "column": "Utilización (%)"
+        }
+      ],
+      "source": {
+        "file": "almacenes_2025.xlsx",
+        "sheet": "Capacidad",
+        "range": "E2",
+        "loc": "sheet Capacidad"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0025",
+      "claim": "Valencia — Capacidad (miles de pedidos/año): 450 YEARS",
+      "values": [
+        {
+          "value": 450.0,
+          "unit": "YEARS",
+          "period": null,
+          "basis": null,
+          "label": "Valencia",
+          "column": "Capacidad (miles de pedidos/año)"
+        }
+      ],
+      "source": {
+        "file": "almacenes_2025.xlsx",
+        "sheet": "Capacidad",
+        "range": "B3",
+        "loc": "sheet Capacidad"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0026",
+      "claim": "Valencia — Pedidos 2025 (miles): 375",
+      "values": [
+        {
+          "value": 375.0,
+          "unit": "",
+          "period": "2025",
+          "basis": "actual",
+          "label": "Valencia",
+          "column": "Pedidos 2025 (miles)"
+        }
+      ],
+      "source": {
+        "file": "almacenes_2025.xlsx",
+        "sheet": "Capacidad",
+        "range": "C3",
+        "loc": "sheet Capacidad"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0027",
+      "claim": "Valencia — Capacidad libre (miles): 75",
+      "values": [
+        {
+          "value": 75.0,
+          "unit": "",
+          "period": null,
+          "basis": null,
+          "label": "Valencia",
+          "column": "Capacidad libre (miles)"
+        }
+      ],
+      "source": {
+        "file": "almacenes_2025.xlsx",
+        "sheet": "Capacidad",
+        "range": "D3",
+        "loc": "sheet Capacidad"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0028",
+      "claim": "Valencia — Utilización (%): 83 PCT",
+      "values": [
+        {
+          "value": 83.0,
+          "unit": "PCT",
+          "period": null,
+          "basis": null,
+          "label": "Valencia",
+          "column": "Utilización (%)"
+        }
+      ],
+      "source": {
+        "file": "almacenes_2025.xlsx",
+        "sheet": "Capacidad",
+        "range": "E3",
+        "loc": "sheet Capacidad"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0029",
+      "claim": "Sevilla — Capacidad (miles de pedidos/año): 420 YEARS",
+      "values": [
+        {
+          "value": 420.0,
+          "unit": "YEARS",
+          "period": null,
+          "basis": null,
+          "label": "Sevilla",
+          "column": "Capacidad (miles de pedidos/año)"
+        }
+      ],
+      "source": {
+        "file": "almacenes_2025.xlsx",
+        "sheet": "Capacidad",
+        "range": "B4",
+        "loc": "sheet Capacidad"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0030",
+      "claim": "Sevilla — Pedidos 2025 (miles): 350",
+      "values": [
+        {
+          "value": 350.0,
+          "unit": "",
+          "period": "2025",
+          "basis": "actual",
+          "label": "Sevilla",
+          "column": "Pedidos 2025 (miles)"
+        }
+      ],
+      "source": {
+        "file": "almacenes_2025.xlsx",
+        "sheet": "Capacidad",
+        "range": "C4",
+        "loc": "sheet Capacidad"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0031",
+      "claim": "Sevilla — Capacidad libre (miles): 70",
+      "values": [
+        {
+          "value": 70.0,
+          "unit": "",
+          "period": null,
+          "basis": null,
+          "label": "Sevilla",
+          "column": "Capacidad libre (miles)"
+        }
+      ],
+      "source": {
+        "file": "almacenes_2025.xlsx",
+        "sheet": "Capacidad",
+        "range": "D4",
+        "loc": "sheet Capacidad"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0032",
+      "claim": "Sevilla — Utilización (%): 83 PCT",
+      "values": [
+        {
+          "value": 83.0,
+          "unit": "PCT",
+          "period": null,
+          "basis": null,
+          "label": "Sevilla",
+          "column": "Utilización (%)"
+        }
+      ],
+      "source": {
+        "file": "almacenes_2025.xlsx",
+        "sheet": "Capacidad",
+        "range": "E4",
+        "loc": "sheet Capacidad"
+      },
+      "fact_type": "table_value",
+      "confidence": 1.0
+    },
+    {
+      "id": "F0033",
+      "claim": "Por encima del 85% de utilización Madrid trabaja con horas extra: el coste variable de los pedidos adicionales sube a 4,8 € por pedido.",
+      "values": [
+        {
+          "value": 85.0,
+          "unit": "PCT",
+          "raw": "85%",
+          "period": null,
+          "basis": null
+        },
+        {
+          "value": 4.8,
+          "unit": "EUR",
+          "raw": "4,8 €",
+          "period": null,
+          "basis": null
+        }
+      ],
+      "source": {
+        "file": "almacenes_2025.xlsx",
+        "loc": "sheet Notas row 2"
+      },
+      "fact_type": "text_statement",
+      "confidence": 0.8
+    },
+    {
+      "id": "F0034",
+      "claim": "Un turno adicional en Madrid amplía la capacidad en 250 mil pedidos y cuesta 0,6 M€ al año.",
+      "values": [
+        {
+          "value": 250.0,
+          "unit": "",
+          "raw": "250",
+          "period": null,
+          "basis": null
+        },
+        {
+          "value": 0.6,
+          "unit": "EUR_M",
+          "raw": "0,6 M",
+          "period": null,
+          "basis": null
+        }
+      ],
+      "source": {
+        "file": "almacenes_2025.xlsx",
+        "loc": "sheet Notas row 3"
+      },
+      "fact_type": "text_statement",
+      "confidence": 0.8
+    },
+    {
+      "id": "F0035",
+      "claim": "Servir Levante desde Madrid añade 1,9 M€ al año de transporte.",
+      "values": [
+        {
+          "value": 1.9,
+          "unit": "EUR_M",
+          "raw": "1,9 M",
+          "period": null,
+          "basis": null
+        }
+      ],
+      "source": {
+        "file": "almacenes_2025.xlsx",
+        "loc": "sheet Notas row 4"
+      },
+      "fact_type": "text_statement",
+      "confidence": 0.8
+    },
+    {
+      "id": "F0036",
+      "claim": "Previsión de pedidos 2026: +6% en toda la red (dato previsto, no real).",
+      "values": [
+        {
+          "value": 6.0,
+          "unit": "PCT",
+          "raw": "+6%",
+          "period": "2026",
+          "basis": "forecast"
+        }
+      ],
+      "source": {
+        "file": "almacenes_2025.xlsx",
+        "loc": "sheet Notas row 5"
+      },
+      "fact_type": "text_statement",
+      "confidence": 0.8
+    },
+    {
+      "id": "F0037",
+      "claim": "El coste de cierre de Valencia (indemnizaciones, penalización del contrato de alquiler y desmantelamiento) asciende a 3,2 millones de euros.",
+      "values": [
+        {
+          "value": 3.2,
+          "unit": "EUR_M",
+          "raw": "3,2",
+          "period": null,
+          "basis": null
+        }
+      ],
+      "source": {
+        "file": "informe_finanzas_red.pdf",
+        "loc": "p.1"
+      },
+      "fact_type": "text_statement",
+      "confidence": 0.8
+    },
+    {
+      "id": "F0038",
+      "claim": "La estimación de 1,5 millones de euros de Operaciones no incluye la penalización del alquiler.",
+      "values": [
+        {
+          "value": 1.5,
+          "unit": "EUR_M",
+          "raw": "1,5",
+          "period": null,
+          "basis": null
+        }
+      ],
+      "source": {
+        "file": "informe_finanzas_red.pdf",
+        "loc": "p.1"
+      },
+      "fact_type": "text_statement",
+      "confidence": 0.8
+    },
+    {
+      "id": "F0039",
+      "claim": "El alquiler de Valencia (1,2 millones de euros al año, incluido en el coste fijo) vence en diciembre de 2026.",
+      "values": [
+        {
+          "value": 1.2,
+          "unit": "EUR_M",
+          "raw": "1,2",
+          "period": "2026",
+          "basis": "actual"
+        }
+      ],
+      "source": {
+        "file": "informe_finanzas_red.pdf",
+        "loc": "p.1"
+      },
+      "fact_type": "text_statement",
+      "confidence": 0.8
+    },
+    {
+      "id": "F0040",
+      "claim": "El propietario ofrece renovar cinco años con un 25% de descuento.",
+      "values": [
+        {
+          "value": 25.0,
+          "unit": "PCT",
+          "raw": "25%",
+          "period": null,
+          "basis": null
+        }
+      ],
+      "source": {
+        "file": "informe_finanzas_red.pdf",
+        "loc": "p.1"
+      },
+      "fact_type": "text_statement",
+      "confidence": 0.8
+    },
+    {
+      "id": "F0041",
+      "claim": "Los clientes de Levante suponen el 18% de los ingresos del grupo: 74 millones de euros de 412 millones de euros en 2025.",
+      "values": [
+        {
+          "value": 18.0,
+          "unit": "PCT",
+          "raw": "18%",
+          "period": "2025",
+          "basis": "actual"
+        },
+        {
+          "value": 74.0,
+          "unit": "EUR_M",
+          "raw": "74",
+          "period": "2025",
+          "basis": "actual"
+        },
+        {
+          "value": 412.0,
+          "unit": "EUR_M",
+          "raw": "412",
+          "period": "2025",
+          "basis": "actual"
+        }
+      ],
+      "source": {
+        "file": "informe_finanzas_red.pdf",
+        "loc": "p.1"
+      },
+      "fact_type": "text_statement",
+      "confidence": 0.8
+    },
+    {
+      "id": "F0042",
+      "claim": "El margen de contribución medio es del 22%.",
+      "values": [
+        {
+          "value": 22.0,
+          "unit": "PCT",
+          "raw": "22%",
+          "period": null,
+          "basis": null
+        }
+      ],
+      "source": {
+        "file": "informe_finanzas_red.pdf",
+        "loc": "p.1"
+      },
+      "fact_type": "text_statement",
+      "confidence": 0.8
+    },
+    {
+      "id": "F0043",
+      "claim": "Desde Madrid, el 34% de los pedidos de Levante pasaría de entrega en 24 horas a 48 horas.",
+      "values": [
+        {
+          "value": 34.0,
+          "unit": "PCT",
+          "raw": "34%",
+          "period": null,
+          "basis": null
+        },
+        {
+          "value": 24.0,
+          "unit": "HOURS",
+          "raw": "24",
+          "period": null,
+          "basis": null
+        },
+        {
+          "value": 48.0,
+          "unit": "HOURS",
+          "raw": "48",
+          "period": null,
+          "basis": null
+        }
+      ],
+      "source": {
+        "file": "informe_finanzas_red.pdf",
+        "loc": "p.1"
+      },
+      "fact_type": "text_statement",
+      "confidence": 0.8
+    },
+    {
+      "id": "F0044",
+      "claim": "En la encuesta de clientes de 2025, el 40% de los clientes con entrega a 48 horas declara que se plantearía cambiar de proveedor.",
+      "values": [
+        {
+          "value": 40.0,
+          "unit": "PCT",
+          "raw": "40%",
+          "period": "2025",
+          "basis": "plan"
+        },
+        {
+          "value": 48.0,
+          "unit": "HOURS",
+          "raw": "48",
+          "period": "2025",
+          "basis": "plan"
+        }
+      ],
+      "source": {
+        "file": "informe_finanzas_red.pdf",
+        "loc": "p.1"
+      },
+      "fact_type": "text_statement",
+      "confidence": 0.8
+    },
+    {
+      "id": "F0045",
+      "claim": "Otros datos: la rotación de la plantilla de almacén fue del 11% en 2025, frente al 9% en 2024.",
+      "values": [
+        {
+          "value": 11.0,
+          "unit": "PCT",
+          "raw": "11%",
+          "period": "2025",
+          "basis": "plan"
+        },
+        {
+          "value": 9.0,
+          "unit": "PCT",
+          "raw": "9%",
+          "period": "2024",
+          "basis": "plan"
+        }
+      ],
+      "source": {
+        "file": "informe_finanzas_red.pdf",
+        "loc": "p.1"
+      },
+      "fact_type": "text_statement",
+      "confidence": 0.8
+    },
+    {
+      "id": "F0046",
+      "claim": "Valencia nos costó 4,1 M€ en 2025 (coste fijo más variable).",
+      "values": [
+        {
+          "value": 4.1,
+          "unit": "EUR_M",
+          "raw": "4,1 M",
+          "period": "2025",
+          "basis": "actual"
+        }
+      ],
+      "source": {
+        "file": "propuesta_operaciones.md",
+        "loc": "line 3"
+      },
+      "fact_type": "text_statement",
+      "confidence": 0.8
+    },
+    {
+      "id": "F0047",
+      "claim": "Cerrándolo ahorramos esos 4,1 M€ al año.",
+      "values": [
+        {
+          "value": 4.1,
+          "unit": "EUR_M",
+          "raw": "4,1 M",
+          "period": null,
+          "basis": null
+        }
+      ],
+      "source": {
+        "file": "propuesta_operaciones.md",
+        "loc": "line 3"
+      },
+      "fact_type": "text_statement",
+      "confidence": 0.8
+    },
+    {
+      "id": "F0048",
+      "claim": "El coste de cierre estimado es de 1,5 M€.",
+      "values": [
+        {
+          "value": 1.5,
+          "unit": "EUR_M",
+          "raw": "1,5 M",
+          "period": null,
+          "basis": null
+        }
+      ],
+      "source": {
+        "file": "propuesta_operaciones.md",
+        "loc": "line 5"
+      },
+      "fact_type": "text_statement",
+      "confidence": 0.8
+    }
+  ],
+  "stats": {
+    "sources": 3,
+    "tables": 2,
+    "facts": 48,
+    "by_type": {
+      "table_value": 32,
+      "derived_change": 0,
+      "text_statement": 16
+    }
+  },
+  "extractor": "1.8"
+}

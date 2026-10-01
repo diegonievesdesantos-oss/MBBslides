@@ -1,0 +1,191 @@
+{
+ "slides": [
+  {
+   "id": "S1",
+   "priority": "core",
+   "role": "title",
+   "purpose": "Portada",
+   "decision_role": "context",
+   "headline": "Almacén de Valencia: cerrar o mantener",
+   "insights": [],
+   "facts": [],
+   "message_type": "title",
+   "archetype": "title",
+   "reason_to_exist": "Portada del documento de consejo"
+  },
+  {
+   "id": "S2",
+   "priority": "core",
+   "role": "exec_summary",
+   "purpose": "Respuesta en una página",
+   "decision_role": "recommendation",
+   "headline": "Recomendamos rechazar el cierre: ahorra 0,1 M€ al año como máximo, cuesta 3,2 M€ y expone hasta 2,2 M€ de margen; renovar el alquiler ahorra 0,3 M€",
+   "insights": [
+    "I1",
+    "I3",
+    "I4",
+    "I5"
+   ],
+   "facts": [
+    "C0007",
+    "F0037",
+    "C0013",
+    "C0014"
+   ],
+   "message_type": "recommendation",
+   "archetype": "executive_summary",
+   "reason_to_exist": "El consejo necesita la respuesta y la petición en la primera página",
+   "why_not_merge": "Resumen ejecutivo: da la respuesta completa; la portada y los próximos pasos tienen otra función"
+  },
+  {
+   "id": "S3",
+   "priority": "core",
+   "key_line": "K1",
+   "purpose": "Desmontar el ahorro de 4,1 M€",
+   "decision_role": "problem",
+   "headline": "De los 4,1 M€ de ahorro prometidos quedan 0,1 M€ al año: 1,5 M€ son coste variable que se traslada y el transporte y el turno consumen 2,5 M€",
+   "insights": [
+    "I1"
+   ],
+   "facts": [
+    "F0046",
+    "C0009",
+    "F0006",
+    "F0035",
+    "F0034",
+    "C0007"
+   ],
+   "message_type": "change",
+   "archetype": "waterfall",
+   "reason_to_exist": "Es el error central de la propuesta y debe verse como puente de 4,1 a 0,1"
+  },
+  {
+   "id": "S4",
+   "priority": "core",
+   "key_line": "K1",
+   "purpose": "Coste puntual del cierre",
+   "decision_role": "problem",
+   "headline": "El cierre cuesta 3,2 M€, no 1,5 M€: falta la penalización del alquiler, y con 0,1 M€ de ahorro anual no se recupera",
+   "insights": [
+    "I3"
+   ],
+   "facts": [
+    "F0037",
+    "F0048",
+    "C0010",
+    "C0007"
+   ],
+   "message_type": "comparison",
+   "archetype": "chart",
+   "reason_to_exist": "Segundo error de la propuesta, de naturaleza distinta (coste puntual)",
+   "why_not_merge": "S3 trata el ahorro recurrente; S4 el coste puntual y la recuperación. Juntos saturarían el puente"
+  },
+  {
+   "id": "S5",
+   "priority": "core",
+   "key_line": "K2",
+   "purpose": "Capacidad de Madrid",
+   "decision_role": "risk",
+   "headline": "Madrid no puede absorber Levante: faltan 75 mil pedidos de capacidad, y con el turno extra llegaría al 97% en 2026",
+   "insights": [
+    "I2",
+    "I6"
+   ],
+   "facts": [
+    "F0008",
+    "F0023",
+    "C0002",
+    "C0017",
+    "F0036"
+   ],
+   "message_type": "comparison",
+   "archetype": "chart",
+   "reason_to_exist": "Refuta la premisa operativa de la propuesta"
+  },
+  {
+   "id": "S6",
+   "priority": "core",
+   "key_line": "K2",
+   "purpose": "Riesgo comercial",
+   "decision_role": "risk",
+   "headline": "El 34% de los pedidos de Levante pasaría a 48 horas: hasta 10,1 M€ de ingresos y 2,2 M€ de margen anual en riesgo",
+   "insights": [
+    "I4"
+   ],
+   "facts": [
+    "F0043",
+    "F0044",
+    "F0041",
+    "F0042",
+    "C0012",
+    "C0013"
+   ],
+   "message_type": "risk",
+   "archetype": "funnel",
+   "reason_to_exist": "Refuta que el servicio no se vea afectado y cuantifica el techo de pérdida",
+   "why_not_merge": "S5 es capacidad (coste); S6 es cliente (ingresos): son riesgos distintos con dueños distintos"
+  },
+  {
+   "id": "S7",
+   "priority": "core",
+   "key_line": "K3",
+   "purpose": "Comparar opciones con los mismos componentes",
+   "decision_role": "options",
+   "headline": "Con los mismos componentes, renovar el alquiler ahorra 0,3 M€ al año; cerrar cuesta hasta 2,22 M€ al año más 3,2 M€ puntuales",
+   "insights": [
+    "I5",
+    "I1",
+    "I4"
+   ],
+   "facts": [
+    "C0014",
+    "C0024",
+    "F0037",
+    "C0008",
+    "C0013"
+   ],
+   "message_type": "comparison",
+   "archetype": "table",
+   "reason_to_exist": "El consejo decide entre opciones comparadas sobre la misma base"
+  },
+  {
+   "id": "S8",
+   "priority": "core",
+   "role": "next_steps",
+   "purpose": "Peticiones, hitos y KPI",
+   "decision_role": "ask",
+   "headline": "Pedimos hoy rechazar el cierre y aprobar la renovación con descuento del 25% antes de diciembre de 2026",
+   "insights": [
+    "I5"
+   ],
+   "facts": [
+    "F0040",
+    "F0039"
+   ],
+   "message_type": "recommendation",
+   "archetype": "roadmap",
+   "reason_to_exist": "Cierre aprobable con dueños, hitos y KPI",
+   "why_not_merge": "Próximos pasos: peticiones, hitos y KPI aprobables; el resumen da la respuesta, no la gobernanza"
+  },
+  {
+   "id": "S9",
+   "priority": "appendix",
+   "key_line": "K2",
+   "purpose": "Supuestos y sensibilidad 2026",
+   "decision_role": "support",
+   "headline": "Con la previsión de 2026 Madrid llega al 88% aun sin cerrar: las horas extra cuestan 0,05 M€ manteniendo Valencia y 0,2 M€ cerrando",
+   "insights": [
+    "I6"
+   ],
+   "facts": [
+    "C0025",
+    "C0021",
+    "C0023",
+    "F0036"
+   ],
+   "message_type": "sensitivity",
+   "archetype": "table",
+   "reason_to_exist": "Muestra que la comparación aguanta con volúmenes de 2026 y documenta los supuestos"
+  }
+ ]
+}

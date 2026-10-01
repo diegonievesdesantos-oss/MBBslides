@@ -2,6 +2,19 @@
 
 ## Unreleased — 1.7.0.dev0: consulting intelligence (development)
 
+- **Protocol 1.2 rerun on case set 02 (development check):** every option is compared on the same cost
+  components, and the s2 packaging error does not recur.
+- **The agents reported these, now fixed:**
+  - decimals read as thousands ("0,048", "€2.868M");
+  - "7.8 EUR M" and "EUR 7.8M" now read as money;
+  - "23–24%" ranges;
+  - a bare number now matches a fact in its own unit;
+  - `F0062[1]` selects a fact's second value in formulas;
+  - rate units ("/año");
+  - plan/proposal basis words, matched as whole words;
+  - the conflicts file is validated instead of crashing;
+  - SLIDE_MERGE ignores non-argument slides.
+
 - **Decision-deck visuals (from the end-to-end deck's gaps):**
   - estimate and bound markers on waterfall steps (hollow, dashed, `~`/`≤`) and on table cells, which
     stay numbers;

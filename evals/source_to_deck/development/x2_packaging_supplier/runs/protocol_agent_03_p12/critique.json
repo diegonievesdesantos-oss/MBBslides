@@ -1,0 +1,104 @@
+{
+  "protocol": "1.2",
+  "findings": [
+    {
+      "critic": "FACT CHECKER",
+      "finding": "Supplier B stoppage cost C0008 could not reference F0062's 2.4 EUR M because the fact carries two values (14 and 2.4) and the formula took the first; the formula now adds the literal 2.4 stated in F0062",
+      "artifact": "computed_facts.json",
+      "ref": "C0008",
+      "severity": "high",
+      "action": "Formula F0061 + 2.4 with the source noted in the claim; check passes",
+      "resolved": true
+    },
+    {
+      "critic": "FACT CHECKER",
+      "finding": "The proposal's 3.0 EUR M (F0059) equals 12% of 25 EUR M, i.e. it prices the 1.1 EUR M rush freight that the finance note says no unit-price cut touches; the invoices reconcile to 25.0 EUR M total and 1.1 EUR M freight (C0001, C0002)",
+      "artifact": "insights.json",
+      "ref": "I1",
+      "severity": "medium",
+      "action": "Gross lever restated to 2.868 EUR M a year (C0003) and used for every option",
+      "resolved": true
+    },
+    {
+      "critic": "PARTNER REVIEW",
+      "finding": "The board asked 'what is the real saving': the storyline must give one number on one basis, test the proposal in force, cost all options and close with approvable asks",
+      "artifact": "storyline.json",
+      "ref": "decision",
+      "severity": "high",
+      "action": "Decision frame: current plan verdict 'partly' (direction right, number wrong, 5.2 EUR M hole if booked); three options costed; asks approve/approve/reject plus a continuity commission tied to a gate with a fallback",
+      "resolved": true
+    },
+    {
+      "critic": "PARTNER REVIEW",
+      "finding": "'Approve' with a gate could read as deferral; the gate needs a pre-agreed fallback so the board decides today",
+      "artifact": "storyline.json",
+      "ref": "gates",
+      "severity": "medium",
+      "action": "Gate states the fallback: if no continuity safeguard covering 14 days is obtainable, move to 70/30 (O2) instead",
+      "resolved": true
+    },
+    {
+      "critic": "RED TEAM",
+      "finding": "Same-basis check (1.2): the stoppage risk must not be charged to full consolidation only. 70/30 still puts 70% of volume on Supplier B's single plant and the status quo 30%",
+      "artifact": "storyline.json",
+      "ref": "options",
+      "severity": "high",
+      "action": "All three options carry the same components (price_saving, switching, stoppage_risk); stoppage risk charged 4.0 / 2.8 / 1.2 EUR M by Supplier B share (C0008-C0010); switching 0.8 / 0.5 / 0; incumbent 4% included in 70/30 price",
+      "resolved": true
+    },
+    {
+      "critic": "RED TEAM",
+      "finding": "The risk estimate rests on a two-event history (A001) and linear exposure (A002); a longer stoppage could flip the ranking, and under full consolidation the incumbent relationship lapses (H6 unresolved)",
+      "artifact": "insights.json",
+      "ref": "I5",
+      "severity": "high",
+      "action": "Break-even shown (9.755 EUR M, 2.4x history, C0015-C0016) and turned into a gate: plant audit and continuity safeguard before signing, fallback 70/30",
+      "resolved": true
+    },
+    {
+      "critic": "RED TEAM",
+      "finding": "Incumbent cover (up to 60% at two weeks' notice) could make 70/30 less exposed than modelled; it is not credited",
+      "artifact": "assumptions.json",
+      "ref": "A002",
+      "severity": "low",
+      "action": "Kept conservative and stated: past stoppages (9-14 days) end before two weeks' notice elapses, so cover would not have helped; noted as upside for O2 in the sensitivity slide",
+      "resolved": true
+    },
+    {
+      "critic": "RED TEAM",
+      "finding": "The OVERCLAIM_BOUND warning: 3.8 EUR M depends on a risk range lever",
+      "artifact": "storyline.json",
+      "ref": "governing_thought",
+      "severity": "medium",
+      "action": "Governing thought now says 'expected saving of about'; L3 carries what to validate",
+      "resolved": true
+    },
+    {
+      "critic": "EDITOR",
+      "finding": "S6 (sensitivity) could merge into S5 (options table)",
+      "artifact": "deck_plan.json",
+      "ref": "S6",
+      "severity": "low",
+      "action": "Kept as support: S5 ranks on expected value, S6 says how far the risk assumption can move; one message per slide",
+      "resolved": true
+    },
+    {
+      "critic": "EDITOR",
+      "finding": "Rush-freight forecasting lever is outside the decision",
+      "artifact": "deck_plan.json",
+      "ref": "S8",
+      "severity": "low",
+      "action": "Moved to appendix",
+      "resolved": true
+    },
+    {
+      "critic": "DATA-VIZ REVIEW",
+      "finding": "Claim-to-real bridge is a change (waterfall); options comparison is a table with identical component rows; sensitivity is a line of net value vs stoppage cost; appendix composition as table",
+      "artifact": "deck_plan.json",
+      "ref": "S3-S8",
+      "severity": "low",
+      "action": "Archetypes set accordingly",
+      "resolved": true
+    }
+  ]
+}

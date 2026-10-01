@@ -1,0 +1,83 @@
+{
+  "protocol": "1.2",
+  "blocks": [
+    {
+      "source": "informe_inmobiliario.pdf",
+      "loc": "p.1",
+      "kind": "text",
+      "text": "Informe de la dirección inmobiliaria - tiendas de proximidad."
+    },
+    {
+      "source": "informe_inmobiliario.pdf",
+      "loc": "p.1",
+      "kind": "text",
+      "text": "El alquiler de las tiendas del grupo A supone un 16% de sus ventas (incluidos gastos comunes), frente al 9% de media de la red."
+    },
+    {
+      "source": "informe_inmobiliario.pdf",
+      "loc": "p.1",
+      "kind": "text",
+      "text": "15 contratos del grupo A tienen ventana de ruptura en 2026: cerrarlas cuesta 100.000 euros por tienda. Cerrar una tienda sin ruptura cuesta 250.000 euros (penalización e indemnizaciones)."
+    },
+    {
+      "source": "informe_inmobiliario.pdf",
+      "loc": "p.1",
+      "kind": "text",
+      "text": "Los propietarios de 5 de las 7 tiendas restantes del grupo A han aceptado negociar una rebaja de alquiler."
+    },
+    {
+      "source": "informe_inmobiliario.pdf",
+      "loc": "p.1",
+      "kind": "text",
+      "text": "Las tiendas del grupo B abrieron en 2023 y 2024. Sus ventas por metro cuadrado crecen un 11% al año. En nuestra red, una tienda de proximidad alcanza el equilibrio en su cuarto año."
+    },
+    {
+      "source": "informe_inmobiliario.pdf",
+      "loc": "p.1",
+      "kind": "text",
+      "text": "Otros: la reforma de la tienda insignia de Madrid terminó en octubre."
+    },
+    {
+      "source": "propuesta_direccion_financiera.md",
+      "loc": "line 1",
+      "kind": "heading",
+      "text": "Propuesta de la dirección financiera"
+    },
+    {
+      "source": "propuesta_direccion_financiera.md",
+      "loc": "line 3",
+      "kind": "text",
+      "text": "Las 40 tiendas de proximidad perdieron 5,2 M€ de EBITDA en 2025."
+    },
+    {
+      "source": "propuesta_direccion_financiera.md",
+      "loc": "line 4",
+      "kind": "text",
+      "text": "Proponemos cerrarlas todas en 2026: el EBITDA del grupo mejora en 5,2 M€."
+    },
+    {
+      "source": "propuesta_direccion_financiera.md",
+      "loc": "line 5",
+      "kind": "text",
+      "text": "Coste de cierre estimado: 250 k€ por tienda, 10 M€ en total."
+    },
+    {
+      "source": "tiendas_proximidad_2025.xlsx",
+      "loc": "sheet Notas controller row 2",
+      "kind": "text",
+      "text": "El EBITDA de cada tienda incluye 90 k€ de coste central asignado (sistemas, logística, central de compras)."
+    },
+    {
+      "source": "tiendas_proximidad_2025.xlsx",
+      "loc": "sheet Notas controller row 3",
+      "kind": "text",
+      "text": "El coste central no desaparece si se cierra una tienda: se reparte entre el resto de la red."
+    },
+    {
+      "source": "tiendas_proximidad_2025.xlsx",
+      "loc": "sheet Notas controller row 4",
+      "kind": "text",
+      "text": "Alquiler / ventas medido sin gastos comunes."
+    }
+  ]
+}

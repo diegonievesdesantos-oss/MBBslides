@@ -1,0 +1,37 @@
+{
+  "protocol": "1.2",
+  "conflicts": [
+    {
+      "id": "X001",
+      "type": "value_mismatch",
+      "measure": [
+        "price"
+      ],
+      "period": "2025",
+      "facts": [
+        {
+          "fact": "F0044",
+          "value": 34.0,
+          "unit": "PCT",
+          "basis": "actual",
+          "source": "crm_export.xlsx"
+        },
+        {
+          "fact": "F0054",
+          "value": 58.0,
+          "unit": "PCT",
+          "basis": "actual",
+          "source": "customer_success_notes.md"
+        }
+      ],
+      "resolution": {
+        "status": "not_a_conflict",
+        "use": [
+          "F0044",
+          "F0054"
+        ],
+        "rationale": "Different measures, not two values of one KPI. F0044 (34%) is the share of 2025 LOST DEALS where sales reported price; F0054's 58% is the share of 2025 CHURNED customers who never fully implemented the product (its price figure is 14%). Both are used, each for its own measure: 34% as the caveat on new-business price pressure, 58%/17%/14% for churn reasons."
+      }
+    }
+  ]
+}

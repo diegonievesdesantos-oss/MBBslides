@@ -1,0 +1,119 @@
+{
+ "insights": [
+  {
+   "id": "I1",
+   "statement": "Los 4,1 M€ de ahorro incluyen 1,5 M€ de coste variable que no desaparece: se traslada a Madrid al mismo coste de 4 € por pedido. Lo único que se elimina es el coste fijo de 2,6 M€, que el transporte desde Madrid (1,9 M€) y el turno adicional (0,6 M€) consumen casi entero: quedan 0,1 M€ al año, y tras horas extra el saldo es de prácticamente nulo (-0,01 M€).",
+   "facts": [
+    "F0046",
+    "F0006",
+    "F0007",
+    "F0004",
+    "F0009",
+    "F0035",
+    "F0034",
+    "C0009",
+    "C0007",
+    "C0006",
+    "C0008"
+   ],
+   "hypotheses": [],
+   "refutes": [
+    "H1"
+   ],
+   "materiality": "high",
+   "decision_relevance": "Elimina la base económica de la propuesta de cierre"
+  },
+  {
+   "id": "I2",
+   "statement": "Madrid no puede absorber Levante con su capacidad actual: Levante son 375 mil pedidos y Madrid tiene 300 mil libres, faltan 75 mil. El cierre obliga a un turno adicional y, con la previsión de 2026, dejaría Madrid al 97% de utilización con turno.",
+   "facts": [
+    "F0008",
+    "F0023",
+    "C0002",
+    "F0034",
+    "C0003",
+    "C0016",
+    "C0017"
+   ],
+   "hypotheses": [],
+   "refutes": [
+    "H2"
+   ],
+   "materiality": "high",
+   "decision_relevance": "El coste del turno y la falta de holgura deben cargarse al cierre",
+   "caveat": "La utilización de 2026 se basa en una previsión de pedidos (+6%), no en datos reales"
+  },
+  {
+   "id": "I3",
+   "statement": "El cierre cuesta 3,2 M€ según Finanzas, no 1,5 M€: Operaciones omite la penalización del alquiler (1,7 M€ de diferencia). Con un ahorro recurrente de 0,1 M€ como máximo, ese coste no se recupera en el horizonte.",
+   "facts": [
+    "F0037",
+    "F0038",
+    "F0048",
+    "C0010",
+    "C0007"
+   ],
+   "hypotheses": [],
+   "refutes": [
+    "H3",
+    "H1"
+   ],
+   "materiality": "high",
+   "decision_relevance": "El cierre destruye valor aun sin riesgo comercial"
+  },
+  {
+   "id": "I4",
+   "statement": "El cierre degrada el servicio: el 34% de los pedidos de Levante pasaría de 24 a 48 horas, y el 40% de los clientes con entrega a 48 horas se plantearía cambiar de proveedor. Sobre 74 M€ de ingresos de Levante y un margen del 22%, hasta 10,1 M€ de ingresos y 2,2 M€ de margen al año quedarían en riesgo, más que cualquier ahorro del cierre.",
+   "facts": [
+    "F0043",
+    "F0044",
+    "F0041",
+    "F0042",
+    "C0011",
+    "C0012",
+    "C0013"
+   ],
+   "hypotheses": [],
+   "refutes": [
+    "H4"
+   ],
+   "materiality": "high",
+   "decision_relevance": "El riesgo comercial supera en un orden de magnitud al ahorro recurrente",
+   "caveat": "Techo: intención declarada en encuesta (A004) y reparto de ingresos proporcional a pedidos (A001)"
+  },
+  {
+   "id": "I5",
+   "statement": "Renovar el alquiler de Valencia, que vence en diciembre de 2026, con el 25% de descuento ofrecido ahorra 0,3 M€ al año (1,5 M€ en cinco años), sin coste de cierre ni riesgo de servicio: 0,31 M€ al año mejor que cerrar antes de contar el riesgo comercial.",
+   "facts": [
+    "F0039",
+    "F0040",
+    "C0014",
+    "C0015",
+    "C0026"
+   ],
+   "hypotheses": [
+    "H5"
+   ],
+   "materiality": "high",
+   "decision_relevance": "Es la alternativa aprobable hoy, con fecha límite",
+   "caveat": "Compromete cinco años de alquiler; conviene negociar una cláusula de salida"
+  },
+  {
+   "id": "I6",
+   "statement": "Con el +6% previsto para 2026, Madrid llegaría al 88% de utilización aun sin cerrar Valencia y entraría en horas extra (0,05 M€); cerrar Valencia elevaría ese sobrecoste a 0,2 M€. El reto de la red es capacidad en Madrid, no un almacén sobrante.",
+   "facts": [
+    "F0036",
+    "C0018",
+    "C0025",
+    "C0021",
+    "C0023"
+   ],
+   "hypotheses": [
+    "H6"
+   ],
+   "materiality": "medium",
+   "decision_relevance": "Pide un plan de capacidad para Madrid en 2027 en lugar del cierre",
+   "caveat": "Previsión, no dato real"
+  }
+ ]
+}
