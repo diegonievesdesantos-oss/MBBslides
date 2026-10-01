@@ -615,3 +615,22 @@ def test_spanish_deck_numbers_source_label_and_verbs():
 
     from cpe.pptx import text_components
     assert '"Fuente: "' in inspect.getsource(text_components.footer)
+
+
+# ── v1.8: first external case (private) exposed these; tests use synthetic text only ──
+
+def test_decimal_comma_documents_and_markdown_tables(tmp_path):
+    from cpe.reasoning.facts import build_fact_model, detect_unit
+    md = ("# Caso\n\nLa Ratio de enero fue **1,734** y hoy es 1,652; el objetivo es 1,777. La distancia baja de 2,55 km a 2,19 km.\n\n"
+          "| | Mayo | Hoy |\n|---|---|---|\n| Ratio | 1,734 | **1,652** |\n| Pedidos/semana | 48.213 | 41.902 |\n| Utilización | 79,1 % | 75,3 % |\n\n"
+          "| Ciudad | Utilización enero → hoy | Pedidos/sem eq. |\n|---|---|---|\n| Norte | 83,2 % → 72,6 % | 151 |\n| Sur | 70,4 % → 66,9 % | 87 |\n"
+          "| Resto | | 34-44 cada una |\n| **Total** | | **≈ 4.120** |\n")
+    (tmp_path / "c.md").write_text(md, encoding="utf-8")
+    fm = build_fact_model([tmp_path / "c.md"])
+    vals = {v["value"] for f in fm["facts"] for v in f["values"]}
+    assert {1.734, 1.652, 1.777, 48213.0, 41902.0, 79.1, 83.2, 72.6, 151.0, 4120.0} <= vals
+    assert 1652.0 not in vals and 1734.0 not in vals
+    locs = {f["source"]["loc"] for f in fm["facts"] if f["fact_type"] == "table_value"}
+    assert "line 5" in locs  # the line the table starts on
+    assert detect_unit("Pedidos/semana") == "" and detect_unit("Año ant.") == "" and detect_unit("Tiempo (min)") == "MINUTES"
+    assert detect_unit("Horas perdidas 2025") == "HOURS"

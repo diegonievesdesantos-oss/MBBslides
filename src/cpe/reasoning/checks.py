@@ -382,7 +382,8 @@ def check_deck_plan(dp: dict | None, storyline: dict | None, insights: dict, fac
                 if g["status"] == "unsupported":
                     out.append(_issue("error", "UNSUPPORTED_NUMBER", "deck_plan.json", sid, f"headline {g['number']} not grounded in the slide's facts", hard=True))
                 elif g["status"] == "assumption":
-                    conditional = re.search(r"\b(if|assuming|assumes|would|could|about|around|approximately|estimated|roughly|si|suponiendo|supondría|cerca de|aproximadamente|unos)\b", h, re.I)
+                    conditional = re.search(r"\b(if|assuming|assumes|assumed|would|could|about|around|approximately|estimated?|estimates?|roughly|up to|at most|upper bound|"
+                                            r"si|suponiendo|supondría|supuesto|hipótesis|estimad[oa]s?|estimación|cerca de|aproximadamente|unos|hasta|como máximo)\b", h, re.I)
                     out.append(_issue("info" if conditional else "warning", "ASSUMPTION_IN_HEADLINE", "deck_plan.json", sid, f"{g['number']} rests on an assumption ({', '.join(g['facts'])}): say so on the slide"))
             lint = lint_headline(h, {"id": sid}, profile)[1]
             if any(i["code"] == "HEADLINE_TOPIC" and i["level"] == "error" for i in lint) and s.get("priority") != "appendix":

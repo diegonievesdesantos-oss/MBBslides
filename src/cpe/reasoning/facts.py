@@ -55,10 +55,16 @@ def detect_period(text: str) -> dict | None:
 def detect_unit(text: str) -> str:
     """Normalised unit token of a header / label: 'EUR_M', 'USD_K', 'PCT', 'PP', 'BPS', 'DAYS', '' …"""
     t = str(text or "").replace("_", " ")  # "opening_arr_eur_m"
-    t = re.sub(r"\s*(/\s*(año|year|yr|mes|month)|per (year|month|annum)|al año|a year|al mes|por año)\b", "", t, flags=re.I)  # a rate, not the unit
+    t = re.sub(r"\s*(/\s*(año|year|yr|mes|month|semana|sem|week|wk|día|dia|day|hora|hour|h)|per (year|month|annum|week|day|hour)"
+               r"|al año|a year|al mes|por año|a la semana|por semana|al día|por día|por hora)\b\.?", "", t, flags=re.I)  # a rate, not the unit
     m = UNIT_RE.search(t)
     if not m:
-        w = next((UNIT_WORDS[x] for x in re.findall(r"[a-záéíóúñ]+", t.lower()) if x in UNIT_WORDS and UNIT_WORDS[x] != "PP"), "")
+        # a time word is the unit only when it is stated as one: "(días)", "(min)", "en horas" — not "Año ant." or "Pedidos > 60 min"
+        stated = " ".join(re.findall(r"\(([^)]*)\)", t)) + " " + " ".join(re.findall(r"\ben ([a-záéíóúñ]+)", t.lower()))
+        first = (re.findall(r"[a-záéíóúñ]+", t.lower()) or [""])[0]
+        if UNIT_WORDS.get(first) in ("HOURS", "DAYS", "MINUTES", "WEEKS"):  # "Horas perdidas 2025": the measure is hours
+            stated += " " + first
+        w = next((UNIT_WORDS[x] for x in re.findall(r"[a-záéíóúñ]+", stated.lower()) if x in UNIT_WORDS and UNIT_WORDS[x] != "PP"), "")
         return w
     s = m.group(0).lower().replace(" ", "")
     cur = "EUR" if ("€" in s or "eur" in s) else "USD" if ("$" in s or "usd" in s) else "GBP" if ("£" in s or "gbp" in s) else None
@@ -174,6 +180,8 @@ def _table_facts(t: dict, next_id) -> list[dict]:
     # a table-wide unit only when the LABEL column header states it ("Line (€M)"); a unit in one
     # value column ("Churn 2025 (%)") never spreads to its neighbours (found by the churn_es case)
     table_unit = detect_unit(header[label_cols[0]]) if label_cols else ""
+    if table_unit in ("DAYS", "WEEKS", "MONTHS", "YEARS", "HOURS", "MINUTES"):
+        table_unit = ""  # "Mes" / "Día" label the rows; they are not the unit of every value
     for i, row in enumerate(t["rows"]):
         label = " · ".join(str(row[j]) for j in label_cols if j < len(row) and str(row[j]).strip()) or f"row {i + 2}"
         cells = {}

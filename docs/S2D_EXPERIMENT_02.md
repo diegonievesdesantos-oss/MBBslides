@@ -150,3 +150,21 @@ cases were already used in s2, so this is a development check, not evidence.
 - Table cells are compared unit-free, so "10 M€" against a k€ column needs a computed fact.
 - **Editorial note from the agent:** per store, the 2024 group-B openings contribute more than the 2023
   ones, which weakens a ramp-by-age reading. The ramp claim rests on sales per m² growing 11% a year.
+
+## First external case (round s3, private)
+
+The owner supplied a corporate business case. It and everything derived from it are kept under
+`.private/` (gitignored): the case, both storylines, the round, the key and the votes.
+
+| | |
+|---|---|
+| type | document → storyline; the source is an already-analysed business case |
+| systems | agent without protocol vs agent with protocol 1.2, independent, blind |
+| verdict | protocol 1.2 preferred, 1/1 decisive, consistent on the side-swapped repeat |
+| what the protocol run added | it tested the client's case against its own data: lever split vs KPIs, observational coefficients, a city counted as a lever that may be a service decision, euro value resting on an assumed cost per hour |
+
+**Extraction gaps on real material, now fixed:** whole markdown tables lost their numeric columns
+(bold values, "≈", empty and label cells); decimal-comma figures were read as thousands; "a → b" cells
+were not split; rate and period headers were taken as units.
+
+One case is a signal. Evidence needs 4–6 external cases.

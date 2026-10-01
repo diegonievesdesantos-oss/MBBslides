@@ -31,14 +31,20 @@ SENT_RE = re.compile(r"(?<=[.!?;])\s+")
 UNIT_OK = re.compile(r"(€|\$|£|eur|usd|gbp)?(m|mn|bn|k|million|billion|thousand)?(€|\$|£|eur|usd|gbp)?|%|pp|bps|x")
 
 
-def _num(raw, dot_decimal: bool = False) -> tuple[float | None, str]:
+def _num(raw, dot_decimal: bool = False, decimal_comma: bool = False) -> tuple[float | None, str]:
     if isinstance(raw, (int, float)) and not isinstance(raw, bool):  # a typed cell (xlsx): already a number
         return float(raw), ""
-    raw = str(raw)
+    raw = re.sub(r"^[≈~±]\s*", "", re.sub(r"\*\*|__", "", str(raw)).strip())  # "**1,941**", "**≈ 5.230**"
     unit = re.sub(r"[\d\s.,+\-−]", "", raw).lower()
     if not UNIT_OK.fullmatch(unit):
         return None, unit  # "Q1 2024", "FY25", "P01": a label, not a number
     core = re.sub(r"[^\d.,\-−+]", "", raw).replace("−", "-")
+    if decimal_comma:  # a document written with decimal commas: "1,829" is 1.829, "75.846" is 75846
+        core = core.replace(".", "").replace(",", ".")
+        try:
+            return float(core), unit
+        except ValueError:
+            return None, unit
     if core.count(",") and core.count("."):
         core = core.replace(",", "") if core.rfind(".") > core.rfind(",") else core.replace(".", "").replace(",", ".")
     elif core.count(",") == 1 and len(core.split(",")[1]) != 3:
@@ -55,12 +61,12 @@ def _num(raw, dot_decimal: bool = False) -> tuple[float | None, str]:
         return None, unit
 
 
-def extract_facts(text: str, source: str, loc: str) -> list[dict]:
+def extract_facts(text: str, source: str, loc: str, decimal_comma: bool = False) -> list[dict]:
     out = []
     for sent in SENT_RE.split(text):
         for m in FACT_RE.finditer(sent):
             raw = m.group("raw").strip()
-            v, unit = _num(raw)
+            v, unit = _num(raw, decimal_comma=decimal_comma)
             if v is None:
                 continue
             if not unit and float(v).is_integer() and 1900 <= v <= 2100:
@@ -74,45 +80,89 @@ def extract_facts(text: str, source: str, loc: str) -> list[dict]:
 DOT_DECIMAL = re.compile(r"[-+]?\d*\.(?:\d{1,2}|\d{4,})|[-+]?0\.\d+")
 
 
-def _table(header, rows, source, loc, dot_decimal: bool = False) -> dict:
+ARROW = re.compile(r"^\s*(.+?)\s*(?:→|->)\s*(.+?)\s*$")
+
+
+def _split_arrows(header: list, rows: list) -> tuple[list, list]:
+    """A column of 'before → after' cells ("81,8 % → 74,5 %") becomes two columns, "(from)" and "(to)"."""
+    ncols = max([len(header)] + [len(r) for r in rows]) if (header or rows) else 0
+    cols = []
+    for j in range(ncols):
+        vals = [str(r[j]) for r in rows if j < len(r) and str(r[j]).strip()]
+        cols.append(bool(vals) and sum(bool(ARROW.match(v)) for v in vals) >= max(1, 0.6 * len(vals)))
+    if not any(cols):
+        return header, rows
+    h2, r2 = [], [[] for _ in rows]
+    for j in range(ncols):
+        name = str(header[j]) if j < len(header) else ""
+        if cols[j]:
+            base = re.sub(r"\s*\S+\s*(?:→|->)\s*\S+\s*$", "", name).strip() or name
+            fr, to = (re.findall(r"(\S+)\s*(?:→|->)\s*(\S+)", name) or [("from", "to")])[0]
+            h2 += [f"{base} ({fr})", f"{base} ({to})"]
+            for i, r in enumerate(rows):
+                m = ARROW.match(str(r[j])) if j < len(r) else None
+                r2[i] += [m.group(1), m.group(2)] if m else ["", ""]
+        else:
+            h2.append(name)
+            for i, r in enumerate(rows):
+                r2[i].append(r[j] if j < len(r) else "")
+    return h2, r2
+
+
+def _table(header, rows, source, loc, dot_decimal: bool = False, decimal_comma: bool = False) -> dict:
+    header, rows = _split_arrows(list(header), [list(r) for r in rows])
     ncols = max([len(header)] + [len(r) for r in rows]) if (header or rows) else 0
     numeric, dot = [], set()
     for j in range(ncols):
-        vals = [r[j] for r in rows if j < len(r) and str(r[j]).strip() != ""]
-        if vals and all(_num(v)[0] is not None for v in vals):
+        vals = [r[j] for r in rows if j < len(r) and str(r[j]).strip() not in ("", "n/a", "–", "-", "—")]
+        ok = [v for v in vals if _num(v, decimal_comma=decimal_comma)[0] is not None]
+        # a value column may carry a stray label cell ("Total", "4-6 sem"): numeric if most cells are numbers
+        if vals and len(ok) >= max(1, 0.7 * len(vals)) and j > 0 or (vals and len(ok) == len(vals)):
             numeric.append(j)
             # one column, one convention: "1.444" next to "0.05" or "16.73" is a decimal, not 1,444
             if dot_decimal or any(isinstance(v, str) and DOT_DECIMAL.fullmatch(v.strip()) for v in vals):
                 dot.add(j)
     conv = []
     for r in rows:
-        conv.append([(_num(c, j in dot)[0] if j in numeric else c) for j, c in enumerate(r)])
+        conv.append([(_num(c, j in dot, decimal_comma)[0] if j in numeric else c) for j, c in enumerate(r)])
     return {"source": source, "loc": loc, "header": list(header), "rows": conv, "numeric_columns": numeric}
+
+
+def decimal_comma_document(txt: str) -> bool:
+    """A document written with decimal commas (Spanish, most of Europe): more "80,4"-style decimals
+    than "80.4"-style ones, and no "1,250,000"-style thousands."""
+    comma = len(re.findall(r"(?<![\d.,])\d+,\d{1,2}(?![\d,])", txt))
+    dot = len(re.findall(r"(?<![\d.,])\d+\.\d{1,2}(?![\d.])", txt))
+    return comma > dot and not re.search(r"\d,\d{3},\d{3}", txt)
 
 
 def read_text(path: Path) -> dict:
     txt = path.read_text(encoding="utf-8", errors="replace")
+    dc = decimal_comma_document(txt)
     blocks, facts, tables = [], [], []
     para: list[str] = []
     md_table: list[list[str]] = []
+    md_start = 0
     ln_no = 0
 
     def flush():
         if para:
             t = " ".join(para).strip()
             blocks.append({"source": path.name, "loc": f"line {ln_no}", "kind": "text", "text": t})
-            facts.extend(extract_facts(t, path.name, f"line {ln_no}"))
+            facts.extend(extract_facts(t, path.name, f"line {ln_no}", decimal_comma=dc))
             para.clear()
 
     for ln_no, line in enumerate(txt.splitlines(), start=1):
         s = line.strip()
         if s.startswith("|") and s.endswith("|"):
             cells = [c.strip() for c in s.strip("|").split("|")]
+            if not md_table:
+                md_start = ln_no
             if not all(re.fullmatch(r":?-{2,}:?", c) for c in cells):
                 md_table.append(cells)
             continue
         if md_table:
-            tables.append(_table(md_table[0], md_table[1:], path.name, f"line {ln_no}"))
+            tables.append(_table(md_table[0], md_table[1:], path.name, f"line {md_start}", decimal_comma=dc))
             md_table = []
         if not s:
             flush()
@@ -125,7 +175,7 @@ def read_text(path: Path) -> dict:
                 flush()
     flush()
     if md_table:
-        tables.append(_table(md_table[0], md_table[1:], path.name, "end"))
+        tables.append(_table(md_table[0], md_table[1:], path.name, f"line {md_start}", decimal_comma=dc))
     return {"blocks": blocks, "facts": facts, "tables": tables}
 
 

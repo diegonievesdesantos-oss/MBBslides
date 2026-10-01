@@ -2,6 +2,18 @@
 
 ## Unreleased — 1.7.0.dev0: consulting intelligence (development)
 
+- **First external case (round s3, private).**
+  - The owner supplied a corporate business case, kept under `.private/`; no content is in the repository.
+  - Blind storyline A/B: protocol 1.2 preferred, 1/1, consistent on the side-swapped repeat.
+  - The case is a single document → storyline, so this is a signal, not validation.
+- **Extraction fixes it exposed (tested on synthetic text only):**
+  - decimal-comma documents ("1,829" is 1.829, "75.846" is 75846);
+  - markdown tables with bold, "≈", empty or label cells now keep their numeric columns;
+  - "a → b" cells are split into two columns;
+  - rate units ("Pedidos/semana") and period labels ("Año ant.", "Mes") are no longer units;
+  - table locations point at the table's first line;
+  - more hedging words clear ASSUMPTION_IN_HEADLINE.
+
 - **Second end-to-end deck, in Spanish** (tiendas, protocol 1.2): reasoning PASS, QA 0 errors, deck 98.4.
 - **Fixes:**
   - Spanish thousands before k€/M€ (a regression in the previous commit);
