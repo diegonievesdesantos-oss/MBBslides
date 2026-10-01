@@ -38,7 +38,7 @@
   "exempted": [],
   "render_metrics": {
     "s02": {
-      "ink_coverage": 0.054
+      "ink_coverage": 0.055
     },
     "s03": {
       "ink_coverage": 0.244
@@ -78,7 +78,7 @@
       "warnings": 0,
       "score": 99.8,
       "patches": [],
-      "seconds": 4.6
+      "seconds": 4.8
     }
   ],
   "pending_actions": [],
@@ -114,10 +114,10 @@
         "score": 100.0,
         "observed": {
           "utilization": 0.865,
-          "empty": 0.156,
-          "ink": 0.047,
-          "offcentre": 0.099,
-          "emphasis": 0.402,
+          "empty": 0.154,
+          "ink": 0.049,
+          "offcentre": 0.093,
+          "emphasis": 0.407,
           "regions": 0.0,
           "ratio": 1.571,
           "edges": 3.0
@@ -133,27 +133,27 @@
         },
         "deviations": [],
         "flags": [],
-        "score_v1": 97.9,
+        "score_v1": 98.2,
         "flags_v1": [],
         "metrics": {
           "dead_space": 1.0,
           "utilization": 1.0,
-          "balance": 0.952,
-          "density": 0.889,
+          "balance": 0.957,
+          "density": 0.911,
           "emphasis": 1.0,
           "evidence": 1.0,
           "hierarchy": 0.951,
           "alignment": 1.0
         },
         "raw": {
-          "largest_empty_share": 0.156,
+          "largest_empty_share": 0.154,
           "utilization": 0.865,
           "center_of_mass": [
-            0.401,
-            0.442
+            0.407,
+            0.511
           ],
-          "ink_coverage": 0.047,
-          "emphasis_share": 0.402,
+          "ink_coverage": 0.049,
+          "emphasis_share": 0.407,
           "focus_regions": 0,
           "accent_regions": 0,
           "proof_checks": "0/1",

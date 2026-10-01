@@ -122,19 +122,26 @@ def divider(p: Painter, slide: dict, meta: dict) -> None:
 
 
 def agenda(p: Painter, box: Box, items: list, current: int | None = None) -> None:
+    """A compact index, centred on the slide's optical centre: an agenda is navigation, it is not
+    stretched over the full height (stretched rows read as a sparse list) nor stuck at the top."""
     n = len(items)
-    row_h = min(0.78, box.h / max(n, 1))
+    row_h = min(0.95, box.h / max(n, 1))
+    block = n * row_h
+    top = box.y + max(0.0, (box.h - block) * 0.42)  # slightly above the geometric centre
     for i, it in enumerate(items):
         title = it if isinstance(it, str) else it.get("title", "")
         desc = None if isinstance(it, str) else it.get("description")
-        y = box.y + i * row_h
+        y = top + i * row_h
         active = current is None or current == i
         col = "primary" if active else "neutral"
-        p.text(Box(box.x, y, 0.8, row_h - 0.1), f"{i + 1:02d}", role="section", size=20, color="highlight" if (current == i) else col, fit=False)
-        paras = [Para(title, bold=True, color=col, size=16)]
+        if i == 0:
+            p.line(box.x, y - 0.04, box.r, y - 0.04, color="rule", width=LINES["rule"])
+        p.text(Box(box.x, y + 0.08, 0.9, row_h - 0.16), f"{i + 1:02d}", role="section", size=24, color="highlight" if (current == i or current is None) else col,
+               fit=False, anchor="middle")
+        paras = [Para(title, bold=True, color=col, size=18)]
         if desc:
-            paras.append(Para(desc, size=12, color="text_muted" if active else "muted"))
-        p.text(Box(box.x + 0.9, y + 0.02, box.w - 0.9, row_h - 0.12), paras, role="body", space_after=2, record=f"agenda {i + 1}")
+            paras.append(Para(desc, size=13, color="text_muted" if active else "muted"))
+        p.text(Box(box.x + 1.0, y + 0.06, box.w - 1.0, row_h - 0.12), paras, role="body", space_after=2, anchor="middle", record=f"agenda {i + 1}")
         p.line(box.x, y + row_h - 0.04, box.r, y + row_h - 0.04, color="gridline", width=LINES["hairline"])
 
 
@@ -146,10 +153,18 @@ def statement(p: Painter, box: Box, data: dict) -> None:
         if data.get("attribution"):
             p.text(Box(box.x, box.y + box.h * 0.76, box.w, 0.5), "— " + data["attribution"], role="body", color="text_muted")
         return
-    p.rect(Box(box.x, box.y + box.h * 0.18 - 0.2, 0.9, 0.07), fill="highlight")
-    p.text(Box(box.x, box.y + box.h * 0.18, box.w, box.h * 0.5), text, role="headline", size=30, record="statement")
-    if data.get("support"):
-        p.text(Box(box.x, box.y + box.h * 0.7, box.w * 0.85, box.h * 0.3), data["support"], role="body", size=14, color="text_muted")
+    # the bar, the statement and its support form ONE block, set on the optical centre of the zone
+    th, _ = p.measure(text, "headline", box.w, size=30)
+    sup = data.get("support")
+    sh = p.measure(sup, "body", box.w * 0.85, size=14)[0] if sup else 0.0
+    gap = 0.35 if sup else 0.0
+    group = 0.27 + th + gap + sh
+    top = box.y + max(0.0, (box.h - group) * 0.42)
+    p.rect(Box(box.x, top, 0.9, 0.07), fill="highlight")
+    p.text(Box(box.x, top + 0.27, box.w, min(box.b - top - 0.27, th + 0.15)), text, role="headline", size=30, record="statement")
+    if sup:
+        y = top + 0.27 + th + gap
+        p.text(Box(box.x, y, box.w * 0.85, min(box.b - y, sh + 0.15)), sup, role="body", size=14, color="text_muted")
 
 
 # ---------------------------------------------------------------------------
@@ -227,12 +242,15 @@ def statements(p: Painter, box: Box, data: dict) -> None:
         if i > 0:
             p.line(box.x, y - gap / 2, box.r, y - gap / 2, color="gridline", width=LINES["hairline"])
         label = it.get("label") if style == "scr" else f"{i + 1}"
-        p.text(Box(box.x, y + 0.04, label_w - 0.1, 0.45), label or "", role="section", color="highlight" if style == "numbered" else "primary", size=18 if style == "numbered" else 12, fit=False)
+        # rows share the height evenly; their content sits on the row's centre line, so short rows
+        # read as an even table instead of text stuck to the top of tall empty bands
+        p.text(Box(box.x, y + 0.04, label_w - 0.1, row_h - 0.08), label or "", role="section", color="highlight" if style == "numbered" else "primary",
+               size=18 if style == "numbered" else 12, fit=False, anchor="middle")
         cx = box.x + label_w
-        p.text(Box(cx, y + 0.04, claim_w - SPACING["M"], row_h - 0.08), it.get("title", ""), role="body_strong", size=14, color="primary", record=f"statement {i + 1} claim", anchor="top")
+        p.text(Box(cx, y + 0.04, claim_w - SPACING["M"], row_h - 0.08), it.get("title", ""), role="body_strong", size=14, color="primary", record=f"statement {i + 1} claim", anchor="middle")
         support = it.get("text") or it.get("points") or ""
         paras = [Para(s, bullet="•") for s in support] if isinstance(support, list) else [Para(support)]
-        p.text(Box(cx + claim_w, y + 0.04, box.r - cx - claim_w, row_h - 0.08), paras, role="body", record=f"statement {i + 1} support")
+        p.text(Box(cx + claim_w, y + 0.04, box.r - cx - claim_w, row_h - 0.08), paras, role="body", anchor="middle", record=f"statement {i + 1} support")
 
 
 def kpis(p: Painter, box: Box, data: dict) -> None:

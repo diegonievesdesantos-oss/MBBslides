@@ -78,7 +78,7 @@
   "exempted": [],
   "render_metrics": {
     "g03": {
-      "ink_coverage": 0.026
+      "ink_coverage": 0.029
     },
     "g05": {
       "ink_coverage": 0.243
@@ -145,7 +145,7 @@
       "warnings": 0,
       "score": 99.8,
       "patches": [],
-      "seconds": 6.8
+      "seconds": 7.5
     }
   ],
   "pending_actions": [],
@@ -185,28 +185,28 @@
   "editorial_advice": [],
   "composition": {
     "metric": "archetype-fitness composition score",
-    "deck_score": 98.8,
-    "deck_score_v1": 90.9,
+    "deck_score": 99.0,
+    "deck_score_v1": 91.0,
     "slides": [
       {
         "slide_id": "g03",
         "archetype": "executive_summary",
         "archetype_why": "slide kind exec_summary",
-        "score": 95.8,
+        "score": 99.5,
         "observed": {
-          "utilization": 0.731,
-          "empty": 0.269,
-          "ink": 0.025,
-          "offcentre": 0.059,
-          "emphasis": 0.422,
+          "utilization": 0.75,
+          "empty": 0.154,
+          "ink": 0.024,
+          "offcentre": 0.057,
+          "emphasis": 0.421,
           "regions": 0.0,
           "ratio": 1.571,
           "edges": 3.0
         },
         "fitness": {
-          "utilization": 0.936,
-          "empty": 0.936,
-          "ink": 0.956,
+          "utilization": 1.0,
+          "empty": 1.0,
+          "ink": 0.947,
           "offcentre": 1.0,
           "regions": 1.0,
           "ratio": 1.0,
@@ -214,67 +214,41 @@
         },
         "deviations": [
           {
-            "metric": "empty",
-            "value": 0.269,
-            "expected": [
-              0.0,
-              0.25
-            ],
-            "direction": "high",
-            "fitness": 0.936,
-            "weight": 16,
-            "meaning": "a large area is left empty",
-            "flag": "DEAD_SPACE"
-          },
-          {
-            "metric": "utilization",
-            "value": 0.731,
-            "expected": [
-              0.75,
-              1.0
-            ],
-            "direction": "low",
-            "fitness": 0.936,
-            "weight": 12,
-            "meaning": "content uses too little of the canvas",
-            "flag": "UNDERUSED_CANVAS"
-          },
-          {
             "metric": "ink",
-            "value": 0.025,
+            "value": 0.024,
             "expected": [
               0.03,
               0.35
             ],
             "direction": "low",
-            "fitness": 0.956,
+            "fitness": 0.947,
             "weight": 8,
             "meaning": "too sparse",
             "flag": "SPARSE"
           }
         ],
         "flags": [],
-        "score_v1": 91.5,
+        "score_v1": 96.3,
         "flags_v1": [],
         "metrics": {
-          "dead_space": 0.777,
-          "utilization": 0.962,
-          "balance": 0.983,
-          "density": 0.706,
+          "dead_space": 1.0,
+          "utilization": 1.0,
+          "balance": 0.984,
+          "density": 0.697,
           "emphasis": 1.0,
           "evidence": 1.0,
           "hierarchy": 0.951,
           "alignment": 1.0
         },
         "raw": {
-          "largest_empty_share": 0.269,
-          "utilization": 0.731,
+          "largest_empty_share": 0.154,
+          "utilization": 0.75,
           "center_of_mass": [
-            0.441,
-            0.388
+            0.443,
+            0.501
           ],
-          "ink_coverage": 0.025,
-          "emphasis_share": 0.422,
+          "ink_coverage": 0.024,
+          "emphasis_share": 0.421,
           "focus_regions": 0,
           "accent_regions": 0,
           "proof_checks": "1/1",
@@ -1597,12 +1571,12 @@
         "archetype_why": "slide kind statement",
         "score": 100.0,
         "observed": {
-          "utilization": 0.359,
-          "empty": 0.308,
-          "ink": 0.037,
+          "utilization": 0.312,
+          "empty": 0.335,
+          "ink": 0.035,
           "offcentre": 0.179,
-          "emphasis": 0.641,
-          "regions": 1.0,
+          "emphasis": 0.621,
+          "regions": 0.0,
           "ratio": 0.733,
           "edges": 1.0
         },
@@ -1616,32 +1590,32 @@
         },
         "deviations": [],
         "flags": [],
-        "score_v1": 67.5,
+        "score_v1": 64.9,
         "flags_v1": [
           "UNDERUSED_CANVAS",
           "WEAK_HIERARCHY"
         ],
         "metrics": {
-          "dead_space": 0.681,
-          "utilization": 0.218,
-          "balance": 0.843,
-          "density": 0.807,
+          "dead_space": 0.611,
+          "utilization": 0.124,
+          "balance": 0.844,
+          "density": 0.795,
           "emphasis": 1.0,
           "evidence": 0.8,
           "hierarchy": 0.0,
           "alignment": 1.0
         },
         "raw": {
-          "largest_empty_share": 0.308,
-          "utilization": 0.359,
+          "largest_empty_share": 0.335,
+          "utilization": 0.312,
           "center_of_mass": [
             0.321,
-            0.418
+            0.465
           ],
-          "ink_coverage": 0.037,
-          "emphasis_share": 0.641,
-          "focus_regions": 3,
-          "accent_regions": 1,
+          "ink_coverage": 0.035,
+          "emphasis_share": 0.621,
+          "focus_regions": 2,
+          "accent_regions": 0,
           "proof_checks": "0/0",
           "headline_body_ratio": 0.73,
           "body_font_sizes": [

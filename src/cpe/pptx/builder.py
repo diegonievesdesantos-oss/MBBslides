@@ -292,7 +292,7 @@ def build(resolved: dict, out_path: str | Path) -> list[dict]:
         elif kind == "agenda":
             s.setdefault("headline", s.get("title", "Agenda"))
             tc.chrome(p, {**s, "tracker": s.get("tracker")}, s.get("_page", 0), meta)
-            box = Box(GRID.col_x(2), GRID.body_y, GRID.span_w(2, 10), GRID.body_h)
+            box = Box(GRID.col_x(1), GRID.body_y, GRID.span_w(1, 9), GRID.body_h)  # aligned with the headline
             m.zones = {"text": {"role": "agenda", **box.to_dict()}}
             tc.agenda(p.for_zone("text"), box, s.get("items") or [], s.get("current"))
         elif kind in ("statement", "closing") and not slide_exhibits(s):

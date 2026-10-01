@@ -95,7 +95,7 @@
       "warnings": 0,
       "score": 99.7,
       "patches": [],
-      "seconds": 5.3
+      "seconds": 5.6
     }
   ],
   "pending_actions": [],
@@ -131,10 +131,10 @@
         "score": 100.0,
         "observed": {
           "utilization": 0.865,
-          "empty": 0.135,
-          "ink": 0.039,
-          "offcentre": 0.103,
-          "emphasis": 0.392,
+          "empty": 0.096,
+          "ink": 0.04,
+          "offcentre": 0.094,
+          "emphasis": 0.415,
           "regions": 0.0,
           "ratio": 1.571,
           "edges": 3.0
@@ -150,27 +150,27 @@
         },
         "deviations": [],
         "flags": [],
-        "score_v1": 97.3,
+        "score_v1": 97.4,
         "flags_v1": [],
         "metrics": {
           "dead_space": 1.0,
           "utilization": 1.0,
-          "balance": 0.948,
-          "density": 0.828,
+          "balance": 0.957,
+          "density": 0.835,
           "emphasis": 1.0,
           "evidence": 1.0,
           "hierarchy": 0.951,
           "alignment": 1.0
         },
         "raw": {
-          "largest_empty_share": 0.135,
+          "largest_empty_share": 0.096,
           "utilization": 0.865,
           "center_of_mass": [
-            0.397,
-            0.44
+            0.406,
+            0.507
           ],
-          "ink_coverage": 0.039,
-          "emphasis_share": 0.392,
+          "ink_coverage": 0.04,
+          "emphasis_share": 0.415,
           "focus_regions": 0,
           "accent_regions": 0,
           "proof_checks": "0/1",

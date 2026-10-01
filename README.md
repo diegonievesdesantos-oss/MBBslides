@@ -29,10 +29,10 @@ Three independent signals, never combined into one number ([why](docs/EVALS.md))
 | example deck | QA gate | QA score | archetype-fitness composition score |
 |---|---|---|---|
 | `alvora` | PASSED · 0 errors · 0 warnings | 99.8 | 99.8 |
-| `gallery` | PASSED · 0 errors · 0 warnings | 99.8 | 98.8 |
+| `gallery` | PASSED · 0 errors · 0 warnings | 99.8 | 99.0 |
 | `alvora_on_kestrel` | PASSED · 0 errors · 0 warnings | 99.7 | 99.5 |
 
-<sub>engine 1.3.0 · LibreOffice 24.2.7.2 420(Build:2) · fontconfig 2.15.0 · container `mbbslides-visual:1.3@sha256:bb5bbbdd55bcec5db567781c63574da1a4b2fc4504446d6fea23f5197f59d278` · render fingerprint `f98cee49d123ed5f`</sub>
+<sub>engine 1.3.1 · LibreOffice 24.2.7.2 420(Build:2) · fontconfig 2.15.0 · container `mbbslides-visual:1.3@sha256:bb5bbbdd55bcec5db567781c63574da1a4b2fc4504446d6fea23f5197f59d278` · render fingerprint `f98cee49d123ed5f`</sub>
 
 <!-- metrics:end -->
 

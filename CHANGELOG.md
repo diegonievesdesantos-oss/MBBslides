@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.3.1 — Agenda, executive summary and statement layout
+
+- Agenda: a compact index set on the optical centre of the body (not stacked from the top),
+  aligned with the headline's left margin, with larger numbers and titles.
+- Executive summary rows: content sits on each row's centre line, so short rows read as an even
+  table instead of text stuck to the top of tall empty bands.
+- Statement slides: bar, statement and support are placed as one block on the optical centre of
+  the zone (the text used to fall into the lower half).
+- Gallery slides 2, 3 and 26 regenerated; regression unchanged (87.3, no new flags).
+
 ## 1.3.0 — Corporate templates read through their inheritance chain
 
 Fixes for the structural findings of the v1.2 private corporate holdout. Because those findings
