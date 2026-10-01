@@ -2,6 +2,21 @@
 
 ## Unreleased — 1.7.0.dev0: consulting intelligence (development)
 
+- **Experiment 02 / round s2 (voting pending):** four harder development cases (set 02, written after
+  protocol 1.1 was frozen); baseline agent vs agent with protocol 1.1.
+  - Automatic yardstick: 3/3 conclusions for both systems in every case.
+  - Untraced numbers: protocol 19, baseline 46.
+  - The protocol agent passed the reasoning check in all four cases.
+- **Fact-model fixes reported by the experiment 02 agents:**
+  - a dot decimal in CSV and typed xlsx cells ("1.444" is 1.444, not 1,444);
+  - prose in spreadsheet cells (a "Notes" sheet) is read as text facts;
+  - snake_case unit headers ("opening_arr_eur_m");
+  - year columns label rows and set their period;
+  - units written after the number ("25 EUR M", "3,2 millones de euros", "250.000 euros").
+- **Conflict detector:** no longer flags two rows or two columns of one table, a prose total of a
+  row's parts, or the same figure with a different sign or rounding. On case x2_tiendas this
+  removes 161 false positives; the real forecast-vs-actual conflict in margin_recovery is still found.
+
 - **s1 voted (expert, blind storyline A/B): 2–2.** The protocol run won churn and margin; the run without
   the protocol won plant and promo. Written feedback mapped after unblinding
   (`evals/human_reference/rounds/s1/FEEDBACK.md`): the protocol run has numeric discipline and

@@ -28,14 +28,17 @@ FACT_RE = re.compile(
 SENT_RE = re.compile(r"(?<=[.!?;])\s+")
 
 
-def _num(raw: str) -> tuple[float | None, str]:
+def _num(raw, dot_decimal: bool = False) -> tuple[float | None, str]:
+    if isinstance(raw, (int, float)) and not isinstance(raw, bool):  # a typed cell (xlsx): already a number
+        return float(raw), ""
+    raw = str(raw)
     unit = re.sub(r"[\d\s.,+\-−]", "", raw).lower()
     core = re.sub(r"[^\d.,\-−+]", "", raw).replace("−", "-")
     if core.count(",") and core.count("."):
         core = core.replace(",", "") if core.rfind(".") > core.rfind(",") else core.replace(".", "").replace(",", ".")
     elif core.count(",") == 1 and len(core.split(",")[1]) != 3:
         core = core.replace(",", ".")
-    elif not core.count(",") and re.fullmatch(r"[-+]?\d{1,3}(?:\.\d{3})+", core):
+    elif not dot_decimal and not core.count(",") and re.fullmatch(r"[-+]?\d{1,3}(?:\.\d{3})+", core):
         core = core.replace(".", "")  # Spanish thousands: "30.000", "1.250.000" (v1.7; a 3-decimal figure is rare in prose)
     else:
         core = core.replace(",", "")
@@ -61,16 +64,22 @@ def extract_facts(text: str, source: str, loc: str) -> list[dict]:
     return out
 
 
-def _table(header, rows, source, loc) -> dict:
+DOT_DECIMAL = re.compile(r"[-+]?\d*\.(?:\d{1,2}|\d{4,})|[-+]?0\.\d+")
+
+
+def _table(header, rows, source, loc, dot_decimal: bool = False) -> dict:
     ncols = max([len(header)] + [len(r) for r in rows]) if (header or rows) else 0
-    numeric = []
+    numeric, dot = [], set()
     for j in range(ncols):
         vals = [r[j] for r in rows if j < len(r) and str(r[j]).strip() != ""]
-        if vals and all(_num(str(v))[0] is not None for v in vals):
+        if vals and all(_num(v)[0] is not None for v in vals):
             numeric.append(j)
+            # one column, one convention: "1.444" next to "0.05" or "16.73" is a decimal, not 1,444
+            if dot_decimal or any(isinstance(v, str) and DOT_DECIMAL.fullmatch(v.strip()) for v in vals):
+                dot.add(j)
     conv = []
     for r in rows:
-        conv.append([(_num(str(c))[0] if j in numeric else c) for j, c in enumerate(r)])
+        conv.append([(_num(c, j in dot)[0] if j in numeric else c) for j, c in enumerate(r)])
     return {"source": source, "loc": loc, "header": list(header), "rows": conv, "numeric_columns": numeric}
 
 
@@ -119,20 +128,28 @@ def read_csv(path: Path) -> dict:
     rows = list(csv.reader(io.StringIO(raw), dialect))
     if not rows:
         return {"blocks": [], "facts": [], "tables": []}
-    return {"blocks": [], "facts": [], "tables": [_table(rows[0], rows[1:], path.name, "sheet")]}
+    # comma-separated values cannot carry a decimal comma unquoted: a dot is a decimal point
+    return {"blocks": [], "facts": [], "tables": [_table(rows[0], rows[1:], path.name, "sheet", dot_decimal=dialect.delimiter == ",")]}
 
 
 def read_xlsx(path: Path) -> dict:
     import openpyxl
 
     wb = openpyxl.load_workbook(path, data_only=True, read_only=True)
-    tables = []
+    tables, blocks, facts = [], [], []
     for ws in wb.worksheets:
         rows = [[("" if c is None else c) for c in r] for r in ws.iter_rows(values_only=True)]
         rows = [r for r in rows if any(str(c).strip() for c in r)]
-        if rows:
+        # prose in cells (a "Notes" sheet, a comment column) is text: read it as sentences, not as table labels
+        for i, r in enumerate(rows, start=1):
+            for c in r:
+                if isinstance(c, str) and len(c) > 40 and c.count(" ") >= 5:
+                    loc = f"sheet {ws.title} row {i}"
+                    blocks.append({"source": path.name, "loc": loc, "kind": "text", "text": c.strip()})
+                    facts.extend(extract_facts(c.strip(), path.name, loc))
+        if rows and not all(sum(1 for c in r if str(c).strip()) == 1 and isinstance(next(c for c in r if str(c).strip()), str) for r in rows):
             tables.append(_table([str(h) for h in rows[0]], rows[1:], path.name, f"sheet {ws.title}"))
-    return {"blocks": [], "facts": [], "tables": tables}
+    return {"blocks": blocks, "facts": facts, "tables": tables}
 
 
 def read_pdf(path: Path) -> dict:

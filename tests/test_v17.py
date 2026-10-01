@@ -380,3 +380,60 @@ def test_fact_units_written_after_the_number(tmp_path):
     (tmp_path / "n.md").write_text("- Spend was 25 EUR M in 2025.\n- El cierre cuesta 3,2 millones de euros.\n- Cerrar cuesta 250.000 euros por tienda.\n", encoding="utf-8")
     units = [v["unit"] for f in build_fact_model([tmp_path / "n.md"])["facts"] for v in f["values"] if v["value"] in (25, 3.2, 250000)]
     assert units == ["EUR_M", "EUR_M", "EUR"]
+
+
+# ── fact-model fixes found by experiment 02 agents ─────────────────────────────────────────────
+
+def test_csv_dot_decimals_are_not_thousands(tmp_path):
+    from cpe.reasoning.facts import build_fact_model
+    (tmp_path / "inv.csv").write_text("month,supplier,invoiced_eur_m\n2025-01,Inc,1.444\n2025-02,Inc,0.598\n", encoding="utf-8")
+    vals = sorted(v["value"] for f in build_fact_model([tmp_path / "inv.csv"])["facts"] for v in f["values"])
+    assert vals == [0.598, 1.444]
+    assert all(v["unit"] == "EUR_M" for f in build_fact_model([tmp_path / "inv.csv"])["facts"] for v in f["values"])
+
+
+def test_xlsx_typed_floats_and_note_sheets(tmp_path):
+    import openpyxl
+
+    from cpe.reasoning.facts import build_fact_model
+    wb = openpyxl.Workbook()
+    ws = wb.active
+    ws.title = "Costes"
+    ws.append(["Almacén", "Coste fijo (M€)"])
+    ws.append(["Valencia", 1.444])
+    n = wb.create_sheet("Notas")
+    n.append(["Nota"])
+    n.append(["Servir Levante desde Madrid añade 1,9 M€ al año de transporte."])
+    wb.save(tmp_path / "a.xlsx")
+    fm = build_fact_model([tmp_path / "a.xlsx"])
+    vals = {(v["value"], v["unit"]) for f in fm["facts"] for v in f["values"]}
+    assert (1.444, "EUR_M") in vals and (1.9, "EUR_M") in vals
+    assert not any("Nota" in f["claim"] and f["fact_type"] == "table_value" for f in fm["facts"])
+
+
+def test_year_column_labels_rows_and_sets_period(tmp_path):
+    from cpe.reasoning.facts import build_fact_model
+    (tmp_path / "b.csv").write_text("year,opening_arr_eur_m\n2024,41.6\n2025,52.0\n", encoding="utf-8")
+    fs = build_fact_model([tmp_path / "b.csv"])["facts"]
+    assert {(v["value"], v["unit"], v["period"]) for f in fs for v in f["values"]} == {(41.6, "EUR_M", "2024"), (52.0, "EUR_M", "2025")}
+
+
+def test_conflicts_ignore_rows_columns_parts_and_rounding():
+    from cpe.reasoning.conflicts import detect_conflicts
+
+    def tv(i, label, col, value, unit="EUR_K", loc="sheet T"):
+        return {"id": i, "fact_type": "table_value", "claim": f"{label} — {col}", "source": {"file": "t.xlsx", "loc": loc},
+                "values": [{"value": value, "unit": unit, "period": "2025", "label": label, "column": col}]}
+
+    def tx(i, claim, value, unit):
+        return {"id": i, "fact_type": "text_statement", "claim": claim, "source": {"file": "n.md", "loc": "line 1"},
+                "values": [{"value": value, "unit": unit, "period": "2025"}]}
+
+    facts = [tv("F1", "B · no", "Ventas 2025", 900), tv("F2", "B · no", "Ventas 2025", 820),  # two stores with the same label
+             tv("F3", "Valencia", "Coste fijo 2025", 2600), tv("F4", "Valencia", "Coste variable 2025", 1500),
+             tv("F5", "Total", "EBITDA 2025", -5196),
+             tx("F6", "Valencia nos costó 4,1 M€ en 2025 (coste fijo más variable)", 4.1, "EUR_M"),
+             tx("F7", "Las tiendas perdieron 5,2 M€ de EBITDA en 2025", 5.2, "EUR_M")]
+    assert detect_conflicts(facts) == []
+    real = [tv("F1", "Total", "Revenue 2025", 1460, "EUR_M"), tx("F2", "The forecast showed revenue of €1,500M in 2025", 1500, "EUR_M")]
+    assert len(detect_conflicts(real)) == 1
