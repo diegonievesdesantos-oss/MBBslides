@@ -83,7 +83,9 @@ def ground_numbers(text: str, facts: list[dict], max_pairs_facts: int = 12) -> l
             real = [s for s in direct if not s.get("assumption")]
             out.append({"number": q["raw"], "status": "grounded" if real else "assumption", "facts": sorted({s["fact"] for s in (real or direct)})})
             continue
-        if q["kind"] == "plain" and q["value"] < 10:
+        if q["kind"] == "plain" and q["value"] <= 30 and float(q["value"]).is_integer():
+            # protocol 1.4: small whole counts (people, stores, waves, weeks) are not checked; amounts,
+            # percentages, ratios and large counts are. A check must never cost the reader a fact.
             out.append({"number": q["raw"], "status": "grounded", "facts": [], "note": "small count: not checked"})
             continue
         hit = None

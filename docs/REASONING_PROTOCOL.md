@@ -1,7 +1,7 @@
-# Reasoning protocol 1.3 — from raw sources to a deck plan
+# Reasoning protocol 1.4 — from raw sources to a deck plan
 
 *The thinking layer of MBBslides is part of the product, so it is versioned like code.*
-`reasoning_protocol: 1.3` is recorded in every artifact `cpe reason` writes and in every
+`reasoning_protocol: 1.4` is recorded in every artifact `cpe reason` writes and in every
 source-to-deck evaluation, together with the agent/model and skill version that produced the work.
 Engine performance (deterministic code) and agent + engine system performance are reported apart.
 
@@ -101,6 +101,9 @@ work back (e.g. a critic finding reopens the storyline).
 10. **Challenge the ghost deck** — editor (can any slide be deleted?), fact checker (is every
     headline number grounded?). Read the headlines alone: do they make the argument?
 11. **Slide intents** — message type per slide, then the evidence it needs.
+13. **Write for the reader** (1.4) — storyline.md and slide text keep deadlines, owners, mechanisms
+    and every concrete fact. Uncertainty is stated once, where it matters. Compare your storyline with
+    what a senior consultant would hand over without any protocol: nothing they would include may be missing.
 12. **Visuals** — only now choose the exhibit, from the message type and the data shape
     (change → waterfall, ranking → bar/table, structure → architecture, recommendation →
     statement …); write `deck.json` citing fact ids.
@@ -161,6 +164,30 @@ was a logic error the checks could not see. The single-plant stoppage risk was c
 option only, although the 70/30 option still put 70% of the volume on that plant. Options now declare
 their cost components, and options compared on different components are flagged.
 
+## 1.4 — traceability never costs the reader content
+
+In round s4 (five external raw-data cases) the agent without the protocol was preferred 4–1. Both
+reached the same answers, but the protocol storylines were about 30% shorter. They dropped deadlines,
+mechanisms and the bridge from numbers to action, partly to get past checks. From 1.4 on:
+
+- **The checks block invented quantities, and nothing else.**
+  - Checked: amounts, percentages, points, ratios and counts above 30.
+  - Never checked: dates, deadlines and periods ("antes del 31/12/2026", "Q1 2027", "2025-26"),
+    durations ("6-8 semanas", "12 mensualidades") and small whole counts (people, stores, waves).
+- **Never remove or blur a true statement to pass a check.** If a true number fails, cite the fact
+  that holds it, add an analysis output, or record an assumption. Do not reword it into vagueness
+  ("antes de que acabe 2026" for a contractual date). Write a tool problem in `critique.json`.
+- **Put the brief in `sources/brief.md`.** Its figures (targets, budgets, constraints) are then
+  citable facts, not assumptions.
+- **Write for the reader** (pass 13). The storyline.md is a client document:
+  - each key-line point says what happened, why (the mechanism) and what follows from it;
+  - the recommendation names action, owner, amount and date;
+  - every fact that makes the case concrete stays in;
+  - state uncertainty once, where it matters (an upper bound, a gate); headlines and the governing
+    thought state the decision plainly.
+  - A protocol storyline should be at least as complete as one written without the protocol. The
+    protocol adds verification; it never subtracts content.
+
 ## Critic roles
 
 Each critic writes structured findings into `work/critique.json`:
@@ -169,7 +196,7 @@ Each critic writes structured findings into `work/critique.json`:
 | critic | question |
 |---|---|
 | FACT CHECKER | Is every important claim grounded? (the deterministic check runs first) |
-| PARTNER REVIEW | Is this the answer a senior client needs? Does it test the current plan, cost the options, and close with something approvable today? |
+| PARTNER REVIEW | Is this the answer a senior client needs? Does it test the current plan, cost the options, and close with something approvable today? Is it as concrete and readable as a document written without any protocol (deadlines, owners, mechanisms kept)? |
 | RED TEAM | What contradicts this storyline? Which rejected or unresolved hypothesis could be true? Is each risk and cost applied to every option it touches (1.2)? |
 | EDITOR | Can any slide be deleted, merged or moved to the appendix? |
 | DATA-VIZ REVIEW | Is each visual encoding appropriate for its message and data? |

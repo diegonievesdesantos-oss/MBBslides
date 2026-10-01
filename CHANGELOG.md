@@ -2,6 +2,16 @@
 
 ## Unreleased — 1.7.0.dev0: consulting intelligence (development)
 
+- **s4 (five external raw-data cases, private): the baseline was preferred 4–1.** Answers converged, but
+  the protocol storylines lost concrete content, partly to get past checks.
+- **Protocol 1.4: traceability never costs the reader content.**
+  - Checks block invented quantities only. Dates, deadlines, periods, durations and small counts are
+    never checked.
+  - A rule forbids blurring a true statement to pass a check.
+  - The brief goes into the sources.
+  - A "write for the reader" pass.
+  - The partner critic compares the storyline with a no-protocol document.
+
 - **Five external cases from the owner (round s4, private, voting pending).**
   - Agents ran without the protocol and with protocol 1.3; all five protocol runs pass the reasoning check.
   - The tool problems they reported are fixed with tests:

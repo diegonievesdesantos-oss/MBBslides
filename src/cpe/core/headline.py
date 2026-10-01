@@ -103,7 +103,8 @@ def has_verb(text: str, within: int | None = None) -> bool:
     return False
 
 
-DURATION_RE = re.compile(r"^\s*[- ]?(?:month|week|year|day|quarter|hour|minute|wave|step|phase|mes|semana|año|día|trimestre|fase|ola)", re.IGNORECASE)
+DURATION_RE = re.compile(r"^\s*(?:[-–]\s*\d+\s*)?[- ]?(?:month|week|year|day|quarter|hour|minute|wave|step|phase|mes|semana|año|día|dia|trimestre|fase|ola|"
+                         r"hora|minuto|mensualidad)", re.IGNORECASE)  # v1.4 protocol: "6-8 semanas", "12 mensualidades" are timing, not quantities
 
 
 def numbers_in(text: str) -> list[tuple[float, str]]:

@@ -179,7 +179,7 @@ def test_benchmark_catches_traps(work):
 def test_reasoning_protocol_is_versioned():
     from cpe.reasoning import PROTOCOL_VERSION
 
-    assert PROTOCOL_VERSION == "1.3"
+    assert PROTOCOL_VERSION == "1.4"
     assert json.loads((RUN / "facts.json").read_text())["protocol"] == "1.0"  # a stored run keeps the protocol it was produced under
     assert "development run — NOT evidence" in (RUN / "RUN.json").read_text()
     for d in ("development", "sealed", "external"):
@@ -691,3 +691,10 @@ def test_external_set_s4_tool_problems():
     issues, good = check_computed({"facts": [{"id": "C0001", "formula": "F1 * 2", "values": [{"value": 21}]},
                                              {"id": "C0002", "formula": "C0001 + 1", "values": [{"value": 22}]}]}, facts)
     assert [i["code"] for i in issues] == ["ARITHMETIC_ERROR"] and "C0002" in good
+
+
+def test_protocol_14_checks_only_quantities():
+    from cpe.reasoning.grounding import ground_numbers
+    text = "Comunicar antes del 31/12/2026 al propietario; 2 personas en 6-8 semanas, 12 mensualidades de penalización, revisión en Q1 2027"
+    assert ground_numbers(text, []) == [] or all(g["status"] == "grounded" for g in ground_numbers(text, []))
+    assert [g["status"] for g in ground_numbers("ahorra 140 k€ al año", [])] == ["unsupported"]

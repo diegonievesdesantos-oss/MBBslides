@@ -28,7 +28,7 @@ All commands: `scripts/cpe <command>` from the skill folder (or `python -m cpe` 
 Requirements: Python ≥3.10, `pip install -r requirements.txt`, LibreOffice **with Impress**
 (`libreoffice-impress`) for rendering, Liberation Sans fonts (Arial metrics).
 
-### Raw material → deck (reasoning protocol 1.3, v1.7 development)
+### Raw material → deck (reasoning protocol 1.4, v1.7 development)
 
 When the input is raw business material rather than a ready storyline, follow
 `docs/REASONING_PROTOCOL.md` **before** writing a deck spec: `cpe reason facts sources/ -o work/`
