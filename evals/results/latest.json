@@ -1,99 +1,37 @@
 {
-  "version": "1.3.3",
+  "version": "1.4.0",
   "regression": {
     "metric": "archetype-fitness composition score",
-    "suite_composition": 87.5,
-    "suite_composition_v1": 84.1,
-    "slides_measured": 39,
-    "qa_errors": 0,
-    "qa_warnings": 62,
-    "cases_ok": 10,
-    "cases_total": 10,
-    "by_archetype": {
-      "chart": {
-        "slides": 8,
-        "mean": 91.2
-      },
-      "comparison": {
-        "slides": 1,
-        "mean": 39.1
-      },
-      "executive_summary": {
-        "slides": 3,
-        "mean": 90.0
-      },
-      "hierarchy": {
-        "slides": 1,
-        "mean": 98.8
-      },
-      "kpi_dashboard": {
-        "slides": 1,
-        "mean": 97.7
-      },
-      "kpi_hero": {
-        "slides": 2,
-        "mean": 51.0
-      },
-      "matrix": {
-        "slides": 2,
-        "mean": 98.8
-      },
-      "operating_model": {
-        "slides": 1,
-        "mean": 100.0
-      },
-      "process": {
-        "slides": 1,
-        "mean": 39.2
-      },
-      "roadmap": {
-        "slides": 2,
-        "mean": 91.6
-      },
-      "statement": {
-        "slides": 2,
-        "mean": 99.9
-      },
-      "table": {
-        "slides": 8,
-        "mean": 97.6
-      },
-      "text_exhibit": {
-        "slides": 2,
-        "mean": 59.7
-      },
-      "timeline": {
-        "slides": 1,
-        "mean": 99.5
-      },
-      "waterfall": {
-        "slides": 4,
-        "mean": 83.9
-      }
-    },
+    "suite_composition": 92.8,
+    "suite_composition_v1": 83.9,
+    "slides_measured": 194,
+    "qa_errors": 41,
+    "qa_errors_authoring": 41,
+    "qa_warnings": 302,
+    "cases_ok": 27,
+    "cases_total": 27,
     "flag_counts": {
-      "DEAD_SPACE": 7,
-      "OFF_BALANCE": 5,
-      "UNDERUSED_CANVAS": 4,
-      "PROOF_NOT_VISIBLE": 2,
-      "WEAK_HIERARCHY": 1,
-      "NOISY_EMPHASIS": 1,
-      "NO_FOCAL_POINT": 1
+      "UNDERUSED_CANVAS": 28,
+      "OFF_BALANCE": 11,
+      "DEAD_SPACE": 5,
+      "PROOF_NOT_VISIBLE": 3,
+      "NO_FOCAL_POINT": 3,
+      "OVERDENSE": 3
     },
     "passed": true,
     "cases": {
       "01_sparse_content": {
-        "composition": 68.1,
+        "composition": 98.5,
         "qa_score": 94.5,
         "qa_errors": 0,
         "qa_warnings": 6,
         "qa_passed": true
       },
       "02_text_overload": {
-        "composition": 98.4,
-        "qa_score": 90.3,
+        "composition": 100.0,
+        "qa_score": 93.3,
         "qa_errors": 0,
-        "qa_warnings": 7,
+        "qa_warnings": 5,
         "qa_passed": true
       },
       "03_tables": {
@@ -119,7 +57,7 @@
       },
       "06_diagrams_dense": {
         "composition": 97.9,
-        "qa_score": 92.8,
+        "qa_score": 93.0,
         "qa_errors": 0,
         "qa_warnings": 8,
         "qa_passed": true
@@ -132,7 +70,7 @@
         "qa_passed": true
       },
       "08_headlines_structure": {
-        "composition": 79.7,
+        "composition": 94.2,
         "qa_score": 97.0,
         "qa_errors": 0,
         "qa_warnings": 3,
@@ -146,17 +84,469 @@
         "qa_passed": true
       },
       "10_archetypes": {
-        "composition": 84.4,
-        "qa_score": 91.7,
+        "composition": 93.9,
+        "qa_score": 91.6,
         "qa_errors": 0,
         "qa_warnings": 21,
         "qa_passed": true
+      },
+      "200_battery_statement": {
+        "composition": 99.6,
+        "qa_score": 100.0,
+        "qa_errors": 0,
+        "qa_warnings": 2,
+        "qa_passed": true
+      },
+      "201_battery_kpi_hero": {
+        "composition": 97.3,
+        "qa_score": 91.0,
+        "qa_errors": 3,
+        "qa_warnings": 13,
+        "qa_passed": false
+      },
+      "202_battery_kpi_dashboard": {
+        "composition": 77.5,
+        "qa_score": 78.8,
+        "qa_errors": 6,
+        "qa_warnings": 18,
+        "qa_passed": false
+      },
+      "203_battery_executive_summary": {
+        "composition": 88.8,
+        "qa_score": 98.6,
+        "qa_errors": 0,
+        "qa_warnings": 4,
+        "qa_passed": true
+      },
+      "204_battery_chart": {
+        "composition": 96.7,
+        "qa_score": 94.2,
+        "qa_errors": 1,
+        "qa_warnings": 12,
+        "qa_passed": false
+      },
+      "205_battery_waterfall": {
+        "composition": 93.5,
+        "qa_score": 90.4,
+        "qa_errors": 3,
+        "qa_warnings": 12,
+        "qa_passed": false
+      },
+      "206_battery_table": {
+        "composition": 95.9,
+        "qa_score": 91.9,
+        "qa_errors": 2,
+        "qa_warnings": 14,
+        "qa_passed": false
+      },
+      "207_battery_matrix": {
+        "composition": 98.7,
+        "qa_score": 92.5,
+        "qa_errors": 1,
+        "qa_warnings": 16,
+        "qa_passed": false
+      },
+      "208_battery_comparison": {
+        "composition": 84.8,
+        "qa_score": 94.8,
+        "qa_errors": 1,
+        "qa_warnings": 12,
+        "qa_passed": false
+      },
+      "209_battery_process": {
+        "composition": 83.5,
+        "qa_score": 84.8,
+        "qa_errors": 3,
+        "qa_warnings": 27,
+        "qa_passed": false
+      },
+      "210_battery_roadmap": {
+        "composition": 92.7,
+        "qa_score": 91.4,
+        "qa_errors": 1,
+        "qa_warnings": 18,
+        "qa_passed": false
+      },
+      "211_battery_timeline": {
+        "composition": 99.1,
+        "qa_score": 89.5,
+        "qa_errors": 2,
+        "qa_warnings": 17,
+        "qa_passed": false
+      },
+      "212_battery_operating_model": {
+        "composition": 98.7,
+        "qa_score": 85.2,
+        "qa_errors": 4,
+        "qa_warnings": 15,
+        "qa_passed": false
+      },
+      "213_battery_architecture": {
+        "composition": 88.4,
+        "qa_score": 89.6,
+        "qa_errors": 3,
+        "qa_warnings": 16,
+        "qa_passed": false
+      },
+      "214_battery_hierarchy": {
+        "composition": 92.6,
+        "qa_score": 92.2,
+        "qa_errors": 1,
+        "qa_warnings": 18,
+        "qa_passed": false
+      },
+      "215_battery_segmentation": {
+        "composition": 98.0,
+        "qa_score": 91.6,
+        "qa_errors": 2,
+        "qa_warnings": 12,
+        "qa_passed": false
+      },
+      "216_battery_text_exhibit": {
+        "composition": 87.6,
+        "qa_score": 83.2,
+        "qa_errors": 8,
+        "qa_warnings": 16,
+        "qa_passed": false
+      }
+    },
+    "overall": {
+      "overall_score": 92.8,
+      "slide_mean": 92.7,
+      "macro_archetype_score": 92.4,
+      "weakest_archetype": "kpi_dashboard",
+      "weakest_archetype_score": 79.8,
+      "weakest_archetype_n": 9,
+      "weakest_covered_archetype": "kpi_dashboard",
+      "weakest_covered_archetype_score": 79.8,
+      "share_slides_above_90": 0.768,
+      "share_slides_above_80": 0.866,
+      "share_slides_above_70": 0.928,
+      "qa_errors": 41,
+      "qa_errors_visual": 0
+    },
+    "distribution": {
+      "n": 194,
+      "min": 49.4,
+      "p10": 75.4,
+      "p25": 91.7,
+      "median": 98.5,
+      "p75": 100.0,
+      "p90": 100.0
+    },
+    "archetypes": {
+      "architecture": {
+        "n": 9,
+        "mean": 91.4,
+        "median": 99.8,
+        "min": 49.4,
+        "p10": 78.1,
+        "flags": {
+          "NO_FOCAL_POINT": 1,
+          "UNDERUSED_CANVAS": 1
+        },
+        "coverage": "gate_eligible",
+        "share_below_floor": 0.111,
+        "health": "HEALTHY",
+        "gate_status": "enforced: min_floor"
+      },
+      "chart": {
+        "n": 18,
+        "mean": 94.2,
+        "median": 99.7,
+        "min": 50.6,
+        "p10": 79.3,
+        "flags": {
+          "DEAD_SPACE": 2,
+          "PROOF_NOT_VISIBLE": 1,
+          "UNDERUSED_CANVAS": 1,
+          "OFF_BALANCE": 1
+        },
+        "coverage": "gate_eligible",
+        "share_below_floor": 0.056,
+        "health": "HEALTHY",
+        "gate_status": "enforced: min_floor"
+      },
+      "comparison": {
+        "n": 11,
+        "mean": 84.6,
+        "median": 82.6,
+        "min": 76.4,
+        "p10": 77.2,
+        "flags": {
+          "UNDERUSED_CANVAS": 5,
+          "OFF_BALANCE": 2
+        },
+        "coverage": "gate_eligible",
+        "share_below_floor": 0.0,
+        "health": "HEALTHY",
+        "gate_status": "enforced: min_floor"
+      },
+      "executive_summary": {
+        "n": 11,
+        "mean": 89.2,
+        "median": 95.0,
+        "min": 72.1,
+        "p10": 75.1,
+        "flags": {
+          "UNDERUSED_CANVAS": 2,
+          "OFF_BALANCE": 2
+        },
+        "coverage": "gate_eligible",
+        "share_below_floor": 0.0,
+        "health": "HEALTHY",
+        "gate_status": "enforced: min_floor"
+      },
+      "hierarchy": {
+        "n": 10,
+        "mean": 93.2,
+        "median": 97.3,
+        "min": 67.6,
+        "p10": 83.0,
+        "flags": {
+          "OFF_BALANCE": 2,
+          "UNDERUSED_CANVAS": 1
+        },
+        "coverage": "gate_eligible",
+        "share_below_floor": 0.1,
+        "health": "HEALTHY",
+        "gate_status": "enforced: min_floor"
+      },
+      "kpi_dashboard": {
+        "n": 9,
+        "mean": 79.8,
+        "median": 71.2,
+        "min": 61.6,
+        "p10": 61.7,
+        "flags": {
+          "UNDERUSED_CANVAS": 5
+        },
+        "coverage": "gate_eligible",
+        "share_below_floor": 0.444,
+        "health": "NOT HEALTHY",
+        "gate_status": "enforced: min_floor"
+      },
+      "kpi_hero": {
+        "n": 12,
+        "mean": 97.4,
+        "median": 97.8,
+        "min": 94.2,
+        "p10": 95.8,
+        "flags": {
+          "UNDERUSED_CANVAS": 1
+        },
+        "coverage": "gate_eligible",
+        "share_below_floor": 0.0,
+        "health": "HEALTHY",
+        "gate_status": "enforced: min_floor"
+      },
+      "matrix": {
+        "n": 10,
+        "mean": 98.7,
+        "median": 98.7,
+        "min": 98.4,
+        "p10": 98.6,
+        "flags": {},
+        "coverage": "gate_eligible",
+        "share_below_floor": 0.0,
+        "health": "HEALTHY",
+        "gate_status": "enforced: min_floor"
+      },
+      "operating_model": {
+        "n": 9,
+        "mean": 98.8,
+        "median": 99.7,
+        "min": 91.7,
+        "p10": 97.9,
+        "flags": {
+          "NO_FOCAL_POINT": 1
+        },
+        "coverage": "gate_eligible",
+        "share_below_floor": 0.0,
+        "health": "HEALTHY",
+        "gate_status": "enforced: min_floor"
+      },
+      "process": {
+        "n": 12,
+        "mean": 81.0,
+        "median": 80.8,
+        "min": 55.1,
+        "p10": 62.7,
+        "flags": {
+          "UNDERUSED_CANVAS": 7,
+          "DEAD_SPACE": 1
+        },
+        "coverage": "gate_eligible",
+        "share_below_floor": 0.167,
+        "health": "HEALTHY",
+        "gate_status": "enforced: min_floor"
+      },
+      "roadmap": {
+        "n": 10,
+        "mean": 93.5,
+        "median": 100.0,
+        "min": 80.1,
+        "p10": 80.5,
+        "flags": {
+          "UNDERUSED_CANVAS": 3,
+          "NO_FOCAL_POINT": 1
+        },
+        "coverage": "gate_eligible",
+        "share_below_floor": 0.0,
+        "health": "HEALTHY",
+        "gate_status": "enforced: min_floor"
+      },
+      "segmentation": {
+        "n": 8,
+        "mean": 98.0,
+        "median": 100.0,
+        "min": 92.0,
+        "p10": 92.0,
+        "flags": {
+          "OVERDENSE": 2
+        },
+        "coverage": "gate_eligible",
+        "share_below_floor": 0.0,
+        "health": "HEALTHY",
+        "gate_status": "enforced: min_floor"
+      },
+      "statement": {
+        "n": 15,
+        "mean": 99.8,
+        "median": 100.0,
+        "min": 97.7,
+        "p10": 99.2,
+        "flags": {},
+        "coverage": "gate_eligible",
+        "share_below_floor": 0.0,
+        "health": "HEALTHY",
+        "gate_status": "enforced: min_floor"
+      },
+      "table": {
+        "n": 18,
+        "mean": 96.6,
+        "median": 99.2,
+        "min": 68.4,
+        "p10": 92.6,
+        "flags": {
+          "DEAD_SPACE": 1,
+          "OVERDENSE": 1
+        },
+        "coverage": "gate_eligible",
+        "share_below_floor": 0.056,
+        "health": "HEALTHY",
+        "gate_status": "enforced: min_floor"
+      },
+      "text_exhibit": {
+        "n": 10,
+        "mean": 85.1,
+        "median": 92.6,
+        "min": 53.4,
+        "p10": 61.0,
+        "flags": {
+          "OFF_BALANCE": 3,
+          "UNDERUSED_CANVAS": 2,
+          "PROOF_NOT_VISIBLE": 1
+        },
+        "coverage": "gate_eligible",
+        "share_below_floor": 0.3,
+        "health": "NOT HEALTHY",
+        "gate_status": "enforced: min_floor"
+      },
+      "timeline": {
+        "n": 9,
+        "mean": 99.1,
+        "median": 99.5,
+        "min": 95.0,
+        "p10": 98.6,
+        "flags": {},
+        "coverage": "gate_eligible",
+        "share_below_floor": 0.0,
+        "health": "HEALTHY",
+        "gate_status": "enforced: min_floor"
+      },
+      "waterfall": {
+        "n": 13,
+        "mean": 90.6,
+        "median": 96.1,
+        "min": 56.5,
+        "p10": 79.3,
+        "flags": {
+          "PROOF_NOT_VISIBLE": 1,
+          "DEAD_SPACE": 1,
+          "OFF_BALANCE": 1
+        },
+        "coverage": "gate_eligible",
+        "share_below_floor": 0.077,
+        "health": "HEALTHY",
+        "gate_status": "enforced: min_floor"
+      }
+    },
+    "absolute_gates": {
+      "breaches": [
+        {
+          "archetype": "kpi_dashboard",
+          "rule": "too_many_slides_below_floor",
+          "value": 0.444,
+          "floor": 0.25,
+          "enforced": false
+        },
+        {
+          "archetype": "text_exhibit",
+          "rule": "too_many_slides_below_floor",
+          "value": 0.3,
+          "floor": 0.25,
+          "enforced": false
+        }
+      ],
+      "not_healthy": [
+        "kpi_dashboard",
+        "text_exhibit"
+      ],
+      "coverage": {
+        "measured": 17,
+        "of": 17,
+        "gate_eligible": [
+          "architecture",
+          "chart",
+          "comparison",
+          "executive_summary",
+          "hierarchy",
+          "kpi_dashboard",
+          "kpi_hero",
+          "matrix",
+          "operating_model",
+          "process",
+          "roadmap",
+          "segmentation",
+          "statement",
+          "table",
+          "text_exhibit",
+          "timeline",
+          "waterfall"
+        ],
+        "provisional": [],
+        "insufficient": [],
+        "missing": [],
+        "rule": "n < 5: diagnostic only · 5 ≤ n < 8: provisional · n ≥ 8: gate eligible"
       }
     },
     "environment_fingerprint": "f98cee49d123ed5f",
     "engine": {
-      "version": "1.3.3",
-      "commit": "8216a5d18a1b41268b484626dc469851d0da3e3b-dirty"
+      "version": "1.4.0",
+      "commit": "430176dacf55c050fd92e3beb6b9e8fbdb13f0db"
+    },
+    "provenance": {
+      "evaluated_commit": "430176dacf55c050fd92e3beb6b9e8fbdb13f0db",
+      "git_tree": "4a5f1c04f3bf52c8bbf5277f91c9d500a2f55b3c",
+      "dirty": false,
+      "dirty_paths": [],
+      "engine_version": "1.4.0",
+      "container_image": "mbbslides-visual:1.3",
+      "container_digest": "sha256:bb5bbbdd55bcec5db567781c63574da1a4b2fc4504446d6fea23f5197f59d278",
+      "eval_timestamp_utc": "2026-10-01T10:03:44Z",
+      "environment_fingerprint": "f98cee49d123ed5f",
+      "release_truth": true
     }
   },
   "environment": {
@@ -268,9 +658,9 @@
       "Inter": "Inter|/usr/share/fonts/opentype/inter/Inter-Regular.otf",
       "Segoe UI": "DejaVu Sans|/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
     },
-    "cpe_version": "1.3.3",
+    "cpe_version": "1.4.0",
     "container_image": "mbbslides-visual:1.3@sha256:bb5bbbdd55bcec5db567781c63574da1a4b2fc4504446d6fea23f5197f59d278",
-    "commit": "8216a5d18a1b41268b484626dc469851d0da3e3b-dirty",
+    "commit": "430176dacf55c050fd92e3beb6b9e8fbdb13f0db-dirty",
     "fingerprint": "f98cee49d123ed5f"
   },
   "holdout": {
@@ -396,85 +786,602 @@
         "version": "1.3.0.dev0",
         "commit": "4f9976d2e727b870505afd9cf1c45d21e1ac2e90-dirty"
       },
-      "note": "retired H01–H05 (development-known since v1.3); last blind result 81.0 at v1.2 (engine e3b63e1); this v1.3 re-run is development evidence"
+      "note": "engine e3b63e1; later runs (this v1.3 re-run included) are development evidence"
+    },
+    "v2": {
+      "metric": "archetype-fitness composition score",
+      "suite_composition": 91.4,
+      "suite_composition_v1": 82.0,
+      "slides_measured": 158,
+      "qa_errors": 97,
+      "qa_errors_authoring": 93,
+      "qa_warnings": 207,
+      "cases_ok": 26,
+      "cases_total": 26,
+      "flag_counts": {
+        "UNDERUSED_CANVAS": 23,
+        "OFF_BALANCE": 10,
+        "PROOF_NOT_VISIBLE": 7,
+        "NO_FOCAL_POINT": 3,
+        "DEAD_SPACE": 2,
+        "SPARSE": 2
+      },
+      "passed": true,
+      "cases": {
+        "V01_airline_board": {
+          "composition": 99.6,
+          "qa_score": 95.8,
+          "qa_errors": 2,
+          "qa_warnings": 7,
+          "qa_passed": false
+        },
+        "V02_banco_resultados": {
+          "composition": 86.9,
+          "qa_score": 87.7,
+          "qa_errors": 4,
+          "qa_warnings": 9,
+          "qa_passed": false
+        },
+        "V03_plant_operations": {
+          "composition": 93.2,
+          "qa_score": 92.8,
+          "qa_errors": 3,
+          "qa_warnings": 10,
+          "qa_passed": false
+        },
+        "V04_sanidad_listas": {
+          "composition": 91.7,
+          "qa_score": 91.0,
+          "qa_errors": 4,
+          "qa_warnings": 9,
+          "qa_passed": false
+        },
+        "V05_saas_product": {
+          "composition": 88.7,
+          "qa_score": 88.5,
+          "qa_errors": 5,
+          "qa_warnings": 8,
+          "qa_passed": false
+        },
+        "V06_ventas_b2b": {
+          "composition": 93.0,
+          "qa_score": 88.3,
+          "qa_errors": 4,
+          "qa_warnings": 8,
+          "qa_passed": false
+        },
+        "V07_energy_market": {
+          "composition": 96.3,
+          "qa_score": 91.3,
+          "qa_errors": 4,
+          "qa_warnings": 7,
+          "qa_passed": false
+        },
+        "V08_insurer_transformation": {
+          "composition": 95.5,
+          "qa_score": 89.4,
+          "qa_errors": 5,
+          "qa_warnings": 8,
+          "qa_passed": false
+        },
+        "V09_retail_moda": {
+          "composition": 89.0,
+          "qa_score": 86.2,
+          "qa_errors": 5,
+          "qa_warnings": 9,
+          "qa_passed": false
+        },
+        "V10_pharma_portfolio": {
+          "composition": 83.0,
+          "qa_score": 90.2,
+          "qa_errors": 4,
+          "qa_warnings": 9,
+          "qa_passed": false
+        },
+        "V11_last_mile": {
+          "composition": 94.1,
+          "qa_score": 90.8,
+          "qa_errors": 4,
+          "qa_warnings": 8,
+          "qa_passed": false
+        },
+        "V12_education_reform": {
+          "composition": 92.7,
+          "qa_score": 95.3,
+          "qa_errors": 2,
+          "qa_warnings": 7,
+          "qa_passed": false
+        },
+        "V13_telco_fibra": {
+          "composition": 95.3,
+          "qa_score": 91.8,
+          "qa_errors": 4,
+          "qa_warnings": 7,
+          "qa_passed": false
+        },
+        "V14_cfo_cash": {
+          "composition": 95.6,
+          "qa_score": 90.7,
+          "qa_errors": 4,
+          "qa_warnings": 9,
+          "qa_passed": false
+        },
+        "V15_hoteles": {
+          "composition": 89.8,
+          "qa_score": 91.7,
+          "qa_errors": 3,
+          "qa_warnings": 7,
+          "qa_passed": false
+        },
+        "V16_auto_supply": {
+          "composition": 94.1,
+          "qa_score": 91.2,
+          "qa_errors": 4,
+          "qa_warnings": 7,
+          "qa_passed": false
+        },
+        "V17_gran_consumo": {
+          "composition": 89.9,
+          "qa_score": 91.0,
+          "qa_errors": 4,
+          "qa_warnings": 8,
+          "qa_passed": false
+        },
+        "V18_water_utility": {
+          "composition": 88.6,
+          "qa_score": 95.9,
+          "qa_errors": 3,
+          "qa_warnings": 6,
+          "qa_passed": false
+        },
+        "V19_startup_consejo": {
+          "composition": 76.9,
+          "qa_score": 89.3,
+          "qa_errors": 4,
+          "qa_warnings": 10,
+          "qa_passed": false
+        },
+        "V20_bank_core_it": {
+          "composition": 95.6,
+          "qa_score": 91.2,
+          "qa_errors": 4,
+          "qa_warnings": 8,
+          "qa_passed": false
+        },
+        "V21_cooperativa_agro": {
+          "composition": 88.5,
+          "qa_score": 92.7,
+          "qa_errors": 3,
+          "qa_warnings": 6,
+          "qa_passed": false
+        },
+        "V22_people_attrition": {
+          "composition": 83.9,
+          "qa_score": 91.7,
+          "qa_errors": 4,
+          "qa_warnings": 7,
+          "qa_passed": false
+        },
+        "V23_real_estate": {
+          "composition": 98.4,
+          "qa_score": 94.3,
+          "qa_errors": 2,
+          "qa_warnings": 8,
+          "qa_passed": false
+        },
+        "V24_ngo_programme": {
+          "composition": 87.1,
+          "qa_score": 90.2,
+          "qa_errors": 4,
+          "qa_warnings": 8,
+          "qa_passed": false
+        },
+        "V25_gov_digital": {
+          "composition": 92.7,
+          "qa_score": 89.2,
+          "qa_errors": 4,
+          "qa_warnings": 11,
+          "qa_passed": false
+        },
+        "V26_banca_segmentos": {
+          "composition": 96.9,
+          "qa_score": 92.2,
+          "qa_errors": 4,
+          "qa_warnings": 6,
+          "qa_passed": false
+        }
+      },
+      "overall": {
+        "overall_score": 91.4,
+        "slide_mean": 91.4,
+        "macro_archetype_score": 91.8,
+        "weakest_archetype": "kpi_dashboard",
+        "weakest_archetype_score": 71.6,
+        "weakest_archetype_n": 5,
+        "weakest_covered_archetype": "kpi_dashboard",
+        "weakest_covered_archetype_score": 71.6,
+        "share_slides_above_90": 0.722,
+        "share_slides_above_80": 0.835,
+        "share_slides_above_70": 0.93,
+        "qa_errors": 97,
+        "qa_errors_visual": 4
+      },
+      "distribution": {
+        "n": 158,
+        "min": 56.4,
+        "p10": 74.5,
+        "p25": 88.6,
+        "median": 97.3,
+        "p75": 99.8,
+        "p90": 100.0
+      },
+      "archetypes": {
+        "architecture": {
+          "n": 6,
+          "mean": 98.9,
+          "median": 100.0,
+          "min": 93.9,
+          "p10": 96.8,
+          "flags": {
+            "NO_FOCAL_POINT": 1
+          },
+          "coverage": "provisional",
+          "share_below_floor": 0.0,
+          "health": "HEALTHY",
+          "gate_status": "enforced: min_floor"
+        },
+        "chart": {
+          "n": 24,
+          "mean": 91.3,
+          "median": 98.5,
+          "min": 58.3,
+          "p10": 75.0,
+          "flags": {
+            "PROOF_NOT_VISIBLE": 2,
+            "NO_FOCAL_POINT": 1,
+            "UNDERUSED_CANVAS": 1,
+            "OFF_BALANCE": 1,
+            "DEAD_SPACE": 1
+          },
+          "coverage": "gate_eligible",
+          "share_below_floor": 0.083,
+          "health": "HEALTHY",
+          "gate_status": "enforced: min_floor"
+        },
+        "comparison": {
+          "n": 11,
+          "mean": 78.2,
+          "median": 78.9,
+          "min": 70.0,
+          "p10": 75.7,
+          "flags": {
+            "UNDERUSED_CANVAS": 11,
+            "OFF_BALANCE": 3
+          },
+          "coverage": "gate_eligible",
+          "share_below_floor": 0.0,
+          "health": "HEALTHY",
+          "gate_status": "enforced: min_floor"
+        },
+        "executive_summary": {
+          "n": 8,
+          "mean": 95.3,
+          "median": 94.2,
+          "min": 92.9,
+          "p10": 93.0,
+          "flags": {},
+          "coverage": "gate_eligible",
+          "share_below_floor": 0.0,
+          "health": "HEALTHY",
+          "gate_status": "enforced: min_floor"
+        },
+        "hierarchy": {
+          "n": 7,
+          "mean": 85.7,
+          "median": 89.2,
+          "min": 56.8,
+          "p10": 67.6,
+          "flags": {
+            "OFF_BALANCE": 2,
+            "PROOF_NOT_VISIBLE": 1,
+            "UNDERUSED_CANVAS": 1
+          },
+          "coverage": "provisional",
+          "share_below_floor": 0.143,
+          "health": "HEALTHY",
+          "gate_status": "enforced: min_floor"
+        },
+        "kpi_dashboard": {
+          "n": 5,
+          "mean": 71.6,
+          "median": 63.5,
+          "min": 61.2,
+          "p10": 62.0,
+          "flags": {
+            "UNDERUSED_CANVAS": 4
+          },
+          "coverage": "provisional",
+          "share_below_floor": 0.6,
+          "health": "NOT HEALTHY",
+          "gate_status": "enforced: min_floor"
+        },
+        "kpi_hero": {
+          "n": 20,
+          "mean": 96.7,
+          "median": 98.1,
+          "min": 91.3,
+          "p10": 92.6,
+          "flags": {},
+          "coverage": "gate_eligible",
+          "share_below_floor": 0.0,
+          "health": "HEALTHY",
+          "gate_status": "enforced: min_floor"
+        },
+        "matrix": {
+          "n": 5,
+          "mean": 98.6,
+          "median": 98.6,
+          "min": 98.6,
+          "p10": 98.6,
+          "flags": {},
+          "coverage": "provisional",
+          "share_below_floor": 0.0,
+          "health": "HEALTHY",
+          "gate_status": "enforced: min_floor"
+        },
+        "operating_model": {
+          "n": 3,
+          "mean": 99.8,
+          "median": 99.9,
+          "min": 99.7,
+          "p10": 99.7,
+          "flags": {},
+          "coverage": "INSUFFICIENT COVERAGE",
+          "share_below_floor": 0.0,
+          "health": "INSUFFICIENT COVERAGE",
+          "gate_status": "enforced: min_floor"
+        },
+        "process": {
+          "n": 11,
+          "mean": 83.6,
+          "median": 81.8,
+          "min": 72.7,
+          "p10": 77.2,
+          "flags": {
+            "UNDERUSED_CANVAS": 5,
+            "SPARSE": 2
+          },
+          "coverage": "gate_eligible",
+          "share_below_floor": 0.0,
+          "health": "HEALTHY",
+          "gate_status": "enforced: min_floor"
+        },
+        "roadmap": {
+          "n": 6,
+          "mean": 100.0,
+          "median": 100.0,
+          "min": 100.0,
+          "p10": 100.0,
+          "flags": {},
+          "coverage": "provisional",
+          "share_below_floor": 0.0,
+          "health": "HEALTHY",
+          "gate_status": "enforced: min_floor"
+        },
+        "segmentation": {
+          "n": 5,
+          "mean": 98.8,
+          "median": 100.0,
+          "min": 93.9,
+          "p10": 96.3,
+          "flags": {
+            "NO_FOCAL_POINT": 1
+          },
+          "coverage": "provisional",
+          "share_below_floor": 0.0,
+          "health": "HEALTHY",
+          "gate_status": "enforced: min_floor"
+        },
+        "statement": {
+          "n": 9,
+          "mean": 100.0,
+          "median": 100.0,
+          "min": 100.0,
+          "p10": 100.0,
+          "flags": {},
+          "coverage": "gate_eligible",
+          "share_below_floor": 0.0,
+          "health": "HEALTHY",
+          "gate_status": "enforced: min_floor"
+        },
+        "table": {
+          "n": 12,
+          "mean": 91.1,
+          "median": 99.6,
+          "min": 56.6,
+          "p10": 60.1,
+          "flags": {
+            "PROOF_NOT_VISIBLE": 2
+          },
+          "coverage": "gate_eligible",
+          "share_below_floor": 0.167,
+          "health": "HEALTHY",
+          "gate_status": "enforced: min_floor"
+        },
+        "text_exhibit": {
+          "n": 9,
+          "mean": 90.1,
+          "median": 92.2,
+          "min": 71.2,
+          "p10": 86.7,
+          "flags": {
+            "OFF_BALANCE": 4,
+            "UNDERUSED_CANVAS": 1
+          },
+          "coverage": "gate_eligible",
+          "share_below_floor": 0.0,
+          "health": "HEALTHY",
+          "gate_status": "enforced: min_floor"
+        },
+        "timeline": {
+          "n": 7,
+          "mean": 91.5,
+          "median": 95.0,
+          "min": 56.7,
+          "p10": 79.7,
+          "flags": {
+            "PROOF_NOT_VISIBLE": 1
+          },
+          "coverage": "provisional",
+          "share_below_floor": 0.143,
+          "health": "HEALTHY",
+          "gate_status": "enforced: min_floor"
+        },
+        "waterfall": {
+          "n": 10,
+          "mean": 89.4,
+          "median": 97.3,
+          "min": 56.4,
+          "p10": 68.0,
+          "flags": {
+            "DEAD_SPACE": 1,
+            "PROOF_NOT_VISIBLE": 1
+          },
+          "coverage": "gate_eligible",
+          "share_below_floor": 0.2,
+          "health": "HEALTHY",
+          "gate_status": "enforced: min_floor"
+        }
+      },
+      "absolute_gates": {
+        "breaches": [
+          {
+            "archetype": "kpi_dashboard",
+            "rule": "too_many_slides_below_floor",
+            "value": 0.6,
+            "floor": 0.25,
+            "enforced": false
+          }
+        ],
+        "not_healthy": [
+          "kpi_dashboard"
+        ],
+        "coverage": {
+          "measured": 17,
+          "of": 17,
+          "gate_eligible": [
+            "chart",
+            "comparison",
+            "executive_summary",
+            "kpi_hero",
+            "process",
+            "statement",
+            "table",
+            "text_exhibit",
+            "waterfall"
+          ],
+          "provisional": [
+            "architecture",
+            "hierarchy",
+            "kpi_dashboard",
+            "matrix",
+            "roadmap",
+            "segmentation",
+            "timeline"
+          ],
+          "insufficient": [
+            "operating_model"
+          ],
+          "missing": [],
+          "rule": "n < 5: diagnostic only · 5 ≤ n < 8: provisional · n ≥ 8: gate eligible"
+        }
+      },
+      "environment_fingerprint": "f98cee49d123ed5f",
+      "engine": {
+        "version": "1.4.0",
+        "commit": "430176dacf55c050fd92e3beb6b9e8fbdb13f0db-dirty"
+      },
+      "provenance": {
+        "evaluated_commit": "430176dacf55c050fd92e3beb6b9e8fbdb13f0db",
+        "git_tree": "4a5f1c04f3bf52c8bbf5277f91c9d500a2f55b3c",
+        "dirty": false,
+        "dirty_paths": [],
+        "engine_version": "1.4.0",
+        "container_image": "mbbslides-visual:1.3",
+        "container_digest": "sha256:bb5bbbdd55bcec5db567781c63574da1a4b2fc4504446d6fea23f5197f59d278",
+        "eval_timestamp_utc": "2026-10-01T10:11:29Z",
+        "environment_fingerprint": "f98cee49d123ed5f",
+        "release_truth": true
+      },
+      "seal": {
+        "sealed_at": "2026-10-01T08:56Z",
+        "sealed_at_engine_commit": "a2f4dbcf373459df55311d66460373c53979770a",
+        "files": 26,
+        "verified": true,
+        "rerun_reason": null
+      },
+      "engine_vs_scorer": {
+        "_doc": "Sealed holdout v2 (158 slides) rendered by the v1.3.3 engine (a2f4dbc) and the v1.4 engine (430176d), each scored by the v1.3.3 scorer (frozen before v1.4) and the v1.4 scorer. Separates engine improvement from metric/profile change. Values: slide mean / macro archetype / P10.",
+        "v1.3.3_engine": {
+          "v1.3.3_scorer": [
+            77.3,
+            78.9,
+            36.5
+          ],
+          "v1.4_scorer": [
+            77.9,
+            79.6,
+            40.0
+          ]
+        },
+        "v1.4_engine": {
+          "v1.3.3_scorer": [
+            87.1,
+            87.7,
+            53.6
+          ],
+          "v1.4_scorer": [
+            91.4,
+            91.8,
+            73.7
+          ]
+        },
+        "reading": "Under the frozen v1.3.3 scorer the engine change alone moves the mean +9.8, macro +8.8, P10 +17.1. The rest of the v1.4 score (P10 53.6 → 73.7) comes from the provisional profile changes for process, comparison and kpi_dashboard, which only human votes (round r2) can validate."
+      },
+      "findings_for_v1.5": [
+        "kpi_dashboard is the weakest archetype (71.6, n=5, NOT HEALTHY provisional); one dashboard slide has a hard LOW_CONTRAST error (likely a coloured delta on the v1.4 KPI card fill)",
+        "PROOF_NOT_VISIBLE causes 7 of the 8 slides below 62: derived headline numbers (sums, differences, ratios) are still not recognised as proven",
+        "OUTSIDE_ZONE ×2 on a Spanish waterfall; RENDER_TEXT_SPILL on a long statement",
+        "Not tuned in this cycle (docs/EVALS.md#holdout-v2-protocol)"
+      ]
     }
   },
   "human_reference": {
-    "status": "round r1 built (40 blind pairs, 3 comparisons) — awaiting votes",
-    "round": "r1",
-    "pairs": 40
+    "rounds": {
+      "r1": {
+        "pairs": 40,
+        "blind": true,
+        "used_for_calibration": false,
+        "status": "awaiting human votes — 40 blind pairs built, 0 votes"
+      },
+      "r2": {
+        "pairs": 40,
+        "blind": true,
+        "used_for_calibration": false,
+        "status": "awaiting human votes — 40 blind pairs built, 0 votes"
+      }
+    }
   },
   "examples": {
     "metric": "archetype-fitness composition score",
-    "suite_composition": 99.4,
-    "suite_composition_v1": 92.6,
+    "suite_composition": 99.5,
+    "suite_composition_v1": 92.7,
     "slides_measured": 43,
     "qa_errors": 0,
+    "qa_errors_authoring": 0,
     "qa_warnings": 0,
     "cases_ok": 3,
     "cases_total": 3,
-    "by_archetype": {
-      "architecture": {
-        "slides": 1,
-        "mean": 100.0
-      },
-      "chart": {
-        "slides": 11,
-        "mean": 99.1
-      },
-      "comparison": {
-        "slides": 1,
-        "mean": 100.0
-      },
-      "executive_summary": {
-        "slides": 3,
-        "mean": 100.0
-      },
-      "hierarchy": {
-        "slides": 2,
-        "mean": 94.3
-      },
-      "kpi_dashboard": {
-        "slides": 1,
-        "mean": 98.1
-      },
-      "matrix": {
-        "slides": 2,
-        "mean": 100.0
-      },
-      "operating_model": {
-        "slides": 2,
-        "mean": 100.0
-      },
-      "process": {
-        "slides": 2,
-        "mean": 98.1
-      },
-      "roadmap": {
-        "slides": 2,
-        "mean": 100.0
-      },
-      "segmentation": {
-        "slides": 3,
-        "mean": 100.0
-      },
-      "statement": {
-        "slides": 1,
-        "mean": 100.0
-      },
-      "table": {
-        "slides": 6,
-        "mean": 100.0
-      },
-      "timeline": {
-        "slides": 1,
-        "mean": 100.0
-      },
-      "waterfall": {
-        "slides": 5,
-        "mean": 99.8
-      }
-    },
     "flag_counts": {},
     "passed": true,
     "cases": {
@@ -486,7 +1393,7 @@
         "qa_passed": true
       },
       "gallery": {
-        "composition": 99.0,
+        "composition": 99.1,
         "qa_score": 99.8,
         "qa_errors": 0,
         "qa_warnings": 0,
@@ -500,10 +1407,262 @@
         "qa_passed": true
       }
     },
+    "overall": {
+      "overall_score": 99.5,
+      "slide_mean": 99.4,
+      "macro_archetype_score": 99.4,
+      "weakest_archetype": "hierarchy",
+      "weakest_archetype_score": 94.3,
+      "weakest_archetype_n": 2,
+      "weakest_covered_archetype": "chart",
+      "weakest_covered_archetype_score": 99.0,
+      "share_slides_above_90": 0.977,
+      "share_slides_above_80": 1.0,
+      "share_slides_above_70": 1.0,
+      "qa_errors": 0,
+      "qa_errors_visual": 0
+    },
+    "distribution": {
+      "n": 43,
+      "min": 89.9,
+      "p10": 98.5,
+      "p25": 99.6,
+      "median": 100.0,
+      "p75": 100.0,
+      "p90": 100.0
+    },
+    "archetypes": {
+      "architecture": {
+        "n": 1,
+        "mean": 100.0,
+        "median": 100.0,
+        "min": 100.0,
+        "p10": 100.0,
+        "flags": {},
+        "coverage": "INSUFFICIENT COVERAGE",
+        "share_below_floor": 0.0,
+        "health": "INSUFFICIENT COVERAGE",
+        "gate_status": "enforced: min_floor"
+      },
+      "chart": {
+        "n": 11,
+        "mean": 99.0,
+        "median": 99.0,
+        "min": 96.9,
+        "p10": 98.1,
+        "flags": {},
+        "coverage": "gate_eligible",
+        "share_below_floor": 0.0,
+        "health": "HEALTHY",
+        "gate_status": "enforced: min_floor"
+      },
+      "comparison": {
+        "n": 1,
+        "mean": 100.0,
+        "median": 100.0,
+        "min": 100.0,
+        "p10": 100.0,
+        "flags": {},
+        "coverage": "INSUFFICIENT COVERAGE",
+        "share_below_floor": 0.0,
+        "health": "INSUFFICIENT COVERAGE",
+        "gate_status": "enforced: min_floor"
+      },
+      "executive_summary": {
+        "n": 3,
+        "mean": 100.0,
+        "median": 100.0,
+        "min": 100.0,
+        "p10": 100.0,
+        "flags": {},
+        "coverage": "INSUFFICIENT COVERAGE",
+        "share_below_floor": 0.0,
+        "health": "INSUFFICIENT COVERAGE",
+        "gate_status": "enforced: min_floor"
+      },
+      "hierarchy": {
+        "n": 2,
+        "mean": 94.3,
+        "median": 94.3,
+        "min": 89.9,
+        "p10": 90.8,
+        "flags": {},
+        "coverage": "INSUFFICIENT COVERAGE",
+        "share_below_floor": 0.0,
+        "health": "INSUFFICIENT COVERAGE",
+        "gate_status": "enforced: min_floor"
+      },
+      "kpi_dashboard": {
+        "n": 1,
+        "mean": 98.9,
+        "median": 98.9,
+        "min": 98.9,
+        "p10": 98.9,
+        "flags": {},
+        "coverage": "INSUFFICIENT COVERAGE",
+        "share_below_floor": 0.0,
+        "health": "INSUFFICIENT COVERAGE",
+        "gate_status": "enforced: min_floor"
+      },
+      "matrix": {
+        "n": 2,
+        "mean": 100.0,
+        "median": 100.0,
+        "min": 99.9,
+        "p10": 99.9,
+        "flags": {},
+        "coverage": "INSUFFICIENT COVERAGE",
+        "share_below_floor": 0.0,
+        "health": "INSUFFICIENT COVERAGE",
+        "gate_status": "enforced: min_floor"
+      },
+      "operating_model": {
+        "n": 2,
+        "mean": 100.0,
+        "median": 100.0,
+        "min": 100.0,
+        "p10": 100.0,
+        "flags": {},
+        "coverage": "INSUFFICIENT COVERAGE",
+        "share_below_floor": 0.0,
+        "health": "INSUFFICIENT COVERAGE",
+        "gate_status": "enforced: min_floor"
+      },
+      "process": {
+        "n": 2,
+        "mean": 98.8,
+        "median": 98.8,
+        "min": 97.7,
+        "p10": 97.9,
+        "flags": {},
+        "coverage": "INSUFFICIENT COVERAGE",
+        "share_below_floor": 0.0,
+        "health": "INSUFFICIENT COVERAGE",
+        "gate_status": "enforced: min_floor"
+      },
+      "roadmap": {
+        "n": 2,
+        "mean": 99.8,
+        "median": 99.8,
+        "min": 99.8,
+        "p10": 99.8,
+        "flags": {},
+        "coverage": "INSUFFICIENT COVERAGE",
+        "share_below_floor": 0.0,
+        "health": "INSUFFICIENT COVERAGE",
+        "gate_status": "enforced: min_floor"
+      },
+      "segmentation": {
+        "n": 3,
+        "mean": 100.0,
+        "median": 100.0,
+        "min": 99.9,
+        "p10": 99.9,
+        "flags": {},
+        "coverage": "INSUFFICIENT COVERAGE",
+        "share_below_floor": 0.0,
+        "health": "INSUFFICIENT COVERAGE",
+        "gate_status": "enforced: min_floor"
+      },
+      "statement": {
+        "n": 1,
+        "mean": 100.0,
+        "median": 100.0,
+        "min": 100.0,
+        "p10": 100.0,
+        "flags": {},
+        "coverage": "INSUFFICIENT COVERAGE",
+        "share_below_floor": 0.0,
+        "health": "INSUFFICIENT COVERAGE",
+        "gate_status": "enforced: min_floor"
+      },
+      "table": {
+        "n": 6,
+        "mean": 100.0,
+        "median": 100.0,
+        "min": 100.0,
+        "p10": 100.0,
+        "flags": {},
+        "coverage": "provisional",
+        "share_below_floor": 0.0,
+        "health": "HEALTHY",
+        "gate_status": "enforced: min_floor"
+      },
+      "timeline": {
+        "n": 1,
+        "mean": 100.0,
+        "median": 100.0,
+        "min": 100.0,
+        "p10": 100.0,
+        "flags": {},
+        "coverage": "INSUFFICIENT COVERAGE",
+        "share_below_floor": 0.0,
+        "health": "INSUFFICIENT COVERAGE",
+        "gate_status": "enforced: min_floor"
+      },
+      "waterfall": {
+        "n": 5,
+        "mean": 99.8,
+        "median": 100.0,
+        "min": 99.5,
+        "p10": 99.6,
+        "flags": {},
+        "coverage": "provisional",
+        "share_below_floor": 0.0,
+        "health": "HEALTHY",
+        "gate_status": "enforced: min_floor"
+      }
+    },
+    "absolute_gates": {
+      "breaches": [],
+      "not_healthy": [],
+      "coverage": {
+        "measured": 15,
+        "of": 17,
+        "gate_eligible": [
+          "chart"
+        ],
+        "provisional": [
+          "table",
+          "waterfall"
+        ],
+        "insufficient": [
+          "architecture",
+          "comparison",
+          "executive_summary",
+          "hierarchy",
+          "kpi_dashboard",
+          "matrix",
+          "operating_model",
+          "process",
+          "roadmap",
+          "segmentation",
+          "statement",
+          "timeline"
+        ],
+        "missing": [
+          "kpi_hero",
+          "text_exhibit"
+        ],
+        "rule": "n < 5: diagnostic only · 5 ≤ n < 8: provisional · n ≥ 8: gate eligible"
+      }
+    },
     "environment_fingerprint": "f98cee49d123ed5f",
     "engine": {
-      "version": "1.3.3",
-      "commit": "8216a5d18a1b41268b484626dc469851d0da3e3b-dirty"
+      "version": "1.4.0",
+      "commit": "430176dacf55c050fd92e3beb6b9e8fbdb13f0db-dirty"
+    },
+    "provenance": {
+      "evaluated_commit": "430176dacf55c050fd92e3beb6b9e8fbdb13f0db",
+      "git_tree": "4a5f1c04f3bf52c8bbf5277f91c9d500a2f55b3c",
+      "dirty": false,
+      "dirty_paths": [],
+      "engine_version": "1.4.0",
+      "container_image": "mbbslides-visual:1.3",
+      "container_digest": "sha256:bb5bbbdd55bcec5db567781c63574da1a4b2fc4504446d6fea23f5197f59d278",
+      "eval_timestamp_utc": "2026-10-01T10:07:45Z",
+      "environment_fingerprint": "f98cee49d123ed5f",
+      "release_truth": true
     }
   },
   "development_private": {
@@ -530,6 +1689,87 @@
         "spec_agreement": "21/22",
         "spec_weighted_agreement": 0.969
       }
+    }
+  },
+  "robustness": {
+    "variants": 78,
+    "seeds": 22,
+    "median_drop": 0.0,
+    "p90_drop": 0.0,
+    "catastrophic": 0,
+    "catastrophic_rate": 0.0,
+    "layout_change_rate": 0.103,
+    "font_drop_rate": 0.038,
+    "by_perturbation": {
+      "full_numbers": {
+        "n": 4,
+        "median_drop": 0.0,
+        "p90_drop": 2.5,
+        "catastrophic": 0,
+        "layout_changes": 1
+      },
+      "headline_longer": {
+        "n": 22,
+        "median_drop": 0.0,
+        "p90_drop": 0.0,
+        "catastrophic": 0,
+        "layout_changes": 3
+      },
+      "more_items": {
+        "n": 10,
+        "median_drop": 0.0,
+        "p90_drop": 0.5,
+        "catastrophic": 0,
+        "layout_changes": 2
+      },
+      "more_rows": {
+        "n": 2,
+        "median_drop": 0.0,
+        "p90_drop": 0.0,
+        "catastrophic": 0,
+        "layout_changes": 0
+      },
+      "more_series": {
+        "n": 3,
+        "median_drop": 0.0,
+        "p90_drop": 0.0,
+        "catastrophic": 0,
+        "layout_changes": 1
+      },
+      "more_sources": {
+        "n": 21,
+        "median_drop": 0.0,
+        "p90_drop": 0.0,
+        "catastrophic": 0,
+        "layout_changes": 0
+      },
+      "more_steps": {
+        "n": 2,
+        "median_drop": 0.0,
+        "p90_drop": 0.0,
+        "catastrophic": 0,
+        "layout_changes": 1
+      },
+      "text_longer": {
+        "n": 14,
+        "median_drop": 0.0,
+        "p90_drop": 0.0,
+        "catastrophic": 0,
+        "layout_changes": 0
+      }
+    },
+    "catastrophic_cases": [],
+    "definition": "catastrophic = composition drop ≥ 25 points or a new visual QA error; separate from the composition score",
+    "provenance": {
+      "evaluated_commit": "430176dacf55c050fd92e3beb6b9e8fbdb13f0db",
+      "git_tree": "4a5f1c04f3bf52c8bbf5277f91c9d500a2f55b3c",
+      "dirty": false,
+      "dirty_paths": [],
+      "engine_version": "1.4.0",
+      "container_image": "mbbslides-visual:1.3",
+      "container_digest": "sha256:bb5bbbdd55bcec5db567781c63574da1a4b2fc4504446d6fea23f5197f59d278",
+      "eval_timestamp_utc": "2026-10-01T10:11:16Z",
+      "release_truth": true
     }
   }
 }

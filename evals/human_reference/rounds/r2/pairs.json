@@ -1,0 +1,289 @@
+{
+  "meta": {
+    "created": "2026-10-01",
+    "pairs": 40,
+    "instructions": "Which slide communicates its message better? Judge clarity, hierarchy and use of space \u2014 not the wording. Pick A, B or Tie."
+  },
+  "pairs": [
+    {
+      "id": "p001",
+      "images": [
+        "15d2256e48cc.png",
+        "7a1a053af2a9.png"
+      ]
+    },
+    {
+      "id": "p002",
+      "images": [
+        "9118763d6873.png",
+        "7aa9cfd2f2b0.png"
+      ]
+    },
+    {
+      "id": "p003",
+      "images": [
+        "c53980339e75.png",
+        "28b4917e3c92.png"
+      ]
+    },
+    {
+      "id": "p004",
+      "images": [
+        "afb3b93ca251.png",
+        "5b89cc17a77e.png"
+      ]
+    },
+    {
+      "id": "p005",
+      "images": [
+        "9d1c54502268.png",
+        "1ad909e0356e.png"
+      ]
+    },
+    {
+      "id": "p006",
+      "images": [
+        "ff6a0ad20567.png",
+        "ef8f29a8bfce.png"
+      ]
+    },
+    {
+      "id": "p007",
+      "images": [
+        "b82b1ac33e52.png",
+        "c7bdf2760d08.png"
+      ]
+    },
+    {
+      "id": "p008",
+      "images": [
+        "772eca0fc7c4.png",
+        "082802f2b849.png"
+      ]
+    },
+    {
+      "id": "p009",
+      "images": [
+        "164514ca43de.png",
+        "465ae620df6b.png"
+      ]
+    },
+    {
+      "id": "p010",
+      "images": [
+        "a2c6ac13b2d0.png",
+        "0bd5a990d8e0.png"
+      ]
+    },
+    {
+      "id": "p011",
+      "images": [
+        "f9cef1af96f2.png",
+        "02bf93c568ac.png"
+      ]
+    },
+    {
+      "id": "p012",
+      "images": [
+        "73b8e5b40d87.png",
+        "c0b04e37053a.png"
+      ]
+    },
+    {
+      "id": "p013",
+      "images": [
+        "d5947b45909d.png",
+        "d0cf70c4521d.png"
+      ]
+    },
+    {
+      "id": "p014",
+      "images": [
+        "806b0d4dc386.png",
+        "6fa5472a9065.png"
+      ]
+    },
+    {
+      "id": "p015",
+      "images": [
+        "dfbe4508f89e.png",
+        "e72e5dcc9e98.png"
+      ]
+    },
+    {
+      "id": "p016",
+      "images": [
+        "844744d185d0.png",
+        "333d2f15b9d8.png"
+      ]
+    },
+    {
+      "id": "p017",
+      "images": [
+        "dc52a7c189a3.png",
+        "fb9d0c5f8536.png"
+      ]
+    },
+    {
+      "id": "p018",
+      "images": [
+        "1752abd7350c.png",
+        "0b51aacd9474.png"
+      ]
+    },
+    {
+      "id": "p019",
+      "images": [
+        "26600b085c09.png",
+        "6cf8da7cf9c8.png"
+      ]
+    },
+    {
+      "id": "p020",
+      "images": [
+        "8e52618fd741.png",
+        "5881010eed70.png"
+      ]
+    },
+    {
+      "id": "p021",
+      "images": [
+        "dd1a2db7a3c0.png",
+        "32b120cf7365.png"
+      ]
+    },
+    {
+      "id": "p022",
+      "images": [
+        "4c04533b3387.png",
+        "bd088e33968b.png"
+      ]
+    },
+    {
+      "id": "p023",
+      "images": [
+        "be6f793b4e1c.png",
+        "0b8e413a6531.png"
+      ]
+    },
+    {
+      "id": "p024",
+      "images": [
+        "f0a52dcac2a6.png",
+        "95920d3312cc.png"
+      ]
+    },
+    {
+      "id": "p025",
+      "images": [
+        "f29fe7d3989d.png",
+        "c1d0969f1209.png"
+      ]
+    },
+    {
+      "id": "p026",
+      "images": [
+        "7018b8791374.png",
+        "88a6716f4634.png"
+      ]
+    },
+    {
+      "id": "p027",
+      "images": [
+        "8a6599ff3e1b.png",
+        "5b5bce5a7efc.png"
+      ]
+    },
+    {
+      "id": "p028",
+      "images": [
+        "5214a3665dae.png",
+        "9b2c71bdcdab.png"
+      ]
+    },
+    {
+      "id": "p029",
+      "images": [
+        "3f9501aadab7.png",
+        "e745deaceb1b.png"
+      ]
+    },
+    {
+      "id": "p030",
+      "images": [
+        "d884ff925ebb.png",
+        "42d6078a3260.png"
+      ]
+    },
+    {
+      "id": "p031",
+      "images": [
+        "dac74bc43d29.png",
+        "cc07f4654935.png"
+      ]
+    },
+    {
+      "id": "p032",
+      "images": [
+        "9dc5d24460b9.png",
+        "4a19f851332c.png"
+      ]
+    },
+    {
+      "id": "p033",
+      "images": [
+        "3d8f098b73db.png",
+        "ca9500af8499.png"
+      ]
+    },
+    {
+      "id": "p034",
+      "images": [
+        "9a224c04c32e.png",
+        "d860385a7aa0.png"
+      ]
+    },
+    {
+      "id": "p035",
+      "images": [
+        "df7c701bd5cc.png",
+        "16db065462a9.png"
+      ]
+    },
+    {
+      "id": "p036",
+      "images": [
+        "2f96938f52e3.png",
+        "f58294b3e6e6.png"
+      ]
+    },
+    {
+      "id": "p037",
+      "images": [
+        "6a0765932914.png",
+        "27271b046a6c.png"
+      ]
+    },
+    {
+      "id": "p038",
+      "images": [
+        "bc4a0dd6275a.png",
+        "8df68f3b63ec.png"
+      ]
+    },
+    {
+      "id": "r001",
+      "images": [
+        "6fa5472a9065.png",
+        "806b0d4dc386.png"
+      ]
+    },
+    {
+      "id": "r002",
+      "images": [
+        "333d2f15b9d8.png",
+        "844744d185d0.png"
+      ]
+    }
+  ]
+}

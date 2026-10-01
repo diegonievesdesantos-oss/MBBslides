@@ -1,13 +1,32 @@
 {
-  "suite_composition": 87.5,
+  "suite_composition": 92.8,
   "environment_fingerprint": "f98cee49d123ed5f",
-  "engine_version": "1.3.2",
+  "engine_version": "1.4.0",
+  "archetype_counts": {
+    "architecture": 9,
+    "chart": 18,
+    "comparison": 11,
+    "executive_summary": 11,
+    "hierarchy": 10,
+    "kpi_dashboard": 9,
+    "kpi_hero": 12,
+    "matrix": 10,
+    "operating_model": 9,
+    "process": 12,
+    "roadmap": 10,
+    "segmentation": 8,
+    "statement": 15,
+    "table": 18,
+    "text_exhibit": 10,
+    "timeline": 9,
+    "waterfall": 13
+  },
   "cases": [
     {
       "case": "01_sparse_content",
       "ok": true,
       "qa_errors": 0,
-      "composition": 68.1,
+      "composition": 98.5,
       "slides": {
         "a1": {
           "score": 97.2,
@@ -22,25 +41,16 @@
           "v1": 90.3
         },
         "a3": {
-          "score": 51.7,
+          "score": 97.7,
           "archetype": "kpi_hero",
-          "flags": [
-            "DEAD_SPACE",
-            "OFF_BALANCE"
-          ],
-          "v1": 55.2
+          "flags": [],
+          "v1": 73.2
         },
         "a4": {
-          "score": 24.1,
-          "archetype": "text_exhibit",
-          "flags": [
-            "UNDERUSED_CANVAS",
-            "DEAD_SPACE",
-            "WEAK_HIERARCHY",
-            "OFF_BALANCE",
-            "NOISY_EMPHASIS"
-          ],
-          "v1": 46.8
+          "score": 100.0,
+          "archetype": "statement",
+          "flags": [],
+          "v1": 55.8
         }
       }
     },
@@ -48,7 +58,7 @@
       "case": "02_text_overload",
       "ok": true,
       "qa_errors": 0,
-      "composition": 98.4,
+      "composition": 100.0,
       "slides": {
         "b1": {
           "score": 100.0,
@@ -57,10 +67,10 @@
           "v1": 98.9
         },
         "b2": {
-          "score": 95.3,
+          "score": 100.0,
           "archetype": "text_exhibit",
           "flags": [],
-          "v1": 83.9
+          "v1": 95.5
         },
         "b3": {
           "score": 100.0,
@@ -187,7 +197,7 @@
           "score": 98.8,
           "archetype": "hierarchy",
           "flags": [],
-          "v1": 85.5
+          "v1": 89.2
         }
       }
     },
@@ -217,7 +227,7 @@
       "case": "08_headlines_structure",
       "ok": true,
       "qa_errors": 0,
-      "composition": 79.7,
+      "composition": 94.2,
       "slides": {
         "h1": {
           "score": 100.0,
@@ -226,14 +236,12 @@
           "v1": 92.1
         },
         "h2": {
-          "score": 39.1,
+          "score": 82.6,
           "archetype": "comparison",
           "flags": [
-            "DEAD_SPACE",
-            "UNDERUSED_CANVAS",
-            "OFF_BALANCE"
+            "UNDERUSED_CANVAS"
           ],
-          "v1": 60.9
+          "v1": 75.9
         },
         "h3": {
           "score": 100.0,
@@ -275,7 +283,7 @@
       "case": "10_archetypes",
       "ok": true,
       "qa_errors": 0,
-      "composition": 84.4,
+      "composition": 93.9,
       "slides": {
         "x0": {
           "score": 75.1,
@@ -292,13 +300,10 @@
           "v1": 55.6
         },
         "x2": {
-          "score": 50.3,
+          "score": 97.4,
           "archetype": "kpi_hero",
-          "flags": [
-            "DEAD_SPACE",
-            "OFF_BALANCE"
-          ],
-          "v1": 54.5
+          "flags": [],
+          "v1": 73.9
         },
         "x3": {
           "score": 97.2,
@@ -319,20 +324,18 @@
           "v1": 92.9
         },
         "x5": {
-          "score": 89.2,
+          "score": 100.0,
           "archetype": "roadmap",
           "flags": [],
-          "v1": 89.9
+          "v1": 96.2
         },
         "x6": {
-          "score": 39.2,
+          "score": 75.5,
           "archetype": "process",
           "flags": [
-            "DEAD_SPACE",
-            "UNDERUSED_CANVAS",
-            "OFF_BALANCE"
+            "UNDERUSED_CANVAS"
           ],
-          "v1": 58.8
+          "v1": 73.4
         },
         "x7": {
           "score": 99.5,
@@ -341,10 +344,1163 @@
           "v1": 73.0
         },
         "x8": {
-          "score": 97.7,
+          "score": 98.4,
           "archetype": "kpi_dashboard",
           "flags": [],
-          "v1": 91.7
+          "v1": 85.3
+        }
+      }
+    },
+    {
+      "case": "200_battery_statement",
+      "ok": true,
+      "qa_errors": 0,
+      "composition": 99.6,
+      "slides": {
+        "st01": {
+          "score": 97.7,
+          "archetype": "statement",
+          "flags": [],
+          "v1": 52.7
+        },
+        "st02": {
+          "score": 100.0,
+          "archetype": "statement",
+          "flags": [],
+          "v1": 60.1
+        },
+        "st03": {
+          "score": 100.0,
+          "archetype": "statement",
+          "flags": [],
+          "v1": 69.6
+        },
+        "st04": {
+          "score": 100.0,
+          "archetype": "statement",
+          "flags": [],
+          "v1": 62.0
+        },
+        "st05": {
+          "score": 100.0,
+          "archetype": "statement",
+          "flags": [],
+          "v1": 54.8
+        },
+        "st06": {
+          "score": 100.0,
+          "archetype": "statement",
+          "flags": [],
+          "v1": 57.6
+        },
+        "st07": {
+          "score": 100.0,
+          "archetype": "statement",
+          "flags": [],
+          "v1": 58.6
+        },
+        "st08": {
+          "score": 98.8,
+          "archetype": "statement",
+          "flags": [],
+          "v1": 56.7
+        },
+        "st09": {
+          "score": 100.0,
+          "archetype": "statement",
+          "flags": [],
+          "v1": 64.0
+        }
+      }
+    },
+    {
+      "case": "201_battery_kpi_hero",
+      "ok": true,
+      "qa_errors": 3,
+      "composition": 97.3,
+      "slides": {
+        "kh01": {
+          "score": 96.7,
+          "archetype": "kpi_hero",
+          "flags": [
+            "UNDERUSED_CANVAS"
+          ],
+          "v1": 73.4
+        },
+        "kh02": {
+          "score": 98.5,
+          "archetype": "kpi_hero",
+          "flags": [],
+          "v1": 75.1
+        },
+        "kh03": {
+          "score": 94.2,
+          "archetype": "kpi_hero",
+          "flags": [],
+          "v1": 84.1
+        },
+        "kh04": {
+          "score": 97.8,
+          "archetype": "kpi_hero",
+          "flags": [],
+          "v1": 70.0
+        },
+        "kh05": {
+          "score": 98.1,
+          "archetype": "kpi_hero",
+          "flags": [],
+          "v1": 74.3
+        },
+        "kh06": {
+          "score": 98.7,
+          "archetype": "kpi_hero",
+          "flags": [],
+          "v1": 76.2
+        },
+        "kh07": {
+          "score": 98.4,
+          "archetype": "kpi_hero",
+          "flags": [],
+          "v1": 67.1
+        },
+        "kh08": {
+          "score": 95.7,
+          "archetype": "kpi_hero",
+          "flags": [],
+          "v1": 82.7
+        },
+        "kh09": {
+          "score": 97.3,
+          "archetype": "kpi_hero",
+          "flags": [],
+          "v1": 66.8
+        },
+        "kh10": {
+          "score": 98.1,
+          "archetype": "kpi_hero",
+          "flags": [],
+          "v1": 76.1
+        }
+      }
+    },
+    {
+      "case": "202_battery_kpi_dashboard",
+      "ok": true,
+      "qa_errors": 6,
+      "composition": 77.5,
+      "slides": {
+        "kd01": {
+          "score": 61.7,
+          "archetype": "kpi_dashboard",
+          "flags": [
+            "UNDERUSED_CANVAS"
+          ],
+          "v1": 65.6
+        },
+        "kd02": {
+          "score": 61.6,
+          "archetype": "kpi_dashboard",
+          "flags": [
+            "UNDERUSED_CANVAS"
+          ],
+          "v1": 65.6
+        },
+        "kd03": {
+          "score": 98.3,
+          "archetype": "kpi_dashboard",
+          "flags": [],
+          "v1": 82.8
+        },
+        "kd04": {
+          "score": 64.7,
+          "archetype": "kpi_dashboard",
+          "flags": [
+            "UNDERUSED_CANVAS"
+          ],
+          "v1": 61.0
+        },
+        "kd05": {
+          "score": 99.8,
+          "archetype": "kpi_dashboard",
+          "flags": [],
+          "v1": 78.7
+        },
+        "kd06": {
+          "score": 71.2,
+          "archetype": "kpi_dashboard",
+          "flags": [
+            "UNDERUSED_CANVAS"
+          ],
+          "v1": 67.9
+        },
+        "kd07": {
+          "score": 96.8,
+          "archetype": "kpi_dashboard",
+          "flags": [],
+          "v1": 82.7
+        },
+        "kd08": {
+          "score": 65.8,
+          "archetype": "kpi_dashboard",
+          "flags": [
+            "UNDERUSED_CANVAS"
+          ],
+          "v1": 61.1
+        }
+      }
+    },
+    {
+      "case": "203_battery_executive_summary",
+      "ok": true,
+      "qa_errors": 0,
+      "composition": 88.8,
+      "slides": {
+        "es01": {
+          "score": 72.1,
+          "archetype": "executive_summary",
+          "flags": [
+            "UNDERUSED_CANVAS"
+          ],
+          "v1": 73.6
+        },
+        "es02": {
+          "score": 95.3,
+          "archetype": "executive_summary",
+          "flags": [],
+          "v1": 95.6
+        },
+        "es03": {
+          "score": 97.9,
+          "archetype": "executive_summary",
+          "flags": [],
+          "v1": 87.2
+        },
+        "es04": {
+          "score": 99.4,
+          "archetype": "executive_summary",
+          "flags": [],
+          "v1": 85.9
+        },
+        "es05": {
+          "score": 79.7,
+          "archetype": "executive_summary",
+          "flags": [
+            "OFF_BALANCE"
+          ],
+          "v1": 93.9
+        },
+        "es06": {
+          "score": 80.1,
+          "archetype": "executive_summary",
+          "flags": [
+            "OFF_BALANCE"
+          ],
+          "v1": 84.8
+        },
+        "es07": {
+          "score": 100.0,
+          "archetype": "executive_summary",
+          "flags": [],
+          "v1": 86.6
+        },
+        "es08": {
+          "score": 86.1,
+          "archetype": "executive_summary",
+          "flags": [],
+          "v1": 94.7
+        }
+      }
+    },
+    {
+      "case": "204_battery_chart",
+      "ok": true,
+      "qa_errors": 1,
+      "composition": 96.7,
+      "slides": {
+        "ch01": {
+          "score": 98.7,
+          "archetype": "chart",
+          "flags": [],
+          "v1": 89.5
+        },
+        "ch02": {
+          "score": 100.0,
+          "archetype": "chart",
+          "flags": [],
+          "v1": 94.3
+        },
+        "ch03": {
+          "score": 99.8,
+          "archetype": "chart",
+          "flags": [],
+          "v1": 90.9
+        },
+        "ch04": {
+          "score": 98.8,
+          "archetype": "chart",
+          "flags": [],
+          "v1": 84.3
+        },
+        "ch05": {
+          "score": 75.0,
+          "archetype": "chart",
+          "flags": [
+            "UNDERUSED_CANVAS",
+            "OFF_BALANCE"
+          ],
+          "v1": 80.0
+        },
+        "ch06": {
+          "score": 99.4,
+          "archetype": "chart",
+          "flags": [],
+          "v1": 88.1
+        },
+        "ch07": {
+          "score": 94.9,
+          "archetype": "chart",
+          "flags": [],
+          "v1": 87.0
+        },
+        "ch08": {
+          "score": 100.0,
+          "archetype": "chart",
+          "flags": [],
+          "v1": 84.6
+        },
+        "ch09": {
+          "score": 100.0,
+          "archetype": "chart",
+          "flags": [],
+          "v1": 87.4
+        },
+        "ch10": {
+          "score": 100.0,
+          "archetype": "chart",
+          "flags": [],
+          "v1": 89.4
+        }
+      }
+    },
+    {
+      "case": "205_battery_waterfall",
+      "ok": true,
+      "qa_errors": 3,
+      "composition": 93.5,
+      "slides": {
+        "wf01": {
+          "score": 91.0,
+          "archetype": "waterfall",
+          "flags": [],
+          "v1": 89.5
+        },
+        "wf02": {
+          "score": 97.9,
+          "archetype": "waterfall",
+          "flags": [],
+          "v1": 89.8
+        },
+        "wf03": {
+          "score": 87.3,
+          "archetype": "waterfall",
+          "flags": [],
+          "v1": 87.4
+        },
+        "wf04": {
+          "score": 100.0,
+          "archetype": "waterfall",
+          "flags": [],
+          "v1": 94.2
+        },
+        "wf05": {
+          "score": 97.0,
+          "archetype": "waterfall",
+          "flags": [],
+          "v1": 94.0
+        },
+        "wf06": {
+          "score": 100.0,
+          "archetype": "waterfall",
+          "flags": [],
+          "v1": 92.8
+        },
+        "wf07": {
+          "score": 96.1,
+          "archetype": "waterfall",
+          "flags": [],
+          "v1": 89.8
+        },
+        "wf08": {
+          "score": 94.1,
+          "archetype": "waterfall",
+          "flags": [],
+          "v1": 90.1
+        },
+        "wf09": {
+          "score": 78.5,
+          "archetype": "waterfall",
+          "flags": [
+            "DEAD_SPACE",
+            "OFF_BALANCE"
+          ],
+          "v1": 86.2
+        }
+      }
+    },
+    {
+      "case": "206_battery_table",
+      "ok": true,
+      "qa_errors": 2,
+      "composition": 95.9,
+      "slides": {
+        "tb01": {
+          "score": 68.4,
+          "archetype": "table",
+          "flags": [
+            "DEAD_SPACE"
+          ],
+          "v1": 80.7
+        },
+        "tb02": {
+          "score": 99.1,
+          "archetype": "table",
+          "flags": [],
+          "v1": 91.9
+        },
+        "tb03": {
+          "score": 100.0,
+          "archetype": "table",
+          "flags": [],
+          "v1": 93.4
+        },
+        "tb03_2": {
+          "score": 100.0,
+          "archetype": "table",
+          "flags": [],
+          "v1": 93.4
+        },
+        "tb04": {
+          "score": 100.0,
+          "archetype": "table",
+          "flags": [],
+          "v1": 96.7
+        },
+        "tb05": {
+          "score": 92.6,
+          "archetype": "table",
+          "flags": [
+            "OVERDENSE"
+          ],
+          "v1": 80.0
+        },
+        "tb06": {
+          "score": 100.0,
+          "archetype": "table",
+          "flags": [],
+          "v1": 92.0
+        },
+        "tb07": {
+          "score": 100.0,
+          "archetype": "table",
+          "flags": [],
+          "v1": 94.1
+        },
+        "tb08": {
+          "score": 100.0,
+          "archetype": "table",
+          "flags": [],
+          "v1": 89.5
+        },
+        "tb09": {
+          "score": 98.8,
+          "archetype": "table",
+          "flags": [],
+          "v1": 92.2
+        }
+      }
+    },
+    {
+      "case": "207_battery_matrix",
+      "ok": true,
+      "qa_errors": 1,
+      "composition": 98.7,
+      "slides": {
+        "mx01": {
+          "score": 98.4,
+          "archetype": "matrix",
+          "flags": [],
+          "v1": 92.5
+        },
+        "mx02": {
+          "score": 98.9,
+          "archetype": "matrix",
+          "flags": [],
+          "v1": 93.2
+        },
+        "mx03": {
+          "score": 98.6,
+          "archetype": "matrix",
+          "flags": [],
+          "v1": 92.7
+        },
+        "mx04": {
+          "score": 99.2,
+          "archetype": "matrix",
+          "flags": [],
+          "v1": 94.3
+        },
+        "mx05": {
+          "score": 98.7,
+          "archetype": "matrix",
+          "flags": [],
+          "v1": 92.8
+        },
+        "mx06": {
+          "score": 98.7,
+          "archetype": "matrix",
+          "flags": [],
+          "v1": 92.9
+        },
+        "mx07": {
+          "score": 98.6,
+          "archetype": "matrix",
+          "flags": [],
+          "v1": 92.7
+        },
+        "mx08": {
+          "score": 98.6,
+          "archetype": "matrix",
+          "flags": [],
+          "v1": 92.7
+        }
+      }
+    },
+    {
+      "case": "208_battery_comparison",
+      "ok": true,
+      "qa_errors": 1,
+      "composition": 84.8,
+      "slides": {
+        "cp01": {
+          "score": 76.4,
+          "archetype": "comparison",
+          "flags": [
+            "UNDERUSED_CANVAS"
+          ],
+          "v1": 73.4
+        },
+        "cp02": {
+          "score": 82.6,
+          "archetype": "comparison",
+          "flags": [
+            "UNDERUSED_CANVAS"
+          ],
+          "v1": 75.9
+        },
+        "cp03": {
+          "score": 95.6,
+          "archetype": "comparison",
+          "flags": [],
+          "v1": 91.1
+        },
+        "cp04": {
+          "score": 80.1,
+          "archetype": "comparison",
+          "flags": [
+            "OFF_BALANCE"
+          ],
+          "v1": 77.9
+        },
+        "cp05": {
+          "score": 96.1,
+          "archetype": "comparison",
+          "flags": [],
+          "v1": 83.2
+        },
+        "cp06": {
+          "score": 79.5,
+          "archetype": "comparison",
+          "flags": [
+            "UNDERUSED_CANVAS"
+          ],
+          "v1": 73.9
+        },
+        "cp07": {
+          "score": 85.8,
+          "archetype": "comparison",
+          "flags": [],
+          "v1": 81.0
+        },
+        "cp08": {
+          "score": 77.2,
+          "archetype": "comparison",
+          "flags": [
+            "UNDERUSED_CANVAS"
+          ],
+          "v1": 73.7
+        },
+        "cp09": {
+          "score": 91.9,
+          "archetype": "comparison",
+          "flags": [],
+          "v1": 80.2
+        },
+        "cp10": {
+          "score": 83.3,
+          "archetype": "comparison",
+          "flags": [
+            "OFF_BALANCE"
+          ],
+          "v1": 81.6
+        }
+      }
+    },
+    {
+      "case": "209_battery_process",
+      "ok": true,
+      "qa_errors": 3,
+      "composition": 83.5,
+      "slides": {
+        "pr01": {
+          "score": 75.4,
+          "archetype": "process",
+          "flags": [
+            "UNDERUSED_CANVAS"
+          ],
+          "v1": 73.2
+        },
+        "pr02": {
+          "score": 81.4,
+          "archetype": "process",
+          "flags": [
+            "UNDERUSED_CANVAS"
+          ],
+          "v1": 73.6
+        },
+        "pr03": {
+          "score": 94.7,
+          "archetype": "process",
+          "flags": [],
+          "v1": 78.2
+        },
+        "pr04": {
+          "score": 99.5,
+          "archetype": "process",
+          "flags": [],
+          "v1": 83.2
+        },
+        "pr05": {
+          "score": 80.2,
+          "archetype": "process",
+          "flags": [
+            "UNDERUSED_CANVAS"
+          ],
+          "v1": 73.1
+        },
+        "pr06": {
+          "score": 55.1,
+          "archetype": "process",
+          "flags": [
+            "UNDERUSED_CANVAS",
+            "DEAD_SPACE"
+          ],
+          "v1": 66.0
+        },
+        "pr07": {
+          "score": 92.1,
+          "archetype": "process",
+          "flags": [],
+          "v1": 81.8
+        },
+        "pr08": {
+          "score": 74.9,
+          "archetype": "process",
+          "flags": [
+            "UNDERUSED_CANVAS"
+          ],
+          "v1": 69.3
+        },
+        "pr09": {
+          "score": 87.4,
+          "archetype": "process",
+          "flags": [],
+          "v1": 76.0
+        },
+        "pr10": {
+          "score": 94.3,
+          "archetype": "process",
+          "flags": [],
+          "v1": 75.4
+        }
+      }
+    },
+    {
+      "case": "210_battery_roadmap",
+      "ok": true,
+      "qa_errors": 1,
+      "composition": 92.7,
+      "slides": {
+        "rm01": {
+          "score": 80.6,
+          "archetype": "roadmap",
+          "flags": [
+            "UNDERUSED_CANVAS"
+          ],
+          "v1": 93.3
+        },
+        "rm02": {
+          "score": 100.0,
+          "archetype": "roadmap",
+          "flags": [],
+          "v1": 96.4
+        },
+        "rm03": {
+          "score": 100.0,
+          "archetype": "roadmap",
+          "flags": [],
+          "v1": 96.1
+        },
+        "rm04": {
+          "score": 100.0,
+          "archetype": "roadmap",
+          "flags": [],
+          "v1": 96.3
+        },
+        "rm05": {
+          "score": 80.1,
+          "archetype": "roadmap",
+          "flags": [
+            "UNDERUSED_CANVAS"
+          ],
+          "v1": 92.9
+        },
+        "rm06": {
+          "score": 100.0,
+          "archetype": "roadmap",
+          "flags": [],
+          "v1": 96.3
+        },
+        "rm07": {
+          "score": 99.9,
+          "archetype": "roadmap",
+          "flags": [],
+          "v1": 96.1
+        },
+        "rm08": {
+          "score": 80.6,
+          "archetype": "roadmap",
+          "flags": [
+            "UNDERUSED_CANVAS"
+          ],
+          "v1": 93.6
+        }
+      }
+    },
+    {
+      "case": "211_battery_timeline",
+      "ok": true,
+      "qa_errors": 2,
+      "composition": 99.1,
+      "slides": {
+        "tl01": {
+          "score": 95.0,
+          "archetype": "timeline",
+          "flags": [],
+          "v1": 71.8
+        },
+        "tl02": {
+          "score": 99.5,
+          "archetype": "timeline",
+          "flags": [],
+          "v1": 73.0
+        },
+        "tl03": {
+          "score": 99.5,
+          "archetype": "timeline",
+          "flags": [],
+          "v1": 73.2
+        },
+        "tl04": {
+          "score": 99.5,
+          "archetype": "timeline",
+          "flags": [],
+          "v1": 73.1
+        },
+        "tl05": {
+          "score": 100.0,
+          "archetype": "timeline",
+          "flags": [],
+          "v1": 77.9
+        },
+        "tl06": {
+          "score": 99.5,
+          "archetype": "timeline",
+          "flags": [],
+          "v1": 72.9
+        },
+        "tl07": {
+          "score": 100.0,
+          "archetype": "timeline",
+          "flags": [],
+          "v1": 79.3
+        },
+        "tl08": {
+          "score": 99.5,
+          "archetype": "timeline",
+          "flags": [],
+          "v1": 73.1
+        }
+      }
+    },
+    {
+      "case": "212_battery_operating_model",
+      "ok": true,
+      "qa_errors": 4,
+      "composition": 98.7,
+      "slides": {
+        "om01": {
+          "score": 91.7,
+          "archetype": "operating_model",
+          "flags": [
+            "NO_FOCAL_POINT"
+          ],
+          "v1": 80.0
+        },
+        "om02": {
+          "score": 99.7,
+          "archetype": "operating_model",
+          "flags": [],
+          "v1": 89.9
+        },
+        "om03": {
+          "score": 99.9,
+          "archetype": "operating_model",
+          "flags": [],
+          "v1": 90.6
+        },
+        "om04": {
+          "score": 99.6,
+          "archetype": "operating_model",
+          "flags": [],
+          "v1": 89.6
+        },
+        "om05": {
+          "score": 99.7,
+          "archetype": "operating_model",
+          "flags": [],
+          "v1": 89.7
+        },
+        "om06": {
+          "score": 99.8,
+          "archetype": "operating_model",
+          "flags": [],
+          "v1": 90.1
+        },
+        "om07": {
+          "score": 99.5,
+          "archetype": "operating_model",
+          "flags": [],
+          "v1": 88.9
+        },
+        "om08": {
+          "score": 99.7,
+          "archetype": "operating_model",
+          "flags": [],
+          "v1": 89.7
+        }
+      }
+    },
+    {
+      "case": "213_battery_architecture",
+      "ok": true,
+      "qa_errors": 3,
+      "composition": 88.4,
+      "slides": {
+        "ar01": {
+          "score": 91.7,
+          "archetype": "architecture",
+          "flags": [
+            "NO_FOCAL_POINT"
+          ],
+          "v1": 80.0
+        },
+        "ar02": {
+          "score": 100.0,
+          "archetype": "architecture",
+          "flags": [],
+          "v1": 93.0
+        },
+        "ar03": {
+          "score": 96.6,
+          "archetype": "architecture",
+          "flags": [],
+          "v1": 83.6
+        },
+        "ar04": {
+          "score": 99.8,
+          "archetype": "architecture",
+          "flags": [],
+          "v1": 90.2
+        },
+        "ar05": {
+          "score": 85.3,
+          "archetype": "architecture",
+          "flags": [],
+          "v1": 92.5
+        },
+        "ar06": {
+          "score": 61.3,
+          "archetype": "process",
+          "flags": [
+            "UNDERUSED_CANVAS"
+          ],
+          "v1": 72.8
+        },
+        "ar07": {
+          "score": 49.4,
+          "archetype": "architecture",
+          "flags": [
+            "UNDERUSED_CANVAS"
+          ],
+          "v1": 76.2
+        },
+        "ar08": {
+          "score": 100.0,
+          "archetype": "architecture",
+          "flags": [],
+          "v1": 91.8
+        },
+        "ar09": {
+          "score": 100.0,
+          "archetype": "architecture",
+          "flags": [],
+          "v1": 93.0
+        },
+        "ar10": {
+          "score": 100.0,
+          "archetype": "architecture",
+          "flags": [],
+          "v1": 89.7
+        }
+      }
+    },
+    {
+      "case": "214_battery_hierarchy",
+      "ok": true,
+      "qa_errors": 1,
+      "composition": 92.6,
+      "slides": {
+        "hi01": {
+          "score": 67.6,
+          "archetype": "hierarchy",
+          "flags": [
+            "UNDERUSED_CANVAS"
+          ],
+          "v1": 81.4
+        },
+        "hi02": {
+          "score": 98.8,
+          "archetype": "hierarchy",
+          "flags": [],
+          "v1": 89.1
+        },
+        "hi03": {
+          "score": 100.0,
+          "archetype": "hierarchy",
+          "flags": [],
+          "v1": 86.2
+        },
+        "hi04": {
+          "score": 95.9,
+          "archetype": "hierarchy",
+          "flags": [],
+          "v1": 89.7
+        },
+        "hi05": {
+          "score": 84.7,
+          "archetype": "hierarchy",
+          "flags": [
+            "OFF_BALANCE"
+          ],
+          "v1": 74.8
+        },
+        "hi06": {
+          "score": 100.0,
+          "archetype": "hierarchy",
+          "flags": [],
+          "v1": 89.8
+        },
+        "hi07": {
+          "score": 91.2,
+          "archetype": "hierarchy",
+          "flags": [],
+          "v1": 90.2
+        },
+        "hi08": {
+          "score": 95.7,
+          "archetype": "hierarchy",
+          "flags": [
+            "OFF_BALANCE"
+          ],
+          "v1": 83.4
+        },
+        "hi09": {
+          "score": 99.5,
+          "archetype": "hierarchy",
+          "flags": [],
+          "v1": 93.9
+        }
+      }
+    },
+    {
+      "case": "215_battery_segmentation",
+      "ok": true,
+      "qa_errors": 2,
+      "composition": 98.0,
+      "slides": {
+        "sg01": {
+          "score": 100.0,
+          "archetype": "segmentation",
+          "flags": [],
+          "v1": 99.6
+        },
+        "sg02": {
+          "score": 100.0,
+          "archetype": "segmentation",
+          "flags": [],
+          "v1": 90.6
+        },
+        "sg03": {
+          "score": 100.0,
+          "archetype": "segmentation",
+          "flags": [],
+          "v1": 96.1
+        },
+        "sg04": {
+          "score": 100.0,
+          "archetype": "segmentation",
+          "flags": [],
+          "v1": 91.6
+        },
+        "sg05": {
+          "score": 100.0,
+          "archetype": "segmentation",
+          "flags": [],
+          "v1": 99.6
+        },
+        "sg06": {
+          "score": 100.0,
+          "archetype": "segmentation",
+          "flags": [],
+          "v1": 96.1
+        },
+        "sg07": {
+          "score": 92.0,
+          "archetype": "segmentation",
+          "flags": [
+            "OVERDENSE"
+          ],
+          "v1": 85.9
+        },
+        "sg08": {
+          "score": 92.0,
+          "archetype": "segmentation",
+          "flags": [
+            "OVERDENSE"
+          ],
+          "v1": 86.4
+        }
+      }
+    },
+    {
+      "case": "216_battery_text_exhibit",
+      "ok": true,
+      "qa_errors": 8,
+      "composition": 87.6,
+      "slides": {
+        "tx01": {
+          "score": 100.0,
+          "archetype": "statement",
+          "flags": [],
+          "v1": 55.7
+        },
+        "tx02": {
+          "score": 89.0,
+          "archetype": "text_exhibit",
+          "flags": [
+            "OFF_BALANCE"
+          ],
+          "v1": 75.4
+        },
+        "tx03": {
+          "score": 61.9,
+          "archetype": "text_exhibit",
+          "flags": [
+            "UNDERUSED_CANVAS"
+          ],
+          "v1": 67.8
+        },
+        "tx04": {
+          "score": 91.4,
+          "archetype": "text_exhibit",
+          "flags": [
+            "OFF_BALANCE"
+          ],
+          "v1": 77.7
+        },
+        "tx05": {
+          "score": 100.0,
+          "archetype": "statement",
+          "flags": [],
+          "v1": 57.8
+        },
+        "tx06": {
+          "score": 97.4,
+          "archetype": "text_exhibit",
+          "flags": [],
+          "v1": 88.6
+        },
+        "tx07": {
+          "score": 100.0,
+          "archetype": "statement",
+          "flags": [],
+          "v1": 60.5
+        },
+        "tx08": {
+          "score": 93.8,
+          "archetype": "text_exhibit",
+          "flags": [],
+          "v1": 79.6
+        },
+        "tx09": {
+          "score": 53.4,
+          "archetype": "text_exhibit",
+          "flags": [
+            "PROOF_NOT_VISIBLE"
+          ],
+          "v1": 72.8
+        },
+        "tx10": {
+          "score": 100.0,
+          "archetype": "text_exhibit",
+          "flags": [],
+          "v1": 91.2
+        },
+        "tx11": {
+          "score": 69.7,
+          "archetype": "text_exhibit",
+          "flags": [
+            "UNDERUSED_CANVAS"
+          ],
+          "v1": 68.3
+        },
+        "tx12": {
+          "score": 94.7,
+          "archetype": "text_exhibit",
+          "flags": [
+            "OFF_BALANCE"
+          ],
+          "v1": 82.2
         }
       }
     }

@@ -1,0 +1,8 @@
+{
+  "round": "r2",
+  "created": "2026-10-01",
+  "purpose": "v1.4 validation: v1.3.3 engine (baseline) vs v1.4 engine (challenger) on the sealed holdout v2 decks (never used for tuning), both scored by the v1.4 scorer",
+  "blind": true,
+  "used_for_calibration": false,
+  "status": "awaiting human votes"
+}

@@ -17,24 +17,66 @@ measures its visual quality, and corrects what it can. The pass/fail verdict is 
 
 <!-- metrics:start (generated from evals/results/latest.json by `cpe results readme`; do not edit) -->
 
-Three independent signals, never combined into one number ([why](docs/EVALS.md)):
+Independent signals, never combined into one number ([why](docs/EVALS.md)). A mean hides structure, so the regression signal is reported as a distribution across slide archetypes.
 
-| signal | what it measures | current |
+**Regression** — development suite, gates CI (relative baseline + absolute archetype gates)
+
+| measure | value |
+|---|---|
+| overall (mean of decks, historical continuity) | 92.8 |
+| macro archetype (each archetype weighs the same) | **92.4** |
+| weakest archetype | **kpi_dashboard 79.8** |
+| P10 slide | **75.4** (median 98.5) |
+| slides ≥ 80 / ≥ 70 | 87% / 93% |
+| archetypes gate-eligible (n ≥ 8) | 17 of 17 |
+| archetypes not healthy | kpi_dashboard, text_exhibit |
+| QA errors (visual / authoring lint) | 0 / 41 |
+| slides · decks | 194 · 27 |
+
+| other signal | what it measures | current |
 |---|---|---|
-| **Regression** | archetype-fitness composition score over the development suite (10 decks, 39 slides); gates CI | **87.5**/100 · QA errors 0 |
-| **Holdout** | archetype-fitness composition score on public cases kept out of development (5 decks, 27 slides); reported, never tuned on — **no longer blind**: v1.3 re-run. These cases were reviewed visually during v1.2, so they are no longer blind: the v1.2 result (81.0, rules frozen at e3b63e1) is the last unbiased holdout number (CHANGELOG 1.2.0). New sealed cases are needed for v1.4. | **81.2**/100 · QA errors 0 |
-| **Human preference** | blind A/B votes (`cpe human`) | round r1 built (40 blind pairs, 3 comparisons) — awaiting votes |
-| Private corporate template | brand-ingest understanding of a real corporate template (sanitized) | development data since v1.3 (its v1.2 findings drove the fixes, so it is no longer a holdout): 1 master(s), 54 layouts, 32% classified with confidence ≥ 0.5; font conflict detected; test deck QA passed; agreement with the human brand spec 21/22 |
+| **Holdout v2** | sealed, never tuned on, run once per release candidate (26 decks, 158 slides) | overall 91.4 · macro 91.8 · P10 74.5 · weakest kpi_dashboard 71.6 |
+| **Robustness** | small content perturbations of development seeds (78 variants) | median drop 0.0 · P90 drop 0.0 · catastrophic 0 (0%) |
+| **Human r1** | blind A/B votes (`cpe human`) | awaiting human votes — 40 blind pairs built, 0 votes |
+| **Human r2** | blind A/B votes (`cpe human`) | awaiting human votes — 40 blind pairs built, 0 votes |
+| Holdout v1 (retired) | H01–H05, development-known since v1.3 | last blind result 81.0 (v1.2); engine e3b63e1; later runs (this v1.3 re-run included) are development evidence |
+| Private corporate template — **development data, not a holdout** | brand-ingest understanding of a real corporate template (sanitized) | development data since v1.3 (its v1.2 findings drove the fixes, so it is no longer a holdout): 1 master(s), 54 layouts, 32% classified with confidence ≥ 0.5; font conflict detected; test deck QA passed; agreement with the human brand spec 21/22 |
+
+Example decks are development material and regression fixtures, not evidence of generalization:
 
 | example deck | QA gate | QA score | archetype-fitness composition score |
 |---|---|---|---|
 | `alvora` | PASSED · 0 errors · 0 warnings | 99.8 | 99.8 |
-| `gallery` | PASSED · 0 errors · 0 warnings | 99.8 | 99.0 |
+| `gallery` | PASSED · 0 errors · 0 warnings | 99.8 | 99.1 |
 | `alvora_on_kestrel` | PASSED · 0 errors · 0 warnings | 99.7 | 99.5 |
 
-<sub>engine 1.3.3 · LibreOffice 24.2.7.2 420(Build:2) · fontconfig 2.15.0 · container `mbbslides-visual:1.3@sha256:bb5bbbdd55bcec5db567781c63574da1a4b2fc4504446d6fea23f5197f59d278` · render fingerprint `f98cee49d123ed5f`</sub>
+<sub>engine 1.4.0 · evaluated commit `430176dacf` · LibreOffice 24.2.7.2 420(Build:2) · fontconfig 2.15.0 · container `mbbslides-visual:1.3@sha256:bb5bbbdd55bcec5db567781c63574da1a4b2fc4504446d6fea23f5197f59d278` · render fingerprint `f98cee49d123ed5f`</sub>
 
 <!-- metrics:end -->
+
+## What's new in v1.4 — generalisation and visual intelligence
+
+The question of this release: *does MBBslides make good editorial decisions on slides it has never
+been tuned on?* A single mean could not answer it (87.5 overall hid process and comparison slides
+at 39 and text slides at 20–30), so:
+
+- **Distribution-aware quality profile** in every eval: macro-archetype score, weakest archetype,
+  P10…P90, coverage per archetype, health, **absolute archetype gates** on top of the relative
+  baseline, and a per-metric **penalty attribution** for every score.
+- **Balanced development battery**: 17 decks, 8–12 slides per archetype, English and Spanish,
+  sparse and dense, stress variants. Weak archetypes diagnosed metric-by-metric
+  ([docs/ARCHETYPE_DIAGNOSIS.md](docs/ARCHETYPE_DIAGNOSIS.md)) and fixed in the engine first:
+  adaptive vertical composition for text, process, comparison, KPI and gantt components.
+- **Metamorphic robustness** suite: small content changes must not collapse quality.
+- **Sealed holdout v2**: 26 new decks sealed before any v1.4 change and run once on the frozen
+  engine; the old holdout is retired as blind evidence.
+- **Human round r2** ready for votes; scorer-vs-human agreement, Kendall τ-b and a disagreements
+  report; no vote is ever generated.
+- **Provenance**: every recorded number declares the clean commit it was evaluated on; CI checks it.
+- Archetype profiles moved to governed data with rationale and a changelog
+  ([evals/profile_changes.md](evals/profile_changes.md)).
+
+See [CHANGELOG.md](CHANGELOG.md) and [docs/EVALS.md](docs/EVALS.md).
 
 ## What's new in v1.3
 
@@ -187,10 +229,11 @@ density profile (board / standard / analytical / status). Themes: `meridian`, `g
 | [docs/SPEC_REFERENCE.md](docs/SPEC_REFERENCE.md) | deck spec and patch reference |
 | [docs/LAYOUT_CATALOG.md](docs/LAYOUT_CATALOG.md) | 43 layouts in 16 families |
 | [docs/QA_CODES.md](docs/QA_CODES.md) | every QA code, its severity and remedy |
-| [docs/EVALS.md](docs/EVALS.md) | regression ≠ holdout ≠ human evaluation, holdout protocol, A/B statistics |
-| [docs/COMPOSITION_SCORING.md](docs/COMPOSITION_SCORING.md) | archetypes, expected profiles, fitness, hard QA vs preference |
+| [docs/EVALS.md](docs/EVALS.md) | quality profile, absolute gates, robustness, sealed holdout v2 protocol, human A/B statistics |
+| [docs/COMPOSITION_SCORING.md](docs/COMPOSITION_SCORING.md) | archetypes, expected profiles, fitness, attribution, profile governance, hard QA vs preference |
+| [docs/ARCHETYPE_DIAGNOSIS.md](docs/ARCHETYPE_DIAGNOSIS.md) | v1.4 weak-archetype diagnosis: metric vs engine decisions, engine-vs-scorer on the holdout |
 | [docs/BRAND_INGESTION.md](docs/BRAND_INGESTION.md) | corporate template intelligence and layout matching |
-| [docs/REPRODUCIBILITY.md](docs/REPRODUCIBILITY.md) | pinned environment, manifest, reproducibility test, CI |
+| [docs/REPRODUCIBILITY.md](docs/REPRODUCIBILITY.md) | pinned environment, manifest, reproducibility test, provenance and release workflow, CI |
 | [evals/](evals/) | the suites, baseline and results |
 
 ## Troubleshooting
@@ -217,11 +260,18 @@ density profile (board / standard / analytical / status). Themes: `meridian`, `g
 - Brand inference has been validated on one real corporate template (which is now development
   data) and on synthetic templates; a new unseen corporate template is needed to measure how it
   generalises.
-- The proof check does not yet recognise derived headline numbers (a sum, a ratio) as proven.
-- Human-preference results depend on the votes collected; round r1 is built and awaiting votes.
+- The proof check does not yet recognise derived headline numbers (a sum, a ratio) as proven; it
+  causes most of the lowest-scoring holdout slides.
+- Human-preference results depend on the votes collected; rounds r1 and r2 are built and awaiting
+  votes. Three v1.4 profile changes (process, comparison, KPI dashboard) are provisional until r2
+  is voted.
+- Holdout v2 was written by the same agent that develops the engine (sealed before the work, but
+  not externally authored); an externally written holdout (`cpe holdout external`) is the next step.
+- KPI dashboards are the weakest archetype on development and holdout data.
 - Maps are editable *tile maps* (cartograms), not choropleth maps with real borders.
-- Composition fitness is a heuristic calibrated on the development set; the holdout gap and the
-  human A/B rounds exist to tell how well it generalises. It does not replace a visual review.
+- Composition fitness is a heuristic calibrated on the development set; the holdout, the 2×2
+  engine-vs-scorer comparison and the human A/B rounds exist to tell how well it generalises. It
+  does not replace a visual review.
 - Storyline quality depends on the agent; the engine structures and checks it, it does not invent it.
 
 ## License

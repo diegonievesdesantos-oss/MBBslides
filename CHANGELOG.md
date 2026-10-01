@@ -1,5 +1,72 @@
 # Changelog
 
+## 1.4.0 — Generalisation and visual intelligence
+
+Engine frozen at `430176d`; every number below was evaluated on that clean commit
+(`evals/results/latest.json`, `provenance.evaluated_commit`).
+
+### Evaluation
+- **Quality profile** in every eval (`quality.py`): macro-archetype score, weakest archetype,
+  P10/P25/median/P75/P90, shares ≥ 90/80/70, per-archetype n/mean/median/min/P10/flags, coverage
+  (insufficient < 5, provisional < 8, gate-eligible ≥ 8), health, and `archetype_diagnostics.md` +
+  contact sheets per weak archetype. The overall mean is kept for continuity, no longer the headline.
+- **Absolute archetype gates** (`evals/archetype_gates.json`) on top of the relative baseline:
+  catastrophic minimum 35 enforced; mean floor 70 and ≤ 25% of slides below it provisional
+  (reported until human evidence exists); coverage regression fails CI. v1.3.3 would have failed
+  the enforced gate (text slide at 20.5) while passing its relative baseline.
+- **Penalty attribution**: every score explains itself per metric (expected, observed, fitness,
+  weight, points lost); penalties sum to 100 − score.
+- **Archetype battery**: 17 decks / 154 slides (`scripts/make_archetype_battery.py`), every archetype
+  gate-eligible. Regression: 27 decks, 194 slides.
+- **Robustness** (`cpe robustness`, CI job): 8 metamorphic perturbations × 22 development seeds;
+  median / P90 drop, catastrophic rate, own baseline.
+- **Holdout v2**: 26 decks / 157 slides sealed in `40a0589` before any v1.4 change, run once on the
+  frozen engine; guarded runner (release candidate, seal, clean tree, once per version). H01–H05
+  retired as blind evidence. External deck holdouts: `cpe holdout external` (sanitized, never
+  baselined). The private corporate template is recorded as development data, never as a holdout.
+- **Human**: round r1 preserved (awaiting votes); round r2 (40 pairs: v1.3.3 vs v1.4 engine on the
+  sealed holdout decks, both scored by the v1.4 scorer, quotas on comparison / process / KPI /
+  text / roadmap + controls) awaiting votes; per-pair scorer/human agreement, Kendall τ-b with
+  bootstrap CI, `human_score_disagreements.md`, round status (development data once used).
+- **Provenance**: evaluated commit, tree, dirty flag, container digest, fingerprint, timestamp on
+  every release signal; dirty runs cannot be recorded as release truth; `cpe results verify` in CI.
+- Profiles moved to `qa/archetype_profiles.json` with rationale and evidence; `evals/profile_changes.md`.
+
+### Engine (fixed on development data only; docs/ARCHETYPE_DIAGNOSIS.md)
+- Adaptive vertical composition (`pptx/adaptive.py`): largest readable scale that fits, block on
+  the optical centre, body type capped below the headline. Process (numerals for sparse flows,
+  metric row under the steps), comparison (one scale and top edge for all columns), KPI strip →
+  cards, KPI hero centred, gantt rows sized by count, small org charts centred.
+- Text slides: own `text` role and component (argument / list / narrative / quote) instead of side
+  commentary. **Bug fixed**: bullets were silently dropped when the slide also had commentary.
+- **Bug fixed**: combo chart without a secondary axis crashed (found by the battery).
+- Classification: one short argument and short quotations are statements; a one-row flow is a process.
+- Metric fixes: figures with short units ("4.5 days") no longer count against hierarchy; the proof
+  check accepts the same number at another scale ("€1.2bn" ↔ "1,210" in €M; "€61,000,000" ↔ "61").
+- Provisional profile changes (process, comparison, kpi_dashboard), evidence and reasons in
+  `evals/profile_changes.md`; human round r2 tests them.
+
+### Results (v1.4 scorer unless stated)
+- Regression: overall 92.8, **macro 92.4, P10 75.4, weakest kpi_dashboard 79.8**; 17/17 archetypes
+  gate-eligible; QA visual errors 0. Battery before (v1.3.3): macro 80.4, P10 37.8, text 30.8,
+  process 42.1, comparison 48.2.
+- Robustness: 78 variants, median drop 0.0, P90 drop 0.0, catastrophic 0 (2 before the scaled-proof
+  fix, both "€61M" → "€61,000,000").
+- **Holdout v2** (run once): 26/26 decks built, overall 91.4, **macro 91.8, P10 74.5, weakest
+  kpi_dashboard 71.6 (n=5)**; 4 visual QA errors.
+- Engine vs scorer on the holdout (slide mean / macro / P10): v1.3.3 engine 77.3 / 78.9 / 36.5 with
+  the v1.3.3 scorer; v1.4 engine **87.1 / 87.7 / 53.6 with the same v1.3.3 scorer**; 91.4 / 91.8 /
+  73.7 with the v1.4 scorer. The engine alone explains ~10 points of mean and 17 of P10; the rest
+  depends on the provisional profile changes.
+- Examples (fixtures, not benchmark): Alvora 99.8, Gallery 99.1, Kestrel 99.5, QA passed.
+- Human: no votes yet (r1, r2 awaiting votes).
+
+### Holdout v2 findings (recorded, NOT tuned in this cycle → v1.5)
+- KPI dashboards weakest (71.6); one dashboard slide has a hard LOW_CONTRAST error (likely a
+  coloured delta on the new KPI card fill).
+- PROOF_NOT_VISIBLE causes 7 of the 8 slides below 62: derived numbers (sums, differences).
+- OUTSIDE_ZONE ×2 on a Spanish waterfall; RENDER_TEXT_SPILL on a long statement.
+
 ## 1.3.3 — Balanced cover
 
 - Built-in cover: the title block (accent bar, title, subtitle) is measured and set on the optical
