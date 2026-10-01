@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.3.3 — Balanced cover
+
+- Built-in cover: the title block (accent bar, title, subtitle) is measured and set on the optical
+  centre of the upper field, so a one-line title no longer floats above a fixed gap; client, date
+  and confidentiality sit in a primary-colour band across the foot of the slide (the lower half
+  used to be empty). Corporate templates keep their native cover.
+- Executive summary numbering (Alvora slide 2) checked at full resolution: the numbers are already
+  centred on their claims; the misalignment seen on the contact sheet was a thumbnail artefact.
+  No change.
+- Regression unchanged (87.5); examples regenerated (Alvora final 99.8, gallery 99.8).
+
 ## 1.3.2 — Compact executive summaries
 
 - Short executive summaries are set as ONE compact block on the optical centre (rows at their

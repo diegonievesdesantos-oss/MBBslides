@@ -11,7 +11,7 @@
         "base_pt": 36.0,
         "chosen_pt": 36.0,
         "need_h": 1.17,
-        "box_h": 1.9,
+        "box_h": 1.27,
         "lines": 2,
         "overflow": false
       },
@@ -22,7 +22,7 @@
         "base_pt": 16.0,
         "chosen_pt": 16.0,
         "need_h": 0.26,
-        "box_h": 0.9,
+        "box_h": 0.36,
         "lines": 1,
         "overflow": false
       }

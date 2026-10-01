@@ -96,18 +96,32 @@ def footer(pc: Painter, slide: dict, page_no: int, meta: dict) -> None:
 # Structural slides
 # ---------------------------------------------------------------------------
 def cover(p: Painter, slide: dict, meta: dict) -> None:
+    """Title block measured and set on the optical centre of the upper field; client, date and
+    confidentiality sit in a primary-colour band across the foot. (Fixed positions left a one-line
+    title floating above a large gap and the lower half of the page empty.)"""
     g = GRID
     pc = p.for_zone("text")
     x = g.margin_l
-    pc.rect(Box(x, 2.35, 0.9, 0.07), fill="highlight", kind="fill")
     title = slide.get("title") or meta.get("title", "")
-    pc.text(Box(x, 2.6, g.span_w(1, 10), 1.9), title, role="cover_title", anchor="top", max_lines=3, record="cover_title")
     sub = slide.get("subtitle") or meta.get("subtitle")
+    tw, sw = g.span_w(1, 10), g.span_w(1, 9)
+    th = min(p.measure(title, "cover_title", tw)[0], 3 * p.measure("X", "cover_title", tw)[0]) + 0.1  # same width as the box (no insets)
+    sh = (p.measure(sub, "cover_subtitle", sw)[0] + 0.1) if sub else 0.0
+    band_y = SLIDE_H * 0.8
+    bar, gap_t, gap_s = 0.07, 0.25, 0.22
+    group = bar + gap_t + th + (gap_s + sh if sub else 0.0)
+    field_top = 0.4
+    top = field_top + max(0.0, (band_y - field_top - group) * 0.55)  # a touch below centre: the band is visually heavy
+    pc.rect(Box(x, top, 0.9, bar), fill="highlight", kind="fill")
+    y = top + bar + gap_t
+    pc.text(Box(x, y, tw, th), title, role="cover_title", anchor="top", max_lines=3, record="cover_title")
     if sub:
-        pc.text(Box(x, 4.55, g.span_w(1, 9), 0.9), sub, role="cover_subtitle", record="cover_subtitle")
+        pc.text(Box(x, y + th + gap_s, sw, sh), sub, role="cover_subtitle", anchor="top", record="cover_subtitle")
+    pc.rect(Box(0, band_y, SLIDE_W, SLIDE_H - band_y), fill="primary", kind="bleed")
     bits = [b for b in (meta.get("client"), meta.get("date"), meta.get("confidentiality")) if b]
     if bits:
-        pc.text(Box(x, 6.55, g.span_w(1, 9), 0.35), "   |   ".join(bits), role="source", size=10, fit=False)
+        pc.text(Box(x, band_y + (SLIDE_H - band_y - 0.35) / 2, sw, 0.35), "   |   ".join(bits), role="source", size=11,
+                color="background", fit=False, anchor="middle")
 
 
 def divider(p: Painter, slide: dict, meta: dict) -> None:
