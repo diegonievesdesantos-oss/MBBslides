@@ -23,8 +23,8 @@ from pathlib import Path
 
 from ..qa.proof import headline_quantities
 from . import PROTOCOL_VERSION
-from .decision import decision_signals_text, decision_summary
 from .checks import _load, check_work
+from .decision import decision_signals_text, decision_summary
 from .grounding import fact_scalars
 
 
