@@ -46,7 +46,8 @@ def enrich_evidence(work_dir: str | Path) -> int:
         for e in s.get("evidence") or []:
             f = facts.get(e.get("fact")) if isinstance(e, dict) else None
             if f:
-                e["claim"] = f["claim"]
+                e.setdefault("claim", f["claim"])  # the agent's wording stays; the source text is kept beside it
+                e["fact_claim"] = f["claim"]
                 e["values"] = [v["value"] for v in f.get("values") or []]
                 e["source"] = (f.get("source") or {}).get("file")
                 n += 1

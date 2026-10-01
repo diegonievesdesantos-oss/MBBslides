@@ -342,6 +342,9 @@ VISUAL_FOR = {  # message type (spec.MESSAGE_TYPES + kpi/summary) → archetypes
 
 
 def check_deck_plan(dp: dict | None, storyline: dict | None, insights: dict, facts: dict, project: dict | None) -> list[dict]:
+    from ..design.tokens import load_profile
+
+    profile = load_profile((project or {}).get("deck_type") or "standard")
     if not dp:
         return [_issue("error", "DECK_PLAN_MISSING", "deck_plan.json", None, "No deck plan (slide architecture)")]
     from ..core.headline import lint_headline
@@ -372,9 +375,12 @@ def check_deck_plan(dp: dict | None, storyline: dict | None, insights: dict, fac
                 elif g["status"] == "assumption":
                     conditional = re.search(r"\b(if|assuming|assumes|would|could|about|around|approximately|estimated|roughly|si|suponiendo|supondría|cerca de|aproximadamente|unos)\b", h, re.I)
                     out.append(_issue("info" if conditional else "warning", "ASSUMPTION_IN_HEADLINE", "deck_plan.json", sid, f"{g['number']} rests on an assumption ({', '.join(g['facts'])}): say so on the slide"))
-            codes = {i["code"] for i in lint_headline(h, {"id": sid})[1] if i["level"] == "error"}
-            if "HEADLINE_TOPIC" in codes and s.get("priority") != "appendix":
+            lint = lint_headline(h, {"id": sid}, profile)[1]
+            if any(i["code"] == "HEADLINE_TOPIC" and i["level"] == "error" for i in lint) and s.get("priority") != "appendix":
                 out.append(_issue("error", "HEADLINE_TOPIC", "deck_plan.json", sid, f"'{h}' is a topic, not a conclusion"))
+            for i in lint:  # same word budget as the render lint of this deck type, so the two layers agree
+                if i["code"] == "HEADLINE_LONG":
+                    out.append(_issue("warning", "HEADLINE_LONG", "deck_plan.json", sid, i["message"]))
         mt, arch = s.get("message_type"), s.get("archetype")
         if mt in VISUAL_FOR and arch and arch not in VISUAL_FOR[mt]:
             out.append(_issue("warning", "VISUAL_INTENT", "deck_plan.json", sid, f"message '{mt}' is usually carried by {', '.join(sorted(VISUAL_FOR[mt]))}, not {arch}"))

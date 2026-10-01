@@ -511,3 +511,22 @@ def test_every_number_on_a_slide_is_grounded():
              "commentary": {"points": ["New ARR rose to €9.6M", "Deal size fell to €53.7k"]}}
     issues = factcheck_deck({"slides": [slide]}, facts)
     assert sorted((i["ref"], i["hard"]) for i in issues) == [("S1:commentary.points[1]", True), ("S1:visual.data.series[0].values[1]", True)]
+
+
+def test_enrich_keeps_the_agents_claim(tmp_path):
+    from cpe.reasoning.ghost import enrich_evidence
+    (tmp_path / "facts.json").write_text(json.dumps({"facts": [{"id": "F1", "claim": "row 2 — arr: 41.6", "values": [{"value": 41.6}], "source": {"file": "b.csv"}}]}))
+    (tmp_path / "deck.json").write_text(json.dumps({"slides": [{"id": "S1", "evidence": [{"fact": "F1", "claim": "Opening ARR 2024"}, {"fact": "F1"}]}]}))
+    enrich_evidence(tmp_path)
+    ev = json.loads((tmp_path / "deck.json").read_text())["slides"][0]["evidence"]
+    assert ev[0]["claim"] == "Opening ARR 2024" and ev[0]["fact_claim"] == "row 2 — arr: 41.6" and ev[0]["values"] == [41.6]
+    assert ev[1]["claim"] == "row 2 — arr: 41.6"
+
+
+def test_deck_plan_headline_budget_follows_deck_type():
+    from cpe.reasoning.checks import check_deck_plan
+    long = "Churn rather than sales explains most of the fall in net new ARR and the retention plan closes almost all of the gap at lower cost"
+    dp = {"slides": [{"id": "S1", "priority": "core", "headline": long, "key_line": "K1"}]}
+    sl = {"key_line": [{"id": "K1", "message": "x"}]}
+    board = [i["code"] for i in check_deck_plan(dp, sl, {}, {}, {"deck_type": "board_presentation"})]
+    assert "HEADLINE_LONG" in board
