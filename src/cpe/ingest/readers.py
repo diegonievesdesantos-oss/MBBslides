@@ -28,11 +28,16 @@ FACT_RE = re.compile(
 SENT_RE = re.compile(r"(?<=[.!?;])\s+")
 
 
+UNIT_OK = re.compile(r"(€|\$|£|eur|usd|gbp)?(m|mn|bn|k|million|billion|thousand)?(€|\$|£|eur|usd|gbp)?|%|pp|bps|x")
+
+
 def _num(raw, dot_decimal: bool = False) -> tuple[float | None, str]:
     if isinstance(raw, (int, float)) and not isinstance(raw, bool):  # a typed cell (xlsx): already a number
         return float(raw), ""
     raw = str(raw)
     unit = re.sub(r"[\d\s.,+\-−]", "", raw).lower()
+    if not UNIT_OK.fullmatch(unit):
+        return None, unit  # "Q1 2024", "FY25", "P01": a label, not a number
     core = re.sub(r"[^\d.,\-−+]", "", raw).replace("−", "-")
     if core.count(",") and core.count("."):
         core = core.replace(",", "") if core.rfind(".") > core.rfind(",") else core.replace(".", "").replace(",", ".")

@@ -87,5 +87,15 @@ deck-plan headlines were kept word for word.
 | 13 | No decisions-table + timeline combination | The gate date cannot sit next to the decision. |
 | 14 | Automatic waterfall labels ("−5.6 vs …") cannot be styled or turned off | It adds a second accent colour. |
 
-Gaps 1–4 are factuality gaps, and 1 and 3 matter most. A deck can pass every check with an unchecked
+**Fixed (v1.8):**
+- **Gap 1:** ids are preserved on re-extraction, and fabrication is checked against the raw files.
+- **Gap 2:** WRONG_SOURCE follows computed-fact lineage.
+- **Gap 3:** every number on a slide is grounded.
+
+On the SaaS deck, re-extraction kept all 55 cited ids and dropped 10 label cells ("Q1 2024", year
+columns) that the old extractor read as numbers. The new check found one real uncited number (S9:
+€10.4M, now cited). On the v1.7 development run (margin_recovery) it found two: freight €9M on s08 and
+the totals row of the appendix table on s10.
+
+Gaps 1–4 are factuality gaps, and 1 and 3 mattered most. A deck can pass every check with an unchecked
 number in a table cell, and an extractor upgrade breaks old runs. They are the first items for v1.8.

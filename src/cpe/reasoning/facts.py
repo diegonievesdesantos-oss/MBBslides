@@ -254,6 +254,57 @@ def build_fact_model(paths: list[str | Path]) -> dict:
     return {"protocol": PROTOCOL_VERSION, "facts": facts, "stats": stats, "blocks": inv["blocks"]}
 
 
+EXTRACTOR_VERSION = "1.8"  # bump when extraction changes what facts or values are produced
+
+
+def fact_key(f: dict) -> tuple:
+    """Where a fact sits in its source, independent of the extractor version: a table cell (or cell
+    pair for a derived change), or a sentence location plus the values it states."""
+    src = f.get("source") or {}
+    if src.get("range"):
+        return ("cell", src.get("file"), src.get("sheet"), src.get("range"))
+    vals = tuple(sorted(round(abs(float(v["value"])), 6) for v in f.get("values") or []))
+    return ("text", src.get("file"), src.get("loc"), vals)
+
+
+def preserve_ids(old: list[dict], new: list[dict]) -> tuple[list[dict], dict]:
+    """Give re-extracted facts the ids of the same facts in the previous model, so hypotheses,
+    insights, storylines, deck plans and decks keep pointing at the right facts after an extractor
+    upgrade. New facts get fresh ids after the highest old one; old facts that are no longer
+    extracted are reported (a citation of one is then an UNKNOWN_FACT)."""
+    by_key: dict = {}
+    for f in old:
+        by_key.setdefault(fact_key(f), f["id"])
+    loose: dict = {}  # text facts whose values changed (a unit fix): same sentence, first value
+    for f in old:
+        k = fact_key(f)
+        if k[0] == "text" and k[3]:
+            loose.setdefault((k[1], k[2], k[3][0]), f["id"])
+    nums = [int(re.sub(r"\D", "", f["id"]) or 0) for f in old if re.fullmatch(r"F\d+", f["id"])]
+    nxt = max(nums, default=0)
+    mapping, used, added = {}, set(), []
+    for f in new:
+        k = fact_key(f)
+        oid = by_key.get(k)
+        if oid is None and k[0] == "text" and k[3]:
+            oid = loose.get((k[1], k[2], k[3][0]))
+        if oid is None or oid in used:
+            nxt += 1
+            oid = f"F{nxt:04d}"
+            added.append(oid)
+        used.add(oid)
+        mapping[f["id"]] = oid
+    out = []
+    for f in new:
+        g = {**f, "id": mapping[f["id"]]}
+        if g.get("derived_from"):
+            g["derived_from"] = [mapping.get(x, x) for x in g["derived_from"]]
+        out.append(g)
+    dropped = sorted(f["id"] for f in old if f["id"] not in used)
+    return out, {"kept": len(used) - len(added), "added": added, "dropped": dropped,
+                 "note": "ids preserved by source location; a citation of a dropped id is an UNKNOWN_FACT"}
+
+
 def write_fact_model(sources_dir: str | Path, work_dir: str | Path) -> dict:
     src = Path(sources_dir)
     paths = sorted(p for p in src.rglob("*") if p.is_file() and not p.name.startswith("."))
@@ -262,6 +313,12 @@ def write_fact_model(sources_dir: str | Path, work_dir: str | Path) -> dict:
     (work / "source_manifest.json").write_text(json.dumps(source_manifest(paths), indent=2) + "\n", encoding="utf-8")
     fm = build_fact_model(paths)
     blocks = fm.pop("blocks")
+    prev = work / "facts.json"
+    if prev.exists():  # re-extraction keeps the ids the agent's artifacts already cite (v1.8)
+        old = json.loads(prev.read_text(encoding="utf-8"))
+        fm["facts"], refresh = preserve_ids(old.get("facts") or [], fm["facts"])
+        (work / "facts_refresh.json").write_text(json.dumps(refresh, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    fm["extractor"] = EXTRACTOR_VERSION
     (work / "facts.json").write_text(json.dumps(fm, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     from .conflicts import detect_conflicts
 

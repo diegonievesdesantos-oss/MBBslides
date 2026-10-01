@@ -16,7 +16,7 @@ _protocol 1.2_ · errors 0 · warnings 0 · hard factual failures **0**
 
 Stopping criteria: no_hard_factual_errors ✅ · storyline_passes ✅ · ghost_deck_passes ✅ · no_unsupported_headlines ✅ · no_unresolved_high_critic_finding ✅ · no_unresolved_conflict_in_use ✅
 
-Information economy: 50 of 95 facts used, 0 in appendix, 45 omitted · 9 core / 0 support / 0 appendix slides
+Information economy: 50 of 87 facts used, 0 in appendix, 37 omitted · 9 core / 0 support / 0 appendix slides
 
 ## infos
 

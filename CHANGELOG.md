@@ -2,6 +2,15 @@
 
 ## Unreleased — 1.7.0.dev0: consulting intelligence (development)
 
+- **Factuality gaps closed (from the end-to-end deck):**
+  - Every number a reader sees on a slide must be grounded in the slide's cited facts: body, KPIs,
+    table cells, chart data, takeaways. Before, only the headline was checked.
+  - Fact ids are stable when facts are re-extracted (matched by source location; `facts_refresh.json`).
+  - FACT_FABRICATED is checked against the raw source content, not a re-extraction.
+  - WRONG_SOURCE follows computed-fact lineage.
+  - Label cells such as "Q1 2024" are no longer read as numbers.
+  - The new check found three real uncited numbers in stored decks; they are now cited.
+
 - **s2 voted (expert, blind): protocol 1.1 wins 3–1** (almacén, SaaS, tiendas). The baseline won
   packaging; the owner corrected one repeat as a mis-click.
   - The expert praised decision-ready closes: approvable asks, owners, dated gates, fallbacks.

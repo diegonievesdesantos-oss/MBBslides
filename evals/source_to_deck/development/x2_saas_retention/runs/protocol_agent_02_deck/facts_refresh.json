@@ -1,0 +1,17 @@
+{
+  "kept": 55,
+  "added": [],
+  "dropped": [
+    "F0001",
+    "F0007",
+    "F0013",
+    "F0017",
+    "F0021",
+    "F0025",
+    "F0029",
+    "F0033",
+    "F0037",
+    "F0041"
+  ],
+  "note": "ids preserved by source location; a citation of a dropped id is an UNKNOWN_FACT"
+}

@@ -6,7 +6,7 @@ score, because a beautiful deck with an invented number is a failure whatever el
 
 | dimension | measures | source |
 |---|---|---|
-| **factuality (hard gate)** | fabricated facts, unsupported numbers in insights / governing thought / headlines, wrong source attribution, arithmetic errors, claims resting on rejected hypotheses | `cpe reason check` |
+| **factuality (hard gate)** | fabricated facts (checked against the raw files), unsupported numbers in insights / governing thought / every number on every slide (v1.8), wrong source attribution, arithmetic errors, claims resting on rejected hypotheses | `cpe reason check` |
 | fact grounding | critical-fact recall, fact precision (1 − fabricated), traceability, arithmetic errors | `facts.json` vs sources and `reference.json` |
 | insight quality | supported vs unsupported, required conclusions reached, restated facts, causal overclaims, decision relevance stated | `insights.json` |
 | storyline | governing thought, candidates compared, framework fits, answer first, key-line support, MECE overlaps, **traps triggered** | `storyline.json`, `deck_plan.json` |

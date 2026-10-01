@@ -40,6 +40,20 @@ short rationales and critic findings — never hidden reasoning traces.
 - `deck_plan.json`: each slide's `key_line` is ONE key-line id; the executive summary is
   `"role": "exec_summary"` (no key line); `title`, `divider`, `next_steps` are the other roles.
 - Units: `EUR_M`, `USD_BN`, `PCT`, `PP`, `DAYS`, `HOURS`, … (as `facts.json` writes them).
+- **Every number a reader sees on a slide is grounded (v1.8):**
+  - This covers the headline, body text, KPIs, table cells, chart data, commentary and takeaways.
+  - Each number must be a value of a fact the slide cites in `evidence`, or one operation on two of
+    them. Table cells and chart values are compared unit-free.
+  - An uncited number is a hard UNSUPPORTED_NUMBER. Years, ranks and counts up to 10 are exempt;
+    "23–25%" reads as 23% and 25%.
+  - A computed fact's source is the files of the raw facts it derives from (WRONG_SOURCE follows lineage).
+- **Fact ids are stable (v1.8):**
+  - Re-running `cpe reason facts` on a work folder keeps the id of every fact found at the same source
+    location: the same cell, or the same sentence and values.
+  - New facts get new ids; facts no longer extracted are listed in `facts_refresh.json`.
+  - FACT_FABRICATED is checked against the raw content of each file, under every reading of its
+    separators, not against a re-extraction. An extractor upgrade never turns an old true fact into a
+    fabrication.
 - Grounding is per sentence: a number must come from the facts the sentence (insight, key-line
   insights for the governing thought, slide facts and insights for a headline) cites.
 

@@ -454,3 +454,60 @@ def test_options_compared_on_the_same_basis():
     assert [(i["code"], i["ref"]) for i in issues] == [("OPTIONS_DIFFERENT_BASIS", "O2")] and "risk" in issues[0]["message"]
     sl["decision"]["options"][1]["cost_components"]["risk"] = -0.9
     assert check_decision(sl, _dec_facts()) == []
+
+
+# ── v1.8 factuality: ids survive extractor upgrades, facts verified against raw sources, every slide number grounded ──
+
+def test_preserve_ids_across_extractor_versions():
+    from cpe.reasoning.facts import preserve_ids
+    old = [{"id": "F0001", "values": [{"value": 2024}], "source": {"file": "b.csv", "sheet": None, "range": "A2"}},
+           {"id": "F0002", "values": [{"value": 41.6, "unit": "EUR"}], "source": {"file": "b.csv", "sheet": None, "range": "B2"}},
+           {"id": "F0003", "values": [{"value": 12, "unit": "PCT"}], "source": {"file": "n.md", "loc": "line 5"}}]
+    new = [{"id": "F0001", "values": [{"value": 41.6, "unit": "EUR_M"}], "source": {"file": "b.csv", "sheet": None, "range": "B2"}},
+           {"id": "F0002", "values": [{"value": 12, "unit": "PCT"}], "source": {"file": "n.md", "loc": "line 5"}},
+           {"id": "F0003", "values": [{"value": 9, "unit": "DAYS"}], "source": {"file": "n.md", "loc": "line 9"}},
+           {"id": "F0004", "values": [{"value": 1.0}], "derived_from": ["F0001", "F0002"], "source": {"file": "b.csv", "range": "B2:B3"}}]
+    facts, rep = preserve_ids(old, new)
+    assert [f["id"] for f in facts] == ["F0002", "F0003", "F0004", "F0005"]
+    assert facts[3]["derived_from"] == ["F0002", "F0003"] and rep["dropped"] == ["F0001"] and rep["added"] == ["F0004", "F0005"]
+
+
+def test_rerun_of_facts_keeps_ids(tmp_path):
+    from cpe.reasoning.facts import write_fact_model
+    src = tmp_path / "sources"
+    src.mkdir()
+    (src / "b.csv").write_text("year,opening_arr_eur_m\n2024,41.6\n2025,52.0\n", encoding="utf-8")
+    write_fact_model(src, tmp_path / "work")
+    first = {f["id"]: f["values"][0]["value"] for f in json.loads((tmp_path / "work" / "facts.json").read_text())["facts"]}
+    (src / "n.md").write_text("- Churn rose to 15% in 2025.\n", encoding="utf-8")
+    write_fact_model(src, tmp_path / "work")
+    second = {f["id"]: f["values"][0]["value"] for f in json.loads((tmp_path / "work" / "facts.json").read_text())["facts"]}
+    assert all(second[k] == v for k, v in first.items()) and len(second) == len(first) + 1
+
+
+def test_facts_verified_against_raw_source(tmp_path):
+    from cpe.reasoning.checks import check_facts, raw_numbers
+    (tmp_path / "b.csv").write_text("year,arr\n2024,41.6\n2025,1.444\n", encoding="utf-8")
+    (tmp_path / "n.md").write_text("El cierre cuesta 3,2 millones; 30.000 clientes.\n", encoding="utf-8")
+    assert {41.6, 1.444, 1444.0} <= raw_numbers(tmp_path / "b.csv") and {3.2, 30000.0} <= raw_numbers(tmp_path / "n.md")
+    fm = {"facts": [{"id": "F1", "values": [{"value": 41.6}], "source": {"file": "b.csv"}, "fact_type": "table_value"},
+                    {"id": "F2", "values": [{"value": 47.0}], "source": {"file": "b.csv"}, "fact_type": "table_value"}]}
+    assert [(i["code"], i["ref"]) for i in check_facts(fm, tmp_path)] == [("FACT_FABRICATED", "F2")]
+
+
+def test_label_cells_are_not_numbers():
+    from cpe.ingest.readers import _num
+    assert _num("Q1 2024")[0] is None and _num("P01")[0] is None and _num("12%")[0] == 12 and _num("€3.2M")[0] == 3.2
+
+
+def test_every_number_on_a_slide_is_grounded():
+    from cpe.reasoning.checks import factcheck_deck
+    facts = {"F1": {"id": "F1", "values": [{"value": 23, "unit": "PCT"}, {"value": 25, "unit": "PCT"}], "source": {"file": "crm.xlsx"}},
+             "F2": {"id": "F2", "values": [{"value": 9.4, "unit": "EUR_M"}], "source": {"file": "arr.csv"}},
+             "C1": {"id": "C1", "values": [{"value": 9.6, "unit": "EUR_M"}], "fact_type": "computed", "derived_from": ["F2"], "source": {"file": "computed"}}}
+    slide = {"id": "S1", "headline": "Win rate held", "evidence": [{"fact": "F1"}, {"fact": "C1"}], "source": "arr.csv; crm.xlsx",
+             "kpis": {"items": [{"value": "23–25%", "label": "Quarterly win rate 2024-25"}]},
+             "visual": {"type": "bar", "data": {"categories": ["2024", "2025"], "series": [{"name": "ARR", "values": [9.6, 13.7]}]}},
+             "commentary": {"points": ["New ARR rose to €9.6M", "Deal size fell to €53.7k"]}}
+    issues = factcheck_deck({"slides": [slide]}, facts)
+    assert sorted((i["ref"], i["hard"]) for i in issues) == [("S1:commentary.points[1]", True), ("S1:visual.data.series[0].values[1]", True)]

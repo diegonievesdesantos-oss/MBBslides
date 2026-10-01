@@ -219,7 +219,7 @@
         },
         {
           "fact": "F0002",
-          "claim": "row 2 — opening_arr_eur_m: 41.6 EUR",
+          "claim": "2024 — opening_arr_eur_m: 41.6 EUR_M",
           "values": [
             41.6
           ],
@@ -227,7 +227,7 @@
         },
         {
           "fact": "F0006",
-          "claim": "row 2 — closing_arr_eur_m: 52 EUR",
+          "claim": "2024 — closing_arr_eur_m: 52 EUR_M",
           "values": [
             52.0
           ],
@@ -235,7 +235,7 @@
         },
         {
           "fact": "F0008",
-          "claim": "row 3 — opening_arr_eur_m: 52 EUR",
+          "claim": "2025 — opening_arr_eur_m: 52 EUR_M",
           "values": [
             52.0
           ],
@@ -243,7 +243,7 @@
         },
         {
           "fact": "F0012",
-          "claim": "row 3 — closing_arr_eur_m: 56.8 EUR",
+          "claim": "2025 — closing_arr_eur_m: 56.8 EUR_M",
           "values": [
             56.8
           ],
@@ -251,7 +251,7 @@
         },
         {
           "fact": "F0003",
-          "claim": "row 2 — new_arr_eur_m: 9.4 EUR",
+          "claim": "2024 — new_arr_eur_m: 9.4 EUR_M",
           "values": [
             9.4
           ],
@@ -259,7 +259,7 @@
         },
         {
           "fact": "F0009",
-          "claim": "row 3 — new_arr_eur_m: 9.6 EUR",
+          "claim": "2025 — new_arr_eur_m: 9.6 EUR_M",
           "values": [
             9.6
           ],
@@ -267,7 +267,7 @@
         },
         {
           "fact": "F0004",
-          "claim": "row 2 — expansion_arr_eur_m: 4.3 EUR",
+          "claim": "2024 — expansion_arr_eur_m: 4.3 EUR_M",
           "values": [
             4.3
           ],
@@ -275,7 +275,7 @@
         },
         {
           "fact": "F0010",
-          "claim": "row 3 — expansion_arr_eur_m: 3 EUR",
+          "claim": "2025 — expansion_arr_eur_m: 3 EUR_M",
           "values": [
             3.0
           ],
@@ -283,7 +283,7 @@
         },
         {
           "fact": "F0005",
-          "claim": "row 2 — churned_arr_eur_m: 3.3 EUR",
+          "claim": "2024 — churned_arr_eur_m: 3.3 EUR_M",
           "values": [
             3.3
           ],
@@ -291,7 +291,7 @@
         },
         {
           "fact": "F0011",
-          "claim": "row 3 — churned_arr_eur_m: 7.8 EUR",
+          "claim": "2025 — churned_arr_eur_m: 7.8 EUR_M",
           "values": [
             7.8
           ],
@@ -404,7 +404,7 @@
         },
         {
           "fact": "F0015",
-          "claim": "row 2 — Win rate (%): 24 PCT",
+          "claim": "Q1 2024 — Win rate (%): 24 PCT",
           "values": [
             24.0
           ],
@@ -412,7 +412,7 @@
         },
         {
           "fact": "F0019",
-          "claim": "row 3 — Win rate (%): 25 PCT",
+          "claim": "Q2 2024 — Win rate (%): 25 PCT",
           "values": [
             25.0
           ],
@@ -420,7 +420,7 @@
         },
         {
           "fact": "F0043",
-          "claim": "row 9 — Win rate (%): 23 PCT",
+          "claim": "Q4 2025 — Win rate (%): 23 PCT",
           "values": [
             23.0
           ],
@@ -951,7 +951,7 @@
         },
         {
           "fact": "F0002",
-          "claim": "row 2 — opening_arr_eur_m: 41.6 EUR",
+          "claim": "2024 — opening_arr_eur_m: 41.6 EUR_M",
           "values": [
             41.6
           ],
@@ -959,7 +959,7 @@
         },
         {
           "fact": "F0006",
-          "claim": "row 2 — closing_arr_eur_m: 52 EUR",
+          "claim": "2024 — closing_arr_eur_m: 52 EUR_M",
           "values": [
             52.0
           ],
@@ -967,7 +967,7 @@
         },
         {
           "fact": "F0008",
-          "claim": "row 3 — opening_arr_eur_m: 52 EUR",
+          "claim": "2025 — opening_arr_eur_m: 52 EUR_M",
           "values": [
             52.0
           ],
@@ -975,7 +975,7 @@
         },
         {
           "fact": "F0012",
-          "claim": "row 3 — closing_arr_eur_m: 56.8 EUR",
+          "claim": "2025 — closing_arr_eur_m: 56.8 EUR_M",
           "values": [
             56.8
           ],
@@ -983,7 +983,7 @@
         },
         {
           "fact": "F0004",
-          "claim": "row 2 — expansion_arr_eur_m: 4.3 EUR",
+          "claim": "2024 — expansion_arr_eur_m: 4.3 EUR_M",
           "values": [
             4.3
           ],
@@ -991,7 +991,7 @@
         },
         {
           "fact": "F0010",
-          "claim": "row 3 — expansion_arr_eur_m: 3 EUR",
+          "claim": "2025 — expansion_arr_eur_m: 3 EUR_M",
           "values": [
             3.0
           ],
@@ -1243,6 +1243,14 @@
             26.0
           ],
           "source": "crm_export.xlsx"
+        },
+        {
+          "fact": "C0001",
+          "claim": "Net new ARR 2024 = closing minus opening ARR",
+          "values": [
+            10.4
+          ],
+          "source": "computed"
         }
       ],
       "visual": {

@@ -110,7 +110,7 @@ slides.append({"id": "S8", "section": "K4", "tracker": "Options",
   "footnotes": ["Upper bounds: L1 assumes a 2026 first-year cohort like 2025's (A002); L3 a linear ramp (A001) and a 10-AE wave (A003). Needed = back to 2024 net new ARR (inferred)"]})
 slides.append({"id": "S9", "section": "K4", "tracker": "Decisions",
   "purpose": dp['S9']['purpose'], "headline": dp['S9']['headline'], "message_type": "recommendation",
-  "evidence": ev("F0058", "A003", "F0061", "C0027", "F0063", "C0024", "F0062", "F0047"),
+  "evidence": ev("F0058", "A003", "F0061", "C0027", "F0063", "C0024", "F0062", "F0047", "C0001"),
   "visual": {"type": "table", "title": "Decisions requested today",
      "columns": [{"label": "Decision", "width": 3.4}, {"label": "Owner"}, {"label": "€M a year", "align": "right"}, {"label": "When"}],
      "rows": [

@@ -76,13 +76,9 @@ def check_facts(fm: dict | None, sources_dir: Path | None = None) -> list[dict]:
     by_id = {f["id"]: f for f in fm["facts"]}
     source_numbers = None
     if sources_dir and Path(sources_dir).exists():
-        from .facts import build_fact_model
-
-        ref = build_fact_model(sorted(p for p in Path(sources_dir).rglob("*") if p.is_file() and not p.name.startswith(".")))
-        source_numbers = {}
-        for f in ref["facts"]:
-            if f["fact_type"] != "derived_change":
-                source_numbers.setdefault(f["source"]["file"], set()).update(round(float(v["value"]), 6) for v in f["values"])
+        # v1.8: against the RAW content of each file (every way a number can be read), not a fresh
+        # re-extraction — an extractor upgrade must not turn an old, true fact into a fabrication
+        source_numbers = {p.name: raw_numbers(p) for p in Path(sources_dir).rglob("*") if p.is_file() and not p.name.startswith(".")}
     for f in fm["facts"]:
         if f["id"] in ids:
             out.append(_issue("error", "FACT_DUPLICATE_ID", "facts.json", f["id"], "duplicate fact id"))
@@ -100,8 +96,54 @@ def check_facts(fm: dict | None, sources_dir: Path | None = None) -> list[dict]:
         elif source_numbers is not None:
             have = source_numbers.get((f.get("source") or {}).get("file"), set())
             for v in f.get("values") or []:
-                if round(float(v["value"]), 6) not in have:
+                if round(abs(float(v["value"])), 6) not in have:
                     out.append(_issue("error", "FACT_FABRICATED", "facts.json", f["id"], f"value {v['value']:g} is not in {f['source'].get('file')}", hard=True))
+    return out
+
+
+def raw_numbers(path: Path) -> set[float]:
+    """Every number written in a source file, under every reading of its separators ("1.444" →
+    1.444 and 1444; "3,2" → 3.2; "30.000" → 30000), plus typed spreadsheet cells. Absolute values."""
+    texts, out = [], set()
+    suf = path.suffix.lower()
+    try:
+        if suf in (".xlsx", ".xlsm"):
+            import openpyxl
+
+            wb = openpyxl.load_workbook(path, data_only=True, read_only=True)
+            for ws in wb.worksheets:
+                for r in ws.iter_rows(values_only=True):
+                    for c in r:
+                        if isinstance(c, (int, float)) and not isinstance(c, bool):
+                            out.add(round(abs(float(c)), 6))
+                        elif c is not None:
+                            texts.append(str(c))
+        elif suf == ".pdf":
+            import pymupdf
+
+            texts += [pg.get_text() for pg in pymupdf.open(str(path))]
+        elif suf in (".docx", ".pptx"):
+            import zipfile
+
+            with zipfile.ZipFile(path) as z:
+                texts += [re.sub(r"<[^>]+>", " ", z.read(n).decode("utf-8", "replace")) for n in z.namelist() if n.endswith(".xml")]
+        elif suf in (".csv", ".tsv"):
+            import csv
+
+            raw = path.read_text(encoding="utf-8-sig", errors="replace")
+            dialect = csv.Sniffer().sniff(raw[:2048], delimiters=",;\t|") if raw.strip() else csv.excel
+            texts += [c for row in csv.reader(raw.splitlines(), dialect) for c in row]
+        else:
+            texts.append(path.read_text(encoding="utf-8", errors="replace"))
+    except Exception:  # unreadable source: nothing can be verified against it
+        return out
+    for t in texts:
+        for tok in re.findall(r"\d[\d.,]*\d|\d", t):
+            for cand in (tok.replace(",", ""), tok.replace(".", "").replace(",", "."), tok.replace(",", "."), tok.replace(".", "")):
+                try:
+                    out.add(round(abs(float(cand)), 6))
+                except ValueError:
+                    pass
     return out
 
 
@@ -381,6 +423,66 @@ def information_economy(dp: dict | None, insights: dict, facts: dict) -> dict:
 
 # ── the rendered spec: factuality hard gate ──────────────────────────────────────────────────────
 
+SKIP_KEYS = {"id", "kind", "archetype", "layout", "source", "tracker", "section", "purpose", "message_type", "evidence", "format", "style", "highlight",
+             "headline", "text", "reason_to_exist", "why_not_merge", "decision_role", "priority", "role", "color", "colors", "delta_colors", "variant",
+             "facts", "insights", "key_line", "assumptions_note", "widths", "column_widths", "decimals", "align", "icon", "emphasis"}
+
+
+def _slide_leaves(s: dict, path: str = ""):
+    """(path, "text"|"num", value) for every string and number a reader sees on a slide, except the
+    headline (checked above), the source line and layout / styling keys."""
+    if isinstance(s, dict):
+        for k, v in s.items():
+            if k not in SKIP_KEYS:
+                yield from _slide_leaves(v, f"{path}.{k}" if path else k)
+    elif isinstance(s, list):
+        for i, v in enumerate(s):
+            yield from _slide_leaves(v, f"{path}[{i}]")
+    elif isinstance(s, str) and re.search(r"\d", s):
+        yield path, "text", s
+    elif isinstance(s, (int, float)) and not isinstance(s, bool):
+        yield path, "num", float(s)
+
+
+def _deck_text(t: str) -> str:
+    """Spell out what a reader understands: '23–25%' is 23% to 25%; '2024-25' is a period, not 25."""
+    t = re.sub(r"\b((?:19|20)\d{2})\s?[-–/]\s?\d{2}\b", r"\1", t)
+    return re.sub(r"(\d+(?:[.,]\d+)?)\s?[–-]\s?(\d+(?:[.,]\d+)?)\s?%", r"\1% to \2%", t)
+
+
+def _value_grounded(v: float, cited: list[dict]) -> bool:
+    """A chart / table number: a cited fact's value (as written, unit-free) or one operation on two."""
+    if float(v).is_integer() and (abs(v) <= 10 or 1900 <= v <= 2100):
+        return True  # small counts, ranks, years
+    vals = [abs(float(x["value"])) for f in cited for x in f.get("values") or []]
+    s = f"{abs(v):g}"
+    tol = 0.5 * 10 ** -(len(s.split(".")[1]) if "." in s else 0) + 0.005 * abs(v)
+    a = abs(v)
+    if any(abs(x - a) <= tol for x in vals):
+        return True
+    for i, x in enumerate(vals):
+        for y in vals[i + 1:]:
+            if min(abs(x + y - a), abs(abs(x - y) - a)) <= tol or (y and abs(x / y * 100 - a) <= tol) or (x and abs(y / x * 100 - a) <= tol):
+                return True
+    return False
+
+
+def _raw_files(cited: list[dict], facts: dict) -> set[str]:
+    """Source files of the cited facts, following computed-fact lineage down to the raw facts."""
+    out, seen, todo = set(), set(), list(cited)
+    while todo:
+        f = todo.pop()
+        if id(f) in seen:
+            continue
+        seen.add(id(f))
+        file = (f.get("source") or {}).get("file")
+        if f.get("fact_type") == "computed":
+            todo += [facts[d] for d in f.get("derived_from") or [] if d in facts]
+        elif file:
+            out.add(file)
+    return out
+
+
 def factcheck_deck(deck: dict | None, facts: dict) -> list[dict]:
     """Headline numbers of the render spec must be grounded in the facts its evidence items cite
     (`evidence: [{"fact": "F0012"}]`); a named source file must be one of those facts' files."""
@@ -401,7 +503,21 @@ def factcheck_deck(deck: dict | None, facts: dict) -> list[dict]:
             if g["status"] == "unsupported":
                 out.append(_issue("error", "UNSUPPORTED_NUMBER", "deck.json", sid, f"headline {g['number']} not grounded in cited facts" if cited
                                   else f"headline {g['number']} cites no facts", hard=True))
-        files = {f["source"]["file"] for f in cited}
+        # v1.8: every number on the slide, not only the headline — body text, KPIs, table cells, chart data
+        for path, kind, val in _slide_leaves(s):
+            if kind == "text" and re.fullmatch(r"\s*[-+−]?[\d.,]+\s*", val):  # a bare table cell: unit-free, like chart data
+                from ..ingest.readers import _num
+
+                kind, val = "num", _num(val.strip())[0]
+                if val is None:
+                    continue
+            if kind == "text":
+                for g in ground_numbers(_deck_text(val), cited):
+                    if g["status"] == "unsupported":
+                        out.append(_issue("error", "UNSUPPORTED_NUMBER", "deck.json", f"{sid}:{path}", f"{g['number']} not grounded in the slide's cited facts", hard=True))
+            elif not _value_grounded(val, cited):
+                out.append(_issue("error", "UNSUPPORTED_NUMBER", "deck.json", f"{sid}:{path}", f"data value {val:g} is not a cited fact value or one operation on two", hard=True))
+        files = _raw_files(cited, facts)
         named = re.findall(r"[\w\-. ]+\.(?:xlsx|csv|pdf|docx|pptx|md|txt)", s.get("source") or "", re.I)
         for n in named:
             if files and n.strip() not in files:
