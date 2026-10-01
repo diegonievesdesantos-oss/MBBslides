@@ -530,3 +530,38 @@ def test_deck_plan_headline_budget_follows_deck_type():
     sl = {"key_line": [{"id": "K1", "message": "x"}]}
     board = [i["code"] for i in check_deck_plan(dp, sl, {}, {}, {"deck_type": "board_presentation"})]
     assert "HEADLINE_LONG" in board
+
+
+# ── v1.8 visual minimum for decision decks: estimates, bounds, target, muted bridge ──
+
+def test_waterfall_estimate_steps_target_and_muted(tmp_path):
+    from pptx import Presentation
+
+    from cpe.design.tokens import load_profile, load_theme
+    from cpe.qa import geometry
+    from test_v15 import _shapes, content_slide
+
+    steps = [{"label": "Onboarding", "value": 2.5, "bound": "upper"}, {"label": "Expansion", "value": 1.3, "bound": "upper"},
+             {"label": "10 AEs", "value": 1.5, "estimate": True}, {"label": "Identified", "type": "total"}]
+    s = content_slide(headline="Three levers identify up to €5.3M of the €5.6M needed", message_type="change_bridge",
+                      visual={"type": "waterfall", "title": "Levers", "unit": "€M", "delta_colors": "muted", "highlight": ["Onboarding"],
+                              "target": {"value": 5.6, "label": "Needed"}, "data": {"steps": steps}})
+    _, man, out = _shapes(tmp_path, [s])
+    texts = [sh.text_frame.text for sl in Presentation(str(out)).slides for sh in sl.shapes if sh.has_text_frame]
+    assert "≤2.5" in texts and "~1.5" in texts and any(t.startswith("Needed 5.6") for t in texts)
+    issues = geometry.check(str(out), man, load_theme(), load_profile("standard"))
+    assert not {i["code"] for i in issues if i["level"] == "error"} & {"OFF_SLIDE", "OUTSIDE_ZONE", "TEXT_OVERFLOW"}
+
+
+def test_table_cells_marked_as_bounds_stay_numbers(tmp_path):
+    from pptx import Presentation
+
+    from test_v15 import _shapes, content_slide
+
+    vis = {"type": "table", "title": "Options", "columns": [{"label": "Option"}, {"label": "€M a year", "kind": "number", "format": {"decimals": 1}}],
+           "rows": [["CRO plan", 3.6], ["Retention first", {"value": 2.0, "bound": "estimate"}], ["AE ramp", {"value": 4.5, "bound": "upper"}]]}
+    s = content_slide(headline="Retention first costs an estimated €2.0M versus €3.6M", message_type="comparison", visual=vis)
+    _shapes(tmp_path, [s])
+    out = next(tmp_path.rglob("*.pptx"))
+    cells = [c.text for sl in Presentation(str(out)).slides for sh in sl.shapes if sh.has_table for r in sh.table.rows for c in r.cells]
+    assert "~2.0" in cells and "≤4.5" in cells and "3.6" in cells

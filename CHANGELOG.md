@@ -2,6 +2,16 @@
 
 ## Unreleased — 1.7.0.dev0: consulting intelligence (development)
 
+- **Decision-deck visuals (from the end-to-end deck's gaps):**
+  - estimate and bound markers on waterfall steps (hollow, dashed, `~`/`≤`) and on table cells, which
+    stay numbers;
+  - a waterfall target line;
+  - `delta_colors: "muted"` (grey but the highlight);
+  - `proof_label: false`;
+  - table widths documented (inches, fixed).
+- `cpe reason check --enrich` keeps the agent's evidence wording (`fact_claim` holds the source text).
+  Deck-plan headlines are linted with the deck type's word budget, as the render lint does.
+
 - **Factuality gaps closed (from the end-to-end deck):**
   - Every number a reader sees on a slide must be grounded in the slide's cited facts: body, KPIs,
     table cells, chart data, takeaways. Before, only the headline was checked.

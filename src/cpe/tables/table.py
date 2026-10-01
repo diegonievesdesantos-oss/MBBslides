@@ -11,11 +11,13 @@ Spec:
 {
   "type": "table" | "heatmap" | "harvey_table" | "scorecard",
   "title": "...", "unit": "...",
-  "columns": [{"label": "Segment", "align": "left", "width": 2.2},
+  "columns": [{"label": "Segment", "align": "left", "width": 2.2},      // width: inches, fixed; columns
+                                                                       // without one share the rest
               {"label": "2025", "format": {"decimals": 0, "suffix": "M"}, "kind": "number"},
               {"label": "Δ", "kind": "delta", "format": {"decimals": 1, "suffix": "pp"}},
               {"label": "Fit", "kind": "harvey"}, {"label": "Status", "kind": "rag"}],
   "rows": [["Grocery", 120, -1.8, 3, "R"], {"cells": [...], "style": "subtotal|total|highlight", "indent": 1}],
+           // a number cell may be {"value": 4.5, "bound": "estimate|upper|lower|range"}: printed "~4.5", "≤4.5"
   "heatmap": {"columns": [1, 2], "mode": "sequential|diverging", "domain": [lo, hi]},
   "highlight_columns": [1]
 }
@@ -41,13 +43,25 @@ CELL_PAD_Y = 0.045
 RAG = {"R": "negative", "A": "warning", "G": "positive", "red": "negative", "amber": "warning", "green": "positive", "grey": "neutral"}
 
 
+BOUND_MARK = {"estimate": "~", "upper": "≤", "lower": "≥", "range": "~"}
+
+
 def _norm_rows(ex: dict) -> list[dict]:
     out = []
     for r in ex.get("rows") or []:
         if isinstance(r, dict):
-            out.append({"cells": list(r.get("cells", [])), "style": r.get("style"), "indent": r.get("indent", 0)})
+            row = {"cells": list(r.get("cells", [])), "style": r.get("style"), "indent": r.get("indent", 0)}
         else:
-            out.append({"cells": list(r), "style": None, "indent": 0})
+            row = {"cells": list(r), "style": None, "indent": 0}
+        # v1.8: a cell {"value": 4.5, "bound": "upper"} stays a number (alignment, format) and prints "≤4.5"
+        row["marks"] = {}
+        for j, c in enumerate(row["cells"]):
+            if isinstance(c, dict) and "value" in c:
+                b = c.get("bound") or ("estimate" if c.get("estimate") else None)
+                if b in BOUND_MARK:
+                    row["marks"][j] = BOUND_MARK[b]
+                row["cells"][j] = c["value"]
+        out.append(row)
     return out
 
 
@@ -129,7 +143,7 @@ def _col_widths(p: Painter, cols, rows, total_w: float, size: float) -> list[flo
     need = []
     for j, c in enumerate(cols):
         head = max((tm.text_width_in(w, size, True) for w in str(c["label"]).split()), default=0) + 2 * CELL_PAD_X + 0.04
-        cells = [_cell_text(r["cells"][j] if j < len(r["cells"]) else None, c) for r in rows]
+        cells = [r["marks"].get(j, "") + _cell_text(r["cells"][j] if j < len(r["cells"]) else None, c) for r in rows]
         body = max((tm.text_width_in(t, size, r["style"] in ("subtotal", "total")) for t, r in zip(cells, rows)), default=0) + 2 * CELL_PAD_X + 0.04
         if c["kind"] in ("harvey", "rag"):
             body = 0.6
@@ -278,7 +292,7 @@ def render(p: Painter, box: Box, ex: dict) -> dict:
                 top = (strong, LINES["rule"] * 1.3)
             bottom = (grid, LINES["hairline"]) if i < len(rows) else (rule, LINES["rule"])
             _tc_borders(cell, top=top, bottom=bottom, fill=fill)
-            set_text(cell, _cell_text(v, c), bold_row or (j == 0 and st is None and ex.get("bold_first_column", False)), color, c["align"], indent=0.18 * r["indent"] if j == 0 else 0.0)
+            set_text(cell, r["marks"].get(j, "") + _cell_text(v, c).lstrip("+") if j in r["marks"] else _cell_text(v, c), bold_row or (j == 0 and st is None and ex.get("bold_first_column", False)), color, c["align"], indent=0.18 * r["indent"] if j == 0 else 0.0)
             if c["kind"] in ("harvey", "rag") and v is not None:
                 shapes_after.append((c["kind"], v, sum(widths[:j]) + plot.x, y, widths[j], hs[i], j))
         y += hs[i]

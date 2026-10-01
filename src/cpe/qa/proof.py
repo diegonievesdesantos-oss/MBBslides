@@ -115,6 +115,8 @@ def headline_quantities(text: str) -> list[dict]:
 def _values(seq) -> list[float]:
     out = []
     for x in seq or []:
+        if isinstance(x, dict) and "value" in x:  # a marked table cell {"value", "bound"} (v1.8)
+            x = x["value"]
         if isinstance(x, (int, float)) and not isinstance(x, bool):
             out.append(float(x))
         elif isinstance(x, str):

@@ -51,6 +51,23 @@ with `_` are written by the engine (plan traces, autofix markers) and can be ign
 | `text`, `support`, `style`, `attribution` | statement | |
 | `reading_first` | content | prefer commentary-left layouts |
 
+## Estimates, bounds and targets (v1.8)
+
+A decision deck mixes actuals with estimates and upper bounds. Mark them on the number itself, never
+only in a footnote:
+
+| where | spec | renders |
+|---|---|---|
+| waterfall step | `{"label": "10 AEs", "value": 1.5, "estimate": true}` or `"bound": "upper|lower|range|estimate"` | hollow bar with a dashed outline; label `~1.5`, `≤2.5`, `≥…` |
+| waterfall | `"target": {"value": 5.6, "label": "Needed"}` | dashed reference line with its label (no fake total bar) |
+| waterfall | `"delta_colors": "muted"` + `"highlight": ["Onboarding"]` | every step grey except the highlighted one; automatic labels in text colour |
+| waterfall | `"proof_label": false` | no automatic "Δ vs start" label |
+| table cell | `{"value": 2.0, "bound": "estimate"}` | stays a right-aligned number in the column format, printed `~2.0` / `≤4.5` |
+| table column | `"width": 2.2` | fixed width in inches; columns without a width share the rest |
+
+Every number on a slide, these included, must be grounded in the slide's cited facts
+(`cpe reason check`, docs/REASONING_PROTOCOL.md).
+
 ## Patches
 
 `{"op": "set" | "delete" | "append", "slide": "s07", "path": "visual.data.series[0].values", "value": …}`,

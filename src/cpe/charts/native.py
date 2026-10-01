@@ -634,7 +634,8 @@ def waterfall(p: Painter, box: Box, ex: dict) -> dict:
         vals.append(v)
         ends.append(running)
     n = len(labels)
-    vmax = max(0.0, max(b for _, b in spans))
+    target = ex.get("target") if isinstance(ex.get("target"), dict) and ex["target"].get("value") is not None else None
+    vmax = max(0.0, max(b for _, b in spans), float(target["value"]) if target else 0.0)
     vmin = min(0.0, min(a for a, _ in spans))
     lo = 0.0
     totals = [abs(v) for v, k in zip(vals, kinds) if k == "total" and v]
@@ -659,7 +660,7 @@ def waterfall(p: Painter, box: Box, ex: dict) -> dict:
 
     first_total = vals[0] if kinds and kinds[0] == "total" else None  # a start→end bridge only
     wf_delta = (ends[-1] - first_total) if first_total is not None and kinds[-1] == "total" else None
-    proof = wf_delta is not None and any(abs(abs(wf_delta) - v) <= max(0.51, 0.01 * v) and abs(v - abs(ends[-1])) > 0.5 for v, _ in numbers_in(ex.get("_headline") or ""))
+    proof = ex.get("proof_label", True) is not False and wf_delta is not None and any(abs(abs(wf_delta) - v) <= max(0.51, 0.01 * v) and abs(v - abs(ends[-1])) > 0.5 for v, _ in numbers_in(ex.get("_headline") or ""))
     # head room for value labels above positive bars, foot room for labels under negative totals
     hi += step * (0.4 if not proof else 1.0)
     if vmin < 0:
@@ -714,9 +715,11 @@ def waterfall(p: Painter, box: Box, ex: dict) -> dict:
     s_base, *coloured = plot.series
     _fill(s_base, None)
     s_base.format.line.fill.background()
-    neutral_deltas = ex.get("delta_colors") == "neutral"
-    colours = {"total": theme.c(ex.get("total_color", "primary")), "up": theme.c("secondary" if neutral_deltas else "positive"),
-               "down": theme.c("secondary" if neutral_deltas else "negative")}
+    dc = ex.get("delta_colors")
+    neutral_deltas = dc == "neutral"
+    delta_col = "muted" if dc == "muted" else "secondary" if neutral_deltas else None  # muted: grey every delta but the highlight
+    colours = {"total": theme.c(ex.get("total_color", "primary")), "up": theme.c(delta_col or "positive"),
+               "down": theme.c(delta_col or "negative")}
     series = dict(zip([(c, s) for c in ("total", "up", "down") for s in (0, 1)], coloured))
     for (c, _), s in series.items():
         _fill(s, colours[c])
@@ -725,6 +728,24 @@ def waterfall(p: Painter, box: Box, ex: dict) -> dict:
         for (c, _), s in series.items():
             if c != "total":
                 _fill(s.points[i], theme.c("highlight"))
+    # v1.8: a step that is an estimate or a bound is drawn hollow with a dashed outline, and its
+    # label says so ("~1.5", "≤4.5"), so a reader never takes it for an actual
+    from pptx.enum.dml import MSO_LINE_DASH_STYLE
+
+    marks = {}
+    for i, st in enumerate(steps):
+        b = st.get("bound") or ("estimate" if st.get("estimate") else None)
+        if b in ("estimate", "upper", "lower", "range"):
+            marks[i] = {"estimate": "~", "upper": "≤", "lower": "≥", "range": "~"}[b]
+            col = theme.c("highlight") if i in hl else (theme.c("text_muted") if delta_col == "muted" else colours[kinds[i]])  # a pale outline vanishes
+            for (c, _), s in series.items():
+                if c == kinds[i]:
+                    pt = s.points[i]
+                    pt.format.fill.solid()
+                    pt.format.fill.fore_color.rgb = rgb(theme.c("background"))
+                    pt.format.line.color.rgb = rgb(col)
+                    pt.format.line.width = Pt(1.25)
+                    pt.format.line.dash_style = MSO_LINE_DASH_STYLE.DASH
     # overlays: value labels (above a bar; under a negative total) kept inside the plot frame
     lab_h = 0.26
     top_lim, bot_lim = plot_box.y + 0.02, geom.inner.b - 0.02
@@ -733,7 +754,9 @@ def waterfall(p: Painter, box: Box, ex: dict) -> dict:
         a, b = spans[i]
         run.append(b)
         plus = kinds[i] != "total"
-        label = fmt(vals[i], f, plus=plus)
+        label = fmt(vals[i], f, plus=plus and i not in marks)
+        if i in marks:
+            label = marks[i] + label.lstrip("+")
         if kinds[i] == "total" and vals[i] < 0:
             y = min(geom.v(a) + 0.03, bot_lim - lab_h)
             anchor = "top"
@@ -751,12 +774,20 @@ def waterfall(p: Painter, box: Box, ex: dict) -> dict:
         covered = [k for k in range(n) if geom.c(k) + geom.slot() / 2 > x and geom.c(k) - geom.slot() / 2 < x + w]
         y = min(min(geom.v(run[k]), label_tops[k]) for k in covered) - 0.03
         y = max(top_lim + 0.27, y)
-        p.text(Box(x, y - 0.27, w, 0.26), txt, role="annotation", bold=True, color="negative" if wf_delta < 0 else "positive",
+        p.text(Box(x, y - 0.27, w, 0.26), txt, role="annotation", bold=True,
+               color="text" if dc in ("muted", "neutral") else "negative" if wf_delta < 0 else "positive",
                align="right" if x + w >= plot_box.r - 0.01 else "center", anchor="bottom", fit=False, kind="label")
     bw = geom.bar_w()
     for i in range(n - 1):
         y = geom.v(ends[i])
         p.line(geom.c(i) + bw / 2, y, geom.c(i + 1) - bw / 2, y, color="neutral", width=LINES["hairline"], kind="connector")
+    if target:  # v1.8: a reference the bars are measured against ("needed €5.6M"), not a fake total bar
+        yt = geom.v(float(target["value"]) - off)
+        p.line(plot_box.x, yt, plot_box.r, yt, color="text", width=LINES["rule"], dash=True, kind="connector")
+        tl = f"{target.get('label') or 'Target'} {fmt(float(target['value']), f)}"
+        tw = p.text_w(tl, "annotation", bold=True) + 0.1
+        p.text(Box(plot_box.r - tw, max(top_lim, yt - 0.29), tw, 0.26), tl, role="annotation", bold=True, color="text", align="right",
+               anchor="bottom", fit=False, kind="label")
     if truncated:  # truncated axis: draw a break on every total bar so the eye is not misled
         from pptx.enum.shapes import MSO_SHAPE
 
