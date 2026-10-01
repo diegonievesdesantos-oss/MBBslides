@@ -1365,10 +1365,108 @@
         "status": "awaiting human votes — 40 blind pairs built, 0 votes"
       },
       "r2": {
-        "pairs": 40,
+        "evaluators": 1,
+        "comparisons": 38,
+        "challenger_wins": 35,
+        "baseline_wins": 1,
+        "ties": 2,
+        "challenger_preference": 0.972,
+        "challenger_preference_ci95": [
+          0.858,
+          0.995
+        ],
+        "ties_as_half": 0.947,
+        "by_comparison": {
+          "engine-v1.3.3-vs-v1.4": {
+            "comparisons": 38,
+            "challenger_wins": 35,
+            "baseline_wins": 1,
+            "ties": 2,
+            "challenger_preference": 0.972,
+            "challenger_preference_ci95": [
+              0.858,
+              0.995
+            ],
+            "ties_as_half": 0.947
+          }
+        },
+        "score_agreement": {
+          "decisive_votes_with_score_gap": 34,
+          "agree": 33,
+          "rate": 0.971,
+          "ci95": [
+            0.851,
+            0.995
+          ]
+        },
+        "pair_agreement": {
+          "pairs_with_votes": 38,
+          "decisive_pairs": 34,
+          "agree": 33,
+          "disagree": 1,
+          "ties": 4,
+          "rate": 0.971,
+          "ci95": [
+            0.851,
+            0.995
+          ],
+          "by_score_gap": {
+            "|Δ| < 5": {
+              "pairs": 2,
+              "agree": 2,
+              "rate": 1.0,
+              "ci95": [
+                0.342,
+                1.0
+              ]
+            },
+            "5 ≤ |Δ| < 15": {
+              "pairs": 1,
+              "agree": 1,
+              "rate": 1.0,
+              "ci95": [
+                0.207,
+                1.0
+              ]
+            },
+            "|Δ| ≥ 15": {
+              "pairs": 31,
+              "agree": 30,
+              "rate": 0.968,
+              "ci95": [
+                0.838,
+                0.994
+              ]
+            }
+          }
+        },
+        "score_human_correlation": {
+          "method": "Kendall tau-b between score delta (challenger − baseline) and human majority (+1/0/−1), percentile bootstrap 95% CI",
+          "n": 38,
+          "tau_b": 0.143,
+          "ci95": [
+            -0.236,
+            0.428
+          ]
+        },
+        "inter_rater": {
+          "note": "one evaluator: agreement needs ≥2"
+        },
+        "self_consistency": {
+          "repeated_pairs": 2,
+          "consistent": 1
+        },
+        "left_bias": {
+          "left_share": 0.5,
+          "ci95": [
+            0.345,
+            0.655
+          ]
+        },
+        "method": "Preference = challenger wins / decisive votes, Wilson 95% interval (ties excluded; ties-as-half also shown). Agreement: percent agreement and Fleiss' kappa over {baseline, challenger, tie} on pairs rated by ≥2 evaluators. Human preference is an independent signal and is never part of the automatic composition score.",
         "blind": true,
         "used_for_calibration": false,
-        "status": "awaiting human votes — 40 blind pairs built, 0 votes"
+        "status": "votes received"
       }
     }
   },

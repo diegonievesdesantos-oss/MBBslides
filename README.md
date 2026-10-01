@@ -38,7 +38,7 @@ Independent signals, never combined into one number ([why](docs/EVALS.md)). A me
 | **Holdout v2** | sealed, never tuned on, run once per release candidate (26 decks, 158 slides) | overall 91.4 · macro 91.8 · P10 74.5 · weakest kpi_dashboard 71.6 |
 | **Robustness** | small content perturbations of development seeds (78 variants) | median drop 0.0 · P90 drop 0.0 · catastrophic 0 (0%) |
 | **Human r1** | blind A/B votes (`cpe human`) | awaiting human votes — 40 blind pairs built, 0 votes |
-| **Human r2** | blind A/B votes (`cpe human`) | awaiting human votes — 40 blind pairs built, 0 votes |
+| **Human r2** | blind A/B votes (38 votes, 1 evaluators) | challenger preferred 0.97 (95% CI 0.86–0.99) · scorer agrees 0.97 |
 | Holdout v1 (retired) | H01–H05, development-known since v1.3 | last blind result 81.0 (v1.2); engine e3b63e1; later runs (this v1.3 re-run included) are development evidence |
 | Private corporate template — **development data, not a holdout** | brand-ingest understanding of a real corporate template (sanitized) | development data since v1.3 (its v1.2 findings drove the fixes, so it is no longer a holdout): 1 master(s), 54 layouts, 32% classified with confidence ≥ 0.5; font conflict detected; test deck QA passed; agreement with the human brand spec 21/22 |
 

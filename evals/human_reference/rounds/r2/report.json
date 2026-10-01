@@ -1,0 +1,932 @@
+{
+  "round": "r2",
+  "evaluators": 1,
+  "comparisons": 38,
+  "challenger_wins": 35,
+  "baseline_wins": 1,
+  "ties": 2,
+  "challenger_preference": 0.972,
+  "challenger_preference_ci95": [
+    0.858,
+    0.995
+  ],
+  "ties_as_half": 0.947,
+  "by_comparison": {
+    "engine-v1.3.3-vs-v1.4": {
+      "comparisons": 38,
+      "challenger_wins": 35,
+      "baseline_wins": 1,
+      "ties": 2,
+      "challenger_preference": 0.972,
+      "challenger_preference_ci95": [
+        0.858,
+        0.995
+      ],
+      "ties_as_half": 0.947
+    }
+  },
+  "by_archetype": {
+    "comparison": {
+      "comparisons": 7,
+      "challenger_wins": 7,
+      "baseline_wins": 0,
+      "ties": 0,
+      "challenger_preference": 1.0,
+      "challenger_preference_ci95": [
+        0.646,
+        1.0
+      ],
+      "ties_as_half": 1.0
+    },
+    "hierarchy": {
+      "comparisons": 2,
+      "challenger_wins": 1,
+      "baseline_wins": 0,
+      "ties": 1,
+      "challenger_preference": 1.0,
+      "challenger_preference_ci95": [
+        0.207,
+        1.0
+      ],
+      "ties_as_half": 0.75
+    },
+    "kpi_dashboard": {
+      "comparisons": 3,
+      "challenger_wins": 2,
+      "baseline_wins": 1,
+      "ties": 0,
+      "challenger_preference": 0.667,
+      "challenger_preference_ci95": [
+        0.208,
+        0.939
+      ],
+      "ties_as_half": 0.667
+    },
+    "kpi_hero": {
+      "comparisons": 6,
+      "challenger_wins": 5,
+      "baseline_wins": 0,
+      "ties": 1,
+      "challenger_preference": 1.0,
+      "challenger_preference_ci95": [
+        0.566,
+        1.0
+      ],
+      "ties_as_half": 0.917
+    },
+    "process": {
+      "comparisons": 8,
+      "challenger_wins": 8,
+      "baseline_wins": 0,
+      "ties": 0,
+      "challenger_preference": 1.0,
+      "challenger_preference_ci95": [
+        0.676,
+        1.0
+      ],
+      "ties_as_half": 1.0
+    },
+    "roadmap": {
+      "comparisons": 6,
+      "challenger_wins": 6,
+      "baseline_wins": 0,
+      "ties": 0,
+      "challenger_preference": 1.0,
+      "challenger_preference_ci95": [
+        0.61,
+        1.0
+      ],
+      "ties_as_half": 1.0
+    },
+    "text_exhibit": {
+      "comparisons": 6,
+      "challenger_wins": 6,
+      "baseline_wins": 0,
+      "ties": 0,
+      "challenger_preference": 1.0,
+      "challenger_preference_ci95": [
+        0.61,
+        1.0
+      ],
+      "ties_as_half": 1.0
+    }
+  },
+  "score_agreement": {
+    "decisive_votes_with_score_gap": 34,
+    "agree": 33,
+    "rate": 0.971,
+    "ci95": [
+      0.851,
+      0.995
+    ]
+  },
+  "left_bias": {
+    "left_share": 0.5,
+    "ci95": [
+      0.345,
+      0.655
+    ]
+  },
+  "inter_rater": {
+    "note": "one evaluator: agreement needs \u22652"
+  },
+  "self_consistency": {
+    "repeated_pairs": 2,
+    "consistent": 1
+  },
+  "pair_agreement": {
+    "pairs_with_votes": 38,
+    "decisive_pairs": 34,
+    "agree": 33,
+    "disagree": 1,
+    "ties": 4,
+    "rate": 0.971,
+    "ci95": [
+      0.851,
+      0.995
+    ],
+    "by_score_gap": {
+      "|\u0394| < 5": {
+        "pairs": 2,
+        "agree": 2,
+        "rate": 1.0,
+        "ci95": [
+          0.342,
+          1.0
+        ]
+      },
+      "5 \u2264 |\u0394| < 15": {
+        "pairs": 1,
+        "agree": 1,
+        "rate": 1.0,
+        "ci95": [
+          0.207,
+          1.0
+        ]
+      },
+      "|\u0394| \u2265 15": {
+        "pairs": 31,
+        "agree": 30,
+        "rate": 0.968,
+        "ci95": [
+          0.838,
+          0.994
+        ]
+      }
+    }
+  },
+  "score_human_correlation": {
+    "method": "Kendall tau-b between score delta (challenger \u2212 baseline) and human majority (+1/0/\u22121), percentile bootstrap 95% CI",
+    "n": 38,
+    "tau_b": 0.143,
+    "ci95": [
+      -0.236,
+      0.428
+    ]
+  },
+  "controls": {
+    "comparisons": 2,
+    "challenger_wins": 1,
+    "baseline_wins": 0,
+    "ties": 1,
+    "challenger_preference": 1.0,
+    "challenger_preference_ci95": [
+      0.207,
+      1.0
+    ],
+    "ties_as_half": 0.75
+  },
+  "status": {
+    "round": "r2",
+    "created": "2026-10-01",
+    "purpose": "v1.4 validation: v1.3.3 engine (baseline) vs v1.4 engine (challenger) on the sealed holdout v2 decks (never used for tuning), both scored by the v1.4 scorer",
+    "blind": true,
+    "used_for_calibration": false,
+    "status": "awaiting human votes"
+  },
+  "verdicts": [
+    {
+      "pair": "p001",
+      "archetype": "comparison",
+      "deck": "V03_plant_operations",
+      "slide": "v017",
+      "baseline_score": 40.8,
+      "challenger_score": 78.5,
+      "score_delta": 37.7,
+      "votes": 1,
+      "challenger_votes": 1,
+      "baseline_votes": 0,
+      "human_pref": 1,
+      "agreement": "agree",
+      "control": false,
+      "images": {
+        "baseline": "7a1a053af2a9.png",
+        "challenger": "15d2256e48cc.png"
+      }
+    },
+    {
+      "pair": "p002",
+      "archetype": "comparison",
+      "deck": "V13_telco_fibra",
+      "slide": "v076",
+      "baseline_score": 41.7,
+      "challenger_score": 80.5,
+      "score_delta": 38.8,
+      "votes": 1,
+      "challenger_votes": 1,
+      "baseline_votes": 0,
+      "human_pref": 1,
+      "agreement": "agree",
+      "control": false,
+      "images": {
+        "baseline": "9118763d6873.png",
+        "challenger": "7aa9cfd2f2b0.png"
+      }
+    },
+    {
+      "pair": "p003",
+      "archetype": "comparison",
+      "deck": "V08_insurer_transformation",
+      "slide": "v049",
+      "baseline_score": 41.4,
+      "challenger_score": 80.1,
+      "score_delta": 38.7,
+      "votes": 1,
+      "challenger_votes": 1,
+      "baseline_votes": 0,
+      "human_pref": 1,
+      "agreement": "agree",
+      "control": false,
+      "images": {
+        "baseline": "28b4917e3c92.png",
+        "challenger": "c53980339e75.png"
+      }
+    },
+    {
+      "pair": "p004",
+      "archetype": "comparison",
+      "deck": "V19_startup_consejo",
+      "slide": "v113",
+      "baseline_score": 41.8,
+      "challenger_score": 80.8,
+      "score_delta": 39.0,
+      "votes": 1,
+      "challenger_votes": 1,
+      "baseline_votes": 0,
+      "human_pref": 1,
+      "agreement": "agree",
+      "control": false,
+      "images": {
+        "baseline": "5b89cc17a77e.png",
+        "challenger": "afb3b93ca251.png"
+      }
+    },
+    {
+      "pair": "p005",
+      "archetype": "comparison",
+      "deck": "V22_people_attrition",
+      "slide": "v131",
+      "baseline_score": 40.6,
+      "challenger_score": 78.6,
+      "score_delta": 38.0,
+      "votes": 1,
+      "challenger_votes": 1,
+      "baseline_votes": 0,
+      "human_pref": 1,
+      "agreement": "agree",
+      "control": false,
+      "images": {
+        "baseline": "1ad909e0356e.png",
+        "challenger": "9d1c54502268.png"
+      }
+    },
+    {
+      "pair": "p006",
+      "archetype": "comparison",
+      "deck": "V11_last_mile",
+      "slide": "v065",
+      "baseline_score": 40.6,
+      "challenger_score": 78.5,
+      "score_delta": 37.9,
+      "votes": 1,
+      "challenger_votes": 1,
+      "baseline_votes": 0,
+      "human_pref": 1,
+      "agreement": "agree",
+      "control": false,
+      "images": {
+        "baseline": "ef8f29a8bfce.png",
+        "challenger": "ff6a0ad20567.png"
+      }
+    },
+    {
+      "pair": "p007",
+      "archetype": "comparison",
+      "deck": "V15_hoteles",
+      "slide": "v089",
+      "baseline_score": 41.4,
+      "challenger_score": 80.2,
+      "score_delta": 38.8,
+      "votes": 1,
+      "challenger_votes": 1,
+      "baseline_votes": 0,
+      "human_pref": 1,
+      "agreement": "agree",
+      "control": false,
+      "images": {
+        "baseline": "c7bdf2760d08.png",
+        "challenger": "b82b1ac33e52.png"
+      }
+    },
+    {
+      "pair": "p008",
+      "archetype": "process",
+      "deck": "V21_cooperativa_agro",
+      "slide": "v126",
+      "baseline_score": 37.8,
+      "challenger_score": 77.2,
+      "score_delta": 39.4,
+      "votes": 1,
+      "challenger_votes": 1,
+      "baseline_votes": 0,
+      "human_pref": 1,
+      "agreement": "agree",
+      "control": false,
+      "images": {
+        "baseline": "772eca0fc7c4.png",
+        "challenger": "082802f2b849.png"
+      }
+    },
+    {
+      "pair": "p009",
+      "archetype": "process",
+      "deck": "V11_last_mile",
+      "slide": "v064",
+      "baseline_score": 41.0,
+      "challenger_score": 90.0,
+      "score_delta": 49.0,
+      "votes": 1,
+      "challenger_votes": 1,
+      "baseline_votes": 0,
+      "human_pref": 1,
+      "agreement": "agree",
+      "control": false,
+      "images": {
+        "baseline": "465ae620df6b.png",
+        "challenger": "164514ca43de.png"
+      }
+    },
+    {
+      "pair": "p010",
+      "archetype": "process",
+      "deck": "V05_saas_product",
+      "slide": "v026",
+      "baseline_score": 40.0,
+      "challenger_score": 81.4,
+      "score_delta": 41.4,
+      "votes": 1,
+      "challenger_votes": 1,
+      "baseline_votes": 0,
+      "human_pref": 1,
+      "agreement": "agree",
+      "control": false,
+      "images": {
+        "baseline": "a2c6ac13b2d0.png",
+        "challenger": "0bd5a990d8e0.png"
+      }
+    },
+    {
+      "pair": "p011",
+      "archetype": "process",
+      "deck": "V16_auto_supply",
+      "slide": "v095",
+      "baseline_score": 42.5,
+      "challenger_score": 88.6,
+      "score_delta": 46.1,
+      "votes": 1,
+      "challenger_votes": 1,
+      "baseline_votes": 0,
+      "human_pref": 1,
+      "agreement": "agree",
+      "control": false,
+      "images": {
+        "baseline": "f9cef1af96f2.png",
+        "challenger": "02bf93c568ac.png"
+      }
+    },
+    {
+      "pair": "p012",
+      "archetype": "process",
+      "deck": "V03_plant_operations",
+      "slide": "v013",
+      "baseline_score": 39.1,
+      "challenger_score": 81.8,
+      "score_delta": 42.7,
+      "votes": 1,
+      "challenger_votes": 1,
+      "baseline_votes": 0,
+      "human_pref": 1,
+      "agreement": "agree",
+      "control": false,
+      "images": {
+        "baseline": "73b8e5b40d87.png",
+        "challenger": "c0b04e37053a.png"
+      }
+    },
+    {
+      "pair": "p013",
+      "archetype": "process",
+      "deck": "V08_insurer_transformation",
+      "slide": "v045",
+      "baseline_score": 42.6,
+      "challenger_score": 90.6,
+      "score_delta": 48.0,
+      "votes": 1,
+      "challenger_votes": 1,
+      "baseline_votes": 0,
+      "human_pref": 1,
+      "agreement": "agree",
+      "control": false,
+      "images": {
+        "baseline": "d5947b45909d.png",
+        "challenger": "d0cf70c4521d.png"
+      }
+    },
+    {
+      "pair": "p014",
+      "archetype": "process",
+      "deck": "V04_sanidad_listas",
+      "slide": "v022",
+      "baseline_score": 40.7,
+      "challenger_score": 89.5,
+      "score_delta": 48.8,
+      "votes": 1,
+      "challenger_votes": 1,
+      "baseline_votes": 0,
+      "human_pref": 1,
+      "agreement": "agree",
+      "control": false,
+      "images": {
+        "baseline": "6fa5472a9065.png",
+        "challenger": "806b0d4dc386.png"
+      }
+    },
+    {
+      "pair": "p015",
+      "archetype": "kpi_hero",
+      "deck": "V08_insurer_transformation",
+      "slide": "v044",
+      "baseline_score": 48.5,
+      "challenger_score": 97.6,
+      "score_delta": 49.1,
+      "votes": 1,
+      "challenger_votes": 0,
+      "baseline_votes": 0,
+      "human_pref": 0,
+      "agreement": "tie",
+      "control": false,
+      "images": {
+        "baseline": "e72e5dcc9e98.png",
+        "challenger": "dfbe4508f89e.png"
+      }
+    },
+    {
+      "pair": "p016",
+      "archetype": "kpi_hero",
+      "deck": "V13_telco_fibra",
+      "slide": "v074",
+      "baseline_score": 89.8,
+      "challenger_score": 91.3,
+      "score_delta": 1.5,
+      "votes": 1,
+      "challenger_votes": 1,
+      "baseline_votes": 0,
+      "human_pref": 1,
+      "agreement": "agree",
+      "control": false,
+      "images": {
+        "baseline": "333d2f15b9d8.png",
+        "challenger": "844744d185d0.png"
+      }
+    },
+    {
+      "pair": "p017",
+      "archetype": "kpi_hero",
+      "deck": "V17_gran_consumo",
+      "slide": "v098",
+      "baseline_score": 94.9,
+      "challenger_score": 95.5,
+      "score_delta": 0.6,
+      "votes": 1,
+      "challenger_votes": 1,
+      "baseline_votes": 0,
+      "human_pref": 1,
+      "agreement": "tie",
+      "control": false,
+      "images": {
+        "baseline": "fb9d0c5f8536.png",
+        "challenger": "dc52a7c189a3.png"
+      }
+    },
+    {
+      "pair": "p018",
+      "archetype": "kpi_hero",
+      "deck": "V16_auto_supply",
+      "slide": "v094",
+      "baseline_score": 90.4,
+      "challenger_score": 92.1,
+      "score_delta": 1.7,
+      "votes": 1,
+      "challenger_votes": 1,
+      "baseline_votes": 0,
+      "human_pref": 1,
+      "agreement": "agree",
+      "control": false,
+      "images": {
+        "baseline": "1752abd7350c.png",
+        "challenger": "0b51aacd9474.png"
+      }
+    },
+    {
+      "pair": "p019",
+      "archetype": "kpi_hero",
+      "deck": "V04_sanidad_listas",
+      "slide": "v020",
+      "baseline_score": 49.2,
+      "challenger_score": 97.9,
+      "score_delta": 48.7,
+      "votes": 1,
+      "challenger_votes": 1,
+      "baseline_votes": 0,
+      "human_pref": 1,
+      "agreement": "agree",
+      "control": false,
+      "images": {
+        "baseline": "26600b085c09.png",
+        "challenger": "6cf8da7cf9c8.png"
+      }
+    },
+    {
+      "pair": "p020",
+      "archetype": "kpi_hero",
+      "deck": "V03_plant_operations",
+      "slide": "v016",
+      "baseline_score": 70.2,
+      "challenger_score": 99.6,
+      "score_delta": 29.4,
+      "votes": 1,
+      "challenger_votes": 1,
+      "baseline_votes": 0,
+      "human_pref": 1,
+      "agreement": "agree",
+      "control": false,
+      "images": {
+        "baseline": "8e52618fd741.png",
+        "challenger": "5881010eed70.png"
+      }
+    },
+    {
+      "pair": "p021",
+      "archetype": "text_exhibit",
+      "deck": "V15_hoteles",
+      "slide": "v091",
+      "baseline_score": 29.5,
+      "challenger_score": 71.2,
+      "score_delta": 41.7,
+      "votes": 1,
+      "challenger_votes": 1,
+      "baseline_votes": 0,
+      "human_pref": 1,
+      "agreement": "agree",
+      "control": false,
+      "images": {
+        "baseline": "32b120cf7365.png",
+        "challenger": "dd1a2db7a3c0.png"
+      }
+    },
+    {
+      "pair": "p022",
+      "archetype": "text_exhibit",
+      "deck": "V22_people_attrition",
+      "slide": "v130",
+      "baseline_score": 31.6,
+      "challenger_score": 92.7,
+      "score_delta": 61.1,
+      "votes": 1,
+      "challenger_votes": 1,
+      "baseline_votes": 0,
+      "human_pref": 1,
+      "agreement": "agree",
+      "control": false,
+      "images": {
+        "baseline": "4c04533b3387.png",
+        "challenger": "bd088e33968b.png"
+      }
+    },
+    {
+      "pair": "p023",
+      "archetype": "text_exhibit",
+      "deck": "V17_gran_consumo",
+      "slide": "v101",
+      "baseline_score": 33.6,
+      "challenger_score": 95.5,
+      "score_delta": 61.9,
+      "votes": 1,
+      "challenger_votes": 1,
+      "baseline_votes": 0,
+      "human_pref": 1,
+      "agreement": "agree",
+      "control": false,
+      "images": {
+        "baseline": "0b8e413a6531.png",
+        "challenger": "be6f793b4e1c.png"
+      }
+    },
+    {
+      "pair": "p024",
+      "archetype": "text_exhibit",
+      "deck": "V20_bank_core_it",
+      "slide": "v121",
+      "baseline_score": 29.5,
+      "challenger_score": 90.6,
+      "score_delta": 61.1,
+      "votes": 1,
+      "challenger_votes": 1,
+      "baseline_votes": 0,
+      "human_pref": 1,
+      "agreement": "agree",
+      "control": false,
+      "images": {
+        "baseline": "f0a52dcac2a6.png",
+        "challenger": "95920d3312cc.png"
+      }
+    },
+    {
+      "pair": "p025",
+      "archetype": "text_exhibit",
+      "deck": "V12_education_reform",
+      "slide": "v073",
+      "baseline_score": 30.9,
+      "challenger_score": 92.2,
+      "score_delta": 61.3,
+      "votes": 1,
+      "challenger_votes": 1,
+      "baseline_votes": 0,
+      "human_pref": 1,
+      "agreement": "agree",
+      "control": false,
+      "images": {
+        "baseline": "f29fe7d3989d.png",
+        "challenger": "c1d0969f1209.png"
+      }
+    },
+    {
+      "pair": "p026",
+      "archetype": "text_exhibit",
+      "deck": "V05_saas_product",
+      "slide": "v029",
+      "baseline_score": 31.9,
+      "challenger_score": 93.1,
+      "score_delta": 61.2,
+      "votes": 1,
+      "challenger_votes": 1,
+      "baseline_votes": 0,
+      "human_pref": 1,
+      "agreement": "agree",
+      "control": false,
+      "images": {
+        "baseline": "7018b8791374.png",
+        "challenger": "88a6716f4634.png"
+      }
+    },
+    {
+      "pair": "p027",
+      "archetype": "roadmap",
+      "deck": "V13_telco_fibra",
+      "slide": "v078",
+      "baseline_score": 59.4,
+      "challenger_score": 100.0,
+      "score_delta": 40.6,
+      "votes": 1,
+      "challenger_votes": 1,
+      "baseline_votes": 0,
+      "human_pref": 1,
+      "agreement": "agree",
+      "control": false,
+      "images": {
+        "baseline": "8a6599ff3e1b.png",
+        "challenger": "5b5bce5a7efc.png"
+      }
+    },
+    {
+      "pair": "p028",
+      "archetype": "roadmap",
+      "deck": "V03_plant_operations",
+      "slide": "v018",
+      "baseline_score": 59.4,
+      "challenger_score": 100.0,
+      "score_delta": 40.6,
+      "votes": 1,
+      "challenger_votes": 1,
+      "baseline_votes": 0,
+      "human_pref": 1,
+      "agreement": "agree",
+      "control": false,
+      "images": {
+        "baseline": "9b2c71bdcdab.png",
+        "challenger": "5214a3665dae.png"
+      }
+    },
+    {
+      "pair": "p029",
+      "archetype": "roadmap",
+      "deck": "V24_ngo_programme",
+      "slide": "v145",
+      "baseline_score": 59.4,
+      "challenger_score": 100.0,
+      "score_delta": 40.6,
+      "votes": 1,
+      "challenger_votes": 1,
+      "baseline_votes": 0,
+      "human_pref": 1,
+      "agreement": "agree",
+      "control": false,
+      "images": {
+        "baseline": "3f9501aadab7.png",
+        "challenger": "e745deaceb1b.png"
+      }
+    },
+    {
+      "pair": "p030",
+      "archetype": "roadmap",
+      "deck": "V18_water_utility",
+      "slide": "v108",
+      "baseline_score": 59.4,
+      "challenger_score": 100.0,
+      "score_delta": 40.6,
+      "votes": 1,
+      "challenger_votes": 1,
+      "baseline_votes": 0,
+      "human_pref": 1,
+      "agreement": "agree",
+      "control": false,
+      "images": {
+        "baseline": "d884ff925ebb.png",
+        "challenger": "42d6078a3260.png"
+      }
+    },
+    {
+      "pair": "p031",
+      "archetype": "roadmap",
+      "deck": "V05_saas_product",
+      "slide": "v030",
+      "baseline_score": 59.4,
+      "challenger_score": 100.0,
+      "score_delta": 40.6,
+      "votes": 1,
+      "challenger_votes": 1,
+      "baseline_votes": 0,
+      "human_pref": 1,
+      "agreement": "agree",
+      "control": false,
+      "images": {
+        "baseline": "cc07f4654935.png",
+        "challenger": "dac74bc43d29.png"
+      }
+    },
+    {
+      "pair": "p032",
+      "archetype": "kpi_dashboard",
+      "deck": "V05_saas_product",
+      "slide": "v025",
+      "baseline_score": 37.5,
+      "challenger_score": 61.2,
+      "score_delta": 23.7,
+      "votes": 1,
+      "challenger_votes": 1,
+      "baseline_votes": 0,
+      "human_pref": 1,
+      "agreement": "agree",
+      "control": false,
+      "images": {
+        "baseline": "4a19f851332c.png",
+        "challenger": "9dc5d24460b9.png"
+      }
+    },
+    {
+      "pair": "p033",
+      "archetype": "kpi_dashboard",
+      "deck": "V14_cfo_cash",
+      "slide": "v084",
+      "baseline_score": 97.6,
+      "challenger_score": 98.5,
+      "score_delta": 0.9,
+      "votes": 1,
+      "challenger_votes": 0,
+      "baseline_votes": 1,
+      "human_pref": -1,
+      "agreement": "tie",
+      "control": false,
+      "images": {
+        "baseline": "3d8f098b73db.png",
+        "challenger": "ca9500af8499.png"
+      }
+    },
+    {
+      "pair": "p034",
+      "archetype": "kpi_dashboard",
+      "deck": "V02_banco_resultados",
+      "slide": "v008",
+      "baseline_score": 89.7,
+      "challenger_score": 63.5,
+      "score_delta": -26.2,
+      "votes": 1,
+      "challenger_votes": 1,
+      "baseline_votes": 0,
+      "human_pref": 1,
+      "agreement": "disagree",
+      "control": false,
+      "images": {
+        "baseline": "9a224c04c32e.png",
+        "challenger": "d860385a7aa0.png"
+      }
+    },
+    {
+      "pair": "p035",
+      "archetype": "hierarchy",
+      "deck": "V22_people_attrition",
+      "slide": "v132",
+      "baseline_score": 84.5,
+      "challenger_score": 84.5,
+      "score_delta": 0.0,
+      "votes": 1,
+      "challenger_votes": 0,
+      "baseline_votes": 0,
+      "human_pref": 0,
+      "agreement": "tie",
+      "control": true,
+      "images": {
+        "baseline": "16db065462a9.png",
+        "challenger": "df7c701bd5cc.png"
+      }
+    },
+    {
+      "pair": "p036",
+      "archetype": "hierarchy",
+      "deck": "V25_gov_digital",
+      "slide": "v149",
+      "baseline_score": 56.8,
+      "challenger_score": 74.8,
+      "score_delta": 18.0,
+      "votes": 1,
+      "challenger_votes": 1,
+      "baseline_votes": 0,
+      "human_pref": 1,
+      "agreement": "agree",
+      "control": true,
+      "images": {
+        "baseline": "f58294b3e6e6.png",
+        "challenger": "2f96938f52e3.png"
+      }
+    },
+    {
+      "pair": "p037",
+      "archetype": "process",
+      "deck": "V19_startup_consejo",
+      "slide": "v114",
+      "baseline_score": 36.2,
+      "challenger_score": 72.7,
+      "score_delta": 36.5,
+      "votes": 1,
+      "challenger_votes": 1,
+      "baseline_votes": 0,
+      "human_pref": 1,
+      "agreement": "agree",
+      "control": false,
+      "images": {
+        "baseline": "6a0765932914.png",
+        "challenger": "27271b046a6c.png"
+      }
+    },
+    {
+      "pair": "p038",
+      "archetype": "roadmap",
+      "deck": "V08_insurer_transformation",
+      "slide": "v048",
+      "baseline_score": 89.2,
+      "challenger_score": 100.0,
+      "score_delta": 10.8,
+      "votes": 1,
+      "challenger_votes": 1,
+      "baseline_votes": 0,
+      "human_pref": 1,
+      "agreement": "agree",
+      "control": false,
+      "images": {
+        "baseline": "8df68f3b63ec.png",
+        "challenger": "bc4a0dd6275a.png"
+      }
+    }
+  ],
+  "method": "Preference = challenger wins / decisive votes, Wilson 95% interval (ties excluded; ties-as-half also shown). Agreement: percent agreement and Fleiss' kappa over {baseline, challenger, tie} on pairs rated by \u22652 evaluators. Human preference is an independent signal and is never part of the automatic composition score."
+}
