@@ -327,7 +327,7 @@ def check_deck_plan(dp: dict | None, storyline: dict | None, insights: dict, fac
                 if g["status"] == "unsupported":
                     out.append(_issue("error", "UNSUPPORTED_NUMBER", "deck_plan.json", sid, f"headline {g['number']} not grounded in the slide's facts", hard=True))
                 elif g["status"] == "assumption":
-                    conditional = re.search(r"\b(if|assuming|assumes|would|could|si|suponiendo|supondría)\b", h, re.I)
+                    conditional = re.search(r"\b(if|assuming|assumes|would|could|about|around|approximately|estimated|roughly|si|suponiendo|supondría|cerca de|aproximadamente|unos)\b", h, re.I)
                     out.append(_issue("info" if conditional else "warning", "ASSUMPTION_IN_HEADLINE", "deck_plan.json", sid, f"{g['number']} rests on an assumption ({', '.join(g['facts'])}): say so on the slide"))
             codes = {i["code"] for i in lint_headline(h, {"id": sid})[1] if i["level"] == "error"}
             if "HEADLINE_TOPIC" in codes and s.get("priority") != "appendix":
@@ -408,6 +408,44 @@ def factcheck_deck(deck: dict | None, facts: dict) -> list[dict]:
     return out
 
 
+# ── conflicts between sources and critic findings ───────────────────────────────────────────────
+
+def check_conflicts(work: Path, fm: dict | None, used: set[str]) -> list[dict]:
+    from .conflicts import detect_conflicts
+
+    if not fm:
+        return []
+    found = detect_conflicts(fm.get("facts") or [])
+    recorded = _load(work, "fact_conflicts.json") or {}
+    res = {tuple(sorted(x["fact"] for x in c["facts"])): c.get("resolution") for c in recorded.get("conflicts") or []}
+    out = []
+    for c in found:
+        key = tuple(sorted(x["fact"] for x in c["facts"]))
+        if res.get(key):
+            continue
+        touches = used & set(key)
+        desc = f"{c['type']} on {'/'.join(c['measure'])} {c['period']}: " + " vs ".join(f"{x['value']:g} ({x['basis']}, {x['source']})" for x in c["facts"])
+        out.append(_issue("error" if touches else "warning", "FACT_CONFLICT_UNRESOLVED", "fact_conflicts.json", "/".join(key),
+                          desc + (" — the deck uses one of these facts: record which value is used and why" if touches else " — record a resolution")))
+    return out
+
+
+def check_critique(cr: dict | None) -> list[dict]:
+    if cr is None:
+        return [_issue("warning", "CRITIQUE_MISSING", "critique.json", None, "No critic findings recorded (fact checker, partner, red team, editor, data-viz)")]
+    out = []
+    roles = {f.get("critic") for f in cr.get("findings") or []}
+    for role in ("FACT CHECKER", "PARTNER REVIEW", "RED TEAM", "EDITOR", "DATA-VIZ REVIEW"):
+        if role not in roles:
+            out.append(_issue("info", "CRITIC_ROLE_MISSING", "critique.json", role, "no finding recorded for this critic (state 'no finding' explicitly)"))
+    for f in cr.get("findings") or []:
+        if f.get("severity") not in ("high", "medium", "low", "none"):
+            out.append(_issue("warning", "CRITIC_FORMAT", "critique.json", f.get("id"), "severity must be high | medium | low | none"))
+        if f.get("severity") == "high" and not f.get("resolved"):
+            out.append(_issue("error", "CRITIC_UNRESOLVED", "critique.json", f.get("id"), f"unresolved high-severity finding ({f.get('critic')}): {f.get('finding', '')[:100]}"))
+    return out
+
+
 # ── everything ───────────────────────────────────────────────────────────────────────────────────
 
 def check_work(work_dir: str | Path, sources_dir: str | Path | None = None) -> dict:
@@ -429,8 +467,12 @@ def check_work(work_dir: str | Path, sources_dir: str | Path | None = None) -> d
     source_text = " ".join(b["text"] for b in (st or {}).get("blocks", []))
     if sources_dir is None and (work.parent / "sources").exists():
         sources_dir = work.parent / "sources"
+    dp_used = {f for x in ((dp or {}).get("slides") or []) for f in (x.get("facts") or [])}
+    dp_used |= {f for x in insights.values() for f in x.get("facts") or []}
     stages = {
         "project": check_project(project),
+        "conflicts": check_conflicts(work, fm, dp_used),
+        "critique": check_critique(_load(work, "critique.json")),
         "facts": check_facts(fm, Path(sources_dir) if sources_dir else None) + computed_issues,
         "hypotheses": check_hypotheses(hy, facts),
         "insights": check_insights(ins, facts, hyps, source_text),
@@ -445,6 +487,8 @@ def check_work(work_dir: str | Path, sources_dir: str | Path | None = None) -> d
         "storyline_passes": not any(i["level"] == "error" for i in stages["storyline"]),
         "ghost_deck_passes": not any(i["level"] == "error" for i in stages["deck_plan"]),
         "no_unsupported_headlines": not any(i["code"] == "UNSUPPORTED_NUMBER" and i["artifact"] in ("deck_plan.json", "deck.json") for i in issues),
+        "no_unresolved_high_critic_finding": not any(i["code"] == "CRITIC_UNRESOLVED" for i in issues),
+        "no_unresolved_conflict_in_use": not any(i["code"] == "FACT_CONFLICT_UNRESOLVED" and i["level"] == "error" for i in issues),
     }
     return {"protocol": PROTOCOL_VERSION, "status": "blocked" if hard else ("needs_work" if any(i["level"] == "error" for i in issues) else "pass"),
             "stopping_criteria": stop, "counts": {lvl: sum(1 for i in issues if i["level"] == lvl) for lvl in ("error", "warning", "info")},

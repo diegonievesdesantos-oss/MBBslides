@@ -1,6 +1,6 @@
 # Source-to-deck evaluation — margin_recovery
 
-_protocol 1.0_ · run: {"engine": "1.6.0rc1", "reasoning_protocol": "1.0", "model": "Claude (developing session)", "skill": "SKILL.md v1.6 + REASONING_PROTOCOL 1.0", "author": "developing agent"}
+_protocol 1.0_ · run: {"engine": "1.7.0.dev0", "reasoning_protocol": "1.0", "model": "Claude (developing session)", "skill": "SKILL.md v1.6 + REASONING_PROTOCOL 1.0", "author": "developing agent"}
 
 **Factuality (hard gate): PASS** — 0 hard failures 
 
@@ -8,7 +8,7 @@ _protocol 1.0_ · run: {"engine": "1.6.0rc1", "reasoning_protocol": "1.0", "mode
 
 - critical_fact_recall: 1.0
 - critical_facts: 6/6
-- facts: 56
+- facts: 57
 - fabricated_facts: 0
 - fact_precision: 1.0
 - traceable: 1.0
@@ -27,8 +27,8 @@ _protocol 1.0_ · run: {"engine": "1.6.0rc1", "reasoning_protocol": "1.0", "mode
 
 ## storyline
 
-- governing_thought: Gross margin fell 1.9 pp mainly because sales shifted to low-margin electronics; repricing electronics and steering mix recover the 1.5 pp target by 2027 without touching store labour
-- candidates_compared: 3
+- governing_thought: Gross margin fell 1.9 pp mainly because sales shifted to low-margin electronics; repricing and mix steering recover about 1.1 pp, and regaining within-category margins closes the 1.5 pp target by 2027 without touching store labour
+- candidates_compared: 4
 - framework: PDS
 - framework_acceptable: True
 - answer_first: True
@@ -49,14 +49,14 @@ _protocol 1.0_ · run: {"engine": "1.6.0rc1", "reasoning_protocol": "1.0", "mode
 - orphan_slides: 0
 - duplicates: 0
 - unjustified_extra_slides: 0
-- information_economy: {"facts_available": 58, "facts_used": 21, "facts_appendix": 15, "facts_omitted": 22, "slides": 9, "core": 7, "support": 1, "appendix": 1, "note": "omitting facts is expected: decision relevance, not coverage, is the goal"}
+- information_economy: {"facts_available": 63, "facts_used": 25, "facts_appendix": 15, "facts_omitted": 23, "slides": 9, "core": 7, "support": 1, "appendix": 1, "note": "omitting facts is expected: decision relevance, not coverage, is the goal"}
 
 ## headlines
 
 - headlines: 8
 - conclusion_rate: 1.0
 - numbers_proven_rate: 1.0
-- mean_words: 13.0
+- mean_words: 13.9
 
 ## visual intent
 

@@ -5,19 +5,21 @@
     "no_hard_factual_errors": true,
     "storyline_passes": true,
     "ghost_deck_passes": true,
-    "no_unsupported_headlines": true
+    "no_unsupported_headlines": true,
+    "no_unresolved_high_critic_finding": true,
+    "no_unresolved_conflict_in_use": true
   },
   "counts": {
     "error": 0,
     "warning": 0,
-    "info": 3
+    "info": 5
   },
   "hard_failures": 0,
   "information_economy": {
-    "facts_available": 58,
-    "facts_used": 21,
+    "facts_available": 63,
+    "facts_used": 25,
     "facts_appendix": 15,
-    "facts_omitted": 22,
+    "facts_omitted": 23,
     "slides": 9,
     "core": 7,
     "support": 1,
@@ -26,6 +28,14 @@
   },
   "stages": {
     "project": {
+      "errors": 0,
+      "warnings": 0
+    },
+    "conflicts": {
+      "errors": 0,
+      "warnings": 0
+    },
+    "critique": {
       "errors": 0,
       "warnings": 0
     },
@@ -67,6 +77,14 @@
       "level": "info",
       "code": "ASSUMPTION_IN_HEADLINE",
       "artifact": "deck_plan.json",
+      "ref": "s02",
+      "message": "1.1 pp rests on an assumption (C0010): say so on the slide",
+      "hard": false
+    },
+    {
+      "level": "info",
+      "code": "ASSUMPTION_IN_HEADLINE",
+      "artifact": "deck_plan.json",
       "ref": "s07",
       "message": "3 pp rests on an assumption (A001): say so on the slide",
       "hard": false
@@ -77,6 +95,14 @@
       "artifact": "deck_plan.json",
       "ref": "s07",
       "message": "0.6 pp rests on an assumption (C0006): say so on the slide",
+      "hard": false
+    },
+    {
+      "level": "info",
+      "code": "ASSUMPTION_IN_HEADLINE",
+      "artifact": "deck_plan.json",
+      "ref": "s08",
+      "message": "1.1 pp rests on an assumption (C0010): say so on the slide",
       "hard": false
     }
   ]

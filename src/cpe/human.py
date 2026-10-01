@@ -199,6 +199,60 @@ def build_round(out_dir: str | Path, pairs_spec: list[tuple[str, str, str]], n: 
             "by_comparison": {n_: sum(1 for k in key.values() if k["comparison"] == n_) for n_ in comparisons}}
 
 
+def build_text_round(out_dir: str | Path, pairs_spec: list[tuple[str, str, str]], context_dir: str | Path | None = None, repeats: int = 2,
+                     seed: int = 7, kind: str = "storyline", key_out: str | Path | None = None, purpose: str = "") -> dict:
+    """Blind A/B of REASONING, before any rendering (v1.7): two storylines (or two deck outlines) of the
+    same case, as text. pairs_spec: [(comparison, dir_A_baseline, dir_B_challenger)]; each dir holds
+    <case>.md; `context_dir` may hold <case>.md with the business question and a short source summary.
+    Same blinding, private key and voting package as slide rounds."""
+    out = Path(out_dir)
+    if (out / "votes").exists() and any((out / "votes").iterdir()):
+        raise SystemExit(f"{out} already has votes: build a new round instead of overwriting one")
+    rng = random.Random(seed)
+    (out / "txt").mkdir(parents=True, exist_ok=True)
+    (out / "votes").mkdir(exist_ok=True)
+    pairs, key = [], {}
+    for comp, a_dir, b_dir in pairs_spec:
+        for fa in sorted(Path(a_dir).glob("*.md")):
+            fb = Path(b_dir) / fa.name
+            if not fb.exists() or _read(fa).strip() == _read(fb).strip():
+                continue
+            names = {}
+            for role, f in (("baseline", fa), ("challenger", fb)):
+                nm = secrets.token_hex(6) + ".md"
+                _write(out / "txt" / nm, _read(f))
+                names[role] = nm
+            ctx = None
+            if context_dir and (Path(context_dir) / fa.name).exists():
+                ctx = secrets.token_hex(6) + ".md"
+                _write(out / "txt" / ctx, _read(Path(context_dir) / fa.name))
+            a, b = names["baseline"], names["challenger"]
+            if rng.random() < 0.5:
+                a, b = b, a
+            pid = f"p{len(pairs) + 1:03d}"
+            pairs.append({"id": pid, "images": [a, b], **({"context": ctx} if ctx else {})})
+            key[pid] = {"comparison": comp, "deck": fa.stem, "slide": kind, "baseline": names["baseline"], "challenger": names["challenger"],
+                        "archetype": kind, "baseline_score": None, "challenger_score": None, "control": False}
+    for j, src in enumerate(rng.sample(pairs, min(repeats, len(pairs)))):
+        pid = f"r{j + 1:03d}"
+        pairs.append({**src, "id": pid, "images": list(reversed(src["images"]))})
+        key[pid] = {**key[src["id"]], "repeat_of": src["id"]}
+    q = {"storyline": "Which storyline would you take to the client? Judge the answer, the logic, the prioritisation and how useful it is for the decision — not the wording.",
+         "outline": "Which deck outline would you take to the client? Judge the argument the headlines make, what is included and what is left out — not the wording."}
+    meta = {"created": time.strftime("%Y-%m-%d"), "pairs": len(pairs), "kind": "text", "instructions": q.get(kind, q["storyline"])}
+    _write(out / "pairs.json", json.dumps({"meta": meta, "pairs": pairs}, indent=2))
+    key_doc = json.dumps(key, indent=2)
+    kp = Path(key_out) if key_out else default_key_path(out)
+    kp.parent.mkdir(parents=True, exist_ok=True)
+    _write(kp, key_doc)
+    _write(kp.parent / "PURPOSE.txt", purpose + "\n")
+    _write(out / "key.sha256", hashlib.sha256(key_doc.encode("utf-8")).hexdigest() + "  key.json\n")
+    _write(out / "index.html", PAGE)
+    write_status(out, {"round": out.name, "created": meta["created"], "purpose": f"blind A/B of {kind}s", "blind": True, "used_for_calibration": False,
+                       "status": "awaiting human votes", "key": "private"})
+    return {"pairs": len(pairs), "key": str(kp)}
+
+
 def close_round(round_dir: str | Path, key: str | Path | None = None) -> dict:
     """End voting and reveal the key into the round (after which the round is no longer blind
     for anyone who reads the repository)."""
@@ -261,7 +315,7 @@ def package_round(round_dir: str | Path, out_zip: str | Path) -> dict:
     import zipfile
 
     rd = Path(round_dir)
-    files = [rd / "pairs.json", rd / "index.html", *sorted((rd / "img").glob("*.png"))]
+    files = [rd / "pairs.json", rd / "index.html", *sorted((rd / "img").glob("*.png")), *sorted((rd / "txt").glob("*.md"))]
     out = Path(out_zip)
     out.parent.mkdir(parents=True, exist_ok=True)
     server = (Path(__file__).parent / "vote_server.py").read_text(encoding="utf-8")
@@ -274,7 +328,7 @@ def package_round(round_dir: str | Path, out_zip: str | Path) -> dict:
         z.writestr(f"{rd.name}/LEEME_README.txt", PACKAGE_README)
     names = zipfile.ZipFile(out).namelist()
     assert not any(n.endswith(("key.json", "key.sha256", "STATUS.json", "PURPOSE.txt", "report.json", "report.md")) for n in names)
-    return {"zip": str(out), "files": len(names), "images": len(files) - 2}
+    return {"zip": str(out), "files": len(names), "images": len([f for f in files if f.suffix == ".png"]), "texts": len([f for f in files if f.suffix == ".md"])}
 
 
 PACKAGE_README = """Blind slide comparison — voting package / Paquete de votación
@@ -329,11 +383,11 @@ def serve(round_dir: str | Path, port: int = 8765, host: str = "127.0.0.1") -> N
             if u.path == "/state":
                 e = (parse_qs(u.query).get("evaluator") or [""])[0]
                 return self._send(200, json.dumps({"done": done_pairs(root, e) if _valid_evaluator(e) else []}))
-            if u.path.startswith("/img/"):
-                name = u.path[5:]
-                if "/" in name or ".." in name or not (root / "img" / name).exists():
+            if u.path.startswith(("/img/", "/txt/")):
+                folder, name = u.path[1:4], u.path[5:]
+                if "/" in name or ".." in name or not (root / folder / name).exists():
                     return self._send(404, "{}")
-                return self._send(200, (root / "img" / name).read_bytes(), "image/png")
+                return self._send(200, (root / folder / name).read_bytes(), "image/png" if folder == "img" else "text/plain; charset=utf-8")
             return self._send(404, "{}")  # key.json and votes/ are never served
 
         def do_POST(self):
@@ -671,6 +725,8 @@ figure:hover{border-color:var(--acc)}figure img{width:100%;display:block;border:
 figcaption{text-align:center;font-weight:600;padding-top:6px}
 .bar{display:flex;gap:12px;justify-content:center;margin:16px 0}button{font:inherit;padding:10px 22px;border-radius:6px;border:1px solid var(--line);background:var(--card);color:var(--fg);cursor:pointer}
 button:hover{border-color:var(--acc)}kbd{border:1px solid var(--line);border-radius:4px;padding:0 5px;font-size:12px}
+.txt{white-space:pre-wrap;font:14px/1.45 system-ui,sans-serif;margin:0;padding:12px;max-height:70vh;overflow:auto;text-align:left}
+.ctx{border:1px dashed var(--line);border-radius:8px;margin-bottom:12px;max-height:30vh}
 progress{width:220px}.done{text-align:center;padding:60px 16px}input{font:inherit;padding:6px 8px;border:1px solid var(--line);border-radius:6px;background:var(--card);color:var(--fg)}
 </style></head><body>
 <header><strong>Blind slide comparison</strong><span id="who"></span><span><progress id="prog" value="0" max="1"></progress> <span id="count"></span></span></header>
@@ -690,11 +746,14 @@ const st=await (await fetch('state?evaluator='+encodeURIComponent(ev))).json();c
 order=shuffle(data.pairs.map(p=>({...p,images:(r()<0.5?[...p.images]:[...p.images].reverse())})),r).filter(p=>!done.has(p.id));i=0;show()}
 function show(){const total=data.pairs.length,left=order.length-i;document.getElementById('prog').max=total;document.getElementById('prog').value=total-left;
 document.getElementById('count').textContent=(total-left)+' / '+total;if(i>=order.length){app.innerHTML='<div class="done"><h2>Done — thank you.</h2><p>You can close this page.</p></div>';return}
-const p=order[i];app.innerHTML=`<p class="q">${data.meta.instructions}</p><div class="pair">
-<figure data-c="left"><img src="img/${p.images[0]}" alt="Slide A"><figcaption>A <kbd>←</kbd> <kbd>1</kbd></figcaption></figure>
-<figure data-c="right"><img src="img/${p.images[1]}" alt="Slide B"><figcaption>B <kbd>→</kbd> <kbd>2</kbd></figcaption></figure></div>
+const p=order[i];const txt=data.meta.kind==='text';
+const cell=(n,k)=>txt?`<pre class="txt" data-src="txt/${n}">…</pre>`:`<img src="img/${n}" alt="Slide ${k}">`;
+app.innerHTML=`<p class="q">${data.meta.instructions}</p>${txt&&p.context?'<pre class="txt ctx" data-src="txt/'+p.context+'">…</pre>':''}<div class="pair">
+<figure data-c="left">${cell(p.images[0],'A')}<figcaption>A <kbd>←</kbd> <kbd>1</kbd></figcaption></figure>
+<figure data-c="right">${cell(p.images[1],'B')}<figcaption>B <kbd>→</kbd> <kbd>2</kbd></figcaption></figure></div>
 <div class="bar"><button data-c="left">A is better</button><button data-c="tie">Tie <kbd>T</kbd> <kbd>↓</kbd></button><button data-c="right">B is better</button></div>`;
-app.querySelectorAll('[data-c]').forEach(el=>el.onclick=()=>vote(el.dataset.c));shownAt=performance.now()}
+app.querySelectorAll('[data-c]').forEach(el=>el.onclick=()=>vote(el.dataset.c));
+app.querySelectorAll('pre[data-src]').forEach(el=>fetch(el.dataset.src).then(r=>r.text()).then(t=>{el.textContent=t}));shownAt=performance.now()}
 let busy=false;async function vote(c){if(busy||i>=order.length)return;busy=true;const p=order[i];
 const body={evaluator:ev,pair:p.id,left:p.images[0],right:p.images[1],choice:c,ms:Math.round(performance.now()-shownAt)};
 try{const r=await fetch('vote',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});if(r.ok){i++;show()}else alert('Vote not saved: '+r.status)}

@@ -2,7 +2,7 @@
   "protocol": "1.0",
   "case": "margin_recovery",
   "run": {
-    "engine": "1.6.0rc1",
+    "engine": "1.7.0.dev0",
     "reasoning_protocol": "1.0",
     "model": "Claude (developing session)",
     "skill": "SKILL.md v1.6 + REASONING_PROTOCOL 1.0",
@@ -16,7 +16,7 @@
   "fact_grounding": {
     "critical_fact_recall": 1.0,
     "critical_facts": "6/6",
-    "facts": 56,
+    "facts": 57,
     "fabricated_facts": 0,
     "fact_precision": 1.0,
     "traceable": 1.0,
@@ -37,8 +37,8 @@
     "with_decision_relevance": 6
   },
   "storyline": {
-    "governing_thought": "Gross margin fell 1.9 pp mainly because sales shifted to low-margin electronics; repricing electronics and steering mix recover the 1.5 pp target by 2027 without touching store labour",
-    "candidates_compared": 3,
+    "governing_thought": "Gross margin fell 1.9 pp mainly because sales shifted to low-margin electronics; repricing and mix steering recover about 1.1 pp, and regaining within-category margins closes the 1.5 pp target by 2027 without touching store labour",
+    "candidates_compared": 4,
     "framework": "PDS",
     "framework_acceptable": true,
     "answer_first": true,
@@ -59,10 +59,10 @@
     "duplicates": 0,
     "unjustified_extra_slides": 0,
     "information_economy": {
-      "facts_available": 58,
-      "facts_used": 21,
+      "facts_available": 63,
+      "facts_used": 25,
       "facts_appendix": 15,
-      "facts_omitted": 22,
+      "facts_omitted": 23,
       "slides": 9,
       "core": 7,
       "support": 1,
@@ -74,7 +74,7 @@
     "headlines": 8,
     "conclusion_rate": 1.0,
     "numbers_proven_rate": 1.0,
-    "mean_words": 13.0
+    "mean_words": 13.9
   },
   "visual_intent": {
     "slides_with_intent": 8,

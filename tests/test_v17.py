@@ -115,8 +115,10 @@ def test_assumptions_are_flagged_not_hidden(work):
         next(x for x in d["slides"] if x["id"] == "s07")["headline"] = "Repricing electronics adds 3 pp there and 0.6 pp to the group"
     _edit(work, "deck_plan.json", plain)
     r = checks.check_work(work, CASE / "sources")
-    w = [i for i in r["issues"] if i["code"] == "ASSUMPTION_IN_HEADLINE"]
-    assert w and all(i["level"] == "warning" for i in w) and not any(i["hard"] for i in w)
+    w = [i for i in r["issues"] if i["code"] == "ASSUMPTION_IN_HEADLINE" and i["ref"] == "s07"]
+    assert w and all(i["level"] == "warning" for i in w) and not any(i["hard"] for i in w)  # unhedged → warning
+    hedged = [i for i in r["issues"] if i["code"] == "ASSUMPTION_IN_HEADLINE" and i["ref"] == "s08"]
+    assert hedged and all(i["level"] == "info" for i in hedged)  # "about 1.1 pp" is stated as an estimate
 
 
 def test_storyline_and_architecture_quality_checks(work):
@@ -182,3 +184,56 @@ def test_reasoning_protocol_is_versioned():
     assert "development run — NOT evidence" in (RUN / "RUN.json").read_text()
     for d in ("development", "sealed", "external"):
         assert (ROOT / "evals" / "source_to_deck" / d).is_dir()
+
+
+def test_conflicts_must_be_resolved_when_used(work):
+    (work / "fact_conflicts.json").unlink()
+    r = checks.check_work(work, CASE / "sources")
+    bad = [i for i in r["issues"] if i["code"] == "FACT_CONFLICT_UNRESOLVED"]
+    assert bad and bad[0]["level"] == "error" and "forecast_vs_actual" in bad[0]["message"]  # €1,500M forecast vs €1,460M actual
+    assert not r["stopping_criteria"]["no_unresolved_conflict_in_use"]
+
+
+def test_unresolved_high_critic_finding_stops_the_loop(work):
+    _edit(work, "critique.json", lambda d: d["findings"][0].update(resolved=False))
+    r = checks.check_work(work, CASE / "sources")
+    assert "CRITIC_UNRESOLVED" in _codes(r) and not r["stopping_criteria"]["no_unresolved_high_critic_finding"]
+    (work / "critique.json").unlink()
+    assert "CRITIQUE_MISSING" in _codes(checks.check_work(work, CASE / "sources"))
+
+
+def test_blind_storyline_ab_round(tmp_path):
+    from cpe import human
+
+    a, b, ctx = tmp_path / "a", tmp_path / "b", tmp_path / "ctx"
+    for d in (a, b, ctx):
+        d.mkdir()
+    for case in ("c1", "c2", "c3"):
+        (a / f"{case}.md").write_text(f"GT v1.6 agent: {case}\n- K1\n- K2")
+        (b / f"{case}.md").write_text(f"GT v1.7 agent: {case}\n- K1'\n- K2'\n- K3'")
+        (ctx / f"{case}.md").write_text(f"Question for {case}?")
+    rd, kp = tmp_path / "s1", tmp_path / "keys" / "s1" / "key.json"
+    r = human.build_text_round(rd, [("agent-1.6->agent-1.7", str(a), str(b))], context_dir=ctx, repeats=1, key_out=kp)
+    assert r["pairs"] == 4 and kp.exists() and not (rd / "key.json").exists()
+    bundle = (rd / "pairs.json").read_text() + (rd / "STATUS.json").read_text()
+    assert "1.6" not in bundle and "1.7" not in bundle and "agent" not in bundle
+    pairs = json.loads((rd / "pairs.json").read_text())
+    assert pairs["meta"]["kind"] == "text" and all("context" in p for p in pairs["pairs"])
+    for p in pairs["pairs"]:
+        human.record_vote(rd, {"evaluator": "ana", "pair": p["id"], "left": p["images"][0], "right": p["images"][1], "choice": "left"})
+    rep = human.report(rd, kp)
+    assert rep["comparisons"] == 3 and rep["by_archetype"].keys() == {"storyline"}
+    z = human.package_round(rd, tmp_path / "s1.zip")
+    assert z["texts"] == 3 * 3 and z["images"] == 0  # A, B and context per case
+
+
+def test_fact_model_on_spanish_excel_case():
+    case = ROOT / "evals" / "source_to_deck" / "development" / "churn_es"
+    fm = facts.build_fact_model(sorted((case / "sources").glob("*")))
+    cli = next(f for f in fm["facts"] if f["claim"].startswith("Particulares — Clientes 2025"))
+    assert cli["values"][0]["unit"] == "" and cli["source"]["sheet"] == "Clientes" and cli["source"]["range"] == "C2"  # % of a neighbour column does not spread
+    ing = next(f for f in fm["facts"] if f["claim"].startswith("Particulares — Ingresos 2025"))
+    assert ing["values"][0]["unit"] == "EUR_M" and ing["source"]["sheet"] == "Ingresos"  # "M€"
+    txt = next(f for f in fm["facts"] if "resolución" in f["claim"])
+    assert [v["value"] for v in txt["values"]] == [2.1, 4.6]  # Spanish decimal comma
+    assert next(f for f in fm["facts"] if "30.000" in f["claim"])["values"][0]["value"] == 30000  # Spanish thousands

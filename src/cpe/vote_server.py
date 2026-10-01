@@ -65,12 +65,12 @@ class H(BaseHTTPRequestHandler):
         if u.path == "/state":
             e = (parse_qs(u.query).get("evaluator") or [""])[0]
             return self._send(200, json.dumps({"done": _done(e) if _ok_id(e) else []}))
-        if u.path.startswith("/img/"):
-            name = u.path[5:]
-            f = ROOT / "img" / name
+        if u.path.startswith(("/img/", "/txt/")):
+            folder, name = u.path[1:4], u.path[5:]
+            f = ROOT / folder / name
             if "/" in name or ".." in name or not f.exists():
                 return self._send(404, "{}")
-            return self._send(200, f.read_bytes(), "image/png")
+            return self._send(200, f.read_bytes(), "image/png" if folder == "img" else "text/plain; charset=utf-8")
         return self._send(404, "{}")
 
     def do_POST(self):

@@ -1,0 +1,28 @@
+{
+  "protocol": "1.0",
+  "conflicts": [
+    {
+      "id": "X001",
+      "type": "forecast_vs_actual",
+      "measure": [
+        "revenue"
+      ],
+      "period": "FY2025",
+      "facts": [
+        {
+          "fact": "F0041",
+          "value": 1460,
+          "basis": "actual",
+          "source": "pnl_by_category.csv"
+        },
+        {
+          "fact": "F0049",
+          "value": 1500,
+          "basis": "estimate",
+          "source": "meeting_notes.md"
+        }
+      ],
+      "resolution": "Use the FY2025 actual (F0041, management accounts). €1,500M is the January forecast; it is not used in the deck."
+    }
+  ]
+}

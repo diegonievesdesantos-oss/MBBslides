@@ -1,0 +1,75 @@
+{
+  "protocol": "1.0",
+  "findings": [
+    {
+      "id": "RT1",
+      "critic": "RED TEAM",
+      "finding": "The governing thought promised the full 1.5 pp from repricing and mix steering, but the sized levers add up to about 1.1 pp (0.6 + 0.5); 0.4 pp was unexplained",
+      "artifact": "storyline.json",
+      "ref": "governing_thought",
+      "severity": "high",
+      "action": "Size mix steering (A002, C0009), state the 0.4 pp gap and how it closes (within-category margins)",
+      "resolved": true
+    },
+    {
+      "id": "PR1",
+      "critic": "PARTNER REVIEW",
+      "finding": "The ask is clear (approve the plan) but both levers rest on assumptions the board cannot check",
+      "artifact": "deck.json",
+      "ref": "s08",
+      "severity": "medium",
+      "action": "Name the assumptions and their owners on the decision slide",
+      "resolved": true
+    },
+    {
+      "id": "FC1",
+      "critic": "FACT CHECKER",
+      "finding": "The bridge showed −1.4 while the headline said 1.45 pp",
+      "artifact": "deck.json",
+      "ref": "s04",
+      "severity": "medium",
+      "action": "State 1.4 pp everywhere (computed 1.45 at the source's one-decimal precision)",
+      "resolved": true
+    },
+    {
+      "id": "FC2",
+      "critic": "FACT CHECKER",
+      "finding": "€1,500M FY2025 revenue in the notes is a January forecast, not the actual (conflict X001)",
+      "artifact": "fact_conflicts.json",
+      "ref": "X001",
+      "severity": "high",
+      "action": "Use the actual €1,460M; record the resolution",
+      "resolved": true
+    },
+    {
+      "id": "RT2",
+      "critic": "RED TEAM",
+      "finding": "Within-category erosion (0.45 pp) is mostly apparel and grocery; the plan assumes it can be regained without a lever for it",
+      "artifact": "insights.json",
+      "ref": "I6",
+      "severity": "medium",
+      "action": "Add a category-margin lever in the next iteration (e.g. apparel markdowns)",
+      "resolved": false
+    },
+    {
+      "id": "ED1",
+      "critic": "EDITOR",
+      "finding": "s03 and s05 could look redundant; kept: s03 kills the volume story, s05 locates the mix shift",
+      "artifact": "deck_plan.json",
+      "ref": "s03/s05",
+      "severity": "low",
+      "action": "none",
+      "resolved": true
+    },
+    {
+      "id": "DV1",
+      "critic": "DATA-VIZ REVIEW",
+      "finding": "s05 shows the electronics share as two bars; a 100% stacked bar of all categories would show where the mix moved",
+      "artifact": "deck.json",
+      "ref": "s05",
+      "severity": "medium",
+      "action": "Switch to a 100% stacked bar in the next iteration",
+      "resolved": false
+    }
+  ]
+}

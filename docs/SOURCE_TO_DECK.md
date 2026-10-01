@@ -31,8 +31,25 @@ Any case used to change the engine, the checks, the protocol or the skill become
 for later versions. A run records `reasoning_protocol`, the engine version, the agent/model and the
 skill version (`--model`, `--skill`), so a reasoning result is reproducible.
 
-## Human evaluation of reasoning (planned)
+## Human evaluation of reasoning
 
-The blind A/B tool is reused for **storylines** and **deck plans** before rendering: reviewers see
-the business question, a short source summary and two storylines (or two outlines) and answer
-"which would you take to the client?" — separating reasoning quality from visual quality.
+The blind A/B tool is reused for **storylines** and **deck outlines** before rendering: reviewers
+see the business question and a short source summary, then two storylines (or two outlines), and
+answer "which would you take to the client?" — separating reasoning quality from visual quality.
+
+```bash
+scripts/cpe human build-text -o evals/human_reference/rounds/s1 --kind storyline \
+  --pair "agentA->agentB=runs_A/storylines,runs_B/storylines" --context cases/context
+scripts/cpe human package evals/human_reference/rounds/s1 -o s1_voting.zip
+```
+
+Same blinding, private key, voting package, per-rater and pooled statistics as slide rounds. No
+storyline round exists yet: it needs two systems (e.g. agent with protocol 1.0 vs without) run
+on cases that are not development data.
+
+## Conflicts and critics
+
+`cpe reason facts` writes `fact_conflicts.json` (same measure and period stated differently,
+forecast vs actual, value mismatch); the agent records a resolution for each. An unresolved
+conflict touching a fact the deck uses is an error. Critic findings go to `critique.json`; an
+unresolved high-severity finding stops the loop.

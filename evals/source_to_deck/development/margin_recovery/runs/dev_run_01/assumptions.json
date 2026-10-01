@@ -11,6 +11,18 @@
       ],
       "rationale": "Pricing team: prices 6% below competitor on top 200 references (F0050); half assumed to convert into margin",
       "owner": "to validate with the pricing team"
+    },
+    {
+      "id": "A002",
+      "statement": "Electronics is steered back to 17% of sales by 2027 (range, placement and promotion), at FY2025 margins",
+      "values": [
+        {
+          "value": 17,
+          "unit": "PCT"
+        }
+      ],
+      "rationale": "Between the FY2024 (13.2%) and FY2025 (19.9%) shares; keeps electronics the fastest-growing category",
+      "owner": "to validate with category management"
     }
   ]
 }

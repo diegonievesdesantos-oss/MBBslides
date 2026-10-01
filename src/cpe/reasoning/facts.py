@@ -113,7 +113,9 @@ def _table_facts(t: dict, next_id) -> list[dict]:
     numeric = set(t["numeric_columns"])
     label_cols = [j for j in range(len(header)) if j not in numeric]
     sheet = t["loc"].replace("sheet", "").strip() or None
-    table_unit = detect_unit(" ".join(header))
+    # a table-wide unit only when the LABEL column header states it ("Line (€M)"); a unit in one
+    # value column ("Churn 2025 (%)") never spreads to its neighbours (found by the churn_es case)
+    table_unit = detect_unit(header[label_cols[0]]) if label_cols else ""
     for i, row in enumerate(t["rows"]):
         label = " · ".join(str(row[j]) for j in label_cols if j < len(row) and str(row[j]).strip()) or f"row {i + 2}"
         cells = {}
@@ -192,5 +194,10 @@ def write_fact_model(sources_dir: str | Path, work_dir: str | Path) -> dict:
     fm = build_fact_model(paths)
     blocks = fm.pop("blocks")
     (work / "facts.json").write_text(json.dumps(fm, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    from .conflicts import detect_conflicts
+
+    cf = work / "fact_conflicts.json"
+    if not cf.exists():  # never overwrite the agent's resolutions
+        cf.write_text(json.dumps({"protocol": PROTOCOL_VERSION, "conflicts": detect_conflicts(fm["facts"])}, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     (work / "source_text.json").write_text(json.dumps({"protocol": PROTOCOL_VERSION, "blocks": blocks}, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     return fm

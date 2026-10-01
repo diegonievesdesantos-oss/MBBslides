@@ -2,7 +2,7 @@
   "insights": [
     {
       "id": "I1",
-      "statement": "Mix explains 1.45 pp of the 1.9 pp gross-margin decline: electronics rose from 13.2% to 19.9% of sales at an 11.5% margin",
+      "statement": "Mix explains 1.4 pp of the 1.9 pp gross-margin decline: electronics rose from 13.2% to 19.9% of sales at an 11.5% margin",
       "facts": [
         "C0004",
         "F0045",
@@ -78,18 +78,24 @@
     },
     {
       "id": "I6",
-      "statement": "The 1.5 pp target by 2027 needs electronics repricing plus mix steering; store labour stays out of scope",
+      "statement": "Repricing electronics (0.6 pp) and steering it back to 17% of sales (0.5 pp) recover about 1.1 pp; the remaining 0.4 pp of the 1.5 pp target must come from regaining within-category margins (0.45 pp lost in FY2025)",
       "facts": [
-        "F0048",
         "C0006",
-        "C0004"
+        "C0009",
+        "C0010",
+        "C0011",
+        "C0005",
+        "F0048",
+        "A001",
+        "A002"
       ],
       "hypotheses": [
         "H2",
         "H5"
       ],
       "materiality": "high",
-      "decision_relevance": "Defines the plan the board is asked to approve"
+      "decision_relevance": "Defines the plan the board is asked to approve",
+      "caveat": "0.6 pp and 0.5 pp rest on assumptions A001 and A002"
     }
   ]
 }

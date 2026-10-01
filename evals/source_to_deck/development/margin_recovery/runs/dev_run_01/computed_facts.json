@@ -38,25 +38,25 @@
     },
     {
       "id": "C0004",
-      "claim": "Mix effect on group gross margin FY2024\u2192FY2025",
+      "claim": "Mix effect on group gross margin FY2024→FY2025",
       "formula": "F0042 - C0003",
       "values": [
         {
-          "value": 1.45,
+          "value": 1.4,
           "unit": "PP",
-          "period": "FY2024\u2192FY2025"
+          "period": "FY2024→FY2025"
         }
       ]
     },
     {
       "id": "C0005",
-      "claim": "Within-category margin effect FY2024\u2192FY2025",
+      "claim": "Within-category margin effect FY2024→FY2025",
       "formula": "C0003 - F0043",
       "values": [
         {
           "value": 0.45,
           "unit": "PP",
-          "period": "FY2024\u2192FY2025"
+          "period": "FY2024→FY2025"
         }
       ]
     },
@@ -81,6 +81,51 @@
           "value": 14.9,
           "unit": "PP",
           "period": "FY2025"
+        }
+      ]
+    },
+    {
+      "id": "C0008",
+      "claim": "Gross margin of the portfolio excluding electronics FY2025",
+      "formula": "(F0041*F0043 - F0029*F0031) / (F0041 - F0029)",
+      "values": [
+        {
+          "value": 30.1,
+          "unit": "PCT",
+          "period": "FY2025"
+        }
+      ]
+    },
+    {
+      "id": "C0009",
+      "claim": "Group margin gain from steering electronics back to 17% of sales (assumption A002)",
+      "formula": "(C0002 - A002) * (C0008 - F0031) / 100",
+      "values": [
+        {
+          "value": 0.54,
+          "unit": "PP"
+        }
+      ]
+    },
+    {
+      "id": "C0010",
+      "claim": "Group margin recovered by repricing and mix steering",
+      "formula": "C0006 + C0009",
+      "values": [
+        {
+          "value": 1.1,
+          "unit": "PP"
+        }
+      ]
+    },
+    {
+      "id": "C0011",
+      "claim": "Remaining gap to the 1.5 pp target after repricing and mix steering",
+      "formula": "F0048 - C0010",
+      "values": [
+        {
+          "value": 0.4,
+          "unit": "PP"
         }
       ]
     }

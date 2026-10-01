@@ -11,7 +11,7 @@
       "id": "s02",
       "priority": "core",
       "role": "exec_summary",
-      "headline": "Gross margin fell 1.9 pp mainly on electronics mix; repricing and mix steering recover 1.5 pp by 2027",
+      "headline": "Gross margin fell 1.9 pp mainly on electronics mix; repricing and mix steering recover about 1.1 pp of the 1.5 pp target",
       "insights": [
         "I1",
         "I5",
@@ -43,7 +43,7 @@
       "id": "s04",
       "priority": "core",
       "key_line": "K1",
-      "headline": "Mix explains 1.45 pp of the 1.9 pp gross-margin decline",
+      "headline": "Mix explains 1.4 pp of the 1.9 pp gross-margin decline",
       "facts": [
         "C0004",
         "C0005",
@@ -116,9 +116,11 @@
       "id": "s08",
       "priority": "core",
       "key_line": "K3",
-      "headline": "Repricing electronics and steering mix recover 1.5 pp by 2027 without touching store labour",
+      "headline": "Repricing and mix steering recover about 1.1 pp; regaining within-category margins closes the gap to 1.5 pp",
       "facts": [
-        "F0048"
+        "F0048",
+        "C0010",
+        "C0011"
       ],
       "insights": [
         "I6"

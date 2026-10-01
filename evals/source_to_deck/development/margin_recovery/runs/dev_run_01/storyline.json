@@ -3,6 +3,23 @@
   "framework_rationale": "The question asks what drives the decline and which actions fix it: problem, diagnosis, solution.",
   "candidates": [
     {
+      "text": "Gross margin fell 1.9 pp mainly because sales shifted to low-margin electronics; repricing and mix steering recover about 1.1 pp, and regaining within-category margins closes the 1.5 pp target by 2027 without touching store labour",
+      "scores": {
+        "answers_question": 2,
+        "supported": 2,
+        "specific": 2,
+        "decision_oriented": 2,
+        "non_trivial": 2,
+        "coverage": 2
+      },
+      "insights": [
+        "I1",
+        "I5",
+        "I6"
+      ],
+      "note": "revised after RED TEAM finding RT1: the first version claimed the full 1.5 pp from two levers that size to about 1.1 pp"
+    },
+    {
       "text": "Gross margin fell 1.9 pp mainly because sales shifted to low-margin electronics; repricing electronics and steering mix recover the 1.5 pp target by 2027 without touching store labour",
       "scores": {
         "answers_question": 2,
@@ -16,7 +33,8 @@
         "I1",
         "I5",
         "I6"
-      ]
+      ],
+      "rejected_because": "overclaims: the two levers size to about 1.1 pp, not 1.5 pp (RED TEAM RT1)"
     },
     {
       "text": "Margin is under pressure from volume and costs; broad cost discipline is needed",
@@ -49,7 +67,7 @@
       "rejected_because": "gives up the fastest-growing category instead of fixing its margin"
     }
   ],
-  "governing_thought": "Gross margin fell 1.9 pp mainly because sales shifted to low-margin electronics; repricing electronics and steering mix recover the 1.5 pp target by 2027 without touching store labour",
+  "governing_thought": "Gross margin fell 1.9 pp mainly because sales shifted to low-margin electronics; repricing and mix steering recover about 1.1 pp, and regaining within-category margins closes the 1.5 pp target by 2027 without touching store labour",
   "key_line": [
     {
       "id": "K1",
@@ -72,7 +90,7 @@
     {
       "id": "K3",
       "role": "solution",
-      "message": "Repricing electronics and steering mix recover 1.5 pp by 2027 without touching store labour",
+      "message": "Repricing and mix steering recover about 1.1 pp; regaining within-category margins closes the gap to 1.5 pp without touching store labour",
       "insights": [
         "I5",
         "I6"

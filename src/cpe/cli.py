@@ -315,6 +315,14 @@ def cmd_human(a):
         _p(json.dumps(st, indent=2))
         if a.record:
             human.record_status(a.round)
+    elif a.human_cmd == "build-text":
+        specs = []
+        for pr in a.pair:
+            name, _, rest = pr.partition("=")
+            base, _, chal = rest.partition(",")
+            specs.append((name, base, chal))
+        r = human.build_text_round(a.out, specs, context_dir=a.context, repeats=a.repeats, kind=a.kind, purpose=a.purpose or "")
+        _p(f"text round {a.out}: {r['pairs']} pairs · key {r['key']} · distribute with `cpe human package`")
     elif a.human_cmd == "package":
         r = human.package_round(a.round, a.out)
         _p(f"voting package {r['zip']}: {r['images']} images, no key — send it to evaluators instead of the repository")
@@ -514,6 +522,10 @@ def main(argv=None) -> int:
     h = hs.add_parser("serve"); h.add_argument("round"); h.add_argument("--port", type=int, default=8765); h.add_argument("--host", default="127.0.0.1"); h.set_defaults(f=cmd_human)
     h = hs.add_parser("import"); h.add_argument("round"); h.add_argument("votes"); h.set_defaults(f=cmd_human)
     h = hs.add_parser("report"); h.add_argument("round"); h.add_argument("--key", help="private key.json of the round"); h.add_argument("--record", action="store_true"); h.set_defaults(f=cmd_human)
+    h = hs.add_parser("build-text", help="blind A/B of storylines or deck outlines (text, before rendering)")
+    h.add_argument("-o", "--out", required=True); h.add_argument("--pair", action="append", required=True, help="NAME=DIR_A,DIR_B (each with <case>.md)")
+    h.add_argument("--context", help="dir with <case>.md: business question + short source summary"); h.add_argument("--kind", choices=["storyline", "outline"], default="storyline")
+    h.add_argument("--repeats", type=int, default=2); h.add_argument("--purpose"); h.set_defaults(f=cmd_human)
     h = hs.add_parser("package"); h.add_argument("round"); h.add_argument("-o", "--out", required=True); h.set_defaults(f=cmd_human)
     h = hs.add_parser("close"); h.add_argument("round"); h.add_argument("--key"); h.set_defaults(f=cmd_human)
     h = hs.add_parser("status"); h.add_argument("round"); h.add_argument("--record", action="store_true"); h.set_defaults(f=cmd_human)

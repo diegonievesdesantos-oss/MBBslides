@@ -6,5 +6,10 @@
   "model": "Claude (developing session; exact model per session metadata, not recorded in the repository)",
   "skill": "SKILL.md (v1.6) + docs/REASONING_PROTOCOL.md 1.0",
   "purpose": "show that the full chain runs end to end and that every artifact is checkable; the case, the reference and the run share one author, so the scores say nothing about reasoning quality",
-  "render": "cpe run deck.json → 10 slides, 0 QA errors, 1 warning (HEADLINE_TWO_MESSAGES on the executive summary)"
+  "render": "cpe run deck.json → 10 slides, 0 QA errors; warnings on s02 (HEADLINE_LONG, HEADLINE_TWO_MESSAGES) left visible",
+  "iterations": [
+    "v1: storyline claimed the 1.5 pp target from two levers",
+    "critic pass: RED TEAM RT1 (high) — levers size to about 1.1 pp; FACT CHECKER FC2 (high) — forecast vs actual conflict; both resolved",
+    "v2: governing thought and decision slide revised; two medium findings left open (RT2, DV1)"
+  ]
 }

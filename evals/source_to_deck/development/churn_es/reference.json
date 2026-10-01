@@ -1,0 +1,22 @@
+{
+  "status": "development",
+  "authored_by": "developing agent (synthetic case; visible, tunable); no agent run yet",
+  "critical_facts": [
+    {"id": "R1", "description": "Clientes particulares 2025", "value": 770000, "unit": ""},
+    {"id": "R2", "description": "Tasa de bajas particulares 2025", "value": 14.2, "unit": "%"},
+    {"id": "R3", "description": "Bajas que citan la atención al cliente", "value": 61, "unit": "%"},
+    {"id": "R4", "description": "Ingresos particulares 2025", "value": 388, "unit": "€M"}
+  ],
+  "required_conclusions": [
+    {"id": "C1", "description": "La causa principal es la atención al cliente (61%), no el precio (22%)", "any_of": [["atención"], ["servicio", "cliente"]]},
+    {"id": "C2", "description": "El deterioro coincide con el cambio de proveedor del centro de llamadas (2,1 → 4,6 días)", "any_of": [["proveedor"], ["centro de llamadas"], ["resolución"]]},
+    {"id": "C3", "description": "La acción más rápida es recuperar el nivel de servicio, no bajar precios", "any_of": [["servicio", "recuper"], ["atención", "plan"], ["resolución", "días"]]}
+  ],
+  "traps": [
+    {"id": "T1", "description": "Aceptar que la causa es el precio (opinión de dirección comercial contradicha por la encuesta)", "forbidden": [["precio", "causa"], ["bajar", "precio"], ["subida de precios", "pérdida"]]},
+    {"id": "T2", "description": "Presentar el objetivo de recuperar 30.000 clientes del presupuesto como un hecho logrado", "forbidden": [["recuperado"], ["recuperamos"]], "numbers": ["30.000"]}
+  ],
+  "acceptable_frameworks": ["SCR", "PDS", "DRI", "CII"],
+  "reference_governing_thought": "Perdemos particulares por la atención al cliente, no por el precio: desde el cambio de proveedor del centro de llamadas la resolución tarda 4,6 días; recuperar ese servicio es la palanca más rápida.",
+  "notes": "Spanish number formats (2,1 / 30.000), M€ units, multi-sheet Excel."
+}

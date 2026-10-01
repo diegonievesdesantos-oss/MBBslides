@@ -13,8 +13,21 @@
   reported separately; one development case (margin recovery) with traps; one development run by
   the developing agent (not evidence). docs/REASONING_PROTOCOL.md (protocol 1.0: 12 passes, 5
   critic roles, stopping criteria), docs/SOURCE_TO_DECK.md.
-- Ingest: numbers in prose are read whole ("2026" was split into "202" + "6"). Headline lint verb
-  lexicon: recover, sell, combine, serve, handle.
+- Conflicting sources: `fact_conflicts.json` (forecast vs actual, value mismatch for one measure
+  and period); an unresolved conflict touching a used fact is an error. Critic findings
+  (`critique.json`, five roles); an unresolved high-severity finding stops the loop. Both are
+  stopping criteria. Hedged headline numbers ("about 1.1 pp") that rest on assumptions are info,
+  unhedged ones a warning.
+- Blind A/B of reasoning before rendering: `cpe human build-text` (storylines or deck outlines,
+  with business-question context), same private key and voting packages.
+- Second development case (`churn_es`: Spanish, multi-sheet Excel, M€, decimal commas) — no run
+  yet; it found two fact-model bugs, fixed: a unit in one column spread to the whole table;
+  "30.000" was read as 30.
+- The margin-recovery development run went through a real critic loop: RED TEAM found that the
+  governing thought claimed the full 1.5 pp target from two levers that size to about 1.1 pp; the
+  storyline was revised (RUN.json records the iterations). Still the developing agent's own run.
+- Ingest: numbers in prose are read whole ("2026" was split into "202" + "6"); Spanish thousands.
+  Headline lint verb lexicon: recover, sell, combine, serve, handle.
 
 ## 1.6.0rc1 — External validation infrastructure (awaiting external input)
 

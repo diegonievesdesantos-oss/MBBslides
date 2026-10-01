@@ -12,7 +12,7 @@
     "framework": "PDS",
     "audience": "CEO and CFO",
     "decision_sought": "Approve the 2027 gross-margin recovery plan",
-    "governing_thought": "Gross margin fell 1.9 pp mainly because sales shifted to low-margin electronics; repricing electronics and steering mix recover the 1.5 pp target by 2027 without touching store labour",
+    "governing_thought": "Gross margin fell 1.9 pp mainly because sales shifted to low-margin electronics; repricing and mix steering recover about 1.1 pp, and regaining within-category margins closes the 1.5 pp target by 2027 without touching store labour",
     "key_line": [
       {
         "id": "K1",
@@ -27,7 +27,7 @@
       {
         "id": "K3",
         "role": "solution",
-        "message": "Repricing electronics and steering mix recover 1.5 pp by 2027 without touching store labour"
+        "message": "Repricing and mix steering recover about 1.1 pp; regaining within-category margins closes the gap to 1.5 pp without touching store labour"
       }
     ]
   },
@@ -39,7 +39,7 @@
     {
       "id": "s02",
       "kind": "exec_summary",
-      "headline": "Gross margin fell 1.9 pp mainly on electronics mix; repricing and mix steering recover 1.5 pp by 2027",
+      "headline": "Gross margin fell 1.9 pp mainly on electronics mix; repricing and mix steering recover about 1.1 pp of the 1.5 pp target",
       "visual": {
         "type": "statements",
         "data": {
@@ -52,13 +52,13 @@
             },
             {
               "label": "Complication",
-              "title": "Mix explains 1.45 pp of the decline",
+              "title": "Mix explains 1.4 pp of the decline",
               "text": "Electronics rose from 13.2% to 19.9% of sales at an 11.5% margin; freight adds a separate €9M profit gap."
             },
             {
               "label": "Resolution",
-              "title": "Reprice electronics and steer mix",
-              "text": "Electronics sells 6% below the main competitor; with mix steering this recovers the 1.5 pp target by 2027, store labour untouched."
+              "title": "Reprice electronics, steer mix, regain category margins",
+              "text": "Repricing (0.6 pp) and steering electronics back to 17% of sales (0.5 pp) recover about 1.1 pp; regaining within-category margins closes the 1.5 pp target by 2027."
             }
           ]
         }
@@ -85,7 +85,7 @@
           "fact": "C0004",
           "claim": "Mix effect on group gross margin FY2024→FY2025",
           "values": [
-            1.45
+            1.4
           ],
           "source": "computed"
         },
@@ -135,10 +135,57 @@
           "fact": "F0048",
           "claim": "CFO: the board wants a plan that recovers 1.5 pp of gross margin by 2027 without cutting store labour.",
           "values": [
-            1.5,
-            202.0
+            1.5
           ],
           "source": "meeting_notes.md"
+        },
+        {
+          "fact": "C0006",
+          "claim": "Group margin gain if electronics margin rises 3 pp (assumption: 3 pp from repricing toward the competitor)",
+          "values": [
+            0.6
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "C0009",
+          "claim": "Group margin gain from steering electronics back to 17% of sales (assumption A002)",
+          "values": [
+            0.54
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "C0010",
+          "claim": "Group margin recovered by repricing and mix steering",
+          "values": [
+            1.1
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "C0011",
+          "claim": "Remaining gap to the 1.5 pp target after repricing and mix steering",
+          "values": [
+            0.4
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "A001",
+          "claim": "Repricing toward the main competitor adds 3 pp to electronics gross margin (half of the 6% price gap)",
+          "values": [
+            3
+          ],
+          "source": "assumptions.json"
+        },
+        {
+          "fact": "A002",
+          "claim": "Electronics is steered back to 17% of sales by 2027 (range, placement and promotion), at FY2025 margins",
+          "values": [
+            17
+          ],
+          "source": "assumptions.json"
         }
       ],
       "source": "Source: pnl_by_category.csv (FY2024–FY2025 management accounts)",
@@ -212,7 +259,7 @@
       "id": "s04",
       "section": "K1",
       "purpose": "Decompose the decline",
-      "headline": "Mix explains 1.45 pp of the 1.9 pp gross-margin decline",
+      "headline": "Mix explains 1.4 pp of the 1.9 pp gross-margin decline",
       "message_type": "change_bridge",
       "visual": {
         "type": "waterfall",
@@ -227,11 +274,11 @@
             },
             {
               "label": "Category mix",
-              "value": -1.45
+              "value": -1.4
             },
             {
               "label": "Within-category margins",
-              "value": -0.45
+              "value": -0.5
             },
             {
               "label": "FY2025",
@@ -245,7 +292,7 @@
           "fact": "C0004",
           "claim": "Mix effect on group gross margin FY2024→FY2025",
           "values": [
-            1.45
+            1.4
           ],
           "source": "computed"
         },
@@ -416,8 +463,7 @@
           "fact": "F0047",
           "claim": "Supply chain lead: freight rates rose 24% after the new carrier contract signed in March 2025.",
           "values": [
-            24.0,
-            202.0
+            24.0
           ],
           "source": "meeting_notes.md"
         }
@@ -483,17 +529,32 @@
       "kind": "statement",
       "section": "K3",
       "headline": "Decision requested",
-      "text": "Repricing electronics and steering mix recover 1.5 pp of gross margin by 2027 without touching store labour",
-      "support": "Freight (€9M) is handled separately through the carrier contract.",
+      "text": "Repricing and mix steering recover about 1.1 pp of gross margin; regaining within-category margins closes the gap to 1.5 pp by 2027",
+      "support": "Assumptions to validate: electronics margin +3 pp from repricing (A001), electronics back to 17% of sales (A002). Freight (€9M) is handled separately through the carrier contract.",
       "evidence": [
         {
           "fact": "F0048",
           "claim": "CFO: the board wants a plan that recovers 1.5 pp of gross margin by 2027 without cutting store labour.",
           "values": [
-            1.5,
-            202.0
+            1.5
           ],
           "source": "meeting_notes.md"
+        },
+        {
+          "fact": "C0010",
+          "claim": "Group margin recovered by repricing and mix steering",
+          "values": [
+            1.1
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "C0011",
+          "claim": "Remaining gap to the 1.5 pp target after repricing and mix steering",
+          "values": [
+            0.4
+          ],
+          "source": "computed"
         },
         {
           "fact": "C0006",
@@ -504,12 +565,28 @@
           "source": "computed"
         },
         {
-          "fact": "C0004",
-          "claim": "Mix effect on group gross margin FY2024→FY2025",
+          "fact": "C0009",
+          "claim": "Group margin gain from steering electronics back to 17% of sales (assumption A002)",
           "values": [
-            1.45
+            0.54
           ],
           "source": "computed"
+        },
+        {
+          "fact": "A001",
+          "claim": "Repricing toward the main competitor adds 3 pp to electronics gross margin (half of the 6% price gap)",
+          "values": [
+            3
+          ],
+          "source": "assumptions.json"
+        },
+        {
+          "fact": "A002",
+          "claim": "Electronics is steered back to 17% of sales by 2027 (range, placement and promotion), at FY2025 margins",
+          "values": [
+            17
+          ],
+          "source": "assumptions.json"
         }
       ]
     },
