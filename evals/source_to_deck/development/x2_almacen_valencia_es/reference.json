@@ -1,0 +1,147 @@
+{
+  "status": "development",
+  "authored_by": "developing agent, case set 02 (synthetic, no real company); written after protocol 1.1 was frozen and not used to tune it — development data, NOT independent evidence",
+  "set": "02",
+  "critical_facts": [
+    {
+      "id": "R1",
+      "description": "Coste total Valencia 2025 (fijo + variable)",
+      "value": 4.1,
+      "unit": "M€"
+    },
+    {
+      "id": "R2",
+      "description": "Capacidad libre de Madrid (miles de pedidos)",
+      "value": 300,
+      "unit": ""
+    },
+    {
+      "id": "R3",
+      "description": "Transporte adicional a Levante desde Madrid",
+      "value": 1.9,
+      "unit": "M€"
+    },
+    {
+      "id": "R4",
+      "description": "Coste de cierre según Finanzas",
+      "value": 3.2,
+      "unit": "M€"
+    }
+  ],
+  "required_conclusions": [
+    {
+      "id": "C1",
+      "description": "Cerrar no ahorra 4,1 M€: el coste variable se traslada a Madrid más caro, hace falta un turno y 1,9 M€ de transporte; el neto es ≈ −0,2 M€/año",
+      "any_of": [
+        [
+          "transporte",
+          "1,9"
+        ],
+        [
+          "ahorro neto"
+        ],
+        [
+          "no ahorra"
+        ],
+        [
+          "0,2 m€"
+        ],
+        [
+          "coste neto"
+        ]
+      ]
+    },
+    {
+      "id": "C2",
+      "description": "Madrid no tiene capacidad: 300 mil pedidos libres frente a 375 mil (397 mil con la previsión 2026)",
+      "any_of": [
+        [
+          "capacidad",
+          "madrid"
+        ],
+        [
+          "300",
+          "375"
+        ],
+        [
+          "turno"
+        ]
+      ]
+    },
+    {
+      "id": "C3",
+      "description": "No cerrar; renovar el alquiler con el 25% de descuento (≈0,3 M€/año) y proteger el servicio en Levante",
+      "any_of": [
+        [
+          "renov"
+        ],
+        [
+          "no cerrar"
+        ],
+        [
+          "rechazar",
+          "cierre"
+        ],
+        [
+          "mantener",
+          "valencia"
+        ]
+      ]
+    }
+  ],
+  "traps": [
+    {
+      "id": "T1",
+      "description": "Aceptar el ahorro de 4,1 M€ de Operaciones",
+      "forbidden": [
+        [
+          "ahorra 4,1"
+        ],
+        [
+          "ahorro de 4,1"
+        ],
+        [
+          "ahorrar 4,1"
+        ]
+      ]
+    },
+    {
+      "id": "T2",
+      "description": "Aceptar que Madrid tiene capacidad libre suficiente",
+      "forbidden": [
+        [
+          "madrid",
+          "capacidad suficiente"
+        ],
+        [
+          "madrid",
+          "capacidad libre suficiente"
+        ]
+      ]
+    },
+    {
+      "id": "T3",
+      "description": "Recomendar el cierre",
+      "forbidden": [
+        [
+          "aprobar el cierre"
+        ],
+        [
+          "cerrar valencia en 2026"
+        ],
+        [
+          "recomendamos cerrar"
+        ]
+      ]
+    }
+  ],
+  "acceptable_frameworks": [
+    "SCR",
+    "PDS",
+    "DRI",
+    "CII",
+    "MPO"
+  ],
+  "reference_governing_thought": "Cerrar Valencia no ahorra 4,1 M€ sino que cuesta unos 0,2 M€ al año, más 3,2 M€ de cierre y hasta 2,2 M€ de margen en riesgo, porque Madrid no tiene capacidad y el transporte a Levante sube 1,9 M€; renovar el alquiler con un 25% de descuento ahorra 0,3 M€ sin riesgo.",
+  "notes": "Net = 2,6 + 1,5 − 375k×4,8€ (1,8) − turno 0,6 − transporte 1,9 = −0,2 M€/año. Margen en riesgo = 74 M€ × 34% × 40% × 22% ≈ 2,2 M€ (cota superior: 'se plantearía' no es 'cambiará')."
+}

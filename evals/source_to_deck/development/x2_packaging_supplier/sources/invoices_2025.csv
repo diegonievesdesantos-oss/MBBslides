@@ -1,0 +1,25 @@
+month,supplier,invoiced_eur_m,of_which_rush_freight_eur_m,note
+2025-01,Incumbent,1.444,0.05,
+2025-01,Supplier B,0.598,0,
+2025-02,Incumbent,1.434,0.04,
+2025-02,Supplier B,0.598,0,
+2025-03,Incumbent,1.514,0.12,rush freight passed through: our forecast errors
+2025-03,Supplier B,0.598,0,
+2025-04,Incumbent,1.474,0.08,
+2025-04,Supplier B,0.598,0,
+2025-05,Incumbent,1.454,0.06,
+2025-05,Supplier B,0.598,0,
+2025-06,Incumbent,1.544,0.15,rush freight passed through: our forecast errors
+2025-06,Supplier B,0.598,0,
+2025-07,Incumbent,1.484,0.09,
+2025-07,Supplier B,0.598,0,
+2025-08,Incumbent,1.424,0.03,
+2025-08,Supplier B,0.598,0,
+2025-09,Incumbent,1.534,0.14,rush freight passed through: our forecast errors
+2025-09,Supplier B,0.598,0,
+2025-10,Incumbent,1.504,0.11,rush freight passed through: our forecast errors
+2025-10,Supplier B,0.598,0,
+2025-11,Incumbent,1.524,0.13,rush freight passed through: our forecast errors
+2025-11,Supplier B,0.598,0,
+2025-12,Incumbent,1.494,0.1,
+2025-12,Supplier B,0.592,0,

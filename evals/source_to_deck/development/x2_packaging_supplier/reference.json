@@ -1,0 +1,138 @@
+{
+  "status": "development",
+  "authored_by": "developing agent, case set 02 (synthetic, no real company); written after protocol 1.1 was frozen and not used to tune it — development data, NOT independent evidence",
+  "set": "02",
+  "critical_facts": [
+    {
+      "id": "R1",
+      "description": "Packaging spend 2025",
+      "value": 25,
+      "unit": "€M"
+    },
+    {
+      "id": "R2",
+      "description": "Rush freight included in that spend",
+      "value": 1.1,
+      "unit": "€M"
+    },
+    {
+      "id": "R3",
+      "description": "Supplier B price reduction at 100% of volume",
+      "value": 12,
+      "unit": "%"
+    },
+    {
+      "id": "R4",
+      "description": "Gross margin lost in a 14-day stoppage",
+      "value": 2.4,
+      "unit": "€M"
+    }
+  ],
+  "required_conclusions": [
+    {
+      "id": "C1",
+      "description": "The saving is below €3.0M: the 12% applies to €23.9M (rush freight is not a price), ≈€2.9M, and expected disruption costs ≈€1.3M a year",
+      "any_of": [
+        [
+          "rush freight"
+        ],
+        [
+          "23.9"
+        ],
+        [
+          "2.9"
+        ],
+        [
+          "disruption",
+          "1.3"
+        ]
+      ]
+    },
+    {
+      "id": "C2",
+      "description": "Single-source risk: Supplier B has one plant and two force-majeure stoppages in three years",
+      "any_of": [
+        [
+          "single plant"
+        ],
+        [
+          "one plant"
+        ],
+        [
+          "force majeure"
+        ],
+        [
+          "force-majeure"
+        ],
+        [
+          "stoppage"
+        ]
+      ]
+    },
+    {
+      "id": "C3",
+      "description": "Dual source 70/30 (≈€1.8M a year with a backup supplier) beats the single supplier (≈€1.5M after expected disruption)",
+      "any_of": [
+        [
+          "70/30"
+        ],
+        [
+          "dual"
+        ],
+        [
+          "two suppliers"
+        ],
+        [
+          "70%",
+          "30%"
+        ]
+      ]
+    }
+  ],
+  "traps": [
+    {
+      "id": "T1",
+      "description": "Accepting procurement's €3.0M saving",
+      "forbidden": [
+        [
+          "saves €3.0m"
+        ],
+        [
+          "saving of €3.0m"
+        ],
+        [
+          "€3.0m",
+          "saving per year"
+        ]
+      ]
+    },
+    {
+      "id": "T2",
+      "description": "Recommending the move of 100% of the volume to Supplier B",
+      "forbidden": [
+        [
+          "approve",
+          "single supplier"
+        ],
+        [
+          "move all",
+          "supplier b"
+        ],
+        [
+          "100%",
+          "supplier b",
+          "approve"
+        ]
+      ]
+    }
+  ],
+  "acceptable_frameworks": [
+    "SCR",
+    "PDS",
+    "DRI",
+    "CII",
+    "MPO"
+  ],
+  "reference_governing_thought": "Moving all packaging to Supplier B saves about €1.5M a year, not €3.0M, once rush freight is taken out and the single plant's stoppage risk is priced in; a 70/30 split saves about €1.8M and keeps a second plant as backup.",
+  "notes": "Single supplier: 12% × 23.9 = 2.87; expected disruption (1.6 + 2.4) / 3 = 1.33 a year (historical frequency, so an estimate); net ≈ 1.5; one-off €0.8M. 70/30: 9% × 16.73 = 1.51 + 4% × 7.17 = 0.29 = 1.79; one-off €0.5M."
+}

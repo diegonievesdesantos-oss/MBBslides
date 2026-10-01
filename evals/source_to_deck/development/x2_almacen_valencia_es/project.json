@@ -1,0 +1,17 @@
+{
+  "project": "Red logística: cierre del almacén de Valencia (caso de desarrollo, set 02)",
+  "audience": [
+    "Consejero delegado",
+    "Director financiero",
+    "Director de operaciones"
+  ],
+  "decision": "Aprobar o rechazar la propuesta de Operaciones de cerrar el almacén de Valencia en 2026",
+  "question": "¿Debemos cerrar el almacén de Valencia y servir Levante desde Madrid? Si no, ¿qué hacemos?",
+  "horizon": "2026-2027",
+  "scope": [
+    "Red de almacenes España: Madrid, Valencia, Sevilla"
+  ],
+  "language": "es",
+  "deck_type": "board_presentation",
+  "max_slides": 9
+}

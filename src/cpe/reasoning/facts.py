@@ -73,6 +73,10 @@ def detect_unit(text: str) -> str:
     return s.upper().rstrip("S") + "S" if s.startswith(("day", "month", "year")) else s.upper()
 
 
+SCALE_WORDS = {"m": "M", "mn": "M", "million": "M", "millones": "M", "bn": "BN", "billion": "BN", "k": "K", "thousand": "K"}
+SCALE_AFTER = re.compile(r"\s*(m|mn|million|millones|bn|billion|k|thousand)\b(?:\s+de)?\s*(€|\$|£|eur(?:os)?\b|usd\b|gbp\b|dólares\b)?", re.I)
+
+
 def unit_from_raw(raw: str) -> str:
     """Unit of a number as written in prose: '€1,500M' → EUR_M, '24%' → PCT, '$3.2bn' → USD_BN."""
     r = str(raw or "").strip().lower()
@@ -225,6 +229,12 @@ def build_fact_model(paths: list[str | Path]) -> dict:
             after = ctx[ctx.find(f["raw"]) + len(f["raw"]):] if f["raw"] in ctx else ""
             if unit.startswith("PLAIN_") and re.match(r"\s*(€|eur)", after, re.I):  # "12 M€"
                 unit = "EUR_" + unit.split("_")[1]
+            sa = SCALE_AFTER.match(after)
+            if sa and (unit in ("EUR", "USD", "GBP") or (not unit and sa.group(2))):  # "25 EUR M", "3,2 millones de euros"
+                cur = unit or {"€": "EUR", "$": "USD", "£": "GBP"}.get(sa.group(2), (sa.group(2) or "eur")[:3].upper().replace("DÓL", "USD"))
+                unit = f"{cur}_{SCALE_WORDS[sa.group(1).lower()]}"
+            elif not unit and re.match(r"\s*(euros?|dólares|dollars)\b", after, re.I):  # "250.000 euros"
+                unit = "USD" if re.match(r"\s*d", after, re.I) else "EUR"
             vals.append({"value": f["value"], "unit": unit or unit_in_context(f["raw"], ctx), "raw": f["raw"],
                          "period": (per or {}).get("period"), "basis": (per or {}).get("basis")})
         facts.append({"id": next_id(), "claim": ctx, "values": vals,

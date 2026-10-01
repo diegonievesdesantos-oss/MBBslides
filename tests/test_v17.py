@@ -373,3 +373,10 @@ def test_decision_signals_text():
     from cpe.reasoning.decision import decision_signals_text
     s = decision_signals_text("The €17M is an upper bound; validate elasticity. Do not approve the 20% increase. Commission a study.")
     assert s["upper_bound"] == 1 and s["to_validate"] >= 1 and s["current_plan_challenged"] >= 1 and s["deferred_ask"] >= 1
+
+
+def test_fact_units_written_after_the_number(tmp_path):
+    from cpe.reasoning.facts import build_fact_model
+    (tmp_path / "n.md").write_text("- Spend was 25 EUR M in 2025.\n- El cierre cuesta 3,2 millones de euros.\n- Cerrar cuesta 250.000 euros por tienda.\n", encoding="utf-8")
+    units = [v["unit"] for f in build_fact_model([tmp_path / "n.md"])["facts"] for v in f["values"] if v["value"] in (25, 3.2, 250000)]
+    assert units == ["EUR_M", "EUR_M", "EUR"]

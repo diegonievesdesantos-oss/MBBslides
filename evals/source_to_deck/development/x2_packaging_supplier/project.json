@@ -1,0 +1,17 @@
+{
+  "project": "Packaging supplier consolidation (development case, set 02)",
+  "audience": [
+    "COO",
+    "CFO",
+    "Chief procurement officer"
+  ],
+  "decision": "Approve or reject procurement's proposal to move all packaging spend to Supplier B from 2026",
+  "question": "Should we consolidate packaging on a single supplier, and what is the real saving?",
+  "horizon": "2026-2028",
+  "scope": [
+    "Packaging for the food division"
+  ],
+  "language": "en",
+  "deck_type": "board_presentation",
+  "max_slides": 8
+}

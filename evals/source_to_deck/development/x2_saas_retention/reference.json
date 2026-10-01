@@ -1,0 +1,150 @@
+{
+  "status": "development",
+  "authored_by": "developing agent, case set 02 (synthetic, no real company); written after protocol 1.1 was frozen and not used to tune it — development data, NOT independent evidence",
+  "set": "02",
+  "critical_facts": [
+    {
+      "id": "R1",
+      "description": "Gross churn 2025 (churned ARR / opening ARR)",
+      "value": 15,
+      "unit": "%"
+    },
+    {
+      "id": "R2",
+      "description": "New ARR 2025",
+      "value": 9.6,
+      "unit": "€M"
+    },
+    {
+      "id": "R3",
+      "description": "First-year cohort churn 2025",
+      "value": 26,
+      "unit": "%"
+    },
+    {
+      "id": "R4",
+      "description": "Median time to first value 2025 (days)",
+      "value": 48,
+      "unit": ""
+    }
+  ],
+  "required_conclusions": [
+    {
+      "id": "C1",
+      "description": "The slowdown is retention, not acquisition: new ARR flat (9.4 → 9.6), win rate stable, churn 8% → 15%",
+      "any_of": [
+        [
+          "churn",
+          "15%"
+        ],
+        [
+          "retention",
+          "not"
+        ],
+        [
+          "new arr",
+          "flat"
+        ],
+        [
+          "churned arr",
+          "7.8"
+        ]
+      ]
+    },
+    {
+      "id": "C2",
+      "description": "The driver is onboarding: first-year customers churn 26% vs 9%, time to first value 21 → 48 days after the team was cut from 14 to 6",
+      "any_of": [
+        [
+          "onboarding"
+        ],
+        [
+          "time to first value"
+        ],
+        [
+          "first-year",
+          "26%"
+        ]
+      ]
+    },
+    {
+      "id": "C3",
+      "description": "Fund onboarding first (≈€0.8M for up to €2.5M retained ARR); phase or cut the AE hiring, whose €9M assumes full productivity from day one",
+      "any_of": [
+        [
+          "onboarding",
+          "restore"
+        ],
+        [
+          "onboarding",
+          "rebuild"
+        ],
+        [
+          "onboarding",
+          "rehire"
+        ],
+        [
+          "onboarding",
+          "invest"
+        ],
+        [
+          "phase",
+          "hiring"
+        ],
+        [
+          "fewer",
+          "account executives"
+        ]
+      ]
+    }
+  ],
+  "traps": [
+    {
+      "id": "T1",
+      "description": "Accepting the CRO's explanation that a competitor caused the slowdown",
+      "forbidden": [
+        [
+          "competitor",
+          "caused"
+        ],
+        [
+          "competition",
+          "slowed"
+        ],
+        [
+          "competitor",
+          "undercutting",
+          "growth"
+        ]
+      ]
+    },
+    {
+      "id": "T2",
+      "description": "Taking the €9M new ARR of the hiring plan as a 2026 result",
+      "forbidden": [
+        [
+          "30 account executives",
+          "9m"
+        ],
+        [
+          "€9m of new arr in 2026"
+        ],
+        [
+          "deliver €9m"
+        ],
+        [
+          "add €9m"
+        ]
+      ]
+    }
+  ],
+  "acceptable_frameworks": [
+    "SCR",
+    "PDS",
+    "DRI",
+    "CII",
+    "MPO"
+  ],
+  "reference_governing_thought": "Growth slowed because churn doubled to 15%, driven by first-year customers (26%) after onboarding was cut, not by weaker selling; restoring onboarding (€0.8M) can retain up to €2.5M ARR, more than 30 new AEs (€3.6M) can add in 2026.",
+  "notes": "AEs ramp in 9 months: 30 × €300k × 3/12 ≈ €2.25M new ARR in 2026, not €9M. Retained ARR = (26% − 12%) × €18.2M ≈ €2.5M, an upper bound (assumes a full return to the 2024 first-year churn)."
+}
