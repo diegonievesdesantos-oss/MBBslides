@@ -1,6 +1,21 @@
 # Changelog
 
-## Unreleased — 1.7.0.dev0: consulting intelligence (development)
+## 1.7.0 — Consulting intelligence: from raw material to a decision deck
+
+**Closed 2026-10-02.**
+- **Reasoning protocol frozen at 1.4.** Traceability never costs the reader content; row-level data goes
+  through recorded analysis scripts.
+- **Acceptance test:** one real external case (private) taken from raw ERP data and documents to an
+  8-slide Spanish board deck.
+  - Reasoning check: 0 errors, 0 hard failures. Render QA: 0 errors; deck score 98.1.
+  - The owner judged it "perfect".
+- **Remaining findings:** in docs/DEBT_V17.md as the backlog for a last fine-tuning pass. The weak
+  grounding on dense slides and locale number formatting come first.
+- **Human rounds this cycle (expert, blind):**
+  - s1 2–2;
+  - s2 3–1 for protocol 1.1;
+  - s3 1–0 for protocol 1.2 (external);
+  - s4 1–4 against protocol 1.3 (5 external raw-data cases), which led to 1.4.
 
 - **s4 (five external raw-data cases, private): the baseline was preferred 4–1.** Answers converged, but
   the protocol storylines lost concrete content, partly to get past checks.

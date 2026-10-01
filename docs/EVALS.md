@@ -14,6 +14,10 @@
 | **unseen corporate template** (`.private/holdouts/corporate_unseen/<name>/`) | potential validation | **AWAITING USER-SUPPLIED TEMPLATE** |
 | human round **r3** (v1.4.0 vs v1.5.0rc1, built after the v1.5 freeze) | blind result for v1.5 preserved (`VALIDATION_v1.5.json`, 1 expert rater); **development data since v1.7** | used for the integrity metric and the KPI decision |
 
+### v1.7 debt
+
+Open findings at the 1.7.0 close are in [DEBT_V17.md](DEBT_V17.md).
+
 ### Evidence standard and the v1.5 debts (decided in v1.7)
 
 **Owner decision (2026-10-01): one expert rater is the human-evidence standard.** The owner is an

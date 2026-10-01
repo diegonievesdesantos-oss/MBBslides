@@ -193,3 +193,18 @@ customer-service organisation and a marketing budget. No case content is in the 
 **This is the first round where the protocol loses clearly, on the hardest and most realistic cases.**
 The automatic checks measure verifiability; the expert judges the storyline as a client document.
 The next protocol version must not trade readability for traceability.
+
+## Acceptance test for protocol 1.4 (closes v1.7)
+
+The owner chose to test one real case end to end instead of re-running every agent. One agent with
+protocol 1.4 ran Grupo Brasa, a case the protocol had lost in s4, from raw data to a rendered deck.
+
+| | protocol 1.3 (s4) | no protocol (s4 winner) | **protocol 1.4** |
+|---|---|---|---|
+| storyline words | 682 | 986 | **1.347** |
+| deadlines, owners and amounts in the recommendation | partly reworded away | yes | yes |
+| reasoning check | PASS | n/a | PASS (0 warnings) |
+| rendered deck | n/a | n/a | 8 slides, QA 0 errors, deck score 98.1 |
+
+**Expert verdict: "la presentación está perfecta".** v1.7 closes on that verdict. The agent's findings are
+in docs/DEBT_V17.md.

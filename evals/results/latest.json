@@ -2069,6 +2069,12 @@
         "status": "votes received (1 expert evaluator) — 5 EXTERNAL raw-data cases written by the owner (private: no case content in the repository). Baseline agent preferred 4–1 over protocol 1.3; consistent on both side-swapped repeats; left chosen in 4 of 5 decisive votes.",
         "case_type": "raw data + documents → storyline",
         "privacy": "cases, storylines, round, key and votes under .private/ (gitignored)"
+      },
+      "brasa_p14_acceptance": {
+        "evaluators": 1,
+        "comparisons": 0,
+        "status": "expert acceptance of one end-to-end deck (protocol 1.4, external private case): judged 'perfect'; not a blind A/B",
+        "privacy": "case and deck under .private/"
       }
     }
   },

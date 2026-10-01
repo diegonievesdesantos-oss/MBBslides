@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "consulting-presentation-engine"
-version = "1.7.0.dev0"
+version = "1.7.0"
 description = "Storyline-first consulting presentation engine: native editable PPTX with render-based QA and a self-correction loop"
 requires-python = ">=3.10"
 license = {text = "Apache-2.0"}
