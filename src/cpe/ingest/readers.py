@@ -21,10 +21,23 @@ from pathlib import Path
 from lxml import etree
 
 FACT_RE = re.compile(
-    # v1.7: a number starts at a digit boundary and takes all its digits ("2026" was read as "202" + "6")
-    r"(?P<raw>(?:[€$£]\s?)?[-−+]?(?<![\d.,])\d+(?:[,.\s]\d{3}(?!\d))*(?:[.,]\d+)?(?:\s?(?:%|pp|bps|x|bn|billion|mn|million|m|k|thousand|€|eur|usd)(?![a-z]))?)",
+    # v1.7: a number starts at a digit boundary and takes all its digits ("2026" was read as "202" + "6");
+    # v1.8: "35-39" is a range (no sign after a digit); "más" is not "m" (accented letters end a word too)
+    r"(?P<raw>(?:[€$£]\s?)?(?<![\d.,])[-−+]?(?<![\d.,])\d+(?:[,.\s]\d{3}(?!\d))*(?:[.,]\d+)?"
+    r"(?:\s?(?:%|pp|bps|x|bn|billion|mn|million|m|k|thousand|€|eur|usd)(?![a-záéíóúñü]))?)",
     re.IGNORECASE,
 )
+MONTHS = ("enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|setiembre|octubre|noviembre|diciembre|"
+          "january|february|march|april|may|june|july|august|september|october|november|december")
+DATE_RE = re.compile(
+    rf"\b\d{{1,2}}/\d{{1,2}}/\d{{2,4}}\b|\b\d{{1,2}}\s+de\s+(?:{MONTHS})\b|\b(?:{MONTHS})\s+\d{{1,2}}\b|\b\d{{1,2}}\s+(?:{MONTHS})\b"
+    r"|\b(?:19|20)\d{2}-\d{2}(?:-\d{2})?\b|\b(?:19|20)\d{2}\s?[-–/]\s?(?:19|20)?\d{2}\b|\b\d{1,2}:\d{2}\b", re.IGNORECASE)
+
+
+def mask_dates(text: str) -> str:
+    """Dates, periods and times are not quantities: '22 de septiembre', '2/12/2025', '2025-26',
+    '2025-01_2026-08', '10:30' are blanked (same length) before numbers are read."""
+    return DATE_RE.sub(lambda m: " " * len(m.group(0)), text or "")
 SENT_RE = re.compile(r"(?<=[.!?;])\s+")
 
 
@@ -64,7 +77,7 @@ def _num(raw, dot_decimal: bool = False, decimal_comma: bool = False) -> tuple[f
 def extract_facts(text: str, source: str, loc: str, decimal_comma: bool = False) -> list[dict]:
     out = []
     for sent in SENT_RE.split(text):
-        for m in FACT_RE.finditer(sent):
+        for m in FACT_RE.finditer(mask_dates(sent)):
             raw = m.group("raw").strip()
             v, unit = _num(raw, decimal_comma=decimal_comma)
             if v is None:
@@ -122,10 +135,12 @@ def _table(header, rows, source, loc, dot_decimal: bool = False, decimal_comma: 
             # one column, one convention: "1.444" next to "0.05" or "16.73" is a decimal, not 1,444
             if dot_decimal or any(isinstance(v, str) and DOT_DECIMAL.fullmatch(v.strip()) for v in vals):
                 dot.add(j)
-    conv = []
+    conv, units = [], []
     for r in rows:
-        conv.append([(_num(c, j in dot, decimal_comma)[0] if j in numeric else c) for j, c in enumerate(r)])
-    return {"source": source, "loc": loc, "header": list(header), "rows": conv, "numeric_columns": numeric}
+        parsed = [(_num(c, j in dot, decimal_comma) if j in numeric else (c, "")) for j, c in enumerate(r)]
+        conv.append([v for v, _ in parsed])
+        units.append([u for _, u in parsed])  # "1,6%", "140.000 €": the unit written in the cell itself
+    return {"source": source, "loc": loc, "header": list(header), "rows": conv, "numeric_columns": numeric, "cell_units": units}
 
 
 def decimal_comma_document(txt: str) -> bool:
@@ -179,9 +194,25 @@ def read_text(path: Path) -> dict:
     return {"blocks": blocks, "facts": facts, "tables": tables}
 
 
+def sniff_dialect(raw: str):
+    """Delimiter from whole lines only (a 22-column file cut at 2048 characters made the sniffer give up);
+    falls back to a comma."""
+    if not raw.strip():
+        return csv.excel
+    head = "\n".join(raw.splitlines()[:30])
+    try:
+        return csv.Sniffer().sniff(head, delimiters=",;\t|")
+    except csv.Error:
+        first = raw.splitlines()[0]
+        best = max(",;\t|", key=first.count)
+        d = csv.excel()
+        d.delimiter = best if first.count(best) else ","
+        return d
+
+
 def read_csv(path: Path) -> dict:
     raw = path.read_text(encoding="utf-8-sig", errors="replace")
-    dialect = csv.Sniffer().sniff(raw[:2048], delimiters=",;\t|") if raw.strip() else csv.excel
+    dialect = sniff_dialect(raw)
     rows = list(csv.reader(io.StringIO(raw), dialect))
     if not rows:
         return {"blocks": [], "facts": [], "tables": []}

@@ -69,6 +69,7 @@ VERBS = {
     "proponemos", "propone", "rechazar", "rechazamos", "mantener", "mantenemos", "aumenta", "aumentan", "disminuye", "disminuyen",
     "frena", "frenan", "cambia", "cambian", "pasa", "pasan", "pasó", "llega", "llegan", "queda", "quedan", "sigue", "siguen",
     "desaparece", "desaparecen", "mejoraría", "captura", "capturan", "identifica", "identifican", "falta", "faltan",
+    "costó", "costaron", "rinde", "rinden", "rindió", "devuelve", "devuelven", "genera", "pagan", "paga", "vende", "venden", "vendió",
 }
 
 VAGUE = {
@@ -77,7 +78,8 @@ VAGUE = {
     "significativo", "significativa", "importante", "varios", "algunos", "fuerte", "considerable", "notable",
 }
 
-NUM_RE = re.compile(r"(?<![\w.,])[-−+]?(?:\d+,\d{1,2}(?!\d)|\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?(?:\s*(?:%|pp|x|bn|mn|m|k|b)(?![A-Za-z]))?", re.IGNORECASE)
+NUM_RE = re.compile(r"(?<![\w.,])[-−+]?(?:\d{1,3}(?:\.\d{3}){2,}(?:,\d+)?|\d+,\d{1,2}(?!\d)|\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?"
+                    r"(?:\s*(?:%|pp|x|bn|mn|m|k|b)(?![A-Za-zÀ-ÿ]))?", re.IGNORECASE)  # v1.8: "1.428.000"; "más" is not "m"
 
 
 def words(text: str) -> list[str]:

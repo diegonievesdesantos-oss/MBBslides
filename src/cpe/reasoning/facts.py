@@ -57,10 +57,13 @@ def detect_unit(text: str) -> str:
     t = str(text or "").replace("_", " ")  # "opening_arr_eur_m"
     t = re.sub(r"\s*(/\s*(año|year|yr|mes|month|semana|sem|week|wk|día|dia|day|hora|hour|h)|per (year|month|annum|week|day|hour)"
                r"|al año|a year|al mes|por año|a la semana|por semana|al día|por día|por hora)\b\.?", "", t, flags=re.I)  # a rate, not the unit
+    if re.search(r"(?:^|[\s_(])(pct|percent|porcentaje)(?:$|[\s_)])", t, re.I):
+        return "PCT"
     m = UNIT_RE.search(t)
     if not m:
         # a time word is the unit only when it is stated as one: "(días)", "(min)", "en horas" — not "Año ant." or "Pedidos > 60 min"
-        stated = " ".join(re.findall(r"\(([^)]*)\)", t)) + " " + " ".join(re.findall(r"\ben ([a-záéíóúñ]+)", t.lower()))
+        # a parenthesis states a unit only when it is just the unit: "(min)", "(en días)" — not "(inicio mes)"
+        stated = " ".join(x for x in re.findall(r"\(\s*(?:en\s+)?([a-záéíóúñ]+)\s*\)", t, re.I)) + " " + " ".join(re.findall(r"\ben ([a-záéíóúñ]+)\b", t.lower()))
         first = (re.findall(r"[a-záéíóúñ]+", t.lower()) or [""])[0]
         if UNIT_WORDS.get(first) in ("HOURS", "DAYS", "MINUTES", "WEEKS"):  # "Horas perdidas 2025": the measure is hours
             stated += " " + first
@@ -190,7 +193,8 @@ def _table_facts(t: dict, next_id) -> list[dict]:
                 continue
             v = float(row[j])
             per = detect_period(header[j]) or next((detect_period(str(row[y])) for y in year_cols if y < len(row)), None)
-            unit = detect_unit(header[j]) or detect_unit(label) or table_unit
+            cu = ((t.get("cell_units") or [])[i][j] if i < len(t.get("cell_units") or []) and j < len(t["cell_units"][i]) else "") or ""
+            unit = detect_unit(header[j]) or (unit_from_raw("1" + cu) if cu else "") or detect_unit(label) or table_unit
             fid = next_id()
             rng = f"{_col(j)}{i + 2}"
             facts.append({"id": fid, "claim": f"{label} — {header[j]}: {_fmt(v)}{(' ' + unit) if unit else ''}",

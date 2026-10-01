@@ -2,6 +2,22 @@
 
 ## Unreleased — 1.7.0.dev0: consulting intelligence (development)
 
+- **Five external cases from the owner (round s4, private, voting pending).**
+  - Agents ran without the protocol and with protocol 1.3; all five protocol runs pass the reasoning check.
+  - The tool problems they reported are fixed with tests:
+    - the CSV sniffer gave up on wide files;
+    - dates, periods and times were read as numbers ("22 de septiembre", "2/12/2025", "2025-26", file date ranges, "10:30");
+    - "35-39" was read as a negative number;
+    - "más" was read as a million;
+    - "1.428.000" in prose;
+    - "9,55x" ratios did not ground;
+    - units written in cells ("1,6%", "140.000 €");
+    - `_pct` and "porcentaje" headers;
+    - "(inicio mes)" was taken for a unit;
+    - negative lever impacts did not ground;
+    - one arithmetic error cascaded into UNKNOWN_FACT;
+    - Spanish estimate verbs and more Spanish verbs.
+
 - **Protocol 1.3, row-level data:**
   - `cpe reason analyze work/ script.py --sources …` runs the agent's analysis script twice and records
     script, input and output hashes in `analysis.json`;

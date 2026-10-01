@@ -136,7 +136,9 @@ def raw_numbers(path: Path) -> set[float]:
             import csv
 
             raw = path.read_text(encoding="utf-8-sig", errors="replace")
-            dialect = csv.Sniffer().sniff(raw[:2048], delimiters=",;\t|") if raw.strip() else csv.excel
+            from ..ingest.readers import sniff_dialect
+
+            dialect = sniff_dialect(raw)
             texts += [c for row in csv.reader(raw.splitlines(), dialect) for c in row]
         else:
             texts.append(path.read_text(encoding="utf-8", errors="replace"))
@@ -208,14 +210,15 @@ def check_computed(cf: dict | None, facts: dict) -> tuple[list[dict], dict]:
             out.append(_issue("error", "FORMULA_INVALID", "computed_facts.json", fid, str(e)))
             continue
         stated = float(f["values"][0]["value"])
-        if abs(res - stated) > max(0.005 * abs(res), 0.5 * 10 ** -_decimals(stated)):
+        bad = abs(res - stated) > max(0.005 * abs(res), 0.5 * 10 ** -_decimals(stated))
+        if bad:  # reported once; the fact stays known so its dependants do not cascade into UNKNOWN_FACT
             out.append(_issue("error", "ARITHMETIC_ERROR", "computed_facts.json", fid, f"{f['formula']} = {res:.4g}, stated {stated:g}", hard=True))
-            continue
         import re as _re
 
         deps = sorted(set(_re.findall(r"\b(?:[FC]\d{4}|A\d{3})\b", f["formula"])))  # F0062[1] cites F0062
         rests = [d for d in deps if (facts.get(d) or good.get(d) or {}).get("fact_type") == "assumption" or (good.get(d) or {}).get("rests_on_assumptions")]
-        good[fid] = {**f, "fact_type": "computed", "derived_from": deps, "source": {"file": "computed", "loc": f["formula"]}, "confidence": 1.0,
+        good[fid] = {**f, "fact_type": "computed", "derived_from": deps, "source": {"file": "computed", "loc": f["formula"]}, "confidence": 0.0 if bad else 1.0,
+                     **({"arithmetic_error": True} if bad else {}),
                      **({"rests_on_assumptions": rests} if rests else {})}
     return out, good
 
@@ -388,7 +391,7 @@ def check_deck_plan(dp: dict | None, storyline: dict | None, insights: dict, fac
                     out.append(_issue("error", "UNSUPPORTED_NUMBER", "deck_plan.json", sid, f"headline {g['number']} not grounded in the slide's facts", hard=True))
                 elif g["status"] == "assumption":
                     conditional = re.search(r"\b(if|assuming|assumes|assumed|would|could|about|around|approximately|estimated?|estimates?|roughly|up to|at most|upper bound|"
-                                            r"si|suponiendo|supondría|supuesto|hipótesis|estimad[oa]s?|estimación|cerca de|aproximadamente|unos|hasta|como máximo)\b", h, re.I)
+                                            r"si|suponiendo|supondría|supuesto|hipótesis|estim\w*|previst\w*|prevemos|calculamos|cerca de|aproximadamente|unos|hasta|como máximo)\b", h, re.I)
                     out.append(_issue("info" if conditional else "warning", "ASSUMPTION_IN_HEADLINE", "deck_plan.json", sid, f"{g['number']} rests on an assumption ({', '.join(g['facts'])}): say so on the slide"))
             lint = lint_headline(h, {"id": sid}, profile)[1]
             if any(i["code"] == "HEADLINE_TOPIC" and i["level"] == "error" for i in lint) and s.get("priority") != "appendix":

@@ -48,7 +48,7 @@ def _issue(level, code, ref, message, hard=False):
 
 
 def quantity_text(q: dict) -> str:
-    v = f"{float(q['value']):g}"
+    v = f"{abs(float(q['value'])):g}"  # grounding compares magnitudes; a negative lever (a cost) grounds like a positive one
     return UNIT_FMT.get((q.get("unit") or "").upper(), "{v}").format(v=v)
 
 

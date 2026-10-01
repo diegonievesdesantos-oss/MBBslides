@@ -76,7 +76,9 @@ def headline_quantities(text: str) -> list[dict]:
     """Numbers of a headline with their unit, skipping years, identifiers and durations
     (same filters as core.headline.numbers_in)."""
     out = []
-    text = text or ""
+    from ..ingest.readers import mask_dates
+
+    text = mask_dates(text or "")
     for m in NUM_RE.finditer(text):
         raw = m.group(0).strip()
         rest = text[m.end():]

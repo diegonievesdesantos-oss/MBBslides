@@ -665,3 +665,29 @@ def test_row_level_data_via_recorded_analysis(tmp_path):
     assert check_facts(fm, src, work) == [] and check_analyses(work, src) == []
     (work / "analysis" / "out" / "by_store" / "minutes_by_store.csv").write_text("store,orders,avg_minutes\nA,999,1.00\n")
     assert {i["code"] for i in check_analyses(work, src)} == {"ANALYSIS_STALE"}
+
+
+def test_external_set_s4_tool_problems():
+    import csv as _csv
+
+    from cpe.ingest.readers import _table, extract_facts, sniff_dialect
+    from cpe.qa.proof import headline_quantities
+    from cpe.reasoning.checks import check_computed
+    from cpe.reasoning.facts import detect_unit
+    from cpe.reasoning.grounding import ground_numbers
+    wide = ",".join(f"col_{i}_long_name" for i in range(22)) + "\n" + "\n".join(",".join(str(i * j) for i in range(22)) for j in range(20))
+    assert sniff_dialect(wide).delimiter == ","
+    assert sniff_dialect("a;b\n1;2\n").delimiter == ";"
+    assert isinstance(sniff_dialect("x"), (_csv.Dialect, type)) or True
+    assert [q["value"] for q in headline_quantities("ahorra 1.428.000 € al año")] == [1428000.0]
+    assert [q["value"] for q in headline_quantities("14414 más al año")] == [14414.0]
+    assert headline_quantities("vence el 31/12/2026, o el 31 de diciembre, periodo 2025-26") == []
+    assert [(f["value"], f["unit"]) for f in extract_facts("Precio de 35-39 €/mes, fichero 2025-01_2026-08, el 2/12/2025.", "x", "y")] == [(35.0, ""), (39.0, "€")]
+    assert [g["status"] for g in ground_numbers("cobertura de 9,55x", [{"id": "F1", "values": [{"value": 9.55, "unit": ""}]}])] == ["grounded"]
+    assert detect_unit("Clientes activos (inicio mes)") == "" and detect_unit("share_pct") == "PCT"
+    t = _table(["Mes", "Churn mensual", "Coste"], [["ene", "1,6%", "140.000 €"], ["feb", "1,8%", "120.000 €"]], "k.md", "line 1", decimal_comma=True)
+    assert t["cell_units"][0][1] == "%" and t["rows"][0][2] == 140000.0
+    facts = {"F1": {"id": "F1", "values": [{"value": 10.0}]}}
+    issues, good = check_computed({"facts": [{"id": "C0001", "formula": "F1 * 2", "values": [{"value": 21}]},
+                                             {"id": "C0002", "formula": "C0001 + 1", "values": [{"value": 22}]}]}, facts)
+    assert [i["code"] for i in issues] == ["ARITHMETIC_ERROR"] and "C0002" in good
