@@ -64,6 +64,11 @@ VERBS = {
     "ofrece", "reduce", "mejora", "amplía", "entrar", "priorizar", "invertir", "recomendamos", "se",
     "baja", "bajan", "bajó", "mejoran", "mejoró", "empeora", "empeoran", "cubre", "cubren", "varía", "varían", "tiene",
     "tienen", "tarda", "tardan", "culmina", "culminan", "crecimos", "toca",
+    "cuesta", "cuestan", "costaría", "costarían", "cierra", "cierran", "cerrar", "rompen", "negociar", "aprobar", "aprobamos",
+    "ahorra", "ahorran", "ahorraría", "pierde", "pierden", "perdieron", "gana", "ganan", "recupera", "recuperan", "deja", "dejan",
+    "proponemos", "propone", "rechazar", "rechazamos", "mantener", "mantenemos", "aumenta", "aumentan", "disminuye", "disminuyen",
+    "frena", "frenan", "cambia", "cambian", "pasa", "pasan", "pasó", "llega", "llegan", "queda", "quedan", "sigue", "siguen",
+    "desaparece", "desaparecen", "mejoraría", "captura", "capturan", "identifica", "identifican", "falta", "faltan",
 }
 
 VAGUE = {

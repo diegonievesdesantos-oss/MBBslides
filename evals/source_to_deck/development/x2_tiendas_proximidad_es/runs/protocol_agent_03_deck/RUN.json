@@ -1,0 +1,8 @@
+{
+  "status": "development run — NOT evidence",
+  "date": "2026-10-01",
+  "experiment": "02b, end to end in Spanish (raw sources → protocol 1.2 reasoning → rendered deck)",
+  "model": "Claude (independent subagent of the developing session; exact model per session metadata)",
+  "input": "runs/protocol_agent_03_p12 (protocol 1.2 reasoning artifacts); numbers in upstream prose rewritten without thousands separators to work around a regression fixed afterwards",
+  "result": "reason check PASS (0 errors, 0 hard); render QA 0 errors, 3 warnings (Spanish verbs, since added); deck score 98.4, composition 99.6"
+}

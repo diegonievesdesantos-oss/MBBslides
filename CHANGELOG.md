@@ -2,6 +2,12 @@
 
 ## Unreleased — 1.7.0.dev0: consulting intelligence (development)
 
+- **Second end-to-end deck, in Spanish** (tiendas, protocol 1.2): reasoning PASS, QA 0 errors, deck 98.4.
+- **Fixes:**
+  - Spanish thousands before k€/M€ (a regression in the previous commit);
+  - a localised source label ("Fuente:");
+  - more Spanish verbs in the headline lint.
+
 - **Protocol 1.2 rerun on case set 02 (development check):** every option is compared on the same cost
   components, and the s2 packaging error does not recur.
 - **The agents reported these, now fixed:**

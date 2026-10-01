@@ -78,8 +78,8 @@ def footer(pc: Painter, slide: dict, page_no: int, meta: dict) -> None:
         lines.append(Para(mark, space_after=0))
     if slide.get("source"):
         src = slide["source"]
-        if not src.lower().startswith(("source", "sources", "note")):
-            src = "Source: " + src
+        if not src.lower().startswith(("source", "sources", "note", "fuente", "fuentes", "nota")):
+            src = ("Fuente: " if str(meta.get("language") or "").lower().startswith("es") else "Source: ") + src
         lines.append(Para(src, space_after=0))
     right = min(SLIDE_W - g.margin_r, g.footer_right_limit or SLIDE_W)
     if lines:

@@ -1,0 +1,1470 @@
+{
+  "meta": {
+    "title": "Tiendas de proximidad: cerrar 15, no 40",
+    "subtitle": "Decisión sobre las 40 tiendas en pérdidas y su efecto real en el EBITDA 2026-2027",
+    "client": "Consejo de administración",
+    "date": "Octubre 2026",
+    "deck_type": "board_presentation",
+    "theme": "meridian",
+    "confidentiality": "Confidencial"
+  },
+  "storyline": {
+    "framework": "SCR",
+    "audience": "Consejero delegado, directora financiera y director de expansión",
+    "decision_sought": "Rechazar el cierre de las 40 tiendas y aprobar el cierre selectivo de las 15 tiendas A con ruptura en 2026",
+    "governing_thought": "No cerremos las 40 tiendas: la mejora real de EBITDA es de 1596 k€, no 5,2 M€; cerremos en 2026 las 15 tiendas A con ruptura, negociemos las 7 restantes y mantengamos las 18 B",
+    "key_line": [
+      {
+        "id": "K1",
+        "role": "problem",
+        "message": "La propuesta sobrevalora el ahorro y el coste de cierre"
+      },
+      {
+        "id": "K2",
+        "role": "diagnosis",
+        "message": "La pérdida evitable está solo en el grupo A; el grupo B aporta y está en rampa"
+      },
+      {
+        "id": "K3",
+        "role": "solution",
+        "message": "Cerrar las 15 tiendas A con ruptura es la opción más barata en la misma base"
+      },
+      {
+        "id": "K4",
+        "role": "next_steps",
+        "message": "Negociar antes de cerrar las 7 tiendas A sin ruptura"
+      }
+    ]
+  },
+  "slides": [
+    {
+      "id": "S0",
+      "kind": "cover",
+      "title": "Tiendas de proximidad: cerrar 15, no 40",
+      "subtitle": "Decisión sobre las 40 tiendas en pérdidas y su efecto real en el EBITDA"
+    },
+    {
+      "id": "S1",
+      "kind": "exec_summary",
+      "tracker": "Resumen ejecutivo",
+      "purpose": "Respuesta completa en una página: rechazar el cierre total y aprobar el cierre selectivo",
+      "headline": "Cerrar 15 tiendas A con ruptura, no las 40: la mejora real es 1596 k€, no 5,2 M€",
+      "evidence": [
+        {
+          "fact": "C0032",
+          "claim": "Mejora real de cerrar las 40: 1596 k€",
+          "fact_claim": "Mejora anual real de EBITDA de cerrar las 40 tiendas",
+          "values": [
+            1596
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "F0215",
+          "claim": "La propuesta promete 5,2 M€",
+          "fact_claim": "Proponemos cerrarlas todas en 2026: el EBITDA del grupo mejora en 5,2 M€.",
+          "values": [
+            5.2
+          ],
+          "source": "propuesta_direccion_financiera.md"
+        },
+        {
+          "fact": "F0208",
+          "claim": "Pérdida 2025 de las 40: 5196 k€",
+          "fact_claim": "Total — EBITDA 2025 (k€): -5,196 EUR_K",
+          "values": [
+            -5196.0
+          ],
+          "source": "tiendas_proximidad_2025.xlsx"
+        },
+        {
+          "fact": "F0209",
+          "claim": "Coste central asignado: 3600 k€",
+          "fact_claim": "Total — Coste central asignado (k€): 3,600 EUR_K",
+          "values": [
+            3600.0
+          ],
+          "source": "tiendas_proximidad_2025.xlsx"
+        },
+        {
+          "fact": "F0207",
+          "claim": "40 tiendas",
+          "fact_claim": "Total — Tiendas: 40",
+          "values": [
+            40.0
+          ],
+          "source": "tiendas_proximidad_2025.xlsx"
+        },
+        {
+          "fact": "F0201",
+          "claim": "22 tiendas A",
+          "fact_claim": "A - alquiler alto — Tiendas: 22",
+          "values": [
+            22.0
+          ],
+          "source": "tiendas_proximidad_2025.xlsx"
+        },
+        {
+          "fact": "F0204",
+          "claim": "18 tiendas B",
+          "fact_claim": "B - aperturas 2023-2024 — Tiendas: 18",
+          "values": [
+            18.0
+          ],
+          "source": "tiendas_proximidad_2025.xlsx"
+        },
+        {
+          "fact": "C0002",
+          "claim": "A pierde 1920 k€ antes de coste central",
+          "fact_claim": "Pérdida del grupo A antes de coste central asignado",
+          "values": [
+            -1920
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "C0003",
+          "claim": "B aporta 324 k€",
+          "fact_claim": "Contribución del grupo B antes de coste central asignado (positiva)",
+          "values": [
+            324
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "F0210",
+          "claim": "Alquiler 16% frente a 9%",
+          "fact_claim": "El alquiler de las tiendas del grupo A supone un 16% de sus ventas (incluidos gastos comunes), frente al 9% de media de la red.",
+          "values": [
+            16.0,
+            9.0
+          ],
+          "source": "informe_inmobiliario.pdf"
+        },
+        {
+          "fact": "F0211",
+          "claim": "15 contratos con ruptura en 2026",
+          "fact_claim": "15 contratos del grupo A tienen ventana de ruptura en 2026: cerrarlas cuesta 100.000 euros por tienda.",
+          "values": [
+            15.0,
+            100000.0
+          ],
+          "source": "informe_inmobiliario.pdf"
+        },
+        {
+          "fact": "C0031",
+          "claim": "Mejora anual 1500 k€",
+          "fact_claim": "Mejora anual de EBITDA de cerrar las 15 tiendas A con ruptura",
+          "values": [
+            1500
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "C0008",
+          "claim": "Coste de cierre 1500 k€",
+          "fact_claim": "Coste de cerrar las 15 tiendas A con ruptura (100 k€ por tienda)",
+          "values": [
+            1500
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "C0025",
+          "claim": "Coste 2026-2027 opción selectiva 9540 k€",
+          "fact_claim": "Coste total 2026-2027 de cerrar las 15 tiendas A con ruptura y mantener el resto (O2)",
+          "values": [
+            9540
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "C0024",
+          "claim": "Coste 2026-2027 cierre total 15598 k€",
+          "fact_claim": "Coste total 2026-2027 de cerrar las 40 tiendas (O1, propuesta financiera)",
+          "values": [
+            15598
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "C0009",
+          "claim": "Cerrar las 7 A sin ruptura: 1750 k€",
+          "fact_claim": "Coste de cerrar las 7 tiendas A sin ruptura (250 k€ por tienda; F0212 = 250.000 €, igual que F0216)",
+          "values": [
+            1750
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "C0007",
+          "claim": "Pérdida de las 7: 420 k€ al año",
+          "fact_claim": "Pérdida anual de las 7 tiendas A sin ruptura, antes de coste central",
+          "values": [
+            -420
+          ],
+          "source": "computed"
+        }
+      ],
+      "visual": {
+        "type": "statements",
+        "data": {
+          "style": "scr",
+          "items": [
+            {
+              "label": "Problema",
+              "title": "La mejora de 5,2 M€ no existe",
+              "text": "3600 k€ son coste central que no desaparece: la mejora real es 1596 k€."
+            },
+            {
+              "label": "Diagnóstico",
+              "title": "La pérdida evitable está en las 22 A",
+              "text": "Pierden 1920 k€ por un alquiler del 16% (red: 9%); B aporta 324 k€."
+            },
+            {
+              "label": "Solución",
+              "title": "Cerrar las 15 A con ruptura es lo más barato",
+              "text": "1500 k€ de mejora anual por 1500 k€ de cierre; 9540 k€ en 2026-2027 frente a 15598 k€."
+            },
+            {
+              "label": "Siguiente paso",
+              "title": "Negociar las 7 A sin ruptura antes de cerrar",
+              "text": "Cerrarlas costaría 1750 k€ para evitar 420 k€ al año; revisión en junio."
+            }
+          ]
+        }
+      },
+      "source": "tiendas_proximidad_2025.xlsx; informe_inmobiliario.pdf; propuesta_direccion_financiera.md"
+    },
+    {
+      "id": "S2",
+      "section": "K1",
+      "tracker": "La propuesta sobrevalora el ahorro",
+      "purpose": "Desmontar la cifra de 5,2 M€: el coste central asignado no desaparece al cerrar",
+      "headline": "Cerrar las 40 mejora el EBITDA 1596 k€, no 5196 k€: 3600 k€ son coste central que permanece",
+      "supporting_message": "El coste central asignado se reparte entre el resto de la red si se cierra una tienda",
+      "message_type": "change_bridge",
+      "evidence": [
+        {
+          "fact": "F0208",
+          "claim": "Pérdida de EBITDA 2025 de las 40 tiendas: −5196 k€",
+          "fact_claim": "Total — EBITDA 2025 (k€): -5,196 EUR_K",
+          "values": [
+            -5196.0
+          ],
+          "source": "tiendas_proximidad_2025.xlsx"
+        },
+        {
+          "fact": "F0215",
+          "claim": "La propuesta promete +5,2 M€",
+          "fact_claim": "Proponemos cerrarlas todas en 2026: el EBITDA del grupo mejora en 5,2 M€.",
+          "values": [
+            5.2
+          ],
+          "source": "propuesta_direccion_financiera.md"
+        },
+        {
+          "fact": "F0209",
+          "claim": "Coste central asignado a las 40: 3600 k€",
+          "fact_claim": "Total — Coste central asignado (k€): 3,600 EUR_K",
+          "values": [
+            3600.0
+          ],
+          "source": "tiendas_proximidad_2025.xlsx"
+        },
+        {
+          "fact": "F0217",
+          "claim": "90 k€ de coste central por tienda",
+          "fact_claim": "El EBITDA de cada tienda incluye 90 k€ de coste central asignado (sistemas, logística, central de compras).",
+          "values": [
+            90.0
+          ],
+          "source": "tiendas_proximidad_2025.xlsx"
+        },
+        {
+          "fact": "C0032",
+          "claim": "Mejora real: 1596 k€",
+          "fact_claim": "Mejora anual real de EBITDA de cerrar las 40 tiendas",
+          "values": [
+            1596
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "C0002",
+          "claim": "Grupo A antes de coste central: −1920 k€",
+          "fact_claim": "Pérdida del grupo A antes de coste central asignado",
+          "values": [
+            -1920
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "C0003",
+          "claim": "Grupo B antes de coste central: +324 k€",
+          "fact_claim": "Contribución del grupo B antes de coste central asignado (positiva)",
+          "values": [
+            324
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "C0017",
+          "claim": "69,3% de la pérdida es coste central",
+          "fact_claim": "Parte de la pérdida de 5196 k€ que es coste central asignado y no desaparece al cerrar (% del total)",
+          "values": [
+            69.3
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "F0207",
+          "claim": "40 tiendas",
+          "fact_claim": "Total — Tiendas: 40",
+          "values": [
+            40.0
+          ],
+          "source": "tiendas_proximidad_2025.xlsx"
+        }
+      ],
+      "visual": {
+        "type": "waterfall",
+        "title": "Mejora anual de EBITDA al cerrar las 40 tiendas",
+        "unit": "k€",
+        "format": {
+          "decimals": 0,
+          "thousands": false
+        },
+        "proof_label": false,
+        "delta_colors": "muted",
+        "highlight": [
+          "Coste central que permanece"
+        ],
+        "data": {
+          "steps": [
+            {
+              "label": "Mejora prometida (pérdida 2025)",
+              "value": 5196,
+              "type": "total"
+            },
+            {
+              "label": "Coste central que permanece",
+              "value": -3600,
+              "type": "delta"
+            },
+            {
+              "label": "Mejora real",
+              "type": "total"
+            }
+          ]
+        }
+      },
+      "commentary": {
+        "title": "El 69% de la pérdida no se ahorra",
+        "points": [
+          "**Coste central:** 90 k€ por tienda (sistemas, logística, compras) que se reparte entre el resto de la red",
+          "**1596 k€ reales:** el grupo A pierde 1920 k€ antes de coste central y el grupo B aporta 324 k€"
+        ]
+      },
+      "source": "tiendas_proximidad_2025.xlsx (Resumen, Notas controller); propuesta_direccion_financiera.md"
+    },
+    {
+      "id": "S3",
+      "section": "K1",
+      "tracker": "La propuesta sobrevalora el coste",
+      "purpose": "Corregir el coste de cierre de la propuesta",
+      "headline": "Cerrar las 40 cuesta 7750 k€, no 10 M€: 15 contratos A rompen en 2026 a 100 k€",
+      "supporting_message": "La propuesta aplica 250 k€ a todas las tiendas; el informe inmobiliario fija 100 k€ para las 15 con ruptura",
+      "message_type": "composition",
+      "evidence": [
+        {
+          "fact": "F0216",
+          "claim": "Propuesta: 250 k€ por tienda, 10 M€ en total",
+          "fact_claim": "Coste de cierre estimado: 250 k€ por tienda, 10 M€ en total.",
+          "values": [
+            250.0,
+            10.0
+          ],
+          "source": "propuesta_direccion_financiera.md"
+        },
+        {
+          "fact": "C0034",
+          "claim": "40 × 250 k€ = 10000 k€",
+          "fact_claim": "Coste de cierre de las 40 tiendas según la propuesta financiera (250 k€ por tienda × 40), en k€; equivale a sus 10 M€",
+          "values": [
+            10000
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "F0207",
+          "claim": "40 tiendas",
+          "fact_claim": "Total — Tiendas: 40",
+          "values": [
+            40.0
+          ],
+          "source": "tiendas_proximidad_2025.xlsx"
+        },
+        {
+          "fact": "F0211",
+          "claim": "15 contratos con ruptura en 2026 a 100.000 € por tienda",
+          "fact_claim": "15 contratos del grupo A tienen ventana de ruptura en 2026: cerrarlas cuesta 100.000 euros por tienda.",
+          "values": [
+            15.0,
+            100000.0
+          ],
+          "source": "informe_inmobiliario.pdf"
+        },
+        {
+          "fact": "A001",
+          "claim": "Supuesto: 100 k€ por tienda con ruptura, a confirmar por contrato",
+          "fact_claim": "Coste de cierre de una tienda A con ventana de ruptura en 2026: 100 k€ (re-expresión en k€ de los 100.000 € del informe inmobiliario, F0211; el motor toma el primer valor de F0211, que es el número de contratos)",
+          "values": [
+            100
+          ],
+          "source": "assumptions.json"
+        },
+        {
+          "fact": "F0204",
+          "claim": "18 tiendas B",
+          "fact_claim": "B - aperturas 2023-2024 — Tiendas: 18",
+          "values": [
+            18.0
+          ],
+          "source": "tiendas_proximidad_2025.xlsx"
+        },
+        {
+          "fact": "C0008",
+          "claim": "15 × 100 k€ = 1500 k€",
+          "fact_claim": "Coste de cerrar las 15 tiendas A con ruptura (100 k€ por tienda)",
+          "values": [
+            1500
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "C0009",
+          "claim": "7 × 250 k€ = 1750 k€",
+          "fact_claim": "Coste de cerrar las 7 tiendas A sin ruptura (250 k€ por tienda; F0212 = 250.000 €, igual que F0216)",
+          "values": [
+            1750
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "C0010",
+          "claim": "18 × 250 k€ = 4500 k€",
+          "fact_claim": "Coste de cerrar las 18 tiendas B (250 k€ por tienda; F0212 = 250.000 €, igual que F0216)",
+          "values": [
+            4500
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "C0011",
+          "claim": "Coste real de cerrar las 40: 7750 k€",
+          "fact_claim": "Coste real de cerrar las 40 tiendas (15 con ruptura + 7 A sin ruptura + 18 B)",
+          "values": [
+            7750
+          ],
+          "source": "computed"
+        }
+      ],
+      "visual": {
+        "type": "table",
+        "title": "Coste de cerrar las 40 tiendas",
+        "unit": "k€",
+        "columns": [
+          {
+            "label": "Grupo de tiendas",
+            "kind": "text",
+            "width": 4.2
+          },
+          {
+            "label": "Tiendas",
+            "kind": "number",
+            "format": {
+              "decimals": 0,
+              "thousands": false
+            }
+          },
+          {
+            "label": "Coste por tienda",
+            "kind": "number",
+            "format": {
+              "decimals": 0,
+              "thousands": false
+            }
+          },
+          {
+            "label": "Coste de cierre",
+            "kind": "number",
+            "format": {
+              "decimals": 0,
+              "thousands": false
+            }
+          }
+        ],
+        "rows": [
+          [
+            "A con ruptura en 2026",
+            15,
+            {
+              "value": 100,
+              "bound": "estimate"
+            },
+            {
+              "value": 1500,
+              "bound": "estimate"
+            }
+          ],
+          [
+            "A sin ruptura",
+            7,
+            250,
+            1750
+          ],
+          [
+            "B (aperturas 2023-2024)",
+            18,
+            250,
+            4500
+          ],
+          {
+            "cells": [
+              "Coste real de cerrar las 40",
+              40,
+              null,
+              {
+                "value": 7750,
+                "bound": "estimate"
+              }
+            ],
+            "style": "total"
+          },
+          {
+            "cells": [
+              "Según la propuesta financiera",
+              40,
+              250,
+              10000
+            ],
+            "style": "highlight"
+          }
+        ]
+      },
+      "takeaway": "La propuesta sobrestima el cierre total en 2250 k€ al aplicar 250 k€ también a las 15 tiendas con ruptura",
+      "footnotes": [
+        "~ Supuesto: 100 k€ por tienda con ruptura (informe inmobiliario), a confirmar contrato a contrato antes de notificar"
+      ],
+      "source": "informe_inmobiliario.pdf; propuesta_direccion_financiera.md; tiendas_proximidad_2025.xlsx"
+    },
+    {
+      "id": "S4",
+      "section": "K2",
+      "tracker": "La pérdida evitable está en el grupo A",
+      "purpose": "Localizar la pérdida evitable: separar el problema estructural (A) de la rampa (B)",
+      "headline": "Sin coste central, A pierde 1920 k€ por su alquiler del 16%, mientras B aporta 324 k€",
+      "supporting_message": "El problema es el contrato de alquiler del grupo A, no el formato de proximidad",
+      "message_type": "comparison",
+      "evidence": [
+        {
+          "fact": "F0201",
+          "claim": "22 tiendas A",
+          "fact_claim": "A - alquiler alto — Tiendas: 22",
+          "values": [
+            22.0
+          ],
+          "source": "tiendas_proximidad_2025.xlsx"
+        },
+        {
+          "fact": "F0204",
+          "claim": "18 tiendas B",
+          "fact_claim": "B - aperturas 2023-2024 — Tiendas: 18",
+          "values": [
+            18.0
+          ],
+          "source": "tiendas_proximidad_2025.xlsx"
+        },
+        {
+          "fact": "F0207",
+          "claim": "40 tiendas",
+          "fact_claim": "Total — Tiendas: 40",
+          "values": [
+            40.0
+          ],
+          "source": "tiendas_proximidad_2025.xlsx"
+        },
+        {
+          "fact": "F0202",
+          "claim": "EBITDA 2025 grupo A: −3900 k€",
+          "fact_claim": "A - alquiler alto — EBITDA 2025 (k€): -3,900 EUR_K",
+          "values": [
+            -3900.0
+          ],
+          "source": "tiendas_proximidad_2025.xlsx"
+        },
+        {
+          "fact": "F0203",
+          "claim": "Coste central grupo A: 1980 k€",
+          "fact_claim": "A - alquiler alto — Coste central asignado (k€): 1,980 EUR_K",
+          "values": [
+            1980.0
+          ],
+          "source": "tiendas_proximidad_2025.xlsx"
+        },
+        {
+          "fact": "F0205",
+          "claim": "EBITDA 2025 grupo B: −1296 k€",
+          "fact_claim": "B - aperturas 2023-2024 — EBITDA 2025 (k€): -1,296 EUR_K",
+          "values": [
+            -1296.0
+          ],
+          "source": "tiendas_proximidad_2025.xlsx"
+        },
+        {
+          "fact": "F0206",
+          "claim": "Coste central grupo B: 1620 k€",
+          "fact_claim": "B - aperturas 2023-2024 — Coste central asignado (k€): 1,620 EUR_K",
+          "values": [
+            1620.0
+          ],
+          "source": "tiendas_proximidad_2025.xlsx"
+        },
+        {
+          "fact": "F0208",
+          "claim": "EBITDA 2025 total: −5196 k€",
+          "fact_claim": "Total — EBITDA 2025 (k€): -5,196 EUR_K",
+          "values": [
+            -5196.0
+          ],
+          "source": "tiendas_proximidad_2025.xlsx"
+        },
+        {
+          "fact": "F0209",
+          "claim": "Coste central total: 3600 k€",
+          "fact_claim": "Total — Coste central asignado (k€): 3,600 EUR_K",
+          "values": [
+            3600.0
+          ],
+          "source": "tiendas_proximidad_2025.xlsx"
+        },
+        {
+          "fact": "C0002",
+          "claim": "A antes de coste central: −1920 k€",
+          "fact_claim": "Pérdida del grupo A antes de coste central asignado",
+          "values": [
+            -1920
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "C0003",
+          "claim": "B antes de coste central: +324 k€",
+          "fact_claim": "Contribución del grupo B antes de coste central asignado (positiva)",
+          "values": [
+            324
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "C0001",
+          "claim": "Total antes de coste central: −1596 k€",
+          "fact_claim": "Pérdida de EBITDA de las 40 tiendas antes de coste central asignado (lo que realmente desaparece al cerrarlas todas)",
+          "values": [
+            -1596
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "F0210",
+          "claim": "Alquiler del grupo A: 16% de las ventas frente al 9% de la red",
+          "fact_claim": "El alquiler de las tiendas del grupo A supone un 16% de sus ventas (incluidos gastos comunes), frente al 9% de media de la red.",
+          "values": [
+            16.0,
+            9.0
+          ],
+          "source": "informe_inmobiliario.pdf"
+        },
+        {
+          "fact": "C0018",
+          "claim": "7 pp por encima de la red",
+          "fact_claim": "Diferencia de alquiler sobre ventas del grupo A frente a la media de la red (incluidos gastos comunes)",
+          "values": [
+            7
+          ],
+          "source": "computed"
+        }
+      ],
+      "visual": {
+        "type": "table",
+        "title": "EBITDA 2025 por grupo, con y sin coste central asignado",
+        "unit": "k€",
+        "columns": [
+          {
+            "label": "Grupo",
+            "kind": "text",
+            "width": 3.4
+          },
+          {
+            "label": "Tiendas",
+            "kind": "number",
+            "format": {
+              "decimals": 0,
+              "thousands": false
+            }
+          },
+          {
+            "label": "EBITDA 2025",
+            "kind": "number",
+            "format": {
+              "decimals": 0,
+              "thousands": false
+            }
+          },
+          {
+            "label": "Coste central asignado",
+            "kind": "number",
+            "format": {
+              "decimals": 0,
+              "thousands": false
+            }
+          },
+          {
+            "label": "Antes de coste central",
+            "kind": "delta",
+            "format": {
+              "decimals": 0,
+              "thousands": false
+            },
+            "good": "up"
+          }
+        ],
+        "rows": [
+          [
+            "A: alquiler alto",
+            22,
+            -3900,
+            1980,
+            -1920
+          ],
+          [
+            "B: aperturas 2023-2024",
+            18,
+            -1296,
+            1620,
+            324
+          ],
+          {
+            "cells": [
+              "Total",
+              40,
+              -5196,
+              3600,
+              -1596
+            ],
+            "style": "total"
+          }
+        ],
+        "highlight_columns": [
+          4
+        ]
+      },
+      "commentary": {
+        "title": "El alquiler explica la pérdida de A",
+        "points": [
+          "**Alquiler de A:** 16% de las ventas frente al 9% de media de la red, 7 pp más",
+          "**Grupo B:** positivo antes de coste central; su pérdida contable es coste asignado"
+        ]
+      },
+      "footnotes": [
+        "Alquiler con gastos comunes, según el informe inmobiliario; el excel lo mide sin ellos"
+      ],
+      "source": "tiendas_proximidad_2025.xlsx (Resumen); informe_inmobiliario.pdf"
+    },
+    {
+      "id": "S5",
+      "section": "K2",
+      "tracker": "El grupo B está en rampa",
+      "purpose": "Mostrar que el grupo B ya aporta y está en rampa: responde a 'B también pierde dinero'",
+      "headline": "Antes de coste central, cada tienda B ya aporta 10 k€ (aperturas 2023) o 28 k€ (2024)",
+      "supporting_message": "Sus ventas por m2 crecen un 11% al año; cerrarlas costaría 4500 k€ y restaría su contribución",
+      "message_type": "single_number",
+      "evidence": [
+        {
+          "fact": "C0015",
+          "claim": "Tienda B abierta en 2023: +10 k€ antes de coste central",
+          "fact_claim": "Contribución por tienda B abierta en 2023, antes de coste central",
+          "values": [
+            10
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "C0016",
+          "claim": "Tienda B abierta en 2024: +28 k€ antes de coste central",
+          "fact_claim": "Contribución por tienda B abierta en 2024, antes de coste central",
+          "values": [
+            28
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "F0213",
+          "claim": "Ventas por m2 +11% al año",
+          "fact_claim": "Sus ventas por metro cuadrado crecen un 11% al año.",
+          "values": [
+            11.0
+          ],
+          "source": "informe_inmobiliario.pdf"
+        },
+        {
+          "fact": "C0003",
+          "claim": "Grupo B: +324 k€",
+          "fact_claim": "Contribución del grupo B antes de coste central asignado (positiva)",
+          "values": [
+            324
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "F0204",
+          "claim": "18 tiendas B",
+          "fact_claim": "B - aperturas 2023-2024 — Tiendas: 18",
+          "values": [
+            18.0
+          ],
+          "source": "tiendas_proximidad_2025.xlsx"
+        },
+        {
+          "fact": "C0010",
+          "claim": "Cerrar las 18 B: 4500 k€",
+          "fact_claim": "Coste de cerrar las 18 tiendas B (250 k€ por tienda; F0212 = 250.000 €, igual que F0216)",
+          "values": [
+            4500
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "F0205",
+          "claim": "EBITDA 2025 grupo B: −1296 k€",
+          "fact_claim": "B - aperturas 2023-2024 — EBITDA 2025 (k€): -1,296 EUR_K",
+          "values": [
+            -1296.0
+          ],
+          "source": "tiendas_proximidad_2025.xlsx"
+        },
+        {
+          "fact": "F0206",
+          "claim": "Coste central grupo B: 1620 k€",
+          "fact_claim": "B - aperturas 2023-2024 — Coste central asignado (k€): 1,620 EUR_K",
+          "values": [
+            1620.0
+          ],
+          "source": "tiendas_proximidad_2025.xlsx"
+        }
+      ],
+      "kpis": {
+        "items": [
+          {
+            "value": "+10 k€",
+            "label": "Por tienda abierta en 2023, antes de coste central"
+          },
+          {
+            "value": "+28 k€",
+            "label": "Por tienda abierta en 2024, antes de coste central"
+          },
+          {
+            "value": "+11%",
+            "label": "Crecimiento anual de las ventas por m2",
+            "trend": "up",
+            "good": "up"
+          }
+        ]
+      },
+      "visual": {
+        "type": "waterfall",
+        "title": "EBITDA 2025 de las 18 tiendas B",
+        "unit": "k€",
+        "format": {
+          "decimals": 0,
+          "thousands": false
+        },
+        "delta_colors": "muted",
+        "highlight": [
+          "Contribución antes de coste central"
+        ],
+        "data": {
+          "steps": [
+            {
+              "label": "EBITDA contable",
+              "value": -1296,
+              "type": "total"
+            },
+            {
+              "label": "Coste central asignado",
+              "value": 1620,
+              "type": "delta"
+            },
+            {
+              "label": "Contribución antes de coste central",
+              "type": "total"
+            }
+          ]
+        }
+      },
+      "takeaway": "Cerrar las 18 tiendas B costaría 4500 k€ y restaría 324 k€ al año; la red alcanza el equilibrio en el cuarto año",
+      "source": "tiendas_proximidad_2025.xlsx (Tiendas); informe_inmobiliario.pdf"
+    },
+    {
+      "id": "S6",
+      "section": "K3",
+      "tracker": "Opciones en la misma base",
+      "purpose": "Comparar las cuatro opciones en la misma base 2026-2027",
+      "headline": "En 2026-2027, cerrar las 15 A con ruptura cuesta 9540 k€, frente a 15598 k€ del cierre total",
+      "supporting_message": "Las cuatro opciones cargan los mismos componentes; el coste central permanece en todas",
+      "message_type": "comparison",
+      "evidence": [
+        {
+          "fact": "C0023",
+          "claim": "Mantener las 40: 11040 k€",
+          "fact_claim": "Coste total 2026-2027 de mantener las 40 tiendas (O0)",
+          "values": [
+            11040
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "C0024",
+          "claim": "Cerrar las 40: 15598 k€",
+          "fact_claim": "Coste total 2026-2027 de cerrar las 40 tiendas (O1, propuesta financiera)",
+          "values": [
+            15598
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "C0025",
+          "claim": "Cerrar 15 A con ruptura: 9540 k€",
+          "fact_claim": "Coste total 2026-2027 de cerrar las 15 tiendas A con ruptura y mantener el resto (O2)",
+          "values": [
+            9540
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "C0026",
+          "claim": "Cerrar las 22 A: 10450 k€",
+          "fact_claim": "Coste total 2026-2027 de cerrar las 22 tiendas del grupo A y mantener B (O3)",
+          "values": [
+            10450
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "C0022",
+          "claim": "Coste central que permanece 2026-2027: 7200 k€",
+          "fact_claim": "Coste central asignado a las 40 tiendas que permanece en cualquier opción, acumulado 2026-2027",
+          "values": [
+            7200
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "C0032",
+          "claim": "Mejora anual cierre total: 1596 k€",
+          "fact_claim": "Mejora anual real de EBITDA de cerrar las 40 tiendas",
+          "values": [
+            1596
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "C0031",
+          "claim": "Mejora anual cierre selectivo: 1500 k€",
+          "fact_claim": "Mejora anual de EBITDA de cerrar las 15 tiendas A con ruptura",
+          "values": [
+            1500
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "C0033",
+          "claim": "Mejora anual cerrar las 22 A: 1920 k€",
+          "fact_claim": "Mejora anual de EBITDA de cerrar las 22 tiendas A",
+          "values": [
+            1920
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "C0011",
+          "claim": "Cierre de las 40: 7750 k€",
+          "fact_claim": "Coste real de cerrar las 40 tiendas (15 con ruptura + 7 A sin ruptura + 18 B)",
+          "values": [
+            7750
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "C0008",
+          "claim": "Cierre de las 15: 1500 k€",
+          "fact_claim": "Coste de cerrar las 15 tiendas A con ruptura (100 k€ por tienda)",
+          "values": [
+            1500
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "C0012",
+          "claim": "Cierre de las 22 A: 3250 k€",
+          "fact_claim": "Coste de cerrar las 22 tiendas del grupo A (15 con ruptura + 7 sin ruptura)",
+          "values": [
+            3250
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "C0019",
+          "claim": "Pérdida directa de A mantenida 2 años: 3840 k€",
+          "fact_claim": "Pérdida directa del grupo A si se mantienen las 22 tiendas, acumulada 2026-2027",
+          "values": [
+            3840
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "C0020",
+          "claim": "Pérdida de las 7 A sin ruptura 2 años: 840 k€",
+          "fact_claim": "Pérdida directa de las 7 tiendas A sin ruptura si siguen abiertas sin rebaja, acumulada 2026-2027",
+          "values": [
+            840
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "C0021",
+          "claim": "Contribución de B perdida 2 años: 648 k€",
+          "fact_claim": "Contribución del grupo B que se pierde si se cierran sus 18 tiendas, acumulada 2026-2027",
+          "values": [
+            648
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "C0028",
+          "claim": "Cerrar las 40 da 96 k€ más al año",
+          "fact_claim": "Mejora anual de EBITDA de la opción recomendada frente a cerrar las 40 tiendas",
+          "values": [
+            -96
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "C0029",
+          "claim": "a cambio de 6250 k€ más de cierre",
+          "fact_claim": "Ahorro de coste de cierre de la opción recomendada frente a cerrar las 40 tiendas",
+          "values": [
+            6250
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "F0211",
+          "claim": "15 contratos con ruptura en 2026",
+          "fact_claim": "15 contratos del grupo A tienen ventana de ruptura en 2026: cerrarlas cuesta 100.000 euros por tienda.",
+          "values": [
+            15.0,
+            100000.0
+          ],
+          "source": "informe_inmobiliario.pdf"
+        },
+        {
+          "fact": "F0207",
+          "claim": "40 tiendas",
+          "fact_claim": "Total — Tiendas: 40",
+          "values": [
+            40.0
+          ],
+          "source": "tiendas_proximidad_2025.xlsx"
+        },
+        {
+          "fact": "F0201",
+          "claim": "22 tiendas A",
+          "fact_claim": "A - alquiler alto — Tiendas: 22",
+          "values": [
+            22.0
+          ],
+          "source": "tiendas_proximidad_2025.xlsx"
+        },
+        {
+          "fact": "A001",
+          "claim": "Supuesto: 100 k€ por tienda con ruptura",
+          "fact_claim": "Coste de cierre de una tienda A con ventana de ruptura en 2026: 100 k€ (re-expresión en k€ de los 100.000 € del informe inmobiliario, F0211; el motor toma el primer valor de F0211, que es el número de contratos)",
+          "values": [
+            100
+          ],
+          "source": "assumptions.json"
+        },
+        {
+          "fact": "A002",
+          "claim": "Supuesto: horizonte de dos años, cierres a inicio de 2026",
+          "fact_claim": "Horizonte de comparación de opciones: dos años (2026-2027), con cierres efectivos a principios de 2026",
+          "values": [
+            2
+          ],
+          "source": "assumptions.json"
+        }
+      ],
+      "visual": {
+        "type": "table",
+        "title": "Coste acumulado 2026-2027 por opción",
+        "unit": "k€",
+        "columns": [
+          {
+            "label": "Opción",
+            "kind": "text",
+            "width": 3.3
+          },
+          {
+            "label": "Mejora EBITDA anual",
+            "kind": "number",
+            "format": {
+              "decimals": 0,
+              "thousands": false
+            }
+          },
+          {
+            "label": "Coste de cierre",
+            "kind": "number",
+            "format": {
+              "decimals": 0,
+              "thousands": false
+            }
+          },
+          {
+            "label": "Pérdida directa mantenida",
+            "kind": "number",
+            "format": {
+              "decimals": 0,
+              "thousands": false
+            }
+          },
+          {
+            "label": "Contribución de B perdida",
+            "kind": "number",
+            "format": {
+              "decimals": 0,
+              "thousands": false
+            }
+          },
+          {
+            "label": "Coste total (incluye 7200 de coste central)",
+            "kind": "number",
+            "format": {
+              "decimals": 0,
+              "thousands": false
+            }
+          }
+        ],
+        "rows": [
+          [
+            "Mantener las 40",
+            0,
+            0,
+            3840,
+            0,
+            11040
+          ],
+          [
+            "Cerrar las 40 (propuesta)",
+            1596,
+            {
+              "value": 7750,
+              "bound": "estimate"
+            },
+            0,
+            648,
+            {
+              "value": 15598,
+              "bound": "estimate"
+            }
+          ],
+          {
+            "cells": [
+              "Cerrar 15 A con ruptura (recomendada)",
+              1500,
+              {
+                "value": 1500,
+                "bound": "estimate"
+              },
+              {
+                "value": 840,
+                "bound": "upper"
+              },
+              0,
+              {
+                "value": 9540,
+                "bound": "estimate"
+              }
+            ],
+            "style": "highlight"
+          },
+          [
+            "Cerrar las 22 A",
+            1920,
+            {
+              "value": 3250,
+              "bound": "estimate"
+            },
+            0,
+            0,
+            {
+              "value": 10450,
+              "bound": "estimate"
+            }
+          ]
+        ],
+        "highlight_columns": [
+          5
+        ]
+      },
+      "takeaway": "Cerrar las 40 da solo 96 k€ más de EBITDA al año, a cambio de 6250 k€ más de cierre y de renunciar a B",
+      "footnotes": [
+        "~ Supuesto: cierres a inicio de 2026 y 100 k€ por tienda con ruptura. ≤ Cota superior: pérdida de las 7 A sin ruptura si la negociación fracasa"
+      ],
+      "source": "tiendas_proximidad_2025.xlsx; informe_inmobiliario.pdf; propuesta_direccion_financiera.md"
+    },
+    {
+      "id": "S7",
+      "section": "K4",
+      "tracker": "Negociar antes de cerrar",
+      "purpose": "Plan para las 7 tiendas A sin ruptura: negociar antes de cerrar, con criterio y fecha",
+      "headline": "En las 7 A sin ruptura, negociar primero: cerrarlas costaría 1750 k€ para evitar 420 k€ al año",
+      "supporting_message": "Cinco de los siete propietarios ya aceptan negociar una rebaja de alquiler",
+      "message_type": "sequence",
+      "evidence": [
+        {
+          "fact": "C0009",
+          "claim": "Cerrar las 7 A sin ruptura: 1750 k€",
+          "fact_claim": "Coste de cerrar las 7 tiendas A sin ruptura (250 k€ por tienda; F0212 = 250.000 €, igual que F0216)",
+          "values": [
+            1750
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "C0007",
+          "claim": "Pérdida de las 7: 420 k€ al año",
+          "fact_claim": "Pérdida anual de las 7 tiendas A sin ruptura, antes de coste central",
+          "values": [
+            -420
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "C0014",
+          "claim": "4,2 años de recuperación",
+          "fact_claim": "Años de recuperación del cierre de las 7 tiendas A sin ruptura",
+          "values": [
+            4.2
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "C0013",
+          "claim": "1 año de recuperación para las 15 con ruptura",
+          "fact_claim": "Años de recuperación del cierre de las 15 tiendas A con ruptura (coste de cierre / pérdida anual evitada)",
+          "values": [
+            1.0
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "F0212",
+          "claim": "Cerrar sin ruptura: 250.000 € por tienda",
+          "fact_claim": "Cerrar una tienda sin ruptura cuesta 250.000 euros (penalización e indemnizaciones).",
+          "values": [
+            250000.0
+          ],
+          "source": "informe_inmobiliario.pdf"
+        },
+        {
+          "fact": "F0211",
+          "claim": "15 contratos con ruptura en 2026",
+          "fact_claim": "15 contratos del grupo A tienen ventana de ruptura en 2026: cerrarlas cuesta 100.000 euros por tienda.",
+          "values": [
+            15.0,
+            100000.0
+          ],
+          "source": "informe_inmobiliario.pdf"
+        }
+      ],
+      "commentary": {
+        "title": "Cerrar hoy no compensa",
+        "points": [
+          "**1750 k€:** coste de cerrarlas hoy, sin ventana de ruptura",
+          "**420 k€ al año:** su pérdida antes de coste central",
+          "**4,2 años de recuperación,** frente a 1 año en las 15 tiendas con ruptura"
+        ]
+      },
+      "visual": {
+        "type": "process",
+        "title": "Plan para las 7 tiendas A sin ruptura",
+        "highlight": [
+          0
+        ],
+        "numbered": true,
+        "data": {
+          "steps": [
+            {
+              "title": "Negociar la rebaja",
+              "text": "5 de los 7 propietarios ya aceptan negociar el alquiler",
+              "owner": "Dirección inmobiliaria"
+            },
+            {
+              "title": "Revisar en junio de 2026",
+              "text": "Umbral: contribución directa positiva tras la rebaja",
+              "owner": "Directora financiera"
+            },
+            {
+              "title": "Cerrar si no hay acuerdo",
+              "text": "En su próxima ventana de ruptura, sin pagar 250 k€ por tienda",
+              "owner": "Consejero delegado"
+            }
+          ]
+        }
+      },
+      "source": "informe_inmobiliario.pdf; tiendas_proximidad_2025.xlsx"
+    },
+    {
+      "id": "S8",
+      "section": "K4",
+      "tracker": "Decisiones para hoy",
+      "purpose": "Decisiones, umbrales y seguimiento que el consejo aprueba hoy",
+      "headline": "Aprobar hoy cerrar 15 tiendas (1500 k€) y negociar las 7 A restantes; revisión en junio de 2026",
+      "message_type": "recommendation",
+      "evidence": [
+        {
+          "fact": "C0008",
+          "claim": "Coste de cierre de las 15: 1500 k€",
+          "fact_claim": "Coste de cerrar las 15 tiendas A con ruptura (100 k€ por tienda)",
+          "values": [
+            1500
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "C0031",
+          "claim": "Mejora anual: 1500 k€",
+          "fact_claim": "Mejora anual de EBITDA de cerrar las 15 tiendas A con ruptura",
+          "values": [
+            1500
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "F0211",
+          "claim": "15 contratos con ruptura en 2026",
+          "fact_claim": "15 contratos del grupo A tienen ventana de ruptura en 2026: cerrarlas cuesta 100.000 euros por tienda.",
+          "values": [
+            15.0,
+            100000.0
+          ],
+          "source": "informe_inmobiliario.pdf"
+        },
+        {
+          "fact": "F0207",
+          "claim": "40 tiendas",
+          "fact_claim": "Total — Tiendas: 40",
+          "values": [
+            40.0
+          ],
+          "source": "tiendas_proximidad_2025.xlsx"
+        },
+        {
+          "fact": "F0204",
+          "claim": "18 tiendas B",
+          "fact_claim": "B - aperturas 2023-2024 — Tiendas: 18",
+          "values": [
+            18.0
+          ],
+          "source": "tiendas_proximidad_2025.xlsx"
+        },
+        {
+          "fact": "C0015",
+          "claim": "10 k€ por tienda B de 2023",
+          "fact_claim": "Contribución por tienda B abierta en 2023, antes de coste central",
+          "values": [
+            10
+          ],
+          "source": "computed"
+        },
+        {
+          "fact": "C0016",
+          "claim": "28 k€ por tienda B de 2024",
+          "fact_claim": "Contribución por tienda B abierta en 2024, antes de coste central",
+          "values": [
+            28
+          ],
+          "source": "computed"
+        }
+      ],
+      "visual": {
+        "type": "table",
+        "title": "Decisiones que se piden al consejo",
+        "columns": [
+          {
+            "label": "Decisión",
+            "kind": "text",
+            "width": 4.3
+          },
+          {
+            "label": "Responsable",
+            "kind": "text",
+            "width": 2.5
+          },
+          {
+            "label": "Umbral o KPI",
+            "kind": "text",
+            "width": 4.3
+          },
+          {
+            "label": "Cuándo",
+            "kind": "text"
+          }
+        ],
+        "rows": [
+          [
+            "Rechazar el cierre de las 40 tiendas",
+            "Consejero delegado",
+            "–",
+            "Hoy"
+          ],
+          {
+            "cells": [
+              "Aprobar el cierre de las 15 tiendas A con ruptura",
+              "Directora financiera",
+              "Coste real no superior a 1500 k€; mejora de EBITDA de 1500 k€ al año",
+              "T1 2026"
+            ],
+            "style": "highlight"
+          },
+          [
+            "Mandato de negociación en las 7 A sin ruptura",
+            "Dirección inmobiliaria",
+            "Contribución directa positiva o cierre en su ventana",
+            "Junio 2026"
+          ],
+          [
+            "Mantener las 18 tiendas B",
+            "Director de expansión",
+            "Por tienda, no menos de 10 k€ (2023) y 28 k€ (2024)",
+            "Cierre 2026"
+          ]
+        ]
+      },
+      "source": "tiendas_proximidad_2025.xlsx; informe_inmobiliario.pdf"
+    }
+  ]
+}

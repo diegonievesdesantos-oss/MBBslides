@@ -130,3 +130,23 @@ cases were already used in s2, so this is a development check, not evidence.
   - prose-vs-prose conflicts without a period are not detected (closure cost 1.5 vs 3.2 M€);
   - no unit conversion in formulas;
   - numbers written in words ("two stoppages") are not extracted.
+
+## Second end to end: tiendas, in Spanish (protocol 1.2)
+
+`x2_tiendas_proximidad_es/runs/protocol_agent_03_deck/`: the reasoning run is from the 1.2 rerun.
+- **Checks:** reasoning check PASS, with every number on every slide grounded. Render QA: 0 errors.
+- **Scores:** deck 98.4, composition 99.6.
+- **The v1.8 markers worked:** `~1500`, `≤840`, a muted bridge with a highlight, `proof_label: false`.
+
+**Found and fixed afterwards:**
+- **A regression from the 1.2-rerun fixes:** "1.596 k€" was read as 1.596. Spanish thousands before `k€`/`M€`
+  are thousands again, and "€2.868M" stays a decimal.
+- **The footer:** it printed "Source:" in a Spanish deck; it now says "Fuente:" when `meta.language` is `es`.
+- **The headline lint's Spanish verbs:** it was missing cuesta, costaría, cierra, rompen, aprobar and others.
+
+**Still open:**
+- No locale number formatting: Spanish decks need `thousands: false` or show "1,596".
+- KPIs + commentary and KPIs + process have no layout.
+- Table cells are compared unit-free, so "10 M€" against a k€ column needs a computed fact.
+- **Editorial note from the agent:** per store, the 2024 group-B openings contribute more than the 2023
+  ones, which weakens a ramp-by-age reading. The ramp claim rests on sales per m² growing 11% a year.

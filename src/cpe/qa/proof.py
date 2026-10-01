@@ -89,7 +89,8 @@ def headline_quantities(text: str) -> list[dict]:
         suffix = re.sub(r"[-−+\d.,\s€$£]", "", raw).lower()
         scale_word = re.match(r"\s*(?:eur|usd|gbp)?\s*(m|mn|bn|k|million|billion|millones)\b", rest, re.I)
         core = re.sub(r"[a-zA-Z%€$£\s]+", "", raw)
-        if re.fullmatch(r"[-+−]?\d{1,3}\.\d{3}", core) and (suffix in SCALES or scale_word):
+        spanish_unit = re.match(r"\s*(k€|m€|€|mil\b|millones\b|euros\b)", rest, re.I)  # "1.596 k€" (raw "1.596 k" + "€"): Spanish thousands
+        if re.fullmatch(r"[-+−]?\d{1,3}\.\d{3}", core) and (suffix in SCALES or scale_word) and not spanish_unit and "€" not in suffix:
             v = float(core.replace("−", "-"))  # "€2.868M", "2.868 EUR M": a decimal before a scale, not thousands
             dec3 = True
         else:

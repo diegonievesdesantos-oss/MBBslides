@@ -602,3 +602,16 @@ def test_conflicts_file_accepts_plain_ids_and_reports_bad_shapes(tmp_path):
     assert check_conflicts(tmp_path, {"facts": []}, set()) == []
     (tmp_path / "fact_conflicts.json").write_text(json.dumps({"conflicts": [{"facts": [3, 4]}, "X001"]}))
     assert [i["code"] for i in check_conflicts(tmp_path, {"facts": []}, set())] == ["CONFLICT_FORMAT", "CONFLICT_FORMAT"]
+
+
+def test_spanish_deck_numbers_source_label_and_verbs():
+    from cpe.core.headline import lint_headline
+    from cpe.qa.proof import headline_quantities
+    assert [q["value"] for q in headline_quantities("mejora 1.596 k€ y 1.500 M€")] == [1596000.0, 1500000000.0]
+    assert [q["value"] for q in headline_quantities("€2.868M")] == [2868000.0]
+    codes = {i["code"] for i in lint_headline("Cerrar las 15 tiendas con ruptura cuesta 1500 k€ en 2026")[1]}
+    assert "HEADLINE_NO_VERB" not in codes and "HEADLINE_TOPIC" not in codes
+    import inspect
+
+    from cpe.pptx import text_components
+    assert '"Fuente: "' in inspect.getsource(text_components.footer)
