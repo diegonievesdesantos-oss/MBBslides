@@ -53,7 +53,7 @@ def detect_period(text: str) -> dict | None:
 
 def detect_unit(text: str) -> str:
     """Normalised unit token of a header / label: 'EUR_M', 'USD_K', 'PCT', 'PP', 'BPS', 'DAYS', '' …"""
-    t = str(text or "")
+    t = str(text or "").replace("_", " ")  # "opening_arr_eur_m"
     m = UNIT_RE.search(t)
     if not m:
         w = next((UNIT_WORDS[x] for x in re.findall(r"[a-záéíóúñ]+", t.lower()) if x in UNIT_WORDS and UNIT_WORDS[x] != "PP"), "")
@@ -157,6 +157,16 @@ def _table_facts(t: dict, next_id) -> list[dict]:
     facts = []
     header = [str(h) for h in t["header"]]
     numeric = set(t["numeric_columns"])
+    year_cols = []
+    for j in list(numeric):  # a year column ("year", "año", "FY") labels its row, it is not a measure
+        vals = [r[j] for r in t["rows"] if j < len(r) and r[j] not in (None, "")]
+        if re.fullmatch(r"\s*(year|años?|ejercicio|fy|fiscal year|period|periodo)\s*", header[j], re.I) and vals \
+                and all(float(v).is_integer() and 1900 <= float(v) <= 2100 for v in vals):
+            numeric.discard(j)
+            year_cols.append(j)
+            for r in t["rows"]:
+                if j < len(r) and r[j] not in (None, ""):
+                    r[j] = str(int(float(r[j])))
     label_cols = [j for j in range(len(header)) if j not in numeric]
     sheet = t["loc"].replace("sheet", "").strip() or None
     # a table-wide unit only when the LABEL column header states it ("Line (€M)"); a unit in one
@@ -169,7 +179,7 @@ def _table_facts(t: dict, next_id) -> list[dict]:
             if j >= len(row) or row[j] is None or row[j] == "":
                 continue
             v = float(row[j])
-            per = detect_period(header[j])
+            per = detect_period(header[j]) or next((detect_period(str(row[y])) for y in year_cols if y < len(row)), None)
             unit = detect_unit(header[j]) or detect_unit(label) or table_unit
             fid = next_id()
             rng = f"{_col(j)}{i + 2}"
