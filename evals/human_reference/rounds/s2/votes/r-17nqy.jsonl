@@ -1,6 +1,6 @@
-{"pair": "p003", "left": "d0e617d42567.md", "right": "d8c98deb8f40.md", "choice": "left", "ms": 111067, "ts": "2026-10-01T19:17:51"}
-{"pair": "p002", "left": "ab8d08085155.md", "right": "87aba0291e0b.md", "choice": "right", "ms": 180727, "ts": "2026-10-01T19:20:52"}
-{"pair": "r002", "left": "ab8d08085155.md", "right": "87aba0291e0b.md", "choice": "right", "ms": 9612, "ts": "2026-10-01T19:21:01"}
-{"pair": "p004", "left": "deb02b1957cc.md", "right": "d96842ba45f4.md", "choice": "right", "ms": 7854, "ts": "2026-10-01T19:22:31"}
-{"pair": "r001", "left": "4ee2b9c91a3f.md", "right": "a949f037355c.md", "choice": "right", "ms": 54530, "ts": "2026-10-01T19:23:26"}
-{"pair": "p001", "left": "a949f037355c.md", "right": "4ee2b9c91a3f.md", "choice": "left", "ms": 8913, "ts": "2026-10-01T19:23:35"}
+{"pair": "p003", "left": "d0e617d42567.md", "right": "d8c98deb8f40.md", "choice": "left", "ms": 57895, "ts": "2026-10-01T19:30:34"}
+{"pair": "p002", "left": "ab8d08085155.md", "right": "87aba0291e0b.md", "choice": "right", "ms": 4608, "ts": "2026-10-01T19:30:38"}
+{"pair": "r002", "left": "ab8d08085155.md", "right": "87aba0291e0b.md", "choice": "left", "ms": 3956, "ts": "2026-10-01T19:30:42"}
+{"pair": "p004", "left": "deb02b1957cc.md", "right": "d96842ba45f4.md", "choice": "right", "ms": 6931, "ts": "2026-10-01T19:30:49"}
+{"pair": "r001", "left": "4ee2b9c91a3f.md", "right": "a949f037355c.md", "choice": "right", "ms": 7200, "ts": "2026-10-01T19:30:56"}
+{"pair": "p001", "left": "a949f037355c.md", "right": "4ee2b9c91a3f.md", "choice": "left", "ms": 2262, "ts": "2026-10-01T19:30:59"}
