@@ -1,12 +1,12 @@
 {
-  "version": "1.3.1",
+  "version": "1.3.2",
   "regression": {
     "metric": "archetype-fitness composition score",
-    "suite_composition": 87.3,
-    "suite_composition_v1": 84.2,
+    "suite_composition": 87.5,
+    "suite_composition_v1": 84.1,
     "slides_measured": 39,
     "qa_errors": 0,
-    "qa_warnings": 63,
+    "qa_warnings": 62,
     "cases_ok": 10,
     "cases_total": 10,
     "by_archetype": {
@@ -20,7 +20,7 @@
       },
       "executive_summary": {
         "slides": 3,
-        "mean": 80.2
+        "mean": 90.0
       },
       "hierarchy": {
         "slides": 1,
@@ -72,7 +72,7 @@
       }
     },
     "flag_counts": {
-      "DEAD_SPACE": 8,
+      "DEAD_SPACE": 7,
       "OFF_BALANCE": 5,
       "UNDERUSED_CANVAS": 4,
       "PROOF_NOT_VISIBLE": 2,
@@ -111,7 +111,7 @@
         "qa_passed": true
       },
       "05_spanish": {
-        "composition": 99.1,
+        "composition": 97.9,
         "qa_score": 98.0,
         "qa_errors": 0,
         "qa_warnings": 2,
@@ -146,17 +146,17 @@
         "qa_passed": true
       },
       "10_archetypes": {
-        "composition": 81.1,
-        "qa_score": 91.3,
+        "composition": 84.4,
+        "qa_score": 91.7,
         "qa_errors": 0,
-        "qa_warnings": 22,
+        "qa_warnings": 21,
         "qa_passed": true
       }
     },
     "environment_fingerprint": "f98cee49d123ed5f",
     "engine": {
-      "version": "1.3.0",
-      "commit": "5383393c46c2f1b437d14ab618b8bfbc98fd5ac6-dirty"
+      "version": "1.3.2",
+      "commit": "89b2641903cc60a45730965fd710a174ba621c52-dirty"
     }
   },
   "environment": {
@@ -268,9 +268,9 @@
       "Inter": "Inter|/usr/share/fonts/opentype/inter/Inter-Regular.otf",
       "Segoe UI": "DejaVu Sans|/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
     },
-    "cpe_version": "1.3.1",
+    "cpe_version": "1.3.2",
     "container_image": "mbbslides-visual:1.3@sha256:bb5bbbdd55bcec5db567781c63574da1a4b2fc4504446d6fea23f5197f59d278",
-    "commit": "5383393c46c2f1b437d14ab618b8bfbc98fd5ac6-dirty",
+    "commit": "89b2641903cc60a45730965fd710a174ba621c52-dirty",
     "fingerprint": "f98cee49d123ed5f"
   },
   "holdout": {
@@ -433,7 +433,7 @@
   "examples": {
     "metric": "archetype-fitness composition score",
     "suite_composition": 99.4,
-    "suite_composition_v1": 92.7,
+    "suite_composition_v1": 92.6,
     "slides_measured": 43,
     "qa_errors": 0,
     "qa_warnings": 0,
@@ -454,7 +454,7 @@
       },
       "executive_summary": {
         "slides": 3,
-        "mean": 99.8
+        "mean": 100.0
       },
       "hierarchy": {
         "slides": 2,
@@ -528,8 +528,8 @@
     },
     "environment_fingerprint": "f98cee49d123ed5f",
     "engine": {
-      "version": "1.3.1",
-      "commit": "5383393c46c2f1b437d14ab618b8bfbc98fd5ac6-dirty"
+      "version": "1.3.2",
+      "commit": "89b2641903cc60a45730965fd710a174ba621c52-dirty"
     }
   }
 }

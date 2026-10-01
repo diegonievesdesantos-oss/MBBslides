@@ -78,7 +78,7 @@
   "exempted": [],
   "render_metrics": {
     "g03": {
-      "ink_coverage": 0.029
+      "ink_coverage": 0.028
     },
     "g05": {
       "ink_coverage": 0.243
@@ -145,7 +145,7 @@
       "warnings": 0,
       "score": 99.8,
       "patches": [],
-      "seconds": 7.5
+      "seconds": 6.7
     }
   ],
   "pending_actions": [],
@@ -186,19 +186,19 @@
   "composition": {
     "metric": "archetype-fitness composition score",
     "deck_score": 99.0,
-    "deck_score_v1": 91.0,
+    "deck_score_v1": 90.6,
     "slides": [
       {
         "slide_id": "g03",
         "archetype": "executive_summary",
         "archetype_why": "slide kind exec_summary",
-        "score": 99.5,
+        "score": 100.0,
         "observed": {
-          "utilization": 0.75,
-          "empty": 0.154,
-          "ink": 0.024,
-          "offcentre": 0.057,
-          "emphasis": 0.421,
+          "utilization": 0.558,
+          "empty": 0.288,
+          "ink": 0.027,
+          "offcentre": 0.054,
+          "emphasis": 0.37,
           "regions": 0.0,
           "ratio": 1.571,
           "edges": 3.0
@@ -206,49 +206,35 @@
         "fitness": {
           "utilization": 1.0,
           "empty": 1.0,
-          "ink": 0.947,
+          "ink": 1.0,
           "offcentre": 1.0,
           "regions": 1.0,
           "ratio": 1.0,
           "edges": 1.0
         },
-        "deviations": [
-          {
-            "metric": "ink",
-            "value": 0.024,
-            "expected": [
-              0.03,
-              0.35
-            ],
-            "direction": "low",
-            "fitness": 0.947,
-            "weight": 8,
-            "meaning": "too sparse",
-            "flag": "SPARSE"
-          }
-        ],
+        "deviations": [],
         "flags": [],
-        "score_v1": 96.3,
+        "score_v1": 86.6,
         "flags_v1": [],
         "metrics": {
-          "dead_space": 1.0,
-          "utilization": 1.0,
-          "balance": 0.984,
-          "density": 0.697,
+          "dead_space": 0.729,
+          "utilization": 0.615,
+          "balance": 0.986,
+          "density": 0.726,
           "emphasis": 1.0,
           "evidence": 1.0,
           "hierarchy": 0.951,
           "alignment": 1.0
         },
         "raw": {
-          "largest_empty_share": 0.154,
-          "utilization": 0.75,
+          "largest_empty_share": 0.288,
+          "utilization": 0.558,
           "center_of_mass": [
-            0.443,
-            0.501
+            0.446,
+            0.433
           ],
-          "ink_coverage": 0.024,
-          "emphasis_share": 0.421,
+          "ink_coverage": 0.027,
+          "emphasis_share": 0.37,
           "focus_regions": 0,
           "accent_regions": 0,
           "proof_checks": "1/1",

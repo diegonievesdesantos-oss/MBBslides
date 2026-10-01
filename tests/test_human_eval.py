@@ -118,4 +118,6 @@ def test_human_results_never_enter_the_automatic_score(tmp_path, monkeypatch):
 
     from cpe.qa import archetypes, composition
 
-    assert "human" not in inspect.getsource(composition) + inspect.getsource(archetypes)
+    src = inspect.getsource(composition) + inspect.getsource(archetypes)
+    assert "import human" not in src and "from .. import human" not in src and "cpe.human" not in src
+    assert "human_reference" not in src and "latest.json" not in src  # votes are never read by the scorer

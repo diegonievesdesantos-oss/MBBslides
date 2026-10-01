@@ -132,7 +132,11 @@ PROFILES = {
     "kpi_dashboard": _p(utilization=_m(0.70, 1.0, 0.35, 12), empty=_m(0.0, 0.30, 0.3, 14), ink=_m(0.04, 0.30, 0.10, 8),
                         emphasis=_m(0.05, 0.70, 0.08, 6), regions=_m(0, 6, 6, 4)),
     # dense by nature: text should fill the canvas in an even rhythm
-    "executive_summary": _p(utilization=_m(0.75, 1.0, 0.3, 12), empty=_m(0.0, 0.25, 0.3, 16), ink=_m(0.03, 0.35, 0.12, 8),
+    # (v1.3.2, human feedback on the gallery: short summaries read better as ONE compact, centred block
+    # than spread over the full height — balance matters more than filling; a summary using under
+    # half the canvas is still too thin)
+    "executive_summary": _p(utilization=_m(0.50, 1.0, 0.3, 12), empty=_m(0.0, 0.32, 0.3, 14), ink=_m(0.02, 0.35, 0.12, 8),
+                            offcentre=_m(0.0, 0.10, 0.25, 12),
                             emphasis=_m(0.0, 1.0, 0.08, 0), regions=_m(0, 6, 6, 2), proof=None, edges=_m(0, 6, 8, 10)),
     # solid bars are data ink, not clutter; a line chart is thin by nature
     "chart": _p(utilization=_m(0.72, 1.0, 0.35, 12), empty=_m(0.0, 0.28, 0.35, 16), ink=_m(0.01, 0.45, 0.12, 6)),

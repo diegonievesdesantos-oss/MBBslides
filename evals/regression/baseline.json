@@ -1,7 +1,7 @@
 {
-  "suite_composition": 87.3,
+  "suite_composition": 87.5,
   "environment_fingerprint": "f98cee49d123ed5f",
-  "engine_version": "1.3.0",
+  "engine_version": "1.3.2",
   "cases": [
     {
       "case": "01_sparse_content",
@@ -135,13 +135,13 @@
       "case": "05_spanish",
       "ok": true,
       "qa_errors": 0,
-      "composition": 99.1,
+      "composition": 97.9,
       "slides": {
         "e1": {
-          "score": 98.7,
+          "score": 95.0,
           "archetype": "executive_summary",
           "flags": [],
-          "v1": 95.3
+          "v1": 90.6
         },
         "e2": {
           "score": 98.6,
@@ -275,16 +275,15 @@
       "case": "10_archetypes",
       "ok": true,
       "qa_errors": 0,
-      "composition": 81.1,
+      "composition": 84.4,
       "slides": {
         "x0": {
-          "score": 42.0,
+          "score": 75.1,
           "archetype": "executive_summary",
           "flags": [
-            "UNDERUSED_CANVAS",
-            "DEAD_SPACE"
+            "UNDERUSED_CANVAS"
           ],
-          "v1": 70.6
+          "v1": 74.9
         },
         "x1": {
           "score": 99.8,

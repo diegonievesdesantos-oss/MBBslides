@@ -229,28 +229,53 @@ def commentary_columns(p: Painter, box: Box, data: dict) -> None:
 
 
 def statements(p: Painter, box: Box, data: dict) -> None:
-    """Executive summary rows: number | bold claim | supporting evidence."""
+    """Executive summary rows: number | bold claim | supporting evidence.
+
+    Dense summaries share the full height evenly. When the rows are short (they would need well
+    under the available height), the rows keep their natural height plus a fixed breathing space
+    and are set as ONE block on the optical centre, instead of being spread into thin lines
+    separated by empty bands."""
     items = data.get("items") or []
     style = data.get("style", "numbered")  # numbered | scr
     n = max(1, len(items))
     gap = SPACING["S"]
-    row_h = (box.h - gap * (n - 1)) / n
     label_w = 1.55 if style == "scr" else 0.55
     claim_w = (box.w - label_w) * 0.42
-    for i, it in enumerate(items):
-        y = box.y + i * (row_h + gap)
+    support_w = box.w - label_w - claim_w
+
+    def need(it):
+        sup = it.get("text") or it.get("points") or ""
+        sup = " ".join(sup) if isinstance(sup, list) else sup
+        h_claim = p.measure(it.get("title", ""), "body_strong", claim_w - SPACING["M"], size=14)[0]
+        h_sup = p.measure(sup, "body", support_w)[0] if sup else 0.0
+        return max(h_claim, h_sup, 0.3)
+
+    pad = 0.55  # breathing space inside a compact row (above + below the text)
+    needs = [need(it) for it in items]
+    compact_total = sum(h + pad for h in needs) + gap * (n - 1)
+    if compact_total <= box.h * 0.72:
+        heights = [h + pad for h in needs]
+        top = box.y + (box.h - compact_total) * 0.42
+    else:
+        heights = [(box.h - gap * (n - 1)) / n] * n
+        top = box.y
+    y = top
+    for i, (it, row_h) in enumerate(zip(items, heights)):
         if i > 0:
             p.line(box.x, y - gap / 2, box.r, y - gap / 2, color="gridline", width=LINES["hairline"])
         label = it.get("label") if style == "scr" else f"{i + 1}"
-        # rows share the height evenly; their content sits on the row's centre line, so short rows
-        # read as an even table instead of text stuck to the top of tall empty bands
+        # content sits on the row's centre line
         p.text(Box(box.x, y + 0.04, label_w - 0.1, row_h - 0.08), label or "", role="section", color="highlight" if style == "numbered" else "primary",
                size=18 if style == "numbered" else 12, fit=False, anchor="middle")
         cx = box.x + label_w
         p.text(Box(cx, y + 0.04, claim_w - SPACING["M"], row_h - 0.08), it.get("title", ""), role="body_strong", size=14, color="primary", record=f"statement {i + 1} claim", anchor="middle")
         support = it.get("text") or it.get("points") or ""
         paras = [Para(s, bullet="•") for s in support] if isinstance(support, list) else [Para(support)]
-        p.text(Box(cx + claim_w, y + 0.04, box.r - cx - claim_w, row_h - 0.08), paras, role="body", anchor="middle", record=f"statement {i + 1} support")
+        p.text(Box(cx + claim_w, y + 0.04, support_w, row_h - 0.08), paras, role="body", anchor="middle", record=f"statement {i + 1} support")
+        y += row_h + gap
+    if heights and heights[0] != (box.h - gap * (n - 1)) / n:  # frame the compact block
+        p.line(box.x, top - gap / 2, box.r, top - gap / 2, color="rule", width=LINES["rule"])
+        p.line(box.x, y - gap * 1.5, box.r, y - gap * 1.5, color="gridline", width=LINES["hairline"])
 
 
 def kpis(p: Painter, box: Box, data: dict) -> None:

@@ -21,7 +21,7 @@ Three independent signals, never combined into one number ([why](docs/EVALS.md))
 
 | signal | what it measures | current |
 |---|---|---|
-| **Regression** | archetype-fitness composition score over the development suite (10 decks, 39 slides); gates CI | **87.3**/100 · QA errors 0 |
+| **Regression** | archetype-fitness composition score over the development suite (10 decks, 39 slides); gates CI | **87.5**/100 · QA errors 0 |
 | **Holdout** | archetype-fitness composition score on public cases kept out of development (5 decks, 27 slides); reported, never tuned on — **no longer blind**: v1.3 re-run. These cases were reviewed visually during v1.2, so they are no longer blind: the v1.2 result (81.0, rules frozen at e3b63e1) is the last unbiased holdout number (CHANGELOG 1.2.0). New sealed cases are needed for v1.4. | **81.2**/100 · QA errors 0 |
 | **Human preference** | blind A/B votes (`cpe human`) | round r1 built (40 blind pairs, 3 comparisons) — awaiting votes |
 | Private corporate template | brand-ingest understanding of a real corporate template (sanitized) | development data since v1.3 (its v1.2 findings drove the fixes, so it is no longer a holdout): 1 master(s), 54 layouts, 32% classified with confidence ≥ 0.5; font conflict detected; test deck QA passed; agreement with the human brand spec 21/22 |
@@ -32,7 +32,7 @@ Three independent signals, never combined into one number ([why](docs/EVALS.md))
 | `gallery` | PASSED · 0 errors · 0 warnings | 99.8 | 99.0 |
 | `alvora_on_kestrel` | PASSED · 0 errors · 0 warnings | 99.7 | 99.5 |
 
-<sub>engine 1.3.1 · LibreOffice 24.2.7.2 420(Build:2) · fontconfig 2.15.0 · container `mbbslides-visual:1.3@sha256:bb5bbbdd55bcec5db567781c63574da1a4b2fc4504446d6fea23f5197f59d278` · render fingerprint `f98cee49d123ed5f`</sub>
+<sub>engine 1.3.2 · LibreOffice 24.2.7.2 420(Build:2) · fontconfig 2.15.0 · container `mbbslides-visual:1.3@sha256:bb5bbbdd55bcec5db567781c63574da1a4b2fc4504446d6fea23f5197f59d278` · render fingerprint `f98cee49d123ed5f`</sub>
 
 <!-- metrics:end -->
 

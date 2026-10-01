@@ -51,7 +51,7 @@ Each entry is a target range, a softness (how fast fitness decays outside the ra
 | statement | 0.15–0.75 (w6) | 0–0.8 (w4) | 0.01–0.12 (w6) | 0–0.25 (w4) | — | 0–3 (w2) | — | 0–5 (w6) | — |
 | kpi_hero | 0.25–0.95 (w8) | 0–0.5 (w12) | 0.02–0.2 (w6) | 0–0.22 (w10) | 0.1–1 (w12) | 0–2 (w4) | 1.35–9 (w10) | 0–5 (w6) | 0.5–1 (w14) |
 | kpi_dashboard | 0.7–1 (w12) | 0–0.3 (w14) | 0.04–0.3 (w8) | 0–0.12 (w8) | 0.05–0.7 (w6) | 0–6 (w4) | 1.35–9 (w10) | 0–5 (w6) | 0.5–1 (w14) |
-| executive_summary | 0.75–1 (w12) | 0–0.25 (w16) | 0.03–0.35 (w8) | 0–0.12 (w8) | — | 0–6 (w2) | 1.35–9 (w10) | 0–6 (w10) | — |
+| executive_summary | 0.5–1 (w12) | 0–0.32 (w14) | 0.02–0.35 (w8) | 0–0.1 (w12) | — | 0–6 (w2) | 1.35–9 (w10) | 0–6 (w10) | — |
 | chart | 0.72–1 (w12) | 0–0.28 (w16) | 0.01–0.45 (w6) | 0–0.12 (w8) | 0.05–1 (w8) | 0–5 (w4) | 1.35–9 (w10) | 0–5 (w6) | 0.5–1 (w14) |
 | waterfall | 0.78–1 (w14) | 0–0.25 (w16) | 0.03–0.4 (w6) | 0–0.12 (w8) | 0.05–1 (w8) | 0–5 (w4) | 1.35–9 (w10) | 0–5 (w6) | 0.5–1 (w14) |
 | table | 0.75–1 (w16) | 0–0.2 (w20) | 0.02–0.32 (w6) | 0–0.14 (w6) | — | 0–5 (w4) | 1.35–9 (w10) | 0–5 (w6) | 0.5–1 (w14) |
@@ -66,6 +66,8 @@ Each entry is a target range, a softness (how fast fitness decays outside the ra
 | segmentation | 0.72–1 (w12) | 0–0.28 (w14) | 0.06–0.3 (w8) | 0–0.12 (w8) | 0.05–1 (w8) | 0–5 (w4) | 1.35–9 (w10) | 0–5 (w6) | 0.5–1 (w14) |
 | text_exhibit | 0.55–1 (w12) | 0–0.4 (w14) | 0.03–0.25 (w8) | 0–0.12 (w8) | 0–0.5 (w2) | 0–4 (w2) | 1.35–9 (w10) | 0–5 (w6) | 0.5–1 (w14) |
 
+Profile changes after v1.2 are listed in CHANGELOG.md with their reason (1.3.2: executive summary,
+after explicit human feedback that short summaries read better as one compact, centred block).
 
 ## 4. Fitness
 

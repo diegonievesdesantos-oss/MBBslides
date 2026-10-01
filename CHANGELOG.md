@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.3.2 — Compact executive summaries
+
+- Short executive summaries are set as ONE compact block on the optical centre (rows at their
+  natural height plus breathing space, framed by rules) instead of being spread over the full
+  height; dense summaries still share the height evenly.
+- Archetype profile change, driven by explicit human feedback on gallery slide 3 (development
+  set): `executive_summary` accepts a compact, balanced block (utilization from 0.50, empty space
+  up to 0.32, balance weighted higher). A summary using under half the canvas is still flagged.
+- Regression 87.3 → 87.5 (no regressions; the two-line summary case 41.8 → 75.1, still flagged as
+  thin); gallery slide 3 scores 100.
+
 ## 1.3.1 — Agenda, executive summary and statement layout
 
 - Agenda: a compact index set on the optical centre of the body (not stacked from the top),
