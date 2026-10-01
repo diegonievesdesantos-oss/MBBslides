@@ -14,6 +14,7 @@ from pptx.enum.shapes import MSO_SHAPE
 from ..charts.numfmt import fmt, fmt_spec
 from ..design.tokens import GRID, LINES, SPACING, best_text_on, legible_fill, sequential_color
 from ..layout.engine import Box
+from ..pptx.adaptive import body_cap, optical_top, pick_scale, size
 from ..pptx.painter import Painter, Para
 from ..pptx.text_components import exhibit_header
 
@@ -41,43 +42,81 @@ def process(p: Painter, box: Box, ex: dict) -> dict:
     if vertical:
         return _process_vertical(p, box, steps, hl)
     chevron = ex["type"] == "value_chain" or ex.get("style") == "chevron"
-    head_h = 0.72
-    cols = box.columns(n, 0.08 if chevron else G)
-    for i, (c, st) in enumerate(zip(cols, steps)):
+    gap = 0.08 if chevron else G
+    cw = (box.w - gap * (n - 1)) / n
+    numbered = ex.get("numbered", True) and not chevron
+    has_metric = any(s_.get("metric") for s_ in steps)
+    t_base, b_base = p.style("body_strong")["size"], p.style("body")["size"] - (1 if n >= 5 else 0)
+    in_w = cw - (0.6 if chevron else 2 * SPACING["S"])
+
+    def bodies(st):
+        return st.get("points") or ([st["text"]] if st.get("text") else [])
+
+    def geom(k: float) -> dict:
+        ts, bs = size(t_base, k, body_cap(p, 20)), size(b_base, k, body_cap(p, 17))
+        tl = max(p.measure(f"{i + 1}  {st['title']}" if numbered else st["title"], "body_strong", in_w, size=ts)[1] for i, st in enumerate(steps))
+        hh = min(1.25 if any(bodies(st) for st in steps) else 1.9, max(0.72, tl * ts / 72 * 1.25 + 0.3))
+        meta_h = 0.34 if any(st.get("owner") or st.get("duration") for st in steps) else 0.0
+        body_h = max((sum(p.measure(t, "body", cw - (0.18 if len(bodies(st)) > 1 else 0), size=bs)[0] + 0.06 for t in bodies(st)) for st in steps), default=0.0)
+        mh = min(1.3, 1.0 * max(1.0, k)) if has_metric else 0.0
+        block = hh + (SPACING["M"] + meta_h + body_h if (meta_h or body_h) else 0) + (SPACING["L"] + mh if has_metric else 0)
+        return {"ts": ts, "bs": bs, "tl": tl, "hh": hh, "meta_h": meta_h, "body_h": body_h, "mh": mh, "block": block}
+
+    # (v1.4) the largest readable scale whose titles stay within two lines and whose block fits;
+    # the block then sits on the optical centre instead of under the headline
+    max_tl = 2 if any(bodies(st) for st in steps) else 4  # title-only steps may wrap instead of shrinking
+    k, _ = pick_scale(lambda k: geom(k)["block"] if geom(k)["tl"] <= max_tl else 99, box.h, fill=0.9)
+    g = geom(k)
+    # a sparse sequence gets large step numerals above the steps (they lead the eye along the flow);
+    # numbers are figures, so they do not compete with the headline
+    numerals = numbered and g["block"] < box.h * 0.5 and n <= 7
+    nh = 0.0
+    if numerals:
+        numbered = False
+        g = geom(k)
+        nh = 0.75
+    top = optical_top(box, g["block"] + nh) if g["block"] + nh < box.h else box.y
+    if numerals:
+        for i in range(n):
+            x = box.x + i * (cw + gap)
+            p.text(Box(x, top, cw, nh - 0.1), f"{i + 1:02d}", role="kpi_value", size=30, color="highlight" if i in hl else "neutral", max_lines=1, record=f"step {i + 1} numeral")
+        top += nh
+    xs = [box.x + i * (cw + gap) for i in range(n)]
+    for i, (x, st) in enumerate(zip(xs, steps)):
+        c = Box(x, top, cw, box.b - top)
         fill = "primary" if i in hl else ("secondary" if chevron else "surface")
-        hb = Box(c.x, c.y, c.w + (0.18 if chevron and i < n - 1 else 0), head_h)
+        hb = Box(c.x, c.y, c.w + (0.18 if chevron and i < n - 1 else 0), g["hh"])
         if chevron:
             p.shape(MSO_SHAPE.CHEVRON if i > 0 else MSO_SHAPE.PENTAGON, hb, fill=fill)
             inner = hb.inset(l=0.3 if i > 0 else 0.12, r=0.3)
         else:
             p.rect(hb, fill=fill)
             inner = hb.inset(l=SPACING["S"], r=SPACING["S"])
-        num = f"{i + 1}  " if ex.get("numbered", True) and not chevron else ""
-        _label_in(p, inner, f"{num}{st['title']}", fill, role="body_strong", align="left" if not chevron else "center", max_lines=2, record=f"step {i + 1}")
+        num = f"{i + 1}  " if numbered else ""
+        _label_in(p, inner, f"{num}{st['title']}", fill, role="body_strong", size=g["ts"], align="left" if not chevron else "center", max_lines=max_tl, record=f"step {i + 1}")
         if not chevron and i < n - 1:
             # small arrow in the gutter between steps
             ax = c.r + 0.02
-            p.line(ax, c.y + head_h / 2, ax + G - 0.04, c.y + head_h / 2, color="neutral", width=LINES["strong"], arrow_end=True, kind="connector")
-        y = c.y + head_h + SPACING["M"]
-        bottom = c.b
-        if any(s_.get("metric") for s_ in steps):
-            # impact row aligned with the steps: what each step changes, as a number
-            mh = 1.0
-            bottom = c.b - mh - SPACING["S"]
-            p.line(c.x, c.b - mh, c.r, c.b - mh, color="rule", width=LINES["rule"])
-            if st.get("metric"):
-                p.text(Box(c.x, c.b - mh + 0.1, c.w, 0.5), str(st["metric"]), role="kpi_value", size=22, max_lines=1,
-                       color="primary" if i in hl else "text", record=f"step {i + 1} metric")
-                if st.get("metric_label"):
-                    p.text(Box(c.x, c.b - mh + 0.6, c.w, 0.38), st["metric_label"], role="kpi_label", max_lines=2, record=f"step {i + 1} metric label")
-        meta = " · ".join(x for x in (st.get("owner"), st.get("duration")) if x)
+            p.line(ax, c.y + g["hh"] / 2, ax + G - 0.04, c.y + g["hh"] / 2, color="neutral", width=LINES["strong"], arrow_end=True, kind="connector")
+        y = c.y + g["hh"] + SPACING["M"]
+        meta = " · ".join(x_ for x_ in (st.get("owner"), st.get("duration")) if x_)
         if meta:
-            p.text(Box(c.x, y, c.w, 0.28), meta, role="annotation", color="text_muted", max_lines=1, record="step meta")
-            y += 0.34
-        body = st.get("points") or ([st["text"]] if st.get("text") else [])
+            p.text(Box(c.x, y, c.w, 0.28), meta, role="annotation", size=size(p.style("annotation")["size"], k, 13), color="text_muted", max_lines=1, record="step meta")
+        y += g["meta_h"]
+        body = bodies(st)
         if body:
             paras = [Para(t, bullet="•" if len(body) > 1 else None) for t in body]
-            p.text(Box(c.x, y, c.w, bottom - y), paras, role="body", size=p.style("body")["size"] - (1 if n >= 5 else 0), record=f"step {i + 1} body")
+            p.text(Box(c.x, y, c.w, g["body_h"] + 0.1), paras, role="body", size=g["bs"], record=f"step {i + 1} body")
+        if has_metric:
+            # impact row aligned across the steps, directly under the longest body (not at the zone's foot)
+            my = c.y + g["block"] - g["mh"]
+            p.line(c.x, my, c.r, my, color="rule", width=LINES["rule"])
+            if st.get("metric"):
+                p.text(Box(c.x, my + 0.1, c.w, 0.5 * max(1.0, k)), str(st["metric"]), role="kpi_value", size=size(22, k, 30), max_lines=1,
+                       color="primary" if i in hl else "text", record=f"step {i + 1} metric")
+                if st.get("metric_label"):
+                    p.text(Box(c.x, my + 0.1 + 0.5 * max(1.0, k), c.w, 0.38), st["metric_label"], role="kpi_label", size=size(p.style("kpi_label")["size"], k, 14),
+                           max_lines=2, record=f"step {i + 1} metric label")
         if i in hl and st.get("callout"):
             p.text(Box(c.x, c.b - 0.55, c.w, 0.55), st["callout"], role="annotation", bold=True, color="highlight", record="step callout")
     return {"type": "process", "steps": n}
@@ -153,7 +192,15 @@ def gantt(p: Painter, box: Box, ex: dict) -> dict:
     grid_x = box.x + lab_w + SPACING["S"]
     grid_w = box.r - grid_x
     colw = grid_w / npd
-    y = box.y
+    # (v1.4) rows take the height their number allows — few workstreams get taller rows and larger
+    # type instead of a thin strip under the headline — and the plan sits on the optical centre
+    head = (0.38 if d.get("phases") else 0) + 0.32
+    foot = 0.26 if d.get("today") is not None else 0
+    n_rows = max(1, len(rows))
+    rh = min(1.0 if n_rows <= 4 else 0.8 if n_rows <= 6 else 0.62, (box.h - head - foot) / n_rows)
+    big = rh >= 0.75
+    block = head + rh * n_rows + foot
+    y = box.y + max(0.0, (box.h - block) * 0.42)
     if d.get("phases"):
         for ph in d["phases"]:
             x0 = grid_x + ph["start"] * colw
@@ -161,12 +208,11 @@ def gantt(p: Painter, box: Box, ex: dict) -> dict:
             p.rect(Box(x0 + 0.02, y, x1 - x0 - 0.04, 0.3), fill="primary")
             _label_in(p, Box(x0 + 0.06, y, x1 - x0 - 0.12, 0.3), ph["label"], "primary", role="annotation", bold=True, max_lines=1)
         y += 0.38
+    ax_size = p.style("chart_axis")["size"] + (1.5 if big else 0)
     for j, per in enumerate(periods):
-        p.text(Box(grid_x + j * colw, y, colw, 0.28), per, role="chart_axis", align="center", max_lines=1, fit=True)
+        p.text(Box(grid_x + j * colw, y, colw, 0.28), per, role="chart_axis", size=ax_size, align="center", max_lines=1, fit=True)
     y += 0.32
     p.line(box.x, y, box.r, y, color="primary", width=LINES["rule"])
-    body_h = box.b - y - (0.26 if d.get("today") is not None else 0)
-    rh = min(0.62, body_h / max(1, len(rows)))
     for j in range(1, npd):
         xg = grid_x + j * colw
         p.line(xg, y, xg, y + rh * len(rows), color="gridline", width=LINES["hairline"])
@@ -177,11 +223,12 @@ def gantt(p: Painter, box: Box, ex: dict) -> dict:
     status_fill = {"done": "neutral", "on_track": "secondary", "at_risk": "warning", "late": "negative", "planned": "muted", None: "secondary"}
     for i, r in enumerate(rows):
         ry = y + i * rh
-        p.text(Box(box.x, ry, lab_w, rh), r["label"], role="body", size=p.style("body")["size"] - 0.5, anchor="middle", max_lines=2, record=f"row {r['label']}")
+        p.text(Box(box.x, ry, lab_w, rh), r["label"], role="body", size=p.style("body")["size"] + (1.5 if big else -0.5), anchor="middle", max_lines=2, record=f"row {r['label']}")
+        bar_size = p.style("annotation")["size"] + (2 if big else 0)
         for b in r.get("bars", []):
             x0 = grid_x + b["start"] * colw + 0.03
             x1 = grid_x + b["end"] * colw - 0.03
-            bh = rh * 0.52
+            bh = min(rh * 0.52, 0.46)
             fill = "highlight" if b.get("highlight") else status_fill.get(b.get("status"), "secondary")
             by = ry + (rh - bh) / 2 + (rh * 0.14 if r.get("milestones") else 0)
             bb = Box(x0, by, max(0.05, x1 - x0), bh)
@@ -189,15 +236,15 @@ def gantt(p: Painter, box: Box, ex: dict) -> dict:
             lab_l = 0.2 if any(abs(grid_x + a * colw - x0) < 0.2 for a in ms_at) else 0.06  # clear a diamond at the bar start
             p.rect(bb, fill=fill)
             if b.get("label"):
-                tw = p.text_w(b["label"], "annotation")
+                tw = p.text_w(b["label"], "annotation", size=bar_size)
                 if tw + lab_l + 0.08 <= bb.w:
-                    _label_in(p, bb.inset(l=lab_l, r=0.06), b["label"], fill, role="annotation", align="left", max_lines=1)
+                    _label_in(p, bb.inset(l=lab_l, r=0.06), b["label"], fill, role="annotation", align="left", size=bar_size, max_lines=1)
                 elif x1 + tw + 0.1 < box.r:
-                    p.text(Box(x1 + 0.06, bb.y, tw + 0.1, bb.h), b["label"], role="annotation", anchor="middle", fit=False, kind="label")
+                    p.text(Box(x1 + 0.06, bb.y, tw + 0.1, bb.h), b["label"], role="annotation", size=bar_size, anchor="middle", fit=False, kind="label")
         for m in r.get("milestones", []):
             mx = grid_x + m["at"] * colw
             s = 0.2
-            bh = rh * 0.52
+            bh = min(rh * 0.52, 0.46)
             by = ry + (rh - bh) / 2 + (rh * 0.14 if r.get("milestones") else 0)
             p.shape(MSO_SHAPE.DIAMOND, Box(mx - s / 2, by + bh / 2 - s / 2, s, s), fill="highlight", line="background", line_w=0.75, kind="marker")
             if m.get("label"):
@@ -333,6 +380,13 @@ def _tree_vertical(p: Painter, box: Box, root: dict, ex: dict) -> dict:
     row_h = min(0.95, (box.h - gap_y * (depth - 1)) / depth)
     unit = box.w / leaves
     node_w = min(2.4, unit * 0.9)
+    # (v1.4) a small chart sits on the optical centre with slightly larger type, not under the headline
+    small = depth <= 2 and leaves <= 5
+    if small:
+        row_h, node_w = min(1.15, row_h * 1.15), min(2.9, unit * 0.9)
+    total = depth * row_h + gap_y * (depth - 1)
+    box = Box(box.x, optical_top(box, total), box.w, total)
+    fs = size(p.style("body")["size"], 1.25, body_cap(p, 16)) if small else p.style("body")["size"] - (1 if leaves > 5 else 0)
 
     def draw(node, level, x0):
         span = _leaves(node) * unit
@@ -343,9 +397,9 @@ def _tree_vertical(p: Painter, box: Box, root: dict, ex: dict) -> dict:
         p.rect(nb, fill=fill)
         paras = [Para(node["label"], bold=True)]
         if node.get("sub"):
-            paras.append(Para(node["sub"], size=p.style("body")["size"] - 1))
+            paras.append(Para(node["sub"], size=fs - 1))
         color = best_text_on(p.color(fill), p.theme)
-        p.text(nb.inset(l=0.06, r=0.06), paras, role="body", size=p.style("body")["size"] - (1 if leaves > 5 else 0), align="center", anchor="middle", color=color, space_after=1, record=f"org {node['label'][:20]}")
+        p.text(nb.inset(l=0.06, r=0.06), paras, role="body", size=fs, align="center", anchor="middle", color=color, space_after=1, record=f"org {node['label'][:20]}")
         xc = x0
         for c in node.get("children") or []:
             cspan = _leaves(c) * unit

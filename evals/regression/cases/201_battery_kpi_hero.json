@@ -1,0 +1,253 @@
+{
+  "meta": {
+    "title": "Battery: kpi_hero",
+    "deck_type": "strategy_deck",
+    "theme": "harbor"
+  },
+  "storyline": {
+    "framework": "SCR",
+    "governing_thought": "Each kpi_hero slide is judged on what it is trying to be",
+    "key_line": [
+      {
+        "id": "K1",
+        "role": "situation",
+        "message": "Variations of one archetype"
+      },
+      {
+        "id": "K2",
+        "role": "resolution",
+        "message": "Composition must hold across them"
+      }
+    ]
+  },
+  "eval": {
+    "purpose": "Archetype battery (kpi_hero): single metric / delta / explanation / positive / negative / % / currency / large integer / Spanish",
+    "battery": "kpi_hero"
+  },
+  "slides": [
+    {
+      "headline": "Gross margin reached 41%, the highest in five years",
+      "message_type": "single_number",
+      "visual": {
+        "type": "kpi",
+        "data": {
+          "items": [
+            {
+              "value": "41%",
+              "label": "gross margin, 2025"
+            }
+          ]
+        }
+      },
+      "id": "kh01",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "Revenue per store fell 6% as footfall declined",
+      "message_type": "single_number",
+      "visual": {
+        "type": "kpi",
+        "data": {
+          "items": [
+            {
+              "value": "−6%",
+              "label": "revenue per store, like-for-like",
+              "delta": "−€0.4M",
+              "trend": "down",
+              "good": "up"
+            }
+          ]
+        }
+      },
+      "id": "kh02",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "The programme has already delivered €48M of savings",
+      "message_type": "single_number",
+      "visual": {
+        "type": "kpi",
+        "data": {
+          "items": [
+            {
+              "value": "€48M",
+              "label": "savings delivered to date",
+              "delta": "+€12M vs plan",
+              "trend": "up",
+              "good": "up",
+              "note": "Procurement and energy contracts signed in Q2"
+            }
+          ]
+        }
+      },
+      "id": "kh03",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "The platform processed 1,240,000 orders in November",
+      "message_type": "single_number",
+      "visual": {
+        "type": "kpi",
+        "data": {
+          "items": [
+            {
+              "value": "1,240,000",
+              "label": "orders processed, November"
+            }
+          ]
+        }
+      },
+      "id": "kh04",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "La rotación de plantilla bajó al 9,8%",
+      "message_type": "single_number",
+      "visual": {
+        "type": "kpi",
+        "data": {
+          "items": [
+            {
+              "value": "9,8%",
+              "label": "rotación anual de plantilla",
+              "delta": "−3,1 pp",
+              "trend": "down",
+              "good": "down"
+            }
+          ]
+        }
+      },
+      "id": "kh05",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Batería de pruebas (sintética)"
+    },
+    {
+      "headline": "Net debt stands at 3.4 times EBITDA, above the 3.0 covenant",
+      "message_type": "single_number",
+      "visual": {
+        "type": "kpi",
+        "data": {
+          "items": [
+            {
+              "value": "3.4x",
+              "label": "net debt / EBITDA, December",
+              "delta": "+0.6x",
+              "trend": "up",
+              "good": "down",
+              "note": "Covenant headroom closes in Q3 without disposals"
+            }
+          ]
+        }
+      },
+      "id": "kh06",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "Customers rate the new app 4.7 out of 5",
+      "message_type": "single_number",
+      "visual": {
+        "type": "kpi",
+        "data": {
+          "items": [
+            {
+              "value": "4.7",
+              "label": "app store rating, 18,300 reviews",
+              "delta": "+0.9",
+              "trend": "up",
+              "good": "up"
+            }
+          ]
+        }
+      },
+      "id": "kh07",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "El coste por pedido es de 2,35 €, un 18% menos que hace un año",
+      "message_type": "single_number",
+      "visual": {
+        "type": "kpi",
+        "data": {
+          "items": [
+            {
+              "value": "2,35 €",
+              "label": "coste logístico por pedido",
+              "delta": "−18%",
+              "trend": "down",
+              "good": "down",
+              "note": "Rutas optimizadas y entregas agrupadas"
+            }
+          ]
+        }
+      },
+      "id": "kh08",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Batería de pruebas (sintética)"
+    },
+    {
+      "headline": "Two KPIs carry the story: churn halved while revenue per user rose",
+      "message_type": "single_number",
+      "visual": {
+        "type": "kpi",
+        "data": {
+          "items": [
+            {
+              "value": "2.1%",
+              "label": "monthly churn",
+              "delta": "−2.2 pts",
+              "trend": "down",
+              "good": "down"
+            },
+            {
+              "value": "$54",
+              "label": "revenue per user",
+              "delta": "+$7",
+              "trend": "up",
+              "good": "up"
+            }
+          ]
+        }
+      },
+      "id": "kh09",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "Emissions fell 27% against the 2019 baseline",
+      "message_type": "single_number",
+      "visual": {
+        "type": "kpi",
+        "data": {
+          "items": [
+            {
+              "value": "−27%",
+              "label": "scope 1 and 2 emissions vs 2019"
+            }
+          ]
+        }
+      },
+      "id": "kh10",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)",
+      "footnotes": [
+        "Market-based method; excludes acquisitions after 2023."
+      ]
+    }
+  ]
+}

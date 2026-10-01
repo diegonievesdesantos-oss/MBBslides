@@ -1,0 +1,134 @@
+{
+ "_doc": [
+  "Absolute expectations per archetype, ON TOP of the relative regression baseline (docs/EVALS.md#absolute-gates).",
+  "coverage: n < diagnostic_below → INSUFFICIENT COVERAGE (reported, never gated, never 'healthy'); diagnostic_below ≤ n < gate_eligible_from → provisional; n ≥ gate_eligible_from → gate eligible.",
+  "Rules: mean_floor (archetype mean), min_floor (catastrophic single slide), max_share_below_floor (share of slides under mean_floor).",
+  "status 'enforced' fails CI for gate-eligible archetypes; 'provisional' is reported only. Each rule states its rationale and evidence; change them like profiles (evals/profile_changes.md)."
+ ],
+ "coverage": {
+  "diagnostic_below": 5,
+  "gate_eligible_from": 8,
+  "rationale": "With n < 5 one slide moves the mean by 20+ points: a number, not evidence. 8 slides per archetype is what the v1.4 battery can afford to render on every commit and keeps one outlier's effect on the mean under ~10 points."
+ },
+ "rules": {
+  "min_floor": {
+   "value": 35,
+   "status": "enforced",
+   "rationale": "Below 35 a slide is broken in every archetype seen so far: v1.3.3 text slides at 20–31 (tiny text top-left on an empty slide), KPI strips at 37, processes at 36. No accepted development slide scores below 45."
+  },
+  "mean_floor": {
+   "value": 70,
+   "status": "provisional",
+   "rationale": "Engineering target of the v1.4 brief ('no important archetype mean << 70'); the editorial floor already used by candidate selection (compose.EDITORIAL_FLOOR = 70). Provisional until human r2 votes say where 'acceptable' starts."
+  },
+  "max_share_below_floor": {
+   "value": 0.25,
+   "status": "provisional",
+   "rationale": "A healthy archetype keeps most slides above the editorial floor; a quarter below means a systematic problem, not an outlier. Provisional (no human evidence yet)."
+  }
+ },
+ "archetypes": {
+  "statement": {
+   "mean_floor": 70,
+   "min_floor": 35,
+   "max_share_below_floor": 0.25,
+   "status": "enforced-min-only"
+  },
+  "kpi_hero": {
+   "mean_floor": 70,
+   "min_floor": 35,
+   "max_share_below_floor": 0.25,
+   "status": "enforced-min-only"
+  },
+  "kpi_dashboard": {
+   "mean_floor": 70,
+   "min_floor": 35,
+   "max_share_below_floor": 0.25,
+   "status": "enforced-min-only"
+  },
+  "executive_summary": {
+   "mean_floor": 70,
+   "min_floor": 35,
+   "max_share_below_floor": 0.25,
+   "status": "enforced-min-only"
+  },
+  "chart": {
+   "mean_floor": 70,
+   "min_floor": 35,
+   "max_share_below_floor": 0.25,
+   "status": "enforced-min-only"
+  },
+  "waterfall": {
+   "mean_floor": 70,
+   "min_floor": 35,
+   "max_share_below_floor": 0.25,
+   "status": "enforced-min-only"
+  },
+  "table": {
+   "mean_floor": 70,
+   "min_floor": 35,
+   "max_share_below_floor": 0.25,
+   "status": "enforced-min-only"
+  },
+  "matrix": {
+   "mean_floor": 70,
+   "min_floor": 35,
+   "max_share_below_floor": 0.25,
+   "status": "enforced-min-only"
+  },
+  "comparison": {
+   "mean_floor": 70,
+   "min_floor": 35,
+   "max_share_below_floor": 0.25,
+   "status": "enforced-min-only"
+  },
+  "process": {
+   "mean_floor": 70,
+   "min_floor": 35,
+   "max_share_below_floor": 0.25,
+   "status": "enforced-min-only"
+  },
+  "roadmap": {
+   "mean_floor": 70,
+   "min_floor": 35,
+   "max_share_below_floor": 0.25,
+   "status": "enforced-min-only"
+  },
+  "timeline": {
+   "mean_floor": 70,
+   "min_floor": 35,
+   "max_share_below_floor": 0.25,
+   "status": "enforced-min-only"
+  },
+  "operating_model": {
+   "mean_floor": 70,
+   "min_floor": 35,
+   "max_share_below_floor": 0.25,
+   "status": "enforced-min-only"
+  },
+  "architecture": {
+   "mean_floor": 70,
+   "min_floor": 35,
+   "max_share_below_floor": 0.25,
+   "status": "enforced-min-only"
+  },
+  "hierarchy": {
+   "mean_floor": 70,
+   "min_floor": 35,
+   "max_share_below_floor": 0.25,
+   "status": "enforced-min-only"
+  },
+  "segmentation": {
+   "mean_floor": 70,
+   "min_floor": 35,
+   "max_share_below_floor": 0.25,
+   "status": "enforced-min-only"
+  },
+  "text_exhibit": {
+   "mean_floor": 70,
+   "min_floor": 35,
+   "max_share_below_floor": 0.25,
+   "status": "enforced-min-only"
+  }
+ }
+}

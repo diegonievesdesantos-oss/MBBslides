@@ -21,7 +21,7 @@ cpe = "cpe.cli:main"
 where = ["src"]
 
 [tool.setuptools.package-data]
-cpe = ["design/themes/*.json", "design/profiles.json", "layouts/*/*.json"]
+cpe = ["design/themes/*.json", "design/profiles.json", "layouts/*/*.json", "qa/archetype_profiles.json"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

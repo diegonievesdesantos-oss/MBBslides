@@ -1,0 +1,616 @@
+{
+  "meta": {
+    "title": "Battery: architecture",
+    "deck_type": "strategy_deck",
+    "theme": "harbor"
+  },
+  "storyline": {
+    "framework": "SCR",
+    "governing_thought": "Each architecture slide is judged on what it is trying to be",
+    "key_line": [
+      {
+        "id": "K1",
+        "role": "situation",
+        "message": "Variations of one archetype"
+      },
+      {
+        "id": "K2",
+        "role": "resolution",
+        "message": "Composition must hold across them"
+      }
+    ]
+  },
+  "eval": {
+    "purpose": "Archetype battery (architecture): 3–6 layers / few and many nodes / new and changed / flow left→right / Spanish",
+    "battery": "architecture"
+  },
+  "slides": [
+    {
+      "headline": "Three layers: channels, services and data",
+      "message_type": "structure",
+      "visual": {
+        "type": "architecture",
+        "data": {
+          "layers": [
+            {
+              "label": "Channels",
+              "items": [
+                "App",
+                "Web"
+              ]
+            },
+            {
+              "label": "Services",
+              "items": [
+                "Orders",
+                "Payments"
+              ]
+            },
+            {
+              "label": "Data",
+              "items": [
+                "Warehouse"
+              ]
+            }
+          ]
+        }
+      },
+      "id": "ar01",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "The target architecture adds an API layer between channels and core",
+      "message_type": "structure",
+      "visual": {
+        "type": "architecture",
+        "data": {
+          "layers": [
+            {
+              "label": "Channels",
+              "items": [
+                "Mobile",
+                "Web",
+                "Branch",
+                "Partners"
+              ]
+            },
+            {
+              "label": "Integration",
+              "items": [
+                {
+                  "label": "API gateway",
+                  "change": "new",
+                  "emphasis": true
+                },
+                {
+                  "label": "Event bus",
+                  "change": "new"
+                }
+              ],
+              "emphasis": true
+            },
+            {
+              "label": "Core",
+              "items": [
+                "Deposits",
+                "Loans",
+                "Cards"
+              ]
+            },
+            {
+              "label": "Data",
+              "items": [
+                {
+                  "label": "Customer master",
+                  "change": "changed"
+                },
+                "Analytics"
+              ]
+            }
+          ]
+        }
+      },
+      "id": "ar02",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "Five layers and twenty components in the current landscape",
+      "message_type": "structure",
+      "visual": {
+        "type": "architecture",
+        "data": {
+          "layers": [
+            {
+              "label": "Experience",
+              "items": [
+                "Web shop",
+                "App",
+                "Call centre",
+                "Stores",
+                "Marketplace"
+              ]
+            },
+            {
+              "label": "Commerce",
+              "items": [
+                "Catalogue",
+                "Pricing",
+                "Promotions",
+                "Basket"
+              ]
+            },
+            {
+              "label": "Fulfilment",
+              "items": [
+                "OMS",
+                "WMS",
+                "TMS",
+                "Returns"
+              ]
+            },
+            {
+              "label": "Enterprise",
+              "items": [
+                "ERP",
+                "HR",
+                "Finance",
+                "Procurement"
+              ]
+            },
+            {
+              "label": "Data",
+              "items": [
+                "Lake",
+                "BI",
+                "ML platform"
+              ]
+            }
+          ]
+        }
+      },
+      "id": "ar03",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "La plataforma de datos tiene cuatro capas",
+      "message_type": "structure",
+      "visual": {
+        "type": "architecture",
+        "data": {
+          "layers": [
+            {
+              "label": "Consumo",
+              "items": [
+                "Cuadros de mando",
+                "Modelos"
+              ]
+            },
+            {
+              "label": "Servicio",
+              "items": [
+                {
+                  "label": "Catálogo de datos",
+                  "change": "new"
+                }
+              ]
+            },
+            {
+              "label": "Procesamiento",
+              "items": [
+                "Ingesta",
+                "Calidad",
+                "Transformación"
+              ],
+              "emphasis": true
+            },
+            {
+              "label": "Fuentes",
+              "items": [
+                "ERP",
+                "CRM",
+                "Web"
+              ]
+            }
+          ]
+        }
+      },
+      "id": "ar04",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Batería de pruebas (sintética)"
+    },
+    {
+      "headline": "Orders flow from four channels through one order service to fulfilment",
+      "message_type": "flow",
+      "visual": {
+        "type": "flow",
+        "data": {
+          "nodes": [
+            {
+              "id": "a",
+              "label": "Web",
+              "col": 0,
+              "row": 0
+            },
+            {
+              "id": "b",
+              "label": "App",
+              "col": 0,
+              "row": 1
+            },
+            {
+              "id": "c",
+              "label": "Stores",
+              "col": 0,
+              "row": 2
+            },
+            {
+              "id": "d",
+              "label": "Marketplace",
+              "col": 0,
+              "row": 3
+            },
+            {
+              "id": "o",
+              "label": "Order service",
+              "col": 1,
+              "row": 1,
+              "emphasis": true
+            },
+            {
+              "id": "w",
+              "label": "Warehouse",
+              "col": 2,
+              "row": 0
+            },
+            {
+              "id": "s",
+              "label": "Store pick",
+              "col": 2,
+              "row": 2
+            }
+          ],
+          "edges": [
+            {
+              "from": "a",
+              "to": "o"
+            },
+            {
+              "from": "b",
+              "to": "o"
+            },
+            {
+              "from": "c",
+              "to": "o"
+            },
+            {
+              "from": "d",
+              "to": "o"
+            },
+            {
+              "from": "o",
+              "to": "w"
+            },
+            {
+              "from": "o",
+              "to": "s"
+            }
+          ]
+        }
+      },
+      "id": "ar05",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "Data moves left to right from sources to decisions",
+      "message_type": "flow",
+      "visual": {
+        "type": "flow",
+        "data": {
+          "nodes": [
+            {
+              "id": "s",
+              "label": "Sources",
+              "col": 0
+            },
+            {
+              "id": "i",
+              "label": "Ingestion",
+              "col": 1
+            },
+            {
+              "id": "m",
+              "label": "Model",
+              "col": 2,
+              "emphasis": true
+            },
+            {
+              "id": "d",
+              "label": "Decisions",
+              "col": 3
+            }
+          ],
+          "edges": [
+            {
+              "from": "s",
+              "to": "i"
+            },
+            {
+              "from": "i",
+              "to": "m"
+            },
+            {
+              "from": "m",
+              "to": "d"
+            }
+          ]
+        }
+      },
+      "id": "ar06",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "Payments run through two parallel paths that meet at the ledger",
+      "message_type": "flow",
+      "visual": {
+        "type": "flow",
+        "data": {
+          "nodes": [
+            {
+              "id": "c",
+              "label": "Card terminal",
+              "col": 0,
+              "row": 0
+            },
+            {
+              "id": "a",
+              "label": "Acquirer",
+              "col": 1,
+              "row": 0
+            },
+            {
+              "id": "s",
+              "label": "Scheme",
+              "col": 2,
+              "row": 0
+            },
+            {
+              "id": "w",
+              "label": "Wallet app",
+              "col": 0,
+              "row": 1
+            },
+            {
+              "id": "p",
+              "label": "Payment gateway",
+              "col": 1,
+              "row": 1,
+              "emphasis": true
+            },
+            {
+              "id": "l",
+              "label": "Ledger",
+              "col": 3,
+              "row": 0
+            }
+          ],
+          "edges": [
+            {
+              "from": "c",
+              "to": "a"
+            },
+            {
+              "from": "a",
+              "to": "s"
+            },
+            {
+              "from": "s",
+              "to": "l"
+            },
+            {
+              "from": "w",
+              "to": "p"
+            },
+            {
+              "from": "p",
+              "to": "l"
+            }
+          ]
+        }
+      },
+      "id": "ar07",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "The procurement platform connects four user groups to eleven back-end services",
+      "message_type": "structure",
+      "visual": {
+        "type": "architecture",
+        "data": {
+          "layers": [
+            {
+              "label": "Users",
+              "items": [
+                "Requesters",
+                "Buyers",
+                "Approvers",
+                "Suppliers"
+              ]
+            },
+            {
+              "label": "Front end",
+              "items": [
+                {
+                  "label": "Guided buying",
+                  "change": "new",
+                  "emphasis": true
+                },
+                "Supplier portal",
+                "Mobile approvals"
+              ],
+              "emphasis": true
+            },
+            {
+              "label": "Services",
+              "items": [
+                "Catalogue",
+                "Sourcing",
+                "Contracts",
+                "Invoices",
+                "Payments",
+                "Risk"
+              ]
+            },
+            {
+              "label": "Integration",
+              "items": [
+                "ERP connector",
+                {
+                  "label": "Event bus",
+                  "change": "changed"
+                }
+              ]
+            },
+            {
+              "label": "Data",
+              "items": [
+                "Spend cube",
+                "Supplier master"
+              ]
+            }
+          ]
+        }
+      },
+      "id": "ar08",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "Six layers, from devices to the cloud, in the IoT platform",
+      "message_type": "structure",
+      "visual": {
+        "type": "architecture",
+        "data": {
+          "layers": [
+            {
+              "label": "Devices",
+              "items": [
+                "Sensors",
+                "Meters",
+                "Gateways"
+              ]
+            },
+            {
+              "label": "Connectivity",
+              "items": [
+                "LoRaWAN",
+                "4G"
+              ]
+            },
+            {
+              "label": "Edge",
+              "items": [
+                {
+                  "label": "Edge compute",
+                  "change": "new"
+                }
+              ]
+            },
+            {
+              "label": "Platform",
+              "items": [
+                "Device registry",
+                {
+                  "label": "Stream processing",
+                  "change": "new",
+                  "emphasis": true
+                },
+                "Storage"
+              ],
+              "emphasis": true
+            },
+            {
+              "label": "Applications",
+              "items": [
+                "Monitoring",
+                "Billing",
+                "Maintenance"
+              ]
+            },
+            {
+              "label": "Cloud",
+              "items": [
+                "Compute",
+                "Identity"
+              ]
+            }
+          ]
+        }
+      },
+      "id": "ar09",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "El nuevo sistema sustituye tres aplicaciones por una plataforma",
+      "message_type": "structure",
+      "visual": {
+        "type": "architecture",
+        "data": {
+          "layers": [
+            {
+              "label": "Usuarios",
+              "items": [
+                "Ciudadanos",
+                "Funcionarios"
+              ]
+            },
+            {
+              "label": "Aplicación",
+              "items": [
+                {
+                  "label": "Plataforma de expedientes",
+                  "change": "new",
+                  "emphasis": true
+                }
+              ],
+              "emphasis": true
+            },
+            {
+              "label": "Integración",
+              "items": [
+                "Registro",
+                "Pagos",
+                "Notificaciones"
+              ]
+            },
+            {
+              "label": "Infraestructura",
+              "items": [
+                "Nube pública"
+              ]
+            }
+          ]
+        }
+      },
+      "id": "ar10",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Batería de pruebas (sintética)"
+    }
+  ]
+}

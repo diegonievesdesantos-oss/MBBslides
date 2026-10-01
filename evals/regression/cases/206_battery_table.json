@@ -1,0 +1,736 @@
+{
+  "meta": {
+    "title": "Battery: table",
+    "deck_type": "strategy_deck",
+    "theme": "meridian"
+  },
+  "storyline": {
+    "framework": "SCR",
+    "governing_thought": "Each table slide is judged on what it is trying to be",
+    "key_line": [
+      {
+        "id": "K1",
+        "role": "situation",
+        "message": "Variations of one archetype"
+      },
+      {
+        "id": "K2",
+        "role": "resolution",
+        "message": "Composition must hold across them"
+      }
+    ]
+  },
+  "eval": {
+    "purpose": "Archetype battery (table): 2–14 rows / 3–7 columns / heatmap, harvey, scorecard / Spanish decimals / commentary",
+    "battery": "table"
+  },
+  "slides": [
+    {
+      "headline": "Two decisions are needed this quarter",
+      "message_type": "comparison",
+      "visual": {
+        "type": "table",
+        "title": "Decisions",
+        "columns": [
+          {
+            "label": "Decision",
+            "width": 4.5
+          },
+          {
+            "label": "Owner"
+          },
+          {
+            "label": "Impact (€M)",
+            "kind": "number"
+          }
+        ],
+        "rows": [
+          [
+            "Approve the pricing pilot",
+            "CCO",
+            12
+          ],
+          [
+            "Approve the IT budget",
+            "CIO",
+            8
+          ]
+        ]
+      },
+      "id": "tb01",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "Option B offers the best return for moderate risk",
+      "message_type": "comparison",
+      "visual": {
+        "type": "table",
+        "title": "Options",
+        "columns": [
+          {
+            "label": "Option"
+          },
+          {
+            "label": "NPV (€M)",
+            "kind": "number"
+          },
+          {
+            "label": "IRR (%)",
+            "kind": "number"
+          },
+          {
+            "label": "Risk"
+          },
+          {
+            "label": "Time to impact"
+          }
+        ],
+        "rows": [
+          [
+            "A: organic",
+            85,
+            14,
+            "Low",
+            "3 years"
+          ],
+          [
+            "B: acquisition",
+            140,
+            18,
+            "Medium",
+            "1 year"
+          ],
+          [
+            "C: partnership",
+            60,
+            21,
+            "Low",
+            "2 years"
+          ],
+          [
+            "D: do nothing",
+            0,
+            0,
+            "High",
+            "—"
+          ]
+        ]
+      },
+      "id": "tb02",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "Twelve plants differ mainly on energy intensity",
+      "message_type": "comparison",
+      "visual": {
+        "type": "table",
+        "title": "Plant benchmark",
+        "columns": [
+          {
+            "label": "Plant"
+          },
+          {
+            "label": "Output (kt)",
+            "kind": "number"
+          },
+          {
+            "label": "Energy (MWh/t)",
+            "kind": "number",
+            "format": {
+              "decimals": 1
+            }
+          },
+          {
+            "label": "Labour (€/t)",
+            "kind": "number"
+          },
+          {
+            "label": "Scrap (%)",
+            "kind": "number",
+            "format": {
+              "decimals": 1
+            }
+          },
+          {
+            "label": "OEE (%)",
+            "kind": "number"
+          }
+        ],
+        "rows": [
+          [
+            "Plant A",
+            210,
+            1.9,
+            38,
+            3.1,
+            74
+          ],
+          [
+            "Plant B",
+            185,
+            2.4,
+            41,
+            3.8,
+            69
+          ],
+          [
+            "Plant C",
+            164,
+            2.1,
+            39,
+            2.9,
+            72
+          ],
+          [
+            "Plant D",
+            150,
+            3.0,
+            40,
+            4.4,
+            61
+          ],
+          [
+            "Plant E",
+            142,
+            2.7,
+            37,
+            3.6,
+            66
+          ],
+          [
+            "Plant F",
+            138,
+            2.2,
+            42,
+            3.0,
+            70
+          ],
+          [
+            "Plant G",
+            131,
+            2.9,
+            36,
+            4.1,
+            63
+          ],
+          [
+            "Plant H",
+            125,
+            2.0,
+            43,
+            2.7,
+            75
+          ],
+          [
+            "Plant I",
+            118,
+            2.6,
+            39,
+            3.5,
+            67
+          ],
+          [
+            "Plant J",
+            104,
+            3.3,
+            41,
+            4.8,
+            58
+          ],
+          [
+            "Plant K",
+            97,
+            2.3,
+            44,
+            3.2,
+            71
+          ],
+          [
+            "Plant L",
+            88,
+            3.1,
+            38,
+            4.5,
+            60
+          ]
+        ]
+      },
+      "commentary": {
+        "points": [
+          "Plants D, J and L use **50% more energy** per tonne"
+        ]
+      },
+      "id": "tb03",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "La rentabilidad por canal varía de −2,1% a 14,8%",
+      "message_type": "comparison",
+      "visual": {
+        "type": "table",
+        "title": "Cuenta de resultados por canal",
+        "columns": [
+          {
+            "label": "Canal"
+          },
+          {
+            "label": "Ventas (M€)",
+            "kind": "number",
+            "format": {
+              "decimals": 1
+            }
+          },
+          {
+            "label": "Margen bruto (%)",
+            "kind": "number",
+            "format": {
+              "decimals": 1
+            }
+          },
+          {
+            "label": "Coste servir (%)",
+            "kind": "number",
+            "format": {
+              "decimals": 1
+            }
+          },
+          {
+            "label": "Resultado (%)",
+            "kind": "number",
+            "format": {
+              "decimals": 1
+            }
+          }
+        ],
+        "rows": [
+          [
+            "Hipermercados",
+            412.5,
+            24.1,
+            9.8,
+            6.2
+          ],
+          [
+            "Supermercados",
+            386.0,
+            27.9,
+            10.4,
+            8.9
+          ],
+          [
+            "Proximidad",
+            154.2,
+            31.2,
+            12.1,
+            11.4
+          ],
+          [
+            "Online",
+            98.7,
+            29.5,
+            22.3,
+            -2.1
+          ],
+          [
+            "Cash & carry",
+            77.3,
+            18.6,
+            3.9,
+            14.8
+          ]
+        ]
+      },
+      "id": "tb04",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Batería de pruebas (sintética)"
+    },
+    {
+      "headline": "Margin erosion concentrates in fresh food and the south",
+      "message_type": "comparison",
+      "visual": {
+        "type": "heatmap",
+        "title": "Gross margin change",
+        "columns": [
+          {
+            "label": "Category"
+          },
+          {
+            "label": "North",
+            "kind": "number",
+            "format": {
+              "decimals": 1
+            }
+          },
+          {
+            "label": "Centre",
+            "kind": "number",
+            "format": {
+              "decimals": 1
+            }
+          },
+          {
+            "label": "South",
+            "kind": "number",
+            "format": {
+              "decimals": 1
+            }
+          },
+          {
+            "label": "East",
+            "kind": "number",
+            "format": {
+              "decimals": 1
+            }
+          },
+          {
+            "label": "Islands",
+            "kind": "number",
+            "format": {
+              "decimals": 1
+            }
+          }
+        ],
+        "rows": [
+          [
+            "Fresh",
+            -1.2,
+            -1.9,
+            -3.1,
+            -1.4,
+            -2.2
+          ],
+          [
+            "Bakery",
+            -0.6,
+            -0.8,
+            -1.7,
+            -0.4,
+            -1.1
+          ],
+          [
+            "Dairy",
+            0.2,
+            -0.1,
+            -0.9,
+            0.1,
+            -0.5
+          ],
+          [
+            "Grocery",
+            0.4,
+            0.3,
+            -0.2,
+            0.5,
+            0.1
+          ],
+          [
+            "Drinks",
+            0.6,
+            0.5,
+            0.2,
+            0.7,
+            0.4
+          ],
+          [
+            "Household",
+            0.3,
+            0.2,
+            0.0,
+            0.4,
+            0.2
+          ]
+        ],
+        "unit": "pp"
+      },
+      "id": "tb05",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "Vendor A scores best on four of five criteria",
+      "message_type": "comparison",
+      "visual": {
+        "type": "harvey_table",
+        "title": "Vendor assessment",
+        "columns": [
+          {
+            "label": "Vendor",
+            "width": 2.6
+          },
+          {
+            "label": "Functionality"
+          },
+          {
+            "label": "Cost"
+          },
+          {
+            "label": "Support"
+          },
+          {
+            "label": "Integration"
+          },
+          {
+            "label": "References"
+          }
+        ],
+        "rows": [
+          [
+            "Vendor A",
+            4,
+            3,
+            4,
+            4,
+            4
+          ],
+          [
+            "Vendor B",
+            3,
+            4,
+            2,
+            3,
+            3
+          ],
+          [
+            "Vendor C",
+            4,
+            2,
+            3,
+            2,
+            4
+          ]
+        ],
+        "highlight_rows": [
+          0
+        ]
+      },
+      "id": "tb06",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "Five of seven initiatives are on track",
+      "message_type": "status",
+      "visual": {
+        "type": "scorecard",
+        "title": "Initiative status",
+        "columns": [
+          {
+            "label": "Initiative",
+            "width": 2.8
+          },
+          {
+            "label": "Owner"
+          },
+          {
+            "label": "Target (€M)",
+            "kind": "number"
+          },
+          {
+            "label": "Delivered (€M)",
+            "kind": "number"
+          },
+          {
+            "label": "Status",
+            "kind": "rag"
+          },
+          {
+            "label": "Comment",
+            "width": 3.2
+          }
+        ],
+        "rows": [
+          [
+            "Procurement",
+            "CPO",
+            30,
+            24,
+            "G",
+            "Ahead of plan"
+          ],
+          [
+            "Energy",
+            "COO",
+            12,
+            10,
+            "G",
+            "Contracts signed"
+          ],
+          [
+            "Footprint",
+            "COO",
+            25,
+            9,
+            "A",
+            "Two sites delayed"
+          ],
+          [
+            "Pricing",
+            "CCO",
+            18,
+            15,
+            "G",
+            "Pilot extended"
+          ],
+          [
+            "Automation",
+            "CIO",
+            15,
+            4,
+            "R",
+            "Supplier delay"
+          ],
+          [
+            "Travel",
+            "CFO",
+            4,
+            4,
+            "G",
+            "Done"
+          ],
+          [
+            "Organisation",
+            "CHRO",
+            10,
+            7,
+            "G",
+            "Consultation closed"
+          ]
+        ]
+      },
+      "id": "tb07",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "Three suppliers, three different risk profiles",
+      "message_type": "comparison",
+      "visual": {
+        "type": "table",
+        "title": "Supplier comparison",
+        "columns": [
+          {
+            "label": "Supplier"
+          },
+          {
+            "label": "Share of spend (%)",
+            "kind": "number"
+          },
+          {
+            "label": "Lead time (weeks)",
+            "kind": "number"
+          },
+          {
+            "label": "Region"
+          }
+        ],
+        "rows": [
+          [
+            "North Metals",
+            46,
+            6,
+            "Europe"
+          ],
+          [
+            "Pacific Alloys",
+            31,
+            14,
+            "Asia"
+          ],
+          [
+            "Andes Mining",
+            23,
+            10,
+            "LatAm"
+          ]
+        ]
+      },
+      "commentary": {
+        "points": [
+          "Pacific Alloys has **the longest lead time**",
+          "No supplier is dual-sourced today"
+        ]
+      },
+      "id": "tb08",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "Previsión de tesorería por trimestre: el mínimo llega en el tercero",
+      "message_type": "trend",
+      "visual": {
+        "type": "table",
+        "title": "Tesorería",
+        "columns": [
+          {
+            "label": "Concepto"
+          },
+          {
+            "label": "1T",
+            "kind": "number"
+          },
+          {
+            "label": "2T",
+            "kind": "number"
+          },
+          {
+            "label": "3T",
+            "kind": "number"
+          },
+          {
+            "label": "4T",
+            "kind": "number"
+          }
+        ],
+        "rows": [
+          [
+            "Saldo inicial",
+            120,
+            96,
+            71,
+            58
+          ],
+          [
+            "Cobros",
+            410,
+            395,
+            380,
+            455
+          ],
+          [
+            "Pagos",
+            -434,
+            -420,
+            -393,
+            -401
+          ],
+          [
+            "Saldo final",
+            96,
+            71,
+            58,
+            112
+          ]
+        ]
+      },
+      "id": "tb09",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Batería de pruebas (sintética)",
+      "footnotes": [
+        "Millones de euros.",
+        "Incluye la línea de crédito no dispuesta de 50 M€."
+      ]
+    }
+  ]
+}

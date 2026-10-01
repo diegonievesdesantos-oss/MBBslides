@@ -1,0 +1,491 @@
+{
+  "meta": {
+    "title": "Battery: chart",
+    "deck_type": "strategy_deck",
+    "theme": "harbor"
+  },
+  "storyline": {
+    "framework": "SCR",
+    "governing_thought": "Each chart slide is judged on what it is trying to be",
+    "key_line": [
+      {
+        "id": "K1",
+        "role": "situation",
+        "message": "Variations of one archetype"
+      },
+      {
+        "id": "K2",
+        "role": "resolution",
+        "message": "Composition must hold across them"
+      }
+    ]
+  },
+  "eval": {
+    "purpose": "Archetype battery (chart): column/bar/line/stacked/donut/combo / few and many points / 1–5 series / negatives / Spanish decimals",
+    "battery": "chart"
+  },
+  "slides": [
+    {
+      "headline": "Revenue doubled in four years",
+      "message_type": "trend",
+      "visual": {
+        "type": "column",
+        "title": "Revenue",
+        "unit": "€M",
+        "data": {
+          "categories": [
+            "2021",
+            "2022",
+            "2023",
+            "2024",
+            "2025"
+          ],
+          "series": [
+            {
+              "name": "Revenue",
+              "values": [
+                210,
+                260,
+                315,
+                370,
+                425
+              ]
+            }
+          ]
+        }
+      },
+      "commentary": {
+        "points": [
+          "Organic growth of **19% a year**",
+          "No acquisitions in the period"
+        ]
+      },
+      "id": "ch01",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "Two regions explain the whole decline in profit",
+      "message_type": "ranking",
+      "visual": {
+        "type": "bar",
+        "title": "Operating profit change by region",
+        "unit": "€M",
+        "data": {
+          "categories": [
+            "North",
+            "South",
+            "East",
+            "West",
+            "Islands"
+          ],
+          "series": [
+            {
+              "name": "Change",
+              "values": [
+                8,
+                3,
+                -1,
+                -14,
+                -11
+              ]
+            }
+          ]
+        },
+        "highlight": [
+          "West",
+          "Islands"
+        ]
+      },
+      "id": "ch02",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "Online overtook stores in 2024 and keeps growing faster",
+      "message_type": "trend",
+      "visual": {
+        "type": "line",
+        "title": "Sales by channel",
+        "unit": "€bn",
+        "data": {
+          "categories": [
+            "2019",
+            "2020",
+            "2021",
+            "2022",
+            "2023",
+            "2024",
+            "2025"
+          ],
+          "series": [
+            {
+              "name": "Online",
+              "values": [
+                1.1,
+                1.9,
+                2.3,
+                2.6,
+                2.9,
+                3.4,
+                3.9
+              ]
+            },
+            {
+              "name": "Stores",
+              "values": [
+                3.8,
+                2.9,
+                3.2,
+                3.3,
+                3.2,
+                3.1,
+                3.0
+              ]
+            }
+          ]
+        },
+        "highlight": [
+          "Online"
+        ]
+      },
+      "id": "ch03",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "La cuota de la marca propia sube en las cinco categorías",
+      "message_type": "composition",
+      "visual": {
+        "type": "stacked_100",
+        "title": "Cuota por tipo de marca",
+        "unit": "% de ventas",
+        "data": {
+          "categories": [
+            "Lácteos",
+            "Bebidas",
+            "Limpieza",
+            "Snacks",
+            "Congelados"
+          ],
+          "series": [
+            {
+              "name": "Marca propia",
+              "values": [
+                42.5,
+                31.2,
+                48.9,
+                27.4,
+                39.8
+              ]
+            },
+            {
+              "name": "Fabricante",
+              "values": [
+                57.5,
+                68.8,
+                51.1,
+                72.6,
+                60.2
+              ]
+            }
+          ]
+        },
+        "format": {
+          "decimals": 1
+        }
+      },
+      "id": "ch04",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Batería de pruebas (sintética)"
+    },
+    {
+      "headline": "Three customers account for half of the revenue",
+      "message_type": "composition",
+      "visual": {
+        "type": "donut",
+        "title": "Revenue by customer, 2025",
+        "unit": "€M",
+        "data": {
+          "categories": [
+            "Customer A",
+            "Customer B",
+            "Customer C",
+            "Others"
+          ],
+          "series": [
+            {
+              "name": "Revenue",
+              "values": [
+                96,
+                71,
+                58,
+                230
+              ]
+            }
+          ]
+        },
+        "highlight": [
+          "Customer A",
+          "Customer B",
+          "Customer C"
+        ],
+        "show_values": true
+      },
+      "id": "ch05",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "Volumes grew while price per unit fell every year",
+      "message_type": "trend",
+      "visual": {
+        "type": "combo",
+        "title": "Volume and price",
+        "unit": "M units, €",
+        "data": {
+          "categories": [
+            "2021",
+            "2022",
+            "2023",
+            "2024",
+            "2025"
+          ],
+          "series": [
+            {
+              "name": "Volume",
+              "values": [
+                12.1,
+                13.4,
+                14.9,
+                16.2,
+                17.8
+              ]
+            },
+            {
+              "name": "Price",
+              "values": [
+                9.8,
+                9.5,
+                9.1,
+                8.8,
+                8.4
+              ]
+            }
+          ]
+        },
+        "format": {
+          "decimals": 1
+        }
+      },
+      "id": "ch06",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "Margins vary from −4% to 22% across the twelve product lines",
+      "message_type": "ranking",
+      "visual": {
+        "type": "bar",
+        "title": "EBIT margin by product line",
+        "unit": "%",
+        "data": {
+          "categories": [
+            "Line A",
+            "Line B",
+            "Line C",
+            "Line D",
+            "Line E",
+            "Line F",
+            "Line G",
+            "Line H",
+            "Line I",
+            "Line J",
+            "Line K",
+            "Line L"
+          ],
+          "series": [
+            {
+              "name": "Margin",
+              "values": [
+                22,
+                19,
+                17,
+                15,
+                12,
+                11,
+                9,
+                6,
+                4,
+                1,
+                -2,
+                -4
+              ]
+            }
+          ]
+        },
+        "highlight": [
+          "Line K",
+          "Line L"
+        ]
+      },
+      "id": "ch07",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "Five segments grew at very different rates",
+      "message_type": "composition",
+      "visual": {
+        "type": "stacked_column",
+        "title": "Revenue by segment",
+        "unit": "€M",
+        "data": {
+          "categories": [
+            "2022",
+            "2023",
+            "2024",
+            "2025"
+          ],
+          "series": [
+            {
+              "name": "Retail",
+              "values": [
+                120,
+                126,
+                131,
+                135
+              ]
+            },
+            {
+              "name": "SME",
+              "values": [
+                80,
+                92,
+                104,
+                118
+              ]
+            },
+            {
+              "name": "Corporate",
+              "values": [
+                140,
+                138,
+                141,
+                139
+              ]
+            },
+            {
+              "name": "Public",
+              "values": [
+                40,
+                44,
+                47,
+                52
+              ]
+            },
+            {
+              "name": "Online",
+              "values": [
+                20,
+                31,
+                45,
+                63
+              ]
+            }
+          ]
+        }
+      },
+      "id": "ch08",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "Los costes de energía se triplicaron en 2022 y no han vuelto al nivel previo",
+      "message_type": "trend",
+      "visual": {
+        "type": "line",
+        "title": "Coste de energía por tonelada",
+        "unit": "€/t",
+        "data": {
+          "categories": [
+            "2019",
+            "2020",
+            "2021",
+            "2022",
+            "2023",
+            "2024",
+            "2025"
+          ],
+          "series": [
+            {
+              "name": "Coste",
+              "values": [
+                41.2,
+                38.7,
+                52.4,
+                128.9,
+                96.3,
+                84.1,
+                79.6
+              ]
+            }
+          ]
+        },
+        "format": {
+          "decimals": 1
+        }
+      },
+      "id": "ch09",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Batería de pruebas (sintética)"
+    },
+    {
+      "headline": "Cash conversion recovered to 92% after two weak years",
+      "message_type": "trend",
+      "visual": {
+        "type": "column",
+        "title": "Cash conversion",
+        "unit": "% of EBITDA",
+        "data": {
+          "categories": [
+            "2021",
+            "2022",
+            "2023",
+            "2024",
+            "2025"
+          ],
+          "series": [
+            {
+              "name": "Conversion",
+              "values": [
+                88,
+                71,
+                69,
+                84,
+                92
+              ]
+            }
+          ]
+        }
+      },
+      "footnotes": [
+        "Cash conversion = operating cash flow / EBITDA.",
+        "2022 includes a one-off tax payment."
+      ],
+      "id": "ch10",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    }
+  ]
+}

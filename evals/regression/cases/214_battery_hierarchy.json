@@ -1,0 +1,419 @@
+{
+  "meta": {
+    "title": "Battery: hierarchy",
+    "deck_type": "strategy_deck",
+    "theme": "graphite"
+  },
+  "storyline": {
+    "framework": "SCR",
+    "governing_thought": "Each hierarchy slide is judged on what it is trying to be",
+    "key_line": [
+      {
+        "id": "K1",
+        "role": "situation",
+        "message": "Variations of one archetype"
+      },
+      {
+        "id": "K2",
+        "role": "resolution",
+        "message": "Composition must hold across them"
+      }
+    ]
+  },
+  "eval": {
+    "purpose": "Archetype battery (hierarchy): org chart / driver tree / issue tree / pyramid / depth 2–3 / 3–8 leaves / Spanish",
+    "battery": "hierarchy"
+  },
+  "slides": [
+    {
+      "headline": "A small team of three reports to the COO",
+      "message_type": "hierarchy",
+      "visual": {
+        "type": "org_chart",
+        "data": {
+          "root": {
+            "label": "COO",
+            "children": [
+              {
+                "label": "Operations"
+              },
+              {
+                "label": "Logistics",
+                "highlight": true
+              },
+              {
+                "label": "Quality"
+              }
+            ]
+          }
+        }
+      },
+      "id": "hi01",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "The transformation office coordinates eight functions",
+      "message_type": "hierarchy",
+      "visual": {
+        "type": "org_chart",
+        "data": {
+          "root": {
+            "label": "CEO",
+            "children": [
+              {
+                "label": "Transformation office",
+                "highlight": true,
+                "children": [
+                  {
+                    "label": "Function 1",
+                    "sub": "Lead"
+                  },
+                  {
+                    "label": "Function 2",
+                    "sub": "Lead"
+                  },
+                  {
+                    "label": "Function 3",
+                    "sub": "Lead"
+                  },
+                  {
+                    "label": "Function 4",
+                    "sub": "Lead"
+                  },
+                  {
+                    "label": "Function 5",
+                    "sub": "Lead"
+                  },
+                  {
+                    "label": "Function 6",
+                    "sub": "Lead"
+                  },
+                  {
+                    "label": "Function 7",
+                    "sub": "Lead"
+                  },
+                  {
+                    "label": "Function 8",
+                    "sub": "Lead"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "id": "hi02",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "Network and warehousing explain €31M of the €44M gap",
+      "message_type": "hierarchy",
+      "visual": {
+        "type": "driver_tree",
+        "format": {
+          "prefix": "€",
+          "suffix": "M"
+        },
+        "data": {
+          "root": {
+            "label": "Gap to peers",
+            "value": 44,
+            "children": [
+              {
+                "label": "Network",
+                "value": 19,
+                "highlight": true,
+                "children": [
+                  {
+                    "label": "Depots",
+                    "value": 11
+                  },
+                  {
+                    "label": "Truck fill",
+                    "value": 8
+                  }
+                ]
+              },
+              {
+                "label": "Warehousing",
+                "value": 12,
+                "highlight": true,
+                "children": [
+                  {
+                    "label": "Picking",
+                    "value": 9
+                  },
+                  {
+                    "label": "Overtime",
+                    "value": 3
+                  }
+                ]
+              },
+              {
+                "label": "Overheads",
+                "value": 13
+              }
+            ]
+          }
+        }
+      },
+      "id": "hi03",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "La caída del margen tiene dos causas principales",
+      "message_type": "hierarchy",
+      "visual": {
+        "type": "tree",
+        "data": {
+          "root": {
+            "label": "Margen −2 pp",
+            "children": [
+              {
+                "label": "Precio",
+                "children": [
+                  {
+                    "label": "Promociones"
+                  },
+                  {
+                    "label": "Mix de canal"
+                  }
+                ]
+              },
+              {
+                "label": "Coste",
+                "highlight": true,
+                "children": [
+                  {
+                    "label": "Energía"
+                  },
+                  {
+                    "label": "Mermas"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "id": "hi04",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Batería de pruebas (sintética)"
+    },
+    {
+      "headline": "Three tiers of support, most pupils need only the first",
+      "message_type": "hierarchy",
+      "visual": {
+        "type": "pyramid",
+        "data": {
+          "levels": [
+            {
+              "label": "Intensive",
+              "text": "8% of pupils"
+            },
+            {
+              "label": "Targeted",
+              "text": "22% of pupils"
+            },
+            {
+              "label": "Universal",
+              "text": "All pupils"
+            }
+          ]
+        }
+      },
+      "id": "hi05",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "Revenue growth breaks down into price, volume and mix",
+      "message_type": "hierarchy",
+      "visual": {
+        "type": "driver_tree",
+        "format": {
+          "suffix": "%"
+        },
+        "data": {
+          "root": {
+            "label": "Revenue growth",
+            "value": 9,
+            "children": [
+              {
+                "label": "Price",
+                "value": 5,
+                "highlight": true
+              },
+              {
+                "label": "Volume",
+                "value": 3
+              },
+              {
+                "label": "Mix",
+                "value": 1
+              }
+            ]
+          }
+        }
+      },
+      "id": "hi06",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "The new regional structure has two levels below the country manager",
+      "message_type": "hierarchy",
+      "visual": {
+        "type": "org_chart",
+        "data": {
+          "root": {
+            "label": "Country manager",
+            "sub": "Spain",
+            "children": [
+              {
+                "label": "North",
+                "sub": "Regional director",
+                "children": [
+                  {
+                    "label": "Galicia"
+                  },
+                  {
+                    "label": "Basque Country"
+                  }
+                ]
+              },
+              {
+                "label": "Centre",
+                "sub": "Regional director",
+                "highlight": true,
+                "children": [
+                  {
+                    "label": "Madrid"
+                  },
+                  {
+                    "label": "Castilla"
+                  }
+                ]
+              },
+              {
+                "label": "South",
+                "sub": "Regional director",
+                "children": [
+                  {
+                    "label": "Andalucía"
+                  },
+                  {
+                    "label": "Murcia"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "id": "hi07",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "Cinco niveles de necesidad del cliente, de lo básico a la lealtad",
+      "message_type": "hierarchy",
+      "visual": {
+        "type": "pyramid",
+        "data": {
+          "levels": [
+            {
+              "label": "Recomendación",
+              "text": "El cliente nos recomienda"
+            },
+            {
+              "label": "Lealtad",
+              "text": "Repite sin buscar alternativas"
+            },
+            {
+              "label": "Experiencia",
+              "text": "Compra sin fricciones"
+            },
+            {
+              "label": "Surtido",
+              "text": "Encuentra lo que busca"
+            },
+            {
+              "label": "Precio",
+              "text": "Precio competitivo"
+            }
+          ]
+        }
+      },
+      "id": "hi08",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Batería de pruebas (sintética)"
+    },
+    {
+      "headline": "Why are deliveries late? Three branches of the issue tree",
+      "message_type": "hierarchy",
+      "visual": {
+        "type": "tree",
+        "data": {
+          "root": {
+            "label": "Late deliveries",
+            "children": [
+              {
+                "label": "Planning",
+                "children": [
+                  {
+                    "label": "Forecast error"
+                  },
+                  {
+                    "label": "Late orders"
+                  }
+                ]
+              },
+              {
+                "label": "Warehouse",
+                "highlight": true,
+                "children": [
+                  {
+                    "label": "Picking errors"
+                  },
+                  {
+                    "label": "Staff shortages"
+                  },
+                  {
+                    "label": "Stock-outs"
+                  }
+                ]
+              },
+              {
+                "label": "Transport",
+                "children": [
+                  {
+                    "label": "Carrier capacity"
+                  },
+                  {
+                    "label": "Traffic"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "id": "hi09",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    }
+  ]
+}

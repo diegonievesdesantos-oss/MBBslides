@@ -1,0 +1,612 @@
+{
+  "meta": {
+    "title": "Battery: roadmap",
+    "deck_type": "strategy_deck",
+    "theme": "harbor"
+  },
+  "storyline": {
+    "framework": "SCR",
+    "governing_thought": "Each roadmap slide is judged on what it is trying to be",
+    "key_line": [
+      {
+        "id": "K1",
+        "role": "situation",
+        "message": "Variations of one archetype"
+      },
+      {
+        "id": "K2",
+        "role": "resolution",
+        "message": "Composition must hold across them"
+      }
+    ]
+  },
+  "eval": {
+    "purpose": "Archetype battery (roadmap): 3–9 rows / 4–12 periods / today marker / multiple bars per row / Spanish",
+    "battery": "roadmap"
+  },
+  "slides": [
+    {
+      "headline": "Three workstreams deliver within a year",
+      "message_type": "plan",
+      "visual": {
+        "type": "gantt",
+        "data": {
+          "periods": [
+            "Q1",
+            "Q2",
+            "Q3",
+            "Q4"
+          ],
+          "rows": [
+            {
+              "label": "Pricing",
+              "bars": [
+                {
+                  "start": 0,
+                  "end": 2,
+                  "label": "Pilot",
+                  "highlight": true
+                }
+              ]
+            },
+            {
+              "label": "Sourcing",
+              "bars": [
+                {
+                  "start": 1,
+                  "end": 3,
+                  "label": "Tender"
+                }
+              ]
+            },
+            {
+              "label": "Stores",
+              "bars": [
+                {
+                  "start": 2,
+                  "end": 4,
+                  "label": "Refit"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "id": "rm01",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "The plan reaches full run-rate in six quarters across five workstreams",
+      "message_type": "plan",
+      "visual": {
+        "type": "gantt",
+        "data": {
+          "periods": [
+            "Q1",
+            "Q2",
+            "Q3",
+            "Q4",
+            "Q5",
+            "Q6"
+          ],
+          "today": 0.5,
+          "rows": [
+            {
+              "label": "Pricing",
+              "bars": [
+                {
+                  "start": 0,
+                  "end": 3,
+                  "label": "Design and pilot",
+                  "highlight": true
+                }
+              ]
+            },
+            {
+              "label": "Procurement",
+              "bars": [
+                {
+                  "start": 0,
+                  "end": 4,
+                  "label": "Renegotiation"
+                }
+              ]
+            },
+            {
+              "label": "Network",
+              "bars": [
+                {
+                  "start": 2,
+                  "end": 6,
+                  "label": "DC consolidation"
+                }
+              ]
+            },
+            {
+              "label": "Stores",
+              "bars": [
+                {
+                  "start": 1,
+                  "end": 5,
+                  "label": "Refit waves"
+                }
+              ]
+            },
+            {
+              "label": "IT",
+              "bars": [
+                {
+                  "start": 0,
+                  "end": 6,
+                  "label": "ERP upgrade"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "id": "rm02",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "Nine workstreams over three years, with the ERP on the critical path",
+      "message_type": "plan",
+      "visual": {
+        "type": "gantt",
+        "data": {
+          "periods": [
+            "H1 26",
+            "H2 26",
+            "H1 27",
+            "H2 27",
+            "H1 28",
+            "H2 28"
+          ],
+          "today": 0.3,
+          "rows": [
+            {
+              "label": "Workstream 1",
+              "bars": [
+                {
+                  "start": 0,
+                  "end": 2,
+                  "label": "Quick wins"
+                }
+              ]
+            },
+            {
+              "label": "Workstream 2",
+              "bars": [
+                {
+                  "start": 0,
+                  "end": 3,
+                  "label": "Procurement"
+                }
+              ]
+            },
+            {
+              "label": "Workstream 3",
+              "bars": [
+                {
+                  "start": 1,
+                  "end": 5,
+                  "label": "ERP",
+                  "highlight": true
+                }
+              ]
+            },
+            {
+              "label": "Workstream 4",
+              "bars": [
+                {
+                  "start": 1,
+                  "end": 3,
+                  "label": "Pricing"
+                }
+              ]
+            },
+            {
+              "label": "Workstream 5",
+              "bars": [
+                {
+                  "start": 2,
+                  "end": 4,
+                  "label": "Footprint"
+                }
+              ]
+            },
+            {
+              "label": "Workstream 6",
+              "bars": [
+                {
+                  "start": 2,
+                  "end": 6,
+                  "label": "Automation"
+                }
+              ]
+            },
+            {
+              "label": "Workstream 7",
+              "bars": [
+                {
+                  "start": 3,
+                  "end": 5,
+                  "label": "Data"
+                }
+              ]
+            },
+            {
+              "label": "Workstream 8",
+              "bars": [
+                {
+                  "start": 3,
+                  "end": 6,
+                  "label": "Organisation"
+                }
+              ]
+            },
+            {
+              "label": "Workstream 9",
+              "bars": [
+                {
+                  "start": 4,
+                  "end": 6,
+                  "label": "Close-out"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "id": "rm03",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "El plan de transformación se despliega en cuatro fases durante 2026",
+      "message_type": "plan",
+      "visual": {
+        "type": "gantt",
+        "data": {
+          "periods": [
+            "Ene",
+            "Feb",
+            "Mar",
+            "Abr",
+            "May",
+            "Jun",
+            "Jul",
+            "Ago",
+            "Sep",
+            "Oct",
+            "Nov",
+            "Dic"
+          ],
+          "rows": [
+            {
+              "label": "Diagnóstico",
+              "bars": [
+                {
+                  "start": 0,
+                  "end": 2,
+                  "label": "Entrevistas y datos"
+                }
+              ]
+            },
+            {
+              "label": "Diseño",
+              "bars": [
+                {
+                  "start": 2,
+                  "end": 5,
+                  "label": "Nuevo modelo",
+                  "highlight": true
+                }
+              ]
+            },
+            {
+              "label": "Piloto",
+              "bars": [
+                {
+                  "start": 5,
+                  "end": 8,
+                  "label": "Dos regiones"
+                }
+              ]
+            },
+            {
+              "label": "Despliegue",
+              "bars": [
+                {
+                  "start": 8,
+                  "end": 12,
+                  "label": "Resto de regiones"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "id": "rm04",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Batería de pruebas (sintética)"
+    },
+    {
+      "headline": "Each workstream has two phases: build, then roll out",
+      "message_type": "plan",
+      "visual": {
+        "type": "gantt",
+        "data": {
+          "periods": [
+            "Q1",
+            "Q2",
+            "Q3",
+            "Q4",
+            "Q5",
+            "Q6",
+            "Q7",
+            "Q8"
+          ],
+          "rows": [
+            {
+              "label": "Digital sales",
+              "bars": [
+                {
+                  "start": 0,
+                  "end": 3,
+                  "label": "Build"
+                },
+                {
+                  "start": 3,
+                  "end": 8,
+                  "label": "Roll-out",
+                  "highlight": true
+                }
+              ]
+            },
+            {
+              "label": "Pricing engine",
+              "bars": [
+                {
+                  "start": 1,
+                  "end": 4,
+                  "label": "Build"
+                },
+                {
+                  "start": 4,
+                  "end": 7,
+                  "label": "Roll-out"
+                }
+              ]
+            },
+            {
+              "label": "Service hub",
+              "bars": [
+                {
+                  "start": 2,
+                  "end": 5,
+                  "label": "Build"
+                },
+                {
+                  "start": 5,
+                  "end": 8,
+                  "label": "Roll-out"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "id": "rm05",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "The migration runs product by product over eight quarters",
+      "message_type": "plan",
+      "visual": {
+        "type": "roadmap",
+        "data": {
+          "periods": [
+            "2026 Q1",
+            "Q2",
+            "Q3",
+            "Q4",
+            "2027 Q1",
+            "Q2",
+            "Q3",
+            "Q4"
+          ],
+          "rows": [
+            {
+              "label": "Deposits",
+              "bars": [
+                {
+                  "start": 0,
+                  "end": 3,
+                  "label": "Migrate deposits to the cloud core",
+                  "highlight": true
+                }
+              ]
+            },
+            {
+              "label": "Loans",
+              "bars": [
+                {
+                  "start": 2,
+                  "end": 5,
+                  "label": "Migrate loans"
+                }
+              ]
+            },
+            {
+              "label": "Cards",
+              "bars": [
+                {
+                  "start": 4,
+                  "end": 7,
+                  "label": "Migrate cards"
+                }
+              ]
+            },
+            {
+              "label": "Mainframe",
+              "bars": [
+                {
+                  "start": 7,
+                  "end": 8,
+                  "label": "Decommission"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "id": "rm06",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "Hiring and training ramp up before the new plant opens",
+      "message_type": "plan",
+      "visual": {
+        "type": "gantt",
+        "data": {
+          "periods": [
+            "M1",
+            "M2",
+            "M3",
+            "M4",
+            "M5",
+            "M6",
+            "M7",
+            "M8",
+            "M9",
+            "M10"
+          ],
+          "today": 2,
+          "rows": [
+            {
+              "label": "Construction",
+              "bars": [
+                {
+                  "start": 0,
+                  "end": 7,
+                  "label": "Building and utilities"
+                }
+              ]
+            },
+            {
+              "label": "Equipment",
+              "bars": [
+                {
+                  "start": 4,
+                  "end": 8,
+                  "label": "Install and commission"
+                }
+              ]
+            },
+            {
+              "label": "Hiring",
+              "bars": [
+                {
+                  "start": 3,
+                  "end": 7,
+                  "label": "220 operators"
+                }
+              ]
+            },
+            {
+              "label": "Training",
+              "bars": [
+                {
+                  "start": 5,
+                  "end": 9,
+                  "label": "Operator certification",
+                  "highlight": true
+                }
+              ]
+            },
+            {
+              "label": "Start of production",
+              "bars": [
+                {
+                  "start": 9,
+                  "end": 10,
+                  "label": "SOP",
+                  "highlight": true
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "id": "rm07",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "Calendario de cierre de oficinas y apertura de centros de asesoramiento",
+      "message_type": "plan",
+      "visual": {
+        "type": "gantt",
+        "data": {
+          "periods": [
+            "1T 26",
+            "2T 26",
+            "3T 26",
+            "4T 26",
+            "1T 27",
+            "2T 27"
+          ],
+          "rows": [
+            {
+              "label": "Cierre de oficinas",
+              "bars": [
+                {
+                  "start": 0,
+                  "end": 4,
+                  "label": "112 oficinas"
+                }
+              ]
+            },
+            {
+              "label": "Centros de asesoramiento",
+              "bars": [
+                {
+                  "start": 1,
+                  "end": 5,
+                  "label": "18 centros",
+                  "highlight": true
+                }
+              ]
+            },
+            {
+              "label": "Gestores remotos",
+              "bars": [
+                {
+                  "start": 0,
+                  "end": 6,
+                  "label": "Contratación"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "id": "rm08",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Batería de pruebas (sintética)"
+    }
+  ]
+}

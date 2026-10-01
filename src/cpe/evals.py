@@ -32,6 +32,9 @@ from .pipeline import run
 from .spec import load_spec
 
 TOLERANCE = 2.0
+# QA errors about the WRITING (storyline, headline wording) rather than the rendered slide: counted
+# apart in reports so authoring lint in fixture decks does not read as a visual defect
+AUTHORING_CODES = ("STORY_", "HEADLINE_")
 ROOT = Path(__file__).resolve().parents[2]
 LATEST = ROOT / "evals" / "results" / "latest.json"
 
@@ -58,11 +61,13 @@ def run_case(path: Path, out_dir: Path, compose: bool = True, name: str | None =
             ok=bool(rep.get("artifacts", {}).get("pngs")),
             qa_passed=rep["passed"],
             qa_errors=rep["counts"]["error"],
+            qa_errors_authoring=sum(1 for i in rep.get("issues") or [] if i.get("level") == "error" and str(i.get("code", "")).startswith(AUTHORING_CODES)),
             qa_warnings=rep["counts"]["warning"],
             qa_score=rep["deck_score"],
             composition=comp.get("deck_score"),
             composition_v1=comp.get("deck_score_v1"),
-            slides={s["slide_id"]: {"score": s["score"], "archetype": s.get("archetype"), "flags": s["flags"], "v1": s.get("score_v1")} for s in comp.get("slides", [])},
+            slides={s["slide_id"]: {"score": s["score"], "archetype": s.get("archetype"), "flags": s["flags"], "v1": s.get("score_v1"),
+                    "attribution": s.get("attribution") or {}} for s in comp.get("slides", [])},
             pending=len(rep.get("pending_actions") or []),
         )
         if not res["ok"]:
@@ -108,12 +113,14 @@ def compare(results: list[dict], baseline: dict, tolerance: float = TOLERANCE) -
     return regressions, improvements
 
 
-def _cases(suite: str, cases_dir: str | Path | None) -> list[tuple[str, Path]]:
+def _cases(suite: str, cases_dir: str | Path | None, match: str | None = None) -> list[tuple[str, Path]]:
     cfg = SUITES[suite]
     if cfg.get("decks") and not cases_dir:
-        return [(n, ROOT / p) for n, p in cfg["decks"].items()]
-    d = Path(cases_dir) if cases_dir else ROOT / cfg["cases"]
-    return [(p.stem, p) for p in sorted(d.glob("*.json")) if p.name != "SEAL.json"]
+        out = [(n, ROOT / p) for n, p in cfg["decks"].items()]
+    else:
+        d = Path(cases_dir) if cases_dir else ROOT / cfg["cases"]
+        out = [(p.stem, p) for p in sorted(d.glob("*.json")) if p.name != "SEAL.json"]
+    return [c for c in out if not match or match in c[0]]
 
 
 def _aggregate(results: list[dict]) -> dict:
@@ -133,6 +140,7 @@ def _aggregate(results: list[dict]) -> dict:
         "by_archetype": {k: {"slides": len(v), "mean": round(sum(v) / len(v), 1)} for k, v in sorted(arche.items())},
         "slides_measured": sum(len(r.get("slides") or {}) for r in results),
         "qa_errors": sum(r.get("qa_errors") or 0 for r in results),
+        "qa_errors_authoring": sum(r.get("qa_errors_authoring") or 0 for r in results),
         "qa_warnings": sum(r.get("qa_warnings") or 0 for r in results),
         "cases_ok": sum(1 for r in results if r.get("ok")),
         "cases_total": len(results),
@@ -140,7 +148,7 @@ def _aggregate(results: list[dict]) -> dict:
 
 
 def run_suite(cases_dir: str | Path | None, out_dir: str | Path, baseline_path: str | Path | None = None, update_baseline: bool = False, compose: bool = True,
-              tolerance: float = TOLERANCE, suite: str = "regression", record: bool = False) -> dict:
+              tolerance: float = TOLERANCE, suite: str = "regression", record: bool = False, match: str | None = None) -> dict:
     from . import environment
 
     if suite not in SUITES:
@@ -154,17 +162,22 @@ def run_suite(cases_dir: str | Path | None, out_dir: str | Path, baseline_path: 
     out = Path(out_dir)
     out.mkdir(parents=True, exist_ok=True)
     results = []
-    for name, c in _cases(suite, cases_dir):
+    if match and (record or update_baseline):
+        raise ValueError("--match runs a subset: it cannot record results or update the baseline")
+    for name, c in _cases(suite, cases_dir, match):
         r = run_case(c, out, compose=compose, name=name, max_iter=3 if suite == "examples" else 2)
         results.append(r)
         print(f"[eval:{suite}] {r['case']:28} {'ok ' if r.get('ok') else 'ERR'} composition={r.get('composition')} qa_errors={r.get('qa_errors')} ({r['seconds']}s)", flush=True)
+    from . import quality
     from .qa.composition import SCORE_NAME
 
     summary = {"suite": suite, "version": __version__, "metric": SCORE_NAME, **_aggregate(results), "cases": results, "environment": env}
+    summary["quality"] = quality.profile(results, deck_mean=summary["suite_composition"])
     regressions, improvements, env_notes = [], [], []
     if baseline_path and Path(baseline_path).exists() and not update_baseline:
         base = json.loads(Path(baseline_path).read_text())
         regressions, improvements = compare(results, base, tolerance)
+        regressions += quality.gate_failures(summary["quality"], None if match else base.get("archetype_counts"))
         if base.get("environment_fingerprint") and base["environment_fingerprint"] != env["fingerprint"]:
             env_notes.append(f"Environment differs from the baseline's ({base['environment_fingerprint']} → {env['fingerprint']}): "
                              "differences may come from the renderer/fonts, not the engine. Use `scripts/cpe-docker eval` for comparable numbers.")
@@ -176,22 +189,38 @@ def run_suite(cases_dir: str | Path | None, out_dir: str | Path, baseline_path: 
     summary["passed"] = all(r.get("ok") for r in results) and not (cfg["gate"] and regressions)
     if update_baseline and baseline_path:
         slim = {"suite_composition": summary["suite_composition"], "environment_fingerprint": env["fingerprint"], "engine_version": __version__,
-                "cases": [{k: r.get(k) for k in ("case", "ok", "qa_errors", "composition", "slides")} for r in results]}
+                "archetype_counts": {a: st["n"] for a, st in summary["quality"]["archetypes"].items()},
+                "cases": [{**{k: r.get(k) for k in ("case", "ok", "qa_errors", "composition")},
+                           "slides": {sid: {k: v for k, v in sl.items() if k != "attribution"} for sid, sl in (r.get("slides") or {}).items()}} for r in results]}
         Path(baseline_path).write_text(json.dumps(slim, indent=2) + "\n")
     (out / "eval_report.json").write_text(json.dumps(summary, indent=2, ensure_ascii=False))
     (out / "eval_report.md").write_text(to_markdown(summary))
+    (out / "archetype_diagnostics.md").write_text(quality.diagnostics_markdown(results, summary["quality"], f"Archetype diagnostics — {suite}"))
+    if suite != "holdout_v2":  # sealed holdout renders are not opened during development
+        quality.archetype_sheets(results, out, out / "archetype_sheets")
     if record:
         record_result(suite, summary)
     return summary
 
 
 def _slim(summary: dict) -> dict:
-    keep = ("suite_composition", "suite_composition_v1", "slides_measured", "qa_errors", "qa_warnings", "cases_ok", "cases_total", "by_archetype", "flag_counts", "passed")
+    keep = ("suite_composition", "suite_composition_v1", "slides_measured", "qa_errors", "qa_errors_authoring", "qa_warnings", "cases_ok", "cases_total", "by_archetype", "flag_counts", "passed")
     from .qa.composition import SCORE_NAME
 
     out = {"metric": summary.get("metric") or SCORE_NAME, **{k: summary.get(k) for k in keep}}
     out["cases"] = {r["case"]: {"composition": r.get("composition"), "qa_score": r.get("qa_score"), "qa_errors": r.get("qa_errors"),
                                 "qa_warnings": r.get("qa_warnings"), "qa_passed": r.get("qa_passed")} for r in summary["cases"]}
+    q = summary.get("quality") or {}
+    if q:
+        out["overall"] = {k: q.get(k) for k in ("overall_score", "slide_mean", "macro_archetype_score", "weakest_archetype", "weakest_archetype_score",
+                                                "weakest_archetype_n", "weakest_covered_archetype", "weakest_covered_archetype_score",
+                                                "share_slides_above_90", "share_slides_above_80", "share_slides_above_70")}
+        out["overall"]["qa_errors"] = summary.get("qa_errors")
+        out["overall"]["qa_errors_visual"] = (summary.get("qa_errors") or 0) - (summary.get("qa_errors_authoring") or 0)
+        out["distribution"] = q.get("distribution")
+        out["archetypes"] = {a: {k: v for k, v in st.items() if k != "breaches"} for a, st in (q.get("archetypes") or {}).items()}
+        out["absolute_gates"] = {"breaches": q.get("absolute_floor_breaches"), "not_healthy": q.get("not_healthy"), "coverage": q.get("archetype_coverage")}
+        out.pop("by_archetype", None)
     out["environment_fingerprint"] = summary["environment"]["fingerprint"]
     out["engine"] = {"version": summary["environment"].get("cpe_version"), "commit": summary["environment"].get("commit")}
     return out
@@ -234,6 +263,10 @@ def to_markdown(s: dict) -> str:
         L += ["## Regressions", ""] + [f"- {x}" for x in s["regressions"]] + [""]
     if s["improvements"]:
         L += ["## Improvements vs baseline", ""] + [f"- {x}" for x in s["improvements"]] + [""]
+    if s.get("quality"):
+        from .quality import profile_markdown
+
+        L += profile_markdown(s["quality"])
     L += ["## Cases", "", "| case | purpose | composition | v1.1 score | QA errors | QA warnings | author actions | flags |", "|---|---|---|---|---|---|---|---|"]
     for r in s["cases"]:
         fl = sorted({f for sl in (r.get("slides") or {}).values() for f in sl["flags"]})

@@ -1,0 +1,391 @@
+{
+  "meta": {
+    "title": "Battery: operating_model",
+    "deck_type": "strategy_deck",
+    "theme": "meridian"
+  },
+  "storyline": {
+    "framework": "SCR",
+    "governing_thought": "Each operating_model slide is judged on what it is trying to be",
+    "key_line": [
+      {
+        "id": "K1",
+        "role": "situation",
+        "message": "Variations of one archetype"
+      },
+      {
+        "id": "K2",
+        "role": "resolution",
+        "message": "Composition must hold across them"
+      }
+    ]
+  },
+  "eval": {
+    "purpose": "Archetype battery (operating_model): 2–6 layers / 2–6 cells / pillars / emphasis / Spanish",
+    "battery": "operating_model"
+  },
+  "slides": [
+    {
+      "headline": "The target model has three layers",
+      "message_type": "structure",
+      "visual": {
+        "type": "operating_model",
+        "data": {
+          "layers": [
+            {
+              "label": "Customers",
+              "items": [
+                "Retail",
+                "Business"
+              ]
+            },
+            {
+              "label": "Operations",
+              "items": [
+                "Stores",
+                "Online"
+              ]
+            },
+            {
+              "label": "Support",
+              "items": [
+                "Finance",
+                "HR"
+              ]
+            }
+          ]
+        }
+      },
+      "id": "om01",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "A central services layer supports four business units",
+      "message_type": "structure",
+      "visual": {
+        "type": "operating_model",
+        "data": {
+          "layers": [
+            {
+              "label": "Business units",
+              "items": [
+                "Retail",
+                "Wholesale",
+                "Online",
+                "Services"
+              ],
+              "emphasis": true
+            },
+            {
+              "label": "Shared services",
+              "items": [
+                "Finance",
+                "HR",
+                "IT",
+                "Procurement"
+              ]
+            },
+            {
+              "label": "Governance",
+              "items": [
+                "Board",
+                "Risk",
+                "Audit"
+              ]
+            }
+          ],
+          "pillars": [
+            {
+              "label": "Transformation office"
+            }
+          ]
+        }
+      },
+      "id": "om02",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "The new model separates customer, product and platform teams",
+      "message_type": "structure",
+      "visual": {
+        "type": "operating_model",
+        "data": {
+          "layers": [
+            {
+              "label": "Customer",
+              "items": [
+                "Segment leads",
+                "Key accounts",
+                "Digital sales",
+                "Service"
+              ]
+            },
+            {
+              "label": "Product",
+              "items": [
+                "Lending",
+                "Payments",
+                "Savings",
+                "Insurance"
+              ],
+              "emphasis": true
+            },
+            {
+              "label": "Platform",
+              "items": [
+                "Data",
+                "Core banking",
+                "Cloud",
+                "Security"
+              ]
+            },
+            {
+              "label": "Enablers",
+              "items": [
+                "Finance",
+                "Risk",
+                "People",
+                "Legal"
+              ]
+            }
+          ],
+          "pillars": [
+            {
+              "label": "Compliance"
+            },
+            {
+              "label": "Change"
+            }
+          ]
+        }
+      },
+      "id": "om03",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "El modelo operativo de compras tiene cuatro capas",
+      "message_type": "structure",
+      "visual": {
+        "type": "operating_model",
+        "data": {
+          "layers": [
+            {
+              "label": "Estrategia",
+              "items": [
+                "Categorías",
+                "Riesgo de proveedor"
+              ]
+            },
+            {
+              "label": "Negociación",
+              "items": [
+                "Compradores de categoría",
+                "Licitaciones"
+              ],
+              "emphasis": true
+            },
+            {
+              "label": "Operación",
+              "items": [
+                "Pedidos",
+                "Facturas",
+                "Pagos"
+              ]
+            },
+            {
+              "label": "Datos",
+              "items": [
+                "Gasto",
+                "Contratos"
+              ]
+            }
+          ]
+        }
+      },
+      "id": "om04",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Batería de pruebas (sintética)"
+    },
+    {
+      "headline": "Six layers from strategy to infrastructure",
+      "message_type": "structure",
+      "visual": {
+        "type": "layers",
+        "data": {
+          "layers": [
+            {
+              "label": "Strategy",
+              "items": [
+                "Portfolio",
+                "Capital allocation"
+              ]
+            },
+            {
+              "label": "Commercial",
+              "items": [
+                "Marketing",
+                "Sales",
+                "Pricing"
+              ]
+            },
+            {
+              "label": "Operations",
+              "items": [
+                "Plants",
+                "Logistics",
+                "Quality"
+              ],
+              "emphasis": true
+            },
+            {
+              "label": "Support",
+              "items": [
+                "Finance",
+                "HR",
+                "Legal"
+              ]
+            },
+            {
+              "label": "Technology",
+              "items": [
+                "ERP",
+                "MES",
+                "Data"
+              ]
+            },
+            {
+              "label": "Infrastructure",
+              "items": [
+                "Cloud",
+                "Network"
+              ]
+            }
+          ]
+        }
+      },
+      "id": "om05",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "Each layer lists who does what in the new structure",
+      "message_type": "structure",
+      "visual": {
+        "type": "operating_model",
+        "data": {
+          "layers": [
+            {
+              "label": "Front office",
+              "items": [
+                "Relationship managers own the client plan",
+                "Specialists join for complex deals",
+                "Digital desk serves small clients"
+              ]
+            },
+            {
+              "label": "Middle office",
+              "items": [
+                "Credit analysts approve within 48 hours",
+                "Pricing desk sets limits"
+              ],
+              "emphasis": true
+            },
+            {
+              "label": "Back office",
+              "items": [
+                "Operations hub in Lisbon",
+                "Automated reconciliation"
+              ]
+            }
+          ]
+        }
+      },
+      "id": "om06",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "Two layers is enough for a small organisation",
+      "message_type": "structure",
+      "visual": {
+        "type": "operating_model",
+        "data": {
+          "layers": [
+            {
+              "label": "Delivery",
+              "items": [
+                "Projects",
+                "Support"
+              ],
+              "emphasis": true
+            },
+            {
+              "label": "Back office",
+              "items": [
+                "Admin"
+              ]
+            }
+          ]
+        }
+      },
+      "id": "om07",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "Funciones centrales y locales en el nuevo modelo de tiendas",
+      "message_type": "structure",
+      "visual": {
+        "type": "operating_model",
+        "data": {
+          "layers": [
+            {
+              "label": "Central",
+              "items": [
+                "Surtido",
+                "Precios",
+                "Marketing",
+                "Compras"
+              ]
+            },
+            {
+              "label": "Regional",
+              "items": [
+                "Operaciones",
+                "Personas"
+              ],
+              "emphasis": true
+            },
+            {
+              "label": "Tienda",
+              "items": [
+                "Atención al cliente",
+                "Reposición",
+                "Caja"
+              ]
+            }
+          ],
+          "pillars": [
+            {
+              "label": "Datos"
+            }
+          ]
+        }
+      },
+      "id": "om08",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Batería de pruebas (sintética)"
+    }
+  ]
+}

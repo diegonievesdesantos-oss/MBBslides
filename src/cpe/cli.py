@@ -206,7 +206,7 @@ def cmd_eval(a):
     from .evals import run_suite
 
     out = a.out or f"out/evals/{a.suite}"
-    r = run_suite(a.cases, out, a.baseline, update_baseline=a.update_baseline, compose=not a.no_compose, tolerance=a.tolerance, suite=a.suite, record=a.record)
+    r = run_suite(a.cases, out, a.baseline, update_baseline=a.update_baseline, compose=not a.no_compose, tolerance=a.tolerance, suite=a.suite, record=a.record, match=a.match)
     for x in r["environment_notes"]:
         _p(f"NOTE        {x}")
     for x in r["regressions"]:
@@ -351,6 +351,7 @@ def main(argv=None) -> int:
     s = sub.add_parser("review"); s.add_argument("review"); s.set_defaults(f=cmd_review)
     s = sub.add_parser("eval"); s.add_argument("cases", nargs="?", default=None, help="case directory (default: the suite's)"); s.add_argument("--suite", default="regression", choices=["regression", "holdout", "examples"])
     s.add_argument("-o", "--out"); s.add_argument("--baseline", default=None); s.add_argument("--update-baseline", action="store_true"); s.add_argument("--no-compose", action="store_true"); s.add_argument("--tolerance", type=float, default=2.0)
+    s.add_argument("--match", help="only cases whose name contains this text (development; cannot record)")
     s.add_argument("--docker", action="store_true", help="run inside the pinned visual environment (scripts/cpe-docker)"); s.add_argument("--record", action="store_true", help="write the result into evals/results/latest.json"); s.set_defaults(f=cmd_eval)
     s = sub.add_parser("repro"); s.add_argument("spec"); s.add_argument("-o", "--out"); s.add_argument("--dpi", type=int, default=80); s.add_argument("--docker", action="store_true"); s.set_defaults(f=cmd_repro)
     s = sub.add_parser("human"); hs = s.add_subparsers(dest="human_cmd", required=True)

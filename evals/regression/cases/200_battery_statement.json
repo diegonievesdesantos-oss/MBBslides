@@ -1,0 +1,82 @@
+{
+  "meta": {
+    "title": "Battery: statement",
+    "deck_type": "strategy_deck",
+    "theme": "meridian"
+  },
+  "storyline": {
+    "framework": "SCR",
+    "governing_thought": "Each statement slide is judged on what it is trying to be",
+    "key_line": [
+      {
+        "id": "K1",
+        "role": "situation",
+        "message": "Variations of one archetype"
+      },
+      {
+        "id": "K2",
+        "role": "resolution",
+        "message": "Composition must hold across them"
+      }
+    ]
+  },
+  "eval": {
+    "purpose": "Archetype battery (statement): short / long / with and without support / Spanish / quote-like",
+    "battery": "statement"
+  },
+  "slides": [
+    {
+      "kind": "statement",
+      "text": "Price is not the problem; availability is",
+      "id": "st01"
+    },
+    {
+      "kind": "statement",
+      "text": "We should exit the wholesale business by 2027",
+      "support": "It uses 30% of capital and earns 4% of profit.",
+      "id": "st02"
+    },
+    {
+      "kind": "statement",
+      "text": "Three of our five markets will shrink in the next decade, and the two that grow are the ones where we are weakest today",
+      "support": "This document explains how we rebalance the portfolio without losing scale.",
+      "id": "st03"
+    },
+    {
+      "kind": "statement",
+      "text": "La decisión es sencilla: invertir ahora o perder la licencia",
+      "support": "El regulador revisa las concesiones en 2027.",
+      "id": "st04"
+    },
+    {
+      "kind": "statement",
+      "text": "“Customers do not leave because of price; they leave because nobody calls back”",
+      "attribution": "Head of customer service",
+      "style": "quote",
+      "id": "st05"
+    },
+    {
+      "kind": "statement",
+      "text": "Recomendamos no renovar el contrato con el operador logístico actual",
+      "id": "st06"
+    },
+    {
+      "kind": "statement",
+      "text": "Growth now comes from services",
+      "support": "Services were 12% of revenue in 2020 and are 31% today; hardware shrank every year.",
+      "id": "st07"
+    },
+    {
+      "kind": "statement",
+      "text": "Decision requested",
+      "support": "Approve €14M for the pilot in four regions; results come back to the board in nine months.",
+      "id": "st08"
+    },
+    {
+      "kind": "statement",
+      "text": "El 80% del ahorro depende de una sola palanca: renegociar la energía",
+      "support": "El resto de iniciativas suma menos de 6 M€ y puede esperar al segundo año.",
+      "id": "st09"
+    }
+  ]
+}

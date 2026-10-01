@@ -49,7 +49,11 @@ def _content_slide(p: Painter, s: dict, meta: dict) -> None:
     p.manifest.zones = {n: {"role": z.role, **z.box.to_dict()} for n, z in zones.items()}
     tc.chrome(p, s, s.get("_page", 0), meta)
     ex_iter = iter(roles.get("exhibit") or [])
-    col_iter = iter(roles.get("column") or [])
+    # comparison columns are composed together: one scale, one top edge (tc.columns)
+    col_zones = [n for n in lay.hierarchy + [n for n in zones if n not in lay.hierarchy] if zones.get(n) is not None and zones[n].role == "column"]
+    col_data = list(roles.get("column") or [])[: len(col_zones)]
+    if col_data:
+        tc.columns([p.for_zone(n) for n in col_zones[: len(col_data)]], [zones[n].box for n in col_zones[: len(col_data)]], col_data)
     for name in lay.hierarchy + [n for n in zones if n not in lay.hierarchy]:
         z = zones.get(name)
         if z is None:
@@ -60,14 +64,15 @@ def _content_slide(p: Painter, s: dict, meta: dict) -> None:
             if ex is not None:
                 info = render_exhibit(pz, z.box, ex)
                 p.manifest.exhibits.append({"zone": name, **info})
+        elif z.role == "text" and (roles.get("text") or roles.get("commentary")):
+            form = tc.text_exhibit(pz, z.box, roles.get("text") or roles["commentary"], so_what=roles.get("commentary") if roles.get("text") else None)
+            p.manifest.exhibits.append({"zone": name, "type": "text", "form": form})
         elif z.role == "commentary" and roles.get("commentary"):
             tc.commentary(pz, z.box, roles["commentary"], style=z.style)
         elif z.role == "kpis" and roles.get("kpis"):
             tc.kpis(pz, z.box, (roles["kpis"].get("data") or roles["kpis"]) if isinstance(roles["kpis"], dict) else roles["kpis"])
         elif z.role == "column":
-            col = next(col_iter, None)
-            if col is not None:
-                tc.column(pz, z.box, col)
+            continue  # drawn above with tc.columns
         elif z.role == "statements" and roles.get("statements"):
             data = dict(roles["statements"].get("data") or {})
             if lay.id == "exec_summary_scr":

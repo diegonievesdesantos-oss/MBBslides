@@ -1,0 +1,501 @@
+{
+  "meta": {
+    "title": "Battery: matrix",
+    "deck_type": "strategy_deck",
+    "theme": "harbor"
+  },
+  "storyline": {
+    "framework": "SCR",
+    "governing_thought": "Each matrix slide is judged on what it is trying to be",
+    "key_line": [
+      {
+        "id": "K1",
+        "role": "situation",
+        "message": "Variations of one archetype"
+      },
+      {
+        "id": "K2",
+        "role": "resolution",
+        "message": "Composition must hold across them"
+      }
+    ]
+  },
+  "eval": {
+    "purpose": "Archetype battery (matrix): 4–14 items / labels short and long / focus quadrant / portfolio bubbles / Spanish",
+    "battery": "matrix"
+  },
+  "slides": [
+    {
+      "headline": "Two initiatives are quick wins",
+      "message_type": "positioning",
+      "visual": {
+        "type": "matrix_2x2",
+        "data": {
+          "x_label": "Ease",
+          "y_label": "Value",
+          "quadrants": [
+            "Big bets",
+            "Quick wins",
+            "Avoid",
+            "Fill-ins"
+          ],
+          "focus": "TR",
+          "items": [
+            {
+              "label": "Pricing",
+              "x": 0.8,
+              "y": 0.8
+            },
+            {
+              "label": "Sourcing",
+              "x": 0.75,
+              "y": 0.65
+            },
+            {
+              "label": "New DC",
+              "x": 0.2,
+              "y": 0.75
+            },
+            {
+              "label": "Loyalty",
+              "x": 0.3,
+              "y": 0.3
+            }
+          ]
+        }
+      },
+      "id": "mx01",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "Eight of fourteen initiatives combine high value and low effort",
+      "message_type": "positioning",
+      "visual": {
+        "type": "matrix_2x2",
+        "data": {
+          "x_label": "Ease of implementation",
+          "y_label": "Value",
+          "quadrants": [
+            "Plan",
+            "Do now",
+            "Drop",
+            "Fill-ins"
+          ],
+          "focus": "TR",
+          "items": [
+            {
+              "label": "Initiative 1",
+              "x": 0.82,
+              "y": 0.86
+            },
+            {
+              "label": "Initiative 2",
+              "x": 0.71,
+              "y": 0.77
+            },
+            {
+              "label": "Initiative 3",
+              "x": 0.66,
+              "y": 0.91
+            },
+            {
+              "label": "Initiative 4",
+              "x": 0.88,
+              "y": 0.62
+            },
+            {
+              "label": "Initiative 5",
+              "x": 0.59,
+              "y": 0.71
+            },
+            {
+              "label": "Initiative 6",
+              "x": 0.77,
+              "y": 0.55
+            },
+            {
+              "label": "Initiative 7",
+              "x": 0.92,
+              "y": 0.81
+            },
+            {
+              "label": "Initiative 8",
+              "x": 0.55,
+              "y": 0.58
+            },
+            {
+              "label": "Initiative 9",
+              "x": 0.2,
+              "y": 0.8
+            },
+            {
+              "label": "Initiative 10",
+              "x": 0.31,
+              "y": 0.66
+            },
+            {
+              "label": "Initiative 11",
+              "x": 0.15,
+              "y": 0.2
+            },
+            {
+              "label": "Initiative 12",
+              "x": 0.4,
+              "y": 0.35
+            },
+            {
+              "label": "Initiative 13",
+              "x": 0.25,
+              "y": 0.42
+            },
+            {
+              "label": "Initiative 14",
+              "x": 0.36,
+              "y": 0.15
+            }
+          ]
+        }
+      },
+      "id": "mx02",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "Los mercados más atractivos son también los más competidos",
+      "message_type": "positioning",
+      "visual": {
+        "type": "matrix_2x2",
+        "data": {
+          "x_label": "Intensidad competitiva",
+          "y_label": "Atractivo del mercado",
+          "quadrants": [
+            "Defender",
+            "Invertir",
+            "Salir",
+            "Mantener"
+          ],
+          "focus": "TL",
+          "items": [
+            {
+              "label": "Madrid",
+              "x": 0.85,
+              "y": 0.9
+            },
+            {
+              "label": "Barcelona",
+              "x": 0.8,
+              "y": 0.85
+            },
+            {
+              "label": "Valencia",
+              "x": 0.55,
+              "y": 0.7
+            },
+            {
+              "label": "Sevilla",
+              "x": 0.4,
+              "y": 0.6
+            },
+            {
+              "label": "Bilbao",
+              "x": 0.35,
+              "y": 0.75
+            },
+            {
+              "label": "Zaragoza",
+              "x": 0.25,
+              "y": 0.45
+            },
+            {
+              "label": "Málaga",
+              "x": 0.6,
+              "y": 0.65
+            }
+          ]
+        }
+      },
+      "id": "mx03",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Batería de pruebas (sintética)"
+    },
+    {
+      "headline": "Our brand is perceived as premium but not differentiated",
+      "message_type": "positioning",
+      "visual": {
+        "type": "portfolio",
+        "title": "Brand perception",
+        "unit": "index; bubble = revenue",
+        "highlight": [
+          "Our brand"
+        ],
+        "data": {
+          "x_label": "Price perception",
+          "y_label": "Differentiation",
+          "quadrants": [
+            "Niche",
+            "Premium leaders",
+            "Commodity",
+            "Overpriced"
+          ],
+          "focus": "BR",
+          "items": [
+            {
+              "label": "Our brand",
+              "x": 0.78,
+              "y": 0.38,
+              "size": 12
+            },
+            {
+              "label": "Brand A",
+              "x": 0.82,
+              "y": 0.8,
+              "size": 18
+            },
+            {
+              "label": "Brand B",
+              "x": 0.3,
+              "y": 0.25,
+              "size": 9
+            },
+            {
+              "label": "Brand C",
+              "x": 0.45,
+              "y": 0.6,
+              "size": 7
+            },
+            {
+              "label": "Brand D",
+              "x": 0.2,
+              "y": 0.7,
+              "size": 4
+            }
+          ]
+        }
+      },
+      "id": "mx04",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "Three suppliers are both critical and at risk",
+      "message_type": "positioning",
+      "visual": {
+        "type": "matrix_2x2",
+        "data": {
+          "x_label": "Supply risk",
+          "y_label": "Spend impact",
+          "quadrants": [
+            "Leverage",
+            "Strategic",
+            "Routine",
+            "Bottleneck"
+          ],
+          "focus": "TR",
+          "items": [
+            {
+              "label": "Steel coils",
+              "x": 0.82,
+              "y": 0.88
+            },
+            {
+              "label": "Chips",
+              "x": 0.91,
+              "y": 0.72
+            },
+            {
+              "label": "Resins",
+              "x": 0.68,
+              "y": 0.66
+            },
+            {
+              "label": "Packaging",
+              "x": 0.25,
+              "y": 0.7
+            },
+            {
+              "label": "Logistics",
+              "x": 0.3,
+              "y": 0.55
+            },
+            {
+              "label": "Office supplies",
+              "x": 0.1,
+              "y": 0.1
+            },
+            {
+              "label": "Paints",
+              "x": 0.7,
+              "y": 0.25
+            },
+            {
+              "label": "Fasteners",
+              "x": 0.2,
+              "y": 0.2
+            }
+          ]
+        }
+      },
+      "id": "mx05",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "Products with long names still need clear positions in the portfolio",
+      "message_type": "positioning",
+      "visual": {
+        "type": "matrix_2x2",
+        "data": {
+          "x_label": "Market growth",
+          "y_label": "Relative market share",
+          "quadrants": [
+            "Question marks",
+            "Stars",
+            "Dogs",
+            "Cash cows"
+          ],
+          "focus": "TR",
+          "items": [
+            {
+              "label": "Industrial coatings for marine use",
+              "x": 0.78,
+              "y": 0.82
+            },
+            {
+              "label": "Residential paints (premium range)",
+              "x": 0.35,
+              "y": 0.8
+            },
+            {
+              "label": "Wood stains and varnishes",
+              "x": 0.2,
+              "y": 0.3
+            },
+            {
+              "label": "Powder coatings for automotive suppliers",
+              "x": 0.85,
+              "y": 0.35
+            },
+            {
+              "label": "Adhesives and sealants",
+              "x": 0.55,
+              "y": 0.55
+            }
+          ]
+        }
+      },
+      "id": "mx06",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "Talent risk concentrates in four critical roles",
+      "message_type": "positioning",
+      "visual": {
+        "type": "matrix_2x2",
+        "data": {
+          "x_label": "Flight risk",
+          "y_label": "Impact of loss",
+          "quadrants": [
+            "Retain",
+            "Act now",
+            "Monitor",
+            "Develop"
+          ],
+          "focus": "TR",
+          "items": [
+            {
+              "label": "Data engineers",
+              "x": 0.85,
+              "y": 0.82
+            },
+            {
+              "label": "Plant managers",
+              "x": 0.66,
+              "y": 0.9
+            },
+            {
+              "label": "Key account managers",
+              "x": 0.72,
+              "y": 0.7
+            },
+            {
+              "label": "Pricing analysts",
+              "x": 0.8,
+              "y": 0.6
+            },
+            {
+              "label": "Finance controllers",
+              "x": 0.3,
+              "y": 0.6
+            },
+            {
+              "label": "HR partners",
+              "x": 0.2,
+              "y": 0.3
+            }
+          ]
+        }
+      },
+      "id": "mx07",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "Segmentos de clientes según valor y potencial",
+      "message_type": "positioning",
+      "visual": {
+        "type": "matrix_2x2",
+        "data": {
+          "x_label": "Potencial de crecimiento",
+          "y_label": "Valor actual",
+          "quadrants": [
+            "Mantener",
+            "Priorizar",
+            "Servir en digital",
+            "Desarrollar"
+          ],
+          "focus": "TR",
+          "items": [
+            {
+              "label": "Grandes cuentas",
+              "x": 0.45,
+              "y": 0.9
+            },
+            {
+              "label": "Pymes industriales",
+              "x": 0.8,
+              "y": 0.65
+            },
+            {
+              "label": "Autónomos",
+              "x": 0.7,
+              "y": 0.25
+            },
+            {
+              "label": "Sector público",
+              "x": 0.25,
+              "y": 0.6
+            },
+            {
+              "label": "Distribuidores",
+              "x": 0.55,
+              "y": 0.45
+            }
+          ]
+        }
+      },
+      "id": "mx08",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Batería de pruebas (sintética)"
+    }
+  ]
+}

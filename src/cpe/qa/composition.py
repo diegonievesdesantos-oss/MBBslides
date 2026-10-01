@@ -31,12 +31,14 @@ PROOF_NOT_VISIBLE, WEAK_HIERARCHY, RAGGED_ALIGNMENT.
 """
 from __future__ import annotations
 
+import re
 from dataclasses import dataclass, field
 
 from ..design.tokens import GRID, SLIDE_H, SLIDE_W, hex_to_rgb
 from ..layout.engine import Box
 from .archetypes import classify, fitness
 
+FIGURE_RE = re.compile(r"^[▲▼+\-−–~≈<>]?\s*[$€£¥]?\s*\d[\d.,\s]*\s*(%|[A-Za-zµ€$£×x]{1,6}\.?)?(\s+[a-z]{1,6})?$")
 FLAG_BELOW = 0.6  # a metric whose fitness to the archetype falls below this is named as a critique
 
 SCORE_NAME = "archetype-fitness composition score"
@@ -78,12 +80,13 @@ class SlideComposition:
     observed: dict = field(default_factory=dict)
     fitness: dict = field(default_factory=dict)
     deviations: list = field(default_factory=list)
+    attribution: dict = field(default_factory=dict)
     score_v1: float = 0.0
     flags_v1: list = field(default_factory=list)
 
     def to_dict(self) -> dict:
         return {"slide_id": self.slide_id, "archetype": self.archetype, "archetype_why": self.archetype_why, "score": round(self.score, 1),
-                "observed": {k: round(v, 3) for k, v in self.observed.items()}, "fitness": self.fitness, "deviations": self.deviations, "flags": self.flags,
+                "observed": {k: round(v, 3) for k, v in self.observed.items()}, "fitness": self.fitness, "deviations": self.deviations, "attribution": self.attribution, "flags": self.flags,
                 "score_v1": round(self.score_v1, 1), "flags_v1": self.flags_v1,
                 "metrics": {k: round(v, 3) for k, v in self.metrics.items()}, "raw": self.raw}
 
@@ -223,6 +226,23 @@ def _band(lo: float, hi: float, v: float, soft: float) -> float:
     return max(0.0, 1 - d / soft)
 
 
+SCALE_UNITS = {"bn", "b", "m", "mn", "mm", "k", "mil", "millones", "billion", "million"}
+
+
+def _scaled_match(v: float, unit: str, body_nums: set) -> bool:
+    """(v1.4) "€1.2bn" in the headline is proven by "1,210" in an exhibit in €M: the same number at
+    another scale (×1000 / ÷1000), within the precision the headline was written with."""
+    u = (unit or "").lower().strip("€$£¥%. ")
+    if u not in SCALE_UNITS:
+        return False
+    dec = len(repr(float(v)).split(".")[1].rstrip("0")) if "." in repr(float(v)) else 0
+    half = 0.5 * 10 ** (-dec)
+    for f in (1000.0, 0.001):
+        if any(abs(v * f - b) <= max(half * f, 0.01 * v * f) for b in body_nums):
+            return True
+    return False
+
+
 def measure(png_path: str, spans: list[dict], slide: dict, manifest: dict, theme) -> SlideComposition:
     from ..core.headline import numbers_in
 
@@ -261,7 +281,7 @@ def measure(png_path: str, spans: list[dict], slide: dict, manifest: dict, theme
     head = re.sub(r"\s*\(\d+/\d+\)\s*$", "", slide.get("headline") or "")  # "(1/2)" continuation marker is not a claim
     body_text = " ".join(s["text"] for s in spans if s["box"].y >= GRID.body_y - 0.05)
     body_nums = {abs(v) for v, _ in numbers_in(body_text)}
-    hnums = [abs(v) for v, _ in numbers_in(head)]
+    hnums = [(abs(v), u) for v, u in numbers_in(head)]
     # counts are proven by the exhibit's structure ("twelve plants" = twelve rows), not by a printed number
     counts = set()
     for ex in [slide.get("visual")] + list(slide.get("exhibits") or []):
@@ -273,8 +293,8 @@ def measure(png_path: str, spans: list[dict], slide: dict, manifest: dict, theme
             if ex.get("_rows_total"):
                 counts.add(float(ex["_rows_total"]))
     checks = []
-    for v in hnums:
-        checks.append(any(abs(v - b) <= max(0.051, 0.01 * v) for b in body_nums) or v in counts)
+    for v, unit in hnums:
+        checks.append(any(abs(v - b) <= max(0.051, 0.01 * v) for b in body_nums) or v in counts or _scaled_match(v, unit, body_nums))
     hls = []
     for ex in [slide.get("visual")] + list(slide.get("exhibits") or []):
         if isinstance(ex, dict):
@@ -293,6 +313,8 @@ def measure(png_path: str, spans: list[dict], slide: dict, manifest: dict, theme
     zones = {n: (z.get("role"), Box(z["x"], z["y"], z["w"], z["h"])) for n, z in (manifest.get("zones") or {}).items()}
     kpi_boxes = [b for r, b in zones.values() if r == "kpis"]
     def wordy(t):  # big figures ("€13M", "85%") are a deliberate emphasis device, not competing text
+        if FIGURE_RE.match(t.strip()):  # (v1.4) a figure with a short unit ("4.5 days", "2 min", "−3 pts") is still a figure
+            return False
         return sum(ch.isalpha() for ch in t) >= max(4, 0.5 * len(t.strip()))
 
     bmax = max([s["size"] for s in spans if s["box"].y >= GRID.body_y - 0.05 and s["box"].b <= GRID.body_bottom + 0.05 and wordy(s["text"])
@@ -341,6 +363,7 @@ def measure(png_path: str, spans: list[dict], slide: dict, manifest: dict, theme
     f = fitness(sc.archetype, sc.observed)
     sc.score = f["score"] if f["score"] is not None else sc.score_v1
     sc.fitness, sc.deviations = f["per_metric"], f["deviations"]
+    sc.attribution = f.get("attribution") or {}
     for d in sc.deviations:
         if d["flag"] and d["fitness"] < FLAG_BELOW and d["flag"] not in sc.flags:
             sc.flags.append(d["flag"])

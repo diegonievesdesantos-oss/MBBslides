@@ -982,6 +982,10 @@ def combo_chart(p: Painter, box: Box, ex: dict) -> dict:
     cats, series = _prepare_categories({**ex, "sort": None})
     bars = [s for s in series if s.get("axis") != "secondary"]
     lines = [s for s in series if s.get("axis") == "secondary"]
+    if not lines and len(bars) > 1:  # no axis given: the last series is the rate (combo convention), not a crash
+        bars, lines = bars[:-1], bars[-1:]
+    if not lines or not bars:  # a combo needs a level and a rate; one kind only is a plain chart
+        return category_chart(p, box, {**ex, "type": "line" if lines else "column", "data": {"categories": cats, "series": lines or bars}})
     n = len(cats)
     fmt_spec({"format": ex.get("line_format"), "data": {"series": lines}})
     # shared horizontal geometry: right padding for the line end labels

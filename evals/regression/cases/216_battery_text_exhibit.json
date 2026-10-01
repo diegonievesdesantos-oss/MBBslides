@@ -1,0 +1,248 @@
+{
+  "meta": {
+    "title": "Battery: text_exhibit",
+    "deck_type": "strategy_deck",
+    "theme": "harbor"
+  },
+  "storyline": {
+    "framework": "SCR",
+    "governing_thought": "Each text_exhibit slide is judged on what it is trying to be",
+    "key_line": [
+      {
+        "id": "K1",
+        "role": "situation",
+        "message": "Variations of one archetype"
+      },
+      {
+        "id": "K2",
+        "role": "resolution",
+        "message": "Composition must hold across them"
+      }
+    ]
+  },
+  "eval": {
+    "purpose": "Archetype battery (text_exhibit): one argument / three bullets / long paragraph / short narrative / quote-like / Spanish",
+    "battery": "text_exhibit"
+  },
+  "slides": [
+    {
+      "headline": "Only one argument is needed: the contract expires in March",
+      "message_type": "argument",
+      "visual": {
+        "type": "bullets",
+        "data": {
+          "points": [
+            "The supplier contract expires in March and cannot be extended"
+          ]
+        }
+      },
+      "id": "tx01",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "Three reasons to act before the summer",
+      "message_type": "argument",
+      "visual": {
+        "type": "bullets",
+        "data": {
+          "points": [
+            "Prices rise 8% in July",
+            "Two competitors are already switching",
+            "The tender takes four months"
+          ]
+        }
+      },
+      "id": "tx02",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "The case for change in one paragraph",
+      "message_type": "argument",
+      "visual": {
+        "type": "bullets",
+        "data": {
+          "points": [
+            "Our cost base grew 9% a year for five years while revenue grew 4%, and the gap is now structural: two thirds of the increase comes from overheads that do not scale with volume, from duplicated regional functions, and from IT systems that were never integrated after the last three acquisitions. Without a reset, operating margin falls below 5% by 2027, below the level at which we can fund the investment the strategy requires."
+          ]
+        }
+      },
+      "id": "tx03",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "Tres condiciones para que el piloto sea un éxito",
+      "message_type": "argument",
+      "visual": {
+        "type": "bullets",
+        "data": {
+          "points": [
+            "Un responsable a tiempo completo en cada tienda",
+            "Datos de ventas diarios, no semanales",
+            "Libertad para ajustar precios sin aprobación central"
+          ]
+        }
+      },
+      "id": "tx04",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Batería de pruebas (sintética)"
+    },
+    {
+      "headline": "What customers told us",
+      "message_type": "argument",
+      "visual": {
+        "type": "bullets",
+        "data": {
+          "points": [
+            "“I do not mind paying more if it arrives when you say it will.”",
+            "“The app is fine; the problem is when something goes wrong.”"
+          ]
+        }
+      },
+      "id": "tx05",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "Five risks to the plan and how we mitigate them",
+      "message_type": "argument",
+      "visual": {
+        "type": "bullets",
+        "data": {
+          "points": [
+            "Supplier delays: dual-source the two critical components",
+            "Union opposition: early consultation and a no-redundancy guarantee for 2026",
+            "IT readiness: freeze other projects during the ERP cut-over",
+            "Customer churn during migration: dedicated retention team",
+            "Cost overrun: 15% contingency released only by the steering committee"
+          ]
+        }
+      },
+      "id": "tx06",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "La historia en breve: crecimos rápido y ahora toca consolidar",
+      "message_type": "argument",
+      "visual": {
+        "type": "bullets",
+        "data": {
+          "points": [
+            "En cinco años pasamos de 40 a 160 tiendas, abrimos dos países y lanzamos la venta online. Ese crecimiento dejó una organización con procesos distintos en cada país y márgenes que no han seguido a las ventas."
+          ]
+        }
+      },
+      "id": "tx07",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Batería de pruebas (sintética)"
+    },
+    {
+      "headline": "Our principles for the new pricing policy",
+      "message_type": "argument",
+      "visual": {
+        "type": "bullets",
+        "data": {
+          "points": [
+            "Prices reflect value to the customer, not cost plus margin",
+            "One list price per country, discounts only against volume commitments",
+            "Every exception is approved, recorded and reviewed quarterly"
+          ]
+        }
+      },
+      "id": "tx08",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "Cuatro cambios en la política de viajes reducen el gasto un 18%",
+      "message_type": "argument",
+      "visual": {
+        "type": "bullets",
+        "data": {
+          "points": [
+            "Reserva obligatoria con 14 días de antelación",
+            "Clase turista en vuelos de menos de cinco horas",
+            "Tope de 120 € por noche de hotel en ciudades de nivel 2",
+            "Aprobación del director para viajes internacionales"
+          ]
+        }
+      },
+      "id": "tx09",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Batería de pruebas (sintética)"
+    },
+    {
+      "headline": "What we heard in twelve interviews with store managers",
+      "message_type": "argument",
+      "visual": {
+        "type": "bullets",
+        "data": {
+          "points": [
+            "Staffing: rosters arrive too late to plan childcare, so people swap shifts informally",
+            "Systems: the ordering tool needs three screens for one product and crashes at peak times",
+            "Targets: half of the KPIs on the store dashboard are not under the manager's control",
+            "Recognition: good months are never mentioned, bad months are escalated within hours",
+            "Training: new starters learn on the job from whoever is on shift",
+            "Communication: head-office emails arrive after customers have already asked about promotions"
+          ]
+        }
+      },
+      "id": "tx10",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "Two conditions must hold before we sign",
+      "message_type": "argument",
+      "visual": {
+        "type": "bullets",
+        "data": {
+          "points": [
+            "Due diligence confirms the €40M of synergies",
+            "The regulator clears the deal without remedies"
+          ]
+        }
+      },
+      "id": "tx11",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "Lessons from the pilot",
+      "message_type": "argument",
+      "visual": {
+        "type": "bullets",
+        "data": {
+          "points": [
+            "Stores with a dedicated lead improved twice as fast",
+            "Daily data mattered more than the pricing algorithm",
+            "Staff accepted the change once they saw their own results"
+          ]
+        }
+      },
+      "commentary": {
+        "points": [
+          "Roll out with the same three conditions"
+        ]
+      },
+      "id": "tx12",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    }
+  ]
+}

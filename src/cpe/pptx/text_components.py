@@ -9,6 +9,7 @@ from __future__ import annotations
 
 from ..design.tokens import GRID, LINES, SLIDE_H, SLIDE_W, SPACING
 from ..layout.engine import EXHIBIT_HEADER_H, Box
+from .adaptive import body_cap, optical_top, pick_scale, size
 from .painter import Painter, Para, plain
 
 
@@ -292,97 +293,183 @@ def statements(p: Painter, box: Box, data: dict) -> None:
         p.line(box.x, y - gap * 1.5, box.r, y - gap * 1.5, color="gridline", width=LINES["hairline"])
 
 
+def _trend(it: dict) -> tuple[str, str]:
+    d = str(it["delta"])
+    trend = it.get("trend") or ("up" if d.strip().startswith("+") else "down" if d.strip().startswith(("-", "−")) else "flat")
+    col = "neutral" if trend == "flat" else ("positive" if trend == it.get("good", "up") else "negative")
+    return {"up": "▲ ", "down": "▼ ", "flat": ""}[trend] + d, col
+
+
+def _kpi_geom(p: Painter, w: float, it: dict, k: float, big: bool = False) -> dict:
+    vs = size(34 if big else p.style("kpi_value")["size"], k, 54)
+    ds, ls, ns = size(p.style("kpi_label")["size"], k, 16), size(p.style("kpi_label")["size"], k, 15), size(11, k, 14)
+    vh = vs / 72 * 1.35
+    dh = ds / 72 * 1.5 if it.get("delta") else 0.0
+    lh = p.measure(it.get("label", ""), "kpi_label", w, size=ls)[0]
+    nh = p.measure(it["note"], "body", w, size=ns)[0] + 0.08 if it.get("note") else 0.0
+    return {"vs": vs, "ds": ds, "ls": ls, "ns": ns, "vh": vh, "dh": dh, "lh": lh, "nh": nh, "h": vh + dh + lh + 0.08 + nh}
+
+
 def kpis(p: Painter, box: Box, data: dict) -> None:
+    """KPI strip or grid (v1.4): the tiles take the largest readable scale that leaves the band
+    breathing, and the set sits on the optical centre — not a strip of small figures under the
+    headline with the slide empty below."""
     items = data.get("items") if isinstance(data, dict) else data
     items = items or []
     if len(items) == 1 and box.h > 2.5:
         return kpi_hero(p, box, items[0])
     grid_mode = isinstance(data, dict) and data.get("style") == "grid"
+    n = max(1, len(items))
     if grid_mode:
-        n = len(items)
         ncols = 3 if n > 4 else 2
         nrows = -(-n // ncols)
-        cells = []
-        for r_box in box.rows(nrows, SPACING["L"]):
-            cells.extend(r_box.columns(ncols, GRID.gutter * 2))
-        for cell, it in zip(cells, items):
-            p.line(cell.x, cell.y, cell.r, cell.y, color="rule", width=LINES["rule"])
-            _kpi(p, cell.inset(t=SPACING["S"]), it, big=True)
+        gap_x, gap_y = GRID.gutter * 2, SPACING["L"]
+        cw = (box.w - gap_x * (ncols - 1)) / ncols
+
+        def block(k):
+            rows_h = [max(_kpi_geom(p, cw, it, k, big=True)["h"] for it in items[r * ncols:(r + 1) * ncols]) + SPACING["S"] for r in range(nrows)]
+            return sum(rows_h) + gap_y * (nrows - 1)
+
+        k, h = pick_scale(block, box.h, fill=0.8, cap=1.35)
+        rh = (h - gap_y * (nrows - 1)) / nrows
+        y = optical_top(box, h)
+        for r in range(nrows):
+            for c in range(ncols):
+                i = r * ncols + c
+                if i >= n:
+                    break
+                cell = Box(box.x + c * (cw + gap_x), y + r * (rh + gap_y), cw, rh)
+                p.line(cell.x, cell.y, cell.r, cell.y, color="rule", width=LINES["rule"])
+                _kpi(p, cell.inset(t=SPACING["S"]), items[i], big=True, k=k)
         return
-    n = max(1, len(items))
-    cols = box.columns(n, GRID.gutter * 2)
-    for i, (c, it) in enumerate(zip(cols, items)):
-        if i > 0:
-            xl = c.x - GRID.gutter
-            p.line(xl, c.y + 0.05, xl, c.b - 0.05, color="gridline", width=LINES["rule"])
-        _kpi(p, c, it)
+    cw = (box.w - GRID.gutter * 2 * (n - 1)) / n
+    if box.h < 2.5:  # a KPI strip above an exhibit: its band is already sized to it
+        for i, it in enumerate(items):
+            c = Box(box.x + i * (cw + GRID.gutter * 2), box.y, cw, box.h)
+            if i > 0:
+                xl = c.x - GRID.gutter
+                p.line(xl, c.y + 0.05, xl, c.b - 0.05, color="gridline", width=LINES["rule"])
+            _kpi(p, c, it)
+        return
+    # a KPI set that IS the slide: one card per figure (v1.4) — the dashboard pattern — with the
+    # figure, delta and label centred in the card; cards are as tall as the content needs plus air,
+    # bounded, and the row sits on the optical centre
+    inner = cw - 2 * SPACING["M"]
+    k, need = pick_scale(lambda k: max(_kpi_geom(p, inner, it, k)["h"] for it in items), box.h, fill=0.5, cap=1.5)
+    ch = min(box.h * 0.72, max(need + 2 * SPACING["L"], min(2.6, box.h * 0.55)))
+    y = optical_top(box, ch)
+    for i, it in enumerate(items):
+        c = Box(box.x + i * (cw + GRID.gutter * 2), y, cw, ch)
+        p.rect(c, fill="surface")
+        g = _kpi_geom(p, inner, it, k)
+        _kpi(p, Box(c.x + SPACING["M"], c.y + (ch - g["h"]) / 2, inner, g["h"] + 0.05), it, k=k)
 
 
 def kpi_hero(p: Painter, box: Box, it: dict) -> None:
-    """One number IS the message: a hero figure, not a small tile floating in white."""
+    """One number IS the message: a hero figure, not a small tile floating in white.
+    (v1.4) The figure group sits on the optical centre; with a note, figure and note form two
+    balanced columns; without one, the figure is centred on the slide (intentional whitespace,
+    not a figure stuck in the top-left corner of an empty slide)."""
     val = str(it.get("value", ""))
-    top = box.y + box.h * 0.12
-    p.rect(Box(box.x, top, 0.9, 0.07), fill="highlight")
-    p.text(Box(box.x, top + 0.2, box.w * 0.55, 1.5), val, role="kpi_value", size=80, max_lines=1, color=it.get("color", "primary"), record="kpi hero")
-    y = top + 1.8
+    note = it.get("note")
+    vs = 88 if len(val) <= 6 else 72 if len(val) <= 10 else 60
+    vh = vs / 72 * 1.3
+    dh = 0.6 if it.get("delta") else 0.0
+    w = box.w * 0.55 if note else box.w
+    lh = p.measure(it.get("label", ""), "body", w, size=20)[0] + 0.05
+    group = 0.27 + vh + dh + lh
+    top = optical_top(box, group)
+    align = "left" if note else "center"
+    if note:
+        p.rect(Box(box.x, top, 0.9, 0.07), fill="highlight")
+    else:
+        p.rect(Box(box.x + box.w / 2 - 0.45, top, 0.9, 0.07), fill="highlight")
+    y = top + 0.27
+    p.text(Box(box.x, y, w, vh), val, role="kpi_value", size=vs, max_lines=1, align=align, color=it.get("color", "primary"), record="kpi hero")
+    y += vh
     if it.get("delta"):
-        d = str(it["delta"])
-        trend = it.get("trend") or ("up" if d.strip().startswith("+") else "down" if d.strip().startswith(("-", "−")) else "flat")
-        col = "neutral" if trend == "flat" else ("positive" if trend == it.get("good", "up") else "negative")
-        p.text(Box(box.x, y, box.w * 0.55, 0.45), {"up": "▲ ", "down": "▼ ", "flat": ""}[trend] + d, role="kpi_label", size=20, bold=True, color=col, max_lines=1)
-        y += 0.55
-    p.text(Box(box.x, y, box.w * 0.55, 0.9), it.get("label", ""), role="body", size=18, color="text_muted", record="kpi hero label")
-    if it.get("note"):
+        txt, col = _trend(it)
+        p.text(Box(box.x, y, w, 0.5), txt, role="kpi_label", size=22, bold=True, color=col, align=align, max_lines=1)
+        y += dh
+    p.text(Box(box.x, y, w, lh + 0.1), it.get("label", ""), role="body", size=20, color="text_muted", align=align, record="kpi hero label")
+    if note:
         nx = box.x + box.w * 0.6
-        p.line(nx - 0.3, top, nx - 0.3, top + 3.0, color="rule")
-        p.text(Box(nx, top + 0.2, box.r - nx, 2.8), it["note"], role="body", size=16, record="kpi hero note")
+        nh = p.measure(note, "body", box.r - nx, size=18)[0] + 0.1
+        p.line(nx - 0.3, top, nx - 0.3, top + group, color="rule")
+        p.text(Box(nx, top + max(0.0, (group - nh) / 2), box.r - nx, nh + 0.1), note, role="body", size=18, record="kpi hero note")
 
 
-def _kpi(p: Painter, c: Box, it: dict, big: bool = False) -> None:
+def _kpi(p: Painter, c: Box, it: dict, big: bool = False, k: float = 1.0) -> None:
+    g = _kpi_geom(p, c.w, it, k, big=big)
     val = str(it.get("value", ""))
-    vh = 0.62 if not big else 0.75
-    p.text(Box(c.x, c.y, c.w, vh), val, role="kpi_value", size=None if not big else 34, max_lines=1, color=it.get("color", "primary"), record=f"kpi {val}")
-    y = c.y + vh
+    p.text(Box(c.x, c.y, c.w, g["vh"]), val, role="kpi_value", size=g["vs"], max_lines=1, color=it.get("color", "primary"), record=f"kpi {val}")
+    y = c.y + g["vh"]
     if it.get("delta"):
-        d = str(it["delta"])
-        trend = it.get("trend") or ("up" if d.strip().startswith("+") else "down" if d.strip().startswith(("-", "−")) else "flat")
-        good = it.get("good", "up")
-        col = "neutral" if trend == "flat" else ("positive" if trend == good else "negative")
-        arrow = {"up": "▲ ", "down": "▼ ", "flat": ""}[trend]
-        p.text(Box(c.x, y, c.w, 0.26), arrow + d, role="kpi_label", bold=True, color=col, max_lines=1)
-        y += 0.28
-    lh, _ = p.measure(it.get("label", ""), "kpi_label", c.w)
-    p.text(Box(c.x, y, c.w, min(c.b - y, lh + 0.05)), it.get("label", ""), role="kpi_label", record="kpi label")
-    y += lh + 0.08
+        txt, col = _trend(it)
+        p.text(Box(c.x, y, c.w, g["dh"]), txt, role="kpi_label", size=g["ds"], bold=True, color=col, max_lines=1)
+        y += g["dh"]
+    p.text(Box(c.x, y, c.w, min(c.b - y, g["lh"] + 0.05)), it.get("label", ""), role="kpi_label", size=g["ls"], record="kpi label")
+    y += g["lh"] + 0.08
     if it.get("note") and c.b - y > 0.25:
-        p.text(Box(c.x, y, c.w, c.b - y), it["note"], role="body", size=11, record="kpi note")
+        p.text(Box(c.x, y, c.w, c.b - y), it["note"], role="body", size=g["ns"], record="kpi note")
 
 
-def column(p: Painter, box: Box, data: dict, index: int = 0) -> None:
+def _column_geom(p: Painter, w: float, data: dict, k: float) -> dict:
+    hs, bs = size(p.style("section")["size"], k, body_cap(p, 20)), size(p.style("body")["size"], k, body_cap(p, 18))
+    hh = max(0.62, p.measure(data.get("title", ""), "section", w - 2 * SPACING["S"], size=hs)[1] * hs / 72 * 1.25 + 0.22)
+    h = hh + SPACING["M"]
+    if data.get("metric"):
+        h += 0.55 * max(1.0, k) + (0.4 if data.get("metric_label") else 0)
+    if data.get("subtitle"):
+        h += p.measure(data["subtitle"], "body_strong", w, size=bs)[0] + SPACING["S"]
+    pts = data.get("points") or []
+    h += sum(p.measure(pt if isinstance(pt, str) else pt.get("text", ""), "body", w - 0.18, size=bs)[0] + 6 * k / 72 + 0.02 for pt in pts)
+    return {"hs": hs, "bs": bs, "hh": hh, "h": h}
+
+
+def columns(painters: list[Painter], boxes: list[Box], cols: list[dict]) -> None:
+    """All comparison columns at ONE scale and ONE top edge (v1.4): short columns get readable type
+    and sit on the optical centre as a group, instead of a band of small text under the headline
+    with the lower half of the slide empty. Unequal content keeps aligned headers; the group is
+    balanced by its tallest column."""
+    if not boxes:
+        return
+    p = painters[0]
+    avail = min(b.h for b in boxes)
+    k, block = pick_scale(lambda k: max(_column_geom(p, b.w, c, k)["h"] for b, c in zip(boxes, cols)), avail, fill=0.86, cap=1.5)
+    hh = max(_column_geom(p, b.w, c, k)["hh"] for b, c in zip(boxes, cols))
+    top = optical_top(boxes[0], block) if block < avail else boxes[0].y
+    for i, (pz, b, c) in enumerate(zip(painters, boxes, cols)):
+        column(pz, Box(b.x, top, b.w, b.b - top), c, index=i, k=k, hh=hh)
+
+
+def column(p: Painter, box: Box, data: dict, index: int = 0, k: float = 1.0, hh: float | None = None) -> None:
     """One comparison column: header (optionally emphasised) + bullets / key facts."""
     head = data.get("title", "")
     emphasis = data.get("emphasis", False)
-    hh = 0.62
+    g = _column_geom(p, box.w, data, k)
+    hh = hh or g["hh"]
     if emphasis:
         p.rect(Box(box.x, box.y, box.w, hh), fill="primary")
-        p.text(Box(box.x, box.y, box.w, hh).inset(l=SPACING["S"], r=SPACING["S"]), head, role="section", color="background", anchor="middle", max_lines=2, record="column header")
+        p.text(Box(box.x, box.y, box.w, hh).inset(l=SPACING["S"], r=SPACING["S"]), head, role="section", size=g["hs"], color="background", anchor="middle", max_lines=2, record="column header")
     else:
-        p.text(Box(box.x, box.y, box.w, hh - 0.08), head, role="section", color="primary", anchor="bottom", max_lines=2, record="column header")
+        p.text(Box(box.x, box.y, box.w, hh - 0.08), head, role="section", size=g["hs"], color="primary", anchor="bottom", max_lines=2, record="column header")
         p.line(box.x, box.y + hh, box.r, box.y + hh, color="primary", width=LINES["strong"])
     y = box.y + hh + SPACING["M"]
     if data.get("metric"):
-        p.text(Box(box.x, y, box.w, 0.55), str(data["metric"]), role="kpi_value", size=24, max_lines=1)
-        y += 0.55
+        mh = 0.55 * max(1.0, k)
+        p.text(Box(box.x, y, box.w, mh), str(data["metric"]), role="kpi_value", size=size(24, k, 32), max_lines=1)
+        y += mh
         if data.get("metric_label"):
-            p.text(Box(box.x, y, box.w, 0.3), data["metric_label"], role="kpi_label", max_lines=1)
+            p.text(Box(box.x, y, box.w, 0.3), data["metric_label"], role="kpi_label", size=size(p.style("kpi_label")["size"], k, 14), max_lines=1)
             y += 0.4
     if data.get("subtitle"):
-        sh, _ = p.measure(data["subtitle"], "body_strong", box.w)
-        p.text(Box(box.x, y, box.w, sh + 0.04), data["subtitle"], role="body_strong", record="column subtitle")
+        sh, _ = p.measure(data["subtitle"], "body_strong", box.w, size=g["bs"])
+        p.text(Box(box.x, y, box.w, sh + 0.04), data["subtitle"], role="body_strong", size=g["bs"], record="column subtitle")
         y += sh + SPACING["S"]
     pts = data.get("points") or []
     if pts:
-        p.text(Box(box.x, y, box.w, box.b - y), _points_to_paras(pts), role="body", space_after=6, record="column points")
+        p.text(Box(box.x, y, box.w, box.b - y), _points_to_paras(pts), role="body", size=g["bs"], space_after=6 * k, record="column points")
 
 
 def takeaway(p: Painter, box: Box, text: str) -> None:
@@ -412,6 +499,104 @@ def legend(p: Painter, box: Box, entries: list[tuple[str, str]], y: float | None
         p.text(Box(x + 0.2, y, w + 0.1, 0.28), label, role="chart_axis", fit=False, kind="label")
         x += 0.2 + w + 0.3
     return 0.3
+
+
+QUOTE_MARKS = ('"', "\u201c", "\u00ab", "'")
+
+
+def _plain_points(points: list) -> list[str]:
+    return [pt if isinstance(pt, str) else pt.get("text", "") for pt in points or []]
+
+
+def text_form(points: list) -> str:
+    """What kind of text slide this is: one ARGUMENT, a LIST of points, a NARRATIVE paragraph,
+    or QUOTES. Each is composed differently (text_exhibit)."""
+    from ..core.headline import words
+
+    pts = [t.strip() for t in _plain_points(points) if t.strip()]
+    if pts and all(t.startswith(QUOTE_MARKS) for t in pts):
+        return "quote"
+    if len(pts) == 1:
+        return "narrative" if len(words(pts[0])) > 40 else "argument"
+    return "list"
+
+
+def _lead_in(t: str) -> str:
+    """'Risk: mitigation' → '**Risk:** mitigation' (a bold lead-in when the point has one)."""
+    i = t.find(":")
+    if 0 < i <= 60 and "**" not in t:
+        return f"**{t[: i + 1]}**{t[i + 1:]}"
+    return t
+
+
+def text_exhibit(p: Painter, box: Box, data: dict, so_what: dict | None = None) -> str:
+    """A text slide composed for what it is (v1.4). Text used to be drawn as a side-commentary
+    box: small type stuck under the headline on an empty slide. Now
+      argument   one claim: large type with an accent bar, on the optical centre
+      list       2–7 points: numbered rows at a readable size, separated by hairlines, one block
+      narrative  one paragraph: comfortable reading size and measure
+      quote      quotations: large type with a rule, stacked
+    The slide-level so-what (commentary) follows the block as a bold conclusion line."""
+    pts = [t for t in _plain_points(data.get("points")) if t.strip()]
+    form = text_form(pts)
+    sw = " ".join(_plain_points((so_what or {}).get("points"))) if so_what else ""
+    meas = min(box.w, 10.5 if form == "list" else 9.6)
+    sw_size = min(16, body_cap(p, 99))
+
+    def sw_h(w):
+        return (p.measure(sw, "body_strong", w - 0.25, size=sw_size)[0] + 0.45) if sw else 0.0
+
+    if form in ("argument", "narrative"):
+        cap = body_cap(p, 99)
+        sizes = (28, 26, 24, 22, 20) if form == "argument" else tuple(x for x in (20, 18, 17, 16, 15, 14, 13, 12) if x <= cap)
+        role = "headline" if form == "argument" else "body"
+        txt = pts[0] if pts else ""
+        for ts in sizes:
+            th, lines = p.measure(txt, role, meas, size=ts, bold=False)
+            block = 0.27 + th + sw_h(meas)
+            if block <= box.h * 0.8 and (form == "narrative" or lines <= 3):
+                break
+        top = optical_top(box, block)
+        p.rect(Box(box.x, top, 0.9, 0.07), fill="highlight")
+        p.text(Box(box.x, top + 0.27, meas, th + 0.15), txt, role=role, size=ts, bold=False, color="primary" if form == "argument" else "text", record="text argument")
+        y = top + 0.27 + th + 0.15
+    elif form == "quote":
+        # short quotations carry the slide like a statement (classified as one): large type
+        for ts in (24, 22, 20, 18, 16, 14, 12):
+            hs = [p.measure(t, "body", meas - 0.35, size=ts)[0] for t in pts]
+            block = sum(hs) + 0.4 * (len(pts) - 1) + sw_h(meas)
+            if block <= box.h * 0.8:
+                break
+        y = optical_top(box, block)
+        for t, h in zip(pts, hs):
+            p.rect(Box(box.x, y + 0.04, 0.06, h - 0.04), fill="highlight")
+            p.text(Box(box.x + 0.35, y, meas - 0.35, h + 0.1), t, role="body", size=ts, color="primary", record="text quote")
+            y += h + 0.4
+        y -= 0.4
+    else:
+        lab_w = 0.6
+        avail = box.h * 0.86 - sw_h(meas)
+        for ts in tuple(x for x in (22, 20, 18, 17, 16, 15, 14, 13, 12, 11) if x <= body_cap(p, 99)):
+            hs = [p.measure(_lead_in(t), "body", meas - lab_w, size=ts)[0] for t in pts]
+            if sum(hs) + 2 * 0.08 * len(pts) <= avail:
+                break
+        # the rows breathe with what is left, within bounds: type size wins over padding
+        pad = max(0.08, min(0.18 + 0.012 * ts, (avail - sum(hs)) / (2 * len(pts))))
+        block = sum(h + 2 * pad for h in hs) + sw_h(meas)
+        y = optical_top(box, block)
+        p.line(box.x, y, box.x + meas, y, color="rule", width=LINES["rule"])
+        for i, (t, h) in enumerate(zip(pts, hs)):
+            row = Box(box.x, y, meas, h + 2 * pad)
+            p.text(Box(row.x, row.y + pad, lab_w - 0.1, h), f"{i + 1}", role="section", size=ts, color="highlight", record="text number")
+            p.text(Box(row.x + lab_w, row.y + pad, meas - lab_w, h + 0.05), _lead_in(t), role="body", size=ts, record=f"text point {i + 1}")
+            y = row.b
+            p.line(box.x, y, box.x + meas, y, color="gridline", width=LINES["hairline"])
+    if sw:
+        y += 0.3
+        h = p.measure(sw, "body_strong", meas - 0.25, size=sw_size)[0]
+        p.rect(Box(box.x, y, 0.06, h + 0.04), fill="highlight")
+        p.text(Box(box.x + 0.25, y, meas - 0.25, h + 0.1), sw, role="body_strong", size=sw_size, color="primary", record="text so-what")
+    return form
 
 
 def bullets_block(p: Painter, box: Box, points: list, title: str | None = None) -> None:

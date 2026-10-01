@@ -1,0 +1,473 @@
+{
+  "meta": {
+    "title": "Battery: segmentation",
+    "deck_type": "strategy_deck",
+    "theme": "meridian"
+  },
+  "storyline": {
+    "framework": "SCR",
+    "governing_thought": "Each segmentation slide is judged on what it is trying to be",
+    "key_line": [
+      {
+        "id": "K1",
+        "role": "situation",
+        "message": "Variations of one archetype"
+      },
+      {
+        "id": "K2",
+        "role": "resolution",
+        "message": "Composition must hold across them"
+      }
+    ]
+  },
+  "eval": {
+    "purpose": "Archetype battery (segmentation): mekko 2–6 columns / tile map / funnel / Spanish",
+    "battery": "segmentation"
+  },
+  "slides": [
+    {
+      "headline": "Discount and online are where our share is lowest",
+      "message_type": "composition",
+      "visual": {
+        "type": "mekko",
+        "title": "Share by channel",
+        "unit": "% of channel; width = channel size (€bn)",
+        "highlight": [
+          "Us"
+        ],
+        "data": {
+          "order": [
+            "Us",
+            "Competitor A",
+            "Others"
+          ],
+          "columns": [
+            {
+              "label": "Discount",
+              "total": 38,
+              "parts": {
+                "Us": 5,
+                "Competitor A": 41,
+                "Others": 54
+              }
+            },
+            {
+              "label": "Supermarkets",
+              "total": 52,
+              "parts": {
+                "Us": 14,
+                "Competitor A": 18,
+                "Others": 68
+              }
+            },
+            {
+              "label": "Online",
+              "total": 14,
+              "parts": {
+                "Us": 4,
+                "Competitor A": 22,
+                "Others": 74
+              }
+            }
+          ]
+        }
+      },
+      "id": "sg01",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "Two segments make up 70% of the market and we lead in neither",
+      "message_type": "composition",
+      "visual": {
+        "type": "mekko",
+        "title": "Market by segment and player",
+        "unit": "% of segment; width = segment size (€M)",
+        "highlight": [
+          "Us"
+        ],
+        "data": {
+          "order": [
+            "Us",
+            "Leader",
+            "Challenger",
+            "Others"
+          ],
+          "columns": [
+            {
+              "label": "Enterprise",
+              "total": 420,
+              "parts": {
+                "Us": 12,
+                "Leader": 38,
+                "Challenger": 21,
+                "Others": 29
+              }
+            },
+            {
+              "label": "Mid-market",
+              "total": 310,
+              "parts": {
+                "Us": 18,
+                "Leader": 24,
+                "Challenger": 26,
+                "Others": 32
+              }
+            },
+            {
+              "label": "SMB",
+              "total": 190,
+              "parts": {
+                "Us": 31,
+                "Leader": 9,
+                "Challenger": 14,
+                "Others": 46
+              }
+            },
+            {
+              "label": "Public",
+              "total": 95,
+              "parts": {
+                "Us": 6,
+                "Leader": 44,
+                "Challenger": 10,
+                "Others": 40
+              }
+            },
+            {
+              "label": "Education",
+              "total": 40,
+              "parts": {
+                "Us": 22,
+                "Leader": 15,
+                "Challenger": 8,
+                "Others": 55
+              }
+            }
+          ]
+        }
+      },
+      "id": "sg02",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "Las ventas por habitante son más altas en el noreste",
+      "message_type": "geography",
+      "visual": {
+        "type": "tile_map",
+        "title": "Ventas por habitante, 2025",
+        "unit": "€",
+        "highlight": [
+          "CT",
+          "AR"
+        ],
+        "data": {
+          "preset": "spain",
+          "values": {
+            "GA": 41,
+            "AS": 38,
+            "CB": 44,
+            "PV": 52,
+            "NA": 55,
+            "CL": 36,
+            "RI": 47,
+            "AR": 61,
+            "CT": 66,
+            "MD": 58,
+            "EX": 29,
+            "CM": 33,
+            "VC": 49,
+            "IB": 51,
+            "AN": 34,
+            "MC": 37,
+            "CN": 31
+          }
+        }
+      },
+      "id": "sg03",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Batería de pruebas (sintética)"
+    },
+    {
+      "headline": "Most of the market sits in two age groups where our share is below 10%",
+      "message_type": "composition",
+      "visual": {
+        "type": "segmentation",
+        "title": "Customers by age group and provider",
+        "unit": "% of group; width = customers (M)",
+        "highlight": [
+          "Us"
+        ],
+        "data": {
+          "order": [
+            "Us",
+            "Bank A",
+            "Bank B",
+            "Others"
+          ],
+          "columns": [
+            {
+              "label": "18–29",
+              "total": 4.1,
+              "parts": {
+                "Us": 6,
+                "Bank A": 21,
+                "Bank B": 30,
+                "Others": 43
+              }
+            },
+            {
+              "label": "30–44",
+              "total": 6.8,
+              "parts": {
+                "Us": 9,
+                "Bank A": 27,
+                "Bank B": 24,
+                "Others": 40
+              }
+            },
+            {
+              "label": "45–64",
+              "total": 7.2,
+              "parts": {
+                "Us": 18,
+                "Bank A": 26,
+                "Bank B": 19,
+                "Others": 37
+              }
+            },
+            {
+              "label": "65+",
+              "total": 5.3,
+              "parts": {
+                "Us": 24,
+                "Bank A": 29,
+                "Bank B": 12,
+                "Others": 35
+              }
+            }
+          ]
+        }
+      },
+      "id": "sg04",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "Premium is a small segment where we already lead",
+      "message_type": "composition",
+      "visual": {
+        "type": "mekko",
+        "title": "Share by price tier",
+        "unit": "% of tier; width = tier size (€bn)",
+        "highlight": [
+          "Us"
+        ],
+        "data": {
+          "order": [
+            "Us",
+            "Brand A",
+            "Private label"
+          ],
+          "columns": [
+            {
+              "label": "Premium",
+              "total": 3.1,
+              "parts": {
+                "Us": 34,
+                "Brand A": 41,
+                "Private label": 25
+              }
+            },
+            {
+              "label": "Mainstream",
+              "total": 9.4,
+              "parts": {
+                "Us": 11,
+                "Brand A": 29,
+                "Private label": 60
+              }
+            }
+          ]
+        }
+      },
+      "id": "sg05",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "La penetración del servicio varía del 12% al 48% entre comunidades",
+      "message_type": "geography",
+      "visual": {
+        "type": "tile_map",
+        "title": "Penetración del servicio",
+        "unit": "% de hogares",
+        "highlight": [
+          "EX",
+          "CN"
+        ],
+        "data": {
+          "preset": "spain",
+          "values": {
+            "GA": 21,
+            "AS": 24,
+            "CB": 28,
+            "PV": 44,
+            "NA": 41,
+            "CL": 19,
+            "RI": 33,
+            "AR": 30,
+            "CT": 46,
+            "MD": 48,
+            "EX": 12,
+            "CM": 17,
+            "VC": 35,
+            "IB": 39,
+            "AN": 22,
+            "MC": 25,
+            "CN": 14
+          }
+        }
+      },
+      "id": "sg06",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Batería de pruebas (sintética)"
+    },
+    {
+      "headline": "Six customer segments by size and profitability",
+      "message_type": "composition",
+      "visual": {
+        "type": "mekko",
+        "title": "Revenue by segment and margin band",
+        "unit": "% of segment; width = revenue (€M)",
+        "data": {
+          "order": [
+            "High margin",
+            "Medium margin",
+            "Low margin"
+          ],
+          "columns": [
+            {
+              "label": "Grocers",
+              "total": 120,
+              "parts": {
+                "High margin": 20,
+                "Medium margin": 50,
+                "Low margin": 30
+              }
+            },
+            {
+              "label": "Hotels",
+              "total": 85,
+              "parts": {
+                "High margin": 45,
+                "Medium margin": 35,
+                "Low margin": 20
+              }
+            },
+            {
+              "label": "Hospitals",
+              "total": 60,
+              "parts": {
+                "High margin": 10,
+                "Medium margin": 40,
+                "Low margin": 50
+              }
+            },
+            {
+              "label": "Schools",
+              "total": 45,
+              "parts": {
+                "High margin": 5,
+                "Medium margin": 35,
+                "Low margin": 60
+              }
+            },
+            {
+              "label": "Offices",
+              "total": 70,
+              "parts": {
+                "High margin": 40,
+                "Medium margin": 40,
+                "Low margin": 20
+              }
+            },
+            {
+              "label": "Airlines",
+              "total": 30,
+              "parts": {
+                "High margin": 60,
+                "Medium margin": 30,
+                "Low margin": 10
+              }
+            }
+          ]
+        }
+      },
+      "id": "sg07",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "Three channels, two of them dominated by a single player",
+      "message_type": "composition",
+      "visual": {
+        "type": "mekko",
+        "title": "Share by channel",
+        "unit": "% of channel; width = channel size ($bn)",
+        "data": {
+          "order": [
+            "Player 1",
+            "Player 2",
+            "Player 3",
+            "Long tail"
+          ],
+          "columns": [
+            {
+              "label": "Retail",
+              "total": 2.2,
+              "parts": {
+                "Player 1": 61,
+                "Player 2": 12,
+                "Player 3": 8,
+                "Long tail": 19
+              }
+            },
+            {
+              "label": "Wholesale",
+              "total": 1.4,
+              "parts": {
+                "Player 1": 18,
+                "Player 2": 55,
+                "Player 3": 9,
+                "Long tail": 18
+              }
+            },
+            {
+              "label": "Direct",
+              "total": 0.6,
+              "parts": {
+                "Player 1": 22,
+                "Player 2": 20,
+                "Player 3": 25,
+                "Long tail": 33
+              }
+            }
+          ]
+        }
+      },
+      "id": "sg08",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    }
+  ]
+}

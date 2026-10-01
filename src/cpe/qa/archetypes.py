@@ -38,6 +38,9 @@ set these numbers.
 """
 from __future__ import annotations
 
+import json
+from pathlib import Path
+
 ARCHETYPES = [
     "statement", "kpi_hero", "kpi_dashboard", "executive_summary", "chart", "waterfall", "table", "matrix",
     "comparison", "process", "roadmap", "timeline", "operating_model", "architecture", "hierarchy",
@@ -75,6 +78,9 @@ def classify(slide: dict) -> tuple[str, str]:
     exhibits = roles.get("exhibit") or []
     if exhibits:
         t = exhibits[0].get("type") or "auto"
+        if t == "flow" and len({n.get("row", 0) for n in ((exhibits[0].get("data") or {}).get("nodes") or [])}) == 1:
+            # (v1.4) a single row of boxes and arrows is a linear sequence, not a layered architecture
+            return "process", "main exhibit is a single-row flow (a sequence)"
         if t in EXHIBIT_ARCHETYPE:
             return EXHIBIT_ARCHETYPE[t], f"main exhibit is a {t}"
         if t in CHART_TYPES or t == "auto":
@@ -89,84 +95,60 @@ def classify(slide: dict) -> tuple[str, str]:
         return "comparison", "comparison columns"
     if roles.get("statement"):
         return "statement", "statement text"
+    if roles.get("text"):
+        # (v1.4) text_exhibit had become a fallback bucket. One short argument with nothing else on
+        # the slide IS a statement (one sentence carries the slide, air is the point) and is judged
+        # as one; lists, paragraphs and quotes stay text exhibits (docs/COMPOSITION_SCORING.md)
+        from ..core.headline import words
+        from ..pptx.text_components import text_form
+
+        form = text_form(roles["text"].get("points"))
+        if form == "argument" and not roles.get("commentary"):
+            return "statement", "a single short argument (text form: argument)"
+        pts = roles["text"].get("points") or []
+        if form == "quote" and len(pts) <= 3 and len(words(" ".join(str(x) for x in pts))) <= 45 and not roles.get("commentary"):
+            return "statement", "short quotations carry the slide (text form: quote)"
+        return "text_exhibit", f"text only (form: {form})"
     return "text_exhibit", "text only"
 
 
-def _m(lo, hi, soft, w):
-    return {"range": [lo, hi], "soft": soft, "w": w}
+PROFILES_PATH = Path(__file__).parent / "archetype_profiles.json"
 
 
-# Shared expectations; archetypes override what differs.
-_BASE = {
-    "utilization": _m(0.70, 1.00, 0.35, 12),
-    "empty": _m(0.00, 0.25, 0.35, 16),
-    "ink": _m(0.06, 0.30, 0.12, 8),
-    "offcentre": _m(0.00, 0.12, 0.30, 8),
-    "emphasis": _m(0.05, 1.00, 0.05, 8),
-    "regions": _m(0, 5, 4, 4),  # a highlighted series repeats across categories: only many masses are noise
-    "ratio": _m(1.35, 9.0, 0.5, 10),
-    "edges": _m(0, 5, 6, 6),
-    "proof": _m(0.5, 1.0, 0.5, 14),
-}
+def load_profiles(path: Path = PROFILES_PATH) -> tuple[dict, dict]:
+    """(base, profiles) from the governed profile file. Ranges live in data, not code, so every
+    calibration change is a visible diff with its reason (evals/profile_changes.md)."""
+    data = json.loads(path.read_text(encoding="utf-8"))
+    base = {k: {"range": list(v["range"]), "soft": v["soft"], "w": v["w"]} for k, v in data["base"].items()}
+    profiles = {}
+    for name, a in data["archetypes"].items():
+        prof = {k: dict(v) for k, v in base.items()}
+        for k, v in (a.get("metrics") or {}).items():
+            if v is None:
+                prof.pop(k, None)
+            else:
+                prof[k] = {"range": list(v["range"]), "soft": v["soft"], "w": v["w"]}
+        profiles[name] = prof
+    return base, profiles
 
 
-def _p(**over):
-    out = {k: dict(v) for k, v in _BASE.items()}
-    for k, v in over.items():
-        if v is None:
-            out.pop(k)
-        else:
-            out[k] = {**out[k], **v}
-    return out
+def format_profiles(data: dict) -> str:
+    """Canonical text of archetype_profiles.json: one metric per line, so calibration diffs are readable."""
+    c = lambda o: json.dumps(o, ensure_ascii=False)  # noqa: E731
+    L = ["{", ' "_doc": ' + json.dumps(data["_doc"], indent=2, ensure_ascii=False).replace("\n", "\n ") + ",", ' "base": {']
+    base = list(data["base"].items())
+    L += [f'  "{k}": {c(v)}' + ("," if i < len(base) - 1 else "") for i, (k, v) in enumerate(base)]
+    L += [" },", ' "archetypes": {']
+    arch = list(data["archetypes"].items())
+    for i, (a, v) in enumerate(arch):
+        L += [f'  "{a}": {{', f'   "why": {c(v["why"])},', f'   "evidence": {c(v["evidence"])},', '   "metrics": {']
+        m = list(v["metrics"].items())
+        L += [f'    "{k}": {c(x)}' + ("," if j < len(m) - 1 else "") for j, (k, x) in enumerate(m)]
+        L += ["   }", "  }" + ("," if i < len(arch) - 1 else "")]
+    return "\n".join(L + [" }", "}"]) + "\n"
 
 
-PROFILES = {
-    # one sentence carries the slide: air is the point, density would be wrong
-    "statement": _p(utilization=_m(0.15, 0.75, 0.35, 6), empty=_m(0.0, 0.80, 0.25, 4), ink=_m(0.01, 0.12, 0.08, 6),
-                    offcentre=_m(0.0, 0.25, 0.3, 4), emphasis=_m(0.0, 1.0, 0.1, 0), regions=_m(0, 3, 6, 2), proof=None,
-                    ratio=None),  # the statement text IS the message: it may be larger than any headline
-    # one big figure: intentional whitespace, the figure must dominate
-    # (a centred figure leaves empty bands above/below of ~40% of the body; half the slide empty is not intentional)
-    "kpi_hero": _p(utilization=_m(0.25, 0.95, 0.35, 8), empty=_m(0.0, 0.50, 0.25, 12), ink=_m(0.02, 0.20, 0.08, 6),
-                   offcentre=_m(0.0, 0.22, 0.3, 10), emphasis=_m(0.10, 1.0, 0.10, 12), regions=_m(0, 2, 4, 4)),
-    "kpi_dashboard": _p(utilization=_m(0.70, 1.0, 0.35, 12), empty=_m(0.0, 0.30, 0.3, 14), ink=_m(0.04, 0.30, 0.10, 8),
-                        emphasis=_m(0.05, 0.70, 0.08, 6), regions=_m(0, 6, 6, 4)),
-    # dense by nature: text should fill the canvas in an even rhythm
-    # (v1.3.2, human feedback on the gallery: short summaries read better as ONE compact, centred block
-    # than spread over the full height — balance matters more than filling; a summary using under
-    # half the canvas is still too thin)
-    "executive_summary": _p(utilization=_m(0.50, 1.0, 0.3, 12), empty=_m(0.0, 0.32, 0.3, 14), ink=_m(0.02, 0.35, 0.12, 8),
-                            offcentre=_m(0.0, 0.10, 0.25, 12),
-                            emphasis=_m(0.0, 1.0, 0.08, 0), regions=_m(0, 6, 6, 2), proof=None, edges=_m(0, 6, 8, 10)),
-    # solid bars are data ink, not clutter; a line chart is thin by nature
-    "chart": _p(utilization=_m(0.72, 1.0, 0.35, 12), empty=_m(0.0, 0.28, 0.35, 16), ink=_m(0.01, 0.45, 0.12, 6)),
-    # the bridge needs the full width and most of the height for its deltas
-    "waterfall": _p(utilization=_m(0.78, 1.0, 0.3, 14), empty=_m(0.0, 0.25, 0.3, 16), ink=_m(0.03, 0.40, 0.12, 6)),
-    # a table that floats in half an empty slide is the canonical failure
-    "table": _p(utilization=_m(0.75, 1.0, 0.25, 16), empty=_m(0.0, 0.20, 0.25, 20), ink=_m(0.02, 0.32, 0.06, 6),
-                offcentre=_m(0.0, 0.14, 0.3, 6), emphasis=_m(0.0, 1.0, 0.08, 0)),
-    # a 2x2 is a square field: balance matters more than filling every corner
-    "matrix": _p(utilization=_m(0.65, 1.0, 0.25, 12), empty=_m(0.0, 0.32, 0.30, 12), ink=_m(0.04, 0.28, 0.12, 6),
-                 offcentre=_m(0.0, 0.10, 0.25, 14)),
-    "comparison": _p(utilization=_m(0.72, 1.0, 0.3, 12), empty=_m(0.0, 0.28, 0.3, 14), offcentre=_m(0.0, 0.10, 0.25, 12),
-                     edges=_m(0, 6, 8, 10)),
-    "process": _p(utilization=_m(0.72, 1.0, 0.3, 12), empty=_m(0.0, 0.28, 0.3, 14), edges=_m(0, 8, 10, 6)),
-    # roadmaps and timelines read left→right across the whole width
-    "roadmap": _p(utilization=_m(0.78, 1.0, 0.3, 16), empty=_m(0.0, 0.28, 0.3, 12), ink=_m(0.04, 0.30, 0.12, 6)),
-    # a timeline is a one-dimensional band: air above and below it is inherent, not waste
-    "timeline": _p(utilization=_m(0.35, 1.0, 0.35, 10), empty=_m(0.0, 0.50, 0.3, 10), ink=_m(0.01, 0.25, 0.10, 6),
-                   offcentre=_m(0.0, 0.18, 0.3, 6)),
-    # layered diagrams carry a label column on the left: their ink is left-weighted by construction
-    "operating_model": _p(utilization=_m(0.78, 1.0, 0.3, 14), empty=_m(0.0, 0.22, 0.3, 14), ink=_m(0.06, 0.40, 0.12, 8), edges=_m(0, 10, 10, 4),
-                          offcentre=_m(0.0, 0.35, 0.3, 3)),
-    "architecture": _p(utilization=_m(0.75, 1.0, 0.3, 14), empty=_m(0.0, 0.25, 0.3, 14), ink=_m(0.06, 0.40, 0.12, 8), edges=_m(0, 10, 10, 4),
-                       offcentre=_m(0.0, 0.35, 0.3, 3)),
-    "hierarchy": _p(utilization=_m(0.65, 1.0, 0.35, 12), empty=_m(0.0, 0.35, 0.3, 12), ink=_m(0.03, 0.30, 0.12, 6), edges=_m(0, 10, 10, 4)),
-    "segmentation": _p(utilization=_m(0.72, 1.0, 0.3, 12), empty=_m(0.0, 0.28, 0.3, 14)),
-    # prose: some air is fine, a sliver of text on an empty slide is not
-    "text_exhibit": _p(utilization=_m(0.55, 1.0, 0.35, 12), empty=_m(0.0, 0.40, 0.3, 14), ink=_m(0.03, 0.25, 0.10, 8),
-                       emphasis=_m(0.0, 0.5, 0.08, 2), regions=_m(0, 4, 6, 2)),
-}
+_BASE, PROFILES = load_profiles()
 
 # what the deviation means, per metric and direction (for editorial explanations)
 MEANING = {
@@ -230,7 +212,24 @@ def fitness(archetype: str, observed: dict) -> dict:
     dev.sort(key=lambda d: (d["fitness"] - 1) * d["weight"])
     if not den:
         return {"score": None, "per_metric": per, "deviations": dev}
-    crit = [per[k] for k, spec in prof.items() if k in per and spec["w"] >= CRITICAL_WEIGHT]
-    worst = min(crit) if crit else 1.0
+    crit = {k: per[k] for k, spec in prof.items() if k in per and spec["w"] >= CRITICAL_WEIGHT}
+    worst_k = min(crit, key=crit.get) if crit else None
+    worst = crit[worst_k] if crit else 1.0
     score = 100 * ((1 - WORST_SHARE) * num / den + WORST_SHARE * worst)
-    return {"score": round(score, 1), "per_metric": per, "deviations": dev, "worst_critical": round(worst, 3)}
+    return {"score": round(score, 1), "per_metric": per, "deviations": dev, "worst_critical": round(worst, 3),
+            "attribution": attribution(prof, observed, per, den, worst_k)}
+
+
+def attribution(prof: dict, observed: dict, per: dict, den: float, worst_k: str | None) -> dict:
+    """Where the points went: for each scored metric, expected range, observed value, fitness,
+    weight and the points it costs. The penalties sum to 100 − score (before rounding):
+    (1 − WORST_SHARE)·100·w·(1 − f)/Σw for every metric, plus WORST_SHARE·100·(1 − f) charged to
+    the worst critical metric."""
+    out = {}
+    for k, f in per.items():
+        spec = prof[k]
+        pen = (1 - WORST_SHARE) * 100 * spec["w"] * (1 - f) / den
+        if k == worst_k:
+            pen += WORST_SHARE * 100 * (1 - f)
+        out[k] = {"expected": spec["range"], "observed": round(observed[k], 3), "fitness": f, "weight": spec["w"], "penalty": round(pen, 2)}
+    return out

@@ -24,7 +24,9 @@ def test_dense_table_is_handled():
 
 
 def test_kpi_hero_can_have_large_intentional_whitespace():
-    hero = {"utilization": 0.40, "empty": 0.42, "ink": 0.05, "offcentre": 0.12, "emphasis": 0.45, "regions": 1, "ratio": 1.6, "edges": 2, "proof": 1.0}
+    # (v1.4: a set of KPI cards may use half the band — evals/profile_changes.md — so the contrast is
+    # checked on a hero that uses a third of it: fine for one figure, too thin for a dashboard)
+    hero = {"utilization": 0.30, "empty": 0.48, "ink": 0.05, "offcentre": 0.12, "emphasis": 0.45, "regions": 1, "ratio": 1.6, "edges": 2, "proof": 1.0}
     assert fitness("kpi_hero", hero)["score"] >= 90
     assert fitness("kpi_dashboard", hero)["score"] < fitness("kpi_hero", hero)["score"] - 15
     stuck_in_a_corner = {**hero, "utilization": 0.12, "empty": 0.79, "offcentre": 0.40}

@@ -1,0 +1,345 @@
+{
+  "meta": {
+    "title": "Battery: timeline",
+    "deck_type": "strategy_deck",
+    "theme": "graphite"
+  },
+  "storyline": {
+    "framework": "SCR",
+    "governing_thought": "Each timeline slide is judged on what it is trying to be",
+    "key_line": [
+      {
+        "id": "K1",
+        "role": "situation",
+        "message": "Variations of one archetype"
+      },
+      {
+        "id": "K2",
+        "role": "resolution",
+        "message": "Composition must hold across them"
+      }
+    ]
+  },
+  "eval": {
+    "purpose": "Archetype battery (timeline): 3–8 events / details / highlight / Spanish / long labels",
+    "battery": "timeline"
+  },
+  "slides": [
+    {
+      "headline": "Three milestones gate the launch",
+      "message_type": "sequence",
+      "visual": {
+        "type": "timeline",
+        "data": {
+          "events": [
+            {
+              "date": "Mar",
+              "text": "Pilot"
+            },
+            {
+              "date": "Jun",
+              "text": "Decision"
+            },
+            {
+              "date": "Oct",
+              "text": "Launch"
+            }
+          ]
+        },
+        "highlight": [
+          1
+        ]
+      },
+      "id": "tl01",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "Four regulatory milestones set the pace of the launch",
+      "message_type": "sequence",
+      "visual": {
+        "type": "timeline",
+        "data": {
+          "events": [
+            {
+              "date": "Jan 2026",
+              "text": "Consultation closes"
+            },
+            {
+              "date": "Apr 2026",
+              "text": "Draft rules"
+            },
+            {
+              "date": "Sep 2026",
+              "text": "Final rules",
+              "detail": "Launch window opens"
+            },
+            {
+              "date": "Jan 2027",
+              "text": "Enforcement"
+            }
+          ]
+        },
+        "highlight": [
+          2
+        ]
+      },
+      "id": "tl02",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "Eight milestones over two years; the go-live in Q3 2027 is the critical one",
+      "message_type": "sequence",
+      "visual": {
+        "type": "timeline",
+        "data": {
+          "events": [
+            {
+              "date": "Q1 26",
+              "text": "Kick-off"
+            },
+            {
+              "date": "Q2 26",
+              "text": "Design signed off"
+            },
+            {
+              "date": "Q3 26",
+              "text": "Vendor selected"
+            },
+            {
+              "date": "Q4 26",
+              "text": "Build starts"
+            },
+            {
+              "date": "Q1 27",
+              "text": "Testing"
+            },
+            {
+              "date": "Q2 27",
+              "text": "Training"
+            },
+            {
+              "date": "Q3 27",
+              "text": "Go-live",
+              "detail": "All countries"
+            },
+            {
+              "date": "Q4 27",
+              "text": "Hypercare ends"
+            }
+          ]
+        },
+        "highlight": [
+          6
+        ]
+      },
+      "id": "tl03",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "La integración culmina en cinco hitos",
+      "message_type": "sequence",
+      "visual": {
+        "type": "timeline",
+        "data": {
+          "events": [
+            {
+              "date": "Ene",
+              "text": "Cierre de la compra"
+            },
+            {
+              "date": "Mar",
+              "text": "Nueva estructura directiva"
+            },
+            {
+              "date": "Jun",
+              "text": "Marca única",
+              "detail": "Rebranding de 140 tiendas"
+            },
+            {
+              "date": "Sep",
+              "text": "Sistemas integrados"
+            },
+            {
+              "date": "Dic",
+              "text": "Sinergias completas"
+            }
+          ]
+        },
+        "highlight": [
+          2
+        ]
+      },
+      "id": "tl04",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Batería de pruebas (sintética)"
+    },
+    {
+      "headline": "The company's history explains today's fragmented portfolio",
+      "message_type": "sequence",
+      "visual": {
+        "type": "timeline",
+        "data": {
+          "events": [
+            {
+              "date": "1998",
+              "text": "Founded as a regional distributor"
+            },
+            {
+              "date": "2006",
+              "text": "First acquisition",
+              "detail": "Entry into foodservice"
+            },
+            {
+              "date": "2012",
+              "text": "Expansion into Portugal"
+            },
+            {
+              "date": "2017",
+              "text": "Two private-label factories bought"
+            },
+            {
+              "date": "2021",
+              "text": "Online launch"
+            },
+            {
+              "date": "2025",
+              "text": "Six business units, four ERP systems"
+            }
+          ]
+        }
+      },
+      "id": "tl05",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "Key dates for the bond refinancing",
+      "message_type": "sequence",
+      "visual": {
+        "type": "timeline",
+        "data": {
+          "events": [
+            {
+              "date": "10 Feb",
+              "text": "Rating agency meetings"
+            },
+            {
+              "date": "3 Mar",
+              "text": "Investor roadshow"
+            },
+            {
+              "date": "17 Mar",
+              "text": "Pricing",
+              "detail": "Target coupon below 5%"
+            },
+            {
+              "date": "24 Mar",
+              "text": "Settlement"
+            }
+          ]
+        },
+        "highlight": [
+          2
+        ]
+      },
+      "id": "tl06",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "Hitos del programa con responsables y entregables",
+      "message_type": "sequence",
+      "visual": {
+        "type": "timeline",
+        "data": {
+          "events": [
+            {
+              "date": "Oct 2026",
+              "text": "Nuevas condiciones comerciales",
+              "detail": "Responsable: dirección comercial"
+            },
+            {
+              "date": "Dic 2026",
+              "text": "Licitación de transporte adjudicada",
+              "detail": "Responsable: compras"
+            },
+            {
+              "date": "Mar 2027",
+              "text": "Primer almacén automatizado",
+              "detail": "Responsable: operaciones"
+            },
+            {
+              "date": "Jun 2027",
+              "text": "Nuevo sistema de almacén",
+              "detail": "Responsable: sistemas"
+            },
+            {
+              "date": "Dic 2027",
+              "text": "Red de almacenes rediseñada",
+              "detail": "Responsable: dirección general"
+            }
+          ]
+        },
+        "highlight": [
+          3
+        ]
+      },
+      "id": "tl07",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Batería de pruebas (sintética)"
+    },
+    {
+      "headline": "Six phases of the clinical programme to filing",
+      "message_type": "sequence",
+      "visual": {
+        "type": "timeline",
+        "data": {
+          "events": [
+            {
+              "date": "2024",
+              "text": "Phase I complete"
+            },
+            {
+              "date": "2025",
+              "text": "Phase II readout"
+            },
+            {
+              "date": "2026",
+              "text": "Phase III start"
+            },
+            {
+              "date": "2027",
+              "text": "Interim analysis"
+            },
+            {
+              "date": "2028",
+              "text": "Primary endpoint",
+              "detail": "Filing decision"
+            },
+            {
+              "date": "2029",
+              "text": "Approval expected"
+            }
+          ]
+        },
+        "highlight": [
+          4
+        ]
+      },
+      "id": "tl08",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    }
+  ]
+}

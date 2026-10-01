@@ -1,0 +1,349 @@
+{
+  "meta": {
+    "title": "Battery: comparison",
+    "deck_type": "strategy_deck",
+    "theme": "graphite"
+  },
+  "storyline": {
+    "framework": "SCR",
+    "governing_thought": "Each comparison slide is judged on what it is trying to be",
+    "key_line": [
+      {
+        "id": "K1",
+        "role": "situation",
+        "message": "Variations of one archetype"
+      },
+      {
+        "id": "K2",
+        "role": "resolution",
+        "message": "Composition must hold across them"
+      }
+    ]
+  },
+  "eval": {
+    "purpose": "Archetype battery (comparison): 2–4 columns / qualitative and quantitative / balanced and asymmetric / short and dense / Spanish",
+    "battery": "comparison"
+  },
+  "slides": [
+    {
+      "headline": "Building in-house is slower but keeps control of the data",
+      "message_type": "comparison",
+      "columns": [
+        {
+          "title": "Build",
+          "points": [
+            "24 months",
+            "€40M",
+            "Full control"
+          ]
+        },
+        {
+          "title": "Buy",
+          "points": [
+            "6 months",
+            "€65M",
+            "Vendor lock-in"
+          ],
+          "emphasis": true
+        }
+      ],
+      "id": "cp01",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "Three options differ on speed, cost and control",
+      "message_type": "comparison",
+      "columns": [
+        {
+          "title": "Build",
+          "points": [
+            "Full control",
+            "24 months",
+            "€40M"
+          ]
+        },
+        {
+          "title": "Buy",
+          "points": [
+            "Fastest: 6 months",
+            "€65M",
+            "Integration risk"
+          ],
+          "emphasis": true
+        },
+        {
+          "title": "Partner",
+          "points": [
+            "Shared control",
+            "12 months",
+            "€25M"
+          ]
+        }
+      ],
+      "id": "cp02",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "Leasing beats buying on cash, buying wins on total cost",
+      "message_type": "comparison",
+      "columns": [
+        {
+          "title": "Lease",
+          "points": [
+            "Upfront cash €0",
+            "Total cost €118M over 10 years",
+            "Flexible exit after 5 years",
+            "Maintenance included"
+          ],
+          "metric": "€0",
+          "metric_label": "upfront"
+        },
+        {
+          "title": "Buy",
+          "points": [
+            "Upfront cash €95M",
+            "Total cost €104M over 10 years",
+            "Asset on the balance sheet",
+            "Resale value of about €20M"
+          ],
+          "metric": "€95M",
+          "metric_label": "upfront",
+          "emphasis": true
+        }
+      ],
+      "id": "cp03",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "La opción local es más cara pero reduce el riesgo de suministro",
+      "message_type": "comparison",
+      "columns": [
+        {
+          "title": "Proveedor local",
+          "points": [
+            "Precio +12%",
+            "Plazo 1 semana",
+            "Sin aranceles"
+          ],
+          "emphasis": true
+        },
+        {
+          "title": "Proveedor asiático",
+          "points": [
+            "Precio de referencia",
+            "Plazo 9 semanas",
+            "Arancel del 6%",
+            "Riesgo de flete"
+          ]
+        }
+      ],
+      "id": "cp04",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Batería de pruebas (sintética)"
+    },
+    {
+      "headline": "The new model changes five things for customers",
+      "message_type": "comparison",
+      "columns": [
+        {
+          "title": "Today",
+          "points": [
+            "Branch visits for most products",
+            "Paper forms",
+            "Approval in 10 days",
+            "One adviser per 2,000 clients",
+            "Fees on every transfer"
+          ]
+        },
+        {
+          "title": "Target",
+          "points": [
+            "App first, branch for advice",
+            "Digital signature",
+            "Approval in 24 hours",
+            "One adviser per 600 premium clients",
+            "Free transfers within the EU"
+          ],
+          "emphasis": true
+        }
+      ],
+      "id": "cp05",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "Four sites were assessed; Valencia scores best on cost and labour",
+      "message_type": "comparison",
+      "columns": [
+        {
+          "title": "Madrid",
+          "points": [
+            "Rent €9.5/m²",
+            "Labour pool 120k",
+            "Port 350 km"
+          ]
+        },
+        {
+          "title": "Valencia",
+          "points": [
+            "Rent €5.8/m²",
+            "Labour pool 95k",
+            "Port 10 km"
+          ],
+          "emphasis": true
+        },
+        {
+          "title": "Zaragoza",
+          "points": [
+            "Rent €4.9/m²",
+            "Labour pool 40k",
+            "Port 300 km"
+          ]
+        },
+        {
+          "title": "Sevilla",
+          "points": [
+            "Rent €5.2/m²",
+            "Labour pool 70k",
+            "Port 120 km"
+          ]
+        }
+      ],
+      "id": "cp06",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "Option A is simple; option B needs more explanation but delivers more",
+      "message_type": "comparison",
+      "columns": [
+        {
+          "title": "Option A",
+          "points": [
+            "Keep the current network"
+          ]
+        },
+        {
+          "title": "Option B",
+          "points": [
+            "Close 6 depots and open 2 hubs",
+            "Re-route 40% of volume through the hubs",
+            "Saves €22M a year from 2028",
+            "Needs €35M of capex and 18 months of dual running",
+            "Union consultation required in three regions"
+          ],
+          "emphasis": true
+        }
+      ],
+      "id": "cp07",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "Antes y después del plan: menos niveles, más alcance de control",
+      "message_type": "comparison",
+      "columns": [
+        {
+          "title": "Antes",
+          "points": [
+            "7 niveles jerárquicos",
+            "Alcance medio de 4",
+            "12 direcciones"
+          ]
+        },
+        {
+          "title": "Después",
+          "points": [
+            "5 niveles jerárquicos",
+            "Alcance medio de 8",
+            "7 direcciones"
+          ],
+          "emphasis": true
+        }
+      ],
+      "id": "cp08",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Batería de pruebas (sintética)"
+    },
+    {
+      "headline": "Insourcing and outsourcing differ on every dimension that matters",
+      "message_type": "comparison",
+      "columns": [
+        {
+          "title": "Insource",
+          "points": [
+            "Cost €14M a year",
+            "Service level under our control",
+            "Hiring 120 people takes 9 months",
+            "Fixed cost base"
+          ]
+        },
+        {
+          "title": "Outsource",
+          "points": [
+            "Cost €11M a year",
+            "SLA-based, penalties capped at 10%",
+            "Live in 3 months",
+            "Variable cost, 2-year minimum term"
+          ],
+          "emphasis": true
+        },
+        {
+          "title": "Hybrid",
+          "points": [
+            "Cost €12.5M a year",
+            "Core in-house, peaks outsourced",
+            "Live in 6 months",
+            "Two contracts to manage"
+          ]
+        }
+      ],
+      "id": "cp09",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "Our proposal versus the competitor's on the five criteria in the tender",
+      "message_type": "comparison",
+      "columns": [
+        {
+          "title": "Our proposal",
+          "points": [
+            "Price €4.2M",
+            "Go-live in 5 months",
+            "24/7 support",
+            "Local team of 12",
+            "3 similar references"
+          ],
+          "emphasis": true
+        },
+        {
+          "title": "Competitor",
+          "points": [
+            "Price €3.8M",
+            "Go-live in 8 months",
+            "Business-hours support",
+            "Offshore team",
+            "1 reference"
+          ]
+        }
+      ],
+      "id": "cp10",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    }
+  ]
+}

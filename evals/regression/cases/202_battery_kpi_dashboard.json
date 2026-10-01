@@ -1,0 +1,342 @@
+{
+  "meta": {
+    "title": "Battery: kpi_dashboard",
+    "deck_type": "strategy_deck",
+    "theme": "graphite"
+  },
+  "storyline": {
+    "framework": "SCR",
+    "governing_thought": "Each kpi_dashboard slide is judged on what it is trying to be",
+    "key_line": [
+      {
+        "id": "K1",
+        "role": "situation",
+        "message": "Variations of one archetype"
+      },
+      {
+        "id": "K2",
+        "role": "resolution",
+        "message": "Composition must hold across them"
+      }
+    ]
+  },
+  "eval": {
+    "purpose": "Archetype battery (kpi_dashboard): 3–6 KPIs / strip and grid / deltas / notes / Spanish",
+    "battery": "kpi_dashboard"
+  },
+  "slides": [
+    {
+      "headline": "Growth, margin and cash all beat the plan except cash",
+      "message_type": "kpi_dashboard",
+      "visual": {
+        "type": "kpi",
+        "data": {
+          "items": [
+            {
+              "value": "12%",
+              "label": "revenue growth",
+              "delta": "+2 pts",
+              "trend": "up",
+              "good": "up"
+            },
+            {
+              "value": "18.5%",
+              "label": "EBIT margin",
+              "delta": "+0.4 pts",
+              "trend": "up",
+              "good": "up"
+            },
+            {
+              "value": "€210M",
+              "label": "free cash flow",
+              "delta": "−€15M",
+              "trend": "down",
+              "good": "up"
+            }
+          ]
+        }
+      },
+      "id": "kd01",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "Crecimiento y margen mejoran; la caja empeora por el inventario",
+      "message_type": "kpi_dashboard",
+      "visual": {
+        "type": "kpi",
+        "data": {
+          "items": [
+            {
+              "value": "12%",
+              "label": "crecimiento",
+              "delta": "+2 pp",
+              "trend": "up",
+              "good": "up"
+            },
+            {
+              "value": "18,5%",
+              "label": "margen EBIT",
+              "delta": "+0,4 pp",
+              "trend": "up",
+              "good": "up"
+            },
+            {
+              "value": "€210M",
+              "label": "caja libre",
+              "delta": "−€15M",
+              "trend": "down",
+              "good": "up"
+            }
+          ]
+        }
+      },
+      "id": "kd02",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Batería de pruebas (sintética)"
+    },
+    {
+      "headline": "Four operating KPIs improved in the quarter",
+      "message_type": "kpi_dashboard",
+      "visual": {
+        "type": "kpi",
+        "data": {
+          "style": "grid",
+          "items": [
+            {
+              "value": "96.1%",
+              "label": "on-time delivery",
+              "delta": "+1.8 pts",
+              "trend": "up",
+              "good": "up"
+            },
+            {
+              "value": "3.2 days",
+              "label": "order lead time",
+              "delta": "−0.6 days",
+              "trend": "down",
+              "good": "down"
+            },
+            {
+              "value": "0.8%",
+              "label": "return rate",
+              "delta": "−0.1 pts",
+              "trend": "down",
+              "good": "down"
+            },
+            {
+              "value": "88",
+              "label": "NPS",
+              "delta": "+4",
+              "trend": "up",
+              "good": "up"
+            }
+          ]
+        }
+      },
+      "id": "kd03",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "Five metrics track the transformation",
+      "message_type": "kpi_dashboard",
+      "visual": {
+        "type": "kpi",
+        "data": {
+          "items": [
+            {
+              "value": "€31M",
+              "label": "run-rate savings"
+            },
+            {
+              "value": "62%",
+              "label": "processes automated"
+            },
+            {
+              "value": "1,450",
+              "label": "staff retrained"
+            },
+            {
+              "value": "4",
+              "label": "systems retired"
+            },
+            {
+              "value": "97%",
+              "label": "milestones on time"
+            }
+          ]
+        }
+      },
+      "id": "kd04",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "Six KPIs show a business that grows but consumes cash",
+      "message_type": "kpi_dashboard",
+      "visual": {
+        "type": "kpi",
+        "data": {
+          "style": "grid",
+          "items": [
+            {
+              "value": "+14%",
+              "label": "revenue"
+            },
+            {
+              "value": "+9%",
+              "label": "gross profit"
+            },
+            {
+              "value": "−3 pts",
+              "label": "gross margin",
+              "trend": "down",
+              "good": "up"
+            },
+            {
+              "value": "€-42M",
+              "label": "operating cash flow",
+              "trend": "down",
+              "good": "up"
+            },
+            {
+              "value": "71 days",
+              "label": "inventory",
+              "trend": "up",
+              "good": "down"
+            },
+            {
+              "value": "2.9x",
+              "label": "leverage",
+              "trend": "up",
+              "good": "down"
+            }
+          ]
+        }
+      },
+      "id": "kd05",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "Customer metrics: more customers, fewer complaints",
+      "message_type": "kpi_dashboard",
+      "visual": {
+        "type": "kpi",
+        "data": {
+          "items": [
+            {
+              "value": "2.4M",
+              "label": "active customers",
+              "delta": "+310k",
+              "trend": "up",
+              "good": "up",
+              "note": "Mostly app sign-ups"
+            },
+            {
+              "value": "1.1%",
+              "label": "complaint rate",
+              "delta": "−0.4 pts",
+              "trend": "down",
+              "good": "down",
+              "note": "Fewer billing errors"
+            },
+            {
+              "value": "38 s",
+              "label": "average wait time",
+              "delta": "−12 s",
+              "trend": "down",
+              "good": "down",
+              "note": "Callback service live"
+            }
+          ]
+        }
+      },
+      "id": "kd06",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "Indicadores de seguridad laboral en mínimos históricos",
+      "message_type": "kpi_dashboard",
+      "visual": {
+        "type": "kpi",
+        "data": {
+          "style": "grid",
+          "items": [
+            {
+              "value": "0,9",
+              "label": "índice de frecuencia"
+            },
+            {
+              "value": "0",
+              "label": "accidentes graves"
+            },
+            {
+              "value": "12.400",
+              "label": "horas de formación"
+            },
+            {
+              "value": "98%",
+              "label": "auditorías superadas"
+            }
+          ]
+        }
+      },
+      "id": "kd07",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Batería de pruebas (sintética)"
+    },
+    {
+      "headline": "Pipeline, win rate and deal size all moved the right way",
+      "message_type": "kpi_dashboard",
+      "visual": {
+        "type": "kpi",
+        "data": {
+          "items": [
+            {
+              "value": "$412M",
+              "label": "qualified pipeline",
+              "delta": "+22%",
+              "trend": "up",
+              "good": "up"
+            },
+            {
+              "value": "27%",
+              "label": "win rate",
+              "delta": "+3 pts",
+              "trend": "up",
+              "good": "up"
+            },
+            {
+              "value": "$186k",
+              "label": "average deal",
+              "delta": "+$21k",
+              "trend": "up",
+              "good": "up"
+            },
+            {
+              "value": "94 days",
+              "label": "sales cycle",
+              "delta": "−8 days",
+              "trend": "down",
+              "good": "down"
+            }
+          ]
+        }
+      },
+      "id": "kd08",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    }
+  ]
+}

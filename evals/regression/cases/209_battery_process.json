@@ -1,0 +1,425 @@
+{
+  "meta": {
+    "title": "Battery: process",
+    "deck_type": "strategy_deck",
+    "theme": "meridian"
+  },
+  "storyline": {
+    "framework": "SCR",
+    "governing_thought": "Each process slide is judged on what it is trying to be",
+    "key_line": [
+      {
+        "id": "K1",
+        "role": "situation",
+        "message": "Variations of one archetype"
+      },
+      {
+        "id": "K2",
+        "role": "resolution",
+        "message": "Composition must hold across them"
+      }
+    ]
+  },
+  "eval": {
+    "purpose": "Archetype battery (process): 3–7 steps / short and long labels / metrics per step / bullets / chevrons / Spanish",
+    "battery": "process"
+  },
+  "slides": [
+    {
+      "headline": "Onboarding takes three steps",
+      "message_type": "process",
+      "visual": {
+        "type": "process",
+        "data": {
+          "steps": [
+            {
+              "title": "Sign up",
+              "text": "Email"
+            },
+            {
+              "title": "Verify",
+              "text": "ID upload"
+            },
+            {
+              "title": "Order",
+              "text": "First basket"
+            }
+          ]
+        },
+        "highlight": [
+          1
+        ]
+      },
+      "id": "pr01",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "Every claim goes through five steps; assessment takes the longest",
+      "message_type": "process",
+      "visual": {
+        "type": "process",
+        "data": {
+          "steps": [
+            {
+              "title": "Notify",
+              "text": "Phone or web"
+            },
+            {
+              "title": "Triage",
+              "text": "Rules engine"
+            },
+            {
+              "title": "Assess",
+              "text": "Field adjuster, 9 days"
+            },
+            {
+              "title": "Approve",
+              "text": "Two signatures"
+            },
+            {
+              "title": "Pay",
+              "text": "Weekly batch"
+            }
+          ]
+        },
+        "highlight": [
+          2
+        ]
+      },
+      "id": "pr02",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "The order-to-cash process has seven steps and three manual hand-offs",
+      "message_type": "process",
+      "visual": {
+        "type": "process",
+        "data": {
+          "steps": [
+            {
+              "title": "Quote",
+              "text": "CRM"
+            },
+            {
+              "title": "Order",
+              "text": "EDI or email"
+            },
+            {
+              "title": "Credit check",
+              "text": "Manual"
+            },
+            {
+              "title": "Pick",
+              "text": "WMS"
+            },
+            {
+              "title": "Ship",
+              "text": "Carrier"
+            },
+            {
+              "title": "Invoice",
+              "text": "Manual"
+            },
+            {
+              "title": "Collect",
+              "text": "Manual reminders"
+            }
+          ]
+        },
+        "highlight": [
+          2,
+          5,
+          6
+        ]
+      },
+      "id": "pr03",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "Each step of the new process has a measurable target",
+      "message_type": "process",
+      "visual": {
+        "type": "process",
+        "data": {
+          "steps": [
+            {
+              "title": "Capture",
+              "text": "EDI for top customers",
+              "metric": "0.3%",
+              "metric_label": "order errors"
+            },
+            {
+              "title": "Allocate",
+              "text": "Automated slotting",
+              "metric": "2 h",
+              "metric_label": "to allocate"
+            },
+            {
+              "title": "Pick",
+              "text": "Goods-to-person",
+              "metric": "99.7%",
+              "metric_label": "pick accuracy"
+            },
+            {
+              "title": "Deliver",
+              "text": "Dynamic routing",
+              "metric": "96%",
+              "metric_label": "on time"
+            }
+          ]
+        },
+        "highlight": [
+          2
+        ]
+      },
+      "id": "pr04",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "El alta de un proveedor tiene cuatro pasos y tarda 21 días",
+      "message_type": "process",
+      "visual": {
+        "type": "process",
+        "data": {
+          "steps": [
+            {
+              "title": "Solicitud",
+              "text": "Compras"
+            },
+            {
+              "title": "Homologación",
+              "text": "Calidad, 12 días"
+            },
+            {
+              "title": "Alta en ERP",
+              "text": "Administración"
+            },
+            {
+              "title": "Primer pedido",
+              "text": "Compras"
+            }
+          ]
+        },
+        "highlight": [
+          1
+        ]
+      },
+      "id": "pr05",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Batería de pruebas (sintética)"
+    },
+    {
+      "headline": "Product development follows a gated process with five stages",
+      "message_type": "process",
+      "visual": {
+        "type": "value_chain",
+        "data": {
+          "steps": [
+            {
+              "title": "Discover"
+            },
+            {
+              "title": "Define"
+            },
+            {
+              "title": "Develop"
+            },
+            {
+              "title": "Validate"
+            },
+            {
+              "title": "Launch"
+            }
+          ]
+        },
+        "highlight": [
+          3
+        ]
+      },
+      "id": "pr06",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "Hiring a nurse takes six steps and 68 days on average",
+      "message_type": "process",
+      "visual": {
+        "type": "process",
+        "data": {
+          "steps": [
+            {
+              "title": "Request position",
+              "points": [
+                "Ward manager",
+                "5 days"
+              ]
+            },
+            {
+              "title": "Approve budget",
+              "points": [
+                "Finance",
+                "11 days"
+              ]
+            },
+            {
+              "title": "Advertise and screen",
+              "points": [
+                "HR",
+                "18 days"
+              ]
+            },
+            {
+              "title": "Interview",
+              "points": [
+                "Panel of 3",
+                "9 days"
+              ]
+            },
+            {
+              "title": "Pre-employment checks",
+              "points": [
+                "Occupational health and references",
+                "21 days"
+              ]
+            },
+            {
+              "title": "Start",
+              "points": [
+                "Induction",
+                "4 days"
+              ]
+            }
+          ]
+        },
+        "highlight": [
+          4
+        ]
+      },
+      "id": "pr07",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "Three steps turn raw data into a monthly forecast",
+      "message_type": "process",
+      "visual": {
+        "type": "process",
+        "data": {
+          "steps": [
+            {
+              "title": "Collect and clean sales, inventory and promotion data from 14 country systems"
+            },
+            {
+              "title": "Run the statistical forecast and flag outliers for review"
+            },
+            {
+              "title": "Agree the consensus forecast in the monthly sales and operations meeting"
+            }
+          ]
+        }
+      },
+      "id": "pr08",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "La tramitación de una licencia de obra tiene cinco fases",
+      "message_type": "process",
+      "visual": {
+        "type": "process",
+        "data": {
+          "steps": [
+            {
+              "title": "Solicitud",
+              "points": [
+                "Registro electrónico"
+              ]
+            },
+            {
+              "title": "Revisión técnica",
+              "points": [
+                "Arquitecto municipal",
+                "45 días"
+              ]
+            },
+            {
+              "title": "Informe jurídico",
+              "points": [
+                "15 días"
+              ]
+            },
+            {
+              "title": "Resolución",
+              "points": [
+                "Junta de gobierno"
+              ]
+            },
+            {
+              "title": "Notificación",
+              "points": [
+                "10 días"
+              ]
+            }
+          ]
+        },
+        "highlight": [
+          1
+        ]
+      },
+      "id": "pr09",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Batería de pruebas (sintética)"
+    },
+    {
+      "headline": "A customer complaint is resolved in four steps; escalation is the bottleneck",
+      "message_type": "process",
+      "visual": {
+        "type": "process",
+        "data": {
+          "steps": [
+            {
+              "title": "Log",
+              "text": "Any channel",
+              "metric": "2 min"
+            },
+            {
+              "title": "Classify",
+              "text": "Automatic",
+              "metric": "1 h"
+            },
+            {
+              "title": "Escalate",
+              "text": "Specialist team",
+              "metric": "4.5 days"
+            },
+            {
+              "title": "Resolve",
+              "text": "Call back",
+              "metric": "1 day"
+            }
+          ]
+        },
+        "highlight": [
+          2
+        ]
+      },
+      "id": "pr10",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    }
+  ]
+}

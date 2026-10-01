@@ -31,6 +31,7 @@ WIDE_VISUALS = {"gantt", "roadmap", "timeline", "journey", "value_chain", "opera
 def content_roles(slide: dict) -> dict:
     roles: dict = {}
     exhibits = []
+    text_ex = None
     for ex in slide_exhibits(slide):
         t = ex.get("type")
         if t == "statements":
@@ -42,19 +43,31 @@ def content_roles(slide: dict) -> dict:
         elif t in ("statement", "quote"):
             roles["statement"] = ex
         elif t == "bullets":
-            roles["commentary"] = {"points": (ex.get("data") or {}).get("points") or ex.get("points") or [], "title": ex.get("title")}
+            text_ex = {"points": (ex.get("data") or {}).get("points") or ex.get("points") or [], "title": ex.get("title")}
         else:
             exhibits.append(ex)
     if exhibits:
         roles["exhibit"] = exhibits
-    if slide.get("commentary"):
-        roles["commentary"] = slide["commentary"]
     if slide.get("kpis"):
         roles["kpis"] = slide["kpis"] if isinstance(slide["kpis"], dict) else {"items": slide["kpis"]}
     if slide.get("columns"):
         roles["column"] = slide["columns"]
     if slide.get("statements"):
         roles["statements"] = {"data": {"items": slide["statements"]}}
+    if text_ex is not None and not any(roles.get(k) for k in ("exhibit", "kpis", "column", "statements", "statement")):
+        # (v1.4) body text that IS the slide gets its own role and component (tc.text_exhibit),
+        # instead of being drawn as side commentary; the slide's own commentary becomes its so-what
+        roles["text"] = text_ex
+        if slide.get("commentary"):
+            roles["commentary"] = slide["commentary"]
+    elif text_ex is not None:
+        # beside another exhibit, bullets are commentary: MERGED with the slide's commentary
+        # (v1.3.3 silently replaced the bullets with it and lost content)
+        c = slide.get("commentary") or {}
+        roles["commentary"] = {"title": text_ex.get("title") or (c.get("title") if isinstance(c, dict) else None),
+                               "points": list(text_ex["points"]) + list((c.get("points") if isinstance(c, dict) else c) or [])}
+    elif slide.get("commentary"):
+        roles["commentary"] = slide["commentary"]
     return roles
 
 

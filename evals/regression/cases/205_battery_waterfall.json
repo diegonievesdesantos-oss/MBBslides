@@ -1,0 +1,433 @@
+{
+  "meta": {
+    "title": "Battery: waterfall",
+    "deck_type": "strategy_deck",
+    "theme": "graphite"
+  },
+  "storyline": {
+    "framework": "SCR",
+    "governing_thought": "Each waterfall slide is judged on what it is trying to be",
+    "key_line": [
+      {
+        "id": "K1",
+        "role": "situation",
+        "message": "Variations of one archetype"
+      },
+      {
+        "id": "K2",
+        "role": "resolution",
+        "message": "Composition must hold across them"
+      }
+    ]
+  },
+  "eval": {
+    "purpose": "Archetype battery (waterfall): 3–9 steps / subtotals / negatives / decimals / Spanish / with and without commentary",
+    "battery": "waterfall"
+  },
+  "slides": [
+    {
+      "headline": "Price increases more than offset inflation in 2025",
+      "message_type": "change_bridge",
+      "visual": {
+        "type": "waterfall",
+        "title": "EBITDA 2024 to 2025",
+        "unit": "€M",
+        "data": {
+          "steps": [
+            {
+              "label": "2024",
+              "value": 180,
+              "type": "total"
+            },
+            {
+              "label": "Price",
+              "value": 34
+            },
+            {
+              "label": "Inflation",
+              "value": -22
+            },
+            {
+              "label": "2025",
+              "type": "total"
+            }
+          ]
+        }
+      },
+      "id": "wf01",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "Volume and mix add €61M; energy and wages take €38M",
+      "message_type": "change_bridge",
+      "visual": {
+        "type": "waterfall",
+        "title": "Operating profit bridge",
+        "unit": "€M",
+        "data": {
+          "steps": [
+            {
+              "label": "2024",
+              "value": 410,
+              "type": "total"
+            },
+            {
+              "label": "Volume",
+              "value": 41
+            },
+            {
+              "label": "Mix",
+              "value": 20
+            },
+            {
+              "label": "Price",
+              "value": 12
+            },
+            {
+              "label": "Energy",
+              "value": -21
+            },
+            {
+              "label": "Wages",
+              "value": -17
+            },
+            {
+              "label": "Freight",
+              "value": -6
+            },
+            {
+              "label": "Other",
+              "value": 3
+            },
+            {
+              "label": "2025",
+              "type": "total"
+            }
+          ]
+        }
+      },
+      "commentary": {
+        "points": [
+          "Volume and mix add **€61M**",
+          "Energy and wages take **€38M**"
+        ]
+      },
+      "id": "wf02",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "El margen bruto cae 1,8 puntos por mermas y promociones",
+      "message_type": "change_bridge",
+      "visual": {
+        "type": "waterfall",
+        "title": "Margen bruto",
+        "unit": "pp",
+        "format": {
+          "decimals": 1
+        },
+        "data": {
+          "steps": [
+            {
+              "label": "2024",
+              "value": 31.4,
+              "type": "total"
+            },
+            {
+              "label": "Mermas",
+              "value": -0.9
+            },
+            {
+              "label": "Promociones",
+              "value": -0.7
+            },
+            {
+              "label": "Mix",
+              "value": -0.4
+            },
+            {
+              "label": "Compras",
+              "value": 0.2
+            },
+            {
+              "label": "2025",
+              "type": "total"
+            }
+          ]
+        }
+      },
+      "id": "wf03",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Batería de pruebas (sintética)"
+    },
+    {
+      "headline": "Cost savings of €95M build up from five initiatives",
+      "message_type": "change_bridge",
+      "visual": {
+        "type": "bridge",
+        "title": "Run-rate savings",
+        "unit": "€M",
+        "data": {
+          "steps": [
+            {
+              "label": "Procurement",
+              "value": 32
+            },
+            {
+              "label": "Footprint",
+              "value": 24
+            },
+            {
+              "label": "Automation",
+              "value": 18
+            },
+            {
+              "label": "Subtotal",
+              "type": "subtotal"
+            },
+            {
+              "label": "Organisation",
+              "value": 14
+            },
+            {
+              "label": "Travel",
+              "value": 7
+            },
+            {
+              "label": "Total",
+              "type": "total"
+            }
+          ]
+        }
+      },
+      "id": "wf04",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "Net debt falls from €1.2bn to €0.9bn",
+      "message_type": "change_bridge",
+      "visual": {
+        "type": "waterfall",
+        "title": "Net debt",
+        "unit": "€M",
+        "data": {
+          "steps": [
+            {
+              "label": "Dec 2024",
+              "value": 1210,
+              "type": "total"
+            },
+            {
+              "label": "Operating cash",
+              "value": -420
+            },
+            {
+              "label": "Capex",
+              "value": 180
+            },
+            {
+              "label": "Dividends",
+              "value": 95
+            },
+            {
+              "label": "Disposals",
+              "value": -160
+            },
+            {
+              "label": "Dec 2025",
+              "type": "total"
+            }
+          ]
+        }
+      },
+      "commentary": {
+        "points": [
+          "Disposals cut debt by **€160M**",
+          "Capex stays at 6% of sales"
+        ]
+      },
+      "id": "wf05",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "Headcount rises by 140 despite automation",
+      "message_type": "change_bridge",
+      "visual": {
+        "type": "waterfall",
+        "title": "FTE",
+        "unit": "FTE",
+        "data": {
+          "steps": [
+            {
+              "label": "Start",
+              "value": 2310,
+              "type": "total"
+            },
+            {
+              "label": "Growth",
+              "value": 260
+            },
+            {
+              "label": "Automation",
+              "value": -150
+            },
+            {
+              "label": "Insourcing",
+              "value": 30
+            },
+            {
+              "label": "End",
+              "type": "total"
+            }
+          ]
+        }
+      },
+      "id": "wf06",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "La caja generada cubre la inversión y el dividendo",
+      "message_type": "change_bridge",
+      "visual": {
+        "type": "waterfall",
+        "title": "Flujo de caja 2025",
+        "unit": "M€",
+        "data": {
+          "steps": [
+            {
+              "label": "EBITDA",
+              "value": 640,
+              "type": "total"
+            },
+            {
+              "label": "Circulante",
+              "value": -85
+            },
+            {
+              "label": "Impuestos",
+              "value": -110
+            },
+            {
+              "label": "Inversión",
+              "value": -230
+            },
+            {
+              "label": "Dividendo",
+              "value": -120
+            },
+            {
+              "label": "Caja neta",
+              "type": "total"
+            }
+          ]
+        }
+      },
+      "id": "wf07",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Batería de pruebas (sintética)"
+    },
+    {
+      "headline": "Revenue per customer up $38 from price, down $12 from churn mix",
+      "message_type": "change_bridge",
+      "visual": {
+        "type": "waterfall",
+        "title": "Revenue per customer",
+        "unit": "$",
+        "data": {
+          "steps": [
+            {
+              "label": "2024",
+              "value": 412,
+              "type": "total"
+            },
+            {
+              "label": "Price",
+              "value": 38
+            },
+            {
+              "label": "Upsell",
+              "value": 19
+            },
+            {
+              "label": "Churn mix",
+              "value": -12
+            },
+            {
+              "label": "Discounts",
+              "value": -9
+            },
+            {
+              "label": "2025",
+              "type": "total"
+            }
+          ]
+        }
+      },
+      "id": "wf08",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    },
+    {
+      "headline": "Gross margin to net profit: where the 42 points go",
+      "message_type": "change_bridge",
+      "visual": {
+        "type": "waterfall",
+        "title": "From gross margin to net margin",
+        "unit": "% of revenue",
+        "data": {
+          "steps": [
+            {
+              "label": "Gross margin",
+              "value": 42,
+              "type": "total"
+            },
+            {
+              "label": "Selling",
+              "value": -14
+            },
+            {
+              "label": "Admin",
+              "value": -8
+            },
+            {
+              "label": "R&D",
+              "value": -6
+            },
+            {
+              "label": "D&A",
+              "value": -4
+            },
+            {
+              "label": "Interest",
+              "value": -2
+            },
+            {
+              "label": "Tax",
+              "value": -2
+            },
+            {
+              "label": "Net margin",
+              "type": "total"
+            }
+          ]
+        }
+      },
+      "id": "wf09",
+      "section": "K1",
+      "purpose": "Battery case",
+      "source": "Battery fixture (synthetic)"
+    }
+  ]
+}

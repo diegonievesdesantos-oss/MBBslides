@@ -58,10 +58,12 @@ def _variants(slide: dict, layout_id: str) -> list[dict]:
     wc = len(words(" ".join(str(p) for p in (roles.get("commentary") or {}).get("points", []) if isinstance(roles.get("commentary"), dict))))
     has_table = any(e.get("rows") for e in roles.get("exhibit") or [])
     n_rows = max((len(e.get("rows") or []) for e in roles.get("exhibit") or []), default=0)
-    only_text = not roles.get("exhibit") and (roles.get("commentary") or roles.get("column") or roles.get("statements") or roles.get("kpis"))
+    if roles.get("text") or roles.get("column") or (roles.get("kpis") and not roles.get("exhibit")):
+        return [{}]  # (v1.4) these components size themselves to the zone (pptx/adaptive.py)
+    only_text = not roles.get("exhibit") and (roles.get("commentary") or roles.get("statements"))
     out = [{}]
     sparse_table = has_table and n_rows <= 6
-    sparse_text = (only_text and wc < 60) or (roles.get("kpis") and not roles.get("exhibit"))
+    sparse_text = only_text and wc < 60
     if sparse_table:
         out += [{"scale": 1.2, "table_stretch": 0.6}, {"scale": 1.35, "table_stretch": 0.9}]
     elif sparse_text:

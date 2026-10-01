@@ -1,0 +1,257 @@
+{
+  "meta": {
+    "title": "Battery: executive_summary",
+    "deck_type": "strategy_deck",
+    "theme": "meridian"
+  },
+  "storyline": {
+    "framework": "SCR",
+    "governing_thought": "Each executive_summary slide is judged on what it is trying to be",
+    "key_line": [
+      {
+        "id": "K1",
+        "role": "situation",
+        "message": "Variations of one archetype"
+      },
+      {
+        "id": "K2",
+        "role": "resolution",
+        "message": "Composition must hold across them"
+      }
+    ]
+  },
+  "eval": {
+    "purpose": "Archetype battery (executive_summary): 2–6 rows / short and long / SCR / Spanish",
+    "battery": "executive_summary"
+  },
+  "slides": [
+    {
+      "kind": "exec_summary",
+      "purpose": "Answer first",
+      "headline": "Two moves restore growth in 2027",
+      "visual": {
+        "type": "statements",
+        "data": {
+          "items": [
+            {
+              "title": "Fix pricing in convenience",
+              "text": "Worth €20M."
+            },
+            {
+              "title": "Open 30 discount stores",
+              "text": "Worth €45M."
+            }
+          ]
+        }
+      },
+      "id": "es01"
+    },
+    {
+      "kind": "exec_summary",
+      "purpose": "Answer first",
+      "headline": "The insurer can cut its cost ratio by four points in three years by automating claims",
+      "visual": {
+        "type": "statements",
+        "data": {
+          "items": [
+            {
+              "title": "Claims cost 38% of premiums, eight points above peers",
+              "text": "Manual assessment and slow payments drive both cost and leakage."
+            },
+            {
+              "title": "Automated assessment works on 70% of motor claims",
+              "text": "Pilot cut handling time from 23 to 6 days with no rise in leakage."
+            },
+            {
+              "title": "The platform pays back in 26 months",
+              "text": "€41M investment, €64M a year of savings from 2028."
+            },
+            {
+              "title": "The board is asked to approve phase one",
+              "text": "€18M for photo assessment and triage in 2026."
+            }
+          ]
+        }
+      },
+      "id": "es02"
+    },
+    {
+      "kind": "exec_summary",
+      "purpose": "Answer first",
+      "headline": "La cadena puede volver a crecer si cierra tiendas pequeñas y abre formato de proximidad",
+      "visual": {
+        "type": "statements",
+        "data": {
+          "items": [
+            {
+              "title": "Las tiendas de menos de 400 m² pierden dinero",
+              "text": "38 tiendas con resultado negativo por tercer año."
+            },
+            {
+              "title": "La proximidad crece al 7% anual",
+              "text": "Los clientes compran más a menudo y con cestas más pequeñas."
+            },
+            {
+              "title": "El nuevo formato se paga en tres años",
+              "text": "Piloto en 5 tiendas con ventas un 22% superiores."
+            }
+          ]
+        }
+      },
+      "id": "es03"
+    },
+    {
+      "kind": "exec_summary",
+      "purpose": "Answer first",
+      "headline": "Exiting two markets frees €120M for the core business",
+      "visual": {
+        "type": "statements",
+        "data": {
+          "style": "scr",
+          "items": [
+            {
+              "label": "Situation",
+              "title": "Five markets, two of them subscale",
+              "text": "Poland and Romania are 9% of revenue and lose money."
+            },
+            {
+              "label": "Complication",
+              "title": "Both need €120M of capex to stay competitive",
+              "text": "Returns stay below the cost of capital even after investment."
+            },
+            {
+              "label": "Resolution",
+              "title": "Sell both and reinvest at home",
+              "text": "Two buyers have shown interest at 0.8x revenue."
+            }
+          ]
+        }
+      },
+      "id": "es04"
+    },
+    {
+      "kind": "exec_summary",
+      "purpose": "Answer first",
+      "headline": "Five findings from the operations review",
+      "visual": {
+        "type": "statements",
+        "data": {
+          "items": [
+            {
+              "title": "Capacity is not the constraint",
+              "text": "Plants run at 71% utilisation."
+            },
+            {
+              "title": "Changeovers are",
+              "text": "They take 19% of planned time."
+            },
+            {
+              "title": "Quality losses are concentrated",
+              "text": "Two lines cause 64% of scrap."
+            },
+            {
+              "title": "Maintenance is reactive",
+              "text": "78% of hours are unplanned."
+            },
+            {
+              "title": "Fixing these adds 9 points of OEE",
+              "text": "Without new equipment."
+            }
+          ]
+        }
+      },
+      "id": "es05"
+    },
+    {
+      "kind": "exec_summary",
+      "purpose": "Answer first",
+      "headline": "Resumen: tres decisiones para el consejo",
+      "visual": {
+        "type": "statements",
+        "data": {
+          "items": [
+            {
+              "title": "Aprobar el plan de eficiencia",
+              "text": "Ahorro de 35 M€."
+            },
+            {
+              "title": "Lanzar la marca propia",
+              "text": "Margen +2 pp."
+            },
+            {
+              "title": "Vender la filial de transporte",
+              "text": "Ingreso de 60 M€."
+            }
+          ]
+        }
+      },
+      "id": "es06"
+    },
+    {
+      "kind": "exec_summary",
+      "purpose": "Answer first",
+      "headline": "The programme is on track, but the second wave needs funding by March to keep the 2027 target",
+      "visual": {
+        "type": "statements",
+        "data": {
+          "style": "scr",
+          "items": [
+            {
+              "label": "Situation",
+              "title": "Wave one delivered €22M, ahead of plan",
+              "text": "Procurement and energy renegotiations closed early; overtime is down a fifth."
+            },
+            {
+              "label": "Complication",
+              "title": "Automation needs €30M of capex with nine-month lead times",
+              "text": "Ordering after March pushes €11M of savings into 2028."
+            },
+            {
+              "label": "Resolution",
+              "title": "Release the wave-two budget now",
+              "text": "Keeps the €65M run-rate target for 2027 and pays back in 22 months."
+            }
+          ]
+        }
+      },
+      "id": "es07"
+    },
+    {
+      "kind": "exec_summary",
+      "purpose": "Answer first",
+      "headline": "Six reasons the merger creates value",
+      "visual": {
+        "type": "statements",
+        "data": {
+          "items": [
+            {
+              "title": "Complementary footprints",
+              "text": "Overlap in only 3 of 14 regions."
+            },
+            {
+              "title": "Procurement scale",
+              "text": "€45M of savings on combined spend."
+            },
+            {
+              "title": "Shared platforms",
+              "text": "One ERP and one data centre by 2028."
+            },
+            {
+              "title": "Cross-selling",
+              "text": "€30M of revenue synergies."
+            },
+            {
+              "title": "Stronger balance sheet",
+              "text": "Leverage falls to 2.1x."
+            },
+            {
+              "title": "Retained talent",
+              "text": "Key managers committed for three years."
+            }
+          ]
+        }
+      },
+      "id": "es08"
+    }
+  ]
+}

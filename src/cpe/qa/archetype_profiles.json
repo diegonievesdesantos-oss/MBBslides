@@ -1,0 +1,199 @@
+{
+ "_doc": [
+   "Expected visual profile per slide archetype (loaded by qa/archetypes.py).",
+   "Each metric: range [lo, hi] = no penalty inside; soft = how fast fitness decays outside; w = weight (0 = not scored); null = metric not used.",
+   "Every change must be recorded in evals/profile_changes.md with reason and evidence; tests/test_quality.py checks that the file and the changelog agree on the last-changed versions."
+ ],
+ "base": {
+  "utilization": {"range": [0.7, 1.0], "soft": 0.35, "w": 12, "why": "Content should use most of the body band unless the archetype says otherwise.", "last_changed": "1.2.0"},
+  "empty": {"range": [0.0, 0.25], "soft": 0.35, "w": 16, "why": "The largest empty rectangle is the 'floats in an empty slide' failure.", "last_changed": "1.2.0"},
+  "ink": {"range": [0.06, 0.3], "soft": 0.12, "w": 8, "why": "Comfortable density band.", "last_changed": "1.2.0"},
+  "offcentre": {"range": [0.0, 0.12], "soft": 0.3, "w": 8, "why": "Visual weight near the body centre.", "last_changed": "1.2.0"},
+  "emphasis": {"range": [0.05, 1.0], "soft": 0.05, "w": 8, "why": "Something should stand out (one-sided: primary is also default data ink).", "last_changed": "1.2.0"},
+  "regions": {"range": [0, 5], "soft": 4, "w": 4, "why": "Many separate accent masses compete; a highlighted series repeats, so only many masses are noise.", "last_changed": "1.2.0"},
+  "ratio": {"range": [1.35, 9.0], "soft": 0.5, "w": 10, "why": "The headline should dominate the body type.", "last_changed": "1.2.0"},
+  "edges": {"range": [0, 5], "soft": 6, "w": 6, "why": "Few unrelated left edges.", "last_changed": "1.2.0"},
+  "proof": {"range": [0.5, 1.0], "soft": 0.5, "w": 14, "why": "Headline numbers / highlighted items visible in the exhibit.", "last_changed": "1.2.0"}
+ },
+ "archetypes": {
+  "statement": {
+   "why": "One sentence carries the slide: air is the point, density would be wrong. The statement text IS the message and may be larger than any headline (no hierarchy ratio, no proof).",
+   "evidence": {"development": "v1.2 calibration set (example decks reviewed slide by slide + regression suite)", "human": "none yet"},
+   "metrics": {
+    "utilization": {"range": [0.15, 0.75], "soft": 0.35, "w": 6, "last_changed": "1.2.0"},
+    "empty": {"range": [0.0, 0.8], "soft": 0.25, "w": 4, "last_changed": "1.2.0"},
+    "ink": {"range": [0.01, 0.12], "soft": 0.08, "w": 6, "last_changed": "1.2.0"},
+    "offcentre": {"range": [0.0, 0.25], "soft": 0.3, "w": 4, "last_changed": "1.2.0"},
+    "emphasis": {"range": [0.0, 1.0], "soft": 0.1, "w": 0, "last_changed": "1.2.0"},
+    "regions": {"range": [0, 3], "soft": 6, "w": 2, "last_changed": "1.2.0"},
+    "ratio": null,
+    "proof": null
+   }
+  },
+  "kpi_hero": {
+   "why": "One big figure: intentional whitespace, the figure must dominate. A centred figure leaves empty bands of ~40% of the body; half the slide empty is not intentional.",
+   "evidence": {"development": "v1.2 calibration set (example decks reviewed slide by slide + regression suite)", "human": "none yet"},
+   "metrics": {
+    "utilization": {"range": [0.25, 0.95], "soft": 0.35, "w": 8, "last_changed": "1.2.0"},
+    "empty": {"range": [0.0, 0.5], "soft": 0.25, "w": 12, "last_changed": "1.2.0"},
+    "ink": {"range": [0.02, 0.2], "soft": 0.08, "w": 6, "last_changed": "1.2.0"},
+    "offcentre": {"range": [0.0, 0.22], "soft": 0.3, "w": 10, "last_changed": "1.2.0"},
+    "emphasis": {"range": [0.1, 1.0], "soft": 0.1, "w": 12, "last_changed": "1.2.0"},
+    "regions": {"range": [0, 2], "soft": 4, "w": 4, "last_changed": "1.2.0"}
+   }
+  },
+  "kpi_dashboard": {
+   "why": "Several KPIs read as a set: fill the band evenly, emphasis bounded so the tiles do not all shout. A set of 3–5 figures shown as cards needs air like a KPI hero (utilization from 0.5, empty up to 0.36); a dense grid still fills the band.",
+   "evidence": {"development": "v1.4 archetype battery (8 dashboard slides, 202_battery_kpi_dashboard.json) after the KPI-card fix", "human": "none yet — r2 samples kpi_dashboard pairs to test this change"},
+   "metrics": {
+    "empty": {"range": [0.0, 0.36], "soft": 0.3, "w": 14, "last_changed": "1.4.0", "status": "provisional"},
+    "ink": {"range": [0.04, 0.3], "soft": 0.1, "w": 8, "last_changed": "1.2.0"},
+    "emphasis": {"range": [0.05, 0.7], "soft": 0.08, "w": 6, "last_changed": "1.2.0"},
+    "regions": {"range": [0, 6], "soft": 6, "w": 4, "last_changed": "1.2.0"},
+    "utilization": {"range": [0.5, 1.0], "soft": 0.35, "w": 12, "last_changed": "1.4.0", "status": "provisional"}
+   }
+  },
+  "executive_summary": {
+   "why": "Dense by nature, even rhythm. Short summaries read better as one compact centred block than spread over the full height; a summary using under half the canvas is still too thin.",
+   "evidence": {"development": "v1.2 calibration set (example decks reviewed slide by slide + regression suite)", "human": "gallery slide 3 feedback (v1.3.2)"},
+   "metrics": {
+    "utilization": {"range": [0.5, 1.0], "soft": 0.3, "w": 12, "last_changed": "1.3.2"},
+    "empty": {"range": [0.0, 0.32], "soft": 0.3, "w": 14, "last_changed": "1.3.2"},
+    "ink": {"range": [0.02, 0.35], "soft": 0.12, "w": 8, "last_changed": "1.2.0"},
+    "offcentre": {"range": [0.0, 0.1], "soft": 0.25, "w": 12, "last_changed": "1.3.2"},
+    "emphasis": {"range": [0.0, 1.0], "soft": 0.08, "w": 0, "last_changed": "1.2.0"},
+    "regions": {"range": [0, 6], "soft": 6, "w": 2, "last_changed": "1.2.0"},
+    "edges": {"range": [0, 6], "soft": 8, "w": 10, "last_changed": "1.2.0"},
+    "proof": null
+   }
+  },
+  "chart": {
+   "why": "Solid bars are data ink, not clutter; a line chart is thin by nature.",
+   "evidence": {"development": "v1.2 calibration set (example decks reviewed slide by slide + regression suite)", "human": "none yet"},
+   "metrics": {
+    "utilization": {"range": [0.72, 1.0], "soft": 0.35, "w": 12, "last_changed": "1.2.0"},
+    "empty": {"range": [0.0, 0.28], "soft": 0.35, "w": 16, "last_changed": "1.2.0"},
+    "ink": {"range": [0.01, 0.45], "soft": 0.12, "w": 6, "last_changed": "1.2.0"}
+   }
+  },
+  "waterfall": {
+   "why": "The bridge needs the full width and most of the height for its deltas.",
+   "evidence": {"development": "v1.2 calibration set (example decks reviewed slide by slide + regression suite)", "human": "none yet"},
+   "metrics": {
+    "utilization": {"range": [0.78, 1.0], "soft": 0.3, "w": 14, "last_changed": "1.2.0"},
+    "empty": {"range": [0.0, 0.25], "soft": 0.3, "w": 16, "last_changed": "1.2.0"},
+    "ink": {"range": [0.03, 0.4], "soft": 0.12, "w": 6, "last_changed": "1.2.0"}
+   }
+  },
+  "table": {
+   "why": "A table that floats in half an empty slide is the canonical failure.",
+   "evidence": {"development": "v1.2 calibration set (example decks reviewed slide by slide + regression suite)", "human": "none yet"},
+   "metrics": {
+    "utilization": {"range": [0.75, 1.0], "soft": 0.25, "w": 16, "last_changed": "1.2.0"},
+    "empty": {"range": [0.0, 0.2], "soft": 0.25, "w": 20, "last_changed": "1.2.0"},
+    "ink": {"range": [0.02, 0.32], "soft": 0.06, "w": 6, "last_changed": "1.2.0"},
+    "offcentre": {"range": [0.0, 0.14], "soft": 0.3, "w": 6, "last_changed": "1.2.0"},
+    "emphasis": {"range": [0.0, 1.0], "soft": 0.08, "w": 0, "last_changed": "1.2.0"}
+   }
+  },
+  "matrix": {
+   "why": "A 2x2 is a square field: balance matters more than filling every corner.",
+   "evidence": {"development": "v1.2 calibration set (example decks reviewed slide by slide + regression suite)", "human": "none yet"},
+   "metrics": {
+    "utilization": {"range": [0.65, 1.0], "soft": 0.25, "w": 12, "last_changed": "1.2.0"},
+    "empty": {"range": [0.0, 0.32], "soft": 0.3, "w": 12, "last_changed": "1.2.0"},
+    "ink": {"range": [0.04, 0.28], "soft": 0.12, "w": 6, "last_changed": "1.2.0"},
+    "offcentre": {"range": [0.0, 0.1], "soft": 0.25, "w": 14, "last_changed": "1.2.0"}
+   }
+  },
+  "comparison": {
+   "why": "Columns compared side by side should use the width and stay balanced. Comparison columns are TEXT: the same density expectations as a text exhibit (utilization from 0.55, empty up to 0.35), balance weighted higher.",
+   "evidence": {"development": "v1.4 archetype battery (10 comparison slides, 208_battery_comparison.json) after the joint-column composition fix", "human": "none yet — r2 samples comparison pairs to test this change"},
+   "metrics": {
+    "utilization": {"range": [0.55, 1.0], "soft": 0.35, "w": 12, "last_changed": "1.4.0", "status": "provisional"},
+    "empty": {"range": [0.0, 0.35], "soft": 0.3, "w": 14, "last_changed": "1.4.0", "status": "provisional"},
+    "offcentre": {"range": [0.0, 0.1], "soft": 0.25, "w": 12, "last_changed": "1.2.0"},
+    "edges": {"range": [0, 6], "soft": 8, "w": 10, "last_changed": "1.2.0"}
+   }
+  },
+  "process": {
+   "why": "Steps read left to right across the width. With few, short steps the sequence is a BAND (like a timeline): vertical air above and below a centred band is inherent; the failures are a band glued under the headline (empty) or off-balance (offcentre).",
+   "evidence": {"development": "v1.4 archetype battery (10 process slides, evals/regression/cases/209_battery_process.json) after the adaptive-composition fix", "human": "none yet — r2 samples process pairs to test this change"},
+   "metrics": {
+    "utilization": {"range": [0.5, 1.0], "soft": 0.35, "w": 12, "last_changed": "1.4.0", "status": "provisional"},
+    "empty": {"range": [0.0, 0.36], "soft": 0.3, "w": 14, "last_changed": "1.4.0", "status": "provisional"},
+    "edges": {"range": [0, 8], "soft": 10, "w": 6, "last_changed": "1.2.0"}
+   }
+  },
+  "roadmap": {
+   "why": "Roadmaps read left to right across the whole width.",
+   "evidence": {"development": "v1.2 calibration set (example decks reviewed slide by slide + regression suite)", "human": "none yet"},
+   "metrics": {
+    "utilization": {"range": [0.78, 1.0], "soft": 0.3, "w": 16, "last_changed": "1.2.0"},
+    "empty": {"range": [0.0, 0.28], "soft": 0.3, "w": 12, "last_changed": "1.2.0"},
+    "ink": {"range": [0.04, 0.3], "soft": 0.12, "w": 6, "last_changed": "1.2.0"}
+   }
+  },
+  "timeline": {
+   "why": "A timeline is a one-dimensional band: air above and below it is inherent, not waste.",
+   "evidence": {"development": "v1.2 calibration set (example decks reviewed slide by slide + regression suite)", "human": "none yet"},
+   "metrics": {
+    "utilization": {"range": [0.35, 1.0], "soft": 0.35, "w": 10, "last_changed": "1.2.0"},
+    "empty": {"range": [0.0, 0.5], "soft": 0.3, "w": 10, "last_changed": "1.2.0"},
+    "ink": {"range": [0.01, 0.25], "soft": 0.1, "w": 6, "last_changed": "1.2.0"},
+    "offcentre": {"range": [0.0, 0.18], "soft": 0.3, "w": 6, "last_changed": "1.2.0"}
+   }
+  },
+  "operating_model": {
+   "why": "Layered diagrams carry a label column on the left: their ink is left-weighted by construction.",
+   "evidence": {"development": "v1.2 calibration set (example decks reviewed slide by slide + regression suite)", "human": "none yet"},
+   "metrics": {
+    "utilization": {"range": [0.78, 1.0], "soft": 0.3, "w": 14, "last_changed": "1.2.0"},
+    "empty": {"range": [0.0, 0.22], "soft": 0.3, "w": 14, "last_changed": "1.2.0"},
+    "ink": {"range": [0.06, 0.4], "soft": 0.12, "w": 8, "last_changed": "1.2.0"},
+    "offcentre": {"range": [0.0, 0.35], "soft": 0.3, "w": 3, "last_changed": "1.2.0"},
+    "edges": {"range": [0, 10], "soft": 10, "w": 4, "last_changed": "1.2.0"}
+   }
+  },
+  "architecture": {
+   "why": "Layered diagrams carry a label column on the left: their ink is left-weighted by construction.",
+   "evidence": {"development": "v1.2 calibration set (example decks reviewed slide by slide + regression suite)", "human": "none yet"},
+   "metrics": {
+    "utilization": {"range": [0.75, 1.0], "soft": 0.3, "w": 14, "last_changed": "1.2.0"},
+    "empty": {"range": [0.0, 0.25], "soft": 0.3, "w": 14, "last_changed": "1.2.0"},
+    "ink": {"range": [0.06, 0.4], "soft": 0.12, "w": 8, "last_changed": "1.2.0"},
+    "offcentre": {"range": [0.0, 0.35], "soft": 0.3, "w": 3, "last_changed": "1.2.0"},
+    "edges": {"range": [0, 10], "soft": 10, "w": 4, "last_changed": "1.2.0"}
+   }
+  },
+  "hierarchy": {
+   "why": "Trees taper: their envelope leaves corners empty.",
+   "evidence": {"development": "v1.2 calibration set (example decks reviewed slide by slide + regression suite)", "human": "none yet"},
+   "metrics": {
+    "utilization": {"range": [0.65, 1.0], "soft": 0.35, "w": 12, "last_changed": "1.2.0"},
+    "empty": {"range": [0.0, 0.35], "soft": 0.3, "w": 12, "last_changed": "1.2.0"},
+    "ink": {"range": [0.03, 0.3], "soft": 0.12, "w": 6, "last_changed": "1.2.0"},
+    "edges": {"range": [0, 10], "soft": 10, "w": 4, "last_changed": "1.2.0"}
+   }
+  },
+  "segmentation": {
+   "why": "Mekko / tile map: a full field.",
+   "evidence": {"development": "v1.2 calibration set (example decks reviewed slide by slide + regression suite)", "human": "none yet"},
+   "metrics": {
+    "utilization": {"range": [0.72, 1.0], "soft": 0.3, "w": 12, "last_changed": "1.2.0"},
+    "empty": {"range": [0.0, 0.28], "soft": 0.3, "w": 14, "last_changed": "1.2.0"}
+   }
+  },
+  "text_exhibit": {
+   "why": "Prose: some air is fine, a sliver of text on an empty slide is not.",
+   "evidence": {"development": "v1.2 calibration set (example decks reviewed slide by slide + regression suite)", "human": "none yet"},
+   "metrics": {
+    "utilization": {"range": [0.55, 1.0], "soft": 0.35, "w": 12, "last_changed": "1.2.0"},
+    "empty": {"range": [0.0, 0.4], "soft": 0.3, "w": 14, "last_changed": "1.2.0"},
+    "ink": {"range": [0.03, 0.25], "soft": 0.1, "w": 8, "last_changed": "1.2.0"},
+    "emphasis": {"range": [0.0, 0.5], "soft": 0.08, "w": 2, "last_changed": "1.2.0"},
+    "regions": {"range": [0, 4], "soft": 6, "w": 2, "last_changed": "1.2.0"}
+   }
+  }
+ }
+}
