@@ -9,7 +9,7 @@ can move a pixel and records it with every eval.
 |---|---|
 | base image | `public.ecr.aws/ubuntu/ubuntu:24.04` pinned by **digest** |
 | system packages | apt resolves against a fixed **Ubuntu archive snapshot** (`SNAPSHOT=20260930T000000Z`, snapshot.ubuntu.com) and every render-relevant package is pinned to an exact version in `docker/apt-pins.txt`: LibreOffice 24.2.7, fontconfig 2.15.0, FreeType 2.13.2, HarfBuzz 8.3.0, FriBiDi 1.0.13, cairo, Python 3.12.3 |
-| fonts | Liberation (Arial/Times/Courier metrics), Carlito (Calibri), Caladea (Cambria), DejaVu; nothing else — a missing corporate font falls back identically everywhere |
+| fonts | Liberation (Arial/Times/Courier metrics), Carlito (Calibri), Caladea (Cambria), DejaVu, and (v1.3) the open-licence corporate typefaces Inter, Roboto, Open Sans, Lato, Montserrat; nothing proprietary — a missing corporate font falls back identically everywhere |
 | Python | `requirements.lock` (python-pptx, Pillow, lxml, PyMuPDF, openpyxl … exact versions) |
 | process | `LANG=C.UTF-8`, `TZ=UTC`, `PYTHONHASHSEED=0`, fontconfig cache built at image build |
 

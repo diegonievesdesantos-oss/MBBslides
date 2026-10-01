@@ -36,7 +36,7 @@ Evidence weights: `{"theme": 0.214, "master": 0.143, "usage": 0.643}` · most us
 
 ## Colours
 
-- Primary brand colour (observed): `#None` · text: `#222222` · supporting: `#1B3A2F` · neutrals: —
+- Primary brand colour (observed): `#None` · text: `#222222` · supporting: — · neutrals: —
 - Share of example slides on a brand-colour background: 0.0
 
 | engine role | colour | source |

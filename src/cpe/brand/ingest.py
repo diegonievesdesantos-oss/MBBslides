@@ -77,7 +77,9 @@ def font_report(name: str | None, installed: set[str]) -> dict:
         sub = tm.FONT_ALIASES.get(fc_match(name).lower())
         if sub and tm.family_available(sub):
             measure = sub
-    exact_measure = bool(fam) and tm.family_available(fam) and (metric or installed_ok)
+    if installed_ok and tm.installed_file(name):  # the real font is here: measure with it
+        measure = tm.family_for(name)
+    exact_measure = (installed_ok and bool(tm.installed_file(name))) or (bool(fam) and tm.family_available(fam) and metric)
     # what the renderer will actually draw with when the font itself is missing
     render_fallback = None if installed_ok else fc_match(name)
     status = "available" if installed_ok else ("metric-compatible substitute" if metric and fam and tm.family_available(fam) else "missing")
@@ -139,7 +141,9 @@ def map_colors(scheme: dict, base) -> tuple[dict, dict, list[str]]:
         "rule": interpolate(text, bg, 0.68), "gridline": interpolate(text, bg, 0.88), "neutral": interpolate(text, bg, 0.5),
     })
     tm_ = interpolate(text, bg, 0.35)
-    while contrast_ratio(tm_, bg) < 4.6:
+    for _ in range(30):  # bounded: with unconventional slots the text/background pair may never reach it
+        if contrast_ratio(tm_, bg) >= 4.6:
+            break
         tm_ = interpolate(tm_, text, 0.2)
     colors["text_muted"] = tm_
     if contrast_ratio(highlight, bg) < 3:
@@ -282,6 +286,11 @@ def reserved_areas(struct: dict, base: dict, sw: float, sh: float) -> list[dict]
     return out
 
 
+def lum_hex(h: str) -> float:
+    r, g, b = hex_to_rgb(h)
+    return (0.299 * r + 0.587 * g + 0.114 * b) / 255
+
+
 def _scaled(b: dict, k: float) -> dict:
     return {kk: round(v * k, 3) if kk in ("x", "y", "w", "h") else v for kk, v in b.items()}
 
@@ -374,10 +383,49 @@ def ingest(template: str | Path, out_dir: str | Path, name: str | None = None, b
         colors["highlight"] = pal["primary"]
         sources["highlight"] = "observed usage"
         series = [colors["primary"], colors["secondary"], interpolate(colors["primary"], colors["background"], 0.55), colors["muted"], colors["highlight"], colors["neutral"]]
-    if pal.get("text") and contrast_ratio(pal["text"], colors["background"]) >= 7 and pal["text"] != colors["text"]:
-        color_notes.append(f"Text colour set to the one used on the slides (#{pal['text']}).")
-        colors["text"] = pal["text"]
+    page, text = pal.get("page"), pal.get("text")
+    template_colors = {c for m in model["masters"] for c in m["theme"]["colors"].values()} | set(pal.get("supporting") or []) | set(pal.get("dark") or [])
+    if page and text and contrast_ratio(text, page) >= 7 and model["example_slides"]["count"] >= 5:
+        # v1.3: roles from what the template really draws (page, text), not from theme slot names —
+        # some templates use dk1/lt1 unconventionally. Derived greys come from the real pair, so
+        # every text/fill combination keeps its contrast by construction.
+        if (page, text) != (colors["background"], colors["text"]):
+            color_notes.append(f"Page #{page} and text #{text} taken from the template's content layouts and the text it actually sets "
+                               f"(theme slots gave page #{colors['background']}, text #{colors['text']}).")
+        colors["background"], colors["text"] = page, text
+        sources.update(background="content layouts", text="observed usage (inheritance resolved)")
+        dark = (pal.get("dark") or [None])[0]
+        if dark and contrast_ratio(dark, page) >= 7:
+            colors["primary"] = dark
+        elif contrast_ratio(colors["primary"], page) < 4.5 or lum_hex(colors["primary"]) > 0.45 or colors["primary"] not in template_colors:
+            colors["primary"] = text  # no dark brand colour of its own: data ink and headers in the text colour
+        sources["primary"] = "observed usage"
+        sec = next((c for c in pal.get("supporting") or [] if contrast_ratio(c, page) >= 3 and contrast_ratio(c, colors["highlight"]) >= 1.5), None)
+        sec = sec or interpolate(colors["primary"], page, 0.45)
+        for _ in range(30):  # data fills carry white labels
+            if contrast_ratio("FFFFFF", sec) >= 4.6 or contrast_ratio(sec, page) >= 7:
+                break
+            sec = interpolate(sec, "1A1A1A", 0.15)
+        colors["secondary"] = sec
+        colors.update({
+            "muted": interpolate(text, page, 0.78), "faint": interpolate(text, page, 0.93), "surface": interpolate(text, page, 0.95),
+            "rule": interpolate(text, page, 0.68), "gridline": interpolate(text, page, 0.88), "neutral": interpolate(text, page, 0.5),
+        })
+        tm_ = interpolate(text, page, 0.35)
+        for _ in range(30):
+            if contrast_ratio(tm_, page) >= 4.6:
+                break
+            tm_ = interpolate(tm_, text, 0.2)
+        colors["text_muted"] = tm_
+        series = [colors["primary"], colors["secondary"], interpolate(colors["primary"], page, 0.55), colors["muted"], colors["highlight"], colors["neutral"]]
+        if contrast_ratio(colors["highlight"], page) < 3:
+            color_notes.append(f"Highlight #{colors['highlight']} has contrast {contrast_ratio(colors['highlight'], page):.1f}:1 on the page: used for fills and marks; "
+                               "text set in it is darkened automatically.")
+    elif text and contrast_ratio(text, colors["background"]) >= 7 and text != colors["text"]:
+        color_notes.append(f"Text colour set to the one used on the slides (#{text}).")
+        colors["text"] = text
         sources["text"] = "observed usage"
+    pal.pop("_text_counts", None)
     notes += color_notes
     grid, grid_notes = derive_grid(struct, sw, sh, model, k)
     notes += grid_notes
@@ -419,6 +467,9 @@ def ingest(template: str | Path, out_dir: str | Path, name: str | None = None, b
             "reserved": reserved if use_template else [],
             "measure_fonts": {f["font"]: f["measure_family"] for f in fonts.values() if f.get("font")},
             "corporate": {"layouts": corp, "scale": k},
+            "brand_rules": {"bookend": bool(model["rules"]["bookend"]["first_and_last_in_brand_colour"]),
+                            "brand_colour_slide_share": pal.get("brand_background_share"),
+                            "headline_case": model["rules"]["headline_case"]["dominant"]},
         },
     }
     for c in model["layouts"]:

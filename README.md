@@ -22,9 +22,9 @@ Three independent signals, never combined into one number ([why](docs/EVALS.md))
 | signal | what it measures | current |
 |---|---|---|
 | **Regression** | archetype-fitness composition score over the development suite (10 decks, 39 slides); gates CI | **87.3**/100 · QA errors 0 |
-| **Holdout** | archetype-fitness composition score on unseen public cases (5 decks, 27 slides); reported, never tuned on | **81.0**/100 · QA errors 1 |
+| **Holdout** | archetype-fitness composition score on public cases kept out of development (5 decks, 27 slides); reported, never tuned on — **no longer blind**: v1.3 re-run. These cases were reviewed visually during v1.2, so they are no longer blind: the v1.2 result (81.0, rules frozen at e3b63e1) is the last unbiased holdout number (CHANGELOG 1.2.0). New sealed cases are needed for v1.4. | **81.2**/100 · QA errors 0 |
 | **Human preference** | blind A/B votes (`cpe human`) | round r1 built (40 blind pairs, 3 comparisons) — awaiting votes |
-| Private corporate holdout | brand-ingest understanding of a real corporate template (sanitized) | 1 master(s), 54 layouts, 32% classified with confidence ≥ 0.5; font conflict none; test deck QA failed; agreement with the human brand spec 13/22 |
+| Private corporate template | brand-ingest understanding of a real corporate template (sanitized) | development data since v1.3 (its v1.2 findings drove the fixes, so it is no longer a holdout): 1 master(s), 54 layouts, 32% classified with confidence ≥ 0.5; font conflict detected; test deck QA passed; agreement with the human brand spec 21/22 |
 
 | example deck | QA gate | QA score | archetype-fitness composition score |
 |---|---|---|---|
@@ -32,9 +32,18 @@ Three independent signals, never combined into one number ([why](docs/EVALS.md))
 | `gallery` | PASSED · 0 errors · 0 warnings | 99.8 | 98.8 |
 | `alvora_on_kestrel` | PASSED · 0 errors · 0 warnings | 99.7 | 99.5 |
 
-<sub>engine 1.2.0 · LibreOffice 24.2.7.2 420(Build:2) · fontconfig 2.15.0 · container `mbbslides-visual:1.2@sha256:f883eeb28a0a267cc316071dd5cd3dd1c3220443775de5f9bdaac937e7e0800d` · render fingerprint `6b5b1872486a594a`</sub>
+<sub>engine 1.3.0 · LibreOffice 24.2.7.2 420(Build:2) · fontconfig 2.15.0 · container `mbbslides-visual:1.3@sha256:bb5bbbdd55bcec5db567781c63574da1a4b2fc4504446d6fea23f5197f59d278` · render fingerprint `f98cee49d123ed5f`</sub>
 
 <!-- metrics:end -->
+
+## What's new in v1.3
+
+Corporate templates are read through PowerPoint's inheritance chain: the font and colour text is
+really drawn in (not what the theme declares), weight-named families merged, page and text colours
+from what the template draws, grid from its content layouts, closings learned from use, and
+deck-level brand advice (bookend, share of brand-colour slides). Open-licence corporate typefaces
+(Inter, Roboto, Open Sans, Lato, Montserrat) are in the visual environment. See
+[CHANGELOG.md](CHANGELOG.md).
 
 ## What's new in v1.2
 
@@ -205,9 +214,9 @@ density profile (board / standard / analytical / status). Themes: `meridian`, `g
 - Verification rendering uses LibreOffice; PowerPoint may break lines slightly differently.
 - Brand templates must be 16:9 for their masters to be used (10 in pages are rescaled). Other
   ratios get colours and fonts only, and the report says so.
-- Brand inference follows font and colour inheritance only down to the master text styles; a
-  template that styles its master placeholders differently from its text styles can be misread
-  (found on a private corporate holdout; see CHANGELOG "Holdout findings").
+- Brand inference has been validated on one real corporate template (which is now development
+  data) and on synthetic templates; a new unseen corporate template is needed to measure how it
+  generalises.
 - The proof check does not yet recognise derived headline numbers (a sum, a ratio) as proven.
 - Human-preference results depend on the votes collected; round r1 is built and awaiting votes.
 - Maps are editable *tile maps* (cartograms), not choropleth maps with real borders.

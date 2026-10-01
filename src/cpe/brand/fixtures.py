@@ -113,7 +113,13 @@ def _theme_xml(base_blob: bytes, m: dict, name: str) -> bytes:
     return etree.tostring(root, xml_declaration=True, encoding="UTF-8", standalone=True)
 
 
-def make_multimaster(path, width_in: float = 13.333, with_examples: bool = True) -> str:
+BRAND_FONT = ["Inter"]
+
+
+def make_multimaster(path, width_in: float = 13.333, with_examples: bool = True, brand_font: str = "Inter") -> str:
+    """brand_font: the typeface set by direct formatting on the examples (pass a non-existent name
+    to test the missing-font path independently of the fonts installed)."""
+    BRAND_FONT[0] = brand_font
     k = width_in / 13.333
     prs = Presentation()
     prs.slide_width, prs.slide_height = Emu(_emu(13.333, k)), Emu(_emu(7.5, k))
@@ -179,7 +185,8 @@ def _layout(prs, master_name: str, layout_name: str):
     raise KeyError((master_name, layout_name))
 
 
-def _text(slide, x, y, w, h, text, k, size=14, font="Inter", bold=False):
+def _text(slide, x, y, w, h, text, k, size=14, font=None, bold=False):
+    font = font or BRAND_FONT[0]
     tb = slide.shapes.add_textbox(Inches(x * k), Inches(y * k), Inches(w * k), Inches(h * k))
     tb.text_frame.word_wrap = True
     tb.text_frame.text = text
@@ -191,7 +198,8 @@ def _text(slide, x, y, w, h, text, k, size=14, font="Inter", bold=False):
     return tb
 
 
-def _set_title(slide, text, font="Inter"):
+def _set_title(slide, text, font=None):
+    font = font or BRAND_FONT[0]
     t = slide.shapes.title
     t.text_frame.text = text
     for r in t.text_frame.paragraphs[0].runs:
@@ -240,14 +248,15 @@ def _examples(prs, k: float) -> None:
         sh.text_frame.text = f"Step {i + 1}"
     s = prs.slides.add_slide(_layout(prs, "Narrative", "Title only"))
     _set_title(s, "Our typography")
-    _text(s, 0.6, 1.6, 12, 1.0, "Typography: Inter is our primary typeface for titles and text.", k, size=20)
-    _text(s, 0.6, 3.0, 12, 2.0, "Use Inter Bold for headlines and Inter Regular for body copy. Never use more than two weights on a slide.", k)
+    f = BRAND_FONT[0]
+    _text(s, 0.6, 1.6, 12, 1.0, f"Typography: {f} is our primary typeface for titles and text.", k, size=20)
+    _text(s, 0.6, 3.0, 12, 2.0, f"Use {f} Bold for headlines and {f} Regular for body copy. Never use more than two weights on a slide.", k)
     s = prs.slides.add_slide(_layout(prs, "Narrative", "Title and text"))
     _set_title(s, "What we recommend")
     body = next(ph for ph in s.placeholders if ph.placeholder_format.idx != 0)
     body.text_frame.text = "Invest in delivery speed before cutting prices."
     for r in body.text_frame.paragraphs[0].runs:
-        r.font.name = "Inter"
+        r.font.name = BRAND_FONT[0]
     s = prs.slides.add_slide(_layout(prs, "Executive", "End"))
     _set_title(s, "Thank you")
 
@@ -260,3 +269,69 @@ def clone(path_in, path_out) -> None:
 
 
 __all__ = ["make_multimaster", "MASTERS", "clone", "copy"]
+
+
+def make_inherited_styles(path, n_content: int = 6) -> str:
+    """Synthetic template where the brand lives in the INHERITANCE chain, not in the theme:
+
+    * theme fonts say Arial; the master's title / body placeholders are styled "Inter Black" /
+      "Inter" and the example text carries no direct formatting (it inherits them);
+    * colour slots are used unconventionally: dk1 is a vivid accent, lt1 the dark text colour,
+      the master background is dk2 (light) — so slot names cannot be trusted;
+    * the deck opens on an accent-coloured cover and closes on an accent-coloured divider layout.
+    """
+    from pptx.dml.color import RGBColor  # noqa: F401
+
+    prs = Presentation()
+    prs.slide_width, prs.slide_height = Emu(_emu(13.333, 1)), Emu(_emu(7.5, 1))
+    master = prs.slide_masters[0]
+    theme_part = master.part.part_related_by(RT.THEME)
+    root = etree.fromstring(theme_part.blob)
+    cs = root.find(f".//{A}clrScheme")
+    for slot, val in (("dk1", "E8590C"), ("lt1", "1F2933"), ("dk2", "FAFAF7"), ("lt2", "F1EFEA"), ("accent1", "EDE9E3"), ("accent2", "F4C542"), ("accent3", "B8D8E0")):
+        el = cs.find(f"{A}{slot}")
+        for ch in list(el):
+            el.remove(ch)
+        etree.SubElement(el, f"{A}srgbClr", val=val)
+    fs = root.find(f".//{A}fontScheme")
+    fs.find(f"{A}majorFont/{A}latin").set("typeface", "Arial")
+    fs.find(f"{A}minorFont/{A}latin").set("typeface", "Arial")
+    theme_part._blob = etree.tostring(root, xml_declaration=True, encoding="UTF-8", standalone=True)
+    mel = master._element
+    cSld = mel.find(f"{P}cSld")
+    bg = etree.fromstring(f'<p:bg {NS}><p:bgPr><a:solidFill><a:schemeClr val="dk2"/></a:solidFill><a:effectLst/></p:bgPr></p:bg>')
+    cSld.insert(0, bg)
+    for sh in master.shapes:
+        if not sh.is_placeholder:
+            continue
+        t = sh.placeholder_format.type
+        face = "Inter Black" if t == 1 else "Inter"
+        txb = sh._element.find(f"{P}txBody")
+        lst = txb.find(f"{A}lstStyle")
+        for ch in list(lst):
+            lst.remove(ch)
+        lv = etree.SubElement(lst, f"{A}lvl1pPr")
+        d = etree.SubElement(lv, f"{A}defRPr", sz="2000" if t == 1 else "1400")
+        sf = etree.SubElement(d, f"{A}solidFill")
+        etree.SubElement(sf, f"{A}schemeClr", val="lt1")
+        etree.SubElement(d, f"{A}latin", typeface=face)
+    lay = {l.name: l for l in master.slide_layouts}
+    accent = "E8590C"
+
+    def coloured(slide):
+        el = slide._element.find(f"{P}cSld")
+        el.insert(0, etree.fromstring(f'<p:bg {NS}><p:bgPr><a:solidFill><a:srgbClr val="{accent}"/></a:solidFill><a:effectLst/></p:bgPr></p:bg>'))
+
+    s = prs.slides.add_slide(lay["Title Slide"])
+    coloured(s)
+    s.shapes.title.text_frame.text = "Annual review"
+    for i in range(n_content):
+        s = prs.slides.add_slide(lay["Title and Content"])
+        s.shapes.title.text_frame.text = f"Revenue grew in region {i + 1} as volume rose"
+        body = next(ph for ph in s.placeholders if ph.placeholder_format.idx != 0)
+        body.text_frame.text = "Volumes rose in every channel and prices held, so revenue grew faster than the market."
+    s = prs.slides.add_slide(lay["Section Header"])
+    coloured(s)
+    s.shapes.title.text_frame.text = "Thank you"
+    prs.save(str(path))
+    return str(path)

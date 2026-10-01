@@ -135,6 +135,13 @@ Each message states the archetype, the deviation and the expected range.
 | `COMPOSITION_WEAK_HIERARCHY` | The body text competes with the headline: reduce it or reword as a statement slide. |
 | `COMPOSITION_RAGGED_ALIGNMENT` | Many unrelated left edges: align the text blocks. |
 
+### Brand conventions (v1.3, advice)
+
+| code | remedy |
+|---|---|
+| `BRAND_BOOKEND` | The template's decks open and close on the brand colour: add a closing slide (kind: closing). |
+| `BRAND_COLOUR_SHARE` | Fewer brand-colour slides than the template's examples: mark sections with dividers. |
+
 ## Layer 2 — semantic visual review (agent)
 
 Eight questions per slide scored 0/1/2 in `review.json` (pass ≥13/16, no 0): one idea · five-second read · hierarchy · no decoration · exhibit proves headline · single focus · right layout · partner-ready. Plus four deck lenses (CEO, CFO, partner, visual editor). `scripts/cpe review review.json`.

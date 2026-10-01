@@ -48,6 +48,8 @@ AGENT_ACTIONS = {
     "COMPOSITION_OFF_BALANCE": "Rebalance: try another layout or add the missing counterpart.",
     "COMPOSITION_WEAK_HIERARCHY": "Make the headline dominate: shorten body text or turn the slide into a statement.",
     "COMPOSITION_RAGGED_ALIGNMENT": "Align the text blocks to fewer left edges.",
+    "BRAND_BOOKEND": "Add a closing slide (kind: closing): the brand opens and closes on its colour.",
+    "BRAND_COLOUR_SHARE": "Mark the sections with dividers (kind: divider) on the brand colour.",
 }
 
 

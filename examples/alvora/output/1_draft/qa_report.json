@@ -137,7 +137,7 @@
       "patches": [
         "VIS_TIME_VERTICAL"
       ],
-      "seconds": 5.3
+      "seconds": 4.8
     },
     {
       "iteration": 2,
@@ -145,7 +145,7 @@
       "warnings": 3,
       "score": 95.8,
       "patches": [],
-      "seconds": 5.4
+      "seconds": 4.8
     }
   ],
   "pending_actions": [

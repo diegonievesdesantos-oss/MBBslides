@@ -54,6 +54,17 @@ def _containers(slide) -> list[tuple[Box, str, str]]:
             out.append((b, "chart", sh.name))
         elif getattr(sh, "has_table", False) and sh.has_table:
             out.append((b, "table", sh.name))
+    # text drawn by the corporate template itself (layout / master artwork such as a
+    # "Confidential" mark) is the template's design, not engine output: its spans are not judged
+    try:
+        lay = slide.slide_layout
+        sources = [lay.shapes] + ([lay.slide_master.shapes] if lay._element.get("showMasterSp", "1") != "0" else [])
+        for shapes in sources:
+            for sh in shapes:
+                if not sh.is_placeholder and sh.has_text_frame and sh.text_frame.text.strip():
+                    out.append((Box(Emu(sh.left).inches, Emu(sh.top).inches, Emu(sh.width).inches, Emu(sh.height).inches).inset(-0.1, -0.1, -0.1, -0.1), "template", sh.name))
+    except Exception:
+        pass
     return out
 
 
@@ -98,8 +109,11 @@ def check(pdf_path: str, pptx_path: str, manifests: list[dict], pngs: list[str] 
         spans = _spans(page)
         conts = _containers(slide)
         full_bleed = man.get("layout") in ("divider",)
+        template = [c for c, k, _ in conts if k == "template"]
         for sp in spans:
             b = sp["box"]
+            if any(t.contains(b, 0.05) for t in template):
+                continue
             if b.x < -0.02 or b.y < -0.02 or b.r > SLIDE_W + 0.02 or b.b > SLIDE_H + 0.02:
                 out.append(issue("error", "RENDER_OFF_SLIDE", f"'{sp['text'][:30]}' rendered beyond the slide", sid))
                 continue

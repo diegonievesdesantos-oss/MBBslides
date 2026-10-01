@@ -69,11 +69,33 @@ def set_default_family(family: str) -> None:
     DEFAULT_FAMILY = family
 
 
+@functools.lru_cache(maxsize=None)
+def installed_file(font_name: str, bold: bool = False) -> str | None:
+    """File of an INSTALLED font family (exact family match through fontconfig), else None.
+    Lets the engine measure with any real installed font (Inter, Roboto, a corporate face…),
+    not only the built-in metric twins."""
+    import subprocess
+
+    try:
+        r = subprocess.run(["fc-match", "-f", "%{family}|%{file}", f"{font_name}:weight={200 if bold else 80}"], capture_output=True, text=True, timeout=10)
+    except (FileNotFoundError, subprocess.TimeoutExpired, OSError):
+        return None
+    fams, _, path = r.stdout.partition("|")
+    names = {f.strip().lower() for f in fams.split(",")}
+    if font_name.lower() not in names or not path or not os.path.exists(path) or not path.lower().endswith((".ttf", ".otf", ".ttc")):
+        return None
+    return path
+
+
 def family_for(font_name: str | None) -> str:
     if not font_name:
         return DEFAULT_FAMILY
     key = font_name.lower()
-    return _REGISTERED.get(key) or FONT_ALIASES.get(key) or DEFAULT_FAMILY
+    if key in _REGISTERED:
+        return _REGISTERED[key]
+    if key not in METRIC_COMPATIBLE and installed_file(font_name):
+        return "fc:" + font_name  # measure with the real font
+    return FONT_ALIASES.get(key) or DEFAULT_FAMILY
 
 
 def family_available(family: str) -> bool:
@@ -84,6 +106,8 @@ LINE_HEIGHT_FACTOR = 1.17  # Arial ascent+descent ≈ 1.149 em; renderers add a 
 
 @functools.lru_cache(maxsize=None)
 def _font_path(family: str, bold: bool) -> str | None:
+    if family.startswith("fc:"):
+        return installed_file(family[3:], bold)
     regular, boldf = FONT_FILES.get(family, FONT_FILES["LiberationSans"])
     if family not in FONT_FILES:
         return None

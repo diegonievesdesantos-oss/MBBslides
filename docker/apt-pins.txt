@@ -19,5 +19,12 @@ fonts-crosextra-carlito=20230309-2
 fonts-crosextra-caladea=20200211-2
 fonts-dejavu-core=2.37-8
 fonts-dejavu-mono=2.37-8
+# Widely used open-licence corporate typefaces (OFL / Apache): a brand set in one of them is
+# measured and rendered exactly instead of being approximated.
+fonts-inter=4.0+ds-1
+fonts-roboto-unhinted=2:0~20170802-3
+fonts-open-sans=1.11-2
+fonts-lato=2.015-1
+fonts-montserrat=7.222-2
 fonts-opensymbol=4:102.12+LibO24.2.7-0ubuntu0.24.04.6
 git

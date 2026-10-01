@@ -1,5 +1,54 @@
 # Changelog
 
+## 1.3.0 — Corporate templates read through their inheritance chain
+
+Fixes for the structural findings of the v1.2 private corporate holdout. Because those findings
+drove the changes, that template is **development data from now on**, not a holdout; the fixes are
+generic and are tested on a synthetic template built to reproduce the same patterns
+(`brand/fixtures.py::make_inherited_styles`). The public holdout cases were reviewed during v1.2
+and are no longer blind either: v1.4 needs new sealed cases.
+
+### Typography
+- Text is attributed to the font it is really drawn in, following PowerPoint's inheritance:
+  run → shape list style → layout placeholder → master placeholder → master text styles →
+  presentation default → theme (`brand/model.py::effective_style`). The report says where the
+  inherited text gets its font from.
+- Weight-named families are one family ("Inter Black", "Inter ExtraBold" → Inter); a different
+  family such as "Inter Tight" stays separate.
+- Any INSTALLED font is now measured with its own file (fontconfig, exact family match), not only
+  the built-in metric twins.
+- The visual environment ships widely used open-licence corporate typefaces (Inter, Roboto,
+  Open Sans, Lato, Montserrat; pinned) so brands set in them render and measure exactly.
+  Regression renders are unchanged (87.3 before and after the image change).
+
+### Colour roles
+- Page and text colours come from what the template draws (the background of its content
+  layouts, the colour its text resolves to) instead of theme slot names, which some templates use
+  unconventionally (dk1 = accent, lt1 = text). All derived greys come from that real pair, the
+  secondary data colour is darkened until white labels reach 4.5:1, and the dark data colour is a
+  template colour (the text colour when the brand has no other dark).
+- Supporting colours include brand-colour slide backgrounds and coloured text; pale brand tints
+  are no longer mistaken for greys.
+
+### Grid, layouts, brand rules
+- Margins from the titles of the content layouts (symmetric when the content reaches the mirrored
+  margin); finer column systems must earn their extra columns; pictures and full-bleed artwork no
+  longer vote.
+- A layout used for the last example slide keeps a `closing` label, even when it looks like a divider.
+- Deck-level brand advice (editorial, never QA): `BRAND_BOOKEND` (the brand opens and closes on its
+  colour) and `BRAND_COLOUR_SHARE` (share of brand-colour slides vs the template's examples).
+- Render QA no longer judges text that belongs to the template's own artwork (e.g. a "Confidential"
+  mark on a corporate cover layout).
+- Bounded a contrast loop that could hang on templates with unconventional colour slots.
+
+### Results on the (former) private holdout — development data, not a holdout result
+- Agreement with the human-written brand spec: 13/22 → 21/22 claims (the remaining one: the
+  closing layout is a divider-class layout used last, counted under "section").
+- Test deck generated on it: QA failed with 112 errors → passed, 0 errors; with dividers and a
+  closing slide, 0 errors, 0 warnings, no brand advice.
+- Regression unchanged (87.3); public holdout 81.0 → 81.2 (the Spanish "todo" false error fixed
+  after v1.2), now reported as no longer blind.
+
 ## 1.2.0 — Reproducible, archetype-aware, independently evaluated, corporate-template aware
 
 **Goal:** make visual quality reproducible, archetype-aware, independently evaluable, and capable

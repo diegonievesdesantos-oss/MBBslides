@@ -34,7 +34,8 @@ def render_block(data: dict) -> str:
     L.append(f"| **Regression** | {metric} over the development suite ({reg.get('cases_total', '—')} decks, {reg.get('slides_measured', '—')} slides); gates CI | "
              f"**{_f(reg.get('suite_composition'))}**/100 · QA errors {_f(reg.get('qa_errors'))} |")
     if hold:
-        L.append(f"| **Holdout** | {hold.get('metric') or 'same metric'} on unseen public cases ({hold.get('cases_total')} decks, {hold.get('slides_measured')} slides); reported, never tuned on | "
+        blind = "" if not hold.get("note") else " — **no longer blind**: " + hold["note"]
+        L.append(f"| **Holdout** | {hold.get('metric') or 'same metric'} on public cases kept out of development ({hold.get('cases_total')} decks, {hold.get('slides_measured')} slides); reported, never tuned on{blind} | "
                  f"**{_f(hold.get('suite_composition'))}**/100 · QA errors {_f(hold.get('qa_errors'))} |")
     else:
         L.append("| **Holdout** | same metric on unseen public cases; reported, never tuned on | not run yet |")
@@ -45,7 +46,7 @@ def render_block(data: dict) -> str:
     else:
         L.append(f"| **Human preference** | blind A/B votes (`cpe human`) | {hum.get('status', 'no votes yet')} |")
     if priv.get("summary"):
-        L.append(f"| Private corporate holdout | brand-ingest understanding of a real corporate template (sanitized) | {priv['summary']} |")
+        L.append(f"| Private corporate template | brand-ingest understanding of a real corporate template (sanitized) | {priv['summary']} |")
     if ex:
         L += ["", f"| example deck | QA gate | QA score | {(data.get('examples') or {}).get('metric') or 'composition'} |", "|---|---|---|---|"]
         for name, c in ex.items():

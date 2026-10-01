@@ -130,9 +130,7 @@
   "palette": {
     "primary": null,
     "text": "222222",
-    "supporting": [
-      "1B3A2F"
-    ],
+    "supporting": [],
     "neutrals": [],
     "brand_background_share": 0.0,
     "conflict": null,
@@ -160,7 +158,8 @@
     "gutter_in": 0.267,
     "edges_explained": 1.0,
     "confidence": 0.95,
-    "edges_sampled": 4
+    "edges_sampled": 4,
+    "margins_from": "content layout titles"
   },
   "assets": {
     "logos": [

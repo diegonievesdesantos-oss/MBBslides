@@ -1,7 +1,7 @@
 {
   "suite_composition": 87.3,
-  "environment_fingerprint": "6b5b1872486a594a",
-  "engine_version": "1.2.0.dev0",
+  "environment_fingerprint": "f98cee49d123ed5f",
+  "engine_version": "1.3.0.dev0",
   "cases": [
     {
       "case": "01_sparse_content",

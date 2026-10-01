@@ -964,6 +964,11 @@
         }
       ],
       "scale": 1.0
+    },
+    "brand_rules": {
+      "bookend": false,
+      "brand_colour_slide_share": 0.0,
+      "headline_case": "sentence"
     }
   }
 }

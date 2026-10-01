@@ -58,6 +58,13 @@ Only a sanitized summary (counts and rates; no names, colours, text or assets) m
 `evals/results/latest.json`. Public CI never runs it (the folder does not exist there) and the
 runner skips cleanly.
 
+### Status of the holdouts (v1.3)
+
+- Public H01–H05: run once blind at v1.2 (81.0, rules frozen at e3b63e1); reviewed visually
+  afterwards, so later runs are reported as **no longer blind**. New sealed cases are due for v1.4.
+- Private corporate template A: its v1.2 findings drove the v1.3 fixes, so it is **development
+  data** now. Measuring generalisation of brand inference needs another, unseen template.
+
 ## Human reference (blind A/B)
 
 ```bash

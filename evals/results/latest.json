@@ -1,5 +1,5 @@
 {
-  "version": "1.2.0",
+  "version": "1.3.0",
   "regression": {
     "metric": "archetype-fitness composition score",
     "suite_composition": 87.3,
@@ -153,10 +153,10 @@
         "qa_passed": true
       }
     },
-    "environment_fingerprint": "6b5b1872486a594a",
+    "environment_fingerprint": "f98cee49d123ed5f",
     "engine": {
-      "version": "1.2.0",
-      "commit": "02efb0d33e8fd035664b85c224946e5f323c7034"
+      "version": "1.3.0",
+      "commit": "4f9976d2e727b870505afd9cf1c45d21e1ac2e90-dirty"
     }
   },
   "environment": {
@@ -265,21 +265,21 @@
       "Georgia": "DejaVu Serif|/usr/share/fonts/truetype/dejavu/DejaVuSerif.ttf",
       "Times New Roman": "Liberation Serif|/usr/share/fonts/truetype/liberation/LiberationSerif-Regular.ttf",
       "Helvetica": "Liberation Sans|/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf",
-      "Inter": "DejaVu Sans|/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
+      "Inter": "Inter|/usr/share/fonts/opentype/inter/Inter-Regular.otf",
       "Segoe UI": "DejaVu Sans|/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
     },
-    "cpe_version": "1.2.0",
-    "container_image": "mbbslides-visual:1.2@sha256:f883eeb28a0a267cc316071dd5cd3dd1c3220443775de5f9bdaac937e7e0800d",
-    "commit": "02efb0d33e8fd035664b85c224946e5f323c7034-dirty",
-    "fingerprint": "6b5b1872486a594a"
+    "cpe_version": "1.3.0",
+    "container_image": "mbbslides-visual:1.3@sha256:bb5bbbdd55bcec5db567781c63574da1a4b2fc4504446d6fea23f5197f59d278",
+    "commit": "4f9976d2e727b870505afd9cf1c45d21e1ac2e90-dirty",
+    "fingerprint": "f98cee49d123ed5f"
   },
   "holdout": {
     "public": {
       "metric": "archetype-fitness composition score",
-      "suite_composition": 81.0,
-      "suite_composition_v1": 79.3,
+      "suite_composition": 81.2,
+      "suite_composition_v1": 79.2,
       "slides_measured": 27,
-      "qa_errors": 1,
+      "qa_errors": 0,
       "qa_warnings": 40,
       "cases_ok": 5,
       "cases_total": 5,
@@ -294,7 +294,7 @@
         },
         "comparison": {
           "slides": 1,
-          "mean": 56.4
+          "mean": 62.3
         },
         "executive_summary": {
           "slides": 3,
@@ -350,7 +350,7 @@
         "DEAD_SPACE": 6,
         "OFF_BALANCE": 4,
         "UNDERUSED_CANVAS": 4,
-        "WEAK_HIERARCHY": 1,
+        "WEAK_HIERARCHY": 2,
         "NOISY_EMPHASIS": 1
       },
       "passed": true,
@@ -370,11 +370,11 @@
           "qa_passed": true
         },
         "H03_retail_es": {
-          "composition": 90.4,
-          "qa_score": 89.6,
-          "qa_errors": 1,
+          "composition": 91.5,
+          "qa_score": 94.8,
+          "qa_errors": 0,
           "qa_warnings": 6,
-          "qa_passed": false
+          "qa_passed": true
         },
         "H04_saas_board": {
           "composition": 68.7,
@@ -391,15 +391,15 @@
           "qa_passed": true
         }
       },
-      "environment_fingerprint": "6b5b1872486a594a",
+      "environment_fingerprint": "f98cee49d123ed5f",
       "engine": {
-        "version": "1.2.0.dev0",
-        "commit": "e3b63e16b4520ab4b45c3cd33ff83f3ec0c4d1fc-dirty"
+        "version": "1.3.0.dev0",
+        "commit": "4f9976d2e727b870505afd9cf1c45d21e1ac2e90-dirty"
       },
-      "note": "run once with the rules frozen at e3b63e1 (not re-run after the correctness fixes made afterwards)"
+      "note": "v1.3 re-run. These cases were reviewed visually during v1.2, so they are no longer blind: the v1.2 result (81.0, rules frozen at e3b63e1) is the last unbiased holdout number (CHANGELOG 1.2.0). New sealed cases are needed for v1.4."
     },
     "private": {
-      "summary": "1 master(s), 54 layouts, 32% classified with confidence ≥ 0.5; font conflict none; test deck QA failed; agreement with the human brand spec 13/22",
+      "summary": "development data since v1.3 (its v1.2 findings drove the fixes, so it is no longer a holdout): 1 master(s), 54 layouts, 32% classified with confidence ≥ 0.5; font conflict detected; test deck QA passed; agreement with the human brand spec 21/22",
       "holdouts": {
         "corporate_template_A": {
           "masters": 1,
@@ -409,18 +409,18 @@
           "layout_families": 10,
           "rescaled": true,
           "masters_used": true,
-          "font_conflict_detected": false,
-          "corporate_font_installed": false,
+          "font_conflict_detected": true,
+          "corporate_font_installed": true,
           "template_pages_rendered": 63,
-          "test_deck_qa_passed": false,
-          "test_deck_qa_errors": 112,
-          "test_deck_composition": 93.3,
+          "test_deck_qa_passed": true,
+          "test_deck_qa_errors": 0,
+          "test_deck_composition": 99.8,
           "corporate_modes": {
             "native": 1,
             "adaptive": 11
           },
-          "spec_agreement": "13/22",
-          "spec_weighted_agreement": 0.531
+          "spec_agreement": "21/22",
+          "spec_weighted_agreement": 0.969
         }
       }
     }
@@ -526,10 +526,10 @@
         "qa_passed": true
       }
     },
-    "environment_fingerprint": "6b5b1872486a594a",
+    "environment_fingerprint": "f98cee49d123ed5f",
     "engine": {
-      "version": "1.2.0",
-      "commit": "02efb0d33e8fd035664b85c224946e5f323c7034-dirty"
+      "version": "1.3.0",
+      "commit": "4f9976d2e727b870505afd9cf1c45d21e1ac2e90-dirty"
     }
   }
 }

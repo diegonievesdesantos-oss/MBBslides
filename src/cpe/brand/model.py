@@ -43,6 +43,7 @@ A = "{http://schemas.openxmlformats.org/drawingml/2006/main}"
 P = "{http://schemas.openxmlformats.org/presentationml/2006/main}"
 SCHEME_SLOTS = ["dk1", "lt1", "dk2", "lt2", "accent1", "accent2", "accent3", "accent4", "accent5", "accent6", "hlink", "folHlink"]
 SCHEME_ALIAS = {"tx1": "dk1", "bg1": "lt1", "tx2": "dk2", "bg2": "lt2"}
+CONTENT_LIKE = {"content", "one_column", "two_column", "three_column", "chart", "chart_commentary", "table", "comparison", "matrix", "process", "roadmap", "timeline", "image_split"}
 CLASSES = ["cover", "section", "content", "statement", "one_column", "two_column", "three_column", "image_split", "chart", "chart_commentary",
            "table", "comparison", "matrix", "process", "roadmap", "timeline", "conclusion", "closing", "special", "unknown"]
 
@@ -109,6 +110,97 @@ def _depth(el) -> int:
     return -d
 
 
+# ── text style inheritance (v1.3) ──────────────────────────────────────────────
+
+WEIGHT_WORDS = {"thin", "hairline", "extralight", "ultralight", "light", "book", "regular", "normal", "medium", "semibold", "demibold",
+                "bold", "extrabold", "ultrabold", "black", "heavy", "italic", "oblique", "extra", "semi", "demi", "ultra"}
+
+
+def family_name(face: str | None) -> str | None:
+    """'Inter Black' / 'Inter ExtraBold' / 'Inter-SemiBold' → 'Inter': weights are styles of one family."""
+    if not face:
+        return face
+    words = re.split(r"[\s\-]+", face.strip())
+    while len(words) > 1 and words[-1].lower() in WEIGHT_WORDS:
+        words.pop()
+    return " ".join(words)
+
+
+def _lvl_defrpr(el, level: int):
+    """defRPr of list level `level` (0-based) inside an lstStyle / txStyle element."""
+    if el is None:
+        return None
+    lv = el.find(f"{A}lvl{level + 1}pPr")
+    return lv.find(f"{A}defRPr") if lv is not None else None
+
+
+def _props(rpr, th: dict) -> dict:
+    out = {}
+    if rpr is None:
+        return out
+    lat = rpr.find(f"{A}latin")
+    if lat is not None and lat.get("typeface"):
+        out["font"] = _resolve_font(lat.get("typeface"), th)
+    sf = rpr.find(f"{A}solidFill")
+    if sf is not None:
+        c = _color_of(sf, th)
+        if c:
+            out["color"] = c
+    if rpr.get("sz"):
+        out["size"] = int(rpr.get("sz")) / 100
+    return out
+
+
+def effective_style(sh, para, run, th: dict, prs=None) -> dict:
+    """Font / colour / size a run is ACTUALLY drawn with, following PowerPoint's inheritance:
+    run → shape list style → layout placeholder → master placeholder → master text styles
+    (title / body / other) → presentation default text style → theme fonts.
+    Returns the values and, per value, the level that supplied it."""
+    level = para.level if para is not None else 0
+    chain = [("run", run._r.find(f"{A}rPr") if run is not None else None)]
+    txb = sh._element.find(f".//{P}txBody")
+    chain.append(("shape", _lvl_defrpr(txb.find(f"{A}lstStyle") if txb is not None else None, level)))
+    master = None
+    tag = "otherStyle"
+    if sh.is_placeholder:
+        try:
+            lp = sh._base_placeholder
+        except Exception:
+            lp = None
+        if lp is not None:
+            chain.append(("layout placeholder", _lvl_defrpr(lp._element.find(f".//{A}lstStyle"), level)))
+            try:
+                mp = lp._base_placeholder
+            except Exception:
+                mp = None
+            if mp is not None:
+                chain.append(("master placeholder", _lvl_defrpr(mp._element.find(f".//{A}lstStyle"), level)))
+        t = ph_type(sh)
+        tag = "titleStyle" if t in ("TITLE", "CENTER_TITLE") else ("bodyStyle" if t in ("BODY", "OBJECT", "SUBTITLE", "VERTICAL_BODY", "VERTICAL_OBJECT") else "otherStyle")
+    try:
+        master = sh.part.slide_layout.slide_master
+    except Exception:
+        master = None
+    if master is not None:
+        chain.append(("master text styles", _lvl_defrpr(master._element.find(f"{P}txStyles/{P}{tag}"), level)))
+    if prs is not None and not sh.is_placeholder:
+        chain.append(("presentation default", _lvl_defrpr(prs.part._element.find(f"{P}defaultTextStyle"), level)))
+    out, src = {}, {}
+    for name, rpr in chain:
+        for k, v in _props(rpr, th).items():
+            if k not in out:
+                out[k], src[k] = v, name
+    if "font" not in out:
+        out["font"] = th["fonts"].get("majorFont" if tag == "titleStyle" else "minorFont")
+        src["font"] = "theme"
+    if "color" not in out:
+        out["color"] = th["colors"].get("dk1")
+        src["color"] = "theme"
+    out["family"] = family_name(out.get("font"))
+    out["source"] = src
+    return out
+
+
 # ── colour helpers ─────────────────────────────────────────────────────────────
 
 def rgb(h: str) -> tuple[int, int, int]:
@@ -131,7 +223,8 @@ def hue(h: str) -> float:
 
 
 def is_neutral(h: str) -> bool:
-    return sat(h) < 0.15
+    # pale brand tints (a light blue at ~13% saturation) are colours, not greys
+    return sat(h) < 0.10
 
 
 # ── shapes ─────────────────────────────────────────────────────────────────────
@@ -520,6 +613,9 @@ def classify(geom: dict, usage: dict) -> list[dict]:
     ranked = sorted(scores.items(), key=lambda kv: -kv[1])
     top = ranked[0][1]
     out = [{"type": k, "confidence": round(min(0.97, v), 2)} for k, v in ranked if v >= max(0.2, top * 0.6)][:3]
+    # a layout seen closing the example deck keeps a "closing" label even when it looks like a divider
+    if usage.get("closing") and out and all(o["type"] != "closing" for o in out):
+        out.append({"type": "closing", "confidence": round(min(0.97, max(0.36, scores.get("closing", 0))), 2), "from": "used as the last slide"})
     # all evidence below 0.2: say so ("unknown") instead of returning nothing (crash found by the private holdout)
     return out or [{"type": "unknown", "confidence": round(max(0.05, 1 - top), 2), "weak_evidence": [{"type": k, "score": round(v, 2)} for k, v in ranked[:2]]}]
 
@@ -601,6 +697,18 @@ def analyse(prs, installed_fonts: set[str] | None = None) -> dict:
     typography = infer_typography(prs, masters, themes, layouts, installed_fonts or set())
     theme_of_layout = {lay.part.partname: th for li, lay, _, _, th in layouts}
     palette = infer_palette(prs, masters, themes, sw, shh, theme_of_layout)
+    # the page content is set on: the background of the template's own content layouts (structure),
+    # falling back to the light neutral backgrounds observed on the slides
+    content_bgs = collections.Counter(c["features"]["background"]["color"] for c in catalog
+                                      if c["classification"][0]["type"] in CONTENT_LIKE and c["features"]["background"]["color"]
+                                      and lum(c["features"]["background"]["color"]) > 0.8)
+    if content_bgs:
+        page = content_bgs.most_common(1)[0][0]
+        palette["page"], palette["page_source"] = page, "content layouts"
+        readable = [c for c, _ in palette["_text_counts"] if _contrast(c, page) >= 4.5]
+        if readable:
+            palette["text"] = readable[0]
+    palette.pop("_text_counts", None)
     grid = infer_grid(prs, catalog, sw, shh)
     assets = infer_assets(all_art, prs, sw, shh)
     rules = infer_rules(prs, catalog, slides_obs, palette, sw, shh, theme_of_layout)
@@ -639,16 +747,16 @@ def infer_typography(prs, masters, themes, layouts, installed: set[str]) -> dict
     for th in themes:
         for role, key in (("heading", "majorFont"), ("body", "minorFont")):
             if th["fonts"].get(key):
-                ev["theme"][th["fonts"][key]] += 1
+                ev["theme"][family_name(th["fonts"][key])] += 1
     for m in masters:
         for st in ("title_style", "body_style"):
             if m[st].get("font"):
-                ev["master"][m[st]["font"]] += 1
+                ev["master"][family_name(m[st]["font"])] += 1
     for li, lay, _, _, th in layouts:
         for el in lay._element.iter(f"{A}latin"):
             f = _resolve_font(el.get("typeface"), th)
             if f:
-                ev["layouts"][f] += 1
+                ev["layouts"][family_name(f)] += 1
     chars_direct = collections.Counter()
     chars_inherited = collections.Counter()
     by_role = {"heading": collections.Counter(), "body": collections.Counter()}
@@ -659,8 +767,15 @@ def infer_typography(prs, masters, themes, layouts, installed: set[str]) -> dict
     master_of_layout = {}
     for li, lay, _, _, th in layouts:
         master_of_layout[lay.part.partname] = th
-    body_default = next((m["body_style"].get("font") for m in masters if m["body_style"].get("font")), None) or (themes[0]["fonts"].get("minorFont") if themes else None)
-    head_default = next((m["title_style"].get("font") for m in masters if m["title_style"].get("font")), None) or (themes[0]["fonts"].get("majorFont") if themes else None)
+    for mm in prs.slide_masters:  # master placeholders style the text of every layout below them
+        thm = theme_of_master(mm)
+        for sh in mm.shapes:
+            if sh.is_placeholder:
+                for el in sh._element.iter(f"{A}latin"):
+                    f = _resolve_font(el.get("typeface"), thm)
+                    if f:
+                        ev["master"][family_name(f)] += 1
+    inherited_from = collections.Counter()
     slide_texts = []
     for slide in prs.slides:
         th = master_of_layout.get(slide.slide_layout.part.partname) or themes[0]
@@ -675,17 +790,17 @@ def infer_typography(prs, masters, themes, layouts, installed: set[str]) -> dict
                     if not t:
                         continue
                     txt.append(r.text)
-                    lat = r._r.find(f"{A}rPr/{A}latin")
-                    face = _resolve_font(lat.get("typeface") if lat is not None else None, th)
-                    if face:
+                    st = effective_style(sh, p, r, th, prs)
+                    face = st["family"]
+                    if not face:
+                        continue
+                    known.add(face)
+                    if st["source"]["font"] == "run":
                         chars_direct[face] += len(t)
-                        known.add(face)
                     else:
-                        face = head_default if is_title else body_default
-                        if face:
-                            chars_inherited[face] += len(t)
-                    if face:
-                        by_role["heading" if is_title else "body"][face] += len(t)
+                        chars_inherited[face] += len(t)
+                        inherited_from[st["source"]["font"]] += len(t)
+                    by_role["heading" if is_title else "body"][face] += len(t)
         slide_texts.append(" ".join(txt))
     for t in slide_texts:
         if GUIDE_WORDS.search(t):
@@ -708,7 +823,7 @@ def infer_typography(prs, masters, themes, layouts, installed: set[str]) -> dict
             comb[f] += w / norm * v
     ranked = comb.most_common()
     primary = ranked[0][0] if ranked else None
-    declared = {"heading": [th["fonts"].get("majorFont") for th in themes], "body": [th["fonts"].get("minorFont") for th in themes]}
+    declared = {"heading": [family_name(th["fonts"].get("majorFont")) for th in themes], "body": [family_name(th["fonts"].get("minorFont")) for th in themes]}
     declared_main = collections.Counter([f for v in declared.values() for f in v if f]).most_common(1)
     declared_main = declared_main[0][0] if declared_main else None
     direct_share = sum(chars_direct.values()) / max(1, sum(usage.values()))
@@ -719,7 +834,9 @@ def infer_typography(prs, masters, themes, layouts, installed: set[str]) -> dict
                     "observed_share": round(usage[top_used] / max(1, sum(usage.values())), 3),
                     "direct_formatting_share": round(direct_share, 3), "style_guide_mentions": dict(guide_mentions),
                     "reason": f"The theme declares {declared_main}, but {round(100 * usage[top_used] / max(1, sum(usage.values())))}% of the text on the example slides is set in {top_used}"
-                              + (" by direct formatting" if chars_direct.get(top_used) else "") + (f"; style-guide slides name {', '.join(guide_mentions)}" if guide_mentions else "") + "."}
+                              + f" ({round(100 * chars_direct.get(top_used, 0) / max(1, usage[top_used]))}% by direct formatting, the rest inherited from "
+                              + (", ".join(k for k, _ in inherited_from.most_common(2)) or "the template") + ")"
+                              + (f"; style-guide slides name {', '.join(guide_mentions)}" if guide_mentions else "") + "."}
     conf = round(ranked[0][1], 3) if ranked else 0.0
     fonts_report = []
     for f, sc in ranked[:6]:
@@ -728,7 +845,7 @@ def infer_typography(prs, masters, themes, layouts, installed: set[str]) -> dict
     roles = {}
     for role, key in (("heading", "majorFont"), ("body", "minorFont")):
         c = by_role[role]
-        dec = collections.Counter(th["fonts"].get(key) for th in themes if th["fonts"].get(key)).most_common(1)
+        dec = collections.Counter(family_name(th["fonts"].get(key)) for th in themes if th["fonts"].get(key)).most_common(1)
         dec = dec[0][0] if dec else None
         if sum(c.values()) >= 40:
             f, n = c.most_common(1)[0]
@@ -737,6 +854,7 @@ def infer_typography(prs, masters, themes, layouts, installed: set[str]) -> dict
             roles[role] = {"font": dec or primary, "source": "declared (too little example text to observe)", "share": None, "declared": dec, "conflict": False}
     return {"primary": primary, "confidence": conf, "declared": declared, "conflict": conflict, "candidates": fonts_report, "roles": roles,
             "evidence_weights": {k: round(w / norm, 3) for k, w in active.items()},
+            "inherited_from": dict(inherited_from.most_common()),
             "master_styles": [{"master": m["master_id"], "title": m["title_style"], "body": m["body_style"]} for m in masters],
             "sizes": _size_profile(prs)}
 
@@ -757,6 +875,7 @@ def _size_profile(prs) -> dict:
 
 def infer_palette(prs, masters, themes, sw, shh, theme_of_layout: dict) -> dict:
     fills, texts, bgs = collections.Counter(), collections.Counter(), collections.Counter()
+    body_texts = collections.Counter()  # (text colour, light page colour) → characters
     th0 = themes[0] if themes else {"colors": {}, "fonts": {}}
     for slide in prs.slides:
         th = theme_of_layout.get(slide.slide_layout.part.partname, th0)
@@ -773,9 +892,11 @@ def infer_palette(prs, masters, themes, sw, shh, theme_of_layout: dict) -> dict:
                         for r in p.runs:
                             if not r.text.strip():
                                 continue
-                            rp = r._r.find(f"{A}rPr")
-                            tc = _color_of(rp.find(f"{A}solidFill"), th) if rp is not None and rp.find(f"{A}solidFill") is not None else None
-                            texts[tc or th["colors"].get("dk1", "000000")] += len(r.text.strip())
+                            st = effective_style(sh, p, r, th, prs)  # the colour it is really drawn in
+                            if st.get("color"):
+                                texts[st["color"]] += len(r.text.strip())
+                                if col and col != "picture" and lum(col) > 0.8:
+                                    body_texts[(st["color"], col)] += len(r.text.strip())
             except Exception:
                 continue
     for mm in prs.slide_masters:  # template artwork (bars, marks, logos) is brand colour too
@@ -792,11 +913,29 @@ def infer_palette(prs, masters, themes, sw, shh, theme_of_layout: dict) -> dict:
     brand_bg = [(c, n) for c, n in bgs.most_common() if not is_neutral(c) and sat(c) > 0.35 and lum(c) > 0.2]
     vivid = [(c, a) for c, a in fills.most_common() if sat(c) > 0.35 and lum(c) > 0.2]
     primary_vivid = (brand_bg[0][0] if brand_bg else (vivid[0][0] if vivid else None))
-    text = texts.most_common(1)[0][0] if texts else th0["colors"].get("dk1")
+    # the page most content is set on (light backgrounds), and the colour most text is set in ON it
+    light = [(c, n) for c, n in bgs.most_common() if c != "picture" and lum(c) > 0.8]
+    page = light[0][0] if light else "FFFFFF"
+    neutral_light = [(c, n) for c, n in light if is_neutral(c)]
+    page = (neutral_light or light or [("FFFFFF", 0)])[0][0]
+    readable = [(c, n) for c, n in texts.most_common() if _contrast(c, page) >= 4.5]
+    text = readable[0][0] if readable else (texts.most_common(1)[0][0] if texts else th0["colors"].get("dk1"))
+    emphasis_text = [c for (c, pg), n in body_texts.most_common() if c != text and not is_neutral(c)][:2]
+    # supporting colours: fills by area + brand-colour slide backgrounds + non-neutral text colours
+    cand = collections.Counter(fills)
+    for c, n in bgs.items():
+        if c != "picture":
+            cand[c] += n * sw * shh * 0.3
+    for c, n in texts.items():
+        if not is_neutral(c) and lum(c) > 0.25:
+            cand[c] += n * 0.01
     supporting = []
-    for c, _ in fills.most_common(30):
-        if c != primary_vivid and not is_neutral(c) and c not in supporting and all(_dist(c, s) > 40 for s in supporting + [primary_vivid or "000000"]):
+    for c, _ in cand.most_common(40):
+        if c == primary_vivid or is_neutral(c) or lum(c) < 0.25 or c in supporting:
+            continue
+        if all(_dist(c, s) > 40 for s in supporting + [primary_vivid or "000000"]):
             supporting.append(c)
+    dark = [c for c, _ in cand.most_common(40) if lum(c) < 0.25 and c != text][:2]
     neutrals = [c for c, _ in fills.most_common(20) if is_neutral(c) and lum(c) > 0.8][:4]
     theme_accents = [th0["colors"].get(f"accent{i}") for i in range(1, 7) if th0["colors"].get(f"accent{i}")]
     all_accents = [t["colors"].get(f"accent{i}") for t in themes for i in (1, 2) if t["colors"].get(f"accent{i}")]
@@ -804,13 +943,25 @@ def infer_palette(prs, masters, themes, sw, shh, theme_of_layout: dict) -> dict:
     if primary_vivid and all_accents and all(_dist(primary_vivid, a) > 30 for a in all_accents):
         conflict = {"theme_accent1": theme_accents[0], "observed_primary": primary_vivid, "reason": "The most used brand colour on the slides is not the theme's first accent."}
     return {
-        "primary": primary_vivid, "text": text, "supporting": supporting[:6], "neutrals": neutrals,
+        "_text_counts": texts.most_common(12), "page_source": "observed slides",
+        "primary": primary_vivid, "text": text, "page": page, "emphasis_text": emphasis_text, "supporting": supporting[:8], "dark": dark, "neutrals": neutrals,
         "theme_scheme": th0["colors"], "theme_schemes_per_master": {m["master_id"]: m["theme"]["colors"] for m in masters},
         "brand_background_share": round(sum(n for c, n in brand_bg) / total_bg, 3) if bgs else None,
         "backgrounds": dict(bgs.most_common(6)), "text_colors": dict(texts.most_common(5)),
         "fills_by_area": {c: round(a, 1) for c, a in fills.most_common(10)}, "conflict": conflict,
         "confidence": round(min(0.95, 0.4 + 0.1 * len(prs.slides) ** 0.5), 2) if len(prs.slides) else 0.4,
     }
+
+
+def _contrast(a: str, b: str) -> float:
+    def rl(h):
+        out = []
+        for c in rgb(h):
+            c = c / 255
+            out.append(c / 12.92 if c <= 0.03928 else ((c + 0.055) / 1.055) ** 2.4)
+        return 0.2126 * out[0] + 0.7152 * out[1] + 0.0722 * out[2]
+    la, lb = rl(a), rl(b)
+    return (max(la, lb) + 0.05) / (min(la, lb) + 0.05)
 
 
 def _dist(a: str, b: str) -> float:
@@ -820,39 +971,45 @@ def _dist(a: str, b: str) -> float:
 # ── grid ────────────────────────────────────────────────────────────────────────
 
 def infer_grid(prs, catalog, sw, shh) -> dict:
-    lefts, rights, edges = [], [], []
+    """Margins from the TITLE placeholders of content layouts (the system's own frame), columns from
+    the edges of text and placeholders across layouts and slides. Pictures and full-bleed artwork
+    are excluded (they bleed off the grid on purpose)."""
+    title_l, title_r, edges = [], [], []
     for c in catalog:
-        for p in [c["features"]["title_geometry"]] if c["features"]["title_geometry"] else []:
-            lefts.append(p["nx"])
-            rights.append(p["nx"] + p["nw"])
+        t = c["features"]["title_geometry"]
+        if t and c["classification"][0]["type"] in CONTENT_LIKE | {"one_column"}:
+            title_l.append(t["nx"])
+            title_r.append(t["nx"] + t["nw"])
     for slide in prs.slides:
         for sh in slide.shapes:
             try:
-                if _in(sh.width) >= 0.9 * sw or _in(sh.width) < 0.02 * sw:
+                k = shape_kind(sh)
+                if k in ("picture", "group") or _in(sh.width) >= 0.9 * sw or _in(sh.width) < 0.02 * sw:
                     continue
                 x0, x1 = _in(sh.left) / sw, (_in(sh.left) + _in(sh.width)) / sw
                 if 0 <= x0 <= 1 and 0 <= x1 <= 1:
                     edges += [x0, x1]
-                    if shape_kind(sh) in ("text", "placeholder"):
-                        lefts.append(x0)
-                        rights.append(x1)
             except Exception:
                 continue
-    if not edges and not lefts:
+    if not edges and not title_l:
         return {"columns": None, "confidence": 0.0}
 
     def mode(vals, lo, hi):
-        vals = [round(v, 3) for v in vals if lo <= v <= hi]
-        if not vals:
-            return None
-        return collections.Counter(round(v * 200) / 200 for v in vals).most_common(1)[0][0]
+        vals = [v for v in vals if lo <= v <= hi]
+        return collections.Counter(round(v * 200) / 200 for v in vals).most_common(1)[0][0] if vals else None
 
-    ml = mode(lefts, 0.0, 0.2) or 0.05
-    mr = 1 - (mode(rights, 0.8, 1.0) or 0.95)
+    lefts = [e for i, e in enumerate(edges) if i % 2 == 0]
+    rights = [e for i, e in enumerate(edges) if i % 2 == 1]
+    ml = mode(title_l, 0.0, 0.2) or mode(lefts, 0.0, 0.2) or 0.05
+    mr_edge = mode(rights, 0.8, 1.0)
+    mr = 1 - (mr_edge or 0.95)
+    # most corporate grids are symmetric: if the shapes' right edges reach the mirrored margin, use it
+    if any(abs(e - (1 - ml)) <= 0.006 for e in rights):
+        mr = ml
     content = 1 - ml - mr
-    best = None
     pts = [e for e in edges if ml - 0.005 <= e <= 1 - mr + 0.005] or [ml, 1 - mr]
     tol = 0.006
+    best = None
     for n in (4, 6, 8, 10, 12, 16):
         for g1000 in range(0, 41, 2):
             g = g1000 / 1000
@@ -864,13 +1021,15 @@ def infer_grid(prs, catalog, sw, shh) -> dict:
                 x0 = ml + i * (cw + g)
                 bounds += [x0, x0 + cw]
             hit = sum(1 for e in pts if min(abs(e - b) for b in bounds) <= tol) / len(pts)
-            # prefer simpler systems unless a finer grid explains clearly more edges
-            sc = hit - 0.004 * n
+            # a finer grid "explains" more edges by chance: it must earn its extra columns; 12 is the
+            # conventional corporate default and gets a small prior
+            sc = hit - 0.008 * n + (0.03 if n == 12 else 0.0)
             if best is None or sc > best[0]:
                 best = (sc, n, g, hit)
     _, n, g, hit = best
     return {"margin_left_in": round(ml * sw, 3), "margin_right_in": round(mr * sw, 3), "columns": n, "gutter_in": round(g * sw, 3),
-            "edges_explained": round(hit, 3), "confidence": round(min(0.95, hit), 2), "edges_sampled": len(pts)}
+            "edges_explained": round(hit, 3), "confidence": round(min(0.95, hit), 2), "edges_sampled": len(pts),
+            "margins_from": "content layout titles" if title_l else "shape edges"}
 
 
 # ── assets ──────────────────────────────────────────────────────────────────────

@@ -38,8 +38,11 @@ real templates use names like `CUSTOM_4_1_2`) and — weighted more as examples 
 **observed use** of the layout on the example slides (a two-area layout always used for picture +
 text is learned as `image_split`, keeping `two_column` as a lower alternative).
 
-**Typography:** theme fonts (declared), master text styles, layout styles, the characters actually
-set on the example slides (direct formatting vs inherited, per role) and **style-guide slides**
+**Typography:** theme fonts (declared), master text styles and master placeholder styles, layout
+styles, the characters actually set on the example slides — each run attributed to the font it is
+**really drawn in**, following PowerPoint's inheritance (run → shape list style → layout placeholder
+→ master placeholder → master text styles → presentation default → theme), with weight-named
+families merged ("Inter Black" → Inter) — and **style-guide slides**
 (text that names a typeface next to "typography / typeface / font / tipografía"). Weighted
 (usage 45%, guide 20%, theme 15%, master 10%, layouts 10%) into a primary font with confidence.
 When theme and usage disagree it reports the contradiction, e.g. *"The theme declares Arial, but
@@ -47,20 +50,26 @@ When theme and usage disagree it reports the contradiction, e.g. *"The theme dec
 name Inter."*
 
 **Palette:** theme scheme per master vs area-weighted fills (slides, layouts, master artwork),
-character-weighted text colours and slide backgrounds → primary brand colour, text colour,
-supporting colours, neutrals, share of brand-colour slides; conflicts with the theme reported.
-Engine roles record their source (`theme` / `observed usage`).
+character-weighted text colours **as drawn** (inheritance resolved) and slide backgrounds →
+primary brand colour, the page colour (background of the content layouts), the text colour on it,
+supporting colours (fills, brand-colour backgrounds, coloured text), neutrals, share of
+brand-colour slides; conflicts with the theme reported. Theme slot names are not trusted (some
+templates use dk1 / lt1 unconventionally): engine roles are built from the real page / text pair,
+so every derived grey keeps its contrast, and each role records its source.
 
-**Grid:** margins from the most frequent left / right edges; the column system (4–16 columns ×
-gutter) that best explains the edges of placeholders and content shapes, with the share explained
-as confidence.
+**Grid:** margins from the titles of the content layouts (symmetric when content reaches the
+mirrored margin); the column system (4–16 columns × gutter) that best explains the edges of text
+and placeholders (pictures and full-bleed artwork excluded), finer grids penalised unless they
+explain clearly more, with the share explained as confidence.
 
 **Assets:** logos (the same image on several layouts, small, near a corner, or named so), icons
 (distinct small images on slides), vector groups, reserved artwork per master/layout.
 
 **Brand rules:** dominant headline case, bookend (first and last slides in the brand colour),
 share of brand-colour slides, text alignment, content headline position and width, rounded share
-of rectangles, chevrons.
+of rectangles, chevrons. Bookend and brand-colour share are checked on generated decks as editorial
+advice (`BRAND_BOOKEND`, `BRAND_COLOUR_SHARE`); a layout used for the last example slide keeps a
+`closing` label so closings are generated on it.
 
 ## Canvas size
 
@@ -75,8 +84,9 @@ are not used.
 For each corporate font: declared? observed? installed? renderable (installed or metric-compatible)?
 what LibreOffice will draw instead (`fc-match`), what the engine measures with, exact or
 approximate. A missing font produces a **FONT WARNING** with the expected risk (line wrapping and
-box fits may differ where the font is installed). The Docker environment deliberately contains
-no corporate fonts, so the warning is reproducible.
+box fits may differ where the font is installed). Any installed font is measured with its own
+file. The Docker environment ships common open-licence corporate typefaces (Inter, Roboto, Open
+Sans, Lato, Montserrat) and nothing proprietary, so warnings are reproducible.
 
 ## Corporate layout matching (builder)
 

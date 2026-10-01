@@ -69,12 +69,13 @@ def test_declared_theme_font_vs_observed_usage_conflict(model):
     assert ty["roles"]["body"]["conflict"] is True
 
 
-def test_missing_corporate_font_is_reported_never_silent(mm):
-    rep = ingest(mm[0], mm[1] / "brand", name="Synthetic")
+def test_missing_corporate_font_is_reported_never_silent(tmp_path):
+    p = make_multimaster(tmp_path / "mf.pptx", brand_font="Kestrel Corporate Sans")  # exists nowhere
+    rep = ingest(p, tmp_path / "brand", name="Synthetic")
     f = rep["fonts"]["body"]
-    assert f["font"] == "Inter" and not f["installed"] and f["measurement"] == "approximate"
+    assert f["font"] == "Kestrel Corporate Sans" and not f["installed"] and f["measurement"] == "approximate"
     assert "FONT WARNING" in f["warning"] and f["render_fallback"]
-    md = (mm[1] / "brand" / "compatibility.md").read_text()
+    md = (tmp_path / "brand" / "compatibility.md").read_text()
     assert "Conflict detected" in md and "FONT WARNING" in md and "Masters: **3**" in md
 
 

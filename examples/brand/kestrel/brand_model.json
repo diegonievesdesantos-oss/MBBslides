@@ -1248,6 +1248,9 @@
       "master": 0.143,
       "usage": 0.643
     },
+    "inherited_from": {
+      "master text styles": 24
+    },
     "master_styles": [
       {
         "master": "m1",
@@ -1272,9 +1275,13 @@
     }
   },
   "palette": {
+    "page_source": "content layouts",
     "primary": null,
     "text": "222222",
-    "supporting": [
+    "page": "FFFFFF",
+    "emphasis_text": [],
+    "supporting": [],
+    "dark": [
       "1B3A2F"
     ],
     "neutrals": [],
@@ -1328,7 +1335,8 @@
     "gutter_in": 0.267,
     "edges_explained": 1.0,
     "confidence": 0.95,
-    "edges_sampled": 4
+    "edges_sampled": 4,
+    "margins_from": "content layout titles"
   },
   "assets": {
     "logos": [

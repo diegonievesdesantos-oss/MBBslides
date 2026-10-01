@@ -74,6 +74,9 @@ def run(spec: dict, out_dir: str | Path, max_iter: int = 3, do_render: bool = Tr
                 issues = [i for i in issues if i["code"] not in ("HEADLINE_WIDOW", "HEADLINE_LINES")] + r_issues
                 comp = composition.measure_deck(render_info["pdf"], render_info["pngs"], resolved, manifests, theme)
                 advice = composition.advice_from(comp)  # editorial preference: never part of hard QA
+                from .brand.rules import deck_advice
+
+                advice += deck_advice(resolved, manifests, theme)
             except renderer.RenderError as e:
                 issues.append({"level": "warning", "code": "RENDER_UNAVAILABLE", "message": str(e)})
         issues, exempted = rep.apply_exemptions(issues, current)
@@ -92,7 +95,7 @@ def run(spec: dict, out_dir: str | Path, max_iter: int = 3, do_render: bool = Tr
         applied_any = True
     resolved, issues, exempted, metrics, render_info, pending, comp, advice = final
     comp_d = [c.to_dict() for c in comp]
-    editorial = [{"slide": a["slide"], "code": a["code"], "action": autofix.AGENT_ACTIONS.get(a["code"], a["message"]), "why": a["message"]} for a in advice]
+    editorial = [{"slide": a["slide"] or "deck", "code": a["code"], "action": autofix.AGENT_ACTIONS.get(a["code"], a["message"]), "why": a["message"]} for a in advice]
     report = rep.summarize(issues, [s.get("id") for s in resolved["slides"]], exempted, metrics, history,
                            {"pending_actions": pending, "artifacts": {"pptx": str(out / f"{name}.pptx"), **render_info},
                             "editorial_advice": editorial,
