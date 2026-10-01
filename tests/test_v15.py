@@ -352,3 +352,13 @@ def test_benchmark_specs_are_editorially_valid():
     assert "STORY_NO_EXEC_SUMMARY" not in {i["code"] for i in lint_storyline(spec)}
     for f in (ROOT / "evals" / "regression" / "cases").glob("2*_battery_*.json"):
         assert json.loads(f.read_text())["storyline"]["collection"] is True
+
+
+def test_holdout_v2_is_history_for_v15():
+    from cpe.results_report import holdout_v2_historical, render_block
+
+    old = {"suite_composition": 91.4, "cases_total": 26, "slides_authored": 157, "slides_measured": 158, "provenance": {"engine_version": "1.4.0"}}
+    assert holdout_v2_historical(old)
+    block = render_block({"holdout": {"v2": old}})
+    assert "development-known since v1.5" in block and "157 authored / 158 measured" in block and "unseen" not in block
+    assert not holdout_v2_historical({"provenance": {"engine_version": "1.5.0rc1"}})

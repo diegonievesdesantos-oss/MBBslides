@@ -64,7 +64,10 @@ def render_block(data: dict) -> str:
     L += ["| other signal | what it measures | current |", "|---|---|---|"]
     if v2.get("suite_composition") is not None:
         vo = v2.get("overall") or {}
-        L.append(f"| **Holdout v2** | sealed at v1.4, run once (v1.4.0); development-known since v1.5 ({v2.get('cases_total')} decks, "
+        ran = (v2.get("provenance") or {}).get("engine_version", "?")
+        what = (f"blind result of v{ran} (run once); development-known since v1.5, not re-run" if holdout_v2_historical(v2)
+                else "development-known run (not blind evidence)")
+        L.append(f"| **Holdout v2** | {what} ({v2.get('cases_total')} decks, "
                  f"{_f(v2.get('slides_authored'))} authored / {_f(v2.get('slides_measured'))} measured slides) | "
                  f"overall {_f(v2.get('suite_composition'))} · macro {_f(vo.get('macro_archetype_score'))} · P10 {_f((v2.get('distribution') or {}).get('p10'))} · "
                  f"weakest {vo.get('weakest_archetype')} {_f(vo.get('weakest_archetype_score'))} |")
@@ -75,12 +78,13 @@ def render_block(data: dict) -> str:
                  f"P90 drop {_f(rob.get('p90_drop'))} · catastrophic {rob.get('catastrophic')} ({_pct(rob.get('catastrophic_rate'))}) |")
     else:
         L.append("| **Robustness** | small content perturbations of development seeds | not run yet |")
-    for rnd in ("r1", "r2"):
+    for rnd in ("r1", "r2", "r3"):
         h = (hum.get("rounds") or {}).get(rnd) or {}
         if h.get("comparisons"):
             ci = h.get("challenger_preference_ci95") or [None, None]
             sa = h.get("score_agreement") or {}
-            L.append(f"| **Human {rnd}** | blind A/B votes ({h['comparisons']} votes, {h.get('evaluators')} evaluators){' — development data' if h.get('used_for_calibration') else ''} | "
+            L.append(f"| **Human {rnd}** | blind A/B votes ({h['comparisons']} votes, {h.get('evaluators')} evaluator{'s' if h.get('evaluators') != 1 else ''})"
+                     f"{' — development data since v1.5; blind validation of v1.4 preserved' if h.get('used_for_calibration') else ''} | "
                      f"challenger preferred {_f(h.get('challenger_preference'), 2)} (95% CI {_f(ci[0], 2)}–{_f(ci[1], 2)}) · scorer agrees {_f(sa.get('rate'), 2)} |")
         elif h:
             L.append(f"| **Human {rnd}** | blind A/B votes (`cpe human`) | {h.get('status', 'awaiting human votes')} |")
@@ -108,6 +112,23 @@ def render_block(data: dict) -> str:
 RELEASE_SECTIONS = ("regression", "examples", "robustness")
 
 
+def _release(v: str | None) -> str:
+    import re
+
+    m = re.match(r"(\d+\.\d+)", v or "")
+    return m.group(1) if m else ""
+
+
+def holdout_v2_historical(v2: dict) -> bool:
+    """Holdout v2 was blind for v1.4 and run once (1.4.0). From v1.5 on it is development-known:
+    its recorded result belongs to the version that ran it and is shown as history."""
+    from . import __version__
+
+    ran = (v2.get("provenance") or {}).get("engine_version") or v2.get("engine")
+    ran = ran.get("version") if isinstance(ran, dict) else ran
+    return _release(ran) != _release(__version__)
+
+
 def verify_provenance(data: dict | None = None, latest: Path = LATEST) -> list[str]:
     """Release truth check (CI): every recorded release signal was evaluated on a CLEAN commit, and
     nothing that determines the numbers (environment.ENGINE_PATHS) changed between that commit and
@@ -119,8 +140,9 @@ def verify_provenance(data: dict | None = None, latest: Path = LATEST) -> list[s
     data = data if data is not None else (json.loads(latest.read_text()) if latest.exists() else {})
     problems = []
     sections = {k: data.get(k) for k in RELEASE_SECTIONS}
-    if (data.get("holdout") or {}).get("v2"):
-        sections["holdout.v2"] = data["holdout"]["v2"]
+    v2 = (data.get("holdout") or {}).get("v2")
+    if v2 and not holdout_v2_historical(v2):  # a past version's blind run is history, not release truth for HEAD
+        sections["holdout.v2"] = v2
     for name, sec in sections.items():
         if not sec:
             problems.append(f"{name}: not recorded")

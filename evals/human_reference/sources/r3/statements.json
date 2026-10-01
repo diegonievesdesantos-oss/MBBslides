@@ -1,0 +1,92 @@
+{
+  "meta": {
+    "title": "r3 statements",
+    "deck_type": "business_review",
+    "theme": "meridian"
+  },
+  "storyline": {
+    "framework": "SCR",
+    "collection": true,
+    "governing_thought": "Slides written after the v1.5 freeze for human round r3",
+    "key_line": [
+      {
+        "id": "K1",
+        "role": "situation",
+        "message": "Round r3 material"
+      },
+      {
+        "id": "K2",
+        "role": "resolution",
+        "message": "Judged blind by people"
+      }
+    ]
+  },
+  "eval": {
+    "purpose": "human round r3 source (written after the v1.5.0rc1 freeze, never used for development)"
+  },
+  "slides": [
+    {
+      "kind": "statement",
+      "headline": "Statement",
+      "text": "Stores that kept their best managers grew three times faster than the rest of the network over the same period",
+      "id": "st01"
+    },
+    {
+      "kind": "statement",
+      "headline": "Statement",
+      "text": "We recommend closing the two smallest plants and moving their volume to Valencia, where capacity, skills and logistics costs are already in place",
+      "support": "Savings, risks and the transition plan follow.",
+      "id": "st02"
+    },
+    {
+      "kind": "statement",
+      "headline": "Statement",
+      "text": "La reorganización solo funcionará si los equipos regionales mantienen la relación con el cliente y la central asume la planificación, el pricing y las compras",
+      "id": "st03"
+    },
+    {
+      "kind": "statement",
+      "headline": "Statement",
+      "text": "Approve the €14M investment today, or accept that the savings slip into 2028",
+      "id": "st04"
+    },
+    {
+      "kind": "statement",
+      "headline": "Statement",
+      "text": "Customers do not leave because of price; they leave after the second unresolved complaint, and that happens in the first ninety days of the contract",
+      "support": "Evidence from 2,400 cancelled contracts in 2025.",
+      "id": "st05"
+    },
+    {
+      "kind": "statement",
+      "headline": "Statement",
+      "text": "The new model is cheaper, faster and safer, but only if procurement, finance and the plants adopt the same planning calendar and the same data definitions from the first month",
+      "id": "st06"
+    },
+    {
+      "kind": "statement",
+      "headline": "Statement",
+      "text": "El mercado no ha caído: hemos perdido cuota en los dos canales que más crecen, el online y la venta directa a grandes cuentas, mientras defendíamos el canal tradicional",
+      "support": "Los datos de cuota por canal y región están en el anexo.",
+      "id": "st07"
+    },
+    {
+      "kind": "statement",
+      "headline": "Statement",
+      "text": "Three decisions are needed from the board today: the budget for wave two, the owner of the programme and the date of the first store conversions",
+      "id": "st08"
+    },
+    {
+      "kind": "statement",
+      "headline": "Statement",
+      "text": "Our growth problem is a retention problem",
+      "id": "st09"
+    },
+    {
+      "kind": "statement",
+      "headline": "Statement",
+      "text": "Every month of delay in the system migration costs about €1.2M in duplicate licences, contractors and manual reconciliations, and the risk of a failed year-end close grows each month",
+      "id": "st10"
+    }
+  ]
+}

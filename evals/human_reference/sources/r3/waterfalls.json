@@ -1,0 +1,519 @@
+{
+  "meta": {
+    "title": "r3 waterfalls",
+    "deck_type": "business_review",
+    "theme": "meridian"
+  },
+  "storyline": {
+    "framework": "SCR",
+    "collection": true,
+    "governing_thought": "Slides written after the v1.5 freeze for human round r3",
+    "key_line": [
+      {
+        "id": "K1",
+        "role": "situation",
+        "message": "Round r3 material"
+      },
+      {
+        "id": "K2",
+        "role": "resolution",
+        "message": "Judged blind by people"
+      }
+    ]
+  },
+  "eval": {
+    "purpose": "human round r3 source (written after the v1.5.0rc1 freeze, never used for development)"
+  },
+  "slides": [
+    {
+      "headline": "The operating loss narrows from €18M to €4M as volumes recover",
+      "message_type": "change_bridge",
+      "visual": {
+        "type": "waterfall",
+        "title": "Bridge",
+        "unit": "€M",
+        "data": {
+          "steps": [
+            {
+              "label": "2024",
+              "value": -18,
+              "type": "total"
+            },
+            {
+              "label": "Volume",
+              "value": 9
+            },
+            {
+              "label": "Price",
+              "value": 4
+            },
+            {
+              "label": "Mix",
+              "value": 3
+            },
+            {
+              "label": "Costs",
+              "value": -2
+            },
+            {
+              "label": "2025",
+              "type": "total"
+            }
+          ]
+        }
+      },
+      "id": "wa01",
+      "section": "K1",
+      "purpose": "r3 source",
+      "source": "Source: illustrative data"
+    },
+    {
+      "headline": "The unit turns profitable in 2026 after a €21M improvement",
+      "message_type": "change_bridge",
+      "visual": {
+        "type": "waterfall",
+        "title": "Bridge",
+        "unit": "€M",
+        "data": {
+          "steps": [
+            {
+              "label": "2025",
+              "value": -9,
+              "type": "total"
+            },
+            {
+              "label": "Pricing",
+              "value": 8
+            },
+            {
+              "label": "Procurement",
+              "value": 7
+            },
+            {
+              "label": "Headcount",
+              "value": 4
+            },
+            {
+              "label": "Energy",
+              "value": 2
+            },
+            {
+              "label": "2026",
+              "type": "total"
+            }
+          ]
+        }
+      },
+      "id": "wa02",
+      "section": "K1",
+      "purpose": "r3 source",
+      "source": "Source: illustrative data"
+    },
+    {
+      "headline": "Net cash falls below zero as the acquisition is paid",
+      "message_type": "change_bridge",
+      "visual": {
+        "type": "waterfall",
+        "title": "Bridge",
+        "unit": "€M",
+        "data": {
+          "steps": [
+            {
+              "label": "Opening cash",
+              "value": 35,
+              "type": "total"
+            },
+            {
+              "label": "Operating cash flow",
+              "value": 22
+            },
+            {
+              "label": "Capex",
+              "value": -18
+            },
+            {
+              "label": "Acquisition",
+              "value": -60
+            },
+            {
+              "label": "Dividend",
+              "value": -8
+            },
+            {
+              "label": "Closing cash",
+              "type": "total"
+            }
+          ]
+        }
+      },
+      "id": "wa03",
+      "section": "K1",
+      "purpose": "r3 source",
+      "source": "Source: illustrative data"
+    },
+    {
+      "headline": "El resultado pasa de pérdidas a beneficio gracias a la reducción de costes",
+      "message_type": "change_bridge",
+      "visual": {
+        "type": "waterfall",
+        "title": "Bridge",
+        "unit": "M€",
+        "data": {
+          "steps": [
+            {
+              "label": "2024",
+              "value": -6,
+              "type": "total"
+            },
+            {
+              "label": "Ahorro en compras de materias primas",
+              "value": 5
+            },
+            {
+              "label": "Reducción de plantilla indirecta",
+              "value": 4
+            },
+            {
+              "label": "Renegociación de alquileres de tiendas",
+              "value": 3
+            },
+            {
+              "label": "Inflación salarial",
+              "value": -2
+            },
+            {
+              "label": "2025",
+              "type": "total"
+            }
+          ]
+        }
+      },
+      "id": "wa04",
+      "section": "K1",
+      "purpose": "r3 source",
+      "source": "Source: illustrative data"
+    },
+    {
+      "headline": "Margin falls 2.3 pp as input costs outpace price increases",
+      "message_type": "change_bridge",
+      "visual": {
+        "type": "waterfall",
+        "title": "Bridge",
+        "unit": "%",
+        "data": {
+          "steps": [
+            {
+              "label": "2024",
+              "value": 14.8,
+              "type": "total"
+            },
+            {
+              "label": "Price",
+              "value": 1.9
+            },
+            {
+              "label": "Input costs",
+              "value": -3.1
+            },
+            {
+              "label": "Freight",
+              "value": -0.8
+            },
+            {
+              "label": "Productivity",
+              "value": 0.6
+            },
+            {
+              "label": "Mix",
+              "value": -0.9
+            },
+            {
+              "label": "2025",
+              "type": "total"
+            }
+          ]
+        }
+      },
+      "id": "wa05",
+      "section": "K1",
+      "purpose": "r3 source",
+      "source": "Source: illustrative data"
+    },
+    {
+      "headline": "Revenue grows €42M, driven by new customers and the online channel",
+      "message_type": "change_bridge",
+      "visual": {
+        "type": "waterfall",
+        "title": "Bridge",
+        "unit": "€M",
+        "data": {
+          "steps": [
+            {
+              "label": "2024",
+              "value": 410,
+              "type": "total"
+            },
+            {
+              "label": "New customers",
+              "value": 21
+            },
+            {
+              "label": "Online channel",
+              "value": 14
+            },
+            {
+              "label": "Price",
+              "value": 9
+            },
+            {
+              "label": "Lost customers",
+              "value": -6
+            },
+            {
+              "label": "Currency",
+              "value": 4
+            },
+            {
+              "label": "2025",
+              "type": "total"
+            }
+          ]
+        }
+      },
+      "id": "wa06",
+      "section": "K1",
+      "purpose": "r3 source",
+      "source": "Source: illustrative data"
+    },
+    {
+      "headline": "Free cash flow turns negative in the investment year and recovers by 2027",
+      "message_type": "change_bridge",
+      "visual": {
+        "type": "waterfall",
+        "title": "Bridge",
+        "unit": "€M",
+        "data": {
+          "steps": [
+            {
+              "label": "2025",
+              "value": 12,
+              "type": "total"
+            },
+            {
+              "label": "Capex step-up",
+              "value": -25
+            },
+            {
+              "label": "Working capital",
+              "value": -4
+            },
+            {
+              "label": "EBITDA growth",
+              "value": 9
+            },
+            {
+              "label": "2026",
+              "type": "total"
+            },
+            {
+              "label": "Capex normalises",
+              "value": 18
+            },
+            {
+              "label": "EBITDA growth",
+              "value": 7
+            },
+            {
+              "label": "2027",
+              "type": "total"
+            }
+          ]
+        }
+      },
+      "id": "wa07",
+      "section": "K1",
+      "purpose": "r3 source",
+      "source": "Source: illustrative data"
+    },
+    {
+      "headline": "Eight levers close the €30M cost gap",
+      "message_type": "change_bridge",
+      "visual": {
+        "type": "waterfall",
+        "title": "Bridge",
+        "unit": "€M",
+        "data": {
+          "steps": [
+            {
+              "label": "Gap",
+              "value": 30,
+              "type": "total"
+            },
+            {
+              "label": "Procurement",
+              "value": -7
+            },
+            {
+              "label": "Network",
+              "value": -6
+            },
+            {
+              "label": "Automation",
+              "value": -5
+            },
+            {
+              "label": "Energy",
+              "value": -3
+            },
+            {
+              "label": "Travel",
+              "value": -2
+            },
+            {
+              "label": "Facilities",
+              "value": -3
+            },
+            {
+              "label": "IT licences",
+              "value": -2
+            },
+            {
+              "label": "Shared services",
+              "value": -2
+            },
+            {
+              "label": "Remaining",
+              "type": "total"
+            }
+          ]
+        }
+      },
+      "id": "wa08",
+      "section": "K1",
+      "purpose": "r3 source",
+      "source": "Source: illustrative data"
+    },
+    {
+      "headline": "Working capital releases €27M, mostly from inventory",
+      "message_type": "change_bridge",
+      "visual": {
+        "type": "waterfall",
+        "title": "Bridge",
+        "unit": "€M",
+        "data": {
+          "steps": [
+            {
+              "label": "Start",
+              "value": 140,
+              "type": "total"
+            },
+            {
+              "label": "Inventory reduction across all distribution centres",
+              "value": -19
+            },
+            {
+              "label": "Faster collection of overdue receivables",
+              "value": -6
+            },
+            {
+              "label": "Supplier payment terms",
+              "value": -2
+            },
+            {
+              "label": "End",
+              "type": "total"
+            }
+          ]
+        }
+      },
+      "id": "wa09",
+      "section": "K1",
+      "purpose": "r3 source",
+      "source": "Source: illustrative data"
+    },
+    {
+      "headline": "Pension deficit widens to €95M as discount rates fall",
+      "message_type": "change_bridge",
+      "visual": {
+        "type": "waterfall",
+        "title": "Bridge",
+        "unit": "€M",
+        "data": {
+          "steps": [
+            {
+              "label": "2024 deficit",
+              "value": -60,
+              "type": "total"
+            },
+            {
+              "label": "Discount rate",
+              "value": -41
+            },
+            {
+              "label": "Asset returns",
+              "value": 12
+            },
+            {
+              "label": "Contributions",
+              "value": 8
+            },
+            {
+              "label": "Longevity",
+              "value": -14
+            },
+            {
+              "label": "2025 deficit",
+              "type": "total"
+            }
+          ]
+        }
+      },
+      "id": "wa10",
+      "section": "K1",
+      "purpose": "r3 source",
+      "source": "Source: illustrative data"
+    },
+    {
+      "headline": "La deuda neta baja de 120 a 85 M€ en dos años",
+      "message_type": "change_bridge",
+      "visual": {
+        "type": "waterfall",
+        "title": "Bridge",
+        "unit": "M€",
+        "data": {
+          "steps": [
+            {
+              "label": "2024",
+              "value": 120,
+              "type": "total"
+            },
+            {
+              "label": "Caja operativa",
+              "value": -48
+            },
+            {
+              "label": "Inversiones",
+              "value": 21
+            },
+            {
+              "label": "Dividendos",
+              "value": 9
+            },
+            {
+              "label": "Venta de activos",
+              "value": -17
+            },
+            {
+              "label": "2026",
+              "type": "total"
+            }
+          ]
+        }
+      },
+      "id": "wa11",
+      "section": "K1",
+      "purpose": "r3 source",
+      "source": "Source: illustrative data"
+    }
+  ]
+}

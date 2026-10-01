@@ -1,0 +1,314 @@
+{
+  "meta": {
+    "title": "r3 controls",
+    "deck_type": "business_review",
+    "theme": "meridian"
+  },
+  "storyline": {
+    "framework": "SCR",
+    "collection": true,
+    "governing_thought": "Slides written after the v1.5 freeze for human round r3",
+    "key_line": [
+      {
+        "id": "K1",
+        "role": "situation",
+        "message": "Round r3 material"
+      },
+      {
+        "id": "K2",
+        "role": "resolution",
+        "message": "Judged blind by people"
+      }
+    ]
+  },
+  "eval": {
+    "purpose": "human round r3 source (written after the v1.5.0rc1 freeze, never used for development)"
+  },
+  "slides": [
+    {
+      "headline": "Online sales overtook stores in the third quarter",
+      "message_type": "trend",
+      "visual": {
+        "type": "line",
+        "title": "Sales by channel",
+        "unit": "€M",
+        "data": {
+          "categories": [
+            "Q1",
+            "Q2",
+            "Q3",
+            "Q4"
+          ],
+          "series": [
+            {
+              "name": "Stores",
+              "values": [
+                120,
+                118,
+                114,
+                112
+              ]
+            },
+            {
+              "name": "Online",
+              "values": [
+                96,
+                108,
+                121,
+                130
+              ]
+            }
+          ]
+        }
+      },
+      "id": "co01",
+      "section": "K1",
+      "purpose": "r3 source",
+      "source": "Source: illustrative data"
+    },
+    {
+      "headline": "Three regions explain 80% of the growth",
+      "message_type": "ranking",
+      "visual": {
+        "type": "bar",
+        "title": "Revenue growth by region",
+        "unit": "€M",
+        "data": {
+          "categories": [
+            "South",
+            "Centre",
+            "East",
+            "North",
+            "West"
+          ],
+          "series": [
+            {
+              "name": "Growth",
+              "values": [
+                14,
+                11,
+                7,
+                2,
+                1
+              ]
+            }
+          ]
+        }
+      },
+      "id": "co02",
+      "section": "K1",
+      "purpose": "r3 source",
+      "source": "Source: illustrative data"
+    },
+    {
+      "headline": "The supplier onboarding takes five steps and 34 days",
+      "message_type": "process",
+      "visual": {
+        "type": "process",
+        "data": {
+          "steps": [
+            {
+              "title": "Request",
+              "text": "Buyer submits the form"
+            },
+            {
+              "title": "Screening",
+              "text": "Risk and compliance checks"
+            },
+            {
+              "title": "Contract",
+              "text": "Legal review and signature"
+            },
+            {
+              "title": "Set-up",
+              "text": "Master data and bank details"
+            },
+            {
+              "title": "First order",
+              "text": "Trial purchase order"
+            }
+          ]
+        }
+      },
+      "id": "co03",
+      "section": "K1",
+      "purpose": "r3 source",
+      "source": "Source: illustrative data"
+    },
+    {
+      "headline": "Option B delivers the savings with less risk than option A",
+      "message_type": "comparison",
+      "id": "co04",
+      "section": "K1",
+      "purpose": "r3 source",
+      "source": "Source: illustrative data",
+      "columns": [
+        {
+          "title": "Option A: one national hub",
+          "points": [
+            "€22M savings",
+            "18-month build",
+            "High transition risk"
+          ]
+        },
+        {
+          "title": "Option B: two regional hubs",
+          "points": [
+            "€19M savings",
+            "9-month build",
+            "Low transition risk"
+          ],
+          "emphasis": true
+        }
+      ]
+    },
+    {
+      "headline": "Four initiatives deliver the plan by the end of 2027",
+      "message_type": "timeline",
+      "visual": {
+        "type": "timeline",
+        "data": {
+          "events": [
+            {
+              "date": "Q1 2026",
+              "text": "Pricing reset"
+            },
+            {
+              "date": "Q3 2026",
+              "text": "Network redesign"
+            },
+            {
+              "date": "Q1 2027",
+              "text": "Automation wave"
+            },
+            {
+              "date": "Q4 2027",
+              "text": "Full run-rate"
+            }
+          ]
+        }
+      },
+      "id": "co05",
+      "section": "K1",
+      "purpose": "r3 source",
+      "source": "Source: illustrative data"
+    },
+    {
+      "headline": "Margins differ by more than 15 points across channels",
+      "message_type": "comparison",
+      "visual": {
+        "type": "table",
+        "columns": [
+          {
+            "label": "Channel"
+          },
+          {
+            "label": "Revenue, €M",
+            "kind": "number"
+          },
+          {
+            "label": "Margin, %",
+            "kind": "number"
+          }
+        ],
+        "rows": [
+          [
+            "Stores",
+            "412",
+            "12.1"
+          ],
+          [
+            "Online",
+            "238",
+            "18.4"
+          ],
+          [
+            "Wholesale",
+            "151",
+            "3.2"
+          ],
+          [
+            "Marketplace",
+            "64",
+            "9.8"
+          ]
+        ]
+      },
+      "id": "co06",
+      "section": "K1",
+      "purpose": "r3 source",
+      "source": "Source: illustrative data"
+    },
+    {
+      "headline": "Customer satisfaction reached 8.7, the best score in five years",
+      "message_type": "single_number",
+      "visual": {
+        "type": "kpi",
+        "data": {
+          "items": [
+            {
+              "value": "8.7",
+              "label": "customer satisfaction, out of 10",
+              "delta": "+0.6",
+              "trend": "up",
+              "good": "up"
+            }
+          ]
+        }
+      },
+      "id": "co07",
+      "section": "K1",
+      "purpose": "r3 source",
+      "source": "Source: illustrative data"
+    },
+    {
+      "headline": "Two segments grow fast and earn high margins",
+      "message_type": "positioning",
+      "visual": {
+        "type": "matrix_2x2",
+        "data": {
+          "x_label": "Growth",
+          "y_label": "Margin",
+          "quadrants": [
+            "Defend",
+            "Invest",
+            "Exit",
+            "Fix"
+          ],
+          "focus": "TR",
+          "items": [
+            {
+              "label": "Premium",
+              "x": 0.8,
+              "y": 0.82
+            },
+            {
+              "label": "Online",
+              "x": 0.72,
+              "y": 0.68
+            },
+            {
+              "label": "Core retail",
+              "x": 0.3,
+              "y": 0.7
+            },
+            {
+              "label": "Wholesale",
+              "x": 0.6,
+              "y": 0.25
+            },
+            {
+              "label": "Legacy B2B",
+              "x": 0.15,
+              "y": 0.2
+            }
+          ]
+        }
+      },
+      "id": "co08",
+      "section": "K1",
+      "purpose": "r3 source",
+      "source": "Source: illustrative data"
+    }
+  ]
+}

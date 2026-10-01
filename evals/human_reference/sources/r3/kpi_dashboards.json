@@ -1,0 +1,639 @@
+{
+  "meta": {
+    "title": "r3 KPI dashboards",
+    "deck_type": "business_review",
+    "theme": "meridian"
+  },
+  "storyline": {
+    "framework": "SCR",
+    "collection": true,
+    "governing_thought": "Slides written after the v1.5 freeze for human round r3",
+    "key_line": [
+      {
+        "id": "K1",
+        "role": "situation",
+        "message": "Round r3 material"
+      },
+      {
+        "id": "K2",
+        "role": "resolution",
+        "message": "Judged blind by people"
+      }
+    ]
+  },
+  "eval": {
+    "purpose": "human round r3 source (written after the v1.5.0rc1 freeze, never used for development)"
+  },
+  "slides": [
+    {
+      "headline": "Service levels recovered in the second half while cost per order fell",
+      "message_type": "kpi_dashboard",
+      "visual": {
+        "type": "kpi",
+        "data": {
+          "items": [
+            {
+              "value": "96.2%",
+              "label": "on-time delivery",
+              "delta": "+3.1 pts",
+              "trend": "up",
+              "good": "up"
+            },
+            {
+              "value": "€4.10",
+              "label": "cost per order",
+              "delta": "−€0.35",
+              "trend": "down",
+              "good": "down"
+            },
+            {
+              "value": "1.8%",
+              "label": "order error rate",
+              "delta": "−0.6 pts",
+              "trend": "down",
+              "good": "down"
+            }
+          ]
+        }
+      },
+      "id": "kp01",
+      "section": "K1",
+      "purpose": "r3 source",
+      "source": "Source: illustrative data"
+    },
+    {
+      "headline": "The new pricing lifted margin without hurting volume",
+      "message_type": "kpi_dashboard",
+      "visual": {
+        "type": "kpi",
+        "data": {
+          "items": [
+            {
+              "value": "+4.2%",
+              "label": "volume vs last year",
+              "delta": "+0.3 pts",
+              "trend": "up",
+              "good": "up"
+            },
+            {
+              "value": "31.5%",
+              "label": "gross margin",
+              "delta": "+2.4 pts",
+              "trend": "up",
+              "good": "up"
+            },
+            {
+              "value": "€212",
+              "label": "average basket",
+              "delta": "+€9",
+              "trend": "up",
+              "good": "up"
+            },
+            {
+              "value": "2.1%",
+              "label": "churn",
+              "delta": "0.0 pts",
+              "trend": "flat",
+              "good": "up"
+            }
+          ]
+        }
+      },
+      "id": "kp02",
+      "section": "K1",
+      "purpose": "r3 source",
+      "source": "Source: illustrative data"
+    },
+    {
+      "headline": "Hospital waiting times fell on four of five measures",
+      "message_type": "kpi_dashboard",
+      "visual": {
+        "type": "kpi",
+        "data": {
+          "items": [
+            {
+              "value": "38 days",
+              "label": "median wait for surgery",
+              "delta": "−9 days",
+              "trend": "down",
+              "good": "down"
+            },
+            {
+              "value": "4.2 h",
+              "label": "time in emergency",
+              "delta": "−0.8 h",
+              "trend": "down",
+              "good": "down"
+            },
+            {
+              "value": "71%",
+              "label": "seen within target",
+              "delta": "+12 pts",
+              "trend": "up",
+              "good": "up"
+            },
+            {
+              "value": "12%",
+              "label": "cancelled operations",
+              "delta": "+1 pt",
+              "trend": "up",
+              "good": "down"
+            },
+            {
+              "value": "88%",
+              "label": "patient satisfaction",
+              "delta": "+3 pts",
+              "trend": "up",
+              "good": "up"
+            }
+          ]
+        }
+      },
+      "id": "kp03",
+      "section": "K1",
+      "purpose": "r3 source",
+      "source": "Source: illustrative data"
+    },
+    {
+      "headline": "All six plant metrics now beat the group benchmark",
+      "message_type": "kpi_dashboard",
+      "visual": {
+        "type": "kpi",
+        "data": {
+          "items": [
+            {
+              "value": "87%",
+              "label": "overall equipment effectiveness",
+              "delta": "+6 pts",
+              "trend": "up",
+              "good": "up"
+            },
+            {
+              "value": "0.9",
+              "label": "lost-time injuries per million hours",
+              "delta": "−0.4",
+              "trend": "down",
+              "good": "down"
+            },
+            {
+              "value": "2.3%",
+              "label": "scrap rate",
+              "delta": "−0.7 pts",
+              "trend": "down",
+              "good": "down"
+            },
+            {
+              "value": "98.1%",
+              "label": "schedule adherence",
+              "delta": "+1.5 pts",
+              "trend": "up",
+              "good": "up"
+            },
+            {
+              "value": "€14.2M",
+              "label": "maintenance spend",
+              "delta": "−€1.1M",
+              "trend": "down",
+              "good": "down"
+            },
+            {
+              "value": "4.6",
+              "label": "energy use, MWh per tonne",
+              "delta": "−0.3",
+              "trend": "down",
+              "good": "down"
+            }
+          ]
+        }
+      },
+      "id": "kp04",
+      "section": "K1",
+      "purpose": "r3 source",
+      "source": "Source: illustrative data"
+    },
+    {
+      "headline": "Los indicadores comerciales mejoran salvo la captación de clientes",
+      "message_type": "kpi_dashboard",
+      "visual": {
+        "type": "kpi",
+        "data": {
+          "items": [
+            {
+              "value": "+6,8%",
+              "label": "ventas comparables",
+              "delta": "+2,1 pts",
+              "trend": "up",
+              "good": "up"
+            },
+            {
+              "value": "24,3%",
+              "label": "margen bruto",
+              "delta": "+0,9 pts",
+              "trend": "up",
+              "good": "up"
+            },
+            {
+              "value": "−3,2%",
+              "label": "nuevos clientes",
+              "delta": "−5,0 pts",
+              "trend": "down",
+              "good": "up"
+            }
+          ]
+        }
+      },
+      "id": "kp05",
+      "section": "K1",
+      "purpose": "r3 source",
+      "source": "Source: illustrative data"
+    },
+    {
+      "headline": "Half of all customer contacts are now digital",
+      "message_type": "kpi_dashboard",
+      "visual": {
+        "type": "kpi",
+        "data": {
+          "items": [
+            {
+              "value": "51%",
+              "label": "contacts handled in digital channels, including the app and web chat",
+              "delta": "+14 pts",
+              "trend": "up",
+              "good": "up"
+            },
+            {
+              "value": "3.2 min",
+              "label": "average handling time for the remaining phone calls",
+              "delta": "−0.4 min",
+              "trend": "down",
+              "good": "down"
+            },
+            {
+              "value": "78",
+              "label": "customer effort score, out of 100",
+              "delta": "+6",
+              "trend": "up",
+              "good": "up"
+            },
+            {
+              "value": "€2.40",
+              "label": "cost per contact across every channel",
+              "delta": "−€0.70",
+              "trend": "down",
+              "good": "down"
+            }
+          ]
+        }
+      },
+      "id": "kp06",
+      "section": "K1",
+      "purpose": "r3 source",
+      "source": "Source: illustrative data"
+    },
+    {
+      "headline": "Cash conversion improved as inventory came down",
+      "message_type": "kpi_dashboard",
+      "visual": {
+        "type": "kpi",
+        "data": {
+          "items": [
+            {
+              "value": "€184M",
+              "label": "free cash flow",
+              "delta": "+€41M",
+              "trend": "up",
+              "good": "up"
+            },
+            {
+              "value": "52 days",
+              "label": "inventory days",
+              "delta": "−11 days",
+              "trend": "down",
+              "good": "down"
+            },
+            {
+              "value": "38 days",
+              "label": "receivable days",
+              "delta": "−2 days",
+              "trend": "down",
+              "good": "down"
+            },
+            {
+              "value": "61 days",
+              "label": "payable days",
+              "delta": "+4 days",
+              "trend": "up",
+              "good": "up"
+            }
+          ]
+        }
+      },
+      "id": "kp07",
+      "section": "K1",
+      "purpose": "r3 source",
+      "source": "Source: illustrative data"
+    },
+    {
+      "headline": "The programme is on track on budget, scope and benefits, but late on hiring",
+      "message_type": "kpi_dashboard",
+      "visual": {
+        "type": "kpi",
+        "data": {
+          "items": [
+            {
+              "value": "€46.1M",
+              "label": "spent of €48M budget",
+              "delta": "96%",
+              "trend": "flat",
+              "good": "up"
+            },
+            {
+              "value": "23 of 25",
+              "label": "milestones delivered"
+            },
+            {
+              "value": "€31M",
+              "label": "run-rate benefits",
+              "delta": "+€9M",
+              "trend": "up",
+              "good": "up"
+            },
+            {
+              "value": "64%",
+              "label": "roles filled vs plan",
+              "delta": "−11 pts",
+              "trend": "down",
+              "good": "up"
+            }
+          ]
+        }
+      },
+      "id": "kp08",
+      "section": "K1",
+      "purpose": "r3 source",
+      "source": "Source: illustrative data"
+    },
+    {
+      "headline": "La red de oficinas reduce costes y mantiene la satisfacción",
+      "message_type": "kpi_dashboard",
+      "visual": {
+        "type": "kpi",
+        "data": {
+          "items": [
+            {
+              "value": "−14%",
+              "label": "coste operativo",
+              "delta": "−€6,3M",
+              "trend": "down",
+              "good": "down"
+            },
+            {
+              "value": "312",
+              "label": "oficinas abiertas",
+              "delta": "−41",
+              "trend": "down",
+              "good": "down"
+            },
+            {
+              "value": "8,4",
+              "label": "satisfacción del cliente",
+              "delta": "+0,1",
+              "trend": "up",
+              "good": "up"
+            },
+            {
+              "value": "+22%",
+              "label": "operaciones en cajero",
+              "delta": "+9 pts",
+              "trend": "up",
+              "good": "up"
+            },
+            {
+              "value": "4,1 min",
+              "label": "espera media",
+              "delta": "−0,6 min",
+              "trend": "down",
+              "good": "down"
+            }
+          ]
+        }
+      },
+      "id": "kp09",
+      "section": "K1",
+      "purpose": "r3 source",
+      "source": "Source: illustrative data"
+    },
+    {
+      "headline": "Three numbers explain why the pilot should scale",
+      "message_type": "kpi_dashboard",
+      "visual": {
+        "type": "kpi",
+        "data": {
+          "items": [
+            {
+              "value": "+18%",
+              "label": "sales per store in pilot stores",
+              "delta": "+18 pts",
+              "trend": "up",
+              "good": "up",
+              "note": "vs 2% in control stores"
+            },
+            {
+              "value": "€0.9M",
+              "label": "one-off cost per store",
+              "note": "paid back in 14 months"
+            },
+            {
+              "value": "92%",
+              "label": "store managers who want to keep it",
+              "note": "survey of 48 managers"
+            }
+          ]
+        }
+      },
+      "id": "kp10",
+      "section": "K1",
+      "purpose": "r3 source",
+      "source": "Source: illustrative data"
+    },
+    {
+      "headline": "Customer metrics improved in every region except the north",
+      "message_type": "kpi_dashboard",
+      "visual": {
+        "type": "kpi",
+        "data": {
+          "items": [
+            {
+              "value": "+9%",
+              "label": "active customers, south",
+              "delta": "+9 pts",
+              "trend": "up",
+              "good": "up"
+            },
+            {
+              "value": "+7%",
+              "label": "active customers, centre",
+              "delta": "+7 pts",
+              "trend": "up",
+              "good": "up"
+            },
+            {
+              "value": "+5%",
+              "label": "active customers, east",
+              "delta": "+5 pts",
+              "trend": "up",
+              "good": "up"
+            },
+            {
+              "value": "−2%",
+              "label": "active customers, north",
+              "delta": "−2 pts",
+              "trend": "down",
+              "good": "up"
+            },
+            {
+              "value": "+11%",
+              "label": "active customers, west",
+              "delta": "+11 pts",
+              "trend": "up",
+              "good": "up"
+            },
+            {
+              "value": "+6%",
+              "label": "active customers, islands",
+              "delta": "+6 pts",
+              "trend": "up",
+              "good": "up"
+            }
+          ]
+        }
+      },
+      "id": "kp11",
+      "section": "K1",
+      "purpose": "r3 source",
+      "source": "Source: illustrative data"
+    },
+    {
+      "headline": "Safety performance is the best in a decade",
+      "message_type": "kpi_dashboard",
+      "visual": {
+        "type": "kpi",
+        "data": {
+          "items": [
+            {
+              "value": "0.42",
+              "label": "recordable injury rate",
+              "delta": "−0.19",
+              "trend": "down",
+              "good": "down"
+            },
+            {
+              "value": "0",
+              "label": "fatalities",
+              "delta": "0",
+              "trend": "flat",
+              "good": "up"
+            },
+            {
+              "value": "97%",
+              "label": "safety training completed",
+              "delta": "+8 pts",
+              "trend": "up",
+              "good": "up"
+            },
+            {
+              "value": "1,240",
+              "label": "near misses reported",
+              "delta": "+310",
+              "trend": "up",
+              "good": "up"
+            }
+          ]
+        }
+      },
+      "id": "kp12",
+      "section": "K1",
+      "purpose": "r3 source",
+      "source": "Source: illustrative data"
+    },
+    {
+      "headline": "Two of four supply targets were missed because of the port strike",
+      "message_type": "kpi_dashboard",
+      "visual": {
+        "type": "kpi",
+        "data": {
+          "items": [
+            {
+              "value": "91%",
+              "label": "fill rate",
+              "delta": "−4 pts",
+              "trend": "down",
+              "good": "up"
+            },
+            {
+              "value": "17 days",
+              "label": "lead time",
+              "delta": "+5 days",
+              "trend": "up",
+              "good": "down"
+            },
+            {
+              "value": "€3.4M",
+              "label": "expediting cost",
+              "delta": "+€2.1M",
+              "trend": "up",
+              "good": "down"
+            },
+            {
+              "value": "99.2%",
+              "label": "supplier quality",
+              "delta": "+0.3 pts",
+              "trend": "up",
+              "good": "up"
+            }
+          ]
+        }
+      },
+      "id": "kp13",
+      "section": "K1",
+      "purpose": "r3 source",
+      "source": "Source: illustrative data"
+    },
+    {
+      "headline": "El hospital atiende más pacientes con la misma plantilla",
+      "message_type": "kpi_dashboard",
+      "visual": {
+        "type": "kpi",
+        "data": {
+          "items": [
+            {
+              "value": "+12%",
+              "label": "altas por médico",
+              "delta": "+12 pts",
+              "trend": "up",
+              "good": "up"
+            },
+            {
+              "value": "5,1 días",
+              "label": "estancia media",
+              "delta": "−0,7 días",
+              "trend": "down",
+              "good": "down"
+            },
+            {
+              "value": "84%",
+              "label": "ocupación de camas",
+              "delta": "+3 pts",
+              "trend": "up",
+              "good": "up"
+            }
+          ]
+        }
+      },
+      "id": "kp14",
+      "section": "K1",
+      "purpose": "r3 source",
+      "source": "Source: illustrative data"
+    }
+  ]
+}
