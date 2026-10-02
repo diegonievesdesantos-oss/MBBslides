@@ -18,13 +18,12 @@ and contradictory opinions. The engine builds the deck as follows:
 It then renders the deck, measures its visual quality and corrects what it can. **Every number a
 reader sees must come from a cited fact.** The pass/fail verdicts are computed by code.
 
-> **v2.4.0** (current): choosing the new value of a figure.
-> - One source value is the new value of at most two different figures.
-> - Years are read as 2025e, FY25 or FY2024/25; a projection no longer takes another year's actual.
-> - Restatements of a figure that found different values are flagged for the reviewer, not overwritten.
-> - Blind, on a sealed synthetic set, these changes did not generalise: proposed values are right about
->   half the time (45/84). The diagnosis is in [docs/V24_STATUS.md](docs/V24_STATUS.md).
-> - Blind validation on real material moves to v2.5.
+> **v2.5.0** (current): years, long tables and cumulative figures.
+> - A source value takes the year next to it; a chart point its category's year; a long table's row
+>   its year column.
+> - A cumulative figure is never matched to one period's, nor the other way round.
+> - Blind, on a sealed synthetic set: proposed values right 72% → 76%, "outdated" flags right 81% → 83%.
+> - Blind validation on real material moves to v3.0, the last version.
 
 <!-- metrics:start (generated from evals/results/latest.json by `cpe results readme`; do not edit) -->
 
@@ -66,6 +65,20 @@ Example decks are development material and regression fixtures, not evidence of 
 <sub>engine 2.4.0 · evaluated source commit `da286cac3a` · LibreOffice 24.2.7.2 420(Build:2) · fontconfig 2.15.0 · container `mbbslides-visual:1.3@sha256:bb5bbbdd55bcec5db567781c63574da1a4b2fc4504446d6fea23f5197f59d278` · render fingerprint `f98cee49d123ed5f`</sub>
 
 <!-- metrics:end -->
+
+## What's new in v2.5 — years, long tables, cumulative figures
+
+- **Each value its own year:** in "1,4 M€ en 2023, 1,8 M€ en 2024", each value takes its own year. A
+  chart point takes its category's year, not every year of the chart's title.
+- **Long tables:** in "indicador, año, valor", each value takes its row's year, so a past actual is no
+  longer called outdated by another year's row.
+- **Cumulative against yearly:** "inversión acumulada" is never one year's investment.
+- **Measured blind,** on a sealed set of 4 synthetic cases (392 keyed numbers):
+  - proposed values right: 72% → 76%;
+  - "outdated" right: 81% → 83%;
+  - "current" right: 67/70 → 70/72.
+
+Details: [docs/V25_STATUS.md](docs/V25_STATUS.md).
 
 ## What's new in v2.4 — choosing the new value
 

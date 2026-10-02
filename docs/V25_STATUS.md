@@ -1,4 +1,8 @@
-# v2.5 status (2.5.0.dev0)
+# v2.5 status (2.5.0)
+
+> **Closed as 2.5.0 on 2026-10-02 (owner decision).**
+> - Items 2–5 are done.
+> - Item 1 (blind validation on real material) moves to v3.0, the last version.
 
 Goal: the failures v2.4's blind check found: years, past actuals and cumulative figures. This is the
 last round built on synthetic cases. After it, the open question is real material.

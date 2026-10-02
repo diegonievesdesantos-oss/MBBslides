@@ -1,6 +1,11 @@
 # Changelog
 
-## Unreleased — 2.5.0.dev0
+## 2.5.0 — Years, long tables, cumulative figures (the last synthetic round)
+
+**Closed 2026-10-02 by the owner, without the blind validation on real material, which moves to v3.0,
+the last version.**
+
+Blind, on a sealed synthetic set: proposed values right 72% → 76%, with every measure improving.
 
 The last synthetic round: time and accumulation, the failures v2.4's blind check found. Status:
 [docs/V25_STATUS.md](docs/V25_STATUS.md).
