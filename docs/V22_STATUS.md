@@ -166,7 +166,7 @@ development cases and the v1.8 project (not on the used holdout) gave two patter
   sources. Its figures are what the update changes, not a source that disagrees. Now low.
 - **Values 40% or more apart.** Every one of them was another quantity under the same words: a quarter
   against the year, a share against a level, a phase against the total. Every real conflict of the
-  development cases was within 30%. Now low.
+  development cases rated medium was within 30%. Now low.
 
 | "medium" flags that are real conflicts | v2.1 | v2.2 |
 |---|---|---|
