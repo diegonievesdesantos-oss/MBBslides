@@ -1,5 +1,17 @@
 # Changelog
 
+## Unreleased — 3.0.0.dev0 (the last version)
+
+The one criterion of 3.0 is the owner's real material: unseen corporate templates and real update cases
+with the owner's key sealed before the tool runs. Status: [docs/V30_STATUS.md](docs/V30_STATUS.md).
+
+- **Validation kit:** `scripts/validation_kit.py`.
+  - `template OLD.pptx -o clave.xlsx` lists every number of the old deck for the owner to key: state,
+    new value, source.
+  - `seal` records each filled key's sha256 before the tool runs.
+  - `score` compares a key with the tool's plan.
+  - Checked on a used synthetic case: it gives the same figures as the scorer used since v2.2.
+
 ## 2.5.0 — Years, long tables, cumulative figures (the last synthetic round)
 
 **Closed 2026-10-02 by the owner, without the blind validation on real material, which moves to v3.0,

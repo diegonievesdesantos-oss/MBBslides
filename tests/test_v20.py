@@ -550,3 +550,37 @@ def test_v25_long_table_years_and_cumulative_figures(tmp_path):
     q = {(s["slide"], x["raw"]): x for s in plan["slides"] for x in s["numbers"]}
     assert q[(1, "48")]["status"] == "current"  # 2024's row, not 2023's 31 or 2025's 71
     assert not str(q[(2, "€2,1 M")].get("new_value") or "").startswith("5.5")  # a cumulative is not one year's figure
+
+
+def test_v30_validation_kit_template_seal_and_score(tmp_path):
+    import importlib.util
+    import json
+    from pathlib import Path as P
+
+    from openpyxl import load_workbook
+
+    from cpe.reasoning.deck_update import ingest_deck, update_plan
+
+    spec = importlib.util.spec_from_file_location("kit", P(__file__).resolve().parents[1] / "scripts" / "validation_kit.py")
+    kit = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(kit)
+    _deck_with(tmp_path / "d.pptx", [("La inversión de la fase 1 asciende a 3,2 M€", None, None)])
+    n = kit.template(str(tmp_path / "d.pptx"), str(tmp_path / "clave.xlsx"))
+    assert n >= 1
+    wb = load_workbook(tmp_path / "clave.xlsx")
+    ws = wb["Clave"]
+    row = next(r for r in ws.iter_rows(min_row=2) if r[2].value == "€3,2 M")
+    row[5].value, row[6].value = "desactualizada", "3,52"
+    wb.save(tmp_path / "clave.xlsx")
+    kit.seal([str(tmp_path / "clave.xlsx")], str(tmp_path / "SEALED"))
+    assert len((tmp_path / "SEALED").read_text().split()[0]) == 64
+    work = tmp_path / "work"
+    work.mkdir()
+    plan = update_plan(ingest_deck(tmp_path / "d.pptx"), [])
+    for s in plan["slides"]:
+        for q in s["numbers"]:
+            if q["raw"] == "€3,2 M":
+                q.update(status="outdated", new_display="3,52", new_num=3.52e6)
+    (work / "update_plan.json").write_text(json.dumps(plan), encoding="utf-8")
+    c = kit.score(str(tmp_path / "clave.xlsx"), str(work))
+    assert c["out_found"] == c["out_gold"] == 1 and c["val_ok"] == 1
