@@ -14,6 +14,7 @@ once the new fact model confirms it. Nothing is silently carried over.
 from __future__ import annotations
 
 import json
+import math
 import re
 import unicodedata
 from collections import Counter
@@ -53,6 +54,67 @@ def _locate(text: str, raw: str, start: int = 0):
     if not core:
         return None
     return re.compile(rf"(?<![\d.,]){re.escape(core.group(0))}(?![\d])").search(text or "", start)
+
+
+def _core(raw: str) -> str:
+    m = NUM_RE.search(raw or "")
+    return m.group(0).rstrip(".,") if m else ""
+
+
+def _occurrences(text: str, raw: str) -> list:
+    core = _core(raw)
+    return list(re.finditer(rf"(?<![\d.,]){re.escape(core)}(?![\d])", text or "")) if core else []
+
+
+def _seps(core: str, hint: str | None = None) -> tuple[str, str]:
+    """(decimal, thousands) separators of a written number; `hint` is the decimal separator of the deck."""
+    if "," in core and "." in core:
+        return (",", ".") if core.rfind(",") > core.rfind(".") else (".", ",")
+    for sep in (",", "."):
+        if sep in core:
+            if re.fullmatch(rf"\d{{1,3}}(\{sep}\d{{3}})+", core) and not (hint == sep and core.count(sep) == 1):
+                return ("," if sep == "." else "."), sep
+            return sep, ("." if sep == "," else ",")
+    d = hint or "."
+    return d, ("." if d == "," else ",")
+
+
+def _parse_core(core: str, hint: str | None = None) -> float | None:
+    """'3,2' → 3.2, '38.500' → 38500, '1,374.5' → 1374.5."""
+    dec, th = _seps(core, hint)
+    try:
+        return float(core.replace(th, "").replace(dec, "."))
+    except ValueError:
+        return None
+
+
+def format_like(core: str, value: float, hint: str | None = None) -> str:
+    """`value` written the way `core` is: decimal and thousands separators, and its decimals unless
+    they would hide more than 0.5% of the value ('4,0' for 4.034 → '4,03')."""
+    dec_sep, th_sep = _seps(core, hint)
+    dec = len(core.split(dec_sep)[1]) if dec_sep in core else 0
+    v = abs(value)
+    while dec < 3 and v and abs(round(v, dec) - v) / v > 0.005:
+        dec += 1
+    grouped = bool(th_sep in core) or (v >= 10000 and bool(re.search(r"\d[.,]\d{3}", core)))
+    s = f"{v:,.{dec}f}" if grouped else f"{v:.{dec}f}"
+    s = s.replace(",", "\x00").replace(".", dec_sep).replace("\x00", th_sep)
+    return ("-" if value < 0 else "") + s
+
+
+def _new_display(q: dict, c: dict) -> str | None:
+    """The new value expressed in the old number's own scale and notation ('3,2' M€ → '4,03')."""
+    hint = q.get("_hint") or ("," if re.search(r"\d,\d{1,2}(?!\d)", q.get("text") or "") else None)
+    shown = _parse_core(q.get("core") or _core(q["raw"]), hint)
+    if not shown or not q["value"]:
+        return None
+    factor = abs(q["value"]) / shown  # what one written unit of the old number is worth (1e6 for "3,2 M€")
+    opts = [abs(c["base"]), abs(c["value"])] + [abs(c["value"]) * k for k in (1e3, 1e-3, 1e6, 1e-6)]
+    best = min((o for o in opts if o), key=lambda o: abs(math.log(o / abs(q["value"]))), default=None)
+    if best is None:
+        return None
+    sign = -1.0 if (q["value"] < 0 or str(q.get("raw", "")).startswith("-")) and c["value"] >= 0 else (-1.0 if c["value"] < 0 else 1.0)
+    return format_like(q.get("core") or _core(q["raw"]), sign * best / factor, hint)  # a cost the deck shows negative stays negative
 
 
 def _window(text: str, m) -> str:
@@ -167,8 +229,9 @@ def ingest_deck(path: str | Path) -> dict:
                     j = k - 1 - 1 if labels_before else k - 1 + 1
                     if 0 <= j < len(body) and not NUM_RE.search(body[j]) and len(body[j].split()) <= 8:
                         ctx = f"{text} {body[j]}"
+                occ = len(_occurrences(text[:m.start()], q["raw"])) if m else 0
                 numbers.append({"where": where, "raw": q["raw"], "value": q["value"], "kind": q["kind"], "context": ctx,
-                                "text": text[:400], "unit_after": _unit_after(text, m), "section": section})
+                                "text": text[:400], "unit_after": _unit_after(text, m), "section": section, "core": _core(q["raw"]), "occ": occ})
         for e_i, ex in enumerate(exhibits):
             for s in ex.get("series") or []:
                 for k, v in enumerate(s["values"]):
@@ -180,10 +243,14 @@ def ingest_deck(path: str | Path) -> dict:
                 for c_i, cell in enumerate(row[1:], start=1):
                     qs = headline_quantities(cell)
                     hdr = (ex.get("header") or [""] * (c_i + 1))[c_i] if c_i < len(ex.get("header") or []) else ""
+                    cpos = 0
                     for k, q in enumerate(qs):
                         label = _pair_label(row[0], k) if len(qs) == 2 and "/" in cell else row[0]
+                        cm = _locate(cell, q["raw"], cpos)
+                        cpos = cm.end() if cm else cpos
                         numbers.append({"where": f"exhibit[{e_i}].rows[{r_i}][{c_i}]", "raw": q["raw"], "value": q["value"], "kind": q["kind"],
-                                        "context": f"{label} {hdr}".strip(), "text": cell, "unit_after": _unit_after(cell, _locate(cell, q["raw"], 0))})
+                                        "context": f"{label} {hdr}".strip(), "text": cell, "unit_after": _unit_after(cell, cm),
+                                        "core": _core(q["raw"]), "occ": len(_occurrences(cell[:cm.start()], q["raw"])) if cm else 0})
         slides.append({"n": i, "role": role, "layout": slide.slide_layout.name, "headline": title, "body": body, "exhibits": exhibits,
                        "numbers": numbers, "words": words, "is_last": i == n})
     return {"source": Path(path).name, "slides": slides,
@@ -465,6 +532,8 @@ def update_plan(inv: dict, facts: list[dict]) -> dict:
     - UNTRACED: no new fact speaks to it, or only a restatement of the old plan does (a budget, an offer);
     - IGNORED: not a figure (page number, document code, phase index, specification)."""
     cands = _candidates(facts, {Path(str(inv.get("source") or "")).name})
+    alltext = " ".join(q.get("text") or "" for s in inv["slides"] for q in s["numbers"])
+    hint = "," if len(re.findall(r"\d,\d{1,2}(?!\d)", alltext)) > len(re.findall(r"\d\.\d{1,2}(?!\d)", alltext)) else "."  # the deck's decimal mark
     out = []
     for s in inv["slides"]:
         items = []
@@ -479,7 +548,8 @@ def update_plan(inv: dict, facts: list[dict]) -> dict:
             elif status == "outdated":
                 u = UNIT_TEXT.get(primary["unit"], "")
                 newv = f"{primary['value']:g}{u}" if u == "%" else (f"{primary['value']:g} {u}" if u else f"{primary['value']:g}")
-                items.append({**q, "status": "outdated", "new_value": newv, "fact": primary["fact"], "new_claim": primary["text"][:140]})
+                items.append({**q, "status": "outdated", "new_value": newv, "fact": primary["fact"], "new_claim": primary["text"][:140],
+                              "new_display": _new_display({**q, "_hint": hint}, primary)})
             else:
                 items.append({**q, "status": "untraced"})
         st = Counter(i["status"] for i in items)

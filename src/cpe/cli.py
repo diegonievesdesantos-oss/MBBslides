@@ -368,13 +368,23 @@ def cmd_holdout(a):
 
 
 def cmd_deck(a):
-    """Existing-deck ingestion and update plan (v1.8)."""
+    """Existing-deck ingestion, update plan (v1.8), in-place edits and patch (v1.9)."""
     from .reasoning import deck_update
 
     if a.deck_cmd == "ingest":
         inv = deck_update.write_ingest(a.pptx, a.out)
         _p(f"{len(inv['slides'])} slides read from {a.pptx} → {a.out}/old_deck.json, old_deck_spec.json, old_ghost.md")
         return 0
+    if a.deck_cmd in ("edits", "patch"):
+        from .reasoning import deck_patch
+
+        if a.deck_cmd == "edits":
+            e = deck_patch.write_edits(a.work)
+            _p(f"{len(e['edits'])} edits proposed (approved: false), {len(e['review'])} numbers to review → {a.work}/edits.json, edits.md")
+            return 0
+        r = deck_patch.write_patch(a.pptx, a.edits, a.out, mark=a.mark, accept_proposed=a.accept_proposed)
+        _p(f"applied {len(r['applied'])} · failed {len(r['failed'])} · not approved {r['skipped_unapproved']} → {a.out} (patch_report.md beside it)")
+        return 1 if r["failed"] else 0
     plan = deck_update.write_plan(a.work)
     _p(deck_update.plan_markdown(plan))
     return 0
@@ -582,6 +592,11 @@ def main(argv=None) -> int:
     ds = s.add_subparsers(dest="deck_cmd", required=True)
     d = ds.add_parser("ingest"); d.add_argument("pptx"); d.add_argument("-o", "--out", required=True); d.set_defaults(f=cmd_deck)
     d = ds.add_parser("stale", help="old deck numbers vs the new fact model: current / outdated / untraced"); d.add_argument("work"); d.set_defaults(f=cmd_deck)
+    d = ds.add_parser("edits", help="(v1.9) proposed in-place edits from the update plan, to approve"); d.add_argument("work"); d.set_defaults(f=cmd_deck)
+    d = ds.add_parser("patch", help="(v1.9) apply approved edits to the ORIGINAL pptx; everything else stays as it was")
+    d.add_argument("pptx"); d.add_argument("edits"); d.add_argument("-o", "--out", required=True)
+    d.add_argument("--mark", action="store_true", help="highlight changed text for review")
+    d.add_argument("--accept-proposed", action="store_true", help="apply every proposed edit, approved or not (dry run)"); d.set_defaults(f=cmd_deck)
     s = sub.add_parser("reason", help="source-to-deck reasoning artifacts (v1.7)"); rs = s.add_subparsers(dest="reason_cmd", required=True)
     r = rs.add_parser("facts"); r.add_argument("sources"); r.add_argument("-o", "--out", required=True); r.set_defaults(f=cmd_reason)
     r = rs.add_parser("check"); r.add_argument("work"); r.add_argument("--sources"); r.add_argument("--enrich", action="store_true",

@@ -187,3 +187,60 @@ def test_d2_footer_artwork_moves_the_source_line_up():
     assert lim["footer_y"] == shift and lim["body_bottom"] < shift and "footer_right_limit" not in lim  # the logo is now below the source line
     high = {"name": "H", "reserved": [{"name": "band", "x": 0.6, "y": 5.4, "w": 12.0, "h": 2.0}]}  # would leave too little body
     assert footer_shift(high, GRID) is None and band_conflict(high, GRID)
+
+
+def test_d1_patch_changes_only_approved_numbers_in_the_original_pptx(tmp_path):
+    from pptx import Presentation
+    from pptx.chart.data import CategoryChartData
+    from pptx.enum.chart import XL_CHART_TYPE
+    from pptx.util import Inches, Pt
+
+    from cpe.reasoning.deck_patch import apply_edits, proposed_edits
+    from cpe.reasoning.deck_update import format_like, ingest_deck, update_plan
+
+    prs = Presentation()
+    blank = prs.slide_layouts[6]
+    s = prs.slides.add_slide(blank)
+    tb = s.shapes.add_textbox(Inches(0.5), Inches(0.3), Inches(9), Inches(1))
+    tb.text_frame.text = "La inversión de la fase 1 es de 3,2 M€ y el ahorro neto anual de 732 k€"
+    r = tb.text_frame.paragraphs[0].runs[0]
+    r.font.size, r.font.bold = Pt(24), True
+    rows = s.shapes.add_table(3, 2, Inches(0.5), Inches(2), Inches(6), Inches(1.2)).table
+    for i, (a, b) in enumerate([("Concepto", "Valor"), ("Mantenimiento anual (k€)", "-150"), ("Rango de temperatura", "2-4 °C")]):
+        rows.cell(i, 0).text, rows.cell(i, 1).text = a, b
+    cd = CategoryChartData()
+    cd.categories = ["2025", "2026"]
+    cd.add_series("Líneas (M)", (4.4, 4.6))
+    s.shapes.add_chart(XL_CHART_TYPE.COLUMN_CLUSTERED, Inches(6.8), Inches(2), Inches(3), Inches(3), cd)
+    prs.slides.add_slide(blank).shapes.add_textbox(Inches(1), Inches(1), Inches(5), Inches(1)).text_frame.text = "Caja acumulada"
+    prs.save(str(tmp_path / "old.pptx"))
+
+    inv = ingest_deck(tmp_path / "old.pptx")
+    facts = [{"id": "F1", "fact_type": "table_value", "claim": "x", "source": {"file": "analysis/coste_fase1.csv"},
+              "values": [{"value": 4034, "unit": "EUR_K", "label": "Inversión completa de la fase 1", "column": "importe (k€)"}]}]
+    e = proposed_edits(update_plan(inv, facts))
+    prop = next(x for x in e["edits"] if x["old"] == "€3,2 M")
+    assert prop["replace"] == "4,03" and prop["approved"] is False
+    prop["approved"] = True
+    e["edits"] += [{"op": "number", "slide": 1, "where": "exhibit[0].rows[0][1]", "find": "150", "replace": "-210", "approved": True},
+                   {"op": "number", "slide": 1, "where": "exhibit[0].rows[1][1]", "find": "4", "replace": "5", "approved": False},  # not approved
+                   {"op": "number", "slide": 1, "where": "exhibit[1].Líneas (M)[2026]", "find": "4.6", "replace": "4,37", "approved": True},
+                   {"op": "number", "slide": 1, "where": "body[9]", "find": "1", "replace": "2", "approved": True},  # no such text
+                   {"op": "delete_slide", "slide": 2}]
+    rep = apply_edits(tmp_path / "old.pptx", e, tmp_path / "new.pptx", mark=True)
+    assert len(rep["applied"]) == 4 and len(rep["failed"]) == 1 and rep["skipped_unapproved"] == 1 and rep["slides_deleted"] == [2]
+    new = Presentation(str(tmp_path / "new.pptx"))
+    assert len(new.slides) == 1
+    s = new.slides[0]
+    title = next(sh for sh in s.shapes if sh.has_text_frame and sh.text_frame.text.startswith("La inversión"))
+    assert title.text_frame.text == "La inversión de la fase 1 es de 4,03 M€ y el ahorro neto anual de 732 k€"
+    runs = title.text_frame.paragraphs[0].runs
+    assert [x.text for x in runs] == ["La inversión de la fase 1 es de ", "4,03", " M€ y el ahorro neto anual de 732 k€"]
+    assert all(x.font.bold and x.font.size == Pt(24) for x in runs)  # formatting kept on every piece
+    assert runs[1]._r.find(".//{http://schemas.openxmlformats.org/drawingml/2006/main}highlight") is not None
+    tbl = next(sh for sh in s.shapes if sh.has_table).table
+    assert tbl.cell(1, 1).text == "-210" and tbl.cell(2, 1).text == "2-4 °C"
+    ch = next(sh for sh in s.shapes if sh.has_chart).chart
+    assert list(ch.plots[0].series[0].values) == [4.4, 4.37]
+    assert "3,2 M€ → 4,03" in s.notes_slide.notes_text_frame.text or "€3,2 M → 4,03" in s.notes_slide.notes_text_frame.text
+    assert format_like("38.500", 41400) == "41.400" and format_like("1,374.5", 1200.25).startswith("1,200")
