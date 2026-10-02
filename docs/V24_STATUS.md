@@ -7,7 +7,7 @@ development set.
 | # | item | status |
 |---|---|---|
 | 1 | Blind validation on real material: unseen corporate templates; new cases with the owner's key sealed beforehand | **needs the owner** |
-| 2 | A fresh sealed set, stressing how a new value is chosen; run once at the end of 2.4 | **sealed** |
+| 2 | A fresh sealed set, stressing how a new value is chosen; run once at the end of 2.4 | **done**: run once |
 | 3 | One source value is the new value of one figure, not of five | **done** |
 | 4 | The year of each figure: a projection's future points do not take a past actual; FY2023 does not replace FY2025 | **done** |
 | 5 | Group heads: a weak match does not lead a group; members that disagree are flagged, not overwritten | **done** |
@@ -96,3 +96,36 @@ matches.
 Every proposal items 3–5 removed on these sets was a wrong value: a reviewer now gets "untraced" (work
 to do) instead of a wrong number. Not one right value was lost. The v2.4 sealed set will say whether
 this holds blind.
+
+## Blind result on the v2.4 sealed set
+
+- **The run.** Once, after items 3–5: 2.3.0 (9356cf6) against 2.4 (52caab0), on 4 sealed cases (366
+  keyed numbers, 149 of them outdated). The seal was checked first. The scorer is unchanged.
+- **Item 3 is blind here:** it was written before the set existed.
+
+| blind, 4 cases | 2.3.0 | 2.4 |
+|---|---|---|
+| outdated numbers found | 88 / 149 | 84 / 149 |
+| "outdated" right | 88 / 133 (66%) | 84 / 123 (68%) |
+| proposed value right | 47 / 88 (53%) | 45 / 84 (54%) |
+| "current" right | 47 / 49 | 46 / 49 |
+
+**What this says.**
+- **Blind, items 3–5 barely move anything.** They remove 10 false "outdated" flags and 2 wrong values,
+  but also lose 2 right values and 4 finds.
+- **They did not generalise.** On the development sets they removed only wrong values; blind, they
+  remove right ones too. Proposed values stay right about half the time, as in v2.3.
+- **The v2.3 tool does better on this set.** It finds 88 of 149 outdated numbers (59%), against 40% on
+  v2.3's sealed set. The sets differ: this one has more figures restated in words and fewer that only
+  arithmetic reaches.
+
+**Why it still fails** (read after the run, so this is diagnosis, not tuning):
+- **Past actuals called outdated.** 34 numbers the key keeps valid were called "outdated". Most are past
+  years' actuals in a chart ("ANR real 2022", "inversión real 2023").
+- **The year check counts every year in the source sentence.** A source sentence that lists several
+  years ("1,4 M€ en 2023, 1,8 M€ en 2024 y 2,3 M€ en 2025") counts as about all of them. The 2023 point
+  can then take 2024's value. The year check needs the year next to the value, as v2.3 does for names.
+- **A total takes a cumulative or another part.** "La inversión acumulada alcanza 5,5 M€" became the new
+  value of a single year's investment.
+
+This set is now used and is not run again as a blind test.

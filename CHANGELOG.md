@@ -28,6 +28,13 @@ Pick the right new value, the part of v2.3 that did not generalise blind. Status
   - a match that moves the figure by more than half is not copied to every restatement.
 - On the development sets, items 3–5 remove only wrong proposed values: on v2.3's sealed set, value
   precision goes from 46% to 64% with no right value lost.
+- **Blind, on the v2.4 sealed set** (4 cases, 366 keyed numbers, run once; 2.3.0 vs 2.4):
+  - outdated found: 88/149 → 84/149;
+  - "outdated" right: 66% → 68%;
+  - proposed values right: 47/88 → 45/84.
+
+  Items 3–5 did not generalise: blind they remove right values too. The diagnosis (past actuals
+  called outdated; the year check reads every year of a source sentence) is the start of v2.5.
 
 ## 2.3.0 — Finding what changed on unseen material
 
