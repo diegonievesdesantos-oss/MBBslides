@@ -538,8 +538,12 @@ def _open_measure(q: dict) -> set[str]:
     ("30.000 socios", "240 miles de expedientes", "Socios en madurez"). Only nouns-like words of 5+ letters."""
     from .derive import _local
 
+    if ".rows[" in q["where"]:  # a table cell: its column says what it counts, its row which one ("Engineering · Offers")
+        ctx, row = q.get("context") or "", q.get("row") or ""
+        col = ctx[len(row):] if row and ctx.startswith(row) else ""
+        return _open_words(col) or _open_words(row or ctx)
     if q["where"].startswith("exhibit["):
-        text = q.get("row") or q.get("context") or ""
+        text = q.get("context") or ""
     else:
         before, after = _local(q)
         wb, wa = re.findall(r"[^\W\d_]+", before), re.findall(r"[^\W\d_]+", after)
@@ -565,6 +569,34 @@ def _open_words(text: str) -> set[str]:
 UNIT_SCALE_WORDS = {"miles", "millon", "millones", "million", "millions", "thousand", "thousands", "euros", "dolares", "dollars", "anual", "anuales"}
 
 
+NAME_RE = re.compile(r"\b[A-ZÁÉÍÓÚÑ][A-Za-zÁÉÍÓÚÑáéíóúñü]{2,}\b")
+_COMMON: set = set()  # words seen in lower case somewhere in the deck or the sources: not names
+
+
+def _names(text: str) -> set[str]:
+    """v2.3: the proper names in a text (a plant, a site, a hotel, a fleet): capitalised words never
+    written in lower case in the deck or the sources."""
+    from .conflicts import HEAD_STOP
+
+    return {w.lower() for w in NAME_RE.findall(text or "") if w.lower() not in _COMMON and _plain(w) not in HEAD_STOP}
+
+
+def _q_names(q: dict) -> set[str]:
+    """A number's names: a table cell or chart point all of its labels; a number in a sentence the one
+    named nearest before it in its clause ("Lugo marca un 72,5%, mientras Mérida se queda en el 61,2%")."""
+    from .derive import _local
+
+    if q["where"].startswith("exhibit["):
+        return _names(_qtext(q))
+    before, after = _local(q)
+    before = re.split(r",|;|\b(?:mientras|while|whereas|frente a|versus|vs)\b", before)[-1]
+    found = [w.lower() for w in NAME_RE.findall(before) if w.lower() in _names(w)]
+    if found:
+        return {found[-1]}
+    found = [w.lower() for w in NAME_RE.findall(re.split(r",|;", after)[0]) if w.lower() in _names(w)]
+    return set(found[:1])
+
+
 def _match(q: dict, slide: dict, cands: list[dict]) -> tuple[str, list[dict], dict | None]:
     from .conflicts import _opposed
 
@@ -587,6 +619,7 @@ def _match(q: dict, slide: dict, cands: list[dict]) -> tuple[str, list[dict], di
     qq = _quals(ctx)
     sq = _quals(q.get("section") or "")
     qq = {k: qq[k] or sq[k] for k in qq}
+    qn = _q_names(q)
     scored = []
     for c in cands:
         if not ((key & c["measures"]) if key else (open_ & c["stems"])) or not _kind_ok(q, c) or _clash(qq, c["quals"]) or _opposed(words, c["words"]) \
@@ -596,7 +629,10 @@ def _match(q: dict, slide: dict, cands: list[dict]) -> tuple[str, list[dict], di
             continue  # the source says it is a known measure the number is not about
         if cum and not CUM_RE.search(c["text"]):
             continue  # v2.2: a year's flow is not the running total to that year
-        sc = len(st & c["stems"]) + sum(1 for k in ("year", "phase", "zone") if qq[k] and qq[k] & c["quals"][k])
+        cn = c.get("names") or set()
+        if qn and cn and not (qn & cn):
+            continue  # v2.3: about another plant, site, hotel or fleet
+        sc = len(st & c["stems"]) + sum(1 for k in ("year", "phase", "zone") if qq[k] and qq[k] & c["quals"][k]) + (1 if qn & cn else 0)
         part = sum(1 for k in ("phase", "zone") if c["quals"][k] and not qq[k])  # a part (one zone) of an unqualified whole
         if sc >= (1 if q["kind"] == "x" or open_ else 2):  # v2.3: the noun it counts ("monitores") is evidence enough
             scored.append((sc - 0.5 * part, c))
@@ -690,6 +726,12 @@ def update_plan(inv: dict, facts: list[dict]) -> dict:
     - UNTRACED: no new fact speaks to it, or only a restatement of the old plan does (a budget, an offer);
     - IGNORED: not a figure (page number, document code, phase index, specification)."""
     cands = _candidates(facts, {Path(str(inv.get("source") or "")).name})
+    lower = " ".join([c["text"] for c in cands] + [q.get("text") or q.get("context") or "" for s in inv["slides"] for q in s["numbers"]]
+                     + [str(b) for s in inv["slides"] for b in s.get("body") or []] + [s.get("headline") or "" for s in inv["slides"]])
+    _COMMON.clear()
+    _COMMON.update(re.findall(r"\b[a-záéíóúñü]{3,}\b", lower))
+    for c in cands:
+        c["names"] = _names(c["text"])
     hint = deck_hint(inv["slides"])
     out = []
     for s in inv["slides"]:
