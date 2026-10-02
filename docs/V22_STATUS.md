@@ -8,8 +8,8 @@ material still open since v1.9.
 | 1 | Blind validation on real material: 3–5 unseen corporate templates; 2–3 new cases with the owner's key sealed beforehand | **needs the owner** |
 | 2 | One figure, one value across the deck: restatements of a figure on several slides follow one value | **done** |
 | 3 | Projections and curves from their drivers: a growth series from its base and rate; a cumulative curve from flows in the sources | **done** |
-| 4 | Precision of medium-priority conflicts (19/50 real in v2.1) | open |
-| 5 | Headline proposals for sign and order claims; a larger superlative lexicon | open |
+| 4 | Precision of medium-priority conflicts (19/50 real in v2.1) | **done**: 18/38 |
+| 5 | Headline proposals for sign and order claims; a larger superlative lexicon | **done** |
 
 Most figures below are in-sample: they come from the v1.8 project (the "Albor" case), which the rules
 were developed on. The one blind figure is in "Blind check on a sealed synthetic set" at the end.
@@ -157,3 +157,54 @@ does not treat as figures.
 - A rule from the failures: two numbers written with different count units ("FTE", "días") are not
   one figure. "current" right went from 6/13 to 6/12.
 - The set is now used. It is not run again as a blind test.
+
+## Item 4: fewer false medium-priority conflicts
+
+In v2.1, 19 of the 50 "medium" conflicts on the 7 keyed cases were real. Reading the false ones on the
+development cases and the v1.8 project (not on the used holdout) gave two patterns:
+- **A presentation on one side.** The deck being updated, or another earlier deck, sits among the
+  sources. Its figures are what the update changes, not a source that disagrees. Now low.
+- **Values 40% or more apart.** Every one of them was another quantity under the same words: a quarter
+  against the year, a share against a level, a phase against the total. Every real conflict of the
+  development cases was within 30%. Now low.
+
+| "medium" flags that are real conflicts | v2.1 | v2.2 |
+|---|---|---|
+| development cases and v1.8 project | 15 / 34 | **15 / 25** |
+| sealed holdout of v2.0 (used: a consistency check) | 4 / 16 | 3 / 13 |
+| all 7 keyed cases | 19 / 50 | **18 / 38** |
+
+- **Low** goes from 5/30 to 6/43 real, so a real conflict is now low more often. On the holdout, one
+  real conflict moved from medium to low.
+- **High** is 8/9.
+- Detection, and so the groups found on each case, is unchanged: only the order a person reads them in
+  changes.
+
+**Limit.** A real budget overrun of 40% or more between a plan and an actual is now low. It still
+appears in the list and in `review.xlsx`, only further down.
+
+## Item 5: headline proposals for signs and orders, more superlatives
+
+v2.1 flagged a flipped sign or order without proposing a headline. Now:
+
+| claim | old headline | approved values | proposal |
+|---|---|---|---|
+| sign | "El proyecto ahorra 0,89 M€ al año" | −0,12 | "El proyecto cuesta 0,12 M€ al año" |
+| order | "El ahorro de 1,2 M€ supera el coste de 0,9 M€" | 0,8 and 0,9 | "El ahorro de 0,8 M€ no alcanza el coste de 0,9 M€" |
+| superlative by noun | "La fase 2 tiene el mayor ahorro neto" | 451 and 436 | "La Fase 1 tiene el mayor ahorro neto" |
+| superlative by adjective | "La zona norte es la más económica" | 4,9 / 4,4 / 5,2 | "La Zona sur es la más económica" |
+
+- **Sign.** The opposite verb comes from a fixed table (ahorra/cuesta, genera/consume, gana/pierde,
+  crece/cae, sube/baja, aumenta/disminuye, mejora/empeora, aporta/resta, and the English forms), in
+  the same person and tense. A verb form not in the table gets no proposal.
+- **Order.** The opposite comparison: supera/no alcanza, por encima/por debajo, más que/menos que,
+  superior/inferior, and the English forms. A tie gets no proposal.
+- **Superlative by noun.** "Tiene / aporta / ofrece el mayor / menor X" needs no lexicon: the noun
+  names the table row.
+- **Superlative by adjective.** The lexicon now covers atractiva, valiosa, económica, costosa,
+  rápida, lenta, grande, pequeña, plurals and English forms.
+
+These are proposals for the reviewer, like every headline proposal. A rewrite that keeps the numbers
+right can still argue something the author would not; the update report lists them.
+
+**Limit.** An adjective with no measure behind it ("la más estratégica") is still not checked.

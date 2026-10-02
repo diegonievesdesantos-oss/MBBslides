@@ -31,6 +31,23 @@ Fewer numbers left for a person to trace by hand. Status: [docs/V22_STATUS.md](d
   - In-sample on the v1.8 project: outdated numbers found 51/68 → 54/68 (its demand projection). Its
     cash curve still cannot be recomputed: no source gives yearly flows, and the old curve does not
     follow the simple payback model exactly.
+- **Fewer false medium-priority conflicts (item 4).** Two more reasons for "low":
+  - one side is a presentation (an earlier deck restates figures; it is what gets updated);
+  - the values differ by 40% or more (on the development cases, always another quantity under the
+    same words).
+
+  Over the 7 keyed cases, "medium" goes from 19/50 to 18/38 real conflicts. On the development cases
+  and the v1.8 project it goes from 15/34 to 15/25, with no real conflict moved down. Detection itself
+  is unchanged.
+- **Headline proposals for signs and orders; more superlatives (item 5).**
+  - A sign that flipped gets the opposite verb and the value without its sign: "ahorra 0,89 M€" →
+    "cuesta 0,12 M€".
+  - An order that flipped gets the opposite comparison: "supera" → "no alcanza", "por encima de" →
+    "por debajo de". A tie gets no proposal.
+  - Superlatives:
+    - "tiene el mayor / menor X" is checked on the row the noun names, with no lexicon;
+    - the adjective lexicon adds atractiva, valiosa, económica, costosa, rápida, lenta, grande,
+      pequeña, plurals and English forms.
 - **Blind check on a sealed synthetic set** (3 cases, 185 keyed numbers, written by an agent that did
   not read the code; run once, 2.1.0 vs items 2–3):
   - outdated numbers found: 20/110 → 26/110;

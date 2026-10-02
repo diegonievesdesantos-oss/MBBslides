@@ -355,17 +355,26 @@ def priority(c: dict, used: set | None = None) -> tuple[str, float]:
       to five ways (a real tangle of versions);
     - low: one side is the analyst's own analysis output (it is the correction, by design) or a long
       chain across many files;
-    - medium: the rest, pairs between two sources."""
+    - medium: the rest, pairs between two sources.
+
+    v2.2 (item 4), also low:
+    - one side is a presentation (.pptx): an earlier deck restates figures, it is what gets updated,
+      not a source that disagrees;
+    - the values differ by 40% or more: on the development cases every such "version" was another
+      quantity with the same words (a quarter against the year, a share against a level)."""
     srcs = [str(x.get("source") or "") for x in c["facts"]]
     analysis = any(s.startswith("analysis/") or "/analysis/" in s for s in srcs)
+    deck = any(s.lower().endswith((".pptx", ".ppt", ".key")) for s in srcs)
+    apart = _gap(c) >= 0.4
     n = len(c["facts"])
     files = len(set(srcs))
     touched = bool(used and used & {x["fact"] for x in c["facts"]})
     score = TYPE_WEIGHT.get(c.get("type"), 1) + min(3.0, 10 * _gap(c)) + (4 if 3 <= n <= 5 and files >= 2 else 0) - (4 if analysis else 0) \
         - (3 if n > 5 else 0) + (6 if touched else 0)
-    if touched or (3 <= n <= 5 and files >= 2 and not analysis):
+    score -= (4 if deck else 0) + (3 if apart else 0)
+    if touched or (3 <= n <= 5 and files >= 2 and not analysis and not deck and not apart):
         level = "high"
-    elif analysis or n > 5:
+    elif analysis or n > 5 or deck or apart:
         level = "low"
     else:
         level = "medium"
