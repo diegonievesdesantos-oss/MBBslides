@@ -9,6 +9,10 @@ new values of its parts, once every part has one.
     sum     a table's total column or total row, or "39 FTE (21 … y 18 …)" in a sentence
     ratio   payback = investment / savings, a share = part / whole (×100 for a percentage)
     same    the same figure shown elsewhere ("1,49 M€" on the summary = the table's 1.495 k€)
+    grow    v2.2: a projection that grows at a rate the deck states ("Demanda prevista (+6%/año)"):
+            each point = the previous one × (1 + rate); a point with its own new value keeps it
+    line    v2.2: a cumulative cash curve that follows the simple payback model: point = −investment
+            + n × annual savings, both figures of the deck
     group   v2.2: every restatement of one figure across the deck ("3,2 M€" in the summary, the plan
             table's 3.200 k€, the recommendation's "fase 1 por 3,2 M€") follows one value
 
@@ -122,6 +126,8 @@ def relations(plan: dict) -> list[dict]:
                         rels.append({"op": "sum", "target": nid(n, tgt), "parts": [nid(n, p) for p in parts], "how": "sum stated in the text"})
                         break
     rels += _cumulative(plan)
+    rels += _growth(plan)  # v2.2 (item 3)
+    rels += _payback_curve(plan, {r["target"] for r in rels})
     rels += _same(plan, rels)
     rels += _same_slide(plan, {r["target"] for r in rels})
     return rels
@@ -173,6 +179,95 @@ def _cumulative(plan: dict) -> list[dict]:
                     if _close(flows[0]["value"], pts[0]):  # a sum of one: the curve starts at the first flow
                         rels.append({"op": "sum", "target": nid(n, pts[0]), "parts": [nid(n, flows[0])], "how": f"cumulative of '{name2}'"})
                     break
+    return rels
+
+
+RATE_RE = re.compile(r"([+-]?\d+(?:[.,]\d+)?)\s*%")
+
+
+def _growth(plan: dict) -> list[dict]:
+    """v2.2 (item 3): a chart series whose points grow at a rate the slide states, for at least its
+    last three points: each = the previous × (1 + rate). The rate is the slide's own percentage when
+    it shows one (then it follows that figure), else the one in the series' name."""
+    rels = []
+    for s in plan["slides"]:
+        n = s["n"] if "n" in s else s["slide"]
+        pcts = [q for q in s["numbers"] if q["kind"] == "pct" and _usable(q) and not q["where"].startswith("exhibit[")]
+        for (e, name), pts in chart_series(s).items():
+            if len(pts) < 3:
+                continue
+            rates = [(q["value"], q) for q in pcts] + [(float(m.replace(",", ".")), None) for m in RATE_RE.findall(name)]
+            for g, q in rates:
+                if not g:
+                    continue
+                ok = [k for k in range(1, len(pts)) if _close(pts[k - 1]["value"] * (1 + g / 100.0), pts[k], [pts[k - 1]])]
+                tail = len(pts)
+                while tail - 1 in ok:
+                    tail -= 1
+                if len(pts) - tail >= 3:  # the last three points or more grow at that rate
+                    for k in range(tail, len(pts)):
+                        r = {"op": "grow", "target": nid(n, pts[k]), "parts": [nid(n, pts[k - 1])], "rate": g,
+                             "how": f"grows {g:g}% a year from the previous point ('{name}')"}
+                        if q is not None:
+                            r["parts"].append(nid(n, q))
+                        rels.append(r)
+                    break
+    return rels
+
+
+def _payback_curve(plan: dict, taken: set) -> list[dict]:
+    """v2.2 (item 3): a cumulative cash curve the deck cannot sum (no flows shown) but whose tail is the
+    simple payback model: point(year) = −investment + n × annual savings, with the investment and the
+    savings figures of the deck (any slide, any scale). Only an unambiguous fit, over 3+ points."""
+    from .deck_update import _key_measures, _measure_set, _stems
+
+    figs = {"inver": [], "ahorr": []}
+    for s in plan["slides"]:
+        n = s["n"] if "n" in s else s["slide"]
+        for q in s["numbers"]:
+            if not _usable(q) or q["where"].startswith("exhibit[") and ".rows[" not in q["where"]:
+                continue
+            ms = _key_measures(_measure_set(_stems(q.get("context") or "")))
+            for m in figs:
+                if m in ms and (q["kind"] == "money" or MONEY_RE.search(q.get("context") or "")):
+                    figs[m].append((n, q))
+    rels = []
+    for s in plan["slides"]:
+        n = s["n"] if "n" in s else s["slide"]
+        for (e, name), pts in chart_series(s).items():
+            generic = len(name) < 3 or re.fullmatch(r"(serie|series|valor|value|datos|data)\s*\d*", name.strip(), re.I)
+            if not CUM_RE.search(name + (" " + (s.get("headline") or "") if generic else "")) or len(pts) < 4:
+                continue
+            if any(nid(n, p) in taken for p in pts[1:]):
+                continue  # already the running sum of flows the slide shows
+            fits = []
+            for ni, i in figs["inver"]:
+                for nd, d in figs["ahorr"]:
+                    for fi in (1.0, 1e-3, 1e-6, 1e3):
+                        for fd in (1.0, 1e-3, 1e-6, 1e3):
+                            I, D = abs(i["value"]) * fi, abs(d["value"]) * fd
+                            if not D or I < D or I > 30 * D:
+                                continue
+                            tol = lambda k, m: _step(pts[k]) + _step(i) * fi + m * _step(d) * fd
+                            last = len(pts) - 1
+                            m_last = round((pts[last]["value"] + I) / D)
+                            k0 = last
+                            while k0 >= 0 and m_last - (last - k0) >= 1 and abs(-I + (m_last - (last - k0)) * D - pts[k0]["value"]) <= tol(k0, m_last - (last - k0)):
+                                k0 -= 1
+                            if last - k0 >= 3:
+                                fits.append((last - k0, (ni, i, fi), (nd, d, fd), m_last))
+            if not fits:
+                continue
+            best = max(f[0] for f in fits)
+            top = [f for f in fits if f[0] == best]
+            vals = {(round(abs(f[1][1]["value"]) * f[1][2], 9), round(abs(f[2][1]["value"]) * f[2][2], 9)) for f in top}
+            if len(vals) != 1:
+                continue  # two different pairs of figures fit as well: ambiguous
+            span, (ni, i, fi), (nd, d, fd), m_last = min(top, key=lambda f: (".rows[" not in f[1][1]["where"], ".rows[" not in f[2][1]["where"]))
+            last = len(pts) - 1
+            for k in range(last - span + 1, last + 1):
+                rels.append({"op": "line", "target": nid(n, pts[k]), "parts": [nid(ni, i), nid(nd, d)], "fi": fi, "fd": fd, "n": m_last - (last - k),
+                             "how": f"payback curve: −investment ({i['raw']}) + {m_last - (last - k)} × annual savings ({d['raw']})"})
     return rels
 
 
@@ -241,8 +336,15 @@ def derive(plan: dict, rels: list[dict], known: dict) -> dict:
         for r in rels:
             if r["target"] in out or not all(p in vals for p in r["parts"]):
                 continue
+            if r["op"] == "grow" and r["target"] in vals:
+                continue  # a projected point with its own new value (an actual, a new forecast) keeps it
             pv = [vals[p] for p in r["parts"]]
-            if r["op"] == "sum":
+            if r["op"] == "grow":
+                rate = pv[1] if len(pv) > 1 else r["rate"]
+                v = pv[0] * (1 + rate / 100.0)
+            elif r["op"] == "line":
+                v = -abs(pv[0]) * r["fi"] + r["n"] * pv[1] * r["fd"]
+            elif r["op"] == "sum":
                 v = sum(pv)
             elif r["op"] == "ratio":
                 if not pv[1]:

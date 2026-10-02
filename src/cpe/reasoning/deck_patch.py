@@ -87,7 +87,7 @@ def derive_edits(plan: dict, edits: dict) -> dict:
                 or next((i for i in ids if i in arith), None))
 
     rels = [r for r in with_groups(plan, base, pick) if r["target"] not in approved]
-    targets = {r["target"] for r in rels}
+    targets = {r["target"] for r in rels if r["op"] != "grow"}
     firm = derive(plan, rels, {k: v for k, v in known.items() if k not in targets or k in approved})
     loose = derive(plan, rels, {k: v for k, v in {**proposed, **known}.items() if k not in targets or k in approved})
     got = {**loose, **firm}

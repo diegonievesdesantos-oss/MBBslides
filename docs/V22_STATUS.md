@@ -7,7 +7,7 @@ material still open since v1.9.
 |---|---|---|
 | 1 | Blind validation on real material: 3–5 unseen corporate templates; 2–3 new cases with the owner's key sealed beforehand | **needs the owner** |
 | 2 | One figure, one value across the deck: restatements of a figure on several slides follow one value | **done** |
-| 3 | Projections and curves from their drivers: a growth series from its base and rate; a cumulative curve from flows in the sources | in progress |
+| 3 | Projections and curves from their drivers: a growth series from its base and rate; a cumulative curve from flows in the sources | **done** |
 | 4 | Precision of medium-priority conflicts (19/50 real in v2.1) | open |
 | 5 | Headline proposals for sign and order claims; a larger superlative lexicon | open |
 
@@ -63,3 +63,50 @@ Approving every firm proposal and applying: 56 edits applied, 0 failed. The fase
   is shown as an alternative so the reviewer sees the disagreement.
 - When the head is a total the deck cannot recompute (one of its parts has no value), the group keeps
   each member's own match.
+
+## Item 3: projections and curves from their drivers
+
+In v2.1, a projection and a cash curve stayed for review unless the slide showed their flows. Three
+derivations now recompute them from what drives them. Each is accepted only when it holds in the old
+deck, to the precision its numbers are written with.
+
+| derivation | when | each point |
+|---|---|---|
+| growth | a chart series whose last 3+ points grow at a rate the slide states (its headline's percentage, or the one in the series name) | the previous point × (1 + rate) |
+| payback curve | a cumulative cash curve whose last 3+ points are exactly −investment + n × annual savings, with an investment figure and a savings figure of the deck | −investment + n × savings |
+| flows in a source | a cumulative curve the deck cannot recompute, and one source that gives the yearly flows for every year of it | the running sum of those flows |
+
+Some details:
+- **Growth.** A point with its own new value (this year's actual, a new forecast) keeps it. The points
+  after it grow from it at the new rate.
+- **Flows in a source.** The analysis comes first, then any source that is not a restatement of the
+  old plan. Two equally ranked sources with different flows give no proposal: that is a conflict for
+  a person.
+- A point of a cumulative curve is no longer matched to one year's flow: a year's flow is not the
+  running total to that year.
+
+**Measured on the v1.8 project** (in-sample):
+
+| | after item 2 | after item 3 |
+|---|---|---|
+| outdated numbers found | 51 / 68 | **54 / 68** |
+| "outdated" right | 51 / 54 | 54 / 57 |
+| proposed value right | 24 / 31 | 24 / 31 |
+| "current" right | 11 / 11 | 11 / 11 |
+
+The 3 new finds are the demand projection of slide 4 (2028–2030). They now grow from 2027's new
+forecast at the new rate (3%), and the chart reads 4,51 / 4,65 / 4,80 M lines instead of
+5,34 / 5,66 / 6,00. Approving every firm proposal and applying: 59 edits applied, 0 failed.
+
+The project's cash curve (slide 7) still cannot be recomputed, and stays flagged:
+- no source gives yearly flows;
+- its tail rises 1,486 M€ a year, which is no figure of the deck. The table's net savings are
+  1,495 M€, so the curve does not follow the simple payback model exactly.
+
+The tool does not guess a curve that the deck's own figures do not reproduce.
+
+**Limits.**
+- The rate quoted in a series name ("+6%/año") is not rewritten when the rate changes. The headline
+  is, and the update report lists the slide's headline for checking.
+- A growth base or a curve's investment that no source updates must be approved by the reviewer
+  before the projection moves.

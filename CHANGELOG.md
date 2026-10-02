@@ -16,6 +16,21 @@ Fewer numbers left for a person to trace by hand. Status: [docs/V22_STATUS.md](d
     alternative, shown in `review.xlsx`, `edits.md` and the update report.
   - In-sample on the v1.8 project: outdated numbers found 41/68 → 51/68, proposed values right 17/25 →
     24/31, no loss on current (11/11) or outdated precision (51/54).
+- **Projections and curves from their drivers (item 3).** Three new derivations:
+  - **Growth.** A chart series whose last 3+ points grow at a rate the slide states ("Demanda
+    prevista (+6%/año)", "crecimiento del 6% anual") is a projection: each point = the previous one ×
+    (1 + rate). It follows a new rate or base, and a point with its own new value (an actual, a new
+    forecast) keeps it.
+  - **Payback curve.** A cumulative cash curve whose 3+ last points are exactly −investment + n ×
+    annual savings, both figures of the deck, follows them.
+  - **Flows in the sources.** A cumulative curve the deck cannot recompute is the running sum of
+    the yearly flows a source gives, when one source covers every year of the curve. The analysis
+    comes first, then any source that is not the old plan; two different equally ranked sources give
+    no proposal.
+  - A point of a cumulative series is no longer matched to a single year's flow.
+  - In-sample on the v1.8 project: outdated numbers found 51/68 → 54/68 (its demand projection). Its
+    cash curve still cannot be recomputed: no source gives yearly flows, and the old curve does not
+    follow the simple payback model exactly.
 - Two edits of the same figure in one paragraph no longer collide: later occurrences are patched first.
 
 ## 2.1.0 — Less review work: ranked conflicts, a review sheet, more headline claims

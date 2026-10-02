@@ -455,7 +455,7 @@ def _candidates(facts: list[dict], exclude_files: set[str]) -> list[dict]:
                         "period": str(v.get("period") or ""), "stems": stems, "measures": measures, "text": text, "quals": quals,
                         "month": bool(MONTH_RE.search(text)), "words": set(re.findall(r"[a-zñ]{4,}", _plain(text))),
                         "plan": bool(PLAN_RE.search(_plain(text)) or PLAN_RE.search(_plain(Path(file).stem).replace(" ", "_").replace("_", " "))),
-                        "analysis": file.startswith("analysis/") or "/analysis/" in file or f.get("fact_type") == "computed"})
+                        "analysis": file.startswith("analysis/") or "/analysis/" in file or f.get("fact_type") == "computed", "file": file})
     return out
 
 
@@ -534,6 +534,9 @@ def _match(q: dict, slide: dict, cands: list[dict]) -> tuple[str, list[dict], di
     if not ms:
         return "untraced", [], None
     key = _key_measures(ms)
+    from .derive import CUM_RE
+
+    cum = q["kind"] == "data" and bool(CUM_RE.search(q["where"]))
     words = set(re.findall(r"[a-zñ]{4,}", _plain(ctx)))
     qq = _quals(ctx)
     sq = _quals(q.get("section") or "")
@@ -542,6 +545,8 @@ def _match(q: dict, slide: dict, cands: list[dict]) -> tuple[str, list[dict], di
     for c in cands:
         if not (key & c["measures"]) or not _kind_ok(q, c) or _clash(qq, c["quals"]) or _opposed(words, c["words"]) or not _same_magnitude(q, c):
             continue
+        if cum and not CUM_RE.search(c["text"]):
+            continue  # v2.2: a year's flow is not the running total to that year
         sc = len(st & c["stems"]) + sum(1 for k in ("year", "phase", "zone") if qq[k] and qq[k] & c["quals"][k])
         part = sum(1 for k in ("phase", "zone") if c["quals"][k] and not qq[k])  # a part (one zone) of an unqualified whole
         if sc >= (1 if q["kind"] == "x" else 2):
@@ -562,6 +567,64 @@ def _match(q: dict, slide: dict, cands: list[dict]) -> tuple[str, list[dict], di
             return "untraced", group, None  # only a restatement of the old plan repeats it: not a confirmation
         return "current", group, primary
     return "outdated", group, primary
+
+
+FLOW_RE = re.compile(r"\b(flujo|flujos|flow|flows|caja|cash)\b", re.I)
+
+
+def _source_curves(slides: list[dict], cands: list[dict], hint: str | None) -> None:
+    """v2.2 (item 3): a cumulative cash curve the deck cannot recompute (it shows no flows) is the
+    running sum of the yearly flows a source gives, when one source covers every year of the curve:
+    the analysis first, then any source that is not a restatement of the old plan. Two sources that
+    cover it equally well with different flows: no proposal (the conflict is for a person)."""
+    from .derive import CUM_RE, _close, _cumulative, chart_series, nid
+
+    flows = [c for c in cands if FLOW_RE.search(c["text"]) and not CUM_RE.search(c["text"]) and len(c["quals"]["year"]) == 1 and c["kind"] != "pct"]
+    if not flows:
+        return
+    for s in slides:
+        for (e, name), pts in chart_series({"numbers": s["numbers"]}).items():
+            label = name if len(name) >= 3 else name + " " + (s.get("headline") or "")
+            summed = {r["target"] for r in _cumulative({"slides": [s]})}
+            if not CUM_RE.search(label) or any(nid(s["slide"], q) in summed for q in pts):
+                continue  # the slide shows its flows: the deck's own arithmetic recomputes it
+            years = [re.search(r"\[((?:19|20)\d\d)\]$", q["where"]) for q in pts]
+            if not all(years):
+                continue
+            years = [y.group(1) for y in years]
+            by_file: dict = {}
+            for c in flows:
+                y = next(iter(c["quals"]["year"]))
+                if y in years:
+                    by_file.setdefault(c["file"], {}).setdefault(y, c)
+            full = {f: ys for f, ys in by_file.items() if all(y in ys for y in years)}
+            if not full:
+                continue
+            rank = {f: (not any(c["plan"] for c in ys.values()), any(c["analysis"] for c in ys.values())) for f, ys in full.items()}
+            top = max(rank.values())
+            best = [f for f in full if rank[f] == top]
+            series = {f: tuple(full[f][y]["value"] for y in years) for f in best}
+            if len(set(series.values())) != 1:
+                continue
+            f = best[0]
+            run, acc = [], 0.0
+            for y in years:
+                acc += full[f][y]["value"]
+                run.append(acc)
+            old = sum(abs(q["value"]) for q in pts) / len(pts) or 1.0
+            new = sum(abs(v) for v in run) / len(run) or 1.0
+            k = min((1.0, 1e-3, 1e-6, 1e3, 1e6), key=lambda k: abs(math.log(new * k / old)))
+            for q, v, y in zip(pts, run, years):
+                v *= k
+                c = full[f][y]
+                info = {"file": f, "flows": [full[f][yy]["fact"] for yy in years]}
+                if _close(v, q):
+                    q.update(status="current", facts=[c["fact"]], source_curve=info)
+                else:
+                    q.update(status="outdated", new_num=v, new_display=display_in(q, v, hint), new_value=f"{v:g} (running sum)",
+                             fact=c["fact"], new_claim=f"running sum of the yearly flows in {f} to {y}", source_curve=info,
+                             fact_analysis=bool(c["analysis"]))
+                q.pop("not_recomputable", None)
 
 
 def deck_hint(slides: list[dict]) -> str:
@@ -602,6 +665,7 @@ def update_plan(inv: dict, facts: list[dict]) -> dict:
     for s in out:
         for q in s["numbers"]:
             q["id"] = f"{s['slide']}|{q['where']}|{q.get('occ', 0)}|{q['raw']}"
+    _source_curves(out, cands, hint)  # v2.2: a cash curve from the yearly flows a source gives
     apply_derived(out, hint)
     from .derive import relations as _rels
     from .derive import unrecomputable
@@ -609,7 +673,7 @@ def update_plan(inv: dict, facts: list[dict]) -> dict:
     for nid_, why in unrecomputable({"slides": out}, _rels({"slides": out})).items():  # v2.1: say it, instead of a silent "untraced"
         for s in out:
             for q in s["numbers"]:
-                if q.get("id") == nid_ and q["status"] in ("untraced", "outdated") and not q.get("derived"):
+                if q.get("id") == nid_ and q["status"] in ("untraced", "outdated") and not q.get("derived") and not q.get("source_curve"):
                     q["not_recomputable"] = why
     for s in out:
         st = Counter(i["status"] for i in s["numbers"])
@@ -648,7 +712,7 @@ def apply_derived(slides: list[dict], hint: str | None = None, known: dict | Non
                     out[q["id"]] = q["new_num"]
         return out
 
-    targets = {r["target"] for r in rels}
+    targets = {r["target"] for r in rels if r["op"] != "grow"}  # a projected point keeps its own new value
     if known is None:
         known = {k: v for k, v in values(set()).items() if not by_id[k].get("derived")}
     known = {k: v for k, v in known.items() if k not in targets}  # a derived figure comes from its parts, not from a direct match
@@ -680,7 +744,7 @@ def apply_derived(slides: list[dict], hint: str | None = None, known: dict | Non
         for h in heads:
             by_id[h]["group_head"] = True
             by_id[h]["group"] = next(r["group"] for r in grels if r["parts"][0] == h)
-        tg = {r["target"] for r in allrels}
+        tg = {r["target"] for r in allrels if r["op"] != "grow"}
         done += _apply_got(derive(plan, allrels, values(tg)), by_id, hint)
     return done
 

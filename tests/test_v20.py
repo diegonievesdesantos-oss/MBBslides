@@ -309,3 +309,42 @@ def test_v22_one_figure_one_value_across_the_deck(tmp_path):
     derive_edits(plan, e)
     new = {(x["slide"], x["where"], x["old"]): x["replace"] for x in e["edits"] if x.get("derived")}
     assert new[(2, "exhibit[0].rows[0][3]", "5.600")] == "6.600" and new[(1, "title", "€2,4 M")].startswith("2,6")
+
+
+def test_v22_projections_and_curves_from_their_drivers(tmp_path):
+    import json
+
+    from cpe.reasoning import facts
+    from cpe.reasoning.deck_patch import derive_edits
+    from cpe.reasoning.deck_update import ingest_deck, update_plan
+
+    (tmp_path / "src").mkdir()
+    (tmp_path / "src" / "plan_caja_2026.csv").write_text("año,flujo de caja (M€)\n2026,-3.6\n2027,0.8\n2028,1.9\n2029,2.4\n", encoding="utf-8")
+    facts.write_fact_model(tmp_path / "src", tmp_path / "work")
+    fm = json.loads((tmp_path / "work" / "facts.json").read_text(encoding="utf-8"))["facts"]
+    _deck_with(tmp_path / "d.pptx", [
+        ("Con un crecimiento del 5% anual la demanda pasa de 1,00 a 1,22 M de pedidos", None,
+         {"cats": ["2025", "2026", "2027", "2028", "2029"], "series": {"Demanda prevista": (1.0, 1.05, 1.10, 1.16, 1.22)}}),
+        ("La caja acumulada del proyecto", None, {"cats": ["2026", "2027", "2028", "2029"], "series": {"Caja acumulada": (-3.0, -2.0, 0.5, 3.0)}}),
+        ("Caso de negocio del almacén", [("Concepto", "Total"), ("Inversión total (k€)", "5.000"), ("Ahorro neto anual (k€)", "1.300")],
+         {"cats": ["2025", "2026", "2027", "2028", "2029", "2030"], "series": {"Caja acumulada": (-5.0, -3.7, -2.4, -1.1, 0.2, 1.5)}})])
+    plan = update_plan(ingest_deck(tmp_path / "d.pptx"), fm)
+    pts = {(s["slide"], q["where"]): q for s in plan["slides"] for q in s["numbers"]}
+    # a source's yearly flows: the curve is their running sum
+    shown = {y: pts[(2, f"exhibit[0].Caja acumulada[{y}]")]["new_display"].replace(",", ".") for y in ("2027", "2029")}  # the deck's decimal mark
+    assert shown == {"2027": "-2.8", "2029": "1.5"}
+    assert not any(pts[(2, f"exhibit[0].Caja acumulada[{y}]")].get("not_recomputable") for y in ("2026", "2029"))
+    e = {"edits": []}
+    _approve(plan, e, 1, "title", "5%", "3")  # a new growth rate from the same base
+    _approve(plan, e, 1, "exhibit[0].Demanda prevista[2025]", "1", "1")
+    _approve(plan, e, 3, "exhibit[0].rows[0][1]", "5.000", "6.000")  # a new investment and savings
+    _approve(plan, e, 3, "exhibit[0].rows[1][1]", "1.300", "1.500")
+    derive_edits(plan, e)
+    new = {(x["slide"], x["where"]): x for x in e["edits"] if x.get("derived")}
+    # a projection follows its rate from the base
+    rep = {k: x["replace"].replace(",", ".") for k, x in new.items()}
+    assert rep[(1, "exhibit[0].Demanda prevista[2026]")] == "1.03" and rep[(1, "exhibit[0].Demanda prevista[2029]")] == "1.13"
+    # a cash curve that is the simple payback model follows the investment and the savings
+    assert rep[(3, "exhibit[1].Caja acumulada[2026]")] == "-4.5" and rep[(3, "exhibit[1].Caja acumulada[2028]")] == "-1.5"
+    assert not new[(3, "exhibit[1].Caja acumulada[2028]")]["derived"].get("pending_parts")
+    assert (3, "exhibit[1].Caja acumulada[2030]") not in new  # −6 + 5 × 1,5 = 1,5: unchanged
