@@ -8,7 +8,7 @@ owner's blind validation.
 | 1 | Blind validation: 3–5 unseen corporate templates (run once, aggregates only); 2–3 new cases with the owner's key sealed beforehand, judged only against it | **needs the owner** |
 | 2 | One update command: `cpe update` | **done** |
 | 3 | Derived figures in `deck stale`: totals, net rows, ratios, repeated figures | **done** |
-| 4 | Conflicts by definition (same quantity, different scope: management report vs ledger vs full cost) | not started |
+| 4 | Conflicts by definition (same quantity, different scope: management report vs ledger vs full cost) | **done**: versions of one quantity across sources; blind result below |
 | 5 | Rewrite slides whose message no longer holds (new headline and exhibit, keeping the layout) | **done**: `messages.md`, `set_headline`, `cpe update --rebuild` with `replace_slide` |
 
 ## Updating a deck
@@ -24,6 +24,47 @@ cpe update --apply work -o new.pptx --mark --accept-derived
 - Re-running `cpe update` keeps every approval and correction.
 - `--accept-derived` applies only figures computed from approved values. A figure with a part not yet
   approved stays a provisional proposal.
+
+## Versions of one quantity across sources (item 4)
+
+`reason facts` now also finds a quantity given with different values in different files. One project
+cost can appear as 3,52 M€ in the management report, 3,74 M€ in the ledger and 4,03 M€ in the full
+cost. The causes are scope, basis (plan vs actual), cut-off, restatement or a competing estimate.
+Each group is one conflict listing all its versions (`fact_conflicts.json`, types `plan_vs_actual`,
+`definition_mismatch`, `value_mismatch`). A deck that uses one of them must record which value it
+uses and why.
+
+**How it was measured.** Two agents wrote synthetic but realistic cases. Each case has messy memos,
+emails, controller notes, CSV exports and ledgers in Spanish and English, with planted conflict groups
+and decoys.
+- **Development:** 3 cases with visible keys, used to build the rules. Their contents and keys are in
+  `.private/defconf/`.
+- **Sealed:** 3 cases in other industries (retail, hospitals, software). Their keys were never read.
+  They were run once on the committed engine (`1d368a5`), with no change after the run. Only the
+  aggregates are reported here, and the holdout is now used.
+
+| | previous engine (0b5b558) | 2.0.0.dev0 |
+|---|---|---|
+| sealed: conflict groups found | 0 / 14 | **7 / 14** |
+| sealed: flagged groups that are planted conflicts | 0 / 3 | **7 / 20** |
+| sealed: decoys flagged | 0 | **0** |
+| development: groups found | 3 / 14 | 11 / 14 |
+| development: flagged groups correct | 5 / 16 | 15 / 23 |
+| v1.8 project (in-sample): groups found | 1 / 5 | 3 / 5 |
+
+**Read it as follows:**
+- Half of the planted conflicts are found on unseen material, where none were before.
+- About one flag in three is a planted conflict.
+- The other flags are not decoys (0 decoy hits). They are pairs the keys do not list. In the
+  development cases many of them are defensible (the same savings restated in an email; an old offer
+  vs a new one). They still cost review time.
+
+The list is a review aid, not a verdict.
+
+**Not paired, by design:**
+- a part and its row total, a month and a year, a per-unit figure and a total;
+- a change and a level, a threshold, a value cited "from" or "frente a";
+- two rows of two data exports, two outputs of the analyst's own model.
 
 ## Slides whose message no longer holds (item 5)
 

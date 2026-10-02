@@ -22,6 +22,15 @@ validation (unseen templates and new cases, judged only against the owner's key)
 
   A derived proposal whose parts are not all approved is marked provisional, and `--accept-derived`
   never applies it.
+- **Versions of one quantity across sources (item 4).** A quantity given with different values in
+  different files (scope, basis, cut-off, restatement, competing estimates) is reported as one conflict
+  with all its versions.
+  - Facts now carry their paragraph and section heading, so an implicit subject is read.
+  - `scripts/score_conflicts.py` scores the conflicts against a key.
+  - **Sealed synthetic holdout** (3 cases by an agent, keys never read, run once):
+    - 7/14 groups found (previous engine: 0/14);
+    - 7/20 flags are planted conflicts;
+    - 0 decoys flagged.
 - **Slides whose message no longer holds (item 5):**
   - `work/messages.md` gives each slide a verdict: holds, figures updated, no longer holds, or check.
   - A threshold claim in a headline must hold with the old values and is re-read with the new ones.
