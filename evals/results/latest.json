@@ -2807,5 +2807,171 @@
   "intake_v1_5": {
     "external_holdout": "EXTERNAL HOLDOUT: AWAITING INPUT (.private/holdouts/v15_external/, docs/EXTERNAL_HOLDOUT_PROTOCOL.md)",
     "unseen_corporate_template": "UNSEEN CORPORATE TEMPLATE: AWAITING USER-SUPPLIED TEMPLATE (.private/holdouts/v15_corporate/template.pptx; scripts/cpe holdout v15-corporate --record)"
+  },
+  "editorial": {
+    "holdout": {
+      "cases": 111,
+      "metrics": {
+        "agreement": 0.928,
+        "by_file": {
+          "causality": 1.0,
+          "drift": 0.895,
+          "invalid": 0.88,
+          "numeric": 0.833,
+          "parallel": 0.917,
+          "sequence": 1.0,
+          "valid": 1.0
+        },
+        "by_language": {
+          "en": 0.897,
+          "es": 0.962
+        },
+        "valid_pass_rate": 0.976,
+        "invalid_catch_rate": 0.882,
+        "unsupported_claims_passed": 3,
+        "unsupported_claims_total": 26,
+        "parallel_agreement": 0.917,
+        "non_parallel_respected": 1.0,
+        "n": {
+          "headline": 93,
+          "valid": 42,
+          "invalid": 51,
+          "parallel": 12,
+          "sequence": 6
+        }
+      },
+      "provenance": {
+        "evaluated_commit": "dcb42323d8a9828df5da1add8bf21009576706d1",
+        "git_tree": "58d493531200ed9077236fcef548fba59b05a313",
+        "dirty": false,
+        "dirty_paths": [],
+        "evaluated_source_commit": "dcb42323d8a9828df5da1add8bf21009576706d1",
+        "evaluated_source_dirty": false,
+        "working_tree_commit": "dcb42323d8a9828df5da1add8bf21009576706d1",
+        "working_tree_dirty": false,
+        "engine_version": "3.1.0",
+        "container_image": null,
+        "container_digest": null,
+        "eval_timestamp_utc": "2026-10-02T20:52:27Z"
+      },
+      "disagreements": [
+        {
+          "id": "EN-HDRF-009",
+          "file": "drift",
+          "expected": "failed",
+          "got": "passed",
+          "codes": []
+        },
+        {
+          "id": "ES-HDRF-012",
+          "file": "drift",
+          "expected": "failed",
+          "got": "passed",
+          "codes": []
+        },
+        {
+          "id": "EN-HINV-001",
+          "file": "invalid",
+          "expected": "failed",
+          "got": "passed",
+          "codes": []
+        },
+        {
+          "id": "EN-HINV-007",
+          "file": "invalid",
+          "expected": "failed",
+          "got": "passed",
+          "codes": []
+        },
+        {
+          "id": "EN-HINV-022",
+          "file": "invalid",
+          "expected": "failed",
+          "got": "passed",
+          "codes": []
+        },
+        {
+          "id": "EN-HNUM-005",
+          "file": "numeric",
+          "expected": "passed",
+          "got": "failed",
+          "codes": [
+            "HEADLINE_TOPIC",
+            "HEADLINE_UNRESOLVED"
+          ]
+        },
+        {
+          "id": "ES-HNUM-009",
+          "file": "numeric",
+          "expected": "failed",
+          "got": "passed",
+          "codes": []
+        },
+        {
+          "id": "EN-HPAR-008",
+          "file": "parallel",
+          "expected": "passed",
+          "got": "failed",
+          "codes": [
+            "PARALLEL_SIGNATURE_MISMATCH"
+          ]
+        }
+      ]
+    },
+    "dev": {
+      "cases": 210,
+      "metrics": {
+        "agreement": 0.995,
+        "by_file": {
+          "causality": 1.0,
+          "drift": 1.0,
+          "invalid": 0.98,
+          "numeric": 1.0,
+          "parallel": 1.0,
+          "sequence": 1.0,
+          "valid": 1.0
+        },
+        "by_language": {
+          "en": 0.991,
+          "es": 1.0
+        },
+        "valid_pass_rate": 1.0,
+        "invalid_catch_rate": 0.99,
+        "unsupported_claims_passed": 0,
+        "unsupported_claims_total": 49,
+        "parallel_agreement": 1.0,
+        "non_parallel_respected": 1.0,
+        "n": {
+          "headline": 180,
+          "valid": 81,
+          "invalid": 99,
+          "parallel": 20,
+          "sequence": 10
+        }
+      },
+      "provenance": {
+        "evaluated_commit": "dcb42323d8a9828df5da1add8bf21009576706d1",
+        "git_tree": "58d493531200ed9077236fcef548fba59b05a313",
+        "dirty": false,
+        "dirty_paths": [],
+        "evaluated_source_commit": "dcb42323d8a9828df5da1add8bf21009576706d1",
+        "evaluated_source_dirty": false,
+        "working_tree_commit": "dcb42323d8a9828df5da1add8bf21009576706d1",
+        "working_tree_dirty": true,
+        "engine_version": "3.1.0",
+        "container_image": null,
+        "container_digest": null,
+        "eval_timestamp_utc": "2026-10-02T20:53:24Z"
+      },
+      "disagreements": [
+        {
+          "id": "EN-INV-024",
+          "file": "invalid",
+          "expected": "failed",
+          "got": "passed",
+          "codes": []
+        }
+      ]
+    }
   }
 }

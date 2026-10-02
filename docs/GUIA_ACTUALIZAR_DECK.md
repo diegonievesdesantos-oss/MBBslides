@@ -96,3 +96,21 @@ python scripts/validation_kit.py seal clave.xlsx -o SEALED                   # h
 cpe update deck_anterior.pptx fuentes -o trabajo                             # una sola ejecución
 python scripts/validation_kit.py score clave.xlsx trabajo -v
 ```
+
+
+## v3.1 — titulares que dicen la conclusión
+
+Desde la 3.1 la herramienta también revisa la **redacción** de los titulares:
+
+- Si un titular deja de ser cierto con las cifras nuevas, la propuesta de nuevo titular pasa por el
+  *Action Title Engine*: no puede cambiar el sentido, el periodo ni el alcance, ni afirmar una causa o una
+  decisión que los datos no sostienen. La propuesta llega **sin aprobar** (`set_headline`, columna de
+  titulares en `review.xlsx`): la aprueba una persona.
+- Un titular que sigue siendo cierto **no se toca**.
+- Con `cpe update OLD.pptx FUENTES -o WORK --normalize-editorial` la herramienta señala además los
+  títulos que son etiquetas ("Plan de inversión") aunque sus cifras sigan valiendo. No inventa la nueva
+  redacción: escribe la alternativa en `candidates` de esa edición en `edits.json` y vuelve a ejecutar;
+  si la acepta, queda propuesta (sin aprobar). Una edición sin texto nunca se aplica.
+- Las diapositivas reconstruidas (`--rebuild`) se comprueban con las mismas reglas que un deck nuevo.
+
+Detalle: `docs/EDITORIAL_LAYER.md`.

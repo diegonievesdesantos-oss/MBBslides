@@ -1,0 +1,66 @@
+{
+  "meta": {
+    "created": "2026-10-02",
+    "pairs": 7,
+    "kind": "text",
+    "instructions": "Which is the stronger consulting action title for this proposition and evidence? Judge clarity, answer-first, specificity, executive readability and factual fidelity (a title that says more than the evidence proves is worse). Tie if neither."
+  },
+  "pairs": [
+    {
+      "id": "p001",
+      "images": [
+        "4f5d3fe43f01.md",
+        "d8692fc12022.md"
+      ],
+      "context": "3b1c8332023d.md"
+    },
+    {
+      "id": "p002",
+      "images": [
+        "2eb0160013c4.md",
+        "2651be81e7a3.md"
+      ],
+      "context": "51af284a154b.md"
+    },
+    {
+      "id": "p003",
+      "images": [
+        "668bd8664fee.md",
+        "9f455668d931.md"
+      ],
+      "context": "37e898f522c3.md"
+    },
+    {
+      "id": "p004",
+      "images": [
+        "2bcface87047.md",
+        "5c3651c81f0b.md"
+      ],
+      "context": "44079e1b3ecf.md"
+    },
+    {
+      "id": "p005",
+      "images": [
+        "07d14e08bd32.md",
+        "d4877b8f895b.md"
+      ],
+      "context": "7a5ae552dd0f.md"
+    },
+    {
+      "id": "r001",
+      "images": [
+        "9f455668d931.md",
+        "668bd8664fee.md"
+      ],
+      "context": "37e898f522c3.md"
+    },
+    {
+      "id": "r002",
+      "images": [
+        "d8692fc12022.md",
+        "4f5d3fe43f01.md"
+      ],
+      "context": "3b1c8332023d.md"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "round": "headlines",
+  "created": "2026-10-02",
+  "purpose": "blind A/B of headlines",
+  "blind": true,
+  "used_for_calibration": false,
+  "status": "awaiting human votes",
+  "key": "private"
+}

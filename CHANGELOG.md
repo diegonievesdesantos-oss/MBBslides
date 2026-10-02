@@ -1,5 +1,39 @@
 # Changelog
 
+## 3.1.0 — Editorial Logic Layer (Action Title Engine + Parallel Wording Guarantee)
+
+Requested by the owner after 3.0 as a mandatory capability; specification saved as given in
+[docs/V31_SPEC.md](docs/V31_SPEC.md). Status and measurements: [docs/V31_STATUS.md](docs/V31_STATUS.md).
+
+- **Proposition** (`slide.proposition`): the slide's semantic contract (statement, role, claim type,
+  subject, direction, magnitude, period, scope, evidence ids, confidence), separate from purpose and
+  headline. Required in `meta.editorial_mode: "mbb_strict"` (new decks, the examples); inferred and
+  flagged in `standard` (the default for old specs); never required in `legacy`.
+- **Action Title Engine** (`src/cpe/editorial/action_titles.py`): reuses `core/headline` lint and adds
+  proposition fidelity (direction, magnitude, entity, scope, period, confidence, causal strength,
+  recommendation vs decision), precision-aware number support, comparison checks against the slide's
+  numbers, the deck's language; ranks `headline` + `headline_candidates`; fails closed
+  (`HEADLINE_UNRESOLVED`); one safe deterministic rewrite for fully determined factual propositions.
+- **Parallel Wording Guarantee** (`parallel.py`, `signatures.py`): explicit and structural sibling
+  groups (steps, workstreams, cards, options, principles, executive summary, key line); English and
+  Spanish signatures; family, tense, voice, granularity, punctuation, capitalisation; never rewrites.
+- **Horizontal logic:** key line and governing thought as arguments, executive summary as conclusions,
+  no orphan slides, headline strip (`headline_strip.md`), editorial ghost deck.
+- **Pipeline:** compiled before `compose()` and `plan()`; the planner keeps its own lint and flags
+  `EDITORIAL_NOT_COMPILED`; autofix and composition cannot change wording; `qa_report` shows five
+  separate verdicts (factual, editorial, visual, authoring, brand), no composite.
+- **Update workflow:** `messages.review` still decides; a broken message becomes a revised proposition
+  checked by the ATE (agent wording in `candidates`); `set_headline` stays unapproved;
+  `cpe update --normalize-editorial`; rebuilt slides are compiled in strict mode.
+- **CLI:** `cpe editorial check | explain | ghost | normalize | eval`, `cpe run --editorial-mode`,
+  `cpe human build-editorial`.
+- **Evals:** `evals/editorial` — 210 dev cases and a sealed 111-case holdout by independent authors who
+  did not read the engine; editorial signals recorded apart from composition; human round e1 built
+  empty (no votes).
+- **Blind holdout (run once):** agreement 92.8% (dev, in-sample: 99.5%); valid headlines accepted
+  97.6%; failing headlines caught 88.2%; 3 of 26 unsupported claims let through. Not tuned afterwards.
+- The three example decks carry explicit propositions and pass strict editorial QA; no headline changed.
+
 ## 3.0.0 — Validated on real material (the last version)
 
 **Closed 2026-10-02 by the owner as the last version.**
