@@ -60,6 +60,6 @@ yearly flows.
 | **v1.8 project**, outdated found / value right | 54 / 24 | 54 / 24 |
 
 - Most of the gain is on v2.4's set, whose failures these items were written from. It is in-sample.
-- One right value was lost, on v2.3's set: points labelled "Ene–Jun 2026" and "Jul–Dic 2026", which now
-  carry a year that one source value does not.
+- One right value was lost, on v2.3's set. The two half-year points "Ene–Jun 2026" and "Jul–Dic 2026"
+  are now untraced: one had a right value, the other a wrong one.
 - The v2.5 sealed set will give the blind figure.

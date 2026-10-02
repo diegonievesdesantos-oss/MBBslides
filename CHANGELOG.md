@@ -21,8 +21,8 @@ The last synthetic round: time and accumulation, the failures v2.4's blind check
   - "current" right: 46/49 → 62/64;
   - proposed values right: 45 → 48.
 
-  No other development set or the v1.8 project lost a right value, except one on v2.3's sealed set
-  (half-year points).
+  The only right value lost on the other sets and the v1.8 project is one half-year point on v2.3's
+  sealed set.
 - **Dropped:** "a target is updated only by a target" lost 4 right values.
 
 ## 2.4.0 — Choosing the new value: one source value per figure, years, weak heads
