@@ -1,5 +1,5 @@
 {
-  "version": "1.8.0",
+  "version": "1.9.0.dev0",
   "regression": {
     "metric": "archetype-fitness composition score",
     "suite_composition": 95.1,
@@ -589,22 +589,22 @@
     },
     "environment_fingerprint": "f98cee49d123ed5f",
     "engine": {
-      "version": "1.8.0",
-      "commit": "885da76a74e0036124cbaa5c59ea4622f80285b3"
+      "version": "1.9.0.dev0",
+      "commit": "e5ae0202a7b79ebc855bf396070a59bdf4adeb61"
     },
     "provenance": {
-      "evaluated_commit": "885da76a74e0036124cbaa5c59ea4622f80285b3",
-      "git_tree": "274b5eb3de0f444a6cf5d340f50ec12ad3637301",
+      "evaluated_commit": "e5ae0202a7b79ebc855bf396070a59bdf4adeb61",
+      "git_tree": "061f3a67eb9610b2927bded1109fc03f1eac4cef",
       "dirty": false,
       "dirty_paths": [],
-      "evaluated_source_commit": "885da76a74e0036124cbaa5c59ea4622f80285b3",
+      "evaluated_source_commit": "e5ae0202a7b79ebc855bf396070a59bdf4adeb61",
       "evaluated_source_dirty": false,
-      "working_tree_commit": "885da76a74e0036124cbaa5c59ea4622f80285b3",
+      "working_tree_commit": "e5ae0202a7b79ebc855bf396070a59bdf4adeb61",
       "working_tree_dirty": false,
-      "engine_version": "1.8.0",
+      "engine_version": "1.9.0.dev0",
       "container_image": "mbbslides-visual:1.3",
       "container_digest": "sha256:bb5bbbdd55bcec5db567781c63574da1a4b2fc4504446d6fea23f5197f59d278",
-      "eval_timestamp_utc": "2026-10-02T09:39:02Z",
+      "eval_timestamp_utc": "2026-10-02T10:27:13Z",
       "environment_fingerprint": "f98cee49d123ed5f",
       "release_truth": true
     }
@@ -718,9 +718,9 @@
       "Inter": "Inter|/usr/share/fonts/opentype/inter/Inter-Regular.otf",
       "Segoe UI": "DejaVu Sans|/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
     },
-    "cpe_version": "1.8.0",
+    "cpe_version": "1.9.0.dev0",
     "container_image": "mbbslides-visual:1.3@sha256:bb5bbbdd55bcec5db567781c63574da1a4b2fc4504446d6fea23f5197f59d278",
-    "commit": "885da76a74e0036124cbaa5c59ea4622f80285b3",
+    "commit": "e5ae0202a7b79ebc855bf396070a59bdf4adeb61",
     "fingerprint": "f98cee49d123ed5f"
   },
   "holdout": {
@@ -2366,22 +2366,22 @@
     },
     "environment_fingerprint": "f98cee49d123ed5f",
     "engine": {
-      "version": "1.8.0",
-      "commit": "885da76a74e0036124cbaa5c59ea4622f80285b3"
+      "version": "1.9.0.dev0",
+      "commit": "e5ae0202a7b79ebc855bf396070a59bdf4adeb61"
     },
     "provenance": {
-      "evaluated_commit": "885da76a74e0036124cbaa5c59ea4622f80285b3",
-      "git_tree": "274b5eb3de0f444a6cf5d340f50ec12ad3637301",
+      "evaluated_commit": "e5ae0202a7b79ebc855bf396070a59bdf4adeb61",
+      "git_tree": "061f3a67eb9610b2927bded1109fc03f1eac4cef",
       "dirty": false,
       "dirty_paths": [],
-      "evaluated_source_commit": "885da76a74e0036124cbaa5c59ea4622f80285b3",
+      "evaluated_source_commit": "e5ae0202a7b79ebc855bf396070a59bdf4adeb61",
       "evaluated_source_dirty": false,
-      "working_tree_commit": "885da76a74e0036124cbaa5c59ea4622f80285b3",
+      "working_tree_commit": "e5ae0202a7b79ebc855bf396070a59bdf4adeb61",
       "working_tree_dirty": true,
-      "engine_version": "1.8.0",
+      "engine_version": "1.9.0.dev0",
       "container_image": "mbbslides-visual:1.3",
       "container_digest": "sha256:bb5bbbdd55bcec5db567781c63574da1a4b2fc4504446d6fea23f5197f59d278",
-      "eval_timestamp_utc": "2026-10-02T09:44:10Z",
+      "eval_timestamp_utc": "2026-10-02T10:32:28Z",
       "environment_fingerprint": "f98cee49d123ed5f",
       "release_truth": true
     }
@@ -2789,18 +2789,18 @@
     "catastrophic_cases": [],
     "definition": "catastrophic = composition drop ≥ 25 points or a new visual QA error; meaningful drop ≥ 5; large drop ≥ 10; separate from the composition score",
     "provenance": {
-      "evaluated_commit": "885da76a74e0036124cbaa5c59ea4622f80285b3",
-      "git_tree": "274b5eb3de0f444a6cf5d340f50ec12ad3637301",
+      "evaluated_commit": "e5ae0202a7b79ebc855bf396070a59bdf4adeb61",
+      "git_tree": "061f3a67eb9610b2927bded1109fc03f1eac4cef",
       "dirty": false,
       "dirty_paths": [],
-      "evaluated_source_commit": "885da76a74e0036124cbaa5c59ea4622f80285b3",
+      "evaluated_source_commit": "e5ae0202a7b79ebc855bf396070a59bdf4adeb61",
       "evaluated_source_dirty": false,
-      "working_tree_commit": "885da76a74e0036124cbaa5c59ea4622f80285b3",
+      "working_tree_commit": "e5ae0202a7b79ebc855bf396070a59bdf4adeb61",
       "working_tree_dirty": true,
-      "engine_version": "1.8.0",
+      "engine_version": "1.9.0.dev0",
       "container_image": "mbbslides-visual:1.3",
       "container_digest": "sha256:bb5bbbdd55bcec5db567781c63574da1a4b2fc4504446d6fea23f5197f59d278",
-      "eval_timestamp_utc": "2026-10-02T09:48:27Z",
+      "eval_timestamp_utc": "2026-10-02T10:37:02Z",
       "release_truth": true
     }
   },
