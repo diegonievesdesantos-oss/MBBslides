@@ -44,6 +44,6 @@ stopped one source value from feeding several quantities.
 | v2.2 set | 5 | 1 | 0 |
 | v1.8 project | | | 0 (54/68 unchanged) |
 
-**What did not work.** One source value per figure, strictly. It lost right values on every set: two
-different figures legitimately share one source value more often than expected (a phase and its total
-when the other phase is zero, a KPI quoted for two segments).
+**What did not work.** One source value per figure, strictly. It lost right values on every set (5 on the
+v2.2 set, 6 on v2.3's sealed set) and 2 outdated finds on the v1.8 project. Allowing two figures kept
+every right value.
