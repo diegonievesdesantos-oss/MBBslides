@@ -379,3 +379,39 @@ def test_v22_headline_proposals_for_signs_orders_and_more_superlatives(tmp_path)
     assert any(c["kind"] == "superlative" and c["status"] == "no longer holds" for c in rev[4]["claims"])
     assert rev[4]["proposal"] == "La Fase 1 tiene el mayor ahorro neto del programa"
     assert rev[5]["proposal"] == "La Zona sur es la más económica de las tres"
+
+
+def test_v23_matching_outside_the_known_measures(tmp_path):
+    import json
+
+    from cpe.reasoning import facts
+    from cpe.reasoning.deck_update import ingest_deck, update_plan
+
+    src = tmp_path / "src"
+    src.mkdir()
+    (src / "informe_2026.md").write_text(
+        "# Informe anual\n\nLa red cerró el año con 31.500 socios activos.\n\n"
+        "El OEE de Lugo cerró en el 74,6% y el de Mérida en el 63,6%.\n\n"
+        "La mediana del sector se sitúa en un OEE del 66%.\n", encoding="utf-8")
+    (src / "capex_real.csv").write_text("concepto,valor\nTotal capex fase 1 (k€),3100\n", encoding="utf-8")
+    facts.write_fact_model(src, tmp_path / "work")
+    fm = json.loads((tmp_path / "work" / "facts.json").read_text(encoding="utf-8"))["facts"]
+    _deck_with(tmp_path / "d.pptx", [
+        ("La red cuenta con 30.000 socios activos este año", None, None),
+        ("Lugo marca la referencia con un 72,5% de OEE, mientras Mérida se queda en el 61,2%", None, None),
+        ("Nuestro OEE medio del 67,1% supera al de muchas plantas", None, None),
+        ("Inversión por fase", [("Concepto", "Fase 1", "Fase 2"), ("Total", "2.800", "1.500")], None)])
+    prs_note = tmp_path / "d.pptx"
+    from pptx import Presentation
+    from pptx.util import Inches
+
+    prs = Presentation(str(prs_note))
+    box = prs.slides[3].shapes.add_textbox(Inches(0.5), Inches(1.1), Inches(6), Inches(0.4))
+    box.text_frame.text = "Capex por fase (k€)"  # the table's caption
+    prs.save(str(prs_note))
+    plan = update_plan(ingest_deck(prs_note), fm)
+    q = {(s["slide"], x["raw"]): x for s in plan["slides"] for x in s["numbers"]}
+    assert q[(1, "30.000")]["status"] == "outdated" and q[(1, "30.000")]["new_num"] == 31500  # "socios": no known measure
+    assert q[(2, "72,5%")]["new_value"].startswith("74.6") and q[(2, "61,2%")]["new_value"].startswith("63.6")  # each plant its own
+    assert q[(3, "67,1%")]["status"] != "outdated" or not q[(3, "67,1%")]["new_value"].startswith("66")  # the sector median is not ours
+    assert q[(4, "2.800")]["status"] == "outdated" and q[(4, "2.800")]["new_num"] == 3100  # the caption says capex

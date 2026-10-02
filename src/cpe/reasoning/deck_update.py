@@ -592,6 +592,20 @@ def _names(text: str) -> set[str]:
     return {w.lower() for w in NAME_RE.findall(text or "") if w.lower() not in _COMMON and _plain(w) not in HEAD_STOP}
 
 
+def _cand_names(c: dict) -> set[str]:
+    """A source value's names: a table row all of its labels; in a sentence the one named nearest
+    before the value ("el de Lugo cerró en el 74,6% y el de Mérida en el 63,6%")."""
+    from .conflicts import _num_pos
+
+    text = c["text"]
+    m = _num_pos(text, c["value"]) if " — " not in text else None
+    if m is None:
+        return _names(text)
+    before = re.split(r",|;|\by el\b|\by la\b|\band\b|\bwhile\b|\bmientras\b", text[:m.start()])[-1]
+    found = [w.lower() for w in NAME_RE.findall(before) if w.lower() in _names(w)]
+    return {found[-1]} if found else _names(text[m.end():m.end() + 30])
+
+
 def _q_names(q: dict) -> set[str]:
     """A number's names: a table cell or chart point all of its labels; a number in a sentence the one
     named nearest before it in its clause ("Lugo marca un 72,5%, mientras Mérida se queda en el 61,2%")."""
@@ -745,7 +759,7 @@ def update_plan(inv: dict, facts: list[dict]) -> dict:
     _COMMON.clear()
     _COMMON.update(re.findall(r"\b[a-záéíóúñü]{3,}\b", lower))
     for c in cands:
-        c["names"] = _names(c["text"])
+        c["names"] = _cand_names(c)
     hint = deck_hint(inv["slides"])
     out = []
     for s in inv["slides"]:
