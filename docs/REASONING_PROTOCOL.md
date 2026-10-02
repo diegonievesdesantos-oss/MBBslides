@@ -1,7 +1,7 @@
-# Reasoning protocol 1.4 — from raw sources to a deck plan
+# Reasoning protocol 1.5 — from raw sources to a deck plan
 
 *The thinking layer of MBBslides is part of the product, so it is versioned like code.*
-`reasoning_protocol: 1.4` is recorded in every artifact `cpe reason` writes and in every
+`reasoning_protocol: 1.5` is recorded in every artifact `cpe reason` writes and in every
 source-to-deck evaluation, together with the agent/model and skill version that produced the work.
 Engine performance (deterministic code) and agent + engine system performance are reported apart.
 
@@ -188,7 +188,25 @@ mechanisms and the bridge from numbers to action, partly to get past checks. Fro
   - A protocol storyline should be at least as complete as one written without the protocol. The
     protocol adds verification; it never subtracts content.
 
-## v1.8 tooling — messy inputs (protocol text unchanged at 1.4)
+## 1.5 — decide like an investment committee, not like the supplier's calendar
+
+Adopted on 2026-10-02 by the owner, after their blind review of the first real-project update.
+
+**What the review found.** The v1 deck got every figure right (14 of 14 against the sealed key) and
+detected 9 of 11 traps. Its decision was weak in five ways. The five rules below answer them. Each is
+checked by `cpe reason check` as a warning or info: it asks a question, it does not block.
+
+| # | rule | artifacts | check |
+|---|---|---|---|
+| R1 | **Contingency.** When a comparable past phase or project overran, carry that overrun, or a stated contingency, into the new investment. Show the threshold with and without it. If none applies, say why in `decision.contingency`. | `options[].cost_components` includes a contingency key; or `decision.contingency` | `CONTINGENCY_MISSING` |
+| R2 | **The decision is not the supplier's deadline.** A counterparty's price or deadline is a negotiation fact, not a decision criterion. Whenever an option carries an investment, also compare renegotiating (price, payment tied to performance) and deferring. Gates clear the break-even with margin (≥ 5%), over a test long enough to avoid the bias of a short, coached trial (≥ 8 weeks). | `options[].kind`: approve, condition, defer, renegotiate, reject; `gates[].threshold`, `break_even`, `period_weeks` | `OPTION_RENEGOTIATE_MISSING`, `OPTION_DEFER_MISSING`, `GATE_NO_MARGIN`, `GATE_SHORT_TEST`, `GATE_UNQUANTIFIED` (info) |
+| R3 | **Discarded evidence stays discarded.** A figure classed as unrepresentative (the best week, a supplier's acceptance test, a run-rate) may not support a later claim, such as "the condition is achievable". | `insights[].discards: [fact ids]`; a slide that shows it only to set it aside marks the evidence item `"as_discarded": true` | `DISCARDED_EVIDENCE_REUSED` |
+| R4 | **Coherent supporting figures.** One base for each quantity across the whole deck, for example a volume with or without a lost customer. An own assumption (such as the cost of deferring) stays out of the executive summary and the headlines unless labelled as one. A rejected hypothesis is not revived as a risk. | computed facts that rest on an assumption declare `rests_on_assumptions`; `options[].risks_from: [hypothesis ids]` | `ASSUMPTION_IN_SUMMARY`, `REJECTED_HYPOTHESIS_REVIVED`; a single base is a critic item |
+| R5 | **Partner-review checklist.** The partner review records five items, writing "no finding" when one does not apply: capacity, sunk costs, contingency, external deadlines and unsourced history. Unsourced history includes old series and benchmarks with no source. | `critique.json` (PARTNER REVIEW findings) | `PARTNER_CHECKLIST` (info) |
+
+The 1.4 rules all remain. 1.5 adds no step and no hard gate.
+
+## v1.8 tooling — messy inputs (no change to the agent's steps)
 
 These checks run inside `cpe reason facts` / `cpe reason check`. They add no step for the agent and
 need no new human round. Each is a warning unless stated.

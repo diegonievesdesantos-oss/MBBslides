@@ -27,6 +27,15 @@ Status and what needs the owner: [docs/V18_STATUS.md](docs/V18_STATUS.md).
   - `docs/INSTALL.md`;
   - a `Portability` CI workflow (Windows, macOS, Linux × Python 3.10 / 3.12).
 - Fix: a chart series with a gap (`None`) no longer crashes visual reasoning.
+- **Reasoning protocol 1.5**, adopted by the owner after their blind review of the real-project update.
+  It adds five rules, each checked as a warning or info:
+  - contingency (`CONTINGENCY_MISSING`);
+  - renegotiate and defer options, with gates that have margin and a sustained test (`OPTION_RENEGOTIATE_MISSING`, `OPTION_DEFER_MISSING`, `GATE_NO_MARGIN`, `GATE_SHORT_TEST`);
+  - discarded evidence stays discarded (`DISCARDED_EVIDENCE_REUSED`);
+  - coherent figures (`ASSUMPTION_IN_SUMMARY`, `REJECTED_HYPOTHESIS_REVIVED`);
+  - partner-review checklist (`PARTNER_CHECKLIST`).
+
+  Computed facts may declare `rests_on_assumptions`.
 
 ## 1.7.1 — Fine-tuning of the v1.7 debt
 

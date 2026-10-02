@@ -28,7 +28,7 @@ All commands: `scripts/cpe <command>` from the skill folder (or `python -m cpe` 
 Requirements: Python ≥3.10, `pip install -r requirements.txt`, LibreOffice **with Impress**
 (`libreoffice-impress`) for rendering, Liberation Sans fonts (Arial metrics).
 
-### Raw material → deck (reasoning protocol 1.4, v1.7 development)
+### Raw material → deck (reasoning protocol 1.5)
 
 When the input is raw business material rather than a ready storyline, follow
 `docs/REASONING_PROTOCOL.md` **before** writing a deck spec: `cpe reason facts sources/ -o work/`
@@ -42,6 +42,21 @@ arithmetic error or claim resting on a rejected hypothesis. Row-level data (orde
 wording — never facts. Computations go in `computed_facts.json` (formulas over fact ids, recomputed);
 assumptions in `assumptions.json` (flagged wherever they reach a headline). `cpe reason trace work/
 "<sentence>"` explains any sentence down to source cells.
+
+Protocol 1.5 adds five rules (`docs/REASONING_PROTOCOL.md`):
+1. **Contingency.** Investments carry a contingency when a comparable phase overran.
+2. **Options, not the supplier's calendar.** Whenever an option carries an investment, compare
+   renegotiating (`kind: renegotiate`) and deferring (`kind: defer`) with approving. A
+   counterparty's deadline is a negotiation fact, not a criterion.
+3. **Gates with margin.** Gates state `threshold`, `break_even` and `period_weeks`, clear the
+   break-even by 5% or more, and run 8 weeks or more.
+4. **Discarded evidence stays discarded.** Mark it with `insights[].discards`; when a slide shows it
+   only to set it aside, mark the evidence item `"as_discarded": true`.
+5. **Coherent figures.** One base per quantity; assumptions stay out of the summary and headlines
+   (declare `rests_on_assumptions` on computed facts that need one); no rejected hypothesis comes back
+   as a risk.
+
+The partner review covers capacity, sunk costs, contingency, external deadlines and unsourced history.
 
 ---
 

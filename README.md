@@ -78,6 +78,16 @@ Example decks are development material and regression fixtures, not evidence of 
   (native / adaptive / engine fallback) and why. Brand-fidelity metrics are reported separately.
 - **Windows, macOS, Linux:** see [docs/INSTALL.md](docs/INSTALL.md).
 
+- **Reasoning protocol 1.5:** five rules from the owner's blind review of the first real-project update.
+  The rules require:
+  - a contingency on investments;
+  - renegotiate and defer as options, so the supplier's deadline does not decide;
+  - gates with margin and a sustained test;
+  - discarded evidence stays discarded;
+  - coherent supporting figures.
+
+  Each rule is checked as a warning.
+
 Status, and what still needs real templates, real projects and the owner's judgement:
 [docs/V18_STATUS.md](docs/V18_STATUS.md).
 
@@ -85,7 +95,7 @@ Status, and what still needs real templates, real projects and the owner's judge
 
 v1.7 moves upstream of rendering, to building the **right** deck. The agent may write hypotheses,
 insights and wording; **it never creates a fact**. Every artifact it writes is checked by code
-([docs/REASONING_PROTOCOL.md](docs/REASONING_PROTOCOL.md), protocol 1.4).
+([docs/REASONING_PROTOCOL.md](docs/REASONING_PROTOCOL.md), protocol 1.5).
 
 - **Fact model** (`cpe reason facts`):
   - reads Excel, CSV, PDF, Word and markdown, including decimal-comma documents and messy tables;

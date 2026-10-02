@@ -39,8 +39,10 @@ not evidence. Only aggregates are recorded here; the case stays in `.private/`.
 
 ## Reasoning findings (from the owner's review of v1)
 
-These are agent-reasoning failures, not tool failures. They are candidates for protocol 1.5, to be
-decided by the owner:
+These are agent-reasoning failures, not tool failures. **The owner adopted them as protocol 1.5 on
+2026-10-02** (docs/REASONING_PROTOCOL.md). Run on v1's patterns, the checks raise CONTINGENCY_MISSING,
+GATE_NO_MARGIN, GATE_SHORT_TEST, OPTION_RENEGOTIATE_MISSING, OPTION_DEFER_MISSING,
+DISCARDED_EVIDENCE_REUSED and ASSUMPTION_IN_SUMMARY. Run on v2, they raise nothing:
 
 | # | finding | candidate rule |
 |---|---|---|

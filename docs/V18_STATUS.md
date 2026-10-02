@@ -48,6 +48,6 @@ These cannot be done honestly without new material or a human judgement. The eng
 
 ## Not changed
 
-- Reasoning protocol text: still 1.4. The v1.8 checks run in the tools and add no agent step.
+- Reasoning protocol: 1.5 since 2026-10-02 (five rules from the owner's review of the real-project run, checked as warnings). The v1.8 tooling checks add no agent step.
 - Regression, robustness and human evidence: the engine evals are re-run and recorded for this
   version. No human round was run and no vote was generated.

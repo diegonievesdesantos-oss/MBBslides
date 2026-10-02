@@ -198,3 +198,43 @@ def test_corporate_usage_and_brand_fidelity(tmp_path):
     g = brand_fidelity(tmp_path / "bad.pptx", theme, man, [{"code": "BRAND_RESERVED_OVERLAP", "slide": "s1", "message": "x"}], res)
     assert g["typography"]["value"] < 1 and "Comic Sans MS" in g["typography"]["misses"][0]
     assert any("FF00CC" in m for m in g["palette"]["misses"]) and g["grid"]["misses"] and g["artwork_protection"]["value"] == 1
+
+
+def test_protocol_15_rules():
+    from cpe.reasoning import PROTOCOL_VERSION
+    from cpe.reasoning.rules15 import check_assumptions_in_summary, check_decision_15, check_discarded, check_partner_checklist, check_rejected_revived
+    assert PROTOCOL_VERSION == "1.5"
+    # R1 + R2: no contingency, a gate without margin and too short, no renegotiate / defer option
+    sl = {"decision": {"options": [{"id": "O1", "statement": "Aprobar hoy al precio de la oferta", "cost_components": {"inversion": 2616}},
+                                   {"id": "O2", "statement": "Aprobar con prueba", "cost_components": {"inversion": 2616}}],
+                       "gates": [{"statement": "Prueba", "criterion": "2,1x", "threshold": 2.1, "break_even": 2.09, "period_weeks": 4}]}}
+    codes = {i["code"] for i in check_decision_15(sl)}
+    assert {"CONTINGENCY_MISSING", "GATE_NO_MARGIN", "GATE_SHORT_TEST", "OPTION_RENEGOTIATE_MISSING", "OPTION_DEFER_MISSING"} <= codes
+    good = {"decision": {"options": [{"id": "O1", "kind": "approve", "cost_components": {"inversion": 2616, "contingencia": 262}},
+                                     {"id": "O2", "kind": "renegotiate", "cost_components": {"inversion": 2182, "contingencia": 218}},
+                                     {"id": "O3", "kind": "defer", "cost_components": {"inversion": 2616, "contingencia": 262}}],
+                         "gates": [{"statement": "Decisión", "threshold": 2.2, "break_even": 2.0, "period_weeks": 8}]}}
+    assert not check_decision_15(good)
+    # R3: a fact set aside as unrepresentative may not support a later claim
+    ins = {"insights": [{"id": "I1", "facts": ["F1", "F2"], "discards": ["F2"]}, {"id": "I6", "facts": ["F3", "F2"]}]}
+    deck = {"slides": [{"id": "s04", "evidence": [{"fact": "F2", "as_discarded": True}]}, {"id": "s08", "evidence": [{"fact": "F2"}]}]}
+    refs = {i["ref"] for i in check_discarded(ins, deck)}
+    assert refs == {"I6", "s08"}
+    # R4: an assumption-only number in the summary; a rejected hypothesis revived as a risk
+    facts = {"F1": {"id": "F1", "claim": "Precio", "values": [{"value": 2396, "unit": "EUR_K"}]},
+             "C1": {"id": "C1", "claim": "Coste de aplazar", "values": [{"value": 237, "unit": "EUR_K"}], "fact_type": "computed", "rests_on_assumptions": ["A001"]}}
+    deck = {"slides": [{"id": "s02", "kind": "exec_summary", "headline": "Aplazar costaría 237 k€", "evidence": [{"fact": "C1"}, {"fact": "F1"}]}]}
+    assert [i["code"] for i in check_assumptions_in_summary(deck, facts)] == ["ASSUMPTION_IN_SUMMARY"]
+    sl = {"decision": {"options": [{"id": "O3", "risks_from": ["H7"]}]}}
+    assert check_rejected_revived(sl, {"H7": {"status": "rejected"}})[0]["code"] == "REJECTED_HYPOTHESIS_REVIVED"
+    # R5: partner checklist
+    cr = {"findings": [{"critic": "PARTNER REVIEW", "finding": "Contingencia del 10% y coste hundido de 48 k€"}]}
+    msg = check_partner_checklist(cr)[0]["message"]
+    assert "capacity" in msg and "external_deadline" in msg and "contingency" not in msg.split("address:")[1]
+
+
+def test_computed_fact_declares_assumption():
+    from cpe.reasoning.checks import check_computed
+    facts = {"F1": {"id": "F1", "values": [{"value": 2396, "unit": "EUR_K"}]}}
+    _, good = check_computed({"facts": [{"id": "C1", "formula": "F1 * 0.099", "values": [{"value": 237.2}], "rests_on_assumptions": ["A001"]}]}, facts)
+    assert good["C1"]["rests_on_assumptions"] == ["A001"]

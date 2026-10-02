@@ -179,7 +179,7 @@ def test_benchmark_catches_traps(work):
 def test_reasoning_protocol_is_versioned():
     from cpe.reasoning import PROTOCOL_VERSION
 
-    assert PROTOCOL_VERSION == "1.4"
+    assert PROTOCOL_VERSION == "1.5"
     assert json.loads((RUN / "facts.json").read_text())["protocol"] == "1.0"  # a stored run keeps the protocol it was produced under
     assert "development run — NOT evidence" in (RUN / "RUN.json").read_text()
     for d in ("development", "sealed", "external"):

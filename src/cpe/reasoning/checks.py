@@ -25,6 +25,7 @@ from . import PROTOCOL_VERSION
 from .analysis import check_analyses
 from .decision import check_decision
 from .grounding import ground_numbers
+from .rules15 import check_assumptions_in_summary, check_decision_15, check_discarded, check_partner_checklist, check_rejected_revived
 
 CAUSAL = re.compile(r"\b(because|driven by|due to|caused by|causes|explains?|explained by|as a result of|porque|debido a|impulsad[oa] por|explica|causad[oa])\b", re.I)
 STOP = set("the a an of to in on for and or with by from is are was were be this that it its as at than vs de la el los las y o en por con del al un una que se".split())
@@ -259,6 +260,7 @@ def check_computed(cf: dict | None, facts: dict) -> tuple[list[dict], dict]:
 
         deps = sorted(set(_re.findall(r"\b(?:[FC]\d{4}|A\d{3})\b", f["formula"])))  # F0062[1] cites F0062
         rests = [d for d in deps if (facts.get(d) or good.get(d) or {}).get("fact_type") == "assumption" or (good.get(d) or {}).get("rests_on_assumptions")]
+        rests += [a for a in f.get("rests_on_assumptions") or [] if a not in rests]  # 1.5: declared when the formula cannot show it
         good[fid] = {**f, "fact_type": "computed", "derived_from": deps, "source": {"file": "computed", "loc": f["formula"]}, "confidence": 0.0 if bad else 1.0,
                      **({"arithmetic_error": True} if bad else {}),
                      **({"rests_on_assumptions": rests} if rests else {})}
@@ -665,13 +667,13 @@ def check_work(work_dir: str | Path, sources_dir: str | Path | None = None) -> d
     stages = {
         "project": check_project(project),
         "conflicts": check_conflicts(work, fm, dp_used),
-        "critique": check_critique(_load(work, "critique.json")),
+        "critique": check_critique(_load(work, "critique.json")) + check_partner_checklist(_load(work, "critique.json")),
         "facts": check_facts(fm, Path(sources_dir) if sources_dir else None, work) + computed_issues + check_analyses(work, sources_dir),
         "hypotheses": check_hypotheses(hy, facts),
-        "insights": check_insights(ins, facts, hyps, source_text),
-        "storyline": check_storyline(sl, insights, facts, hyps, project) + check_decision(sl, facts, project),
+        "insights": check_insights(ins, facts, hyps, source_text) + check_discarded(ins, deck),
+        "storyline": check_storyline(sl, insights, facts, hyps, project) + check_decision(sl, facts, project) + check_decision_15(sl) + check_rejected_revived(sl, hyps),
         "deck_plan": check_deck_plan(dp, sl, insights, facts, project),
-        "deck": factcheck_deck(deck, facts),
+        "deck": factcheck_deck(deck, facts) + check_assumptions_in_summary(deck, facts),
     }
     issues = [i for v in stages.values() for i in v]
     hard = [i for i in issues if i["hard"]]
