@@ -350,7 +350,10 @@ MEASURE_STEMS = {"inver": "inver", "capex": "inver", "ahorr": "ahorr", "savin": 
                  "payba": "payba", "tir": "tir", "irr": "tir", "mante": "mante", "licen": "mante", "creci": "creci", "varia": "creci",
                  "coste": "coste", "cost": "coste", "costs": "coste", "caja": "caja", "cash": "caja", "merma": "merma", "capac": "capac",
                  "horas": "horas", "hours": "horas", "ocupa": "ocupa", "preci": "preci", "price": "preci", "ventas": "venta", "venta": "venta",
-                 "ingre": "venta", "reven": "venta", "ebitd": "ebitd", "marge": "marge", "margi": "marge"}
+                 "ingre": "venta", "reven": "venta", "ebitd": "ebitd", "marge": "marge", "margi": "marge",
+                 # v2.3: other forms of the same measures ("crecerán", "facturación", "growth")
+                 "crece": "creci", "growt": "creci", "factu": "venta", "sales": "venta", "payba": "payba", "recup": "payba",
+                 "plazo": "payba", "headc": "plant", "staff": "plant", "inves": "inver", "savin": "ahorr", "margin": "marge"}
 # words that make a figure a restatement of a plan, an offer or the old deck, not an observation
 PLAN_RE = re.compile(r"\b(presupuest\w*|budget\w*|business case|previst\w*|previsi\w*|aprobad\w*|approved|garant\w*|guarantee\w*|ofert\w*|"
                      r"offer\w*|anterior|deck|objetivo|target|plan(?:ned)?|forecast)\b", re.I)
@@ -479,6 +482,10 @@ def _non_figure(q: dict, slide_n: int) -> str | None:
     return None
 
 
+def _qtext(q: dict) -> str:
+    return ((q.get("context") or "") + " " + (q.get("caption") or "")).strip()
+
+
 def _kind_ok(q: dict, c: dict) -> bool:
     k, ua = q["kind"], q.get("unit_after") or ""
     if k == "money":
@@ -490,12 +497,12 @@ def _kind_ok(q: dict, c: dict) -> bool:
     if ua in ("h", "horas", "hours", "h/fte"):
         return c["kind"] in ("duration", "plain")
     if c["kind"] == "pct":  # a unit-less number is a share only under a "%" label, not next to "+6%/año"
-        return bool(re.search(r"\(%\)|(?<![\d+\-.,])\s%|^%|\bpct\b|porcentaje|percent", q.get("context") or ""))
+        return bool(re.search(r"\(%\)|(?<![\d+\-.,])\s%|^%|\bpct\b|porcentaje|percent", _qtext(q)))
     if c["kind"] == "money":  # a bare number counts as money only under a money label
-        return bool(re.search(r"(€|\$|£|k€|m€|eur|ahorr|inversi|capex|caja|mantenim|coste|cost|saving)", _plain(q.get("context") or ""))) and \
+        return bool(re.search(r"(€|\$|£|k€|m€|eur|ahorr|inversi|capex|caja|mantenim|coste|cost|saving)", _plain(_qtext(q)))) and \
             ua not in ("fte", "ftes", "lineas", "líneas", "lines", "años", "years", "x", "%")
     if c["kind"] == "x":
-        return bool(re.search(r"(veces|times|\bx\b|multiplica)", _plain(q.get("context") or "")))
+        return bool(re.search(r"(veces|times|\bx\b|multiplica)", _plain(_qtext(q))))
     return c["kind"] in ("plain", "duration")
 
 
@@ -522,17 +529,57 @@ def _same_magnitude(q: dict, c: dict) -> bool:
     return any(b and a and max(a, b) / min(a, b) <= 3 for b in bs)
 
 
+OPEN_STOP = {"cada", "each", "todo", "todos", "toda", "todas", "previst", "objet", "target", "estim", "inicial", "final", "medio", "media",
+             "average", "promedio", "aprox", "hasta", "desde", "entre", "sobre", "bajo", "alcanz", "llega", "supon", "repres", "pasa", "queda"}
+
+
+def _open_measure(q: dict) -> set[str]:
+    """v2.3: the stems of the few content words around a number with no known measure: what it counts
+    ("30.000 socios", "240 miles de expedientes", "Socios en madurez"). Only nouns-like words of 5+ letters."""
+    from .conflicts import HEAD_STOP
+    from .derive import _local
+
+    if q["where"].startswith("exhibit["):
+        text = q.get("row") or q.get("context") or ""
+    else:
+        before, after = _local(q)
+        wb, wa = re.findall(r"[^\W\d_]+", before), re.findall(r"[^\W\d_]+", after)
+        for k in (3, 6):  # the nearest words first
+            got = _open_words(" ".join(wb[-k:] + wa[:k]))
+            if got:
+                return got
+        return set()
+    return _open_words(text)
+
+
+def _open_words(text: str) -> set[str]:
+    from .conflicts import HEAD_STOP
+
+    out = set()
+    for w in re.findall(r"[a-zñ]{5,}", _plain(text)):
+        if w in HEAD_STOP or any(w.startswith(s) for s in OPEN_STOP) or w in UNIT_SCALE_WORDS:
+            continue
+        out.add(w[:5])
+    return out
+
+
+UNIT_SCALE_WORDS = {"miles", "millon", "millones", "million", "millions", "thousand", "thousands", "euros", "dolares", "dollars", "anual", "anuales"}
+
+
 def _match(q: dict, slide: dict, cands: list[dict]) -> tuple[str, list[dict], dict | None]:
     from .conflicts import _opposed
 
-    ctx = q.get("context") or ""
+    ctx = ((q.get("context") or "") + " " + (q.get("caption") or "")).strip()  # v2.3: a table cell reads its table's caption too
     st = _stems(ctx)
     ms = _measure_set(st)
     if not ms and q["kind"] == "data":
         ms = _measure_set(_stems(slide.get("headline") or ""))  # a bare chart point: its slide says what it measures
         st = st | ms
-    if not ms:
-        return "untraced", [], None
+    open_ = set()
+    if not ms:  # v2.3: a measure outside the known list ("expedientes", "socios", "monitores"): the words around the number
+        open_ = _open_measure(q)
+        if not open_:
+            return "untraced", [], None
     key = _key_measures(ms)
     from .derive import CUM_RE
 
@@ -543,13 +590,16 @@ def _match(q: dict, slide: dict, cands: list[dict]) -> tuple[str, list[dict], di
     qq = {k: qq[k] or sq[k] for k in qq}
     scored = []
     for c in cands:
-        if not (key & c["measures"]) or not _kind_ok(q, c) or _clash(qq, c["quals"]) or _opposed(words, c["words"]) or not _same_magnitude(q, c):
+        if not ((key & c["measures"]) if key else (open_ & c["stems"])) or not _kind_ok(q, c) or _clash(qq, c["quals"]) or _opposed(words, c["words"]) \
+                or not _same_magnitude(q, c):
             continue
+        if open_ and c["measures"] - open_:
+            continue  # the source says it is a known measure the number is not about
         if cum and not CUM_RE.search(c["text"]):
             continue  # v2.2: a year's flow is not the running total to that year
         sc = len(st & c["stems"]) + sum(1 for k in ("year", "phase", "zone") if qq[k] and qq[k] & c["quals"][k])
         part = sum(1 for k in ("phase", "zone") if c["quals"][k] and not qq[k])  # a part (one zone) of an unqualified whole
-        if sc >= (1 if q["kind"] == "x" else 2):
+        if sc >= (1 if q["kind"] == "x" or open_ else 2):  # v2.3: the noun it counts ("monitores") is evidence enough
             scored.append((sc - 0.5 * part, c))
     if not scored:
         return "untraced", [], None
@@ -645,7 +695,10 @@ def update_plan(inv: dict, facts: list[dict]) -> dict:
     out = []
     for s in inv["slides"]:
         items = []
+        caps = [b for b in s.get("body") or [] if isinstance(b, str) and len(b.split()) <= 8 and not re.search(r"\d{2,}", b)]
         for q in s["numbers"]:
+            if ".rows[" in q["where"] and caps:
+                q = {**q, "caption": caps[0]}  # v2.3: a short text over the table ("Capex por fase (k€)") says what its cells are
             why = _non_figure(q, s["n"])
             if why:
                 items.append({**q, "status": "ignored", "why": why})
