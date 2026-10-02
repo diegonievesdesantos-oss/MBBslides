@@ -31,6 +31,14 @@ Fewer numbers left for a person to trace by hand. Status: [docs/V22_STATUS.md](d
   - In-sample on the v1.8 project: outdated numbers found 51/68 → 54/68 (its demand projection). Its
     cash curve still cannot be recomputed: no source gives yearly flows, and the old curve does not
     follow the simple payback model exactly.
+- **Blind check on a sealed synthetic set** (3 cases, 185 keyed numbers, written by an agent that did
+  not read the code; run once, 2.1.0 vs items 2–3):
+  - outdated numbers found: 20/110 → 26/110;
+  - proposed values right: 8/20 → 17/26;
+  - "current" right: 6/8 → 6/13. It got worse: decoys grouped, and a wrong head propagated.
+
+  On unseen material the tool still finds only about 1 outdated number in 4. Afterwards, numbers
+  written with different count units ("45 FTE", "45 días") are never one figure.
 - Two edits of the same figure in one paragraph no longer collide: later occurrences are patched first.
 
 ## 2.1.0 — Less review work: ranked conflicts, a review sheet, more headline claims

@@ -434,6 +434,19 @@ def _cls(q: dict) -> str:
     return "level"
 
 
+UNIT_WORDS = {"fte", "ftes", "dias", "dia", "days", "day", "meses", "mes", "months", "month", "semanas", "weeks", "horas", "hours", "anos", "años",
+              "years", "personas", "people", "empleados", "employees", "tiendas", "stores", "centros", "sites", "clientes", "customers",
+              "pedidos", "orders", "lineas", "lines", "unidades", "units", "puestos", "camiones", "trucks", "m2", "km", "kg", "t", "toneladas"}
+
+
+def _unit(q: dict) -> str:
+    """The count unit written right after the number ("45 FTE", "45 días"), if it is one."""
+    from .deck_update import _plain
+
+    u = _plain(str(q.get("unit_after") or ""))
+    return u if u in UNIT_WORDS else ""
+
+
 def _scale(a: dict, b: dict) -> float | None:
     """f such that a's value = f × b's value (a power of ten), when the two are the same figure."""
     for f in (1.0, 1e3, 1e-3, 1e6, 1e-6, 1e9, 1e-9):
@@ -458,6 +471,8 @@ def _same_figure(a: tuple, b: tuple) -> tuple | None:
         return None  # two cells of one table, two points of one chart: two quantities
     if ia["ents"] and ib["ents"] and not (ia["ents"] & ib["ents"]):
         return None
+    if ia["unit"] and ib["unit"] and ia["unit"] != ib["unit"]:
+        return None  # "45 FTE" and "45 días": the units the numbers are written with differ
     if ia["ms"] and ib["ms"] and not (ia["ms"] & ib["ms"]):
         return None
     f = _scale(qa, qb)
@@ -479,7 +494,7 @@ def groups(plan: dict) -> list[list[tuple]]:
             if not _usable(q) or q.get("status") == "ignored":
                 continue
             ctx = q.get("context") or ""
-            nums.append((n, q, {"cls": _cls(q), "ents": _entities(q), "ms": _measures(q), "digits": _digits(q),
+            nums.append((n, q, {"cls": _cls(q), "ents": _entities(q), "ms": _measures(q), "digits": _digits(q), "unit": _unit(q),
                                 "money": q["kind"] == "money" or bool(MONEY_RE.search(ctx))}))
     rank = lambda x: (0 if ".rows[" in x[1]["where"] else 1 if x[1]["where"].startswith("exhibit[") else 2 if x[1]["where"] != "title" else 3)
     nums.sort(key=rank)

@@ -11,8 +11,8 @@ material still open since v1.9.
 | 4 | Precision of medium-priority conflicts (19/50 real in v2.1) | open |
 | 5 | Headline proposals for sign and order claims; a larger superlative lexicon | open |
 
-All figures below are in-sample: they come from the v1.8 project (the "Albor" case), which the rules
-were developed on. There is no new blind figure yet.
+Most figures below are in-sample: they come from the v1.8 project (the "Albor" case), which the rules
+were developed on. The one blind figure is in "Blind check on a sealed synthetic set" at the end.
 
 ## Item 2: one figure, one value
 
@@ -110,3 +110,50 @@ The tool does not guess a curve that the deck's own figures do not reproduce.
   is, and the update report lists the slide's headline for checking.
 - A growth base or a curve's investment that no source updates must be approved by the reviewer
   before the projection moves.
+
+## Blind check on a sealed synthetic set (items 2 and 3)
+
+**The set.** An agent wrote 3 synthetic update cases in Spanish:
+- a packaging line;
+- a claims-automation programme;
+- a gym-chain expansion.
+
+Each has an old deck (9 slides, with tables and charts), 6 new sources, and a key for each of the 185
+numbers of the old decks. The agent did not read the tool's code. The key was sealed (sha256) before
+the tool ran. The set is fictional and stays private, like every case.
+
+**The run.** It ran once, with 2.1.0 and with items 2–3 on the same inputs. The scorer was then fixed
+twice, and both fixes were to the scorer only:
+- it compared "21,0" with "21" as text;
+- it read chart values with the wrong decimal mark.
+
+The same outputs were then re-scored, without running the tool again. 161 of the 185 keyed numbers are
+matched to a number of the plan. Most of the other 24 are phase indices ("fase 1"), which the tool
+does not treat as figures.
+
+| blind, 3 cases | 2.1.0 | items 2–3 |
+|---|---|---|
+| outdated numbers found | 20 / 110 | **26 / 110** |
+| "outdated" right | 20 / 21 | 26 / 27 |
+| proposed value right | 8 / 20 | **17 / 26** |
+| "current" right | 6 / 8 | **6 / 13** |
+
+**What this says:**
+- **On unseen material the tool finds about 1 outdated number in 4,** against 54 of 68 on the
+  project it was developed on. The gap is mostly in matching a deck number to its new source in the
+  first place, before any of items 2–3 apply. That gap is the main open problem of the tool.
+- **Items 2–3 help where they apply.** They bring 6 more outdated numbers found and nearly double the
+  right proposed values (8 → 17). The growth series and the curve from source flows were recomputed
+  right.
+- **Items 2–3 also cost.** 5 more numbers are called "current" wrongly:
+  - two decoys grouped with a figure of the same digits ("45 FTE" and "45 días");
+  - points of a cumulative curve that already had their flows on the slide;
+  - a projection's base.
+
+  And one wrong direct match (a headline's "4,6 M€" investment matched to a 1,8 M€ saving) was
+  propagated to its restatements: a group is only as right as its head.
+
+**After the run** (so in-sample on this set too):
+- A rule from the failures: two numbers written with different count units ("FTE", "días") are not
+  one figure. "current" right went from 6/13 to 6/12.
+- The set is now used. It is not run again as a blind test.

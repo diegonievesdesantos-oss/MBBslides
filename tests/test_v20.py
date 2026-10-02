@@ -293,9 +293,12 @@ def test_v22_one_figure_one_value_across_the_deck(tmp_path):
         ("El plan de inversión por fases", [("Concepto", "Fase 1", "Fase 2", "Total"), ("Inversión (capex, k€)", "3.200", "2.400", "5.600"),
                                             ("Plantilla (FTE)", "32", "20", "52")], None),
         ("La productividad llega a 32 líneas por hora con el nuevo sistema", None, None),
-        ("Pedimos aprobar la fase 1 por 3,2 M€ este trimestre", None, None)])
+        ("Pedimos aprobar la fase 1 por 3,2 M€ este trimestre", None, None),
+        ("La plantilla final será de 52 FTE en las dos fases", None, None),
+        ("La puesta en marcha completa dura 52 días de pruebas", None, None)])
     plan = update_plan(ingest_deck(tmp_path / "d.pptx"), [])
     gs = [{i.split("|")[0] + "|" + i.split("|")[-1] for i, _ in g} for g in groups(plan)]
+    assert not any("5|52" in g and "6|52" in g for g in gs)  # 52 FTE is not 52 días
     assert {"1|€3,2 M", "2|3.200", "4|€3,2 M"} in gs and {"1|€2,4 M", "2|2.400"} in gs
     assert not any("3|32" in g for g in gs)  # 32 líneas/hora is not the 32 FTE of the table
     e = {"edits": []}
