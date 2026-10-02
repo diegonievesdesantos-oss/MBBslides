@@ -108,8 +108,10 @@ DURATION_RE = re.compile(r"^\s*(?:[-–]\s*\d+\s*)?[- ]?(?:month|week|year|day|q
 
 
 def numbers_in(text: str) -> list[tuple[float, str]]:
+    from ..ingest.readers import mask_dates
+
     out = []
-    text = text or ""
+    text = mask_dates(text or "")  # v1.9 (DEBT_V18 U5): dates and periods are not quantities here either (protocol 1.4)
     for m in NUM_RE.finditer(text):
         raw = m.group(0).strip()
         if DURATION_RE.match(text[m.end():]):

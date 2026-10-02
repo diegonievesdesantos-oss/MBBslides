@@ -68,6 +68,15 @@ def _unit_scale(s: dict) -> float:
         return 1.0
 
 
+def _scaled_plain(q: dict, s: dict, tol: float) -> bool:
+    """v1.9 (DEBT_V18 U9): a plain number written with a scale word ("4,59 M de líneas", "120k") is
+    compared at full scale, against the fact at full scale or in another scale of the same quantity
+    (a table of thousands, a unit in millions). Only when the text states the scale."""
+    if q["kind"] != "plain" or (q.get("scale") or 1.0) <= 1.0 or s["kind"] != "plain":
+        return False
+    return any(abs(s["value"] * k - q["value"]) <= tol for k in (1.0, 1e3, 1e6))
+
+
 def ground_numbers(text: str, facts: list[dict], max_pairs_facts: int = 12) -> list[dict]:
     """Per number in `text`: {"number", "status": grounded|derived|unsupported, "facts": [...]}.
     `facts` must be the facts the sentence CITES, not the whole fact base."""
@@ -77,7 +86,8 @@ def ground_numbers(text: str, facts: list[dict], max_pairs_facts: int = 12) -> l
     for q in headline_quantities(text):
         tol = 0.5 * 10 ** (-q["decimals"]) * (q["scale"] or 1.0) + REL_TOL * q["value"]
         direct = [s for s in scal if (s["kind"] == q["kind"] or q["kind"] == "plain" or (q["kind"] == "x" and s["kind"] == "plain")) and (q["kind"] != "money" or q["currency"] in (None, s["currency"]))
-                  and abs((s["value"] / (1.0 if q["kind"] != "plain" else _unit_scale(s)) if q["kind"] == "plain" else s["value"]) - q["value"]) <= tol]
+                  and (abs((s["value"] / (1.0 if q["kind"] != "plain" else _unit_scale(s)) if q["kind"] == "plain" else s["value"]) - q["value"]) <= tol
+                       or _scaled_plain(q, s, tol))]
         # a bare number ("10.4") may name a fact in its own unit (€10.4M): compared as written
         if direct:
             real = [s for s in direct if not s.get("assumption")]

@@ -495,7 +495,7 @@ def information_economy(dp: dict | None, insights: dict, facts: dict) -> dict:
 # ── the rendered spec: factuality hard gate ──────────────────────────────────────────────────────
 
 SKIP_KEYS = {"id", "kind", "archetype", "layout", "source", "tracker", "section", "purpose", "message_type", "evidence", "format", "style", "highlight",
-             "headline", "text", "reason_to_exist", "why_not_merge", "decision_role", "priority", "role", "color", "colors", "delta_colors", "variant",
+             "headline", "reason_to_exist", "why_not_merge", "decision_role", "priority", "role", "color", "colors", "delta_colors", "variant",
              "facts", "insights", "key_line", "assumptions_note", "widths", "column_widths", "decimals", "align", "icon", "emphasis",
              "bound", "estimate", "width", "kind", "type", "delta_colors", "total_color", "proof_label", "truncate_axis"}
 

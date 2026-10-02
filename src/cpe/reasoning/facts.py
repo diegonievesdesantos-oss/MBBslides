@@ -108,6 +108,15 @@ SCALE_WORDS = {"m": "M", "mn": "M", "million": "M", "millones": "M", "bn": "BN",
 SCALE_AFTER = re.compile(r"\s*(m|mn|million|millones|bn|billion|k|thousand)\b(?:\s+de)?\s*(€|\$|£|eur(?:os)?\b|usd\b|gbp\b|dólares\b)?", re.I)
 
 
+LABEL_FIGURE = re.compile(r"[-+−]?\d[\d.,]*\s*(?:%|pp|bps|x\b|k€|m€|bn€|€|\$|£|eur\b|usd\b|gbp\b|k\b|m\b|bn\b|mn\b)?", re.I)
+
+
+def _label_unit_text(label: str) -> str:
+    """v1.9 (DEBT_V18 U6): the unit a row label STATES ("Ventas netas (M€)"), not the unit of a figure
+    the label happens to quote ("Real + mermas de 120 k€", "orgánico (+3,5% sin Marea)")."""
+    return LABEL_FIGURE.sub(" ", label or "")
+
+
 def unit_from_raw(raw: str) -> str:
     """Unit of a number as written in prose: '€1,500M' → EUR_M, '24%' → PCT, '$3.2bn' → USD_BN."""
     r = str(raw or "").strip().lower()
@@ -220,7 +229,7 @@ def _table_facts(t: dict, next_id) -> list[dict]:
             elif sc and per:
                 per = {**per, "basis": SCENARIOS[sc.group(1).lower()]}
             cu = ((t.get("cell_units") or [])[i][j] if i < len(t.get("cell_units") or []) and j < len(t["cell_units"][i]) else "") or ""
-            unit = detect_unit(header[j]) or (unit_from_raw("1" + cu) if cu else "") or detect_unit(label) or table_unit
+            unit = detect_unit(header[j]) or (unit_from_raw("1" + cu) if cu else "") or detect_unit(_label_unit_text(label)) or table_unit
             fid = next_id()
             rng = f"{_col(j)}{i + 2}"
             facts.append({"id": fid, "claim": f"{label} — {header[j]}: {_fmt(v)}{(' ' + unit) if unit else ''}",

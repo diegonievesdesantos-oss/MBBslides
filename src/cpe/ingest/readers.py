@@ -31,7 +31,9 @@ MONTHS = ("enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|setiembr
           "january|february|march|april|may|june|july|august|september|october|november|december")
 DATE_RE = re.compile(
     rf"\b\d{{1,2}}/\d{{1,2}}/\d{{2,4}}\b|\b\d{{1,2}}\s+de\s+(?:{MONTHS})\b|\b(?:{MONTHS})\s+\d{{1,2}}\b|\b\d{{1,2}}\s+(?:{MONTHS})\b"
-    r"|\b(?:19|20)\d{2}-\d{2}(?:-\d{2})?\b|\b(?:19|20)\d{2}\s?[-–/]\s?(?:19|20)?\d{2}\b|\b\d{1,2}:\d{2}\b", re.IGNORECASE)
+    r"|\b(?:19|20)\d{2}-\d{2}(?:-\d{2})?\b|\b(?:19|20)\d{2}\s?[-–/]\s?(?:19|20)?\d{2}\b|\b\d{1,2}:\d{2}\b"
+    # v1.9 (DEBT_V18 U4): ISO week references are periods — "semanas 31 a 40", "semana 37", "S37", "week 12", "W12", "KW 12"
+    r"|\b(?:semanas?|sem\.|weeks?|wk|cw|kw)\s*\d{1,2}(?:\s*(?:a|al|y|-|–|to|and|hasta)\s*\d{1,2})?\b|\b[SW]\d{1,2}\b", re.IGNORECASE)
 
 
 def mask_dates(text: str) -> str:

@@ -186,6 +186,10 @@
             17
           ],
           "source": "assumptions.json"
+        },
+        {
+          "fact": "F0041",
+          "claim": "F0041"
         }
       ],
       "source": "Source: pnl_by_category.csv (FY2024–FY2025 management accounts)",
