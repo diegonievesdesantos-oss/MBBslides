@@ -352,8 +352,8 @@ MEASURE_STEMS = {"inver": "inver", "capex": "inver", "ahorr": "ahorr", "savin": 
                  "horas": "horas", "hours": "horas", "ocupa": "ocupa", "preci": "preci", "price": "preci", "ventas": "venta", "venta": "venta",
                  "ingre": "venta", "reven": "venta", "ebitd": "ebitd", "marge": "marge", "margi": "marge",
                  # v2.3: other forms of the same measures ("crecerán", "facturación", "growth")
-                 "crece": "creci", "growt": "creci", "factu": "venta", "sales": "venta", "payba": "payba", "recup": "payba",
-                 "plazo": "payba", "headc": "plant", "staff": "plant", "inves": "inver", "savin": "ahorr", "margin": "marge"}
+                 "crece": "creci", "growt": "creci", "factu": "venta", "sales": "venta", "recup": "payba",
+                 "plazo": "payba", "headc": "plant", "staff": "plant", "inves": "inver", "margin": "marge"}
 # words that make a figure a restatement of a plan, an offer or the old deck, not an observation
 PLAN_RE = re.compile(r"\b(presupuest\w*|budget\w*|business case|previst\w*|previsi\w*|aprobad\w*|approved|garant\w*|guarantee\w*|ofert\w*|"
                      r"offer\w*|anterior|deck|objetivo|target|plan(?:ned)?|forecast)\b", re.I)
