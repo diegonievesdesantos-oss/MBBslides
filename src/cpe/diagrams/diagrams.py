@@ -699,6 +699,71 @@ def mekko(p: Painter, box: Box, ex: dict) -> dict:
     return {"type": "mekko", "columns": len(cols)}
 
 
+# ---------------------------------------------------------------------------
+# Cause → effect (v1.8): causes on the left, the effect in the middle, consequences on the right
+# ---------------------------------------------------------------------------
+def cause_effect(p: Painter, box: Box, ex: dict) -> dict:
+    """data: {"causes": [{"label", "detail", "value", "emphasis", "link"}], "effect": {"label", "value"},
+    "consequences": [{"label", "detail", "value"}]}. Each cause has a causal arrow into the effect
+    (`link` labels the mechanism); the effect has arrows out to its consequences. Unlike a process,
+    the arrows mean "causes", not "comes before"."""
+    box = exhibit_header(p, box, ex)
+    d = ex["data"]
+    causes = d.get("causes") or []
+    eff = d.get("effect") or {}
+    eff = eff if isinstance(eff, dict) else {"label": str(eff)}
+    cons = d.get("consequences") or []
+    gap = 0.75 if any(isinstance(c, dict) and c.get("link") for c in causes) else 0.5
+    ncol = 3 if cons else 2
+    cw = (box.w - gap * (ncol - 1)) / (ncol + (0.0 if cons else 0.4))
+    cols = [Box(box.x, box.y, cw * (1.0 if cons else 1.2), box.h)]
+    cols.append(Box(cols[0].r + gap, box.y, cw, box.h))
+    if cons:
+        cols.append(Box(cols[1].r + gap, box.y, box.r - cols[1].r - gap, box.h))
+
+    def card(b: Box, it, fill: str, rec: str):
+        it = it if isinstance(it, dict) else {"label": str(it)}
+        p.rect(b, fill=fill)
+        paras = []
+        if it.get("value") not in (None, ""):
+            paras.append(Para(fmt_spec(it["value"], it) if not isinstance(it["value"], str) else it["value"], bold=True, size=p.style("body")["size"] + 3))
+        paras.append(Para(it.get("label", ""), bold=bool(it.get("emphasis")) or fill == "primary"))
+        if it.get("detail"):
+            paras.append(Para(it["detail"], size=p.style("body")["size"] - 2))
+        color = best_text_on(p.color(fill), p.theme)
+        p.text(b.inset(l=0.1, r=0.1, t=0.06, b=0.06), paras, role="body", align="left", anchor="middle", color=color, space_after=2, record=rec)
+
+    def stack(col: Box, items: list, fill_of, tag: str) -> list[Box]:
+        n = max(1, len(items))
+        g = 0.12
+        h = min(1.25, (col.h - g * (n - 1)) / n)
+        top = col.y + (col.h - (n * h + (n - 1) * g)) / 2
+        out = []
+        for i, it in enumerate(items):
+            b = Box(col.x, top + i * (h + g), col.w, h)
+            card(b, it, fill_of(it), f"{tag} {i + 1}")
+            out.append(b)
+        return out
+
+    cb = stack(cols[0], causes, lambda it: "highlight" if isinstance(it, dict) and it.get("emphasis") else "surface", "cause")
+    eh = min(box.h, max(1.4, 0.55 * box.h))
+    eb = Box(cols[1].x, box.y + (box.h - eh) / 2, cols[1].w, eh)
+    card(eb, eff, "primary", "effect")
+    for b, it in zip(cb, causes):
+        y0 = b.y + b.h / 2
+        y1 = min(max(y0, eb.y + 0.1), eb.b - 0.1)
+        p.line(b.r, y0, eb.x, y1, color="neutral", width=LINES["strong"], arrow_end=True, kind="connector")
+        if isinstance(it, dict) and it.get("link"):
+            p.text(Box(b.r + 0.02, (y0 + y1) / 2 - 0.3, gap - 0.04, 0.26), it["link"], role="annotation", align="center", fit=False, kind="label", color="text_muted")
+    if cons:
+        kb = stack(cols[2], cons, lambda it: "faint", "consequence")
+        for b in kb:
+            y1 = b.y + b.h / 2
+            y0 = min(max(y1, eb.y + 0.1), eb.b - 0.1)
+            p.line(eb.r, y0, b.x, y1, color="neutral", width=LINES["strong"], arrow_end=True, kind="connector")
+    return {"type": "cause_effect", "causes": len(causes), "consequences": len(cons)}
+
+
 RENDERERS = {
     "process": process,
     "value_chain": process,
@@ -714,6 +779,8 @@ RENDERERS = {
     "pyramid": pyramid,
     "tile_map": tile_map,
     "flow": flow,
+    "cause_effect": cause_effect,
+    "causal_chain": cause_effect,
     "layers": layers,
     "operating_model": layers,
     "architecture": layers,

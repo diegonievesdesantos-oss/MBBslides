@@ -133,3 +133,32 @@ def test_cell_to_fact_binding():
     assert not [i for i in good if i["code"] in ("CELL_MISBOUND", "BINDING_PATH_MISSING")]
     missing = factcheck_deck(deck([["Norte", 70.4]], [{"fact": "F1", "at": "visual.rows[3][1]"}]), facts)
     assert [i for i in missing if i["code"] == "BINDING_PATH_MISSING" and i["hard"]]
+
+
+def test_cause_effect_decisions_timeline_and_na_cells(tmp_path):
+    import json
+
+    from pptx import Presentation
+
+    from cpe.charts.numfmt import NA, is_na
+    from cpe.core.planner import plan
+    from cpe.pptx.builder import build
+    from cpe.tables.table import _cell_text, _norm_rows
+    spec = {"meta": {"title": "T", "language": "es"}, "slides": [
+        {"id": "s1", "purpose": "diagnose", "headline": "El margen cae por tres causas que se refuerzan y obligan a actuar ya",
+         "visual": {"type": "cause_effect", "data": {"causes": [{"label": "Coste", "link": "encarece"}, {"label": "Descuentos"}],
+                                                     "effect": {"label": "Margen -4 pp"}, "consequences": [{"label": "Caja"}]}}},
+        {"id": "s2", "purpose": "decide", "headline": "Tres decisiones hoy desbloquean el plan con hitos entre enero y junio",
+         "visual": {"type": "timeline", "data": {"events": [{"date": "Ene", "text": "A"}, {"date": "Mar", "text": "B"}]}},
+         "exhibits": [{"type": "table", "columns": ["Decisión", "Impacto"], "rows": [["A", 4.5], ["B", "n/a"]]}]},
+        {"id": "s3", "purpose": "inform", "headline": "Ventas por región con el Sur todavía sin reportar",
+         "visual": {"type": "column", "data": {"categories": ["N", "S"], "series": [{"name": "V", "values": [70.4, "n/d"]}]}}}]}
+    res, _ = plan(json.loads(json.dumps(spec)))
+    lay = {s["id"]: s["_plan"]["layout"]["id"] for s in res["slides"]}
+    assert lay["s1"].startswith("process") and lay["s2"] == "timeline_decisions"
+    build(res, tmp_path / "d.pptx")
+    texts = [sh.text_frame.text for sl in Presentation(str(tmp_path / "d.pptx")).slides for sh in sl.shapes if sh.has_text_frame]
+    assert sum(t == "n/d" for t in texts) == 1  # the chart's missing point (the table cell is in a table shape)
+    rows = _norm_rows({"rows": [["B", "n/a"], ["C", {"value": None, "na": True}]]})
+    assert rows[0]["cells"][1] is NA and rows[1]["cells"][1] is NA and is_na("No disponible")
+    assert _cell_text(NA, {"kind": "number"}) == "n/a"  # outside a build the locale is English

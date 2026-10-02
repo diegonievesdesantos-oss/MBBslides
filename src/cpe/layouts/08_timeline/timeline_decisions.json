@@ -1,0 +1,50 @@
+{
+  "id": "timeline_decisions",
+  "family": "08_timeline",
+  "name": "Timeline + decisions table",
+  "description": "A dated timeline across the top and the decisions table (decision, owner, gate date, impact) below it.",
+  "when_to_use": "A decision slide where the gate dates matter: what is decided, by whom, and when on one timeline.",
+  "zones": [
+    {
+      "name": "exhibit",
+      "role": "exhibit",
+      "cols": [
+        1,
+        12
+      ],
+      "top": 0,
+      "bottom": 0.38
+    },
+    {
+      "name": "exhibit_2",
+      "role": "exhibit",
+      "cols": [
+        1,
+        12
+      ],
+      "top": 0.42,
+      "bottom": 1
+    }
+  ],
+  "accepts": {
+    "exhibit": [
+      2,
+      2
+    ]
+  },
+  "takeaway": "optional",
+  "compatible_visuals": [
+    "timeline",
+    "gantt",
+    "roadmap",
+    "table",
+    "scorecard",
+    "harvey_table"
+  ],
+  "capacity": {},
+  "hierarchy": [
+    "exhibit",
+    "exhibit_2"
+  ],
+  "body_band": "body"
+}

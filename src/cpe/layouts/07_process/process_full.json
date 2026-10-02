@@ -28,6 +28,7 @@
     "value_chain",
     "flow",
     "journey",
+    "cause_effect",
     "funnel"
   ],
   "capacity": {},

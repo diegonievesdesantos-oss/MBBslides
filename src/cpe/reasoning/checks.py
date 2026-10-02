@@ -397,6 +397,7 @@ VISUAL_FOR = {  # message type (spec.MESSAGE_TYPES + kpi/summary) → archetypes
     "plan": {"roadmap", "timeline"}, "hierarchy": {"hierarchy", "architecture"}, "geography": {"chart", "table"}, "flow": {"process", "architecture", "chart"},
     "structure": {"architecture", "operating_model", "hierarchy"}, "status": {"table", "kpi_dashboard"}, "argument": {"text_exhibit", "statement"},
     "recommendation": {"statement", "executive_summary", "text_exhibit", "roadmap"}, "summary": {"executive_summary"},
+    "causality": {"process", "hierarchy", "architecture"},
 }
 
 

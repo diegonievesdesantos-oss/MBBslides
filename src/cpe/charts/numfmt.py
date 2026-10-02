@@ -18,6 +18,35 @@ LCID = {"es": "[$-C0A]", "fr": "[$-40C]", "de": "[$-407]", "it": "[$-410]", "pt"
 COMMA_DECIMAL = set(LCID)
 
 
+NA_TEXT = {"en": "n/a", "es": "n/d", "fr": "n.d.", "de": "k.A.", "it": "n.d.", "pt": "n/d", "nl": "n.b."}
+NA_WORDS = {"n/a", "na", "n.a.", "n/d", "nd", "n.d.", "s/d", "k.a.", "n.b.", "not available", "no disponible", "sin dato", "sin datos"}
+
+
+class _NA:
+    """A cell or point with no data (explicitly so): printed as n/a (n/d in Spanish), never as 0."""
+
+    def __repr__(self):
+        return "NA"
+
+    def __bool__(self):
+        return False
+
+
+NA = _NA()
+
+
+def is_na(v) -> bool:
+    if v is NA:
+        return True
+    if isinstance(v, dict):
+        return bool(v.get("na")) or (isinstance(v.get("value"), str) and v["value"].strip().lower() in NA_WORDS)
+    return isinstance(v, str) and v.strip().lower() in NA_WORDS
+
+
+def na_text() -> str:
+    return NA_TEXT.get(LOCALE.get(), "n/a")
+
+
 def set_locale(language: str | None):
     lang = (language or "en").lower()[:2]
     return LOCALE.set(lang if lang in COMMA_DECIMAL else "en")

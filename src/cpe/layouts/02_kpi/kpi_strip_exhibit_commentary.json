@@ -77,7 +77,8 @@
     "process",
     "value_chain",
     "flow",
-    "journey"
+    "journey",
+    "cause_effect"
   ],
   "capacity": {
     "kpis": {

@@ -16,6 +16,7 @@ FAMILY_FOR_VISUAL = {
     "waterfall": "09_waterfall", "bridge": "09_waterfall",
     "matrix_2x2": "06_matrix", "portfolio": "06_matrix",
     "process": "07_process", "value_chain": "07_process", "flow": "07_process", "journey": "07_process", "funnel": "07_process",
+    "cause_effect": "07_process", "causal_chain": "07_process",
     "timeline": "08_timeline",
     "gantt": "15_roadmap", "roadmap": "15_roadmap",
     "table": "10_table", "heatmap": "10_table", "scorecard": "10_table", "harvey_table": "05_comparison",

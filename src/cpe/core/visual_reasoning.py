@@ -36,6 +36,7 @@ BASE: dict[str, list[tuple[str, int, str]]] = {
     "plan": [("gantt", 90, "workstreams × time with milestones"), ("timeline", 80, "dated milestones without durations"), ("roadmap", 85, "phased plan with workstreams"), ("table", 40, "actions / owners / dates")],
     "hierarchy": [("driver_tree", 88, "value decomposed into drivers (with numbers)"), ("tree", 85, "MECE issue tree"), ("org_chart", 85, "reporting lines / roles"), ("pyramid", 55, "layered priorities with a foundation")],
     "geography": [("tile_map", 80, "geography is the message (spatial pattern)"), ("bar", 80, "ranked bars by region are usually more precise"), ("heatmap", 55, "regions × metrics")],
+    "causality": [("cause_effect", 90, "causes → the effect → its consequences: arrows mean 'causes', not 'comes next'"), ("driver_tree", 70, "the effect decomposed arithmetically into drivers"), ("flow", 55, "a chain of causes with branches")],
     "flow": [("funnel", 90, "volumes lost between stages"), ("journey", 85, "stages × lanes (actions, touchpoints, pain points)"), ("flow", 80, "nodes and transfers")],
     "structure": [("operating_model", 90, "layers of the model with the changes highlighted"), ("layers", 85, "stacked layers"), ("architecture", 85, "system layers and components"), ("org_chart", 50, "if the structure is people")],
     "status": [("scorecard", 90, "RAG status by item"), ("table", 70, "status with owners and dates"), ("gantt", 60, "plan vs actual")],
@@ -63,7 +64,7 @@ def data_shape(ex: dict) -> dict:
             shape["parts_of_100"] = abs(tot - 100) < 1.5 or abs(tot - 1) < 0.02
         shape["secondary_axis"] = any(s.get("axis") == "secondary" for s in series)
         if cats and len(series) == 1:
-            v = series[0].get("values", [])
+            v = [x for x in series[0].get("values", []) if isinstance(x, (int, float))]  # gaps (None / n/a) do not count
             shape["sorted"] = v == sorted(v, reverse=True) or v == sorted(v)
     if d.get("steps"):
         shape["n_steps"] = len(d["steps"])
@@ -166,7 +167,7 @@ def _feasible(visual: str, ex: dict) -> bool:
         "waterfall": "steps", "bridge": "steps", "scatter": "points", "bubble": "points", "matrix_2x2": "items", "portfolio": "items",
         "process": "steps", "value_chain": "steps", "timeline": "events", "gantt": "rows", "roadmap": "rows", "tree": "root",
         "driver_tree": "root", "org_chart": "root", "funnel": "stages", "pyramid": "levels", "layers": "layers",
-        "operating_model": "layers", "architecture": "layers", "journey": "stages", "flow": "nodes", "mekko": "columns",
+        "operating_model": "layers", "architecture": "layers", "journey": "stages", "flow": "nodes", "cause_effect": "causes", "causal_chain": "causes", "mekko": "columns",
         "segmentation": "columns", "tile_map": "values",
     }
     if visual in need:

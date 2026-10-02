@@ -74,6 +74,8 @@ VISUAL_TYPES = {
     "pyramid": "diagram",
     "tile_map": "diagram",
     "flow": "diagram",
+    "cause_effect": "diagram",
+    "causal_chain": "diagram",
     "journey": "diagram",
     "layers": "diagram",
     "operating_model": "diagram",
@@ -93,6 +95,7 @@ MESSAGE_TYPES = {
     "distribution": "How many items fall into ranges.",
     "correlation": "Whether two measures move together.",
     "positioning": "Where items sit on two strategic dimensions.",
+    "causality": "What causes an outcome, and what the outcome causes in turn (causes → effect → consequences).",
     "comparison": "Options/entities compared across several criteria.",
     "segmentation": "The market splits into segments of different size and attractiveness.",
     "sequence": "Steps that happen in order.",
@@ -166,6 +169,13 @@ def normalize_exhibit(ex: dict) -> list[str]:
         data = ex.setdefault("data", {})
         for k in moved:
             data[k] = ex.pop(k)
+    # v1.8: an explicit "n/a" point is missing data: a gap in the series, labelled n/a on the chart
+    from .charts.numfmt import is_na
+
+    for s in (ex.get("data") or {}).get("series") or []:
+        if isinstance(s, dict) and any(is_na(v) for v in s.get("values") or []):
+            s["na"] = sorted(set(s.get("na") or []) | {i for i, v in enumerate(s["values"]) if is_na(v)})
+            s["values"] = [None if is_na(v) else v for v in s["values"]]
     return sorted(moved)
 
 

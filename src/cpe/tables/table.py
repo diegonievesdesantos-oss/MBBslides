@@ -30,7 +30,7 @@ from pptx.enum.text import MSO_ANCHOR, PP_ALIGN
 from pptx.oxml.ns import qn
 from pptx.util import Pt
 
-from ..charts.numfmt import fmt
+from ..charts.numfmt import NA, fmt, is_na, na_text
 from ..design import text_metrics as tm
 from ..design.tokens import FONT_FLOOR, LINES, best_text_on, interpolate, legible_fill, sequential_color
 from ..layout.engine import Box
@@ -56,6 +56,9 @@ def _norm_rows(ex: dict) -> list[dict]:
         # v1.8: a cell {"value": 4.5, "bound": "upper"} stays a number (alignment, format) and prints "≤4.5"
         row["marks"] = {}
         for j, c in enumerate(row["cells"]):
+            if is_na(c):  # v1.8: an explicit "n/a" cell is missing data, not text, so the column stays numeric
+                row["cells"][j] = NA
+                continue
             if isinstance(c, dict) and "value" in c:
                 b = c.get("bound") or ("estimate" if c.get("estimate") else None)
                 if b in BOUND_MARK:
@@ -75,7 +78,7 @@ def _norm_cols(ex: dict, rows: list[dict]) -> list[dict]:
     for j, c in enumerate(cols):
         if "kind" not in c:
             vals = [r["cells"][j] for r in rows if j < len(r["cells"])]
-            numeric = all(isinstance(v, (int, float)) or v is None for v in vals) and any(isinstance(v, (int, float)) for v in vals)
+            numeric = all(isinstance(v, (int, float)) or v is None or v is NA for v in vals) and any(isinstance(v, (int, float)) for v in vals)
             c["kind"] = "harvey" if (ex_kind == "harvey_table" and numeric and j > 0) else ("number" if numeric else "text")
         if "align" in c:
             c["_align_set"] = True
@@ -97,6 +100,8 @@ def data_decimals(vals) -> int:
 
 
 def _cell_text(v, col: dict) -> str:
+    if v is NA:
+        return na_text()
     if v is None:
         return "–"
     k = col["kind"]
@@ -295,7 +300,7 @@ def render(p: Painter, box: Box, ex: dict) -> dict:
             bottom = (grid, LINES["hairline"]) if i < len(rows) else (rule, LINES["rule"])
             _tc_borders(cell, top=top, bottom=bottom, fill=fill)
             set_text(cell, r["marks"].get(j, "") + _cell_text(v, c).lstrip("+") if j in r["marks"] else _cell_text(v, c), bold_row or (j == 0 and st is None and ex.get("bold_first_column", False)), color, c["align"], indent=0.18 * r["indent"] if j == 0 else 0.0)
-            if c["kind"] in ("harvey", "rag") and v is not None:
+            if c["kind"] in ("harvey", "rag") and v is not None and v is not NA:
                 shapes_after.append((c["kind"], v, sum(widths[:j]) + plot.x, y, widths[j], hs[i], j))
         y += hs[i]
     # overlays: Harvey balls / RAG dots (editable shapes centred on cells)

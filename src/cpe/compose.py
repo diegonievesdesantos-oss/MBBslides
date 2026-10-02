@@ -70,7 +70,7 @@ def _variants(slide: dict, layout_id: str) -> list[dict]:
         out += [{"scale": 1.2}, {"scale": 1.4}]
     elif roles.get("commentary") and wc < 30:
         out += [{"scale": 1.15}]
-    text_diagrams = {"process", "value_chain", "timeline", "journey", "layers", "operating_model", "architecture", "pyramid", "funnel"}
+    text_diagrams = {"process", "cause_effect", "value_chain", "timeline", "journey", "layers", "operating_model", "architecture", "pyramid", "funnel"}
     if any(e.get("type") in text_diagrams for e in roles.get("exhibit") or []) and not any(v.get("scale") for v in out):
         out += [{"scale": 1.15}, {"scale": 1.3}]
     return out

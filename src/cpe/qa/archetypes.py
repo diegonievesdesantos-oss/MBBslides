@@ -53,7 +53,7 @@ EXHIBIT_ARCHETYPE = {
     "matrix_2x2": "matrix", "portfolio": "matrix",
     "gantt": "roadmap", "roadmap": "roadmap",
     "timeline": "timeline",
-    "process": "process", "value_chain": "process", "journey": "process",
+    "process": "process", "value_chain": "process", "journey": "process", "cause_effect": "process", "causal_chain": "process",
     "operating_model": "operating_model", "layers": "operating_model",
     "architecture": "architecture", "flow": "architecture",
     "org_chart": "hierarchy", "tree": "hierarchy", "driver_tree": "hierarchy", "pyramid": "hierarchy",

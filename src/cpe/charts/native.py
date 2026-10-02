@@ -26,7 +26,7 @@ from ..design.tokens import LINES, best_text_on
 from ..layout.engine import Box
 from ..pptx.painter import E, Painter, rgb
 from ..pptx.text_components import exhibit_header, legend
-from .numfmt import cagr, excel_code, fmt, fmt_spec, nice_scale
+from .numfmt import cagr, excel_code, fmt, fmt_spec, is_na, na_text, nice_scale
 
 C_NS = "http://schemas.openxmlformats.org/drawingml/2006/chart"
 
@@ -200,7 +200,8 @@ def _prepare_categories(ex: dict) -> tuple[list[str], list[dict]]:
     cats = [str(c) for c in data["categories"]]
     series = [dict(s) for s in data["series"]]
     for s in series:
-        s["values"] = [None if v is None else float(v) for v in s["values"]]
+        s["_na"] = sorted(set(s.get("na") or []) | {i for i, v in enumerate(s["values"]) if is_na(v)})  # v1.8: explicit missing data, labelled n/a
+        s["values"] = [None if (v is None or is_na(v)) else float(v) for v in s["values"]]
         if len(s["values"]) != len(cats):
             raise ValueError(f"Series '{s.get('name')}' has {len(s['values'])} values for {len(cats)} categories")
     sort = ex.get("sort")
@@ -439,6 +440,18 @@ def category_chart(p: Painter, box: Box, ex: dict) -> dict:
             tot = sum(s["values"][i] or 0 for s in series)
             x = geom.v(tot)
             po.text(Box(x + 0.06, geom.c(i) - 0.13, 0.9, 0.26), fmt(tot, f), role="chart", bold=True, anchor="middle", fit=False, kind="label")
+    # v1.8: explicit n/a points are labelled at the baseline, so a gap never reads as zero
+    if not stacked and vt != "area":
+        for k, s in enumerate(series):
+            for i in s.get("_na") or []:
+                if i >= n:
+                    continue
+                base = geom.v(max(lo, min(hi, 0.0)))
+                if horizontal:
+                    po.text(Box(base + 0.06, geom.series_c(i, k) - 0.13, 0.6, 0.26), na_text(), role="chart", align="left", anchor="middle", fit=False, kind="label", color="text_muted")
+                else:
+                    w = max(geom.bar_w(), 0.45)
+                    po.text(Box(geom.series_c(i, k) - w / 2, base - 0.3, w, 0.26), na_text(), role="chart", align="center", anchor="bottom", fit=False, kind="label", color="text_muted")
     # direct series labels at the right end
     if end_labels:
         placed = []
