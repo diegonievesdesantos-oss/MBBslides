@@ -590,21 +590,21 @@
     "environment_fingerprint": "f98cee49d123ed5f",
     "engine": {
       "version": "3.1.0",
-      "commit": "3b7824d6653d8a91250f3de82d4156cef8ec8d76"
+      "commit": "82dcf505175d78b28efa8967ab98c7180a9af4e1"
     },
     "provenance": {
-      "evaluated_commit": "3b7824d6653d8a91250f3de82d4156cef8ec8d76",
-      "git_tree": "3cac389de524c85f41859514a5320f41ea633baa",
+      "evaluated_commit": "82dcf505175d78b28efa8967ab98c7180a9af4e1",
+      "git_tree": "513c40d515b1ba82f8e8cea6f7fe430534dd5db0",
       "dirty": false,
       "dirty_paths": [],
-      "evaluated_source_commit": "3b7824d6653d8a91250f3de82d4156cef8ec8d76",
+      "evaluated_source_commit": "82dcf505175d78b28efa8967ab98c7180a9af4e1",
       "evaluated_source_dirty": false,
-      "working_tree_commit": "3b7824d6653d8a91250f3de82d4156cef8ec8d76",
+      "working_tree_commit": "82dcf505175d78b28efa8967ab98c7180a9af4e1",
       "working_tree_dirty": false,
       "engine_version": "3.1.0",
       "container_image": "mbbslides-visual:1.3",
       "container_digest": "sha256:bb5bbbdd55bcec5db567781c63574da1a4b2fc4504446d6fea23f5197f59d278",
-      "eval_timestamp_utc": "2026-10-02T20:59:30Z",
+      "eval_timestamp_utc": "2026-10-02T21:22:31Z",
       "environment_fingerprint": "f98cee49d123ed5f",
       "release_truth": true
     }
@@ -720,7 +720,7 @@
     },
     "cpe_version": "3.1.0",
     "container_image": "mbbslides-visual:1.3@sha256:bb5bbbdd55bcec5db567781c63574da1a4b2fc4504446d6fea23f5197f59d278",
-    "commit": "3b7824d6653d8a91250f3de82d4156cef8ec8d76",
+    "commit": "82dcf505175d78b28efa8967ab98c7180a9af4e1",
     "fingerprint": "f98cee49d123ed5f"
   },
   "holdout": {
@@ -2367,21 +2367,21 @@
     "environment_fingerprint": "f98cee49d123ed5f",
     "engine": {
       "version": "3.1.0",
-      "commit": "3b7824d6653d8a91250f3de82d4156cef8ec8d76"
+      "commit": "82dcf505175d78b28efa8967ab98c7180a9af4e1"
     },
     "provenance": {
-      "evaluated_commit": "3b7824d6653d8a91250f3de82d4156cef8ec8d76",
-      "git_tree": "3cac389de524c85f41859514a5320f41ea633baa",
+      "evaluated_commit": "82dcf505175d78b28efa8967ab98c7180a9af4e1",
+      "git_tree": "513c40d515b1ba82f8e8cea6f7fe430534dd5db0",
       "dirty": false,
       "dirty_paths": [],
-      "evaluated_source_commit": "3b7824d6653d8a91250f3de82d4156cef8ec8d76",
+      "evaluated_source_commit": "82dcf505175d78b28efa8967ab98c7180a9af4e1",
       "evaluated_source_dirty": false,
-      "working_tree_commit": "3b7824d6653d8a91250f3de82d4156cef8ec8d76",
+      "working_tree_commit": "82dcf505175d78b28efa8967ab98c7180a9af4e1",
       "working_tree_dirty": true,
       "engine_version": "3.1.0",
       "container_image": "mbbslides-visual:1.3",
       "container_digest": "sha256:bb5bbbdd55bcec5db567781c63574da1a4b2fc4504446d6fea23f5197f59d278",
-      "eval_timestamp_utc": "2026-10-02T21:04:27Z",
+      "eval_timestamp_utc": "2026-10-02T21:27:25Z",
       "environment_fingerprint": "f98cee49d123ed5f",
       "release_truth": true
     }
@@ -2789,18 +2789,18 @@
     "catastrophic_cases": [],
     "definition": "catastrophic = composition drop ≥ 25 points or a new visual QA error; meaningful drop ≥ 5; large drop ≥ 10; separate from the composition score",
     "provenance": {
-      "evaluated_commit": "3b7824d6653d8a91250f3de82d4156cef8ec8d76",
-      "git_tree": "3cac389de524c85f41859514a5320f41ea633baa",
+      "evaluated_commit": "82dcf505175d78b28efa8967ab98c7180a9af4e1",
+      "git_tree": "513c40d515b1ba82f8e8cea6f7fe430534dd5db0",
       "dirty": false,
       "dirty_paths": [],
-      "evaluated_source_commit": "3b7824d6653d8a91250f3de82d4156cef8ec8d76",
+      "evaluated_source_commit": "82dcf505175d78b28efa8967ab98c7180a9af4e1",
       "evaluated_source_dirty": false,
-      "working_tree_commit": "3b7824d6653d8a91250f3de82d4156cef8ec8d76",
+      "working_tree_commit": "82dcf505175d78b28efa8967ab98c7180a9af4e1",
       "working_tree_dirty": true,
       "engine_version": "3.1.0",
       "container_image": "mbbslides-visual:1.3",
       "container_digest": "sha256:bb5bbbdd55bcec5db567781c63574da1a4b2fc4504446d6fea23f5197f59d278",
-      "eval_timestamp_utc": "2026-10-02T21:08:42Z",
+      "eval_timestamp_utc": "2026-10-02T21:31:44Z",
       "release_truth": true
     }
   },
