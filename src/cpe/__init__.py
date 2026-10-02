@@ -1,3 +1,3 @@
 """Consulting Presentation Engine — storyline-first, QA-looped, native editable PPTX."""
 
-__version__ = "1.7.1"
+__version__ = "1.8.0.dev0"

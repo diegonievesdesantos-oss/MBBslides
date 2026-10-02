@@ -13,9 +13,9 @@
 | id | zones | takeaway | use when |
 |---|---|---|---|
 | `kpi_grid` | kpis[1-12] | optional | When 4-6 metrics are the message and no single chart dominates. |
+| `kpi_grid_commentary` | kpis[1-8], commentary[9-12] | optional | A few numbers are the message and need an explanation, with no chart (v1.7.1). |
 | `kpi_strip_exhibit` | kpis[1-12], exhibit[1-12] | optional | A few numbers set context and one chart carries the proof. |
 | `kpi_strip_exhibit_commentary` | kpis[1-12], exhibit[1-8], commentary[9-12] | none | Performance slides: numbers, trend, and why. |
-| `kpi_grid_commentary` | kpis[1-8], commentary[9-12] | optional | A few numbers are the message and need an explanation, with no chart (v1.7.1). |
 
 ## 03_chart
 
@@ -63,6 +63,7 @@
 | id | zones | takeaway | use when |
 |---|---|---|---|
 | `timeline_commentary` | exhibit[1-8], commentary[9-12] | optional | When the sequence needs interpretation. |
+| `timeline_decisions` | exhibit[1-12], exhibit_2[1-12] | optional | A decision slide where the gate dates matter: what is decided, by whom, and when on one timeline. |
 | `timeline_full` | exhibit[1-12] | optional | History or plan milestones (5-10 events). |
 
 ## 09_waterfall
@@ -122,4 +123,4 @@
 | `cover` | text[1-10] | none | First slide. |
 | `divider` | text[1-10] | none | Opens a section of the storyline. |
 | `statement` | text[1-10] | none | Governing thought, key recommendation, or a quote. |
-| `text_bullets` | text[1-9] | optional | Qualitative argument with no data; keep ≤5 points. |
+| `text_bullets` | text[1-12] | optional | Qualitative argument with no data; keep ≤5 points. |

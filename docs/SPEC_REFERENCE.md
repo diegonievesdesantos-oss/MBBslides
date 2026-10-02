@@ -68,6 +68,27 @@ only in a footnote:
 Every number on a slide, these included, must be grounded in the slide's cited facts
 (`cpe reason check`, docs/REASONING_PROTOCOL.md).
 
+## Messy inputs, binding and new exhibits (v1.8)
+
+| where | spec | what it does |
+|---|---|---|
+| evidence item | `{"fact": "F0012", "at": "visual.rows[1][2]"}` (or a list of paths) | binds the fact to that table cell or chart point. A different value there is a hard `CELL_MISBOUND`, a missing path is `BINDING_PATH_MISSING`. Chart points: `visual.data.series[0].values[3]`; waterfall steps: `visual.data.steps[2].value` |
+| table cell | `"n/a"`, `"n/d"`, `"no disponible"` or `{"value": null, "na": true}` | explicit missing data: printed `n/a` (`n/d` in Spanish, `n.d.` in French/Italian, `k.A.` in German), never 0; the column stays numeric |
+| chart value | `"n/a"` in `series[].values` | a gap in the series, labelled `n/a` / `n/d` at the baseline, so it never reads as zero (`series[].na` lists the indices after normalisation) |
+| exhibit | `{"type": "cause_effect", "data": {"causes": [{"label", "detail", "value", "emphasis", "link"}], "effect": {"label", "value"}, "consequences": [{"label", "detail"}]}}` | causes → effect → consequences; the arrows mean "causes", not "comes next"; `link` labels the mechanism on the arrow. Message type `causality`. Alias `causal_chain` |
+| layout | `timeline_decisions` (family 08_timeline) | a slide with a `timeline` (or `gantt`) as `visual` and a decisions table in `exhibits`: the dated gates across the top, the decisions (owner, date, impact) below |
+
+Without a binding, a cell is still checked by its labels: when its value belongs to a cited fact that
+does not mention the row, while another cited fact names the row and the column, `CELL_MISBOUND` is a
+warning ("probably swapped").
+
+Existing decks: `cpe deck ingest old.pptx -o work` writes `old_deck.json` (per slide: role, layout,
+headline, body, exhibits with their data, every number with its location), `old_deck_spec.json`
+(a starting deck.json that rebuilds charts and tables natively, waterfalls included) and
+`old_ghost.md`. After `cpe reason facts` on the new sources, `cpe deck stale work` classifies each
+old number as current, outdated (with the new value and its fact) or untraced, and each slide as
+keep / update / review (`update_plan.json`, `update_plan.md`).
+
 ## Patches
 
 `{"op": "set" | "delete" | "append", "slide": "s07", "path": "visual.data.series[0].values", "value": …}`,

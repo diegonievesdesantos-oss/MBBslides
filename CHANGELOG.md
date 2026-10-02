@@ -1,5 +1,33 @@
 # Changelog
 
+## Unreleased — 1.8.0.dev0: real-world inputs, corporate use, any OS
+
+Status and what needs the owner: [docs/V18_STATUS.md](docs/V18_STATUS.md).
+- **Messy inputs:**
+  - period and basis semantics, with a `PERIOD_MISMATCH` warning;
+  - typed conflicts (management vs audited, forecast vs actual, definition, value, prose);
+  - two-level headers, scenario columns, total rows;
+  - chart data read from docx / xlsx / pptx.
+- **Existing decks:** `cpe deck ingest` and `cpe deck stale`. An old deck is read, rebuilt natively,
+  and each of its numbers is checked against the new facts.
+- **Cell-to-fact binding:** `"at"` on evidence items (hard), plus a label check on unbound cells
+  (warning). This closes the DEBT F1 residual.
+- **Visuals:**
+  - `cause_effect` exhibit (message type `causality`);
+  - `timeline_decisions` layout;
+  - explicit n/a cells and chart points (`n/d` in Spanish).
+- **Corporate:**
+  - `corporate_usage.md` (native / adaptive / engine fallback per slide, with reasons);
+  - `brand_fidelity.md` (separate metrics, never blended into the deck score);
+  - `cpe brand fidelity`.
+- **Portability:**
+  - UTF-8 for every file read or written;
+  - LibreOffice and font discovery on Windows and macOS;
+  - Windows wrappers;
+  - `docs/INSTALL.md`;
+  - a `Portability` CI workflow (Windows, macOS, Linux × Python 3.10 / 3.12).
+- Fix: a chart series with a gap (`None`) no longer crashes visual reasoning.
+
 ## 1.7.1 — Fine-tuning of the v1.7 debt
 
 Fine-tuning of docs/DEBT_V17.md, with no new agent runs. The stored decks are the regression set: all

@@ -188,6 +188,55 @@ mechanisms and the bridge from numbers to action, partly to get past checks. Fro
   - A protocol storyline should be at least as complete as one written without the protocol. The
     protocol adds verification; it never subtracts content.
 
+## v1.8 tooling — messy inputs (protocol text unchanged at 1.4)
+
+These checks run inside `cpe reason facts` / `cpe reason check`. They add no step for the agent and
+need no new human round. Each is a warning unless stated.
+
+- **Periods and bases.** Every value carries a period and a basis:
+  - periods: FY2025, CY2025, 2025-Q3, H1, 2025-07, LTM, YTD, run-rate;
+  - bases: actual, budget, forecast, target, plan, estimate, audited, management.
+
+  Scenario columns (Real / Presupuesto / Forecast) and two-level headers ("2024 · Real") set them.
+  `PERIOD_MISMATCH` (warning) flags a computed fact that mixes incompatible values:
+  - budget with actual;
+  - run-rate with reported;
+  - YTD with a full year;
+  - a quarter with a year;
+  - FY with CY.
+
+  When the comparison is deliberate, add `"periods_ok": true` to the computed fact and say it in the
+  text ("vs presupuesto").
+- **Conflict types.** `conflicts.json` names the kind of disagreement:
+  - `management_vs_audited`;
+  - `forecast_vs_actual`;
+  - `definition_mismatch` (group vs local scope);
+  - `value_mismatch`;
+  - `prose_mismatch` (two documents, no period).
+
+  The storyline must resolve each conflict whose facts it uses, as in 1.0.
+- **Tables as found.** These are read correctly:
+  - two-level headers;
+  - total and subtotal rows, which become `row_kind` and are never summed again;
+  - decimal-comma documents;
+  - units per cell.
+
+  Charts embedded in docx / xlsx / pptx are read from their data caches, or from the referenced
+  cells, and become facts like any table.
+- **Cell-to-fact binding.**
+  - A table cell or chart point must be a cited fact value (since 1.7.1).
+  - Since 1.8 it can be bound to its fact with `"at"`, which makes a swapped value a hard error.
+  - Unbound cells are checked by their labels: a warning when the value belongs to a fact about another row.
+  - On the real private deck: 11 of 15 injected same-column swaps were flagged, with 0 false positives on
+    the clean deck.
+- **Updating an existing deck.**
+  1. Run `cpe deck ingest old.pptx -o work` before the new pass.
+  2. Run `cpe deck stale work` after `cpe reason facts`.
+  3. An old number is reused only when the new fact model confirms it. An outdated number is replaced
+     from its new fact. An untraced number is removed, or its source is added.
+
+  The old deck's storyline (`old_ghost.md`) is a hypothesis, not a fact.
+
 ## Critic roles
 
 Each critic writes structured findings into `work/critique.json`:

@@ -157,6 +157,18 @@ def _words(t: str) -> set[str]:
     return {w for w in re.findall(r"[a-záéíóúñü]{3,}", (t or "").lower())} - STOP - {"hasta", "con", "más", "than", "with", "from", "desde"}
 
 
+UNIT_TEXT = {"EUR": "€", "EUR_K": "k€", "EUR_M": "M€", "EUR_BN": "bn€", "USD": "$", "USD_K": "k$", "USD_M": "M$", "USD_BN": "bn$",
+             "GBP": "£", "GBP_K": "k£", "GBP_M": "M£", "PCT": "%", "PP": "pp", "BPS": "bps", "PLAIN_K": "k", "PLAIN_M": "M"}
+
+
+def _with_unit(x: dict, by_fact: dict) -> str:
+    for v in (by_fact.get(x["fact"]) or {}).get("values") or []:
+        if f"{v['value']:g}" == x["raw"]:
+            u = UNIT_TEXT.get(str(v.get("unit") or "").upper(), "")
+            return f"{x['raw']}{u}" if u in ("%",) else (f"{x['raw']} {u}" if u else x["raw"])
+    return x["raw"]
+
+
 def update_plan(inv: dict, facts: list[dict]) -> dict:
     """Every number of the old deck against the new fact model. A number is CURRENT when a new fact
     holds it; OUTDATED when a new fact about the same thing (shared words with its context) holds a
@@ -187,7 +199,7 @@ def update_plan(inv: dict, facts: list[dict]) -> dict:
                     cands.append((overlap, x))
             if cands:
                 best = max(cands, key=lambda c: c[0])[1]
-                items.append({**q, "status": "outdated", "new_value": best["raw"], "fact": best["fact"],
+                items.append({**q, "status": "outdated", "new_value": _with_unit(best, by_fact), "fact": best["fact"],
                               "new_claim": (by_fact.get(best["fact"]) or {}).get("claim", "")[:140]})
             else:
                 items.append({**q, "status": "untraced"})

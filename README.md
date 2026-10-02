@@ -65,6 +65,22 @@ Example decks are development material and regression fixtures, not evidence of 
 
 <!-- metrics:end -->
 
+## In development: v1.8 — real-world inputs, corporate use, any OS
+
+- **Messy sources:** periods and bases (FY vs CY, LTM, YTD, budget vs actual, audited vs management)
+  are understood and mismatches flagged. Conflicts between sources are typed. Two-level and
+  total-row tables are read, and so are charts embedded in Word, Excel and PowerPoint files.
+- **Update an existing deck:** `cpe deck ingest old.pptx -o work`, then `cpe deck stale work`. Each
+  old number is current, outdated (with the new value and its source) or untraced.
+- **Cell-to-fact binding:** a real number in the wrong cell is caught.
+- **New visuals:** cause → effect; timeline + decisions table; explicit n/a.
+- **Corporate templates:** a per-slide report says whether the template's own layout was used
+  (native / adaptive / engine fallback) and why. Brand-fidelity metrics are reported separately.
+- **Windows, macOS, Linux:** see [docs/INSTALL.md](docs/INSTALL.md).
+
+Status, and what still needs real templates, real projects and the owner's judgement:
+[docs/V18_STATUS.md](docs/V18_STATUS.md).
+
 ## What's new in v1.7 / 1.7.1: from raw material to a decision deck
 
 v1.7 moves upstream of rendering, to building the **right** deck. The agent may write hypotheses,
