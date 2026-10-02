@@ -120,40 +120,40 @@ def run_one(hdir: Path, out_root: Path) -> dict:
     out = out_root / name
     out.mkdir(parents=True, exist_ok=True)
     rep = ingest(hdir / "template.pptx", out / "brand", name=name)
-    (out / "brand_report.json").write_text(json.dumps(rep, indent=2, ensure_ascii=False, default=str))
+    (out / "brand_report.json").write_text(json.dumps(rep, indent=2, ensure_ascii=False, default=str), encoding="utf-8")
     shutil.copy(out / "brand" / "compatibility.md", out / "brand_report.md")
     shutil.copy(out / "brand" / "layout_catalog.json", out / "layout_catalog.json")
     L = ["# Layout classification", "", "| id | layout | classification | observed use |", "|---|---|---|---|"]
     L += [f"| {x['id']} | {x['name']} | " + ", ".join(f"{c['type']} ({c['confidence']})" for c in x["classification"]) + f" | {x['usage'] or '—'} |" for x in rep["layouts"]]
-    (out / "layout_classification.md").write_text("\n".join(L) + "\n")
-    (out / "font_analysis.json").write_text(json.dumps({"typography": rep["typography"], "fonts": rep["fonts"]}, indent=2, ensure_ascii=False))
+    (out / "layout_classification.md").write_text("\n".join(L) + "\n", encoding="utf-8")
+    (out / "font_analysis.json").write_text(json.dumps({"typography": rep["typography"], "fonts": rep["fonts"]}, indent=2, ensure_ascii=False), encoding="utf-8")
     with tempfile.TemporaryDirectory() as tmp:
         tpl_render = _render_template(hdir / "template.pptx", Path(tmp))
     spec = load_spec(TEST_DECK)
     spec["meta"]["brand"] = str(out / "brand")
     spec["meta"].pop("theme", None)
     deck_rep = run(spec, out / "test_deck", max_iter=2, verbose=False, compose=True)
-    man = json.loads((out / "test_deck" / "build_manifest.json").read_text())
+    man = json.loads((out / "test_deck" / "build_manifest.json").read_text(encoding="utf-8"))
     modes = {}
     for m in man:
         c = m.get("corporate") or {"mode": "none"}
         modes[c["mode"]] = modes.get(c["mode"], 0) + 1
     comp = deck_rep.get("composition") or {}
     render = {"template_render": tpl_render,
-              "test_deck": {"spec": str(TEST_DECK.relative_to(ROOT)), "qa_passed": deck_rep["passed"], "qa_errors": deck_rep["counts"]["error"],
+              "test_deck": {"spec": TEST_DECK.relative_to(ROOT).as_posix(), "qa_passed": deck_rep["passed"], "qa_errors": deck_rep["counts"]["error"],
                             "qa_warnings": deck_rep["counts"]["warning"], "qa_codes": sorted({i["code"] for i in deck_rep["issues"] if i["level"] != "info"}),
                             "composition": comp.get("deck_score"), "corporate_modes": modes,
                             "decisions": [{"slide": m["slide_id"], **(m.get("corporate") or {})} for m in man]}}
-    (out / "render_analysis.json").write_text(json.dumps(render, indent=2, ensure_ascii=False, default=str))
+    (out / "render_analysis.json").write_text(json.dumps(render, indent=2, ensure_ascii=False, default=str), encoding="utf-8")
     comparison = None
     exp_file = hdir / "expectations.json"
     if exp_file.exists():
-        comparison = compare_spec(rep, json.loads(exp_file.read_text())["expectations"])
-        (out / "spec_comparison.json").write_text(json.dumps(comparison, indent=2, ensure_ascii=False, default=str))
+        comparison = compare_spec(rep, json.loads(exp_file.read_text(encoding="utf-8"))["expectations"])
+        (out / "spec_comparison.json").write_text(json.dumps(comparison, indent=2, ensure_ascii=False, default=str), encoding="utf-8")
         L = ["# CPE inference vs human-written brand specification", "", f"Agreement: {comparison['agree']}/{comparison['claims']} claims (weighted {comparison['weighted_agreement']})", "",
              "| claim | expected | CPE inferred | agrees |", "|---|---|---|---|"]
         L += [f"| {r['claim']} | {r['expected']} | {json.dumps(r['actual'], ensure_ascii=False, default=str)[:80]} | {'✅' if r['agrees'] else '❌'} |" for r in comparison["rows"]]
-        (out / "spec_comparison.md").write_text("\n".join(L) + "\n")
+        (out / "spec_comparison.md").write_text("\n".join(L) + "\n", encoding="utf-8")
     cls = [x["classification"][0] for x in rep["layouts"]]
     summary = {
         "masters": len(rep["masters"]), "layouts": rep["layout_count"], "example_slides": rep["example_slides"]["count"],
@@ -165,7 +165,7 @@ def run_one(hdir: Path, out_root: Path) -> dict:
         "spec_agreement": (f"{comparison['agree']}/{comparison['claims']}" if comparison else None),
         "spec_weighted_agreement": comparison["weighted_agreement"] if comparison else None,
     }
-    (out / "summary_sanitized.json").write_text(json.dumps(summary, indent=2))
+    (out / "summary_sanitized.json").write_text(json.dumps(summary, indent=2), encoding="utf-8")
     return summary
 
 
@@ -219,7 +219,7 @@ def run_external(root: str | Path | None = None, out: str | Path | None = None, 
         results.append(r)
     comps = [r["composition"] for r in results if r.get("composition") is not None]
     prof = quality.profile(results, deck_mean=round(sum(comps) / len(comps), 1) if comps else None)
-    (out / "external_report.json").write_text(json.dumps({"cases": results, "quality": prof}, indent=2, ensure_ascii=False))
+    (out / "external_report.json").write_text(json.dumps({"cases": results, "quality": prof}, indent=2, ensure_ascii=False), encoding="utf-8")
     summary = {
         "status": "run", "decks": len(results), "built": sum(1 for r in results if r.get("ok")),
         "slides": prof["distribution"]["n"], "overall": prof["overall_score"], "macro_archetype": prof["macro_archetype_score"],
@@ -266,7 +266,7 @@ def _sha256(p: Path) -> str:
 
 def _rel(p: Path) -> str:
     try:
-        return str(p.relative_to(ROOT))
+        return p.relative_to(ROOT).as_posix()
     except ValueError:
         return str(p)
 
@@ -276,7 +276,7 @@ def known_development_hashes() -> set[str]:
     the unseen-template intake, plus the recorded hash list."""
     out = set()
     if KNOWN_DEVELOPMENT.exists():
-        out |= {line.split()[0] for line in KNOWN_DEVELOPMENT.read_text().splitlines() if line.strip()}
+        out |= {line.split()[0] for line in KNOWN_DEVELOPMENT.read_text(encoding="utf-8").splitlines() if line.strip()}
     if DEFAULT_ROOT.exists():
         out |= {_sha256(t) for t in DEFAULT_ROOT.glob("*/template.pptx")}
     return out
@@ -294,7 +294,7 @@ def seal_external(root: Path = EXTERNAL) -> dict:
         raise SystemExit("already sealed: a seal is never rewritten (add new decks as a new holdout)")
     seal = {"sealed_at": __import__("time").strftime("%Y-%m-%dT%H:%M:%S"), "files": {d.name: _sha256(d) for d in decks},
             "provenance_sha256": _sha256(root / "PROVENANCE.json") if (root / "PROVENANCE.json").exists() else None}
-    (root / "SEAL.json").write_text(json.dumps(seal, indent=2) + "\n")
+    (root / "SEAL.json").write_text(json.dumps(seal, indent=2) + "\n", encoding="utf-8")
     return seal
 
 
@@ -302,7 +302,7 @@ def _seal_ok(root: Path) -> tuple[bool, str]:
     f = root / "SEAL.json"
     if not f.exists():
         return False, "not sealed (run `cpe holdout external-seal` before anything else)"
-    seal = json.loads(f.read_text())
+    seal = json.loads(f.read_text(encoding="utf-8"))
     now = {d.name: _sha256(d) for d in _decks(root)}
     if now != seal["files"]:
         return False, "seal broken: decks were added, removed or edited after sealing"
@@ -312,17 +312,17 @@ def _seal_ok(root: Path) -> tuple[bool, str]:
 def _already_ran(kind: str) -> str | None:
     from . import __version__
 
-    runs = json.loads(RUNS.read_text()) if RUNS.exists() else {}
+    runs = json.loads(RUNS.read_text(encoding="utf-8")) if RUNS.exists() else {}
     return runs.get(kind, {}).get(__version__)
 
 
 def _mark_ran(kind: str, commit: str | None) -> None:
     from . import __version__
 
-    runs = json.loads(RUNS.read_text()) if RUNS.exists() else {}
+    runs = json.loads(RUNS.read_text(encoding="utf-8")) if RUNS.exists() else {}
     runs.setdefault(kind, {})[__version__] = commit or "unknown"
     RUNS.parent.mkdir(parents=True, exist_ok=True)
-    RUNS.write_text(json.dumps(runs, indent=2) + "\n")
+    RUNS.write_text(json.dumps(runs, indent=2) + "\n", encoding="utf-8")
 
 
 def external_status(root: Path = EXTERNAL) -> dict:

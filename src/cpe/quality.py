@@ -239,7 +239,7 @@ def archetype_sheets(results: list[dict], run_root: Path, out_dir: Path, archety
         for r in rs:
             run = run_root / r["case"]
             try:
-                ids = [s.get("id") for s in json.loads((run / "resolved.json").read_text())["slides"]]
+                ids = [s.get("id") for s in json.loads((run / "resolved.json").read_text(encoding="utf-8"))["slides"]]
                 png = run / "renders" / f"slide-{ids.index(r['slide']) + 1:02d}.png"
                 im = Image.open(png).convert("RGB").resize((tw, th))
             except (OSError, ValueError, KeyError):

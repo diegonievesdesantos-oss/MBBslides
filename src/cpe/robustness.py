@@ -209,7 +209,7 @@ def _deck(seed: dict, variants: list[tuple[str, dict]]) -> dict:
 
 
 def _slide_facts(run_dir: Path, rep: dict) -> dict:
-    res = json.loads((run_dir / "resolved.json").read_text())
+    res = json.loads((run_dir / "resolved.json").read_text(encoding="utf-8"))
     layouts = {s.get("id"): ((s.get("_plan") or {}).get("layout") or {}).get("id") for s in res["slides"]}
     comp = {c["slide_id"]: c for c in (rep.get("composition") or {}).get("slides", [])}
     qa: dict = {}
@@ -252,8 +252,8 @@ def run(out_dir: str | Path, seeds_path: Path = SEEDS) -> dict:
                          "catastrophic": delta <= -CATASTROPHIC_DROP or bool(new_qa)})
         print(f"[robustness] {name:40} {len(variants)} variants", flush=True)
     summary = summarize(rows)
-    (out / "robustness_report.json").write_text(json.dumps(summary, indent=2, ensure_ascii=False))
-    (out / "robustness_report.md").write_text(to_markdown(summary))
+    (out / "robustness_report.json").write_text(json.dumps(summary, indent=2, ensure_ascii=False), encoding="utf-8")
+    (out / "robustness_report.md").write_text(to_markdown(summary), encoding="utf-8")
     return summary
 
 

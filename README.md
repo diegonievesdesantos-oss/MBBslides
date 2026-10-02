@@ -229,13 +229,15 @@ pip install -r requirements.txt            # python-pptx, Pillow, lxml, PyMuPDF,
 # rendering: LibreOffice with Impress + metric-compatible fonts
 sudo apt-get install -y libreoffice-impress fonts-liberation fonts-crosextra-carlito fonts-crosextra-caladea
 # macOS: brew install --cask libreoffice
-pip install pytest && python -m pytest -q  # 85 tests
+pip install pytest && python -m pytest -q
 ```
 
 Reproducible renders (recommended for benchmarks): `scripts/cpe-docker <command>` runs the same
 pinned environment as CI (Docker required; the image is built on first use).
 
-Optional: `pip install -e .` installs the `cpe` command. Without installing: `scripts/cpe <command>`.
+Optional: `pip install -e .` installs the `cpe` command. Without installing: `scripts/cpe <command>`
+(Linux / macOS) or `.\scripts\cpe.ps1 <command>` (Windows). Windows and macOS steps:
+[docs/INSTALL.md](docs/INSTALL.md); building, reasoning and deck updates need no LibreOffice.
 
 ## Quick start
 

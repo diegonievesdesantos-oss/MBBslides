@@ -208,7 +208,7 @@ def load_theme(name: str = "meridian") -> Theme:
         path = THEMES_DIR / f"{name}.json"
     if not path.exists():
         raise FileNotFoundError(f"Theme '{name}' not found (built-ins: {', '.join(available_themes())})")
-    data = json.loads(path.read_text())
+    data = json.loads(path.read_text(encoding="utf-8"))
     return Theme(
         name=data["name"],
         font_latin=data["font_latin"],
@@ -249,7 +249,7 @@ PROFILES_PATH = Path(__file__).parent / "profiles.json"
 
 
 def load_profile(name: str) -> dict:
-    data = json.loads(PROFILES_PATH.read_text())
+    data = json.loads(PROFILES_PATH.read_text(encoding="utf-8"))
     base = copy.deepcopy(data["_default"])
     if name and name in data:
         base.update(data[name])

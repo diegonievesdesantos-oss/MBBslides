@@ -36,8 +36,8 @@ def _sha(p: Path) -> str:
 
 def _run(script: Path, sources: Path, out: Path, timeout: int) -> subprocess.CompletedProcess:
     out.mkdir(parents=True, exist_ok=True)
-    env = {**os.environ, "CPE_SOURCES": str(sources.resolve()), "CPE_OUT": str(out.resolve())}
-    return subprocess.run([sys.executable, str(script.resolve())], cwd=str(out.parent), env=env, capture_output=True, text=True, timeout=timeout)
+    env = {**os.environ, "CPE_SOURCES": str(sources.resolve()), "CPE_OUT": str(out.resolve()), "PYTHONUTF8": "1", "PYTHONIOENCODING": "utf-8"}
+    return subprocess.run([sys.executable, str(script.resolve())], cwd=str(out.parent), env=env, capture_output=True, text=True, timeout=timeout, encoding="utf-8", errors="replace")
 
 
 def run_analysis(work_dir: str | Path, script: str | Path, sources_dir: str | Path, timeout: int = 600) -> dict:

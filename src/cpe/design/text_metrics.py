@@ -24,7 +24,10 @@ FONT_DIRS = [
     "/usr/share/fonts/truetype/liberation2",
     "/usr/share/fonts/liberation",
     "/Library/Fonts",
+    "/System/Library/Fonts/Supplemental",
+    os.path.expanduser("~/Library/Fonts"),
     "C:/Windows/Fonts",
+    os.path.join(os.environ.get("LOCALAPPDATA", ""), "Microsoft", "Windows", "Fonts"),
     str(Path(__file__).parent / "fonts"),
 ]
 
@@ -77,7 +80,7 @@ def installed_file(font_name: str, bold: bool = False) -> str | None:
     import subprocess
 
     try:
-        r = subprocess.run(["fc-match", "-f", "%{family}|%{file}", f"{font_name}:weight={200 if bold else 80}"], capture_output=True, text=True, timeout=10)
+        r = subprocess.run(["fc-match", "-f", "%{family}|%{file}", f"{font_name}:weight={200 if bold else 80}"], capture_output=True, text=True, timeout=10, encoding="utf-8", errors="replace")
     except (FileNotFoundError, subprocess.TimeoutExpired, OSError):
         return None
     fams, _, path = r.stdout.partition("|")

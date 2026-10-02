@@ -197,11 +197,11 @@ def _guard_holdout_v2(release_candidate: bool, match: str | None, update_baselin
     prov = environment.provenance()
     if prov["dirty"]:
         raise HoldoutGuard("holdout v2 needs a FROZEN engine: commit everything and run on the clean commit")
-    prev = (json.loads(LATEST.read_text()).get("holdout") or {}).get("v2") if LATEST.exists() else None
+    prev = (json.loads(LATEST.read_text(encoding="utf-8")).get("holdout") or {}).get("v2") if LATEST.exists() else None
     if prev and (prev.get("provenance") or {}).get("engine_version") == __version__ and (prev.get("provenance") or {}).get("evaluated_commit") != prov["evaluated_commit"] and not rerun_reason:
         raise HoldoutGuard(f"holdout v2 was already run for {__version__} on {prev['provenance']['evaluated_commit'][:10]}: a second run on a "
                            "different engine is tuning against it. Record failures for the next cycle; pass --rerun-reason only for a non-engine cause")
-    return json.loads((ROOT / cfg["sealed"]).read_text())
+    return json.loads((ROOT / cfg["sealed"]).read_text(encoding="utf-8"))
 
 
 def run_suite(cases_dir: str | Path | None, out_dir: str | Path, baseline_path: str | Path | None = None, update_baseline: bool = False, compose: bool = True,
@@ -234,7 +234,7 @@ def run_suite(cases_dir: str | Path | None, out_dir: str | Path, baseline_path: 
     summary["quality"] = quality.profile(results, deck_mean=summary["suite_composition"])
     regressions, improvements, env_notes = [], [], []
     if baseline_path and Path(baseline_path).exists() and not update_baseline:
-        base = json.loads(Path(baseline_path).read_text())
+        base = json.loads(Path(baseline_path).read_text(encoding="utf-8"))
         regressions, improvements = compare(results, base, tolerance)
         regressions += quality.gate_failures(summary["quality"], None if match else base.get("archetype_counts"))
         if base.get("environment_fingerprint") and base["environment_fingerprint"] != env["fingerprint"]:
@@ -256,10 +256,10 @@ def run_suite(cases_dir: str | Path | None, out_dir: str | Path, baseline_path: 
                 "archetype_counts": {a: st["n"] for a, st in summary["quality"]["archetypes"].items()},
                 "cases": [{**{k: r.get(k) for k in ("case", "ok", "qa_errors", "composition")},
                            "slides": {sid: {k: v for k, v in sl.items() if k != "attribution"} for sid, sl in (r.get("slides") or {}).items()}} for r in results]}
-        Path(baseline_path).write_text(json.dumps(slim, indent=2) + "\n")
-    (out / "eval_report.json").write_text(json.dumps(summary, indent=2, ensure_ascii=False))
-    (out / "eval_report.md").write_text(to_markdown(summary))
-    (out / "archetype_diagnostics.md").write_text(quality.diagnostics_markdown(results, summary["quality"], f"Archetype diagnostics — {suite}"))
+        Path(baseline_path).write_text(json.dumps(slim, indent=2) + "\n", encoding="utf-8")
+    (out / "eval_report.json").write_text(json.dumps(summary, indent=2, ensure_ascii=False), encoding="utf-8")
+    (out / "eval_report.md").write_text(to_markdown(summary), encoding="utf-8")
+    (out / "archetype_diagnostics.md").write_text(quality.diagnostics_markdown(results, summary["quality"], f"Archetype diagnostics — {suite}"), encoding="utf-8")
     if suite != "holdout_v2":  # the sealed holdout's renders are not turned into review sheets
         quality.archetype_sheets(results, out, out / "archetype_sheets")
     if seal:
@@ -312,7 +312,7 @@ def record_result(section: str, summary: dict, path: Path = LATEST, allow_dirty:
     if prov.get("dirty") and not allow_dirty and section != "human_reference":  # votes do not depend on the engine commit
         raise DirtyEvaluation(f"evaluated on a dirty tree ({', '.join(prov.get('dirty_paths') or []) or 'no commit'}): commit the engine first, "
                               "re-run on the clean commit, then record (or pass --allow-dirty for a development record)")
-    data = json.loads(path.read_text()) if path.exists() else {}
+    data = json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
     data["version"] = __version__
     prov = {**prov, "release_truth": not prov.get("dirty")}
     if section in ("regression", "examples"):
@@ -336,7 +336,7 @@ def record_result(section: str, summary: dict, path: Path = LATEST, allow_dirty:
     data.setdefault("holdout", {})
     data.setdefault("human_reference", {"status": "no votes imported yet"})
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n")
+    path.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     return data
 
 

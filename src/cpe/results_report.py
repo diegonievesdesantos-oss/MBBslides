@@ -137,7 +137,7 @@ def verify_provenance(data: dict | None = None, latest: Path = LATEST) -> list[s
 
     from .environment import ENGINE_PATHS
 
-    data = data if data is not None else (json.loads(latest.read_text()) if latest.exists() else {})
+    data = data if data is not None else (json.loads(latest.read_text(encoding="utf-8")) if latest.exists() else {})
     problems = []
     sections = {k: data.get(k) for k in RELEASE_SECTIONS}
     v2 = (data.get("holdout") or {}).get("v2")
@@ -159,7 +159,7 @@ def verify_provenance(data: dict | None = None, latest: Path = LATEST) -> list[s
         if not known:
             problems.append(f"{name}: evaluated commit {c[:10]} not in this repository's history")
             continue
-        diff = subprocess.run(["git", "-C", str(ROOT), "diff", "--name-only", c, "HEAD", "--", *ENGINE_PATHS], capture_output=True, text=True).stdout.split()
+        diff = subprocess.run(["git", "-C", str(ROOT), "diff", "--name-only", c, "HEAD", "--", *ENGINE_PATHS], capture_output=True, text=True, encoding="utf-8", errors="replace").stdout.split()
         if diff:
             problems.append(f"{name}: engine inputs changed since {c[:10]} ({', '.join(diff[:5])}{'…' if len(diff) > 5 else ''}) — re-run on the current commit")
     return problems
@@ -167,8 +167,8 @@ def verify_provenance(data: dict | None = None, latest: Path = LATEST) -> list[s
 
 def update_readme(check: bool = False, readme: Path = README, latest: Path = LATEST) -> bool:
     """Returns True if the README block differs from latest.json (and rewrites it unless check)."""
-    data = json.loads(latest.read_text()) if latest.exists() else {}
-    txt = readme.read_text()
+    data = json.loads(latest.read_text(encoding="utf-8")) if latest.exists() else {}
+    txt = readme.read_text(encoding="utf-8")
     if START not in txt or END not in txt:
         raise SystemExit(f"README has no metrics markers ({START} … {END})")
     head, rest = txt.split(START, 1)
@@ -176,5 +176,5 @@ def update_readme(check: bool = False, readme: Path = README, latest: Path = LAT
     new = head + render_block(data) + tail
     changed = new != txt
     if changed and not check:
-        readme.write_text(new)
+        readme.write_text(new, encoding="utf-8")
     return changed

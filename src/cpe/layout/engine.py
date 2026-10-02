@@ -118,7 +118,7 @@ def load_library(layouts_dir: str | None = None) -> dict[str, Layout]:
     root = Path(layouts_dir) if layouts_dir else LAYOUTS_DIR
     lib: dict[str, Layout] = {}
     for p in sorted(root.glob("*/*.json")):
-        d = json.loads(p.read_text())
+        d = json.loads(p.read_text(encoding="utf-8"))
         lay = Layout(
             id=d["id"],
             family=d.get("family", p.parent.name),

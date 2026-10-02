@@ -335,4 +335,4 @@ def _build(resolved: dict, out_path: str | Path) -> list[dict]:
 
 
 def save_manifest(manifests: list[dict], path: str | Path) -> None:
-    Path(path).write_text(json.dumps(manifests, indent=2, ensure_ascii=False))
+    Path(path).write_text(json.dumps(manifests, indent=2, ensure_ascii=False), encoding="utf-8")

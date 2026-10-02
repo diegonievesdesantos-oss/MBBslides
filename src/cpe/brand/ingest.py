@@ -46,7 +46,7 @@ def read_theme(prs) -> list[dict]:
 
 def installed_font_families() -> set[str]:
     try:
-        out = subprocess.run(["fc-list", ":", "family"], capture_output=True, text=True, timeout=20).stdout
+        out = subprocess.run(["fc-list", ":", "family"], capture_output=True, text=True, timeout=20, encoding="utf-8", errors="replace").stdout
     except (FileNotFoundError, subprocess.TimeoutExpired):
         return set()
     fams = set()
@@ -58,7 +58,7 @@ def installed_font_families() -> set[str]:
 
 def fc_match(name: str) -> str:
     try:
-        r = subprocess.run(["fc-match", "-f", "%{family}", name], capture_output=True, text=True, timeout=10)
+        r = subprocess.run(["fc-match", "-f", "%{family}", name], capture_output=True, text=True, timeout=10, encoding="utf-8", errors="replace")
         return r.stdout.split(",")[0].strip() or "unknown"
     except (FileNotFoundError, subprocess.TimeoutExpired):
         return "unknown (fontconfig not available)"
@@ -499,11 +499,11 @@ def ingest(template: str | Path, out_dir: str | Path, name: str | None = None, b
         "notes": notes,
         "masters_used": use_template,
     }
-    (out / "theme.json").write_text(json.dumps(theme, indent=2, ensure_ascii=False))
-    (out / "brand_model.json").write_text(json.dumps(model, indent=2, ensure_ascii=False, default=str))
-    (out / "layout_catalog.json").write_text(json.dumps(model["layouts"], indent=2, ensure_ascii=False, default=str))
-    (out / "compatibility.json").write_text(json.dumps(report, indent=2, ensure_ascii=False, default=str))
-    (out / "compatibility.md").write_text(to_markdown(report))
+    (out / "theme.json").write_text(json.dumps(theme, indent=2, ensure_ascii=False), encoding="utf-8")
+    (out / "brand_model.json").write_text(json.dumps(model, indent=2, ensure_ascii=False, default=str), encoding="utf-8")
+    (out / "layout_catalog.json").write_text(json.dumps(model["layouts"], indent=2, ensure_ascii=False, default=str), encoding="utf-8")
+    (out / "compatibility.json").write_text(json.dumps(report, indent=2, ensure_ascii=False, default=str), encoding="utf-8")
+    (out / "compatibility.md").write_text(to_markdown(report), encoding="utf-8")
     return report
 
 

@@ -1,0 +1,46 @@
+name: Portability
+
+# Install and run the engine natively on Windows, macOS and Linux: no Docker, no LibreOffice.
+# It checks that a plain `pip install` works on each OS, that the CLI starts, that a deck builds
+# (python-pptx, text measurement with the OS fonts), and that the reasoning layer (facts, checks,
+# deck update, binding) passes its tests. Rendering and the recorded evals stay in ci.yml, inside the
+# pinned visual environment: renders from different OS fonts are not comparable, so they are never
+# recorded from here. Private material (.private/) is not in the repository and never runs here.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: portability-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  native:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-2022, macos-14, ubuntu-24.04]
+        python: ["3.10", "3.12"]
+    runs-on: ${{ matrix.os }}
+    env:
+      PYTHONUTF8: "1"
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Install
+        run: python -m pip install -e ".[dev]"
+      - name: CLI starts
+        run: cpe --help
+      - name: Build a deck without rendering
+        run: cpe build examples/alvora/deck.json -o out/alvora.pptx
+      - name: Ingest the deck back (deck update)
+        run: cpe deck ingest out/alvora.pptx -o out/alvora_ingest
+      - name: Reasoning and v1.8 tests
+        run: python -m pytest -q -p no:cacheprovider tests/test_v17.py tests/test_v18.py tests/test_ingest.py

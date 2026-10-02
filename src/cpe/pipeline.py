@@ -49,12 +49,12 @@ def run(spec: dict, out_dir: str | Path, max_iter: int = 3, do_render: bool = Tr
             current, decisions = run_compose(spec, scratch, verbose=verbose)
         finally:
             shutil.rmtree(scratch, ignore_errors=True)
-        (out / "composition.md").write_text(compose_summary(decisions))
+        (out / "composition.md").write_text(compose_summary(decisions), encoding="utf-8")
     final = None
     for it in range(1, max_iter + 1):
         t0 = time.time()
         resolved, content_issues = plan(current)
-        (out / "resolved.json").write_text(json.dumps(resolved, indent=2, ensure_ascii=False, default=str))
+        (out / "resolved.json").write_text(json.dumps(resolved, indent=2, ensure_ascii=False, default=str), encoding="utf-8")
         pptx_path = out / f"{name}.pptx"
         manifests = build(resolved, pptx_path)
         save_manifest(manifests, out / "build_manifest.json")
@@ -107,8 +107,8 @@ def run(spec: dict, out_dir: str | Path, max_iter: int = 3, do_render: bool = Tr
     rep.write(report, out)
     from .brand.fidelity import write_run_reports  # v1.8: corporate usage + brand fidelity, kept apart from the deck score
 
-    write_run_reports(out, out / f"{name}.pptx", theme_for(resolved.get("meta", {})), json.loads((out / "build_manifest.json").read_text()), issues, resolved)
-    (out / "ghost_deck.md").write_text(ghost_deck(current))
+    write_run_reports(out, out / f"{name}.pptx", theme_for(resolved.get("meta", {})), json.loads((out / "build_manifest.json").read_text(encoding="utf-8")), issues, resolved)
+    (out / "ghost_deck.md").write_text(ghost_deck(current), encoding="utf-8")
     if render_info.get("pngs"):
         rep.review_packet(resolved, report, render_info["pngs"], out)
     if applied_any or decisions:

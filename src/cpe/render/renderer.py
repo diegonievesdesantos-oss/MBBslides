@@ -21,7 +21,9 @@ def find_soffice() -> str | None:
         p = shutil.which(name)
         if p:
             return p
-    for p in ("/Applications/LibreOffice.app/Contents/MacOS/soffice", "C:/Program Files/LibreOffice/program/soffice.exe"):
+    for p in ("/Applications/LibreOffice.app/Contents/MacOS/soffice", os.path.expanduser("~/Applications/LibreOffice.app/Contents/MacOS/soffice"),
+              "C:/Program Files/LibreOffice/program/soffice.exe", "C:/Program Files (x86)/LibreOffice/program/soffice.exe",
+              "/snap/bin/libreoffice", "/opt/homebrew/bin/soffice"):
         if os.path.exists(p):
             return p
     return None
@@ -35,8 +37,8 @@ def to_pdf(pptx: str | Path, out_dir: str | Path, timeout: int = 240) -> Path:
     out_dir = Path(out_dir).resolve()
     out_dir.mkdir(parents=True, exist_ok=True)
     with tempfile.TemporaryDirectory() as profile:
-        cmd = [soffice, f"-env:UserInstallation=file://{profile}", "--headless", "--convert-to", "pdf", "--outdir", str(out_dir), str(pptx)]
-        r = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout)
+        cmd = [soffice, f"-env:UserInstallation={Path(profile).resolve().as_uri()}", "--headless", "--convert-to", "pdf", "--outdir", str(out_dir), str(pptx)]
+        r = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout, encoding="utf-8", errors="replace")
     pdf = out_dir / (pptx.stem + ".pdf")
     if not pdf.exists():
         hint = " (is libreoffice-impress installed?)" if "could not be loaded" in (r.stderr + r.stdout) else ""

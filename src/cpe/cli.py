@@ -47,8 +47,8 @@ def cmd_ingest(a):
     inv = ingest(a.files)
     out = Path(a.out)
     out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(json.dumps(inv, indent=2, ensure_ascii=False, default=str))
-    out.with_suffix(".md").write_text(summary_markdown(inv))
+    out.write_text(json.dumps(inv, indent=2, ensure_ascii=False, default=str), encoding="utf-8")
+    out.with_suffix(".md").write_text(summary_markdown(inv), encoding="utf-8")
     _p(f"inventory: {len(inv['blocks'])} blocks, {len(inv['tables'])} tables, {len(inv['facts'])} facts → {out} (+ .md)")
 
 
@@ -67,7 +67,7 @@ def cmd_outline(a):
 
     txt = ghost_deck(load_spec(a.spec))
     if a.out:
-        Path(a.out).write_text(txt)
+        Path(a.out).write_text(txt, encoding="utf-8")
     _p(txt)
 
 
@@ -88,7 +88,7 @@ def cmd_lint(a):
 def cmd_recommend(a):
     from .core.visual_reasoning import recommend
 
-    ex = json.loads(Path(a.exhibit).read_text()) if a.exhibit else {}
+    ex = json.loads(Path(a.exhibit).read_text(encoding="utf-8")) if a.exhibit else {}
     for r in recommend(a.message_type, ex)[:6]:
         _p(f"{r['score']:>3}  {r['visual']:16} {'; '.join(r['reasons'])}")
 
@@ -98,7 +98,7 @@ def cmd_plan(a):
     from .spec import load_spec
 
     res, issues = plan(load_spec(a.spec))
-    Path(a.out).write_text(json.dumps(res, indent=2, ensure_ascii=False, default=str))
+    Path(a.out).write_text(json.dumps(res, indent=2, ensure_ascii=False, default=str), encoding="utf-8")
     for s in res["slides"]:
         lay = (s.get("_plan") or {}).get("layout") or {}
         vis = ", ".join(v.get("chosen", "") for v in (s.get("_plan") or {}).get("visuals", []))
@@ -133,7 +133,7 @@ def cmd_qa(a):
 
     pptx = Path(a.pptx)
     out = Path(a.out or pptx.parent)
-    manifests = json.loads(Path(a.manifest).read_text()) if a.manifest else []
+    manifests = json.loads(Path(a.manifest).read_text(encoding="utf-8")) if a.manifest else []
     theme = load_theme(a.theme)  # a built-in name, a theme JSON or a brand directory
     profile = load_profile(a.profile)
     issues = geometry.check(str(pptx), manifests, theme, profile)
@@ -169,7 +169,7 @@ def cmd_patch(a):
     from .spec import apply_patches, load_spec, save_spec
 
     spec = load_spec(a.spec)
-    patches = json.loads(Path(a.patches).read_text())
+    patches = json.loads(Path(a.patches).read_text(encoding="utf-8"))
     if isinstance(patches, dict):  # review.json style {slide: {patches: [...]}}
         flat = []
         for sid, r in patches.items():
@@ -185,7 +185,7 @@ def cmd_patch(a):
 def cmd_review(a):
     from .qa.report import evaluate_review
 
-    r = evaluate_review(json.loads(Path(a.review).read_text()))
+    r = evaluate_review(json.loads(Path(a.review).read_text(encoding="utf-8")))
     for sid, v in r["slides"].items():
         _p(f"{sid:6} {v['total']}/{v['max']} {'ok' if v['passed'] else 'REVISE'}")
     _p("REVIEW PASSED" if r["passed"] else "REVIEW: revise the flagged slides")
@@ -243,9 +243,9 @@ def cmd_robustness(a):
     if a.update_baseline:
         keep = ("variants", "seeds", "catastrophic", "catastrophic_rate", "new_visual_errors", "median_drop", "p90_drop", "p95_drop", "max_drop",
                 "large_drop_rate", "font_drop_rate", "layout_change_rate", "layout_change_with_quality_drop_rate")
-        rb.BASELINE.write_text(json.dumps({k: s.get(k) for k in keep}, indent=2) + "\n")
+        rb.BASELINE.write_text(json.dumps({k: s.get(k) for k in keep}, indent=2) + "\n", encoding="utf-8")
     elif rb.BASELINE.exists():
-        base = json.loads(rb.BASELINE.read_text())
+        base = json.loads(rb.BASELINE.read_text(encoding="utf-8"))
         problems = rb.compare(s, base)
         for x in rb.provisional_breaches(s, base):
             _p(f"NOTE (provisional gate)  {x}")
@@ -432,7 +432,7 @@ def cmd_quality(a):
     """Quality profile of an eval report: distribution, archetype health, absolute gates."""
     from . import quality
 
-    rep = json.loads(Path(a.report).read_text())
+    rep = json.loads(Path(a.report).read_text(encoding="utf-8"))
     prof = quality.profile(rep["cases"], deck_mean=rep.get("suite_composition"))
     for line in quality.profile_markdown(prof):
         _p(line)
@@ -494,8 +494,8 @@ def cmd_measure(a):
     from .qa.composition import measure_deck
 
     d = Path(a.run_dir)
-    resolved = json.loads((d / "resolved.json").read_text())
-    manifests = json.loads((d / "build_manifest.json").read_text())
+    resolved = json.loads((d / "resolved.json").read_text(encoding="utf-8"))
+    manifests = json.loads((d / "build_manifest.json").read_text(encoding="utf-8"))
     pngs = sorted(str(p) for p in (d / "renders").glob("slide-*.png"))
     comps = measure_deck(str(d / f"{a.name}.pdf"), pngs, resolved, manifests, theme_for(resolved.get("meta", {})))
     # integrity from the CURRENT checks on the stored render (not the run's own, possibly older, QA)
@@ -507,7 +507,7 @@ def cmd_measure(a):
     issues += render_checks.check(str(d / f"{a.name}.pdf"), str(d / f"{a.name}.pptx"), manifests, pngs)[0]
     apply_integrity(comps, issues, manifests)
     out = {"deck_score": round(sum(c.score for c in comps) / len(comps), 1) if comps else None, "slides": [c.to_dict() for c in comps]}
-    (d / "composition_measure.json").write_text(json.dumps(out, indent=2))
+    (d / "composition_measure.json").write_text(json.dumps(out, indent=2), encoding="utf-8")
     for c in comps:
         _p(f"{c.slide_id:8} {c.score:5.1f} {', '.join(c.flags)}")
     _p(f"deck composition {out['deck_score']}")
@@ -518,7 +518,7 @@ def cmd_catalog(a):
 
     txt = catalog_markdown()
     if a.out:
-        Path(a.out).write_text(txt)
+        Path(a.out).write_text(txt, encoding="utf-8")
     _p(txt)
 
 
@@ -529,6 +529,11 @@ def cmd_themes(a):
 
 
 def main(argv=None) -> int:
+    for stream in (sys.stdout, sys.stderr):  # a Windows console or a redirect may not be UTF-8: never crash on "→" or "€"
+        try:
+            stream.reconfigure(errors="replace")
+        except (AttributeError, ValueError):
+            pass
     ap = argparse.ArgumentParser(prog="cpe", description="Consulting Presentation Engine")
     sub = ap.add_subparsers(dest="cmd", required=True)
     s = sub.add_parser("ingest"); s.add_argument("files", nargs="+"); s.add_argument("-o", "--out", default="inventory.json"); s.set_defaults(f=cmd_ingest)

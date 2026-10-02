@@ -31,7 +31,7 @@ PY_PACKAGES = ["python-pptx", "pillow", "lxml", "pymupdf", "openpyxl"]
 
 def _run(cmd: list[str], timeout: int = 60) -> str:
     try:
-        r = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout)
+        r = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout, encoding="utf-8", errors="replace")
         return (r.stdout or r.stderr).strip()
     except (FileNotFoundError, subprocess.TimeoutExpired, OSError):
         return ""
@@ -39,7 +39,7 @@ def _run(cmd: list[str], timeout: int = 60) -> str:
 
 def _os() -> str:
     try:
-        rel = Path("/etc/os-release").read_text()
+        rel = Path("/etc/os-release").read_text(encoding="utf-8")
         m = re.search(r'^PRETTY_NAME="?([^"\n]+)', rel, re.M)
         if m:
             return f"{m.group(1)} ({platform.machine()})"

@@ -403,7 +403,7 @@ def read_pptx(path: Path) -> dict:
 
 
 def read_json(path: Path) -> dict:
-    data = json.loads(path.read_text())
+    data = json.loads(path.read_text(encoding="utf-8"))
     blocks, facts, tables = [], [], []
     if isinstance(data, list) and data and isinstance(data[0], dict):
         header = list(data[0].keys())
