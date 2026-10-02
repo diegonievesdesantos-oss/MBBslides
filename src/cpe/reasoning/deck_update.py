@@ -403,6 +403,33 @@ def _key_measures(ms: set[str]) -> set[str]:
 MONTH_RE = re.compile(r"\b(?:19|20)\d\d-(?:0[1-9]|1[0-2])\b|\b(?:ene|feb|mar|abr|may|jun|jul|ago|sep|oct|nov|dic|jan|apr|aug|dec)\w*[-\s]\d{2,4}\b", re.I)
 
 
+NUM_TOKEN_RE = re.compile(r"\d[\d.,]*")
+
+
+def _value_year(claim: str, value: float) -> set[str]:
+    """v2.5 (item 3): the year a value in a sentence is about: the one named right after it, before the
+    next figure ("1,4 M€ en 2023"), else the last one named before it since the previous figure
+    ("en 2024, 1,8 M€"). Empty when the sentence does not tie it to one."""
+    from .conflicts import _num_pos
+
+    m = _num_pos(claim, value)
+    if m is None:
+        return set()
+
+    def is_year(tok: str) -> bool:
+        return bool(re.fullmatch(r"(?:19|20)\d\d", tok.rstrip(".,")))
+
+    after = _plain(claim[m.end():m.end() + 40])
+    tied = re.match(r"[^;\d]{0,15}?\b(?:en|in|de|del|for|during|durante|ano|year|ejercicio|fy|el)\s*'?((?:19|20)\d\d)(?!\d)", after)
+    if tied:
+        return {tied.group(1)}
+    before = claim[max(0, m.start() - 60):m.start()]
+    prev = [n for n in NUM_TOKEN_RE.finditer(before) if not is_year(n.group(0))]
+    before = before[prev[-1].end():] if prev else before
+    ys = re.findall(r"(?<![\d/])(?<!\d[.,])((?:19|20)\d\d)(?!\d|[.,/]\d)", before)
+    return {ys[-1]} if ys else set()
+
+
 def _years(t: str) -> set[str]:
     """v2.4 (item 4): the years a text is about, written any way: 2025, 2025e, 2025F, FY2025, FY25,
     FY2024/25 or 2024/25 (a fiscal year: the year it ends)."""
@@ -419,7 +446,7 @@ def _years(t: str) -> set[str]:
     t = re.sub(span, lambda m: " " if 0 < end(m) - int(m.group(1)) <= 1 else m.group(0), t)
     out |= {"20" + b for _, b in re.findall(r"\bfy\s*'?(\d\d)\s*[/-]\s*(\d\d)\b", t)}  # FY24/25
     out |= {"20" + y for y in re.findall(r"\bfy\s*'?(\d\d)(?![\d/])", t)}  # FY25
-    out |= set(re.findall(r"(?<![\d.,/])((?:19|20)\d\d)(?:[a-z]{1,2})?(?![\d.,/])", t))  # 2025, 2025e, fy2025
+    out |= set(re.findall(r"(?<![\d/])(?<!\d[.,])((?:19|20)\d\d)(?:[a-z]{1,2})?(?!\d|[.,/]\d)", t))  # 2025, 2025e, fy2025; not 2.025
     return out
 
 
@@ -480,6 +507,11 @@ def _candidates(facts: list[dict], exclude_files: set[str]) -> list[dict]:
                 measures = _measure_set(_stems(str(v.get("column") or "")))  # "payback_anios", "productividad_veces": the column says what the value is
             quals, fq = _quals(f"{text} {v.get('period') or ''}"), _quals(Path(file).stem)
             quals = {k: quals[k] or fq[k] for k in quals}  # the file name ("ahorro_fase1.csv") only when the row says nothing
+            if f.get("fact_type") != "table_value" and len(quals["year"]) > 1:
+                # v2.5: "1,4 M€ en 2023, 1,8 M€ en 2024": each value its own year, not every year of the sentence
+                own = _value_year(f.get("claim", ""), v["value"]) or _years(_plain(str(v.get("period") or "")))
+                if own:
+                    quals["year"] = own
             out.append({"fact": f["id"], "value": float(v["value"]), "base": float(v["value"]) * scale, "unit": unit, "kind": _cand_kind(f, v, text),
                         "period": str(v.get("period") or ""), "stems": stems, "measures": measures, "text": text, "quals": quals,
                         "month": bool(MONTH_RE.search(text)), "words": set(re.findall(r"[a-zñ]{4,}", _plain(text))),
@@ -673,6 +705,9 @@ def _match(q: dict, slide: dict, cands: list[dict]) -> tuple[str, list[dict], di
     qq = _quals(ctx)
     sq = _quals(q.get("section") or "")
     qq = {k: qq[k] or sq[k] for k in qq}
+    cat = re.match(r"exhibit\[\d+\]\..+\[(.*)\]$", q["where"])
+    if cat and _years(_plain(cat.group(1))):  # v2.5: a chart point is about its category's year, not every year of the chart's title
+        qq["year"] = _years(_plain(cat.group(1)))
     qn = _q_names(q)
     scored = []
     for c in cands:

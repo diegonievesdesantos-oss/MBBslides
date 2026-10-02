@@ -505,3 +505,26 @@ def test_v24_restatements_that_disagree_are_flagged_not_overwritten(tmp_path):
     assert all(q.get("group_disagrees") for q in qs)
     e = proposed_edits(plan)
     assert sum("restatements disagree" in x.get("evidence", "") for x in e["edits"]) == 2
+
+
+def test_v25_each_source_value_and_chart_point_has_its_own_year(tmp_path):
+    import json
+
+    from cpe.reasoning import facts
+    from cpe.reasoning.deck_update import _value_year, ingest_deck, update_plan
+
+    c = "La inversión fue de 1,4 M€ en 2023, 1,8 M€ en 2024 y 2,3 M€ en 2025."
+    assert [_value_year(c, v) for v in (1.4, 1.8, 2.3)] == [{"2023"}, {"2024"}, {"2025"}]
+    assert [_value_year("En 2023 se invirtieron 1,4 M€; en 2024, 1,8 M€.", v) for v in (1.4, 1.8)] == [{"2023"}, {"2024"}]
+    src = tmp_path / "src"
+    src.mkdir()
+    (src / "nota.md").write_text("La inversión ejecutada fue de 1,4 M€ en 2023, 1,8 M€ en 2024 y 2,3 M€ en 2025.\n", encoding="utf-8")
+    facts.write_fact_model(src, tmp_path / "work")
+    fm = json.loads((tmp_path / "work" / "facts.json").read_text(encoding="utf-8"))["facts"]
+    _deck_with(tmp_path / "d.pptx", [
+        ("Inversión anual del plan (real 2023–2024, previsión 2025–2026)", None,
+         {"cats": ["2023", "2024", "2025", "2026"], "series": {"Inversión (M€)": (1.4, 1.8, 2.1, 1.6)}})])
+    plan = update_plan(ingest_deck(tmp_path / "d.pptx"), fm)
+    pts = {q["where"]: q for s in plan["slides"] for q in s["numbers"] if q["where"].startswith("exhibit[")}
+    assert pts["exhibit[0].Inversión (M€)[2023]"]["status"] == "current"  # 1,4 in 2023: confirmed, not 2025's 2,3
+    assert pts["exhibit[0].Inversión (M€)[2025]"].get("new_num") == 2.3
