@@ -360,6 +360,9 @@ MEASURE_STEMS = {"inver": "inver", "capex": "inver", "ahorr": "ahorr", "savin": 
 PLAN_RE = re.compile(r"\b(presupuest\w*|budget\w*|business case|previst\w*|previsi\w*|aprobad\w*|approved|garant\w*|guarantee\w*|ofert\w*|"
                      r"recordatorio|os recuerdo|reminder|reaffirm\w*|reiter\w*|tender\w*|licitaci\w*|"
                      r"offer\w*|propuesta\w*|proposal\w*|quote\w*|cotizaci\w*|anterior|deck|objetivo|target|plan(?:ned)?|forecast)\b", re.I)
+# v2.3 (item 5): a reminder of what was already agreed: the old figure repeated, never a new value
+REMINDER_RE = re.compile(r"\b(recordatorio|os recuerdo|te recuerdo|recordamos|como se aprob\w*|aprobad\w* hace|reminder|as a reminder|reaffirm\w*|"
+                         r"reiter\w*|as agreed|seg[uú]n lo acordado|oferta original|original offer|original (?:proposal|quote|budget))\b", re.I)
 CODE_COL_RE = re.compile(r"\b(asiento|n[ºo°]|num|id|c[oó]digo|code|cuenta|account|factura|invoice|pedido|order|ref)\b", re.I)
 NON_FIGURE_UNITS = {"°c", "ºc", "niveles", "levels", "ubicaciones", "puestos", "locations"}
 
@@ -461,6 +464,7 @@ def _candidates(facts: list[dict], exclude_files: set[str]) -> list[dict]:
                         "period": str(v.get("period") or ""), "stems": stems, "measures": measures, "text": text, "quals": quals,
                         "month": bool(MONTH_RE.search(text)), "words": set(re.findall(r"[a-zñ]{4,}", _plain(text))),
                         "plan": bool(PLAN_RE.search(_plain(text)) or PLAN_RE.search(_plain(Path(file).stem).replace(" ", "_").replace("_", " "))),
+                        "reminder": bool(REMINDER_RE.search(text) or REMINDER_RE.search(f.get("claim") or "")),
                         "analysis": file.startswith("analysis/") or "/analysis/" in file or f.get("fact_type") == "computed", "file": file})
     return out
 
@@ -674,6 +678,8 @@ def _match(q: dict, slide: dict, cands: list[dict]) -> tuple[str, list[dict], di
     if not scored:
         return "untraced", [], None
     obs = [(sc, c) for sc, c in scored if not c["plan"]]
+    if not obs and all(c.get("reminder") for _, c in scored):
+        return "untraced", [c for _, c in scored], None  # v2.3: only a reminder of the old figure speaks to it
     pool = obs or scored
     top = max(sc for sc, _ in pool)
     group = [c for sc, c in pool if sc == top]
