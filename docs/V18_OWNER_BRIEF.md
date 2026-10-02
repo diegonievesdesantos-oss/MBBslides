@@ -27,7 +27,7 @@ Orden recomendado:
 
 ### Qué plantillas valen
 - **Plantillas reales** que alguna empresa use para sus presentaciones, en `.pptx` o `.potx`.
-- **Que el motor no haya visto nunca.** JET es material de desarrollo para siempre, y el motor la
+- **Que el motor no haya visto nunca.** La plantilla corporativa privada usada en desarrollo es material de desarrollo para siempre, y el motor la
   rechaza sola porque reconoce su huella (`.private/holdouts/KNOWN_DEVELOPMENT.sha256`).
 - **De empresas distintas**, y si puede ser de sectores distintos. Cinco plantillas de un mismo
   grupo cuentan como una.
@@ -65,7 +65,7 @@ Orden recomendado:
 ### Qué se hace con ellas
 1. Se fija el motor en una versión candidata (1.8.0-rc) antes de abrir nada.
 2. Se copia cada plantilla a `.private/holdouts/corporate_unseen/<nombre>/` y se comprueba su
-   huella para descartar JET o plantillas ya vistas.
+   huella para descartar la plantilla de desarrollo o plantillas ya vistas.
 3. `cpe holdout corporate-run --record` se ejecuta una vez y, por cada plantilla:
    - lee y clasifica masters y layouts;
    - deduce tipografía, paleta, rejilla, logos y grafismo protegido, con sus conflictos;

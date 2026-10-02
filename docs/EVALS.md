@@ -9,7 +9,7 @@
 | robustness seeds | development | development slides |
 | human round **r2** | **development** (since `mark-used`, v1.5) | its votes drove the KPI-dashboard diagnosis and the profile statuses. Its blind result for **v1.4** is preserved in `rounds/r2/VALIDATION_v1.4.json` (single rater) |
 | **holdout v2** | **development-known** | blind for v1.4 (run once); its findings (KPI dashboards, waterfall negatives, long statements, derived numbers) drove v1.5. Any v1.5 run is labelled development-known, never "unseen" |
-| JET corporate template | development | since v1.3 |
+| private corporate template (real) | development | since v1.3 |
 | **external holdout** (`.private/holdouts/external/`) | potential validation | **AWAITING INPUT** — docs/EXTERNAL_HOLDOUT_PROTOCOL.md |
 | **unseen corporate template** (`.private/holdouts/corporate_unseen/<name>/`) | potential validation | **AWAITING USER-SUPPLIED TEMPLATE** |
 | human round **r3** (v1.4.0 vs v1.5.0rc1, built after the v1.5 freeze) | blind result for v1.5 preserved (`VALIDATION_v1.5.json`, 1 expert rater); **development data since v1.7** | used for the integrity metric and the KPI decision |
@@ -162,7 +162,7 @@ cpe holdout external [--record]    → private_results/external/; sanitized aggr
 .private/holdouts/<name>/…         corporate templates: cpe holdout private
 ```
 
-The private corporate template used in v1.2 (JET) is **development data** since v1.3 (its findings
+The private corporate template used in v1.2 is **development data** since v1.3 (its findings
 drove the v1.3 fixes); its sanitized summary is recorded as `development_private`, never as a
 holdout. Nothing specific to it is published.
 

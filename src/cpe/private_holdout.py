@@ -250,7 +250,7 @@ def run_external(root: str | Path | None = None, out: str | Path | None = None, 
 # Order (docs/EXTERNAL_HOLDOUT_PROTOCOL.md): author → receive → hash → seal → do not render →
 # freeze engine → run once → report → no same-version tuning. The runners refuse missing
 # provenance, a broken seal, a second run on the same engine version, and known development
-# templates (JET): a self-authored deck or a reused template is never presented as independent.
+# templates (the private development template): a self-authored deck or a reused template is never presented as independent.
 
 EXTERNAL = DEFAULT_ROOT / "external"
 CORPORATE_UNSEEN = DEFAULT_ROOT / "corporate_unseen"

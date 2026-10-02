@@ -745,7 +745,7 @@ for v1.5 (docs/EVALS.md, first table).
 
 ### Intake (awaiting input)
 - `cpe holdout intake | v15-external | v15-corporate` and docs/EXTERNAL_HOLDOUT_PROTOCOL.md.
-  External decks need attested outside authorship; a known development template (JET) is refused.
+  External decks need attested outside authorship; a known development template is refused.
 
 ## 1.4.0 — Generalisation and visual intelligence
 

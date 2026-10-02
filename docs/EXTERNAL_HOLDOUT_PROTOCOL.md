@@ -61,7 +61,7 @@ the decks are development-known for the next cycle.
 ## 2. Unseen corporate template(s)
 
 **What qualifies.** A real corporate PowerPoint template never used in this project's
-development. JET is development data permanently and is refused automatically (hash list in
+development. The private development template is development data permanently and is refused automatically (hash list in
 `.private/holdouts/KNOWN_DEVELOPMENT.sha256`). One template is the v1.6 minimum; 3–5 different
 ones are the v1.8 target. Optionally a human-written brand guide and `expectations.json`.
 

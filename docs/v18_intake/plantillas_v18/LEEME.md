@@ -14,7 +14,7 @@ plantillas_v18.zip
 ```
 
 ## Lista de comprobación por plantilla
-- [ ] Es una plantilla real que usa una empresa (no JET, no una de Office genérica).
+- [ ] Es una plantilla real que usa una empresa (no la plantilla de desarrollo, no una de Office genérica).
 - [ ] El motor no la ha visto nunca en este proyecto.
 - [ ] Contiene todos sus masters y layouts, sin tocar ni limpiar.
 - [ ] Lleva entre 5 y 20 diapositivas de ejemplo de uso real (portada, agenda, separador,
