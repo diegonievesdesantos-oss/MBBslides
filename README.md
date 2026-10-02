@@ -18,13 +18,14 @@ and contradictory opinions. The engine builds the deck as follows:
 It then renders the deck, measures its visual quality and corrects what it can. **Every number a
 reader sees must come from a cited fact.** The pass/fail verdicts are computed by code.
 
-> **v2.1.0** (current): less review work when updating a deck.
-> - Conflicts between sources are ranked: 8 of 10 "high" flags are real conflicts on the keyed cases.
->   Dismissals and resolutions are kept across runs.
-> - The whole review fits in one spreadsheet (`work/review.xlsx`): changes, headlines, conflicts, slides.
-> - Headlines are checked for superlatives, signs, orders and payback years, not only thresholds.
-> - A cumulative curve is recomputed from its flows, or flagged as not recomputable from the deck.
-> - Blind validation on real material moves to v2.2.
+> **v2.2.0** (current): fewer numbers left to trace by hand when updating a deck.
+> - One figure restated on several slides follows one value. Approving one restatement moves them all.
+> - Projections follow their base and growth rate; a cash curve follows the investment and savings,
+>   or the yearly flows a source gives.
+> - Fewer false medium-priority conflicts; headline proposals for flipped signs and orders.
+> - On a sealed synthetic set (blind): outdated numbers found 20/110 → 26/110, proposed values right
+>   8/20 → 17/26. Matching a deck number to its new source is still the main gap.
+> - Blind validation on real material moves to v2.3.
 
 <!-- metrics:start (generated from evals/results/latest.json by `cpe results readme`; do not edit) -->
 
@@ -66,6 +67,21 @@ Example decks are development material and regression fixtures, not evidence of 
 <sub>engine 2.1.0 · evaluated source commit `d9ca583929` · LibreOffice 24.2.7.2 420(Build:2) · fontconfig 2.15.0 · container `mbbslides-visual:1.3@sha256:bb5bbbdd55bcec5db567781c63574da1a4b2fc4504446d6fea23f5197f59d278` · render fingerprint `f98cee49d123ed5f`</sub>
 
 <!-- metrics:end -->
+
+## What's new in v2.2 — one figure across the deck, projections from their drivers
+
+- **One figure, one value:** restatements of a figure across slides form a group. The group follows a
+  derived figure, else an analysis output, else a table cell. A member's own different match is kept
+  as an alternative.
+- **Projections and curves:**
+  - a series growing at a stated rate is base × (1 + rate);
+  - a cumulative cash curve follows −investment + n × savings, or a source's yearly flows.
+- **Conflicts:** an earlier deck on one side, or values 40% or more apart, now rank low. "Medium" goes
+  from 19/50 to 18/38 real conflicts.
+- **Headlines:** flipped signs ("ahorra" → "cuesta") and orders ("supera" → "no alcanza") get a
+  proposal. "Tiene el mayor X" and more adjectives are checked.
+
+Details, the blind check and its failures: [docs/V22_STATUS.md](docs/V22_STATUS.md).
 
 ## What's new in v2.1 — less review work
 

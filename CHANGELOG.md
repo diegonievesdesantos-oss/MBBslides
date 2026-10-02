@@ -1,6 +1,13 @@
 # Changelog
 
-## Unreleased — 2.2.0.dev0
+## 2.2.0 — One figure across the deck, projections from their drivers, fewer false conflicts
+
+**Closed 2026-10-02 by the owner, without the blind validation on real material, which moves to v2.3:**
+- unseen corporate templates;
+- new cases with the owner's key.
+
+The one blind figure is on a sealed synthetic set written by an agent: outdated numbers found
+26/110. On unseen material the tool still finds about 1 outdated number in 4.
 
 Fewer numbers left for a person to trace by hand. Status: [docs/V22_STATUS.md](docs/V22_STATUS.md).
 
