@@ -18,11 +18,13 @@ and contradictory opinions. The engine builds the deck as follows:
 It then renders the deck, measures its visual quality and corrects what it can. **Every number a
 reader sees must come from a cited fact.** The pass/fail verdicts are computed by code.
 
-> **v1.7.1** (current): source-to-deck reasoning, protocol 1.4.
-> - Accepted by the expert evaluator on a real external case taken from raw ERP data to an 8-slide
->   Spanish board deck.
-> - Strict factuality on every table cell and chart value.
-> - Spanish and other decimal-comma number formats throughout.
+> **v1.8.0** (current): real-world inputs, corporate use, any OS; reasoning protocol 1.5.
+> - Updates an existing deck from messy new sources: it reads the old deck, checks each of its
+>   numbers against the new facts and rebuilds the deck in the old style. Tested on one real project
+>   against the owner's blind answer key.
+> - Cell-to-fact binding, new exhibits, explicit n/a, and per-slide corporate usage and
+>   brand-fidelity reports.
+> - Native on Windows, macOS and Linux.
 
 <!-- metrics:start (generated from evals/results/latest.json by `cpe results readme`; do not edit) -->
 
@@ -65,7 +67,7 @@ Example decks are development material and regression fixtures, not evidence of 
 
 <!-- metrics:end -->
 
-## In development: v1.8 — real-world inputs, corporate use, any OS
+## What's new in v1.8 — real-world inputs, corporate use, any OS
 
 - **Messy sources:** periods and bases (FY vs CY, LTM, YTD, budget vs actual, audited vs management)
   are understood and mismatches flagged. Conflicts between sources are typed. Two-level and

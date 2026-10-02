@@ -1,6 +1,12 @@
 # Changelog
 
-## Unreleased — 1.8.0.dev0: real-world inputs, corporate use, any OS
+## 1.8.0 — Real-world inputs, corporate use, any OS
+
+**Closed 2026-10-02 by the owner, without the unseen-template validation, which moves to v1.9.**
+- **Acceptance test:** one real messy project with its previous deck, updated end to end.
+  - Owner's blind review: 14 of 14 numbers right, 9 of 11 traps found, "would present with changes".
+  - The review led to protocol 1.5.
+- **Tool findings U1-U9:** listed in docs/DEBT_V18.md for v1.9.
 
 Status and what needs the owner: [docs/V18_STATUS.md](docs/V18_STATUS.md).
 - **Messy inputs:**

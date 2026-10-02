@@ -1,5 +1,9 @@
 # v1.8 — real-world inputs, corporate use, any OS: status
 
+> **Closed as 1.8.0 on 2026-10-02 (owner decision).** Two items move to v1.9: the unseen corporate
+> templates (run once, aggregates only) and the owner's judgement on layout choice and brand fidelity.
+> The real-project update, the owner's review and protocol 1.5 are done.
+
 v1.8 makes the engine work on material as it really arrives: messy sources, an existing deck to
 update, a corporate template, and a laptop that may run Windows or macOS. Development started on
 2026-10-02. Every deterministic part is built and tested. No agent runs were made and no human
