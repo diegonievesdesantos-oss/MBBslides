@@ -9,6 +9,8 @@ new values of its parts, once every part has one.
     sum     a table's total column or total row, or "39 FTE (21 … y 18 …)" in a sentence
     ratio   payback = investment / savings, a share = part / whole (×100 for a percentage)
     same    the same figure shown elsewhere ("1,49 M€" on the summary = the table's 1.495 k€)
+    group   v2.2: every restatement of one figure across the deck ("3,2 M€" in the summary, the plan
+            table's 3.200 k€, the recommendation's "fase 1 por 3,2 M€") follows one value
 
 A relation is accepted only when it holds exactly in the old deck (within the precision each number
 is written with), and a derived value only when all its parts have a new value. Nothing here
@@ -168,8 +170,8 @@ def _cumulative(plan: dict) -> list[dict]:
                 if all(_close(pts[k - 1]["value"] + flows[k]["value"], pts[k], [pts[k - 1], flows[k]]) for k in range(1, len(pts))):
                     for k in range(1, len(pts)):
                         rels.append({"op": "sum", "target": nid(n, pts[k]), "parts": [nid(n, pts[k - 1]), nid(n, flows[k])], "how": f"cumulative of '{name2}'"})
-                    if _close(flows[0]["value"], pts[0]):
-                        rels.append({"op": "same", "target": nid(n, pts[0]), "parts": [nid(n, flows[0])], "mult": 1.0, "how": f"cumulative of '{name2}'"})
+                    if _close(flows[0]["value"], pts[0]):  # a sum of one: the curve starts at the first flow
+                        rels.append({"op": "sum", "target": nid(n, pts[0]), "parts": [nid(n, flows[0])], "how": f"cumulative of '{name2}'"})
                     break
     return rels
 
@@ -253,4 +255,165 @@ def derive(plan: dict, rels: list[dict], known: dict) -> dict:
             changed = True
         if not changed:
             break
+    return out
+
+
+# ── v2.2 (item 2): one figure, one value across the deck ────────────────────────
+
+ENT_RE = re.compile(r"\b(fase|phase|stage|etapa|zona|zone|escenario|scenario|opci[oó]n|option|planta|plant|site|lote|lot)\s*([0-9]+|[ivx]+\b|[a-d]\b)", re.I)
+MULT_RE = re.compile(r"(multiplica\w*|veces|times|\bx\s*$|multiplie\w*)", re.I)
+
+
+def _where_in_text(q: dict) -> tuple[str, re.Match | None]:
+    """(the number's own text, the match of the number in it): its paragraph when known, else its context."""
+    core, occ = q.get("core") or "", q.get("occ", 0)
+    pat = rf"(?<![\d.,]){re.escape(core)}(?![\d])"
+    ms = list(re.finditer(pat, q.get("text") or "")) if core else []
+    if len(ms) > occ:
+        return q["text"], ms[occ]
+    m = re.search(pat, q.get("context") or "") if core else None  # the context is cut around this very occurrence
+    return q.get("context") or "", m
+
+
+def _local(q: dict) -> tuple[str, str]:
+    """(the words just before the number, the words just after it, up to the next number)."""
+    ctx, m = _where_in_text(q)
+    if not m:
+        return ctx, ""
+    before, after = ctx[max(0, m.start() - 45):m.start()], ctx[m.end():m.end() + 30]
+    after = re.split(r"\d", after)[0]
+    before = re.split(r"[.;](?:\s|$)", before)[-1]  # the same sentence
+    return before, after
+
+
+POST_ENT_RE = re.compile(r"^\s*(?:[^\w\s(]{0,2}\s*)?(?:[mk]?€|m|k|%|\w{1,5})?\s*(?:en|de|del|para|in|for|of|on)\s+(?:la|el|the)?\s*"
+                         r"(fase|phase|stage|etapa|zona|zone|escenario|scenario|opcion|option|planta|plant|site|lote|lot)\s*([0-9]+|[ivx]+\b|[a-d]\b)")
+
+
+def _entities(q: dict) -> set:
+    """The phase / zone / option a number is about: for a table cell, its row and column; in a
+    sentence, the one named right after it ("2,4 M€ en la fase 2"), else the nearest one before it
+    ("fase 1 (3,2 M€) y la fase 2 (2,4 M€)")."""
+    from .deck_update import _plain
+
+    if ".rows[" in q["where"]:
+        return {(a[:4], b) for a, b in ENT_RE.findall(_plain(q.get("context") or ""))}
+    ctx, m = _where_in_text(q)
+    if m:
+        post = POST_ENT_RE.match(_plain(ctx[m.end():m.end() + 40]))
+        if post:
+            return {(post.group(1)[:4], post.group(2))}
+    before, after = _local(q)
+    found = ENT_RE.findall(_plain(before)) or ENT_RE.findall(_plain(after))[:1]
+    return {(a[:4], b) for a, b in found[-1:]}
+
+
+def _measures(q: dict) -> set:
+    from .deck_update import _key_measures, _measure_set, _stems
+
+    if ".rows[" in q["where"] or re.match(r"exhibit\[\d+\]\.(.+)\[(.*)\]$", q["where"]):
+        text = q.get("context") or ""
+    else:  # the few words around the number say what it is ("39 FTE", "Invertir 5,6 M€")
+        before, after = _local(q)
+        wb, wa = re.findall(r"[^\W\d_]+", before), re.findall(r"[^\W\d_]+", after)
+        for k in (3, 6):  # the nearest words first
+            got = _key_measures(_measure_set(_stems(" ".join(wb[-k:] + wa[:k]))))
+            if got:
+                return got
+        return set()
+    return _key_measures(_measure_set(_stems(text)))
+
+
+def _cls(q: dict) -> str:
+    if q["kind"] == "pct":
+        return "pct"
+    if q["kind"] == "x" or (q["kind"] == "plain" and MULT_RE.search(_local(q)[0][-25:])):
+        return "x"
+    return "level"
+
+
+def _scale(a: dict, b: dict) -> float | None:
+    """f such that a's value = f × b's value (a power of ten), when the two are the same figure."""
+    for f in (1.0, 1e3, 1e-3, 1e6, 1e-6, 1e9, 1e-9):
+        if abs(abs(a["value"]) - abs(b["value"]) * f) <= max(_step(a), _step(b) * f) + 1e-9 * abs(a["value"]):
+            return f
+    return None
+
+
+def _digits(q: dict) -> int:
+    return len(re.sub(r"\D", "", q.get("core") or q["raw"]).lstrip("0"))
+
+
+def _same_figure(a: tuple, b: tuple) -> tuple | None:
+    """a, b: (slide, number, info). None when they cannot be one figure; else (scale between them,
+    whether the pair is evidence that they are: the same measure, or a distinctive figure next to one
+    that says what it is)."""
+    (na, qa, ia), (nb, qb, ib) = a, b
+    if ia["cls"] != ib["cls"] or _signed(qa) * _signed(qb) < 0 or ia["money"] != ib["money"]:
+        return None
+    ta, tb = qa["where"].split(".")[0], qb["where"].split(".")[0]
+    if na == nb and ta == tb and ta.startswith("exhibit["):
+        return None  # two cells of one table, two points of one chart: two quantities
+    if ia["ents"] and ib["ents"] and not (ia["ents"] & ib["ents"]):
+        return None
+    if ia["ms"] and ib["ms"] and not (ia["ms"] & ib["ms"]):
+        return None
+    f = _scale(qa, qb)
+    if f is None:
+        return None
+    shared = bool(ia["ms"] & ib["ms"])
+    one = bool(ia["ms"] or ib["ms"]) and min(ia["digits"], ib["digits"]) >= 2
+    return f, shared or one
+
+
+def groups(plan: dict) -> list[list[tuple]]:
+    """Restatements of one figure across slides: [[(number id, f)], …] with f = that number's value
+    over the group's first number's value. Built anchor-first (table cells, then KPIs and text): a
+    number joins a group only if it is the same figure as every member that says what it is about."""
+    nums = []
+    for s in plan["slides"]:
+        n = s["n"] if "n" in s else s["slide"]
+        for q in s["numbers"]:
+            if not _usable(q) or q.get("status") == "ignored":
+                continue
+            ctx = q.get("context") or ""
+            nums.append((n, q, {"cls": _cls(q), "ents": _entities(q), "ms": _measures(q), "digits": _digits(q),
+                                "money": q["kind"] == "money" or bool(MONEY_RE.search(ctx))}))
+    rank = lambda x: (0 if ".rows[" in x[1]["where"] else 1 if x[1]["where"].startswith("exhibit[") else 2 if x[1]["where"] != "title" else 3)
+    nums.sort(key=rank)
+    out: list[list] = []
+    for x in nums:
+        for g in out:
+            fs = [_same_figure(x, m) for m, _ in g]
+            if all(f is not None for f in fs) and any(f[1] for f in fs):
+                g.append((x, fs[0][0] * g[0][1]))
+                break
+        else:
+            out.append([(x, 1.0)])
+    return [[(nid(n, q), f) for (n, q, _), f in g] for g in out if len({n for (n, _, _), _ in g}) >= 2]
+
+
+def with_groups(plan: dict, rels: list[dict], pick) -> list[dict]:
+    """`rels` with each group's pairwise `same` relations replaced by the group's own: every member
+    follows the head `pick(group)` chose, unless table arithmetic derives it."""
+    grels = group_relations(plan, {r["target"] for r in rels if r["op"] != "same"}, pick)
+    covered = {r["target"] for r in grels}
+    return [r for r in rels if not (r["op"] == "same" and r["target"] in covered)] + grels
+
+
+def group_relations(plan: dict, taken: set, pick) -> list[dict]:
+    """A `same` relation from each group's head (`pick(group)`: a number id, or None) to every other
+    member that no table arithmetic already derives."""
+    where = {nid(s["n"] if "n" in s else s["slide"], q): (s["n"] if "n" in s else s["slide"], q["where"]) for s in plan["slides"] for q in s["numbers"]}
+    out = []
+    for gi, g in enumerate(groups(plan)):
+        head = pick(g)
+        if head is None:
+            continue
+        fh = dict(g)[head]
+        hn, hw = where[head]
+        for m, f in g:
+            if m != head and m not in taken:
+                out.append({"op": "same", "target": m, "parts": [head], "mult": f / fh, "group": gi,
+                            "how": f"same figure as slide {hn} {hw} (one figure, one value across the deck)"})
     return out

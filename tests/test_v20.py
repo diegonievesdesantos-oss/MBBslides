@@ -273,10 +273,39 @@ def test_v21_cumulative_series(tmp_path):
     for cat, v in zip(cats, ("-3,6", "0,8", "1,9", "2,4")):  # the reviewer approves the new yearly flows
         _approve(plan, e, 2, f"exhibit[0].Flujo anual[{cat}]", f"{dict(zip(cats, (-3.0, 1.0, 2.5, 2.5)))[cat]:g}", v)
     derive_edits(plan, e)
-    cum = {x["where"]: x["replace"] for x in e["edits"] if x.get("derived")}
-    assert cum["exhibit[0].Caja acumulada[2027]"] == "-2.8" and cum["exhibit[0].Caja acumulada[2029]"] == "1.5"
+    cum = {(x["slide"], x["where"]): x["replace"] for x in e["edits"] if x.get("derived")}
+    assert cum[(2, "exhibit[0].Caja acumulada[2027]")] == "-2.8" and cum[(2, "exhibit[0].Caja acumulada[2029]")] == "1.5"
+    assert cum[(3, "exhibit[0].Caja acumulada[2029]")] == "1.5"  # v2.2: the same curve on another slide follows
     for x in e["edits"]:
         x["approved"] = True
     rev = {r["slide"]: r for r in messages.review(plan, e)}
     be = next(c for c in rev[2]["claims"] if c["kind"] == "breakeven")
     assert be["status"] == "no longer holds" and be["new"] == ["2029"] and "2029" in rev[2]["proposal"]
+
+
+def test_v22_one_figure_one_value_across_the_deck(tmp_path):
+    from cpe.reasoning.deck_patch import derive_edits
+    from cpe.reasoning.deck_update import ingest_deck, update_plan
+    from cpe.reasoning.derive import groups
+
+    _deck_with(tmp_path / "d.pptx", [
+        ("Invertir 3,2 M€ en la fase 1 y 2,4 M€ en la fase 2 duplica la capacidad", None, None),
+        ("El plan de inversión por fases", [("Concepto", "Fase 1", "Fase 2", "Total"), ("Inversión (capex, k€)", "3.200", "2.400", "5.600"),
+                                            ("Plantilla (FTE)", "32", "20", "52")], None),
+        ("La productividad llega a 32 líneas por hora con el nuevo sistema", None, None),
+        ("Pedimos aprobar la fase 1 por 3,2 M€ este trimestre", None, None)])
+    plan = update_plan(ingest_deck(tmp_path / "d.pptx"), [])
+    gs = [{i.split("|")[0] + "|" + i.split("|")[-1] for i, _ in g} for g in groups(plan)]
+    assert {"1|€3,2 M", "2|3.200", "4|€3,2 M"} in gs and {"1|€2,4 M", "2|2.400"} in gs
+    assert not any("3|32" in g for g in gs)  # 32 líneas/hora is not the 32 FTE of the table
+    e = {"edits": []}
+    _approve(plan, e, 2, "exhibit[0].rows[0][1]", "3.200", "4.000")
+    derive_edits(plan, e)
+    new = {(x["slide"], x["where"]): x for x in e["edits"] if x.get("derived")}
+    assert new[(1, "title")]["replace"].startswith("4") and new[(4, "title")]["replace"].startswith("4")
+    assert not new[(4, "title")]["derived"].get("pending_parts") and "one figure" in new[(4, "title")]["derived"]["how"]
+    assert (2, "exhibit[0].rows[0][3]") not in new  # the total waits for its other part
+    _approve(plan, e, 2, "exhibit[0].rows[0][2]", "2.400", "2.600")
+    derive_edits(plan, e)
+    new = {(x["slide"], x["where"], x["old"]): x["replace"] for x in e["edits"] if x.get("derived")}
+    assert new[(2, "exhibit[0].rows[0][3]", "5.600")] == "6.600" and new[(1, "title", "€2,4 M")].startswith("2,6")

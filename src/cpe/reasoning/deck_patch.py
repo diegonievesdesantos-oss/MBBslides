@@ -36,9 +36,12 @@ def proposed_edits(plan: dict) -> dict:
     for s in plan["slides"]:
         for q in s["numbers"]:
             if q["status"] == "outdated" and q.get("new_display") and q.get("core"):
+                d = q.get("direct") or {}
+                alt = f" | its own match says {d['new_display']} ({d.get('fact')})" if d.get("new_display") and d["new_display"] != q["new_display"] else ""
                 edits.append({"op": "number", "id": q.get("id"), "slide": s["slide"], "where": q["where"], "find": q["core"], "occ": q.get("occ", 0),
-                              "replace": q["new_display"], "fact": q.get("fact"), "old": q["raw"], "evidence": q.get("new_claim", ""),
-                              "context": q.get("context", "")[:120], "approved": False, **({"derived": q["derived"]} if q.get("derived") else {})})
+                              "replace": q["new_display"], "fact": q.get("fact"), "old": q["raw"], "evidence": q.get("new_claim", "") + alt,
+                              "context": q.get("context", "")[:120], "approved": False, **({"derived": q["derived"]} if q.get("derived") else {}),
+                              **({"direct": d["new_display"]} if alt else {})})
             elif q["status"] in ("outdated", "untraced"):
                 review.append({"slide": s["slide"], "where": q["where"], "number": q["raw"], "status": q["status"], "context": q.get("context", "")[:120]})
     return {"source": plan.get("source"), "edits": edits, "review": review,
@@ -51,7 +54,7 @@ def derive_edits(plan: dict, edits: dict) -> dict:
     plan found current). Each derived figure becomes a proposed edit marked `derived`, unapproved; an
     edit the reviewer approved by hand is never overwritten. Returns {"added", "updated", "unchanged"}."""
     from .deck_update import _factor, _parse_core, display_in
-    from .derive import _close, derive, relations
+    from .derive import _close, derive, relations, with_groups
 
     hint = plan.get("decimal_mark")
     items = {q["id"]: (s["slide"], q) for s in plan["slides"] for q in s["numbers"] if q.get("id")}
@@ -68,10 +71,22 @@ def derive_edits(plan: dict, edits: dict) -> dict:
     for e in edits.get("edits") or []:  # values proposed but not yet approved: a provisional derivation
         if e.get("op", "number") == "number" and not e.get("approved") and not e.get("derived") and e.get("id") in items:
             q = items[e["id"]][1]
+            if e["replace"] == q.get("new_display") and q.get("new_num") is not None:
+                proposed[e["id"]] = q["new_num"]  # the plan's value, not its rounded display
+                continue
             f, v = _factor(q, hint), _parse_core(str(e["replace"]).lstrip("-−"), hint)
             if f and v is not None:
                 proposed[e["id"]] = (-1 if str(e["replace"]).startswith(("-", "−")) else 1) * v * f
-    rels = [r for r in relations(plan) if r["target"] not in approved]
+    # v2.2: one figure, one value: its group follows the member the reviewer approved, else the plan's head
+    base = relations(plan)
+    arith = {r["target"] for r in base if r["op"] != "same"}
+
+    def pick(g: list) -> str | None:  # the approved member, else the plan's head, else one the deck's arithmetic gives
+        ids = [i for i, _ in g]
+        return (next((i for i in ids if i in approved), None) or next((i for i in ids if i in items and items[i][1].get("group_head")), None)
+                or next((i for i in ids if i in arith), None))
+
+    rels = [r for r in with_groups(plan, base, pick) if r["target"] not in approved]
     targets = {r["target"] for r in rels}
     firm = derive(plan, rels, {k: v for k, v in known.items() if k not in targets or k in approved})
     loose = derive(plan, rels, {k: v for k, v in {**proposed, **known}.items() if k not in targets or k in approved})
@@ -124,6 +139,8 @@ def edits_markdown(e: dict) -> str:
     for i, x in enumerate(nums, 1):
         d = x.get("derived") or {}
         src = x.get("fact") or (f"derived: {d['how']}" + (" (provisional)" if d.get("pending_parts") else "") if d else "by hand")
+        if x.get("direct") and x["direct"] != x.get("replace"):
+            src += f"; its own match said {x['direct']}"
         L.append(f"| {i} | {x.get('slide')} | {x.get('where')} | {x.get('old', x.get('find'))} → **{x.get('replace')}** {'✓' if x.get('approved') else ''} "
                  f"| {src} | {(x.get('context') or '')[:60]} |")
     if other:
@@ -317,7 +334,8 @@ def apply_edits(pptx_in: str | Path, edits: dict, pptx_out: str | Path, mark: bo
     deletes = []
     replaces: dict = {}
     order = {"number": 0, "set_chart": 0, "replace_text": 1, "set_headline": 2, "note": 3, "replace_slide": 4, "delete_slide": 4}
-    for e in sorted(edits.get("edits") or [], key=lambda x: order.get(x.get("op", "number"), 5)):  # a headline rewrite after its numbers
+    # a headline rewrite after its numbers; the later occurrences of a figure in one text first, so earlier ones keep their place
+    for e in sorted(edits.get("edits") or [], key=lambda x: (order.get(x.get("op", "number"), 5), -int(x.get("occ") or 0))):
         op = e.get("op", "number")
         if op in ("number", "set_headline", "replace_slide") and not (e.get("approved") or accept_proposed):
             skipped.append(e)

@@ -95,7 +95,9 @@ def apply(work: str | Path, out: str | Path, mark: bool = False, accept_derived:
         q = next((q for s in plan["slides"] for q in s["numbers"] if s["slide"] == x["slide"] and q["where"] == x["where"] and q["raw"] == x["number"]), {})
         if q.get("not_recomputable"):
             x["why"] = q["not_recomputable"]
-    rep = {**r, "rewrite_headlines": rewrite, "left_unchanged": left, "derived": e["derived"]}
+    alts = [{"slide": x["slide"], "where": x["where"], "old": x.get("old"), "applied": x["replace"], "own": x["direct"], "how": (x.get("derived") or {}).get("how", "")}
+            for x in e["edits"] if x.get("id") in changed and x.get("direct") and x["direct"] != x.get("replace")]
+    rep = {**r, "rewrite_headlines": rewrite, "left_unchanged": left, "derived": e["derived"], "overrode_own_match": alts}
     Path(out).parent.joinpath("update_report.json").write_text(json.dumps(rep, indent=2, ensure_ascii=False, default=str) + "\n", encoding="utf-8", newline="\n")
     Path(out).parent.joinpath("update_report.md").write_text(report_markdown(rep), encoding="utf-8", newline="\n")
     return rep
@@ -156,6 +158,10 @@ def report_markdown(r: dict) -> str:
               for w in r["rewrite_headlines"]] + [""]
     if r["failed"]:
         L += ["## Not applied", ""] + [f"- slide {f.get('slide')}: {f['why']}" for f in r["failed"]] + [""]
+    if r.get("overrode_own_match"):
+        L += ["## One figure, one value (v2.2): a different value from its own match", "",
+              "These numbers follow another statement of the same figure; their own source said otherwise. Check which is right.", ""]
+        L += [f"- slide {x['slide']} {x['where']}: {x['old']} → **{x['applied']}** ({x['how']}); its own match said {x['own']}" for x in r["overrode_own_match"]] + [""]
     cum = [x for x in r["left_unchanged"] if x.get("why")]
     if cum:
         L += ["## Not recomputable from the deck (v2.1)", ""] + sorted({f"- slide {x['slide']}: {x['why']}" for x in cum}) + [""]

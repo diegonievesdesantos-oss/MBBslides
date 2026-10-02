@@ -28,7 +28,7 @@ LANG = {
            "priority": "Prioridad", "state": "Estado", "type": "Tipo", "versions": "Versiones", "decision": "Decisión (usar / descartar)",
            "use": "Hecho a usar", "why": "Motivo", "action": "Acción (mantener / eliminar / reconstruir)",
            "yes": ("sí", "si", "s", "yes", "y", "x", "ok"), "no": ("no", "n"), "fact": "hecho", "derived": "derivado", "hand": "a mano",
-           "review": "revisar (sin propuesta)"},
+           "review": "revisar (sin propuesta)", "alt": "su propia fuente decía"},
     "en": {"Changes": "Changes", "Headlines": "Headlines", "Conflicts": "Conflicts", "Slides": "Slides",
            "key": "key", "slide": "Slide", "where": "Where", "old": "Old", "new": "Proposed", "origin": "Origin",
            "context": "Context", "evidence": "Evidence", "approve": "Approve? (yes/no)", "value": "Corrected value", "comment": "Comment",
@@ -36,7 +36,7 @@ LANG = {
            "priority": "Priority", "state": "State", "type": "Type", "versions": "Versions", "decision": "Decision (use / dismiss)",
            "use": "Fact to use", "why": "Reason", "action": "Action (keep / delete / rebuild)",
            "yes": ("yes", "y", "x", "ok", "sí", "si"), "no": ("no", "n"), "fact": "fact", "derived": "derived", "hand": "by hand",
-           "review": "review (no proposal)"},
+           "review": "review (no proposal)", "alt": "its own match said"},
 }
 
 
@@ -93,8 +93,9 @@ def write_sheet(work: str | Path) -> Path:
             continue
         origin = L["derived"] if e.get("derived") else (L["fact"] + f" {e['fact']}" if e.get("fact") else L["hand"])
         state = yes if e.get("approved") else ""
+        alt = f" | {L['alt']}: {e['direct']}" if e.get("direct") and e["direct"] != e.get("replace") else ""
         rows.append([f"edit:{e['id']}", e.get("slide"), e.get("where"), e.get("old"), e.get("replace"), origin,
-                     (e.get("context") or "")[:200], (e.get("evidence") or "")[:200], state, "", ""])
+                     (e.get("context") or "")[:200], ((e.get("evidence") or "")[:200 - len(alt)]) + alt, state, "", ""])
     have = {r[0][5:] for r in rows}
     for s in plan.get("slides") or []:
         for q in s["numbers"]:

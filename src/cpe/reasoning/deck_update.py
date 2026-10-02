@@ -589,12 +589,13 @@ def update_plan(inv: dict, facts: list[dict]) -> dict:
                 continue
             status, group, primary = _match(q, s, cands)
             if status == "current":
-                items.append({**q, "status": "current", "facts": sorted({c["fact"] for c in group})[:3]})
+                items.append({**q, "status": "current", "facts": sorted({c["fact"] for c in group})[:3], "fact_analysis": bool(primary["analysis"])})
             elif status == "outdated":
                 u = UNIT_TEXT.get(primary["unit"], "")
                 newv = f"{primary['value']:g}{u}" if u == "%" else (f"{primary['value']:g} {u}" if u else f"{primary['value']:g}")
                 items.append({**q, "status": "outdated", "new_value": newv, "fact": primary["fact"], "new_claim": primary["text"][:140],
-                              "new_display": _new_display({**q, "_hint": hint}, primary), "new_num": _new_num(q, primary)})
+                              "new_display": _new_display({**q, "_hint": hint}, primary), "new_num": _new_num(q, primary),
+                              "fact_analysis": bool(primary["analysis"])})
             else:
                 items.append({**q, "status": "untraced"})
         out.append({"slide": s["n"], "role": s["role"], "headline": s["headline"], "numbers": items})
@@ -624,32 +625,76 @@ def update_plan(inv: dict, facts: list[dict]) -> dict:
 def apply_derived(slides: list[dict], hint: str | None = None, known: dict | None = None) -> list[dict]:
     """v2.0: totals, ratios and repeated figures recomputed from the new values of their parts.
     A derived value replaces a direct match on the same number: the old deck's own arithmetic is
-    stronger evidence than a fact that merely shares its words. Returns the derived items."""
-    from .derive import derive, relations
+    stronger evidence than a fact that merely shares its words. Returns the derived items.
+
+    v2.2 (item 2): then every restatement of one figure across the deck follows one value, its
+    group's head: a figure the deck's arithmetic derives, else one an analysis output gives, else the
+    table cell, else any direct match. A member's own different match is kept as `direct`."""
+    from .derive import derive, relations, with_groups
 
     plan = {"slides": slides}
     rels = relations(plan)
-    if known is None:
-        known = {}
+    by_id = {q["id"]: q for s in slides for q in s["numbers"]}
+
+    def values(exclude: set) -> dict:
+        out = {}
         for s in slides:
             for q in s["numbers"]:
+                if q["id"] in exclude:
+                    continue
                 if q["status"] == "current":
-                    known[q["id"]] = q["value"] if not str(q["raw"]).startswith("-") else -abs(q["value"])
-                elif q["status"] == "outdated" and q.get("new_num") is not None and not q.get("derived"):
-                    known[q["id"]] = q["new_num"]
+                    out[q["id"]] = q["value"] if not str(q["raw"]).startswith("-") else -abs(q["value"])
+                elif q["status"] == "outdated" and q.get("new_num") is not None:
+                    out[q["id"]] = q["new_num"]
+        return out
+
     targets = {r["target"] for r in rels}
+    if known is None:
+        known = {k: v for k, v in values(set()).items() if not by_id[k].get("derived")}
     known = {k: v for k, v in known.items() if k not in targets}  # a derived figure comes from its parts, not from a direct match
-    got = derive(plan, rels, known)
-    by_id = {q["id"]: q for s in slides for q in s["numbers"]}
+    done = _apply_got(derive(plan, rels, known), by_id, hint)
+
+    arith = {r["target"] for r in rels if r["op"] != "same"}
+
+    def pick(g: list) -> str | None:
+        def score(i: str) -> float | None:
+            q = by_id.get(i)
+            if q is None or q["status"] == "ignored":
+                return None
+            if i in arith:
+                return 3.0  # the deck's own arithmetic
+            if q.get("derived"):
+                return 2.5
+            if q["status"] not in ("current", "outdated"):
+                return None
+            return (2.0 if q.get("fact_analysis") else 1.0) + (0.5 if ".rows[" in q["where"] else 0.0)
+        sc = [(score(i), -k, i) for k, (i, _) in enumerate(g) if score(i) is not None]
+        return max(sc)[2] if sc else None
+
+    allrels = with_groups(plan, rels, pick)
+    grels = [r for r in allrels if "group" in r]
+    if grels:
+        heads = {r["parts"][0] for r in grels}
+        for r in grels:
+            by_id[r["target"]]["group"] = r["group"]
+        for h in heads:
+            by_id[h]["group_head"] = True
+            by_id[h]["group"] = next(r["group"] for r in grels if r["parts"][0] == h)
+        tg = {r["target"] for r in allrels}
+        done += _apply_got(derive(plan, allrels, values(tg)), by_id, hint)
+    return done
+
+
+def _apply_got(got: dict, by_id: dict, hint: str | None) -> list[dict]:
+    from .derive import _close as close_to
+
     done = []
     for tid, (v, r) in got.items():
         q = by_id.get(tid)
         if q is None or q["status"] == "ignored":
             continue
-        from .derive import _close as close_to
-
         facts = sorted({f for p in r["parts"] for f in ([by_id[p].get("fact")] + (by_id[p].get("facts") or [])) if f})
-        info = {"op": r["op"], "from": r["parts"], "how": r["how"]}
+        info = {"op": r["op"], "from": r["parts"], "how": r["how"], **({"group": r["group"]} if "group" in r else {})}
         if close_to(v, q):
             q.update(status="current", facts=facts[:3], derived=info)
         else:

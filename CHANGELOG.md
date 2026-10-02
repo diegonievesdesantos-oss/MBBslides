@@ -1,5 +1,23 @@
 # Changelog
 
+## Unreleased — 2.2.0.dev0
+
+Fewer numbers left for a person to trace by hand. Status: [docs/V22_STATUS.md](docs/V22_STATUS.md).
+
+- **One figure, one value across the deck (item 2).** The same figure restated on several slides (the
+  plan table's 3.200 k€, the summary's "3,2 M€", the recommendation's "fase 1 por 3,2 M€") is now one
+  group that follows one value.
+  - A number joins a group when it has the same value at some scale, the same kind (level, share or
+    multiple), the same phase / zone / option and the same measure. A number with no measure of its own
+    joins only as a distinctive figure (2+ significant digits) next to one that has a measure.
+  - The group's head is, in order: a figure the deck's own arithmetic derives; one an analysis output
+    gives; a table cell; any direct match.
+  - Approving one member moves the others. A member whose own match said something else keeps it as an
+    alternative, shown in `review.xlsx`, `edits.md` and the update report.
+  - In-sample on the v1.8 project: outdated numbers found 41/68 → 51/68, proposed values right 17/25 →
+    24/31, no loss on current (11/11) or outdated precision (51/54).
+- Two edits of the same figure in one paragraph no longer collide: later occurrences are patched first.
+
 ## 2.1.0 — Less review work: ranked conflicts, a review sheet, more headline claims
 
 **Closed 2026-10-02 by the owner, without the blind validation on real material, which moves to v2.2:**
