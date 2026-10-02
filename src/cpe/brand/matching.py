@@ -106,11 +106,23 @@ def _hits(a: dict, y0: float, y1: float, x0: float, x1: float) -> float:
     return max(0.0, min(x1, a["x"] + a["w"]) - max(x0, a["x"])) / max(0.01, x1 - x0)
 
 
+def footer_shift(lay: dict, grid) -> float | None:
+    """v1.9: a layout whose own footer artwork (a confidentiality line, a client label) fills the
+    bottom of the page: the engine's source line moves up above it, when the body keeps ≥ 4.5 in."""
+    x0, x1 = grid.margin_l, grid.margin_l + grid.content_w
+    tops = [a["y"] for a in lay["reserved"] if _hits(a, grid.footer_y, grid.footer_y + grid.footer_h, x0, x1) > 0.35]
+    if not tops:
+        return None
+    y = round(min(tops) - grid.footer_h - 0.04, 3)
+    return y if y - 0.08 - grid.body_y >= 4.5 and y < grid.footer_y else None
+
+
 def band_conflict(lay: dict, grid) -> str | None:
     """Artwork that would collide with the engine's headline, body or footer (source, page number)."""
     x0, x1 = grid.margin_l, grid.margin_l + grid.content_w
+    shift = footer_shift(lay, grid)
     for a in lay["reserved"]:
-        if _hits(a, grid.footer_y, grid.footer_y + grid.footer_h, x0, x1) > 0.35:
+        if _hits(a, grid.footer_y, grid.footer_y + grid.footer_h, x0, x1) > 0.35 and shift is None:
             return f"artwork '{a['name']}' runs through the footer band (source line, page number)"
         if _hits(a, grid.headline_y, grid.headline_y + grid.headline_h, x0, x1) > 0 and a["x"] < x0 + 0.6 * (x1 - x0):
             return f"artwork '{a['name']}' sits in the headline band"
@@ -120,10 +132,15 @@ def band_conflict(lay: dict, grid) -> str | None:
 def limits(lay: dict, grid) -> dict:
     """Per-slide headline / footer right limits so the engine keeps clear of this layout's corner artwork."""
     out = {}
+    fy = grid.footer_y
+    shift = footer_shift(lay, grid)
+    if shift is not None:  # the source line moves up above the layout's own footer artwork
+        out["footer_y"], out["body_bottom"] = shift, round(shift - 0.08, 3)
+        fy = shift
     for a in lay["reserved"]:
         if a["y"] < grid.body_y and a["y"] + a["h"] > grid.tracker_y and a["x"] > grid.margin_l + grid.content_w / 2:
             out["headline_right_limit"] = round(min(out.get("headline_right_limit", 99), a["x"] - 0.15), 3)
-        if a["y"] + a["h"] > grid.footer_y and a["x"] > grid.margin_l + grid.content_w / 2:
+        if a["y"] + a["h"] > fy and a["y"] < fy + grid.footer_h and a["x"] > grid.margin_l + grid.content_w / 2:
             out["footer_right_limit"] = round(min(out.get("footer_right_limit", 99), a["x"] - 0.15), 3)
     return out
 

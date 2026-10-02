@@ -107,8 +107,11 @@ def test_layout_matching_picks_layouts_from_different_masters(mm):
     assert modes["c1"]["mode"] == modes["d1"]["mode"] == modes["e1"]["mode"] == "native"
     assert modes["c1"]["layout"] == "Cover" and modes["e1"]["layout"] == "End"
     assert modes["s1"]["mode"] == "adaptive"
-    # layouts whose artwork crosses the engine footer are rejected with a reason, not used silently
-    assert any("footer band" in r for r in modes["s1"].get("rejected", []))
+    # layouts whose artwork crosses the engine footer are rejected with a reason, or (v1.9) used with the
+    # source line moved above that artwork — never used silently
+    footer_art = {"Chart", "Chart + commentary", "CUSTOM_4_1_2", "Matrix"}
+    assert (any("footer band" in r for r in modes["s1"].get("rejected", []))
+            or modes["s1"]["layout"] not in footer_art or (modes["s1"].get("limits") or {}).get("footer_y", 99) + 0.44 <= 7.25)
     prs = Presentation(str(mm[1] / "deck.pptx"))
     masters = {s.slide_layout.slide_master.name for s in prs.slides}
     assert len(masters) >= 2

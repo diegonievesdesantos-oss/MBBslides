@@ -330,6 +330,7 @@ def font_warning(role: str, font: str | None, installed: set[str], declared: str
 
 
 def ingest(template: str | Path, out_dir: str | Path, name: str | None = None, base_theme: str = "meridian") -> dict:
+    from .learned import learn_layouts, needs_learning
     from .model import analyse
     from .rescale import rescale
 
@@ -337,6 +338,12 @@ def ingest(template: str | Path, out_dir: str | Path, name: str | None = None, b
     out = Path(out_dir)
     out.mkdir(parents=True, exist_ok=True)
     prs = Presentation(str(template))
+    learned = None
+    source_name = template.name
+    if needs_learning(prs):  # v1.9 (U7): a deck of free text boxes: learn its layouts from the slides' geometry
+        learned = learn_layouts(template, out / "learned_source.pptx")
+        template = out / "learned_source.pptx"
+        prs = Presentation(str(template))
     sw, sh = _in(prs.slide_width), _in(prs.slide_height)
     base = load_theme(base_theme)
     installed = installed_font_families()
@@ -346,6 +353,12 @@ def ingest(template: str | Path, out_dir: str | Path, name: str | None = None, b
         c["_placeholders"] = [{"type": str(x.placeholder_format.type).split(".")[-1].split(" ")[0], "idx": x.placeholder_format.idx,
                                "x": _in(x.left), "y": _in(x.top), "w": _in(x.width), "h": _in(x.height)} for x in lay.placeholders]
     notes, unsupported = [], []
+    if learned:
+        notes.append(f"No layout of this deck carries a title placeholder (its slides use free text boxes): {len(learned['learned_layouts'])} layouts "
+                     "were learned from the slides' geometry (title box, cover subtitle, body area, repeated shapes) and added to the template: "
+                     + "; ".join(f"{x['layout']} from slides {x['slides']}" for x in learned["learned_layouts"]) + ".")
+        for t in learned.get("dated_layout_text") or []:
+            unsupported.append(f"Fixed text on a layout carries a date: '{t[:80]}'. Every slide built on it repeats that text: update it in the template.")
     same_size = abs(sw - SLIDE_W) < 0.05 and abs(sh - SLIDE_H) < 0.05
     same_ratio = sh > 0 and abs((sw / sh) / (SLIDE_W / SLIDE_H) - 1) < 0.01
     k = 1.0
@@ -447,11 +460,11 @@ def ingest(template: str | Path, out_dir: str | Path, name: str | None = None, b
         pass
     elif not same_size and not scale_info:
         use_template = False
-    brand_name = name or template.stem
+    brand_name = name or Path(source_name).stem
     corp = corporate_layouts(model, k) if use_template else []
     theme = {
         "name": brand_name,
-        "description": f"Brand theme ingested from {template.name}",
+        "description": f"Brand theme ingested from {source_name}",
         "font_latin": body,
         "font_heading": heading if heading != body else None,
         "font_fallback_file": fonts["body"]["measure_family"],
@@ -476,7 +489,8 @@ def ingest(template: str | Path, out_dir: str | Path, name: str | None = None, b
         c.pop("_placeholders", None)
     report = {
         "brand": brand_name,
-        "template": template.name,
+        "template": source_name,
+        "learned_layouts": (learned or {}).get("learned_layouts", []),
         "slide_size": {"width_in": sw, "height_in": sh, "supported": use_template, "rescaled": scale_info},
         "masters": [{"id": m["master_id"], "name": m["name"], "layouts": m["layouts"], "theme": m["theme"]["name"], "fonts": m["theme"]["fonts"]} for m in model["masters"]],
         "layout_count": len(model["layouts"]),

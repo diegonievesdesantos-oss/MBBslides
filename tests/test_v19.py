@@ -123,3 +123,67 @@ def test_u1_stale_matches_on_words_unit_and_period_not_on_value():
     assert st["118"]["status"] == "ignored" and st["2"]["status"] == "ignored"
     assert _pair_label("Tasa de error manual / automatizada", 1) == "Tasa de error automatizada"
     assert _kpi_labels_before(["Plantilla almacén", "142 FTE"]) and not _kpi_labels_before(["5,6 M€", "Inversión total"])
+
+
+def _textbox_deck(path):
+    """A deck built with free text boxes on placeholder-less layouts (like many real client decks)."""
+    from pptx import Presentation
+    from pptx.dml.color import RGBColor
+    from pptx.enum.shapes import MSO_SHAPE
+    from pptx.util import Inches, Pt
+
+    prs = Presentation()
+    prs.slide_width, prs.slide_height = Inches(13.333), Inches(7.5)
+    blank = prs.slide_layouts[6]
+
+    def text(s, x, y, w, h, t, size, bold=False):
+        tb = s.shapes.add_textbox(Inches(x), Inches(y), Inches(w), Inches(h))
+        tb.text_frame.text = t
+        r = tb.text_frame.paragraphs[0].runs[0]
+        r.font.size, r.font.bold, r.font.color.rgb = Pt(size), bold, RGBColor(0x1F, 0x3A, 0x5F)
+
+    s = prs.slides.add_slide(blank)
+    text(s, 0.6, 2.4, 11, 1.0, "Plan de expansión de la red de tiendas", 40, True)
+    text(s, 0.6, 3.4, 11, 0.6, "Comité de dirección", 22)
+    for i in range(4):
+        s = prs.slides.add_slide(blank)
+        text(s, 0.6, 0.35, 12.1, 0.9, f"Las ventas por tienda crecieron un {i + 3}% en el último año", 26, True)
+        text(s, 0.6, 1.8, 6.0, 4.0, "Detalle del análisis por región y formato de tienda", 14)
+        bar = s.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(0.6), Inches(1.3), Inches(12.1), Inches(0.05))  # repeated on every page
+        bar.fill.solid()
+        bar.fill.fore_color.rgb = RGBColor(0xE0, 0x7A, 0x1F)
+        text(s, 0.6, 7.0, 6, 0.3, "Comité de dirección · 12/03/2025 · Confidencial", 9)
+    prs.save(str(path))
+
+
+def test_d2_layouts_learned_from_slide_geometry(tmp_path):
+    from pptx import Presentation
+
+    from cpe.brand.ingest import ingest
+    from cpe.brand.learned import needs_learning
+
+    _textbox_deck(tmp_path / "deck.pptx")
+    assert needs_learning(Presentation(str(tmp_path / "deck.pptx")))
+    rep = ingest(tmp_path / "deck.pptx", tmp_path / "brand")
+    learned = {x["kind"]: x for x in rep["learned_layouts"]}
+    assert set(learned) == {"cover", "content"}
+    assert learned["content"]["title"]["y"] == 0.35 and learned["content"]["title"]["size"] == 26.0 and learned["content"]["repeated_shapes"] >= 2
+    assert "subtitle" in learned["cover"] and learned["content"]["slides"] == [2, 3, 4, 5]
+    cls = {x["name"]: x["classification"][0]["type"] for x in rep["layouts"]}
+    assert cls["Learned · Cover"] == "cover" and cls["Learned · Title and content"] in ("one_column", "content")
+    assert any("12/03/2025" in u for u in rep["unsupported"])  # a dated footer on the layout is flagged
+    # a template that already has title placeholders is left alone
+    assert not needs_learning(Presentation())
+
+
+def test_d2_footer_artwork_moves_the_source_line_up():
+    from cpe.brand.matching import band_conflict, footer_shift, limits
+    from cpe.design.tokens import GRID
+
+    lay = {"name": "L", "reserved": [{"name": "footer text", "x": 0.6, "y": 7.0, "w": 6.0, "h": 0.3}, {"name": "logo", "x": 11.6, "y": 7.0, "w": 1.3, "h": 0.3}]}
+    shift = footer_shift(lay, GRID)
+    assert shift is not None and shift + GRID.footer_h <= 7.0 and band_conflict(lay, GRID) is None
+    lim = limits(lay, GRID)
+    assert lim["footer_y"] == shift and lim["body_bottom"] < shift and "footer_right_limit" not in lim  # the logo is now below the source line
+    high = {"name": "H", "reserved": [{"name": "band", "x": 0.6, "y": 5.4, "w": 12.0, "h": 2.0}]}  # would leave too little body
+    assert footer_shift(high, GRID) is None and band_conflict(high, GRID)

@@ -215,7 +215,8 @@ def check_slide(slide, idx: int, manifest: dict | None, theme: Theme, profile: d
                 out.append(issue("error", "TEXT_OVERFLOW", f"Text needs {s.need_h:.2f} in but box is {inner_h:.2f} in: '{s.text[:50]}'", sid, shape=s.name, zone=s.zone))
             if PLACEHOLDER_RE.search(s.text):
                 out.append(issue("error", "PLACEHOLDER_TEXT", f"Placeholder text left: '{s.text[:60]}'", sid, shape=s.name))
-            in_footer = b.y >= GRID.footer_y - 0.05
+            fy = ((manifest or {}).get("corporate") or {}).get("limits", {}).get("footer_y", GRID.footer_y)  # v1.9: moved above the layout's footer artwork
+            in_footer = b.y >= min(fy, GRID.footer_y) - 0.05
             for r in _all_run_props(s.shape):
                 if r.font.size is not None:
                     pt = r.font.size.pt

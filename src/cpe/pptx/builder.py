@@ -292,7 +292,7 @@ def _build(resolved: dict, out_path: str | Path) -> list[dict]:
             continue
         for ph in list(slide.placeholders):  # the engine draws its own content; no empty "Click to add…" boxes
             ph._element.getparent().remove(ph._element)
-        saved = {k: getattr(GRID, k, None) for k in ("headline_right_limit", "footer_right_limit")}
+        saved = {k: getattr(GRID, k, None) for k in ("headline_right_limit", "footer_right_limit", "footer_y", "body_bottom")}
         if decision and decision.get("limits"):  # keep clear of THIS layout's corner artwork
             for k, v in decision["limits"].items():
                 cur = getattr(GRID, k, None)
