@@ -523,7 +523,7 @@ def _close_vals(q: dict, c: dict) -> bool:
     return any(abs(a - b) <= tol for b in bs)
 
 
-def _same_magnitude(q: dict, c: dict) -> bool:
+def _same_magnitude(q: dict, c: dict, within: float = 3.0) -> bool:
     """Within 3x of each other (at some scale for unit-less numbers): an update, not another quantity."""
     a = abs(q["value"])
     if q["kind"] == "money":
@@ -532,7 +532,7 @@ def _same_magnitude(q: dict, c: dict) -> bool:
         bs = [abs(c["base"]), abs(c["value"]), abs(c["base"]) / 1e3, abs(c["base"]) / 1e6]
     else:
         bs = [abs(c["value"]) * k for k in (1, 1e3, 1e-3, 1e6, 1e-6)]
-    return any(b and a and max(a, b) / min(a, b) <= 3 for b in bs)
+    return any(b and a and max(a, b) / min(a, b) <= within for b in bs)
 
 
 OPEN_STOP = {"cada", "each", "todo", "todos", "toda", "todas", "previst", "objet", "target", "estim", "inicial", "final", "medio", "media",
@@ -657,6 +657,8 @@ def _match(q: dict, slide: dict, cands: list[dict]) -> tuple[str, list[dict], di
             continue
         if open_ and c["measures"] - open_:
             continue  # the source says it is a known measure the number is not about
+        if open_ and not _same_magnitude(q, c, 1.6):
+            continue  # v2.3: weaker evidence, so a closer value: within 60%
         if cum and not CUM_RE.search(c["text"]):
             continue  # v2.2: a year's flow is not the running total to that year
         if BENCH_RE.search(c["text"]) and not BENCH_RE.search(_qtext(q) + " " + (q.get("text") or "")):
@@ -779,13 +781,14 @@ def update_plan(inv: dict, facts: list[dict]) -> dict:
                 continue
             status, group, primary = _match(q, s, cands)
             if status == "current":
-                items.append({**q, "status": "current", "facts": sorted({c["fact"] for c in group})[:3], "fact_analysis": bool(primary["analysis"])})
+                items.append({**q, "status": "current", "facts": sorted({c["fact"] for c in group})[:3], "fact_analysis": bool(primary["analysis"]),
+                              "fact_measures": sorted(primary["measures"])})
             elif status == "outdated":
                 u = UNIT_TEXT.get(primary["unit"], "")
                 newv = f"{primary['value']:g}{u}" if u == "%" else (f"{primary['value']:g} {u}" if u else f"{primary['value']:g}")
                 items.append({**q, "status": "outdated", "new_value": newv, "fact": primary["fact"], "new_claim": primary["text"][:140],
                               "new_display": _new_display({**q, "_hint": hint}, primary), "new_num": _new_num(q, primary),
-                              "fact_analysis": bool(primary["analysis"])})
+                              "fact_analysis": bool(primary["analysis"]), "fact_measures": sorted(primary["measures"])})
             else:
                 items.append({**q, "status": "untraced"})
         out.append({"slide": s["n"], "role": s["role"], "headline": s["headline"], "numbers": items})
@@ -858,6 +861,12 @@ def apply_derived(slides: list[dict], hint: str | None = None, known: dict | Non
                 return 2.5
             if q["status"] not in ("current", "outdated"):
                 return None
+            if not q["where"].startswith("exhibit["):  # v2.3 (item 4): a sentence's match leads only if it is about the measure right next to it
+                from .derive import _measures as near_measures
+
+                near, fm = near_measures(q), set(q.get("fact_measures") or [])
+                if near and fm and not (near & fm):
+                    return None  # "ahorra 1,8 M€ … una inversión de 4,6 M€": 4,6 matched to the saving
             return (2.0 if q.get("fact_analysis") else 1.0) + (0.5 if ".rows[" in q["where"] else 0.0)
         sc = [(score(i), -k, i) for k, (i, _) in enumerate(g) if score(i) is not None]
         return max(sc)[2] if sc else None
