@@ -1,6 +1,12 @@
 # Changelog
 
-## Unreleased — 2.4.0.dev0
+## 2.4.0 — Choosing the new value: one source value per figure, years, weak heads
+
+**Closed 2026-10-02 by the owner, without the blind validation on real material, which moves to v2.5:**
+- unseen corporate templates;
+- new cases with the owner's key.
+
+Blind, on a sealed synthetic set, items 3–5 did not generalise. Proposed values right: 47/88 → 45/84.
 
 Pick the right new value, the part of v2.3 that did not generalise blind. Status:
 [docs/V24_STATUS.md](docs/V24_STATUS.md).

@@ -18,13 +18,13 @@ and contradictory opinions. The engine builds the deck as follows:
 It then renders the deck, measures its visual quality and corrects what it can. **Every number a
 reader sees must come from a cited fact.** The pass/fail verdicts are computed by code.
 
-> **v2.3.0** (current): finds what a deck must change on material it has not seen.
-> - Matches a deck number to its new source by what it counts, its table's caption and column, its
->   acronym, and the plant, site or hotel it names. It ignores benchmarks.
-> - "Current" only when a source rounds to the deck's own figure; reminders and quotes confirm nothing.
-> - On a sealed synthetic set (blind): outdated numbers found 32/206 → 82/206, flags right 86%.
->   Proposed values did not improve (46% right): picking the new value is the open problem.
-> - Blind validation on real material moves to v2.4.
+> **v2.4.0** (current): choosing the new value of a figure.
+> - One source value is the new value of at most two different figures.
+> - Years are read as 2025e, FY25 or FY2024/25; a projection no longer takes another year's actual.
+> - Restatements of a figure that found different values are flagged for the reviewer, not overwritten.
+> - Blind, on a sealed synthetic set, these changes did not generalise: proposed values are right about
+>   half the time (45/84). The diagnosis is in [docs/V24_STATUS.md](docs/V24_STATUS.md).
+> - Blind validation on real material moves to v2.5.
 
 <!-- metrics:start (generated from evals/results/latest.json by `cpe results readme`; do not edit) -->
 
@@ -66,6 +66,19 @@ Example decks are development material and regression fixtures, not evidence of 
 <sub>engine 2.4.0.dev0 · evaluated source commit `52caab0ae7` · LibreOffice 24.2.7.2 420(Build:2) · fontconfig 2.15.0 · container `mbbslides-visual:1.3@sha256:bb5bbbdd55bcec5db567781c63574da1a4b2fc4504446d6fea23f5197f59d278` · render fingerprint `f98cee49d123ed5f`</sub>
 
 <!-- metrics:end -->
+
+## What's new in v2.4 — choosing the new value
+
+- **One source value, at most two figures:** a committee's "3,5 M€" is no longer the new value of five
+  different numbers. Restatements of one figure share it.
+- **Years in every form:** 2025e, 2025F, FY25, FY2024/25, 2024-2025.
+- **Disagreeing restatements are flagged:** with no derived or analysis value to lead them, each keeps
+  its own and the review shows "restatements disagree".
+- **Measured blind,** on a sealed set of 4 synthetic cases:
+  - outdated found: 88/149 → 84/149;
+  - proposed values right: 53% → 54%.
+
+  These changes removed only wrong values on the development sets, but not blind.
 
 ## What's new in v2.3 — finding what changed on unseen material
 

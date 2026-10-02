@@ -1,4 +1,8 @@
-# v2.4 status (2.4.0.dev0)
+# v2.4 status (2.4.0)
+
+> **Closed as 2.4.0 on 2026-10-02 (owner decision).**
+> - Items 2–5 are done; blind, items 3–5 did not generalise.
+> - Item 1 (blind validation on real material) moves to v2.5.
 
 Goal: pick the right new value. In v2.3's blind check the tool found 2,5 times more of the numbers a deck
 must change, but the new value it proposed was right only 46% of the time, against 89% on the
