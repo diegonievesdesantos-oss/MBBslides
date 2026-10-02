@@ -1,6 +1,8 @@
 # Changelog
 
-## Unreleased — 3.0.0.dev0 (the last version)
+## 3.0.0 — Validated on real material (the last version)
+
+**Closed 2026-10-02 by the owner as the last version.**
 
 The one criterion of 3.0 is the owner's real material: unseen corporate templates and real update cases
 with the owner's key sealed before the tool runs. Status: [docs/V30_STATUS.md](docs/V30_STATUS.md).
@@ -11,6 +13,21 @@ with the owner's key sealed before the tool runs. Status: [docs/V30_STATUS.md](d
   - `seal` records each filled key's sha256 before the tool runs.
   - `score` compares a key with the tool's plan.
   - Checked on a used synthetic case: it gives the same figures as the scorer used since v2.2.
+- **Blind result on the owner's real material** (3 cases, 322 keyed numbers, key sealed before one run):
+  - outdated numbers found: 59/216 (27%);
+  - "outdated" right: 75%;
+  - proposed values right: 16/59 (27%);
+  - "current" right: 11/25.
+
+  Much worse than on synthetic cases. The new values are mostly business-case model outputs and
+  aggregates of a row-level export, which the tool does not build. Details:
+  [docs/V30_STATUS.md](docs/V30_STATUS.md).
+- **Fixed:** a monthly row ("2025-01") is never the new value of a figure that is not monthly.
+- **Fixed:** a corporate template that cannot be used (4:3) is a visible warning
+  (`BRAND_TEMPLATE_NOT_USED`), in the QA report and on screen, instead of a silent fallback to its
+  colours and fonts.
+- **Guide:** [docs/GUIA_ACTUALIZAR_DECK.md](docs/GUIA_ACTUALIZAR_DECK.md), with the measured limits and how to
+  work around them.
 
 ## 2.5.0 — Years, long tables, cumulative figures (the last synthetic round)
 

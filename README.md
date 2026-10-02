@@ -18,12 +18,15 @@ and contradictory opinions. The engine builds the deck as follows:
 It then renders the deck, measures its visual quality and corrects what it can. **Every number a
 reader sees must come from a cited fact.** The pass/fail verdicts are computed by code.
 
-> **v2.5.0** (current): years, long tables and cumulative figures.
-> - A source value takes the year next to it; a chart point its category's year; a long table's row
->   its year column.
-> - A cumulative figure is never matched to one period's, nor the other way round.
-> - Blind, on a sealed synthetic set: proposed values right 72% → 76%, "outdated" flags right 81% → 83%.
-> - Blind validation on real material moves to v3.0, the last version.
+> **v3.0.0** (current, final): validated on the owner's real material.
+> - On 3 real update cases, blind (key sealed before one run):
+>   - outdated numbers found: 27%;
+>   - "outdated" flags right: 75%;
+>   - proposed values right: 27%.
+> - New values that come from rebuilding a business case or from aggregating a row-level export are out
+>   of the tool's reach. A person reviews every change.
+> - Guide: [docs/GUIA_ACTUALIZAR_DECK.md](docs/GUIA_ACTUALIZAR_DECK.md). Validation kit for new cases:
+>   `scripts/validation_kit.py`.
 
 <!-- metrics:start (generated from evals/results/latest.json by `cpe results readme`; do not edit) -->
 
@@ -65,6 +68,22 @@ Example decks are development material and regression fixtures, not evidence of 
 <sub>engine 3.0.0.dev0 · evaluated source commit `c6be11a878` · LibreOffice 24.2.7.2 420(Build:2) · fontconfig 2.15.0 · container `mbbslides-visual:1.3@sha256:bb5bbbdd55bcec5db567781c63574da1a4b2fc4504446d6fea23f5197f59d278` · render fingerprint `f98cee49d123ed5f`</sub>
 
 <!-- metrics:end -->
+
+## What's new in v3.0 — validated on real material (final)
+
+- **Validation kit** (`scripts/validation_kit.py`): a key sheet per old deck, a seal before the run, a
+  score after it.
+- **Blind on the owner's 3 real cases:**
+  - outdated found: 27%;
+  - "outdated" right: 75%;
+  - proposed values right: 27%;
+  - "current" right: 44%.
+
+  Much below the synthetic sets: the reasons and the limits are in
+  [docs/V30_STATUS.md](docs/V30_STATUS.md).
+- **Fixed:** monthly rows are never yearly values; a corporate template that cannot be used (4:3) is a
+  visible warning.
+- **Guide in Spanish:** [docs/GUIA_ACTUALIZAR_DECK.md](docs/GUIA_ACTUALIZAR_DECK.md).
 
 ## What's new in v2.5 — years, long tables, cumulative figures
 

@@ -158,6 +158,11 @@ def cmd_run(a):
 
     r = run(load_spec(a.spec), a.out, max_iter=a.max_iter, do_render=not a.no_render, dpi=a.dpi, name=a.name, compose=not a.no_compose)
     _p(f"\n{'PASSED' if r['passed'] else 'FAILED'} · score {r['deck_score']} · errors {r['counts']['error']} · warnings {r['counts']['warning']}")
+    from .design.tokens import theme_for
+    from .pipeline import _template_not_used
+
+    for w in _template_not_used(load_spec(a.spec).get("meta", {}), theme_for(load_spec(a.spec).get("meta", {}))):
+        _p(f"WARNING {w['code']}: {w['message']}")  # v3.0: a template that was not used is said on screen, not only in the report
     if r.get("pending_actions"):
         _p("Pending author actions:")
         for x in r["pending_actions"]:

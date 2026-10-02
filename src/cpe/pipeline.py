@@ -29,6 +29,24 @@ from .render import renderer
 from .spec import apply_patches, save_spec
 
 
+def _template_not_used(meta: dict, theme) -> list[dict]:
+    """v3.0: a corporate template the engine could not use (a 4:3 canvas) is a deck-level warning, not a
+    silent fallback to its colours and fonts."""
+    if not meta.get("brand"):
+        return []
+    comp = Path(getattr(theme, "source_dir", "") or "") / "compatibility.json"
+    try:
+        r = json.loads(comp.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return []
+    if r.get("masters_used", True):
+        return []
+    sz = r.get("slide_size") or {}
+    return [{"level": "warning", "code": "BRAND_TEMPLATE_NOT_USED", "slide": None,
+             "message": f"The corporate template was NOT used: its slide size {sz.get('width_in')}×{sz.get('height_in')} in is not 16:9, "
+                        "so only its colours and fonts were applied (no master, layouts or logo). See the brand's compatibility.md."}]
+
+
 def run(spec: dict, out_dir: str | Path, max_iter: int = 3, do_render: bool = True, dpi: int = 110, name: str = "deck", verbose: bool = True, compose: bool = False) -> dict:
     out = Path(out_dir)
     out.mkdir(parents=True, exist_ok=True)
@@ -62,6 +80,7 @@ def run(spec: dict, out_dir: str | Path, max_iter: int = 3, do_render: bool = Tr
         profile = resolved.get("_profile") or {}
         issues = list(content_issues)
         issues += geometry.check(str(pptx_path), manifests, theme, profile)
+        issues += _template_not_used(resolved.get("meta", {}), theme)  # v3.0: never silent
         metrics = {}
         render_info = {}
         comp = []

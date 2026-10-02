@@ -584,3 +584,29 @@ def test_v30_validation_kit_template_seal_and_score(tmp_path):
     (work / "update_plan.json").write_text(json.dumps(plan), encoding="utf-8")
     c = kit.score(str(tmp_path / "clave.xlsx"), str(work))
     assert c["out_found"] == c["out_gold"] == 1 and c["val_ok"] == 1
+
+
+def test_v30_month_rows_and_unused_template_warning(tmp_path):
+    import json
+
+    from cpe.design.tokens import load_theme
+    from cpe.pipeline import _template_not_used
+    from cpe.reasoning import facts
+    from cpe.reasoning.deck_update import ingest_deck, update_plan
+
+    src = tmp_path / "src"
+    src.mkdir()
+    (src / "seguimiento.csv").write_text("mes,planta,horas_persona_produccion\n2025-01,Norteña,3.4\n2025-02,Norteña,3.7\n", encoding="utf-8")
+    facts.write_fact_model(src, tmp_path / "work")
+    fm = json.loads((tmp_path / "work" / "facts.json").read_text(encoding="utf-8"))["facts"]
+    _deck_with(tmp_path / "d.pptx", [("Horas de producción del año por planta", [("Planta", "Horas-persona producción (miles)"), ("Norteña", "4,2")], None)])
+    plan = update_plan(ingest_deck(tmp_path / "d.pptx"), fm)
+    q = next(x for s in plan["slides"] for x in s["numbers"] if x["raw"] == "4,2")
+    assert q["status"] != "outdated"  # January's row is not the new yearly figure
+    brand = tmp_path / "brand"
+    brand.mkdir()
+    (brand / "theme.json").write_text(json.dumps({"name": "b", "font_latin": "Arial", "colors": {"text": "#000000"}, "series": ["#000000"],
+                                                 "sequential": ["#000000"], "diverging": ["#000000"]}), encoding="utf-8")
+    (brand / "compatibility.json").write_text(json.dumps({"masters_used": False, "slide_size": {"width_in": 10.0, "height_in": 7.5}}), encoding="utf-8")
+    w = _template_not_used({"brand": str(brand)}, load_theme(str(brand)))
+    assert w and w[0]["code"] == "BRAND_TEMPLATE_NOT_USED" and w[0]["level"] == "warning"

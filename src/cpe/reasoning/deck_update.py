@@ -400,6 +400,8 @@ def _key_measures(ms: set[str]) -> set[str]:
     return {m for m in ms if MEASURE_TIER.get(m, 3) == top}
 
 
+# v3.0: a month's row is written 2025-01 (not 2025-12-31, a point in time; not "Sep 2026", a date in a label)
+MONTH_ISO_RE = re.compile(r"\b(?:19|20)\d\d-(?:0[1-9]|1[0-2])\b(?!-\d)")
 MONTH_RE = re.compile(r"\b(?:19|20)\d\d-(?:0[1-9]|1[0-2])\b|\b(?:ene|feb|mar|abr|may|jun|jul|ago|sep|oct|nov|dic|jan|apr|aug|dec)\w*[-\s]\d{2,4}\b", re.I)
 
 
@@ -545,7 +547,8 @@ def _candidates(facts: list[dict], exclude_files: set[str]) -> list[dict]:
                         "month": bool(MONTH_RE.search(text)), "words": set(re.findall(r"[a-zñ]{4,}", _plain(text))),
                         "plan": bool(PLAN_RE.search(_plain(text)) or PLAN_RE.search(_plain(Path(file).stem).replace(" ", "_").replace("_", " "))),
                         "reminder": bool(REMINDER_RE.search(text) or REMINDER_RE.search(f.get("claim") or "")),
-                        "analysis": file.startswith("analysis/") or "/analysis/" in file or f.get("fact_type") == "computed", "file": file})
+                        "analysis": file.startswith("analysis/") or "/analysis/" in file or f.get("fact_type") == "computed", "file": file,
+                        "table": f.get("fact_type") == "table_value"})
     return out
 
 
@@ -745,6 +748,7 @@ def _match(q: dict, slide: dict, cands: list[dict]) -> tuple[str, list[dict], di
     if cat and _years(_plain(cat.group(1))):  # v2.5: a chart point is about its category's year, not every year of the chart's title
         qq["year"] = _years(_plain(cat.group(1)))
     qn = _q_names(q)
+    q_month = bool(MONTH_RE.search(ctx) or MONTH_RE.search(q["where"]) or re.search(r"\b(mensual|monthly|al mes|per month|/mes|/month)\b", _plain(ctx)))
     scored = []
     for c in cands:
         if not ((key & c["measures"]) if key else (open_ & c["stems"])) or not _kind_ok(q, c) or _clash(qq, c["quals"]) or _opposed(words, c["words"]) \
@@ -754,6 +758,8 @@ def _match(q: dict, slide: dict, cands: list[dict]) -> tuple[str, list[dict], di
             continue  # the source says it is a known measure the number is not about
         if open_ and not _same_magnitude(q, c, 1.6):
             continue  # v2.3: weaker evidence, so a closer value: within 60%
+        if not q_month and MONTH_ISO_RE.search(c["text"]):
+            continue  # v3.0: one month's row ("2025-01 · plant X") is never the new value of a figure that is not monthly
         if cum != bool(CUM_RE.search(c["text"])):
             continue  # a year's flow is not the running total to that year, nor the other way round (v2.5: any number, both ways)
         if BENCH_RE.search(c["text"]) and not BENCH_RE.search(_qtext(q) + " " + (q.get("text") or "")):
