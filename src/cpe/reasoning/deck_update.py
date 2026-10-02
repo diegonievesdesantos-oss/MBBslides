@@ -356,6 +356,7 @@ MEASURE_STEMS = {"inver": "inver", "capex": "inver", "ahorr": "ahorr", "savin": 
                  "plazo": "payba", "headc": "plant", "staff": "plant", "inves": "inver", "margin": "marge"}
 # words that make a figure a restatement of a plan, an offer or the old deck, not an observation
 PLAN_RE = re.compile(r"\b(presupuest\w*|budget\w*|business case|previst\w*|previsi\w*|aprobad\w*|approved|garant\w*|guarantee\w*|ofert\w*|"
+                     r"recordatorio|os recuerdo|reminder|reaffirm\w*|reiter\w*|tender\w*|licitaci\w*|"
                      r"offer\w*|anterior|deck|objetivo|target|plan(?:ned)?|forecast)\b", re.I)
 CODE_COL_RE = re.compile(r"\b(asiento|n[ºo°]|num|id|c[oó]digo|code|cuenta|account|factura|invoice|pedido|order|ref)\b", re.I)
 NON_FIGURE_UNITS = {"°c", "ºc", "niveles", "levels", "ubicaciones", "puestos", "locations"}
@@ -634,6 +635,7 @@ def _match(q: dict, slide: dict, cands: list[dict]) -> tuple[str, list[dict], di
             continue  # v2.3: about another plant, site, hotel or fleet
         sc = len(st & c["stems"]) + sum(1 for k in ("year", "phase", "zone") if qq[k] and qq[k] & c["quals"][k]) + (1 if qn & cn else 0)
         part = sum(1 for k in ("phase", "zone") if c["quals"][k] and not qq[k])  # a part (one zone) of an unqualified whole
+        part += 2 if cn and not qn else 0  # v2.3: one plant / fleet / site of a figure about all of them
         if sc >= (1 if q["kind"] == "x" or open_ else 2):  # v2.3: the noun it counts ("monitores") is evidence enough
             scored.append((sc - 0.5 * part, c))
     if not scored:
