@@ -6,7 +6,7 @@ last round built on synthetic cases. After it, the open question is real materia
 | # | item | status |
 |---|---|---|
 | 1 | Blind validation on real material: unseen corporate templates; new cases with the owner's key sealed beforehand | **needs the owner** |
-| 2 | A fresh sealed set stressing years, quarters and cumulative figures; run once at the end of 2.5 | **being written** |
+| 2 | A fresh sealed set stressing years, quarters and cumulative figures; run once at the end of 2.5 | **done**: run once |
 | 3 | The year next to each source value; a chart point's own year | **done** |
 | 4 | A past actual is not "outdated" | **done** |
 | 5 | Cumulative against yearly figures | **done** |
@@ -62,4 +62,29 @@ yearly flows.
 - Most of the gain is on v2.4's set, whose failures these items were written from. It is in-sample.
 - One right value was lost, on v2.3's set. The two half-year points "Ene–Jun 2026" and "Jul–Dic 2026"
   are now untraced: one had a right value, the other a wrong one.
-- The v2.5 sealed set will give the blind figure.
+- The v2.5 sealed set gives the blind figure (below).
+
+## Blind result on the v2.5 sealed set
+
+- **The set.** Written by an agent that did not read the code: 4 cases, 392 keyed numbers (airport
+  ground handling, B2B software in English, a chemicals plant, outpatient care).
+- **Items 3–5 are blind here.** They were committed before the set existed.
+- **The run.** Once: 2.4.0 (b7ab79d) against 2.5 (d2abc9f). The seal was checked first.
+
+| blind, 4 cases | 2.4.0 | 2.5 |
+|---|---|---|
+| outdated numbers found | 109 / 161 | 110 / 161 |
+| "outdated" right | 109 / 135 (81%) | 110 / 132 (83%) |
+| proposed value right | 78 / 109 (72%) | **84 / 110 (76%)** |
+| "current" right | 67 / 70 | 70 / 72 |
+
+**What this says.**
+- **The first blind gain in three rounds,** and on every measure at once:
+  - 6 more right values;
+  - 3 fewer false "outdated" flags;
+  - 3 more right "current".
+
+  It is small: the items fix specific failures, and this set has fewer of them than v2.4's.
+- **2.4.0 already did well on this set.** It found 68% of the outdated numbers, with values right 72%
+  of the time. As noted in v2.4, the figures vary a lot from one set of cases to another.
+- **The set is now used.** It is not run again as a blind test.

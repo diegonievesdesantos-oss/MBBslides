@@ -24,6 +24,12 @@ The last synthetic round: time and accumulation, the failures v2.4's blind check
   The only right value lost on the other sets and the v1.8 project is one half-year point on v2.3's
   sealed set.
 - **Dropped:** "a target is updated only by a target" lost 4 right values.
+- **Blind, on the v2.5 sealed set** (4 cases, 392 keyed numbers, run once; 2.4.0 vs 2.5):
+  - proposed values right: 78/109 → 84/110;
+  - "outdated" right: 81% → 83%;
+  - "current" right: 67/70 → 70/72.
+
+  A small gain, but on every measure and with none lost: the first blind improvement since v2.3.
 
 ## 2.4.0 — Choosing the new value: one source value per figure, years, weak heads
 
