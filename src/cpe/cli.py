@@ -367,6 +367,19 @@ def cmd_holdout(a):
     return 0
 
 
+def cmd_deck(a):
+    """Existing-deck ingestion and update plan (v1.8)."""
+    from .reasoning import deck_update
+
+    if a.deck_cmd == "ingest":
+        inv = deck_update.write_ingest(a.pptx, a.out)
+        _p(f"{len(inv['slides'])} slides read from {a.pptx} → {a.out}/old_deck.json, old_deck_spec.json, old_ghost.md")
+        return 0
+    plan = deck_update.write_plan(a.work)
+    _p(deck_update.plan_markdown(plan))
+    return 0
+
+
 def cmd_reason(a):
     """Source-to-deck reasoning artifacts (v1.7): facts, checks, ghost deck, trace, benchmark."""
     from .reasoning import benchmark, checks, facts, ghost, graph
@@ -549,6 +562,10 @@ def main(argv=None) -> int:
     h = hs.add_parser("status"); h.add_argument("round"); h.add_argument("--record", action="store_true"); h.set_defaults(f=cmd_human)
     h = hs.add_parser("mark-used"); h.add_argument("round"); h.add_argument("--change", required=True, help="what the votes were used to change"); h.set_defaults(f=cmd_human)
     s = sub.add_parser("holdout"); s.add_argument("which", choices=["private", "external", "intake", "external-seal", "external-run", "corporate-run"]); s.add_argument("--root"); s.add_argument("-o", "--out"); s.add_argument("--record", action="store_true"); s.set_defaults(f=cmd_holdout)
+    s = sub.add_parser("deck", help="existing deck: ingest structure and conventions, plan the update against new facts (v1.8)")
+    ds = s.add_subparsers(dest="deck_cmd", required=True)
+    d = ds.add_parser("ingest"); d.add_argument("pptx"); d.add_argument("-o", "--out", required=True); d.set_defaults(f=cmd_deck)
+    d = ds.add_parser("stale", help="old deck numbers vs the new fact model: current / outdated / untraced"); d.add_argument("work"); d.set_defaults(f=cmd_deck)
     s = sub.add_parser("reason", help="source-to-deck reasoning artifacts (v1.7)"); rs = s.add_subparsers(dest="reason_cmd", required=True)
     r = rs.add_parser("facts"); r.add_argument("sources"); r.add_argument("-o", "--out", required=True); r.set_defaults(f=cmd_reason)
     r = rs.add_parser("check"); r.add_argument("work"); r.add_argument("--sources"); r.add_argument("--enrich", action="store_true",

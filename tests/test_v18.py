@@ -64,3 +64,52 @@ def test_chart_data_in_excel_and_word_sources(tmp_path):
     wb.save(tmp_path / "c.xlsx")
     charts = [t for t in ingest([tmp_path / "c.xlsx"])["tables"] if t["loc"].startswith("chart")]
     assert charts and charts[0]["header"] == ["Ventas por región", "Ventas"] and charts[0]["rows"][1] == ["Sur", 9.25]
+
+
+def _old_deck(path):
+    from pptx import Presentation
+    from pptx.chart.data import CategoryChartData
+    from pptx.enum.chart import XL_CHART_TYPE
+    from pptx.util import Inches, Pt
+
+    prs = Presentation()
+    blank = prs.slide_layouts[6]
+    s = prs.slides.add_slide(blank)
+    tb = s.shapes.add_textbox(Inches(1), Inches(1), Inches(8), Inches(1))
+    tb.text_frame.text = "Plan de crecimiento 2025"
+    s = prs.slides.add_slide(blank)
+    tb = s.shapes.add_textbox(Inches(0.5), Inches(0.3), Inches(9), Inches(1))
+    tb.text_frame.text = "Las ventas crecieron hasta 120 M€ con un margen del 18%"
+    tb.text_frame.paragraphs[0].runs[0].font.size = Pt(24)
+    cd = CategoryChartData()
+    cd.categories = ["Norte", "Sur"]
+    cd.add_series("Ventas", (70, 50))
+    s.shapes.add_chart(XL_CHART_TYPE.COLUMN_CLUSTERED, Inches(1), Inches(2), Inches(6), Inches(4), cd)
+    prs.save(str(path))
+
+
+def test_existing_deck_ingest_and_update_plan(tmp_path):
+    from cpe.reasoning.deck_update import ingest_deck, to_spec, update_plan
+    _old_deck(tmp_path / "old.pptx")
+    inv = ingest_deck(tmp_path / "old.pptx")
+    assert [s["role"] for s in inv["slides"]] == ["title", "content"]
+    assert inv["slides"][1]["headline"].startswith("Las ventas crecieron") and inv["slides"][1]["exhibits"][0]["type"] == "column"
+    spec = to_spec(inv)
+    assert spec["slides"][1]["visual"]["data"]["series"][0]["values"] == [70, 50]
+    facts = [{"id": "F1", "claim": "Ventas totales 2026: 135 M€", "values": [{"value": 135, "unit": "EUR_M"}]},
+             {"id": "F2", "claim": "Margen bruto 2026 del 18%", "values": [{"value": 18, "unit": "PCT"}]},
+             {"id": "F3", "claim": "Ventas Norte 2026: 70", "values": [{"value": 70, "unit": ""}]}]
+    plan = update_plan(inv, facts)
+    st = {q["raw"]: q["status"] for q in plan["slides"][1]["numbers"]}
+    assert st["18%"] == "current" and st["70"] == "current" and st["50"] == "untraced"
+    outdated = [q for q in plan["slides"][1]["numbers"] if q["status"] == "outdated"]
+    assert outdated and outdated[0]["fact"] == "F1" and plan["slides"][1]["action"] == "update"
+
+
+def test_waterfall_is_rebuilt_from_stacked_columns():
+    from cpe.reasoning.deck_update import _waterfall_steps
+    ex = {"categories": ["2024", "Precio", "Volumen", "2025"],
+          "series": [{"name": "Base", "values": [0, 100, 90, 0]}, {"name": "Total", "values": [100, 0, 0, 110]},
+                     {"name": "Increase", "values": [0, 20, 0, 0]}, {"name": "Decrease", "values": [0, 0, 10, 0]}]}
+    assert _waterfall_steps(ex) == [{"label": "2024", "value": 100.0, "type": "total"}, {"label": "Precio", "value": 20.0},
+                                    {"label": "Volumen", "value": -10.0}, {"label": "2025", "value": 110.0, "type": "total"}]
