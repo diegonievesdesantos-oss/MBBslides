@@ -39,12 +39,25 @@ def prepare(old_pptx: str | Path, sources: str | Path, work: str | Path) -> dict
     else:
         e = fresh
     e["derived"] = deck_patch.derive_edits(plan, e)
+    rev = _messages(work, plan, e)
     path.write_text(json.dumps(e, indent=2, ensure_ascii=False) + "\n", encoding="utf-8", newline="\n")
     (work / "edits.md").write_text(deck_patch.edits_markdown(e), encoding="utf-8", newline="\n")
-    meta = {"old_pptx": str(Path(old_pptx).resolve()), "sources": str(Path(sources).resolve()), "slides": len(inv["slides"]),
+    meta = {"messages": {v: sum(1 for r in rev if r["verdict"] == v) for v in ("holds", "figures updated", "no longer holds", "check")},
+            "old_pptx": str(Path(old_pptx).resolve()), "sources": str(Path(sources).resolve()), "slides": len(inv["slides"]),
             "facts": fm["stats"]["facts"], "plan": plan["totals"], "edits": len(e["edits"]), "approved_kept": kept}
     (work / "update.json").write_text(json.dumps(meta, indent=2, ensure_ascii=False) + "\n", encoding="utf-8", newline="\n")
     return meta
+
+
+def _messages(work: Path, plan: dict, e: dict) -> list[dict]:
+    """v2.0 item 5: each headline against the new values; set_headline proposals where it no longer holds."""
+    from . import messages
+
+    rev = messages.review(plan, e)
+    messages.headline_edits(rev, e)
+    (work / "messages.json").write_text(json.dumps(rev, indent=2, ensure_ascii=False) + "\n", encoding="utf-8", newline="\n")
+    (work / "messages.md").write_text(messages.markdown(rev), encoding="utf-8", newline="\n")
+    return rev
 
 
 def apply(work: str | Path, out: str | Path, mark: bool = False, accept_derived: bool = False) -> dict:
@@ -59,14 +72,14 @@ def apply(work: str | Path, out: str | Path, mark: bool = False, accept_derived:
         for x in e["edits"]:
             if x.get("derived") and not x["derived"].get("pending_parts"):
                 x["approved"] = True
+    rev = _messages(work, plan, e)  # with the derived figures now approved, the claims are re-read
     (work / "edits.json").write_text(json.dumps(e, indent=2, ensure_ascii=False) + "\n", encoding="utf-8", newline="\n")
     r = deck_patch.write_patch(meta["old_pptx"], work / "edits.json", out, mark=mark)
     changed = {x["id"] for x in r["applied"] if x.get("id")}
-    rewrite = []
-    for s in plan["slides"]:
-        hits = [q for q in s["numbers"] if q.get("id") in changed and q["where"] == "title"]
-        if hits:  # the headline's own figures changed: its message may no longer hold
-            rewrite.append({"slide": s["slide"], "headline": s["headline"], "changed": [q["raw"] for q in hits]})
+    rewritten = {x["slide"] for x in r["applied"] if x.get("op") == "set_headline"}
+    rewrite = [{"slide": m["slide"], "headline": m["headline"], "verdict": m["verdict"], "rewritten": m["slide"] in rewritten,
+                "why": [c for c in m["claims"] if c["status"] != "holds"] + [{"changed": c} for c in m["changed"]] + [{"unresolved": u} for u in m["unresolved"]]}
+               for m in rev if m["verdict"] != "holds"]
     applied_ids = changed | {x.get("id") for x in r["failed"] if x.get("id")}
     left = [{"slide": s["slide"], "where": q["where"], "number": q["raw"], "status": q["status"]} for s in plan["slides"] for q in s["numbers"]
             if q["status"] in ("outdated", "untraced") and q.get("id") not in applied_ids and str(s["slide"]) not in {str(d) for d in r["slides_deleted"]}]
@@ -76,14 +89,59 @@ def apply(work: str | Path, out: str | Path, mark: bool = False, accept_derived:
     return rep
 
 
+def rebuild(work: str | Path, slides: list[int] | None = None, render: bool = True) -> dict:
+    """v2.0 item 5: build the slides whose message no longer holds in the old deck's own style and
+    propose replacing them (unapproved `replace_slide` edits). The spec in work/rewrite/deck.json is
+    kept once written: edit it (headline, exhibit) and run --rebuild again."""
+    from ..brand.ingest import ingest as brand_ingest
+    from ..pipeline import run
+    from ..spec import load_spec
+    from . import deck_patch
+    from .rebuild import rewrite_spec
+
+    work = Path(work)
+    meta = json.loads((work / "update.json").read_text(encoding="utf-8"))
+    if not (work / "brand" / "theme.json").exists():
+        brand_ingest(meta["old_pptx"], work / "brand")
+    plan = json.loads((work / "update_plan.json").read_text(encoding="utf-8"))
+    e0 = json.loads((work / "edits.json").read_text(encoding="utf-8"))
+    e0["derived"] = deck_patch.derive_edits(plan, e0)
+    _messages(work, plan, e0)  # the claims re-read with what is approved now
+    (work / "edits.json").write_text(json.dumps(e0, indent=2, ensure_ascii=False) + "\n", encoding="utf-8", newline="\n")
+    rw = work / "rewrite"
+    rw.mkdir(exist_ok=True)
+    spec_path = rw / "deck.json"
+    if not spec_path.exists() or slides:
+        spec = rewrite_spec(work, slides)
+        if not spec["slides"]:
+            return {"slides": [], "why": "no slide whose message no longer holds (pass --slides to choose)"}
+        spec_path.write_text(json.dumps(spec, indent=2, ensure_ascii=False) + "\n", encoding="utf-8", newline="\n")
+    spec = json.loads(spec_path.read_text(encoding="utf-8"))
+    r = run(load_spec(str(spec_path)), str(rw / "out"), do_render=render, name="rebuilt")
+    built = (rw / "out" / "rebuilt.pptx").resolve()
+    e = json.loads((work / "edits.json").read_text(encoding="utf-8"))
+    e["edits"] = [x for x in e["edits"] if x.get("op") != "replace_slide" or x.get("approved")]
+    for k, s in enumerate(spec["slides"]):
+        n = s.get("_old_slide") or int(s["id"][1:])
+        if any(x.get("op") == "replace_slide" and x["slide"] == n for x in e["edits"]):
+            continue
+        e["edits"].append({"op": "replace_slide", "slide": n, "from": str(built), "index": k, "headline": s.get("headline"),
+                           "approved": False, "qa": {"passed": r.get("passed"), "score": r.get("deck_score")}})
+    (work / "edits.json").write_text(json.dumps(e, indent=2, ensure_ascii=False) + "\n", encoding="utf-8", newline="\n")
+    return {"slides": [s.get("_old_slide") for s in spec["slides"]], "spec": str(spec_path), "built": str(built),
+            "qa": {"passed": r.get("passed"), "score": r.get("deck_score"), "errors": (r.get("counts") or {}).get("error")}}
+
+
 def report_markdown(r: dict) -> str:
     L = [f"# Update report — {r['source']} → {r['output']}", "",
          f"- **Applied:** {len(r['applied'])} edits ({sum(1 for a in r['applied'] if a.get('derived'))} derived); "
-         f"**failed:** {len(r['failed'])}; **not approved:** {r['skipped_unapproved']}; **slides deleted:** {r['slides_deleted'] or 'none'}.",
+         f"**failed:** {len(r['failed'])}; **not approved:** {r['skipped_unapproved']}; **slides deleted:** {r['slides_deleted'] or 'none'}; "
+         f"**slides rebuilt:** {r.get('slides_rebuilt') or 'none'}.",
          f"- **Left unchanged for review:** {len(r['left_unchanged'])} old numbers the plan found outdated or could not trace.", ""]
     if r["rewrite_headlines"]:
-        L += ["## Headlines whose own figures changed (check the message still holds)", ""]
-        L += [f"- slide {w['slide']}: {w['headline']} — changed {', '.join(w['changed'])}" for w in r["rewrite_headlines"]] + [""]
+        L += ["## Slides whose message changed (messages.md has the detail)", ""]
+        L += [f"- slide {w['slide']} — **{w['verdict']}**{' (headline rewritten)' if w['rewritten'] else ''}: {w['headline']}"
+              for w in r["rewrite_headlines"]] + [""]
     if r["failed"]:
         L += ["## Not applied", ""] + [f"- slide {f.get('slide')}: {f['why']}" for f in r["failed"]] + [""]
     L += ["## Left unchanged (outdated or untraced, no approved edit)", ""]

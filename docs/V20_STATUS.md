@@ -9,7 +9,7 @@ owner's blind validation.
 | 2 | One update command: `cpe update` | **done** |
 | 3 | Derived figures in `deck stale`: totals, net rows, ratios, repeated figures | **done** |
 | 4 | Conflicts by definition (same quantity, different scope: management report vs ledger vs full cost) | not started |
-| 5 | Rewrite slides whose message no longer holds (new headline and exhibit, keeping the layout) | not started; `update_report.md` already lists the headlines whose own figures changed |
+| 5 | Rewrite slides whose message no longer holds (new headline and exhibit, keeping the layout) | **done**: `messages.md`, `set_headline`, `cpe update --rebuild` with `replace_slide` |
 
 ## Updating a deck
 
@@ -24,6 +24,45 @@ cpe update --apply work -o new.pptx --mark --accept-derived
 - Re-running `cpe update` keeps every approval and correction.
 - `--accept-derived` applies only figures computed from approved values. A figure with a part not yet
   approved stays a provisional proposal.
+
+## Slides whose message no longer holds (item 5)
+
+`cpe update` reads every headline against the new values: approved edits, figures derived from them,
+and the numbers found current. Each slide gets a verdict in `work/messages.md`:
+
+| verdict | meaning | what is proposed |
+|---|---|---|
+| holds | no headline figure changed, no claim contradicted | nothing |
+| figures updated | the headline's own figures changed; its claims still hold | the headline with the new figures (the number edits apply them) |
+| no longer holds | a threshold claim ("menos de 5 años", "más del 20%", "supera …") held with the old values and fails with the new | a mechanical rewrite as a `set_headline` edit, unapproved |
+| check | a headline figure is outdated or untraced, with no approved value | nothing: a person decides |
+
+To rebuild a slide whose argument changed, run `cpe update --rebuild work [--slides 4,6]`:
+- It writes `work/rewrite/deck.json` with those slides, taken from the old deck's native rebuild with
+  every approved value and the proposed headline.
+- You edit the headline and the exhibit there and run it again.
+- It builds the slides with the brand learned from the old deck itself and proposes `replace_slide`
+  edits.
+
+On `--apply`, the rebuilt slide takes the old one's place in the original file:
+- It sits on the old slide's own layout, with the old slide's page-number placeholder.
+- Placeholders become plain shapes with their geometry and style written out.
+- Learned repeated shapes, charts and pictures are copied.
+- The rest of the file is untouched.
+
+**On the v1.8 project:**
+- **Slide 6** ("Las dos fases se pagan en menos de 5 años") is found to no longer hold: payback
+  4,4 / 3,1 → 9,2 / 5,8. The total column is not one of "las dos fases".
+- **Proposed headline:** "Las dos fases se pagan en 9,2 y 5,8 años; la fase 2 es la más rentable".
+- **The rebuilt slide 6:**
+  - passed QA (92, 0 errors);
+  - sits in the original deck with its footer, logo and page number;
+  - carries its source line and the business case with every approved and derived figure.
+- **Slide 2:** its figures were updated (6,65 M€ · 0,89 M€ · 7,5 años).
+- **Slides 3, 4 and 7:** marked "check" (14%, 6% and 7,8 M€ have no approved value).
+
+The mechanical rewrite is a lead, not a message. "La fase 2 es la más rentable" is not checked
+(superlatives are not read).
 
 ## Measured (v1.8 project, owner's key; in-sample: the case is development data)
 

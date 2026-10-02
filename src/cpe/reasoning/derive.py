@@ -120,7 +120,24 @@ def relations(plan: dict) -> list[dict]:
                         rels.append({"op": "sum", "target": nid(n, tgt), "parts": [nid(n, p) for p in parts], "how": "sum stated in the text"})
                         break
     rels += _same(plan, rels)
+    rels += _same_slide(plan, {r["target"] for r in rels})
     return rels
+
+
+def _same_slide(plan: dict, taken: set) -> list[dict]:
+    """A headline repeating, word for word, a figure shown on its own slide ("se recupera en 3,7 años"
+    and the KPI "3,7 años"): it follows that figure."""
+    out = []
+    for s in plan["slides"]:
+        n = s["n"] if "n" in s else s["slide"]
+        body = [q for q in s["numbers"] if _usable(q) and q["where"] != "title"]
+        for q in s["numbers"]:
+            if q["where"] != "title" or not _usable(q) or nid(n, q) in taken or len(re.sub(r"\D", "", q["raw"])) < 2:
+                continue
+            same = [b for b in body if b["raw"] == q["raw"]]
+            if len(same) == 1:
+                out.append({"op": "same", "target": nid(n, q), "parts": [nid(n, same[0])], "mult": 1.0, "how": f"same figure as {same[0]['where']}"})
+    return out
 
 
 def _same(plan: dict, rels: list[dict]) -> list[dict]:

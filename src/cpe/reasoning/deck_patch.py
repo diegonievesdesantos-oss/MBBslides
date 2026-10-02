@@ -234,6 +234,23 @@ def _highlight(r_el) -> None:
         rpr.append(hl)
 
 
+def _set_frame_text(tf, text: str, mark: bool) -> None:
+    """The whole text of a frame replaced, in its first run (so the headline keeps its formatting)."""
+    paras = list(tf.paragraphs)
+    runs = [r for p in paras for r in p.runs]
+    if not runs:
+        tf.text = text
+        return
+    first = runs[0]
+    first.text = text
+    for r in runs[1:]:
+        r._r.getparent().remove(r._r)
+    for p in paras[1:]:
+        p._p.getparent().remove(p._p)
+    if mark:
+        _highlight(first._r)
+
+
 def _number(slide, e: dict, mark: bool) -> str | None:
     where = e["where"]
     if where == "title" or where.startswith("body["):
@@ -298,9 +315,11 @@ def apply_edits(pptx_in: str | Path, edits: dict, pptx_out: str | Path, mark: bo
     applied, failed, skipped = [], [], []
     notes: dict = {}
     deletes = []
-    for e in edits.get("edits") or []:
+    replaces: dict = {}
+    order = {"number": 0, "set_chart": 0, "replace_text": 1, "set_headline": 2, "note": 3, "replace_slide": 4, "delete_slide": 4}
+    for e in sorted(edits.get("edits") or [], key=lambda x: order.get(x.get("op", "number"), 5)):  # a headline rewrite after its numbers
         op = e.get("op", "number")
-        if op == "number" and not (e.get("approved") or accept_proposed):
+        if op in ("number", "set_headline", "replace_slide") and not (e.get("approved") or accept_proposed):
             skipped.append(e)
             continue
         n = int(e["slide"])
@@ -312,6 +331,12 @@ def apply_edits(pptx_in: str | Path, edits: dict, pptx_out: str | Path, mark: bo
         if op == "number":
             why = _number(slide, e, mark)
             line = f"{e.get('old') or e['find']} → {e['replace']}" + (f" ({e['fact']})" if e.get("fact") else "")
+        elif op == "set_headline":
+            shapes = _texts(slide)
+            why = None if shapes and shapes[0] is not None else "no headline found"
+            if not why:
+                _set_frame_text(shapes[0].text_frame, e["text"], mark)
+            line = f"headline rewritten: '{e['text']}'"
         elif op == "replace_text":
             frames = [sh.text_frame for sh in slide.shapes if sh.has_text_frame]
             frames += [c.text_frame for sh in slide.shapes if getattr(sh, "has_table", False) and sh.has_table for r in sh.table.rows for c in r.cells]
@@ -336,6 +361,13 @@ def apply_edits(pptx_in: str | Path, edits: dict, pptx_out: str | Path, mark: bo
         elif op == "delete_slide":
             deletes.append(n)
             line = "slide deleted"
+        elif op == "replace_slide":  # v2.0: a rebuilt slide takes this one's place, on its layout
+            src = Path(e["from"])
+            if not src.exists():
+                why = f"rebuilt deck {src} not found"
+            else:
+                replaces[n] = e
+            line = f"slide rebuilt: '{e.get('headline', '')}'"
         elif op == "note":
             line = e["text"]
         else:
@@ -349,19 +381,30 @@ def apply_edits(pptx_in: str | Path, edits: dict, pptx_out: str | Path, mark: bo
     for n, lines in notes.items():
         if n in deletes:
             continue
-        tf = slides[n - 1].notes_slide.notes_text_frame
+        target = slides[n - 1]
+        tf = target.notes_slide.notes_text_frame
         prefix = (tf.text + "\n\n") if tf.text.strip() else ""
         tf.text = prefix + "Updated by cpe deck patch:\n" + "\n".join(f"- {x}" for x in lines)
     lst = prs.slides._sldIdLst
     ids = list(lst)
-    for n in sorted(set(deletes), reverse=True):
-        sid = ids[n - 1]
+    built: dict = {}
+    from pptx import Presentation as _P
+
+    from .rebuild import transplant_slide
+
+    for n in sorted(set(replaces) - set(deletes), reverse=True):  # all insertions first: new part names stay unique
+        e = replaces[n]
+        src = built.setdefault(e["from"], _P(e["from"]))
+        new = transplant_slide(prs, list(src.slides)[int(e.get("index", 0))], n - 1, slides[n - 1].slide_layout, old_slide=slides[n - 1])
+        new.notes_slide.notes_text_frame.text = f"Rebuilt by cpe update (old slide {n}). " + "\n".join(notes.get(n, []))
+    for n in sorted(set(deletes) | set(replaces), reverse=True):
+        sid = ids[n - 1]  # the old slide's own entry, wherever the insertions moved it
         prs.part.drop_rel(sid.rId)
         lst.remove(sid)
     Path(pptx_out).parent.mkdir(parents=True, exist_ok=True)
     prs.save(str(pptx_out))
     return {"source": Path(pptx_in).name, "output": Path(pptx_out).name, "applied": applied, "failed": failed,
-            "skipped_unapproved": len(skipped), "slides_deleted": sorted(set(deletes)), "marked": mark}
+            "skipped_unapproved": len(skipped), "slides_deleted": sorted(set(deletes)), "slides_rebuilt": sorted(set(replaces) - set(deletes)), "marked": mark}
 
 
 def report_markdown(r: dict) -> str:

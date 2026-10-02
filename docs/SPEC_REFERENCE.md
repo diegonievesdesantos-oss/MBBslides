@@ -110,6 +110,11 @@ Since 2.0:
 - `cpe update --apply work -o new.pptx [--mark] [--accept-derived]` patches the original file.
 - Derived figures (totals, net rows, ratios, sums in a sentence, the same figure repeated) are
   recomputed from approved values. `cpe deck edits work --derive` shows them before applying.
+- `work/messages.md` says whether each headline still holds with the new values (threshold claims).
+  Edit ops `set_headline {slide, text}` (keeps the headline's formatting) and
+  `replace_slide {slide, from, index}` (transplants a built slide onto the old slide's layout).
+- `cpe update --rebuild work [--slides N,M]` builds the slides whose message no longer holds, in the
+  old deck's style.
 
 ## Patches
 

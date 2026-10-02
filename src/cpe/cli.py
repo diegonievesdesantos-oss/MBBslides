@@ -397,13 +397,24 @@ def cmd_update(a):
     """(v2.0) Update an existing deck: prepare the edits, then apply the approved ones to the original."""
     from .reasoning import update
 
+    if a.rebuild:
+        r = update.rebuild(a.rebuild, [int(x) for x in a.slides.split(",")] if a.slides else None, render=not a.no_render)
+        if not r["slides"]:
+            _p(r["why"])
+            return 0
+        _p(f"slides {r['slides']} rebuilt in the old deck's style → {r['built']} (QA {r['qa']}); spec to edit: {r['spec']}; "
+           f"approve the replace_slide edits in edits.json, then --apply")
+        return 0
     if a.apply:
+        if not a.out:
+            _p("--apply needs -o NEW.pptx")
+            return 2
         r = update.apply(a.apply, a.out, mark=a.mark, accept_derived=a.accept_derived)
         _p(f"applied {len(r['applied'])} · failed {len(r['failed'])} · not approved {r['skipped_unapproved']} · "
            f"headlines to check {len(r['rewrite_headlines'])} · left for review {len(r['left_unchanged'])} → {a.out} (update_report.md beside it)")
         return 1 if r["failed"] else 0
-    if not (a.pptx and a.sources):
-        _p("usage: cpe update OLD.pptx SOURCES -o WORK   |   cpe update --apply WORK -o NEW.pptx")
+    if not (a.pptx and a.sources and a.out):
+        _p("usage: cpe update OLD.pptx SOURCES -o WORK  |  cpe update --rebuild WORK  |  cpe update --apply WORK -o NEW.pptx")
         return 2
     m = update.prepare(a.pptx, a.sources, a.out)
     _p(f"{m['slides']} slides, {m['facts']} facts; numbers {m['plan']}; {m['edits']} edits in {a.out}/edits.json "
@@ -622,10 +633,13 @@ def main(argv=None) -> int:
     d.add_argument("--mark", action="store_true", help="highlight changed text for review")
     d.add_argument("--accept-proposed", action="store_true", help="apply every proposed edit, approved or not (dry run)"); d.set_defaults(f=cmd_deck)
     s = sub.add_parser("update", help="(v2.0) update an existing deck: OLD.pptx SOURCES -o WORK, then --apply WORK -o NEW.pptx")
-    s.add_argument("pptx", nargs="?"); s.add_argument("sources", nargs="?"); s.add_argument("-o", "--out", required=True)
+    s.add_argument("pptx", nargs="?"); s.add_argument("sources", nargs="?"); s.add_argument("-o", "--out")
     s.add_argument("--apply", metavar="WORK", help="apply the approved edits of WORK to the original deck")
     s.add_argument("--mark", action="store_true", help="highlight changed text for review")
     s.add_argument("--accept-derived", action="store_true", help="also apply totals / ratios recomputed from approved values")
+    s.add_argument("--rebuild", metavar="WORK", help="build the slides whose message no longer holds in the old deck's style (replace_slide edits)")
+    s.add_argument("--slides", help="with --rebuild: which old slides (e.g. 4,6)")
+    s.add_argument("--no-render", action="store_true", help="with --rebuild: skip rendering")
     s.set_defaults(f=cmd_update)
     s = sub.add_parser("reason", help="source-to-deck reasoning artifacts (v1.7)"); rs = s.add_subparsers(dest="reason_cmd", required=True)
     r = rs.add_parser("facts"); r.add_argument("sources"); r.add_argument("-o", "--out", required=True); r.set_defaults(f=cmd_reason)

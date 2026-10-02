@@ -22,6 +22,15 @@ validation (unseen templates and new cases, judged only against the owner's key)
 
   A derived proposal whose parts are not all approved is marked provisional, and `--accept-derived`
   never applies it.
+- **Slides whose message no longer holds (item 5):**
+  - `work/messages.md` gives each slide a verdict: holds, figures updated, no longer holds, or check.
+  - A threshold claim in a headline must hold with the old values and is re-read with the new ones.
+  - A headline that no longer holds gets a mechanical `set_headline` proposal, unapproved.
+  - `cpe update --rebuild` builds the flagged slides in the old deck's own style. On `--apply`, a
+    `replace_slide` edit transplants each one into the original, on the old slide's layout.
+  - On the v1.8 project:
+    - slide 6 "se pagan en menos de 5 años" is caught (payback now 9,2 / 5,8);
+    - the rebuilt slide passed QA (92, 0 errors) and sits in the original deck.
 - **`deck stale`:**
   - durations ("se recupera en 3,7 años") are read as figures;
   - horizons and criteria ("TIR a 10 años", "en menos de 5 años") are ignored;

@@ -95,3 +95,52 @@ def test_cpe_update_end_to_end(tmp_path):
     assert main(["update", str(tmp_path / "old.pptx"), str(tmp_path / "src"), "-o", str(work)]) == 0
     e2 = json.loads((work / "edits.json").read_text(encoding="utf-8"))
     assert sum(1 for x in e2["edits"] if x.get("approved") and not x.get("derived")) == 2
+
+
+def test_messages_rebuild_and_transplant(tmp_path):
+    """Item 5: a headline claim the new figures contradict is found; the slide is rebuilt in the deck's
+    own style and takes the old slide's place in the original file."""
+    from pptx import Presentation
+
+    from cpe.cli import main
+    from cpe.reasoning import messages
+
+    _bc_deck(tmp_path / "old.pptx")
+    (tmp_path / "src").mkdir()
+    (tmp_path / "src" / "n.md").write_text("# Nota\n\nSin cifras nuevas.\n", encoding="utf-8")
+    work = tmp_path / "work"
+    assert main(["update", str(tmp_path / "old.pptx"), str(tmp_path / "src"), "-o", str(work)]) == 0
+    plan = json.loads((work / "update_plan.json").read_text(encoding="utf-8"))
+    e = json.loads((work / "edits.json").read_text(encoding="utf-8"))
+    ids = {(s["slide"], q["where"], q["raw"]): q for s in plan["slides"] for q in s["numbers"]}
+    for where, raw, new in (("exhibit[0].rows[5][1]", "4,9", "6,1"), ("exhibit[0].rows[5][2]", "4,1", "4,5"), ("exhibit[0].rows[0][1]", "3.200", "4.030")):
+        q = ids[(2, where, raw)]
+        e["edits"].append({"op": "number", "id": q["id"], "slide": 2, "where": where, "find": q["core"], "occ": q["occ"], "replace": new, "old": raw, "approved": True})
+    rev = {r["slide"]: r for r in messages.review(plan, e)}
+    assert rev[2]["verdict"] == "no longer holds"
+    claim = rev[2]["claims"][0]
+    assert claim["claim"].startswith("menos de 5 años") and claim["new"] == ["6,1", "4,5"]  # the total column is not one of "las dos fases"
+    assert rev[2]["proposal"] == "Las dos fases se pagan en 6,1 y 4,5 años"
+    assert rev[1]["verdict"] in ("holds", "check")
+    (work / "edits.json").write_text(json.dumps(e, ensure_ascii=False), encoding="utf-8")
+    assert main(["update", "--rebuild", str(work), "--no-render"]) == 0
+    spec = json.loads((work / "rewrite" / "deck.json").read_text(encoding="utf-8"))
+    s = spec["slides"][0]
+    assert s["headline"] == "Las dos fases se pagan en 6,1 y 4,5 años" and s["visual"]["rows"][0][1] == "4.030" and s["visual"]["rows"][5][1] == "6,1"
+    e = json.loads((work / "edits.json").read_text(encoding="utf-8"))
+    rep = next(x for x in e["edits"] if x["op"] == "replace_slide")
+    assert rep["slide"] == 2 and rep["approved"] is False
+    rep["approved"] = True
+    (work / "edits.json").write_text(json.dumps(e, ensure_ascii=False), encoding="utf-8")
+    out = tmp_path / "out" / "new.pptx"
+    assert main(["update", "--apply", str(work), "-o", str(out)]) == 0
+    new, old = Presentation(str(out)), Presentation(str(tmp_path / "old.pptx"))
+    assert len(new.slides) == len(old.slides)
+    texts = [sh.text_frame.text for sh in new.slides[1].shapes if sh.has_text_frame]
+    assert "Las dos fases se pagan en 6,1 y 4,5 años" in texts
+    assert not any(getattr(sh, "is_placeholder", False) and "TITLE" in str(sh.placeholder_format.type) for sh in new.slides[1].shapes)
+    assert new.slides[1].slide_layout.name == old.slides[1].slide_layout.name  # the old slide's own layout
+    tbl = next(sh for sh in new.slides[1].shapes if sh.has_table).table
+    assert any(c.text == "6,1" for r in tbl.rows for c in r.cells)
+    assert [sh.text_frame.text for sh in new.slides[0].shapes if sh.has_text_frame][0].startswith("Invertir")  # slide 1 untouched otherwise
+    assert "Rebuilt by cpe update" in new.slides[1].notes_slide.notes_text_frame.text

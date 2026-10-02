@@ -323,8 +323,12 @@ def to_spec(inv: dict, title: str = "") -> dict:
         sl = {"id": sid, "kind": "exec_summary" if s["role"] == "exec_summary" else "content", "headline": s["headline"],
               "purpose": f"(from the old deck, slide {s['n']}: {s['role']})", "_old_slide": s["n"]}
         ex = next((e for e in s["exhibits"] if not e.get("unreadable")), None)
+        notes = [b for b in s["body"] if re.match(r"\s*(fuente|fuentes|source|sources|nota|note|hipótesis|hipotesis)\s*:", b, re.I)]
+        if notes and ex:  # v2.0: the source line and footnote travel with the slide
+            sl["source"] = " ".join(notes)
+        sub = next((b for b in s["body"] if b not in notes and 2 <= len(b.split()) <= 14 and not _is_kpi(b)), None)
         if ex and ex["type"] == "table":
-            sl["visual"] = {"type": "table", "columns": [{"label": h} for h in ex["header"]], "rows": ex["rows"]}
+            sl["visual"] = {"type": "table", "columns": [{"label": h} for h in ex["header"]], "rows": ex["rows"], **({"title": sub} if sub else {})}
         elif ex and {x["name"] for x in ex["series"]} >= {"Base"} and any(x["name"].startswith(("Increase", "Decrease", "Total")) for x in ex["series"]):
             sl["visual"] = {"type": "waterfall", "title": ex.get("title") or "", "data": {"steps": _waterfall_steps(ex)}}
         elif ex:
