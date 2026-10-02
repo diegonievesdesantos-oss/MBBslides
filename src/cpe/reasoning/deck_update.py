@@ -688,6 +688,55 @@ def _match(q: dict, slide: dict, cands: list[dict]) -> tuple[str, list[dict], di
         best = max(sc for sc, _ in near)
         group = [c for sc, c in near if sc == best]
     primary = max(group, key=lambda c: (not c["month"], c["period"], c["analysis"]))  # an aggregate over a monthly slice, then the latest
+    # v2.4: the other candidates in order, for the one-to-one assignment across the deck
+    q["_ranked"] = [(top + 1, primary)] + sorted([(sc, c) for sc, c in pool if c is not primary], key=lambda x: -x[0])
+    return _decide(q, group, primary)
+
+
+def _same_old(a: dict, b: dict) -> bool:
+    """Two deck numbers that are one figure written at another scale (3,2 M€ and 3.200 k€)."""
+    va, vb = abs(a["value"]), abs(b["value"])
+    return bool(va and vb) and any(abs(va - vb * f) <= 1e-6 * max(va, vb * f) for f in (1, 1e3, 1e-3, 1e6, 1e-6))
+
+
+def _distinct(qs: list[dict]) -> int:
+    """How many different figures a list of deck numbers is (restatements count once)."""
+    reps: list = []
+    for q in qs:
+        if not any(_same_old(q, r) for r in reps):
+            reps.append(q)
+    return len(reps)
+
+
+SHARE_MAX = 2  # a source value may be the new value of up to this many different figures
+
+
+def _assign_one_to_one(pending: list[list]) -> None:
+    """v2.4 (item 3): each source value is the new value of one figure of the deck. When several deck
+    numbers that are not the same figure picked one source value, the best-scored keeps it and the others
+    move to their next candidate, or stay untraced. Restatements of one figure share it."""
+    claims: dict = {}
+    order = sorted((p for p in pending if p[1].get("_ranked")), key=lambda p: (-p[1]["_ranked"][0][0], ".rows[" not in p[1]["where"]))
+    for p in order:
+        q = p[1]
+        ranked = q["_ranked"]
+        best = ranked[0][0] - 1  # the primary's own score
+        chosen = None
+        for sc, c in ranked:
+            if c is not ranked[0][1] and sc < best - 1:
+                break  # only a near-equal alternative, not any weak one
+            key = (c["fact"], c["value"])
+            if _distinct(claims.get(key, []) + [q]) <= SHARE_MAX:
+                chosen = c
+                claims.setdefault(key, []).append(q)
+                break
+        if chosen is None:
+            p[2], p[3], p[4] = "untraced", [], None
+        elif chosen is not ranked[0][1]:
+            p[2], p[3], p[4] = _decide(q, [chosen], chosen)
+
+
+def _decide(q: dict, group: list[dict], primary: dict) -> tuple[str, list[dict], dict | None]:
     if _close_vals(q, primary):
         if primary["plan"]:
             return "untraced", group, None  # only a restatement of the old plan repeats it: not a confirmation
@@ -775,6 +824,7 @@ def update_plan(inv: dict, facts: list[dict]) -> dict:
         c["names"] = _cand_names(c)
     hint = deck_hint(inv["slides"])
     out = []
+    pending = []
     for s in inv["slides"]:
         items = []
         caps = [b for b in s.get("body") or [] if isinstance(b, str) and len(b.split()) <= 8 and not re.search(r"\d{2,}", b)]
@@ -786,18 +836,25 @@ def update_plan(inv: dict, facts: list[dict]) -> dict:
                 items.append({**q, "status": "ignored", "why": why})
                 continue
             status, group, primary = _match(q, s, cands)
-            if status == "current":
-                items.append({**q, "status": "current", "facts": sorted({c["fact"] for c in group})[:3], "fact_analysis": bool(primary["analysis"]),
-                              "fact_measures": sorted(primary["measures"])})
-            elif status == "outdated":
-                u = UNIT_TEXT.get(primary["unit"], "")
-                newv = f"{primary['value']:g}{u}" if u == "%" else (f"{primary['value']:g} {u}" if u else f"{primary['value']:g}")
-                items.append({**q, "status": "outdated", "new_value": newv, "fact": primary["fact"], "new_claim": primary["text"][:140],
-                              "new_display": _new_display({**q, "_hint": hint}, primary), "new_num": _new_num(q, primary),
-                              "fact_analysis": bool(primary["analysis"]), "fact_measures": sorted(primary["measures"])})
-            else:
-                items.append({**q, "status": "untraced"})
+            pending.append([s["n"], q, status, group, primary, len(items)])
+            items.append(None)
         out.append({"slide": s["n"], "role": s["role"], "headline": s["headline"], "numbers": items})
+    _assign_one_to_one(pending)  # v2.4: one source value is the new value of one figure, not of five
+    by_slide = {o["slide"]: o["numbers"] for o in out}
+    for n, q, status, group, primary, k in pending:
+        q.pop("_ranked", None)
+        if status == "current":
+            item = {**q, "status": "current", "facts": sorted({c["fact"] for c in group})[:3], "fact_analysis": bool(primary["analysis"]),
+                    "fact_measures": sorted(primary["measures"])}
+        elif status == "outdated":
+            u = UNIT_TEXT.get(primary["unit"], "")
+            newv = f"{primary['value']:g}{u}" if u == "%" else (f"{primary['value']:g} {u}" if u else f"{primary['value']:g}")
+            item = {**q, "status": "outdated", "new_value": newv, "fact": primary["fact"], "new_claim": primary["text"][:140],
+                    "new_display": _new_display({**q, "_hint": hint}, primary), "new_num": _new_num(q, primary),
+                    "fact_analysis": bool(primary["analysis"]), "fact_measures": sorted(primary["measures"])}
+        else:
+            item = {**q, "status": "untraced"}
+        by_slide[n][k] = item
     for s in out:
         for q in s["numbers"]:
             q["id"] = f"{s['slide']}|{q['where']}|{q.get('occ', 0)}|{q['raw']}"

@@ -441,3 +441,27 @@ def test_v23_fewer_false_current_and_safer_groups(tmp_path):
     assert q[(2, "€3,8 M")]["status"] != "current" and not q[(2, "€3,8 M")].get("new_value")  # a reminder confirms nothing
     gs = [{i.split("|")[0] for i, _ in g} for g in groups(plan)]
     assert not any({"3", "4"} <= g for g in gs)  # 57.000 flight hours and 57 AOG events: two quantities
+
+
+def test_v24_one_source_value_is_not_the_new_value_of_many_figures(tmp_path):
+    import json
+
+    from cpe.reasoning import facts
+    from cpe.reasoning.deck_update import ingest_deck, update_plan
+
+    src = tmp_path / "src"
+    src.mkdir()
+    (src / "acta_comite.md").write_text("El comité valida un ahorro anual en régimen de 3,5 M€.\n", encoding="utf-8")
+    facts.write_fact_model(src, tmp_path / "work")
+    fm = json.loads((tmp_path / "work" / "facts.json").read_text(encoding="utf-8"))["facts"]
+    _deck_with(tmp_path / "d.pptx", [
+        ("El ahorro anual en régimen será de 3,2 M€", None, None),
+        ("El programa ahorra 3,2 M€ al año en régimen", None, None),
+        ("Ahorro por fases", [("Concepto", "Fase 1", "Fase 2"), ("Ahorro anual (M€)", "2,0", "1,7")], None),
+        ("El ahorro de mermas llega a 2,6 M€ al año", None, None),
+        ("El ahorro energético suma 2,4 M€ anuales", None, None)])
+    plan = update_plan(ingest_deck(tmp_path / "d.pptx"), fm)
+    took = [(s["slide"], q["raw"]) for s in plan["slides"] for q in s["numbers"] if str(q.get("new_value") or "").startswith(("3.5 ", "3.5e"))]
+    assert {(1, "€3,2 M"), (2, "€3,2 M")} <= set(took)  # one figure restated: both follow
+    figures = {raw for _, raw in took}
+    assert len(figures) <= 2  # 3,5 M€ is not also the new 2,6 and 2,4 M€
