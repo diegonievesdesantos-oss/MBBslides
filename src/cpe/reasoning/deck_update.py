@@ -357,7 +357,7 @@ MEASURE_STEMS = {"inver": "inver", "capex": "inver", "ahorr": "ahorr", "savin": 
 # words that make a figure a restatement of a plan, an offer or the old deck, not an observation
 PLAN_RE = re.compile(r"\b(presupuest\w*|budget\w*|business case|previst\w*|previsi\w*|aprobad\w*|approved|garant\w*|guarantee\w*|ofert\w*|"
                      r"recordatorio|os recuerdo|reminder|reaffirm\w*|reiter\w*|tender\w*|licitaci\w*|"
-                     r"offer\w*|anterior|deck|objetivo|target|plan(?:ned)?|forecast)\b", re.I)
+                     r"offer\w*|propuesta\w*|proposal\w*|quote\w*|cotizaci\w*|anterior|deck|objetivo|target|plan(?:ned)?|forecast)\b", re.I)
 CODE_COL_RE = re.compile(r"\b(asiento|n[ºo°]|num|id|c[oó]digo|code|cuenta|account|factura|invoice|pedido|order|ref)\b", re.I)
 NON_FIGURE_UNITS = {"°c", "ºc", "niveles", "levels", "ubicaciones", "puestos", "locations"}
 
@@ -515,7 +515,10 @@ def _close_vals(q: dict, c: dict) -> bool:
         bs = [abs(c["value"]) * k for k in (1, 1e3, 1e-3, 1e6, 1e-6)]
     else:
         bs = [abs(c["value"])]
-    return any(abs(a - b) <= 0.015 * max(a, b, 1e-9) for b in bs)
+    from .derive import _step
+
+    tol = _step(q) * 1.0001 + 1e-9 * max(a, 1.0)  # v2.3: the source must round to what the deck shows, not merely be within 1.5%
+    return any(abs(a - b) <= tol for b in bs)
 
 
 def _same_magnitude(q: dict, c: dict) -> bool:
