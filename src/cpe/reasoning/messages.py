@@ -110,7 +110,20 @@ def review(plan: dict, edits: dict) -> list[dict]:
             if c.get("kind") == "breakeven" and c["new"][0][:2] in ("19", "20"):
                 proposal = proposal.replace(c["old"][0], c["new"][0], 1)
                 continue
-            if c.get("kind") in ("sign", "order", "breakeven"):
+            if c.get("kind") == "sign":  # v2.2: "ahorra 0,89 M€" → "cuesta 0,12 M€"
+                opp = _opposite(c["verb"], OPP_VERB)
+                if opp:
+                    proposal = re.sub(rf"\b{re.escape(c['verb'])}\b", opp, proposal, count=1)
+                    new = str(shown.get(c["id"], ""))
+                    if new[:1] in "-−" and new:
+                        proposal = proposal.replace(new, new[1:], 1)
+                continue
+            if c.get("kind") == "order":  # v2.2: "supera" → "no cubre"
+                opp = None if c.get("tie") else _opposite(c["word"], OPP_ORDER)
+                if opp:
+                    proposal = re.sub(rf"\b{re.escape(c['word'])}\b", opp, proposal, count=1)
+                continue
+            if c.get("kind") == "breakeven":
                 continue  # no mechanical rewrite: the argument itself changed
             if c.get("kind") == "superlative":  # the claimed winner becomes the actual one
                 if c.get("winner_label"):
@@ -138,27 +151,85 @@ ADJ = {"rentable": [(r"payback|retorno simple|periodo de recuperaci", "min"), (r
        "cheap": [(r"cost|capex|price|coste|inversi", "min")], "cara": [(r"coste|cost|inversi|capex|precio|price", "max")],
        "caro": [(r"coste|cost|inversi|capex|precio|price", "max")], "expensive": [(r"cost|capex|price", "max")],
        "productiva": [(r"productiv", "max")], "productivo": [(r"productiv", "max")], "productive": [(r"productiv", "max")],
-       "eficiente": [(r"coste por|cost per|productiv", "min")], "r[aá]pida": [(r"plazo|payback|tiempo|time", "min")]}
+       "eficiente": [(r"coste por|cost per|productiv", "min")], "r[aá]pida": [(r"plazo|payback|tiempo|time", "min")],
+       # v2.2 (item 5)
+       "rentables": [(r"payback|retorno simple|periodo de recuperaci", "min"), (r"\btir\b|\birr\b", "max"), (r"ahorro neto|beneficio", "max")],
+       "atractiv[ao]s?": [(r"\bvan\b|\bnpv\b|valor actual", "max"), (r"\btir\b|\birr\b", "max"), (r"payback|periodo de recuperaci", "min")],
+       "attractive": [(r"\bnpv\b|\bvan\b", "max"), (r"\birr\b|\btir\b", "max"), (r"payback", "min")],
+       "valios[ao]s?": [(r"\bvan\b|\bnpv\b|valor", "max")], "valuable": [(r"\bnpv\b|value", "max")],
+       "econ[oó]mic[ao]s?": [(r"coste|cost|inversi|capex|precio|price", "min")], "costos[ao]s?": [(r"coste|cost|inversi|capex|precio|price", "max")],
+       "barat[ao]s": [(r"coste|cost|inversi|capex|precio|price", "min")], "car[ao]s": [(r"coste|cost|inversi|capex|precio|price", "max")],
+       "cheaper|cheapest": [(r"cost|capex|price|coste|inversi", "min")],
+       "r[aá]pid[ao]s?": [(r"plazo|payback|tiempo|time|meses|months|semanas|weeks", "min")], "lent[ao]s?": [(r"plazo|payback|tiempo|time", "max")],
+       "fast|quick": [(r"time|payback|lead|months|weeks|plazo", "min")], "slow": [(r"time|payback|lead|plazo", "max")],
+       "eficientes": [(r"coste por|cost per|productiv", "min")], "efficient": [(r"cost per|coste por|productiv", "min")],
+       "productiv[ao]s": [(r"productiv", "max")],
+       "grandes?": [(r"volumen|volume|ventas|sales|ingres|revenue|capacidad|capacity|superficie|area", "max")],
+       "peque[ñn][ao]s?": [(r"volumen|volume|ventas|sales|ingres|revenue|capacidad|capacity|superficie|area", "min")],
+       "large|big": [(r"volume|sales|revenue|capacity|volumen|ventas", "max")], "small": [(r"volume|sales|revenue|capacity|volumen|ventas", "min")],
+       "profitable|profitably": [(r"payback", "min"), (r"\birr\b|\btir\b", "max"), (r"net saving|profit|ahorro neto", "max")]}
+# "la fase 2 tiene el mayor ahorro": the noun says the measure, mayor / menor which value wins
+SUP2_RE = re.compile(rf"(?P<ent>{ENTITY})\s+(?:tiene|aporta|ofrece|genera|logra|consigue|presenta|has|offers|delivers|brings|yields)\s+"
+                     rf"(?:la |el |los |las |the )?(?P<cmp>mayor(?:es)?|menor(?:es)?|m[aá]s alt[ao]s?|m[aá]s baj[ao]s?|highest|lowest|largest|smallest|biggest|best|worst)\s+"
+                     rf"(?P<noun>[a-záéíóúñ]{{4,}})", re.I)
 POS_VERB = re.compile(r"\b(ahorra\w*|ahorro de|genera\w*|gana\w*|crece\w*|sube\w*|aumenta\w*|mejora\w*|aporta\w*|saves?|generates?|earns?|grows?|rises?|increases?|improves?|adds?)\b[^.;\d]{0,25}$", re.I)
 ORDER_RE = re.compile(r"\b(supera\w*|por encima de|m[aá]s que|exceeds?|above|higher than|greater than|more than|por debajo de|menos que|below|lower than|less than|inferior a|superior a)\b", re.I)
+
+
+# v2.2 (item 5): the word that says the opposite, for a sign or an order that flipped (same person and number)
+OPP_VERB = {"ahorra": "cuesta", "ahorran": "cuestan", "ahorraría": "costaría", "ahorrarían": "costarían", "ahorrará": "costará",
+            "ahorrarán": "costarán", "genera": "consume", "generan": "consumen", "generará": "consumirá", "generarán": "consumirán",
+            "gana": "pierde", "ganan": "pierden", "ganará": "perderá", "crece": "cae", "crecen": "caen", "crecerá": "caerá",
+            "crecerán": "caerán", "sube": "baja", "suben": "bajan", "subirá": "bajará", "aumenta": "disminuye", "aumentan": "disminuyen",
+            "aumentará": "disminuirá", "mejora": "empeora", "mejoran": "empeoran", "mejorará": "empeorará", "aporta": "resta", "aportan": "restan",
+            "saves": "costs", "save": "cost", "generates": "consumes", "generate": "consume", "earns": "loses", "earn": "lose",
+            "grows": "shrinks", "grow": "shrink", "rises": "falls", "rise": "fall", "increases": "decreases", "increase": "decrease",
+            "improves": "worsens", "improve": "worsen", "adds": "subtracts", "add": "subtract"}
+OPP_ORDER = {"supera": "no alcanza", "superan": "no alcanzan", "superará": "no alcanzará", "por encima de": "por debajo de",
+             "por debajo de": "por encima de", "más que": "menos que", "mas que": "menos que", "menos que": "más que",
+             "superior a": "inferior a", "inferior a": "superior a", "exceeds": "falls short of", "exceed": "fall short of",
+             "above": "below", "below": "above", "higher than": "lower than", "lower than": "higher than",
+             "greater than": "less than", "more than": "less than", "less than": "more than"}
+
+
+def _opposite(word: str, table: dict) -> str | None:
+    w = table.get(word.lower())
+    if not w:
+        return None
+    return w[:1].upper() + w[1:] if word[:1].isupper() else w
 
 
 def _entity_key(t: str) -> str:
     return re.sub(r"\s+", " ", t.lower().replace("á", "a").replace("é", "e").replace("í", "i").replace("ó", "o").replace("ú", "u")).strip()
 
 
-def _superlatives(head: str, nums: list[dict], vals: dict) -> list[dict]:
+def _sup_claims(head: str) -> list[tuple]:
+    """(match, rules, worse) for each superlative of the headline: "la fase 2 es la más rentable" (the
+    adjective's measures) or, v2.2, "la fase 2 tiene el mayor ahorro" (the noun is the measure)."""
     out = []
     for m in SUP_RE.finditer(head):
-        ent = re.sub(r"^(la|el|the)\s+", "", m.group("ent").strip(), flags=re.I)
         adj = (m.group("adj") or "").lower()
         rules = next((v for k, v in ADJ.items() if re.fullmatch(k, adj)), None)
-        if not rules:
-            continue
-        worse = m.group("cmp").lower() in ("menos", "least", "peor", "worst")
+        if rules:
+            out.append((m, rules, m.group("cmp").lower() in ("menos", "least", "peor", "worst")))
+    for m in SUP2_RE.finditer(head):
+        cmp = m.group("cmp").lower()
+        low = bool(re.match(r"menor|m[aá]s baj|lowest|smallest|worst", cmp))
+        stem = _entity_key(m.group("noun"))[:5]
+        if cmp in ("best", "worst"):
+            continue  # "the best result": which value wins depends on the measure
+        out.append((m, [(stem, "min" if low else "max")], False))
+    return out
+
+
+def _superlatives(head: str, nums: list[dict], vals: dict) -> list[dict]:
+    out = []
+    for m, rules, worse in _sup_claims(head):
+        ent = re.sub(r"^(la|el|the)\s+", "", m.group("ent").strip(), flags=re.I)
         kind_word = _entity_key(ent).split(" ")[0]
         for row_rx, best in rules:
-            cells = [q for q in nums if q["where"].startswith("exhibit[") and re.search(row_rx, q.get("row") or q.get("context") or "", re.I)
+            cells = [q for q in nums if q["where"].startswith("exhibit[") and (re.search(row_rx, q.get("row") or q.get("context") or "", re.I)
+                                                                              or re.search(row_rx, _entity_key(q.get("row") or q.get("context") or "")))
                      and not re.search(r"\btotal(es)?\b", q.get("context") or "", re.I)]
             ents = {}
             for q in cells:
@@ -197,8 +268,9 @@ def _signs(head: str, in_head: list[dict], vals: dict) -> list[dict]:
         if old_v < 0:
             continue
         if vals[q["id"]] < 0:
+            verb = POS_VERB.search(head[max(0, m.start() - 40):m.start()]).group(1)
             out.append({"kind": "sign", "claim": head[max(0, m.start() - 25):m.end()].strip(), "status": "no longer holds",
-                        "old": [q["raw"]], "new": [f"{vals[q['id']]:g}"]})
+                        "old": [q["raw"]], "new": [f"{vals[q['id']]:g}"], "verb": verb, "id": q["id"]})
     return out
 
 
@@ -220,7 +292,7 @@ def _orders(head: str, in_head: list[dict], vals: dict) -> list[dict]:
         va, vb = abs(vals[a["id"]]), abs(vals[b["id"]])
         ok = va > vb if more else va < vb
         out.append({"kind": "order", "claim": head[pa:pb + len(b["raw"])], "status": "holds" if ok else "no longer holds",
-                    "old": [a["raw"], b["raw"]], "new": [f"{va:g}", f"{vb:g}"]})
+                    "old": [a["raw"], b["raw"]], "new": [f"{va:g}", f"{vb:g}"], "word": mid.group(0), "tie": va == vb})
     return out
 
 

@@ -351,3 +351,31 @@ def test_v22_projections_and_curves_from_their_drivers(tmp_path):
     assert rep[(3, "exhibit[1].Caja acumulada[2026]")] == "-4.5" and rep[(3, "exhibit[1].Caja acumulada[2028]")] == "-1.5"
     assert not new[(3, "exhibit[1].Caja acumulada[2028]")]["derived"].get("pending_parts")
     assert (3, "exhibit[1].Caja acumulada[2030]") not in new  # −6 + 5 × 1,5 = 1,5: unchanged
+
+
+def test_v22_headline_proposals_for_signs_orders_and_more_superlatives(tmp_path):
+    from cpe.reasoning import messages
+    from cpe.reasoning.deck_update import ingest_deck, update_plan
+
+    _deck_with(tmp_path / "d.pptx", [
+        ("Plan de inversión en dos fases", None, None),
+        ("El proyecto ahorra 0,89 M€ al año desde 2027", None, None),
+        ("El ahorro de 1,2 M€ supera el coste de 0,9 M€ anual", None, None),
+        ("La fase 2 tiene el mayor ahorro neto del programa", [("Concepto", "Fase 1", "Fase 2"), ("Ahorro neto anual (k€)", "732", "763")], None),
+        ("La zona norte es la más económica de las tres", [("Concepto", "Zona norte", "Zona sur", "Zona este"), ("Coste por pedido (€)", "4,1", "4,6", "5,0")], None)])
+    plan = update_plan(ingest_deck(tmp_path / "d.pptx"), [])
+    e = {"edits": []}
+    _approve(plan, e, 2, "title", "€0,89 M", "-0,12")
+    _approve(plan, e, 3, "title", "€1,2 M", "0,8")
+    _approve(plan, e, 3, "title", "€0,9 M", "0,9")
+    _approve(plan, e, 4, "exhibit[0].rows[0][1]", "732", "451")
+    _approve(plan, e, 4, "exhibit[0].rows[0][2]", "763", "436")
+    _approve(plan, e, 5, "exhibit[0].rows[0][1]", "4,1", "4,9")
+    _approve(plan, e, 5, "exhibit[0].rows[0][2]", "4,6", "4,4")
+    _approve(plan, e, 5, "exhibit[0].rows[0][3]", "5,0", "5,2")
+    rev = {r["slide"]: r for r in messages.review(plan, e)}
+    assert rev[2]["proposal"] == "El proyecto cuesta 0,12 M€ al año desde 2027"
+    assert rev[3]["proposal"] == "El ahorro de 0,8 M€ no alcanza el coste de 0,9 M€ anual"
+    assert any(c["kind"] == "superlative" and c["status"] == "no longer holds" for c in rev[4]["claims"])
+    assert rev[4]["proposal"] == "La Fase 1 tiene el mayor ahorro neto del programa"
+    assert rev[5]["proposal"] == "La Zona sur es la más económica de las tres"
