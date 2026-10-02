@@ -1,7 +1,7 @@
 # Cerrar v1.8: qué tiene que aportar el responsable
 
 v1.8 tiene construido y probado todo lo que no depende de material real (ver
-[V18_STATUS.md](V18_STATUS.md)). Para cerrarla faltan tres entregas del responsable. Las plantillas
+[V18_STATUS.md](../V18_STATUS.md)). Para cerrarla faltan tres entregas del responsable. Las plantillas
 vacías para prepararlas están en [v18_intake/](v18_intake/).
 
 | entrega | qué es | plantilla | coste |

@@ -30,7 +30,7 @@ One real messy project with its previous deck ran end to end. Reasoning check: 0
 
 ## What needs the owner
 
-Step-by-step guide (Spanish) and blank intake templates: [V18_OWNER_BRIEF.md](V18_OWNER_BRIEF.md), [v18_intake/](v18_intake/).
+Step-by-step guide (Spanish) and blank intake templates: [archive/V18_OWNER_BRIEF.md](archive/V18_OWNER_BRIEF.md), [archive/v18_intake/](archive/v18_intake/).
 
 These cannot be done honestly without new material or a human judgement. The engine is ready for each.
 
