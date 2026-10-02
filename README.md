@@ -74,6 +74,8 @@ Example decks are development material and regression fixtures, not evidence of 
   total-row tables are read, and so are charts embedded in Word, Excel and PowerPoint files.
 - **Update an existing deck:** `cpe deck ingest old.pptx -o work`, then `cpe deck stale work`. Each
   old number is current, outdated (with the new value and its source) or untraced.
+  Since 1.9, `cpe deck edits` and `cpe deck patch` change the original file in place: only the approved
+  numbers change, and everything else stays as it was.
 - **Cell-to-fact binding:** a real number in the wrong cell is caught.
 - **New visuals:** cause → effect; timeline + decisions table; explicit n/a.
 - **Corporate templates:** a per-slide report says whether the template's own layout was used

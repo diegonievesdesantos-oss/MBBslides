@@ -1,5 +1,38 @@
 # Changelog
 
+## Unreleased — 1.9.0.dev0
+
+Status and what needs the owner: [docs/V19_STATUS.md](docs/V19_STATUS.md).
+
+The figures are measured on the v1.8 real project against the owner's key. That case is development
+data, so the figures are in-sample.
+
+- **Block A: tool debts U1–U9 from v1.8** ([docs/DEBT_V18.md](docs/DEBT_V18.md)):
+  - **`deck stale` (U1)** matches each old number on its own words (measure, phase, zone, year) and unit,
+    never on its value alone.
+    - Page numbers, document codes, phase indices and specifications are `ignored`.
+    - Restatements of the old plan never confirm a number.
+    - Analysis outputs and the latest aggregate come first.
+    - On the owner's key: asserted statuses 61/64 correct; proposed new value 15/23 (v1.8: 1/7).
+  - **Conflicts (U3):** prose numbers are read with their own words and compared with period-less tables;
+    tables are compared with each other; ratios are compared. Different phases, years, zones and
+    opposite qualifiers are never paired. On the case: 3 conflicts, all real, 0 false.
+  - **Messy tables (U2):** a banner line above a header, a repeated two-level group label, and `n/d` cells.
+  - **Periods and dates (U4, U5):** week references are periods, and render QA masks dates in headlines.
+  - **Units (U6):** units come from the label's unit text, not from figures quoted in it.
+  - **Factuality gate (U8):** statement texts are fact-checked.
+  - **Scaled numbers (U9):** they ground against unscaled facts.
+- **D2: layouts learned from slide geometry.** A deck built with free text boxes now yields real
+  corporate layouts (cover, statement, content), and its slides count as usage evidence.
+  - Footer artwork on a layout moves the engine's source line up instead of rejecting the layout.
+  - Dated fixed text on a layout is flagged.
+  - On the case: corporate share 0/12 → 12/12, render errors 16 → 0.
+- **D1: update the original pptx in place.**
+  - `cpe deck edits` proposes edits in the old number's notation, all unapproved.
+  - `cpe deck patch` applies the approved ones to the original file. Run formatting, table cells and
+    chart data are kept, and the change is noted on the slide.
+  - `--mark` highlights the new text. An edit that cannot be found is reported, never moved.
+
 ## 1.8.0 — Real-world inputs, corporate use, any OS
 
 **Closed 2026-10-02 by the owner, without the unseen-template validation, which moves to v1.9.**

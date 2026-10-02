@@ -252,6 +252,12 @@ need no new human round. Each is a warning unless stated.
   2. Run `cpe deck stale work` after `cpe reason facts`.
   3. An old number is reused only when the new fact model confirms it. An outdated number is replaced
      from its new fact. An untraced number is removed, or its source is added.
+  4. (1.9) When the deliverable is the old file itself:
+     - run `cpe deck edits work`;
+     - review every proposed edit (the proposed value is a lead, not a decision);
+     - run `cpe deck patch`.
+
+     A number the plan leaves untraced is changed only by an explicit edit.
 
   The old deck's storyline (`old_ghost.md`) is a hypothesis, not a fact.
 

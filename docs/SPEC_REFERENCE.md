@@ -89,6 +89,22 @@ headline, body, exhibits with their data, every number with its location), `old_
 old number as current, outdated (with the new value and its fact) or untraced, and each slide as
 keep / update / review (`update_plan.json`, `update_plan.md`).
 
+Since 1.9, a number is matched on its own words, not on its value:
+- its measure, phase, zone and year, and its unit;
+- page numbers, document codes and phase indices are `ignored`;
+- restatements of the old plan (budget, offer, business case) never confirm a number.
+
+The original file can then be updated in place:
+- `cpe deck edits work` writes `edits.json` / `edits.md`. It proposes one edit per outdated number,
+  written in the old number's notation ("3,2" M€ → "4,03"). Every edit starts as `approved: false`.
+- `cpe deck patch old.pptx work/edits.json -o new.pptx [--mark]` applies only approved edits to the
+  original pptx and leaves everything else untouched.
+  - Numbers keep their run formatting. Table cells are edited in place. Chart points go through the
+    chart's own data.
+  - Other operations: `replace_text`, `set_chart`, `delete_slide`, `note`.
+  - Each change is written to the slide's notes. `--mark` highlights the new text.
+  - An edit not found where the plan says is reported, never applied elsewhere (`patch_report.md`).
+
 ## Patches
 
 `{"op": "set" | "delete" | "append", "slide": "s07", "path": "visual.data.series[0].values", "value": …}`,

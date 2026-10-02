@@ -107,6 +107,28 @@ band, and no artwork across the engine's headline or footer bands — every reje
 with its reason (`build_manifest.json` → `corporate`). The composition engine can render the
 next-best corporate layouts as candidates and keep the one with the best QA + archetype fitness.
 
+### Decks without placeholders (1.9)
+
+Many client decks are built with free text boxes, so their layouts carry no title placeholder. When no
+example slide has its title in a placeholder, ingest writes `learned_source.pptx` with layouts learned
+from the slides' geometry, one per family:
+- **Cover:** the first slide.
+- **Statement:** a later slide on the cover's layout with its title low.
+- **Title and content:** the rest.
+
+Each learned layout is a clone of the layout those slides use, plus:
+- a title placeholder at the median title box, with its size, weight, colour and font;
+- a subtitle on covers;
+- a body placeholder over the area the slides fill;
+- the shapes repeated on most of the family's slides.
+
+The example slides are re-linked to them, so usage counts as evidence. Matching is unchanged.
+`compatibility.json → learned_layouts` lists what was learned. Fixed layout text carrying a date
+(a footer such as "Comité · 18/11/2025") is listed under `unsupported`, because every slide repeats it.
+
+When a layout's own footer artwork fills the bottom of the page, the engine's source line moves up above
+it (`limits.footer_y`), as long as the body keeps 4.5 in. Before 1.9 the layout was rejected.
+
 ## Testing without corporate material
 
 `src/cpe/brand/fixtures.py` builds a synthetic **three-master** template (executive / analytical /

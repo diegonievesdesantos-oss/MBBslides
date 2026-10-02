@@ -64,3 +64,31 @@ DISCARDED_EVIDENCE_REUSED and ASSUMPTION_IN_SUMMARY. Run on v2, they raise nothi
 
 U1–U6 are engine fixes for the next cycle. They must not be tuned on this case, which is now
 development data. U7 is a feature idea.
+
+### Status in 1.9.0.dev0 (2026-10-02)
+
+The owner asked to work these fixes "only against my key". So U1, U3 and U7 were developed and
+measured on this same case against the owner's answer key. **Every Albor figure below is in-sample:**
+it shows the fix works on the case it came from, not that it generalises. The blind check is v1.9
+block C: new cases, compared only with the owner's key.
+
+| # | status | measured |
+|---|---|---|
+| U1 | **fixed** | Gold labels from the owner's key, all 131 old numbers. **Precision of the statuses the tool asserts:** current 11/11, outdated 33/36, ignored (page numbers, codes, phase indices, specs) 17/17, i.e. 61/64. v1.8 on the same labels: current 7/56, outdated 19/36. **All statuses** (untraced counts as wrong when the number is outdated): 96/131 = 73% (v1.8: 37%). **Proposed new value right:** 15/23 (v1.8: 1/7). **Outdated recall:** 33/66; the rest are untraced, i.e. left for review, mostly figures no new source restates (the cash series, totals). Synthetic test in `tests/test_v19.py`. |
+| U2 | **fixed** | A banner line above the header goes to a caption block. A repeated group label with a blank first cell is a two-level header. `n/d`-style cells no longer make a numeric column text. Synthetic test. |
+| U3 | **partly fixed** | Prose numbers are read with their own words. They are compared with period-less tables (one best row) and tables with each other. The pass skips different phases, years or zones, opposite or ambiguous qualifiers (manual vs automated), limits, and periods used only as a comparison base. Ratios ("2,1x", "2,4 veces") are now compared. **Albor:** 3 conflicts, all real. They cover the productivity group (2,1x / 2,15x vs 2,4x / 2,6x), 1 of the 5 real conflict groups, with 0 false positives (v1.8: 0 of 5, 1 false). Capex, savings and error rate still pass unflagged: their versions sit in one analysis table under different labels, or differ by definition. **Dev cases:** the true closing-cost conflict is kept and one false positive dropped. |
+| U4 | **fixed** | Week references (`semana 37`, `semanas 31 a 40`, `S37`, `W12`, `KW 5`) are periods. |
+| U5 | **fixed** | Render QA masks dates before reading headline numbers. |
+| U6 | **fixed** | A row label's unit comes only from its unit text ("(k€)", "%"), never from a figure quoted in it ("120 k€"). |
+| U7 | **built (D2)** | Layouts are learned from the slides' geometry when no layout has a title placeholder (`src/cpe/brand/learned.py`). A layout's footer artwork moves the engine's source line up instead of rejecting the layout. **Albor v2 deck on the old deck's style:** corporate share 0/12 → 12/12 (1 native cover + 11 adaptive); render errors 16 → 0 (11 artwork overlaps and 5 collisions before). A dated fixed footer on the layout ("18/11/2025") is flagged. |
+| U8 | **fixed** | Statement `text` is fact-checked. It caught a real uncited figure in the development run, now cited. |
+| U9 | **fixed** | A scaled number ("4,59 M") grounds against the same figure written unscaled in thousands or units. |
+
+**D1 (in-place update of the original pptx):**
+- `cpe deck edits` → review → `cpe deck patch`.
+- On Albor, the edits reviewed against the owner's key:
+  - 23 applied, 0 failed;
+  - one slide removed, as the key asks.
+- The rest of the file is untouched.
+- The review step matters. Applied blindly, 8 of the 23 checkable proposed values would be wrong
+  (U1 above).
