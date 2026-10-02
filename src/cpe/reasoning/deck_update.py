@@ -556,10 +556,18 @@ def _open_measure(q: dict) -> set[str]:
     return _open_words(text)
 
 
+ACRO_RE = re.compile(r"\b[A-Z][A-Za-z]?[A-Z][A-Z0-9]{0,4}\b")  # OEE, NPS, OTD, TAT, RevPAR, KPI…
+ACRO_STOP = {"KPI", "KPIS", "EUR", "USD", "GBP", "FTE", "FTES", "YOY", "YTD", "TOTAL", "CEO", "CFO", "COO", "Q1", "Q2", "Q3", "Q4"}
+
+
+def _acronyms(text: str) -> set[str]:
+    return {a.lower()[:5] for a in ACRO_RE.findall(text or "") if a.upper() not in ACRO_STOP and len(a) >= 3}
+
+
 def _open_words(text: str) -> set[str]:
     from .conflicts import HEAD_STOP
 
-    out = set()
+    out = _acronyms(text)
     for w in re.findall(r"[a-zñ]{5,}", _plain(text)):
         if w in HEAD_STOP or any(w.startswith(s) for s in OPEN_STOP) or w in UNIT_SCALE_WORDS:
             continue
@@ -609,7 +617,7 @@ def _match(q: dict, slide: dict, cands: list[dict]) -> tuple[str, list[dict], di
         st = st | ms
     open_ = set()
     if not ms:  # v2.3: a measure outside the known list ("expedientes", "socios", "monitores"): the words around the number
-        open_ = _open_measure(q)
+        open_ = _open_measure(q) or _acronyms(_qtext(q)) or _acronyms(slide.get("headline") or "")  # else an acronym (OEE, NPS)
         if not open_:
             return "untraced", [], None
     key = _key_measures(ms)
