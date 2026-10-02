@@ -7,7 +7,7 @@ it found about 1 outdated number in 4 on unseen cases, against 4 in 5 on the pro
 |---|---|---|
 | 1 | Blind validation on real material: unseen corporate templates; new cases with the owner's key sealed beforehand | **needs the owner** |
 | 2 | Matching a deck number to its new source on unseen material | **done** (first round) |
-| 3 | A fresh sealed synthetic set, written before item 2's work is measured on new cases, run once at the end | **sealed**; runs at the end of 2.3 |
+| 3 | A fresh sealed synthetic set, written before item 2's work is measured on new cases, run once at the end | **done**: run once |
 | 4 | Group heads: a weak match must not spread to every restatement | **done** |
 | 5 | Fewer false "current": a restatement of the old plan or a figure with the same digits is no confirmation | **done** |
 
@@ -112,3 +112,35 @@ wrong: a wrong proposal became "untraced", which a reviewer sees as work, not as
 
 **What did not work.** "A total is not one phase's figure" lost right finds on the v1.8 project and
 the v2.2 set, and was dropped.
+
+## Blind result on the sealed set (items 2–5)
+
+- **The run.** Once, after items 2–5 were done: 2.2.0 (a9c85bf) against 2.3 (a001616), on the 4
+  sealed cases (308 keyed numbers). The seal was checked first: every key's sha256 matched the one
+  recorded when it was written.
+- **The scorer.** The same as for the development sets, fixed before this run.
+
+| blind, 4 cases | 2.2.0 | 2.3 |
+|---|---|---|
+| outdated numbers found | 32 / 206 (16%) | **82 / 206 (40%)** |
+| "outdated" right | 32 / 41 | 82 / 95 |
+| proposed value right | 15 / 32 (47%) | 38 / 82 (46%) |
+| "current" right | 7 / 14 | 14 / 21 |
+
+**What this says:**
+- **Finds.** The tool now finds 2,5 times more of the numbers a deck must change on unseen material,
+  and its "outdated" flags are right more often (86% against 78%).
+- **Proposed values are the overfit part.** On the development sets they were right 89% of the time.
+  Blind, they are right less than half the time, no better than before. Finding which number changed
+  generalises; picking its new value does not yet.
+- **"Current."** It improves (14 of 21 right, against 7 of 14) but is still wrong a third of the time.
+
+**Why the blind values are wrong** (read after the run, so this is diagnosis, not tuning):
+- **One source sentence feeds many numbers.** A committee's "ahorro anual de 3,5 M€" became the new
+  value of 5 different numbers of the deck. Nothing stops one source value from being assigned to
+  several quantities.
+- **Projections against another year's actual.** The 2025–2027 points of a spend projection took the
+  2024 actual.
+- **Weak heads still spread.** A headline's "4,5 M€" matched to 1,7 M€ led its group.
+
+These are the starting points for v2.4. The set is now used and is not run again as a blind test.
