@@ -1,0 +1,296 @@
+[
+  {
+    "id": "EN-HPAR-001",
+    "type": "parallel",
+    "lang": "en",
+    "tags": [
+      "parallel",
+      "clean"
+    ],
+    "group": {
+      "context": "recommendations",
+      "explicit": true,
+      "members": [
+        "Consolidate suppliers to reduce procurement complexity",
+        "Automate invoice processing to remove manual effort",
+        "Tighten pricing discipline to protect gross margin"
+      ]
+    },
+    "expect": {
+      "status": "passed",
+      "codes": []
+    }
+  },
+  {
+    "id": "ES-HPAR-002",
+    "type": "parallel",
+    "lang": "es",
+    "tags": [
+      "parallel",
+      "clean"
+    ],
+    "group": {
+      "context": "recommendations",
+      "explicit": true,
+      "members": [
+        "Consolidar proveedores para reducir la complejidad de compras",
+        "Automatizar la facturación para eliminar trabajo manual",
+        "Reforzar la disciplina de precios para proteger el margen"
+      ]
+    },
+    "expect": {
+      "status": "passed",
+      "codes": []
+    }
+  },
+  {
+    "id": "EN-HPAR-003",
+    "type": "parallel",
+    "lang": "en",
+    "tags": [
+      "parallel",
+      "mixed_signature"
+    ],
+    "group": {
+      "context": "process_steps",
+      "explicit": true,
+      "members": [
+        "Data",
+        "Analyse results",
+        "Recommendation is developed",
+        "Implementation"
+      ]
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "PARALLEL_SIGNATURE_MISMATCH",
+        "PARALLEL_VOICE_MISMATCH",
+        "PARALLEL_ROLE_MISMATCH"
+      ]
+    }
+  },
+  {
+    "id": "ES-HPAR-004",
+    "type": "parallel",
+    "lang": "es",
+    "tags": [
+      "parallel",
+      "mixed_signature"
+    ],
+    "group": {
+      "context": "options",
+      "explicit": true,
+      "members": [
+        "Opción A — Coste mínimo",
+        "Opción B — Acelerar la implantación",
+        "Opción C — Esta opción maximiza la flexibilidad estratégica"
+      ]
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "PARALLEL_SIGNATURE_MISMATCH",
+        "PARALLEL_ROLE_MISMATCH",
+        "PARALLEL_LENGTH_OUTLIER"
+      ]
+    }
+  },
+  {
+    "id": "EN-HPAR-005",
+    "type": "parallel",
+    "lang": "en",
+    "tags": [
+      "parallel",
+      "granularity"
+    ],
+    "group": {
+      "context": "recommendations",
+      "explicit": true,
+      "members": [
+        "Reduce supplier fragmentation",
+        "Automate finance",
+        "Increase EBITDA by €12m through pricing"
+      ]
+    },
+    "expect": {
+      "status": "flagged",
+      "codes": [
+        "PARALLEL_GRANULARITY_MISMATCH",
+        "PARALLEL_NUMBERING_MISMATCH",
+        "PARALLEL_LENGTH_OUTLIER",
+        "PARALLEL_SIGNATURE_MISMATCH"
+      ]
+    }
+  },
+  {
+    "id": "EN-HPAR-006",
+    "type": "parallel",
+    "lang": "en",
+    "tags": [
+      "parallel",
+      "voice"
+    ],
+    "group": {
+      "context": "cards",
+      "explicit": true,
+      "members": [
+        "Finance closes the monthly books in five days",
+        "Procurement consolidates the supplier base",
+        "Pricing decisions are centralised by the commercial team"
+      ]
+    },
+    "expect": {
+      "status": "flagged",
+      "codes": [
+        "PARALLEL_VOICE_MISMATCH",
+        "PARALLEL_SIGNATURE_MISMATCH"
+      ]
+    }
+  },
+  {
+    "id": "ES-HPAR-007",
+    "type": "parallel",
+    "lang": "es",
+    "tags": [
+      "parallel",
+      "punctuation"
+    ],
+    "group": {
+      "context": "process_steps",
+      "explicit": true,
+      "members": [
+        "Recoger los datos relevantes.",
+        "Diagnosticar la brecha de rendimiento",
+        "Definir las acciones recomendadas.",
+        "Implantar y seguir la ejecución"
+      ]
+    },
+    "expect": {
+      "status": "flagged",
+      "codes": [
+        "PARALLEL_PUNCTUATION_MISMATCH"
+      ]
+    }
+  },
+  {
+    "id": "EN-HPAR-008",
+    "type": "parallel",
+    "lang": "en",
+    "tags": [
+      "parallel",
+      "repeated_verb",
+      "clean"
+    ],
+    "group": {
+      "context": "roadmap_workstreams",
+      "explicit": true,
+      "members": [
+        "Reduce warehouse lead times by redesigning pick paths",
+        "Reduce stock-outs by automating replenishment",
+        "Reduce returns by tightening quality checks at intake"
+      ]
+    },
+    "expect": {
+      "status": "passed",
+      "codes": []
+    }
+  },
+  {
+    "id": "ES-HPAR-009",
+    "type": "parallel",
+    "lang": "es",
+    "tags": [
+      "parallel",
+      "exec_summary",
+      "declarative"
+    ],
+    "group": {
+      "context": "exec_summary",
+      "explicit": true,
+      "members": [
+        "El mix de electrónica provocó la mayor parte de la caída de 1,9 pp del margen",
+        "Los planes de crecimiento actuales ampliarían aún más la brecha de margen",
+        "Repreciar electrónica puede recuperar ~1,4 pp de margen en 2027"
+      ]
+    },
+    "expect": {
+      "status": "passed",
+      "codes": []
+    }
+  },
+  {
+    "id": "EN-HPAR-010",
+    "type": "parallel",
+    "lang": "en",
+    "tags": [
+      "parallel",
+      "key_line",
+      "declarative"
+    ],
+    "group": {
+      "context": "key_line",
+      "explicit": true,
+      "members": [
+        "Electronics mix explains most of the margin decline",
+        "Current growth plans would deepen the margin gap",
+        "Repricing electronics can recover most of the lost margin"
+      ]
+    },
+    "expect": {
+      "status": "passed",
+      "codes": []
+    }
+  },
+  {
+    "id": "ES-HPAR-011",
+    "type": "parallel",
+    "lang": "es",
+    "tags": [
+      "parallel",
+      "key_line",
+      "mixed_signature"
+    ],
+    "group": {
+      "context": "key_line",
+      "explicit": true,
+      "members": [
+        "Caída del margen",
+        "La electrónica se ha convertido en un problema",
+        "Recomendamos repreciar"
+      ]
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "PARALLEL_SIGNATURE_MISMATCH",
+        "PARALLEL_ROLE_MISMATCH",
+        "PARALLEL_GRANULARITY_MISMATCH"
+      ]
+    }
+  },
+  {
+    "id": "ES-HPAR-012",
+    "type": "parallel",
+    "lang": "es",
+    "tags": [
+      "parallel",
+      "design_principles",
+      "clean"
+    ],
+    "group": {
+      "context": "design_principles",
+      "explicit": true,
+      "members": [
+        "Poner los resultados del cliente en el centro de las decisiones",
+        "Llevar la responsabilidad al nivel más bajo eficaz",
+        "Mantener una gobernanza simple y explícita",
+        "Escalar capacidades sin duplicar funciones"
+      ]
+    },
+    "expect": {
+      "status": "passed",
+      "codes": []
+    }
+  }
+]

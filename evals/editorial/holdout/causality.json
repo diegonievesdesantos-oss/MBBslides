@@ -1,0 +1,925 @@
+[
+  {
+    "id": "EN-HCAU-001",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "causality",
+      "correlation",
+      "invalid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "comparison",
+      "purpose": "Compare store productivity by opening hours",
+      "proposition": {
+        "statement": "Stores open more than 12 hours show 20% higher sales per sq m than other stores (association only)",
+        "role": "observation",
+        "claim_type": "comparison",
+        "subject": "sales per sq m",
+        "comparison": "stores open >12h vs ≤12h",
+        "magnitude": "20%",
+        "qualifiers": [
+          "cross-sectional correlation",
+          "no control for location or size"
+        ],
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Longer opening hours drive 20% higher sales per sq m",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Fenwick Grocers 2026: stores open >12h average €5,400 sales per sq m (n=38); stores open ≤12h €4,500 (n=52); cross-sectional comparison with no control for location or size",
+          "values": [
+            5400,
+            4500,
+            38,
+            52
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            ">12h",
+            "≤12h"
+          ],
+          "series": [
+            {
+              "name": "Sales per sq m (€)",
+              "values": [
+                5400,
+                4500
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Fenwick Grocers store P&L 2026"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_CAUSALITY_UNSUPPORTED"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-HCAU-002",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "causality",
+      "correlation",
+      "invalid"
+    ],
+    "slide": {
+      "id": "s06",
+      "kind": "content",
+      "message_type": "trend",
+      "purpose": "Mostrar la evolución del NPS",
+      "proposition": {
+        "statement": "La caída de 11 puntos del NPS coincide con el lanzamiento de la nueva app",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "NPS",
+        "direction": "down",
+        "magnitude": "11 puntos",
+        "timeframe": "2026",
+        "qualifiers": [
+          "coincidencia temporal",
+          "sin análisis causal"
+        ],
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "La caída de 11 puntos del NPS se debe a la nueva app",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "NPS de Aurora Banca: 42 en marzo de 2026 y 31 en junio de 2026; la nueva app se lanzó en abril de 2026",
+          "values": [
+            42,
+            31
+          ]
+        }
+      ],
+      "visual": {
+        "type": "line",
+        "data": {
+          "categories": [
+            "Mar 2026",
+            "Jun 2026"
+          ],
+          "series": [
+            {
+              "name": "NPS",
+              "values": [
+                42,
+                31
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Encuesta de clientes de Aurora Banca"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_CAUSALITY_UNSUPPORTED"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-HCAU-003",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "causality",
+      "correlation",
+      "invalid"
+    ],
+    "slide": {
+      "id": "s07",
+      "kind": "content",
+      "message_type": "comparison",
+      "purpose": "Compare sales growth by marketing intensity",
+      "proposition": {
+        "statement": "Regions with higher marketing spend grew sales faster in 2026 (9% vs 3%)",
+        "role": "observation",
+        "claim_type": "comparison",
+        "subject": "regional sales growth",
+        "comparison": "high-spend vs other regions",
+        "timeframe": "2026",
+        "qualifiers": [
+          "correlation r=0.62",
+          "no controlled test"
+        ],
+        "evidence_ids": [
+          "F1",
+          "F2"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Higher marketing spend caused the 9% sales growth in high-spend regions",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Solent Beverages regional marketing spend vs sales growth across 14 regions, 2026: correlation r=0.62",
+          "values": [
+            14,
+            0.62
+          ]
+        },
+        {
+          "id": "F2",
+          "claim": "Sales in the 6 high-spend regions grew 9% vs 3% in the other 8 regions",
+          "values": [
+            6,
+            9,
+            3,
+            8
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            "High-spend regions",
+            "Other regions"
+          ],
+          "series": [
+            {
+              "name": "Sales growth 2026 (%)",
+              "values": [
+                9,
+                3
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Solent Beverages sales and marketing data"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_CAUSALITY_UNSUPPORTED"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-HCAU-004",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "causality",
+      "correlation",
+      "invalid"
+    ],
+    "slide": {
+      "id": "s08",
+      "kind": "content",
+      "message_type": "trend",
+      "purpose": "Mostrar la evolución del absentismo y de los retrasos",
+      "proposition": {
+        "statement": "El aumento del absentismo coincide con el aumento de entregas con retraso en 2026",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "entregas con retraso",
+        "direction": "up",
+        "timeframe": "2026",
+        "qualifiers": [
+          "coincidencia temporal",
+          "sin análisis causal"
+        ],
+        "evidence_ids": [
+          "F1",
+          "F2"
+        ],
+        "confidence": "high"
+      },
+      "headline": "El aumento del absentismo provoca el repunte de entregas con retraso hasta el 12%",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Absentismo de Transportes Olmedo: 4,1% en el primer semestre y 6,8% en el segundo semestre de 2026",
+          "values": [
+            4.1,
+            6.8
+          ]
+        },
+        {
+          "id": "F2",
+          "claim": "Entregas con retraso: 7% en el primer semestre y 12% en el segundo semestre de 2026",
+          "values": [
+            7,
+            12
+          ]
+        }
+      ],
+      "visual": {
+        "type": "line",
+        "data": {
+          "categories": [
+            "S1 2026",
+            "S2 2026"
+          ],
+          "series": [
+            {
+              "name": "Absentismo (%)",
+              "values": [
+                4.1,
+                6.8
+              ]
+            },
+            {
+              "name": "Entregas con retraso (%)",
+              "values": [
+                7,
+                12
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Informe de operaciones de Transportes Olmedo"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_CAUSALITY_UNSUPPORTED"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-HCAU-005",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "causality",
+      "correlation",
+      "invalid"
+    ],
+    "slide": {
+      "id": "s09",
+      "kind": "content",
+      "message_type": "trend",
+      "purpose": "Show how churn moved after the price change",
+      "proposition": {
+        "statement": "Monthly churn rose to 2.3% in Q2 2026, the same quarter as the 5% price increase",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "monthly churn",
+        "direction": "up",
+        "magnitude": "0.7 pp",
+        "timeframe": "Q2 2026",
+        "qualifiers": [
+          "temporal coincidence",
+          "competitors also saw higher churn"
+        ],
+        "evidence_ids": [
+          "F1",
+          "F2"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Churn rose to 2.3% in Q2 2026 because of the 5% price increase",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Quillon Telecom monthly churn: 1.6% in Q1 2026, 2.3% in Q2 2026",
+          "values": [
+            1.6,
+            2.3
+          ]
+        },
+        {
+          "id": "F2",
+          "claim": "List prices raised 5% on 1 April 2026; churn also rose at two competitors that did not change prices",
+          "values": [
+            5
+          ]
+        }
+      ],
+      "visual": {
+        "type": "line",
+        "data": {
+          "categories": [
+            "Q1 2026",
+            "Q2 2026"
+          ],
+          "series": [
+            {
+              "name": "Monthly churn (%)",
+              "values": [
+                1.6,
+                2.3
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Quillon Telecom subscriber reports"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_CAUSALITY_UNSUPPORTED"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-HCAU-006",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "causality",
+      "correlation",
+      "invalid"
+    ],
+    "slide": {
+      "id": "s10",
+      "kind": "content",
+      "message_type": "comparison",
+      "purpose": "Comparar el tráfico con y sin promoción",
+      "proposition": {
+        "statement": "Las semanas con promoción registran un 11% más de tráfico en tienda",
+        "role": "observation",
+        "claim_type": "comparison",
+        "subject": "tráfico en tienda",
+        "comparison": "semanas con y sin promoción",
+        "magnitude": "11%",
+        "timeframe": "2026",
+        "qualifiers": [
+          "asociación",
+          "las promociones coinciden con semanas festivas"
+        ],
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Las promociones impulsan un 11% más de tráfico en tienda",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Tráfico semanal medio de Supermercados Brezo en 2026: 52.000 visitas en semanas con promoción y 46.800 en semanas sin promoción; las promociones se concentran en semanas festivas",
+          "values": [
+            52000,
+            46800
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            "Con promoción",
+            "Sin promoción"
+          ],
+          "series": [
+            {
+              "name": "Visitas semanales",
+              "values": [
+                52000,
+                46800
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Datos de afluencia de Supermercados Brezo"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_CAUSALITY_UNSUPPORTED"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-HCAU-007",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "causality",
+      "supported_causal",
+      "valid"
+    ],
+    "slide": {
+      "id": "s11",
+      "kind": "content",
+      "message_type": "change_bridge",
+      "purpose": "Show what explains the logistics cost overrun",
+      "proposition": {
+        "statement": "Higher freight rates explain €3.2m of the €4.0m logistics cost overrun in 2026",
+        "role": "diagnosis",
+        "claim_type": "driver",
+        "subject": "logistics cost overrun",
+        "driver": "freight rates",
+        "magnitude": "€3.2m",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1",
+          "F2"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Higher freight rates explain €3.2m of the €4.0m logistics cost overrun",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Tamsin Distribution logistics cost overrun vs budget, 2026: €4.0m",
+          "value": 4.0
+        },
+        {
+          "id": "F2",
+          "claim": "Variance decomposition (rate × volume): freight rate effect €3.2m; labour €0.5m; other €0.3m",
+          "values": [
+            3.2,
+            0.5,
+            0.3
+          ]
+        }
+      ],
+      "visual": {
+        "type": "waterfall",
+        "data": {
+          "categories": [
+            "Freight rates",
+            "Labour",
+            "Other",
+            "Total"
+          ],
+          "series": [
+            {
+              "name": "Overrun (€m)",
+              "values": [
+                3.2,
+                0.5,
+                0.3,
+                4.0
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Tamsin Distribution cost accounting"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-HCAU-008",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "causality",
+      "supported_causal",
+      "valid"
+    ],
+    "slide": {
+      "id": "s12",
+      "kind": "content",
+      "message_type": "change_bridge",
+      "purpose": "Mostrar el origen de las roturas de stock",
+      "proposition": {
+        "statement": "Los retrasos del proveedor principal causaron el 80% de las roturas de stock del tercer trimestre de 2026",
+        "role": "diagnosis",
+        "claim_type": "causal",
+        "subject": "roturas de stock",
+        "driver": "retrasos del proveedor principal",
+        "magnitude": "80%",
+        "timeframe": "tercer trimestre de 2026",
+        "evidence_ids": [
+          "F1",
+          "F2"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Los retrasos del proveedor principal causaron el 80% de las roturas de stock del tercer trimestre",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Roturas de stock de Ferretería Alcor en el tercer trimestre de 2026: 400",
+          "value": 400
+        },
+        {
+          "id": "F2",
+          "claim": "Análisis de causa raíz pedido a pedido: 320 roturas originadas por retrasos del proveedor principal y 80 por errores de previsión",
+          "values": [
+            320,
+            80
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            "Retrasos del proveedor",
+            "Errores de previsión"
+          ],
+          "series": [
+            {
+              "name": "Roturas de stock",
+              "values": [
+                320,
+                80
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Análisis de causa raíz de Ferretería Alcor"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-HCAU-009",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "causality",
+      "supported_causal",
+      "valid"
+    ],
+    "slide": {
+      "id": "s13",
+      "kind": "content",
+      "message_type": "comparison",
+      "purpose": "Show the result of the free-delivery threshold test",
+      "proposition": {
+        "statement": "Lowering the free-delivery threshold from €50 to €30 raised conversion by 4 pp in a randomised test",
+        "role": "insight",
+        "claim_type": "causal",
+        "subject": "conversion",
+        "driver": "free-delivery threshold",
+        "direction": "up",
+        "magnitude": "4 pp",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Lowering the free-delivery threshold to €30 lifted conversion by 4 pp in a controlled test",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Maple & Pine Home randomised A/B test, 8 weeks, 120,000 sessions: conversion 14% with a €30 free-delivery threshold vs 10% with €50; p<0.01",
+          "values": [
+            8,
+            120000,
+            14,
+            10,
+            30,
+            50
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            "€30 threshold",
+            "€50 threshold"
+          ],
+          "series": [
+            {
+              "name": "Conversion (%)",
+              "values": [
+                14,
+                10
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Maple & Pine Home experimentation platform"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-HCAU-010",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "causality",
+      "correlation",
+      "associative",
+      "valid"
+    ],
+    "slide": {
+      "id": "s14",
+      "kind": "content",
+      "message_type": "comparison",
+      "purpose": "Compare store productivity by opening hours",
+      "proposition": {
+        "statement": "Stores open more than 12 hours show 20% higher sales per sq m than other stores (association only)",
+        "role": "observation",
+        "claim_type": "comparison",
+        "subject": "sales per sq m",
+        "comparison": "stores open >12h vs ≤12h",
+        "magnitude": "20%",
+        "qualifiers": [
+          "cross-sectional correlation",
+          "no control for location or size"
+        ],
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Longer opening hours are associated with 20% higher sales per sq m",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Fenwick Grocers 2026: stores open >12h average €5,400 sales per sq m (n=38); stores open ≤12h €4,500 (n=52); cross-sectional comparison with no control for location or size",
+          "values": [
+            5400,
+            4500,
+            38,
+            52
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            ">12h",
+            "≤12h"
+          ],
+          "series": [
+            {
+              "name": "Sales per sq m (€)",
+              "values": [
+                5400,
+                4500
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Fenwick Grocers store P&L 2026"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-HCAU-011",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "causality",
+      "correlation",
+      "associative",
+      "valid"
+    ],
+    "slide": {
+      "id": "s15",
+      "kind": "content",
+      "message_type": "trend",
+      "purpose": "Mostrar la evolución del NPS",
+      "proposition": {
+        "statement": "La caída de 11 puntos del NPS coincide con el lanzamiento de la nueva app",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "NPS",
+        "direction": "down",
+        "magnitude": "11 puntos",
+        "timeframe": "2026",
+        "qualifiers": [
+          "coincidencia temporal",
+          "sin análisis causal"
+        ],
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "La caída de 11 puntos del NPS coincide con el lanzamiento de la nueva app",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "NPS de Aurora Banca: 42 en marzo de 2026 y 31 en junio de 2026; la nueva app se lanzó en abril de 2026",
+          "values": [
+            42,
+            31
+          ]
+        }
+      ],
+      "visual": {
+        "type": "line",
+        "data": {
+          "categories": [
+            "Mar 2026",
+            "Jun 2026"
+          ],
+          "series": [
+            {
+              "name": "NPS",
+              "values": [
+                42,
+                31
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Encuesta de clientes de Aurora Banca"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-HCAU-012",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "causality",
+      "correlation",
+      "associative",
+      "valid"
+    ],
+    "slide": {
+      "id": "s16",
+      "kind": "content",
+      "message_type": "comparison",
+      "purpose": "Comparar el tráfico con y sin promoción",
+      "proposition": {
+        "statement": "Las semanas con promoción registran un 11% más de tráfico en tienda",
+        "role": "observation",
+        "claim_type": "comparison",
+        "subject": "tráfico en tienda",
+        "comparison": "semanas con y sin promoción",
+        "magnitude": "11%",
+        "timeframe": "2026",
+        "qualifiers": [
+          "asociación",
+          "las promociones coinciden con semanas festivas"
+        ],
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Las semanas con promoción registran un 11% más de tráfico en tienda",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Tráfico semanal medio de Supermercados Brezo en 2026: 52.000 visitas en semanas con promoción y 46.800 en semanas sin promoción; las promociones se concentran en semanas festivas",
+          "values": [
+            52000,
+            46800
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            "Con promoción",
+            "Sin promoción"
+          ],
+          "series": [
+            {
+              "name": "Visitas semanales",
+              "values": [
+                52000,
+                46800
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Datos de afluencia de Supermercados Brezo"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  }
+]

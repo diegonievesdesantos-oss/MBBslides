@@ -1,0 +1,1490 @@
+[
+  {
+    "id": "EN-HSEQ-001",
+    "type": "sequence",
+    "lang": "en",
+    "tags": [
+      "non_parallel"
+    ],
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "slides": [
+      {
+        "id": "s03",
+        "kind": "content",
+        "section": "K1",
+        "story_role": "diagnosis",
+        "message_type": "trend",
+        "purpose": "Show how gross margin moved in 2026",
+        "proposition": {
+          "statement": "Ridgeway Stores gross margin fell 1.9 pp in 2026",
+          "role": "observation",
+          "claim_type": "trend",
+          "subject": "gross margin",
+          "direction": "down",
+          "magnitude": "1.9 pp",
+          "timeframe": "2026",
+          "evidence_ids": [
+            "F1"
+          ],
+          "confidence": "high"
+        },
+        "headline": "Gross margin fell 1.9 pp in 2026, from 18.2% to 16.3%",
+        "evidence": [
+          {
+            "id": "F1",
+            "claim": "Ridgeway Stores gross margin: 18.2% in 2025, 16.3% in 2026",
+            "values": [
+              18.2,
+              16.3
+            ]
+          }
+        ],
+        "visual": {
+          "type": "column",
+          "data": {
+            "categories": [
+              "2025",
+              "2026"
+            ],
+            "series": [
+              {
+                "name": "Gross margin (%)",
+                "values": [
+                  18.2,
+                  16.3
+                ]
+              }
+            ]
+          }
+        },
+        "source": "Ridgeway Stores management accounts"
+      },
+      {
+        "id": "s04",
+        "kind": "content",
+        "section": "K1",
+        "story_role": "driver",
+        "message_type": "change_bridge",
+        "purpose": "Show what explains the margin decline",
+        "proposition": {
+          "statement": "Electronics mix accounts for 1.3 pp of the 1.9 pp gross-margin decline",
+          "role": "diagnosis",
+          "claim_type": "driver",
+          "subject": "gross margin",
+          "direction": "down",
+          "magnitude": "1.3 pp",
+          "driver": "electronics mix",
+          "timeframe": "2026",
+          "evidence_ids": [
+            "F1",
+            "F2"
+          ],
+          "confidence": "high"
+        },
+        "headline": "Electronics mix accounts for 1.3 pp of the 1.9 pp margin decline",
+        "evidence": [
+          {
+            "id": "F1",
+            "claim": "Ridgeway Stores gross margin: 18.2% in 2025, 16.3% in 2026",
+            "values": [
+              18.2,
+              16.3
+            ]
+          },
+          {
+            "id": "F2",
+            "claim": "Margin bridge: electronics mix −1.3 pp, freight −0.4 pp, store labour −0.2 pp",
+            "values": [
+              -1.3,
+              -0.4,
+              -0.2
+            ]
+          }
+        ],
+        "visual": {
+          "type": "waterfall",
+          "data": {
+            "categories": [
+              "2025",
+              "Electronics mix",
+              "Freight",
+              "Labour",
+              "2026"
+            ],
+            "series": [
+              {
+                "name": "Gross margin (%)",
+                "values": [
+                  18.2,
+                  -1.3,
+                  -0.4,
+                  -0.2,
+                  16.3
+                ]
+              }
+            ]
+          }
+        },
+        "source": "Ridgeway Stores management accounts"
+      },
+      {
+        "id": "s05",
+        "kind": "content",
+        "section": "K2",
+        "story_role": "recommendation",
+        "message_type": "recommendation",
+        "purpose": "Recommend the first recovery lever",
+        "proposition": {
+          "statement": "Reprice electronics first to recover about 1.0 pp of gross margin in 2027",
+          "role": "recommendation",
+          "claim_type": "recommendation",
+          "subject": "gross margin",
+          "recommended_action": "reprice electronics",
+          "magnitude": "~1.0 pp",
+          "timeframe": "2027",
+          "evidence_ids": [
+            "F3"
+          ],
+          "confidence": "high"
+        },
+        "headline": "Reprice electronics first to recover ~1.0 pp of gross margin in 2027",
+        "evidence": [
+          {
+            "id": "F3",
+            "claim": "Pricing simulation: a 3% electronics price increase recovers ~1.0 pp of gross margin in 2027 with 1.5% volume loss",
+            "values": [
+              3,
+              1.0,
+              1.5
+            ]
+          }
+        ],
+        "visual": {
+          "type": "bar",
+          "data": {
+            "categories": [
+              "Electronics +3%"
+            ],
+            "series": [
+              {
+                "name": "Margin recovered (pp)",
+                "values": [
+                  1.0
+                ]
+              }
+            ]
+          }
+        },
+        "source": "Ridgeway Stores pricing model"
+      }
+    ],
+    "expect": {
+      "parallel_flags": 0,
+      "headlines_unchanged": true
+    }
+  },
+  {
+    "id": "ES-HSEQ-002",
+    "type": "sequence",
+    "lang": "es",
+    "tags": [
+      "non_parallel"
+    ],
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "slides": [
+      {
+        "id": "s03",
+        "kind": "content",
+        "section": "K1",
+        "story_role": "context",
+        "message_type": "trend",
+        "purpose": "Mostrar la evolución del mercado de mobiliario",
+        "proposition": {
+          "statement": "El mercado español de mobiliario creció un 3% en 2026, hasta 8.240 M€",
+          "role": "context",
+          "claim_type": "trend",
+          "subject": "mercado de mobiliario",
+          "direction": "up",
+          "magnitude": "3%",
+          "timeframe": "2026",
+          "evidence_ids": [
+            "F1"
+          ],
+          "confidence": "high"
+        },
+        "headline": "El mercado español de mobiliario creció un 3% en 2026, hasta 8.240 M€",
+        "evidence": [
+          {
+            "id": "F1",
+            "claim": "Mercado español de mobiliario: 8.000 M€ en 2025 y 8.240 M€ en 2026",
+            "values": [
+              8000,
+              8240
+            ]
+          }
+        ],
+        "visual": {
+          "type": "column",
+          "data": {
+            "categories": [
+              "2025",
+              "2026"
+            ],
+            "series": [
+              {
+                "name": "Mercado (M€)",
+                "values": [
+                  8000,
+                  8240
+                ]
+              }
+            ]
+          }
+        },
+        "source": "Asociación sectorial del mueble"
+      },
+      {
+        "id": "s04",
+        "kind": "content",
+        "section": "K1",
+        "story_role": "diagnosis",
+        "message_type": "comparison",
+        "purpose": "Mostrar la evolución de la cuota de Calderón Hogar",
+        "proposition": {
+          "statement": "Calderón Hogar perdió 2 pp de cuota en 2026 mientras las cadenas de descuento ganaron 3 pp",
+          "role": "diagnosis",
+          "claim_type": "comparison",
+          "subject": "cuota de mercado",
+          "direction": "down",
+          "magnitude": "2 pp",
+          "timeframe": "2026",
+          "evidence_ids": [
+            "F2"
+          ],
+          "confidence": "high"
+        },
+        "headline": "Calderón Hogar perdió 2 pp de cuota en 2026 frente a las cadenas de descuento",
+        "evidence": [
+          {
+            "id": "F2",
+            "claim": "Cuota de mercado 2025→2026: Calderón Hogar 14%→12%; cadenas de descuento 18%→21%",
+            "values": [
+              14,
+              12,
+              18,
+              21
+            ]
+          }
+        ],
+        "visual": {
+          "type": "column",
+          "data": {
+            "categories": [
+              "Calderón Hogar",
+              "Descuento"
+            ],
+            "series": [
+              {
+                "name": "2025 (%)",
+                "values": [
+                  14,
+                  18
+                ]
+              },
+              {
+                "name": "2026 (%)",
+                "values": [
+                  12,
+                  21
+                ]
+              }
+            ]
+          }
+        },
+        "source": "Asociación sectorial del mueble; análisis de Calderón Hogar"
+      },
+      {
+        "id": "s05",
+        "kind": "content",
+        "section": "K2",
+        "story_role": "recommendation",
+        "message_type": "recommendation",
+        "purpose": "Recomendar la respuesta comercial",
+        "proposition": {
+          "statement": "Lanzar una gama de entrada para recuperar 0,5 pp de cuota en 2027",
+          "role": "recommendation",
+          "claim_type": "recommendation",
+          "subject": "cuota de mercado",
+          "recommended_action": "lanzar una gama de entrada",
+          "magnitude": "0,5 pp",
+          "timeframe": "2027",
+          "evidence_ids": [
+            "F3"
+          ],
+          "confidence": "high"
+        },
+        "headline": "Lanzar una gama de entrada para recuperar 0,5 pp de cuota en 2027",
+        "evidence": [
+          {
+            "id": "F3",
+            "claim": "Estudio de demanda: una gama de entrada recuperaría 0,5 pp de cuota en 2027",
+            "value": 0.5
+          }
+        ],
+        "visual": {
+          "type": "bar",
+          "data": {
+            "categories": [
+              "Gama de entrada"
+            ],
+            "series": [
+              {
+                "name": "Cuota recuperada (pp)",
+                "values": [
+                  0.5
+                ]
+              }
+            ]
+          }
+        },
+        "source": "Estudio de demanda de Calderón Hogar"
+      },
+      {
+        "id": "s06",
+        "kind": "content",
+        "section": "K3",
+        "story_role": "impact",
+        "message_type": "impact",
+        "purpose": "Mostrar el impacto en ventas",
+        "proposition": {
+          "statement": "La gama de entrada añadiría 42 M€ de ventas en 2027",
+          "role": "impact",
+          "claim_type": "impact",
+          "subject": "ventas",
+          "magnitude": "42 M€",
+          "timeframe": "2027",
+          "evidence_ids": [
+            "F3",
+            "F4"
+          ],
+          "confidence": "high"
+        },
+        "headline": "La gama de entrada añadiría 42 M€ de ventas en 2027",
+        "evidence": [
+          {
+            "id": "F3",
+            "claim": "Estudio de demanda: una gama de entrada recuperaría 0,5 pp de cuota en 2027",
+            "value": 0.5
+          },
+          {
+            "id": "F4",
+            "claim": "Previsión del mercado español de mobiliario en 2027: 8.400 M€; 0,5 pp de cuota equivalen a 42 M€",
+            "values": [
+              8400,
+              0.5,
+              42
+            ]
+          }
+        ],
+        "visual": {
+          "type": "bar",
+          "data": {
+            "categories": [
+              "Ventas incrementales 2027"
+            ],
+            "series": [
+              {
+                "name": "M€",
+                "values": [
+                  42
+                ]
+              }
+            ]
+          }
+        },
+        "source": "Plan de negocio de Calderón Hogar"
+      }
+    ],
+    "expect": {
+      "parallel_flags": 0,
+      "headlines_unchanged": true
+    }
+  },
+  {
+    "id": "EN-HSEQ-003",
+    "type": "sequence",
+    "lang": "en",
+    "tags": [
+      "non_parallel"
+    ],
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "slides": [
+      {
+        "id": "s04",
+        "kind": "content",
+        "section": "K1",
+        "story_role": "problem",
+        "message_type": "trend",
+        "purpose": "Show how churn moved in 2026",
+        "proposition": {
+          "statement": "Quillon Telecom monthly churn rose from 1.6% to 2.3% in 2026",
+          "role": "observation",
+          "claim_type": "trend",
+          "subject": "monthly churn",
+          "direction": "up",
+          "magnitude": "0.7 pp",
+          "timeframe": "2026",
+          "evidence_ids": [
+            "F1"
+          ],
+          "confidence": "high"
+        },
+        "headline": "Monthly churn rose from 1.6% to 2.3% in 2026",
+        "evidence": [
+          {
+            "id": "F1",
+            "claim": "Quillon Telecom monthly churn: 1.6% in 2025, 2.3% in 2026",
+            "values": [
+              1.6,
+              2.3
+            ]
+          }
+        ],
+        "visual": {
+          "type": "line",
+          "data": {
+            "categories": [
+              "2025",
+              "2026"
+            ],
+            "series": [
+              {
+                "name": "Monthly churn (%)",
+                "values": [
+                  1.6,
+                  2.3
+                ]
+              }
+            ]
+          }
+        },
+        "source": "Quillon Telecom subscriber reports"
+      },
+      {
+        "id": "s05",
+        "kind": "content",
+        "section": "K1",
+        "story_role": "driver",
+        "message_type": "decomposition",
+        "purpose": "Show which churn reasons account for the increase",
+        "proposition": {
+          "statement": "Contract expiries without a retention offer account for 60% of the churn increase",
+          "role": "diagnosis",
+          "claim_type": "driver",
+          "subject": "churn increase",
+          "driver": "contract expiries without retention offer",
+          "magnitude": "60%",
+          "timeframe": "2026",
+          "evidence_ids": [
+            "F1",
+            "F2"
+          ],
+          "confidence": "high"
+        },
+        "headline": "Contract expiries without a retention offer account for 60% of the churn increase",
+        "evidence": [
+          {
+            "id": "F1",
+            "claim": "Quillon Telecom monthly churn: 1.6% in 2025, 2.3% in 2026",
+            "values": [
+              1.6,
+              2.3
+            ]
+          },
+          {
+            "id": "F2",
+            "claim": "Churn increase of 0.7 pp by reason code: contract expiry without offer 0.42 pp; network complaints 0.18 pp; other 0.10 pp",
+            "values": [
+              0.7,
+              0.42,
+              0.18,
+              0.1
+            ]
+          }
+        ],
+        "visual": {
+          "type": "waterfall",
+          "data": {
+            "categories": [
+              "Expiry, no offer",
+              "Network",
+              "Other"
+            ],
+            "series": [
+              {
+                "name": "Churn increase (pp)",
+                "values": [
+                  0.42,
+                  0.18,
+                  0.1
+                ]
+              }
+            ]
+          }
+        },
+        "source": "Quillon Telecom churn reason codes"
+      },
+      {
+        "id": "s06",
+        "kind": "content",
+        "section": "K2",
+        "story_role": "option",
+        "message_type": "comparison",
+        "purpose": "Compare the retention options",
+        "proposition": {
+          "statement": "Option B delivers 80% of option A's churn reduction at half the cost",
+          "role": "comparison",
+          "claim_type": "comparison",
+          "subject": "retention options",
+          "comparison": "option B vs option A",
+          "evidence_ids": [
+            "F3"
+          ],
+          "confidence": "high"
+        },
+        "headline": "Option B delivers 80% of option A's churn reduction at half the cost",
+        "evidence": [
+          {
+            "id": "F3",
+            "claim": "Retention options: A (blanket discount) −0.5 pp churn for €8m a year; B (targeted offers at expiry) −0.4 pp for €4m a year",
+            "values": [
+              0.5,
+              8,
+              0.4,
+              4
+            ]
+          }
+        ],
+        "visual": {
+          "type": "table",
+          "data": {
+            "columns": [
+              "Option",
+              "Churn reduction (pp)",
+              "Annual cost (€m)"
+            ],
+            "rows": [
+              [
+                "A",
+                0.5,
+                8
+              ],
+              [
+                "B",
+                0.4,
+                4
+              ]
+            ]
+          }
+        },
+        "source": "Quillon Telecom retention business case"
+      },
+      {
+        "id": "s07",
+        "kind": "content",
+        "section": "K2",
+        "story_role": "recommendation",
+        "message_type": "recommendation",
+        "purpose": "Recommend the retention approach",
+        "proposition": {
+          "statement": "Launch targeted retention offers for expiring contracts to cut monthly churn by 0.4 pp",
+          "role": "recommendation",
+          "claim_type": "recommendation",
+          "subject": "monthly churn",
+          "recommended_action": "launch targeted retention offers",
+          "magnitude": "0.4 pp",
+          "evidence_ids": [
+            "F3"
+          ],
+          "confidence": "high"
+        },
+        "headline": "Launch targeted retention offers at contract expiry to cut monthly churn by 0.4 pp",
+        "evidence": [
+          {
+            "id": "F3",
+            "claim": "Retention options: A (blanket discount) −0.5 pp churn for €8m a year; B (targeted offers at expiry) −0.4 pp for €4m a year",
+            "values": [
+              0.5,
+              8,
+              0.4,
+              4
+            ]
+          }
+        ],
+        "visual": {
+          "type": "bar",
+          "data": {
+            "categories": [
+              "Targeted offers"
+            ],
+            "series": [
+              {
+                "name": "Churn reduction (pp)",
+                "values": [
+                  0.4
+                ]
+              }
+            ]
+          }
+        },
+        "source": "Quillon Telecom retention business case"
+      },
+      {
+        "id": "s08",
+        "kind": "content",
+        "section": "K3",
+        "story_role": "plan",
+        "message_type": "roadmap",
+        "purpose": "Show the rollout plan",
+        "proposition": {
+          "statement": "Three waves roll out targeted retention offers to all 12 regions by Q3 2027",
+          "role": "implementation",
+          "claim_type": "fact",
+          "subject": "rollout plan",
+          "timeframe": "Q3 2027",
+          "evidence_ids": [
+            "F4"
+          ],
+          "confidence": "high"
+        },
+        "headline": "Three waves can roll out retention offers to all 12 regions by Q3 2027",
+        "evidence": [
+          {
+            "id": "F4",
+            "claim": "Rollout plan: wave 1 Q1 2027 (4 regions), wave 2 Q2 2027 (5 regions), wave 3 Q3 2027 (3 regions)",
+            "values": [
+              1,
+              4,
+              2,
+              5,
+              3,
+              3
+            ]
+          }
+        ],
+        "visual": {
+          "type": "table",
+          "data": {
+            "columns": [
+              "Wave",
+              "Quarter",
+              "Regions"
+            ],
+            "rows": [
+              [
+                "1",
+                "Q1 2027",
+                4
+              ],
+              [
+                "2",
+                "Q2 2027",
+                5
+              ],
+              [
+                "3",
+                "Q3 2027",
+                3
+              ]
+            ]
+          }
+        },
+        "source": "Quillon Telecom PMO"
+      }
+    ],
+    "expect": {
+      "parallel_flags": 0,
+      "headlines_unchanged": true
+    }
+  },
+  {
+    "id": "ES-HSEQ-004",
+    "type": "sequence",
+    "lang": "es",
+    "tags": [
+      "non_parallel"
+    ],
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "slides": [
+      {
+        "id": "s05",
+        "kind": "content",
+        "section": "K1",
+        "story_role": "diagnosis",
+        "message_type": "trend",
+        "purpose": "Mostrar la evolución del coste de siniestros",
+        "proposition": {
+          "statement": "El coste de siniestros por póliza de Talía Seguros subió un 8% en 2026",
+          "role": "diagnosis",
+          "claim_type": "trend",
+          "subject": "coste de siniestros por póliza",
+          "direction": "up",
+          "magnitude": "8%",
+          "timeframe": "2026",
+          "evidence_ids": [
+            "F1"
+          ],
+          "confidence": "high"
+        },
+        "headline": "El coste de siniestros por póliza subió un 8% en 2026",
+        "evidence": [
+          {
+            "id": "F1",
+            "claim": "Coste medio de siniestros por póliza de Talía Seguros: 500 € en 2025 y 540 € en 2026",
+            "values": [
+              500,
+              540
+            ]
+          }
+        ],
+        "visual": {
+          "type": "column",
+          "data": {
+            "categories": [
+              "2025",
+              "2026"
+            ],
+            "series": [
+              {
+                "name": "Coste por póliza (€)",
+                "values": [
+                  500,
+                  540
+                ]
+              }
+            ]
+          }
+        },
+        "source": "Datos técnicos de Talía Seguros"
+      },
+      {
+        "id": "s06",
+        "kind": "content",
+        "section": "K2",
+        "story_role": "risk",
+        "message_type": "risk",
+        "purpose": "Mostrar el riesgo de un retraso en la migración",
+        "proposition": {
+          "statement": "Un retraso de 8 semanas en la migración de pólizas aplazaría 3,5 M€ de los 10 M€ de ahorro previstos para 2027",
+          "role": "risk",
+          "claim_type": "risk",
+          "subject": "ahorro 2027",
+          "magnitude": "3,5 M€",
+          "timeframe": "2027",
+          "evidence_ids": [
+            "F2"
+          ],
+          "confidence": "high"
+        },
+        "headline": "Un retraso de 8 semanas en la migración pondría en riesgo 3,5 M€ del ahorro de 2027",
+        "evidence": [
+          {
+            "id": "F2",
+            "claim": "Migración de pólizas: un retraso de 8 semanas aplaza 3,5 M€ de los 10 M€ de ahorro previstos para 2027",
+            "values": [
+              8,
+              3.5,
+              10
+            ]
+          }
+        ],
+        "visual": {
+          "type": "bar",
+          "data": {
+            "categories": [
+              "Según plan",
+              "Retraso de 8 semanas"
+            ],
+            "series": [
+              {
+                "name": "Ahorro 2027 (M€)",
+                "values": [
+                  10,
+                  6.5
+                ]
+              }
+            ]
+          }
+        },
+        "source": "Oficina de proyecto de Talía Seguros"
+      },
+      {
+        "id": "s07",
+        "kind": "content",
+        "section": "K3",
+        "story_role": "decision",
+        "message_type": "decision",
+        "purpose": "Solicitar la aprobación del presupuesto de migración",
+        "proposition": {
+          "statement": "Aprobar este trimestre el presupuesto de migración de 1,2 M€ protege los 10 M€ de ahorro previstos para 2027",
+          "role": "decision",
+          "claim_type": "decision",
+          "subject": "ahorro 2027",
+          "decision": "aprobar el presupuesto de migración",
+          "magnitude": "10 M€",
+          "timeframe": "2027",
+          "evidence_ids": [
+            "F2",
+            "F3"
+          ],
+          "confidence": "high"
+        },
+        "headline": "Aprobar este trimestre el presupuesto de migración protege los 10 M€ de ahorro de 2027",
+        "evidence": [
+          {
+            "id": "F2",
+            "claim": "Migración de pólizas: un retraso de 8 semanas aplaza 3,5 M€ de los 10 M€ de ahorro previstos para 2027",
+            "values": [
+              8,
+              3.5,
+              10
+            ]
+          },
+          {
+            "id": "F3",
+            "claim": "Presupuesto de migración solicitado: 1,2 M€; con aprobación este trimestre, el calendario mantiene el ahorro íntegro de 10 M€ en 2027",
+            "values": [
+              1.2,
+              10
+            ]
+          }
+        ],
+        "visual": {
+          "type": "bar",
+          "data": {
+            "categories": [
+              "Inversión",
+              "Ahorro 2027"
+            ],
+            "series": [
+              {
+                "name": "M€",
+                "values": [
+                  1.2,
+                  10
+                ]
+              }
+            ]
+          }
+        },
+        "source": "Caso de negocio de Talía Seguros"
+      }
+    ],
+    "expect": {
+      "parallel_flags": 0,
+      "headlines_unchanged": true
+    }
+  },
+  {
+    "id": "EN-HSEQ-005",
+    "type": "sequence",
+    "lang": "en",
+    "tags": [
+      "non_parallel"
+    ],
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "slides": [
+      {
+        "id": "s03",
+        "kind": "content",
+        "section": "K1",
+        "story_role": "context",
+        "message_type": "kpi_hero",
+        "purpose": "Show 2026 EBITDA against plan",
+        "proposition": {
+          "statement": "Caldera Retail EBITDA reached €95m in 2026, €25m below plan",
+          "role": "context",
+          "claim_type": "comparison",
+          "subject": "EBITDA",
+          "direction": "below plan",
+          "magnitude": "€25m",
+          "timeframe": "2026",
+          "evidence_ids": [
+            "F1"
+          ],
+          "confidence": "high"
+        },
+        "headline": "EBITDA reached €95m in 2026, €25m below plan",
+        "evidence": [
+          {
+            "id": "F1",
+            "claim": "Caldera Retail 2026 EBITDA €95m vs plan €120m",
+            "values": [
+              95,
+              120
+            ]
+          }
+        ],
+        "visual": {
+          "type": "column",
+          "data": {
+            "categories": [
+              "Plan",
+              "Actual"
+            ],
+            "series": [
+              {
+                "name": "EBITDA 2026 (€m)",
+                "values": [
+                  120,
+                  95
+                ]
+              }
+            ]
+          }
+        },
+        "source": "Caldera Retail management accounts 2026"
+      },
+      {
+        "id": "s04",
+        "kind": "content",
+        "section": "K1",
+        "story_role": "diagnosis",
+        "message_type": "decomposition",
+        "purpose": "Show where the EBITDA gap is concentrated",
+        "proposition": {
+          "statement": "Three regions (North, East and Coast) account for 72% of the €25m EBITDA gap",
+          "role": "diagnosis",
+          "claim_type": "driver",
+          "subject": "EBITDA gap",
+          "magnitude": "72%",
+          "timeframe": "2026",
+          "evidence_ids": [
+            "F1",
+            "F2"
+          ],
+          "confidence": "high"
+        },
+        "headline": "Three regions account for 72% of the €25m EBITDA gap",
+        "evidence": [
+          {
+            "id": "F1",
+            "claim": "Caldera Retail 2026 EBITDA €95m vs plan €120m",
+            "values": [
+              95,
+              120
+            ]
+          },
+          {
+            "id": "F2",
+            "claim": "Gap by region: North €8m, East €6m, Coast €4m, remaining five regions €7m",
+            "values": [
+              8,
+              6,
+              4,
+              7
+            ]
+          }
+        ],
+        "visual": {
+          "type": "waterfall",
+          "data": {
+            "categories": [
+              "North",
+              "East",
+              "Coast",
+              "Other"
+            ],
+            "series": [
+              {
+                "name": "EBITDA gap (€m)",
+                "values": [
+                  8,
+                  6,
+                  4,
+                  7
+                ]
+              }
+            ]
+          }
+        },
+        "source": "Caldera Retail management accounts 2026"
+      },
+      {
+        "id": "s05",
+        "kind": "content",
+        "section": "K1",
+        "story_role": "driver",
+        "message_type": "change_bridge",
+        "purpose": "Show what explains the gap in the three regions",
+        "proposition": {
+          "statement": "Store labour overruns explain €11m of the €18m gap in the three regions",
+          "role": "diagnosis",
+          "claim_type": "driver",
+          "subject": "regional EBITDA gap",
+          "driver": "store labour overruns",
+          "magnitude": "€11m",
+          "timeframe": "2026",
+          "evidence_ids": [
+            "F3"
+          ],
+          "confidence": "high"
+        },
+        "headline": "Store labour overruns explain €11m of the €18m gap in the three regions",
+        "evidence": [
+          {
+            "id": "F3",
+            "claim": "Variance analysis of the €18m gap in North, East and Coast: store labour €11m; rent €4m; other €3m",
+            "values": [
+              18,
+              11,
+              4,
+              3
+            ]
+          }
+        ],
+        "visual": {
+          "type": "waterfall",
+          "data": {
+            "categories": [
+              "Store labour",
+              "Rent",
+              "Other",
+              "Total"
+            ],
+            "series": [
+              {
+                "name": "Gap (€m)",
+                "values": [
+                  11,
+                  4,
+                  3,
+                  18
+                ]
+              }
+            ]
+          }
+        },
+        "source": "Caldera Retail store P&L"
+      },
+      {
+        "id": "s06",
+        "kind": "content",
+        "section": "K2",
+        "story_role": "implication",
+        "message_type": "implication",
+        "purpose": "Show what the gap means for the 2027 plan",
+        "proposition": {
+          "statement": "Without labour rescheduling, 2027 EBITDA would fall €18m short of the €130m plan",
+          "role": "implication",
+          "claim_type": "constraint",
+          "subject": "2027 EBITDA",
+          "magnitude": "€18m",
+          "timeframe": "2027",
+          "evidence_ids": [
+            "F4"
+          ],
+          "confidence": "high"
+        },
+        "headline": "Without labour rescheduling, 2027 EBITDA would fall €18m short of the €130m plan",
+        "evidence": [
+          {
+            "id": "F4",
+            "claim": "2027 EBITDA plan €130m; run-rate forecast without action €112m",
+            "values": [
+              130,
+              112
+            ]
+          }
+        ],
+        "visual": {
+          "type": "column",
+          "data": {
+            "categories": [
+              "Plan 2027",
+              "Run-rate 2027"
+            ],
+            "series": [
+              {
+                "name": "EBITDA (€m)",
+                "values": [
+                  130,
+                  112
+                ]
+              }
+            ]
+          }
+        },
+        "source": "Caldera Retail 2027 budget"
+      },
+      {
+        "id": "s07",
+        "kind": "content",
+        "section": "K3",
+        "story_role": "recommendation",
+        "message_type": "recommendation",
+        "purpose": "Recommend the labour lever",
+        "proposition": {
+          "statement": "Reschedule store labour in the three regions to recover €9m of EBITDA in 2027",
+          "role": "recommendation",
+          "claim_type": "recommendation",
+          "subject": "2027 EBITDA",
+          "recommended_action": "reschedule store labour",
+          "magnitude": "€9m",
+          "timeframe": "2027",
+          "evidence_ids": [
+            "F5"
+          ],
+          "confidence": "high"
+        },
+        "headline": "Reschedule store labour in the three regions to recover €9m of EBITDA in 2027",
+        "evidence": [
+          {
+            "id": "F5",
+            "claim": "Labour scheduling model: demand-based rosters in North, East and Coast recover €9m of EBITDA in 2027",
+            "value": 9
+          }
+        ],
+        "visual": {
+          "type": "bar",
+          "data": {
+            "categories": [
+              "Labour rescheduling"
+            ],
+            "series": [
+              {
+                "name": "EBITDA recovered 2027 (€m)",
+                "values": [
+                  9
+                ]
+              }
+            ]
+          }
+        },
+        "source": "Caldera Retail workforce model"
+      },
+      {
+        "id": "s08",
+        "kind": "content",
+        "section": "K3",
+        "story_role": "impact",
+        "message_type": "impact",
+        "purpose": "Show the impact on the 2027 shortfall",
+        "proposition": {
+          "statement": "Labour rescheduling would close half of the €18m 2027 EBITDA shortfall",
+          "role": "impact",
+          "claim_type": "impact",
+          "subject": "2027 EBITDA shortfall",
+          "magnitude": "50%",
+          "timeframe": "2027",
+          "evidence_ids": [
+            "F4",
+            "F5"
+          ],
+          "confidence": "high"
+        },
+        "headline": "Labour rescheduling halves the €18m 2027 EBITDA shortfall",
+        "evidence": [
+          {
+            "id": "F4",
+            "claim": "2027 EBITDA plan €130m; run-rate forecast without action €112m",
+            "values": [
+              130,
+              112
+            ]
+          },
+          {
+            "id": "F5",
+            "claim": "Labour scheduling model: demand-based rosters in North, East and Coast recover €9m of EBITDA in 2027",
+            "value": 9
+          }
+        ],
+        "visual": {
+          "type": "waterfall",
+          "data": {
+            "categories": [
+              "Run-rate",
+              "Labour",
+              "Remaining gap",
+              "Plan"
+            ],
+            "series": [
+              {
+                "name": "EBITDA 2027 (€m)",
+                "values": [
+                  112,
+                  9,
+                  9,
+                  130
+                ]
+              }
+            ]
+          }
+        },
+        "source": "Caldera Retail 2027 budget and workforce model"
+      }
+    ],
+    "expect": {
+      "parallel_flags": 0,
+      "headlines_unchanged": true
+    }
+  },
+  {
+    "id": "ES-HSEQ-006",
+    "type": "sequence",
+    "lang": "es",
+    "tags": [
+      "non_parallel"
+    ],
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "slides": [
+      {
+        "id": "s04",
+        "kind": "content",
+        "section": "K1",
+        "story_role": "status",
+        "message_type": "status",
+        "purpose": "Informar del estado del programa de eficiencia",
+        "proposition": {
+          "statement": "El programa de eficiencia va 6 semanas por detrás del plan en la migración de datos",
+          "role": "status",
+          "claim_type": "status",
+          "subject": "programa de eficiencia",
+          "direction": "off track",
+          "magnitude": "6 semanas",
+          "evidence_ids": [
+            "F1"
+          ],
+          "confidence": "high"
+        },
+        "headline": "El programa de eficiencia va 6 semanas por detrás del plan en la migración de datos",
+        "evidence": [
+          {
+            "id": "F1",
+            "claim": "Plan de eficiencia de Arenal Telecom: 7 de 12 hitos completados frente a 10 previstos; la migración de datos acumula 6 semanas de retraso",
+            "values": [
+              7,
+              12,
+              10,
+              6
+            ]
+          }
+        ],
+        "visual": {
+          "type": "bar",
+          "data": {
+            "categories": [
+              "Hitos previstos",
+              "Hitos completados"
+            ],
+            "series": [
+              {
+                "name": "Hitos",
+                "values": [
+                  10,
+                  7
+                ]
+              }
+            ]
+          }
+        },
+        "source": "Oficina de proyecto de Arenal Telecom"
+      },
+      {
+        "id": "s05",
+        "kind": "content",
+        "section": "K2",
+        "story_role": "risk",
+        "message_type": "risk",
+        "purpose": "Mostrar el riesgo si el retraso aumenta",
+        "proposition": {
+          "statement": "Si el retraso supera las 10 semanas, 5 M€ del ahorro de 2027 se desplazarían a 2028",
+          "role": "risk",
+          "claim_type": "risk",
+          "subject": "ahorro 2027",
+          "magnitude": "5 M€",
+          "timeframe": "2027",
+          "evidence_ids": [
+            "F2"
+          ],
+          "confidence": "high"
+        },
+        "headline": "Si el retraso supera las 10 semanas, 5 M€ del ahorro de 2027 se desplazarían a 2028",
+        "evidence": [
+          {
+            "id": "F2",
+            "claim": "Análisis de sensibilidad: con más de 10 semanas de retraso, 5 M€ de los 14 M€ de ahorro de 2027 pasan a 2028",
+            "values": [
+              10,
+              5,
+              14,
+              2027,
+              2028
+            ]
+          }
+        ],
+        "visual": {
+          "type": "bar",
+          "data": {
+            "categories": [
+              "Según plan",
+              "Retraso > 10 semanas"
+            ],
+            "series": [
+              {
+                "name": "Ahorro 2027 (M€)",
+                "values": [
+                  14,
+                  9
+                ]
+              }
+            ]
+          }
+        },
+        "source": "Oficina de proyecto de Arenal Telecom"
+      },
+      {
+        "id": "s06",
+        "kind": "content",
+        "section": "K3",
+        "story_role": "decision",
+        "message_type": "decision",
+        "purpose": "Solicitar la aprobación del refuerzo externo",
+        "proposition": {
+          "statement": "Aprobar ahora 2 M€ de refuerzo externo protege los 5 M€ de ahorro de 2027 en riesgo",
+          "role": "decision",
+          "claim_type": "decision",
+          "subject": "ahorro 2027",
+          "decision": "aprobar 2 M€ de refuerzo externo",
+          "magnitude": "5 M€",
+          "timeframe": "2027",
+          "evidence_ids": [
+            "F2",
+            "F3"
+          ],
+          "confidence": "high"
+        },
+        "headline": "Aprobar ahora 2 M€ de refuerzo externo protege 5 M€ del ahorro de 2027",
+        "evidence": [
+          {
+            "id": "F2",
+            "claim": "Análisis de sensibilidad: con más de 10 semanas de retraso, 5 M€ de los 14 M€ de ahorro de 2027 pasan a 2028",
+            "values": [
+              10,
+              5,
+              14,
+              2027,
+              2028
+            ]
+          },
+          {
+            "id": "F3",
+            "claim": "Propuesta de refuerzo externo para la migración: 2 M€; reduce el retraso previsto de 6 a 2 semanas",
+            "values": [
+              2,
+              6,
+              2
+            ]
+          }
+        ],
+        "visual": {
+          "type": "bar",
+          "data": {
+            "categories": [
+              "Refuerzo",
+              "Ahorro protegido"
+            ],
+            "series": [
+              {
+                "name": "M€",
+                "values": [
+                  2,
+                  5
+                ]
+              }
+            ]
+          }
+        },
+        "source": "Caso de negocio de Arenal Telecom"
+      },
+      {
+        "id": "s07",
+        "kind": "content",
+        "section": "K3",
+        "story_role": "plan",
+        "message_type": "roadmap",
+        "purpose": "Mostrar el plan para recuperar el calendario",
+        "proposition": {
+          "statement": "Completar la migración en tres oleadas antes de junio de 2027 recupera el calendario",
+          "role": "implementation",
+          "claim_type": "fact",
+          "subject": "plan de migración",
+          "timeframe": "junio de 2027",
+          "evidence_ids": [
+            "F4"
+          ],
+          "confidence": "high"
+        },
+        "headline": "Tres oleadas de migración permiten recuperar el calendario antes de junio de 2027",
+        "evidence": [
+          {
+            "id": "F4",
+            "claim": "Plan revisado: oleada 1 en enero de 2027, oleada 2 en marzo de 2027 y oleada 3 en mayo de 2027; cierre del programa previsto antes de junio de 2027",
+            "values": [
+              1,
+              2,
+              3,
+              2027
+            ]
+          }
+        ],
+        "visual": {
+          "type": "table",
+          "data": {
+            "columns": [
+              "Oleada",
+              "Mes"
+            ],
+            "rows": [
+              [
+                "1",
+                "enero 2027"
+              ],
+              [
+                "2",
+                "marzo 2027"
+              ],
+              [
+                "3",
+                "mayo 2027"
+              ]
+            ]
+          }
+        },
+        "source": "Oficina de proyecto de Arenal Telecom"
+      }
+    ],
+    "expect": {
+      "parallel_flags": 0,
+      "headlines_unchanged": true
+    }
+  }
+]

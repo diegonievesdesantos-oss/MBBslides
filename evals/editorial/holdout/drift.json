@@ -1,0 +1,1379 @@
+[
+  {
+    "id": "EN-HDRF-001",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "drift",
+      "direction_reversed"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "trend",
+      "purpose": "Show how sales moved in 2026",
+      "proposition": {
+        "statement": "Fenwick Grocers sales grew 8% in 2026",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "sales",
+        "direction": "up",
+        "magnitude": "8%",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Sales fell 8% in 2026",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Fenwick Grocers sales: €500m in 2025, €540m in 2026",
+          "values": [
+            500,
+            540
+          ]
+        }
+      ],
+      "visual": {
+        "type": "column",
+        "data": {
+          "categories": [
+            "2025",
+            "2026"
+          ],
+          "series": [
+            {
+              "name": "Sales (€m)",
+              "values": [
+                500,
+                540
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Fenwick Grocers annual report"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_DIRECTION_MISMATCH",
+        "HEADLINE_PROPOSITION_MISMATCH"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-HDRF-002",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "drift",
+      "direction_reversed"
+    ],
+    "slide": {
+      "id": "s06",
+      "kind": "content",
+      "message_type": "trend",
+      "purpose": "Mostrar la evolución del margen bruto",
+      "proposition": {
+        "statement": "El margen bruto de Ridgeway Tiendas cayó 1,9 pp en 2026",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "margen bruto",
+        "direction": "down",
+        "magnitude": "1,9 pp",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "El margen bruto mejoró 1,9 pp en 2026",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Margen bruto de Ridgeway Tiendas: 18,2% en 2025 y 16,3% en 2026",
+          "values": [
+            18.2,
+            16.3
+          ]
+        }
+      ],
+      "visual": {
+        "type": "column",
+        "data": {
+          "categories": [
+            "2025",
+            "2026"
+          ],
+          "series": [
+            {
+              "name": "Margen bruto (%)",
+              "values": [
+                18.2,
+                16.3
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Contabilidad de gestión de Ridgeway Tiendas"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_DIRECTION_MISMATCH",
+        "HEADLINE_PROPOSITION_MISMATCH"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-HDRF-003",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "drift",
+      "magnitude_changed"
+    ],
+    "slide": {
+      "id": "s07",
+      "kind": "content",
+      "message_type": "trend",
+      "purpose": "Show how revenue moved in 2026",
+      "proposition": {
+        "statement": "Pellam Group revenue grew 12% in 2026",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "revenue",
+        "direction": "up",
+        "magnitude": "12%",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Revenue grew 21% in 2026",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Pellam Group revenue: €100m in 2025, €112m in 2026",
+          "values": [
+            100,
+            112
+          ]
+        }
+      ],
+      "visual": {
+        "type": "column",
+        "data": {
+          "categories": [
+            "2025",
+            "2026"
+          ],
+          "series": [
+            {
+              "name": "Revenue (€m)",
+              "values": [
+                100,
+                112
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Pellam Group management accounts"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_PROPOSITION_MISMATCH",
+        "HEADLINE_NUMBER_UNSUPPORTED"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-HDRF-004",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "drift",
+      "magnitude_changed"
+    ],
+    "slide": {
+      "id": "s08",
+      "kind": "content",
+      "message_type": "impact",
+      "purpose": "Mostrar el ahorro de la consolidación de proveedores",
+      "proposition": {
+        "statement": "La consolidación de proveedores ahorra 3,5 M€ al año",
+        "role": "impact",
+        "claim_type": "impact",
+        "subject": "ahorro de compras",
+        "magnitude": "3,5 M€",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "La consolidación de proveedores ahorra 5,3 M€ al año",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Caso de negocio de Kestrel Logística: consolidar de 300 a 120 proveedores ahorra 3,5 M€ al año",
+          "values": [
+            300,
+            120,
+            3.5
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            "Ahorro anual"
+          ],
+          "series": [
+            {
+              "name": "M€",
+              "values": [
+                3.5
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Caso de negocio de compras de Kestrel Logística"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_PROPOSITION_MISMATCH",
+        "HEADLINE_NUMBER_UNSUPPORTED"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-HDRF-005",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "drift",
+      "wrong_entity"
+    ],
+    "slide": {
+      "id": "s09",
+      "kind": "content",
+      "message_type": "decomposition",
+      "purpose": "Show which region drives the EBITDA gap",
+      "proposition": {
+        "statement": "The North region accounts for 45% of the €20m EBITDA gap",
+        "role": "diagnosis",
+        "claim_type": "driver",
+        "subject": "EBITDA gap",
+        "driver": "North region",
+        "magnitude": "45%",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "The South region accounts for 45% of the €20m EBITDA gap",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Tavira Retail EBITDA gap vs plan 2026: €20m; North €9m (45%), South €4m (20%), West €7m (35%)",
+          "values": [
+            20,
+            9,
+            45,
+            4,
+            20,
+            7,
+            35
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            "North",
+            "South",
+            "West"
+          ],
+          "series": [
+            {
+              "name": "EBITDA gap (€m)",
+              "values": [
+                9,
+                4,
+                7
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Tavira Retail management accounts"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_PROPOSITION_MISMATCH",
+        "HEADLINE_NUMBER_UNSUPPORTED"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-HDRF-006",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "drift",
+      "wrong_entity"
+    ],
+    "slide": {
+      "id": "s10",
+      "kind": "content",
+      "message_type": "comparison",
+      "purpose": "Mostrar la tasa de abandono por segmento",
+      "proposition": {
+        "statement": "La tasa de abandono de los clientes pyme alcanzó el 18% en 2026",
+        "role": "observation",
+        "claim_type": "fact",
+        "subject": "tasa de abandono",
+        "scope": "clientes pyme",
+        "magnitude": "18%",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "La tasa de abandono de los clientes corporativos alcanzó el 18% en 2026",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Tasa de abandono anual de Oria Software en 2026: clientes pyme 18%; clientes corporativos 7%",
+          "values": [
+            18,
+            7
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            "Pyme",
+            "Corporativos"
+          ],
+          "series": [
+            {
+              "name": "Abandono (%)",
+              "values": [
+                18,
+                7
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Datos de clientes de Oria Software"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_PROPOSITION_MISMATCH",
+        "HEADLINE_NUMBER_UNSUPPORTED"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-HDRF-007",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "drift",
+      "wrong_year"
+    ],
+    "slide": {
+      "id": "s11",
+      "kind": "content",
+      "message_type": "trend",
+      "purpose": "Show revenue growth by year",
+      "proposition": {
+        "statement": "Solent Beverages revenue grew 12% in 2026",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "revenue",
+        "direction": "up",
+        "magnitude": "12%",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Revenue grew 12% in 2025",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Solent Beverages revenue: €100.0m in 2024, €104.0m in 2025, €116.5m in 2026",
+          "values": [
+            100.0,
+            104.0,
+            116.5
+          ]
+        }
+      ],
+      "visual": {
+        "type": "column",
+        "data": {
+          "categories": [
+            "2024",
+            "2025",
+            "2026"
+          ],
+          "series": [
+            {
+              "name": "Revenue (€m)",
+              "values": [
+                100.0,
+                104.0,
+                116.5
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Solent Beverages annual reports"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_TIMEFRAME_MISMATCH",
+        "HEADLINE_PROPOSITION_MISMATCH",
+        "HEADLINE_NUMBER_UNSUPPORTED"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-HDRF-008",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "drift",
+      "wrong_year"
+    ],
+    "slide": {
+      "id": "s12",
+      "kind": "content",
+      "message_type": "trend",
+      "purpose": "Mostrar la previsión de ingresos digitales",
+      "proposition": {
+        "statement": "Los ingresos digitales alcanzarán 205 M€ en 2027",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "ingresos digitales",
+        "direction": "up",
+        "magnitude": "205 M€",
+        "timeframe": "2027",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "medium"
+      },
+      "headline": "Los ingresos digitales alcanzarán 205 M€ en 2028",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Previsión de ingresos digitales de Calderón Hogar: 170 M€ en 2026, 205 M€ en 2027 y 240 M€ en 2028",
+          "values": [
+            170,
+            205,
+            240
+          ]
+        }
+      ],
+      "visual": {
+        "type": "column",
+        "data": {
+          "categories": [
+            "2026",
+            "2027",
+            "2028"
+          ],
+          "series": [
+            {
+              "name": "Ingresos digitales (M€)",
+              "values": [
+                170,
+                205,
+                240
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Plan estratégico de Calderón Hogar"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_TIMEFRAME_MISMATCH",
+        "HEADLINE_PROPOSITION_MISMATCH",
+        "HEADLINE_NUMBER_UNSUPPORTED"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-HDRF-009",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "drift",
+      "scope_widened"
+    ],
+    "slide": {
+      "id": "s13",
+      "kind": "content",
+      "message_type": "trend",
+      "purpose": "Show online channel growth",
+      "proposition": {
+        "statement": "Online channel revenue grew 15% in 2026",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "revenue",
+        "direction": "up",
+        "magnitude": "15%",
+        "scope": "online channel",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Revenue grew 15% in 2026",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Brightline Apparel revenue 2025→2026: online €80m→€92m (+15%); stores €320m→€324m; total €400m→€416m (+4%)",
+          "values": [
+            80,
+            92,
+            15,
+            320,
+            324,
+            400,
+            416,
+            4
+          ]
+        }
+      ],
+      "visual": {
+        "type": "column",
+        "data": {
+          "categories": [
+            "Online",
+            "Stores",
+            "Total"
+          ],
+          "series": [
+            {
+              "name": "2025 (€m)",
+              "values": [
+                80,
+                320,
+                400
+              ]
+            },
+            {
+              "name": "2026 (€m)",
+              "values": [
+                92,
+                324,
+                416
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Brightline Apparel management accounts"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_PROPOSITION_MISMATCH",
+        "HEADLINE_NUMBER_UNSUPPORTED"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-HDRF-010",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "drift",
+      "scope_widened"
+    ],
+    "slide": {
+      "id": "s14",
+      "kind": "content",
+      "message_type": "trend",
+      "purpose": "Mostrar el crecimiento de ventas en Cataluña",
+      "proposition": {
+        "statement": "Las ventas en Cataluña crecieron un 11% en 2026",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "ventas",
+        "direction": "up",
+        "magnitude": "11%",
+        "scope": "Cataluña",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Las ventas en España crecieron un 11% en 2026",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Ventas de Supermercados Brezo 2026 frente a 2025: Cataluña +11%; total España +3%",
+          "values": [
+            11,
+            3
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            "Cataluña",
+            "Total España"
+          ],
+          "series": [
+            {
+              "name": "Crecimiento (%)",
+              "values": [
+                11,
+                3
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Datos de ventas de Supermercados Brezo"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_PROPOSITION_MISMATCH",
+        "HEADLINE_NUMBER_UNSUPPORTED"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-HDRF-011",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "drift",
+      "confidence_overclaimed"
+    ],
+    "slide": {
+      "id": "s15",
+      "kind": "content",
+      "message_type": "trend",
+      "purpose": "Show early pilot results of the new pricing",
+      "proposition": {
+        "statement": "Early pilot results suggest the new pricing may lift conversion by about 3 pp",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "conversion",
+        "direction": "up",
+        "magnitude": "~3 pp",
+        "qualifiers": [
+          "preliminary",
+          "not statistically significant"
+        ],
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "low"
+      },
+      "headline": "The new pricing model is proven to lift conversion by 3 pp",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Fenwick Grocers pricing pilot in 6 stores over 4 weeks: conversion 21% vs 18% in control stores; not statistically significant (p=0.18)",
+          "values": [
+            6,
+            4,
+            21,
+            18,
+            0.18
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            "Pilot stores",
+            "Control stores"
+          ],
+          "series": [
+            {
+              "name": "Conversion (%)",
+              "values": [
+                21,
+                18
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Fenwick Grocers pilot readout"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_PROPOSITION_MISMATCH",
+        "HEADLINE_CAUSALITY_UNSUPPORTED"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-HDRF-012",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "drift",
+      "observation_to_recommendation"
+    ],
+    "slide": {
+      "id": "s16",
+      "kind": "content",
+      "message_type": "comparison",
+      "purpose": "Comparar el VAN de las tres opciones",
+      "proposition": {
+        "statement": "La opción A tiene el mayor VAN de las tres (42 M€), aunque con el mayor riesgo de ejecución",
+        "role": "observation",
+        "claim_type": "comparison",
+        "subject": "VAN de las opciones",
+        "comparison": "opciones A, B y C",
+        "magnitude": "42 M€",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Elegir la opción A para capturar un VAN de 42 M€",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "VAN de las opciones de Grupo Vellisca: A 42 M€, B 35 M€, C 28 M€; riesgo de ejecución: A alto, B medio, C bajo",
+          "values": [
+            42,
+            35,
+            28
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            "Opción A",
+            "Opción B",
+            "Opción C"
+          ],
+          "series": [
+            {
+              "name": "VAN (M€)",
+              "values": [
+                42,
+                35,
+                28
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Modelo financiero de Grupo Vellisca"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_PROPOSITION_MISMATCH"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-HDRF-013",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "drift",
+      "recommendation_to_decision"
+    ],
+    "slide": {
+      "id": "s17",
+      "kind": "content",
+      "message_type": "recommendation",
+      "purpose": "Recommend the next step for automated invoicing",
+      "proposition": {
+        "statement": "Pilot automated invoicing in two more business units before committing to a group-wide rollout",
+        "role": "recommendation",
+        "claim_type": "recommendation",
+        "subject": "automated invoicing",
+        "recommended_action": "extend the pilot to two more business units",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Approving the group-wide rollout of automated invoicing now unlocks €3m a year",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Ostara Chemicals automated-invoicing pilot in 2 business units: €0.8m annual savings; group-wide potential estimated at €3m",
+          "values": [
+            2,
+            0.8,
+            3
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            "Pilot (2 units)",
+            "Group-wide estimate"
+          ],
+          "series": [
+            {
+              "name": "Annual savings (€m)",
+              "values": [
+                0.8,
+                3
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Ostara Chemicals finance transformation office"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_PROPOSITION_MISMATCH"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-HDRF-014",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "drift",
+      "approximate_to_exact"
+    ],
+    "slide": {
+      "id": "s18",
+      "kind": "content",
+      "message_type": "impact",
+      "purpose": "Mostrar el impacto esperado del repreciado",
+      "proposition": {
+        "statement": "Repreciar electrónica permitiría recuperar ~1,4 pp de margen en 2027",
+        "role": "impact",
+        "claim_type": "impact",
+        "subject": "margen bruto",
+        "direction": "up",
+        "magnitude": "~1,4 pp",
+        "qualifiers": [
+          "estimación",
+          "rango 1,2-1,6 pp"
+        ],
+        "timeframe": "2027",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "medium"
+      },
+      "headline": "Repreciar electrónica recuperará 1,43 pp de margen en 2027",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Simulación de Mercantia Hogar: recuperación de margen entre 1,2 y 1,6 pp en 2027 (escenario central 1,4 pp)",
+          "values": [
+            1.2,
+            1.6,
+            1.4
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            "Bajo",
+            "Central",
+            "Alto"
+          ],
+          "series": [
+            {
+              "name": "Margen recuperado (pp)",
+              "values": [
+                1.2,
+                1.4,
+                1.6
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Modelo de precios de Mercantia Hogar"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_PROPOSITION_MISMATCH",
+        "HEADLINE_NUMBER_UNSUPPORTED"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-HDRF-015",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "drift",
+      "direction_dropped"
+    ],
+    "slide": {
+      "id": "s19",
+      "kind": "content",
+      "message_type": "trend",
+      "purpose": "Show how gross margin moved in 2026",
+      "proposition": {
+        "statement": "Ridgeway Stores gross margin fell 1.9 pp in 2026",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "gross margin",
+        "direction": "down",
+        "magnitude": "1.9 pp",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Gross margin moved 1.9 pp in 2026",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Ridgeway Stores gross margin: 18.2% in 2025, 16.3% in 2026",
+          "values": [
+            18.2,
+            16.3
+          ]
+        }
+      ],
+      "visual": {
+        "type": "column",
+        "data": {
+          "categories": [
+            "2025",
+            "2026"
+          ],
+          "series": [
+            {
+              "name": "Gross margin (%)",
+              "values": [
+                18.2,
+                16.3
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Ridgeway Stores management accounts"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_DIRECTION_MISMATCH",
+        "HEADLINE_PROPOSITION_MISMATCH"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-HDRF-016",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "drift",
+      "faithful"
+    ],
+    "slide": {
+      "id": "s20",
+      "kind": "content",
+      "message_type": "change_bridge",
+      "purpose": "Show where margin erosion is concentrated",
+      "proposition": {
+        "statement": "Most of the 1.9 pp margin erosion is concentrated in electronics",
+        "role": "diagnosis",
+        "claim_type": "driver",
+        "subject": "gross margin",
+        "direction": "down",
+        "magnitude": "1.9 pp",
+        "driver": "electronics",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1",
+          "F2"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Electronics accounts for most of the 1.9 pp margin erosion",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Ridgeway Stores gross margin: 18.2% in 2025, 16.3% in 2026",
+          "values": [
+            18.2,
+            16.3
+          ]
+        },
+        {
+          "id": "F2",
+          "claim": "Margin bridge: electronics −1.3 pp, freight −0.4 pp, store labour −0.2 pp",
+          "values": [
+            -1.3,
+            -0.4,
+            -0.2
+          ]
+        }
+      ],
+      "visual": {
+        "type": "waterfall",
+        "data": {
+          "categories": [
+            "2025",
+            "Electronics",
+            "Freight",
+            "Labour",
+            "2026"
+          ],
+          "series": [
+            {
+              "name": "Gross margin (%)",
+              "values": [
+                18.2,
+                -1.3,
+                -0.4,
+                -0.2,
+                16.3
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Ridgeway Stores management accounts"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-HDRF-017",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "drift",
+      "faithful"
+    ],
+    "slide": {
+      "id": "s21",
+      "kind": "content",
+      "message_type": "trend",
+      "purpose": "Mostrar la evolución de las ventas online",
+      "proposition": {
+        "statement": "Las ventas online crecieron un 15% en 2026",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "ventas online",
+        "direction": "up",
+        "magnitude": "15%",
+        "scope": "canal online",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "El canal online aumentó sus ventas un 15% en 2026",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Ventas online de Casal Moda: 80 M€ en 2025 y 92 M€ en 2026",
+          "values": [
+            80,
+            92
+          ]
+        }
+      ],
+      "visual": {
+        "type": "column",
+        "data": {
+          "categories": [
+            "2025",
+            "2026"
+          ],
+          "series": [
+            {
+              "name": "Ventas online (M€)",
+              "values": [
+                80,
+                92
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Cuentas de gestión de Casal Moda"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-HDRF-018",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "drift",
+      "faithful"
+    ],
+    "slide": {
+      "id": "s22",
+      "kind": "content",
+      "message_type": "decision",
+      "purpose": "Ask the board to approve the priority initiatives",
+      "proposition": {
+        "statement": "Approving the two priority initiatives unlocks €14m of annual EBITDA",
+        "role": "decision",
+        "claim_type": "decision",
+        "subject": "EBITDA",
+        "decision": "approve initiatives A and B",
+        "magnitude": "€14m",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "The two priority initiatives would add €14m of annual EBITDA once approved",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Ostara Chemicals business cases: initiative A (procurement) €9m annual EBITDA; initiative B (energy) €5m",
+          "values": [
+            9,
+            5
+          ]
+        }
+      ],
+      "visual": {
+        "type": "column",
+        "data": {
+          "categories": [
+            "Initiative A",
+            "Initiative B"
+          ],
+          "series": [
+            {
+              "name": "Annual EBITDA (€m)",
+              "values": [
+                9,
+                5
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Ostara Chemicals approved business cases"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-HDRF-019",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "drift",
+      "faithful"
+    ],
+    "slide": {
+      "id": "s23",
+      "kind": "content",
+      "message_type": "recommendation",
+      "purpose": "Recomendar la consolidación de proveedores",
+      "proposition": {
+        "statement": "Consolidar la base de proveedores de 300 a 120 para ahorrar 4 M€ al año",
+        "role": "recommendation",
+        "claim_type": "recommendation",
+        "subject": "coste de compras",
+        "recommended_action": "consolidar proveedores",
+        "magnitude": "4 M€",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Reducir de 300 a 120 los proveedores para ahorrar 4 M€ anuales",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Proveedores activos de Tolland Industrial: 300; objetivo del plan de categorías: 120; ahorro anual estimado: 4 M€",
+          "values": [
+            300,
+            120,
+            4
+          ]
+        }
+      ],
+      "visual": {
+        "type": "column",
+        "data": {
+          "categories": [
+            "Actual",
+            "Objetivo"
+          ],
+          "series": [
+            {
+              "name": "Proveedores activos",
+              "values": [
+                300,
+                120
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Análisis de gasto de Tolland Industrial"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  }
+]

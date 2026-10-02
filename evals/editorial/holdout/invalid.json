@@ -1,0 +1,1893 @@
+[
+  {
+    "id": "EN-HINV-001",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "invalid",
+      "topic"
+    ],
+    "slide": {
+      "id": "s04",
+      "kind": "content",
+      "message_type": "trend",
+      "purpose": "Show how the addressable market moved",
+      "proposition": {
+        "statement": "Vantor Robotics' addressable market grew 6% in 2026 to €4.2bn",
+        "role": "context",
+        "claim_type": "trend",
+        "subject": "addressable market",
+        "direction": "up",
+        "magnitude": "6%",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Market overview",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Addressable market for warehouse robotics: €3.96bn in 2025, €4.20bn in 2026",
+          "values": [
+            3.96,
+            4.2
+          ]
+        }
+      ],
+      "visual": {
+        "type": "column",
+        "data": {
+          "categories": [
+            "2025",
+            "2026"
+          ],
+          "series": [
+            {
+              "name": "Market (€bn)",
+              "values": [
+                3.96,
+                4.2
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Industry association data; Vantor Robotics analysis"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_TOPIC",
+        "HEADLINE_UNRESOLVED"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-HINV-002",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "invalid",
+      "topic"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "trend",
+      "purpose": "Mostrar la evolución de los ingresos en 2026",
+      "proposition": {
+        "statement": "Los ingresos de Calderón Hogar crecieron un 12% en 2026, hasta 280 M€",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "ingresos",
+        "direction": "up",
+        "magnitude": "12%",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Evolución de ingresos",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Ingresos de Calderón Hogar: 250 M€ en 2025 y 280 M€ en 2026",
+          "values": [
+            250,
+            280
+          ]
+        }
+      ],
+      "visual": {
+        "type": "column",
+        "data": {
+          "categories": [
+            "2025",
+            "2026"
+          ],
+          "series": [
+            {
+              "name": "Ingresos (M€)",
+              "values": [
+                250,
+                280
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Cuentas anuales de Calderón Hogar"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_TOPIC",
+        "HEADLINE_UNRESOLVED"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-HINV-003",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "invalid",
+      "topic"
+    ],
+    "slide": {
+      "id": "s06",
+      "kind": "content",
+      "message_type": "comparison",
+      "purpose": "Show the competitive position",
+      "proposition": {
+        "statement": "Vantor Robotics lost 3 pp of market share in 2026 while two discount entrants reached 9% combined",
+        "role": "diagnosis",
+        "claim_type": "comparison",
+        "subject": "market share",
+        "direction": "down",
+        "magnitude": "3 pp",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1",
+          "F2"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Competitive landscape",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Vantor Robotics market share: 24% in 2025, 21% in 2026",
+          "values": [
+            24,
+            21
+          ]
+        },
+        {
+          "id": "F2",
+          "claim": "Combined share of two discount entrants: 2% in 2025, 9% in 2026",
+          "values": [
+            2,
+            9
+          ]
+        }
+      ],
+      "visual": {
+        "type": "column",
+        "data": {
+          "categories": [
+            "2025",
+            "2026"
+          ],
+          "series": [
+            {
+              "name": "Vantor (%)",
+              "values": [
+                24,
+                21
+              ]
+            },
+            {
+              "name": "Discount entrants (%)",
+              "values": [
+                2,
+                9
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Industry association data"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_TOPIC",
+        "HEADLINE_UNRESOLVED"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-HINV-004",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "invalid",
+      "topic"
+    ],
+    "slide": {
+      "id": "s07",
+      "kind": "content",
+      "message_type": "composition",
+      "purpose": "Mostrar la contribución de cada segmento",
+      "proposition": {
+        "statement": "Los clientes pyme concentran el 58% del margen con solo el 30% de los ingresos",
+        "role": "insight",
+        "claim_type": "composition",
+        "subject": "margen por segmento",
+        "magnitude": "58%",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Segmentación de clientes",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Distribución 2026 de Oria Software: pymes 30% de los ingresos y 58% del margen; grandes cuentas 70% de los ingresos y 42% del margen",
+          "values": [
+            30,
+            58,
+            70,
+            42
+          ]
+        }
+      ],
+      "visual": {
+        "type": "stacked_bar",
+        "data": {
+          "categories": [
+            "Ingresos",
+            "Margen"
+          ],
+          "series": [
+            {
+              "name": "Pymes (%)",
+              "values": [
+                30,
+                58
+              ]
+            },
+            {
+              "name": "Grandes cuentas (%)",
+              "values": [
+                70,
+                42
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Contabilidad analítica de Oria Software"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_TOPIC",
+        "HEADLINE_UNRESOLVED"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-HINV-005",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "invalid",
+      "topic"
+    ],
+    "slide": {
+      "id": "s08",
+      "kind": "content",
+      "message_type": "decomposition",
+      "purpose": "Summarise the key findings on the EBITDA gap",
+      "proposition": {
+        "statement": "Three regions (North, East and Coast) account for 72% of the €25m EBITDA gap to plan",
+        "role": "diagnosis",
+        "claim_type": "driver",
+        "subject": "EBITDA gap",
+        "magnitude": "72%",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1",
+          "F2"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Key findings",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Caldera Retail EBITDA gap vs plan, 2026: €25m",
+          "value": 25
+        },
+        {
+          "id": "F2",
+          "claim": "Gap by region: North €8m, East €6m, Coast €4m, remaining five regions €7m",
+          "values": [
+            8,
+            6,
+            4,
+            7
+          ]
+        }
+      ],
+      "visual": {
+        "type": "waterfall",
+        "data": {
+          "categories": [
+            "North",
+            "East",
+            "Coast",
+            "Other"
+          ],
+          "series": [
+            {
+              "name": "EBITDA gap (€m)",
+              "values": [
+                8,
+                6,
+                4,
+                7
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Caldera Retail management accounts 2026"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_TOPIC",
+        "HEADLINE_UNRESOLVED"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-HINV-006",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "invalid",
+      "topic"
+    ],
+    "slide": {
+      "id": "s09",
+      "kind": "content",
+      "message_type": "recommendation",
+      "purpose": "Proponer los siguientes pasos",
+      "proposition": {
+        "statement": "Lanzar un piloto de precios en 40 tiendas en enero de 2027 para validar una mejora de 1,1 pp de margen",
+        "role": "recommendation",
+        "claim_type": "recommendation",
+        "subject": "margen bruto",
+        "recommended_action": "lanzar piloto de precios",
+        "magnitude": "1,1 pp",
+        "timeframe": "enero de 2027",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Próximos pasos",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Modelo de precios de Mercantia Hogar: mejora esperada de 1,1 pp de margen; piloto dimensionado en 40 tiendas",
+          "values": [
+            1.1,
+            40
+          ]
+        }
+      ],
+      "visual": {
+        "type": "table",
+        "data": {
+          "columns": [
+            "Paso",
+            "Fecha"
+          ],
+          "rows": [
+            [
+              "Selección de 40 tiendas",
+              "dic 2026"
+            ],
+            [
+              "Lanzamiento",
+              "ene 2027"
+            ],
+            [
+              "Lectura de resultados",
+              "mar 2027"
+            ]
+          ]
+        }
+      },
+      "source": "Modelo de precios de Mercantia Hogar"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_TOPIC",
+        "HEADLINE_UNRESOLVED"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-HINV-007",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "invalid",
+      "topic"
+    ],
+    "slide": {
+      "id": "s10",
+      "kind": "content",
+      "message_type": "trend",
+      "purpose": "Show logistics cost per order by year",
+      "proposition": {
+        "statement": "Logistics cost per order rose 9% in 2026",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "logistics cost per order",
+        "direction": "up",
+        "magnitude": "9%",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Cost analysis by business unit",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Casal Moda logistics cost per order: €4.40 in 2025, €4.80 in 2026",
+          "values": [
+            4.4,
+            4.8
+          ]
+        }
+      ],
+      "visual": {
+        "type": "column",
+        "data": {
+          "categories": [
+            "2025",
+            "2026"
+          ],
+          "series": [
+            {
+              "name": "Cost per order (€)",
+              "values": [
+                4.4,
+                4.8
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Casal Moda cost accounting"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_TOPIC",
+        "HEADLINE_UNRESOLVED"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-HINV-008",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "invalid",
+      "placeholder"
+    ],
+    "slide": {
+      "id": "s11",
+      "kind": "content",
+      "message_type": "trend",
+      "purpose": "Show how revenue moved in 2026",
+      "proposition": {
+        "statement": "Northwind Tools revenue grew 12% in 2026 to €280m",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "revenue",
+        "direction": "up",
+        "magnitude": "12%",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "[Insert headline]",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Northwind Tools revenue: 2025 €250m, 2026 €280m",
+          "values": [
+            250,
+            280
+          ]
+        }
+      ],
+      "visual": {
+        "type": "column",
+        "data": {
+          "categories": [
+            "2025",
+            "2026"
+          ],
+          "series": [
+            {
+              "name": "Revenue (€m)",
+              "values": [
+                250,
+                280
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Northwind Tools audited accounts 2025-2026"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_PLACEHOLDER",
+        "HEADLINE_UNRESOLVED",
+        "HEADLINE_TOPIC"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-HINV-009",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "invalid",
+      "placeholder"
+    ],
+    "slide": {
+      "id": "s12",
+      "kind": "content",
+      "message_type": "trend",
+      "purpose": "Mostrar la evolución de los ingresos en 2026",
+      "proposition": {
+        "statement": "Los ingresos de Calderón Hogar crecieron un 12% en 2026, hasta 280 M€",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "ingresos",
+        "direction": "up",
+        "magnitude": "12%",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "[Titular pendiente]",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Ingresos de Calderón Hogar: 250 M€ en 2025 y 280 M€ en 2026",
+          "values": [
+            250,
+            280
+          ]
+        }
+      ],
+      "visual": {
+        "type": "column",
+        "data": {
+          "categories": [
+            "2025",
+            "2026"
+          ],
+          "series": [
+            {
+              "name": "Ingresos (M€)",
+              "values": [
+                250,
+                280
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Cuentas anuales de Calderón Hogar"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_PLACEHOLDER",
+        "HEADLINE_UNRESOLVED",
+        "HEADLINE_TOPIC"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-HINV-010",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "invalid",
+      "placeholder"
+    ],
+    "slide": {
+      "id": "s13",
+      "kind": "content",
+      "message_type": "trend",
+      "purpose": "Show logistics cost per order by year",
+      "proposition": {
+        "statement": "Logistics cost per order rose 9% in 2026",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "logistics cost per order",
+        "direction": "up",
+        "magnitude": "9%",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "TBD",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Casal Moda logistics cost per order: €4.40 in 2025, €4.80 in 2026",
+          "values": [
+            4.4,
+            4.8
+          ]
+        }
+      ],
+      "visual": {
+        "type": "column",
+        "data": {
+          "categories": [
+            "2025",
+            "2026"
+          ],
+          "series": [
+            {
+              "name": "Cost per order (€)",
+              "values": [
+                4.4,
+                4.8
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Casal Moda cost accounting"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_PLACEHOLDER",
+        "HEADLINE_UNRESOLVED",
+        "HEADLINE_TOPIC"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-HINV-011",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "invalid",
+      "empty"
+    ],
+    "slide": {
+      "id": "s14",
+      "kind": "content",
+      "message_type": "decomposition",
+      "purpose": "Summarise the key findings on the EBITDA gap",
+      "proposition": {
+        "statement": "Three regions (North, East and Coast) account for 72% of the €25m EBITDA gap to plan",
+        "role": "diagnosis",
+        "claim_type": "driver",
+        "subject": "EBITDA gap",
+        "magnitude": "72%",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1",
+          "F2"
+        ],
+        "confidence": "high"
+      },
+      "headline": "",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Caldera Retail EBITDA gap vs plan, 2026: €25m",
+          "value": 25
+        },
+        {
+          "id": "F2",
+          "claim": "Gap by region: North €8m, East €6m, Coast €4m, remaining five regions €7m",
+          "values": [
+            8,
+            6,
+            4,
+            7
+          ]
+        }
+      ],
+      "visual": {
+        "type": "waterfall",
+        "data": {
+          "categories": [
+            "North",
+            "East",
+            "Coast",
+            "Other"
+          ],
+          "series": [
+            {
+              "name": "EBITDA gap (€m)",
+              "values": [
+                8,
+                6,
+                4,
+                7
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Caldera Retail management accounts 2026"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_MISSING",
+        "HEADLINE_UNRESOLVED"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-HINV-012",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "invalid",
+      "empty"
+    ],
+    "slide": {
+      "id": "s15",
+      "kind": "content",
+      "message_type": "composition",
+      "purpose": "Mostrar la contribución de cada segmento",
+      "proposition": {
+        "statement": "Los clientes pyme concentran el 58% del margen con solo el 30% de los ingresos",
+        "role": "insight",
+        "claim_type": "composition",
+        "subject": "margen por segmento",
+        "magnitude": "58%",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "   ",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Distribución 2026 de Oria Software: pymes 30% de los ingresos y 58% del margen; grandes cuentas 70% de los ingresos y 42% del margen",
+          "values": [
+            30,
+            58,
+            70,
+            42
+          ]
+        }
+      ],
+      "visual": {
+        "type": "stacked_bar",
+        "data": {
+          "categories": [
+            "Ingresos",
+            "Margen"
+          ],
+          "series": [
+            {
+              "name": "Pymes (%)",
+              "values": [
+                30,
+                58
+              ]
+            },
+            {
+              "name": "Grandes cuentas (%)",
+              "values": [
+                70,
+                42
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Contabilidad analítica de Oria Software"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_MISSING",
+        "HEADLINE_PLACEHOLDER",
+        "HEADLINE_UNRESOLVED"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-HINV-013",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "invalid",
+      "purpose_as_headline"
+    ],
+    "slide": {
+      "id": "s16",
+      "kind": "content",
+      "message_type": "change_bridge",
+      "purpose": "Explain the causes of the margin decline",
+      "proposition": {
+        "statement": "Electronics mix explains 1.3 pp of the 1.9 pp gross-margin decline in 2026",
+        "role": "diagnosis",
+        "claim_type": "driver",
+        "subject": "gross margin",
+        "direction": "down",
+        "magnitude": "1.9 pp",
+        "driver": "electronics mix",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1",
+          "F2"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Explain the causes of the margin decline",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Ridgeway Stores gross margin: 18.2% in 2025, 16.3% in 2026",
+          "values": [
+            18.2,
+            16.3
+          ]
+        },
+        {
+          "id": "F2",
+          "claim": "Margin bridge: electronics mix −1.3 pp, freight −0.4 pp, store labour −0.2 pp",
+          "values": [
+            -1.3,
+            -0.4,
+            -0.2
+          ]
+        }
+      ],
+      "visual": {
+        "type": "waterfall",
+        "data": {
+          "categories": [
+            "2025",
+            "Electronics mix",
+            "Freight",
+            "Labour",
+            "2026"
+          ],
+          "series": [
+            {
+              "name": "Gross margin (%)",
+              "values": [
+                18.2,
+                -1.3,
+                -0.4,
+                -0.2,
+                16.3
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Ridgeway Stores management accounts"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_TOPIC",
+        "HEADLINE_UNRESOLVED",
+        "HEADLINE_PLACEHOLDER"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-HINV-014",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "invalid",
+      "purpose_as_headline"
+    ],
+    "slide": {
+      "id": "s17",
+      "kind": "content",
+      "message_type": "decomposition",
+      "purpose": "Mostrar la evolución del margen por región",
+      "proposition": {
+        "statement": "El margen operativo cayó 2,5 pp en la región sur en 2026 y se mantuvo estable en el resto",
+        "role": "diagnosis",
+        "claim_type": "comparison",
+        "subject": "margen operativo",
+        "direction": "down",
+        "magnitude": "2,5 pp",
+        "scope": "región sur",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Mostrar la evolución del margen por región",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Margen operativo de Sierra Farma por región, 2025→2026: sur 14,0%→11,5%; centro 12,2%→12,1%; norte 13,0%→13,1%",
+          "values": [
+            14.0,
+            11.5,
+            12.2,
+            12.1,
+            13.0,
+            13.1
+          ]
+        }
+      ],
+      "visual": {
+        "type": "column",
+        "data": {
+          "categories": [
+            "Sur",
+            "Centro",
+            "Norte"
+          ],
+          "series": [
+            {
+              "name": "2025 (%)",
+              "values": [
+                14.0,
+                12.2,
+                13.0
+              ]
+            },
+            {
+              "name": "2026 (%)",
+              "values": [
+                11.5,
+                12.1,
+                13.1
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Contabilidad de gestión de Sierra Farma"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_TOPIC",
+        "HEADLINE_UNRESOLVED",
+        "HEADLINE_PLACEHOLDER"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-HINV-015",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "invalid",
+      "purpose_as_headline"
+    ],
+    "slide": {
+      "id": "s18",
+      "kind": "content",
+      "message_type": "comparison",
+      "purpose": "Show how churn moved across segments in 2026",
+      "proposition": {
+        "statement": "Monthly churn rose most in the prepaid segment, from 2.0% to 3.1% in 2026",
+        "role": "observation",
+        "claim_type": "comparison",
+        "subject": "monthly churn",
+        "direction": "up",
+        "magnitude": "1.1 pp",
+        "scope": "prepaid",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Show how churn moved across segments in 2026",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Velora Mobile monthly churn 2025→2026: prepaid 2.0%→3.1%; postpaid 1.1%→1.2%; business 0.8%→0.8%",
+          "values": [
+            2.0,
+            3.1,
+            1.1,
+            1.2,
+            0.8,
+            0.8
+          ]
+        }
+      ],
+      "visual": {
+        "type": "column",
+        "data": {
+          "categories": [
+            "Prepaid",
+            "Postpaid",
+            "Business"
+          ],
+          "series": [
+            {
+              "name": "2025 (%)",
+              "values": [
+                2.0,
+                1.1,
+                0.8
+              ]
+            },
+            {
+              "name": "2026 (%)",
+              "values": [
+                3.1,
+                1.2,
+                0.8
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Velora Mobile subscriber base reports"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_TOPIC",
+        "HEADLINE_UNRESOLVED",
+        "HEADLINE_PLACEHOLDER"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-HINV-016",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "invalid",
+      "two_messages"
+    ],
+    "slide": {
+      "id": "s19",
+      "kind": "content",
+      "message_type": "trend",
+      "purpose": "Show 2026 financial performance",
+      "proposition": {
+        "statement": "Revenue grew 12% in 2026",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "revenue",
+        "direction": "up",
+        "magnitude": "12%",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1",
+          "F2",
+          "F3"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Revenue grew 12% and margins fell 3 pp and costs remain above plan",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Pellam Group revenue: €100m in 2025, €112m in 2026",
+          "values": [
+            100,
+            112
+          ]
+        },
+        {
+          "id": "F2",
+          "claim": "Operating margin: 21% in 2025, 18% in 2026",
+          "values": [
+            21,
+            18
+          ]
+        },
+        {
+          "id": "F3",
+          "claim": "Operating costs 2026: €104m vs plan €100m",
+          "values": [
+            104,
+            100
+          ]
+        }
+      ],
+      "visual": {
+        "type": "column",
+        "data": {
+          "categories": [
+            "2025",
+            "2026"
+          ],
+          "series": [
+            {
+              "name": "Revenue (€m)",
+              "values": [
+                100,
+                112
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Pellam Group management accounts"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_TWO_GOVERNING_MESSAGES",
+        "HEADLINE_UNRESOLVED"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-HINV-017",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "invalid",
+      "two_messages"
+    ],
+    "slide": {
+      "id": "s20",
+      "kind": "content",
+      "message_type": "trend",
+      "purpose": "Mostrar los resultados de 2026",
+      "proposition": {
+        "statement": "Las ventas de Oria Software crecieron un 8% en 2026",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "ventas",
+        "direction": "up",
+        "magnitude": "8%",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1",
+          "F2",
+          "F3"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Las ventas crecieron un 8% y el margen cayó 2 pp, mientras la deuda neta subió 15 M€",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Ventas de Oria Software: 200 M€ en 2025 y 216 M€ en 2026",
+          "values": [
+            200,
+            216
+          ]
+        },
+        {
+          "id": "F2",
+          "claim": "Margen operativo: 15% en 2025 y 13% en 2026",
+          "values": [
+            15,
+            13
+          ]
+        },
+        {
+          "id": "F3",
+          "claim": "Deuda neta: 60 M€ en 2025 y 75 M€ en 2026",
+          "values": [
+            60,
+            75
+          ]
+        }
+      ],
+      "visual": {
+        "type": "column",
+        "data": {
+          "categories": [
+            "2025",
+            "2026"
+          ],
+          "series": [
+            {
+              "name": "Ventas (M€)",
+              "values": [
+                200,
+                216
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Cuentas anuales de Oria Software"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_TWO_GOVERNING_MESSAGES",
+        "HEADLINE_UNRESOLVED"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-HINV-018",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "invalid",
+      "two_messages"
+    ],
+    "slide": {
+      "id": "s21",
+      "kind": "content",
+      "message_type": "trend",
+      "purpose": "Show customer health in H1 2026",
+      "proposition": {
+        "statement": "Monthly churn rose from 1.5% to 2.4% in H1 2026",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "monthly churn",
+        "direction": "up",
+        "magnitude": "0.9 pp",
+        "timeframe": "H1 2026",
+        "evidence_ids": [
+          "F1",
+          "F2"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Churn rose to 2.4%; separately, NPS improved by 6 points",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Velora Mobile monthly churn: 1.5% in H2 2025, 2.4% in H1 2026",
+          "values": [
+            1.5,
+            2.4
+          ]
+        },
+        {
+          "id": "F2",
+          "claim": "Velora Mobile NPS: 24 in H2 2025, 30 in H1 2026",
+          "values": [
+            24,
+            30
+          ]
+        }
+      ],
+      "visual": {
+        "type": "line",
+        "data": {
+          "categories": [
+            "H2 2025",
+            "H1 2026"
+          ],
+          "series": [
+            {
+              "name": "Monthly churn (%)",
+              "values": [
+                1.5,
+                2.4
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Velora Mobile subscriber base reports"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_TWO_GOVERNING_MESSAGES",
+        "HEADLINE_UNRESOLVED"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-HINV-019",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "invalid",
+      "two_messages"
+    ],
+    "slide": {
+      "id": "s22",
+      "kind": "content",
+      "message_type": "trend",
+      "purpose": "Mostrar la evolución operativa",
+      "proposition": {
+        "statement": "El coste por pedido de Casal Moda bajó un 5% en 2026",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "coste por pedido",
+        "direction": "down",
+        "magnitude": "5%",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1",
+          "F2"
+        ],
+        "confidence": "high"
+      },
+      "headline": "El coste por pedido bajó un 5%. Además, la puntualidad mejoró 4 pp",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Coste por pedido de Casal Moda: 6,00 € en 2025 y 5,70 € en 2026",
+          "values": [
+            6.0,
+            5.7
+          ]
+        },
+        {
+          "id": "F2",
+          "claim": "Entregas puntuales: 89% en 2025 y 93% en 2026",
+          "values": [
+            89,
+            93
+          ]
+        }
+      ],
+      "visual": {
+        "type": "column",
+        "data": {
+          "categories": [
+            "2025",
+            "2026"
+          ],
+          "series": [
+            {
+              "name": "Coste por pedido (€)",
+              "values": [
+                6.0,
+                5.7
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Informe de operaciones de Casal Moda"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_TWO_GOVERNING_MESSAGES",
+        "HEADLINE_UNRESOLVED"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-HINV-020",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "invalid",
+      "kpi_label"
+    ],
+    "slide": {
+      "id": "s23",
+      "kind": "content",
+      "message_type": "kpi_hero",
+      "purpose": "Show 2026 EBITDA against plan",
+      "proposition": {
+        "statement": "EBITDA is €8m below plan in 2026 despite revenue on target",
+        "role": "observation",
+        "claim_type": "comparison",
+        "subject": "EBITDA",
+        "direction": "below plan",
+        "magnitude": "€8m",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1",
+          "F2"
+        ],
+        "confidence": "high"
+      },
+      "headline": "2026 EBITDA",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Pellam Group 2026 EBITDA €42m vs plan €50m",
+          "values": [
+            42,
+            50
+          ]
+        },
+        {
+          "id": "F2",
+          "claim": "Pellam Group 2026 revenue €610m vs plan €608m",
+          "values": [
+            610,
+            608
+          ]
+        }
+      ],
+      "visual": {
+        "type": "kpi",
+        "data": {
+          "value": 42,
+          "unit": "€m",
+          "comparison": 50,
+          "label": "EBITDA 2026"
+        }
+      },
+      "source": "Pellam Group monthly management report, December 2026"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_TOPIC",
+        "HEADLINE_UNRESOLVED"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-HINV-021",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "invalid",
+      "kpi_label"
+    ],
+    "slide": {
+      "id": "s24",
+      "kind": "content",
+      "message_type": "kpi_hero",
+      "purpose": "Mostrar el margen bruto de 2026",
+      "proposition": {
+        "statement": "El margen bruto cayó 2,0 pp en 2026, hasta el 22,1%",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "margen bruto",
+        "direction": "down",
+        "magnitude": "2,0 pp",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Margen bruto 2026 (%)",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Margen bruto de Mercantia Hogar: 24,1% en 2025 y 22,1% en 2026",
+          "values": [
+            24.1,
+            22.1
+          ]
+        }
+      ],
+      "visual": {
+        "type": "kpi",
+        "data": {
+          "value": 22.1,
+          "unit": "%",
+          "comparison": 24.1,
+          "label": "Margen bruto 2026"
+        }
+      },
+      "source": "Contabilidad de gestión de Mercantia Hogar"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_TOPIC",
+        "HEADLINE_UNRESOLVED"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-HINV-022",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "invalid",
+      "kpi_label"
+    ],
+    "slide": {
+      "id": "s25",
+      "kind": "content",
+      "message_type": "kpi_hero",
+      "purpose": "Show NPS for Q2 2026",
+      "proposition": {
+        "statement": "NPS fell 11 points in Q2 2026 to 31",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "NPS",
+        "direction": "down",
+        "magnitude": "11 points",
+        "timeframe": "Q2 2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Net promoter score (NPS), Q2 2026",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Aurora Bank NPS: 42 in Q1 2026, 31 in Q2 2026",
+          "values": [
+            42,
+            31
+          ]
+        }
+      ],
+      "visual": {
+        "type": "kpi",
+        "data": {
+          "value": 31,
+          "unit": "pts",
+          "comparison": 42,
+          "label": "NPS Q2 2026"
+        }
+      },
+      "source": "Aurora Bank customer survey, Q1-Q2 2026"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_TOPIC",
+        "HEADLINE_UNRESOLVED"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-HINV-023",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "invalid",
+      "proposition_missing"
+    ],
+    "slide": {
+      "id": "s26",
+      "kind": "content",
+      "message_type": "trend",
+      "purpose": "Show how revenue moved in 2026",
+      "headline": "Revenue grew 12% in 2026 to reach €280m",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Northwind Tools revenue: 2025 €250m, 2026 €280m",
+          "values": [
+            250,
+            280
+          ]
+        }
+      ],
+      "visual": {
+        "type": "column",
+        "data": {
+          "categories": [
+            "2025",
+            "2026"
+          ],
+          "series": [
+            {
+              "name": "Revenue (€m)",
+              "values": [
+                250,
+                280
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Northwind Tools audited accounts 2025-2026"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "PROPOSITION_MISSING"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-HINV-024",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "invalid",
+      "proposition_missing"
+    ],
+    "slide": {
+      "id": "s27",
+      "kind": "content",
+      "message_type": "decomposition",
+      "purpose": "Mostrar dónde se concentra la brecha de EBITDA",
+      "headline": "Tres regiones concentran el 72% de la brecha de EBITDA",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Brecha de EBITDA frente a plan de Caldera Retail en 2026: 25 M€",
+          "value": 25
+        },
+        {
+          "id": "F2",
+          "claim": "Brecha por región: norte 8 M€, este 6 M€, costa 4 M€, resto de regiones 7 M€",
+          "values": [
+            8,
+            6,
+            4,
+            7
+          ]
+        }
+      ],
+      "visual": {
+        "type": "waterfall",
+        "data": {
+          "categories": [
+            "Norte",
+            "Este",
+            "Costa",
+            "Resto"
+          ],
+          "series": [
+            {
+              "name": "Brecha de EBITDA (M€)",
+              "values": [
+                8,
+                6,
+                4,
+                7
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Contabilidad de gestión de Caldera Retail"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "PROPOSITION_MISSING"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-HINV-025",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "invalid",
+      "topic"
+    ],
+    "slide": {
+      "id": "s28",
+      "kind": "content",
+      "message_type": "comparison",
+      "purpose": "Mostrar la posición competitiva",
+      "proposition": {
+        "statement": "Calderón Hogar perdió 2 pp de cuota en 2026 frente a las cadenas de descuento",
+        "role": "diagnosis",
+        "claim_type": "comparison",
+        "subject": "cuota de mercado",
+        "direction": "down",
+        "magnitude": "2 pp",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Panorama competitivo",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Cuota de mercado 2025→2026: Calderón Hogar 14%→12%; cadenas de descuento 18%→21%",
+          "values": [
+            14,
+            12,
+            18,
+            21
+          ]
+        }
+      ],
+      "visual": {
+        "type": "column",
+        "data": {
+          "categories": [
+            "Calderón Hogar",
+            "Descuento"
+          ],
+          "series": [
+            {
+              "name": "2025 (%)",
+              "values": [
+                14,
+                18
+              ]
+            },
+            {
+              "name": "2026 (%)",
+              "values": [
+                12,
+                21
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Asociación sectorial del mueble; análisis de Calderón Hogar"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_TOPIC",
+        "HEADLINE_UNRESOLVED"
+      ],
+      "selected": null
+    }
+  }
+]

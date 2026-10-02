@@ -1,0 +1,1677 @@
+[
+  {
+    "id": "EN-HVAL-001",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "valid",
+      "factual"
+    ],
+    "slide": {
+      "id": "s04",
+      "kind": "content",
+      "message_type": "trend",
+      "purpose": "Show how Northwind Tools revenue moved in 2026",
+      "proposition": {
+        "statement": "Northwind Tools revenue grew 12% in 2026 to €280m",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "revenue",
+        "direction": "up",
+        "magnitude": "12%",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Revenue grew 12% in 2026 to reach €280m",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Northwind Tools revenue: 2025 €250m, 2026 €280m",
+          "values": [
+            250,
+            280
+          ]
+        }
+      ],
+      "visual": {
+        "type": "column",
+        "data": {
+          "categories": [
+            "2025",
+            "2026"
+          ],
+          "series": [
+            {
+              "name": "Revenue (€m)",
+              "values": [
+                250,
+                280
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Northwind Tools audited accounts 2025-2026"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-HVAL-002",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "valid",
+      "factual"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "trend",
+      "purpose": "Mostrar la evolución del EBITDA en 2026",
+      "proposition": {
+        "statement": "El EBITDA de Lumbra Alimentación creció un 14% en 2026 con unas ventas prácticamente planas",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "EBITDA",
+        "direction": "up",
+        "magnitude": "14%",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1",
+          "F2"
+        ],
+        "confidence": "high"
+      },
+      "headline": "El EBITDA creció un 14% en 2026 pese a unas ventas prácticamente planas",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "EBITDA de Lumbra Alimentación: 50 M€ en 2025 y 57 M€ en 2026",
+          "values": [
+            50,
+            57
+          ]
+        },
+        {
+          "id": "F2",
+          "claim": "Ventas de Lumbra Alimentación: 410 M€ en 2025 y 412 M€ en 2026",
+          "values": [
+            410,
+            412
+          ]
+        }
+      ],
+      "visual": {
+        "type": "column",
+        "data": {
+          "categories": [
+            "2025",
+            "2026"
+          ],
+          "series": [
+            {
+              "name": "EBITDA (M€)",
+              "values": [
+                50,
+                57
+              ]
+            },
+            {
+              "name": "Ventas (M€)",
+              "values": [
+                410,
+                412
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Cuentas anuales de Lumbra Alimentación"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-HVAL-003",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "valid",
+      "comparative"
+    ],
+    "slide": {
+      "id": "s06",
+      "kind": "content",
+      "message_type": "comparison",
+      "purpose": "Compare contribution per account across customer segments",
+      "proposition": {
+        "statement": "Enterprise accounts generate 2.3 times the annual contribution of SMB accounts",
+        "role": "comparison",
+        "claim_type": "comparison",
+        "subject": "contribution per account",
+        "comparison": "enterprise vs SMB accounts",
+        "magnitude": "2.3x",
+        "timeframe": "FY2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Enterprise accounts generate 2.3× the contribution of SMB accounts",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Halcyon Software FY2026 average annual contribution per account: enterprise €46k, SMB €20k",
+          "values": [
+            46,
+            20
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            "Enterprise",
+            "SMB"
+          ],
+          "series": [
+            {
+              "name": "Contribution per account (€k)",
+              "values": [
+                46,
+                20
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Halcyon Software CRM and finance data, FY2026"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-HVAL-004",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "valid",
+      "comparative"
+    ],
+    "slide": {
+      "id": "s07",
+      "kind": "content",
+      "message_type": "comparison",
+      "purpose": "Comparar la productividad de las dos plantas",
+      "proposition": {
+        "statement": "La planta de Burgos produce un 18% más por empleado que la de Ávila",
+        "role": "comparison",
+        "claim_type": "comparison",
+        "subject": "productividad por empleado",
+        "comparison": "Burgos frente a Ávila",
+        "magnitude": "18%",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "La planta de Burgos produce un 18% más por empleado que la de Ávila",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Productividad de Ferrovia Componentes en 2026: Burgos 236 unidades por empleado; Ávila 200 unidades por empleado",
+          "values": [
+            236,
+            200
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            "Burgos",
+            "Ávila"
+          ],
+          "series": [
+            {
+              "name": "Unidades por empleado",
+              "values": [
+                236,
+                200
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Datos de producción de Ferrovia Componentes, 2026"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-HVAL-005",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "valid",
+      "driver"
+    ],
+    "slide": {
+      "id": "s08",
+      "kind": "content",
+      "message_type": "decomposition",
+      "purpose": "Show where the EBITDA gap is concentrated",
+      "proposition": {
+        "statement": "Three regions (North, East and Coast) account for 72% of the €25m EBITDA gap to plan",
+        "role": "diagnosis",
+        "claim_type": "driver",
+        "subject": "EBITDA gap",
+        "driver": "North, East and Coast regions",
+        "magnitude": "72%",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1",
+          "F2"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Three regions account for 72% of the €25m EBITDA gap",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Caldera Retail EBITDA gap vs plan, 2026: €25m",
+          "value": 25
+        },
+        {
+          "id": "F2",
+          "claim": "Gap by region: North €8m, East €6m, Coast €4m, remaining five regions €7m",
+          "values": [
+            8,
+            6,
+            4,
+            7
+          ]
+        }
+      ],
+      "visual": {
+        "type": "waterfall",
+        "data": {
+          "categories": [
+            "North",
+            "East",
+            "Coast",
+            "Other"
+          ],
+          "series": [
+            {
+              "name": "EBITDA gap (€m)",
+              "values": [
+                8,
+                6,
+                4,
+                7
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Caldera Retail management accounts 2026"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-HVAL-006",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "valid",
+      "driver"
+    ],
+    "slide": {
+      "id": "s09",
+      "kind": "content",
+      "message_type": "change_bridge",
+      "purpose": "Explicar qué factores explican la caída del margen bruto",
+      "proposition": {
+        "statement": "El mayor peso de electrónica explica 1,4 de los 2,0 pp de caída del margen bruto en 2026",
+        "role": "diagnosis",
+        "claim_type": "driver",
+        "subject": "margen bruto",
+        "direction": "down",
+        "magnitude": "2,0 pp",
+        "driver": "mix de electrónica",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1",
+          "F2"
+        ],
+        "confidence": "high"
+      },
+      "headline": "El mayor peso de electrónica explica 1,4 de los 2,0 pp de caída del margen bruto",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Margen bruto de Mercantia Hogar: 24,1% en 2025 y 22,1% en 2026",
+          "values": [
+            24.1,
+            22.1
+          ]
+        },
+        {
+          "id": "F2",
+          "claim": "Puente del margen 2025-2026: efecto mix de electrónica −1,4 pp; precio −0,3 pp; logística −0,3 pp",
+          "values": [
+            -1.4,
+            -0.3,
+            -0.3
+          ]
+        }
+      ],
+      "visual": {
+        "type": "waterfall",
+        "data": {
+          "categories": [
+            "2025",
+            "Mix electrónica",
+            "Precio",
+            "Logística",
+            "2026"
+          ],
+          "series": [
+            {
+              "name": "Margen bruto (%)",
+              "values": [
+                24.1,
+                -1.4,
+                -0.3,
+                -0.3,
+                22.1
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Contabilidad de gestión de Mercantia Hogar"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-HVAL-007",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "valid",
+      "causal"
+    ],
+    "slide": {
+      "id": "s10",
+      "kind": "content",
+      "message_type": "change_bridge",
+      "purpose": "Show what caused the online revenue shortfall",
+      "proposition": {
+        "statement": "Lower conversion, rather than traffic, caused 75% of the €10m online revenue shortfall against plan in 2026",
+        "role": "diagnosis",
+        "claim_type": "causal",
+        "subject": "online revenue shortfall",
+        "direction": "down",
+        "magnitude": "75%",
+        "driver": "lower conversion",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1",
+          "F2"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Lower conversion, not traffic, drives 75% of the €10m online revenue shortfall",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Brightline Apparel online revenue 2026: €90m vs plan €100m, a €10m shortfall",
+          "values": [
+            90,
+            100,
+            10
+          ]
+        },
+        {
+          "id": "F2",
+          "claim": "Shortfall decomposition (traffic × conversion × basket): conversion effect −€7.5m, traffic effect −€2.5m, basket effect €0m",
+          "values": [
+            -7.5,
+            -2.5,
+            0
+          ]
+        }
+      ],
+      "visual": {
+        "type": "waterfall",
+        "data": {
+          "categories": [
+            "Plan",
+            "Conversion",
+            "Traffic",
+            "Basket",
+            "Actual"
+          ],
+          "series": [
+            {
+              "name": "Online revenue (€m)",
+              "values": [
+                100,
+                -7.5,
+                -2.5,
+                0,
+                90
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Brightline Apparel web analytics and finance, 2026"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-HVAL-008",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "valid",
+      "implication"
+    ],
+    "slide": {
+      "id": "s11",
+      "kind": "content",
+      "message_type": "implication",
+      "purpose": "Show what demand growth means for capacity",
+      "proposition": {
+        "statement": "Current line capacity will constrain volume growth from Q3 2027 unless a second line is added",
+        "role": "implication",
+        "claim_type": "constraint",
+        "subject": "production capacity",
+        "implication": "a second line is required",
+        "timeframe": "Q3 2027",
+        "evidence_ids": [
+          "F1",
+          "F2"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Current capacity will cap volume growth from Q3 2027 unless a second line is added",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Orrin Packaging line capacity: 1.20m units per year",
+          "value": 1.2
+        },
+        {
+          "id": "F2",
+          "claim": "Demand forecast: 1.05m units in 2026, rising to an annualised 1.35m units from Q3 2027",
+          "values": [
+            1.05,
+            1.35
+          ]
+        }
+      ],
+      "visual": {
+        "type": "line",
+        "data": {
+          "categories": [
+            "Capacity",
+            "2026 demand",
+            "Q3 2027 demand"
+          ],
+          "series": [
+            {
+              "name": "Units (m per year)",
+              "values": [
+                1.2,
+                1.05,
+                1.35
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Orrin Packaging operations plan and sales forecast"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-HVAL-009",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "valid",
+      "recommendation"
+    ],
+    "slide": {
+      "id": "s12",
+      "kind": "content",
+      "message_type": "recommendation",
+      "purpose": "Recomendar la primera palanca de recuperación del margen",
+      "proposition": {
+        "statement": "Repreciar electrónica como primera palanca para recuperar 1,1 pp de margen bruto en 2027",
+        "role": "recommendation",
+        "claim_type": "recommendation",
+        "subject": "margen bruto",
+        "recommended_action": "repreciar electrónica",
+        "magnitude": "1,1 pp",
+        "timeframe": "2027",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Repreciar electrónica primero para recuperar 1,1 pp de margen bruto en 2027",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Simulación de precios: subir un 4% el precio medio de electrónica recupera 1,1 pp de margen bruto en 2027 con una pérdida de volumen del 2%",
+          "values": [
+            4,
+            1.1,
+            2
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            "Electrónica +4%"
+          ],
+          "series": [
+            {
+              "name": "Margen recuperado (pp)",
+              "values": [
+                1.1
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Modelo de precios de Mercantia Hogar"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-HVAL-010",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "valid",
+      "recommendation"
+    ],
+    "slide": {
+      "id": "s13",
+      "kind": "content",
+      "message_type": "recommendation",
+      "purpose": "Recommend how to reduce procurement cost",
+      "proposition": {
+        "statement": "Consolidate the supplier base from 420 to 150 vendors to save €6m a year",
+        "role": "recommendation",
+        "claim_type": "recommendation",
+        "subject": "procurement cost",
+        "recommended_action": "consolidate suppliers",
+        "magnitude": "€6m",
+        "evidence_ids": [
+          "F1",
+          "F2"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Consolidate the supplier base from 420 to 150 vendors to save €6m a year",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Kestrel Logistics active suppliers 2026: 420; category plans support 150",
+          "values": [
+            420,
+            150
+          ]
+        },
+        {
+          "id": "F2",
+          "claim": "Modelled savings from consolidating to 150 suppliers: €6m per year",
+          "value": 6
+        }
+      ],
+      "visual": {
+        "type": "column",
+        "data": {
+          "categories": [
+            "Today",
+            "Target"
+          ],
+          "series": [
+            {
+              "name": "Active suppliers",
+              "values": [
+                420,
+                150
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Kestrel Logistics procurement spend cube 2026"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-HVAL-011",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "valid",
+      "decision"
+    ],
+    "slide": {
+      "id": "s14",
+      "kind": "content",
+      "message_type": "decision",
+      "purpose": "Ask the board to approve the priority initiatives",
+      "proposition": {
+        "statement": "Approving the two priority initiatives unlocks €14m of annual EBITDA",
+        "role": "decision",
+        "claim_type": "decision",
+        "subject": "EBITDA",
+        "decision": "approve initiatives A and B",
+        "magnitude": "€14m",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Approving the two priority initiatives unlocks €14m of annual EBITDA",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Ostara Chemicals business cases: initiative A (procurement) €9m annual EBITDA; initiative B (energy) €5m",
+          "values": [
+            9,
+            5
+          ]
+        }
+      ],
+      "visual": {
+        "type": "column",
+        "data": {
+          "categories": [
+            "Initiative A",
+            "Initiative B"
+          ],
+          "series": [
+            {
+              "name": "Annual EBITDA (€m)",
+              "values": [
+                9,
+                5
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Ostara Chemicals approved business cases"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-HVAL-012",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "valid",
+      "decision"
+    ],
+    "slide": {
+      "id": "s15",
+      "kind": "content",
+      "message_type": "decision",
+      "purpose": "Solicitar la aprobación de la oleada 1",
+      "proposition": {
+        "statement": "Aprobar la oleada 1 este mes permite capturar 9 M€ de ahorro en 2027",
+        "role": "decision",
+        "claim_type": "decision",
+        "subject": "ahorro",
+        "decision": "aprobar la oleada 1 este mes",
+        "magnitude": "9 M€",
+        "timeframe": "2027",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Aprobar la oleada 1 este mes permite capturar 9 M€ de ahorro en 2027",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Ahorro 2027 de la oleada 1 de Grupo Vellisca: 9 M€ si arranca en enero de 2027; 6,5 M€ si arranca en abril",
+          "values": [
+            9,
+            6.5
+          ]
+        }
+      ],
+      "visual": {
+        "type": "column",
+        "data": {
+          "categories": [
+            "Arranque enero",
+            "Arranque abril"
+          ],
+          "series": [
+            {
+              "name": "Ahorro 2027 (M€)",
+              "values": [
+                9,
+                6.5
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Plan de transformación de Grupo Vellisca"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-HVAL-013",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "valid",
+      "risk"
+    ],
+    "slide": {
+      "id": "s16",
+      "kind": "content",
+      "message_type": "risk",
+      "purpose": "Show the savings exposure from an ERP delay",
+      "proposition": {
+        "statement": "A 6-week delay in the ERP cut-over would put €4m of the €12m 2027 savings at risk",
+        "role": "risk",
+        "claim_type": "risk",
+        "subject": "2027 savings",
+        "magnitude": "€4m",
+        "timeframe": "2027",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "A 6-week delay in the ERP cut-over would put €4m of 2027 savings at risk",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Pinecrest Utilities ERP cut-over plan: 2027 savings €12m; a 6-week delay defers €4m beyond 2027",
+          "values": [
+            12,
+            6,
+            4
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            "On plan",
+            "6-week delay"
+          ],
+          "series": [
+            {
+              "name": "2027 savings (€m)",
+              "values": [
+                12,
+                8
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Pinecrest Utilities PMO"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-HVAL-014",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "valid",
+      "risk"
+    ],
+    "slide": {
+      "id": "s17",
+      "kind": "content",
+      "message_type": "risk",
+      "purpose": "Mostrar el riesgo de un retraso en la migración",
+      "proposition": {
+        "statement": "Un retraso de 8 semanas en la migración de pólizas aplazaría 3,5 M€ de los 10 M€ de ahorro previstos para 2027",
+        "role": "risk",
+        "claim_type": "risk",
+        "subject": "ahorro 2027",
+        "magnitude": "3,5 M€",
+        "timeframe": "2027",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Un retraso de 8 semanas en la migración pondría en riesgo 3,5 M€ del ahorro de 2027",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Migración de pólizas de Talía Seguros: un retraso de 8 semanas aplaza 3,5 M€ de los 10 M€ de ahorro previstos para 2027",
+          "values": [
+            8,
+            3.5,
+            10
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            "Según plan",
+            "Retraso de 8 semanas"
+          ],
+          "series": [
+            {
+              "name": "Ahorro 2027 (M€)",
+              "values": [
+                10,
+                6.5
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Oficina de proyecto de Talía Seguros"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-HVAL-015",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "valid",
+      "status"
+    ],
+    "slide": {
+      "id": "s18",
+      "kind": "content",
+      "message_type": "status",
+      "purpose": "Report programme status to the steering committee",
+      "proposition": {
+        "statement": "The cost programme remains on track; workstream 3 is 2 weeks late but off the critical path",
+        "role": "status",
+        "claim_type": "status",
+        "subject": "cost programme",
+        "direction": "on track",
+        "qualifiers": [
+          "workstream 3 two weeks late"
+        ],
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "The cost programme remains on track despite a 2-week slip in workstream 3",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Marlow Foods programme milestones: 18 of 20 on schedule; workstream 3 (procurement) 2 weeks late; critical path unaffected",
+          "values": [
+            18,
+            20,
+            3,
+            2
+          ]
+        }
+      ],
+      "visual": {
+        "type": "table",
+        "data": {
+          "columns": [
+            "Workstream",
+            "Status",
+            "Delay (weeks)"
+          ],
+          "rows": [
+            [
+              "1",
+              "On track",
+              0
+            ],
+            [
+              "2",
+              "On track",
+              0
+            ],
+            [
+              "3",
+              "Late",
+              2
+            ],
+            [
+              "4",
+              "On track",
+              0
+            ]
+          ]
+        }
+      },
+      "source": "Marlow Foods PMO tracker"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-HVAL-016",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "valid",
+      "status"
+    ],
+    "slide": {
+      "id": "s19",
+      "kind": "content",
+      "message_type": "status",
+      "purpose": "Informar del estado del programa de eficiencia",
+      "proposition": {
+        "statement": "El programa de eficiencia va 6 semanas por detrás del plan en la migración de datos",
+        "role": "status",
+        "claim_type": "status",
+        "subject": "programa de eficiencia",
+        "direction": "off track",
+        "magnitude": "6 semanas",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "El programa de eficiencia va 6 semanas por detrás del plan en la migración de datos",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Plan de eficiencia de Arenal Telecom: 7 de 12 hitos completados frente a 10 previstos; la migración de datos acumula 6 semanas de retraso",
+          "values": [
+            7,
+            12,
+            10,
+            6
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            "Hitos previstos",
+            "Hitos completados"
+          ],
+          "series": [
+            {
+              "name": "Hitos",
+              "values": [
+                10,
+                7
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Oficina de proyecto de Arenal Telecom"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-HVAL-017",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "valid",
+      "exempt",
+      "cover"
+    ],
+    "slide": {
+      "id": "s01",
+      "kind": "cover",
+      "purpose": "Title page",
+      "headline": "Northwind Tools — Margin recovery plan"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-HVAL-018",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "valid",
+      "exempt",
+      "divider"
+    ],
+    "slide": {
+      "id": "s02",
+      "kind": "divider",
+      "purpose": "Separador de sección",
+      "headline": "Diagnóstico"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-HVAL-019",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "valid",
+      "exempt",
+      "agenda"
+    ],
+    "slide": {
+      "id": "s03",
+      "kind": "agenda",
+      "purpose": "Índice del documento",
+      "headline": "Índice"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-HVAL-020",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "valid",
+      "candidates"
+    ],
+    "slide": {
+      "id": "s20",
+      "kind": "content",
+      "message_type": "trend",
+      "purpose": "Show how gross margin moved in 2026",
+      "proposition": {
+        "statement": "Ridgeway Stores gross margin fell 1.9 pp in 2026",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "gross margin",
+        "direction": "down",
+        "magnitude": "1.9 pp",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Gross margin performance",
+      "headline_candidates": [
+        "Gross margin performance",
+        "Gross margin rose 1.9 pp in 2026",
+        "Gross margin fell 1.9 pp in 2026"
+      ],
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Ridgeway Stores gross margin: 18.2% in 2025, 16.3% in 2026",
+          "values": [
+            18.2,
+            16.3
+          ]
+        }
+      ],
+      "visual": {
+        "type": "column",
+        "data": {
+          "categories": [
+            "2025",
+            "2026"
+          ],
+          "series": [
+            {
+              "name": "Gross margin (%)",
+              "values": [
+                18.2,
+                16.3
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Ridgeway Stores management accounts"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": "Gross margin fell 1.9 pp in 2026"
+    }
+  },
+  {
+    "id": "ES-HVAL-021",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "valid",
+      "candidates"
+    ],
+    "slide": {
+      "id": "s21",
+      "kind": "content",
+      "message_type": "trend",
+      "purpose": "Mostrar la evolución del coste logístico por pedido",
+      "proposition": {
+        "statement": "El coste logístico por pedido subió un 9% en 2026",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "coste logístico por pedido",
+        "direction": "up",
+        "magnitude": "9%",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Análisis de costes logísticos",
+      "headline_candidates": [
+        "Análisis de costes logísticos",
+        "El coste logístico por pedido subió un 15% en 2026",
+        "El coste logístico por pedido subió un 9% en 2026"
+      ],
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Coste logístico por pedido de Casal Moda: 4,40 € en 2025 y 4,80 € en 2026",
+          "values": [
+            4.4,
+            4.8
+          ]
+        }
+      ],
+      "visual": {
+        "type": "column",
+        "data": {
+          "categories": [
+            "2025",
+            "2026"
+          ],
+          "series": [
+            {
+              "name": "Coste por pedido (€)",
+              "values": [
+                4.4,
+                4.8
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Contabilidad analítica de Casal Moda"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": "El coste logístico por pedido subió un 9% en 2026"
+    }
+  },
+  {
+    "id": "EN-HVAL-022",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "valid",
+      "candidates"
+    ],
+    "slide": {
+      "id": "s22",
+      "kind": "content",
+      "message_type": "trend",
+      "purpose": "Explain the churn increase",
+      "proposition": {
+        "statement": "Monthly churn rose from 1.5% in H2 2025 to 2.4% in H1 2026",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "monthly churn",
+        "direction": "up",
+        "magnitude": "0.9 pp",
+        "timeframe": "H1 2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Explain the churn increase",
+      "headline_candidates": [
+        "Churn analysis",
+        "Price increases caused monthly churn to rise to 2.4% in H1 2026",
+        "Monthly churn rose from 1.5% to 2.4% in H1 2026"
+      ],
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Velora Mobile monthly churn: 1.5% in H2 2025, 2.4% in H1 2026; price list raised in January 2026",
+          "values": [
+            1.5,
+            2.4
+          ]
+        }
+      ],
+      "visual": {
+        "type": "line",
+        "data": {
+          "categories": [
+            "H2 2025",
+            "H1 2026"
+          ],
+          "series": [
+            {
+              "name": "Monthly churn (%)",
+              "values": [
+                1.5,
+                2.4
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Velora Mobile subscriber base reports"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": "Monthly churn rose from 1.5% to 2.4% in H1 2026"
+    }
+  },
+  {
+    "id": "EN-HVAL-023",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "valid",
+      "qualitative"
+    ],
+    "slide": {
+      "id": "s23",
+      "kind": "content",
+      "message_type": "diagnosis",
+      "purpose": "Show who owns the order-to-cash process",
+      "proposition": {
+        "statement": "No function owns order-to-cash end to end, so hand-offs between teams are unmanaged",
+        "role": "diagnosis",
+        "claim_type": "constraint",
+        "subject": "order-to-cash ownership",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "No function owns order-to-cash end to end, leaving hand-offs between teams unmanaged",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Tolland Industrial process mapping: 5 functions own steps of order-to-cash; 0 roles accountable for end-to-end cycle time; 14 hand-offs with no owner",
+          "values": [
+            5,
+            0,
+            14
+          ]
+        }
+      ],
+      "visual": {
+        "type": "table",
+        "data": {
+          "columns": [
+            "Step",
+            "Owner"
+          ],
+          "rows": [
+            [
+              "Order entry",
+              "Sales ops"
+            ],
+            [
+              "Credit check",
+              "Finance"
+            ],
+            [
+              "Fulfilment",
+              "Logistics"
+            ],
+            [
+              "Invoicing",
+              "Billing"
+            ],
+            [
+              "Collections",
+              "Treasury"
+            ]
+          ]
+        }
+      },
+      "source": "Tolland Industrial process interviews and RACI review"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-HVAL-024",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "valid",
+      "qualitative"
+    ],
+    "slide": {
+      "id": "s24",
+      "kind": "content",
+      "message_type": "comparison",
+      "purpose": "Mostrar qué valoran los clientes premium",
+      "proposition": {
+        "statement": "Los clientes premium valoran más la rapidez de entrega que el precio",
+        "role": "insight",
+        "claim_type": "comparison",
+        "subject": "criterios de compra de clientes premium",
+        "comparison": "rapidez de entrega frente a precio",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Los clientes premium valoran más la rapidez de entrega que el precio",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Encuesta a 1.200 clientes premium de Nórdica Café (2026): el 64% sitúa la rapidez de entrega como primer criterio de compra y el 22% el precio",
+          "values": [
+            1200,
+            64,
+            22
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            "Rapidez de entrega",
+            "Precio",
+            "Otros"
+          ],
+          "series": [
+            {
+              "name": "Primer criterio de compra (%)",
+              "values": [
+                64,
+                22,
+                14
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Encuesta de clientes de Nórdica Café, 2026"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-HVAL-025",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "valid",
+      "qualitative",
+      "implication"
+    ],
+    "slide": {
+      "id": "s25",
+      "kind": "content",
+      "message_type": "implication",
+      "purpose": "Mostrar qué implica el crecimiento previsto para la red logística",
+      "proposition": {
+        "statement": "La red actual de almacenes no podrá absorber el crecimiento previsto sin una nueva plataforma en el norte",
+        "role": "implication",
+        "claim_type": "constraint",
+        "subject": "capacidad de almacenaje",
+        "implication": "nueva plataforma en el norte",
+        "timeframe": "2027-2028",
+        "evidence_ids": [
+          "F1",
+          "F2"
+        ],
+        "confidence": "high"
+      },
+      "headline": "La red actual de almacenes no podrá absorber el crecimiento previsto sin una nueva plataforma en el norte",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Ocupación media de los almacenes de Distribuciones Ebro en 2026: 94%",
+          "value": 94
+        },
+        {
+          "id": "F2",
+          "claim": "Previsión de volumen 2027-2028: +18%, el 70% en la zona norte; la capacidad libre permite absorber como máximo un +6%",
+          "values": [
+            18,
+            70,
+            6
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            "Crecimiento previsto",
+            "Capacidad libre"
+          ],
+          "series": [
+            {
+              "name": "Volumen (%)",
+              "values": [
+                18,
+                6
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Plan logístico de Distribuciones Ebro"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  }
+]

@@ -1,0 +1,12 @@
+{
+  "sealed_by": "independent author (no engine code read)",
+  "files": {
+    "causality.json": "1e1e1708c6e72c228315e3270e66931612aff4bd36df6dbaded26889158642ee",
+    "drift.json": "386327c70344e13e2dca48f68b67385896a58cfca918a37fa18ebb8e18cd62f2",
+    "invalid.json": "c8f13d43d586ca179da339e533d55a28c23c362c2bd9f7cf42df9c9bea8e4ad5",
+    "numeric.json": "382b2627f51ea629266d10afc1a06c455dc199f8c8915ff2d76d623463805118",
+    "parallel.json": "bae523e21e8a76a80422e65b62bde8353e5eb11f3dd06c29009ad3686bba54ff",
+    "sequence.json": "0fb1f8667d2395f8f7628afb3334c4b5baf8d16e480637d9368d3b270b595fd6",
+    "valid.json": "0ef5022c618bdd8c01c962000ab9a0d18db41dc06045f1dd5f55dd453eb34d1f"
+  }
+}

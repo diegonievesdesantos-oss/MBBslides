@@ -1,0 +1,827 @@
+[
+  {
+    "id": "EN-HNUM-001",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "numeric",
+      "difference_pp",
+      "valid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "trend",
+      "purpose": "Show how gross margin moved in 2026",
+      "proposition": {
+        "statement": "Margin declined materially in 2026",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "gross margin",
+        "direction": "down",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Gross margin fell 1.9 pp in 2026",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Ridgeway Stores gross margin: 18.2% in 2025, 16.3% in 2026",
+          "values": [
+            18.2,
+            16.3
+          ]
+        }
+      ],
+      "visual": {
+        "type": "column",
+        "data": {
+          "categories": [
+            "2025",
+            "2026"
+          ],
+          "series": [
+            {
+              "name": "Gross margin (%)",
+              "values": [
+                18.2,
+                16.3
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Ridgeway Stores management accounts"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-HNUM-002",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "numeric",
+      "pct_change",
+      "valid"
+    ],
+    "slide": {
+      "id": "s06",
+      "kind": "content",
+      "message_type": "trend",
+      "purpose": "Mostrar la evolución de las ventas",
+      "proposition": {
+        "statement": "Las ventas de Calderón Hogar crecieron en 2026",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "ventas",
+        "direction": "up",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Las ventas de Calderón Hogar crecieron un 12% en 2026",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Ventas de Calderón Hogar: 250 M€ en 2025 y 280 M€ en 2026",
+          "values": [
+            250,
+            280
+          ]
+        }
+      ],
+      "visual": {
+        "type": "column",
+        "data": {
+          "categories": [
+            "2025",
+            "2026"
+          ],
+          "series": [
+            {
+              "name": "Ventas (M€)",
+              "values": [
+                250,
+                280
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Cuentas anuales de Calderón Hogar"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-HNUM-003",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "numeric",
+      "share",
+      "valid"
+    ],
+    "slide": {
+      "id": "s07",
+      "kind": "content",
+      "message_type": "composition",
+      "purpose": "Show the weight of private label in the category",
+      "proposition": {
+        "statement": "Private label now accounts for over a third of category sales",
+        "role": "observation",
+        "claim_type": "composition",
+        "subject": "category sales",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Private label now accounts for 35% of category sales",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Fenwick Grocers 2026 category sales €180m, of which private label €63m",
+          "values": [
+            180,
+            63
+          ]
+        }
+      ],
+      "visual": {
+        "type": "pie",
+        "data": {
+          "categories": [
+            "Private label",
+            "Brands"
+          ],
+          "series": [
+            {
+              "name": "Sales (€m)",
+              "values": [
+                63,
+                117
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Fenwick Grocers category P&L 2026"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-HNUM-004",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "numeric",
+      "sum",
+      "valid"
+    ],
+    "slide": {
+      "id": "s08",
+      "kind": "content",
+      "message_type": "composition",
+      "purpose": "Mostrar el ahorro conjunto de las iniciativas",
+      "proposition": {
+        "statement": "Las tres iniciativas prioritarias generan un ahorro anual relevante",
+        "role": "impact",
+        "claim_type": "impact",
+        "subject": "ahorro anual",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Las tres iniciativas prioritarias suman 9 M€ de ahorro anual",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Ahorro anual de Grupo Vellisca por iniciativa: compras 4,2 M€; energía 3,1 M€; logística 1,7 M€",
+          "values": [
+            4.2,
+            3.1,
+            1.7
+          ]
+        }
+      ],
+      "visual": {
+        "type": "waterfall",
+        "data": {
+          "categories": [
+            "Compras",
+            "Energía",
+            "Logística",
+            "Total"
+          ],
+          "series": [
+            {
+              "name": "Ahorro anual (M€)",
+              "values": [
+                4.2,
+                3.1,
+                1.7,
+                9.0
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Casos de negocio de Grupo Vellisca"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-HNUM-005",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "numeric",
+      "ratio",
+      "valid"
+    ],
+    "slide": {
+      "id": "s09",
+      "kind": "content",
+      "message_type": "comparison",
+      "purpose": "Compare basket size by channel",
+      "proposition": {
+        "statement": "Online orders carry a larger average basket than store orders",
+        "role": "comparison",
+        "claim_type": "comparison",
+        "subject": "average basket",
+        "comparison": "online vs store orders",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Online orders carry 1.5× the average basket of store orders",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Maple & Pine Home 2026 average basket: online €72, store €48",
+          "values": [
+            72,
+            48
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            "Online",
+            "Store"
+          ],
+          "series": [
+            {
+              "name": "Average basket (€)",
+              "values": [
+                72,
+                48
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Maple & Pine Home sales data 2026"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-HNUM-006",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "numeric",
+      "cagr",
+      "valid"
+    ],
+    "slide": {
+      "id": "s10",
+      "kind": "content",
+      "message_type": "trend",
+      "purpose": "Mostrar el crecimiento de los ingresos digitales",
+      "proposition": {
+        "statement": "Los ingresos digitales crecieron de forma sostenida entre 2022 y 2026",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "ingresos digitales",
+        "direction": "up",
+        "timeframe": "2022-2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Los ingresos digitales crecieron a una TCAC del 10% entre 2022 y 2026",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Ingresos digitales de Oria Software: 100 M€ en 2022 y 146,4 M€ en 2026",
+          "values": [
+            100,
+            146.4
+          ]
+        }
+      ],
+      "visual": {
+        "type": "column",
+        "data": {
+          "categories": [
+            "2022",
+            "2026"
+          ],
+          "series": [
+            {
+              "name": "Ingresos digitales (M€)",
+              "values": [
+                100,
+                146.4
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Cuentas anuales de Oria Software"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-HNUM-007",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "numeric",
+      "pp_change",
+      "valid"
+    ],
+    "slide": {
+      "id": "s11",
+      "kind": "content",
+      "message_type": "trend",
+      "purpose": "Mostrar la evolución de la puntualidad",
+      "proposition": {
+        "statement": "La puntualidad de las entregas mejoró en 2026",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "puntualidad",
+        "direction": "up",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "La puntualidad de las entregas mejoró 6 pp hasta el 93% en 2026",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Entregas puntuales de Transportes Olmedo: 87% en 2025 y 93% en 2026",
+          "values": [
+            87,
+            93
+          ]
+        }
+      ],
+      "visual": {
+        "type": "column",
+        "data": {
+          "categories": [
+            "2025",
+            "2026"
+          ],
+          "series": [
+            {
+              "name": "Entregas puntuales (%)",
+              "values": [
+                87,
+                93
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Informe de operaciones de Transportes Olmedo"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-HNUM-008",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "numeric",
+      "non_derivable",
+      "invalid"
+    ],
+    "slide": {
+      "id": "s12",
+      "kind": "content",
+      "message_type": "trend",
+      "purpose": "Show how revenue moved in 2026",
+      "proposition": {
+        "statement": "Pellam Group revenue grew 12% in 2026",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "revenue",
+        "direction": "up",
+        "magnitude": "12%",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Revenue grew 15% in 2026",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Pellam Group revenue: €100m in 2025, €112m in 2026",
+          "values": [
+            100,
+            112
+          ]
+        }
+      ],
+      "visual": {
+        "type": "column",
+        "data": {
+          "categories": [
+            "2025",
+            "2026"
+          ],
+          "series": [
+            {
+              "name": "Revenue (€m)",
+              "values": [
+                100,
+                112
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Pellam Group management accounts"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_NUMBER_UNSUPPORTED",
+        "HEADLINE_PROPOSITION_MISMATCH"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-HNUM-009",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "numeric",
+      "non_derivable",
+      "invalid"
+    ],
+    "slide": {
+      "id": "s13",
+      "kind": "content",
+      "message_type": "fact",
+      "purpose": "Mostrar el abandono de clientes pyme en el primer año",
+      "proposition": {
+        "statement": "Una parte significativa de los clientes pyme abandona durante el primer año",
+        "role": "observation",
+        "claim_type": "fact",
+        "subject": "abandono de clientes pyme",
+        "scope": "cohorte 2025",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "El 40% de los clientes pyme abandona durante el primer año",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Cohorte 2025 de Oria Software: 7.000 clientes pyme captados; 2.100 se dieron de baja en los primeros 12 meses",
+          "values": [
+            7000,
+            2100,
+            12
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            "Captados",
+            "Bajas en 12 meses"
+          ],
+          "series": [
+            {
+              "name": "Clientes pyme",
+              "values": [
+                7000,
+                2100
+              ]
+            }
+          ]
+        }
+      },
+      "source": "CRM de Oria Software"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_NUMBER_UNSUPPORTED"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-HNUM-010",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "numeric",
+      "false_precision",
+      "invalid"
+    ],
+    "slide": {
+      "id": "s14",
+      "kind": "content",
+      "message_type": "impact",
+      "purpose": "Show the expected programme savings",
+      "proposition": {
+        "statement": "The programme will save about €9m a year",
+        "role": "impact",
+        "claim_type": "impact",
+        "subject": "programme savings",
+        "magnitude": "€9m",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "The programme will save €9.7m a year",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Marlow Foods programme savings estimate: €9m per year (range €8m–€10m)",
+          "values": [
+            9,
+            8,
+            10
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            "Low",
+            "Central",
+            "High"
+          ],
+          "series": [
+            {
+              "name": "Annual savings (€m)",
+              "values": [
+                8,
+                9,
+                10
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Marlow Foods programme business case"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_NUMBER_UNSUPPORTED",
+        "HEADLINE_PROPOSITION_MISMATCH"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-HNUM-011",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "numeric",
+      "contradicts_magnitude",
+      "invalid"
+    ],
+    "slide": {
+      "id": "s15",
+      "kind": "content",
+      "message_type": "trend",
+      "purpose": "Mostrar la evolución del margen bruto",
+      "proposition": {
+        "statement": "El margen bruto cayó 2,0 pp en 2026",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "margen bruto",
+        "direction": "down",
+        "magnitude": "2,0 pp",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "El margen bruto cayó 3,2 pp en 2026",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Margen bruto de Mercantia Hogar: 24,1% en 2025 y 22,1% en 2026",
+          "values": [
+            24.1,
+            22.1
+          ]
+        }
+      ],
+      "visual": {
+        "type": "column",
+        "data": {
+          "categories": [
+            "2025",
+            "2026"
+          ],
+          "series": [
+            {
+              "name": "Margen bruto (%)",
+              "values": [
+                24.1,
+                22.1
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Contabilidad de gestión de Mercantia Hogar"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_NUMBER_UNSUPPORTED",
+        "HEADLINE_PROPOSITION_MISMATCH"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-HNUM-012",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "numeric",
+      "contradicts_magnitude",
+      "invalid"
+    ],
+    "slide": {
+      "id": "s16",
+      "kind": "content",
+      "message_type": "comparison",
+      "purpose": "Compare contribution per account across segments",
+      "proposition": {
+        "statement": "Enterprise accounts generate 2.3 times the annual contribution of SMB accounts",
+        "role": "comparison",
+        "claim_type": "comparison",
+        "subject": "contribution per account",
+        "comparison": "enterprise vs SMB accounts",
+        "magnitude": "2.3x",
+        "timeframe": "FY2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Enterprise accounts generate 4× the contribution of SMB accounts",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Halcyon Software FY2026 average annual contribution per account: enterprise €46k, SMB €20k",
+          "values": [
+            46,
+            20
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            "Enterprise",
+            "SMB"
+          ],
+          "series": [
+            {
+              "name": "Contribution per account (€k)",
+              "values": [
+                46,
+                20
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Halcyon Software CRM and finance data, FY2026"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_NUMBER_UNSUPPORTED",
+        "HEADLINE_PROPOSITION_MISMATCH"
+      ],
+      "selected": null
+    }
+  }
+]
