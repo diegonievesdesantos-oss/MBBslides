@@ -117,5 +117,5 @@ def check(spec: dict, out_dir: str | Path | None = None, dpi: int = 80) -> dict:
     c["qa_result"] = a["report"]["passed"] == b["report"]["passed"] and codes(a["report"]) == codes(b["report"])
     res["passed"] = all(c.values())
     res["tolerances"] = {"pixel_diff_share": PIXEL_TOLERANCE, "composition_metric": METRIC_TOLERANCE, "pdf_span_position_in": POSITION_TOLERANCE}
-    (base / "repro_report.json").write_text(json.dumps(res, indent=2), encoding="utf-8")
+    (base / "repro_report.json").write_text(json.dumps(res, indent=2), encoding="utf-8", newline="\n")
     return res

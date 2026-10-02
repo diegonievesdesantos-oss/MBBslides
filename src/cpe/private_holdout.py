@@ -120,13 +120,13 @@ def run_one(hdir: Path, out_root: Path) -> dict:
     out = out_root / name
     out.mkdir(parents=True, exist_ok=True)
     rep = ingest(hdir / "template.pptx", out / "brand", name=name)
-    (out / "brand_report.json").write_text(json.dumps(rep, indent=2, ensure_ascii=False, default=str), encoding="utf-8")
+    (out / "brand_report.json").write_text(json.dumps(rep, indent=2, ensure_ascii=False, default=str), encoding="utf-8", newline="\n")
     shutil.copy(out / "brand" / "compatibility.md", out / "brand_report.md")
     shutil.copy(out / "brand" / "layout_catalog.json", out / "layout_catalog.json")
     L = ["# Layout classification", "", "| id | layout | classification | observed use |", "|---|---|---|---|"]
     L += [f"| {x['id']} | {x['name']} | " + ", ".join(f"{c['type']} ({c['confidence']})" for c in x["classification"]) + f" | {x['usage'] or '—'} |" for x in rep["layouts"]]
-    (out / "layout_classification.md").write_text("\n".join(L) + "\n", encoding="utf-8")
-    (out / "font_analysis.json").write_text(json.dumps({"typography": rep["typography"], "fonts": rep["fonts"]}, indent=2, ensure_ascii=False), encoding="utf-8")
+    (out / "layout_classification.md").write_text("\n".join(L) + "\n", encoding="utf-8", newline="\n")
+    (out / "font_analysis.json").write_text(json.dumps({"typography": rep["typography"], "fonts": rep["fonts"]}, indent=2, ensure_ascii=False), encoding="utf-8", newline="\n")
     with tempfile.TemporaryDirectory() as tmp:
         tpl_render = _render_template(hdir / "template.pptx", Path(tmp))
     spec = load_spec(TEST_DECK)
@@ -144,16 +144,16 @@ def run_one(hdir: Path, out_root: Path) -> dict:
                             "qa_warnings": deck_rep["counts"]["warning"], "qa_codes": sorted({i["code"] for i in deck_rep["issues"] if i["level"] != "info"}),
                             "composition": comp.get("deck_score"), "corporate_modes": modes,
                             "decisions": [{"slide": m["slide_id"], **(m.get("corporate") or {})} for m in man]}}
-    (out / "render_analysis.json").write_text(json.dumps(render, indent=2, ensure_ascii=False, default=str), encoding="utf-8")
+    (out / "render_analysis.json").write_text(json.dumps(render, indent=2, ensure_ascii=False, default=str), encoding="utf-8", newline="\n")
     comparison = None
     exp_file = hdir / "expectations.json"
     if exp_file.exists():
         comparison = compare_spec(rep, json.loads(exp_file.read_text(encoding="utf-8"))["expectations"])
-        (out / "spec_comparison.json").write_text(json.dumps(comparison, indent=2, ensure_ascii=False, default=str), encoding="utf-8")
+        (out / "spec_comparison.json").write_text(json.dumps(comparison, indent=2, ensure_ascii=False, default=str), encoding="utf-8", newline="\n")
         L = ["# CPE inference vs human-written brand specification", "", f"Agreement: {comparison['agree']}/{comparison['claims']} claims (weighted {comparison['weighted_agreement']})", "",
              "| claim | expected | CPE inferred | agrees |", "|---|---|---|---|"]
         L += [f"| {r['claim']} | {r['expected']} | {json.dumps(r['actual'], ensure_ascii=False, default=str)[:80]} | {'✅' if r['agrees'] else '❌'} |" for r in comparison["rows"]]
-        (out / "spec_comparison.md").write_text("\n".join(L) + "\n", encoding="utf-8")
+        (out / "spec_comparison.md").write_text("\n".join(L) + "\n", encoding="utf-8", newline="\n")
     cls = [x["classification"][0] for x in rep["layouts"]]
     summary = {
         "masters": len(rep["masters"]), "layouts": rep["layout_count"], "example_slides": rep["example_slides"]["count"],
@@ -165,7 +165,7 @@ def run_one(hdir: Path, out_root: Path) -> dict:
         "spec_agreement": (f"{comparison['agree']}/{comparison['claims']}" if comparison else None),
         "spec_weighted_agreement": comparison["weighted_agreement"] if comparison else None,
     }
-    (out / "summary_sanitized.json").write_text(json.dumps(summary, indent=2), encoding="utf-8")
+    (out / "summary_sanitized.json").write_text(json.dumps(summary, indent=2), encoding="utf-8", newline="\n")
     return summary
 
 
@@ -219,7 +219,7 @@ def run_external(root: str | Path | None = None, out: str | Path | None = None, 
         results.append(r)
     comps = [r["composition"] for r in results if r.get("composition") is not None]
     prof = quality.profile(results, deck_mean=round(sum(comps) / len(comps), 1) if comps else None)
-    (out / "external_report.json").write_text(json.dumps({"cases": results, "quality": prof}, indent=2, ensure_ascii=False), encoding="utf-8")
+    (out / "external_report.json").write_text(json.dumps({"cases": results, "quality": prof}, indent=2, ensure_ascii=False), encoding="utf-8", newline="\n")
     summary = {
         "status": "run", "decks": len(results), "built": sum(1 for r in results if r.get("ok")),
         "slides": prof["distribution"]["n"], "overall": prof["overall_score"], "macro_archetype": prof["macro_archetype_score"],
@@ -294,7 +294,7 @@ def seal_external(root: Path = EXTERNAL) -> dict:
         raise SystemExit("already sealed: a seal is never rewritten (add new decks as a new holdout)")
     seal = {"sealed_at": __import__("time").strftime("%Y-%m-%dT%H:%M:%S"), "files": {d.name: _sha256(d) for d in decks},
             "provenance_sha256": _sha256(root / "PROVENANCE.json") if (root / "PROVENANCE.json").exists() else None}
-    (root / "SEAL.json").write_text(json.dumps(seal, indent=2) + "\n", encoding="utf-8")
+    (root / "SEAL.json").write_text(json.dumps(seal, indent=2) + "\n", encoding="utf-8", newline="\n")
     return seal
 
 
@@ -322,7 +322,7 @@ def _mark_ran(kind: str, commit: str | None) -> None:
     runs = json.loads(RUNS.read_text(encoding="utf-8")) if RUNS.exists() else {}
     runs.setdefault(kind, {})[__version__] = commit or "unknown"
     RUNS.parent.mkdir(parents=True, exist_ok=True)
-    RUNS.write_text(json.dumps(runs, indent=2) + "\n", encoding="utf-8")
+    RUNS.write_text(json.dumps(runs, indent=2) + "\n", encoding="utf-8", newline="\n")
 
 
 def external_status(root: Path = EXTERNAL) -> dict:

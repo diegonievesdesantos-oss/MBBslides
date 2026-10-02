@@ -121,5 +121,5 @@ def trace_markdown(t: dict) -> str:
 def save_graph(work_dir: str | Path) -> Path:
     g = build_graph(work_dir)
     p = Path(work_dir) / "evidence_graph.json"
-    p.write_text(json.dumps(g, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    p.write_text(json.dumps(g, indent=2, ensure_ascii=False) + "\n", encoding="utf-8", newline="\n")
     return p

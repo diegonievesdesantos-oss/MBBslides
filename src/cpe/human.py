@@ -52,7 +52,7 @@ def _read(p: Path) -> str:
 
 
 def _write(p: Path, text: str) -> None:
-    Path(p).write_text(text, encoding="utf-8")
+    Path(p).write_text(text, encoding="utf-8", newline="\n")
 
 
 def default_key_path(round_dir: str | Path) -> Path:
@@ -477,7 +477,7 @@ def read_status(round_dir: Path) -> dict:
 
 
 def write_status(round_dir: Path, st: dict) -> None:
-    (Path(round_dir) / "STATUS.json").write_text(json.dumps(st, indent=2) + "\n", encoding="utf-8")
+    (Path(round_dir) / "STATUS.json").write_text(json.dumps(st, indent=2) + "\n", encoding="utf-8", newline="\n")
 
 
 def mark_used_for_calibration(round_dir: str | Path, change: str) -> dict:
@@ -711,7 +711,7 @@ def record(r: dict, path: Path | None = None) -> None:
                                  "left_bias", "method")},
         "blind": st.get("blind", True), "used_for_calibration": st.get("used_for_calibration", False),
         "status": "votes received" if r.get("comparisons") else "awaiting human votes"}
-    path.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    path.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8", newline="\n")
 
 
 def record_status(round_dir: str | Path, path: Path | None = None) -> None:
@@ -728,7 +728,7 @@ def record_status(round_dir: str | Path, path: Path | None = None) -> None:
     n = len(json.loads((rd / "pairs.json").read_text(encoding="utf-8"))["pairs"])
     hr.setdefault("rounds", {})[rd.name] = {"pairs": n, "blind": st.get("blind", True), "used_for_calibration": st.get("used_for_calibration", False),
                                             "status": f"{st.get('status', 'awaiting human votes')} — {n} blind pairs built, 0 votes"}
-    path.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    path.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8", newline="\n")
 
 
 PAGE = r"""<!doctype html>

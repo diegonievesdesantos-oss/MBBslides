@@ -96,9 +96,9 @@ def summarize(issues: list[dict], slide_ids: list[str], exempted: list[dict] | N
 def write(report: dict, out_dir: str | Path) -> tuple[Path, Path]:
     out_dir = Path(out_dir)
     jp = out_dir / "qa_report.json"
-    jp.write_text(json.dumps(report, indent=2, ensure_ascii=False), encoding="utf-8")
+    jp.write_text(json.dumps(report, indent=2, ensure_ascii=False), encoding="utf-8", newline="\n")
     mp = out_dir / "qa_report.md"
-    mp.write_text(to_markdown(report), encoding="utf-8")
+    mp.write_text(to_markdown(report), encoding="utf-8", newline="\n")
     return jp, mp
 
 
@@ -185,8 +185,8 @@ def review_packet(resolved: dict, report: dict, pngs: list[str], out_dir: str | 
         L.append("")
         template[sid] = {"scores": {k: None for k, _ in REVIEW_QUESTIONS}, "issues": [], "patches": []}
     p = out_dir / "review.md"
-    p.write_text("\n".join(L) + "\n", encoding="utf-8")
-    (out_dir / "review_template.json").write_text(json.dumps(template, indent=2), encoding="utf-8")
+    p.write_text("\n".join(L) + "\n", encoding="utf-8", newline="\n")
+    (out_dir / "review_template.json").write_text(json.dumps(template, indent=2), encoding="utf-8", newline="\n")
     return p
 
 

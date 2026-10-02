@@ -176,5 +176,5 @@ def update_readme(check: bool = False, readme: Path = README, latest: Path = LAT
     new = head + render_block(data) + tail
     changed = new != txt
     if changed and not check:
-        readme.write_text(new, encoding="utf-8")
+        readme.write_text(new, encoding="utf-8", newline="\n")
     return changed

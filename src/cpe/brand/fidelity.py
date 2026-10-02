@@ -183,10 +183,10 @@ def write_run_reports(out: str | Path, pptx: str | Path, theme, manifests: list[
     out = Path(out)
     u = corporate_usage(manifests, resolved)
     f = brand_fidelity(pptx, theme, manifests, issues, resolved)
-    (out / "corporate_usage.json").write_text(json.dumps(u, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-    (out / "corporate_usage.md").write_text(usage_markdown(u), encoding="utf-8")
-    (out / "brand_fidelity.json").write_text(json.dumps(f, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-    (out / "brand_fidelity.md").write_text(fidelity_markdown(f), encoding="utf-8")
+    (out / "corporate_usage.json").write_text(json.dumps(u, indent=2, ensure_ascii=False) + "\n", encoding="utf-8", newline="\n")
+    (out / "corporate_usage.md").write_text(usage_markdown(u), encoding="utf-8", newline="\n")
+    (out / "brand_fidelity.json").write_text(json.dumps(f, indent=2, ensure_ascii=False) + "\n", encoding="utf-8", newline="\n")
+    (out / "brand_fidelity.md").write_text(fidelity_markdown(f), encoding="utf-8", newline="\n")
     return f
 
 

@@ -47,8 +47,8 @@ def cmd_ingest(a):
     inv = ingest(a.files)
     out = Path(a.out)
     out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(json.dumps(inv, indent=2, ensure_ascii=False, default=str), encoding="utf-8")
-    out.with_suffix(".md").write_text(summary_markdown(inv), encoding="utf-8")
+    out.write_text(json.dumps(inv, indent=2, ensure_ascii=False, default=str), encoding="utf-8", newline="\n")
+    out.with_suffix(".md").write_text(summary_markdown(inv), encoding="utf-8", newline="\n")
     _p(f"inventory: {len(inv['blocks'])} blocks, {len(inv['tables'])} tables, {len(inv['facts'])} facts → {out} (+ .md)")
 
 
@@ -67,7 +67,7 @@ def cmd_outline(a):
 
     txt = ghost_deck(load_spec(a.spec))
     if a.out:
-        Path(a.out).write_text(txt, encoding="utf-8")
+        Path(a.out).write_text(txt, encoding="utf-8", newline="\n")
     _p(txt)
 
 
@@ -98,7 +98,7 @@ def cmd_plan(a):
     from .spec import load_spec
 
     res, issues = plan(load_spec(a.spec))
-    Path(a.out).write_text(json.dumps(res, indent=2, ensure_ascii=False, default=str), encoding="utf-8")
+    Path(a.out).write_text(json.dumps(res, indent=2, ensure_ascii=False, default=str), encoding="utf-8", newline="\n")
     for s in res["slides"]:
         lay = (s.get("_plan") or {}).get("layout") or {}
         vis = ", ".join(v.get("chosen", "") for v in (s.get("_plan") or {}).get("visuals", []))
@@ -243,7 +243,7 @@ def cmd_robustness(a):
     if a.update_baseline:
         keep = ("variants", "seeds", "catastrophic", "catastrophic_rate", "new_visual_errors", "median_drop", "p90_drop", "p95_drop", "max_drop",
                 "large_drop_rate", "font_drop_rate", "layout_change_rate", "layout_change_with_quality_drop_rate")
-        rb.BASELINE.write_text(json.dumps({k: s.get(k) for k in keep}, indent=2) + "\n", encoding="utf-8")
+        rb.BASELINE.write_text(json.dumps({k: s.get(k) for k in keep}, indent=2) + "\n", encoding="utf-8", newline="\n")
     elif rb.BASELINE.exists():
         base = json.loads(rb.BASELINE.read_text(encoding="utf-8"))
         problems = rb.compare(s, base)
@@ -302,9 +302,9 @@ def cmd_human(a):
         md = human.to_markdown(r)
         # the report names versions and scores: while the key is private, so is the report
         dest = Path(a.round) if (Path(a.round) / "key.json").exists() else human.key_path(a.round, a.key).parent
-        (dest / "report.md").write_text(md, encoding="utf-8")
-        (dest / "report.json").write_text(json.dumps(r, indent=2), encoding="utf-8")
-        (dest / "human_score_disagreements.md").write_text(human.disagreements_markdown(r.get("verdicts") or [], r["round"]), encoding="utf-8")
+        (dest / "report.md").write_text(md, encoding="utf-8", newline="\n")
+        (dest / "report.json").write_text(json.dumps(r, indent=2), encoding="utf-8", newline="\n")
+        (dest / "human_score_disagreements.md").write_text(human.disagreements_markdown(r.get("verdicts") or [], r["round"]), encoding="utf-8", newline="\n")
         _p(md)
         _p(f"report written to {dest}")
         if a.record:
@@ -392,8 +392,8 @@ def cmd_reason(a):
         if a.enrich:
             ghost.enrich_evidence(a.work)
         r = checks.check_work(a.work, a.sources)
-        Path(a.work, "reasoning_report.json").write_text(json.dumps(r, indent=2, ensure_ascii=False), encoding="utf-8")
-        Path(a.work, "reasoning_report.md").write_text(checks.report_markdown(r), encoding="utf-8")
+        Path(a.work, "reasoning_report.json").write_text(json.dumps(r, indent=2, ensure_ascii=False), encoding="utf-8", newline="\n")
+        Path(a.work, "reasoning_report.md").write_text(checks.report_markdown(r), encoding="utf-8", newline="\n")
         graph.save_graph(a.work)
         ghost.write_ghost(a.work)
         _p(checks.report_markdown(r))
@@ -421,8 +421,8 @@ def cmd_reason(a):
 
         meta = {"engine": __version__, "reasoning_protocol": PROTOCOL_VERSION, "model": a.model, "skill": a.skill, "author": a.author}
         r = benchmark.evaluate(a.case, a.work, meta)
-        Path(a.work, "s2d_eval.json").write_text(json.dumps(r, indent=2, ensure_ascii=False), encoding="utf-8")
-        Path(a.work, "s2d_eval.md").write_text(benchmark.to_markdown(r), encoding="utf-8")
+        Path(a.work, "s2d_eval.json").write_text(json.dumps(r, indent=2, ensure_ascii=False), encoding="utf-8", newline="\n")
+        Path(a.work, "s2d_eval.md").write_text(benchmark.to_markdown(r), encoding="utf-8", newline="\n")
         _p(benchmark.to_markdown(r))
         return 1 if r["factuality"]["status"] == "FAIL" else 0
     return 2
@@ -507,7 +507,7 @@ def cmd_measure(a):
     issues += render_checks.check(str(d / f"{a.name}.pdf"), str(d / f"{a.name}.pptx"), manifests, pngs)[0]
     apply_integrity(comps, issues, manifests)
     out = {"deck_score": round(sum(c.score for c in comps) / len(comps), 1) if comps else None, "slides": [c.to_dict() for c in comps]}
-    (d / "composition_measure.json").write_text(json.dumps(out, indent=2), encoding="utf-8")
+    (d / "composition_measure.json").write_text(json.dumps(out, indent=2), encoding="utf-8", newline="\n")
     for c in comps:
         _p(f"{c.slide_id:8} {c.score:5.1f} {', '.join(c.flags)}")
     _p(f"deck composition {out['deck_score']}")
@@ -518,7 +518,7 @@ def cmd_catalog(a):
 
     txt = catalog_markdown()
     if a.out:
-        Path(a.out).write_text(txt, encoding="utf-8")
+        Path(a.out).write_text(txt, encoding="utf-8", newline="\n")
     _p(txt)
 
 

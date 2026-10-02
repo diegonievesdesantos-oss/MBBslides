@@ -252,8 +252,8 @@ def run(out_dir: str | Path, seeds_path: Path = SEEDS) -> dict:
                          "catastrophic": delta <= -CATASTROPHIC_DROP or bool(new_qa)})
         print(f"[robustness] {name:40} {len(variants)} variants", flush=True)
     summary = summarize(rows)
-    (out / "robustness_report.json").write_text(json.dumps(summary, indent=2, ensure_ascii=False), encoding="utf-8")
-    (out / "robustness_report.md").write_text(to_markdown(summary), encoding="utf-8")
+    (out / "robustness_report.json").write_text(json.dumps(summary, indent=2, ensure_ascii=False), encoding="utf-8", newline="\n")
+    (out / "robustness_report.md").write_text(to_markdown(summary), encoding="utf-8", newline="\n")
     return summary
 
 

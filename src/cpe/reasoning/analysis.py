@@ -61,7 +61,7 @@ def run_analysis(work_dir: str | Path, script: str | Path, sources_dir: str | Pa
     man_p = work / "analysis.json"
     man = json.loads(man_p.read_text(encoding="utf-8")) if man_p.exists() else {"analyses": []}
     man["analyses"] = [a for a in man.get("analyses") or [] if a.get("name") != name] + [entry]
-    man_p.write_text(json.dumps(man, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    man_p.write_text(json.dumps(man, indent=2, ensure_ascii=False) + "\n", encoding="utf-8", newline="\n")
     return entry
 
 

@@ -86,7 +86,7 @@ class H(BaseHTTPRequestHandler):
                 lines = [ln for ln in f.read_text(encoding="utf-8").splitlines() if ln.strip()]
                 if lines:
                     pair = json.loads(lines[-1])["pair"]
-                    f.write_text("".join(ln + "\n" for ln in lines[:-1]), encoding="utf-8")
+                    f.write_text("".join(ln + "\n" for ln in lines[:-1]), encoding="utf-8", newline="\n")
             return self._send(200, json.dumps({"pair": pair}))
         if urlparse(self.path).path != "/vote":
             return self._send(404, "{}")

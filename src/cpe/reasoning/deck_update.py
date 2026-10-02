@@ -229,10 +229,10 @@ def write_ingest(pptx: str | Path, work: str | Path) -> dict:
     work = Path(work)
     work.mkdir(parents=True, exist_ok=True)
     inv = ingest_deck(pptx)
-    (work / "old_deck.json").write_text(json.dumps(inv, indent=2, ensure_ascii=False, default=str) + "\n", encoding="utf-8")
-    (work / "old_deck_spec.json").write_text(json.dumps(to_spec(inv), indent=2, ensure_ascii=False, default=str) + "\n", encoding="utf-8")
+    (work / "old_deck.json").write_text(json.dumps(inv, indent=2, ensure_ascii=False, default=str) + "\n", encoding="utf-8", newline="\n")
+    (work / "old_deck_spec.json").write_text(json.dumps(to_spec(inv), indent=2, ensure_ascii=False, default=str) + "\n", encoding="utf-8", newline="\n")
     ghost = ["# Old deck — the argument from its headlines", ""] + [f"{s['n']}. [{s['role']}] {s['headline']}" for s in inv["slides"]]
-    (work / "old_ghost.md").write_text("\n".join(ghost) + "\n", encoding="utf-8")
+    (work / "old_ghost.md").write_text("\n".join(ghost) + "\n", encoding="utf-8", newline="\n")
     return inv
 
 
@@ -241,6 +241,6 @@ def write_plan(work: str | Path) -> dict:
     inv = json.loads((work / "old_deck.json").read_text(encoding="utf-8"))
     facts = json.loads((work / "facts.json").read_text(encoding="utf-8")).get("facts", [])
     plan = update_plan(inv, facts)
-    (work / "update_plan.json").write_text(json.dumps(plan, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-    (work / "update_plan.md").write_text(plan_markdown(plan), encoding="utf-8")
+    (work / "update_plan.json").write_text(json.dumps(plan, indent=2, ensure_ascii=False) + "\n", encoding="utf-8", newline="\n")
+    (work / "update_plan.md").write_text(plan_markdown(plan), encoding="utf-8", newline="\n")
     return plan

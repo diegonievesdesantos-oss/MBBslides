@@ -374,7 +374,7 @@ def write_fact_model(sources_dir: str | Path, work_dir: str | Path) -> dict:
     paths = sorted(p for p in src.rglob("*") if p.is_file() and not p.name.startswith("."))
     work = Path(work_dir)
     work.mkdir(parents=True, exist_ok=True)
-    (work / "source_manifest.json").write_text(json.dumps(source_manifest(paths), indent=2) + "\n", encoding="utf-8")
+    (work / "source_manifest.json").write_text(json.dumps(source_manifest(paths), indent=2) + "\n", encoding="utf-8", newline="\n")
     from .analysis import output_tables
 
     extra = output_tables(work)  # tables written by recorded analysis scripts (v1.8)
@@ -389,13 +389,13 @@ def write_fact_model(sources_dir: str | Path, work_dir: str | Path) -> dict:
     if prev.exists():  # re-extraction keeps the ids the agent's artifacts already cite (v1.8)
         old = json.loads(prev.read_text(encoding="utf-8"))
         fm["facts"], refresh = preserve_ids(old.get("facts") or [], fm["facts"])
-        (work / "facts_refresh.json").write_text(json.dumps(refresh, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+        (work / "facts_refresh.json").write_text(json.dumps(refresh, indent=2, ensure_ascii=False) + "\n", encoding="utf-8", newline="\n")
     fm["extractor"] = EXTRACTOR_VERSION
-    (work / "facts.json").write_text(json.dumps(fm, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    (work / "facts.json").write_text(json.dumps(fm, indent=2, ensure_ascii=False) + "\n", encoding="utf-8", newline="\n")
     from .conflicts import detect_conflicts
 
     cf = work / "fact_conflicts.json"
     if not cf.exists():  # never overwrite the agent's resolutions
-        cf.write_text(json.dumps({"protocol": PROTOCOL_VERSION, "conflicts": detect_conflicts(fm["facts"])}, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-    (work / "source_text.json").write_text(json.dumps({"protocol": PROTOCOL_VERSION, "blocks": blocks}, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+        cf.write_text(json.dumps({"protocol": PROTOCOL_VERSION, "conflicts": detect_conflicts(fm["facts"])}, indent=2, ensure_ascii=False) + "\n", encoding="utf-8", newline="\n")
+    (work / "source_text.json").write_text(json.dumps({"protocol": PROTOCOL_VERSION, "blocks": blocks}, indent=2, ensure_ascii=False) + "\n", encoding="utf-8", newline="\n")
     return fm

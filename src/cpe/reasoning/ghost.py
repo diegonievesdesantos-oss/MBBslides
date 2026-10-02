@@ -24,7 +24,7 @@ def ghost_markdown(work_dir: str | Path) -> str:
 
 def write_ghost(work_dir: str | Path) -> Path:
     p = Path(work_dir) / "ghost_deck.md"
-    p.write_text(ghost_markdown(work_dir), encoding="utf-8")
+    p.write_text(ghost_markdown(work_dir), encoding="utf-8", newline="\n")
     return p
 
 
@@ -51,5 +51,5 @@ def enrich_evidence(work_dir: str | Path) -> int:
                 e["values"] = [v["value"] for v in f.get("values") or []]
                 e["source"] = (f.get("source") or {}).get("file")
                 n += 1
-    (work / "deck.json").write_text(json.dumps(deck, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    (work / "deck.json").write_text(json.dumps(deck, indent=2, ensure_ascii=False) + "\n", encoding="utf-8", newline="\n")
     return n

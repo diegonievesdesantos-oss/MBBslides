@@ -256,10 +256,10 @@ def run_suite(cases_dir: str | Path | None, out_dir: str | Path, baseline_path: 
                 "archetype_counts": {a: st["n"] for a, st in summary["quality"]["archetypes"].items()},
                 "cases": [{**{k: r.get(k) for k in ("case", "ok", "qa_errors", "composition")},
                            "slides": {sid: {k: v for k, v in sl.items() if k != "attribution"} for sid, sl in (r.get("slides") or {}).items()}} for r in results]}
-        Path(baseline_path).write_text(json.dumps(slim, indent=2) + "\n", encoding="utf-8")
-    (out / "eval_report.json").write_text(json.dumps(summary, indent=2, ensure_ascii=False), encoding="utf-8")
-    (out / "eval_report.md").write_text(to_markdown(summary), encoding="utf-8")
-    (out / "archetype_diagnostics.md").write_text(quality.diagnostics_markdown(results, summary["quality"], f"Archetype diagnostics — {suite}"), encoding="utf-8")
+        Path(baseline_path).write_text(json.dumps(slim, indent=2) + "\n", encoding="utf-8", newline="\n")
+    (out / "eval_report.json").write_text(json.dumps(summary, indent=2, ensure_ascii=False), encoding="utf-8", newline="\n")
+    (out / "eval_report.md").write_text(to_markdown(summary), encoding="utf-8", newline="\n")
+    (out / "archetype_diagnostics.md").write_text(quality.diagnostics_markdown(results, summary["quality"], f"Archetype diagnostics — {suite}"), encoding="utf-8", newline="\n")
     if suite != "holdout_v2":  # the sealed holdout's renders are not turned into review sheets
         quality.archetype_sheets(results, out, out / "archetype_sheets")
     if seal:
@@ -336,7 +336,7 @@ def record_result(section: str, summary: dict, path: Path = LATEST, allow_dirty:
     data.setdefault("holdout", {})
     data.setdefault("human_reference", {"status": "no votes imported yet"})
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    path.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8", newline="\n")
     return data
 
 

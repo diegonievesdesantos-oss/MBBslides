@@ -499,11 +499,11 @@ def ingest(template: str | Path, out_dir: str | Path, name: str | None = None, b
         "notes": notes,
         "masters_used": use_template,
     }
-    (out / "theme.json").write_text(json.dumps(theme, indent=2, ensure_ascii=False), encoding="utf-8")
-    (out / "brand_model.json").write_text(json.dumps(model, indent=2, ensure_ascii=False, default=str), encoding="utf-8")
-    (out / "layout_catalog.json").write_text(json.dumps(model["layouts"], indent=2, ensure_ascii=False, default=str), encoding="utf-8")
-    (out / "compatibility.json").write_text(json.dumps(report, indent=2, ensure_ascii=False, default=str), encoding="utf-8")
-    (out / "compatibility.md").write_text(to_markdown(report), encoding="utf-8")
+    (out / "theme.json").write_text(json.dumps(theme, indent=2, ensure_ascii=False), encoding="utf-8", newline="\n")
+    (out / "brand_model.json").write_text(json.dumps(model, indent=2, ensure_ascii=False, default=str), encoding="utf-8", newline="\n")
+    (out / "layout_catalog.json").write_text(json.dumps(model["layouts"], indent=2, ensure_ascii=False, default=str), encoding="utf-8", newline="\n")
+    (out / "compatibility.json").write_text(json.dumps(report, indent=2, ensure_ascii=False, default=str), encoding="utf-8", newline="\n")
+    (out / "compatibility.md").write_text(to_markdown(report), encoding="utf-8", newline="\n")
     return report
 
 

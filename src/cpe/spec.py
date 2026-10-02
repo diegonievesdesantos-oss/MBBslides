@@ -141,7 +141,7 @@ def load_spec(path: str | Path) -> dict:
 
 def save_spec(spec: dict, path: str | Path) -> None:
     Path(path).parent.mkdir(parents=True, exist_ok=True)
-    Path(path).write_text(json.dumps(spec, indent=2, ensure_ascii=False), encoding="utf-8")
+    Path(path).write_text(json.dumps(spec, indent=2, ensure_ascii=False), encoding="utf-8", newline="\n")
 
 
 # data fields per exhibit family (docs/VISUAL_GUIDE.md): they belong under `data`
