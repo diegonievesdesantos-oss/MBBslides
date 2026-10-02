@@ -1,0 +1,3683 @@
+[
+  {
+    "id": "EN-INV-001",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "topic",
+      "invalid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "comparison",
+      "purpose": "Show the competitive position",
+      "proposition": {
+        "statement": "Norvalia holds 24% of the industrial pumps market, ahead of the next competitor at 17%",
+        "role": "comparison",
+        "claim_type": "comparison",
+        "subject": "market share",
+        "magnitude": "24%",
+        "timeframe": "2026",
+        "comparison": "largest competitor",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Market overview",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Market share 2026: Norvalia 24%, Rivermark 17%, Helden 12%, others 47%",
+          "values": [
+            24,
+            17,
+            12,
+            47
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            "Norvalia",
+            "Rivermark",
+            "Helden",
+            "Others"
+          ],
+          "series": [
+            {
+              "name": "Market share 2026 (%)",
+              "values": [
+                24,
+                17,
+                12,
+                47
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Industry association data 2026"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_TOPIC",
+        "HEADLINE_UNRESOLVED"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-INV-002",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "topic",
+      "invalid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "driver",
+      "purpose": "Locate the EBITDA gap",
+      "proposition": {
+        "statement": "North, East and South explain €18m of the €25m EBITDA gap to plan",
+        "role": "diagnosis",
+        "claim_type": "driver",
+        "subject": "EBITDA gap to plan",
+        "direction": "down",
+        "magnitude": "72%",
+        "timeframe": "2026",
+        "driver": "three regions",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Financial performance",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "EBITDA gap to plan 2026 (€m): North 9, East 6, South 3, West 4, Central 3; total 25",
+          "values": [
+            9,
+            6,
+            3,
+            4,
+            3
+          ]
+        }
+      ],
+      "visual": {
+        "type": "waterfall",
+        "data": {
+          "categories": [
+            "North",
+            "East",
+            "South",
+            "West",
+            "Central"
+          ],
+          "series": [
+            {
+              "name": "Gap (€m)",
+              "values": [
+                9,
+                6,
+                3,
+                4,
+                3
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Lumenor regional P&L 2026"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_TOPIC",
+        "HEADLINE_UNRESOLVED"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-INV-003",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "topic",
+      "invalid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "driver",
+      "purpose": "Explain the cost-to-serve increase",
+      "proposition": {
+        "statement": "Freight accounts for €2.2m of the €4.0m increase in cost to serve",
+        "role": "diagnosis",
+        "claim_type": "driver",
+        "subject": "cost to serve",
+        "direction": "up",
+        "magnitude": "55%",
+        "timeframe": "2026",
+        "driver": "freight",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Cost analysis",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Increase in cost to serve 2026 (€m): freight 2.2, handling 1.0, packaging 0.8; total 4.0",
+          "values": [
+            2.2,
+            1.0,
+            0.8
+          ]
+        }
+      ],
+      "visual": {
+        "type": "waterfall",
+        "data": {
+          "categories": [
+            "Freight",
+            "Handling",
+            "Packaging"
+          ],
+          "series": [
+            {
+              "name": "€m",
+              "values": [
+                2.2,
+                1.0,
+                0.8
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Kestrel Foods logistics costs 2026"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_TOPIC",
+        "HEADLINE_UNRESOLVED"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-INV-004",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "topic",
+      "invalid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "implication",
+      "purpose": "Show the consequence of current churn",
+      "proposition": {
+        "statement": "At current churn the 2027 subscriber target will be missed by about 40,000",
+        "role": "implication",
+        "claim_type": "impact",
+        "subject": "subscriber base",
+        "direction": "down",
+        "magnitude": "about 40,000",
+        "timeframe": "2027",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Key findings",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "2027 target 500k subscribers; projection at current churn 460k",
+          "values": [
+            500,
+            460
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            "Target",
+            "Projection"
+          ],
+          "series": [
+            {
+              "name": "Subscribers (k)",
+              "values": [
+                500,
+                460
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Oaklyn Telecom subscriber model"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_TOPIC",
+        "HEADLINE_UNRESOLVED"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-INV-005",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "topic",
+      "invalid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "recommendation",
+      "purpose": "Recommend procurement action",
+      "proposition": {
+        "statement": "We recommend consolidating indirect suppliers from 420 to 150 to save €6m a year",
+        "role": "recommendation",
+        "claim_type": "recommendation",
+        "subject": "indirect spend",
+        "direction": "down",
+        "magnitude": "€6m",
+        "recommended_action": "consolidate suppliers",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Strategic priorities",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Suppliers 420 today, 150 target; savings model €6m per year",
+          "values": [
+            420,
+            150,
+            6
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            "Today",
+            "Target"
+          ],
+          "series": [
+            {
+              "name": "Suppliers",
+              "values": [
+                420,
+                150
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Lumenor procurement analysis 2026"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_TOPIC",
+        "HEADLINE_UNRESOLVED"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-INV-006",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "topic",
+      "invalid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "comparison",
+      "purpose": "Show the competitive position",
+      "proposition": {
+        "statement": "Norvalia holds 24% of the industrial pumps market, ahead of the next competitor at 17%",
+        "role": "comparison",
+        "claim_type": "comparison",
+        "subject": "market share",
+        "magnitude": "24%",
+        "timeframe": "2026",
+        "comparison": "largest competitor",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Competitive landscape",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Market share 2026: Norvalia 24%, Rivermark 17%, Helden 12%, others 47%",
+          "values": [
+            24,
+            17,
+            12,
+            47
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            "Norvalia",
+            "Rivermark",
+            "Helden",
+            "Others"
+          ],
+          "series": [
+            {
+              "name": "Market share 2026 (%)",
+              "values": [
+                24,
+                17,
+                12,
+                47
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Industry association data 2026"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_TOPIC",
+        "HEADLINE_UNRESOLVED"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-INV-007",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "topic",
+      "invalid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "recommendation",
+      "purpose": "Recommend procurement action",
+      "proposition": {
+        "statement": "We recommend consolidating indirect suppliers from 420 to 150 to save €6m a year",
+        "role": "recommendation",
+        "claim_type": "recommendation",
+        "subject": "indirect spend",
+        "direction": "down",
+        "magnitude": "€6m",
+        "recommended_action": "consolidate suppliers",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Next steps",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Suppliers 420 today, 150 target; savings model €6m per year",
+          "values": [
+            420,
+            150,
+            6
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            "Today",
+            "Target"
+          ],
+          "series": [
+            {
+              "name": "Suppliers",
+              "values": [
+                420,
+                150
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Lumenor procurement analysis 2026"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_TOPIC",
+        "HEADLINE_UNRESOLVED"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-INV-001",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "topic",
+      "invalid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "comparison",
+      "purpose": "Mostrar la posición competitiva",
+      "proposition": {
+        "statement": "Altavera tiene el 31% del mercado de bebidas vegetales, el doble que su siguiente competidor",
+        "role": "comparison",
+        "claim_type": "comparison",
+        "subject": "cuota de mercado",
+        "magnitude": "31%",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Visión general del mercado",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Cuota de mercado 2026: Altavera 31%, Brisa Verde 15%, Monteluz 11%, otros 43%",
+          "values": [
+            31,
+            15,
+            11,
+            43
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            "Altavera",
+            "Brisa Verde",
+            "Monteluz",
+            "Otros"
+          ],
+          "series": [
+            {
+              "name": "Cuota 2026 (%)",
+              "values": [
+                31,
+                15,
+                11,
+                43
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Panel de mercado 2026"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_TOPIC",
+        "HEADLINE_UNRESOLVED"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-INV-002",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "topic",
+      "invalid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "driver",
+      "purpose": "Explicar la pérdida de margen online",
+      "proposition": {
+        "statement": "Las devoluciones suponen 3 M€ de los 5 M€ de pérdida de margen online en 2026",
+        "role": "diagnosis",
+        "claim_type": "driver",
+        "subject": "margen del canal online",
+        "direction": "down",
+        "magnitude": "60%",
+        "timeframe": "2026",
+        "driver": "devoluciones",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Evolución de la rentabilidad online",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Pérdida de margen online 2026 (M€): devoluciones 3,0, envíos 1,5, descuentos 0,5",
+          "values": [
+            3.0,
+            1.5,
+            0.5
+          ]
+        }
+      ],
+      "visual": {
+        "type": "waterfall",
+        "data": {
+          "categories": [
+            "Devoluciones",
+            "Envíos",
+            "Descuentos"
+          ],
+          "series": [
+            {
+              "name": "M€",
+              "values": [
+                3.0,
+                1.5,
+                0.5
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Contabilidad analítica de Grupo Ventisca"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_TOPIC",
+        "HEADLINE_UNRESOLVED"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-INV-003",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "topic",
+      "invalid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "driver",
+      "purpose": "Descomponer el sobrecoste de personal",
+      "proposition": {
+        "statement": "El absentismo supone 2,0 M€ de los 3,0 M€ de sobrecoste de personal en 2026",
+        "role": "diagnosis",
+        "claim_type": "driver",
+        "subject": "sobrecoste de personal",
+        "direction": "up",
+        "magnitude": "dos tercios",
+        "timeframe": "2026",
+        "driver": "absentismo",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Análisis de costes",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Sobrecoste de personal 2026 (M€): absentismo 2,0, horas extra 0,6, rotación 0,4",
+          "values": [
+            2.0,
+            0.6,
+            0.4
+          ]
+        }
+      ],
+      "visual": {
+        "type": "waterfall",
+        "data": {
+          "categories": [
+            "Absentismo",
+            "Horas extra",
+            "Rotación"
+          ],
+          "series": [
+            {
+              "name": "M€",
+              "values": [
+                2.0,
+                0.6,
+                0.4
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Nóminas de Calderón Logística"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_TOPIC",
+        "HEADLINE_UNRESOLVED"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-INV-004",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "topic",
+      "invalid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "comparison",
+      "purpose": "Comparar segmentos de clientes",
+      "proposition": {
+        "statement": "Los clientes premium generan 2,3 veces el margen de los clientes estándar",
+        "role": "comparison",
+        "claim_type": "comparison",
+        "subject": "margen por cliente",
+        "magnitude": "2,3x",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Segmentación de clientes",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Margen por cliente 2026: premium 69 €, estándar 30 €",
+          "values": [
+            69,
+            30
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            "Premium",
+            "Estándar"
+          ],
+          "series": [
+            {
+              "name": "Margen por cliente (€)",
+              "values": [
+                69,
+                30
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Sarmiento Seguros, cuenta de resultados por cliente"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_TOPIC",
+        "HEADLINE_UNRESOLVED"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-INV-005",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "topic",
+      "invalid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "implication",
+      "purpose": "Mostrar la implicación de no actuar en precios",
+      "proposition": {
+        "statement": "Sin acción en precios, el margen de 2027 quedará en el 16,0%, por debajo del objetivo del 17,5%",
+        "role": "implication",
+        "claim_type": "impact",
+        "subject": "margen bruto",
+        "direction": "down",
+        "magnitude": "1,5 pp",
+        "timeframe": "2027",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Principales conclusiones",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Margen 2027: objetivo 17,5%, previsión sin acción 16,0%",
+          "values": [
+            17.5,
+            16.0
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            "Objetivo 2027",
+            "Previsión 2027"
+          ],
+          "series": [
+            {
+              "name": "Margen (%)",
+              "values": [
+                17.5,
+                16.0
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Plan financiero de Grupo Ventisca"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_TOPIC",
+        "HEADLINE_UNRESOLVED"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-INV-006",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "topic",
+      "invalid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "driver",
+      "purpose": "Explicar la pérdida de margen online",
+      "proposition": {
+        "statement": "Las devoluciones suponen 3 M€ de los 5 M€ de pérdida de margen online en 2026",
+        "role": "diagnosis",
+        "claim_type": "driver",
+        "subject": "margen del canal online",
+        "direction": "down",
+        "magnitude": "60%",
+        "timeframe": "2026",
+        "driver": "devoluciones",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Situación actual",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Pérdida de margen online 2026 (M€): devoluciones 3,0, envíos 1,5, descuentos 0,5",
+          "values": [
+            3.0,
+            1.5,
+            0.5
+          ]
+        }
+      ],
+      "visual": {
+        "type": "waterfall",
+        "data": {
+          "categories": [
+            "Devoluciones",
+            "Envíos",
+            "Descuentos"
+          ],
+          "series": [
+            {
+              "name": "M€",
+              "values": [
+                3.0,
+                1.5,
+                0.5
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Contabilidad analítica de Grupo Ventisca"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_TOPIC",
+        "HEADLINE_UNRESOLVED"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-INV-008",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "placeholder",
+      "invalid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "driver",
+      "purpose": "Locate the EBITDA gap",
+      "proposition": {
+        "statement": "North, East and South explain €18m of the €25m EBITDA gap to plan",
+        "role": "diagnosis",
+        "claim_type": "driver",
+        "subject": "EBITDA gap to plan",
+        "direction": "down",
+        "magnitude": "72%",
+        "timeframe": "2026",
+        "driver": "three regions",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "TBD",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "EBITDA gap to plan 2026 (€m): North 9, East 6, South 3, West 4, Central 3; total 25",
+          "values": [
+            9,
+            6,
+            3,
+            4,
+            3
+          ]
+        }
+      ],
+      "visual": {
+        "type": "waterfall",
+        "data": {
+          "categories": [
+            "North",
+            "East",
+            "South",
+            "West",
+            "Central"
+          ],
+          "series": [
+            {
+              "name": "Gap (€m)",
+              "values": [
+                9,
+                6,
+                3,
+                4,
+                3
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Lumenor regional P&L 2026"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_PLACEHOLDER",
+        "HEADLINE_MISSING",
+        "HEADLINE_TOPIC",
+        "HEADLINE_UNRESOLVED"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-INV-009",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "placeholder",
+      "invalid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "driver",
+      "purpose": "Explain the cost-to-serve increase",
+      "proposition": {
+        "statement": "Freight accounts for €2.2m of the €4.0m increase in cost to serve",
+        "role": "diagnosis",
+        "claim_type": "driver",
+        "subject": "cost to serve",
+        "direction": "up",
+        "magnitude": "55%",
+        "timeframe": "2026",
+        "driver": "freight",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "[Insert headline here]",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Increase in cost to serve 2026 (€m): freight 2.2, handling 1.0, packaging 0.8; total 4.0",
+          "values": [
+            2.2,
+            1.0,
+            0.8
+          ]
+        }
+      ],
+      "visual": {
+        "type": "waterfall",
+        "data": {
+          "categories": [
+            "Freight",
+            "Handling",
+            "Packaging"
+          ],
+          "series": [
+            {
+              "name": "€m",
+              "values": [
+                2.2,
+                1.0,
+                0.8
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Kestrel Foods logistics costs 2026"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_PLACEHOLDER",
+        "HEADLINE_MISSING",
+        "HEADLINE_TOPIC",
+        "HEADLINE_UNRESOLVED"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-INV-010",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "placeholder",
+      "invalid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "comparison",
+      "purpose": "Compare segment profitability",
+      "proposition": {
+        "statement": "Enterprise customers generate 2.3 times the contribution margin of SMB customers",
+        "role": "comparison",
+        "claim_type": "comparison",
+        "subject": "contribution margin per customer",
+        "magnitude": "2.3×",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Lorem ipsum dolor sit amet",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Contribution per customer 2026: enterprise €46k, SMB €20k",
+          "values": [
+            46,
+            20
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            "Enterprise",
+            "SMB"
+          ],
+          "series": [
+            {
+              "name": "€k",
+              "values": [
+                46,
+                20
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Kestrel Software customer P&L"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_PLACEHOLDER",
+        "HEADLINE_MISSING",
+        "HEADLINE_TOPIC",
+        "HEADLINE_UNRESOLVED"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-INV-007",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "placeholder",
+      "invalid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "driver",
+      "purpose": "Explicar la pérdida de margen online",
+      "proposition": {
+        "statement": "Las devoluciones suponen 3 M€ de los 5 M€ de pérdida de margen online en 2026",
+        "role": "diagnosis",
+        "claim_type": "driver",
+        "subject": "margen del canal online",
+        "direction": "down",
+        "magnitude": "60%",
+        "timeframe": "2026",
+        "driver": "devoluciones",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Titular pendiente",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Pérdida de margen online 2026 (M€): devoluciones 3,0, envíos 1,5, descuentos 0,5",
+          "values": [
+            3.0,
+            1.5,
+            0.5
+          ]
+        }
+      ],
+      "visual": {
+        "type": "waterfall",
+        "data": {
+          "categories": [
+            "Devoluciones",
+            "Envíos",
+            "Descuentos"
+          ],
+          "series": [
+            {
+              "name": "M€",
+              "values": [
+                3.0,
+                1.5,
+                0.5
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Contabilidad analítica de Grupo Ventisca"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_PLACEHOLDER",
+        "HEADLINE_MISSING",
+        "HEADLINE_TOPIC",
+        "HEADLINE_UNRESOLVED"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-INV-008",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "placeholder",
+      "invalid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "comparison",
+      "purpose": "Comparar segmentos de clientes",
+      "proposition": {
+        "statement": "Los clientes premium generan 2,3 veces el margen de los clientes estándar",
+        "role": "comparison",
+        "claim_type": "comparison",
+        "subject": "margen por cliente",
+        "magnitude": "2,3x",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "[Titular]",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Margen por cliente 2026: premium 69 €, estándar 30 €",
+          "values": [
+            69,
+            30
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            "Premium",
+            "Estándar"
+          ],
+          "series": [
+            {
+              "name": "Margen por cliente (€)",
+              "values": [
+                69,
+                30
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Sarmiento Seguros, cuenta de resultados por cliente"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_PLACEHOLDER",
+        "HEADLINE_MISSING",
+        "HEADLINE_TOPIC",
+        "HEADLINE_UNRESOLVED"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-INV-009",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "placeholder",
+      "invalid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "recommendation",
+      "purpose": "Recomendar la palanca de transporte",
+      "proposition": {
+        "statement": "Recomendamos renegociar los contratos de transporte para ahorrar 3,2 M€ al año",
+        "role": "recommendation",
+        "claim_type": "recommendation",
+        "subject": "gasto de transporte",
+        "direction": "down",
+        "magnitude": "3,2 M€",
+        "recommended_action": "renegociar contratos de transporte",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "TODO: añadir conclusión",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Gasto de transporte 40 M€; tarifas 8% sobre mercado; ahorro 3,2 M€ al año",
+          "values": [
+            40,
+            8,
+            3.2
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            "Actual",
+            "A mercado"
+          ],
+          "series": [
+            {
+              "name": "M€",
+              "values": [
+                40,
+                36.8
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Benchmark de compras de Calderón Logística"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_PLACEHOLDER",
+        "HEADLINE_MISSING",
+        "HEADLINE_TOPIC",
+        "HEADLINE_UNRESOLVED"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-INV-011",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "empty",
+      "invalid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "comparison",
+      "purpose": "Show the competitive position",
+      "proposition": {
+        "statement": "Norvalia holds 24% of the industrial pumps market, ahead of the next competitor at 17%",
+        "role": "comparison",
+        "claim_type": "comparison",
+        "subject": "market share",
+        "magnitude": "24%",
+        "timeframe": "2026",
+        "comparison": "largest competitor",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Market share 2026: Norvalia 24%, Rivermark 17%, Helden 12%, others 47%",
+          "values": [
+            24,
+            17,
+            12,
+            47
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            "Norvalia",
+            "Rivermark",
+            "Helden",
+            "Others"
+          ],
+          "series": [
+            {
+              "name": "Market share 2026 (%)",
+              "values": [
+                24,
+                17,
+                12,
+                47
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Industry association data 2026"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_MISSING",
+        "HEADLINE_PLACEHOLDER",
+        "HEADLINE_UNRESOLVED"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-INV-012",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "empty",
+      "invalid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "implication",
+      "purpose": "Show the consequence of current churn",
+      "proposition": {
+        "statement": "At current churn the 2027 subscriber target will be missed by about 40,000",
+        "role": "implication",
+        "claim_type": "impact",
+        "subject": "subscriber base",
+        "direction": "down",
+        "magnitude": "about 40,000",
+        "timeframe": "2027",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "   ",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "2027 target 500k subscribers; projection at current churn 460k",
+          "values": [
+            500,
+            460
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            "Target",
+            "Projection"
+          ],
+          "series": [
+            {
+              "name": "Subscribers (k)",
+              "values": [
+                500,
+                460
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Oaklyn Telecom subscriber model"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_MISSING",
+        "HEADLINE_PLACEHOLDER",
+        "HEADLINE_UNRESOLVED"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-INV-010",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "empty",
+      "invalid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "driver",
+      "purpose": "Descomponer el sobrecoste de personal",
+      "proposition": {
+        "statement": "El absentismo supone 2,0 M€ de los 3,0 M€ de sobrecoste de personal en 2026",
+        "role": "diagnosis",
+        "claim_type": "driver",
+        "subject": "sobrecoste de personal",
+        "direction": "up",
+        "magnitude": "dos tercios",
+        "timeframe": "2026",
+        "driver": "absentismo",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Sobrecoste de personal 2026 (M€): absentismo 2,0, horas extra 0,6, rotación 0,4",
+          "values": [
+            2.0,
+            0.6,
+            0.4
+          ]
+        }
+      ],
+      "visual": {
+        "type": "waterfall",
+        "data": {
+          "categories": [
+            "Absentismo",
+            "Horas extra",
+            "Rotación"
+          ],
+          "series": [
+            {
+              "name": "M€",
+              "values": [
+                2.0,
+                0.6,
+                0.4
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Nóminas de Calderón Logística"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_MISSING",
+        "HEADLINE_PLACEHOLDER",
+        "HEADLINE_UNRESOLVED"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-INV-011",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "empty",
+      "invalid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "implication",
+      "purpose": "Mostrar la implicación de no actuar en precios",
+      "proposition": {
+        "statement": "Sin acción en precios, el margen de 2027 quedará en el 16,0%, por debajo del objetivo del 17,5%",
+        "role": "implication",
+        "claim_type": "impact",
+        "subject": "margen bruto",
+        "direction": "down",
+        "magnitude": "1,5 pp",
+        "timeframe": "2027",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "  ",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Margen 2027: objetivo 17,5%, previsión sin acción 16,0%",
+          "values": [
+            17.5,
+            16.0
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            "Objetivo 2027",
+            "Previsión 2027"
+          ],
+          "series": [
+            {
+              "name": "Margen (%)",
+              "values": [
+                17.5,
+                16.0
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Plan financiero de Grupo Ventisca"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_MISSING",
+        "HEADLINE_PLACEHOLDER",
+        "HEADLINE_UNRESOLVED"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-INV-013",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "purpose",
+      "invalid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "driver",
+      "purpose": "Locate the EBITDA gap",
+      "proposition": {
+        "statement": "North, East and South explain €18m of the €25m EBITDA gap to plan",
+        "role": "diagnosis",
+        "claim_type": "driver",
+        "subject": "EBITDA gap to plan",
+        "direction": "down",
+        "magnitude": "72%",
+        "timeframe": "2026",
+        "driver": "three regions",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Explain the causes of the EBITDA gap",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "EBITDA gap to plan 2026 (€m): North 9, East 6, South 3, West 4, Central 3; total 25",
+          "values": [
+            9,
+            6,
+            3,
+            4,
+            3
+          ]
+        }
+      ],
+      "visual": {
+        "type": "waterfall",
+        "data": {
+          "categories": [
+            "North",
+            "East",
+            "South",
+            "West",
+            "Central"
+          ],
+          "series": [
+            {
+              "name": "Gap (€m)",
+              "values": [
+                9,
+                6,
+                3,
+                4,
+                3
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Lumenor regional P&L 2026"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_TOPIC",
+        "HEADLINE_PROPOSITION_MISMATCH",
+        "HEADLINE_UNRESOLVED"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-INV-014",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "purpose",
+      "invalid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "trend",
+      "purpose": "Show 2026 performance",
+      "proposition": {
+        "statement": "Revenue grew 12% in 2026 to €280m",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "revenue",
+        "direction": "up",
+        "magnitude": "12%",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1",
+          "F2",
+          "F3"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Show how revenue moved in 2026",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Revenue 2025 €250m, 2026 €280m",
+          "values": [
+            250,
+            280
+          ]
+        },
+        {
+          "id": "F2",
+          "claim": "Gross margin 2025 21%, 2026 18%",
+          "values": [
+            21,
+            18
+          ]
+        },
+        {
+          "id": "F3",
+          "claim": "Operating costs 2026: plan €100m, actual €105m",
+          "values": [
+            100,
+            105
+          ]
+        }
+      ],
+      "visual": {
+        "type": "column",
+        "data": {
+          "categories": [
+            "2025",
+            "2026"
+          ],
+          "series": [
+            {
+              "name": "Revenue (€m)",
+              "values": [
+                250,
+                280
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Brightmoor annual accounts"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_TOPIC",
+        "HEADLINE_PROPOSITION_MISMATCH",
+        "HEADLINE_UNRESOLVED"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-INV-015",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "purpose",
+      "invalid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "comparison",
+      "purpose": "Compare segment profitability",
+      "proposition": {
+        "statement": "Enterprise customers generate 2.3 times the contribution margin of SMB customers",
+        "role": "comparison",
+        "claim_type": "comparison",
+        "subject": "contribution margin per customer",
+        "magnitude": "2.3×",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Assess the profitability of customer segments",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Contribution per customer 2026: enterprise €46k, SMB €20k",
+          "values": [
+            46,
+            20
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            "Enterprise",
+            "SMB"
+          ],
+          "series": [
+            {
+              "name": "€k",
+              "values": [
+                46,
+                20
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Kestrel Software customer P&L"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_TOPIC",
+        "HEADLINE_PROPOSITION_MISMATCH",
+        "HEADLINE_UNRESOLVED"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-INV-012",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "purpose",
+      "invalid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "driver",
+      "purpose": "Explicar la pérdida de margen online",
+      "proposition": {
+        "statement": "Las devoluciones suponen 3 M€ de los 5 M€ de pérdida de margen online en 2026",
+        "role": "diagnosis",
+        "claim_type": "driver",
+        "subject": "margen del canal online",
+        "direction": "down",
+        "magnitude": "60%",
+        "timeframe": "2026",
+        "driver": "devoluciones",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Explicar las causas de la caída del margen online",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Pérdida de margen online 2026 (M€): devoluciones 3,0, envíos 1,5, descuentos 0,5",
+          "values": [
+            3.0,
+            1.5,
+            0.5
+          ]
+        }
+      ],
+      "visual": {
+        "type": "waterfall",
+        "data": {
+          "categories": [
+            "Devoluciones",
+            "Envíos",
+            "Descuentos"
+          ],
+          "series": [
+            {
+              "name": "M€",
+              "values": [
+                3.0,
+                1.5,
+                0.5
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Contabilidad analítica de Grupo Ventisca"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_TOPIC",
+        "HEADLINE_PROPOSITION_MISMATCH",
+        "HEADLINE_UNRESOLVED"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-INV-013",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "purpose",
+      "invalid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "comparison",
+      "purpose": "Comparar segmentos de clientes",
+      "proposition": {
+        "statement": "Los clientes premium generan 2,3 veces el margen de los clientes estándar",
+        "role": "comparison",
+        "claim_type": "comparison",
+        "subject": "margen por cliente",
+        "magnitude": "2,3x",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Analizar la rentabilidad por segmento de cliente",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Margen por cliente 2026: premium 69 €, estándar 30 €",
+          "values": [
+            69,
+            30
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            "Premium",
+            "Estándar"
+          ],
+          "series": [
+            {
+              "name": "Margen por cliente (€)",
+              "values": [
+                69,
+                30
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Sarmiento Seguros, cuenta de resultados por cliente"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_TOPIC",
+        "HEADLINE_PROPOSITION_MISMATCH",
+        "HEADLINE_UNRESOLVED"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-INV-014",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "purpose",
+      "invalid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "driver",
+      "purpose": "Descomponer el sobrecoste de personal",
+      "proposition": {
+        "statement": "El absentismo supone 2,0 M€ de los 3,0 M€ de sobrecoste de personal en 2026",
+        "role": "diagnosis",
+        "claim_type": "driver",
+        "subject": "sobrecoste de personal",
+        "direction": "up",
+        "magnitude": "dos tercios",
+        "timeframe": "2026",
+        "driver": "absentismo",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Mostrar la evolución del sobrecoste de personal",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Sobrecoste de personal 2026 (M€): absentismo 2,0, horas extra 0,6, rotación 0,4",
+          "values": [
+            2.0,
+            0.6,
+            0.4
+          ]
+        }
+      ],
+      "visual": {
+        "type": "waterfall",
+        "data": {
+          "categories": [
+            "Absentismo",
+            "Horas extra",
+            "Rotación"
+          ],
+          "series": [
+            {
+              "name": "M€",
+              "values": [
+                2.0,
+                0.6,
+                0.4
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Nóminas de Calderón Logística"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_TOPIC",
+        "HEADLINE_PROPOSITION_MISMATCH",
+        "HEADLINE_UNRESOLVED"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-INV-016",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "two_messages",
+      "invalid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "trend",
+      "purpose": "Show 2026 performance",
+      "proposition": {
+        "statement": "Revenue grew 12% in 2026 to €280m",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "revenue",
+        "direction": "up",
+        "magnitude": "12%",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1",
+          "F2",
+          "F3"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Revenue grew 12% in 2026, gross margin fell 3 pp and operating costs remain 5% above plan",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Revenue 2025 €250m, 2026 €280m",
+          "values": [
+            250,
+            280
+          ]
+        },
+        {
+          "id": "F2",
+          "claim": "Gross margin 2025 21%, 2026 18%",
+          "values": [
+            21,
+            18
+          ]
+        },
+        {
+          "id": "F3",
+          "claim": "Operating costs 2026: plan €100m, actual €105m",
+          "values": [
+            100,
+            105
+          ]
+        }
+      ],
+      "visual": {
+        "type": "column",
+        "data": {
+          "categories": [
+            "2025",
+            "2026"
+          ],
+          "series": [
+            {
+              "name": "Revenue (€m)",
+              "values": [
+                250,
+                280
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Brightmoor annual accounts"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_TWO_GOVERNING_MESSAGES",
+        "HEADLINE_PROPOSITION_MISMATCH"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-INV-017",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "two_messages",
+      "invalid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "trend",
+      "purpose": "Show churn in the north",
+      "proposition": {
+        "statement": "Churn in the northern region doubled in 2026, from 4.7% to 9.4%",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "northern churn",
+        "direction": "up",
+        "magnitude": "2×",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1",
+          "F2"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Northern churn doubled in 2026 and the northern salesforce should be restructured",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Northern churn 2025 4.7%, 2026 9.4%",
+          "values": [
+            4.7,
+            9.4
+          ]
+        },
+        {
+          "id": "F2",
+          "claim": "Northern salesforce: 42 reps, 9 vacancies",
+          "values": [
+            42,
+            9
+          ]
+        }
+      ],
+      "visual": {
+        "type": "column",
+        "data": {
+          "categories": [
+            "2025",
+            "2026"
+          ],
+          "series": [
+            {
+              "name": "Northern churn (%)",
+              "values": [
+                4.7,
+                9.4
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Oaklyn Telecom CRM"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_TWO_GOVERNING_MESSAGES",
+        "HEADLINE_PROPOSITION_MISMATCH"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-INV-018",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "two_messages",
+      "invalid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "driver",
+      "purpose": "Explain the margin decline",
+      "proposition": {
+        "statement": "Electronics mix explains 1.3 pp of the 1.9 pp gross-margin decline",
+        "role": "diagnosis",
+        "claim_type": "driver",
+        "subject": "gross margin",
+        "direction": "down",
+        "magnitude": "1.9 pp",
+        "timeframe": "2026",
+        "driver": "electronics mix",
+        "evidence_ids": [
+          "F1",
+          "F2"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Electronics mix explains most of the margin decline; separately, the Leeds plant is running at 97% utilisation",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Margin bridge (pp): electronics mix -1.3, freight -0.4, labour -0.2",
+          "values": [
+            -1.3,
+            -0.4,
+            -0.2
+          ]
+        },
+        {
+          "id": "F2",
+          "claim": "Leeds plant utilisation 2026: 97%",
+          "value": 97
+        }
+      ],
+      "visual": {
+        "type": "waterfall",
+        "data": {
+          "categories": [
+            "Electronics mix",
+            "Freight",
+            "Labour"
+          ],
+          "series": [
+            {
+              "name": "pp",
+              "values": [
+                -1.3,
+                -0.4,
+                -0.2
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Brightmoor finance"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_TWO_GOVERNING_MESSAGES",
+        "HEADLINE_PROPOSITION_MISMATCH"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-INV-019",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "two_messages",
+      "invalid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "trend",
+      "purpose": "Show channel shift",
+      "proposition": {
+        "statement": "Online channels reached 31% of sales in 2026",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "online share of sales",
+        "direction": "up",
+        "magnitude": "31%",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1",
+          "F2",
+          "F3"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Online reached 31% of sales while store traffic fell 8% and the loyalty scheme lost 40,000 members",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Online share 2025 28%, 2026 31%",
+          "values": [
+            28,
+            31
+          ]
+        },
+        {
+          "id": "F2",
+          "claim": "Store traffic 2026 -8% vs 2025",
+          "value": -8
+        },
+        {
+          "id": "F3",
+          "claim": "Loyalty members 2025 640k, 2026 600k",
+          "values": [
+            640,
+            600
+          ]
+        }
+      ],
+      "visual": {
+        "type": "line",
+        "data": {
+          "categories": [
+            "2025",
+            "2026"
+          ],
+          "series": [
+            {
+              "name": "Online share (%)",
+              "values": [
+                28,
+                31
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Brightmoor sales ledger"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_TWO_GOVERNING_MESSAGES",
+        "HEADLINE_PROPOSITION_MISMATCH"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-INV-015",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "two_messages",
+      "invalid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "trend",
+      "purpose": "Mostrar los resultados de 2026",
+      "proposition": {
+        "statement": "Los ingresos crecieron un 9% en 2026",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "ingresos",
+        "direction": "up",
+        "magnitude": "9%",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1",
+          "F2",
+          "F3"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Los ingresos crecieron un 9%, el margen bruto cayó 1,9 pp y los costes operativos siguen un 5% por encima del plan",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Ingresos 2025 200 M€, 2026 218 M€",
+          "values": [
+            200,
+            218
+          ]
+        },
+        {
+          "id": "F2",
+          "claim": "Margen bruto 2025 18,2%, 2026 16,3%",
+          "values": [
+            18.2,
+            16.3
+          ]
+        },
+        {
+          "id": "F3",
+          "claim": "Costes operativos 2026: plan 80 M€, real 84 M€",
+          "values": [
+            80,
+            84
+          ]
+        }
+      ],
+      "visual": {
+        "type": "column",
+        "data": {
+          "categories": [
+            "2025",
+            "2026"
+          ],
+          "series": [
+            {
+              "name": "Ingresos (M€)",
+              "values": [
+                200,
+                218
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Cuentas anuales de Altavera"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_TWO_GOVERNING_MESSAGES",
+        "HEADLINE_PROPOSITION_MISMATCH"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-INV-016",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "two_messages",
+      "invalid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "trend",
+      "purpose": "Mostrar la rotación en el Norte",
+      "proposition": {
+        "statement": "La rotación de plantilla en el Norte se duplicó en 2026, del 9% al 18%",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "rotación de plantilla en el Norte",
+        "direction": "up",
+        "magnitude": "2x",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1",
+          "F2"
+        ],
+        "confidence": "high"
+      },
+      "headline": "La rotación de plantilla se duplicó en el Norte y además hay que renegociar el contrato logístico",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Rotación en el Norte: 2025 9%, 2026 18%",
+          "values": [
+            9,
+            18
+          ]
+        },
+        {
+          "id": "F2",
+          "claim": "Contrato logístico vigente hasta junio de 2027, tarifa 8% sobre mercado",
+          "value": 8
+        }
+      ],
+      "visual": {
+        "type": "column",
+        "data": {
+          "categories": [
+            "2025",
+            "2026"
+          ],
+          "series": [
+            {
+              "name": "Rotación (%)",
+              "values": [
+                9,
+                18
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Datos de RR. HH. de Calderón Logística"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_TWO_GOVERNING_MESSAGES",
+        "HEADLINE_PROPOSITION_MISMATCH"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-INV-017",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "two_messages",
+      "invalid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "trend",
+      "purpose": "Mostrar el cambio de canal",
+      "proposition": {
+        "statement": "El canal online ya supone el 31% de las ventas",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "peso del canal online",
+        "direction": "up",
+        "magnitude": "31%",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1",
+          "F2"
+        ],
+        "confidence": "high"
+      },
+      "headline": "El canal online ya supone el 31% de las ventas; por otro lado, la planta de Burgos trabaja al 98% de su capacidad",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Peso online: 2025 28%, 2026 31%",
+          "values": [
+            28,
+            31
+          ]
+        },
+        {
+          "id": "F2",
+          "claim": "Utilización de la planta de Burgos 2026: 98%",
+          "value": 98
+        }
+      ],
+      "visual": {
+        "type": "line",
+        "data": {
+          "categories": [
+            "2025",
+            "2026"
+          ],
+          "series": [
+            {
+              "name": "Peso online (%)",
+              "values": [
+                28,
+                31
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Datos de ventas de Grupo Ventisca"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_TWO_GOVERNING_MESSAGES",
+        "HEADLINE_PROPOSITION_MISMATCH"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-INV-020",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "proposition_missing",
+      "invalid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "driver",
+      "purpose": "Locate the EBITDA gap",
+      "headline": "Three regions account for 72% of the EBITDA gap to plan",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "EBITDA gap to plan 2026 (€m): North 9, East 6, South 3, West 4, Central 3; total 25",
+          "values": [
+            9,
+            6,
+            3,
+            4,
+            3
+          ]
+        }
+      ],
+      "visual": {
+        "type": "waterfall",
+        "data": {
+          "categories": [
+            "North",
+            "East",
+            "South",
+            "West",
+            "Central"
+          ],
+          "series": [
+            {
+              "name": "Gap (€m)",
+              "values": [
+                9,
+                6,
+                3,
+                4,
+                3
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Lumenor regional P&L 2026"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "PROPOSITION_MISSING",
+        "HEADLINE_UNRESOLVED"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-INV-021",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "proposition_missing",
+      "invalid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "driver",
+      "purpose": "Explain the cost-to-serve increase",
+      "headline": "Freight accounts for 55% of the increase in cost to serve",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Increase in cost to serve 2026 (€m): freight 2.2, handling 1.0, packaging 0.8; total 4.0",
+          "values": [
+            2.2,
+            1.0,
+            0.8
+          ]
+        }
+      ],
+      "visual": {
+        "type": "waterfall",
+        "data": {
+          "categories": [
+            "Freight",
+            "Handling",
+            "Packaging"
+          ],
+          "series": [
+            {
+              "name": "€m",
+              "values": [
+                2.2,
+                1.0,
+                0.8
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Kestrel Foods logistics costs 2026"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "PROPOSITION_MISSING",
+        "HEADLINE_UNRESOLVED"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-INV-022",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "proposition_missing",
+      "invalid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "comparison",
+      "purpose": "Compare segment profitability",
+      "headline": "Enterprise customers generate 2.3× the contribution margin of SMB customers",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Contribution per customer 2026: enterprise €46k, SMB €20k",
+          "values": [
+            46,
+            20
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            "Enterprise",
+            "SMB"
+          ],
+          "series": [
+            {
+              "name": "€k",
+              "values": [
+                46,
+                20
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Kestrel Software customer P&L"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "PROPOSITION_MISSING",
+        "HEADLINE_UNRESOLVED"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-INV-018",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "proposition_missing",
+      "invalid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "driver",
+      "purpose": "Explicar la pérdida de margen online",
+      "headline": "Las devoluciones explican el 60% de la pérdida de margen del canal online",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Pérdida de margen online 2026 (M€): devoluciones 3,0, envíos 1,5, descuentos 0,5",
+          "values": [
+            3.0,
+            1.5,
+            0.5
+          ]
+        }
+      ],
+      "visual": {
+        "type": "waterfall",
+        "data": {
+          "categories": [
+            "Devoluciones",
+            "Envíos",
+            "Descuentos"
+          ],
+          "series": [
+            {
+              "name": "M€",
+              "values": [
+                3.0,
+                1.5,
+                0.5
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Contabilidad analítica de Grupo Ventisca"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "PROPOSITION_MISSING",
+        "HEADLINE_UNRESOLVED"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-INV-019",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "proposition_missing",
+      "invalid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "driver",
+      "purpose": "Descomponer el sobrecoste de personal",
+      "headline": "El absentismo explica dos tercios del sobrecoste de personal en 2026",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Sobrecoste de personal 2026 (M€): absentismo 2,0, horas extra 0,6, rotación 0,4",
+          "values": [
+            2.0,
+            0.6,
+            0.4
+          ]
+        }
+      ],
+      "visual": {
+        "type": "waterfall",
+        "data": {
+          "categories": [
+            "Absentismo",
+            "Horas extra",
+            "Rotación"
+          ],
+          "series": [
+            {
+              "name": "M€",
+              "values": [
+                2.0,
+                0.6,
+                0.4
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Nóminas de Calderón Logística"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "PROPOSITION_MISSING",
+        "HEADLINE_UNRESOLVED"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-INV-020",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "proposition_missing",
+      "invalid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "comparison",
+      "purpose": "Comparar segmentos de clientes",
+      "headline": "Los clientes premium generan 2,3 veces el margen de los clientes estándar",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Margen por cliente 2026: premium 69 €, estándar 30 €",
+          "values": [
+            69,
+            30
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            "Premium",
+            "Estándar"
+          ],
+          "series": [
+            {
+              "name": "Margen por cliente (€)",
+              "values": [
+                69,
+                30
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Sarmiento Seguros, cuenta de resultados por cliente"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "PROPOSITION_MISSING",
+        "HEADLINE_UNRESOLVED"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-INV-023",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "kpi_label",
+      "invalid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "kpi",
+      "purpose": "Show EBITDA against plan",
+      "proposition": {
+        "statement": "EBITDA is €8m below plan in 2026 although revenue is on target",
+        "role": "observation",
+        "claim_type": "comparison",
+        "subject": "EBITDA",
+        "direction": "down",
+        "magnitude": "€8m",
+        "timeframe": "2026",
+        "comparison": "plan",
+        "evidence_ids": [
+          "F1",
+          "F2"
+        ],
+        "confidence": "high"
+      },
+      "headline": "2026 EBITDA",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "EBITDA 2026: plan €45m, actual €37m",
+          "values": [
+            45,
+            37
+          ]
+        },
+        {
+          "id": "F2",
+          "claim": "Revenue 2026: plan €300m, actual €301m",
+          "values": [
+            300,
+            301
+          ]
+        }
+      ],
+      "visual": {
+        "type": "kpi",
+        "data": {
+          "categories": [
+            "Plan",
+            "Actual"
+          ],
+          "series": [
+            {
+              "name": "EBITDA 2026 (€m)",
+              "values": [
+                45,
+                37
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Tervani management accounts 2026"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_TOPIC",
+        "HEADLINE_UNRESOLVED"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-INV-024",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "kpi_label",
+      "invalid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "kpi",
+      "purpose": "Show customer advocacy",
+      "proposition": {
+        "statement": "Net Promoter Score fell 11 points in Q3 2026 to 23",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "Net Promoter Score",
+        "direction": "down",
+        "magnitude": "11 points",
+        "timeframe": "Q3 2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Net Promoter Score, Q3 2026",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "NPS Q2 2026 34, Q3 2026 23",
+          "values": [
+            34,
+            23
+          ]
+        }
+      ],
+      "visual": {
+        "type": "kpi",
+        "data": {
+          "categories": [
+            "Q2 2026",
+            "Q3 2026"
+          ],
+          "series": [
+            {
+              "name": "NPS",
+              "values": [
+                34,
+                23
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Oaklyn Telecom NPS tracker"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_TOPIC",
+        "HEADLINE_UNRESOLVED"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-INV-025",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "kpi_label",
+      "invalid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "kpi",
+      "purpose": "Show headcount against budget",
+      "proposition": {
+        "statement": "Headcount ended 2026 at 3,150, 6% below the 3,350 budget",
+        "role": "observation",
+        "claim_type": "comparison",
+        "subject": "headcount",
+        "direction": "down",
+        "magnitude": "6%",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Headcount, December 2026",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Headcount December 2026: budget 3,350, actual 3,150",
+          "values": [
+            3350,
+            3150
+          ]
+        }
+      ],
+      "visual": {
+        "type": "kpi",
+        "data": {
+          "categories": [
+            "Budget",
+            "Actual"
+          ],
+          "series": [
+            {
+              "name": "Headcount",
+              "values": [
+                3350,
+                3150
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Norvalia HR system"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_TOPIC",
+        "HEADLINE_UNRESOLVED"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-INV-021",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "kpi_label",
+      "invalid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "kpi",
+      "purpose": "Mostrar el EBITDA frente a plan",
+      "proposition": {
+        "statement": "El EBITDA de 2026 queda 6 M€ por debajo del plan pese a cumplir el objetivo de ingresos",
+        "role": "observation",
+        "claim_type": "comparison",
+        "subject": "EBITDA",
+        "direction": "down",
+        "magnitude": "6 M€",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1",
+          "F2"
+        ],
+        "confidence": "high"
+      },
+      "headline": "EBITDA 2026",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "EBITDA 2026: plan 30 M€, real 24 M€",
+          "values": [
+            30,
+            24
+          ]
+        },
+        {
+          "id": "F2",
+          "claim": "Ingresos 2026: plan 218 M€, real 218 M€",
+          "values": [
+            218,
+            218
+          ]
+        }
+      ],
+      "visual": {
+        "type": "kpi",
+        "data": {
+          "categories": [
+            "Plan",
+            "Real"
+          ],
+          "series": [
+            {
+              "name": "EBITDA 2026 (M€)",
+              "values": [
+                30,
+                24
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Cuentas de gestión de Altavera 2026"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_TOPIC",
+        "HEADLINE_UNRESOLVED"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-INV-022",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "kpi_label",
+      "invalid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "kpi",
+      "purpose": "Mostrar la evolución de la cuota",
+      "proposition": {
+        "statement": "Altavera ganó 1,5 pp de cuota de mercado en 2026, hasta el 25,0%",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "cuota de mercado",
+        "direction": "up",
+        "magnitude": "1,5 pp",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Cuota de mercado 2026",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Cuota de mercado: 2025 23,5%, 2026 25,0%",
+          "values": [
+            23.5,
+            25.0
+          ]
+        }
+      ],
+      "visual": {
+        "type": "kpi",
+        "data": {
+          "categories": [
+            "2025",
+            "2026"
+          ],
+          "series": [
+            {
+              "name": "Cuota (%)",
+              "values": [
+                23.5,
+                25.0
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Panel de mercado 2026"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_TOPIC",
+        "HEADLINE_UNRESOLVED"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-INV-026",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "recommendation_unsupported",
+      "invalid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "comparison",
+      "purpose": "Compare the options",
+      "proposition": {
+        "statement": "Option A has the highest NPV of the three options at €42m",
+        "role": "comparison",
+        "claim_type": "comparison",
+        "subject": "option NPV",
+        "magnitude": "€42m",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Choose Option A to maximise shareholder value",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "NPV by option: A €42m, B €38m, C €21m; implementation time A 24 months, B 12 months, C 9 months",
+          "values": [
+            42,
+            38,
+            21,
+            24,
+            12,
+            9
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            "Option A",
+            "Option B",
+            "Option C"
+          ],
+          "series": [
+            {
+              "name": "NPV (€m)",
+              "values": [
+                42,
+                38,
+                21
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Norvalia investment case"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_PROPOSITION_MISMATCH"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-INV-027",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "recommendation_unsupported",
+      "invalid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "trend",
+      "purpose": "Show churn in the north",
+      "proposition": {
+        "statement": "Churn in the northern region doubled in 2026, from 4.7% to 9.4%",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "northern churn",
+        "direction": "up",
+        "magnitude": "2×",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1",
+          "F2"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Restructure the northern salesforce to halve churn",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Northern churn 2025 4.7%, 2026 9.4%",
+          "values": [
+            4.7,
+            9.4
+          ]
+        },
+        {
+          "id": "F2",
+          "claim": "Northern salesforce: 42 reps, 9 vacancies",
+          "values": [
+            42,
+            9
+          ]
+        }
+      ],
+      "visual": {
+        "type": "column",
+        "data": {
+          "categories": [
+            "2025",
+            "2026"
+          ],
+          "series": [
+            {
+              "name": "Northern churn (%)",
+              "values": [
+                4.7,
+                9.4
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Oaklyn Telecom CRM"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_PROPOSITION_MISMATCH",
+        "HEADLINE_CAUSALITY_UNSUPPORTED"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-INV-023",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "comparison_unsupported",
+      "invalid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "comparison",
+      "purpose": "Comparar Levante con Centro",
+      "proposition": {
+        "statement": "Las tiendas de Levante obtienen un margen por tienda un 18% superior al de Centro",
+        "role": "comparison",
+        "claim_type": "comparison",
+        "subject": "margen por tienda",
+        "direction": "higher",
+        "magnitude": "18%",
+        "timeframe": "2026",
+        "comparison": "Centro",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Levante es la región más rentable de toda la red",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Margen por tienda 2026: Levante 472 k€, Centro 400 k€ (no se muestran las otras tres regiones)",
+          "values": [
+            472,
+            400
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            "Levante",
+            "Centro"
+          ],
+          "series": [
+            {
+              "name": "Margen por tienda (k€)",
+              "values": [
+                472,
+                400
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Cuenta de resultados de tiendas de Grupo Ventisca"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_COMPARISON_UNSUPPORTED",
+        "HEADLINE_PROPOSITION_MISMATCH"
+      ],
+      "selected": null
+    }
+  }
+]

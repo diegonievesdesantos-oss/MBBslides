@@ -127,10 +127,14 @@ No slide is rendered without its intent. Content slide fields:
 {
   "id": "s06", "section": "K2", "tracker": "Profitability",
   "purpose": "Explain what drove the EBITDA decline",
+  "proposition": {"statement": "Margin erosion in grocery and convenience (€119M) pushed EBITDA down from €924M to €857M",
+                  "role": "driver", "claim_type": "driver", "subject": "EBITDA", "direction": "down",
+                  "magnitude": "€119M", "timeframe": "2025", "evidence_ids": ["E06-1"], "confidence": "high"},
   "headline": "Margin erosion in grocery and convenience (€119M) pushed EBITDA down to €857M",
+  "headline_candidates": ["optional alternative wordings: the engine picks the strongest faithful one"],
   "supporting_message": "Volume and price gains were not enough to offset cost inflation",
   "message_type": "change_bridge",
-  "evidence": [{"claim": "EBITDA 2024 €924M to 2025 €857M", "values": [924, 857], "source": "mgmt accounts"}],
+  "evidence": [{"id": "E06-1", "claim": "EBITDA 2024 €924M to 2025 €857M", "values": [924, 857], "source": "mgmt accounts"}],
   "visual": {"type": "waterfall", "title": "EBITDA bridge 2024 to 2025", "unit": "€M", "data": {…}},
   "commentary": {"title": "Two categories explain the decline", "points": ["**Grocery (−€78M):** …"]},
   "takeaway": "optional so-what bar at the bottom",
@@ -145,6 +149,13 @@ Other slide kinds: `cover`, `agenda` (`items`), `divider` (`number`, `title`), `
 (`visual: {type: statements, data: {items: [{title, text}], style: numbered|scr}}`), `statement`
 (`text`, `support`), `closing`. Slide-level `kpis`, `columns` (comparison columns) and `commentary`
 are roles the layout engine places for you. Full reference: `docs/SPEC_REFERENCE.md`.
+
+**v3.1 — purpose, proposition, headline are three different things.** Write the `proposition` (what the
+slide asserts, its role and claim type, the evidence ids that prove it, how sure you are) before the
+headline; the headline is its compressed wording. New decks are `meta.editorial_mode: "mbb_strict"`:
+a content slide without a proposition, a topic title, an unsupported number or causal word, or a broken
+sibling group FAILS the deck (docs/EDITORIAL_LAYER.md). `scripts/cpe editorial check deck.json` before
+rendering; `scripts/cpe editorial explain deck.json` shows why a title was rejected and what was expected.
 
 ## 4. Headlines (Step 4)
 
@@ -162,6 +173,14 @@ numbers, and **any number in the headline that the slide's evidence/exhibit cann
 (values, sums, shares, deltas, growth rates, CAGRs are derived automatically; the executive
 summary may quote any number proven elsewhere in the deck). If the number is right, add the
 evidence; if it is not, fix the number.
+
+v3.1: the Action Title Engine then checks the headline against the proposition (docs/HEADLINE_STYLE.md):
+no change of direction, magnitude, entity, scope, period, confidence or causal strength; a finding is
+not a recommendation and a recommendation is not a decision; numbers at the precision of the evidence;
+causal words only on causal/driver claims. If it rejects every candidate the slide fails closed
+(`HEADLINE_UNRESOLVED`, with the expected proposition): write a new candidate, do not weaken the claim's
+evidence. Siblings — recommendations, process steps, options, workstreams, executive-summary statements,
+key-line points — must share one grammatical family (docs/PARALLEL_WORDING.md).
 
 ## 5. Choose the visual by the message (Step 5)
 

@@ -17,7 +17,7 @@ import json
 from pathlib import Path
 
 
-def prepare(old_pptx: str | Path, sources: str | Path, work: str | Path) -> dict:
+def prepare(old_pptx: str | Path, sources: str | Path, work: str | Path, normalize_editorial: bool = False) -> dict:
     from . import deck_patch, deck_update, facts
 
     work = Path(work)
@@ -39,7 +39,9 @@ def prepare(old_pptx: str | Path, sources: str | Path, work: str | Path) -> dict
     else:
         e = fresh
     e["derived"] = deck_patch.derive_edits(plan, e)
-    rev = _messages(work, plan, e)
+    prev = json.loads((work / "update.json").read_text(encoding="utf-8")) if (work / "update.json").exists() else {}
+    normalize_editorial = normalize_editorial or bool(prev.get("normalize_editorial"))
+    rev = _messages(work, plan, e, normalize_editorial)
     path.write_text(json.dumps(e, indent=2, ensure_ascii=False) + "\n", encoding="utf-8", newline="\n")
     (work / "edits.md").write_text(deck_patch.edits_markdown(e), encoding="utf-8", newline="\n")
     from .review_sheet import write_sheet
@@ -47,17 +49,22 @@ def prepare(old_pptx: str | Path, sources: str | Path, work: str | Path) -> dict
     write_sheet(work)  # v2.1: the review in a spreadsheet, beside edits.md
     meta = {"messages": {v: sum(1 for r in rev if r["verdict"] == v) for v in ("holds", "figures updated", "no longer holds", "check")},
             "old_pptx": str(Path(old_pptx).resolve()), "sources": str(Path(sources).resolve()), "slides": len(inv["slides"]),
-            "facts": fm["stats"]["facts"], "plan": plan["totals"], "edits": len(e["edits"]), "approved_kept": kept}
+            "facts": fm["stats"]["facts"], "plan": plan["totals"], "edits": len(e["edits"]), "approved_kept": kept,
+            "normalize_editorial": normalize_editorial}
     (work / "update.json").write_text(json.dumps(meta, indent=2, ensure_ascii=False) + "\n", encoding="utf-8", newline="\n")
     return meta
 
 
-def _messages(work: Path, plan: dict, e: dict) -> list[dict]:
-    """v2.0 item 5: each headline against the new values; set_headline proposals where it no longer holds."""
+def _messages(work: Path, plan: dict, e: dict, normalize: bool | None = None) -> list[dict]:
+    """v2.0 item 5: each headline against the new values; set_headline proposals where it no longer holds.
+    v3.1: the proposals go through the Action Title Engine; `normalize` also flags non-action titles that hold."""
     from . import messages
 
+    if normalize is None:
+        um = work / "update.json"
+        normalize = bool(json.loads(um.read_text(encoding="utf-8")).get("normalize_editorial")) if um.exists() else False
     rev = messages.review(plan, e)
-    messages.headline_edits(rev, e)
+    messages.headline_edits(rev, e, plan, normalize)
     (work / "messages.json").write_text(json.dumps(rev, indent=2, ensure_ascii=False) + "\n", encoding="utf-8", newline="\n")
     (work / "messages.md").write_text(messages.markdown(rev), encoding="utf-8", newline="\n")
     return rev

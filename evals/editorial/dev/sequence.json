@@ -1,0 +1,2279 @@
+[
+  {
+    "id": "EN-SEQ-001",
+    "type": "sequence",
+    "lang": "en",
+    "tags": [
+      "non_parallel"
+    ],
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "slides": [
+      {
+        "id": "s03",
+        "kind": "content",
+        "section": "K1",
+        "story_role": "diagnosis",
+        "message_type": "trend",
+        "purpose": "Show how gross margin moved",
+        "proposition": {
+          "statement": "Gross margin declined 1.9 pp in 2026",
+          "role": "diagnosis",
+          "claim_type": "trend",
+          "subject": "gross margin",
+          "direction": "down",
+          "magnitude": "1.9 pp",
+          "timeframe": "2026",
+          "evidence_ids": [
+            "F1"
+          ],
+          "confidence": "high"
+        },
+        "headline": "Gross margin fell 1.9 pp in 2026 to 16.3%",
+        "evidence": [
+          {
+            "id": "F1",
+            "claim": "Gross margin 2025 18.2%, 2026 16.3%",
+            "values": [
+              18.2,
+              16.3
+            ]
+          }
+        ],
+        "visual": {
+          "type": "column",
+          "data": {
+            "categories": [
+              "2025",
+              "2026"
+            ],
+            "series": [
+              {
+                "name": "Gross margin (%)",
+                "values": [
+                  18.2,
+                  16.3
+                ]
+              }
+            ]
+          }
+        },
+        "source": "Brightmoor finance"
+      },
+      {
+        "id": "s04",
+        "kind": "content",
+        "section": "K1",
+        "story_role": "driver",
+        "message_type": "change_bridge",
+        "purpose": "Explain the main driver of the decline",
+        "proposition": {
+          "statement": "The shift toward electronics accounts for 1.3 pp of the 1.9 pp gross-margin decline",
+          "role": "diagnosis",
+          "claim_type": "driver",
+          "subject": "gross margin",
+          "direction": "down",
+          "magnitude": "1.3 pp",
+          "timeframe": "2026",
+          "driver": "electronics mix",
+          "evidence_ids": [
+            "F2"
+          ],
+          "confidence": "high"
+        },
+        "headline": "Electronics mix explains 1.3 pp of the 1.9 pp margin decline",
+        "evidence": [
+          {
+            "id": "F2",
+            "claim": "Margin bridge 2025-2026 (pp): electronics mix -1.3, freight -0.4, store labour -0.2",
+            "values": [
+              -1.3,
+              -0.4,
+              -0.2
+            ]
+          }
+        ],
+        "visual": {
+          "type": "waterfall",
+          "data": {
+            "categories": [
+              "Electronics mix",
+              "Freight",
+              "Store labour"
+            ],
+            "series": [
+              {
+                "name": "pp",
+                "values": [
+                  -1.3,
+                  -0.4,
+                  -0.2
+                ]
+              }
+            ]
+          }
+        },
+        "source": "Brightmoor finance, margin bridge"
+      },
+      {
+        "id": "s05",
+        "kind": "content",
+        "section": "K2",
+        "story_role": "implication",
+        "message_type": "implication",
+        "purpose": "Show what current plans imply for 2027",
+        "proposition": {
+          "statement": "At the planned 2027 mix, gross margin would be 15.6%, 2.6 pp below the 2025 level",
+          "role": "implication",
+          "claim_type": "impact",
+          "subject": "gross margin gap",
+          "direction": "down",
+          "magnitude": "2.6 pp",
+          "timeframe": "2027",
+          "evidence_ids": [
+            "F3"
+          ],
+          "confidence": "high"
+        },
+        "headline": "Current growth plans would widen the margin gap to 2.6 pp by 2027",
+        "evidence": [
+          {
+            "id": "F3",
+            "claim": "Gross margin 2025 18.2%; 2027 projection at planned mix 15.6%",
+            "values": [
+              18.2,
+              15.6
+            ]
+          }
+        ],
+        "visual": {
+          "type": "column",
+          "data": {
+            "categories": [
+              "2025",
+              "2027 plan"
+            ],
+            "series": [
+              {
+                "name": "Gross margin (%)",
+                "values": [
+                  18.2,
+                  15.6
+                ]
+              }
+            ]
+          }
+        },
+        "source": "Brightmoor 2027 plan"
+      },
+      {
+        "id": "s06",
+        "kind": "content",
+        "section": "K3",
+        "story_role": "recommendation",
+        "message_type": "recommendation",
+        "purpose": "Recommend the first lever",
+        "proposition": {
+          "statement": "We recommend repricing electronics first, recovering about 1.4 pp of margin in 2027",
+          "role": "recommendation",
+          "claim_type": "recommendation",
+          "subject": "gross margin",
+          "direction": "up",
+          "magnitude": "~1.4 pp",
+          "timeframe": "2027",
+          "recommended_action": "reprice electronics",
+          "evidence_ids": [
+            "F4"
+          ],
+          "confidence": "high"
+        },
+        "headline": "Reprice electronics first to recover ~1.4 pp of margin in 2027",
+        "evidence": [
+          {
+            "id": "F4",
+            "claim": "Pricing model: electronics repricing recovers 1.4 pp in 2027 (range 1.2-1.6 pp)",
+            "values": [
+              1.2,
+              1.4,
+              1.6
+            ]
+          }
+        ],
+        "visual": {
+          "type": "bar",
+          "data": {
+            "categories": [
+              "Low",
+              "Base",
+              "High"
+            ],
+            "series": [
+              {
+                "name": "pp",
+                "values": [
+                  1.2,
+                  1.4,
+                  1.6
+                ]
+              }
+            ]
+          }
+        },
+        "source": "Brightmoor pricing model"
+      },
+      {
+        "id": "s07",
+        "kind": "content",
+        "section": "K3",
+        "story_role": "impact",
+        "message_type": "impact",
+        "purpose": "Show what the programme delivers",
+        "proposition": {
+          "statement": "Repricing recovers 1.4 pp of the 2.6 pp gap while store headcount and opening hours stay at plan",
+          "role": "impact",
+          "claim_type": "impact",
+          "subject": "2027 margin gap",
+          "direction": "up",
+          "timeframe": "2027",
+          "evidence_ids": [
+            "F3",
+            "F4",
+            "F5"
+          ],
+          "confidence": "high"
+        },
+        "headline": "The programme closes most of the 2027 gap without reducing store capacity",
+        "evidence": [
+          {
+            "id": "F3",
+            "claim": "Gap 2027 at planned mix: 2.6 pp",
+            "value": 2.6
+          },
+          {
+            "id": "F4",
+            "claim": "Repricing recovery: 1.4 pp",
+            "value": 1.4
+          },
+          {
+            "id": "F5",
+            "claim": "Store headcount plan 2027 unchanged at 4,200 FTE; opening hours unchanged",
+            "value": 4200
+          }
+        ],
+        "visual": {
+          "type": "waterfall",
+          "data": {
+            "categories": [
+              "Gap",
+              "Repricing",
+              "Residual"
+            ],
+            "series": [
+              {
+                "name": "pp",
+                "values": [
+                  2.6,
+                  -1.4,
+                  1.2
+                ]
+              }
+            ]
+          }
+        },
+        "source": "Brightmoor 2027 plan"
+      }
+    ],
+    "expect": {
+      "parallel_flags": 0,
+      "headlines_unchanged": true
+    }
+  },
+  {
+    "id": "EN-SEQ-002",
+    "type": "sequence",
+    "lang": "en",
+    "tags": [
+      "non_parallel"
+    ],
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "slides": [
+      {
+        "id": "s03",
+        "kind": "content",
+        "section": "K1",
+        "story_role": "context",
+        "message_type": "trend",
+        "purpose": "Show demand growth",
+        "proposition": {
+          "statement": "Series K demand compounded at 18% a year from 2023 to 2026",
+          "role": "context",
+          "claim_type": "trend",
+          "subject": "Series K demand",
+          "direction": "up",
+          "magnitude": "18%",
+          "timeframe": "2023-2026",
+          "evidence_ids": [
+            "F1"
+          ],
+          "confidence": "high"
+        },
+        "headline": "Demand for Series K pumps grew 18% a year between 2023 and 2026",
+        "evidence": [
+          {
+            "id": "F1",
+            "claim": "Series K units (k): 2023 100.0, 2024 118.0, 2025 139.2, 2026 164.3",
+            "values": [
+              100.0,
+              118.0,
+              139.2,
+              164.3
+            ]
+          }
+        ],
+        "visual": {
+          "type": "column",
+          "data": {
+            "categories": [
+              "2023",
+              "2024",
+              "2025",
+              "2026"
+            ],
+            "series": [
+              {
+                "name": "Units (k)",
+                "values": [
+                  100.0,
+                  118.0,
+                  139.2,
+                  164.3
+                ]
+              }
+            ]
+          }
+        },
+        "source": "Norvalia sales data"
+      },
+      {
+        "id": "s04",
+        "kind": "content",
+        "section": "K1",
+        "story_role": "problem",
+        "message_type": "implication",
+        "purpose": "Show the capacity constraint",
+        "proposition": {
+          "statement": "Forecast quarterly demand exceeds the 50k-unit capacity of the Tilbury line from Q3 2027",
+          "role": "implication",
+          "claim_type": "constraint",
+          "subject": "Tilbury line capacity",
+          "timeframe": "Q3 2027",
+          "evidence_ids": [
+            "F2"
+          ],
+          "confidence": "high"
+        },
+        "headline": "The Tilbury line will reach full capacity in Q3 2027",
+        "evidence": [
+          {
+            "id": "F2",
+            "claim": "Tilbury capacity 50k units/quarter; demand forecast Q2 2027 48k, Q3 2027 52k",
+            "values": [
+              50,
+              48,
+              52
+            ]
+          }
+        ],
+        "visual": {
+          "type": "line",
+          "data": {
+            "categories": [
+              "Q2 2027",
+              "Q3 2027"
+            ],
+            "series": [
+              {
+                "name": "Demand (k units)",
+                "values": [
+                  48,
+                  52
+                ]
+              },
+              {
+                "name": "Capacity",
+                "values": [
+                  50,
+                  50
+                ]
+              }
+            ]
+          }
+        },
+        "source": "Norvalia S&OP"
+      },
+      {
+        "id": "s05",
+        "kind": "content",
+        "section": "K2",
+        "story_role": "option",
+        "message_type": "comparison",
+        "purpose": "Compare capacity options",
+        "proposition": {
+          "statement": "Among the three options assessed, a second line has the highest NPV at €18m",
+          "role": "comparison",
+          "claim_type": "comparison",
+          "subject": "capacity option NPV",
+          "magnitude": "€18m",
+          "evidence_ids": [
+            "F3"
+          ],
+          "confidence": "high"
+        },
+        "headline": "A second line offers the highest NPV of the three capacity options at €18m",
+        "evidence": [
+          {
+            "id": "F3",
+            "claim": "NPV by option: second line €18m, outsourcing €11m, overtime €4m",
+            "values": [
+              18,
+              11,
+              4
+            ]
+          }
+        ],
+        "visual": {
+          "type": "bar",
+          "data": {
+            "categories": [
+              "Second line",
+              "Outsourcing",
+              "Overtime"
+            ],
+            "series": [
+              {
+                "name": "NPV (€m)",
+                "values": [
+                  18,
+                  11,
+                  4
+                ]
+              }
+            ]
+          }
+        },
+        "source": "Norvalia investment case"
+      },
+      {
+        "id": "s06",
+        "kind": "content",
+        "section": "K3",
+        "story_role": "decision",
+        "message_type": "decision",
+        "purpose": "Ask for the decision",
+        "proposition": {
+          "statement": "Board approval by December 2026 is required for the second line to start up in Q3 2027",
+          "role": "decision",
+          "claim_type": "decision",
+          "subject": "second line",
+          "timeframe": "Q3 2027",
+          "decision": "approve the second line by December 2026",
+          "evidence_ids": [
+            "F4"
+          ],
+          "confidence": "high"
+        },
+        "headline": "Approving the second line by December 2026 protects the Q3 2027 start-up date",
+        "evidence": [
+          {
+            "id": "F4",
+            "claim": "Second line lead time: 7 months from approval to start-up",
+            "value": 7
+          }
+        ],
+        "visual": {
+          "type": "gantt",
+          "data": {
+            "categories": [
+              "Approval",
+              "Build",
+              "Start-up"
+            ],
+            "series": [
+              {
+                "name": "Months",
+                "values": [
+                  0,
+                  7,
+                  1
+                ]
+              }
+            ]
+          }
+        },
+        "source": "Norvalia engineering plan"
+      }
+    ],
+    "expect": {
+      "parallel_flags": 0,
+      "headlines_unchanged": true
+    }
+  },
+  {
+    "id": "EN-SEQ-003",
+    "type": "sequence",
+    "lang": "en",
+    "tags": [
+      "non_parallel"
+    ],
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "slides": [
+      {
+        "id": "s08",
+        "kind": "content",
+        "section": "K1",
+        "story_role": "problem",
+        "message_type": "trend",
+        "purpose": "Show churn trend",
+        "proposition": {
+          "statement": "Annual churn increased from 7.1% to 9.4% in 2026",
+          "role": "observation",
+          "claim_type": "trend",
+          "subject": "subscriber churn",
+          "direction": "up",
+          "magnitude": "9.4%",
+          "timeframe": "2026",
+          "evidence_ids": [
+            "F1"
+          ],
+          "confidence": "high"
+        },
+        "headline": "Subscriber churn rose from 7.1% to 9.4% in 2026",
+        "evidence": [
+          {
+            "id": "F1",
+            "claim": "Annual churn 2025 7.1%, 2026 9.4%",
+            "values": [
+              7.1,
+              9.4
+            ]
+          }
+        ],
+        "visual": {
+          "type": "column",
+          "data": {
+            "categories": [
+              "2025",
+              "2026"
+            ],
+            "series": [
+              {
+                "name": "Churn (%)",
+                "values": [
+                  7.1,
+                  9.4
+                ]
+              }
+            ]
+          }
+        },
+        "source": "Oaklyn Telecom CRM"
+      },
+      {
+        "id": "s09",
+        "kind": "content",
+        "section": "K1",
+        "story_role": "diagnosis",
+        "message_type": "composition",
+        "purpose": "Show why customers cancel",
+        "proposition": {
+          "statement": "Billing errors are the stated reason for 45% of voluntary cancellations in 2026",
+          "role": "diagnosis",
+          "claim_type": "composition",
+          "subject": "voluntary cancellations",
+          "magnitude": "45%",
+          "timeframe": "2026",
+          "evidence_ids": [
+            "F2"
+          ],
+          "confidence": "high"
+        },
+        "headline": "Billing errors account for 45% of voluntary cancellations",
+        "evidence": [
+          {
+            "id": "F2",
+            "claim": "Cancellation reasons 2026 (n=24,000): billing errors 45%, price 30%, service quality 25%",
+            "values": [
+              45,
+              30,
+              25
+            ]
+          }
+        ],
+        "visual": {
+          "type": "pie",
+          "data": {
+            "categories": [
+              "Billing errors",
+              "Price",
+              "Service quality"
+            ],
+            "series": [
+              {
+                "name": "Share of cancellations (%)",
+                "values": [
+                  45,
+                  30,
+                  25
+                ]
+              }
+            ]
+          }
+        },
+        "source": "Oaklyn exit survey"
+      },
+      {
+        "id": "s10",
+        "kind": "content",
+        "section": "K2",
+        "story_role": "recommendation",
+        "message_type": "recommendation",
+        "purpose": "Recommend the first fix",
+        "proposition": {
+          "statement": "We recommend fixing the billing platform first because billing errors are the largest cancellation reason",
+          "role": "recommendation",
+          "claim_type": "recommendation",
+          "subject": "billing platform",
+          "recommended_action": "fix billing platform",
+          "evidence_ids": [
+            "F2"
+          ],
+          "confidence": "high"
+        },
+        "headline": "Fix the billing platform first to remove the largest source of cancellations",
+        "evidence": [
+          {
+            "id": "F2",
+            "claim": "Cancellation reasons 2026: billing errors 45%, price 30%, service quality 25%",
+            "values": [
+              45,
+              30,
+              25
+            ]
+          }
+        ],
+        "visual": {
+          "type": "bar",
+          "data": {
+            "categories": [
+              "Billing errors",
+              "Price",
+              "Service quality"
+            ],
+            "series": [
+              {
+                "name": "%",
+                "values": [
+                  45,
+                  30,
+                  25
+                ]
+              }
+            ]
+          }
+        },
+        "source": "Oaklyn exit survey"
+      },
+      {
+        "id": "s11",
+        "kind": "content",
+        "section": "K2",
+        "story_role": "impact",
+        "message_type": "impact",
+        "purpose": "Size the retention benefit",
+        "proposition": {
+          "statement": "The retention model estimates that halving billing errors retains about 18,000 subscribers a year",
+          "role": "impact",
+          "claim_type": "impact",
+          "subject": "subscribers retained",
+          "direction": "up",
+          "magnitude": "about 18,000",
+          "evidence_ids": [
+            "F3"
+          ],
+          "confidence": "high"
+        },
+        "headline": "Halving billing errors would retain about 18,000 subscribers a year",
+        "evidence": [
+          {
+            "id": "F3",
+            "claim": "Retention model: halving billing errors retains 18,000 subscribers per year (range 15,000-21,000)",
+            "values": [
+              18000,
+              15000,
+              21000
+            ]
+          }
+        ],
+        "visual": {
+          "type": "bar",
+          "data": {
+            "categories": [
+              "Low",
+              "Base",
+              "High"
+            ],
+            "series": [
+              {
+                "name": "Subscribers retained",
+                "values": [
+                  15000,
+                  18000,
+                  21000
+                ]
+              }
+            ]
+          }
+        },
+        "source": "Oaklyn retention model"
+      },
+      {
+        "id": "s12",
+        "kind": "content",
+        "section": "K3",
+        "story_role": "risk",
+        "message_type": "risk",
+        "purpose": "Show the risk of delay",
+        "proposition": {
+          "statement": "If the billing fix slips beyond Q2 2027, 50% of the 2027 retention benefit is lost",
+          "role": "risk",
+          "claim_type": "risk",
+          "subject": "2027 retention benefit",
+          "direction": "down",
+          "magnitude": "50%",
+          "timeframe": "2027",
+          "evidence_ids": [
+            "F4"
+          ],
+          "confidence": "high"
+        },
+        "headline": "A delay beyond Q2 2027 would put half of the 2027 retention benefit at risk",
+        "evidence": [
+          {
+            "id": "F4",
+            "claim": "Benefit phasing: go-live after Q2 2027 forfeits 50% of the 2027 retention benefit",
+            "value": 50
+          }
+        ],
+        "visual": {
+          "type": "line",
+          "data": {
+            "categories": [
+              "Q1",
+              "Q2",
+              "Q3",
+              "Q4"
+            ],
+            "series": [
+              {
+                "name": "Share of 2027 benefit retained (%)",
+                "values": [
+                  100,
+                  100,
+                  50,
+                  25
+                ]
+              }
+            ]
+          }
+        },
+        "source": "Oaklyn retention model"
+      }
+    ],
+    "expect": {
+      "parallel_flags": 0,
+      "headlines_unchanged": true
+    }
+  },
+  {
+    "id": "EN-SEQ-004",
+    "type": "sequence",
+    "lang": "en",
+    "tags": [
+      "non_parallel"
+    ],
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "slides": [
+      {
+        "id": "s04",
+        "kind": "content",
+        "section": "K1",
+        "story_role": "context",
+        "message_type": "fact",
+        "purpose": "Size indirect spend",
+        "proposition": {
+          "statement": "Indirect spend was €140m in 2026, spread across 420 suppliers",
+          "role": "context",
+          "claim_type": "fact",
+          "subject": "indirect spend",
+          "magnitude": "€140m",
+          "timeframe": "2026",
+          "evidence_ids": [
+            "F1"
+          ],
+          "confidence": "high"
+        },
+        "headline": "Indirect spend reached €140m in 2026 across 420 suppliers",
+        "evidence": [
+          {
+            "id": "F1",
+            "claim": "Indirect spend 2026 €140m; active suppliers 420",
+            "values": [
+              140,
+              420
+            ]
+          }
+        ],
+        "visual": {
+          "type": "kpi",
+          "data": {
+            "categories": [
+              "Spend (€m)",
+              "Suppliers"
+            ],
+            "series": [
+              {
+                "name": "2026",
+                "values": [
+                  140,
+                  420
+                ]
+              }
+            ]
+          }
+        },
+        "source": "Lumenor spend cube"
+      },
+      {
+        "id": "s05",
+        "kind": "content",
+        "section": "K1",
+        "story_role": "diagnosis",
+        "message_type": "composition",
+        "purpose": "Show spend concentration",
+        "proposition": {
+          "statement": "The 50 largest suppliers account for €112m of the €140m indirect spend",
+          "role": "diagnosis",
+          "claim_type": "composition",
+          "subject": "indirect spend concentration",
+          "magnitude": "80%",
+          "timeframe": "2026",
+          "evidence_ids": [
+            "F2"
+          ],
+          "confidence": "high"
+        },
+        "headline": "The top 50 suppliers handle 80% of indirect spend",
+        "evidence": [
+          {
+            "id": "F2",
+            "claim": "Indirect spend 2026: top 50 suppliers €112m, remaining 370 suppliers €28m",
+            "values": [
+              112,
+              28
+            ]
+          }
+        ],
+        "visual": {
+          "type": "pie",
+          "data": {
+            "categories": [
+              "Top 50",
+              "Tail (370)"
+            ],
+            "series": [
+              {
+                "name": "€m",
+                "values": [
+                  112,
+                  28
+                ]
+              }
+            ]
+          }
+        },
+        "source": "Lumenor spend cube"
+      },
+      {
+        "id": "s06",
+        "kind": "content",
+        "section": "K2",
+        "story_role": "recommendation",
+        "message_type": "recommendation",
+        "purpose": "Recommend the consolidation",
+        "proposition": {
+          "statement": "We recommend consolidating to 150 vendors, saving €6m a year",
+          "role": "recommendation",
+          "claim_type": "recommendation",
+          "subject": "indirect spend",
+          "direction": "down",
+          "magnitude": "€6m",
+          "recommended_action": "consolidate supplier tail",
+          "evidence_ids": [
+            "F3"
+          ],
+          "confidence": "high"
+        },
+        "headline": "Consolidate the supplier tail to reach 150 vendors and cut indirect spend by €6m",
+        "evidence": [
+          {
+            "id": "F3",
+            "claim": "Savings model: consolidation to 150 vendors saves €6m per year",
+            "values": [
+              150,
+              6
+            ]
+          }
+        ],
+        "visual": {
+          "type": "bar",
+          "data": {
+            "categories": [
+              "Today",
+              "Target"
+            ],
+            "series": [
+              {
+                "name": "Suppliers",
+                "values": [
+                  420,
+                  150
+                ]
+              }
+            ]
+          }
+        },
+        "source": "Lumenor procurement analysis"
+      },
+      {
+        "id": "s07",
+        "kind": "content",
+        "section": "K3",
+        "story_role": "plan",
+        "message_type": "roadmap",
+        "purpose": "Show the delivery plan",
+        "proposition": {
+          "statement": "A three-wave plan completes the supplier consolidation by Q4 2027",
+          "role": "implementation",
+          "claim_type": "status",
+          "subject": "consolidation plan",
+          "timeframe": "Q4 2027",
+          "evidence_ids": [
+            "F4"
+          ],
+          "confidence": "high"
+        },
+        "headline": "Three waves can deliver the consolidation by Q4 2027",
+        "evidence": [
+          {
+            "id": "F4",
+            "claim": "Wave plan: wave 1 Q1-Q2 2027, wave 2 Q2-Q3 2027, wave 3 Q3-Q4 2027",
+            "values": [
+              1,
+              2,
+              3
+            ]
+          }
+        ],
+        "visual": {
+          "type": "gantt",
+          "data": {
+            "categories": [
+              "Wave 1",
+              "Wave 2",
+              "Wave 3"
+            ],
+            "series": [
+              {
+                "name": "Quarters",
+                "values": [
+                  2,
+                  2,
+                  2
+                ]
+              }
+            ]
+          }
+        },
+        "source": "Lumenor procurement roadmap"
+      }
+    ],
+    "expect": {
+      "parallel_flags": 0,
+      "headlines_unchanged": true
+    }
+  },
+  {
+    "id": "EN-SEQ-005",
+    "type": "sequence",
+    "lang": "en",
+    "tags": [
+      "non_parallel"
+    ],
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "slides": [
+      {
+        "id": "s14",
+        "kind": "content",
+        "section": "K1",
+        "story_role": "context",
+        "message_type": "status",
+        "purpose": "Report programme status",
+        "proposition": {
+          "statement": "The programme end date is unchanged although workstream 3 is two weeks late",
+          "role": "status",
+          "claim_type": "status",
+          "subject": "transformation programme",
+          "timeframe": "Q3 2026",
+          "evidence_ids": [
+            "F1"
+          ],
+          "confidence": "high"
+        },
+        "headline": "The transformation programme remains on track despite a two-week delay in workstream 3",
+        "evidence": [
+          {
+            "id": "F1",
+            "claim": "Milestones on schedule 14 of 15; workstream 3 two weeks late; end date unchanged",
+            "values": [
+              14,
+              15,
+              2
+            ]
+          }
+        ],
+        "visual": {
+          "type": "table",
+          "data": {
+            "categories": [
+              "WS1",
+              "WS2",
+              "WS3",
+              "WS4"
+            ],
+            "series": [
+              {
+                "name": "Weeks late",
+                "values": [
+                  0,
+                  0,
+                  2,
+                  0
+                ]
+              }
+            ]
+          }
+        },
+        "source": "Tervani PMO"
+      },
+      {
+        "id": "s15",
+        "kind": "content",
+        "section": "K2",
+        "story_role": "risk",
+        "message_type": "risk",
+        "purpose": "Show the risk of further slippage",
+        "proposition": {
+          "statement": "Each additional week of delay in workstream 3 defers €0.5m of 2027 savings",
+          "role": "risk",
+          "claim_type": "risk",
+          "subject": "2027 savings",
+          "direction": "down",
+          "magnitude": "€2m",
+          "timeframe": "2027",
+          "evidence_ids": [
+            "F2"
+          ],
+          "confidence": "high"
+        },
+        "headline": "A further four-week slip in workstream 3 would put €2m of 2027 savings at risk",
+        "evidence": [
+          {
+            "id": "F2",
+            "claim": "Savings phasing: €0.5m of 2027 savings deferred per week of workstream 3 delay",
+            "value": 0.5
+          }
+        ],
+        "visual": {
+          "type": "line",
+          "data": {
+            "categories": [
+              "0",
+              "2",
+              "4"
+            ],
+            "series": [
+              {
+                "name": "Savings at risk (€m)",
+                "values": [
+                  0,
+                  1.0,
+                  2.0
+                ]
+              }
+            ]
+          }
+        },
+        "source": "Tervani PMO"
+      },
+      {
+        "id": "s16",
+        "kind": "content",
+        "section": "K3",
+        "story_role": "decision",
+        "message_type": "decision",
+        "purpose": "Ask for the resourcing decision",
+        "proposition": {
+          "statement": "Two additional data engineers recover the workstream 3 delay and keep the Q1 2027 go-live",
+          "role": "decision",
+          "claim_type": "decision",
+          "subject": "workstream 3 go-live",
+          "timeframe": "Q1 2027",
+          "decision": "approve two extra data engineers",
+          "evidence_ids": [
+            "F3"
+          ],
+          "confidence": "high"
+        },
+        "headline": "Approving two extra data engineers protects the Q1 2027 go-live",
+        "evidence": [
+          {
+            "id": "F3",
+            "claim": "Resource plan: two additional data engineers recover 3 weeks of schedule; current delay 2 weeks",
+            "values": [
+              2,
+              3,
+              2
+            ]
+          }
+        ],
+        "visual": {
+          "type": "gantt",
+          "data": {
+            "categories": [
+              "Current plan",
+              "With two engineers"
+            ],
+            "series": [
+              {
+                "name": "Weeks late",
+                "values": [
+                  2,
+                  0
+                ]
+              }
+            ]
+          }
+        },
+        "source": "Tervani resource plan"
+      }
+    ],
+    "expect": {
+      "parallel_flags": 0,
+      "headlines_unchanged": true
+    }
+  },
+  {
+    "id": "ES-SEQ-001",
+    "type": "sequence",
+    "lang": "es",
+    "tags": [
+      "non_parallel"
+    ],
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "slides": [
+      {
+        "id": "s03",
+        "kind": "content",
+        "section": "K1",
+        "story_role": "diagnosis",
+        "message_type": "trend",
+        "purpose": "Mostrar la evolución del margen",
+        "proposition": {
+          "statement": "El margen bruto se redujo 1,9 pp en 2026",
+          "role": "diagnosis",
+          "claim_type": "trend",
+          "subject": "margen bruto",
+          "direction": "down",
+          "magnitude": "1,9 pp",
+          "timeframe": "2026",
+          "evidence_ids": [
+            "F1"
+          ],
+          "confidence": "high"
+        },
+        "headline": "El margen bruto cayó 1,9 pp en 2026, hasta el 16,3%",
+        "evidence": [
+          {
+            "id": "F1",
+            "claim": "Margen bruto: 2025 18,2%, 2026 16,3%",
+            "values": [
+              18.2,
+              16.3
+            ]
+          }
+        ],
+        "visual": {
+          "type": "column",
+          "data": {
+            "categories": [
+              "2025",
+              "2026"
+            ],
+            "series": [
+              {
+                "name": "Margen bruto (%)",
+                "values": [
+                  18.2,
+                  16.3
+                ]
+              }
+            ]
+          }
+        },
+        "source": "Grupo Ventisca, dirección financiera"
+      },
+      {
+        "id": "s04",
+        "kind": "content",
+        "section": "K1",
+        "story_role": "driver",
+        "message_type": "change_bridge",
+        "purpose": "Explicar el principal factor de la caída",
+        "proposition": {
+          "statement": "El aumento del peso de electrónica supone 1,3 pp de la caída de 1,9 pp",
+          "role": "diagnosis",
+          "claim_type": "driver",
+          "subject": "margen bruto",
+          "direction": "down",
+          "magnitude": "1,3 pp",
+          "timeframe": "2026",
+          "driver": "mix de electrónica",
+          "evidence_ids": [
+            "F2"
+          ],
+          "confidence": "high"
+        },
+        "headline": "El mix de electrónica explica 1,3 pp de la caída del margen",
+        "evidence": [
+          {
+            "id": "F2",
+            "claim": "Puente de margen 2025-2026 (pp): mix de electrónica -1,3, transporte -0,4, personal de tienda -0,2",
+            "values": [
+              -1.3,
+              -0.4,
+              -0.2
+            ]
+          }
+        ],
+        "visual": {
+          "type": "waterfall",
+          "data": {
+            "categories": [
+              "Electrónica",
+              "Transporte",
+              "Personal"
+            ],
+            "series": [
+              {
+                "name": "pp",
+                "values": [
+                  -1.3,
+                  -0.4,
+                  -0.2
+                ]
+              }
+            ]
+          }
+        },
+        "source": "Grupo Ventisca, puente de margen"
+      },
+      {
+        "id": "s05",
+        "kind": "content",
+        "section": "K2",
+        "story_role": "implication",
+        "message_type": "implication",
+        "purpose": "Mostrar la implicación de no actuar",
+        "proposition": {
+          "statement": "Sin cambios de precio, el margen de 2027 sería del 16,0%, frente a un objetivo del 17,5%",
+          "role": "implication",
+          "claim_type": "impact",
+          "subject": "margen bruto 2027",
+          "direction": "down",
+          "timeframe": "2027",
+          "evidence_ids": [
+            "F3"
+          ],
+          "confidence": "high"
+        },
+        "headline": "Sin acción en precios, el margen seguirá por debajo del objetivo de 2027",
+        "evidence": [
+          {
+            "id": "F3",
+            "claim": "Margen 2027: objetivo 17,5%, previsión sin acción 16,0%",
+            "values": [
+              17.5,
+              16.0
+            ]
+          }
+        ],
+        "visual": {
+          "type": "bar",
+          "data": {
+            "categories": [
+              "Objetivo",
+              "Previsión"
+            ],
+            "series": [
+              {
+                "name": "Margen 2027 (%)",
+                "values": [
+                  17.5,
+                  16.0
+                ]
+              }
+            ]
+          }
+        },
+        "source": "Plan financiero de Grupo Ventisca"
+      },
+      {
+        "id": "s06",
+        "kind": "content",
+        "section": "K3",
+        "story_role": "recommendation",
+        "message_type": "recommendation",
+        "purpose": "Recomendar la primera palanca",
+        "proposition": {
+          "statement": "Recomendamos repreciar electrónica, que recupera en torno a 1,4 pp de margen en 2027",
+          "role": "recommendation",
+          "claim_type": "recommendation",
+          "subject": "margen bruto",
+          "direction": "up",
+          "magnitude": "~1,4 pp",
+          "timeframe": "2027",
+          "recommended_action": "repreciar electrónica",
+          "evidence_ids": [
+            "F4"
+          ],
+          "confidence": "high"
+        },
+        "headline": "Repreciar electrónica para recuperar ~1,4 pp de margen en 2027",
+        "evidence": [
+          {
+            "id": "F4",
+            "claim": "Modelo de precios: recuperación de 1,4 pp en 2027 (rango 1,2-1,6 pp)",
+            "values": [
+              1.2,
+              1.4,
+              1.6
+            ]
+          }
+        ],
+        "visual": {
+          "type": "bar",
+          "data": {
+            "categories": [
+              "Bajo",
+              "Base",
+              "Alto"
+            ],
+            "series": [
+              {
+                "name": "pp",
+                "values": [
+                  1.2,
+                  1.4,
+                  1.6
+                ]
+              }
+            ]
+          }
+        },
+        "source": "Modelo de precios de Grupo Ventisca"
+      }
+    ],
+    "expect": {
+      "parallel_flags": 0,
+      "headlines_unchanged": true
+    }
+  },
+  {
+    "id": "ES-SEQ-002",
+    "type": "sequence",
+    "lang": "es",
+    "tags": [
+      "non_parallel"
+    ],
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "slides": [
+      {
+        "id": "s05",
+        "kind": "content",
+        "section": "K1",
+        "story_role": "context",
+        "message_type": "trend",
+        "purpose": "Dimensionar el coste logístico",
+        "proposition": {
+          "statement": "El coste logístico subió un 8% en 2026, hasta 40 M€",
+          "role": "context",
+          "claim_type": "trend",
+          "subject": "coste logístico",
+          "direction": "up",
+          "magnitude": "8%",
+          "timeframe": "2026",
+          "evidence_ids": [
+            "F1"
+          ],
+          "confidence": "high"
+        },
+        "headline": "El coste logístico alcanzó 40 M€ en 2026, un 8% más que en 2025",
+        "evidence": [
+          {
+            "id": "F1",
+            "claim": "Coste logístico: 2025 37,0 M€, 2026 40,0 M€",
+            "values": [
+              37.0,
+              40.0
+            ]
+          }
+        ],
+        "visual": {
+          "type": "column",
+          "data": {
+            "categories": [
+              "2025",
+              "2026"
+            ],
+            "series": [
+              {
+                "name": "Coste logístico (M€)",
+                "values": [
+                  37.0,
+                  40.0
+                ]
+              }
+            ]
+          }
+        },
+        "source": "Calderón Logística, contabilidad"
+      },
+      {
+        "id": "s06",
+        "kind": "content",
+        "section": "K1",
+        "story_role": "diagnosis",
+        "message_type": "comparison",
+        "purpose": "Comparar tarifas con el mercado",
+        "proposition": {
+          "statement": "Las tarifas contratadas superan en un 8% la media del benchmark de mercado",
+          "role": "diagnosis",
+          "claim_type": "comparison",
+          "subject": "tarifas de transporte",
+          "direction": "higher",
+          "magnitude": "8%",
+          "timeframe": "2026",
+          "comparison": "benchmark de mercado",
+          "evidence_ids": [
+            "F2"
+          ],
+          "confidence": "high"
+        },
+        "headline": "Las tarifas de transporte están un 8% por encima del mercado",
+        "evidence": [
+          {
+            "id": "F2",
+            "claim": "Tarifa media por palé: Calderón 108 €, benchmark de mercado 100 €",
+            "values": [
+              108,
+              100
+            ]
+          }
+        ],
+        "visual": {
+          "type": "bar",
+          "data": {
+            "categories": [
+              "Calderón",
+              "Mercado"
+            ],
+            "series": [
+              {
+                "name": "€ por palé",
+                "values": [
+                  108,
+                  100
+                ]
+              }
+            ]
+          }
+        },
+        "source": "Benchmark de compras 2026"
+      },
+      {
+        "id": "s07",
+        "kind": "content",
+        "section": "K2",
+        "story_role": "recommendation",
+        "message_type": "recommendation",
+        "purpose": "Recomendar la renegociación",
+        "proposition": {
+          "statement": "Recomendamos renegociar los contratos de transporte para alinear tarifas con mercado y ahorrar 3,2 M€ al año",
+          "role": "recommendation",
+          "claim_type": "recommendation",
+          "subject": "gasto de transporte",
+          "direction": "down",
+          "magnitude": "3,2 M€",
+          "recommended_action": "renegociar contratos de transporte",
+          "evidence_ids": [
+            "F3"
+          ],
+          "confidence": "high"
+        },
+        "headline": "Renegociar los contratos de transporte para ahorrar 3,2 M€ al año",
+        "evidence": [
+          {
+            "id": "F3",
+            "claim": "Ahorro potencial de alinear tarifas a mercado: 3,2 M€ al año",
+            "value": 3.2
+          }
+        ],
+        "visual": {
+          "type": "bar",
+          "data": {
+            "categories": [
+              "Actual",
+              "A mercado"
+            ],
+            "series": [
+              {
+                "name": "M€",
+                "values": [
+                  40.0,
+                  36.8
+                ]
+              }
+            ]
+          }
+        },
+        "source": "Benchmark de compras 2026"
+      },
+      {
+        "id": "s08",
+        "kind": "content",
+        "section": "K2",
+        "story_role": "impact",
+        "message_type": "impact",
+        "purpose": "Mostrar el impacto",
+        "proposition": {
+          "statement": "Con el ahorro de 3,2 M€, el coste logístico bajaría a 36,8 M€, por debajo de los 37,0 M€ de 2025",
+          "role": "impact",
+          "claim_type": "impact",
+          "subject": "coste logístico",
+          "direction": "down",
+          "evidence_ids": [
+            "F1",
+            "F3"
+          ],
+          "confidence": "high"
+        },
+        "headline": "La renegociación devolvería el coste logístico por debajo del nivel de 2025",
+        "evidence": [
+          {
+            "id": "F1",
+            "claim": "Coste logístico: 2025 37,0 M€, 2026 40,0 M€",
+            "values": [
+              37.0,
+              40.0
+            ]
+          },
+          {
+            "id": "F3",
+            "claim": "Ahorro potencial 3,2 M€ al año",
+            "value": 3.2
+          }
+        ],
+        "visual": {
+          "type": "column",
+          "data": {
+            "categories": [
+              "2025",
+              "2026",
+              "Tras renegociar"
+            ],
+            "series": [
+              {
+                "name": "M€",
+                "values": [
+                  37.0,
+                  40.0,
+                  36.8
+                ]
+              }
+            ]
+          }
+        },
+        "source": "Calderón Logística"
+      }
+    ],
+    "expect": {
+      "parallel_flags": 0,
+      "headlines_unchanged": true
+    }
+  },
+  {
+    "id": "ES-SEQ-003",
+    "type": "sequence",
+    "lang": "es",
+    "tags": [
+      "non_parallel"
+    ],
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "slides": [
+      {
+        "id": "s03",
+        "kind": "content",
+        "section": "K1",
+        "story_role": "problem",
+        "message_type": "trend",
+        "purpose": "Mostrar la rotación",
+        "proposition": {
+          "statement": "La rotación anual de plantilla en tiendas pasó del 22% al 28% en 2026",
+          "role": "observation",
+          "claim_type": "trend",
+          "subject": "rotación de plantilla",
+          "direction": "up",
+          "magnitude": "28%",
+          "timeframe": "2026",
+          "evidence_ids": [
+            "F1"
+          ],
+          "confidence": "high"
+        },
+        "headline": "La rotación de plantilla en tiendas subió al 28% en 2026",
+        "evidence": [
+          {
+            "id": "F1",
+            "claim": "Rotación en tiendas: 2025 22%, 2026 28%",
+            "values": [
+              22,
+              28
+            ]
+          }
+        ],
+        "visual": {
+          "type": "column",
+          "data": {
+            "categories": [
+              "2025",
+              "2026"
+            ],
+            "series": [
+              {
+                "name": "Rotación (%)",
+                "values": [
+                  22,
+                  28
+                ]
+              }
+            ]
+          }
+        },
+        "source": "RR. HH. de Grupo Ventisca"
+      },
+      {
+        "id": "s04",
+        "kind": "content",
+        "section": "K1",
+        "story_role": "driver",
+        "message_type": "composition",
+        "purpose": "Explicar las bajas voluntarias",
+        "proposition": {
+          "statement": "El 55% de las bajas voluntarias de 2026 cita los horarios rotativos como motivo principal",
+          "role": "diagnosis",
+          "claim_type": "driver",
+          "subject": "bajas voluntarias",
+          "magnitude": "55%",
+          "timeframe": "2026",
+          "driver": "horarios rotativos",
+          "evidence_ids": [
+            "F2"
+          ],
+          "confidence": "high"
+        },
+        "headline": "Los horarios rotativos explican el 55% de las bajas voluntarias",
+        "evidence": [
+          {
+            "id": "F2",
+            "claim": "Entrevistas de salida 2026 (n=1.400): horarios rotativos 55%, salario 25%, otros 20%",
+            "values": [
+              55,
+              25,
+              20
+            ]
+          }
+        ],
+        "visual": {
+          "type": "pie",
+          "data": {
+            "categories": [
+              "Horarios rotativos",
+              "Salario",
+              "Otros"
+            ],
+            "series": [
+              {
+                "name": "%",
+                "values": [
+                  55,
+                  25,
+                  20
+                ]
+              }
+            ]
+          }
+        },
+        "source": "Entrevistas de salida de Grupo Ventisca"
+      },
+      {
+        "id": "s05",
+        "kind": "content",
+        "section": "K2",
+        "story_role": "recommendation",
+        "message_type": "recommendation",
+        "purpose": "Recomendar la acción",
+        "proposition": {
+          "statement": "Recomendamos introducir turnos fijos en las 40 tiendas con mayor rotación",
+          "role": "recommendation",
+          "claim_type": "recommendation",
+          "subject": "turnos de tienda",
+          "recommended_action": "introducir turnos fijos en 40 tiendas",
+          "evidence_ids": [
+            "F3"
+          ],
+          "confidence": "high"
+        },
+        "headline": "Introducir turnos fijos en las 40 tiendas con más rotación para reducir las bajas voluntarias",
+        "evidence": [
+          {
+            "id": "F3",
+            "claim": "40 tiendas concentran el 60% de las bajas voluntarias de 2026",
+            "values": [
+              40,
+              60
+            ]
+          }
+        ],
+        "visual": {
+          "type": "bar",
+          "data": {
+            "categories": [
+              "40 tiendas",
+              "Resto"
+            ],
+            "series": [
+              {
+                "name": "Bajas voluntarias (%)",
+                "values": [
+                  60,
+                  40
+                ]
+              }
+            ]
+          }
+        },
+        "source": "RR. HH. de Grupo Ventisca"
+      },
+      {
+        "id": "s06",
+        "kind": "content",
+        "section": "K3",
+        "story_role": "impact",
+        "message_type": "impact",
+        "purpose": "Dimensionar el ahorro",
+        "proposition": {
+          "statement": "El modelo de costes estima un ahorro de 1,5 M€ al año si la rotación vuelve al 22%",
+          "role": "impact",
+          "claim_type": "impact",
+          "subject": "coste de selección y formación",
+          "direction": "down",
+          "magnitude": "1,5 M€",
+          "evidence_ids": [
+            "F4"
+          ],
+          "confidence": "high"
+        },
+        "headline": "Volver a una rotación del 22% ahorraría 1,5 M€ anuales en selección y formación",
+        "evidence": [
+          {
+            "id": "F4",
+            "claim": "Coste por baja 2.500 €; 600 bajas menos al año con rotación del 22%; ahorro 1,5 M€",
+            "values": [
+              2500,
+              600,
+              1.5
+            ]
+          }
+        ],
+        "visual": {
+          "type": "bar",
+          "data": {
+            "categories": [
+              "Coste actual",
+              "Coste con 22%"
+            ],
+            "series": [
+              {
+                "name": "M€",
+                "values": [
+                  7.0,
+                  5.5
+                ]
+              }
+            ]
+          }
+        },
+        "source": "Modelo de costes de RR. HH."
+      }
+    ],
+    "expect": {
+      "parallel_flags": 0,
+      "headlines_unchanged": true
+    }
+  },
+  {
+    "id": "ES-SEQ-004",
+    "type": "sequence",
+    "lang": "es",
+    "tags": [
+      "non_parallel"
+    ],
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "slides": [
+      {
+        "id": "s10",
+        "kind": "content",
+        "section": "K2",
+        "story_role": "option",
+        "message_type": "comparison",
+        "purpose": "Comparar las opciones",
+        "proposition": {
+          "statement": "La opción B alcanza un VAN de 19 M€ frente a 20 M€ de la A, con 12 meses de implantación frente a 24",
+          "role": "comparison",
+          "claim_type": "comparison",
+          "subject": "opciones de inversión",
+          "evidence_ids": [
+            "F1"
+          ],
+          "confidence": "high"
+        },
+        "headline": "La opción B ofrece un VAN similar al de la A con la mitad de plazo de implantación",
+        "evidence": [
+          {
+            "id": "F1",
+            "claim": "VAN: opción A 20 M€, opción B 19 M€; plazo de implantación: A 24 meses, B 12 meses",
+            "values": [
+              20,
+              19,
+              24,
+              12
+            ]
+          }
+        ],
+        "visual": {
+          "type": "bar",
+          "data": {
+            "categories": [
+              "Opción A",
+              "Opción B"
+            ],
+            "series": [
+              {
+                "name": "VAN (M€)",
+                "values": [
+                  20,
+                  19
+                ]
+              },
+              {
+                "name": "Plazo (meses)",
+                "values": [
+                  24,
+                  12
+                ]
+              }
+            ]
+          }
+        },
+        "source": "Caso de inversión de Altavera"
+      },
+      {
+        "id": "s11",
+        "kind": "content",
+        "section": "K3",
+        "story_role": "recommendation",
+        "message_type": "recommendation",
+        "purpose": "Recomendar una opción",
+        "proposition": {
+          "statement": "Recomendamos la opción B porque empieza a generar ahorros en 2027, un año antes que la A",
+          "role": "recommendation",
+          "claim_type": "recommendation",
+          "subject": "opción de inversión",
+          "timeframe": "2027",
+          "recommended_action": "elegir la opción B",
+          "evidence_ids": [
+            "F2"
+          ],
+          "confidence": "high"
+        },
+        "headline": "Elegir la opción B para capturar ahorros desde 2027",
+        "evidence": [
+          {
+            "id": "F2",
+            "claim": "Primer año de ahorro: opción A 2028, opción B 2027",
+            "values": [
+              2028,
+              2027
+            ]
+          }
+        ],
+        "visual": {
+          "type": "gantt",
+          "data": {
+            "categories": [
+              "Opción A",
+              "Opción B"
+            ],
+            "series": [
+              {
+                "name": "Meses hasta el ahorro",
+                "values": [
+                  24,
+                  12
+                ]
+              }
+            ]
+          }
+        },
+        "source": "Caso de inversión de Altavera"
+      },
+      {
+        "id": "s12",
+        "kind": "content",
+        "section": "K3",
+        "story_role": "decision",
+        "message_type": "decision",
+        "purpose": "Solicitar la decisión",
+        "proposition": {
+          "statement": "La aprobación en diciembre de 2026 es necesaria para arrancar la implantación en enero de 2027",
+          "role": "decision",
+          "claim_type": "decision",
+          "subject": "implantación de la opción B",
+          "timeframe": "enero de 2027",
+          "decision": "aprobar la opción B en diciembre de 2026",
+          "evidence_ids": [
+            "F3"
+          ],
+          "confidence": "high"
+        },
+        "headline": "Aprobar la opción B en diciembre permite iniciar la implantación en enero de 2027",
+        "evidence": [
+          {
+            "id": "F3",
+            "claim": "Plazo entre aprobación e inicio de obra: 4 semanas",
+            "value": 4
+          }
+        ],
+        "visual": {
+          "type": "gantt",
+          "data": {
+            "categories": [
+              "Aprobación",
+              "Preparación",
+              "Inicio"
+            ],
+            "series": [
+              {
+                "name": "Semanas",
+                "values": [
+                  0,
+                  4,
+                  1
+                ]
+              }
+            ]
+          }
+        },
+        "source": "Plan de proyecto de Altavera"
+      }
+    ],
+    "expect": {
+      "parallel_flags": 0,
+      "headlines_unchanged": true
+    }
+  },
+  {
+    "id": "ES-SEQ-005",
+    "type": "sequence",
+    "lang": "es",
+    "tags": [
+      "non_parallel"
+    ],
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "slides": [
+      {
+        "id": "s15",
+        "kind": "content",
+        "section": "K1",
+        "story_role": "context",
+        "message_type": "status",
+        "purpose": "Informar del avance",
+        "proposition": {
+          "statement": "Hasta el T3 2026 se han capturado 8 M€ de ahorro frente a 10 M€ previstos",
+          "role": "status",
+          "claim_type": "status",
+          "subject": "ahorros del programa",
+          "magnitude": "8 M€",
+          "timeframe": "T3 2026",
+          "evidence_ids": [
+            "F1"
+          ],
+          "confidence": "high"
+        },
+        "headline": "El programa de eficiencia ha capturado 8 M€ de los 10 M€ previstos hasta el T3 2026",
+        "evidence": [
+          {
+            "id": "F1",
+            "claim": "Ahorro acumulado al T3 2026: plan 10 M€, real 8 M€",
+            "values": [
+              10,
+              8
+            ]
+          }
+        ],
+        "visual": {
+          "type": "bar",
+          "data": {
+            "categories": [
+              "Plan",
+              "Real"
+            ],
+            "series": [
+              {
+                "name": "M€",
+                "values": [
+                  10,
+                  8
+                ]
+              }
+            ]
+          }
+        },
+        "source": "PMO de Lumenor"
+      },
+      {
+        "id": "s16",
+        "kind": "content",
+        "section": "K1",
+        "story_role": "diagnosis",
+        "message_type": "composition",
+        "purpose": "Localizar el retraso",
+        "proposition": {
+          "statement": "Los 2 M€ de desviación corresponden íntegramente al frente de logística",
+          "role": "diagnosis",
+          "claim_type": "composition",
+          "subject": "desviación de ahorros",
+          "magnitude": "2 M€",
+          "timeframe": "T3 2026",
+          "evidence_ids": [
+            "F2"
+          ],
+          "confidence": "high"
+        },
+        "headline": "El frente de logística concentra todo el retraso, con 2 M€ pendientes",
+        "evidence": [
+          {
+            "id": "F2",
+            "claim": "Desviación por frente (M€): logística 2, compras 0, precios 0",
+            "values": [
+              2,
+              0,
+              0
+            ]
+          }
+        ],
+        "visual": {
+          "type": "bar",
+          "data": {
+            "categories": [
+              "Logística",
+              "Compras",
+              "Precios"
+            ],
+            "series": [
+              {
+                "name": "Desviación (M€)",
+                "values": [
+                  2,
+                  0,
+                  0
+                ]
+              }
+            ]
+          }
+        },
+        "source": "PMO de Lumenor"
+      },
+      {
+        "id": "s17",
+        "kind": "content",
+        "section": "K2",
+        "story_role": "risk",
+        "message_type": "risk",
+        "purpose": "Mostrar el riesgo",
+        "proposition": {
+          "statement": "Un retraso de la licitación logística más allá de marzo de 2027 pondría en riesgo 3 M€ de ahorro de 2027",
+          "role": "risk",
+          "claim_type": "risk",
+          "subject": "ahorro de 2027",
+          "direction": "down",
+          "magnitude": "3 M€",
+          "timeframe": "2027",
+          "evidence_ids": [
+            "F3"
+          ],
+          "confidence": "high"
+        },
+        "headline": "Si la licitación logística se retrasa más allá de marzo, 3 M€ del ahorro de 2027 estarían en riesgo",
+        "evidence": [
+          {
+            "id": "F3",
+            "claim": "Calendario: cada mes de retraso tras marzo aplaza 0,33 M€; adjudicación en diciembre implica 3,0 M€ en riesgo; ahorro logístico 2027 previsto 4,0 M€",
+            "values": [
+              0.33,
+              3.0,
+              4.0
+            ]
+          }
+        ],
+        "visual": {
+          "type": "line",
+          "data": {
+            "categories": [
+              "Mar",
+              "Jun",
+              "Sep",
+              "Dic"
+            ],
+            "series": [
+              {
+                "name": "Ahorro en riesgo (M€)",
+                "values": [
+                  0,
+                  1.0,
+                  2.0,
+                  3.0
+                ]
+              }
+            ]
+          }
+        },
+        "source": "PMO de Lumenor"
+      },
+      {
+        "id": "s18",
+        "kind": "content",
+        "section": "K3",
+        "story_role": "plan",
+        "message_type": "recommendation",
+        "purpose": "Proponer el ajuste de calendario",
+        "proposition": {
+          "statement": "Recomendamos adelantar la licitación a enero de 2027, lo que dejaría margen para capturar el ahorro logístico previsto para 2027",
+          "role": "recommendation",
+          "claim_type": "recommendation",
+          "subject": "licitación logística",
+          "timeframe": "2027",
+          "recommended_action": "adelantar la licitación a enero",
+          "evidence_ids": [
+            "F4"
+          ],
+          "confidence": "high"
+        },
+        "headline": "Adelantar la licitación logística a enero permitiría asegurar el ahorro de 2027",
+        "evidence": [
+          {
+            "id": "F4",
+            "claim": "Plan revisado: licitación en enero, adjudicación en marzo, ahorro logístico 2027 de 4,0 M€ sin riesgo de calendario",
+            "values": [
+              4.0
+            ]
+          }
+        ],
+        "visual": {
+          "type": "gantt",
+          "data": {
+            "categories": [
+              "Licitación",
+              "Adjudicación",
+              "Captura"
+            ],
+            "series": [
+              {
+                "name": "Meses",
+                "values": [
+                  2,
+                  1,
+                  9
+                ]
+              }
+            ]
+          }
+        },
+        "source": "PMO de Lumenor"
+      }
+    ],
+    "expect": {
+      "parallel_flags": 0,
+      "headlines_unchanged": true
+    }
+  }
+]

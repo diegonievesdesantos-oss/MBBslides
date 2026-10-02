@@ -1,0 +1,3376 @@
+[
+  {
+    "id": "EN-VAL-001",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "factual",
+      "valid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "trend",
+      "purpose": "Show how EBITDA moved in 2026",
+      "proposition": {
+        "statement": "Norvalia EBITDA rose 14% in 2026 while revenue was flat",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "EBITDA",
+        "direction": "up",
+        "magnitude": "14%",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1",
+          "F2"
+        ],
+        "confidence": "high"
+      },
+      "headline": "EBITDA increased 14% in 2026 despite flat revenue",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Norvalia EBITDA 2025 €50m, 2026 €57m",
+          "values": [
+            50,
+            57
+          ]
+        },
+        {
+          "id": "F2",
+          "claim": "Norvalia revenue 2025 €400m, 2026 €401m",
+          "values": [
+            400,
+            401
+          ]
+        }
+      ],
+      "visual": {
+        "type": "column",
+        "data": {
+          "categories": [
+            "2025",
+            "2026"
+          ],
+          "series": [
+            {
+              "name": "EBITDA (€m)",
+              "values": [
+                50,
+                57
+              ]
+            },
+            {
+              "name": "Revenue (€m)",
+              "values": [
+                400,
+                401
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Norvalia management accounts 2025-2026"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-VAL-002",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "factual",
+      "valid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "trend",
+      "purpose": "Show how basket value moved",
+      "proposition": {
+        "statement": "Average order value declined 6% in Q2 2026 versus Q2 2025",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "average order value",
+        "direction": "down",
+        "magnitude": "6%",
+        "timeframe": "Q2 2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Average order value fell 6% year on year in Q2 2026",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Brightmoor average order value Q2 2025 €50.0, Q2 2026 €47.0",
+          "values": [
+            50.0,
+            47.0
+          ]
+        }
+      ],
+      "visual": {
+        "type": "column",
+        "data": {
+          "categories": [
+            "Q2 2025",
+            "Q2 2026"
+          ],
+          "series": [
+            {
+              "name": "Average order value (€)",
+              "values": [
+                50.0,
+                47.0
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Brightmoor e-commerce data"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-VAL-003",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "factual",
+      "valid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "trend",
+      "purpose": "Show channel shift",
+      "proposition": {
+        "statement": "The online share of Brightmoor sales rose from 22% in 2023 to 31% in 2026",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "online share of sales",
+        "direction": "up",
+        "magnitude": "31%",
+        "timeframe": "2023-2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Online channels reached 31% of Brightmoor sales in 2026, up from 22% in 2023",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Online share of sales: 2023 22%, 2024 25%, 2025 28%, 2026 31%",
+          "values": [
+            22,
+            25,
+            28,
+            31
+          ]
+        }
+      ],
+      "visual": {
+        "type": "line",
+        "data": {
+          "categories": [
+            "2023",
+            "2024",
+            "2025",
+            "2026"
+          ],
+          "series": [
+            {
+              "name": "Online share of sales (%)",
+              "values": [
+                22,
+                25,
+                28,
+                31
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Brightmoor sales ledger"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-VAL-004",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "comparative",
+      "valid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "comparison",
+      "purpose": "Compare customer segment profitability",
+      "proposition": {
+        "statement": "Contribution margin per enterprise customer is 2.3 times that of an SMB customer",
+        "role": "comparison",
+        "claim_type": "comparison",
+        "subject": "contribution margin per customer",
+        "magnitude": "2.3×",
+        "timeframe": "2026",
+        "comparison": "SMB customers",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Enterprise customers generate 2.3× the contribution margin of SMB customers",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Contribution margin per customer 2026: enterprise €46k, SMB €20k",
+          "values": [
+            46,
+            20
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            "Enterprise",
+            "SMB"
+          ],
+          "series": [
+            {
+              "name": "Contribution per customer (€k)",
+              "values": [
+                46,
+                20
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Kestrel Software customer P&L 2026"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-VAL-005",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "comparative",
+      "valid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "comparison",
+      "purpose": "Compare plant cost competitiveness",
+      "proposition": {
+        "statement": "Unit cost at Lyon is 38% below unit cost at Leeds",
+        "role": "comparison",
+        "claim_type": "comparison",
+        "subject": "unit cost",
+        "direction": "lower",
+        "magnitude": "38%",
+        "timeframe": "2026",
+        "comparison": "Leeds plant",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "The Lyon plant produces at a 38% lower unit cost than the Leeds plant",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Unit cost 2026: Lyon €6.20, Leeds €10.00",
+          "values": [
+            6.2,
+            10.0
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            "Lyon",
+            "Leeds"
+          ],
+          "series": [
+            {
+              "name": "Unit cost (€)",
+              "values": [
+                6.2,
+                10.0
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Norvalia plant cost reports 2026"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-VAL-006",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "comparative",
+      "superlative",
+      "valid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "comparison",
+      "purpose": "Compare churn across regions",
+      "proposition": {
+        "statement": "Northern churn is the highest of the five regions at 9.4%",
+        "role": "comparison",
+        "claim_type": "comparison",
+        "subject": "customer churn",
+        "direction": "higher",
+        "magnitude": "9.4%",
+        "timeframe": "2026",
+        "scope": "five regions",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "The northern region has the highest churn of all five regions at 9.4%",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Churn 2026 by region: North 9.4%, Central 7.2%, East 6.0%, South 5.1%, West 4.8%",
+          "values": [
+            9.4,
+            7.2,
+            6.0,
+            5.1,
+            4.8
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            "North",
+            "Central",
+            "East",
+            "South",
+            "West"
+          ],
+          "series": [
+            {
+              "name": "Churn 2026 (%)",
+              "values": [
+                9.4,
+                7.2,
+                6.0,
+                5.1,
+                4.8
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Oaklyn Telecom CRM 2026"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-VAL-007",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "driver",
+      "valid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "driver",
+      "purpose": "Locate the EBITDA gap",
+      "proposition": {
+        "statement": "North, East and South explain €18m of the €25m EBITDA gap to plan",
+        "role": "diagnosis",
+        "claim_type": "driver",
+        "subject": "EBITDA gap to plan",
+        "direction": "down",
+        "magnitude": "72%",
+        "timeframe": "2026",
+        "driver": "North, East and South regions",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Three regions account for 72% of the EBITDA gap to plan",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "EBITDA gap to plan 2026 by region (€m): North 9, East 6, South 3, West 4, Central 3; total 25",
+          "values": [
+            9,
+            6,
+            3,
+            4,
+            3
+          ]
+        }
+      ],
+      "visual": {
+        "type": "waterfall",
+        "data": {
+          "categories": [
+            "North",
+            "East",
+            "South",
+            "West",
+            "Central"
+          ],
+          "series": [
+            {
+              "name": "Gap to plan (€m)",
+              "values": [
+                9,
+                6,
+                3,
+                4,
+                3
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Lumenor regional P&L 2026"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-VAL-008",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "driver",
+      "valid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "change_bridge",
+      "purpose": "Explain the main driver of the margin decline",
+      "proposition": {
+        "statement": "The shift toward electronics explains 1.3 pp of the 1.9 pp gross-margin decline in 2026",
+        "role": "diagnosis",
+        "claim_type": "driver",
+        "subject": "gross margin",
+        "direction": "down",
+        "magnitude": "1.9 pp",
+        "timeframe": "2026",
+        "driver": "electronics mix",
+        "evidence_ids": [
+          "F1",
+          "F2"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Electronics mix explains most of the 1.9 pp gross-margin decline in 2026",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Gross margin 2025 18.2%, 2026 16.3%",
+          "values": [
+            18.2,
+            16.3
+          ]
+        },
+        {
+          "id": "F2",
+          "claim": "Margin bridge 2025-2026 (pp): electronics mix -1.3, freight -0.4, store labour -0.2",
+          "values": [
+            -1.3,
+            -0.4,
+            -0.2
+          ]
+        }
+      ],
+      "visual": {
+        "type": "waterfall",
+        "data": {
+          "categories": [
+            "2025",
+            "Electronics mix",
+            "Freight",
+            "Store labour",
+            "2026"
+          ],
+          "series": [
+            {
+              "name": "Gross margin (%)",
+              "values": [
+                18.2,
+                -1.3,
+                -0.4,
+                -0.2,
+                16.3
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Brightmoor finance, margin bridge 2026"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-VAL-009",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "driver",
+      "valid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "driver",
+      "purpose": "Decompose the online shortfall",
+      "proposition": {
+        "statement": "Conversion explains €8m of the €10m online revenue shortfall versus budget; traffic explains €2m",
+        "role": "diagnosis",
+        "claim_type": "driver",
+        "subject": "online revenue shortfall",
+        "direction": "down",
+        "magnitude": "80%",
+        "timeframe": "2026",
+        "driver": "conversion",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Lower conversion, rather than traffic, explains 80% of the online revenue shortfall",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Online revenue shortfall vs budget 2026 (€m): conversion 8, traffic 2; total 10",
+          "values": [
+            8,
+            2
+          ]
+        }
+      ],
+      "visual": {
+        "type": "waterfall",
+        "data": {
+          "categories": [
+            "Conversion",
+            "Traffic",
+            "Total shortfall"
+          ],
+          "series": [
+            {
+              "name": "€m",
+              "values": [
+                8,
+                2,
+                10
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Brightmoor web analytics 2026"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-VAL-010",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "causal",
+      "valid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "causal",
+      "purpose": "Establish the cause of the volume drop",
+      "proposition": {
+        "statement": "The March 2026 price increase caused the 11% volume decline in the value segment",
+        "role": "diagnosis",
+        "claim_type": "causal",
+        "subject": "value-segment volume",
+        "direction": "down",
+        "magnitude": "11%",
+        "timeframe": "2026",
+        "driver": "March price increase",
+        "evidence_ids": [
+          "F1",
+          "F2"
+        ],
+        "confidence": "high"
+      },
+      "headline": "The March price increase drove the 11% volume drop in the value segment",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Randomised store test, March-June 2026: value-segment volume -11% in test stores with the increase, 0% in matched control stores",
+          "values": [
+            -11,
+            0
+          ]
+        },
+        {
+          "id": "F2",
+          "claim": "Elasticity model attributes 100% of the test-store volume decline to price (p<0.01)",
+          "value": 100
+        }
+      ],
+      "visual": {
+        "type": "column",
+        "data": {
+          "categories": [
+            "Test stores",
+            "Control stores"
+          ],
+          "series": [
+            {
+              "name": "Volume change (%)",
+              "values": [
+                -11,
+                0
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Kestrel Foods pricing experiment 2026"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-VAL-011",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "implication",
+      "valid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "implication",
+      "purpose": "Show what current capacity means for growth",
+      "proposition": {
+        "statement": "Forecast demand exceeds single-line capacity from Q3 2027",
+        "role": "implication",
+        "claim_type": "constraint",
+        "subject": "production capacity",
+        "timeframe": "Q3 2027",
+        "implication": "a second line is required to keep growing",
+        "evidence_ids": [
+          "F1",
+          "F2"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Without a second line, current capacity will constrain growth from Q3 2027",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Single-line capacity: 120k units per quarter",
+          "value": 120
+        },
+        {
+          "id": "F2",
+          "claim": "Demand forecast (k units): Q1 2027 112, Q2 2027 118, Q3 2027 126, Q4 2027 131",
+          "values": [
+            112,
+            118,
+            126,
+            131
+          ]
+        }
+      ],
+      "visual": {
+        "type": "line",
+        "data": {
+          "categories": [
+            "Q1 2027",
+            "Q2 2027",
+            "Q3 2027",
+            "Q4 2027"
+          ],
+          "series": [
+            {
+              "name": "Demand (k units)",
+              "values": [
+                112,
+                118,
+                126,
+                131
+              ]
+            },
+            {
+              "name": "Capacity (k units)",
+              "values": [
+                120,
+                120,
+                120,
+                120
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Norvalia S&OP forecast, Oct 2026"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-VAL-012",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "implication",
+      "valid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "implication",
+      "purpose": "Show the consequence of current churn",
+      "proposition": {
+        "statement": "If churn stays at the 2026 rate, subscribers will end 2027 at about 460k against a 500k target",
+        "role": "implication",
+        "claim_type": "impact",
+        "subject": "subscriber base",
+        "direction": "down",
+        "magnitude": "about 40,000",
+        "timeframe": "2027",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "At current churn, the 2027 subscriber target will be missed by about 40,000",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "2027 subscriber target 500k; projection at 2026 churn rate 460k",
+          "values": [
+            500,
+            460
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            "Target 2027",
+            "Projection 2027"
+          ],
+          "series": [
+            {
+              "name": "Subscribers (k)",
+              "values": [
+                500,
+                460
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Oaklyn Telecom subscriber model 2026"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-VAL-013",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "recommendation",
+      "valid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "recommendation",
+      "purpose": "Recommend the first margin lever",
+      "proposition": {
+        "statement": "We recommend repricing electronics first, which the pricing model shows recovers about 1.4 pp of gross margin in 2027",
+        "role": "recommendation",
+        "claim_type": "recommendation",
+        "subject": "gross margin",
+        "direction": "up",
+        "magnitude": "~1.4 pp",
+        "timeframe": "2027",
+        "recommended_action": "reprice electronics first",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Reprice electronics first to recover ~1.4 pp of gross margin in 2027",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Pricing model: electronics repricing recovers 1.4 pp of margin in 2027 (range 1.2-1.6 pp)",
+          "values": [
+            1.2,
+            1.4,
+            1.6
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            "Low",
+            "Base",
+            "High"
+          ],
+          "series": [
+            {
+              "name": "Margin recovery 2027 (pp)",
+              "values": [
+                1.2,
+                1.4,
+                1.6
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Brightmoor pricing model v4"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-VAL-014",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "recommendation",
+      "valid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "recommendation",
+      "purpose": "Recommend the procurement lever",
+      "proposition": {
+        "statement": "We recommend consolidating indirect suppliers from 420 to 150, saving €6m a year",
+        "role": "recommendation",
+        "claim_type": "recommendation",
+        "subject": "indirect spend",
+        "direction": "down",
+        "magnitude": "€6m",
+        "recommended_action": "consolidate supplier base to 150 vendors",
+        "evidence_ids": [
+          "F1",
+          "F2"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Consolidate the supplier base from 420 to 150 vendors to cut indirect spend by €6m",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Active indirect suppliers 2026: 420; target after consolidation: 150",
+          "values": [
+            420,
+            150
+          ]
+        },
+        {
+          "id": "F2",
+          "claim": "Savings model: consolidation to 150 vendors saves €6m per year",
+          "value": 6
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            "Today",
+            "Target"
+          ],
+          "series": [
+            {
+              "name": "Active suppliers",
+              "values": [
+                420,
+                150
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Lumenor procurement analysis 2026"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-VAL-015",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "decision",
+      "valid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "decision",
+      "purpose": "Ask for the wave 1 decision",
+      "proposition": {
+        "statement": "Approving wave 1 by November 2026 is required to start implementation in Q2 2027",
+        "role": "decision",
+        "claim_type": "decision",
+        "subject": "wave 1 implementation",
+        "timeframe": "Q2 2027",
+        "decision": "approve wave 1 by November 2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Approving wave 1 by November protects the Q2 2027 implementation window",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Wave 1 lead time is 5 months; Q2 2027 window opens 1 April 2027; latest approval date 1 November 2026",
+          "value": 5
+        }
+      ],
+      "visual": {
+        "type": "gantt",
+        "data": {
+          "categories": [
+            "Approval",
+            "Mobilisation",
+            "Implementation"
+          ],
+          "series": [
+            {
+              "name": "Months",
+              "values": [
+                0,
+                5,
+                3
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Altavera transformation office plan"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-VAL-016",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "decision",
+      "valid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "decision",
+      "purpose": "Ask for approval of priority initiatives",
+      "proposition": {
+        "statement": "The two priority initiatives together deliver €14m of annual EBITDA once approved",
+        "role": "decision",
+        "claim_type": "decision",
+        "subject": "EBITDA",
+        "direction": "up",
+        "magnitude": "€14m",
+        "decision": "approve initiatives A and B",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Approving the two priority initiatives unlocks €14m of annual EBITDA",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Annual EBITDA impact: initiative A €9m, initiative B €5m",
+          "values": [
+            9,
+            5
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            "Initiative A",
+            "Initiative B"
+          ],
+          "series": [
+            {
+              "name": "Annual EBITDA (€m)",
+              "values": [
+                9,
+                5
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Tervani business cases 2026"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-VAL-017",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "risk",
+      "valid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "risk",
+      "purpose": "Show the cost of delay",
+      "proposition": {
+        "statement": "Each week of ERP cutover delay defers about €0.67m of 2027 savings, so a six-week delay puts €4m at risk",
+        "role": "risk",
+        "claim_type": "risk",
+        "subject": "2027 savings",
+        "direction": "down",
+        "magnitude": "€4m",
+        "timeframe": "2027",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "A six-week delay in ERP cutover would put €4m of 2027 savings at risk",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Savings phasing: each week of cutover delay defers €0.67m of 2027 savings; six weeks = €4.0m",
+          "values": [
+            0.67,
+            4.0
+          ]
+        }
+      ],
+      "visual": {
+        "type": "line",
+        "data": {
+          "categories": [
+            "0",
+            "2",
+            "4",
+            "6"
+          ],
+          "series": [
+            {
+              "name": "Savings at risk (€m) by weeks of delay",
+              "values": [
+                0,
+                1.3,
+                2.7,
+                4.0
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Norvalia ERP programme plan"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-VAL-018",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "status",
+      "valid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "status",
+      "purpose": "Report programme status",
+      "proposition": {
+        "statement": "The procurement programme end date is unchanged although workstream 3 is two weeks late",
+        "role": "status",
+        "claim_type": "status",
+        "subject": "procurement programme",
+        "timeframe": "Q3 2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "The procurement programme remains on track despite a two-week delay in workstream 3",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Milestones on schedule: 14 of 15; workstream 3 two weeks late; programme end date unchanged (Q2 2027)",
+          "values": [
+            14,
+            15,
+            2
+          ]
+        }
+      ],
+      "visual": {
+        "type": "table",
+        "data": {
+          "categories": [
+            "WS1",
+            "WS2",
+            "WS3",
+            "WS4"
+          ],
+          "series": [
+            {
+              "name": "Weeks late",
+              "values": [
+                0,
+                0,
+                2,
+                0
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Lumenor PMO report, Sept 2026"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-VAL-019",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "status",
+      "valid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "status",
+      "purpose": "Report savings status",
+      "proposition": {
+        "statement": "Delivered savings are €8m against a €10m plan at Q3 2026; the whole gap sits in logistics",
+        "role": "status",
+        "claim_type": "status",
+        "subject": "savings delivery",
+        "direction": "down",
+        "magnitude": "€2m",
+        "timeframe": "Q3 2026",
+        "evidence_ids": [
+          "F1",
+          "F2"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Savings delivery is €2m behind the Q3 2026 plan, with logistics the only lagging workstream",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Savings to Q3 2026: plan €10m, actual €8m",
+          "values": [
+            10,
+            8
+          ]
+        },
+        {
+          "id": "F2",
+          "claim": "Gap by workstream (€m): logistics 2, procurement 0, pricing 0",
+          "values": [
+            2,
+            0,
+            0
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            "Logistics",
+            "Procurement",
+            "Pricing"
+          ],
+          "series": [
+            {
+              "name": "Gap to plan (€m)",
+              "values": [
+                2,
+                0,
+                0
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Altavera PMO tracker Q3 2026"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-VAL-001",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "factual",
+      "valid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "trend",
+      "purpose": "Mostrar la evolución de los ingresos",
+      "proposition": {
+        "statement": "Los ingresos de Altavera aumentaron un 9% en 2026",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "ingresos",
+        "direction": "up",
+        "magnitude": "9%",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Los ingresos de Altavera crecieron un 9% en 2026, hasta 218 M€",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Ingresos de Altavera: 2025 200 M€, 2026 218 M€",
+          "values": [
+            200,
+            218
+          ]
+        }
+      ],
+      "visual": {
+        "type": "column",
+        "data": {
+          "categories": [
+            "2025",
+            "2026"
+          ],
+          "series": [
+            {
+              "name": "Ingresos (M€)",
+              "values": [
+                200,
+                218
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Cuentas anuales de Altavera"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-VAL-002",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "factual",
+      "valid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "trend",
+      "purpose": "Mostrar la evolución del margen",
+      "proposition": {
+        "statement": "El margen bruto se redujo 1,9 puntos porcentuales en 2026",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "margen bruto",
+        "direction": "down",
+        "magnitude": "1,9 pp",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "El margen bruto cayó 1,9 pp en 2026, hasta el 16,3%",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Margen bruto: 2025 18,2%, 2026 16,3%",
+          "values": [
+            18.2,
+            16.3
+          ]
+        }
+      ],
+      "visual": {
+        "type": "column",
+        "data": {
+          "categories": [
+            "2025",
+            "2026"
+          ],
+          "series": [
+            {
+              "name": "Margen bruto (%)",
+              "values": [
+                18.2,
+                16.3
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Dirección financiera de Grupo Ventisca"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-VAL-003",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "factual",
+      "valid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "trend",
+      "purpose": "Mostrar la evolución del coste logístico unitario",
+      "proposition": {
+        "statement": "El coste por pedido se redujo un 12% entre 2024 y 2026",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "coste por pedido",
+        "direction": "down",
+        "magnitude": "12%",
+        "timeframe": "2024-2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "El coste por pedido bajó un 12% entre 2024 y 2026",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Coste por pedido: 2024 5,00 €, 2025 4,70 €, 2026 4,40 €",
+          "values": [
+            5.0,
+            4.7,
+            4.4
+          ]
+        }
+      ],
+      "visual": {
+        "type": "line",
+        "data": {
+          "categories": [
+            "2024",
+            "2025",
+            "2026"
+          ],
+          "series": [
+            {
+              "name": "Coste por pedido (€)",
+              "values": [
+                5.0,
+                4.7,
+                4.4
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Sistema de gestión de almacén de Calderón Logística"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-VAL-004",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "comparative",
+      "valid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "comparison",
+      "purpose": "Comparar la rentabilidad por segmento",
+      "proposition": {
+        "statement": "El margen de contribución por cliente premium es 2,3 veces el del cliente estándar",
+        "role": "comparison",
+        "claim_type": "comparison",
+        "subject": "margen de contribución por cliente",
+        "magnitude": "2,3x",
+        "timeframe": "2026",
+        "comparison": "clientes estándar",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Los clientes premium generan 2,3 veces el margen de contribución de los clientes estándar",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Margen de contribución por cliente 2026: premium 69 €, estándar 30 €",
+          "values": [
+            69,
+            30
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            "Premium",
+            "Estándar"
+          ],
+          "series": [
+            {
+              "name": "Margen por cliente (€)",
+              "values": [
+                69,
+                30
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Cuenta de resultados por cliente de Sarmiento Seguros"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-VAL-005",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "comparative",
+      "valid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "comparison",
+      "purpose": "Comparar la productividad comercial de las regiones",
+      "proposition": {
+        "statement": "Las ventas por metro cuadrado en Levante superan en un 18% a las de Centro",
+        "role": "comparison",
+        "claim_type": "comparison",
+        "subject": "ventas por metro cuadrado",
+        "direction": "higher",
+        "magnitude": "18%",
+        "timeframe": "2026",
+        "comparison": "Centro",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "La tienda media de Levante vende un 18% más por metro cuadrado que la de Centro",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Ventas por m² en 2026: Levante 4.720 €, Centro 4.000 €",
+          "values": [
+            4720,
+            4000
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            "Levante",
+            "Centro"
+          ],
+          "series": [
+            {
+              "name": "Ventas por m² (€)",
+              "values": [
+                4720,
+                4000
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Datos de tiendas de Grupo Ventisca 2026"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-VAL-006",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "driver",
+      "valid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "driver",
+      "purpose": "Localizar la brecha de EBITDA",
+      "proposition": {
+        "statement": "Norte, Sur y Este explican 36 M€ de una brecha de EBITDA de 50 M€",
+        "role": "diagnosis",
+        "claim_type": "driver",
+        "subject": "brecha de EBITDA",
+        "direction": "down",
+        "magnitude": "72%",
+        "timeframe": "2026",
+        "driver": "regiones Norte, Sur y Este",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Tres regiones concentran el 72% de la brecha de EBITDA",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Brecha de EBITDA frente a presupuesto 2026 (M€): Norte 18, Sur 11, Este 7, Oeste 8, Centro 6; total 50",
+          "values": [
+            18,
+            11,
+            7,
+            8,
+            6
+          ]
+        }
+      ],
+      "visual": {
+        "type": "waterfall",
+        "data": {
+          "categories": [
+            "Norte",
+            "Sur",
+            "Este",
+            "Oeste",
+            "Centro"
+          ],
+          "series": [
+            {
+              "name": "Brecha (M€)",
+              "values": [
+                18,
+                11,
+                7,
+                8,
+                6
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Cuenta de resultados regional de Lumenor 2026"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-VAL-007",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "driver",
+      "valid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "driver",
+      "purpose": "Descomponer el sobrecoste de personal",
+      "proposition": {
+        "statement": "El absentismo supone 2,0 M€ de los 3,0 M€ de sobrecoste de personal en 2026",
+        "role": "diagnosis",
+        "claim_type": "driver",
+        "subject": "sobrecoste de personal",
+        "direction": "up",
+        "magnitude": "dos tercios",
+        "timeframe": "2026",
+        "driver": "absentismo",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "El absentismo explica dos tercios del sobrecoste de personal en 2026",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Sobrecoste de personal 2026 (M€): absentismo 2,0, horas extra 0,6, rotación 0,4; total 3,0",
+          "values": [
+            2.0,
+            0.6,
+            0.4
+          ]
+        }
+      ],
+      "visual": {
+        "type": "waterfall",
+        "data": {
+          "categories": [
+            "Absentismo",
+            "Horas extra",
+            "Rotación"
+          ],
+          "series": [
+            {
+              "name": "Sobrecoste (M€)",
+              "values": [
+                2.0,
+                0.6,
+                0.4
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Nóminas y control horario de Calderón Logística"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-VAL-008",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "driver",
+      "valid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "driver",
+      "purpose": "Explicar la pérdida de margen online",
+      "proposition": {
+        "statement": "Las devoluciones suponen 3 M€ de los 5 M€ de pérdida de margen online en 2026",
+        "role": "diagnosis",
+        "claim_type": "driver",
+        "subject": "margen del canal online",
+        "direction": "down",
+        "magnitude": "60%",
+        "timeframe": "2026",
+        "driver": "devoluciones",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Las devoluciones explican el 60% de la pérdida de margen del canal online",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Pérdida de margen online 2026 (M€): devoluciones 3,0, envíos 1,5, descuentos 0,5; total 5,0",
+          "values": [
+            3.0,
+            1.5,
+            0.5
+          ]
+        }
+      ],
+      "visual": {
+        "type": "waterfall",
+        "data": {
+          "categories": [
+            "Devoluciones",
+            "Envíos",
+            "Descuentos"
+          ],
+          "series": [
+            {
+              "name": "Pérdida de margen (M€)",
+              "values": [
+                3.0,
+                1.5,
+                0.5
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Contabilidad analítica de Grupo Ventisca"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-VAL-009",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "causal",
+      "valid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "causal",
+      "purpose": "Demostrar el efecto del nuevo proceso de alta",
+      "proposition": {
+        "statement": "El nuevo proceso de alta causó una reducción del 25% de las bajas tempranas, según un test A/B aleatorizado",
+        "role": "diagnosis",
+        "claim_type": "causal",
+        "subject": "bajas en los primeros 90 días",
+        "direction": "down",
+        "magnitude": "25%",
+        "timeframe": "2026",
+        "driver": "nuevo proceso de alta",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "El nuevo proceso de alta redujo un 25% las bajas en los primeros 90 días",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Test A/B aleatorizado 2026: tasa de baja a 90 días 12% en grupo control y 9% con el nuevo proceso (p<0,01)",
+          "values": [
+            12,
+            9
+          ]
+        }
+      ],
+      "visual": {
+        "type": "column",
+        "data": {
+          "categories": [
+            "Control",
+            "Nuevo proceso"
+          ],
+          "series": [
+            {
+              "name": "Bajas a 90 días (%)",
+              "values": [
+                12,
+                9
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Experimento de onboarding de Sarmiento Seguros"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-VAL-010",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "implication",
+      "valid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "implication",
+      "purpose": "Mostrar la implicación de la capacidad actual",
+      "proposition": {
+        "statement": "La demanda prevista supera la capacidad de una sola línea desde el T3 2027",
+        "role": "implication",
+        "claim_type": "constraint",
+        "subject": "capacidad productiva",
+        "timeframe": "T3 2027",
+        "implication": "hace falta una segunda línea para seguir creciendo",
+        "evidence_ids": [
+          "F1",
+          "F2"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Sin una segunda línea, la capacidad actual limitará el crecimiento a partir del T3 2027",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Capacidad de una línea: 80.000 unidades por trimestre",
+          "value": 80000
+        },
+        {
+          "id": "F2",
+          "claim": "Demanda prevista (unidades): T1 2027 74.000, T2 2027 78.000, T3 2027 84.000, T4 2027 88.000",
+          "values": [
+            74000,
+            78000,
+            84000,
+            88000
+          ]
+        }
+      ],
+      "visual": {
+        "type": "line",
+        "data": {
+          "categories": [
+            "T1 2027",
+            "T2 2027",
+            "T3 2027",
+            "T4 2027"
+          ],
+          "series": [
+            {
+              "name": "Demanda (unidades)",
+              "values": [
+                74000,
+                78000,
+                84000,
+                88000
+              ]
+            },
+            {
+              "name": "Capacidad (unidades)",
+              "values": [
+                80000,
+                80000,
+                80000,
+                80000
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Previsión S&OP de Altavera, octubre 2026"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-VAL-011",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "recommendation",
+      "valid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "recommendation",
+      "purpose": "Recomendar la palanca de transporte",
+      "proposition": {
+        "statement": "Recomendamos renegociar los contratos de transporte, cuyas tarifas están un 8% por encima de mercado sobre un gasto de 40 M€",
+        "role": "recommendation",
+        "claim_type": "recommendation",
+        "subject": "gasto de transporte",
+        "direction": "down",
+        "magnitude": "3,2 M€",
+        "recommended_action": "renegociar los contratos de transporte",
+        "evidence_ids": [
+          "F1",
+          "F2"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Renegociar los contratos de transporte para ahorrar 3,2 M€ anuales",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Gasto anual de transporte 2026: 40 M€",
+          "value": 40
+        },
+        {
+          "id": "F2",
+          "claim": "Benchmark de tarifas: 8% por encima de mercado; ahorro potencial 3,2 M€ al año",
+          "values": [
+            8,
+            3.2
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            "Gasto actual",
+            "Gasto a mercado"
+          ],
+          "series": [
+            {
+              "name": "Gasto de transporte (M€)",
+              "values": [
+                40,
+                36.8
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Benchmark de compras de Calderón Logística"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-VAL-012",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "recommendation",
+      "valid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "recommendation",
+      "purpose": "Recomendar la primera palanca de margen",
+      "proposition": {
+        "statement": "Recomendamos repreciar electrónica, que según el modelo recupera en torno a 1,4 pp de margen en 2027",
+        "role": "recommendation",
+        "claim_type": "recommendation",
+        "subject": "margen bruto",
+        "direction": "up",
+        "magnitude": "~1,4 pp",
+        "timeframe": "2027",
+        "recommended_action": "repreciar electrónica",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Repreciar electrónica permitiría recuperar ~1,4 pp de margen en 2027",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Modelo de precios: la repreciación de electrónica recupera 1,4 pp de margen en 2027 (rango 1,2-1,6 pp)",
+          "values": [
+            1.2,
+            1.4,
+            1.6
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            "Bajo",
+            "Base",
+            "Alto"
+          ],
+          "series": [
+            {
+              "name": "Recuperación de margen 2027 (pp)",
+              "values": [
+                1.2,
+                1.4,
+                1.6
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Modelo de precios de Grupo Ventisca v4"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-VAL-013",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "decision",
+      "valid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "decision",
+      "purpose": "Solicitar la decisión sobre la ola 1",
+      "proposition": {
+        "statement": "Aprobar la ola 1 antes de noviembre de 2026 es necesario para implantar en el T2 2027",
+        "role": "decision",
+        "claim_type": "decision",
+        "subject": "implantación de la ola 1",
+        "timeframe": "T2 2027",
+        "decision": "aprobar la ola 1 en noviembre de 2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Aprobar la ola 1 en noviembre protege la ventana de implantación del T2 2027",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Plazo de preparación de la ola 1: 5 meses; la ventana del T2 2027 se abre el 1 de abril de 2027",
+          "value": 5
+        }
+      ],
+      "visual": {
+        "type": "gantt",
+        "data": {
+          "categories": [
+            "Aprobación",
+            "Preparación",
+            "Implantación"
+          ],
+          "series": [
+            {
+              "name": "Meses",
+              "values": [
+                0,
+                5,
+                3
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Oficina de transformación de Lumenor"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-VAL-014",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "risk",
+      "valid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "risk",
+      "purpose": "Mostrar el coste del retraso",
+      "proposition": {
+        "statement": "Cada semana de retraso en la migración aplaza 0,5 M€ de ahorros de 2027; seis semanas suponen 3 M€",
+        "role": "risk",
+        "claim_type": "risk",
+        "subject": "ahorros de 2027",
+        "direction": "down",
+        "magnitude": "3 M€",
+        "timeframe": "2027",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Un retraso de seis semanas en la migración pondría en riesgo 3 M€ de ahorros de 2027",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Calendario de ahorros: cada semana de retraso aplaza 0,5 M€ de ahorro de 2027; seis semanas = 3,0 M€",
+          "values": [
+            0.5,
+            3.0
+          ]
+        }
+      ],
+      "visual": {
+        "type": "line",
+        "data": {
+          "categories": [
+            "0",
+            "2",
+            "4",
+            "6"
+          ],
+          "series": [
+            {
+              "name": "Ahorro en riesgo (M€) por semanas de retraso",
+              "values": [
+                0,
+                1.0,
+                2.0,
+                3.0
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Plan del programa ERP de Altavera"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-VAL-015",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "risk",
+      "valid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "risk",
+      "purpose": "Mostrar el riesgo de suministro",
+      "proposition": {
+        "statement": "El 30% de las unidades planificadas para 2027 depende de un único proveedor de baterías",
+        "role": "risk",
+        "claim_type": "risk",
+        "subject": "producción de 2027",
+        "magnitude": "30%",
+        "timeframe": "2027",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "La dependencia de un único proveedor de baterías pone en riesgo el 30% de la producción de 2027",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Plan de producción 2027: 120.000 unidades, de las que 36.000 usan baterías de un único proveedor",
+          "values": [
+            120000,
+            36000
+          ]
+        }
+      ],
+      "visual": {
+        "type": "pie",
+        "data": {
+          "categories": [
+            "Proveedor único",
+            "Multiproveedor"
+          ],
+          "series": [
+            {
+              "name": "Unidades 2027",
+              "values": [
+                36000,
+                84000
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Plan de producción de Lumenor 2027"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-VAL-016",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "status",
+      "valid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "status",
+      "purpose": "Informar del estado del programa",
+      "proposition": {
+        "statement": "La fecha de cierre del programa no cambia aunque el frente 3 acumula dos semanas de retraso",
+        "role": "status",
+        "claim_type": "status",
+        "subject": "programa de eficiencia",
+        "timeframe": "T3 2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "El programa de eficiencia sigue en plazo pese al retraso de dos semanas en el frente 3",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Hitos en plazo: 14 de 15; frente 3 con dos semanas de retraso; fecha de cierre sin cambios (T2 2027)",
+          "values": [
+            14,
+            15,
+            2
+          ]
+        }
+      ],
+      "visual": {
+        "type": "table",
+        "data": {
+          "categories": [
+            "Frente 1",
+            "Frente 2",
+            "Frente 3",
+            "Frente 4"
+          ],
+          "series": [
+            {
+              "name": "Semanas de retraso",
+              "values": [
+                0,
+                0,
+                2,
+                0
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Informe de la PMO de Grupo Ventisca, septiembre 2026"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-VAL-020",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "exempt",
+      "cover",
+      "valid"
+    ],
+    "slide": {
+      "id": "s01",
+      "kind": "cover",
+      "headline": "Project Kestrel: commercial excellence review"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-VAL-021",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "exempt",
+      "agenda",
+      "valid"
+    ],
+    "slide": {
+      "id": "s02",
+      "kind": "agenda",
+      "headline": "Agenda"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-VAL-017",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "exempt",
+      "divider",
+      "valid"
+    ],
+    "slide": {
+      "id": "s04",
+      "kind": "divider",
+      "headline": "Diagnóstico"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-VAL-018",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "exempt",
+      "closing",
+      "valid"
+    ],
+    "slide": {
+      "id": "s30",
+      "kind": "closing",
+      "headline": "Contacto"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-VAL-019",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "exempt",
+      "divider",
+      "valid"
+    ],
+    "slide": {
+      "id": "s25",
+      "kind": "divider",
+      "headline": "Anexo"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-VAL-022",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "candidates",
+      "valid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "trend",
+      "purpose": "Show how gross margin moved",
+      "proposition": {
+        "statement": "Gross margin declined 1.9 pp in 2026 to 16.3%",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "gross margin",
+        "direction": "down",
+        "magnitude": "1.9 pp",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Margin evolution",
+      "headline_candidates": [
+        "Gross margin performance",
+        "Gross margin fell 1.9 pp in 2026 to 16.3%"
+      ],
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Gross margin 2025 18.2%, 2026 16.3%",
+          "values": [
+            18.2,
+            16.3
+          ]
+        }
+      ],
+      "visual": {
+        "type": "column",
+        "data": {
+          "categories": [
+            "2025",
+            "2026"
+          ],
+          "series": [
+            {
+              "name": "Gross margin (%)",
+              "values": [
+                18.2,
+                16.3
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Brightmoor finance 2026"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": "Gross margin fell 1.9 pp in 2026 to 16.3%"
+    }
+  },
+  {
+    "id": "EN-VAL-023",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "candidates",
+      "valid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "trend",
+      "purpose": "Show how churn moved",
+      "proposition": {
+        "statement": "Churn rose from 7.1% in 2025 to 9.4% in 2026",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "customer churn",
+        "direction": "up",
+        "magnitude": "9.4%",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Customer churn",
+      "headline_candidates": [
+        "Churn rose to 12% in 2026",
+        "Churn rose from 7.1% to 9.4% in 2026"
+      ],
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Annual churn: 2025 7.1%, 2026 9.4%",
+          "values": [
+            7.1,
+            9.4
+          ]
+        }
+      ],
+      "visual": {
+        "type": "column",
+        "data": {
+          "categories": [
+            "2025",
+            "2026"
+          ],
+          "series": [
+            {
+              "name": "Churn (%)",
+              "values": [
+                7.1,
+                9.4
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Oaklyn Telecom CRM"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": "Churn rose from 7.1% to 9.4% in 2026"
+    }
+  },
+  {
+    "id": "EN-VAL-024",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "candidates",
+      "valid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "driver",
+      "purpose": "Explain the drivers of the cost overrun",
+      "proposition": {
+        "statement": "Steel prices account for €3m of the €5m project cost overrun",
+        "role": "diagnosis",
+        "claim_type": "driver",
+        "subject": "project cost overrun",
+        "direction": "up",
+        "magnitude": "60%",
+        "timeframe": "2026",
+        "driver": "steel prices",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Explain the drivers of the cost overrun",
+      "headline_candidates": [
+        "Steel prices account for 60% of the overrun, the project is eight weeks late and headcount is above plan",
+        "Steel prices account for 60% of the €5m cost overrun"
+      ],
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Cost overrun 2026 (€m): steel prices 3.0, labour 1.5, other 0.5; total 5.0",
+          "values": [
+            3.0,
+            1.5,
+            0.5
+          ]
+        }
+      ],
+      "visual": {
+        "type": "waterfall",
+        "data": {
+          "categories": [
+            "Steel",
+            "Labour",
+            "Other"
+          ],
+          "series": [
+            {
+              "name": "Overrun (€m)",
+              "values": [
+                3.0,
+                1.5,
+                0.5
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Norvalia capex project control"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": "Steel prices account for 60% of the €5m cost overrun"
+    }
+  },
+  {
+    "id": "ES-VAL-020",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "candidates",
+      "valid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "composition",
+      "purpose": "Mostrar el peso de cada canal en el crecimiento",
+      "proposition": {
+        "statement": "El canal digital generó 27 M€ de los 50 M€ de ventas incrementales en 2026",
+        "role": "observation",
+        "claim_type": "composition",
+        "subject": "ventas incrementales",
+        "direction": "up",
+        "magnitude": "54%",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Análisis de canales",
+      "headline_candidates": [
+        "Situación actual del canal digital",
+        "El canal digital ya genera el 54% de las ventas incrementales"
+      ],
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Ventas incrementales 2026 (M€): digital 27, tiendas 23; total 50",
+          "values": [
+            27,
+            23
+          ]
+        }
+      ],
+      "visual": {
+        "type": "pie",
+        "data": {
+          "categories": [
+            "Digital",
+            "Tiendas"
+          ],
+          "series": [
+            {
+              "name": "Ventas incrementales (M€)",
+              "values": [
+                27,
+                23
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Datos de ventas de Grupo Ventisca 2026"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": "El canal digital ya genera el 54% de las ventas incrementales"
+    }
+  },
+  {
+    "id": "ES-VAL-021",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "candidates",
+      "valid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "driver",
+      "purpose": "Localizar la brecha de EBITDA",
+      "proposition": {
+        "statement": "Norte, Este y Sur explican 18 M€ de una brecha de EBITDA de 25 M€",
+        "role": "diagnosis",
+        "claim_type": "driver",
+        "subject": "brecha de EBITDA",
+        "direction": "down",
+        "magnitude": "72%",
+        "timeframe": "2026",
+        "driver": "regiones Norte, Este y Sur",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "TODO: titular",
+      "headline_candidates": [
+        "Tres regiones concentran el 85% de la brecha de EBITDA",
+        "Tres regiones concentran el 72% de la brecha de EBITDA"
+      ],
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Brecha de EBITDA 2026 (M€): Norte 9, Este 6, Sur 3, Oeste 4, Centro 3; total 25",
+          "values": [
+            9,
+            6,
+            3,
+            4,
+            3
+          ]
+        }
+      ],
+      "visual": {
+        "type": "waterfall",
+        "data": {
+          "categories": [
+            "Norte",
+            "Este",
+            "Sur",
+            "Oeste",
+            "Centro"
+          ],
+          "series": [
+            {
+              "name": "Brecha (M€)",
+              "values": [
+                9,
+                6,
+                3,
+                4,
+                3
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Cuenta de resultados regional de Altavera"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": "Tres regiones concentran el 72% de la brecha de EBITDA"
+    }
+  },
+  {
+    "id": "EN-VAL-025",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "qualitative",
+      "valid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "diagnosis",
+      "purpose": "Show the ownership gap in order delivery",
+      "proposition": {
+        "statement": "Order delivery is split across five functions and none is accountable end to end",
+        "role": "diagnosis",
+        "claim_type": "constraint",
+        "subject": "order delivery ownership",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "No single function owns end-to-end order delivery",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "RACI mapping: order delivery steps are owned by 5 functions (sales, planning, warehouse, transport, billing); 0 roles accountable end to end",
+          "values": [
+            5,
+            0
+          ]
+        }
+      ],
+      "visual": {
+        "type": "table",
+        "data": {
+          "categories": [
+            "Sales",
+            "Planning",
+            "Warehouse",
+            "Transport",
+            "Billing"
+          ],
+          "series": [
+            {
+              "name": "Steps owned",
+              "values": [
+                2,
+                3,
+                4,
+                2,
+                1
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Kestrel Foods process mapping workshops 2026"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-VAL-026",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "qualitative",
+      "valid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "comparison",
+      "purpose": "Show what customers value",
+      "proposition": {
+        "statement": "In all four customer segments, delivery reliability is ranked first and price no higher than second",
+        "role": "observation",
+        "claim_type": "comparison",
+        "subject": "purchase criteria",
+        "timeframe": "2026",
+        "scope": "four segments",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Customers rank delivery reliability above price in every segment",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Customer survey 2026 (n=1,200): rank of reliability / price by segment: Enterprise 1/3, Mid-market 1/2, SMB 1/2, Public 1/3",
+          "values": [
+            1,
+            3,
+            1,
+            2,
+            1,
+            2,
+            1,
+            3
+          ]
+        }
+      ],
+      "visual": {
+        "type": "table",
+        "data": {
+          "categories": [
+            "Enterprise",
+            "Mid-market",
+            "SMB",
+            "Public"
+          ],
+          "series": [
+            {
+              "name": "Rank of delivery reliability",
+              "values": [
+                1,
+                1,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "Rank of price",
+              "values": [
+                3,
+                2,
+                2,
+                3
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Norvalia customer survey 2026"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-VAL-027",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "qualitative",
+      "valid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "diagnosis",
+      "purpose": "Show maintenance data gaps",
+      "proposition": {
+        "statement": "None of the six plants tracks spare-parts inventory in a system updated in real time",
+        "role": "diagnosis",
+        "claim_type": "fact",
+        "subject": "spare-parts inventory visibility",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "No plant has a real-time view of its spare-parts stock",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Plant survey 2026: 6 plants; spare-parts stock tracked on paper or monthly spreadsheets in all 6; real-time systems 0",
+          "values": [
+            6,
+            0
+          ]
+        }
+      ],
+      "visual": {
+        "type": "table",
+        "data": {
+          "categories": [
+            "Plant 1",
+            "Plant 2",
+            "Plant 3",
+            "Plant 4",
+            "Plant 5",
+            "Plant 6"
+          ],
+          "series": [
+            {
+              "name": "Real-time tracking (1=yes)",
+              "values": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Norvalia maintenance audit 2026"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-VAL-022",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "qualitative",
+      "valid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "diagnosis",
+      "purpose": "Mostrar la falta de responsable del margen",
+      "proposition": {
+        "statement": "Ningún rol tiene la responsabilidad completa del margen de cada canal; se reparte entre comercial, marketing y finanzas",
+        "role": "diagnosis",
+        "claim_type": "constraint",
+        "subject": "responsabilidad del margen por canal",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "El modelo de gobierno actual no asigna un responsable único del margen por canal",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Mapa RACI 2026: el margen de cada canal depende de 3 áreas (comercial, marketing, finanzas); 0 roles con responsabilidad completa",
+          "values": [
+            3,
+            0
+          ]
+        }
+      ],
+      "visual": {
+        "type": "table",
+        "data": {
+          "categories": [
+            "Comercial",
+            "Marketing",
+            "Finanzas"
+          ],
+          "series": [
+            {
+              "name": "Decisiones de margen asignadas",
+              "values": [
+                4,
+                3,
+                2
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Entrevistas y mapa RACI de Altavera 2026"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-VAL-023",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "qualitative",
+      "valid"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "observation",
+      "purpose": "Mostrar cómo se aprueban los descuentos",
+      "proposition": {
+        "statement": "En las cinco regiones, cualquier descuento fuera de tarifa requiere aprobación de la dirección comercial central",
+        "role": "observation",
+        "claim_type": "fact",
+        "subject": "aprobación de descuentos",
+        "timeframe": "2026",
+        "scope": "cinco regiones",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "La aprobación de descuentos sigue dependiendo de la dirección comercial en todas las regiones",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Revisión de procesos 2026: 5 de 5 regiones requieren aprobación central para descuentos fuera de tarifa",
+          "values": [
+            5,
+            5
+          ]
+        }
+      ],
+      "visual": {
+        "type": "table",
+        "data": {
+          "categories": [
+            "Norte",
+            "Sur",
+            "Este",
+            "Oeste",
+            "Centro"
+          ],
+          "series": [
+            {
+              "name": "Aprobación central (1=sí)",
+              "values": [
+                1,
+                1,
+                1,
+                1,
+                1
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Revisión de procesos comerciales de Grupo Ventisca"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  }
+]

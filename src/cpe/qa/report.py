@@ -107,6 +107,11 @@ def to_markdown(r: dict) -> str:
     verdict = "✅ PASSED" if r["passed"] else "❌ FAILED"
     L.append(f"**Verdict:** {verdict} · **Deck score:** {r['deck_score']}/100 · errors {r['counts']['error']} · warnings {r['counts']['warning']} · info {r['counts']['info']}")
     L.append("")
+    if r.get("dimensions"):  # v3.1: separate verdicts, never a composite
+        L += ["```"] + [f"{k.title() + ' QA':<18}{'PASSED' if d['passed'] else 'FAILED'}" + (f"   ({d['errors']} error{'s' if d['errors'] != 1 else ''})" if d.get("errors") else "")
+                        for k, d in r["dimensions"].items()] + ["```", ""]
+        if not r["dimensions"]["editorial"]["passed"]:
+            L += [f"Editorial QA ({r['dimensions']['editorial']['mode']}) failed: see `editorial_report.md`. The deck is rendered for inspection but is not approved.", ""]
     if r.get("iterations"):
         L.append("## Iterations (generate → render → inspect → patch)")
         L.append("")

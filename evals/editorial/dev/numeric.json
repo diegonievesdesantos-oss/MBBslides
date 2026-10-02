@@ -1,0 +1,1799 @@
+[
+  {
+    "id": "EN-NUM-001",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "numeric",
+      "supported",
+      "pct_change"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "trend",
+      "purpose": "Show revenue trend",
+      "proposition": {
+        "statement": "Revenue grew 12% in 2026 to €280m",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "revenue",
+        "direction": "up",
+        "magnitude": "12%",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Revenue grew 12% to €280m in 2026",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Brightmoor revenue 2025 €250m, 2026 €280m",
+          "values": [
+            250,
+            280
+          ]
+        }
+      ],
+      "visual": {
+        "type": "column",
+        "data": {
+          "categories": [
+            "2025",
+            "2026"
+          ],
+          "series": [
+            {
+              "name": "Revenue (€m)",
+              "values": [
+                250,
+                280
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Brightmoor accounts"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-NUM-002",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "numeric",
+      "supported",
+      "difference"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "kpi",
+      "purpose": "Show EBITDA against plan",
+      "proposition": {
+        "statement": "EBITDA is €8m below plan in 2026 although revenue is on target",
+        "role": "observation",
+        "claim_type": "comparison",
+        "subject": "EBITDA vs plan",
+        "direction": "down",
+        "magnitude": "€8m",
+        "timeframe": "2026",
+        "comparison": "plan",
+        "evidence_ids": [
+          "F1",
+          "F2"
+        ],
+        "confidence": "high"
+      },
+      "headline": "EBITDA is €8m below plan in 2026 despite revenue on target",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "EBITDA 2026: plan €45m, actual €37m",
+          "values": [
+            45,
+            37
+          ]
+        },
+        {
+          "id": "F2",
+          "claim": "Revenue 2026: plan €300m, actual €301m",
+          "values": [
+            300,
+            301
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            "Plan",
+            "Actual"
+          ],
+          "series": [
+            {
+              "name": "EBITDA 2026 (€m)",
+              "values": [
+                45,
+                37
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Tervani management accounts"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-NUM-003",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "numeric",
+      "supported",
+      "share"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "composition",
+      "purpose": "Show channel contribution to growth",
+      "proposition": {
+        "statement": "Digital channels generated most of 2026 incremental sales",
+        "role": "observation",
+        "claim_type": "composition",
+        "subject": "incremental sales",
+        "direction": "up",
+        "magnitude": "54%",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Digital channels generated 54% of incremental sales in 2026",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Incremental sales 2026 (€m): digital 27, stores 23; total 50",
+          "values": [
+            27,
+            23,
+            50
+          ]
+        }
+      ],
+      "visual": {
+        "type": "pie",
+        "data": {
+          "categories": [
+            "Digital",
+            "Stores"
+          ],
+          "series": [
+            {
+              "name": "Incremental sales (€m)",
+              "values": [
+                27,
+                23
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Brightmoor sales data"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-NUM-004",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "numeric",
+      "supported",
+      "sum"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "impact",
+      "purpose": "Size the initiatives",
+      "proposition": {
+        "statement": "The two priority initiatives deliver €14m of annual EBITDA",
+        "role": "impact",
+        "claim_type": "impact",
+        "subject": "annual EBITDA",
+        "direction": "up",
+        "magnitude": "€14m",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "The two priority initiatives deliver €14m of annual EBITDA",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Annual EBITDA impact: initiative A €9m, initiative B €5m",
+          "values": [
+            9,
+            5
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            "Initiative A",
+            "Initiative B"
+          ],
+          "series": [
+            {
+              "name": "€m",
+              "values": [
+                9,
+                5
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Tervani business cases"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-NUM-005",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "numeric",
+      "supported",
+      "ratio"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "comparison",
+      "purpose": "Compare segments",
+      "proposition": {
+        "statement": "Enterprise customers generate 2.3 times the contribution margin of SMB customers",
+        "role": "comparison",
+        "claim_type": "comparison",
+        "subject": "contribution per customer",
+        "magnitude": "2.3×",
+        "timeframe": "2026",
+        "comparison": "SMB customers",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Enterprise customers generate 2.3× the contribution margin of SMB customers",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Contribution per customer 2026: enterprise €46k, SMB €20k",
+          "values": [
+            46,
+            20
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            "Enterprise",
+            "SMB"
+          ],
+          "series": [
+            {
+              "name": "€k",
+              "values": [
+                46,
+                20
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Kestrel Software customer P&L"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-NUM-006",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "numeric",
+      "supported",
+      "cagr"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "trend",
+      "purpose": "Show subscription growth",
+      "proposition": {
+        "statement": "Subscription revenue grew at a 10% compound annual rate between 2022 and 2026",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "subscription revenue",
+        "direction": "up",
+        "magnitude": "10%",
+        "timeframe": "2022-2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Subscription revenue grew at a 10% CAGR between 2022 and 2026",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Subscription revenue (€m): 2022 100.0, 2023 110.0, 2024 121.0, 2025 133.1, 2026 146.4",
+          "values": [
+            100.0,
+            110.0,
+            121.0,
+            133.1,
+            146.4
+          ]
+        }
+      ],
+      "visual": {
+        "type": "column",
+        "data": {
+          "categories": [
+            "2022",
+            "2023",
+            "2024",
+            "2025",
+            "2026"
+          ],
+          "series": [
+            {
+              "name": "Subscription revenue (€m)",
+              "values": [
+                100.0,
+                110.0,
+                121.0,
+                133.1,
+                146.4
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Kestrel Software accounts"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-NUM-007",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "numeric",
+      "supported",
+      "pp_difference"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "trend",
+      "purpose": "Show margin trend",
+      "proposition": {
+        "statement": "Gross margin declined materially in 2026",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "gross margin",
+        "direction": "down",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Gross margin fell 1.9 pp in 2026",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Gross margin 2025 18.2%, 2026 16.3%",
+          "values": [
+            18.2,
+            16.3
+          ]
+        }
+      ],
+      "visual": {
+        "type": "column",
+        "data": {
+          "categories": [
+            "2025",
+            "2026"
+          ],
+          "series": [
+            {
+              "name": "Gross margin (%)",
+              "values": [
+                18.2,
+                16.3
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Brightmoor finance"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-NUM-008",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "numeric",
+      "unsupported",
+      "pct_change"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "trend",
+      "purpose": "Show revenue trend",
+      "proposition": {
+        "statement": "Revenue grew 12% in 2026 to €280m",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "revenue",
+        "direction": "up",
+        "magnitude": "12%",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Revenue grew 15% in 2026",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Brightmoor revenue 2025 €250m, 2026 €280m",
+          "values": [
+            250,
+            280
+          ]
+        }
+      ],
+      "visual": {
+        "type": "column",
+        "data": {
+          "categories": [
+            "2025",
+            "2026"
+          ],
+          "series": [
+            {
+              "name": "Revenue (€m)",
+              "values": [
+                250,
+                280
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Brightmoor accounts"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_NUMBER_UNSUPPORTED",
+        "HEADLINE_PROPOSITION_MISMATCH"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-NUM-009",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "numeric",
+      "unsupported",
+      "absolute"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "composition",
+      "purpose": "Show channel contribution to growth",
+      "proposition": {
+        "statement": "Digital channels generated most of 2026 incremental sales",
+        "role": "observation",
+        "claim_type": "composition",
+        "subject": "incremental sales",
+        "direction": "up",
+        "magnitude": "54%",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Digital channels generated €31m of incremental sales in 2026",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Incremental sales 2026 (€m): digital 27, stores 23; total 50",
+          "values": [
+            27,
+            23,
+            50
+          ]
+        }
+      ],
+      "visual": {
+        "type": "pie",
+        "data": {
+          "categories": [
+            "Digital",
+            "Stores"
+          ],
+          "series": [
+            {
+              "name": "Incremental sales (€m)",
+              "values": [
+                27,
+                23
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Brightmoor sales data"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_NUMBER_UNSUPPORTED",
+        "HEADLINE_PROPOSITION_MISMATCH"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-NUM-010",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "numeric",
+      "unsupported",
+      "ratio"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "comparison",
+      "purpose": "Compare segments",
+      "proposition": {
+        "statement": "Enterprise customers generate 2.3 times the contribution margin of SMB customers",
+        "role": "comparison",
+        "claim_type": "comparison",
+        "subject": "contribution per customer",
+        "magnitude": "2.3×",
+        "timeframe": "2026",
+        "comparison": "SMB customers",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Enterprise customers generate 3× the contribution margin of SMB customers",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Contribution per customer 2026: enterprise €46k, SMB €20k",
+          "values": [
+            46,
+            20
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            "Enterprise",
+            "SMB"
+          ],
+          "series": [
+            {
+              "name": "€k",
+              "values": [
+                46,
+                20
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Kestrel Software customer P&L"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_NUMBER_UNSUPPORTED",
+        "HEADLINE_PROPOSITION_MISMATCH"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-NUM-011",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "numeric",
+      "unsupported",
+      "cagr"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "trend",
+      "purpose": "Show subscription growth",
+      "proposition": {
+        "statement": "Subscription revenue grew at a 10% compound annual rate between 2022 and 2026",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "subscription revenue",
+        "direction": "up",
+        "magnitude": "10%",
+        "timeframe": "2022-2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Subscription revenue grew at a 12% CAGR between 2022 and 2026",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Subscription revenue (€m): 2022 100.0, 2023 110.0, 2024 121.0, 2025 133.1, 2026 146.4",
+          "values": [
+            100.0,
+            110.0,
+            121.0,
+            133.1,
+            146.4
+          ]
+        }
+      ],
+      "visual": {
+        "type": "column",
+        "data": {
+          "categories": [
+            "2022",
+            "2023",
+            "2024",
+            "2025",
+            "2026"
+          ],
+          "series": [
+            {
+              "name": "Subscription revenue (€m)",
+              "values": [
+                100.0,
+                110.0,
+                121.0,
+                133.1,
+                146.4
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Kestrel Software accounts"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_NUMBER_UNSUPPORTED",
+        "HEADLINE_PROPOSITION_MISMATCH"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-NUM-012",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "numeric",
+      "unsupported",
+      "pp_difference"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "trend",
+      "purpose": "Show margin trend",
+      "proposition": {
+        "statement": "Gross margin declined materially in 2026",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "gross margin",
+        "direction": "down",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Gross margin fell 2.4 pp in 2026",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Gross margin 2025 18.2%, 2026 16.3%",
+          "values": [
+            18.2,
+            16.3
+          ]
+        }
+      ],
+      "visual": {
+        "type": "column",
+        "data": {
+          "categories": [
+            "2025",
+            "2026"
+          ],
+          "series": [
+            {
+              "name": "Gross margin (%)",
+              "values": [
+                18.2,
+                16.3
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Brightmoor finance"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_NUMBER_UNSUPPORTED",
+        "HEADLINE_PROPOSITION_MISMATCH"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-NUM-013",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "numeric",
+      "unsupported",
+      "invented"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "comparison",
+      "purpose": "Show purchase criteria",
+      "proposition": {
+        "statement": "Customers rank delivery reliability above price in every segment",
+        "role": "observation",
+        "claim_type": "comparison",
+        "subject": "purchase criteria",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Customers rank delivery reliability above price, with 78% citing it first",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Customer survey 2026: reliability ranked first in all 4 segments; price ranked second or third",
+          "values": [
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      ],
+      "visual": {
+        "type": "table",
+        "data": {
+          "categories": [
+            "Enterprise",
+            "Mid-market",
+            "SMB",
+            "Public"
+          ],
+          "series": [
+            {
+              "name": "Rank of reliability",
+              "values": [
+                1,
+                1,
+                1,
+                1
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Norvalia customer survey"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_NUMBER_UNSUPPORTED",
+        "HEADLINE_PROPOSITION_MISMATCH"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-NUM-014",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "numeric",
+      "unsupported",
+      "sum"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "impact",
+      "purpose": "Size the initiatives",
+      "proposition": {
+        "statement": "The two priority initiatives deliver €14m of annual EBITDA",
+        "role": "impact",
+        "claim_type": "impact",
+        "subject": "annual EBITDA",
+        "direction": "up",
+        "magnitude": "€14m",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "The two priority initiatives deliver €16m of annual EBITDA",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Annual EBITDA impact: initiative A €9m, initiative B €5m",
+          "values": [
+            9,
+            5
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            "Initiative A",
+            "Initiative B"
+          ],
+          "series": [
+            {
+              "name": "€m",
+              "values": [
+                9,
+                5
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Tervani business cases"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_NUMBER_UNSUPPORTED",
+        "HEADLINE_PROPOSITION_MISMATCH"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-NUM-001",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "numeric",
+      "supported",
+      "pct_change"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "trend",
+      "purpose": "Mostrar la evolución de los ingresos",
+      "proposition": {
+        "statement": "Los ingresos de Altavera crecieron un 9% en 2026",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "ingresos",
+        "direction": "up",
+        "magnitude": "9%",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Los ingresos de Altavera crecieron un 9% en 2026, hasta 218 M€",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Ingresos de Altavera: 2025 200 M€, 2026 218 M€",
+          "values": [
+            200,
+            218
+          ]
+        }
+      ],
+      "visual": {
+        "type": "column",
+        "data": {
+          "categories": [
+            "2025",
+            "2026"
+          ],
+          "series": [
+            {
+              "name": "Ingresos (M€)",
+              "values": [
+                200,
+                218
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Cuentas anuales de Altavera"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-NUM-002",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "numeric",
+      "supported",
+      "pp_difference"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "trend",
+      "purpose": "Mostrar la evolución de la cuota",
+      "proposition": {
+        "statement": "Altavera ganó cuota de mercado en 2026",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "cuota de mercado",
+        "direction": "up",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Altavera ganó 1,5 pp de cuota de mercado en 2026",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Cuota de mercado de Altavera: 2025 23,5%, 2026 25,0%",
+          "values": [
+            23.5,
+            25.0
+          ]
+        }
+      ],
+      "visual": {
+        "type": "column",
+        "data": {
+          "categories": [
+            "2025",
+            "2026"
+          ],
+          "series": [
+            {
+              "name": "Cuota (%)",
+              "values": [
+                23.5,
+                25.0
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Panel de mercado 2026"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-NUM-003",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "numeric",
+      "supported",
+      "share"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "driver",
+      "purpose": "Localizar la brecha",
+      "proposition": {
+        "statement": "Norte, Sur y Este explican 36 M€ de una brecha de EBITDA de 50 M€",
+        "role": "diagnosis",
+        "claim_type": "driver",
+        "subject": "brecha de EBITDA",
+        "direction": "down",
+        "timeframe": "2026",
+        "driver": "Norte, Sur y Este",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Tres regiones concentran el 72% de la brecha de EBITDA",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Brecha de EBITDA 2026 (M€): Norte 18, Sur 11, Este 7, Oeste 8, Centro 6; total 50",
+          "values": [
+            18,
+            11,
+            7,
+            8,
+            6,
+            50
+          ]
+        }
+      ],
+      "visual": {
+        "type": "waterfall",
+        "data": {
+          "categories": [
+            "Norte",
+            "Sur",
+            "Este",
+            "Oeste",
+            "Centro"
+          ],
+          "series": [
+            {
+              "name": "M€",
+              "values": [
+                18,
+                11,
+                7,
+                8,
+                6
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Cuenta de resultados regional de Lumenor"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-NUM-004",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "numeric",
+      "supported",
+      "difference"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "trend",
+      "purpose": "Mostrar el coste unitario",
+      "proposition": {
+        "statement": "El coste por pedido se redujo entre 2024 y 2026",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "coste por pedido",
+        "direction": "down",
+        "timeframe": "2024-2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "El coste por pedido se redujo en 0,60 € entre 2024 y 2026",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Coste por pedido: 2024 5,00 €, 2025 4,70 €, 2026 4,40 €",
+          "values": [
+            5.0,
+            4.7,
+            4.4
+          ]
+        }
+      ],
+      "visual": {
+        "type": "line",
+        "data": {
+          "categories": [
+            "2024",
+            "2025",
+            "2026"
+          ],
+          "series": [
+            {
+              "name": "€ por pedido",
+              "values": [
+                5.0,
+                4.7,
+                4.4
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Calderón Logística"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-NUM-005",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "numeric",
+      "supported",
+      "ratio"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "comparison",
+      "purpose": "Comparar segmentos",
+      "proposition": {
+        "statement": "Los clientes premium generan más del doble de margen que los estándar",
+        "role": "comparison",
+        "claim_type": "comparison",
+        "subject": "margen por cliente",
+        "direction": "higher",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Los clientes premium generan 2,3 veces el margen de los clientes estándar",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Margen por cliente 2026: premium 69 €, estándar 30 €",
+          "values": [
+            69,
+            30
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            "Premium",
+            "Estándar"
+          ],
+          "series": [
+            {
+              "name": "Margen por cliente (€)",
+              "values": [
+                69,
+                30
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Sarmiento Seguros"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-NUM-006",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "numeric",
+      "supported",
+      "sum"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "impact",
+      "purpose": "Dimensionar el ahorro logístico",
+      "proposition": {
+        "statement": "Renegociar transporte y almacenaje generaría 3,2 M€ de ahorro anual",
+        "role": "impact",
+        "claim_type": "impact",
+        "subject": "coste logístico",
+        "direction": "down",
+        "magnitude": "3,2 M€",
+        "evidence_ids": [
+          "F1",
+          "F2"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Renegociar transporte y almacenaje ahorraría 3,2 M€ al año",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Ahorro anual estimado (M€): transporte 1,8, almacenaje 1,4",
+          "values": [
+            1.8,
+            1.4
+          ]
+        },
+        {
+          "id": "F2",
+          "claim": "Gasto logístico total 2026: 40 M€",
+          "value": 40
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            "Transporte",
+            "Almacenaje"
+          ],
+          "series": [
+            {
+              "name": "Ahorro (M€)",
+              "values": [
+                1.8,
+                1.4
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Benchmark de compras de Calderón Logística"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-NUM-007",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "numeric",
+      "unsupported",
+      "pct_change"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "trend",
+      "purpose": "Mostrar la evolución de los ingresos",
+      "proposition": {
+        "statement": "Los ingresos de Altavera crecieron un 9% en 2026",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "ingresos",
+        "direction": "up",
+        "magnitude": "9%",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Los ingresos de Altavera crecieron un 12% en 2026",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Ingresos de Altavera: 2025 200 M€, 2026 218 M€",
+          "values": [
+            200,
+            218
+          ]
+        }
+      ],
+      "visual": {
+        "type": "column",
+        "data": {
+          "categories": [
+            "2025",
+            "2026"
+          ],
+          "series": [
+            {
+              "name": "Ingresos (M€)",
+              "values": [
+                200,
+                218
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Cuentas anuales de Altavera"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_NUMBER_UNSUPPORTED",
+        "HEADLINE_PROPOSITION_MISMATCH"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-NUM-008",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "numeric",
+      "unsupported",
+      "pp_difference"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "trend",
+      "purpose": "Mostrar la evolución de la cuota",
+      "proposition": {
+        "statement": "Altavera ganó cuota de mercado en 2026",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "cuota de mercado",
+        "direction": "up",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Altavera ganó 2,5 pp de cuota de mercado en 2026",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Cuota de mercado de Altavera: 2025 23,5%, 2026 25,0%",
+          "values": [
+            23.5,
+            25.0
+          ]
+        }
+      ],
+      "visual": {
+        "type": "column",
+        "data": {
+          "categories": [
+            "2025",
+            "2026"
+          ],
+          "series": [
+            {
+              "name": "Cuota (%)",
+              "values": [
+                23.5,
+                25.0
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Panel de mercado 2026"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_NUMBER_UNSUPPORTED",
+        "HEADLINE_PROPOSITION_MISMATCH"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-NUM-009",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "numeric",
+      "unsupported",
+      "share"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "driver",
+      "purpose": "Localizar la brecha",
+      "proposition": {
+        "statement": "Norte, Sur y Este explican 36 M€ de una brecha de EBITDA de 50 M€",
+        "role": "diagnosis",
+        "claim_type": "driver",
+        "subject": "brecha de EBITDA",
+        "direction": "down",
+        "magnitude": "72%",
+        "timeframe": "2026",
+        "driver": "Norte, Sur y Este",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Tres regiones concentran el 80% de la brecha de EBITDA",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Brecha de EBITDA 2026 (M€): Norte 18, Sur 11, Este 7, Oeste 8, Centro 6; total 50",
+          "values": [
+            18,
+            11,
+            7,
+            8,
+            6,
+            50
+          ]
+        }
+      ],
+      "visual": {
+        "type": "waterfall",
+        "data": {
+          "categories": [
+            "Norte",
+            "Sur",
+            "Este",
+            "Oeste",
+            "Centro"
+          ],
+          "series": [
+            {
+              "name": "M€",
+              "values": [
+                18,
+                11,
+                7,
+                8,
+                6
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Cuenta de resultados regional de Lumenor"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_NUMBER_UNSUPPORTED",
+        "HEADLINE_PROPOSITION_MISMATCH"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-NUM-010",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "numeric",
+      "unsupported",
+      "difference"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "trend",
+      "purpose": "Mostrar el coste unitario",
+      "proposition": {
+        "statement": "El coste por pedido se redujo entre 2024 y 2026",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "coste por pedido",
+        "direction": "down",
+        "timeframe": "2024-2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "El coste por pedido se redujo en 0,90 € entre 2024 y 2026",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Coste por pedido: 2024 5,00 €, 2025 4,70 €, 2026 4,40 €",
+          "values": [
+            5.0,
+            4.7,
+            4.4
+          ]
+        }
+      ],
+      "visual": {
+        "type": "line",
+        "data": {
+          "categories": [
+            "2024",
+            "2025",
+            "2026"
+          ],
+          "series": [
+            {
+              "name": "€ por pedido",
+              "values": [
+                5.0,
+                4.7,
+                4.4
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Calderón Logística"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_NUMBER_UNSUPPORTED",
+        "HEADLINE_PROPOSITION_MISMATCH"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-NUM-011",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "numeric",
+      "unsupported",
+      "share"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "impact",
+      "purpose": "Dimensionar el ahorro logístico",
+      "proposition": {
+        "statement": "Renegociar transporte y almacenaje generaría 3,2 M€ de ahorro anual",
+        "role": "impact",
+        "claim_type": "impact",
+        "subject": "coste logístico",
+        "direction": "down",
+        "magnitude": "3,2 M€",
+        "evidence_ids": [
+          "F1",
+          "F2"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Renegociar transporte y almacenaje ahorraría 3,2 M€ al año, un 15% del gasto logístico",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Ahorro anual estimado (M€): transporte 1,8, almacenaje 1,4",
+          "values": [
+            1.8,
+            1.4
+          ]
+        },
+        {
+          "id": "F2",
+          "claim": "Gasto logístico total 2026: 40 M€",
+          "value": 40
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            "Transporte",
+            "Almacenaje"
+          ],
+          "series": [
+            {
+              "name": "Ahorro (M€)",
+              "values": [
+                1.8,
+                1.4
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Benchmark de compras de Calderón Logística"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_NUMBER_UNSUPPORTED",
+        "HEADLINE_PROPOSITION_MISMATCH"
+      ],
+      "selected": null
+    }
+  }
+]

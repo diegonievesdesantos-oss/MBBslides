@@ -7,7 +7,8 @@
     "deck_type": "strategy_deck",
     "theme": "meridian",
     "confidentiality": "Illustrative data",
-    "brand": "kestrel"
+    "brand": "kestrel",
+    "editorial_mode": "mbb_strict"
   },
   "storyline": {
     "framework": "SCR",
@@ -42,6 +43,20 @@
       "kind": "exec_summary",
       "tracker": "Executive summary",
       "purpose": "Give the board the whole answer on one page",
+      "proposition": {
+        "statement": "Alvora can restore EBITDA to €1,067M by 2028 if it repositions towards discount now",
+        "role": "implication",
+        "claim_type": "impact",
+        "subject": "Alvora's EBITDA",
+        "direction": "up",
+        "timeframe": "2028",
+        "evidence_ids": [
+          "K1",
+          "K2",
+          "K3"
+        ],
+        "confidence": "medium"
+      },
       "headline": "Alvora can restore EBITDA to €1,067M by 2028 if it repositions towards discount now",
       "visual": {
         "type": "statements",
@@ -73,17 +88,32 @@
       "section": "K1",
       "tracker": "Market",
       "purpose": "Show where market growth is coming from",
+      "proposition": {
+        "statement": "Discount and online added €15.5bn of the €20.7bn growth of Iberian grocery between 2021 and 2025, 75% of it",
+        "role": "observation",
+        "claim_type": "composition",
+        "subject": "Iberian grocery growth",
+        "magnitude": "75%",
+        "timeframe": "2021-2025",
+        "evidence_ids": [
+          "E03-1",
+          "E03-2"
+        ],
+        "confidence": "high"
+      },
       "headline": "Discount and online captured 75% of Iberian grocery growth since 2021",
       "supporting_message": "The market added €20.7bn in four years; €15.5bn went to discount and online",
       "message_type": "composition_change",
       "evidence": [
         {
           "claim": "Market grew from €121.3bn (2021) to €142.0bn (2025)",
-          "value": 142.0
+          "value": 142.0,
+          "id": "E03-1"
         },
         {
           "claim": "Discount + online added €15.5bn of the €20.7bn growth",
-          "value": 75
+          "value": 75,
+          "id": "E03-2"
         }
       ],
       "visual": {
@@ -183,6 +213,21 @@
       "section": "K2",
       "tracker": "Performance",
       "purpose": "Show that Alvora's growth has fallen below the market",
+      "proposition": {
+        "statement": "Alvora's revenue growth slowed to 3.0% in 2025, below the market's 4.1%, for the second year running",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "Alvora's growth",
+        "direction": "down",
+        "magnitude": "3.0%",
+        "comparison": "market growth 4.1%",
+        "timeframe": "2025",
+        "evidence_ids": [
+          "E04-1",
+          "E04-2"
+        ],
+        "confidence": "high"
+      },
       "headline": "Alvora's growth slowed to 3.0% in 2025, below the market (4.1%) for the second year",
       "message_type": "trend",
       "evidence": [
@@ -193,11 +238,13 @@
             6.7,
             3.9,
             3.0
-          ]
+          ],
+          "id": "E04-1"
         },
         {
           "claim": "Market growth 2025",
-          "value": 4.1
+          "value": 4.1,
+          "id": "E04-2"
         }
       ],
       "kpis": {
@@ -286,6 +333,18 @@
       "section": "K2",
       "tracker": "Portfolio",
       "purpose": "Show that Alvora is weakest where the market grows",
+      "proposition": {
+        "statement": "Alvora holds 14% of supermarkets but only 5% of discount, the segment driving growth",
+        "role": "diagnosis",
+        "claim_type": "comparison",
+        "subject": "Alvora's share by channel",
+        "comparison": "supermarkets vs discount",
+        "timeframe": "2025",
+        "evidence_ids": [
+          "E05-1"
+        ],
+        "confidence": "high"
+      },
       "headline": "Alvora holds 14% of supermarkets but only 5% of discount, the segment driving growth",
       "message_type": "segmentation",
       "evidence": [
@@ -297,7 +356,8 @@
             9,
             12,
             4
-          ]
+          ],
+          "id": "E05-1"
         }
       ],
       "visual": {
@@ -391,6 +451,20 @@
       "section": "K2",
       "tracker": "Profitability",
       "purpose": "Explain what drove the EBITDA decline",
+      "proposition": {
+        "statement": "Margin erosion in grocery and convenience (€119M) pushed EBITDA down from €924M in 2024 to €857M in 2025",
+        "role": "driver",
+        "claim_type": "driver",
+        "subject": "EBITDA",
+        "direction": "down",
+        "magnitude": "€119M",
+        "driver": "margin erosion in grocery and convenience",
+        "timeframe": "2025",
+        "evidence_ids": [
+          "E06-1"
+        ],
+        "confidence": "high"
+      },
       "headline": "Margin erosion in grocery and convenience (€119M) pushed EBITDA down to €857M",
       "message_type": "change_bridge",
       "evidence": [
@@ -399,7 +473,8 @@
           "values": [
             924,
             857
-          ]
+          ],
+          "id": "E06-1"
         }
       ],
       "visual": {
@@ -468,11 +543,23 @@
       "section": "K2",
       "tracker": "Profitability",
       "purpose": "Locate the margin erosion by category and region",
+      "proposition": {
+        "statement": "The 2025 gross-margin erosion concentrates in fresh and food-to-go, above all in Madrid and Catalonia",
+        "role": "diagnosis",
+        "claim_type": "composition",
+        "subject": "gross-margin erosion",
+        "timeframe": "2025",
+        "evidence_ids": [
+          "E07-1"
+        ],
+        "confidence": "high"
+      },
       "headline": "The erosion concentrates in fresh and food-to-go, above all in Madrid and Catalonia",
       "message_type": "comparison",
       "evidence": [
         {
-          "claim": "Gross margin change 2025 vs 2024 by category and region, pp"
+          "claim": "Gross margin change 2025 vs 2024 by category and region, pp",
+          "id": "E07-1"
         }
       ],
       "visual": {
@@ -611,11 +698,24 @@
       "section": "K2",
       "tracker": "Competition",
       "purpose": "Show Alvora's competitive position",
+      "proposition": {
+        "statement": "Alvora is stuck in the middle: priced above discounters without a clear store-experience edge",
+        "role": "diagnosis",
+        "claim_type": "comparison",
+        "subject": "Alvora's competitive position",
+        "comparison": "Alvora vs discounters and other grocers",
+        "timeframe": "2025",
+        "evidence_ids": [
+          "E08-1"
+        ],
+        "confidence": "high"
+      },
       "headline": "Alvora is stuck in the middle: priced above discounters without a clear experience edge",
       "message_type": "positioning",
       "evidence": [
         {
-          "claim": "Customer survey 2025 (n=4,000): price perception and store experience indices"
+          "claim": "Customer survey 2025 (n=4,000): price perception and store experience indices",
+          "id": "E08-1"
         }
       ],
       "visual": {
@@ -683,11 +783,22 @@
       "section": "K3",
       "tracker": "Operating model",
       "purpose": "Describe the target operating model and what changes",
+      "proposition": {
+        "statement": "The target operating model adds a discount banner and central pricing to fund the growth moves",
+        "role": "implementation",
+        "claim_type": "fact",
+        "subject": "target operating model",
+        "evidence_ids": [
+          "E09-1"
+        ],
+        "confidence": "high"
+      },
       "headline": "The target model adds a discount banner and central pricing to fund the growth moves",
       "message_type": "structure",
       "evidence": [
         {
-          "claim": "Design principles agreed with the executive committee"
+          "claim": "Design principles agreed with the executive committee",
+          "id": "E09-1"
         }
       ],
       "visual": {
@@ -772,11 +883,22 @@
       "section": "K3",
       "tracker": "Roadmap",
       "purpose": "Show the implementation plan and its sequencing",
+      "proposition": {
+        "statement": "A plan in three waves over 24 months secures quick margin wins before scaling the discount banner",
+        "role": "implementation",
+        "claim_type": "fact",
+        "subject": "implementation plan",
+        "evidence_ids": [
+          "E10-1"
+        ],
+        "confidence": "high"
+      },
       "headline": "A plan in three waves over 24 months secures quick margin wins before scaling the banner",
       "message_type": "plan",
       "evidence": [
         {
-          "claim": "Plan agreed with workstream leads"
+          "claim": "Plan agreed with workstream leads",
+          "id": "E10-1"
         }
       ],
       "visual": {
@@ -893,6 +1015,19 @@
       "section": "K3",
       "tracker": "Value at stake",
       "purpose": "Quantify the EBITDA impact of the plan",
+      "proposition": {
+        "statement": "Five initiatives adding €250M lift EBITDA to €1,067M by 2028, net of €40M market headwinds",
+        "role": "impact",
+        "claim_type": "impact",
+        "subject": "EBITDA",
+        "direction": "up",
+        "magnitude": "€250M",
+        "timeframe": "2028",
+        "evidence_ids": [
+          "E11-1"
+        ],
+        "confidence": "medium"
+      },
       "headline": "Five initiatives adding €250M lift EBITDA to €1,067M by 2028, net of €40M market headwinds",
       "message_type": "change_bridge",
       "evidence": [
@@ -905,7 +1040,8 @@
             55,
             20,
             -40
-          ]
+          ],
+          "id": "E11-1"
         }
       ],
       "visual": {
@@ -958,11 +1094,22 @@
       "section": "K3",
       "tracker": "Decisions",
       "purpose": "Make the ask explicit",
+      "proposition": {
+        "statement": "The board is asked to approve three decisions so that Wave 1 starts in January",
+        "role": "decision",
+        "claim_type": "decision",
+        "decision": "approve the discount banner pilot, the margin programme and its €85M budget",
+        "evidence_ids": [
+          "E12-1"
+        ],
+        "confidence": "high"
+      },
       "headline": "The board is asked to approve three decisions to start Wave 1 in January",
       "message_type": "recommendation",
       "evidence": [
         {
-          "claim": "Programme budget €85M over 2026-27"
+          "claim": "Programme budget €85M over 2026-27",
+          "id": "E12-1"
         }
       ],
       "visual": {

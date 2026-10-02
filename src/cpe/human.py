@@ -237,7 +237,11 @@ def build_text_round(out_dir: str | Path, pairs_spec: list[tuple[str, str, str]]
         pid = f"r{j + 1:03d}"
         pairs.append({**src, "id": pid, "images": list(reversed(src["images"]))})
         key[pid] = {**key[src["id"]], "repeat_of": src["id"]}
-    q = {"storyline": "Which storyline would you take to the client? Judge the answer, the logic, the prioritisation and how useful it is for the decision — not the wording.",
+    q = {"headline": "Which is the stronger consulting action title for this proposition and evidence? Judge clarity, answer-first, specificity, "
+                     "executive readability and factual fidelity (a title that says more than the evidence proves is worse). Tie if neither.",
+         "strip": "Read only the titles. Which sequence lets you reconstruct the deck's argument — what happened, why, so what, what to do, "
+                  "what decision — without opening the slides?",
+         "storyline": "Which storyline would you take to the client? Judge the answer, the logic, the prioritisation and how useful it is for the decision — not the wording.",
          "outline": "Which deck outline would you take to the client? Judge the argument the headlines make, what is included and what is left out — not the wording."}
     meta = {"created": time.strftime("%Y-%m-%d"), "pairs": len(pairs), "kind": "text", "instructions": q.get(kind, q["storyline"])}
     _write(out / "pairs.json", json.dumps({"meta": meta, "pairs": pairs}, indent=2))
@@ -251,6 +255,47 @@ def build_text_round(out_dir: str | Path, pairs_spec: list[tuple[str, str, str]]
     write_status(out, {"round": out.name, "created": meta["created"], "purpose": f"blind A/B of {kind}s", "blind": True, "used_for_calibration": False,
                        "status": "awaiting human votes", "key": "private"})
     return {"pairs": len(pairs), "key": str(kp)}
+
+
+def build_editorial_round(out_dir: str | Path, pairs_file: str | Path | None = None, strips: list[tuple[str, str, str]] | None = None,
+                          seed: int = 7, key_out: str | Path | None = None) -> dict:
+    """v3.1 editorial round (spec §92-93), on the text-round machinery (same blinding, private key, votes).
+
+    pairs_file: JSON list of {"case", "proposition", "evidence", "baseline", "challenger"} — two wordings of
+    one proposition; the evaluator sees the proposition and an evidence summary as context, then A / B / tie.
+    strips: [(comparison, run_dir_A, run_dir_B)] — two runs' headline_strip.md, judged on whether the argument
+    can be reconstructed from the titles alone.
+    No vote is ever generated: the round is built empty and waits for people."""
+    import tempfile
+
+    out = Path(out_dir)
+    tmp = Path(tempfile.mkdtemp(prefix="cpe_editorial_round_"))
+    built = {}
+    if pairs_file:
+        items = json.loads(_read(Path(pairs_file)))
+        for d in ("A", "B", "ctx"):
+            (tmp / d).mkdir(parents=True, exist_ok=True)
+        for it in items:
+            name = f"{it['case']}.md"
+            _write(tmp / "A" / name, it["baseline"] + "\n")
+            _write(tmp / "B" / name, it["challenger"] + "\n")
+            ev = it.get("evidence")
+            ev = "\n".join(f"- {e}" for e in ev) if isinstance(ev, list) else str(ev or "")
+            _write(tmp / "ctx" / name, f"**What the slide asserts (proposition):** {it['proposition']}\n\n**Evidence:**\n{ev}\n")
+        built["headline"] = build_text_round(out / "headlines", [("headline_wording", str(tmp / "A"), str(tmp / "B"))], tmp / "ctx", seed=seed,
+                                             kind="headline", key_out=Path(key_out) / "headlines" / "key.json" if key_out else None,
+                                             purpose="v3.1 editorial round: headline only (spec §92)")
+    if strips:
+        for comp, a_dir, b_dir in strips:
+            for side, src in (("A", a_dir), ("B", b_dir)):
+                (tmp / "s" / side).mkdir(parents=True, exist_ok=True)
+                f = Path(src) / "headline_strip.md"
+                if f.exists():
+                    _write(tmp / "s" / side / f"{Path(src).name}.md", _read(f))
+        built["strip"] = build_text_round(out / "strips", [(c, str(tmp / "s" / "A"), str(tmp / "s" / "B")) for c, _, _ in strips[:1]], seed=seed,
+                                          kind="strip", key_out=Path(key_out) / "strips" / "key.json" if key_out else None,
+                                          purpose="v3.1 editorial round: headline strip (spec §93)")
+    return built
 
 
 def close_round(round_dir: str | Path, key: str | Path | None = None) -> dict:

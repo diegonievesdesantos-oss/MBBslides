@@ -1,0 +1,2181 @@
+[
+  {
+    "id": "EN-DRI-001",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "drift",
+      "sign_reversal"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "trend",
+      "purpose": "Show sales trend",
+      "proposition": {
+        "statement": "Sales grew 8% in 2026",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "sales",
+        "direction": "up",
+        "magnitude": "8%",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Sales fell 8% in 2026",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Kestrel Foods sales 2025 €150m, 2026 €162m",
+          "values": [
+            150,
+            162
+          ]
+        }
+      ],
+      "visual": {
+        "type": "column",
+        "data": {
+          "categories": [
+            "2025",
+            "2026"
+          ],
+          "series": [
+            {
+              "name": "Sales (€m)",
+              "values": [
+                150,
+                162
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Kestrel Foods accounts"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_DIRECTION_MISMATCH",
+        "HEADLINE_PROPOSITION_MISMATCH"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-DRI-002",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "drift",
+      "comparison_reversed"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "comparison",
+      "purpose": "Compare segments",
+      "proposition": {
+        "statement": "Enterprise customers generate 2.3 times the contribution margin of SMB customers",
+        "role": "comparison",
+        "claim_type": "comparison",
+        "subject": "contribution margin per customer",
+        "magnitude": "2.3×",
+        "timeframe": "2026",
+        "comparison": "SMB customers",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "SMB customers generate 2.3× the contribution margin of enterprise customers",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Contribution per customer 2026: enterprise €46k, SMB €20k",
+          "values": [
+            46,
+            20
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            "Enterprise",
+            "SMB"
+          ],
+          "series": [
+            {
+              "name": "€k",
+              "values": [
+                46,
+                20
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Kestrel Software customer P&L"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_PROPOSITION_MISMATCH",
+        "HEADLINE_DIRECTION_MISMATCH",
+        "HEADLINE_COMPARISON_UNSUPPORTED"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-DRI-001",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "drift",
+      "sign_reversal"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "trend",
+      "purpose": "Mostrar el margen",
+      "proposition": {
+        "statement": "El margen bruto cayó 1,9 pp en 2026",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "margen bruto",
+        "direction": "down",
+        "magnitude": "1,9 pp",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "El margen bruto mejoró 1,9 pp en 2026",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Margen bruto: 2025 18,2%, 2026 16,3%",
+          "values": [
+            18.2,
+            16.3
+          ]
+        }
+      ],
+      "visual": {
+        "type": "column",
+        "data": {
+          "categories": [
+            "2025",
+            "2026"
+          ],
+          "series": [
+            {
+              "name": "Margen bruto (%)",
+              "values": [
+                18.2,
+                16.3
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Dirección financiera de Grupo Ventisca"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_DIRECTION_MISMATCH",
+        "HEADLINE_PROPOSITION_MISMATCH"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-DRI-003",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "drift",
+      "magnitude"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "trend",
+      "purpose": "Show revenue trend",
+      "proposition": {
+        "statement": "Revenue grew 12% in 2026",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "revenue",
+        "direction": "up",
+        "magnitude": "12%",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Revenue grew 21% in 2026",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Revenue 2025 €250m, 2026 €280m",
+          "values": [
+            250,
+            280
+          ]
+        }
+      ],
+      "visual": {
+        "type": "column",
+        "data": {
+          "categories": [
+            "2025",
+            "2026"
+          ],
+          "series": [
+            {
+              "name": "Revenue (€m)",
+              "values": [
+                250,
+                280
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Brightmoor accounts"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_PROPOSITION_MISMATCH",
+        "HEADLINE_NUMBER_UNSUPPORTED"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-DRI-004",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "drift",
+      "magnitude"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "driver",
+      "purpose": "Locate the gap",
+      "proposition": {
+        "statement": "North, East and South explain €18m of the €25m EBITDA gap",
+        "role": "diagnosis",
+        "claim_type": "driver",
+        "subject": "EBITDA gap",
+        "direction": "down",
+        "magnitude": "72%",
+        "timeframe": "2026",
+        "driver": "three regions",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Three regions account for 90% of the EBITDA gap to plan",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "EBITDA gap 2026 (€m): North 9, East 6, South 3, West 4, Central 3",
+          "values": [
+            9,
+            6,
+            3,
+            4,
+            3
+          ]
+        }
+      ],
+      "visual": {
+        "type": "waterfall",
+        "data": {
+          "categories": [
+            "North",
+            "East",
+            "South",
+            "West",
+            "Central"
+          ],
+          "series": [
+            {
+              "name": "€m",
+              "values": [
+                9,
+                6,
+                3,
+                4,
+                3
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Lumenor regional P&L"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_PROPOSITION_MISMATCH",
+        "HEADLINE_NUMBER_UNSUPPORTED"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-DRI-002",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "drift",
+      "magnitude"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "trend",
+      "purpose": "Mostrar el coste unitario",
+      "proposition": {
+        "statement": "El coste por pedido bajó un 12% entre 2024 y 2026",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "coste por pedido",
+        "direction": "down",
+        "magnitude": "12%",
+        "timeframe": "2024-2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "El coste por pedido bajó un 21% entre 2024 y 2026",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Coste por pedido: 2024 5,00 €, 2026 4,40 €",
+          "values": [
+            5.0,
+            4.4
+          ]
+        }
+      ],
+      "visual": {
+        "type": "column",
+        "data": {
+          "categories": [
+            "2024",
+            "2026"
+          ],
+          "series": [
+            {
+              "name": "€ por pedido",
+              "values": [
+                5.0,
+                4.4
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Calderón Logística"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_PROPOSITION_MISMATCH",
+        "HEADLINE_NUMBER_UNSUPPORTED"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-DRI-005",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "drift",
+      "entity"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "comparison",
+      "purpose": "Compare churn",
+      "proposition": {
+        "statement": "The northern region has the highest churn of the five regions at 9.4%",
+        "role": "comparison",
+        "claim_type": "comparison",
+        "subject": "churn",
+        "direction": "higher",
+        "magnitude": "9.4%",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "The southern region has the highest churn of all five regions at 9.4%",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Churn 2026: North 9.4%, Central 7.2%, East 6.0%, South 5.1%, West 4.8%",
+          "values": [
+            9.4,
+            7.2,
+            6.0,
+            5.1,
+            4.8
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            "North",
+            "Central",
+            "East",
+            "South",
+            "West"
+          ],
+          "series": [
+            {
+              "name": "Churn (%)",
+              "values": [
+                9.4,
+                7.2,
+                6.0,
+                5.1,
+                4.8
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Oaklyn Telecom CRM"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_PROPOSITION_MISMATCH",
+        "HEADLINE_COMPARISON_UNSUPPORTED"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-DRI-003",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "drift",
+      "entity"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "comparison",
+      "purpose": "Comparar plantas",
+      "proposition": {
+        "statement": "La planta de Valencia tiene el coste unitario más bajo de las tres plantas, 6,2 €",
+        "role": "comparison",
+        "claim_type": "comparison",
+        "subject": "coste unitario",
+        "direction": "lower",
+        "magnitude": "6,2 €",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "La planta de Sevilla tiene el coste unitario más bajo de la red, 6,2 €",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Coste unitario 2026: Valencia 6,2 €, Zaragoza 8,1 €, Sevilla 9,4 €",
+          "values": [
+            6.2,
+            8.1,
+            9.4
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            "Valencia",
+            "Zaragoza",
+            "Sevilla"
+          ],
+          "series": [
+            {
+              "name": "Coste unitario (€)",
+              "values": [
+                6.2,
+                8.1,
+                9.4
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Informes de coste de Lumenor"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_PROPOSITION_MISMATCH",
+        "HEADLINE_COMPARISON_UNSUPPORTED"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-DRI-004",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "drift",
+      "entity"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "driver",
+      "purpose": "Explicar la caída del margen",
+      "proposition": {
+        "statement": "El mix de electrónica explica 1,3 pp de la caída de 1,9 pp del margen",
+        "role": "diagnosis",
+        "claim_type": "driver",
+        "subject": "margen bruto",
+        "direction": "down",
+        "magnitude": "1,9 pp",
+        "timeframe": "2026",
+        "driver": "mix de electrónica",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "El mix de alimentación explica la mayor parte de la caída del margen",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Puente de margen 2025-2026 (pp): mix de electrónica -1,3, transporte -0,4, personal -0,2; alimentación 0,0",
+          "values": [
+            -1.3,
+            -0.4,
+            -0.2,
+            0.0
+          ]
+        }
+      ],
+      "visual": {
+        "type": "waterfall",
+        "data": {
+          "categories": [
+            "Electrónica",
+            "Transporte",
+            "Personal",
+            "Alimentación"
+          ],
+          "series": [
+            {
+              "name": "pp",
+              "values": [
+                -1.3,
+                -0.4,
+                -0.2,
+                0.0
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Grupo Ventisca"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_PROPOSITION_MISMATCH"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-DRI-006",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "drift",
+      "timeframe"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "trend",
+      "purpose": "Show EBITDA trend",
+      "proposition": {
+        "statement": "EBITDA increased 14% in 2026",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "EBITDA",
+        "direction": "up",
+        "magnitude": "14%",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "EBITDA increased 14% in 2025",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "EBITDA 2024 €50m, 2025 €50m, 2026 €57m",
+          "values": [
+            50,
+            50,
+            57
+          ]
+        }
+      ],
+      "visual": {
+        "type": "column",
+        "data": {
+          "categories": [
+            "2024",
+            "2025",
+            "2026"
+          ],
+          "series": [
+            {
+              "name": "EBITDA (€m)",
+              "values": [
+                50,
+                50,
+                57
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Norvalia accounts"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_TIMEFRAME_MISMATCH",
+        "HEADLINE_PROPOSITION_MISMATCH"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-DRI-007",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "drift",
+      "timeframe"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "implication",
+      "purpose": "Show capacity implication",
+      "proposition": {
+        "statement": "Forecast demand exceeds single-line capacity from Q3 2027",
+        "role": "implication",
+        "claim_type": "constraint",
+        "subject": "capacity",
+        "timeframe": "Q3 2027",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Without a second line, current capacity will constrain growth from Q3 2026",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Capacity 120k units/quarter; demand Q2 2027 118k, Q3 2027 126k",
+          "values": [
+            120,
+            118,
+            126
+          ]
+        }
+      ],
+      "visual": {
+        "type": "line",
+        "data": {
+          "categories": [
+            "Q2 2027",
+            "Q3 2027"
+          ],
+          "series": [
+            {
+              "name": "Demand (k units)",
+              "values": [
+                118,
+                126
+              ]
+            },
+            {
+              "name": "Capacity",
+              "values": [
+                120,
+                120
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Norvalia S&OP"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_TIMEFRAME_MISMATCH",
+        "HEADLINE_PROPOSITION_MISMATCH"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-DRI-005",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "drift",
+      "timeframe"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "status",
+      "purpose": "Informar del estado",
+      "proposition": {
+        "statement": "El programa sigue en plazo para cerrar en el T4 2027",
+        "role": "status",
+        "claim_type": "status",
+        "subject": "programa de transformación",
+        "timeframe": "T4 2027",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "El programa sigue en plazo para cerrar en el T4 2026",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Fecha de cierre planificada: T4 2027; hitos en plazo 12 de 12",
+          "values": [
+            12,
+            12
+          ]
+        }
+      ],
+      "visual": {
+        "type": "table",
+        "data": {
+          "categories": [
+            "Frente 1",
+            "Frente 2",
+            "Frente 3"
+          ],
+          "series": [
+            {
+              "name": "Semanas de retraso",
+              "values": [
+                0,
+                0,
+                0
+              ]
+            }
+          ]
+        }
+      },
+      "source": "PMO de Altavera"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_TIMEFRAME_MISMATCH",
+        "HEADLINE_PROPOSITION_MISMATCH"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-DRI-008",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "drift",
+      "scope"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "trend",
+      "purpose": "Show returns by region",
+      "proposition": {
+        "statement": "Online returns rose 30% in the Iberia region in 2026",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "online returns",
+        "direction": "up",
+        "magnitude": "30%",
+        "timeframe": "2026",
+        "scope": "Iberia region",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Online returns rose 30% across all regions in 2026",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Online returns 2025 vs 2026: Iberia 10,000 to 13,000 (+30%); France +4%; Benelux -2%",
+          "values": [
+            10000,
+            13000,
+            4,
+            -2
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            "Iberia",
+            "France",
+            "Benelux"
+          ],
+          "series": [
+            {
+              "name": "Change in returns (%)",
+              "values": [
+                30,
+                4,
+                -2
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Brightmoor returns system"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_PROPOSITION_MISMATCH"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-DRI-006",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "drift",
+      "scope"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "trend",
+      "purpose": "Mostrar la rotación",
+      "proposition": {
+        "statement": "La rotación de plantilla en la región Norte subió al 18% en 2026",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "rotación de plantilla",
+        "direction": "up",
+        "magnitude": "18%",
+        "timeframe": "2026",
+        "scope": "región Norte",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "La rotación de plantilla subió al 18% en todas las regiones",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Rotación 2026: Norte 18%, Sur 11%, Centro 9%",
+          "values": [
+            18,
+            11,
+            9
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            "Norte",
+            "Sur",
+            "Centro"
+          ],
+          "series": [
+            {
+              "name": "Rotación 2026 (%)",
+              "values": [
+                18,
+                11,
+                9
+              ]
+            }
+          ]
+        }
+      },
+      "source": "RR. HH. de Calderón Logística"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_PROPOSITION_MISMATCH"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-DRI-007",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "drift",
+      "scope"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "observation",
+      "purpose": "Mostrar el abandono por segmento",
+      "proposition": {
+        "statement": "El 40% de los clientes pyme abandona tras el primer año",
+        "role": "observation",
+        "claim_type": "fact",
+        "subject": "abandono de clientes pyme",
+        "magnitude": "40%",
+        "timeframe": "2026",
+        "scope": "clientes pyme",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "El 40% de los clientes abandona tras el primer año",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Abandono tras el primer año (cohorte 2025): pymes 40%, grandes cuentas 8%, total 22%",
+          "values": [
+            40,
+            8,
+            22
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            "Pymes",
+            "Grandes cuentas",
+            "Total"
+          ],
+          "series": [
+            {
+              "name": "Abandono (%)",
+              "values": [
+                40,
+                8,
+                22
+              ]
+            }
+          ]
+        }
+      },
+      "source": "CRM de Sarmiento Seguros"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_PROPOSITION_MISMATCH",
+        "HEADLINE_NUMBER_UNSUPPORTED"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-DRI-009",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "drift",
+      "confidence"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "insight",
+      "purpose": "Show early pilot results",
+      "proposition": {
+        "statement": "Early pilot data suggests the loyalty app may lift repeat purchases by about 3 pp",
+        "role": "insight",
+        "claim_type": "opportunity",
+        "subject": "repeat purchase rate",
+        "direction": "up",
+        "magnitude": "~3 pp",
+        "timeframe": "2026",
+        "scope": "two pilot stores",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "low"
+      },
+      "headline": "The loyalty app lifts repeat purchases by 3 pp across the network",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Four-week pilot in 2 stores: repeat purchase rate 31% vs 28% in comparison stores; difference not statistically significant",
+          "values": [
+            31,
+            28
+          ]
+        }
+      ],
+      "visual": {
+        "type": "column",
+        "data": {
+          "categories": [
+            "Pilot stores",
+            "Comparison stores"
+          ],
+          "series": [
+            {
+              "name": "Repeat purchase (%)",
+              "values": [
+                31,
+                28
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Brightmoor loyalty pilot"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_PROPOSITION_MISMATCH",
+        "HEADLINE_CAUSALITY_UNSUPPORTED"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-DRI-008",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "drift",
+      "confidence"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "implication",
+      "purpose": "Mostrar la señal de demanda",
+      "proposition": {
+        "statement": "Los datos preliminares sugieren que la demanda podría recuperarse en el T2 2027",
+        "role": "implication",
+        "claim_type": "trend",
+        "subject": "demanda",
+        "direction": "up",
+        "timeframe": "T2 2027",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "low"
+      },
+      "headline": "La demanda se recuperará en el T2 2027",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Pedidos anticipados de 12 distribuidores (de 85): +6% para el T2 2027; muestra no representativa",
+          "values": [
+            12,
+            85,
+            6
+          ]
+        }
+      ],
+      "visual": {
+        "type": "column",
+        "data": {
+          "categories": [
+            "T1 2027",
+            "T2 2027"
+          ],
+          "series": [
+            {
+              "name": "Pedidos anticipados (índice)",
+              "values": [
+                100,
+                106
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Encuesta a distribuidores de Altavera"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_PROPOSITION_MISMATCH"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-DRI-010",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "drift",
+      "observation_to_recommendation"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "comparison",
+      "purpose": "Compare options",
+      "proposition": {
+        "statement": "Option A has the highest NPV of the three options at €42m",
+        "role": "comparison",
+        "claim_type": "comparison",
+        "subject": "option NPV",
+        "magnitude": "€42m",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Select Option A, which has the highest NPV at €42m",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "NPV: A €42m, B €38m, C €21m",
+          "values": [
+            42,
+            38,
+            21
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            "A",
+            "B",
+            "C"
+          ],
+          "series": [
+            {
+              "name": "NPV (€m)",
+              "values": [
+                42,
+                38,
+                21
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Norvalia investment case"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_PROPOSITION_MISMATCH"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-DRI-009",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "drift",
+      "observation_to_recommendation"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "comparison",
+      "purpose": "Comparar márgenes por canal",
+      "proposition": {
+        "statement": "El canal mayorista tiene el margen más bajo de los tres canales",
+        "role": "comparison",
+        "claim_type": "comparison",
+        "subject": "margen por canal",
+        "direction": "lower",
+        "magnitude": "9%",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Salir del canal mayorista para proteger el margen",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Margen bruto por canal 2026: mayorista 9%, tiendas 21%, online 17%",
+          "values": [
+            9,
+            21,
+            17
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            "Mayorista",
+            "Tiendas",
+            "Online"
+          ],
+          "series": [
+            {
+              "name": "Margen (%)",
+              "values": [
+                9,
+                21,
+                17
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Contabilidad analítica de Altavera"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_PROPOSITION_MISMATCH"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-DRI-011",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "drift",
+      "recommendation_to_decision"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "recommendation",
+      "purpose": "Recommend approval of wave 1",
+      "proposition": {
+        "statement": "We recommend approving wave 1 by November 2026 to protect the Q2 2027 implementation window",
+        "role": "recommendation",
+        "claim_type": "recommendation",
+        "subject": "wave 1",
+        "timeframe": "Q2 2027",
+        "recommended_action": "approve wave 1",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "The steering committee has approved wave 1, securing the Q2 2027 window",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Wave 1 lead time 5 months; Q2 2027 window opens 1 April 2027; steering committee meeting scheduled 15 November 2026",
+          "value": 5
+        }
+      ],
+      "visual": {
+        "type": "gantt",
+        "data": {
+          "categories": [
+            "Approval",
+            "Mobilisation",
+            "Implementation"
+          ],
+          "series": [
+            {
+              "name": "Months",
+              "values": [
+                0,
+                5,
+                3
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Altavera transformation office"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_PROPOSITION_MISMATCH"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-DRI-010",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "drift",
+      "recommendation_to_decision"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "recommendation",
+      "purpose": "Recomendar el cierre del almacén",
+      "proposition": {
+        "statement": "Recomendamos cerrar el almacén de Getafe, lo que ahorraría 2 M€ al año",
+        "role": "recommendation",
+        "claim_type": "recommendation",
+        "subject": "red de almacenes",
+        "direction": "down",
+        "magnitude": "2 M€",
+        "recommended_action": "cerrar el almacén de Getafe",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Se ha decidido cerrar el almacén de Getafe, con un ahorro de 2 M€ anuales",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Coste fijo del almacén de Getafe 2,6 M€; coste de reubicar volumen 0,6 M€; ahorro neto 2,0 M€ al año",
+          "values": [
+            2.6,
+            0.6,
+            2.0
+          ]
+        }
+      ],
+      "visual": {
+        "type": "waterfall",
+        "data": {
+          "categories": [
+            "Coste fijo",
+            "Reubicación",
+            "Ahorro neto"
+          ],
+          "series": [
+            {
+              "name": "M€",
+              "values": [
+                2.6,
+                -0.6,
+                2.0
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Estudio de red de Calderón Logística"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_PROPOSITION_MISMATCH"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-DRI-012",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "drift",
+      "approx_to_exact"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "recommendation",
+      "purpose": "Recommend repricing",
+      "proposition": {
+        "statement": "Repricing electronics would recover about 1.4 pp of margin in 2027",
+        "role": "recommendation",
+        "claim_type": "recommendation",
+        "subject": "gross margin",
+        "direction": "up",
+        "magnitude": "~1.4 pp",
+        "timeframe": "2027",
+        "recommended_action": "reprice electronics",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Repricing electronics will recover exactly 1.43 pp of margin in 2027",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Pricing model: margin recovery 2027 central case 1.4 pp, range 1.2-1.6 pp",
+          "values": [
+            1.2,
+            1.4,
+            1.6
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            "Low",
+            "Base",
+            "High"
+          ],
+          "series": [
+            {
+              "name": "pp",
+              "values": [
+                1.2,
+                1.4,
+                1.6
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Brightmoor pricing model"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_NUMBER_UNSUPPORTED",
+        "HEADLINE_PROPOSITION_MISMATCH"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-DRI-011",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "drift",
+      "approx_to_exact"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "implication",
+      "purpose": "Mostrar la consecuencia de las bajas",
+      "proposition": {
+        "statement": "Con la tasa de bajas actual, el objetivo de 2027 se incumpliría en torno a 40.000 suscriptores",
+        "role": "implication",
+        "claim_type": "impact",
+        "subject": "base de suscriptores",
+        "direction": "down",
+        "magnitude": "~40.000",
+        "timeframe": "2027",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "El objetivo de 2027 se incumplirá por 41.250 suscriptores",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Objetivo 2027: 500.000 suscriptores; proyección con la tasa actual: 460.000 (rango 455.000-465.000)",
+          "values": [
+            500000,
+            460000,
+            455000,
+            465000
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            "Objetivo",
+            "Proyección"
+          ],
+          "series": [
+            {
+              "name": "Suscriptores",
+              "values": [
+                500000,
+                460000
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Modelo de suscriptores de Sarmiento Seguros"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_NUMBER_UNSUPPORTED",
+        "HEADLINE_PROPOSITION_MISMATCH"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-DRI-013",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "drift",
+      "direction_dropped"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "trend",
+      "purpose": "Show margin trend",
+      "proposition": {
+        "statement": "Gross margin fell 1.9 pp in 2026",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "gross margin",
+        "direction": "down",
+        "magnitude": "1.9 pp",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Gross margin changed by 1.9 pp in 2026",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Gross margin 2025 18.2%, 2026 16.3%",
+          "values": [
+            18.2,
+            16.3
+          ]
+        }
+      ],
+      "visual": {
+        "type": "column",
+        "data": {
+          "categories": [
+            "2025",
+            "2026"
+          ],
+          "series": [
+            {
+              "name": "Gross margin (%)",
+              "values": [
+                18.2,
+                16.3
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Brightmoor finance"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_DIRECTION_MISMATCH",
+        "HEADLINE_PROPOSITION_MISMATCH"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-DRI-014",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "drift",
+      "faithful"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "change_bridge",
+      "purpose": "Explain the margin decline",
+      "proposition": {
+        "statement": "There was a 1.9 percentage-point decline in gross margin in 2026 and most of the decline can be attributed to the shift in product mix toward electronics",
+        "role": "diagnosis",
+        "claim_type": "driver",
+        "subject": "gross margin",
+        "direction": "down",
+        "magnitude": "1.9 pp",
+        "timeframe": "2026",
+        "driver": "electronics mix",
+        "evidence_ids": [
+          "F1",
+          "F2"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Electronics mix explains most of the 1.9 pp gross-margin decline in 2026",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Gross margin 2025 18.2%, 2026 16.3%",
+          "values": [
+            18.2,
+            16.3
+          ]
+        },
+        {
+          "id": "F2",
+          "claim": "Margin bridge (pp): electronics mix -1.3, freight -0.4, store labour -0.2",
+          "values": [
+            -1.3,
+            -0.4,
+            -0.2
+          ]
+        }
+      ],
+      "visual": {
+        "type": "waterfall",
+        "data": {
+          "categories": [
+            "2025",
+            "Electronics mix",
+            "Freight",
+            "Store labour",
+            "2026"
+          ],
+          "series": [
+            {
+              "name": "Gross margin (%)",
+              "values": [
+                18.2,
+                -1.3,
+                -0.4,
+                -0.2,
+                16.3
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Brightmoor finance"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-DRI-015",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "drift",
+      "faithful"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "change_bridge",
+      "purpose": "Locate the margin erosion",
+      "proposition": {
+        "statement": "Most margin erosion in 2026 is concentrated in electronics",
+        "role": "diagnosis",
+        "claim_type": "composition",
+        "subject": "gross margin erosion",
+        "direction": "down",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1",
+          "F2"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Electronics accounts for most of the 2026 margin erosion",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Gross margin 2025 18.2%, 2026 16.3%",
+          "values": [
+            18.2,
+            16.3
+          ]
+        },
+        {
+          "id": "F2",
+          "claim": "Margin bridge (pp): electronics mix -1.3, freight -0.4, store labour -0.2",
+          "values": [
+            -1.3,
+            -0.4,
+            -0.2
+          ]
+        }
+      ],
+      "visual": {
+        "type": "waterfall",
+        "data": {
+          "categories": [
+            "2025",
+            "Electronics mix",
+            "Freight",
+            "Store labour",
+            "2026"
+          ],
+          "series": [
+            {
+              "name": "Gross margin (%)",
+              "values": [
+                18.2,
+                -1.3,
+                -0.4,
+                -0.2,
+                16.3
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Brightmoor finance"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-DRI-016",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "drift",
+      "faithful"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "trend",
+      "purpose": "Show revenue trend",
+      "proposition": {
+        "statement": "Revenue in 2026 was 12% higher than in 2025",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "revenue",
+        "direction": "up",
+        "magnitude": "12%",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Revenue grew 12% in 2026",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Revenue 2025 €250m, 2026 €280m",
+          "values": [
+            250,
+            280
+          ]
+        }
+      ],
+      "visual": {
+        "type": "column",
+        "data": {
+          "categories": [
+            "2025",
+            "2026"
+          ],
+          "series": [
+            {
+              "name": "Revenue (€m)",
+              "values": [
+                250,
+                280
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Brightmoor accounts"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-DRI-012",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "drift",
+      "faithful"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "driver",
+      "purpose": "Localizar la brecha",
+      "proposition": {
+        "statement": "Las tres regiones con peor desempeño suman 36 M€ de una brecha de EBITDA de 50 M€",
+        "role": "diagnosis",
+        "claim_type": "driver",
+        "subject": "brecha de EBITDA",
+        "direction": "down",
+        "magnitude": "36 M€",
+        "timeframe": "2026",
+        "driver": "Norte, Sur y Este",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Tres regiones concentran el 72% de la brecha de EBITDA",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Brecha de EBITDA 2026 (M€): Norte 18, Sur 11, Este 7, Oeste 8, Centro 6; total 50",
+          "values": [
+            18,
+            11,
+            7,
+            8,
+            6
+          ]
+        }
+      ],
+      "visual": {
+        "type": "waterfall",
+        "data": {
+          "categories": [
+            "Norte",
+            "Sur",
+            "Este",
+            "Oeste",
+            "Centro"
+          ],
+          "series": [
+            {
+              "name": "M€",
+              "values": [
+                18,
+                11,
+                7,
+                8,
+                6
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Lumenor"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-DRI-013",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "drift",
+      "faithful"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "recommendation",
+      "purpose": "Recomendar la palanca de transporte",
+      "proposition": {
+        "statement": "Se recomienda renegociar los contratos de transporte, lo que generaría un ahorro de 3,2 M€ al año",
+        "role": "recommendation",
+        "claim_type": "recommendation",
+        "subject": "gasto de transporte",
+        "direction": "down",
+        "magnitude": "3,2 M€",
+        "recommended_action": "renegociar los contratos de transporte",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Renegociar los contratos de transporte para ahorrar 3,2 M€ al año",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Gasto de transporte 40 M€; tarifas 8% sobre mercado; ahorro potencial 3,2 M€ al año",
+          "values": [
+            40,
+            8,
+            3.2
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            "Actual",
+            "A mercado"
+          ],
+          "series": [
+            {
+              "name": "M€",
+              "values": [
+                40,
+                36.8
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Calderón Logística"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-DRI-014",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "drift",
+      "faithful"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "trend",
+      "purpose": "Mostrar el coste unitario",
+      "proposition": {
+        "statement": "El coste por pedido pasó de 5,00 € en 2024 a 4,40 € en 2026",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "coste por pedido",
+        "direction": "down",
+        "timeframe": "2024-2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "El coste por pedido bajó un 12% entre 2024 y 2026",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Coste por pedido: 2024 5,00 €, 2026 4,40 €",
+          "values": [
+            5.0,
+            4.4
+          ]
+        }
+      ],
+      "visual": {
+        "type": "column",
+        "data": {
+          "categories": [
+            "2024",
+            "2026"
+          ],
+          "series": [
+            {
+              "name": "€ por pedido",
+              "values": [
+                5.0,
+                4.4
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Calderón Logística"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  }
+]

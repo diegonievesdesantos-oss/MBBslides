@@ -96,6 +96,12 @@ def has_verb(text: str, within: int | None = None) -> bool:
         toks = toks[:within]
     if any(t in VERBS and not (i > 0 and toks[i - 1] in ("to", "para")) for i, t in enumerate(toks)):
         return True
+    # v3.1: Spanish finite forms by ending (preterite, future, conditional) and any word after "no" / "se"
+    for i, t in enumerate(toks[1:], start=1):
+        if (len(t) > 3 and re.search(r"(?:aron|ieron|aría|ería|iría|arían|erían|irían|ará|erá|irá|arán|erán|irán|[^aeiouáéíóú]ó)$", t)
+                and t not in ("según", "también", "millón", "región", "acción", "opción", "visión", "gestión", "versión", "inversión", "misión")
+                and not t.endswith(("ión", "ción"))) or (toks[i - 1] in ("no", "se") and len(t) > 2 and t not in ("de", "la", "el", "en", "un", "una", "lo")):
+            return True
     # English inflection heuristics on non-initial tokens
     for t in toks[1:]:
         if len(t) > 4 and (t.endswith("ed") or (t.endswith("es") and not t.endswith("ies"))):

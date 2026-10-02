@@ -107,9 +107,9 @@ def write_sheet(work: str | Path) -> Path:
     hrows = []
     heads = {e["slide"]: e for e in edits.get("edits") or [] if e.get("op") == "set_headline"}
     for m in msgs:
-        if m.get("verdict") == "holds":
-            continue
         e = heads.get(m["slide"])
+        if m.get("verdict") == "holds" and not (e or {}).get("normalize"):
+            continue
         hrows.append([f"head:{m['slide']}", m["slide"], m["verdict"], m["headline"], (e or {}).get("text") or m.get("proposal") or "",
                       yes if (e or {}).get("approved") else "", "", ""])
     sheet(L["Headlines"], [L["key"], L["slide"], L["verdict"], L["headline"], L["proposal"], L["approve"], L["own"], L["comment"]],

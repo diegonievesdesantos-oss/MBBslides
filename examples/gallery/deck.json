@@ -6,7 +6,8 @@
     "date": "Q3 2026",
     "deck_type": "project_steering_committee",
     "theme": "harbor",
-    "confidentiality": "Illustrative data"
+    "confidentiality": "Illustrative data",
+    "editorial_mode": "mbb_strict"
   },
   "storyline": {
     "framework": "DRI",
@@ -61,6 +62,18 @@
       "kind": "exec_summary",
       "tracker": "Executive summary",
       "purpose": "Frame the decision",
+      "proposition": {
+        "statement": "Wave 1 is delivering; releasing wave 2 funding keeps the €48M run-rate target on track",
+        "role": "implication",
+        "claim_type": "impact",
+        "subject": "the programme's savings target",
+        "evidence_ids": [
+          "K1",
+          "K2",
+          "K3"
+        ],
+        "confidence": "medium"
+      },
       "headline": "Wave 1 is delivering; releasing wave 2 funding keeps the €48M target on track",
       "visual": {
         "type": "statements",
@@ -98,6 +111,19 @@
       "section": "K1",
       "tracker": "Diagnosis",
       "purpose": "Size the gap",
+      "proposition": {
+        "statement": "Helix's cost-to-serve is 18% above the peer median, the highest of the panel",
+        "role": "observation",
+        "claim_type": "comparison",
+        "subject": "Helix's cost-to-serve",
+        "magnitude": "18%",
+        "comparison": "Helix vs peer median",
+        "timeframe": "2025",
+        "evidence_ids": [
+          "E05-1"
+        ],
+        "confidence": "high"
+      },
       "headline": "Helix's cost-to-serve is 18% above the peer median, the highest of the panel",
       "message_type": "ranking",
       "evidence": [
@@ -110,7 +136,8 @@
             100,
             96,
             91
-          ]
+          ],
+          "id": "E05-1"
         }
       ],
       "visual": {
@@ -165,6 +192,18 @@
       "section": "K1",
       "tracker": "Diagnosis",
       "purpose": "Decompose cost-to-serve",
+      "proposition": {
+        "statement": "Network and warehousing explain €31M of the €44M cost-to-serve gap to peers",
+        "role": "driver",
+        "claim_type": "driver",
+        "subject": "cost-to-serve gap to peers",
+        "magnitude": "€31M",
+        "driver": "network and warehousing",
+        "evidence_ids": [
+          "E06-1"
+        ],
+        "confidence": "high"
+      },
       "headline": "Network and warehousing explain €31M of the €44M gap to peers",
       "message_type": "hierarchy",
       "evidence": [
@@ -178,7 +217,8 @@
             13,
             8,
             5
-          ]
+          ],
+          "id": "E06-1"
         }
       ],
       "visual": {
@@ -254,6 +294,20 @@
       "section": "K1",
       "tracker": "Diagnosis",
       "purpose": "Show the trend",
+      "proposition": {
+        "statement": "Helix's cost per drop rose 21% since 2021 while peers held it flat",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "cost per drop",
+        "direction": "up",
+        "magnitude": "21%",
+        "comparison": "Helix vs peers",
+        "timeframe": "2021-2025",
+        "evidence_ids": [
+          "E07-1"
+        ],
+        "confidence": "high"
+      },
       "headline": "Cost per drop rose 21% since 2021 while peers held it flat",
       "message_type": "trend",
       "evidence": [
@@ -265,7 +319,8 @@
             5.4,
             5.6,
             5.8
-          ]
+          ],
+          "id": "E07-1"
         }
       ],
       "visual": {
@@ -327,6 +382,18 @@
       "section": "K1",
       "tracker": "Diagnosis",
       "purpose": "Show where volume goes",
+      "proposition": {
+        "statement": "Only 61% of orders arrive in full and on time, and picking causes the largest single loss in the order funnel",
+        "role": "diagnosis",
+        "claim_type": "driver",
+        "subject": "orders in full and on time",
+        "magnitude": "61%",
+        "driver": "picking",
+        "evidence_ids": [
+          "E08-1"
+        ],
+        "confidence": "high"
+      },
       "headline": "Only 61% of orders arrive in full and on time, with picking causing the largest loss",
       "message_type": "flow",
       "evidence": [
@@ -338,7 +405,8 @@
             78,
             64,
             61
-          ]
+          ],
+          "id": "E08-1"
         }
       ],
       "visual": {
@@ -384,11 +452,23 @@
       "section": "K1",
       "tracker": "Diagnosis",
       "purpose": "Show the geography",
+      "proposition": {
+        "statement": "Cost-to-serve is highest in the north-west, the region with the lowest depot density",
+        "role": "diagnosis",
+        "claim_type": "comparison",
+        "subject": "cost-to-serve by region",
+        "comparison": "regions",
+        "evidence_ids": [
+          "E09-1"
+        ],
+        "confidence": "high"
+      },
       "headline": "Cost-to-serve is highest in the north-west, where depot density is lowest",
       "message_type": "geography",
       "evidence": [
         {
-          "claim": "Cost per drop by region"
+          "claim": "Cost per drop by region",
+          "id": "E09-1"
         }
       ],
       "visual": {
@@ -438,6 +518,17 @@
       "section": "K1",
       "tracker": "Diagnosis",
       "purpose": "Show customer mix",
+      "proposition": {
+        "statement": "Small customers are 38% of drops but only 12% of revenue",
+        "role": "diagnosis",
+        "claim_type": "composition",
+        "subject": "small customers",
+        "comparison": "share of drops vs share of revenue",
+        "evidence_ids": [
+          "E10-1"
+        ],
+        "confidence": "high"
+      },
       "headline": "Small customers are 38% of drops but only 12% of revenue",
       "message_type": "composition",
       "evidence": [
@@ -446,7 +537,8 @@
           "values": [
             38,
             12
-          ]
+          ],
+          "id": "E10-1"
         }
       ],
       "visual": {
@@ -496,11 +588,23 @@
       "section": "K1",
       "tracker": "Diagnosis",
       "purpose": "Show relationship",
+      "proposition": {
+        "statement": "Depots with fewer than 400 drops a day cost up to 40% more per drop",
+        "role": "diagnosis",
+        "claim_type": "comparison",
+        "subject": "cost per drop by depot volume",
+        "comparison": "small vs large depots",
+        "evidence_ids": [
+          "E11-1"
+        ],
+        "confidence": "high"
+      },
       "headline": "Depots with fewer than 400 drops a day cost up to 40% more per drop",
       "message_type": "correlation",
       "evidence": [
         {
-          "claim": "Depot volume vs cost per drop"
+          "claim": "Depot volume vs cost per drop",
+          "id": "E11-1"
         }
       ],
       "visual": {
@@ -586,11 +690,23 @@
       "section": "K2",
       "tracker": "Programme",
       "purpose": "Compare initiatives",
+      "proposition": {
+        "statement": "Network redesign and hub automation offer the best value for effort of the four initiatives",
+        "role": "comparison",
+        "claim_type": "comparison",
+        "subject": "network redesign and hub automation",
+        "comparison": "value vs effort of the four initiatives",
+        "evidence_ids": [
+          "E13-1"
+        ],
+        "confidence": "high"
+      },
       "headline": "Network redesign and hub automation offer the best value for effort",
       "message_type": "comparison",
       "evidence": [
         {
-          "claim": "Initiative assessment workshop"
+          "claim": "Initiative assessment workshop",
+          "id": "E13-1"
         }
       ],
       "visual": {
@@ -664,6 +780,17 @@
       "section": "K2",
       "tracker": "Programme",
       "purpose": "Show the operating process",
+      "proposition": {
+        "statement": "The new order-to-delivery process removes two hand-offs and the manual picking step",
+        "role": "implementation",
+        "claim_type": "fact",
+        "subject": "order-to-delivery process",
+        "evidence_ids": [
+          "E14-1",
+          "E14-2"
+        ],
+        "confidence": "high"
+      },
       "headline": "The new order-to-delivery process removes two hand-offs and the manual picking step",
       "message_type": "sequence",
       "evidence": [
@@ -672,14 +799,16 @@
           "values": [
             61,
             85
-          ]
+          ],
+          "id": "E14-1"
         },
         {
           "claim": "Order-to-delivery hours",
           "values": [
             31,
             24
-          ]
+          ],
+          "id": "E14-2"
         }
       ],
       "visual": {
@@ -755,11 +884,22 @@
       "section": "K2",
       "tracker": "Programme",
       "purpose": "Show the customer journey",
+      "proposition": {
+        "statement": "Customers lose most time at order confirmation and delivery booking",
+        "role": "diagnosis",
+        "claim_type": "composition",
+        "subject": "customer journey",
+        "evidence_ids": [
+          "E15-1"
+        ],
+        "confidence": "medium"
+      },
       "headline": "Customers lose most time at order confirmation and delivery booking",
       "message_type": "flow",
       "evidence": [
         {
-          "claim": "Customer interviews n=40"
+          "claim": "Customer interviews n=40",
+          "id": "E15-1"
         }
       ],
       "visual": {
@@ -818,11 +958,22 @@
       "section": "K2",
       "tracker": "Programme",
       "purpose": "Show organisation",
+      "proposition": {
+        "statement": "A lean transformation office with four initiative owners runs the programme",
+        "role": "implementation",
+        "claim_type": "fact",
+        "subject": "programme governance",
+        "evidence_ids": [
+          "E16-1"
+        ],
+        "confidence": "high"
+      },
       "headline": "A lean transformation office with four initiative owners runs the programme",
       "message_type": "hierarchy",
       "evidence": [
         {
-          "claim": "Governance charter"
+          "claim": "Governance charter",
+          "id": "E16-1"
         }
       ],
       "visual": {
@@ -866,11 +1017,22 @@
       "section": "K2",
       "tracker": "Programme",
       "purpose": "Show the target architecture",
+      "proposition": {
+        "statement": "The target architecture adds a WMS and a routing engine on a common data layer",
+        "role": "implementation",
+        "claim_type": "fact",
+        "subject": "target architecture",
+        "evidence_ids": [
+          "E17-1"
+        ],
+        "confidence": "high"
+      },
       "headline": "The target architecture adds a WMS and a routing engine on a common data layer",
       "message_type": "structure",
       "evidence": [
         {
-          "claim": "IT design"
+          "claim": "IT design",
+          "id": "E17-1"
         }
       ],
       "visual": {
@@ -937,11 +1099,22 @@
       "section": "K2",
       "tracker": "Programme",
       "purpose": "Show the phases",
+      "proposition": {
+        "statement": "Three phases move from quick wins to structural change within 24 months",
+        "role": "implementation",
+        "claim_type": "fact",
+        "subject": "programme phases",
+        "evidence_ids": [
+          "E18-1"
+        ],
+        "confidence": "high"
+      },
       "headline": "Three phases move from quick wins to structural change within 24 months",
       "message_type": "plan",
       "evidence": [
         {
-          "claim": "Programme plan"
+          "claim": "Programme plan",
+          "id": "E18-1"
         }
       ],
       "columns": [
@@ -992,11 +1165,23 @@
       "section": "K2",
       "tracker": "Programme",
       "purpose": "Show milestones",
+      "proposition": {
+        "statement": "Five milestones gate the programme; the WMS go-live in Q2 2027 is the critical one",
+        "role": "implementation",
+        "claim_type": "fact",
+        "subject": "programme milestones",
+        "timeframe": "Q2 2027",
+        "evidence_ids": [
+          "E19-1"
+        ],
+        "confidence": "high"
+      },
       "headline": "Five milestones gate the programme; the WMS go-live in Q2 2027 is the critical one",
       "message_type": "plan",
       "evidence": [
         {
-          "claim": "Programme plan"
+          "claim": "Programme plan",
+          "id": "E19-1"
         }
       ],
       "visual": {
@@ -1055,11 +1240,22 @@
       "section": "K3",
       "tracker": "Value",
       "purpose": "Show status of initiatives",
+      "proposition": {
+        "statement": "Three of four initiatives are on track; automation is amber on supplier lead times",
+        "role": "status",
+        "claim_type": "status",
+        "subject": "initiative status",
+        "evidence_ids": [
+          "E21-1"
+        ],
+        "confidence": "high"
+      },
       "headline": "Three of four initiatives are on track; automation is amber on supplier lead times",
       "message_type": "status",
       "evidence": [
         {
-          "claim": "Programme tracker"
+          "claim": "Programme tracker",
+          "id": "E21-1"
         }
       ],
       "visual": {
@@ -1146,11 +1342,24 @@
       "section": "K3",
       "tracker": "Value",
       "purpose": "Show KPIs",
+      "proposition": {
+        "statement": "Wave 1 already cut cost per drop by 3% and overtime by a fifth",
+        "role": "impact",
+        "claim_type": "impact",
+        "subject": "cost per drop",
+        "direction": "down",
+        "magnitude": "3%",
+        "evidence_ids": [
+          "E22-1"
+        ],
+        "confidence": "high"
+      },
       "headline": "Wave 1 already cut cost per drop by 3% and overtime by a fifth",
       "message_type": "single_number",
       "evidence": [
         {
-          "claim": "KPI tracker"
+          "claim": "KPI tracker",
+          "id": "E22-1"
         }
       ],
       "visual": {
@@ -1196,6 +1405,18 @@
       "section": "K3",
       "tracker": "Value",
       "purpose": "Bridge savings",
+      "proposition": {
+        "statement": "The programme delivers €48M run-rate savings by 2027, with €24M secured by waves 1 and 2",
+        "role": "impact",
+        "claim_type": "impact",
+        "subject": "run-rate savings",
+        "magnitude": "€48M",
+        "timeframe": "2027",
+        "evidence_ids": [
+          "E23-1"
+        ],
+        "confidence": "medium"
+      },
       "headline": "€48M run-rate savings by 2027, with €24M secured by wave 1 and 2",
       "message_type": "change_bridge",
       "evidence": [
@@ -1208,7 +1429,8 @@
             17,
             7,
             48
-          ]
+          ],
+          "id": "E23-1"
         }
       ],
       "visual": {
@@ -1257,11 +1479,24 @@
       "section": "K3",
       "tracker": "Value",
       "purpose": "Small multiples of savings by quarter",
+      "proposition": {
+        "statement": "Savings ramp up in every initiative, with automation back-loaded to 2027",
+        "role": "impact",
+        "claim_type": "trend",
+        "subject": "savings by initiative",
+        "direction": "up",
+        "timeframe": "2027",
+        "evidence_ids": [
+          "E24-1"
+        ],
+        "confidence": "medium"
+      },
       "headline": "Savings ramp up in every initiative, with automation back-loaded to 2027",
       "message_type": "trend",
       "evidence": [
         {
-          "claim": "Savings plan by quarter"
+          "claim": "Savings plan by quarter",
+          "id": "E24-1"
         }
       ],
       "exhibits": [
@@ -1348,6 +1583,17 @@
       "section": "K3",
       "tracker": "Value",
       "purpose": "Share of savings",
+      "proposition": {
+        "statement": "Network and automation deliver 63% of the savings",
+        "role": "impact",
+        "claim_type": "composition",
+        "subject": "savings by initiative",
+        "magnitude": "63%",
+        "evidence_ids": [
+          "E25-1"
+        ],
+        "confidence": "medium"
+      },
       "headline": "Network and automation deliver 63% of the savings",
       "message_type": "composition",
       "evidence": [
@@ -1358,7 +1604,8 @@
             13,
             11,
             7
-          ]
+          ],
+          "id": "E25-1"
         }
       ],
       "visual": {
@@ -1403,6 +1650,17 @@
       "section": "K3",
       "tracker": "Decision",
       "kind": "statement",
+      "proposition": {
+        "statement": "Release €22M of wave 2 funding today to keep the €48M run-rate target for 2027",
+        "role": "decision",
+        "claim_type": "decision",
+        "decision": "release €22M of wave 2 funding",
+        "timeframe": "2027",
+        "evidence_ids": [
+          "E23-1"
+        ],
+        "confidence": "high"
+      },
       "headline": "Decision requested",
       "text": "Release €22M of wave 2 funding today to keep the €48M run-rate target for 2027",
       "support": "Payback in 19 months; each quarter of delay defers about €3.5M of savings."

@@ -58,7 +58,9 @@ def plan(spec: dict, auto_split: bool | None = None) -> tuple[dict, list[dict]]:
         s.setdefault("kind", "content")
         sid = s.get("id")
         s["_plan"] = {"visuals": [], "layout": None}
-        if s["kind"] in CONTENT_KINDS:
+        if s["kind"] in CONTENT_KINDS and meta.get("editorial_mode") == "mbb_strict" and not (s.get("_editorial") or {}).get("compiled"):
+            issues.append(issue("error", "EDITORIAL_NOT_COMPILED", "Strict deck planned without the editorial compiler: run it first (pipeline.run / cpe editorial check)", sid))
+        if s["kind"] in CONTENT_KINDS:  # defence in depth: the planner lints the final headline independently of the ATE (spec §37)
             sc, hi = lint_headline(s.get("headline", ""), s, profile, deck_values if s["kind"] == "exec_summary" else None)
             headline_scores[sid] = sc
             issues += hi

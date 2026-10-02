@@ -68,6 +68,9 @@ def run_case(path: Path, out_dir: Path, compose: bool = True, name: str | None =
             visual_qa_passed=qa_semantics(rep.get("issues"))["visual_qa_passed"],
             authoring_qa_passed=qa_semantics(rep.get("issues"))["authoring_qa_passed"],
             qa_warnings=rep["counts"]["warning"],
+            editorial_passed=(rep.get("editorial") or {}).get("passed"),  # v3.1: its own signal (never part of composition)
+            editorial_errors=(rep.get("editorial") or {}).get("hard_errors"),
+            editorial_mode=(rep.get("editorial") or {}).get("mode"),
             qa_score=rep["deck_score"],
             composition=comp.get("deck_score"),
             composition_v1=comp.get("deck_score_v1"),

@@ -1,0 +1,1883 @@
+[
+  {
+    "id": "EN-CAU-001",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "causality",
+      "unsupported",
+      "drives"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "trend",
+      "purpose": "Show traffic and competitor activity",
+      "proposition": {
+        "statement": "Store traffic fell 8% in 2026 while competitor openings in our catchments rose from 3 to 9",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "store traffic",
+        "direction": "down",
+        "magnitude": "8%",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1",
+          "F2"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Competitor openings drove the 8% fall in store traffic in 2026",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Store traffic index 2025 100, 2026 92",
+          "values": [
+            100,
+            92
+          ]
+        },
+        {
+          "id": "F2",
+          "claim": "Competitor store openings in our catchments: 2025 3, 2026 9 (no attribution analysis performed)",
+          "values": [
+            3,
+            9
+          ]
+        }
+      ],
+      "visual": {
+        "type": "line",
+        "data": {
+          "categories": [
+            "2025",
+            "2026"
+          ],
+          "series": [
+            {
+              "name": "Traffic index",
+              "values": [
+                100,
+                92
+              ]
+            },
+            {
+              "name": "Competitor openings",
+              "values": [
+                3,
+                9
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Brightmoor footfall counters; market scan"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_CAUSALITY_UNSUPPORTED",
+        "HEADLINE_PROPOSITION_MISMATCH"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-CAU-002",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "causality",
+      "unsupported",
+      "causes"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "comparison",
+      "purpose": "Compare regional growth",
+      "proposition": {
+        "statement": "Regions where marketing spend rose saw 15% sales growth versus 6% elsewhere",
+        "role": "comparison",
+        "claim_type": "comparison",
+        "subject": "regional sales growth",
+        "direction": "up",
+        "magnitude": "15%",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Higher marketing spend caused the 15% sales growth in high-spend regions",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Sales growth 2026: regions with higher marketing spend +15%, other regions +6%; regions were not randomly assigned",
+          "values": [
+            15,
+            6
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            "Higher spend regions",
+            "Other regions"
+          ],
+          "series": [
+            {
+              "name": "Sales growth (%)",
+              "values": [
+                15,
+                6
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Kestrel Foods sales and marketing data"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_CAUSALITY_UNSUPPORTED",
+        "HEADLINE_PROPOSITION_MISMATCH"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-CAU-003",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "causality",
+      "unsupported",
+      "explains"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "comparison",
+      "purpose": "Compare churn by ticket volume",
+      "proposition": {
+        "statement": "SMB customers with more than three support tickets churn at 14% versus 6% for those with fewer",
+        "role": "comparison",
+        "claim_type": "comparison",
+        "subject": "SMB churn",
+        "direction": "higher",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Support ticket volume explains the higher churn among SMB customers",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "SMB churn 2026: >3 tickets 14%, <=3 tickets 6% (observational)",
+          "values": [
+            14,
+            6
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            ">3 tickets",
+            "<=3 tickets"
+          ],
+          "series": [
+            {
+              "name": "Churn (%)",
+              "values": [
+                14,
+                6
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Kestrel Software CRM"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_CAUSALITY_UNSUPPORTED",
+        "HEADLINE_PROPOSITION_MISMATCH"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-CAU-004",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "causality",
+      "unsupported",
+      "due_to"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "trend",
+      "purpose": "Show margin trend",
+      "proposition": {
+        "statement": "Gross margin fell 2.1 pp in 2026, the year the discount policy changed",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "gross margin",
+        "direction": "down",
+        "magnitude": "2.1 pp",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1",
+          "F2"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Gross margin fell 2.1 pp in 2026 due to the new discount policy",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Gross margin 2025 22.4%, 2026 20.3%",
+          "values": [
+            22.4,
+            20.3
+          ]
+        },
+        {
+          "id": "F2",
+          "claim": "New discount policy introduced January 2026",
+          "value": 2026
+        }
+      ],
+      "visual": {
+        "type": "column",
+        "data": {
+          "categories": [
+            "2025",
+            "2026"
+          ],
+          "series": [
+            {
+              "name": "Gross margin (%)",
+              "values": [
+                22.4,
+                20.3
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Lumenor finance"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_CAUSALITY_UNSUPPORTED",
+        "HEADLINE_PROPOSITION_MISMATCH"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-CAU-005",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "causality",
+      "unsupported",
+      "results_from"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "comparison",
+      "purpose": "Compare plant productivity",
+      "proposition": {
+        "statement": "Plants with the new MES are 20% more productive than plants without it",
+        "role": "comparison",
+        "claim_type": "comparison",
+        "subject": "plant productivity",
+        "direction": "higher",
+        "magnitude": "20%",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "The 20% productivity advantage results from the new MES",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Units per labour hour 2026: plants with MES 18.0, plants without 15.0; MES plants are also the newest sites",
+          "values": [
+            18.0,
+            15.0
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            "With MES",
+            "Without MES"
+          ],
+          "series": [
+            {
+              "name": "Units per labour hour",
+              "values": [
+                18.0,
+                15.0
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Norvalia operations data"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_CAUSALITY_UNSUPPORTED",
+        "HEADLINE_PROPOSITION_MISMATCH"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-CAU-006",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "causality",
+      "unsupported",
+      "because"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "trend",
+      "purpose": "Show delivery NPS",
+      "proposition": {
+        "statement": "Delivery NPS rose 9 points in Q3 2026, the quarter the new courier contract started",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "delivery NPS",
+        "direction": "up",
+        "magnitude": "9 points",
+        "timeframe": "Q3 2026",
+        "evidence_ids": [
+          "F1",
+          "F2"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Delivery NPS rose 9 points in Q3 2026 because of the new courier contract",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Delivery NPS Q2 2026 41, Q3 2026 50",
+          "values": [
+            41,
+            50
+          ]
+        },
+        {
+          "id": "F2",
+          "claim": "New courier contract live from 1 July 2026",
+          "value": 2026
+        }
+      ],
+      "visual": {
+        "type": "column",
+        "data": {
+          "categories": [
+            "Q2 2026",
+            "Q3 2026"
+          ],
+          "series": [
+            {
+              "name": "Delivery NPS",
+              "values": [
+                41,
+                50
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Brightmoor NPS tracker"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_CAUSALITY_UNSUPPORTED",
+        "HEADLINE_PROPOSITION_MISMATCH"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-CAU-007",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "causality",
+      "unsupported",
+      "drives"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "comparison",
+      "purpose": "Compare spend by app usage",
+      "proposition": {
+        "statement": "Customers who use the app spend 35% more a year than customers who do not",
+        "role": "comparison",
+        "claim_type": "comparison",
+        "subject": "annual spend per customer",
+        "direction": "higher",
+        "magnitude": "35%",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "App usage drives 35% higher annual customer spend",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Annual spend per customer 2026: app users €540, non-users €400 (self-selected groups)",
+          "values": [
+            540,
+            400
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            "App users",
+            "Non-users"
+          ],
+          "series": [
+            {
+              "name": "Annual spend (€)",
+              "values": [
+                540,
+                400
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Brightmoor CRM"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_CAUSALITY_UNSUPPORTED",
+        "HEADLINE_PROPOSITION_MISMATCH"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-CAU-001",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "causality",
+      "unsupported",
+      "provoca"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "trend",
+      "purpose": "Mostrar ventas y precio",
+      "proposition": {
+        "statement": "Las ventas cayeron un 7% en 2026, el mismo año en que el precio medio subió un 5%",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "ventas",
+        "direction": "down",
+        "magnitude": "7%",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1",
+          "F2"
+        ],
+        "confidence": "high"
+      },
+      "headline": "La subida del 5% del precio provocó la caída del 7% de las ventas en 2026",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Ventas 2025 100 M€, 2026 93 M€",
+          "values": [
+            100,
+            93
+          ]
+        },
+        {
+          "id": "F2",
+          "claim": "Precio medio 2025 10,00 €, 2026 10,50 €",
+          "values": [
+            10.0,
+            10.5
+          ]
+        }
+      ],
+      "visual": {
+        "type": "line",
+        "data": {
+          "categories": [
+            "2025",
+            "2026"
+          ],
+          "series": [
+            {
+              "name": "Ventas (M€)",
+              "values": [
+                100,
+                93
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Datos comerciales de Altavera"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_CAUSALITY_UNSUPPORTED",
+        "HEADLINE_PROPOSITION_MISMATCH"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-CAU-002",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "causality",
+      "unsupported",
+      "causa"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "comparison",
+      "purpose": "Comparar NPS por rotación",
+      "proposition": {
+        "statement": "Las tiendas con rotación superior al 30% tienen un NPS 12 puntos inferior al resto",
+        "role": "comparison",
+        "claim_type": "comparison",
+        "subject": "NPS de tienda",
+        "direction": "lower",
+        "magnitude": "12 puntos",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "La rotación de plantilla causa un NPS 12 puntos inferior en tienda",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "NPS 2026: tiendas con rotación >30% 28, resto 40 (análisis observacional)",
+          "values": [
+            28,
+            40
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            "Rotación >30%",
+            "Resto"
+          ],
+          "series": [
+            {
+              "name": "NPS",
+              "values": [
+                28,
+                40
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Grupo Ventisca, RR. HH. y encuestas"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_CAUSALITY_UNSUPPORTED",
+        "HEADLINE_PROPOSITION_MISMATCH"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-CAU-003",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "causality",
+      "unsupported",
+      "se_debe_a"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "trend",
+      "purpose": "Mostrar el coste logístico",
+      "proposition": {
+        "statement": "El coste logístico subió un 14% en 2026, año en que se abrió el segundo almacén",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "coste logístico",
+        "direction": "up",
+        "magnitude": "14%",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1",
+          "F2"
+        ],
+        "confidence": "high"
+      },
+      "headline": "El aumento del 14% del coste logístico se debe a la apertura del segundo almacén",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Coste logístico 2025 50 M€, 2026 57 M€",
+          "values": [
+            50,
+            57
+          ]
+        },
+        {
+          "id": "F2",
+          "claim": "Segundo almacén operativo desde marzo de 2026",
+          "value": 2026
+        }
+      ],
+      "visual": {
+        "type": "column",
+        "data": {
+          "categories": [
+            "2025",
+            "2026"
+          ],
+          "series": [
+            {
+              "name": "Coste logístico (M€)",
+              "values": [
+                50,
+                57
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Calderón Logística"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_CAUSALITY_UNSUPPORTED",
+        "HEADLINE_PROPOSITION_MISMATCH"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-CAU-004",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "causality",
+      "unsupported",
+      "impulsa"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "comparison",
+      "purpose": "Comparar clientes con y sin tarjeta",
+      "proposition": {
+        "statement": "Los clientes con tarjeta de fidelización compran un 25% más al año que los que no la tienen",
+        "role": "comparison",
+        "claim_type": "comparison",
+        "subject": "compra anual por cliente",
+        "direction": "higher",
+        "magnitude": "25%",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "La tarjeta de fidelización impulsa un 25% más de compra anual",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Compra anual por cliente 2026: con tarjeta 500 €, sin tarjeta 400 € (grupos autoseleccionados)",
+          "values": [
+            500,
+            400
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            "Con tarjeta",
+            "Sin tarjeta"
+          ],
+          "series": [
+            {
+              "name": "Compra anual (€)",
+              "values": [
+                500,
+                400
+              ]
+            }
+          ]
+        }
+      },
+      "source": "CRM de Grupo Ventisca"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_CAUSALITY_UNSUPPORTED",
+        "HEADLINE_PROPOSITION_MISMATCH"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-CAU-005",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "causality",
+      "unsupported",
+      "explica"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "comparison",
+      "purpose": "Relacionar promociones y margen",
+      "proposition": {
+        "statement": "Las regiones con más promociones registran las mayores caídas de margen",
+        "role": "comparison",
+        "claim_type": "comparison",
+        "subject": "caída de margen por región",
+        "direction": "down",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "La intensidad promocional explica la caída de margen en las regiones del sur",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Peso de ventas en promoción / variación de margen 2026: Sur 38% / -2,4 pp; Levante 33% / -1,9 pp; Centro 22% / -0,6 pp; Norte 18% / -0,3 pp",
+          "values": [
+            38,
+            -2.4,
+            33,
+            -1.9,
+            22,
+            -0.6,
+            18,
+            -0.3
+          ]
+        }
+      ],
+      "visual": {
+        "type": "scatter",
+        "data": {
+          "categories": [
+            "Sur",
+            "Levante",
+            "Centro",
+            "Norte"
+          ],
+          "series": [
+            {
+              "name": "Variación de margen (pp)",
+              "values": [
+                -2.4,
+                -1.9,
+                -0.6,
+                -0.3
+              ]
+            },
+            {
+              "name": "Ventas en promoción (%)",
+              "values": [
+                38,
+                33,
+                22,
+                18
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Grupo Ventisca"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_CAUSALITY_UNSUPPORTED",
+        "HEADLINE_PROPOSITION_MISMATCH"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-CAU-006",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "causality",
+      "unsupported",
+      "debido_a"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "trend",
+      "purpose": "Mostrar la productividad",
+      "proposition": {
+        "statement": "La productividad del almacén mejoró un 9% en el T2 2026, trimestre en que se implantó el nuevo sistema de turnos",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "productividad del almacén",
+        "direction": "up",
+        "magnitude": "9%",
+        "timeframe": "T2 2026",
+        "evidence_ids": [
+          "F1",
+          "F2"
+        ],
+        "confidence": "high"
+      },
+      "headline": "La productividad del almacén mejoró un 9% en el T2 2026 debido al nuevo sistema de turnos",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Líneas preparadas por hora: T1 2026 100, T2 2026 109",
+          "values": [
+            100,
+            109
+          ]
+        },
+        {
+          "id": "F2",
+          "claim": "Nuevo sistema de turnos desde abril de 2026; en el mismo trimestre se renovó el software de preparación",
+          "value": 2026
+        }
+      ],
+      "visual": {
+        "type": "column",
+        "data": {
+          "categories": [
+            "T1 2026",
+            "T2 2026"
+          ],
+          "series": [
+            {
+              "name": "Líneas por hora",
+              "values": [
+                100,
+                109
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Calderón Logística"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "HEADLINE_CAUSALITY_UNSUPPORTED",
+        "HEADLINE_PROPOSITION_MISMATCH"
+      ],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-CAU-008",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "causality",
+      "supported",
+      "causal"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "causal",
+      "purpose": "Establish the effect of price",
+      "proposition": {
+        "statement": "A randomised price test shows the 4% increase reduced value-segment volume by 6% versus control",
+        "role": "diagnosis",
+        "claim_type": "causal",
+        "subject": "value-segment volume",
+        "direction": "down",
+        "magnitude": "6%",
+        "timeframe": "2026",
+        "driver": "4% price increase",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "The 4% price increase drove a 6% volume loss in the value segment",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Randomised test across 40 stores (20 test, 20 control), 2026: volume change -6% test vs 0% control after a 4% price increase (p<0.01)",
+          "values": [
+            4,
+            -6,
+            0
+          ]
+        }
+      ],
+      "visual": {
+        "type": "column",
+        "data": {
+          "categories": [
+            "Test",
+            "Control"
+          ],
+          "series": [
+            {
+              "name": "Volume change (%)",
+              "values": [
+                -6,
+                0
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Kestrel Foods pricing experiment"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-CAU-009",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "causality",
+      "supported",
+      "driver"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "driver",
+      "purpose": "Decompose the shortfall",
+      "proposition": {
+        "statement": "Conversion accounts for €8m and traffic for €2m of the €10m online revenue shortfall versus budget",
+        "role": "diagnosis",
+        "claim_type": "driver",
+        "subject": "online revenue shortfall",
+        "direction": "down",
+        "magnitude": "80%",
+        "timeframe": "2026",
+        "driver": "conversion",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Lower conversion explains 80% of the €10m online revenue shortfall",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Revenue shortfall decomposition 2026 (€m): conversion 8, traffic 2; total 10",
+          "values": [
+            8,
+            2,
+            10
+          ]
+        }
+      ],
+      "visual": {
+        "type": "waterfall",
+        "data": {
+          "categories": [
+            "Conversion",
+            "Traffic",
+            "Total"
+          ],
+          "series": [
+            {
+              "name": "€m",
+              "values": [
+                8,
+                2,
+                10
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Brightmoor web analytics"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-CAU-010",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "causality",
+      "supported",
+      "driver"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "driver",
+      "purpose": "Explain the cost-to-serve increase",
+      "proposition": {
+        "statement": "Freight accounts for €2.2m of the €4.0m increase in cost to serve in 2026",
+        "role": "diagnosis",
+        "claim_type": "driver",
+        "subject": "cost to serve",
+        "direction": "up",
+        "magnitude": "55%",
+        "timeframe": "2026",
+        "driver": "freight",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Freight drives 55% of the €4m increase in cost to serve",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Cost-to-serve bridge 2025-2026 (€m): freight 2.2, handling 1.0, packaging 0.8; total 4.0",
+          "values": [
+            2.2,
+            1.0,
+            0.8,
+            4.0
+          ]
+        }
+      ],
+      "visual": {
+        "type": "waterfall",
+        "data": {
+          "categories": [
+            "Freight",
+            "Handling",
+            "Packaging"
+          ],
+          "series": [
+            {
+              "name": "€m",
+              "values": [
+                2.2,
+                1.0,
+                0.8
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Kestrel Foods logistics"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-CAU-011",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "causality",
+      "supported",
+      "causal"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "causal",
+      "purpose": "Identify root causes of missed promises",
+      "proposition": {
+        "statement": "Root-cause coding of all 2,500 missed delivery promises in 2026 attributes 1,600 to late carrier pickups",
+        "role": "diagnosis",
+        "claim_type": "causal",
+        "subject": "missed delivery promises",
+        "magnitude": "64%",
+        "timeframe": "2026",
+        "driver": "late carrier pickups",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Late carrier pickups cause 64% of missed delivery promises",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Root-cause analysis of 2,500 missed promises (2026): late carrier pickup 1,600; warehouse delay 600; address errors 300",
+          "values": [
+            1600,
+            600,
+            300
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            "Carrier pickup",
+            "Warehouse",
+            "Address"
+          ],
+          "series": [
+            {
+              "name": "Missed promises",
+              "values": [
+                1600,
+                600,
+                300
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Brightmoor order-tracking root-cause log"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-CAU-007",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "causality",
+      "supported",
+      "causal"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "causal",
+      "purpose": "Demostrar el efecto de la subida de tarifas",
+      "proposition": {
+        "statement": "Un test aleatorizado muestra que la subida de tarifas redujo un 6% el volumen del segmento básico frente al grupo control",
+        "role": "diagnosis",
+        "claim_type": "causal",
+        "subject": "volumen del segmento básico",
+        "direction": "down",
+        "magnitude": "6%",
+        "timeframe": "2026",
+        "driver": "subida de tarifas",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "La subida de tarifas provocó una pérdida de volumen del 6% en el segmento básico",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Test aleatorizado en 40 tiendas (20 test, 20 control), 2026: volumen -6% en test frente a 0% en control (p<0,01)",
+          "values": [
+            -6,
+            0
+          ]
+        }
+      ],
+      "visual": {
+        "type": "column",
+        "data": {
+          "categories": [
+            "Test",
+            "Control"
+          ],
+          "series": [
+            {
+              "name": "Variación de volumen (%)",
+              "values": [
+                -6,
+                0
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Experimento de precios de Altavera"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-CAU-008",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "causality",
+      "supported",
+      "driver"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "driver",
+      "purpose": "Descomponer el sobrecoste",
+      "proposition": {
+        "statement": "El absentismo supone 2,0 M€ de los 3,0 M€ de sobrecoste de personal en 2026",
+        "role": "diagnosis",
+        "claim_type": "driver",
+        "subject": "sobrecoste de personal",
+        "direction": "up",
+        "magnitude": "dos tercios",
+        "timeframe": "2026",
+        "driver": "absentismo",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "El absentismo explica dos tercios del sobrecoste de personal de 2026",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Sobrecoste de personal 2026 (M€): absentismo 2,0, horas extra 0,6, rotación 0,4; total 3,0",
+          "values": [
+            2.0,
+            0.6,
+            0.4,
+            3.0
+          ]
+        }
+      ],
+      "visual": {
+        "type": "waterfall",
+        "data": {
+          "categories": [
+            "Absentismo",
+            "Horas extra",
+            "Rotación"
+          ],
+          "series": [
+            {
+              "name": "M€",
+              "values": [
+                2.0,
+                0.6,
+                0.4
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Nóminas de Calderón Logística"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-CAU-009",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "causality",
+      "supported",
+      "driver"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "driver",
+      "purpose": "Explicar la pérdida de margen",
+      "proposition": {
+        "statement": "Las devoluciones suponen 3 M€ de los 5 M€ de pérdida de margen online en 2026",
+        "role": "diagnosis",
+        "claim_type": "driver",
+        "subject": "margen online",
+        "direction": "down",
+        "magnitude": "60%",
+        "timeframe": "2026",
+        "driver": "devoluciones",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Las devoluciones explican el 60% de la pérdida de margen del canal online",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Pérdida de margen online 2026 (M€): devoluciones 3,0, envíos 1,5, descuentos 0,5; total 5,0",
+          "values": [
+            3.0,
+            1.5,
+            0.5,
+            5.0
+          ]
+        }
+      ],
+      "visual": {
+        "type": "waterfall",
+        "data": {
+          "categories": [
+            "Devoluciones",
+            "Envíos",
+            "Descuentos"
+          ],
+          "series": [
+            {
+              "name": "M€",
+              "values": [
+                3.0,
+                1.5,
+                0.5
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Contabilidad analítica de Grupo Ventisca"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-CAU-010",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "causality",
+      "supported",
+      "causal"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "causal",
+      "purpose": "Identificar las causas de las roturas",
+      "proposition": {
+        "statement": "El análisis de causa raíz de 1.000 roturas de stock en 2026 atribuye 700 a errores de previsión",
+        "role": "diagnosis",
+        "claim_type": "causal",
+        "subject": "roturas de stock",
+        "magnitude": "70%",
+        "timeframe": "2026",
+        "driver": "errores de previsión",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "El 70% de las roturas de stock se debe a errores en la previsión de demanda",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Análisis de causa raíz de 1.000 roturas (2026): previsión 700, retraso de proveedor 200, errores de reposición 100",
+          "values": [
+            700,
+            200,
+            100
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            "Previsión",
+            "Proveedor",
+            "Reposición"
+          ],
+          "series": [
+            {
+              "name": "Roturas",
+              "values": [
+                700,
+                200,
+                100
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Registro de incidencias de Altavera"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-CAU-012",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "causality",
+      "safe_wording"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "trend",
+      "purpose": "Show traffic and competitor activity",
+      "proposition": {
+        "statement": "Store traffic fell 8% in 2026 while competitor openings in our catchments rose from 3 to 9",
+        "role": "observation",
+        "claim_type": "trend",
+        "subject": "store traffic",
+        "direction": "down",
+        "magnitude": "8%",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1",
+          "F2"
+        ],
+        "confidence": "high"
+      },
+      "headline": "The 8% fall in store traffic coincides with nine competitor openings in 2026",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Store traffic index 2025 100, 2026 92",
+          "values": [
+            100,
+            92
+          ]
+        },
+        {
+          "id": "F2",
+          "claim": "Competitor store openings in our catchments: 2025 3, 2026 9 (no attribution analysis performed)",
+          "values": [
+            3,
+            9
+          ]
+        }
+      ],
+      "visual": {
+        "type": "line",
+        "data": {
+          "categories": [
+            "2025",
+            "2026"
+          ],
+          "series": [
+            {
+              "name": "Traffic index",
+              "values": [
+                100,
+                92
+              ]
+            },
+            {
+              "name": "Competitor openings",
+              "values": [
+                3,
+                9
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Brightmoor footfall counters; market scan"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-CAU-013",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "causality",
+      "safe_wording"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "comparison",
+      "purpose": "Compare spend by app usage",
+      "proposition": {
+        "statement": "Customers who use the app spend 35% more a year than customers who do not",
+        "role": "comparison",
+        "claim_type": "comparison",
+        "subject": "annual spend per customer",
+        "direction": "higher",
+        "magnitude": "35%",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "App usage is associated with 35% higher annual spend per customer",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Annual spend per customer 2026: app users €540, non-users €400 (self-selected groups)",
+          "values": [
+            540,
+            400
+          ]
+        }
+      ],
+      "visual": {
+        "type": "bar",
+        "data": {
+          "categories": [
+            "App users",
+            "Non-users"
+          ],
+          "series": [
+            {
+              "name": "Annual spend (€)",
+              "values": [
+                540,
+                400
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Brightmoor CRM"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "EN-CAU-014",
+    "type": "headline",
+    "lang": "en",
+    "tags": [
+      "causality",
+      "safe_wording"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "comparison",
+      "purpose": "Relate promotions and margin",
+      "proposition": {
+        "statement": "The two regions with the highest promotional share show the largest margin declines",
+        "role": "comparison",
+        "claim_type": "comparison",
+        "subject": "margin decline by region",
+        "direction": "down",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "Margin erosion is concentrated in the two regions with the heaviest promotions",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Promotional share / margin change 2026: South 38% / -2.4 pp; Coast 33% / -1.9 pp; Central 22% / -0.6 pp; North 18% / -0.3 pp",
+          "values": [
+            38,
+            -2.4,
+            33,
+            -1.9,
+            22,
+            -0.6,
+            18,
+            -0.3
+          ]
+        }
+      ],
+      "visual": {
+        "type": "scatter",
+        "data": {
+          "categories": [
+            "South",
+            "Coast",
+            "Central",
+            "North"
+          ],
+          "series": [
+            {
+              "name": "Margin change (pp)",
+              "values": [
+                -2.4,
+                -1.9,
+                -0.6,
+                -0.3
+              ]
+            },
+            {
+              "name": "Promotional share (%)",
+              "values": [
+                38,
+                33,
+                22,
+                18
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Lumenor regional data"
+    },
+    "deck": {
+      "language": "en",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  },
+  {
+    "id": "ES-CAU-011",
+    "type": "headline",
+    "lang": "es",
+    "tags": [
+      "causality",
+      "safe_wording"
+    ],
+    "slide": {
+      "id": "s05",
+      "kind": "content",
+      "message_type": "comparison",
+      "purpose": "Relacionar promociones y margen",
+      "proposition": {
+        "statement": "Las dos regiones con mayor peso de promociones registran las mayores caídas de margen",
+        "role": "comparison",
+        "claim_type": "comparison",
+        "subject": "caída de margen por región",
+        "direction": "down",
+        "timeframe": "2026",
+        "evidence_ids": [
+          "F1"
+        ],
+        "confidence": "high"
+      },
+      "headline": "La caída de margen se concentra en las dos regiones con más promociones",
+      "evidence": [
+        {
+          "id": "F1",
+          "claim": "Peso de ventas en promoción / variación de margen 2026: Sur 38% / -2,4 pp; Levante 33% / -1,9 pp; Centro 22% / -0,6 pp; Norte 18% / -0,3 pp",
+          "values": [
+            38,
+            -2.4,
+            33,
+            -1.9,
+            22,
+            -0.6,
+            18,
+            -0.3
+          ]
+        }
+      ],
+      "visual": {
+        "type": "scatter",
+        "data": {
+          "categories": [
+            "Sur",
+            "Levante",
+            "Centro",
+            "Norte"
+          ],
+          "series": [
+            {
+              "name": "Variación de margen (pp)",
+              "values": [
+                -2.4,
+                -1.9,
+                -0.6,
+                -0.3
+              ]
+            },
+            {
+              "name": "Ventas en promoción (%)",
+              "values": [
+                38,
+                33,
+                22,
+                18
+              ]
+            }
+          ]
+        }
+      },
+      "source": "Grupo Ventisca"
+    },
+    "deck": {
+      "language": "es",
+      "editorial_mode": "mbb_strict"
+    },
+    "expect": {
+      "status": "passed",
+      "codes": [],
+      "selected": null
+    }
+  }
+]

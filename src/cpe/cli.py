@@ -25,6 +25,8 @@ Rendering commands:
              .private/holdouts/decks (never in the repo; skipped if absent; sanitized aggregates only)
   quality    eval_report.json → quality profile (macro archetype, P10, weakest, coverage, absolute gates); --check for CI
   update     (v2.0) existing deck + new sources → reviewed in-place update of the original pptx
+             (v3.1) --normalize-editorial also flags titles that hold but are not action titles
+  editorial  (v3.1) check | explain | ghost | normalize | eval — the Editorial Logic Layer (docs/EDITORIAL_LAYER.md)
   reason     source-to-deck reasoning (v1.7): facts | check | ghost | trace | eval  (docs/REASONING_PROTOCOL.md)
   results    `results readme [--check]`: regenerate the README metrics block from evals/results/latest.json
 Reference:
@@ -58,6 +60,7 @@ def cmd_scaffold(a):
     from .spec import save_spec
 
     spec = scaffold(a.deck_type, a.title or "", a.governing_thought or "", a.theme)
+    spec["meta"]["editorial_mode"] = "mbb_strict"  # v3.1: a generated deck has no compatibility escape (spec §55-56)
     save_spec(spec, a.out)
     _p(f"skeleton with {len(spec['slides'])} slides ({spec['storyline']['framework']}) → {a.out}")
 
@@ -74,9 +77,12 @@ def cmd_outline(a):
 
 def cmd_lint(a):
     from .core.planner import plan
+    from .editorial import compile_editorial
     from .spec import load_spec
 
-    _, issues = plan(load_spec(a.spec))
+    compiled, ed = compile_editorial(load_spec(a.spec))
+    _, issues = plan(compiled)
+    issues += [{"level": f["level"], "code": f["code"], "slide": f.get("slide") or "-", "message": "[editorial] " + f["message"]} for f in ed["findings"]]
     levels = {"error": 0, "warning": 0, "info": 0}
     for i in issues:
         levels[i["level"]] += 1
@@ -96,9 +102,10 @@ def cmd_recommend(a):
 
 def cmd_plan(a):
     from .core.planner import plan
+    from .editorial import compile_editorial
     from .spec import load_spec
 
-    res, issues = plan(load_spec(a.spec))
+    res, issues = plan(compile_editorial(load_spec(a.spec))[0])
     Path(a.out).write_text(json.dumps(res, indent=2, ensure_ascii=False, default=str), encoding="utf-8", newline="\n")
     for s in res["slides"]:
         lay = (s.get("_plan") or {}).get("layout") or {}
@@ -156,8 +163,10 @@ def cmd_run(a):
     from .pipeline import run
     from .spec import load_spec
 
-    r = run(load_spec(a.spec), a.out, max_iter=a.max_iter, do_render=not a.no_render, dpi=a.dpi, name=a.name, compose=not a.no_compose)
+    r = run(load_spec(a.spec), a.out, max_iter=a.max_iter, do_render=not a.no_render, dpi=a.dpi, name=a.name, compose=not a.no_compose,
+            editorial_mode=a.editorial_mode)
     _p(f"\n{'PASSED' if r['passed'] else 'FAILED'} · score {r['deck_score']} · errors {r['counts']['error']} · warnings {r['counts']['warning']}")
+    _p("  " + " · ".join(f"{k} {'PASSED' if d['passed'] else 'FAILED'}" for k, d in (r.get("dimensions") or {}).items()))
     from .design.tokens import theme_for
     from .pipeline import _template_not_used
 
@@ -167,7 +176,8 @@ def cmd_run(a):
         _p("Pending author actions:")
         for x in r["pending_actions"]:
             _p(f"  - {x['slide']} {x['code']}: {x['action']}")
-    _p(f"Artifacts in {a.out}: {a.name}.pptx, renders/, contact_sheet.png, qa_report.md, review.md, ghost_deck.md")
+    _p(f"Artifacts in {a.out}: {a.name}.pptx, renders/, contact_sheet.png, qa_report.md, review.md, ghost_deck.md, "
+       "editorial_report.md, headline_strip.md, editorial_ghost_deck.md")
     return 0 if r["passed"] else 1
 
 
@@ -287,6 +297,15 @@ def cmd_repro(a):
 def cmd_human(a):
     from . import human
 
+    if a.human_cmd == "build-editorial":
+        strips = []
+        for pr in a.strip or []:
+            name, _, rest = pr.partition("=")
+            x, _, y = rest.partition(",")
+            strips.append((name, x, y))
+        r = human.build_editorial_round(a.out, a.pairs, strips or None, key_out=a.key_out)
+        _p(f"editorial round → {a.out}: " + ", ".join(f"{k} {v['pairs']} pairs" for k, v in r.items()) + " (no votes: it waits for people)")
+        return 0
     if a.human_cmd == "build":
         specs = []
         for pr in a.pair:
@@ -433,11 +452,75 @@ def cmd_update(a):
     if not (a.pptx and a.sources and a.out):
         _p("usage: cpe update OLD.pptx SOURCES -o WORK  |  cpe update --rebuild WORK  |  cpe update --apply WORK -o NEW.pptx")
         return 2
-    m = update.prepare(a.pptx, a.sources, a.out)
+    m = update.prepare(a.pptx, a.sources, a.out, normalize_editorial=a.normalize_editorial)
     _p(f"{m['slides']} slides, {m['facts']} facts; numbers {m['plan']}; {m['edits']} edits in {a.out}/edits.json "
        f"({m['approved_kept']} approvals kept).\nNext: review {a.out}/review.xlsx (approve, correct, dismiss), then "
        f"`cpe update --apply {a.out} -o new.pptx --mark`")
     return 0
+
+
+def cmd_editorial(a):
+    """(v3.1) The Editorial Logic Layer on a deck spec, without rendering."""
+    from .editorial import compile_editorial, strip_editorial
+    from .editorial import report as er
+    from .spec import load_spec, save_spec
+
+    if a.editorial_cmd == "eval":
+        from .editorial.fixtures import run_set
+
+        r = run_set(a.set)
+        m = r["metrics"]
+        _p(f"{r['set']}: {r['cases']} cases · agreement {m['agreement']} · valid accepted {m['valid_pass_rate']} · invalid caught {m['invalid_catch_rate']} · "
+           f"unsupported claims passed {m['unsupported_claims_passed']}/{m['unsupported_claims_total']} · parallel {m['parallel_agreement']} · "
+           f"non-parallel respected {m['non_parallel_respected']}")
+        _p(f"  by file {m['by_file']}  by language {m['by_language']}")
+        if a.verbose:
+            for x in r["results"]:
+                if not x["ok"]:
+                    _p(f"  ✗ {x['id']} expected {x['expected']} got {x['got']} {x.get('codes')}")
+        if a.out:
+            Path(a.out).write_text(json.dumps(r, indent=2, ensure_ascii=False), encoding="utf-8", newline="\n")
+        if a.record:
+            from .editorial.fixtures import record
+
+            _p(f"recorded → {record(r)}")
+        return 0
+    spec = load_spec(a.spec)
+    compiled, rep = compile_editorial(spec, mode=a.mode)
+    out = Path(a.out or Path(a.spec).with_suffix("").as_posix() + "_editorial")
+    if a.editorial_cmd == "check":
+        er.write(rep, compiled, out)
+        _p(er.to_markdown(rep))
+        _p(f"→ {out}/editorial_report.md")
+        return 0 if rep["passed"] else 1
+    if a.editorial_cmd == "explain":
+        _p(er.explain(rep))
+        return 0 if rep["passed"] else 1
+    if a.editorial_cmd == "ghost":
+        out.mkdir(parents=True, exist_ok=True)
+        (out / "headline_strip.md").write_text(er.headline_strip_md(compiled, rep), encoding="utf-8", newline="\n")
+        (out / "editorial_ghost_deck.md").write_text(er.editorial_ghost(compiled, rep), encoding="utf-8", newline="\n")
+        _p(er.headline_strip_md(compiled, rep))
+        _p(f"→ {out}/headline_strip.md, {out}/editorial_ghost_deck.md")
+        return 0
+    if a.editorial_cmd == "normalize":
+        # a legacy spec: provisional propositions written out for the author to confirm; titles the ATE selected applied
+        from .editorial.proposition import infer
+
+        norm = strip_editorial(compiled)
+        n = 0
+        for s in norm.get("slides") or []:
+            if s.get("kind", "content") in ("content", "exec_summary") and not s.get("proposition"):
+                p = infer(s)
+                s["proposition"] = {**{k: v for k, v in p.items() if not k.startswith("_")},
+                                    "_to_confirm": "inferred from the headline: check it says what the slide asserts"}
+                n += 1
+        norm.setdefault("meta", {})["editorial_mode"] = a.target_mode
+        dest = a.out or Path(a.spec).with_suffix("").as_posix() + ".editorial.json"
+        save_spec(norm, dest)
+        _p(f"{n} provisional propositions to confirm (marked _to_confirm); editorial_mode {a.target_mode} → {dest}")
+        return 0
+    return 2
 
 
 def cmd_reason(a):
@@ -618,7 +701,7 @@ def main(argv=None) -> int:
     s = sub.add_parser("build"); s.add_argument("spec"); s.add_argument("-o", "--out", default="out/deck.pptx"); s.set_defaults(f=cmd_build)
     s = sub.add_parser("render"); s.add_argument("pptx"); s.add_argument("-o", "--out"); s.add_argument("--dpi", type=int, default=110); s.set_defaults(f=cmd_render)
     s = sub.add_parser("qa"); s.add_argument("pptx"); s.add_argument("--manifest"); s.add_argument("--theme", default="meridian"); s.add_argument("--profile", default="standard"); s.add_argument("-o", "--out"); s.add_argument("--no-render", action="store_true"); s.add_argument("--dpi", type=int, default=110); s.set_defaults(f=cmd_qa)
-    s = sub.add_parser("run"); s.add_argument("spec"); s.add_argument("-o", "--out", default="out"); s.add_argument("--max-iter", type=int, default=3); s.add_argument("--no-render", action="store_true"); s.add_argument("--dpi", type=int, default=110); s.add_argument("--name", default="deck"); s.add_argument("--no-compose", action="store_true", help="skip the composition engine"); s.set_defaults(f=cmd_run)
+    s = sub.add_parser("run"); s.add_argument("spec"); s.add_argument("-o", "--out", default="out"); s.add_argument("--max-iter", type=int, default=3); s.add_argument("--no-render", action="store_true"); s.add_argument("--dpi", type=int, default=110); s.add_argument("--name", default="deck"); s.add_argument("--no-compose", action="store_true", help="skip the composition engine"); s.add_argument("--editorial-mode", choices=["mbb_strict", "standard", "legacy"], help="override meta.editorial_mode (v3.1)"); s.set_defaults(f=cmd_run)
     s = sub.add_parser("patch"); s.add_argument("spec"); s.add_argument("patches"); s.add_argument("-o", "--out"); s.set_defaults(f=cmd_patch)
     s = sub.add_parser("review"); s.add_argument("review"); s.set_defaults(f=cmd_review)
     s = sub.add_parser("eval"); s.add_argument("cases", nargs="?", default=None, help="case directory (default: the suite's)"); s.add_argument("--suite", default="regression", choices=["regression", "holdout_v1", "holdout_v2", "examples"])
@@ -646,6 +729,9 @@ def main(argv=None) -> int:
     h.add_argument("-o", "--out", required=True); h.add_argument("--pair", action="append", required=True, help="NAME=DIR_A,DIR_B (each with <case>.md)")
     h.add_argument("--context", help="dir with <case>.md: business question + short source summary"); h.add_argument("--kind", choices=["storyline", "outline"], default="storyline")
     h.add_argument("--repeats", type=int, default=2); h.add_argument("--purpose"); h.set_defaults(f=cmd_human)
+    h = hs.add_parser("build-editorial", help="(v3.1) blind A/B of headline wordings for one proposition, and of headline strips")
+    h.add_argument("-o", "--out", required=True); h.add_argument("--pairs", help="JSON list of {case, proposition, evidence, baseline, challenger}")
+    h.add_argument("--strip", action="append", help="NAME=RUN_DIR_A,RUN_DIR_B (their headline_strip.md)"); h.add_argument("--key-out"); h.set_defaults(f=cmd_human)
     h = hs.add_parser("package"); h.add_argument("round"); h.add_argument("-o", "--out", required=True); h.set_defaults(f=cmd_human)
     h = hs.add_parser("close"); h.add_argument("round"); h.add_argument("--key"); h.set_defaults(f=cmd_human)
     h = hs.add_parser("status"); h.add_argument("round"); h.add_argument("--record", action="store_true"); h.set_defaults(f=cmd_human)
@@ -672,7 +758,19 @@ def main(argv=None) -> int:
     s.add_argument("--rebuild", metavar="WORK", help="build the slides whose message no longer holds in the old deck's style (replace_slide edits)")
     s.add_argument("--slides", help="with --rebuild: which old slides (e.g. 4,6)")
     s.add_argument("--no-render", action="store_true", help="with --rebuild: skip rendering")
+    s.add_argument("--normalize-editorial", action="store_true", help="(v3.1) also propose rewording titles that hold but are not action titles (unapproved)")
     s.set_defaults(f=cmd_update)
+    s = sub.add_parser("editorial", help="(v3.1) Editorial Logic Layer: action titles, parallel wording, horizontal logic")
+    es = s.add_subparsers(dest="editorial_cmd", required=True)
+    for name, hlp in (("check", "editorial QA of a deck spec → editorial_report.md (exit 1 if failed)"),
+                      ("explain", "per slide: proposition, candidates, selected title, findings, parallel group"),
+                      ("ghost", "headline_strip.md + editorial_ghost_deck.md")):
+        e = es.add_parser(name, help=hlp); e.add_argument("spec"); e.add_argument("-o", "--out"); e.add_argument("--mode", choices=["mbb_strict", "standard", "legacy"]); e.set_defaults(f=cmd_editorial)
+    e = es.add_parser("normalize", help="legacy spec → spec with provisional propositions to confirm"); e.add_argument("spec"); e.add_argument("-o", "--out")
+    e.add_argument("--mode", default=None, choices=["mbb_strict", "standard", "legacy"]); e.add_argument("--target-mode", default="standard", choices=["mbb_strict", "standard"]); e.set_defaults(f=cmd_editorial)
+    e = es.add_parser("eval", help="the editorial fixtures (evals/editorial): dev, or the sealed holdout")
+    e.add_argument("--set", default="dev", choices=["dev", "holdout"]); e.add_argument("-o", "--out"); e.add_argument("-v", "--verbose", action="store_true")
+    e.add_argument("--record", action="store_true"); e.set_defaults(f=cmd_editorial)
     s = sub.add_parser("reason", help="source-to-deck reasoning artifacts (v1.7)"); rs = s.add_subparsers(dest="reason_cmd", required=True)
     r = rs.add_parser("facts"); r.add_argument("sources"); r.add_argument("-o", "--out", required=True); r.set_defaults(f=cmd_reason)
     r = rs.add_parser("conflicts", help="(v2.1) ranked conflicts between sources; --dismiss / --resolve one")

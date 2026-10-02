@@ -330,20 +330,88 @@ def _join(xs: list[str]) -> str:
     return xs[0] if len(xs) == 1 else ", ".join(xs[:-1]) + " y " + xs[-1]
 
 
-def headline_edits(rev: list[dict], edits: dict) -> int:
-    """Add a `set_headline` proposal (unapproved) for every slide whose message no longer holds; keep a
-    reviewer's own set_headline untouched. Returns how many were added or refreshed."""
+def revised_proposition(r: dict, plan_slide: dict | None, vals: dict) -> dict:
+    """v3.1 (spec §50-52): what the slide can assert NOW, as a proposition for the Action Title Engine.
+    messages.review decides whether the old argument holds; this states the argument that is true with the new
+    values (the mechanical proposal), its kind of claim, and the numbers that prove it (lineage)."""
+    kinds = {c.get("kind") for c in r["claims"] if c["status"] == "no longer holds"}
+    claim = "comparison" if kinds & {"superlative", "order"} else "trend" if "sign" in kinds else "fact"
+    nums = [q for q in (plan_slide or {}).get("numbers") or [] if q.get("id") and q["status"] != "ignored"]
+    direction = None
+    for c in r["claims"]:
+        if c.get("kind") == "sign" and c["status"] == "no longer holds":
+            direction = "down"
+    return {"statement": r.get("proposal") or r["headline"], "role": "comparison" if claim == "comparison" else "observation",
+            "claim_type": claim, "direction": direction, "evidence_ids": [q["id"] for q in nums if q["id"] in vals] or [q["id"] for q in nums],
+            "confidence": "medium", "_from": "messages.review (the claim that holds with the new values)"}
+
+
+def _ate_slide(plan_slide: dict | None, vals: dict, shown: dict, prop: dict) -> dict:
+    """The slide as the ATE reads it: the plan's numbers with their NEW values as evidence."""
+    ev = []
+    for q in (plan_slide or {}).get("numbers") or []:
+        if not q.get("id") or q["status"] == "ignored":
+            continue
+        v = vals.get(q["id"], q.get("value"))
+        ev.append({"id": q["id"], "claim": f"{q.get('context') or ''} {shown.get(q['id'], q.get('raw'))}".strip(), "value": abs(v) if isinstance(v, (int, float)) else v})
+    return {"id": f"s{(plan_slide or {}).get('slide', 0)}", "kind": "content", "headline": prop.get("statement"), "proposition": prop, "evidence": ev}
+
+
+def ate_review(text_candidates: list[str], prop: dict | None, slide: dict, lang: str | None) -> dict:
+    """Run the Action Title Engine on candidate wordings for an existing-deck slide (standard mode: findings, not gates)."""
+    from ..editorial import action_titles as ate
+
+    s = {**slide, "headline": text_candidates[0] if text_candidates else "", "headline_candidates": text_candidates[1:]}
+    sel = ate.select(s, prop, {"lang": lang, "profile": {}}, allow_rewrite=False)
+    best = max(sel["candidates"], key=lambda e: e["rank"])
+    return {"status": "passed" if best["passed"] else "rejected", "selected": best["text"], "hard": best["hard"], "score": best["score"],
+            "candidates": [{"text": e["text"], "passed": e["passed"], "hard": e["hard"]} for e in sel["candidates"]],
+            "issues": [f"{c}: {m}" for c, cls, m in best["issues"] if cls != "info"]}
+
+
+def headline_edits(rev: list[dict], edits: dict, plan: dict | None = None, normalize: bool = False) -> int:
+    """`set_headline` proposals, unapproved, never applied silently (spec §52-53):
+
+    - a slide whose message no longer holds: messages.review's proposal becomes a revised proposition and goes
+      through the Action Title Engine with any wording the agent added to the edit (`candidates`); the edit
+      records the proposition and the ATE verdict;
+    - with `normalize` (`cpe update --normalize-editorial`): also a slide whose message holds but whose title is
+      not an action title (a topic label, two messages…): flagged for rewording (`needs_wording` until a
+      candidate passes the ATE);
+    - a headline that holds is preserved: no edit. A reviewer's own (approved or hand-written) edit is never touched.
+    Returns how many were added or refreshed."""
     have = {e["slide"]: e for e in edits.get("edits") or [] if e.get("op") == "set_headline"}
+    vals = new_values(plan, edits) if plan else {}
+    shown = _approved_display(edits)
+    by_slide = {s["slide"]: s for s in (plan or {}).get("slides") or []}
+    lang = _deck_lang(rev)
     n = 0
     for r in rev:
-        if r["verdict"] != "no longer holds" or not r["proposal"]:
-            continue
         e = have.get(r["slide"])
         if e and (e.get("approved") or e.get("by_hand")):
             continue
-        new = {"op": "set_headline", "slide": r["slide"], "text": r["proposal"], "old": r["headline"], "approved": False,
-               "why": "; ".join(f"'{c['claim']}' no longer holds: {', '.join(c['old'])} → {', '.join(c['new'])}" for c in r["claims"]
-                                if c["status"] == "no longer holds") + " (mechanical rewrite: check the message)"}
+        extra = [c for c in (e or {}).get("candidates") or [] if c]
+        if r["verdict"] == "no longer holds" and r["proposal"]:
+            prop = revised_proposition(r, by_slide.get(r["slide"]), vals)
+            ate = ate_review([r["proposal"]] + extra, prop, _ate_slide(by_slide.get(r["slide"]), vals, shown, prop), lang)
+            text = ate["selected"] if ate["status"] == "passed" else r["proposal"]
+            new = {"op": "set_headline", "slide": r["slide"], "text": text, "old": r["headline"], "approved": False, "proposition": prop,
+                   "editorial": ate, "candidates": extra,
+                   "why": "; ".join(f"'{c['claim']}' no longer holds: {', '.join(c['old'])} → {', '.join(c['new'])}" for c in r["claims"]
+                                    if c["status"] == "no longer holds")
+                   + (" (mechanical rewrite, checked by the Action Title Engine: review the message)" if ate["status"] == "passed"
+                      else f" (mechanical rewrite REJECTED by the Action Title Engine: {', '.join(ate['hard'])}; add wording in `candidates`)")}
+        elif normalize and r["verdict"] in ("holds", "figures updated"):
+            ate = ate_review([r["headline"]] + extra, None, _ate_slide(by_slide.get(r["slide"]), vals, shown, {"statement": r["headline"]}), lang)
+            if ate["status"] == "passed" and ate["selected"] == r["headline"]:
+                continue  # already an action title: preserved
+            ok = ate["status"] == "passed"
+            new = {"op": "set_headline", "slide": r["slide"], "text": ate["selected"] if ok else None, "old": r["headline"], "approved": False,
+                   "normalize": True, "needs_wording": not ok, "editorial": ate, "candidates": extra,
+                   "why": f"editorial normalization (--normalize-editorial): {', '.join(ate['hard']) or 'a candidate reads better'}"
+                          + ("" if ok else "; write the action title in `candidates` and re-run")}
+        else:
+            continue
         if e:
             e.clear()
             e.update(new)
@@ -351,6 +419,14 @@ def headline_edits(rev: list[dict], edits: dict) -> int:
             edits["edits"].append(new)
         n += 1
     return n
+
+
+def _deck_lang(rev: list[dict]) -> str | None:
+    from ..editorial.signatures import language
+
+    votes = [language(r.get("headline") or "") for r in rev]
+    es, en = votes.count("es"), votes.count("en")
+    return "es" if es > en else "en" if en > es else None
 
 
 def markdown(rev: list[dict]) -> str:

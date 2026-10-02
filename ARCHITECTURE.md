@@ -210,6 +210,24 @@ deck.json → plan → compose ─┬─ candidates: layouts × variants × corp
 - *Same environment locally and in CI.* A benchmark whose renderer changes under it measures the
   renderer.
 
+## 5b. v3.1 — Editorial Logic Layer
+
+```
+INPUT → CONTENT UNDERSTANDING → FACT MODEL → ANALYSIS → HYPOTHESES / INSIGHTS → STORYLINE
+→ SLIDE INTENT → PROPOSITION → ACTION TITLE ENGINE → PARALLEL WORDING GUARANTEE → EDITORIAL QA
+→ EVIDENCE → VISUAL ENCODING → LAYOUT SELECTION → SLIDE SPECIFICATION → PPTX GENERATION
+→ RENDER → VISUAL QA → ITERATION → FINAL PPTX
+```
+
+`src/cpe/editorial/` (compiler, proposition, action_titles, parallel, signatures, qa, report) runs in
+`pipeline.run` before `compose()` and `plan()`: the wording contract is settled before any layout is
+chosen, every composition candidate gets the same compiled headline, and visual autofix cannot change
+wording. `core/headline.lint_headline` remains both the ATE's first layer and the planner's independent
+check; `EDITORIAL_NOT_COMPILED` flags a strict spec planned without the compiler. Editorial QA is its
+own verdict next to Factual, Visual, Authoring and Brand QA (`qa_report.dimensions`); there is no
+composite. In the update workflow `reasoning/messages.py` keeps deciding whether a message holds and
+hands the claim that holds now to the ATE (docs/EDITORIAL_LAYER.md).
+
 ## 6. Data flow and artefacts
 
 | Step | Input | Output |

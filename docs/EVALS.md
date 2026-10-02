@@ -208,6 +208,25 @@ Votes are used to find **patterns** ("people consistently prefer more whitespace
 than the scorer allows") that justify a documented profile or metric change — never to make one
 slide win. Profile changes follow `evals/profile_changes.md`.
 
+## Editorial evaluation (v3.1)
+
+A separate signal, never combined with composition or QA scores (spec §94). `evals/editorial/` holds
+fixtures written by authors who did not read the engine (schema: `evals/editorial/README.md`):
+
+| set | cases | use |
+|---|---|---|
+| `dev` | 210 (113 EN / 97 ES) | visible, used while building the v3.1 engine: in-sample |
+| `holdout` | 111 (58 EN / 53 ES), `SEAL.json` | sealed before the engine ran on it; run once per release (`cpe editorial eval --set holdout --record`), never used to tune |
+
+Signals: agreement with the author's verdict (per file, per language) · valid headlines accepted ·
+failing headlines caught with an acceptable code · unsupported claims (numeric, causal, drift) let
+through · parallel groups judged as the author judged them · non-parallel sequences left alone. The
+editorial QA of the three example decks (strict) is part of the `examples` suite's QA gate.
+
+Human signal: `cpe human build-editorial` builds a blind A/B round of headline wordings for one
+proposition (with the proposition and an evidence summary as context) and of headline strips ("can you
+reconstruct the argument from the titles alone?"). Rounds are built empty; no vote is ever generated.
+
 ## Single source of truth and provenance
 
 `evals/results/latest.json` holds the current numbers: `regression` (overall, distribution,

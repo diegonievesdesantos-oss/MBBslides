@@ -133,7 +133,8 @@ RESULT_PATHS = ("evals/results/", "evals/regression/baseline.json", "evals/robus
 # What determines the numbers: if none of these changed between the evaluated commit and HEAD, the
 # recorded results still describe HEAD (results_report.verify_provenance).
 ENGINE_PATHS = ("src", "docker", "requirements.lock", "pyproject.toml", "evals/regression/cases", "evals/archetype_gates.json", "evals/robustness/seeds.json",
-                "evals/holdout", "examples/alvora/deck.json", "examples/gallery/deck.json", "examples/brand", "scripts/cpe-docker")
+                "evals/holdout", "examples/alvora/deck.json", "examples/gallery/deck.json", "examples/brand", "scripts/cpe-docker",
+                "evals/editorial")
 
 
 def dirty_paths() -> list[str]:

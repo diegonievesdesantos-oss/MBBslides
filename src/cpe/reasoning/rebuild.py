@@ -39,8 +39,16 @@ def rewrite_spec(work: str | Path, slides: list[int] | None = None) -> dict:
     edits = json.loads((work / "edits.json").read_text(encoding="utf-8"))
     want = set(slides or [r["slide"] for r in rev if r["verdict"] == "no longer holds"])
     approved = [e for e in edits.get("edits") or [] if e.get("approved") and e.get("op", "number") == "number"]
-    heads = {e["slide"]: e["text"] for e in edits.get("edits") or [] if e.get("op") == "set_headline"}
+    heads = {e["slide"]: e["text"] for e in edits.get("edits") or [] if e.get("op") == "set_headline" and e.get("text")}
+    head_edits = {e["slide"]: e for e in edits.get("edits") or [] if e.get("op") == "set_headline"}
     props = {r["slide"]: r["proposal"] for r in rev if r.get("proposal")}
+    plan = json.loads((work / "update_plan.json").read_text(encoding="utf-8")) if (work / "update_plan.json").exists() else {"slides": []}
+    from .messages import _approved_display, new_values, revised_proposition
+
+    vals = new_values(plan, edits) if plan.get("slides") else {}
+    shown = _approved_display(edits)
+    by_rev = {r["slide"]: r for r in rev}
+    by_plan = {p["slide"]: p for p in plan.get("slides") or []}
     out = []
     for s in old["slides"]:
         n = s.get("_old_slide") or int(s["id"][1:])
@@ -51,10 +59,24 @@ def rewrite_spec(work: str | Path, slides: list[int] | None = None) -> dict:
             if e["slide"] == n:
                 _apply_to_spec(s, e)
         if s.get("headline") is not None:
-            s["headline"] = heads.get(n) or props.get(n) or s["headline"]
+            # v3.1 (spec §54): old slide + approved numbers + NEW proposition + ATE candidates; the compiler picks the title
+            he = head_edits.get(n) or {}
+            r = by_rev.get(n) or {"headline": s["headline"], "claims": [], "proposal": None}
+            prop = he.get("proposition") or revised_proposition({**r, "proposal": heads.get(n) or props.get(n) or s["headline"]}, by_plan.get(n), vals)
+            cands = [c for c in [heads.get(n), props.get(n)] + list(he.get("candidates") or []) if c]
+            s["headline"] = cands[0] if cands else s["headline"]
+            s["headline_candidates"] = list(dict.fromkeys(cands[1:]))
+            s["proposition"] = {k: v for k, v in prop.items() if not k.startswith("_")}
+            ev = []
+            for q in (by_plan.get(n) or {}).get("numbers") or []:
+                if q.get("id") and q["status"] != "ignored":
+                    v = vals.get(q["id"], q.get("value"))
+                    ev.append({"id": q["id"], "claim": f"{q.get('context') or ''} {shown.get(q['id'], q.get('raw'))}".strip(),
+                               "value": abs(v) if isinstance(v, (int, float)) else v})
+            s["evidence"] = (s.get("evidence") or []) + ev
         s["purpose"] = f"(rebuilt: slide {n} of the old deck, its message no longer holds; edit headline and exhibit, then `cpe update --rebuild`)"
         out.append(s)
-    meta = {**old.get("meta", {}), "brand": str((work / "brand").resolve())}
+    meta = {**old.get("meta", {}), "brand": str((work / "brand").resolve()), "editorial_mode": "mbb_strict", "partial": True}  # a rebuilt slide meets new-slide rules
     words = " ".join(str(s.get("headline") or "") for s in old["slides"]).lower().split()
     if not meta.get("language") and sum(w in ("de", "la", "el", "los", "las", "y", "en", "con", "por", "que") for w in words) > 0.08 * max(1, len(words)):
         meta["language"] = "es"  # the old deck's language: "Fuente:", decimal comma

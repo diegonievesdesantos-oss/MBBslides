@@ -1,0 +1,496 @@
+[
+  {
+    "id": "EN-PAR-001",
+    "type": "parallel",
+    "lang": "en",
+    "tags": [
+      "parallel",
+      "clean",
+      "recommendations"
+    ],
+    "group": {
+      "context": "recommendations",
+      "explicit": true,
+      "members": [
+        "Consolidate suppliers to reduce procurement complexity",
+        "Automate invoice processing to remove manual effort",
+        "Tighten pricing discipline to protect gross margin"
+      ]
+    },
+    "expect": {
+      "status": "passed",
+      "codes": []
+    }
+  },
+  {
+    "id": "EN-PAR-002",
+    "type": "parallel",
+    "lang": "en",
+    "tags": [
+      "parallel",
+      "mixed_signature",
+      "recommendations"
+    ],
+    "group": {
+      "context": "recommendations",
+      "explicit": true,
+      "members": [
+        "Supplier consolidation",
+        "Automating invoice processing",
+        "We should improve price discipline"
+      ]
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "PARALLEL_SIGNATURE_MISMATCH",
+        "PARALLEL_ROLE_MISMATCH"
+      ]
+    }
+  },
+  {
+    "id": "EN-PAR-003",
+    "type": "parallel",
+    "lang": "en",
+    "tags": [
+      "parallel",
+      "clean",
+      "process_steps"
+    ],
+    "group": {
+      "context": "process_steps",
+      "explicit": true,
+      "members": [
+        "1. Collect the relevant data",
+        "2. Diagnose the performance gap",
+        "3. Define the recommended actions",
+        "4. Implement and track delivery"
+      ]
+    },
+    "expect": {
+      "status": "passed",
+      "codes": []
+    }
+  },
+  {
+    "id": "EN-PAR-004",
+    "type": "parallel",
+    "lang": "en",
+    "tags": [
+      "parallel",
+      "tense_mix",
+      "process_steps"
+    ],
+    "group": {
+      "context": "process_steps",
+      "explicit": true,
+      "members": [
+        "1. Collect the relevant data",
+        "2. Diagnosed the performance gap",
+        "3. Define the recommended actions",
+        "4. Implemented and tracked delivery"
+      ]
+    },
+    "expect": {
+      "status": "flagged",
+      "codes": [
+        "PARALLEL_TENSE_MISMATCH",
+        "PARALLEL_SIGNATURE_MISMATCH"
+      ]
+    }
+  },
+  {
+    "id": "EN-PAR-005",
+    "type": "parallel",
+    "lang": "en",
+    "tags": [
+      "parallel",
+      "mixed_signature",
+      "design_principles"
+    ],
+    "group": {
+      "context": "design_principles",
+      "explicit": true,
+      "members": [
+        "Customer focused",
+        "Make decisions locally",
+        "Simple",
+        "Scalable organisation"
+      ]
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "PARALLEL_SIGNATURE_MISMATCH"
+      ]
+    }
+  },
+  {
+    "id": "EN-PAR-006",
+    "type": "parallel",
+    "lang": "en",
+    "tags": [
+      "parallel",
+      "clean",
+      "exec_summary",
+      "mixed_tense_declaratives"
+    ],
+    "group": {
+      "context": "exec_summary",
+      "explicit": true,
+      "members": [
+        "Electronics mix drove most of the 1.9 pp margin decline",
+        "Current growth plans would widen the margin gap further",
+        "Repricing electronics can recover ~1.4 pp in 2027"
+      ]
+    },
+    "expect": {
+      "status": "passed",
+      "codes": []
+    }
+  },
+  {
+    "id": "EN-PAR-007",
+    "type": "parallel",
+    "lang": "en",
+    "tags": [
+      "parallel",
+      "granularity",
+      "roadmap_workstreams"
+    ],
+    "group": {
+      "context": "roadmap_workstreams",
+      "explicit": true,
+      "members": [
+        "Reduce supplier fragmentation",
+        "Automate finance",
+        "Increase EBITDA by €12m through pricing"
+      ]
+    },
+    "expect": {
+      "status": "flagged",
+      "codes": [
+        "PARALLEL_GRANULARITY_MISMATCH",
+        "PARALLEL_NUMBERING_MISMATCH"
+      ]
+    }
+  },
+  {
+    "id": "EN-PAR-008",
+    "type": "parallel",
+    "lang": "en",
+    "tags": [
+      "parallel",
+      "voice_mix",
+      "cards"
+    ],
+    "group": {
+      "context": "cards",
+      "explicit": true,
+      "members": [
+        "Procurement consolidated 40 suppliers into 12",
+        "Invoice processing was automated by the finance team",
+        "Sales tightened discount approvals in all regions"
+      ]
+    },
+    "expect": {
+      "status": "flagged",
+      "codes": [
+        "PARALLEL_VOICE_MISMATCH"
+      ]
+    }
+  },
+  {
+    "id": "EN-PAR-009",
+    "type": "parallel",
+    "lang": "en",
+    "tags": [
+      "parallel",
+      "repeated_verb",
+      "recommendations"
+    ],
+    "group": {
+      "context": "recommendations",
+      "explicit": true,
+      "members": [
+        "Improve pricing discipline to protect gross margin",
+        "Improve procurement terms to lower unit cost",
+        "Improve shift planning to raise labour productivity"
+      ]
+    },
+    "expect": {
+      "status": "passed",
+      "codes": []
+    }
+  },
+  {
+    "id": "EN-PAR-010",
+    "type": "parallel",
+    "lang": "en",
+    "tags": [
+      "parallel",
+      "punctuation",
+      "key_line"
+    ],
+    "group": {
+      "context": "key_line",
+      "explicit": true,
+      "members": [
+        "Electronics mix explains most of the margin decline.",
+        "Current growth plans would deepen the margin gap",
+        "Repricing electronics can recover most of the lost margin."
+      ]
+    },
+    "expect": {
+      "status": "flagged",
+      "codes": [
+        "PARALLEL_PUNCTUATION_MISMATCH"
+      ]
+    }
+  },
+  {
+    "id": "ES-PAR-001",
+    "type": "parallel",
+    "lang": "es",
+    "tags": [
+      "parallel",
+      "clean",
+      "recommendations"
+    ],
+    "group": {
+      "context": "recommendations",
+      "explicit": true,
+      "members": [
+        "Consolidar proveedores para reducir complejidad",
+        "Automatizar facturación para eliminar trabajo manual",
+        "Reforzar disciplina de precios para proteger margen"
+      ]
+    },
+    "expect": {
+      "status": "passed",
+      "codes": []
+    }
+  },
+  {
+    "id": "ES-PAR-002",
+    "type": "parallel",
+    "lang": "es",
+    "tags": [
+      "parallel",
+      "mixed_signature",
+      "recommendations"
+    ],
+    "group": {
+      "context": "recommendations",
+      "explicit": true,
+      "members": [
+        "Consolidación de proveedores",
+        "Automatizar la facturación para eliminar trabajo manual",
+        "Deberíamos mejorar la disciplina de precios"
+      ]
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "PARALLEL_SIGNATURE_MISMATCH",
+        "PARALLEL_ROLE_MISMATCH"
+      ]
+    }
+  },
+  {
+    "id": "ES-PAR-003",
+    "type": "parallel",
+    "lang": "es",
+    "tags": [
+      "parallel",
+      "clean",
+      "options"
+    ],
+    "group": {
+      "context": "options",
+      "explicit": true,
+      "members": [
+        "Opción A — Minimizar la inversión inicial",
+        "Opción B — Acelerar la implantación",
+        "Opción C — Maximizar la flexibilidad estratégica"
+      ]
+    },
+    "expect": {
+      "status": "passed",
+      "codes": []
+    }
+  },
+  {
+    "id": "ES-PAR-004",
+    "type": "parallel",
+    "lang": "es",
+    "tags": [
+      "parallel",
+      "mixed_signature",
+      "options"
+    ],
+    "group": {
+      "context": "options",
+      "explicit": true,
+      "members": [
+        "Opción A — Menor coste",
+        "Opción B — Implantación más rápida",
+        "Opción C — Esta opción maximiza la flexibilidad estratégica"
+      ]
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "PARALLEL_SIGNATURE_MISMATCH"
+      ]
+    }
+  },
+  {
+    "id": "ES-PAR-005",
+    "type": "parallel",
+    "lang": "es",
+    "tags": [
+      "parallel",
+      "clean",
+      "process_steps"
+    ],
+    "group": {
+      "context": "process_steps",
+      "explicit": true,
+      "members": [
+        "1. Recopilar los datos relevantes",
+        "2. Diagnosticar la brecha de rendimiento",
+        "3. Definir las acciones recomendadas",
+        "4. Implantar y seguir la ejecución"
+      ]
+    },
+    "expect": {
+      "status": "passed",
+      "codes": []
+    }
+  },
+  {
+    "id": "ES-PAR-006",
+    "type": "parallel",
+    "lang": "es",
+    "tags": [
+      "parallel",
+      "mixed_signature",
+      "process_steps"
+    ],
+    "group": {
+      "context": "process_steps",
+      "explicit": true,
+      "members": [
+        "1. Datos",
+        "2. Analizar resultados",
+        "3. Se elabora la recomendación",
+        "4. Implantación"
+      ]
+    },
+    "expect": {
+      "status": "failed",
+      "codes": [
+        "PARALLEL_SIGNATURE_MISMATCH",
+        "PARALLEL_VOICE_MISMATCH"
+      ]
+    }
+  },
+  {
+    "id": "ES-PAR-007",
+    "type": "parallel",
+    "lang": "es",
+    "tags": [
+      "parallel",
+      "clean",
+      "exec_summary",
+      "mixed_tense_declaratives"
+    ],
+    "group": {
+      "context": "exec_summary",
+      "explicit": true,
+      "members": [
+        "El mix de electrónica explicó la mayor parte de la caída de 1,9 pp del margen",
+        "Los planes de crecimiento actuales ampliarían la brecha de margen",
+        "Repreciar electrónica puede recuperar ~1,4 pp de margen en 2027"
+      ]
+    },
+    "expect": {
+      "status": "passed",
+      "codes": []
+    }
+  },
+  {
+    "id": "ES-PAR-008",
+    "type": "parallel",
+    "lang": "es",
+    "tags": [
+      "parallel",
+      "clean",
+      "design_principles"
+    ],
+    "group": {
+      "context": "design_principles",
+      "explicit": true,
+      "members": [
+        "Situar al cliente en el centro de las decisiones",
+        "Llevar la responsabilidad al nivel más bajo eficaz",
+        "Mantener una gobernanza simple y explícita",
+        "Escalar capacidades sin duplicar funciones"
+      ]
+    },
+    "expect": {
+      "status": "passed",
+      "codes": []
+    }
+  },
+  {
+    "id": "ES-PAR-009",
+    "type": "parallel",
+    "lang": "es",
+    "tags": [
+      "parallel",
+      "clean",
+      "roadmap_workstreams"
+    ],
+    "group": {
+      "context": "roadmap_workstreams",
+      "explicit": true,
+      "members": [
+        "Frente 1 — Consolidar el aprovisionamiento indirecto",
+        "Frente 2 — Automatizar el ciclo de facturación",
+        "Frente 3 — Rediseñar la red logística regional"
+      ]
+    },
+    "expect": {
+      "status": "passed",
+      "codes": []
+    }
+  },
+  {
+    "id": "ES-PAR-010",
+    "type": "parallel",
+    "lang": "es",
+    "tags": [
+      "parallel",
+      "granularity",
+      "cards"
+    ],
+    "group": {
+      "context": "cards",
+      "explicit": true,
+      "members": [
+        "Reducir la fragmentación de proveedores",
+        "Transformar la compañía",
+        "Aumentar el EBITDA en 12 M€ mediante precios"
+      ]
+    },
+    "expect": {
+      "status": "flagged",
+      "codes": [
+        "PARALLEL_GRANULARITY_MISMATCH",
+        "PARALLEL_NUMBERING_MISMATCH"
+      ]
+    }
+  }
+]

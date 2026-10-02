@@ -24,6 +24,13 @@ with `_` are written by the engine (plan traces, autofix markers) and can be ign
 }
 ```
 
+## Editorial mode (v3.1)
+
+`meta.editorial_mode`: `mbb_strict` (new decks; `cpe scaffold` writes it) · `standard` (default when absent) ·
+`legacy`. `meta.language` (`en`/`es`) fixes the deck language the titles must keep;
+`meta.editorial.capitalization: "title"` accepts Title Case titles when a corporate style requires it;
+`meta.fact_model` lets `evidence_ids` cite a fact model's ids. See docs/EDITORIAL_LAYER.md.
+
 ## Slide fields
 
 | field | kinds | meaning |
@@ -33,11 +40,16 @@ with `_` are written by the engine (plan traces, autofix markers) and can be ign
 | `section` | content | key-line id the slide proves |
 | `tracker` | content | small section label above the headline |
 | `purpose` | content, exec_summary | what the audience must accept after the slide (required) |
-| `headline` | content, exec_summary | the conclusion (required) |
+| `headline` | content, exec_summary | the conclusion (required); v3.1: the wording of the proposition |
+| `proposition` | content, exec_summary, statement | (v3.1) the semantic contract: `{statement, role, claim_type, subject?, predicate?, direction?, magnitude?, comparison?, driver?, implication?, recommended_action?, decision?, timeframe?, scope?, qualifiers?, evidence_ids, analysis_ids?, confidence}` — required in `mbb_strict` (docs/ACTION_TITLE_ENGINE.md) |
+| `headline_candidates` | content, exec_summary, statement | (v3.1) alternative wordings; the Action Title Engine selects the strongest faithful one |
+| `story_role` | content | (v3.1) context · problem · diagnosis · driver · implication · option · recommendation · impact · plan · risk · decision |
+| `parallel_group`, `editorial.parallel_group`, `parallel_role` | content; key-line points; exhibits; items | (v3.1) explicit sibling group: its members must share one grammatical family (docs/PARALLEL_WORDING.md) |
+| `supports` | content | (v3.1) the slide this one substantiates, when it proves no key-line point directly |
 | `subheadline` | content | optional one-line qualifier |
 | `supporting_message` | content | the second-level message (goes to speaker notes) |
 | `message_type` | content | drives visual reasoning (see VISUAL_GUIDE) |
-| `evidence` | content | `[{claim, value?, values?, source?}]` — what proves the headline; numbers feed the headline check |
+| `evidence` | content | `[{id?, claim, value?, values?, source?}]` — what proves the headline; numbers feed the headline check; `id` is what `proposition.evidence_ids` cites |
 | `visual` / `exhibits` | content | the exhibit(s); `type: auto` lets the engine choose |
 | `commentary` | content | `{title?, points: [...]}` so-what bullets |
 | `kpis` | content | `{items: [...]}` KPI strip |

@@ -354,6 +354,9 @@ def apply_edits(pptx_in: str | Path, edits: dict, pptx_out: str | Path, mark: bo
         if op == "number":
             why = _number(slide, e, mark)
             line = f"{e.get('old') or e['find']} → {e['replace']}" + (f" ({e['fact']})" if e.get("fact") else "")
+        elif op == "set_headline" and not e.get("text"):
+            why = "no wording yet (needs_wording): add an action title to the edit's `candidates` and re-run"
+            line = ""
         elif op == "set_headline":
             shapes = _texts(slide)
             why = None if shapes and shapes[0] is not None else "no headline found"

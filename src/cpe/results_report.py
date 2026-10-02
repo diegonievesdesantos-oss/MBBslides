@@ -78,6 +78,16 @@ def render_block(data: dict) -> str:
                  f"P90 drop {_f(rob.get('p90_drop'))} · catastrophic {rob.get('catastrophic')} ({_pct(rob.get('catastrophic_rate'))}) |")
     else:
         L.append("| **Robustness** | small content perturbations of development seeds | not run yet |")
+    ed = data.get("editorial") or {}
+    for name, label in (("dev", "**Editorial (dev)**"), ("holdout", "**Editorial holdout**")):
+        e = ed.get(name) or {}
+        m = e.get("metrics") or {}
+        if m:
+            what = ("v3.1 editorial fixtures, development set (used while building: in-sample)" if name == "dev"
+                    else f"sealed editorial fixtures, independent author, run once (v{(e.get('provenance') or {}).get('engine_version', '?')})")
+            L.append(f"| {label} | {what}, {e.get('cases')} cases | agreement {_pct(m.get('agreement'))} · valid accepted {_pct(m.get('valid_pass_rate'))} · "
+                     f"invalid caught {_pct(m.get('invalid_catch_rate'))} · unsupported claims passed {m.get('unsupported_claims_passed')}/{m.get('unsupported_claims_total')} · "
+                     f"parallel {_pct(m.get('parallel_agreement'))} |")
     for rnd in ("r1", "r2", "r3"):
         h = (hum.get("rounds") or {}).get(rnd) or {}
         if h.get("comparisons"):
