@@ -476,16 +476,41 @@ def _cand_kind(f: dict, v: dict, text: str) -> str:
     return "plain"
 
 
+YEAR_COL_RE = re.compile(r"^\s*(a[nñ]o|anio|year|yr|ejercicio|periodo|period|fy|fiscal[ _]year)\s*$", re.I)
+
+
+def _row_key(src: dict) -> tuple | None:
+    m = re.match(r"([A-Z]+)(\d+)$", str(src.get("range") or ""))
+    return (str(src.get("file") or ""), str(src.get("sheet") or ""), int(m.group(2))) if m else None
+
+
+def _row_years(facts: list[dict]) -> dict:
+    """v2.5 (item 4): {(file, sheet, row): year} for table rows whose year sits in a column of its own."""
+    out = {}
+    for f in facts:
+        if f.get("fact_type") != "table_value":
+            continue
+        for v in f.get("values") or []:
+            if YEAR_COL_RE.search(str(v.get("column") or "")) and 1900 <= float(v["value"]) <= 2100 and float(v["value"]) == int(v["value"]):
+                k = _row_key(f.get("source") or {})
+                if k:
+                    out[k] = str(int(v["value"]))
+    return out
+
+
 def _candidates(facts: list[dict], exclude_files: set[str]) -> list[dict]:
     """Every value of the new fact model with the words that say what it is about."""
     from .conflicts import _local, _num_pos
 
     out = []
+    row_year = _row_years(facts)
     for f in facts:
         src = f.get("source") or {}
         file = str(src.get("file") or "")
         if f.get("fact_type") in ("derived_change", "assumption") or Path(file).name in exclude_files:
             continue
+        if f.get("fact_type") == "table_value" and any(YEAR_COL_RE.search(str(v.get("column") or "")) for v in f.get("values") or []):
+            continue  # the row's year itself, not a quantity
         for v in f.get("values") or []:
             if f.get("fact_type") == "table_value":
                 if CODE_COL_RE.search(str(v.get("column") or "")):
@@ -507,6 +532,9 @@ def _candidates(facts: list[dict], exclude_files: set[str]) -> list[dict]:
                 measures = _measure_set(_stems(str(v.get("column") or "")))  # "payback_anios", "productividad_veces": the column says what the value is
             quals, fq = _quals(f"{text} {v.get('period') or ''}"), _quals(Path(file).stem)
             quals = {k: quals[k] or fq[k] for k in quals}  # the file name ("ahorro_fase1.csv") only when the row says nothing
+            ry = row_year.get(_row_key(src))
+            if ry and f.get("fact_type") == "table_value":
+                quals["year"] = {ry}  # v2.5: a long table ("indicador, año, valor"): the year is in its own column of the row
             if f.get("fact_type") != "table_value" and len(quals["year"]) > 1:
                 # v2.5: "1,4 M€ en 2023, 1,8 M€ en 2024": each value its own year, not every year of the sentence
                 own = _value_year(f.get("claim", ""), v["value"]) or _years(_plain(str(v.get("period") or "")))
