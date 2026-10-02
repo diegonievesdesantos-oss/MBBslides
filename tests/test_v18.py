@@ -113,3 +113,23 @@ def test_waterfall_is_rebuilt_from_stacked_columns():
                      {"name": "Increase", "values": [0, 20, 0, 0]}, {"name": "Decrease", "values": [0, 0, 10, 0]}]}
     assert _waterfall_steps(ex) == [{"label": "2024", "value": 100.0, "type": "total"}, {"label": "Precio", "value": 20.0},
                                     {"label": "Volumen", "value": -10.0}, {"label": "2025", "value": 110.0, "type": "total"}]
+
+
+def test_cell_to_fact_binding():
+    from cpe.reasoning.checks import factcheck_deck
+    facts = {"F1": {"id": "F1", "claim": "Ventas Norte 2025: 70,4 M€", "values": [{"value": 70.4, "unit": "EUR_M"}]},
+             "F2": {"id": "F2", "claim": "Ventas Sur 2025: 50,2 M€", "values": [{"value": 50.2, "unit": "EUR_M"}]}}
+    def deck(rows, ev):
+        return {"slides": [{"id": "s1", "headline": "Norte vende más que Sur", "evidence": ev,
+                            "visual": {"type": "table", "columns": [{"label": "Región"}, {"label": "Ventas (M€)"}], "rows": rows}}]}
+    ok = factcheck_deck(deck([["Norte", 70.4], ["Sur", 50.2]], [{"fact": "F1"}, {"fact": "F2"}]), facts)
+    assert not [i for i in ok if i["code"] == "CELL_MISBOUND"]
+    swapped = factcheck_deck(deck([["Norte", 50.2], ["Sur", 70.4]], [{"fact": "F1"}, {"fact": "F2"}]), facts)
+    warn = [i for i in swapped if i["code"] == "CELL_MISBOUND"]
+    assert len(warn) == 2 and not any(i["hard"] for i in warn)
+    hard = factcheck_deck(deck([["Norte", 50.2], ["Sur", 70.4]], [{"fact": "F1", "at": "visual.rows[0][1]"}, {"fact": "F2", "at": "visual.rows[1][1]"}]), facts)
+    assert sum(i["code"] == "CELL_MISBOUND" and i["hard"] for i in hard) == 2
+    good = factcheck_deck(deck([["Norte", 70400], ["Sur", 50.2]], [{"fact": "F1", "at": "visual.rows[0][1]"}, {"fact": "F2", "at": ["visual.rows[1][1]"]}]), facts)
+    assert not [i for i in good if i["code"] in ("CELL_MISBOUND", "BINDING_PATH_MISSING")]
+    missing = factcheck_deck(deck([["Norte", 70.4]], [{"fact": "F1", "at": "visual.rows[3][1]"}]), facts)
+    assert [i for i in missing if i["code"] == "BINDING_PATH_MISSING" and i["hard"]]

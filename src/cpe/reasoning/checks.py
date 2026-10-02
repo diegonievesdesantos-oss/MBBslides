@@ -583,6 +583,9 @@ def factcheck_deck(deck: dict | None, facts: dict) -> list[dict]:
                         out.append(_issue("error", "UNSUPPORTED_NUMBER", "deck.json", f"{sid}:{path}", f"{g['number']} not grounded in the slide's cited facts", hard=True))
             elif not _value_grounded(val, cited):
                 out.append(_issue("error", "UNSUPPORTED_NUMBER", "deck.json", f"{sid}:{path}", f"data value {val:g} is not a cited fact value: cite the fact, or write the derived value as a computed fact and cite it", hard=True))
+        from .binding import check_binding
+
+        out += check_binding(s, facts, _issue)
         files = _raw_files(cited, facts)
         named = re.findall(r"[\w\-. ]+\.(?:xlsx|csv|pdf|docx|pptx|md|txt)", s.get("source") or "", re.I)
         for n in named:
