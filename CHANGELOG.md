@@ -30,6 +30,12 @@ Find the numbers a deck must change on material the tool has not seen. Status:
   - A sentence's match leads its group only about the measure next to it.
   - A match on open words alone must be within 60%.
   - Labelled cells about different things ("Horas de vuelo", "Eventos AOG") are never one figure.
+- **Blind, on the sealed set** (4 cases, 308 keyed numbers, run once after items 2–5, 2.2.0 vs 2.3):
+  - outdated numbers found: 32/206 → 82/206;
+  - "outdated" right: 32/41 → 82/95;
+  - proposed values right: 15/32 → 38/82. No better than before: picking the new value is what did
+    not generalise;
+  - "current" right: 7/14 → 14/21.
 - **Measured.** On a new development set of 6 cases (347 keyed numbers, 2 in English) written by another agent:
   - outdated numbers found: 30/255 → 116/255;
   - proposed values right: 21/30 → 103/116;
