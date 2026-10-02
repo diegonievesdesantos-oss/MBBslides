@@ -1,14 +1,16 @@
 ---
 name: consulting-presentation-engine
 description: >
-  Turn structured or unstructured input (notes, documents, PDFs, Excel/CSV, research,
-  financials, business cases) into a top-tier consulting PowerPoint: storyline-first
-  (pyramid principle, SCR and 6 other frameworks), one message per slide with
-  conclusion headlines, visuals chosen by the message, 43 grid layouts in 16 families,
-  native editable charts/tables/shapes, and an automatic render → QA → patch loop with
-  a machine-derived pass/fail gate. Use for strategy decks, board and steering committee
-  presentations, business reviews, investment memos, CDD, market analysis,
-  transformation / operating-model / roadmap decks, financial analysis and executive updates.
+  Turn structured or unstructured input (notes, documents, PDFs, Excel/CSV, research, financials,
+  business cases) into a top-tier consulting PowerPoint, or update an existing deck with new figures.
+  Storyline-first (pyramid principle, SCR and 6 other frameworks); every number traced to a cited
+  source; one evidence-backed proposition per slide, stated by a conclusion headline the engine
+  verifies (no topic titles, unsupported numbers or causal claims); sibling messages in parallel
+  wording; visuals chosen by the message; 45 grid layouts in 16 families; native editable
+  charts/tables/shapes; corporate templates; and an automatic render → QA → patch loop with
+  machine-derived pass/fail verdicts. Use for strategy decks, board and steering committee
+  presentations, business reviews, investment memos, CDD, market analysis, transformation /
+  operating-model / roadmap decks, financial analysis and executive updates, in English or Spanish.
 ---
 
 # Consulting Presentation Engine — operating manual
@@ -233,7 +235,7 @@ layout: add the proof, merge the slide, or turn it into the archetype it really 
 a KPI hero).
 
 Leave `layout: "auto"`. The selector matches the slide's content roles (exhibit, commentary,
-kpis, columns, statements, statement, takeaway) and visual family against 43 layouts in 16
+kpis, columns, statements, statement, takeaway) and visual family against 45 layouts in 16
 families (`scripts/cpe catalog`, `docs/LAYOUT_CATALOG.md`), checks capacity with real text
 metrics, and avoids repeating the previous slide's layout. Fix a layout only for a reason
 (e.g. `exhibit_commentary_left` when the argument must be read before the chart,

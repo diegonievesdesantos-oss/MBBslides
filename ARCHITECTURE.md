@@ -33,7 +33,7 @@ the PPTX. The result is reproducible, diffable and auditable.
 ```
 MBBslides/
 ├── SKILL.md                 the agent's operating manual
-├── layouts/01_…/…16_…/      43 declarative layouts (JSON) in 16 families
+├── layouts/01_…/…16_…/      45 declarative layouts (JSON) in 16 families
 ├── src/cpe/
 │   ├── spec.py              vocabulary (kinds, 45 visual types, 20 message types, 14 deck types),
 │   │                        structural validation, patches
