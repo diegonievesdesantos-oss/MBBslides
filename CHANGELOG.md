@@ -1,5 +1,27 @@
 # Changelog
 
+## Unreleased — 2.4.0.dev0
+
+Pick the right new value, the part of v2.3 that did not generalise blind. Status:
+[docs/V24_STATUS.md](docs/V24_STATUS.md).
+
+- **A fresh sealed set (item 2).** An agent that did not read the code wrote 4 synthetic update cases
+  (366 keyed numbers; water, pharmaceutical distribution, fibre in English, bus electrification). They
+  stress how a new value is chosen:
+  - several new values in one paragraph or table;
+  - actuals next to forecasts, fiscal and calendar years mixed;
+  - restatements in several forms, decoys and benchmarks.
+
+  It was sealed (sha256) and runs once, at the end of 2.4.
+- **One source value, at most two figures (item 3).** In v2.3's blind check a committee's "3,5 M€" became
+  the new value of five different numbers. Now one source value is the new value of at most two
+  different figures of the deck; restatements of one figure (3,2 M€, 3.200 k€) share it freely. The
+  best-matched figures keep it, the others take their next near-equal candidate or stay untraced.
+  - Wrong proposed values removed, with no right one lost: 10 of 44 on v2.3's sealed set (now
+    development), 3 of 13 and 1 of 5 on the other development sets. The v1.8 project is unchanged.
+  - A strict one-to-one rule was tried first and dropped: it lost right values where two different
+    figures legitimately share a source value.
+
 ## 2.3.0 — Finding what changed on unseen material
 
 **Closed 2026-10-02 by the owner, without the blind validation on real material, which moves to v2.4:**
