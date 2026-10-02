@@ -111,13 +111,13 @@ this holds blind.
 | "current" right | 47 / 49 | 46 / 49 |
 
 **What this says.**
-- **Blind, items 3–5 barely move anything.** They remove 10 false "outdated" flags and 2 wrong values,
+- **Blind, items 3–5 barely move anything.** They remove 6 false "outdated" flags and 2 wrong values,
   but also lose 2 right values and 4 finds.
 - **They did not generalise.** On the development sets they removed only wrong values; blind, they
   remove right ones too. Proposed values stay right about half the time, as in v2.3.
 - **The v2.3 tool does better on this set.** It finds 88 of 149 outdated numbers (59%), against 40% on
-  v2.3's sealed set. The sets differ: this one has more figures restated in words and fewer that only
-  arithmetic reaches.
+  v2.3's sealed set. Recall varies a lot from one set of cases to another, so a single set is a rough
+  figure.
 
 **Why it still fails** (read after the run, so this is diagnosis, not tuning):
 - **Past actuals called outdated.** 34 numbers the key keeps valid were called "outdated". Most are past
