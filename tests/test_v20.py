@@ -196,3 +196,87 @@ def test_v21_review_sheet_round_trip(tmp_path):
     assert any(x["op"] == "delete_slide" and x["slide"] == 2 for x in e["edits"])
     assert main(["update", "--apply", str(work), "-o", str(tmp_path / "out" / "new.pptx")]) == 0
     assert len(Presentation(str(tmp_path / "out" / "new.pptx")).slides) == 1
+
+
+def _deck_with(path, slides):
+    """slides: [(headline, table rows or None, chart {"cats": [...], "series": {name: values}} or None)]"""
+    from pptx import Presentation
+    from pptx.chart.data import CategoryChartData
+    from pptx.enum.chart import XL_CHART_TYPE
+    from pptx.util import Inches, Pt
+
+    prs = Presentation()
+    for head, rows, chart in slides:
+        s = prs.slides.add_slide(prs.slide_layouts[6])
+        t = s.shapes.add_textbox(Inches(0.5), Inches(0.3), Inches(9), Inches(1))
+        t.text_frame.text = head
+        t.text_frame.paragraphs[0].runs[0].font.size = Pt(26)
+        if rows:
+            tbl = s.shapes.add_table(len(rows), len(rows[0]), Inches(0.5), Inches(1.5), Inches(9), Inches(3)).table
+            for i, r in enumerate(rows):
+                for j, v in enumerate(r):
+                    tbl.cell(i, j).text = v
+        if chart:
+            cd = CategoryChartData()
+            cd.categories = chart["cats"]
+            for n, v in chart["series"].items():
+                cd.add_series(n, v)
+            s.shapes.add_chart(XL_CHART_TYPE.COLUMN_CLUSTERED, Inches(0.5), Inches(1.5), Inches(9), Inches(5), cd)
+    prs.save(str(path))
+
+
+def _approve(plan, e, slide, where, raw, new):
+    q = next(q for s in plan["slides"] for q in s["numbers"] if s["slide"] == slide and q["where"] == where and q["raw"] == raw)
+    e["edits"].append({"op": "number", "id": q["id"], "slide": slide, "where": where, "find": q["core"], "occ": q["occ"], "replace": new, "old": raw, "approved": True})
+
+
+def test_v21_more_headline_claims(tmp_path):
+    from cpe.reasoning import messages
+    from cpe.reasoning.deck_update import ingest_deck, update_plan
+
+    _deck_with(tmp_path / "d.pptx", [
+        ("Plan de inversión en dos fases", None, None),
+        ("Ambas fases se pagan pronto; la fase 2 es la más rentable", [("Concepto", "Fase 1", "Fase 2"), ("Payback simple (años)", "4,4", "3,1")], None),
+        ("El proyecto ahorra 0,89 M€ al año desde 2027", None, None),
+        ("El ahorro de 1,2 M€ supera el coste de 0,9 M€ anual", None, None)])
+    plan = update_plan(ingest_deck(tmp_path / "d.pptx"), [])
+    e = {"edits": []}
+    _approve(plan, e, 2, "exhibit[0].rows[0][1]", "4,4", "3,0")
+    _approve(plan, e, 2, "exhibit[0].rows[0][2]", "3,1", "5,8")
+    _approve(plan, e, 3, "title", "€0,89 M", "-0,12")
+    _approve(plan, e, 4, "title", "€1,2 M", "0,8")
+    _approve(plan, e, 4, "title", "€0,9 M", "0,9")
+    rev = {r["slide"]: r for r in messages.review(plan, e)}
+    sup = next(c for c in rev[2]["claims"] if c["kind"] == "superlative")
+    assert sup["status"] == "no longer holds" and rev[2]["proposal"] == "Ambas fases se pagan pronto; la Fase 1 es la más rentable"
+    assert any(c["kind"] == "sign" and c["status"] == "no longer holds" for c in rev[3]["claims"])
+    assert any(c["kind"] == "order" and c["status"] == "no longer holds" for c in rev[4]["claims"])
+    assert rev[2]["verdict"] == rev[3]["verdict"] == rev[4]["verdict"] == "no longer holds"
+
+
+def test_v21_cumulative_series(tmp_path):
+    from cpe.reasoning import messages
+    from cpe.reasoning.deck_patch import derive_edits
+    from cpe.reasoning.deck_update import ingest_deck, update_plan
+
+    cats = ["2026", "2027", "2028", "2029"]
+    _deck_with(tmp_path / "d.pptx", [
+        ("Caso de negocio", None, None),
+        ("La inversión se recupera en 2028 con la caja acumulada", None,
+         {"cats": cats, "series": {"Flujo anual": (-3.0, 1.0, 2.5, 2.5), "Caja acumulada": (-3.0, -2.0, 0.5, 3.0)}}),
+        ("Caja acumulada del proyecto sin desglose", None, {"cats": cats, "series": {"Caja acumulada": (-3.0, -2.0, 0.5, 3.0)}})])
+    plan = update_plan(ingest_deck(tmp_path / "d.pptx"), [])
+    flags = [q for s in plan["slides"] for q in s["numbers"] if q.get("not_recomputable")]
+    assert flags and {q["where"].split(".")[0] for q in flags} == {"exhibit[0]"} and all("Caja acumulada" in q["where"] for q in flags)
+    assert not any(q.get("not_recomputable") for q in plan["slides"][1]["numbers"])  # its flows are shown: recomputable
+    e = {"edits": []}
+    for cat, v in zip(cats, ("-3,6", "0,8", "1,9", "2,4")):  # the reviewer approves the new yearly flows
+        _approve(plan, e, 2, f"exhibit[0].Flujo anual[{cat}]", f"{dict(zip(cats, (-3.0, 1.0, 2.5, 2.5)))[cat]:g}", v)
+    derive_edits(plan, e)
+    cum = {x["where"]: x["replace"] for x in e["edits"] if x.get("derived")}
+    assert cum["exhibit[0].Caja acumulada[2027]"] == "-2.8" and cum["exhibit[0].Caja acumulada[2029]"] == "1.5"
+    for x in e["edits"]:
+        x["approved"] = True
+    rev = {r["slide"]: r for r in messages.review(plan, e)}
+    be = next(c for c in rev[2]["claims"] if c["kind"] == "breakeven")
+    assert be["status"] == "no longer holds" and be["new"] == ["2029"] and "2029" in rev[2]["proposal"]

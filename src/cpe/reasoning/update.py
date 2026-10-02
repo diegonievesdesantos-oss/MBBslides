@@ -91,6 +91,10 @@ def apply(work: str | Path, out: str | Path, mark: bool = False, accept_derived:
     applied_ids = changed | {x.get("id") for x in r["failed"] if x.get("id")}
     left = [{"slide": s["slide"], "where": q["where"], "number": q["raw"], "status": q["status"]} for s in plan["slides"] for q in s["numbers"]
             if q["status"] in ("outdated", "untraced") and q.get("id") not in applied_ids and str(s["slide"]) not in {str(d) for d in r["slides_deleted"]}]
+    for x in left:
+        q = next((q for s in plan["slides"] for q in s["numbers"] if s["slide"] == x["slide"] and q["where"] == x["where"] and q["raw"] == x["number"]), {})
+        if q.get("not_recomputable"):
+            x["why"] = q["not_recomputable"]
     rep = {**r, "rewrite_headlines": rewrite, "left_unchanged": left, "derived": e["derived"]}
     Path(out).parent.joinpath("update_report.json").write_text(json.dumps(rep, indent=2, ensure_ascii=False, default=str) + "\n", encoding="utf-8", newline="\n")
     Path(out).parent.joinpath("update_report.md").write_text(report_markdown(rep), encoding="utf-8", newline="\n")
@@ -152,6 +156,9 @@ def report_markdown(r: dict) -> str:
               for w in r["rewrite_headlines"]] + [""]
     if r["failed"]:
         L += ["## Not applied", ""] + [f"- slide {f.get('slide')}: {f['why']}" for f in r["failed"]] + [""]
+    cum = [x for x in r["left_unchanged"] if x.get("why")]
+    if cum:
+        L += ["## Not recomputable from the deck (v2.1)", ""] + sorted({f"- slide {x['slide']}: {x['why']}" for x in cum}) + [""]
     L += ["## Left unchanged (outdated or untraced, no approved edit)", ""]
-    L += [f"- slide {x['slide']} {x['where']}: {x['number']} ({x['status']})" for x in r["left_unchanged"]]
+    L += [f"- slide {x['slide']} {x['where']}: {x['number']} ({x['status']})" for x in r["left_unchanged"] if not x.get("why")]
     return "\n".join(L) + "\n"

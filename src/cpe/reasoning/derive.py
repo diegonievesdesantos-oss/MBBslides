@@ -119,6 +119,7 @@ def relations(plan: dict) -> list[dict]:
                     if len(parts) == k and all(p["kind"] == tgt["kind"] for p in parts) and _close(sum(p["value"] for p in parts), tgt, parts):
                         rels.append({"op": "sum", "target": nid(n, tgt), "parts": [nid(n, p) for p in parts], "how": "sum stated in the text"})
                         break
+    rels += _cumulative(plan)
     rels += _same(plan, rels)
     rels += _same_slide(plan, {r["target"] for r in rels})
     return rels
@@ -137,6 +138,55 @@ def _same_slide(plan: dict, taken: set) -> list[dict]:
             same = [b for b in body if b["raw"] == q["raw"]]
             if len(same) == 1:
                 out.append({"op": "same", "target": nid(n, q), "parts": [nid(n, same[0])], "mult": 1.0, "how": f"same figure as {same[0]['where']}"})
+    return out
+
+
+CUM_RE = re.compile(r"acumulad|cumulativ|running total|cumulative|a origen|year-to-date|ytd", re.I)
+
+
+def chart_series(slide: dict) -> dict:
+    """{(exhibit, series): [numbers in category order]} for a slide's chart points."""
+    out: dict = {}
+    for q in slide["numbers"]:
+        m = re.match(r"exhibit\[(\d+)\]\.(.+)\[(.*)\]$", q["where"])
+        if m and q["kind"] == "data":
+            out.setdefault((int(m.group(1)), m.group(2)), []).append(q)
+    return out
+
+
+def _cumulative(plan: dict) -> list[dict]:
+    """v2.1 (item 5): a cumulative series (a cash curve) is the running sum of a flow series. When the
+    deck shows that flow (or its yearly values), each point = the previous point + this year's flow."""
+    rels = []
+    for s in plan["slides"]:
+        n = s["n"] if "n" in s else s["slide"]
+        series = chart_series(s)
+        for (e, name), pts in series.items():
+            for (e2, name2), flows in series.items():
+                if e2 != e or name2 == name or len(flows) != len(pts):
+                    continue
+                if all(_close(pts[k - 1]["value"] + flows[k]["value"], pts[k], [pts[k - 1], flows[k]]) for k in range(1, len(pts))):
+                    for k in range(1, len(pts)):
+                        rels.append({"op": "sum", "target": nid(n, pts[k]), "parts": [nid(n, pts[k - 1]), nid(n, flows[k])], "how": f"cumulative of '{name2}'"})
+                    if _close(flows[0]["value"], pts[0]):
+                        rels.append({"op": "same", "target": nid(n, pts[0]), "parts": [nid(n, flows[0])], "mult": 1.0, "how": f"cumulative of '{name2}'"})
+                    break
+    return rels
+
+
+def unrecomputable(plan: dict, rels: list[dict]) -> dict:
+    """{number id: why} for the points of a cumulative series the deck cannot recompute: its flows
+    are not shown, so a new curve needs the analysis (or values approved point by point)."""
+    targets = {r["target"] for r in rels}
+    out = {}
+    for s in plan["slides"]:
+        n = s["n"] if "n" in s else s["slide"]
+        for (e, name), pts in chart_series(s).items():
+            generic = len(name) < 3 or re.fullmatch(r"(serie|series|valor|value|datos|data)\s*\d*", name.strip(), re.I)
+            label = name + (" " + (s.get("headline") or "") if generic else "")  # the series' own name, or the slide's when it has none
+            if CUM_RE.search(label) and not any(nid(n, p) in targets for p in pts[1:]):
+                for p in pts:
+                    out[nid(n, p)] = f"cumulative series '{name}': its yearly flows are not in the deck, so it cannot be recomputed from approved values — rebuild it in the analysis or approve its points"
     return out
 
 

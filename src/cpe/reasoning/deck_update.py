@@ -271,7 +271,7 @@ def ingest_deck(path: str | Path) -> dict:
                     if isinstance(v, (int, float)):
                         cat = (ex.get("categories") or [""] * (k + 1))[k] if k < len(ex.get("categories") or []) else ""
                         numbers.append({"where": f"exhibit[{e_i}].{s['name']}[{cat}]", "raw": f"{v:g}", "value": float(v), "kind": "data",
-                                        "context": f"{ex.get('title') or ''} {s['name']} {cat}".strip()})
+                                        "context": f"{ex.get('title') or ''} {s['name']} {cat}".strip(), "core": _core(f"{v:g}"), "occ": 0})
             for r_i, row in enumerate(ex.get("rows") or []):
                 for c_i, cell in enumerate(row[1:], start=1):
                     qs = headline_quantities(cell)
@@ -602,6 +602,14 @@ def update_plan(inv: dict, facts: list[dict]) -> dict:
         for q in s["numbers"]:
             q["id"] = f"{s['slide']}|{q['where']}|{q.get('occ', 0)}|{q['raw']}"
     apply_derived(out, hint)
+    from .derive import relations as _rels
+    from .derive import unrecomputable
+
+    for nid_, why in unrecomputable({"slides": out}, _rels({"slides": out})).items():  # v2.1: say it, instead of a silent "untraced"
+        for s in out:
+            for q in s["numbers"]:
+                if q.get("id") == nid_ and q["status"] in ("untraced", "outdated") and not q.get("derived"):
+                    q["not_recomputable"] = why
     for s in out:
         st = Counter(i["status"] for i in s["numbers"])
         live = len(s["numbers"]) - st["ignored"]

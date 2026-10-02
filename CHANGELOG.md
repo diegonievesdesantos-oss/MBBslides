@@ -16,6 +16,17 @@ Less review work for a person. Status: [docs/V21_STATUS.md](docs/V21_STATUS.md).
   - `reason facts` now re-detects with the current sources and keeps every resolution and dismissal.
     A group that gained a version keeps its review, and a reviewed conflict no longer detected stays,
     marked `stale`.
+- **More headline claims (item 4):**
+  - superlatives ("la fase 2 es la más rentable", checked on the measure row of the slide's table);
+  - signs ("ahorra" with a value now negative);
+  - orders ("A supera B");
+  - the payback year against the slide's cumulative curve.
+
+  Each is read only if it held with the old values, and a superlative or payback year gets a
+  substituted proposal.
+- **Cumulative series (item 5).** A curve whose flows the slide shows is recomputed point by point from
+  approved flows. One whose flows are not shown is marked "not recomputable from the deck", with the
+  reason, instead of a silent "untraced".
 - **The review as a spreadsheet (item 3).** `cpe update` also writes `work/review.xlsx` with four
   sheets:
   - **Changes:** approve or correct each number, or give a value to one left for review.
