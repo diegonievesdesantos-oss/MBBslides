@@ -403,10 +403,30 @@ def _key_measures(ms: set[str]) -> set[str]:
 MONTH_RE = re.compile(r"\b(?:19|20)\d\d-(?:0[1-9]|1[0-2])\b|\b(?:ene|feb|mar|abr|may|jun|jul|ago|sep|oct|nov|dic|jan|apr|aug|dec)\w*[-\s]\d{2,4}\b", re.I)
 
 
+def _years(t: str) -> set[str]:
+    """v2.4 (item 4): the years a text is about, written any way: 2025, 2025e, 2025F, FY2025, FY25,
+    FY2024/25 or 2024/25 (a fiscal year: the year it ends)."""
+    out = set()
+    span = r"(?<![\d.,])((?:19|20)\d\d)\s*[/-]\s*(\d\d(?:\d\d)?)(?![\d.,])"
+
+    def end(m: re.Match) -> int:
+        b = m.group(2)
+        return int(b if len(b) == 4 else m.group(1)[:2] + b)
+
+    for m in re.finditer(span, t):  # 2024/25, 2024-2025: the year it ends
+        if 0 < end(m) - int(m.group(1)) <= 1:
+            out.add(str(end(m)))
+    t = re.sub(span, lambda m: " " if 0 < end(m) - int(m.group(1)) <= 1 else m.group(0), t)
+    out |= {"20" + b for _, b in re.findall(r"\bfy\s*'?(\d\d)\s*[/-]\s*(\d\d)\b", t)}  # FY24/25
+    out |= {"20" + y for y in re.findall(r"\bfy\s*'?(\d\d)(?![\d/])", t)}  # FY25
+    out |= set(re.findall(r"(?<![\d.,/])((?:19|20)\d\d)(?:[a-z]{1,2})?(?![\d.,/])", t))  # 2025, 2025e, fy2025
+    return out
+
+
 def _quals(t: str) -> dict:
     t = _plain(t)
     return {"phase": set(re.findall(r"\b(?:fase|phase|stage)\s*(\d)", t)),
-            "year": {y[-4:] for y in re.findall(r"\b(?:fy)?((?:19|20)\d\d)\b", t)},
+            "year": _years(t),
             "zone": set(re.findall(r"\b(frio|ambiente|cold|ambient)\b", t))}
 
 

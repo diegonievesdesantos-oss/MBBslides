@@ -465,3 +465,23 @@ def test_v24_one_source_value_is_not_the_new_value_of_many_figures(tmp_path):
     assert {(1, "€3,2 M"), (2, "€3,2 M")} <= set(took)  # one figure restated: both follow
     figures = {raw for _, raw in took}
     assert len(figures) <= 2  # 3,5 M€ is not also the new 2,6 and 2,4 M€
+
+
+def test_v24_a_projection_point_does_not_take_another_years_actual(tmp_path):
+    import json
+
+    from cpe.reasoning import facts
+    from cpe.reasoning.deck_update import _years, ingest_deck, update_plan
+
+    assert _years("fy2024/25") == {"2025"} and _years("gasto 2025e") == {"2025"} and _years("fy25") == {"2025"}
+    assert _years("precio 2.025 €") == set()
+    src = tmp_path / "src"
+    src.mkdir()
+    (src / "gasto.csv").write_text("concepto,valor\nGasto material sanitario (M€) — 2024,48.6\n", encoding="utf-8")
+    facts.write_fact_model(src, tmp_path / "work")
+    fm = json.loads((tmp_path / "work" / "facts.json").read_text(encoding="utf-8"))["facts"]
+    _deck_with(tmp_path / "d.pptx", [
+        ("El gasto en material sanitario seguirá creciendo sin actuación", None,
+         {"cats": ["2025e", "2026e", "2027e"], "series": {"Gasto material sanitario proyectado (M€)": (50.5, 52.6, 54.7)}})])
+    plan = update_plan(ingest_deck(tmp_path / "d.pptx"), fm)
+    assert not any(str(q.get("new_value") or "").startswith("48.6") for s in plan["slides"] for q in s["numbers"])
