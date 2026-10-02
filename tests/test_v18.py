@@ -162,3 +162,39 @@ def test_cause_effect_decisions_timeline_and_na_cells(tmp_path):
     rows = _norm_rows({"rows": [["B", "n/a"], ["C", {"value": None, "na": True}]]})
     assert rows[0]["cells"][1] is NA and rows[1]["cells"][1] is NA and is_na("No disponible")
     assert _cell_text(NA, {"kind": "number"}) == "n/a"  # outside a build the locale is English
+
+
+def test_corporate_usage_and_brand_fidelity(tmp_path):
+    from pptx import Presentation
+    from pptx.dml.color import RGBColor
+    from pptx.util import Inches
+
+    from conftest import content_slide, mini_spec
+    from cpe.brand.fidelity import brand_fidelity, corporate_usage
+    from cpe.brand.fixtures import make_multimaster
+    from cpe.brand.ingest import ingest
+    from cpe.core.planner import plan
+    from cpe.design.tokens import theme_for
+    from cpe.pptx.builder import build
+    ingest(make_multimaster(tmp_path / "mm.pptx"), tmp_path / "brand", name="Synthetic")
+    spec = mini_spec([content_slide(id="s1"), {"id": "d1", "kind": "divider", "title": "Where the market is going"}])
+    spec["slides"].insert(0, {"id": "c1", "kind": "cover", "title": "Brand test"})
+    spec["meta"]["brand"] = str(tmp_path / "brand")
+    res, _ = plan(spec)
+    man = build(res, tmp_path / "deck.pptx")
+    u = corporate_usage(man, res)
+    assert {r["slide"]: r["mode"] for r in u["slides"]} == {"c1": "native", "s1": "adaptive", "d1": "native"}
+    theme = theme_for(res["meta"])
+    f = brand_fidelity(tmp_path / "deck.pptx", theme, man, [], res)
+    assert f["structural_slides"]["value"] == 1.0 and f["typography"]["value"] == 1.0 and f["layout_family_appropriateness"]["value"] is None
+    # an off-brand font and colour, outside the margins, are reported, each in its own dimension
+    prs = Presentation(str(tmp_path / "deck.pptx"))
+    tb = prs.slides[1].shapes.add_textbox(Inches(0.02), Inches(3), Inches(3), Inches(1))
+    tb.text_frame.text = "Comic text"
+    run = tb.text_frame.paragraphs[0].runs[0]
+    run.font.name = "Comic Sans MS"
+    run.font.color.rgb = RGBColor(0xFF, 0x00, 0xCC)
+    prs.save(str(tmp_path / "bad.pptx"))
+    g = brand_fidelity(tmp_path / "bad.pptx", theme, man, [{"code": "BRAND_RESERVED_OVERLAP", "slide": "s1", "message": "x"}], res)
+    assert g["typography"]["value"] < 1 and "Comic Sans MS" in g["typography"]["misses"][0]
+    assert any("FF00CC" in m for m in g["palette"]["misses"]) and g["grid"]["misses"] and g["artwork_protection"]["value"] == 1

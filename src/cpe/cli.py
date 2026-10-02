@@ -462,6 +462,17 @@ def cmd_results(a):
     return 0
 
 
+def cmd_brand_fidelity(a):
+    from .brand.fidelity import fidelity_markdown, from_run_dir
+
+    f = from_run_dir(a.run, a.brand)
+    if "typography" not in f:
+        _p(f["note"])
+        return
+    print(fidelity_markdown(f))
+    _p(f"→ {a.run}/brand_fidelity.json, {a.run}/corporate_usage.md")
+
+
 def cmd_brand(a):
     from .brand.ingest import ingest
 
@@ -583,6 +594,8 @@ def main(argv=None) -> int:
     s = sub.add_parser("results"); s.add_argument("what", choices=["readme", "verify"]); s.add_argument("--check", action="store_true"); s.set_defaults(f=cmd_results)
     s = sub.add_parser("brand"); bs = s.add_subparsers(dest="brand_cmd", required=True)
     s2 = bs.add_parser("ingest"); s2.add_argument("template"); s2.add_argument("-o", "--out", required=True); s2.add_argument("--name"); s2.add_argument("--base-theme", default="meridian"); s2.set_defaults(f=cmd_brand)
+    s2 = bs.add_parser("fidelity", help="corporate usage per slide (native / adaptive / engine fallback) and brand-fidelity metrics of a run folder")
+    s2.add_argument("run"); s2.add_argument("--brand", help="brand directory, if it moved since the run"); s2.set_defaults(f=cmd_brand_fidelity)
     s = sub.add_parser("measure"); s.add_argument("run_dir"); s.add_argument("--name", default="deck"); s.set_defaults(f=cmd_measure)
     s = sub.add_parser("catalog"); s.add_argument("-o", "--out"); s.set_defaults(f=cmd_catalog)
     s = sub.add_parser("themes"); s.set_defaults(f=cmd_themes)

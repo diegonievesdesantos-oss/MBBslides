@@ -105,6 +105,9 @@ def run(spec: dict, out_dir: str | Path, max_iter: int = 3, do_render: bool = Tr
                                             "deck_score_v1": round(sum(c["score_v1"] for c in comp_d) / len(comp_d), 1) if comp_d else None,
                                             "slides": comp_d, "decisions": decisions}})
     rep.write(report, out)
+    from .brand.fidelity import write_run_reports  # v1.8: corporate usage + brand fidelity, kept apart from the deck score
+
+    write_run_reports(out, out / f"{name}.pptx", theme_for(resolved.get("meta", {})), json.loads((out / "build_manifest.json").read_text()), issues, resolved)
     (out / "ghost_deck.md").write_text(ghost_deck(current))
     if render_info.get("pngs"):
         rep.review_packet(resolved, report, render_info["pngs"], out)
