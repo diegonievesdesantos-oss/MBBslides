@@ -616,10 +616,10 @@ def check_conflicts(work: Path, fm: dict | None, used: set[str]) -> list[dict]:
         res[tuple(sorted(ids))] = c.get("resolution")
     for c in found:
         key = tuple(sorted(x["fact"] for x in c["facts"]))
-        if res.get(key):
-            continue
+        if res.get(key) or any(r and len(set(k) & set(key)) >= 2 for k, r in res.items()):
+            continue  # (v2.0) a group of versions is resolved by a resolution of the group or of any two of its versions
         touches = used & set(key)
-        desc = f"{c['type']} on {'/'.join(c['measure'])} {c['period']}: " + " vs ".join(f"{x['value']:g} ({x['basis']}, {x['source']})" for x in c["facts"])
+        desc = f"{c['type']} on {'/'.join(m.removeprefix('h:') for m in c['measure'])} {c['period'] or ''}: " + " vs ".join(f"{x['value']:g} ({x['basis']}, {x['source']})" for x in c["facts"])
         out.append(_issue("error" if touches else "warning", "FACT_CONFLICT_UNRESOLVED", "fact_conflicts.json", "/".join(key),
                           desc + (" — the deck uses one of these facts: record which value is used and why" if touches else " — record a resolution")))
     return out

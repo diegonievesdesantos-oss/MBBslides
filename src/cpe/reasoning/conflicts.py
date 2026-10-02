@@ -9,6 +9,7 @@ touching a fact the deck uses is an error.
 from __future__ import annotations
 
 import re
+from pathlib import Path
 
 MEASURES = ("revenue", "sales", "ventas", "ingresos", "ebitda", "ebit", "margin", "margen", "cost", "costs", "coste", "costes", "profit", "beneficio",
             "volume", "volumen", "headcount", "plantilla", "customers", "clientes", "price", "precio", "cash", "caja", "capex", "freight", "transporte",
@@ -248,7 +249,8 @@ def detect_conflicts(facts: list[dict], tolerance: float = 0.01) -> list[dict]:
     # unit kind. Limits ("≤ 5 años", "mínimo del 12%") are criteria, not observations, and are skipped.
     tables = [(f, v) for f in facts if f.get("fact_type") == "table_value" for v in f.get("values") or [] if not v.get("period")]
     prose = [(f, v) for f in facts if f.get("fact_type") == "text_statement" for v in f.get("values") or [] if not v.get("period")]
-    rows = [(fb, vb, _content(_row_text(vb)), _measures(_row_text(vb)), _kind_of(fb, vb)) for fb, vb in tables]
+    rows = [(fb, vb, _content(_row_text(vb)), _measures(_row_text(vb)), _kind_of(fb, vb)) for fb, vb in tables
+            if not re.search(r"[≤≥<>]", _row_text(vb))]  # a requirement row ("≥ 130") is a criterion, not an observation
     for fa, va in prose:
         ctx = _local(fa.get("claim", ""), va["value"])
         if ctx is None:
@@ -331,4 +333,299 @@ def detect_conflicts(facts: list[dict], tolerance: float = 0.01) -> list[dict]:
                         "facts": [{"fact": fa["id"], "value": va["value"], "unit": va["unit"], "basis": va.get("basis"), "source": fa["source"].get("file")},
                                   {"fact": fb["id"], "value": vb["value"], "unit": vb["unit"], "basis": vb.get("basis"), "source": fb["source"].get("file")}],
                         "resolution": None})
+    _versions(facts, out, seen)
     return out
+
+
+# v2.0 (item 4): versions of one quantity across sources — the same project cost, savings or rate given
+# with different values because each source counts something different (scope), on another basis
+# (plan vs actual), at another cut-off, or by another method. Families group synonyms of a measure.
+FAMILIES = {"cost": ("inversi", "investment", "capex", "coste", "costes", "cost", "contab", "importe", "spend", "gasto"),
+            "saving": ("ahorro", "ahorros", "saving", "savings", "beneficio", "benefit"),
+            "revenue": ("ventas", "ingreso", "facturaci", "revenue", "sales", "turnover"),
+            "margin": ("margen", "margin", "ebitda", "ebit"),
+            "rate": ("tasa", "rate", "ratio", "porcentaje", "share", "cuota"),
+            "error": ("error", "errores", "defect", "incidenc"),
+            "productivity": ("productividad", "productivity", "veces", "times", "rendimiento", "output"),
+            "headcount": ("plantilla", "fte", "empleados", "headcount", "personas", "staff"),
+            "volume": ("volumen", "volume", "líneas", "lineas", "unidades", "units", "pedidos", "orders", "pacientes", "patients", "clientes", "customers"),
+            "payback": ("payback", "retorno", "recupera"),
+            "price": ("precio", "price", "tarifa", "fee")}
+SCOPE_RE = re.compile(r"\b(incluy\w*|inclu\w*|exclu\w*|sin|without|con|with|complet\w*|total|neto|neta|net|bruto|gross|contabiliz\w*|pendiente\w*|pending|"
+                      r"a \d{1,2}/\d{1,2}|as of|cierre|cut-?off|recoge|only|solo)\b", re.I)
+PLANNY = re.compile(r"\b(business case|presupuest\w*|budget\w*|previst\w*|previsi\w*|forecast\w*|objetivo|target|garant\w*|guarante\w*|ofert\w*|"
+                    r"plan(?:ned)?|estimad\w*|estimat\w*|aprobad\w*|approved)\b", re.I)
+
+
+GROWTH_RE = re.compile(r"\b(crec\w*|creci\w*|variaci\w*|aument\w*|growth|grow\w*|increase\w*|decrease\w*|declin\w*|desviaci\w*|deviation|"
+                       r"reduc\w*|libera\w*|ahorrad\w*|menos|fewer|cut|recorte\w*|subid\w*|ca[ií]d\w*)\b|"
+                       r"\d\s*%\s*(?:más|menos|more|less|above|below|por encima|por debajo)\b", re.I)
+CRITERION_RE = re.compile(r"\b(necesari\w*|required|requerid\w*|umbral|threshold|break-?even|mínim\w*|minimum|máxim\w*|maximum|límite|limit|"
+                          r"criterio|criterion|hurdle|garantía contractual|contractual guarantee)\b", re.I)
+SLICE_RE = re.compile(r"\b(?:19|20)\d\d-(?:0[1-9]|1[0-2])\b|\b(?:ene|feb|mar|abr|may|jun|jul|ago|sep|oct|nov|dic|jan|apr|aug|dec)[a-z]*[-\s]\d{2,4}\b|"
+                      r"\bsemana\s*\d+|\bweek\s*\d+|\bS\d{1,2}\b|\bQ[1-4]\b|\btrimestre\b|\bquarter\b", re.I)
+PER_RE = re.compile(r"\b(?:por|per|/)\s*(fte|empleado|persona|hora|hour|línea|linea|line|unidad|unit|cliente|customer|paciente|patient|pedido|order|tienda|store|m2|día|dia|day|mes|month)\b|"
+                    r"\b(medio|media|average|avg|unitari\w*)\b", re.I)
+
+
+DATE_SLICE_RE = re.compile(r"\b\d{1,2}[/.-]\d{1,2}[/.-](?:19|20)?\d{2}\b|\b(?:19|20)\d\d-\d{2}-\d{2}\b")  # a ledger line, a daily row
+SOURCE_RE = re.compile(r"\b(según|segun|according to|per the|calculad\w*|calculated|medid\w*|measured|reportad\w*|reported|informe|report|mayor|ledger|redondead\w*|rounded)\b", re.I)
+GENERIC = {"ascie", "total", "segun", "según", "hasta", "sobre", "entre", "desde", "valor", "value", "impor", "datos", "fuent", "tras", "frent"}
+
+
+VQUAL = {"phase": re.compile(r"\b(?:fase|phase|stage)[\s_]*(\d)\b", re.I),
+         "year": QUAL_RES["year"], "zone": QUAL_RES["zone"]}  # versions: "inversión total" is the whole project, not a total column
+
+
+def _own_delta(text: str, value: float) -> bool:
+    """Is THIS number a change ("crece un 6%", "12 FTE menos", "un 10% por encima")? Words of another
+    number of the sentence do not count."""
+    m = _num_pos(text, value)
+    if m is None:
+        return bool(GROWTH_RE.search(text))
+    before, after = text[max(0, m.start() - 40):m.start()], text[m.end():m.end() + 25]
+    return bool(re.search(r"\b(crec\w*|creci\w*|variaci\w*|aument\w*|reduc\w*|libera\w*|growth|increase\w*|decrease\w*|declin\w*|desviaci\w*|cut)\b[^.;\d]*$", before, re.I)
+                or re.match(r"\s*(%|pp|p\.p\.)?\s*(más|menos|more|less|above|below|por encima|por debajo|fewer)\b", after, re.I)
+                or re.search(r"[+−-]\s*$", before))
+
+
+REF_RE = re.compile(r"\b(up from|down from|from|desde|frente a(?: los| las| el| la)?|compared (?:with|to)|vs\.?|versus|respecto a(?:l)?|que en|than|antes|previously|was)\s*[£$€]?\s*$", re.I)
+
+
+def _is_reference(claim: str, value: float) -> bool:
+    m = _num_pos(claim, value)
+    return bool(m and REF_RE.search(claim[max(0, m.start() - 22):m.start()]))
+
+
+def _qset(rx, t: str) -> set:
+    return {next(g for g in m.groups() if g).lower().replace("í", "i") for m in rx.finditer(t)}
+
+
+def _shared_quals(ta: str, tb: str) -> int:
+    """How many of phase / year / zone both name, and the same."""
+    return sum(1 for cat, rx in VQUAL.items() if cat != "year" and _qset(rx, ta) & _qset(rx, tb))  # a shared year says little
+
+
+def _both_clash(ta: str, tb: str) -> bool:
+    for cat, rx in VQUAL.items():
+        qa = {next(g for g in m.groups() if g).lower().replace("í", "i") for m in rx.finditer(ta)}
+        qb = {next(g for g in m.groups() if g).lower().replace("í", "i") for m in rx.finditer(tb)}
+        if qa and qb and not (qa & qb):
+            return True
+    return False
+
+
+SPAN_RE = re.compile(r"\b(anual\w*|al año|per year|a year|annual\w*|yearly)\b|\b(en (?:\w+ )?(?:\d+|dos|tres|cuatro|cinco) años|in (?:\d+|two|three|four|five) years|acumulad\w*|cumulative)\b", re.I)
+
+
+def _per(text: str) -> str:
+    m = PER_RE.search(text or "")
+    unit = (m.group(1) or "avg").lower()[:4] if m else ""
+    sp = SPAN_RE.search(text or "")
+    return unit + ("|cum" if sp and sp.group(2) else "")
+
+
+def _slice_key(text: str) -> str:
+    m = SLICE_RE.search(text or "") or DATE_SLICE_RE.search(text or "")
+    return m.group(0).lower() if m else ""
+
+
+HEAD_STOP = STOP | {"total", "valor", "value", "importe", "amount", "cifra", "figure", "dato", "data", "nuevo", "nueva", "new", "nivel", "level",
+                    "anual", "annual", "año", "year", "mes", "month", "trimestre", "quarter", "fecha", "date", "según", "segun", "hasta", "sobre", "unos",
+                    "unas", "cerca", "around", "about", "approximately", "aproximadamente", "este", "esta", "this", "that", "ese", "esa", "came", "fue", "es",
+                    "son", "was", "were", "has", "have", "ha", "han", "of", "de", "del", "at", "in", "en", "is", "are", "be", "un", "una", "al",
+                    # qualifiers and connectives are not measures
+                    "fase", "phase", "stage", "zona", "zone", "frío", "frio", "ambiente", "real", "actual", "plan", "for", "the", "and", "with", "con",
+                    "por", "para", "los", "las", "que", "como", "más", "mas", "menos", "end", "from", "ahead", "after", "before", "tras", "antes",
+                    "resultado", "result", "hipotesis", "hipótesis", "calculo", "cálculo", "concepto", "comentario", "comment", "note", "nota"}
+
+
+def _heads(text: str, value) -> set[str]:
+    """The measure named right before the number ("ARR of £28.6m", "new bookings came in at £3.7m"), or
+    the head of a row label: works for metrics no fixed list names."""
+    if value is not None:
+        m = _num_pos(text, value)
+        if m is None:
+            return set()
+        pre = text[max(0, m.start() - 60):m.start()]
+        post = re.findall(r"[A-Za-záéíóúñüÁÉÍÓÚÑ]{3,}", text[m.end():m.end() + 14])[:1]  # "£3.7m ACV", "212 personas"
+        lead = re.findall(r"[A-Za-záéíóúñüÁÉÍÓÚÑ]{3,}", text)[:3]  # the subject of the clause
+    else:
+        pre, post, lead = text[:60], [], []
+    toks = re.findall(r"[A-Za-záéíóúñüÁÉÍÓÚÑ]{3,}", pre)
+    toks = (toks[-4:] + post + lead) if value is not None else toks[:3]
+    out = set()
+    for t in toks:
+        lt = t.lower()
+        if lt in HEAD_STOP:
+            continue
+        out.add("h:" + (t if t.isupper() and len(t) <= 5 else lt[:6]))
+    return out
+
+
+def _families(text: str) -> set[str]:
+    t = (text or "").lower()
+    words = re.findall(r"[a-záéíóúñü]+", t)
+    return {fam for fam, stems in FAMILIES.items() if any(w.startswith(st) for w in words for st in stems)}
+
+
+def _stems5(text: str) -> set[str]:
+    return {w[:5] for w in re.findall(r"[a-záéíóúñü]{4,}", (text or "").lower().replace("_", " ")) if w not in STOP}
+
+
+SUBJ_RE = re.compile(r"\b(?:fase|phase|stage)[\s_]*\d\b|\b(?:fr[ií]o|ambiente|cold|ambient)\b", re.I)
+
+
+def _version_items(facts: list[dict]) -> list[dict]:
+    paras: dict = {}  # the sentences of one paragraph: "La fase 1 … arrancó. La inversión total asciende a 3,52 M€"
+    for f in facts:
+        if f.get("fact_type") == "text_statement":
+            paras.setdefault((f["source"].get("file"), f["source"].get("loc")), []).append(f.get("claim", ""))
+    sizes: dict = {}
+    rowsum: dict = {}
+    for f in facts:
+        if f.get("fact_type") == "table_value":
+            sizes[f["source"].get("file")] = sizes.get(f["source"].get("file"), 0) + 1
+            for v in f.get("values") or []:
+                k = (f["source"].get("file"), f["source"].get("loc"), v.get("label"), _kind(v.get("unit")))
+                rowsum[k] = rowsum.get(k, 0.0) + _base(v)
+    items = []
+    for f in facts:
+        if f.get("fact_type") in ("derived_change", "assumption"):
+            continue
+        file = str(f["source"].get("file") or "")
+        for v in f.get("values") or []:
+            kind = _kind_of(f, v)
+            if not kind and re.search(r"\b(personas|empleados|fte|ftes|people|employees|staff|headcount|plantilla|camas|beds|tiendas|stores|clientes|customers|pacientes|patients|usuarios|users)\b",
+                                      f"{f.get('claim', '')} {v.get('label') or ''} {v.get('column') or ''}", re.I):
+                kind = "COUNT"  # a head count or a count of units: unit-less, still a quantity with versions
+            if not kind or kind in DURATIONS:
+                continue
+            if f.get("fact_type") == "table_value":
+                text = f"{v.get('label') or ''} — {v.get('column') or ''}"
+                fam = _families(str(v.get("column") or "")) or _families(text)
+                fam |= _heads(str(v.get("label") or ""), None) | _heads(str(v.get("column") or ""), None)
+            else:
+                text = _local(f.get("claim", ""), v["value"])
+                if text is None:
+                    continue  # a limit or target is a criterion, not a version
+                fam = _families(text) | _heads(text, v["value"])
+            if not fam:
+                continue
+            if CRITERION_RE.search(text):
+                continue  # a threshold is a criterion, not a version
+            if f.get("fact_type") != "table_value" and _is_reference(f.get("claim", ""), v["value"]):
+                continue  # "up from £27.4m", "frente a los 3,2 M€ aprobados": another period or the base, cited for comparison
+            subj = text
+            if f.get("fact_type") == "text_statement" and not SUBJ_RE.search(text):  # the paragraph or its heading names the subject
+                around = " ".join(paras.get((file, f["source"].get("loc")), [])) + " " + " ".join((f.get("where") or {}).values())
+                subj = f"{text} " + " ".join(dict.fromkeys(m.group(0) for m in SUBJ_RE.finditer(around)))
+            if not VQUAL["phase"].search(subj):  # "coste_fase1.csv", "detalle_fase2_real.csv": the file names the phase
+                subj += " " + " ".join(m.group(0) for m in VQUAL["phase"].finditer(Path(file).stem.replace("_", " ").replace("fase", " fase ")))
+            quals = {"text": f"{subj} {v.get('period') or ''}", "file": Path(file).stem}
+            items.append({"f": f, "v": v, "file": file, "kind": kind, "fam": fam, "words": _stems5(text), "full": set(re.findall(r"[a-záéíóúñü]{4,}", text.lower())),
+                          "quals": quals, "text": text, "plan": bool(PLANNY.search(text) or PLANNY.search(Path(file).stem.replace("_", " "))),
+                          "base": abs(_base(v)), "per": _per(text), "delta": _own_delta(text, v["value"]) if f.get("fact_type") != "table_value" else bool(GROWTH_RE.search(text)),
+                          "slice_key": _slice_key(text if f.get("fact_type") != "table_value" else f"{v.get('label') or ''}"),
+                          "slice": f.get("fact_type") == "table_value" and bool(SLICE_RE.search(str(v.get("label") or "")) or DATE_SLICE_RE.search(str(v.get("label") or ""))),
+                          "analysis": file.startswith("analysis/") or "/analysis/" in file,
+                          "records": f.get("fact_type") == "table_value" and sizes.get(file, 0) >= 40,
+                          "row_total": abs(rowsum.get((f["source"].get("file"), f["source"].get("loc"), v.get("label"), _kind(v.get("unit"))), 0.0))
+                          if f.get("fact_type") == "table_value" else None})
+    return items
+
+
+def _versions(facts: list[dict], out: list[dict], seen: set) -> None:
+    items = _version_items(facts)
+    best: dict = {}
+    for i, a in enumerate(items):
+        for b in items[i + 1:]:
+            if a["file"] == b["file"] or a["kind"] != b["kind"] or not (a["fam"] & b["fam"]) or a["f"]["id"] == b["f"]["id"]:
+                continue
+            if a["analysis"] and b["analysis"]:
+                continue  # two outputs of the analyst's own model: scenarios, not versions
+            if a["slice"] != b["slice"] or a["per"] != b["per"] or a["delta"] != b["delta"]:
+                continue  # a month against a year, a cost per FTE against a total, a change against a level
+            if a["slice"] and a["slice_key"] != b["slice_key"]:
+                continue  # two different months / days / weeks
+            x, y = a["base"], b["base"]
+            if not x or not y or max(x, y) / min(x, y) > 1.7:
+                continue  # versions differ by scope or basis, not by multiples: a part of the total, another quantity
+            if _same(abs(_base(a["v"])), abs(_base(b["v"])), a["v"], b["v"], 0.01):
+                continue  # the same figure, to the precision each is written with
+            ta, tb = a["quals"]["text"], b["quals"]["text"]
+            if _both_clash(ta, tb):
+                continue  # both name a phase / zone / year, and not the same one
+            if _opposed(a["full"], b["full"]):
+                continue
+            fam_stems = {st[:5] for fam in (a["fam"] & b["fam"]) for st in FAMILIES.get(fam, (fam[2:],))}
+            shared = {w for w in (a["words"] & b["words"]) - GENERIC if w[:5] not in fam_stems and not any(w.startswith(st[:4]) for st in fam_stems)}
+            ratio = max(x, y) / min(x, y)
+            # the measure family, the unit and the magnitude already match; words, subject and closeness rank the candidates
+            if any(t["row_total"] and abs(t["row_total"] - t["base"]) > 1e-9 and abs(o["base"] - t["row_total"]) <= 0.015 * t["row_total"]
+                   for t, o in ((a, b), (b, a))):
+                continue  # the other figure is this row's total (fixed + variable cost): a part and its whole
+            if a["records"] and b["records"]:
+                continue  # two rows of two data exports: reconciling them is an analysis, not a conflict between statements
+            sc = len(shared) + 2 * _shared_quals(ta, tb) + (1 if ratio <= 1.3 else 0) + (1 if a["kind"] in ("EUR", "USD", "GBP") and min(x, y) >= 1e6 else 0)
+            marked = any(SCOPE_RE.search(t["text"]) or PLANNY.search(t["text"]) or SOURCE_RE.search(t["text"]) for t in (a, b))
+            anchored = bool(shared) or _shared_quals(ta, tb) > 0 or bool((a["fam"] & b["fam"]) - set(FAMILIES))
+            if sc < 1 or not anchored or (sc < 2 and not marked):
+                continue  # the same measure is not enough: a shared word, subject or named metric anchors it
+            for me, other in ((a, b), (b, a)):  # each value keeps its best matches (ties included) in each other file
+                k = (me["f"]["id"], id(me["v"]), other["file"])
+                if k not in best or sc > best[k][0]:
+                    best[k] = (sc, [other])
+                elif sc == best[k][0]:
+                    best[k][1].append(other)
+    pairs = {}
+    by_key = {(it["f"]["id"], id(it["v"])): it for it in items}
+    for (fid, vid, ofile), (sc, others) in best.items():
+        if len(others) > 2:
+            continue  # many equally good candidates in one file: the match is not specific enough
+        me = by_key[(fid, vid)]
+        for other in others:
+            key = tuple(sorted((me["f"]["id"], other["f"]["id"])))
+            if key in seen or key in pairs:
+                continue
+            back = best.get((other["f"]["id"], id(other["v"]), me["file"]))
+            if back and len(back[1]) <= 2 and any(x is me for x in back[1]):  # mutual: both sides rank each other first
+                pairs[key] = (sc, me, other)
+    # one conflict per quantity: the pairs that share a version join (a cost given as 3,52 / 3,74 / 4,03 M€)
+    parent: dict = {}
+
+    def find(k):
+        while parent.setdefault(k, k) != k:
+            parent[k] = parent[parent[k]]
+            k = parent[k]
+        return k
+
+    node = {}
+    for key, (sc, a, b) in pairs.items():
+        ka, kb = (a["f"]["id"], id(a["v"])), (b["f"]["id"], id(b["v"]))
+        node[ka], node[kb] = a, b
+        parent[find(ka)] = find(kb)
+    groups: dict = {}
+    for key, (sc, a, b) in pairs.items():
+        groups.setdefault(find((a["f"]["id"], id(a["v"]))), []).append((key, sc, a, b))
+    for members in groups.values():
+        vers = {}
+        for key, sc, a, b in members:
+            seen.add(key)
+            for it in (a, b):
+                vers[(it["f"]["id"], id(it["v"]))] = it
+        its = sorted(vers.values(), key=lambda it: it["base"])
+        if len({it["file"] for it in its}) > 6:  # a chain across many files is not one quantity: keep its pairs
+            chunks = [[a, b] for _, _, a, b in members]
+        else:
+            chunks = [its]
+        for its in chunks:
+            plan = {it["plan"] for it in its}
+            kind = ("plan_vs_actual" if len(plan) > 1 else
+                    "definition_mismatch" if any(SCOPE_RE.search(it["text"]) for it in its) else "value_mismatch")
+            fams = set.intersection(*(it["fam"] for it in its)) or set.union(*(it["fam"] for it in its))
+            out.append({"id": f"X{len(out) + 1:03d}", "type": kind, "measure": sorted(fams), "period": None,
+                        "version_score": max(sc for _, sc, _, _ in members), "versions": len(its),
+                        "facts": [{"fact": it["f"]["id"], "value": it["v"]["value"], "unit": it["v"]["unit"], "basis": it["v"].get("basis"),
+                                   "source": it["file"], "says": it["text"][:120]} for it in its],
+                        "resolution": None})

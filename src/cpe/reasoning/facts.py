@@ -299,6 +299,12 @@ def build_fact_model(paths: list[str | Path]) -> dict:
                 ctx = f"{label} — {head}: {c}" if label and label != c else f"{head}: {c}"
                 for x in _xf(c, t["source"], f"{t['loc']} r{i + 2}c{j + 1}", decimal_comma=t.get("decimal_comma", False)):
                     extra_cells.append({**x, "context": ctx[:300]})
+    para, head, last = {}, {}, {}  # v2.0: the paragraph and section heading of each line (the subject a sentence may leave implicit)
+    for b in inv.get("blocks") or []:
+        if b.get("kind") == "heading":
+            last[b["source"]] = b.get("text", "")
+        para[(b["source"], b["loc"])] = b.get("text", "")
+        head[(b["source"], b["loc"])] = last.get(b["source"], "")
     by_sentence: dict = {}  # one text fact per sentence, with every number it states
     for f in inv["facts"] + extra_cells:
         by_sentence.setdefault((f["source"], f["loc"], f["context"]), []).append(f)
@@ -318,8 +324,9 @@ def build_fact_model(paths: list[str | Path]) -> dict:
                 unit = "USD" if re.match(r"\s*d", after, re.I) else "EUR"
             vals.append({"value": f["value"], "unit": unit or unit_in_context(f["raw"], ctx), "raw": f["raw"],
                          "period": (per or {}).get("period"), "basis": (per or {}).get("basis")})
+        where = {k: v[:300] for k, v in (("heading", head.get((src, loc), "")), ("paragraph", para.get((src, loc), ""))) if v and v != ctx}
         facts.append({"id": next_id(), "claim": ctx, "values": vals,
-                      "source": {"file": src, "loc": loc}, "fact_type": "text_statement", "confidence": 0.8})
+                      "source": {"file": src, "loc": loc}, "fact_type": "text_statement", "confidence": 0.8, **({"where": where} if where else {})})
     stats = {"sources": len(inv["sources"]), "tables": len(inv["tables"]), "facts": len(facts),
              "by_type": {k: sum(1 for f in facts if f["fact_type"] == k) for k in ("table_value", "derived_change", "text_statement")},
              "datasets": datasets}
