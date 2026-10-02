@@ -37,13 +37,17 @@ def proposed_edits(plan: dict) -> dict:
         for q in s["numbers"]:
             if q["status"] == "outdated" and q.get("new_display") and q.get("core"):
                 d = q.get("direct") or {}
-                alt = f" | its own match says {d['new_display']} ({d.get('fact')})" if d.get("new_display") and d["new_display"] != q["new_display"] else ""
+                own = d.get("new_display") if d.get("new_display") and d["new_display"] != q["new_display"] else None
+                alt = f" | its own match says {own} ({d.get('fact')})" if own else ""
+                if q.get("group_disagrees"):  # v2.4: restatements of this figure got different values: the reviewer decides
+                    alt += " | restatements disagree: " + "; ".join(q["group_disagrees"][:4])
                 edits.append({"op": "number", "id": q.get("id"), "slide": s["slide"], "where": q["where"], "find": q["core"], "occ": q.get("occ", 0),
                               "replace": q["new_display"], "fact": q.get("fact"), "old": q["raw"], "evidence": q.get("new_claim", "") + alt,
                               "context": q.get("context", "")[:120], "approved": False, **({"derived": q["derived"]} if q.get("derived") else {}),
-                              **({"direct": d["new_display"]} if alt else {})})
+                              **({"direct": own} if own else {})})
             elif q["status"] in ("outdated", "untraced"):
-                review.append({"slide": s["slide"], "where": q["where"], "number": q["raw"], "status": q["status"], "context": q.get("context", "")[:120]})
+                review.append({"slide": s["slide"], "where": q["where"], "number": q["raw"], "status": q["status"], "context": q.get("context", "")[:120],
+                               **({"disagree": q["group_disagrees"][:4]} if q.get("group_disagrees") else {})})
     return {"source": plan.get("source"), "edits": edits, "review": review,
             "how": "set approved: true on each edit you accept (or change 'replace'); add replace_text / set_chart / delete_slide / note "
                    "edits by hand; then `cpe deck patch old.pptx edits.json -o new.pptx`"}
@@ -146,7 +150,8 @@ def edits_markdown(e: dict) -> str:
     if other:
         L += ["", "## Other edits", ""] + [f"- slide {x.get('slide')}: {x.get('op')} {x.get('text') or x.get('find') or x.get('series') or ''}" for x in other]
     L += ["", "## To review by hand (no new value proposed)", ""]
-    L += [f"- slide {r['slide']} {r['where']}: {r['number']} ({r['status']}) — {r['context'][:80]}" for r in e.get("review") or []]
+    L += [f"- slide {r['slide']} {r['where']}: {r['number']} ({r['status']}) — {r['context'][:80]}"
+          + (f" — restatements disagree: {'; '.join(r['disagree'])}" if r.get("disagree") else "") for r in e.get("review") or []]
     return "\n".join(L) + "\n"
 
 

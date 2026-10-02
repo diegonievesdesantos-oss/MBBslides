@@ -925,6 +925,19 @@ def apply_derived(slides: list[dict], hint: str | None = None, known: dict | Non
                     out[q["id"]] = q["new_num"]
         return out
 
+    # v2.4 (item 5): a restatement with its own different plain match is not overwritten by a pairwise "same"
+    def own(q: dict) -> float | None:
+        return q["new_num"] if q.get("status") == "outdated" and not q.get("derived") and not q.get("fact_analysis") and q.get("new_num") is not None else None
+
+    keep = []
+    for r in rels:
+        t_, p_ = by_id.get(r["target"]), by_id.get(r["parts"][0]) if r["parts"] else None
+        if r["op"] == "same" and t_ and p_ and own(t_) is not None and own(p_) is not None and not p_.get("fact_analysis"):
+            a, b = own(t_), own(p_) * r.get("mult", 1.0)
+            if abs(a - b) > 0.01 * max(abs(a), abs(b), 1e-9):
+                continue
+        keep.append(r)
+    rels = keep
     targets = {r["target"] for r in rels if r["op"] != "grow"}  # a projected point keeps its own new value
     if known is None:
         known = {k: v for k, v in values(set()).items() if not by_id[k].get("derived")}
@@ -952,7 +965,27 @@ def apply_derived(slides: list[dict], hint: str | None = None, known: dict | Non
                     return None  # "ahorra 1,8 M€ … una inversión de 4,6 M€": 4,6 matched to the saving
             return (2.0 if q.get("fact_analysis") else 1.0) + (0.5 if ".rows[" in q["where"] else 0.0)
         sc = [(score(i), -k, i) for k, (i, _) in enumerate(g) if score(i) is not None]
-        return max(sc)[2] if sc else None
+        if not sc:
+            return None
+        best = max(sc)
+        if best[0] < 2.0:  # v2.4 (item 5): no derived or analysis head, and the members' own matches disagree: flag, do not overwrite
+            own = {}
+            for i, f in g:
+                q = by_id.get(i)
+                if q and q["status"] == "outdated" and not q.get("derived") and q.get("new_num") is not None and f:
+                    own[i] = q["new_num"] / f  # in the group's first member's units
+            vals = sorted(own.values())
+            if len(vals) >= 2 and abs(vals[-1] - vals[0]) > 0.01 * max(abs(vals[-1]), abs(vals[0]), 1e-9):
+                shown = [f"slide {by_id[i]['id'].split('|')[0]}: {by_id[i].get('new_display')}" for i in own]
+                for i, _ in g:
+                    if i in by_id:
+                        by_id[i]["group_disagrees"] = shown
+                return None
+            h = by_id[best[2]]
+            old_v = abs(h["value"]) or 1e-9
+            if h["status"] == "outdated" and h.get("new_num") is not None and abs(abs(h["new_num"]) / old_v - 1) > 0.5:
+                return None  # a plain match that moves the figure by more than half: it does not speak for every restatement
+        return best[2]
 
     allrels = with_groups(plan, rels, pick)
     grels = [r for r in allrels if "group" in r]

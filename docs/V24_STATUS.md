@@ -9,8 +9,8 @@ development set.
 | 1 | Blind validation on real material: unseen corporate templates; new cases with the owner's key sealed beforehand | **needs the owner** |
 | 2 | A fresh sealed set, stressing how a new value is chosen; run once at the end of 2.4 | **sealed** |
 | 3 | One source value is the new value of one figure, not of five | **done** |
-| 4 | The year of each figure: a projection's future points do not take a past actual; FY2023 does not replace FY2025 | open |
-| 5 | Group heads: a weak match does not lead a group; members that disagree are flagged, not overwritten | open |
+| 4 | The year of each figure: a projection's future points do not take a past actual; FY2023 does not replace FY2025 | **done** |
+| 5 | Group heads: a weak match does not lead a group; members that disagree are flagged, not overwritten | **done** |
 
 ## The sets
 
@@ -47,3 +47,52 @@ stopped one source value from feeding several quantities.
 **What did not work.** One source value per figure, strictly. It lost right values on every set (5 on the
 v2.2 set, 6 on v2.3's sealed set) and 2 outdated finds on the v1.8 project. Allowing two figures kept
 every right value.
+
+## Item 4: the year of each figure
+
+**The failure.** In v2.3's blind check, a projection's 2025–2027 points took the 2024 actual. Their
+categories read "2025e", "2026e", "2027e", and the year reader needed a bare 2025.
+
+**The rule.** Years are read in every written form, and a year on each side that differs is a clash:
+- an estimate or forecast: 2025e, 2025F;
+- a fiscal year: FY2025, FY25, and FY2024/25, 2024/25 or 2024-2025 (the year it ends);
+- a price such as "2.025 €" is not a year.
+
+**Measured.** On v2.3's sealed set (now development), 7 wrong proposed values removed and no right one
+lost; no change on the other development sets or the v1.8 project.
+
+**What did not work.** Preferring the latest year when the deck's number names none changed nothing
+on any set, and was dropped.
+
+## Item 5: weak heads, disagreeing restatements
+
+**The failure.** A restatement with a plain (non-analysis) match led its group, and every other
+restatement copied it. In v2.3's blind check, a headline's "4,5 M€" matched to 1,7 M€ was copied to
+the table and the next steps.
+
+**The rules.** For a group whose best member is a plain match (not derived by the deck's arithmetic,
+not from an analysis):
+- **Members that disagree are flagged, not overwritten.** When restatements found different values, no
+  value is copied. Each keeps its own, and `review.xlsx`, `edits.md` and the review list show
+  "restatements disagree" with every slide's value. The older pairwise "same figure" rule now respects
+  this too.
+- **A large jump does not spread.** A match that moves the figure by more than half does not speak for
+  every restatement.
+
+**Measured.** On v2.3's sealed set (now development), 6 wrong proposed values removed and no right one
+lost. No change on the other development sets or the v1.8 project. On the v1.8 project the rule first
+lost 4 finds, because it also stopped an analysis output from leading. It now applies only to plain
+matches.
+
+## Development sets after items 3–5
+
+| | 2.3.0 | 2.4 items 3–5 |
+|---|---|---|
+| v2.3 sealed set (now development): found / value right | 82 / 38 (46%) | 59 / 38 (64%) |
+| v2.3 development set: found / value right | 116 / 103 | 113 / 103 |
+| v2.2 set: found / value right | 33 / 28 | 32 / 28 |
+| v1.8 project: outdated found / value right | 54 / 24 | 54 / 24 |
+
+Every proposal items 3–5 removed on these sets was a wrong value: a reviewer now gets "untraced" (work
+to do) instead of a wrong number. Not one right value was lost. The v2.4 sealed set will say whether
+this holds blind.

@@ -485,3 +485,23 @@ def test_v24_a_projection_point_does_not_take_another_years_actual(tmp_path):
          {"cats": ["2025e", "2026e", "2027e"], "series": {"Gasto material sanitario proyectado (M€)": (50.5, 52.6, 54.7)}})])
     plan = update_plan(ingest_deck(tmp_path / "d.pptx"), fm)
     assert not any(str(q.get("new_value") or "").startswith("48.6") for s in plan["slides"] for q in s["numbers"])
+
+
+def test_v24_restatements_that_disagree_are_flagged_not_overwritten(tmp_path):
+    from cpe.reasoning.deck_patch import proposed_edits
+    from cpe.reasoning.deck_update import apply_derived, ingest_deck, update_plan
+
+    _deck_with(tmp_path / "d.pptx", [
+        ("Las ventas netas alcanzan 38,0 M€ este año", None, None),
+        ("Resumen financiero", [("Concepto", "Valor"), ("Ventas netas (M€)", "38,0")], None)])
+    plan = update_plan(ingest_deck(tmp_path / "d.pptx"), [])
+    qs = [q for s in plan["slides"] for q in s["numbers"] if q["raw"] in ("€38,0 M", "38,0")]
+    assert len(qs) == 2
+    for q, (num, shown) in zip(qs, ((41.5e6, "41,5"), (39.8, "39,8"))):  # each restatement found a different source value
+        q.update(status="outdated", new_num=num, new_display=shown, new_value=shown, fact="F1", fact_analysis=False)
+        q.pop("derived", None)
+    apply_derived(plan["slides"], ",")
+    assert {q["new_display"] for q in qs} == {"41,5", "39,8"}  # neither overwrote the other
+    assert all(q.get("group_disagrees") for q in qs)
+    e = proposed_edits(plan)
+    assert sum("restatements disagree" in x.get("evidence", "") for x in e["edits"]) == 2

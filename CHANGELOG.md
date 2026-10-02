@@ -19,8 +19,15 @@ Pick the right new value, the part of v2.3 that did not generalise blind. Status
   best-matched figures keep it, the others take their next near-equal candidate or stay untraced.
   - Wrong proposed values removed, with no right one lost: 10 of 44 on v2.3's sealed set (now
     development), 3 of 13 and 1 of 5 on the other development sets. The v1.8 project is unchanged.
-  - A strict one-to-one rule was tried first and dropped: it lost right values where two different
-    figures legitimately share a source value.
+  - A strict one-to-one rule was tried first and dropped: it lost right values on every set.
+- **The year of each figure (item 4).** Years are read as 2025e, 2025F, FY25, FY2024/25 or 2024-2025,
+  so a projection's 2025e point no longer takes the 2024 actual.
+- **Weak heads, disagreeing restatements (item 5).** For a group led by a plain match:
+  - restatements that found different values keep their own and are flagged "restatements disagree"
+    in the review;
+  - a match that moves the figure by more than half is not copied to every restatement.
+- On the development sets, items 3–5 remove only wrong proposed values: on v2.3's sealed set, value
+  precision goes from 46% to 64% with no right value lost.
 
 ## 2.3.0 — Finding what changed on unseen material
 
