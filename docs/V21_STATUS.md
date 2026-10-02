@@ -1,4 +1,9 @@
-# v2.1 status (2.1.0.dev0)
+# v2.1 status (2.1.0)
+
+> **Closed as 2.1.0 on 2026-10-02 (owner decision).**
+> - Items 2–5 are done.
+> - Item 1 (blind validation on real material: unseen templates, new cases with the owner's key)
+>   moves to v2.2.
 
 Goal: less review work for a person, and the blind validation on real material that v2.0 left open.
 

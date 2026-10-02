@@ -1,6 +1,13 @@
 # Changelog
 
-## Unreleased — 2.1.0.dev0
+## 2.1.0 — Less review work: ranked conflicts, a review sheet, more headline claims
+
+**Closed 2026-10-02 by the owner, without the blind validation on real material, which moves to v2.2:**
+- unseen corporate templates;
+- new cases with the owner's key.
+
+There is no new blind figure in this release. The Albor figures are in-sample, and the sealed
+holdout of v2.0 was already used.
 
 Less review work for a person. Status: [docs/V21_STATUS.md](docs/V21_STATUS.md).
 
