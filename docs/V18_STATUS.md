@@ -20,6 +20,10 @@ evidence was generated. The parts that need the owner are listed at the end.
 | D — v1.7 leftovers | D.12 cell-to-fact binding | `"at"` on an evidence item binds a fact to a cell (hard); label check on unbound cells (warning) | on the real private deck: 11 of 15 injected swaps flagged, 0 false positives |
 | | D.13 visuals | `cause_effect` exhibit; `timeline_decisions` layout; explicit n/a cells and chart points (`n/d` in Spanish) | rendered and inspected; unit tests |
 
+## Real-project acceptance run (2026-10-02)
+
+One real messy project with its previous deck ran end to end. Reasoning check: 0 hard failures. Render QA: 93.7, 0 errors. The owner's blind review against their answer key is pending. Findings, including the low precision of `deck stale` on real material: [DEBT_V18.md](DEBT_V18.md).
+
 ## What needs the owner
 
 Step-by-step guide (Spanish) and blank intake templates: [V18_OWNER_BRIEF.md](V18_OWNER_BRIEF.md), [v18_intake/](v18_intake/).
