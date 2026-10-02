@@ -1,5 +1,30 @@
 # Changelog
 
+## Unreleased — 2.3.0.dev0
+
+Find the numbers a deck must change on material the tool has not seen. Status:
+[docs/V23_STATUS.md](docs/V23_STATUS.md).
+
+- **A fresh sealed set (item 3).** An agent that did not read the code wrote 4 synthetic update cases
+  (308 keyed numbers; hospital logistics, retail pricing, SaaS, an electricity network in English).
+  Their keys were sealed (sha256) before any change of this release was measured against new cases.
+  The set runs once, at the end of 2.3.
+- **Matching a deck number to its new source on unseen material (item 2).** The measured gap of
+  v2.2: on unseen cases the tool found about 1 outdated number in 4, mostly because it knew only ~25
+  measures (investment, savings, FTE…) from the project it was built on. Now:
+  - **Open measures.** A number with no known measure is matched on the words it counts ("socios",
+    "expedientes", "applications"), an acronym (OEE, NPS, RevPAR), or, for a table cell, its column.
+  - **Table captions.** A short text above a table ("Capex por fase (k€)") tells its cells what they are.
+  - **Proper names.** A plant, site, fleet or hotel named next to a number must match the source's;
+    in a sentence the name nearest before the number counts. A source's figure for one named part
+    ranks below one for the whole.
+  - **Benchmarks.** A competitive set's or the sector median's figure is not the company's own.
+  - More forms of known measures ("crecerán", "facturación", "growth", "headcount").
+
+  On a new development set of 6 cases (347 keyed numbers, 2 in English) written by another agent:
+  outdated numbers found 30/255 → 123/255, proposed values right 21/30 → 93/123. The first changes were
+  made before that set existed. The v1.8 project is unchanged (54/68).
+
 ## 2.2.0 — One figure across the deck, projections from their drivers, fewer false conflicts
 
 **Closed 2026-10-02 by the owner, without the blind validation on real material, which moves to v2.3:**
