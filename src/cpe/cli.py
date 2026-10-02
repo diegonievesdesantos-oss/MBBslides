@@ -24,6 +24,7 @@ Rendering commands:
   holdout    `holdout private`: corporate templates in .private/holdouts; `holdout external`: deck specs in
              .private/holdouts/decks (never in the repo; skipped if absent; sanitized aggregates only)
   quality    eval_report.json → quality profile (macro archetype, P10, weakest, coverage, absolute gates); --check for CI
+  update     (v2.0) existing deck + new sources → reviewed in-place update of the original pptx
   reason     source-to-deck reasoning (v1.7): facts | check | ghost | trace | eval  (docs/REASONING_PROTOCOL.md)
   results    `results readme [--check]`: regenerate the README metrics block from evals/results/latest.json
 Reference:
@@ -379,14 +380,35 @@ def cmd_deck(a):
         from .reasoning import deck_patch
 
         if a.deck_cmd == "edits":
-            e = deck_patch.write_edits(a.work)
-            _p(f"{len(e['edits'])} edits proposed (approved: false), {len(e['review'])} numbers to review → {a.work}/edits.json, edits.md")
+            e = deck_patch.write_edits(a.work, rederive=a.derive)
+            d = e.get("derived") or {}
+            _p(f"{len(e['edits'])} edits ({sum(1 for x in e['edits'] if x.get('approved'))} approved), {len(e['review'])} numbers to review; "
+               f"derived figures: {d.get('added', 0)} added, {d.get('updated', 0)} updated, {d.get('unchanged', 0)} unchanged, {d.get('dropped', 0)} withdrawn → {a.work}/edits.json, edits.md")
             return 0
         r = deck_patch.write_patch(a.pptx, a.edits, a.out, mark=a.mark, accept_proposed=a.accept_proposed)
         _p(f"applied {len(r['applied'])} · failed {len(r['failed'])} · not approved {r['skipped_unapproved']} → {a.out} (patch_report.md beside it)")
         return 1 if r["failed"] else 0
     plan = deck_update.write_plan(a.work)
     _p(deck_update.plan_markdown(plan))
+    return 0
+
+
+def cmd_update(a):
+    """(v2.0) Update an existing deck: prepare the edits, then apply the approved ones to the original."""
+    from .reasoning import update
+
+    if a.apply:
+        r = update.apply(a.apply, a.out, mark=a.mark, accept_derived=a.accept_derived)
+        _p(f"applied {len(r['applied'])} · failed {len(r['failed'])} · not approved {r['skipped_unapproved']} · "
+           f"headlines to check {len(r['rewrite_headlines'])} · left for review {len(r['left_unchanged'])} → {a.out} (update_report.md beside it)")
+        return 1 if r["failed"] else 0
+    if not (a.pptx and a.sources):
+        _p("usage: cpe update OLD.pptx SOURCES -o WORK   |   cpe update --apply WORK -o NEW.pptx")
+        return 2
+    m = update.prepare(a.pptx, a.sources, a.out)
+    _p(f"{m['slides']} slides, {m['facts']} facts; numbers {m['plan']}; {m['edits']} edits in {a.out}/edits.json "
+       f"({m['approved_kept']} approvals kept).\nNext: review {a.out}/edits.md, approve in edits.json, then "
+       f"`cpe update --apply {a.out} -o new.pptx --mark`")
     return 0
 
 
@@ -592,11 +614,19 @@ def main(argv=None) -> int:
     ds = s.add_subparsers(dest="deck_cmd", required=True)
     d = ds.add_parser("ingest"); d.add_argument("pptx"); d.add_argument("-o", "--out", required=True); d.set_defaults(f=cmd_deck)
     d = ds.add_parser("stale", help="old deck numbers vs the new fact model: current / outdated / untraced"); d.add_argument("work"); d.set_defaults(f=cmd_deck)
-    d = ds.add_parser("edits", help="(v1.9) proposed in-place edits from the update plan, to approve"); d.add_argument("work"); d.set_defaults(f=cmd_deck)
+    d = ds.add_parser("edits", help="(v1.9) proposed in-place edits from the update plan, to approve"); d.add_argument("work")
+    d.add_argument("--derive", action="store_true", help="(v2.0) keep the reviewed edits.json and recompute totals, ratios and repeated figures from the approved ones")
+    d.set_defaults(f=cmd_deck)
     d = ds.add_parser("patch", help="(v1.9) apply approved edits to the ORIGINAL pptx; everything else stays as it was")
     d.add_argument("pptx"); d.add_argument("edits"); d.add_argument("-o", "--out", required=True)
     d.add_argument("--mark", action="store_true", help="highlight changed text for review")
     d.add_argument("--accept-proposed", action="store_true", help="apply every proposed edit, approved or not (dry run)"); d.set_defaults(f=cmd_deck)
+    s = sub.add_parser("update", help="(v2.0) update an existing deck: OLD.pptx SOURCES -o WORK, then --apply WORK -o NEW.pptx")
+    s.add_argument("pptx", nargs="?"); s.add_argument("sources", nargs="?"); s.add_argument("-o", "--out", required=True)
+    s.add_argument("--apply", metavar="WORK", help="apply the approved edits of WORK to the original deck")
+    s.add_argument("--mark", action="store_true", help="highlight changed text for review")
+    s.add_argument("--accept-derived", action="store_true", help="also apply totals / ratios recomputed from approved values")
+    s.set_defaults(f=cmd_update)
     s = sub.add_parser("reason", help="source-to-deck reasoning artifacts (v1.7)"); rs = s.add_subparsers(dest="reason_cmd", required=True)
     r = rs.add_parser("facts"); r.add_argument("sources"); r.add_argument("-o", "--out", required=True); r.set_defaults(f=cmd_reason)
     r = rs.add_parser("check"); r.add_argument("work"); r.add_argument("--sources"); r.add_argument("--enrich", action="store_true",

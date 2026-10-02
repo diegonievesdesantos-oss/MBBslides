@@ -1,5 +1,38 @@
 # Changelog
 
+## Unreleased — 2.0.0.dev0
+
+The aim of 2.0 is a tool that works on cases it has not seen. The release needs the owner's blind
+validation (unseen templates and new cases, judged only against the owner's key). Status:
+[docs/V20_STATUS.md](docs/V20_STATUS.md).
+
+- **`cpe update`: one command to update an existing deck.**
+  - `cpe update old.pptx sources/ -o work` ingests the deck, builds the facts (with any recorded
+    analyses), writes the plan and proposes edits.
+  - Re-running keeps the review.
+  - `cpe update --apply work -o new.pptx [--mark] [--accept-derived]` patches the original file.
+  - `update_report.md` lists:
+    - headlines whose own figures changed (check the message still holds);
+    - every number left unchanged for review.
+- **Derived figures.** Totals, net rows, ratios such as payback, sums stated in a sentence and the same
+  figure repeated elsewhere are found in the old deck's own arithmetic (`derive.py`). They are
+  recomputed from the new values of their parts:
+  - first in the plan;
+  - then, more importantly, from the reviewer's approved values (`cpe deck edits --derive`).
+
+  A derived proposal whose parts are not all approved is marked provisional, and `--accept-derived`
+  never applies it.
+- **`deck stale`:**
+  - durations ("se recupera en 3,7 años") are read as figures;
+  - horizons and criteria ("TIR a 10 años", "en menos de 5 años") are ignored;
+  - a KPI label may contain numbers.
+- **Measured on the v1.8 project (owner's key, in-sample):**
+  - outdated numbers found: 41/68 (1.9.0: 33/66);
+  - outdated status correct: 41/44;
+  - proposed value right: 17/25.
+  - After the reviewer approves the parts, totals, KPIs and payback follow: 6.646 k€ capex,
+    payback 9,2 / 5,8 years by phase.
+
 ## 1.9.0 — Tool debts, in-place deck update, layouts learned from slides
 
 **Closed 2026-10-02 by the owner, without blocks B and C, which move to v2.0:**

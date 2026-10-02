@@ -36,9 +36,9 @@ def proposed_edits(plan: dict) -> dict:
     for s in plan["slides"]:
         for q in s["numbers"]:
             if q["status"] == "outdated" and q.get("new_display") and q.get("core"):
-                edits.append({"op": "number", "slide": s["slide"], "where": q["where"], "find": q["core"], "occ": q.get("occ", 0),
+                edits.append({"op": "number", "id": q.get("id"), "slide": s["slide"], "where": q["where"], "find": q["core"], "occ": q.get("occ", 0),
                               "replace": q["new_display"], "fact": q.get("fact"), "old": q["raw"], "evidence": q.get("new_claim", ""),
-                              "context": q.get("context", "")[:120], "approved": False})
+                              "context": q.get("context", "")[:120], "approved": False, **({"derived": q["derived"]} if q.get("derived") else {})})
             elif q["status"] in ("outdated", "untraced"):
                 review.append({"slide": s["slide"], "where": q["where"], "number": q["raw"], "status": q["status"], "context": q.get("context", "")[:120]})
     return {"source": plan.get("source"), "edits": edits, "review": review,
@@ -46,13 +46,90 @@ def proposed_edits(plan: dict) -> dict:
                    "edits by hand; then `cpe deck patch old.pptx edits.json -o new.pptx`"}
 
 
+def derive_edits(plan: dict, edits: dict) -> dict:
+    """v2.0: recompute totals, ratios and repeated figures from the APPROVED edits (and the numbers the
+    plan found current). Each derived figure becomes a proposed edit marked `derived`, unapproved; an
+    edit the reviewer approved by hand is never overwritten. Returns {"added", "updated", "unchanged"}."""
+    from .deck_update import _factor, _parse_core, display_in
+    from .derive import _close, derive, relations
+
+    hint = plan.get("decimal_mark")
+    items = {q["id"]: (s["slide"], q) for s in plan["slides"] for q in s["numbers"] if q.get("id")}
+    known = {i: (-abs(q["value"]) if str(q["raw"]).startswith("-") else q["value"]) for i, (_, q) in items.items() if q["status"] == "current"}
+    approved = set()
+    for e in edits.get("edits") or []:
+        if e.get("op", "number") == "number" and e.get("approved") and e.get("id") in items:
+            q = items[e["id"]][1]
+            f, v = _factor(q, hint), _parse_core(str(e["replace"]).lstrip("-−"), hint)
+            if f and v is not None:
+                known[e["id"]] = (-1 if str(e["replace"]).startswith(("-", "−")) else 1) * v * f
+                approved.add(e["id"])
+    proposed = {}
+    for e in edits.get("edits") or []:  # values proposed but not yet approved: a provisional derivation
+        if e.get("op", "number") == "number" and not e.get("approved") and not e.get("derived") and e.get("id") in items:
+            q = items[e["id"]][1]
+            f, v = _factor(q, hint), _parse_core(str(e["replace"]).lstrip("-−"), hint)
+            if f and v is not None:
+                proposed[e["id"]] = (-1 if str(e["replace"]).startswith(("-", "−")) else 1) * v * f
+    rels = [r for r in relations(plan) if r["target"] not in approved]
+    targets = {r["target"] for r in rels}
+    firm = derive(plan, rels, {k: v for k, v in known.items() if k not in targets or k in approved})
+    loose = derive(plan, rels, {k: v for k, v in {**proposed, **known}.items() if k not in targets or k in approved})
+    got = {**loose, **firm}
+    pending = set(loose) - set(firm)
+    by_id = {e.get("id"): e for e in edits.get("edits") or [] if e.get("op", "number") == "number"}
+    stats = {"added": 0, "updated": 0, "unchanged": 0, "dropped": 0}
+    for e in list(edits.get("edits") or []):  # a derived proposal whose parts are not all approved yet is withdrawn
+        if e.get("derived") and not e.get("approved") and e.get("id") not in got:
+            if e.get("direct"):
+                e.pop("derived")
+                e["replace"] = e.pop("direct")
+            else:
+                edits["edits"].remove(e)
+            stats["dropped"] += 1
+    for tid, (v, r) in got.items():
+        if tid in approved or tid not in items:
+            continue
+        n, q = items[tid]
+        if _close(v, q):
+            stats["unchanged"] += 1
+            if tid in by_id and not by_id[tid].get("approved"):
+                edits["edits"].remove(by_id[tid])  # the parts as approved leave this figure as it was
+            continue
+        info = {"op": r["op"], "from": r["parts"], "how": r["how"], **({"pending_parts": True} if tid in pending else {})}
+        new = {"op": "number", "id": tid, "slide": n, "where": q["where"], "find": q.get("core"), "occ": q.get("occ", 0),
+               "replace": display_in(q, v, hint), "old": q["raw"], "fact": None, "derived": info,
+               "evidence": f"{r['how']}: " + " , ".join(items[p][1]["raw"] for p in r["parts"] if p in items)
+               + (" (some parts not approved yet: provisional)" if tid in pending else " (approved values)"),
+               "context": (q.get("context") or "")[:120], "approved": False}
+        if tid in by_id:
+            if by_id[tid].get("replace") != new["replace"] or by_id[tid].get("derived") != info:
+                new["direct"] = by_id[tid].get("replace") if not by_id[tid].get("derived") else by_id[tid].get("direct")
+                by_id[tid].clear()
+                by_id[tid].update(new)
+                stats["updated"] += 1
+        else:
+            edits["edits"].append(new)
+            stats["added"] += 1
+    return stats
+
+
 def edits_markdown(e: dict) -> str:
-    L = [f"# Proposed edits — {e.get('source')}", "", f"{len(e['edits'])} number edits proposed (none applied until approved); "
-         f"{len(e['review'])} numbers to review by hand.", "", "| # | slide | where | old → new | fact | context |", "|---|---|---|---|---|---|"]
-    for i, x in enumerate(e["edits"], 1):
-        L.append(f"| {i} | {x['slide']} | {x['where']} | {x['old']} → **{x['replace']}** | {x.get('fact') or ''} | {x['context'][:60]} |")
+    nums = [x for x in e["edits"] if x.get("op", "number") == "number"]
+    other = [x for x in e["edits"] if x.get("op", "number") != "number"]
+    ok = sum(1 for x in nums if x.get("approved"))
+    L = [f"# Proposed edits — {e.get('source')}", "", f"{len(nums)} number edits ({ok} approved ✓; only approved ones are applied); "
+         f"{len(e.get('review') or [])} numbers to review by hand.", "",
+         "| # | slide | where | old → new | source | context |", "|---|---|---|---|---|---|"]
+    for i, x in enumerate(nums, 1):
+        d = x.get("derived") or {}
+        src = x.get("fact") or (f"derived: {d['how']}" + (" (provisional)" if d.get("pending_parts") else "") if d else "by hand")
+        L.append(f"| {i} | {x.get('slide')} | {x.get('where')} | {x.get('old', x.get('find'))} → **{x.get('replace')}** {'✓' if x.get('approved') else ''} "
+                 f"| {src} | {(x.get('context') or '')[:60]} |")
+    if other:
+        L += ["", "## Other edits", ""] + [f"- slide {x.get('slide')}: {x.get('op')} {x.get('text') or x.get('find') or x.get('series') or ''}" for x in other]
     L += ["", "## To review by hand (no new value proposed)", ""]
-    L += [f"- slide {r['slide']} {r['where']}: {r['number']} ({r['status']}) — {r['context'][:80]}" for r in e["review"]]
+    L += [f"- slide {r['slide']} {r['where']}: {r['number']} ({r['status']}) — {r['context'][:80]}" for r in e.get("review") or []]
     return "\n".join(L) + "\n"
 
 
@@ -296,10 +373,16 @@ def report_markdown(r: dict) -> str:
     return "\n".join(L) + "\n"
 
 
-def write_edits(work: str | Path) -> dict:
+def write_edits(work: str | Path, rederive: bool = False) -> dict:
+    """Write work/edits.json from the plan; with `rederive`, keep the reviewed edits.json and recompute
+    the derived figures from what was approved."""
     work = Path(work)
     plan = json.loads((work / "update_plan.json").read_text(encoding="utf-8"))
-    e = proposed_edits(plan)
+    if rederive and (work / "edits.json").exists():
+        e = json.loads((work / "edits.json").read_text(encoding="utf-8"))
+    else:
+        e = proposed_edits(plan)
+    e["derived"] = derive_edits(plan, e)
     (work / "edits.json").write_text(json.dumps(e, indent=2, ensure_ascii=False) + "\n", encoding="utf-8", newline="\n")
     (work / "edits.md").write_text(edits_markdown(e), encoding="utf-8", newline="\n")
     return e

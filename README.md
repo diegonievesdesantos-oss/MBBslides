@@ -67,6 +67,16 @@ Example decks are development material and regression fixtures, not evidence of 
 
 <!-- metrics:end -->
 
+## In development: v2.0 — works on cases it has not seen
+
+- **`cpe update old.pptx sources/ -o work`:** one command from the old deck and new sources to
+  reviewable edits.
+- **`cpe update --apply work -o new.pptx`:** applies the approved edits to the original file.
+- **Derived figures:** totals, net rows, payback-type ratios and repeated KPIs are found in the old deck's
+  own arithmetic. They are recomputed from the approved values.
+- **Release:** the release waits on blind validation by the owner (unseen templates, new cases). See
+  [docs/V20_STATUS.md](docs/V20_STATUS.md).
+
 ## What's new in v1.9 — in-place update, learned layouts, tool debts
 
 - **Update the original file:**

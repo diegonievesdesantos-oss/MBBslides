@@ -105,6 +105,12 @@ The original file can then be updated in place:
   - Each change is written to the slide's notes. `--mark` highlights the new text.
   - An edit not found where the plan says is reported, never applied elsewhere (`patch_report.md`).
 
+Since 2.0:
+- `cpe update old.pptx sources/ -o work` runs ingest, facts, stale and edits in one go.
+- `cpe update --apply work -o new.pptx [--mark] [--accept-derived]` patches the original file.
+- Derived figures (totals, net rows, ratios, sums in a sentence, the same figure repeated) are
+  recomputed from approved values. `cpe deck edits work --derive` shows them before applying.
+
 ## Patches
 
 `{"op": "set" | "delete" | "append", "slide": "s07", "path": "visual.data.series[0].values", "value": …}`,

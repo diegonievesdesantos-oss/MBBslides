@@ -56,6 +56,23 @@ def _locate(text: str, raw: str, start: int = 0):
     return re.compile(rf"(?<![\d.,]){re.escape(core.group(0))}(?![\d])").search(text or "", start)
 
 
+DURATION_RE = re.compile(r"(?<![\d.,])(\d+(?:[.,]\d+)?)\s*(años|año|years?|meses|months?|semanas|weeks?)\b", re.I)
+
+
+def _quantities(text: str) -> list[dict]:
+    """The figures of a text in reading order: headline quantities plus durations ("se recupera en
+    3,7 años"), which headline QA treats as timing but a business case states as a result."""
+    qs = list(headline_quantities(text))
+    taken = {_core(q["raw"]) for q in qs}
+    for m in DURATION_RE.finditer(text or ""):
+        if m.group(1) in taken:
+            continue
+        v = _parse_core(m.group(1), "," if "," in m.group(1) else None)
+        if v is not None and not (v.is_integer() and 1900 <= v <= 2100):
+            qs.append({"raw": f"{m.group(1)} {m.group(2)}", "value": v, "kind": "plain"})
+    return qs  # durations after the headline quantities: the others keep their order and positions
+
+
 def _core(raw: str) -> str:
     m = NUM_RE.search(raw or "")
     return m.group(0).rstrip(".,") if m else ""
@@ -102,19 +119,35 @@ def format_like(core: str, value: float, hint: str | None = None) -> str:
     return ("-" if value < 0 else "") + s
 
 
-def _new_display(q: dict, c: dict) -> str | None:
-    """The new value expressed in the old number's own scale and notation ('3,2' M€ → '4,03')."""
-    hint = q.get("_hint") or ("," if re.search(r"\d,\d{1,2}(?!\d)", q.get("text") or "") else None)
+def _factor(q: dict, hint: str | None = None) -> float | None:
+    """What one written unit of the old number is worth in its value units (1e6 for '3,2 M€')."""
     shown = _parse_core(q.get("core") or _core(q["raw"]), hint)
-    if not shown or not q["value"]:
+    return abs(q["value"]) / shown if shown and q["value"] else None
+
+
+def _new_num(q: dict, c: dict) -> float | None:
+    """The candidate's value in the old number's own value units, signed as the deck shows it."""
+    if not q["value"]:
         return None
-    factor = abs(q["value"]) / shown  # what one written unit of the old number is worth (1e6 for "3,2 M€")
     opts = [abs(c["base"]), abs(c["value"])] + [abs(c["value"]) * k for k in (1e3, 1e-3, 1e6, 1e-6)]
     best = min((o for o in opts if o), key=lambda o: abs(math.log(o / abs(q["value"]))), default=None)
     if best is None:
         return None
     sign = -1.0 if (q["value"] < 0 or str(q.get("raw", "")).startswith("-")) and c["value"] >= 0 else (-1.0 if c["value"] < 0 else 1.0)
-    return format_like(q.get("core") or _core(q["raw"]), sign * best / factor, hint)  # a cost the deck shows negative stays negative
+    return sign * best  # a cost the deck shows negative stays negative
+
+
+def display_in(q: dict, value: float, hint: str | None = None) -> str | None:
+    """`value` (in the old number's value units) written in the old number's scale and notation."""
+    hint = hint or q.get("_hint") or ("," if re.search(r"\d,\d{1,2}(?!\d)", q.get("text") or "") else None)
+    f = _factor(q, hint)
+    return format_like(q.get("core") or _core(q["raw"]), value / f, hint) if f else None
+
+
+def _new_display(q: dict, c: dict) -> str | None:
+    """The new value expressed in the old number's own scale and notation ('3,2' M€ → '4,03')."""
+    v = _new_num(q, c)
+    return display_in(q, v) if v is not None else None
 
 
 def _window(text: str, m) -> str:
@@ -221,13 +254,13 @@ def ingest_deck(path: str | Path) -> dict:
             if k and SECTION_RE.search(text) and len(text.split()) <= 6:
                 section = text  # "Fase 1 · Zona ambiente": the heading of what follows
             pos = 0
-            for q in headline_quantities(text):
-                m = _locate(text, q["raw"], pos)
-                pos = m.end() if m else pos
+            for q in _quantities(text):
+                m = _locate(text, q["raw"], pos) or _locate(text, q["raw"], 0)  # a duration listed after the others
+                pos = max(pos, m.end()) if m else pos
                 ctx = _window(text, m) if m else text[:160]
                 if k and _is_kpi(text):  # a hero number: its words are the short label next to it
                     j = k - 1 - 1 if labels_before else k - 1 + 1
-                    if 0 <= j < len(body) and not NUM_RE.search(body[j]) and len(body[j].split()) <= 8:
+                    if 0 <= j < len(body) and not _is_kpi(body[j]) and len(body[j].split()) <= 10:
                         ctx = f"{text} {body[j]}"
                 occ = len(_occurrences(text[:m.start()], q["raw"])) if m else 0
                 numbers.append({"where": where, "raw": q["raw"], "value": q["value"], "kind": q["kind"], "context": ctx,
@@ -250,7 +283,7 @@ def ingest_deck(path: str | Path) -> dict:
                         cpos = cm.end() if cm else cpos
                         numbers.append({"where": f"exhibit[{e_i}].rows[{r_i}][{c_i}]", "raw": q["raw"], "value": q["value"], "kind": q["kind"],
                                         "context": f"{label} {hdr}".strip(), "text": cell, "unit_after": _unit_after(cell, cm),
-                                        "core": _core(q["raw"]), "occ": len(_occurrences(cell[:cm.start()], q["raw"])) if cm else 0})
+                                        "core": _core(q["raw"]), "occ": len(_occurrences(cell[:cm.start()], q["raw"])) if cm else 0, "row": label})
         slides.append({"n": i, "role": role, "layout": slide.slide_layout.name, "headline": title, "body": body, "exhibits": exhibits,
                        "numbers": numbers, "words": words, "is_last": i == n})
     return {"source": Path(path).name, "slides": slides,
@@ -434,6 +467,9 @@ def _non_figure(q: dict, slide_n: int) -> str | None:
             return "code"
         if q["kind"] == "plain" and re.search(r"\b(fase|phase|stage|step|paso)\s*$", before, re.I):
             return "phase index"
+    if m and DURATION_RE.fullmatch(raw) and re.search(r"\b(a|de|hasta|menos de|más de|mas de|within|over|under|máximo|mínimo)\s*$|[≤≥<>]\s*$",
+                                                   text[max(0, m.start() - 14):m.start()], re.I):
+        return "horizon or criterion"  # "TIR a 10 años", "en menos de 5 años": not a result
     if (q.get("unit_after") or "") in NON_FIGURE_UNITS or re.match(r"\s*-\s*\d+\s*°", text[m.end():] if m else ""):
         return "specification"
     return None
@@ -524,6 +560,12 @@ def _match(q: dict, slide: dict, cands: list[dict]) -> tuple[str, list[dict], di
     return "outdated", group, primary
 
 
+def deck_hint(slides: list[dict]) -> str:
+    """The deck's decimal mark, from how its numbers are written."""
+    alltext = " ".join(q.get("text") or "" for s in slides for q in s["numbers"])
+    return "," if len(re.findall(r"\d,\d{1,2}(?!\d)", alltext)) > len(re.findall(r"\d\.\d{1,2}(?!\d)", alltext)) else "."
+
+
 def update_plan(inv: dict, facts: list[dict]) -> dict:
     """Every number of the old deck against the new fact model. A number is matched on what it is about
     (its own words: measure, phase, zone, year; its unit), never on its value alone:
@@ -532,8 +574,7 @@ def update_plan(inv: dict, facts: list[dict]) -> dict:
     - UNTRACED: no new fact speaks to it, or only a restatement of the old plan does (a budget, an offer);
     - IGNORED: not a figure (page number, document code, phase index, specification)."""
     cands = _candidates(facts, {Path(str(inv.get("source") or "")).name})
-    alltext = " ".join(q.get("text") or "" for s in inv["slides"] for q in s["numbers"])
-    hint = "," if len(re.findall(r"\d,\d{1,2}(?!\d)", alltext)) > len(re.findall(r"\d\.\d{1,2}(?!\d)", alltext)) else "."  # the deck's decimal mark
+    hint = deck_hint(inv["slides"])
     out = []
     for s in inv["slides"]:
         items = []
@@ -549,17 +590,63 @@ def update_plan(inv: dict, facts: list[dict]) -> dict:
                 u = UNIT_TEXT.get(primary["unit"], "")
                 newv = f"{primary['value']:g}{u}" if u == "%" else (f"{primary['value']:g} {u}" if u else f"{primary['value']:g}")
                 items.append({**q, "status": "outdated", "new_value": newv, "fact": primary["fact"], "new_claim": primary["text"][:140],
-                              "new_display": _new_display({**q, "_hint": hint}, primary)})
+                              "new_display": _new_display({**q, "_hint": hint}, primary), "new_num": _new_num(q, primary)})
             else:
                 items.append({**q, "status": "untraced"})
-        st = Counter(i["status"] for i in items)
-        live = len(items) - st["ignored"]
-        action = "keep" if not live or st["current"] == live else ("update" if st["outdated"] else "review")
-        out.append({"slide": s["n"], "role": s["role"], "headline": s["headline"], "action": action, "counts": dict(st), "numbers": items})
+        out.append({"slide": s["n"], "role": s["role"], "headline": s["headline"], "numbers": items})
+    for s in out:
+        for q in s["numbers"]:
+            q["id"] = f"{s['slide']}|{q['where']}|{q.get('occ', 0)}|{q['raw']}"
+    apply_derived(out, hint)
+    for s in out:
+        st = Counter(i["status"] for i in s["numbers"])
+        live = len(s["numbers"]) - st["ignored"]
+        s["action"] = "keep" if not live or st["current"] == live else ("update" if st["outdated"] else "review")
+        s["counts"] = dict(st)
     tot = Counter(i["status"] for s in out for i in s["numbers"])
-    return {"source": inv["source"], "slides": out, "totals": dict(tot),
+    return {"source": inv["source"], "slides": out, "totals": dict(tot), "decimal_mark": hint,
             "rule": "an old number is matched on its own words (measure, phase, zone, year) and unit, never on its value alone; "
                     "it is reused only when the best-matching new fact holds it; restatements of the old plan never confirm it"}
+
+
+def apply_derived(slides: list[dict], hint: str | None = None, known: dict | None = None) -> list[dict]:
+    """v2.0: totals, ratios and repeated figures recomputed from the new values of their parts.
+    A derived value replaces a direct match on the same number: the old deck's own arithmetic is
+    stronger evidence than a fact that merely shares its words. Returns the derived items."""
+    from .derive import derive, relations
+
+    plan = {"slides": slides}
+    rels = relations(plan)
+    if known is None:
+        known = {}
+        for s in slides:
+            for q in s["numbers"]:
+                if q["status"] == "current":
+                    known[q["id"]] = q["value"] if not str(q["raw"]).startswith("-") else -abs(q["value"])
+                elif q["status"] == "outdated" and q.get("new_num") is not None and not q.get("derived"):
+                    known[q["id"]] = q["new_num"]
+    targets = {r["target"] for r in rels}
+    known = {k: v for k, v in known.items() if k not in targets}  # a derived figure comes from its parts, not from a direct match
+    got = derive(plan, rels, known)
+    by_id = {q["id"]: q for s in slides for q in s["numbers"]}
+    done = []
+    for tid, (v, r) in got.items():
+        q = by_id.get(tid)
+        if q is None or q["status"] == "ignored":
+            continue
+        from .derive import _close as close_to
+
+        facts = sorted({f for p in r["parts"] for f in ([by_id[p].get("fact")] + (by_id[p].get("facts") or [])) if f})
+        info = {"op": r["op"], "from": r["parts"], "how": r["how"]}
+        if close_to(v, q):
+            q.update(status="current", facts=facts[:3], derived=info)
+        else:
+            if q["status"] == "outdated" and not q.get("derived"):
+                q["direct"] = {k: q.get(k) for k in ("new_value", "fact", "new_display")}
+            q.update(status="outdated", new_num=v, new_display=display_in(q, v, hint), new_value=f"{v:g} (derived)",
+                     fact=facts[0] if facts else None, new_claim=f"{r['how']}: " + " , ".join(by_id[p]["raw"] for p in r["parts"]), derived=info)
+        done.append(q)
+    return done
 
 
 def plan_markdown(plan: dict) -> str:
