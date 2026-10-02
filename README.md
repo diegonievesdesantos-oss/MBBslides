@@ -18,14 +18,13 @@ and contradictory opinions. The engine builds the deck as follows:
 It then renders the deck, measures its visual quality and corrects what it can. **Every number a
 reader sees must come from a cited fact.** The pass/fail verdicts are computed by code.
 
-> **v2.2.0** (current): fewer numbers left to trace by hand when updating a deck.
-> - One figure restated on several slides follows one value. Approving one restatement moves them all.
-> - Projections follow their base and growth rate; a cash curve follows the investment and savings,
->   or the yearly flows a source gives.
-> - Fewer false medium-priority conflicts; headline proposals for flipped signs and orders.
-> - On a sealed synthetic set (blind): outdated numbers found 20/110 → 26/110, proposed values right
->   8/20 → 17/26. Matching a deck number to its new source is still the main gap.
-> - Blind validation on real material moves to v2.3.
+> **v2.3.0** (current): finds what a deck must change on material it has not seen.
+> - Matches a deck number to its new source by what it counts, its table's caption and column, its
+>   acronym, and the plant, site or hotel it names. It ignores benchmarks.
+> - "Current" only when a source rounds to the deck's own figure; reminders and quotes confirm nothing.
+> - On a sealed synthetic set (blind): outdated numbers found 32/206 → 82/206, flags right 86%.
+>   Proposed values did not improve (46% right): picking the new value is the open problem.
+> - Blind validation on real material moves to v2.4.
 
 <!-- metrics:start (generated from evals/results/latest.json by `cpe results readme`; do not edit) -->
 
@@ -67,6 +66,25 @@ Example decks are development material and regression fixtures, not evidence of 
 <sub>engine 2.3.0.dev0 · evaluated source commit `a001616cf5` · LibreOffice 24.2.7.2 420(Build:2) · fontconfig 2.15.0 · container `mbbslides-visual:1.3@sha256:bb5bbbdd55bcec5db567781c63574da1a4b2fc4504446d6fea23f5197f59d278` · render fingerprint `f98cee49d123ed5f`</sub>
 
 <!-- metrics:end -->
+
+## What's new in v2.3 — finding what changed on unseen material
+
+- **Open measures:** a number is matched on what it counts ("socios", "applications"), an acronym (OEE,
+  NPS, RevPAR) or a table cell's column, not only on ~25 known measures.
+- **Captions, names, benchmarks:**
+  - a table's caption names its cells' measure and unit;
+  - a plant, site, fleet or hotel named next to a number must match the source's;
+  - a competitive set or sector median is not the company's figure.
+- **Fewer false "current":** the source must round to the deck's figure. Proposals, quotes and
+  reminders ("os recuerdo", "reaffirmed") confirm nothing.
+- **Safer groups:** a head must be about the measure next to it, and labelled cells about different
+  things are never one figure.
+- **Measured blind**, on a sealed set of 4 synthetic cases:
+  - outdated numbers found: 32/206 → 82/206;
+  - "outdated" flags right: 78% → 86%;
+  - proposed values right: 46% (no better than before).
+
+Details, the three sets and what did not work: [docs/V23_STATUS.md](docs/V23_STATUS.md).
 
 ## What's new in v2.2 — one figure across the deck, projections from their drivers
 

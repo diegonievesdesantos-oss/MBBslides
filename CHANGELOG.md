@@ -1,6 +1,13 @@
 # Changelog
 
-## Unreleased — 2.3.0.dev0
+## 2.3.0 — Finding what changed on unseen material
+
+**Closed 2026-10-02 by the owner, without the blind validation on real material, which moves to v2.4:**
+- unseen corporate templates;
+- new cases with the owner's key.
+
+The blind figure is on a sealed synthetic set: outdated numbers found 32/206 → 82/206. Proposed values
+did not improve blind (15/32 → 38/82).
 
 Find the numbers a deck must change on material the tool has not seen. Status:
 [docs/V23_STATUS.md](docs/V23_STATUS.md).

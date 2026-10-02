@@ -1,4 +1,9 @@
-# v2.3 status (2.3.0.dev0)
+# v2.3 status (2.3.0)
+
+> **Closed as 2.3.0 on 2026-10-02 (owner decision).**
+> - Items 2–5 are done.
+> - Item 1 (blind validation on real material: unseen templates, new cases with the owner's key)
+>   moves to v2.4.
 
 Goal: find the numbers a deck must change on material the tool has not seen. In v2.2's blind check,
 it found about 1 outdated number in 4 on unseen cases, against 4 in 5 on the project it was built on.
