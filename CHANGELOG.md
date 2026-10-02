@@ -21,9 +21,21 @@ Find the numbers a deck must change on material the tool has not seen. Status:
   - **Benchmarks.** A competitive set's or the sector median's figure is not the company's own.
   - More forms of known measures ("crecerán", "facturación", "growth", "headcount").
 
-  On a new development set of 6 cases (347 keyed numbers, 2 in English) written by another agent:
-  outdated numbers found 30/255 → 123/255, proposed values right 21/30 → 93/123. The first changes were
-  made before that set existed. The v1.8 project is unchanged (54/68).
+- **Fewer false "current" (item 5).**
+  - A source confirms a number only if it rounds to what the deck shows: 94,1% no longer confirms
+    93,2%. A chart point is read at its series' precision.
+  - Proposals and quotes count as restatements.
+  - A reminder ("os recuerdo", "reaffirmed", "original offer") gives no new value.
+- **Safer groups (item 4).**
+  - A sentence's match leads its group only about the measure next to it.
+  - A match on open words alone must be within 60%.
+  - Labelled cells about different things ("Horas de vuelo", "Eventos AOG") are never one figure.
+- **Measured.** On a new development set of 6 cases (347 keyed numbers, 2 in English) written by another agent:
+  - outdated numbers found: 30/255 → 116/255;
+  - proposed values right: 21/30 → 103/116;
+  - "current" right: 4/5 → 13/15.
+
+  The first changes were made before that set existed. The v1.8 project is unchanged (54/68).
 
 ## 2.2.0 — One figure across the deck, projections from their drivers, fewer false conflicts
 

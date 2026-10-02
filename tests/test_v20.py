@@ -415,3 +415,29 @@ def test_v23_matching_outside_the_known_measures(tmp_path):
     assert q[(2, "72,5%")]["new_value"].startswith("74.6") and q[(2, "61,2%")]["new_value"].startswith("63.6")  # each plant its own
     assert q[(3, "67,1%")]["status"] != "outdated" or not q[(3, "67,1%")]["new_value"].startswith("66")  # the sector median is not ours
     assert q[(4, "2.800")]["status"] == "outdated" and q[(4, "2.800")]["new_num"] == 3100  # the caption says capex
+
+
+def test_v23_fewer_false_current_and_safer_groups(tmp_path):
+    import json
+
+    from cpe.reasoning import facts
+    from cpe.reasoning.deck_update import ingest_deck, update_plan
+    from cpe.reasoning.derive import groups
+
+    src = tmp_path / "src"
+    src.mkdir()
+    (src / "kpis_2026.md").write_text("# KPIs\n\nLa entrega a tiempo (OTD) cerró el año en el 94,1%.\n", encoding="utf-8")
+    (src / "correo_proveedor.md").write_text("Como recordatorio, vuestra oferta original comprometía un ahorro de 3,8 M€.\n", encoding="utf-8")
+    facts.write_fact_model(src, tmp_path / "work")
+    fm = json.loads((tmp_path / "work" / "facts.json").read_text(encoding="utf-8"))["facts"]
+    _deck_with(tmp_path / "d.pptx", [
+        ("La entrega a tiempo (OTD) alcanza el 93,2% de los pedidos", None, None),
+        ("El mantenimiento predictivo ahorra 3,8 M€ al año", None, None),
+        ("Operación de la flota", [("Concepto", "Valor"), ("Horas de vuelo", "57.000")], None),
+        ("Fiabilidad técnica", [("Concepto", "Valor"), ("Eventos AOG", "57")], None)])
+    plan = update_plan(ingest_deck(tmp_path / "d.pptx"), fm)
+    q = {(s["slide"], x["raw"]): x for s in plan["slides"] for x in s["numbers"]}
+    assert q[(1, "93,2%")]["status"] == "outdated"  # 94,1% is not 93,2% at the deck's precision
+    assert q[(2, "€3,8 M")]["status"] != "current" and not q[(2, "€3,8 M")].get("new_value")  # a reminder confirms nothing
+    gs = [{i.split("|")[0] for i, _ in g} for g in groups(plan)]
+    assert not any({"3", "4"} <= g for g in gs)  # 57.000 flight hours and 57 AOG events: two quantities

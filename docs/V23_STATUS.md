@@ -8,8 +8,8 @@ it found about 1 outdated number in 4 on unseen cases, against 4 in 5 on the pro
 | 1 | Blind validation on real material: unseen corporate templates; new cases with the owner's key sealed beforehand | **needs the owner** |
 | 2 | Matching a deck number to its new source on unseen material | **done** (first round) |
 | 3 | A fresh sealed synthetic set, written before item 2's work is measured on new cases, run once at the end | **sealed**; runs at the end of 2.3 |
-| 4 | Group heads: a weak match must not spread to every restatement | open |
-| 5 | Fewer false "current": a restatement of the old plan or a figure with the same digits is no confirmation | open |
+| 4 | Group heads: a weak match must not spread to every restatement | **done** |
+| 5 | Fewer false "current": a restatement of the old plan or a figure with the same digits is no confirmation | **done** |
 
 ## The sets
 
@@ -74,6 +74,41 @@ How much of this is in-sample:
 - About 90 of the 132 outdated numbers still missed on the development set are figures no source
   gives. They need the deck's own arithmetic (totals, ratios, projections) to reach them, and that only
   works once their parts are found.
-- "Current" is right only about half the time (13/24). That is item 5.
 - A verb that names a known measure can mislabel a count ("crece hasta 30.000 socios" is read as
   growth).
+
+## Items 4 and 5: safer groups, fewer false "current"
+
+**Item 5: "current" only when the source really confirms the figure.**
+- **The deck's precision.** A source within 1,5% used to confirm a number: 94,1% "confirmed" 93,2%,
+  and 880 confirmed 870. Now the source must round to what the deck shows. A chart point is read at
+  its series' precision: "−3" in a series of "−2,8" is −3,0.
+- **Restatements.** A supplier's proposal or quote restates the old figure, like an offer or a budget.
+- **Reminders.** "Os recuerdo", "como recordatorio", "reaffirmed", "the original offer" repeat what was
+  agreed. When only such a text speaks to a number, it gets no new value.
+
+**Item 4: a group follows a head only when the head is sound.**
+- **A sentence's match leads only about its own measure.** A match in a sentence leads its group only
+  when the source's measure is the one named right next to the number. In "ahorra 1,8 M€ … una
+  inversión de 4,6 M€", the 4,6 had been matched to the saving.
+- **A match on open words alone must be close.** With no known measure behind it, the value must be
+  within 60% of the old one.
+- **Labelled cells.** Two table cells or chart points whose labels name different things ("Horas de
+  vuelo" and "Eventos AOG") are never one figure, whatever their digits.
+
+| | after item 2 | after items 4–5 |
+|---|---|---|
+| **v2.3 development set**, outdated found | 123 / 255 | 116 / 255 |
+| "outdated" right | 123 / 133 | 116 / 124 |
+| proposed value right | 93 / 123 (76%) | **103 / 116 (89%)** |
+| "current" right | 13 / 24 | **13 / 15** |
+| **v2.2 set**, outdated found | 32 / 110 | 33 / 110 |
+| proposed value right | 24 / 32 | 28 / 33 |
+| "current" right | 10 / 15 | **9 / 9** |
+| **v1.8 project**, outdated found | 54 / 68 | 54 / 68 (outdated right 54/57, current 11/12) |
+
+Items 4 and 5 trade a few finds for right ones. Every proposal they removed on the development set was
+wrong: a wrong proposal became "untraced", which a reviewer sees as work, not as an answer.
+
+**What did not work.** "A total is not one phase's figure" lost right finds on the v1.8 project and
+the v2.2 set, and was dropped.
