@@ -22,6 +22,8 @@ evidence was generated. The parts that need the owner are listed at the end.
 
 ## What needs the owner
 
+Step-by-step guide (Spanish) and blank intake templates: [V18_OWNER_BRIEF.md](V18_OWNER_BRIEF.md), [v18_intake/](v18_intake/).
+
 These cannot be done honestly without new material or a human judgement. The engine is ready for each.
 
 1. **3–5 corporate templates the engine has never seen**, ideally from different companies and with
