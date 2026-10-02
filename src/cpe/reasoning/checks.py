@@ -613,7 +613,7 @@ def check_conflicts(work: Path, fm: dict | None, used: set[str]) -> list[dict]:
             out.append(_issue("error", "CONFLICT_FORMAT", "fact_conflicts.json", None,
                               'each conflict is {"facts": [{"fact": "F0012"}, …], "resolution": "…"}'))
             continue
-        res[tuple(sorted(ids))] = c.get("resolution")
+        res[tuple(sorted(ids))] = c.get("resolution") or (f"dismissed: {c['dismissed']}" if c.get("dismissed") else None)
     for c in found:
         key = tuple(sorted(x["fact"] for x in c["facts"]))
         if res.get(key) or any(r and len(set(k) & set(key)) >= 2 for k, r in res.items()):

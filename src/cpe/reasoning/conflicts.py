@@ -334,7 +334,73 @@ def detect_conflicts(facts: list[dict], tolerance: float = 0.01) -> list[dict]:
                                   {"fact": fb["id"], "value": vb["value"], "unit": vb["unit"], "basis": vb.get("basis"), "source": fb["source"].get("file")}],
                         "resolution": None})
     _versions(facts, out, seen)
+    return rank(out)
+
+
+# v2.1: the review order. A reader has time for the first few conflicts: money and large gaps first.
+TYPE_WEIGHT = {"plan_vs_actual": 3, "definition_mismatch": 3, "management_vs_audited": 3, "forecast_vs_actual": 3,
+               "value_mismatch": 2, "prose_mismatch": 2, "prose_vs_table": 2, "table_mismatch": 1}
+
+
+def _gap(c: dict) -> float:
+    vals = [abs(_base(x)) for x in c["facts"] if x.get("value") is not None]
+    vals = [v for v in vals if v]
+    return (max(vals) / min(vals) - 1) if len(vals) >= 2 else 0.0
+
+
+def priority(c: dict, used: set | None = None) -> tuple[str, float]:
+    """(high | medium | low, score), from what separated real conflicts from noise on the development
+    cases (not from magnitude, which did not):
+    - high: the deck uses one of the figures, or three to five sources give the same quantity three
+      to five ways (a real tangle of versions);
+    - low: one side is the analyst's own analysis output (it is the correction, by design) or a long
+      chain across many files;
+    - medium: the rest, pairs between two sources."""
+    srcs = [str(x.get("source") or "") for x in c["facts"]]
+    analysis = any(s.startswith("analysis/") or "/analysis/" in s for s in srcs)
+    n = len(c["facts"])
+    files = len(set(srcs))
+    touched = bool(used and used & {x["fact"] for x in c["facts"]})
+    score = TYPE_WEIGHT.get(c.get("type"), 1) + min(3.0, 10 * _gap(c)) + (4 if 3 <= n <= 5 and files >= 2 else 0) - (4 if analysis else 0) \
+        - (3 if n > 5 else 0) + (6 if touched else 0)
+    if touched or (3 <= n <= 5 and files >= 2 and not analysis):
+        level = "high"
+    elif analysis or n > 5:
+        level = "low"
+    else:
+        level = "medium"
+    return level, round(score, 2)
+
+
+def rank(conflicts: list[dict], used: set | None = None) -> list[dict]:
+    for c in conflicts:
+        c["priority"], c["priority_score"] = priority(c, used)
+    order = {"high": 0, "medium": 1, "low": 2}
+    out = sorted(conflicts, key=lambda c: (order[c["priority"]], -c["priority_score"]))
+    for i, c in enumerate(out, 1):
+        c["id"] = f"X{i:03d}"
     return out
+
+
+def merge_reviews(old: list[dict], new: list[dict]) -> list[dict]:
+    """New detections keep the reviewer's resolution or dismissal of the same conflict (two shared
+    facts are enough: a group may have gained a version). Reviewed conflicts no longer detected are
+    kept, marked `stale`, so no decision is lost."""
+    reviewed = [c for c in old if c.get("resolution") or c.get("dismissed")]
+    used = set()
+    for c in new:
+        ids = {x["fact"] for x in c["facts"]}
+        for i, r in enumerate(reviewed):
+            if len(ids & {x.get("fact") if isinstance(x, dict) else x for x in r.get("facts") or []}) >= 2:
+                for k in ("resolution", "dismissed", "reviewer_note"):
+                    if r.get(k):
+                        c[k] = r[k]
+                used.add(i)
+                break
+    for i, r in enumerate(reviewed):
+        if i not in used:
+            new.append({**r, "stale": "no longer detected with the current sources"})
+    return new
 
 
 # v2.0 (item 4): versions of one quantity across sources — the same project cost, savings or rate given
@@ -629,3 +695,26 @@ def _versions(facts: list[dict], out: list[dict], seen: set) -> None:
                         "facts": [{"fact": it["f"]["id"], "value": it["v"]["value"], "unit": it["v"]["unit"], "basis": it["v"].get("basis"),
                                    "source": it["file"], "says": it["text"][:120]} for it in its],
                         "resolution": None})
+
+
+def review_conflict(work, cid: str, dismiss: bool, why: str, use: str | None = None) -> dict:
+    """Record a reviewer's decision on one conflict in fact_conflicts.json (kept across re-runs)."""
+    import json
+
+    path = Path(work) / "fact_conflicts.json"
+    data = json.loads(path.read_text(encoding="utf-8"))
+    c = next((x for x in data.get("conflicts") or [] if x.get("id") == cid), None)
+    if c is None:
+        raise SystemExit(f"no conflict {cid} in {path}")
+    if dismiss:
+        if not why.strip():
+            raise SystemExit("a dismissal needs a reason (--why): it is kept and shown to the next reviewer")
+        c["dismissed"] = why.strip()
+        c.pop("resolution", None)
+    else:
+        if use and use not in {x["fact"] for x in c["facts"]}:
+            raise SystemExit(f"{use} is not one of the facts of {cid}")
+        c["resolution"] = (f"use {use}" + (f": {why.strip()}" if why.strip() else "")) if use else (why.strip() or "resolved")
+        c.pop("dismissed", None)
+    path.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8", newline="\n")
+    return c

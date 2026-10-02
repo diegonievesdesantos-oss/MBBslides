@@ -1,5 +1,32 @@
 # Changelog
 
+## Unreleased — 2.1.0.dev0
+
+Less review work for a person. Status: [docs/V21_STATUS.md](docs/V21_STATUS.md).
+
+- **Conflicts ranked by what separates real ones from noise (item 2).** Each conflict gets a priority:
+  - **high:** the deck uses one of the figures, or 3–5 sources give the quantity 3–5 ways;
+  - **low:** one side is the analyst's own analysis output, or a long chain;
+  - **medium:** the rest.
+
+  Over the 7 cases with keys, 8/10 high flags are real conflicts, against 19/50 medium and 5/30 low.
+  - The rule comes from the development cases. Ranking by magnitude did not separate.
+  - `cpe reason conflicts WORK [--dismiss ID --why … | --resolve ID --use FACT]` lists and records
+    decisions.
+  - `reason facts` now re-detects with the current sources and keeps every resolution and dismissal.
+    A group that gained a version keeps its review, and a reviewed conflict no longer detected stays,
+    marked `stale`.
+- **The review as a spreadsheet (item 3).** `cpe update` also writes `work/review.xlsx` with four
+  sheets:
+  - **Changes:** approve or correct each number, or give a value to one left for review.
+  - **Headlines:** approve the proposal or write your own.
+  - **Conflicts:** use a fact or dismiss, with a reason.
+  - **Slides:** keep, delete or rebuild.
+
+  `--read-sheet` reads it back, and `--apply` reads it on its own when it is newer than `edits.json`.
+  Typos, approvals without a value and dismissals without a reason are reported, never applied.
+  Labels are in the deck's language (Spanish or English).
+
 ## 2.0.0 — Update an existing deck end to end; versions of a quantity across sources
 
 **Closed 2026-10-02 by the owner, without the blind validation on real material, which moves to v2.1:**

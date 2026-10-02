@@ -144,3 +144,55 @@ def test_messages_rebuild_and_transplant(tmp_path):
     assert any(c.text == "6,1" for r in tbl.rows for c in r.cells)
     assert [sh.text_frame.text for sh in new.slides[0].shapes if sh.has_text_frame][0].startswith("Invertir")  # slide 1 untouched otherwise
     assert "Rebuilt by cpe update" in new.slides[1].notes_slide.notes_text_frame.text
+
+
+def test_v21_conflicts_ranked_and_reviews_kept_across_runs(tmp_path):
+    from cpe.reasoning.conflicts import merge_reviews, priority, rank
+
+    def c(facts, typ="definition_mismatch"):
+        return {"type": typ, "measure": ["cost"], "facts": [{"fact": f, "value": v, "unit": "EUR_M", "source": s} for f, v, s in facts]}
+
+    tangle = c([("F1", 3.52, "informe.md"), ("F2", 3.74, "nota.md"), ("F3", 4.03, "correo.md")])
+    model = c([("F4", 732, "modelo.csv"), ("F5", 451, "analysis/ahorro.csv")])
+    pair = c([("F6", 212, "informe.md"), ("F7", 247, "correo.md")])
+    assert priority(tangle)[0] == "high" and priority(model)[0] == "low" and priority(pair)[0] == "medium"
+    assert priority(pair, used={"F6"})[0] == "high"  # the deck uses it
+    ranked = rank([model, pair, tangle])
+    assert [x["facts"][0]["fact"] for x in ranked] == ["F1", "F6", "F4"] and ranked[0]["id"] == "X001"
+    old = [dict(ranked[1], dismissed="212 son plantilla propia; 247 con ETT"), dict(ranked[0], resolution="use F3")]
+    again = rank([c([("F6", 212, "informe.md"), ("F7", 247, "correo.md"), ("F8", 250, "acta.md")]), c([("F9", 1, "x.md"), ("F10", 2, "y.md")])])
+    merged = merge_reviews(old, again)
+    assert next(x for x in merged if x["facts"][0]["fact"] == "F6")["dismissed"].startswith("212")  # a group that gained a version keeps its review
+    assert any(x.get("stale") and x.get("resolution") == "use F3" for x in merged)  # no decision is lost
+
+
+def test_v21_review_sheet_round_trip(tmp_path):
+    from openpyxl import load_workbook
+    from pptx import Presentation
+
+    from cpe.cli import main
+
+    _bc_deck(tmp_path / "old.pptx")
+    (tmp_path / "src").mkdir()
+    (tmp_path / "src" / "n.md").write_text("# Nota\n\nSin cifras nuevas.\n", encoding="utf-8")
+    work = tmp_path / "work"
+    assert main(["update", str(tmp_path / "old.pptx"), str(tmp_path / "src"), "-o", str(work)]) == 0
+    wb = load_workbook(work / "review.xlsx")
+    assert wb.sheetnames == ["Cambios", "Titulares", "Conflictos", "Diapositivas"]
+    ws = wb["Cambios"]
+    for row in ws.iter_rows(min_row=2):
+        if (row[1].value, row[2].value, row[3].value) == (2, "exhibit[0].rows[0][1]", "3.200"):
+            row[8].value, row[9].value = "sí", "4.030"  # a number the plan left for review: the reviewer gives the value
+        if (row[1].value, row[2].value, row[3].value) == (2, "exhibit[0].rows[0][2]", "2.400"):
+            row[8].value, row[9].value = "sí", "abc"  # a typo is reported, not applied
+    for row in wb["Diapositivas"].iter_rows(min_row=2):
+        if row[1].value == 2:
+            row[3].value = "eliminar"
+    wb.save(work / "review.xlsx")
+    assert main(["update", "--read-sheet", str(work)]) == 1  # the typo
+    e = json.loads((work / "edits.json").read_text(encoding="utf-8"))
+    assert any(x.get("by_hand") and x["replace"] == "4.030" and x["approved"] for x in e["edits"])
+    assert not any(x.get("replace") == "abc" for x in e["edits"])
+    assert any(x["op"] == "delete_slide" and x["slide"] == 2 for x in e["edits"])
+    assert main(["update", "--apply", str(work), "-o", str(tmp_path / "out" / "new.pptx")]) == 0
+    assert len(Presentation(str(tmp_path / "out" / "new.pptx")).slides) == 1

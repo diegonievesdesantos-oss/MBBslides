@@ -397,6 +397,18 @@ def cmd_update(a):
     """(v2.0) Update an existing deck: prepare the edits, then apply the approved ones to the original."""
     from .reasoning import update
 
+    if a.sheet or a.read_sheet:  # v2.1: the review as a spreadsheet
+        from .reasoning import review_sheet
+
+        if a.sheet:
+            _p(f"review sheet → {review_sheet.write_sheet(a.sheet)} (fill the coloured columns, then --read-sheet or --apply)")
+            return 0
+        st = review_sheet.read_sheet(a.read_sheet)
+        _p(f"approved {st['approved']} · corrected {st['corrected']} · rejected {st['rejected']} · added {st['added']} · headlines {st['headlines']} · "
+           f"conflicts decided {st['conflicts']} · slides {st['slides']}" + (f" · rebuild: --rebuild {a.read_sheet} --slides {','.join(map(str, st['rebuild']))}" if st["rebuild"] else ""))
+        for p in st["problems"]:
+            _p(f"  ! {p}")
+        return 1 if st["problems"] else 0
     if a.rebuild:
         r = update.rebuild(a.rebuild, [int(x) for x in a.slides.split(",")] if a.slides else None, render=not a.no_render)
         if not r["slides"]:
@@ -418,7 +430,7 @@ def cmd_update(a):
         return 2
     m = update.prepare(a.pptx, a.sources, a.out)
     _p(f"{m['slides']} slides, {m['facts']} facts; numbers {m['plan']}; {m['edits']} edits in {a.out}/edits.json "
-       f"({m['approved_kept']} approvals kept).\nNext: review {a.out}/edits.md, approve in edits.json, then "
+       f"({m['approved_kept']} approvals kept).\nNext: review {a.out}/review.xlsx (approve, correct, dismiss), then "
        f"`cpe update --apply {a.out} -o new.pptx --mark`")
     return 0
 
@@ -427,6 +439,19 @@ def cmd_reason(a):
     """Source-to-deck reasoning artifacts (v1.7): facts, checks, ghost deck, trace, benchmark."""
     from .reasoning import benchmark, checks, facts, ghost, graph
 
+    if a.reason_cmd == "conflicts":  # v2.1: the ranked list; dismiss or resolve one
+        from .reasoning.conflicts import review_conflict
+
+        if a.dismiss or a.resolve:
+            c = review_conflict(a.work, a.dismiss or a.resolve, dismiss=bool(a.dismiss), why=a.why or "", use=a.use)
+            _p(f"{c['id']}: {'dismissed' if a.dismiss else 'resolved'} — {c.get('dismissed') or c.get('resolution')}")
+            return 0
+        cs = json.loads(Path(a.work, "fact_conflicts.json").read_text(encoding="utf-8")).get("conflicts") or []
+        for c in cs:
+            state = "dismissed" if c.get("dismissed") else "resolved" if c.get("resolution") else "open"
+            vers = " / ".join(f"{x['value']:g} ({x['source']})" for x in c["facts"])
+            _p(f"{c['id']} [{c.get('priority', '-')}] {state:9} {c['type']}: {vers}")
+        return 0
     if a.reason_cmd == "facts":
         fm = facts.write_fact_model(a.sources, a.out)
         _p(f"{fm['stats']['facts']} facts from {fm['stats']['sources']} sources ({fm['stats']['by_type']}) → {a.out}/facts.json")
@@ -637,12 +662,18 @@ def main(argv=None) -> int:
     s.add_argument("--apply", metavar="WORK", help="apply the approved edits of WORK to the original deck")
     s.add_argument("--mark", action="store_true", help="highlight changed text for review")
     s.add_argument("--accept-derived", action="store_true", help="also apply totals / ratios recomputed from approved values")
+    s.add_argument("--sheet", metavar="WORK", help="(v2.1) write WORK/review.xlsx: approve, correct, dismiss in a spreadsheet")
+    s.add_argument("--read-sheet", metavar="WORK", help="(v2.1) read WORK/review.xlsx back into the edits and conflicts")
     s.add_argument("--rebuild", metavar="WORK", help="build the slides whose message no longer holds in the old deck's style (replace_slide edits)")
     s.add_argument("--slides", help="with --rebuild: which old slides (e.g. 4,6)")
     s.add_argument("--no-render", action="store_true", help="with --rebuild: skip rendering")
     s.set_defaults(f=cmd_update)
     s = sub.add_parser("reason", help="source-to-deck reasoning artifacts (v1.7)"); rs = s.add_subparsers(dest="reason_cmd", required=True)
     r = rs.add_parser("facts"); r.add_argument("sources"); r.add_argument("-o", "--out", required=True); r.set_defaults(f=cmd_reason)
+    r = rs.add_parser("conflicts", help="(v2.1) ranked conflicts between sources; --dismiss / --resolve one")
+    r.add_argument("work"); r.add_argument("--dismiss", metavar="ID"); r.add_argument("--resolve", metavar="ID")
+    r.add_argument("--why", help="the reason (required to dismiss)"); r.add_argument("--use", metavar="FACT", help="with --resolve: the fact whose value is used")
+    r.set_defaults(f=cmd_reason)
     r = rs.add_parser("check"); r.add_argument("work"); r.add_argument("--sources"); r.add_argument("--enrich", action="store_true",
                                                                                                     help="fill deck.json evidence from the cited facts first"); r.set_defaults(f=cmd_reason)
     r = rs.add_parser("ghost"); r.add_argument("work"); r.set_defaults(f=cmd_reason)

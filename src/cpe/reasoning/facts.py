@@ -411,7 +411,12 @@ def write_fact_model(sources_dir: str | Path, work_dir: str | Path) -> dict:
     from .conflicts import detect_conflicts
 
     cf = work / "fact_conflicts.json"
-    if not cf.exists():  # never overwrite the agent's resolutions
-        cf.write_text(json.dumps({"protocol": PROTOCOL_VERSION, "conflicts": detect_conflicts(fm["facts"])}, indent=2, ensure_ascii=False) + "\n", encoding="utf-8", newline="\n")
+    found = detect_conflicts(fm["facts"])
+    if cf.exists():  # v2.1: re-detect with the current sources, keeping every resolution and dismissal
+        from .conflicts import merge_reviews
+
+        old = json.loads(cf.read_text(encoding="utf-8")).get("conflicts") or []
+        found = merge_reviews(old, found)
+    cf.write_text(json.dumps({"protocol": PROTOCOL_VERSION, "conflicts": found}, indent=2, ensure_ascii=False) + "\n", encoding="utf-8", newline="\n")
     (work / "source_text.json").write_text(json.dumps({"protocol": PROTOCOL_VERSION, "blocks": blocks}, indent=2, ensure_ascii=False) + "\n", encoding="utf-8", newline="\n")
     return fm

@@ -42,6 +42,9 @@ def prepare(old_pptx: str | Path, sources: str | Path, work: str | Path) -> dict
     rev = _messages(work, plan, e)
     path.write_text(json.dumps(e, indent=2, ensure_ascii=False) + "\n", encoding="utf-8", newline="\n")
     (work / "edits.md").write_text(deck_patch.edits_markdown(e), encoding="utf-8", newline="\n")
+    from .review_sheet import write_sheet
+
+    write_sheet(work)  # v2.1: the review in a spreadsheet, beside edits.md
     meta = {"messages": {v: sum(1 for r in rev if r["verdict"] == v) for v in ("holds", "figures updated", "no longer holds", "check")},
             "old_pptx": str(Path(old_pptx).resolve()), "sources": str(Path(sources).resolve()), "slides": len(inv["slides"]),
             "facts": fm["stats"]["facts"], "plan": plan["totals"], "edits": len(e["edits"]), "approved_kept": kept}
@@ -64,6 +67,11 @@ def apply(work: str | Path, out: str | Path, mark: bool = False, accept_derived:
     from . import deck_patch
 
     work = Path(work)
+    sheet = work / "review.xlsx"
+    if sheet.exists() and sheet.stat().st_mtime > (work / "edits.json").stat().st_mtime:  # v2.1: the reviewer worked in the sheet
+        from .review_sheet import read_sheet
+
+        read_sheet(work)
     meta = json.loads((work / "update.json").read_text(encoding="utf-8"))
     plan = json.loads((work / "update_plan.json").read_text(encoding="utf-8"))
     e = json.loads((work / "edits.json").read_text(encoding="utf-8"))
