@@ -22,6 +22,16 @@ def _measures(text: str) -> set[str]:
 STOP = set("de la el los las del al en por para con un una y o que se su sus es son the of to in for and a an on at by is are".split())
 
 
+def _scope(text: str) -> str | None:
+    """'group' / 'local' definition of a figure ("EBITDA del grupo" vs "EBITDA España")."""
+    t = (text or "").lower()
+    if re.search(r"\b(group|grupo|consolidated|consolidad[oa])\b", t):
+        return "group"
+    if re.search(r"\b(local|country|país|pais|segment|segmento|division|división|filial|subsidiary)\b", t):
+        return "local"
+    return None
+
+
 def _bigrams(text: str) -> set[str]:
     """Content-word pairs of a sentence ('coste de cierre' → 'coste cierre')."""
     w = [x for x in re.findall(r"[a-záéíóúñü]+", (text or "").lower()) if x not in STOP and len(x) > 2]
@@ -108,7 +118,11 @@ def detect_conflicts(facts: list[dict], tolerance: float = 0.01) -> list[dict]:
             if key in seen:
                 continue
             seen.add(key)
-            kind = "forecast_vs_actual" if (va.get("basis") or "actual") != (vb.get("basis") or "actual") else "value_mismatch"
+            bases = {(va.get("basis") or "actual"), (vb.get("basis") or "actual")}
+            scope = {_scope(fa.get("claim", "") + " " + str(va.get("label") or "")), _scope(fb.get("claim", "") + " " + str(vb.get("label") or ""))}
+            kind = ("management_vs_audited" if bases == {"management", "audited"} or bases == {"actual", "audited"} else
+                    "forecast_vs_actual" if len(bases) > 1 else
+                    "definition_mismatch" if scope == {"group", "local"} else "value_mismatch")
             out.append({"id": f"X{len(out) + 1:03d}", "type": kind, "measure": sorted(ma & mb), "period": va["period"],
                         "facts": [{"fact": fa["id"], "value": va["value"], "unit": va["unit"], "basis": va.get("basis"), "source": fa["source"].get("file")},
                                   {"fact": fb["id"], "value": vb["value"], "unit": vb["unit"], "basis": vb.get("basis"), "source": fb["source"].get("file")}],

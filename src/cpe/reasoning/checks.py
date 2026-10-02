@@ -235,6 +235,24 @@ def check_computed(cf: dict | None, facts: dict) -> tuple[list[dict], dict]:
             continue
         stated = float(f["values"][0]["value"])
         bad = abs(res - stated) > max(0.005 * abs(res), 0.5 * 10 ** -_decimals(stated))
+        # v1.8: a formula that adds, subtracts or divides values of incompatible periods / bases
+        # (LTM with a quarter, YTD with a full year, budget with actual, run-rate with reported)
+        if not f.get("periods_ok"):
+            from .periods import compare as _cmp
+
+            refs = [(r, (facts.get(r) or good.get(r) or {}).get("values") or [{}]) for r in sorted(set(re.findall(r"\b[FC]\d{4}\b", f["formula"])))]
+            vals = [(r, v[0]) for r, v in refs if v and v[0].get("period")]
+            for i in range(len(vals)):
+                for j in range(i + 1, len(vals)):
+                    why = _cmp(vals[i][1], vals[j][1])
+                    if why:
+                        out.append(_issue("warning", "PERIOD_MISMATCH", "computed_facts.json", fid,
+                                          f"{vals[i][0]} ({vals[i][1].get('period')}) and {vals[j][0]} ({vals[j][1].get('period')}): {why}; "
+                                          "if intended, set \"periods_ok\": \"<why>\""))
+                        break
+                else:
+                    continue
+                break
         if bad:  # reported once; the fact stays known so its dependants do not cascade into UNKNOWN_FACT
             out.append(_issue("error", "ARITHMETIC_ERROR", "computed_facts.json", fid, f"{f['formula']} = {res:.4g}, stated {stated:g}", hard=True))
         import re as _re

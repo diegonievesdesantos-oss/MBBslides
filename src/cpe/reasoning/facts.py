@@ -17,11 +17,17 @@ from . import PROTOCOL_VERSION
 
 PERIOD_RE = re.compile(
     r"\b(?:(?P<fy>FY|CY)\s?'?(?P<fyy>\d{2}|\d{4})(?P<fs>[EABF])?|(?P<q>Q[1-4])\s?'?(?P<qy>\d{2}|\d{4})?|(?P<h>H[12])\s?'?(?P<hy>\d{2}|\d{4})?"
-    r"|(?P<y>(?:19|20)\d{2})(?P<ys>[EABF])?|(?P<w>YTD|LTM|TTM|run[- ]rate))\b", re.IGNORECASE)
+    r"|(?P<ym>(?:19|20)\d{2})-(?P<mm>0[1-9]|1[0-2])(?!\d)"
+    r"|(?P<y>(?:19|20)\d{2})(?P<ys>[EABF])?|(?P<w>YTD|LTM|TTM|run[- ]rate|últimos doce meses|last twelve months|en lo que va de año))\b", re.IGNORECASE)
 BASIS_WORDS = {"budget": "budget", "presupuesto": "budget", "forecast": "forecast", "previsión": "forecast", "prevista": "forecast",
                "previsto": "forecast", "projected": "forecast", "proyectad": "forecast", "expected": "forecast", "target": "target",
                "objetivo": "target", "plan": "plan", "propose": "plan", "proposes": "plan", "proposal": "plan", "proponemos": "plan",
-               "propone": "plan", "propuesta": "plan", "actual": "actual", "real": "actual", "estimate": "estimate", "est.": "estimate"}
+               "propone": "plan", "propuesta": "plan", "actual": "actual", "real": "actual", "budgeted": "budget", "presupuestado": "budget",
+               "presupuestada": "budget", "pronóstico": "forecast", "previsiones": "forecast", "estimate": "estimate", "est.": "estimate"}
+SCENARIOS = {"actual": "actual", "actuals": "actual", "real": "actual", "reales": "actual", "budget": "budget", "presupuesto": "budget", "ppto": "budget",
+             "forecast": "forecast", "previsión": "forecast", "prevision": "forecast", "fcst": "forecast", "plan": "plan", "target": "target",
+             "objetivo": "target", "audited": "audited", "auditado": "audited", "base case": "plan", "escenario base": "plan"}
+SCENARIO_RE = re.compile(r"\b(" + "|".join(sorted(map(re.escape, SCENARIOS), key=len, reverse=True)) + r")\b", re.I)
 SUFFIX_BASIS = {"E": "estimate", "A": "actual", "B": "budget", "F": "forecast"}
 UNIT_RE = re.compile(r"(€|\$|£|eur|usd|gbp)\s?(m|mn|bn|k|million|billion|thousand)?|\b(m|mn|bn|k)\s?(€|\$|£|eur|usd)|%|\bpp\b|\bbps\b|\bdays?\b|\bmonths?\b|\byears?\b",
                      re.IGNORECASE)
@@ -45,10 +51,18 @@ def detect_period(text: str) -> dict | None:
         out = {"period": f"{yy(g['qy'])}-{g['q'].upper()}" if g["qy"] else g["q"].upper(), "basis": basis or "actual"}
     elif g["h"]:
         out = {"period": f"{yy(g['hy'])}-{g['h'].upper()}" if g["hy"] else g["h"].upper(), "basis": basis or "actual"}
+    elif g.get("ym"):
+        out = {"period": f"{g['ym']}-{g['mm']}", "basis": basis or "actual"}
     elif g["y"]:
         out = {"period": g["y"], "basis": SUFFIX_BASIS.get((g["ys"] or "").upper(), basis or "actual")}
     else:
-        out = {"period": g["w"].upper().replace(" ", "-"), "basis": basis or "actual"}
+        w = g["w"].lower()
+        w = "LTM" if w in ("últimos doce meses", "last twelve months", "ttm", "ltm") else "YTD" if w in ("en lo que va de año", "ytd") else w
+        out = {"period": w.upper().replace(" ", "-"), "basis": basis or "actual"}
+    if re.search(r"\b(audited|auditad[oa]s?|statutory|cuentas anuales)\b", t, re.I):
+        out["basis"] = "audited"  # v1.8: management vs audited figures are told apart
+    elif re.search(r"\b(management accounts?|cuentas de gestión|de gestión|internal reporting|reporting interno)\b", t, re.I) and out["basis"] == "actual":
+        out["basis"] = "management"
     return out
 
 
@@ -200,13 +214,18 @@ def _table_facts(t: dict, next_id) -> list[dict]:
                 continue
             v = float(row[j])
             per = detect_period(header[j]) or next((detect_period(str(row[y])) for y in year_cols if y < len(row)), None)
+            sc = SCENARIO_RE.search(header[j])  # v1.8: a scenario column without a period ("Budget", "Real", "Previsión")
+            if sc and not per:
+                per = {"period": None, "basis": SCENARIOS[sc.group(1).lower()]}
+            elif sc and per:
+                per = {**per, "basis": SCENARIOS[sc.group(1).lower()]}
             cu = ((t.get("cell_units") or [])[i][j] if i < len(t.get("cell_units") or []) and j < len(t["cell_units"][i]) else "") or ""
             unit = detect_unit(header[j]) or (unit_from_raw("1" + cu) if cu else "") or detect_unit(label) or table_unit
             fid = next_id()
             rng = f"{_col(j)}{i + 2}"
             facts.append({"id": fid, "claim": f"{label} — {header[j]}: {_fmt(v)}{(' ' + unit) if unit else ''}",
                           "values": [{"value": v, "unit": unit, "period": (per or {}).get("period"), "basis": (per or {}).get("basis"), "label": label,
-                                      "column": header[j]}],
+                                      "column": header[j], **({"row_kind": t["row_kinds"][i]} if (t.get("row_kinds") or ["row"] * (i + 1))[i] != "row" else {})}],
                           "source": {"file": t["source"], "sheet": sheet, "range": rng, "loc": t["loc"]}, "fact_type": "table_value", "confidence": 1.0})
             cells[j] = facts[-1]
         groups: dict = {}  # one measure observed in several periods: "Revenue FY2024 (€M)" + "Revenue FY2025 (€M)"
