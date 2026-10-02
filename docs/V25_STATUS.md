@@ -79,12 +79,12 @@ yearly flows.
 | "current" right | 67 / 70 | 70 / 72 |
 
 **What this says.**
-- **The first blind gain in three rounds,** and on every measure at once:
+- **The first blind gain in proposed values since v2.2,** and on every measure at once:
   - 6 more right values;
   - 3 fewer false "outdated" flags;
   - 3 more right "current".
 
-  It is small: the items fix specific failures, and this set has fewer of them than v2.4's.
+  It is small.
 - **2.4.0 already did well on this set.** It found 68% of the outdated numbers, with values right 72%
   of the time. As noted in v2.4, the figures vary a lot from one set of cases to another.
 - **The set is now used.** It is not run again as a blind test.

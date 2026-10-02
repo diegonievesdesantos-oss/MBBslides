@@ -29,7 +29,8 @@ The last synthetic round: time and accumulation, the failures v2.4's blind check
   - "outdated" right: 81% → 83%;
   - "current" right: 67/70 → 70/72.
 
-  A small gain, but on every measure and with none lost: the first blind improvement since v2.3.
+  A small gain, but on every measure and with none lost: the first blind gain in proposed values
+  since v2.2.
 
 ## 2.4.0 — Choosing the new value: one source value per figure, years, weak heads
 
