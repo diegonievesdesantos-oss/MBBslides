@@ -18,13 +18,13 @@ and contradictory opinions. The engine builds the deck as follows:
 It then renders the deck, measures its visual quality and corrects what it can. **Every number a
 reader sees must come from a cited fact.** The pass/fail verdicts are computed by code.
 
-> **v1.9.0** (current): updates the original deck in place and learns layouts from hand-made decks.
-> - `cpe deck edits` / `cpe deck patch` change only the approved numbers of the original pptx; everything
->   else stays as it was.
-> - A deck built with free text boxes now gives real corporate layouts.
-> - `deck stale` matches numbers on their meaning, not their value. Conflict detection reads each
->   number with its own words.
-> - Measured in-sample on one real project; blind validation moves to v2.0.
+> **v2.0.0** (current): updates an existing deck end to end.
+> - `cpe update`: proposed edits, review, then a patch of the original file.
+> - Derived totals, ratios and KPIs follow the approved values.
+> - Slides whose message no longer holds are flagged and can be rebuilt in the deck's own style.
+> - Versions of one quantity across sources are found. On a sealed synthetic holdout: 7/14 groups
+>   found, 0 decoys flagged.
+> - Blind validation on real material moves to v2.1.
 
 <!-- metrics:start (generated from evals/results/latest.json by `cpe results readme`; do not edit) -->
 
@@ -67,7 +67,7 @@ Example decks are development material and regression fixtures, not evidence of 
 
 <!-- metrics:end -->
 
-## In development: v2.0 — works on cases it has not seen
+## What's new in v2.0 — update an existing deck end to end
 
 - **`cpe update old.pptx sources/ -o work`:** one command from the old deck and new sources to
   reviewable edits.

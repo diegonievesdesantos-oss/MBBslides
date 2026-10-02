@@ -1,6 +1,13 @@
 # Changelog
 
-## Unreleased — 2.0.0.dev0
+## 2.0.0 — Update an existing deck end to end; versions of a quantity across sources
+
+**Closed 2026-10-02 by the owner, without the blind validation on real material, which moves to v2.1:**
+- unseen corporate templates;
+- new cases with the owner's key.
+
+The only blind figure of this release is on a synthetic holdout written by an agent (item 4). The
+v1.8 project figures are in-sample.
 
 The aim of 2.0 is a tool that works on cases it has not seen. The release needs the owner's blind
 validation (unseen templates and new cases, judged only against the owner's key). Status:
