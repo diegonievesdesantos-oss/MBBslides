@@ -1,5 +1,30 @@
 # Changelog
 
+## Unreleased — 2.5.0.dev0
+
+The last synthetic round: time and accumulation, the failures v2.4's blind check found. Status:
+[docs/V25_STATUS.md](docs/V25_STATUS.md).
+
+- **A fresh sealed set (item 2),** written by an agent that did not read the code: 4 cases stressing
+  years, quarters and cumulative figures. It runs once, at the end of 2.5.
+- **Each value its own year (item 3).**
+  - In a source sentence, a value takes the year named next to it ("1,4 M€ en 2023, 1,8 M€ en 2024"),
+    not every year of the sentence.
+  - A chart point takes its category's year, not every year in the chart's title.
+- **A past actual is not outdated (item 4).** In a long table ("indicador, año, valor") the year sits
+  in its own column; each value now takes its row's year, and the year cell is no longer read as a
+  quantity. A deck figure for 2024 no longer takes 2023's or 2025's row.
+- **Cumulative against yearly (item 5).** For any number, a cumulative figure ("inversión acumulada",
+  "to date", "since launch") is not one period's figure, nor the other way round.
+- **On v2.4's sealed set (now development):**
+  - false "outdated" flags: 39 → 19;
+  - "current" right: 46/49 → 62/64;
+  - proposed values right: 45 → 48.
+
+  No other development set or the v1.8 project lost a right value, except one on v2.3's sealed set
+  (half-year points).
+- **Dropped:** "a target is updated only by a target" lost 4 right values.
+
 ## 2.4.0 — Choosing the new value: one source value per figure, years, weak heads
 
 **Closed 2026-10-02 by the owner, without the blind validation on real material, which moves to v2.5:**
