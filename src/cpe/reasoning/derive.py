@@ -426,6 +426,15 @@ def _measures(q: dict) -> set:
     return _key_measures(_measure_set(_stems(text)))
 
 
+def _label_words(q: dict) -> set | None:
+    """A table cell's or chart point's label words (its row, or series), None for a number in a sentence."""
+    if not q["where"].startswith("exhibit["):
+        return None
+    from .deck_update import _open_words
+
+    return _open_words(q.get("row") or q.get("context") or "")
+
+
 def _cls(q: dict) -> str:
     if q["kind"] == "pct":
         return "pct"
@@ -475,6 +484,9 @@ def _same_figure(a: tuple, b: tuple) -> tuple | None:
         return None  # "45 FTE" and "45 días": the units the numbers are written with differ
     if ia["ms"] and ib["ms"] and not (ia["ms"] & ib["ms"]):
         return None
+    wa, wb = ia["ms"] or ia["label"], ib["ms"] or ib["label"]
+    if ia["label"] is not None and ib["label"] is not None and wa and wb and not (wa & wb):
+        return None  # v2.3: two labelled cells or points about different things ("Horas de vuelo" and "Eventos AOG")
     f = _scale(qa, qb)
     if f is None:
         return None
@@ -494,7 +506,7 @@ def groups(plan: dict) -> list[list[tuple]]:
             if not _usable(q) or q.get("status") == "ignored":
                 continue
             ctx = q.get("context") or ""
-            nums.append((n, q, {"cls": _cls(q), "ents": _entities(q), "ms": _measures(q), "digits": _digits(q), "unit": _unit(q),
+            nums.append((n, q, {"cls": _cls(q), "ents": _entities(q), "ms": _measures(q), "digits": _digits(q), "unit": _unit(q), "label": _label_words(q),
                                 "money": q["kind"] == "money" or bool(MONEY_RE.search(ctx))}))
     rank = lambda x: (0 if ".rows[" in x[1]["where"] else 1 if x[1]["where"].startswith("exhibit[") else 2 if x[1]["where"] != "title" else 3)
     nums.sort(key=rank)
