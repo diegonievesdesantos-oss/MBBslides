@@ -96,12 +96,13 @@ def test_existing_deck_ingest_and_update_plan(tmp_path):
     assert inv["slides"][1]["headline"].startswith("Las ventas crecieron") and inv["slides"][1]["exhibits"][0]["type"] == "column"
     spec = to_spec(inv)
     assert spec["slides"][1]["visual"]["data"]["series"][0]["values"] == [70, 50]
-    facts = [{"id": "F1", "claim": "Ventas totales 2026: 135 M€", "values": [{"value": 135, "unit": "EUR_M"}]},
+    # v1.9 (U1): a number matches on two words of its own (not one shared word), so the facts say what they are about
+    facts = [{"id": "F1", "claim": "Las ventas crecieron hasta 135 M€ en 2026", "values": [{"value": 135, "unit": "EUR_M"}]},
              {"id": "F2", "claim": "Margen bruto 2026 del 18%", "values": [{"value": 18, "unit": "PCT"}]},
              {"id": "F3", "claim": "Ventas Norte 2026: 70", "values": [{"value": 70, "unit": ""}]}]
     plan = update_plan(inv, facts)
     st = {q["raw"]: q["status"] for q in plan["slides"][1]["numbers"]}
-    assert st["18%"] == "current" and st["70"] == "current" and st["50"] == "untraced"
+    assert st["18%"] == "untraced" and st["70"] == "current" and st["50"] == "untraced"  # v1.9: "margen" alone is one shared word
     outdated = [q for q in plan["slides"][1]["numbers"] if q["status"] == "outdated"]
     assert outdated and outdated[0]["fact"] == "F1" and plan["slides"][1]["action"] == "update"
 

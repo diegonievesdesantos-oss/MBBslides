@@ -85,3 +85,41 @@ def test_u3_conflicts_read_each_number_with_its_own_words():
         tv("F7", "ventas.csv", "Líneas preparadas (miles) · FY2025 · Real", "valor", 4396, ""),
         tv("F8", "wms.csv", "Líneas de la zona frío en FY2026 (miles)", "valor", 1927, "")]
     assert detect_conflicts(noise) == []
+
+
+def test_u1_stale_matches_on_words_unit_and_period_not_on_value():
+    from cpe.reasoning.deck_update import _kpi_labels_before, _pair_label, update_plan
+
+    def tx(i, file, claim, value, unit, period=None):
+        return {"id": i, "fact_type": "text_statement", "claim": claim, "source": {"file": file}, "values": [{"value": value, "unit": unit, "period": period}]}
+
+    def tv(i, file, label, col, value, unit=""):
+        return {"id": i, "fact_type": "table_value", "claim": f"{label} — {col}", "source": {"file": file},
+                "values": [{"value": value, "unit": unit, "label": label, "column": col}]}
+
+    def num(raw, value, kind, context, text=None, unit_after=""):
+        return {"where": "body[0]", "raw": raw, "value": value, "kind": kind, "context": context, "text": text or context, "unit_after": unit_after}
+
+    inv = {"source": "old.pptx", "slides": [{"n": 2, "role": "content", "headline": "Business case", "numbers": [
+        num("26%", 26.0, "pct", "26% TIR a 10 años"),                                     # equal value elsewhere (a cost overrun %): not "current"
+        num("732", 732.0, "plain", "Ahorro neto anual Fase 1 · Ambiente"),                 # the business case repeats it; the analysis does not
+        num("2,4x", 2.4, "x", "2,4x productividad de picking"),
+        num("€38.500", 38500.0, "money", "38.500 € Coste empresa por FTE"),
+        num("1.640", 1640.0, "plain", "1.640 h/FTE; coste por", unit_after="h"),           # no new fact about hours per FTE
+        num("118", 118.0, "plain", "oferta K-ES-2025-118 rev. B"),                         # a document code
+        num("2", 2.0, "plain", "2", text="2")]}]}                                          # the page number
+    facts = [tv("F1", "analysis/desviacion_fase1.csv", "Coste completo frente a los 3.200 k€ aprobados", "desviacion_pct", 26, "PCT"),
+             tv("F2", "analysis/ahorro_fase1.csv", "Ahorro neto anual de la fase 1 en el business case", "importe (k€)", 732, "EUR_K"),
+             tv("F3", "analysis/ahorro_fase1.csv", "Ahorro neto anual a la productividad real", "importe (k€)", 451, "EUR_K"),
+             tv("F4", "analysis/productividad.csv", "Ambiente automatizada en régimen", "productividad_veces", 1.89),
+             tx("F5", "nota_rrhh.md", "El coste empresa medio por FTE de almacén queda en 41.400 € en 2026.", 41400, "EUR", "2026"),
+             tx("F6", "mayor.csv", "Asiento 26078 · Kinetra — importe", 2.4, "")]
+    st = {q["raw"]: q for q in update_plan(inv, facts)["slides"][0]["numbers"]}
+    assert st["26%"]["status"] == "untraced"
+    assert st["732"]["status"] == "outdated" and st["732"]["fact"] == "F3"
+    assert st["2,4x"]["status"] == "outdated" and st["2,4x"]["fact"] == "F4"
+    assert st["€38.500"]["status"] == "outdated" and st["€38.500"]["fact"] == "F5"
+    assert st["1.640"]["status"] == "untraced"
+    assert st["118"]["status"] == "ignored" and st["2"]["status"] == "ignored"
+    assert _pair_label("Tasa de error manual / automatizada", 1) == "Tasa de error automatizada"
+    assert _kpi_labels_before(["Plantilla almacén", "142 FTE"]) and not _kpi_labels_before(["5,6 M€", "Inversión total"])
