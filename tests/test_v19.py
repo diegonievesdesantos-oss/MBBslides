@@ -34,3 +34,26 @@ def test_u9_scaled_numbers_ground_against_unscaled_facts():
     st = {g["number"]: g["status"] for g in ground_numbers("4,59 M de líneas frente a 4,6 M de capacidad", f)}
     assert st == {"4,59 M": "grounded", "4,6 M": "grounded"}
     assert ground_numbers("unos 7,3 M de líneas", f)[0]["status"] == "unsupported"
+
+
+def test_u2_banner_line_and_repeated_two_level_header(tmp_path):
+    import json
+    import subprocess
+    import sys
+    src = tmp_path / "src"
+    src.mkdir()
+    (src / "presupuesto.csv").write_text(
+        "Presupuesto almacén · versión 2 (borrador 25/09/2026);;;;;\n"
+        "Concepto;FY2025;FY2026;FY2026;FY2027;Comentario\n"
+        ";Real;Presupuesto;Real;Presupuesto;\n"
+        "Volumen;;;;;\n"
+        "Líneas preparadas (miles);4.396;4.660;4.373;4.723;+8% s/ real FY2026\n"
+        "Ventas netas (M€);94,5;100,1;94,0;101,6;\n"
+        "Mantenimiento;n/d;75;33;133;Contrato\n", encoding="utf-8")
+    subprocess.run([sys.executable, "-m", "cpe", "reason", "facts", str(src), "-o", str(tmp_path / "w")], check=True, capture_output=True)
+    fs = json.loads((tmp_path / "w" / "facts.json").read_text(encoding="utf-8"))["facts"]
+    by = {(f["values"][0]["label"].split(" · ")[0], f["values"][0]["period"], f["values"][0]["basis"]): f["values"][0] for f in fs if f.get("fact_type") == "table_value"}
+    assert by[("Líneas preparadas (miles)", "FY2025", "actual")]["value"] == 4396 and by[("Líneas preparadas (miles)", "FY2025", "actual")]["unit"] == ""
+    assert by[("Líneas preparadas (miles)", "FY2027", "budget")]["value"] == 4723
+    assert by[("Ventas netas (M€)", "FY2025", "actual")] == {**by[("Ventas netas (M€)", "FY2025", "actual")], "value": 94.5, "unit": "EUR_M"}
+    assert by[("Mantenimiento", "FY2026", "actual")]["value"] == 33

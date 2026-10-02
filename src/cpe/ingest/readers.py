@@ -132,7 +132,10 @@ def _two_level_header(header: list, rows: list) -> tuple[list, list, bool]:
     h, sub = [str(x or "").strip() for x in header], [str(x or "").strip() for x in rows[0]]
     blanks = sum(1 for x in h[1:] if not x)
     sub_text = [x for x in sub[1:] if x]
-    if not blanks or len(sub_text) < 2 or any(_num(x)[0] is not None for x in sub_text):
+    # v1.9 (DEBT_V18 U2): the group row may repeat its label instead of leaving merged cells blank
+    # ("Concepto | FY2025 | FY2026 | FY2026 | FY2027" over " | Real | Presupuesto | Real | Presupuesto")
+    repeated = len(set(x for x in h[1:] if x)) < len([x for x in h[1:] if x]) and not sub[0]
+    if not (blanks or repeated) or len(sub_text) < 2 or any(_num(x)[0] is not None for x in sub_text):
         return header, rows, False
     filled, last = [], ""
     for x in h:
@@ -144,6 +147,7 @@ def _two_level_header(header: list, rows: list) -> tuple[list, list, bool]:
     return merged, rows[1:], True
 
 
+NA_CELLS = {"n/a", "na", "n.a.", "n/d", "nd", "n.d.", "s/d", "k.a.", "n.b.", "#n/a", "#n/d"}
 TOTAL_RE = re.compile(r"^\s*(total|subtotal|sub-total|grand total|suma|total general|totales)\b", re.I)
 
 
@@ -153,7 +157,8 @@ def _table(header, rows, source, loc, dot_decimal: bool = False, decimal_comma: 
     ncols = max([len(header)] + [len(r) for r in rows]) if (header or rows) else 0
     numeric, dot = [], set()
     for j in range(ncols):
-        vals = [r[j] for r in rows if j < len(r) and str(r[j]).strip() not in ("", "n/a", "–", "-", "—")]
+        vals = [r[j] for r in rows if j < len(r) and str(r[j]).strip() not in ("", "n/a", "–", "-", "—")
+                and str(r[j]).strip().lower() not in NA_CELLS]  # v1.9: "n/d", "s/d" are missing data, not labels
         ok = [v for v in vals if _num(v, decimal_comma=decimal_comma)[0] is not None]
         # a value column may carry a stray label cell ("Total", "4-6 sem"): numeric if most cells are numbers
         if vals and len(ok) >= max(1, 0.7 * len(vals)) and j > 0 or (vals and len(ok) == len(vals)):
@@ -239,14 +244,33 @@ def sniff_dialect(raw: str):
         return d
 
 
+def _split_banner(rows: list) -> tuple[list[str], list]:
+    """v1.9 (DEBT_V18 U2): title lines above a table ("Presupuesto almacén · versión 2 (borrador)") are a
+    caption, not the header: leading rows with a single non-empty text cell, followed by a wider row."""
+    banner = []
+    while len(rows) > 1:
+        cells = [str(c).strip() for c in rows[0] if str(c).strip()]
+        nxt = [str(c).strip() for c in rows[1] if str(c).strip()]
+        if len(cells) == 1 and _num(cells[0])[0] is None and len(nxt) >= 2:
+            banner.append(cells[0])
+            rows = rows[1:]
+        else:
+            break
+    return banner, rows
+
+
 def read_csv(path: Path) -> dict:
     raw = path.read_text(encoding="utf-8-sig", errors="replace")
     dialect = sniff_dialect(raw)
     rows = list(csv.reader(io.StringIO(raw), dialect))
     if not rows:
         return {"blocks": [], "facts": [], "tables": []}
-    # comma-separated values cannot carry a decimal comma unquoted: a dot is a decimal point
-    return {"blocks": [], "facts": [], "tables": [_table(rows[0], rows[1:], path.name, "sheet", dot_decimal=dialect.delimiter == ",")]}
+    banner, rows = _split_banner(rows)
+    blocks = [{"source": path.name, "loc": "caption", "kind": "text", "text": b} for b in banner]
+    # comma-separated values cannot carry a decimal comma unquoted: a dot is a decimal point; a ";"-separated
+    # export from a Spanish / European system usually writes "94,5" and "4.396" (v1.9, DEBT_V18 U2)
+    dc = dialect.delimiter != "," and decimal_comma_document(raw)
+    return {"blocks": blocks, "facts": [], "tables": [_table(rows[0], rows[1:], path.name, "sheet", dot_decimal=dialect.delimiter == ",", decimal_comma=dc)]}
 
 
 def read_xlsx(path: Path) -> dict:
@@ -265,6 +289,8 @@ def read_xlsx(path: Path) -> dict:
                     blocks.append({"source": path.name, "loc": loc, "kind": "text", "text": c.strip()})
                     facts.extend(extract_facts(c.strip(), path.name, loc))
         if rows and not all(sum(1 for c in r if str(c).strip()) == 1 and isinstance(next(c for c in r if str(c).strip()), str) for r in rows):
+            banner, rows = _split_banner(rows)
+            blocks.extend({"source": path.name, "loc": f"sheet {ws.title} caption", "kind": "text", "text": str(b)} for b in banner)
             tables.append(_table([str(h) for h in rows[0]], rows[1:], path.name, f"sheet {ws.title}"))
     return {"blocks": blocks, "facts": facts, "tables": tables + ooxml_charts(path)}
 
