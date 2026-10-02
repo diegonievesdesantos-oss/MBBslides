@@ -536,7 +536,6 @@ OPEN_STOP = {"cada", "each", "todo", "todos", "toda", "todas", "previst", "objet
 def _open_measure(q: dict) -> set[str]:
     """v2.3: the stems of the few content words around a number with no known measure: what it counts
     ("30.000 socios", "240 miles de expedientes", "Socios en madurez"). Only nouns-like words of 5+ letters."""
-    from .conflicts import HEAD_STOP
     from .derive import _local
 
     if q["where"].startswith("exhibit["):
