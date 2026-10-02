@@ -528,3 +528,25 @@ def test_v25_each_source_value_and_chart_point_has_its_own_year(tmp_path):
     pts = {q["where"]: q for s in plan["slides"] for q in s["numbers"] if q["where"].startswith("exhibit[")}
     assert pts["exhibit[0].Inversión (M€)[2023]"]["status"] == "current"  # 1,4 in 2023: confirmed, not 2025's 2,3
     assert pts["exhibit[0].Inversión (M€)[2025]"].get("new_num") == 2.3
+
+
+def test_v25_long_table_years_and_cumulative_figures(tmp_path):
+    import json
+
+    from cpe.reasoning import facts
+    from cpe.reasoning.deck_update import ingest_deck, update_plan
+
+    src = tmp_path / "src"
+    src.mkdir()
+    (src / "indicadores_long.csv").write_text("indicador,anio,valor\nflota_electrica,2023,31\nflota_electrica,2024,48\nflota_electrica,2025,71\n",
+                                              encoding="utf-8")
+    (src / "memoria.md").write_text("La inversión acumulada alcanza 5,5 M€ al cierre del programa.\n", encoding="utf-8")
+    facts.write_fact_model(src, tmp_path / "work")
+    fm = json.loads((tmp_path / "work" / "facts.json").read_text(encoding="utf-8"))["facts"]
+    _deck_with(tmp_path / "d.pptx", [
+        ("La empresa cerró 2024 con 48 autobuses de flota eléctrica", None, None),
+        ("La inversión del año fue de 2,1 M€ en el programa", None, None)])
+    plan = update_plan(ingest_deck(tmp_path / "d.pptx"), fm)
+    q = {(s["slide"], x["raw"]): x for s in plan["slides"] for x in s["numbers"]}
+    assert q[(1, "48")]["status"] == "current"  # 2024's row, not 2023's 31 or 2025's 71
+    assert not str(q[(2, "€2,1 M")].get("new_value") or "").startswith("5.5")  # a cumulative is not one year's figure

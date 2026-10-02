@@ -728,7 +728,15 @@ def _match(q: dict, slide: dict, cands: list[dict]) -> tuple[str, list[dict], di
     key = _key_measures(ms)
     from .derive import CUM_RE
 
-    cum = q["kind"] == "data" and bool(CUM_RE.search(q["where"]))
+    if q["kind"] == "data":
+        cum = bool(CUM_RE.search(q["where"]))
+    elif q["where"].startswith("exhibit["):
+        cum = bool(CUM_RE.search(_qtext(q)))
+    else:  # v2.5: a sentence's number is cumulative when the words next to it say so ("inversión acumulada de 5,5 M€")
+        from .derive import _local as _near_text
+
+        nb, na = _near_text(q)
+        cum = bool(CUM_RE.search(nb[-35:] + " " + na[:30]))
     words = set(re.findall(r"[a-zñ]{4,}", _plain(ctx)))
     qq = _quals(ctx)
     sq = _quals(q.get("section") or "")
@@ -746,8 +754,8 @@ def _match(q: dict, slide: dict, cands: list[dict]) -> tuple[str, list[dict], di
             continue  # the source says it is a known measure the number is not about
         if open_ and not _same_magnitude(q, c, 1.6):
             continue  # v2.3: weaker evidence, so a closer value: within 60%
-        if cum and not CUM_RE.search(c["text"]):
-            continue  # v2.2: a year's flow is not the running total to that year
+        if cum != bool(CUM_RE.search(c["text"])):
+            continue  # a year's flow is not the running total to that year, nor the other way round (v2.5: any number, both ways)
         if BENCH_RE.search(c["text"]) and not BENCH_RE.search(_qtext(q) + " " + (q.get("text") or "")):
             continue  # v2.3: the market's figure (a competitive set, the sector median), not this company's
         cn = c.get("names") or set()

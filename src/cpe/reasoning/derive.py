@@ -149,7 +149,7 @@ def _same_slide(plan: dict, taken: set) -> list[dict]:
     return out
 
 
-CUM_RE = re.compile(r"acumulad|cumulativ|running total|cumulative|a origen|year-to-date|ytd", re.I)
+CUM_RE = re.compile(r"acumulad|cumulativ|running total|cumulative|a origen|year-to-date|ytd|to date|hasta la fecha|desde el inicio|since (?:launch|inception|start)", re.I)
 
 
 def chart_series(slide: dict) -> dict:
