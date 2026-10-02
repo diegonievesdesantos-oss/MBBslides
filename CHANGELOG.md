@@ -1,6 +1,12 @@
 # Changelog
 
-## Unreleased — 1.9.0.dev0
+## 1.9.0 — Tool debts, in-place deck update, layouts learned from slides
+
+**Closed 2026-10-02 by the owner, without blocks B and C, which move to v2.0:**
+- **B:** unseen corporate templates;
+- **C:** blind cases for protocol 1.5, judged only against the owner's key.
+
+All figures below are in-sample, on the v1.8 project.
 
 Status and what needs the owner: [docs/V19_STATUS.md](docs/V19_STATUS.md).
 

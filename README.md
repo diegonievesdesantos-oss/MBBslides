@@ -18,13 +18,13 @@ and contradictory opinions. The engine builds the deck as follows:
 It then renders the deck, measures its visual quality and corrects what it can. **Every number a
 reader sees must come from a cited fact.** The pass/fail verdicts are computed by code.
 
-> **v1.8.0** (current): real-world inputs, corporate use, any OS; reasoning protocol 1.5.
-> - Updates an existing deck from messy new sources: it reads the old deck, checks each of its
->   numbers against the new facts and rebuilds the deck in the old style. Tested on one real project
->   against the owner's blind answer key.
-> - Cell-to-fact binding, new exhibits, explicit n/a, and per-slide corporate usage and
->   brand-fidelity reports.
-> - Native on Windows, macOS and Linux.
+> **v1.9.0** (current): updates the original deck in place and learns layouts from hand-made decks.
+> - `cpe deck edits` / `cpe deck patch` change only the approved numbers of the original pptx; everything
+>   else stays as it was.
+> - A deck built with free text boxes now gives real corporate layouts.
+> - `deck stale` matches numbers on their meaning, not their value. Conflict detection reads each
+>   number with its own words.
+> - Measured in-sample on one real project; blind validation moves to v2.0.
 
 <!-- metrics:start (generated from evals/results/latest.json by `cpe results readme`; do not edit) -->
 
@@ -66,6 +66,23 @@ Example decks are development material and regression fixtures, not evidence of 
 <sub>engine 1.9.0.dev0 · evaluated source commit `e5ae0202a7` · LibreOffice 24.2.7.2 420(Build:2) · fontconfig 2.15.0 · container `mbbslides-visual:1.3@sha256:bb5bbbdd55bcec5db567781c63574da1a4b2fc4504446d6fea23f5197f59d278` · render fingerprint `f98cee49d123ed5f`</sub>
 
 <!-- metrics:end -->
+
+## What's new in v1.9 — in-place update, learned layouts, tool debts
+
+- **Update the original file:**
+  - `cpe deck edits work` proposes one edit per outdated number, in the deck's own notation,
+    unapproved.
+  - `cpe deck patch old.pptx edits.json -o new.pptx` applies the approved ones. Formatting, tables and
+    charts are kept, and each change is noted on its slide.
+- **Layouts learned from slides:** when no layout of a deck has a title placeholder, brand ingest learns
+  cover, statement and content layouts from the slides' geometry.
+- **`deck stale`:** a number is matched on its own words, unit and period. Page numbers, codes and
+  phase indices are ignored. Restatements of the old plan never confirm a number.
+- **Conflicts and messy tables:**
+  - prose is compared with tables, and ratios are compared;
+  - title lines above a header, repeated two-level headers and `n/d` cells are read;
+  - week references count as periods.
+- Status and caveats: [docs/V19_STATUS.md](docs/V19_STATUS.md).
 
 ## What's new in v1.8 — real-world inputs, corporate use, any OS
 

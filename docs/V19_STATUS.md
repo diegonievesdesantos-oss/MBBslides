@@ -1,4 +1,9 @@
-# v1.9 status (1.9.0.dev0, 2026-10-02)
+# v1.9 status (1.9.0, 2026-10-02)
+
+> **Closed as 1.9.0 on 2026-10-02 (owner decision).**
+> - Blocks B (unseen templates) and C (blind cases against the owner's key) move to v2.0.
+> - A, D1 and D2 are done.
+> - Every measured figure is in-sample on the v1.8 project.
 
 The owner's instruction: "empieza con A, D las dos, solo contra mi clave".
 - **A:** the tool debts.
