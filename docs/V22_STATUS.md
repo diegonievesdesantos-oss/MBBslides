@@ -1,4 +1,9 @@
-# v2.2 status (2.2.0.dev0)
+# v2.2 status (2.2.0)
+
+> **Closed as 2.2.0 on 2026-10-02 (owner decision).**
+> - Items 2–5 are done.
+> - Item 1 (blind validation on real material: unseen templates, new cases with the owner's key)
+>   moves to v2.3.
 
 Goal: fewer numbers a person must trace by hand when updating a deck, and the blind validation on real
 material still open since v1.9.
