@@ -267,11 +267,13 @@ def ingest_deck(path: str | Path) -> dict:
                                 "text": text[:400], "unit_after": _unit_after(text, m), "section": section, "core": _core(q["raw"]), "occ": occ})
         for e_i, ex in enumerate(exhibits):
             for s in ex.get("series") or []:
+                # v2.3: a point is written with its series' precision ("-3" in a series of "-2.8" is -3.0)
+                dec = max([len(f"{v:g}".split(".")[1]) for v in s["values"] if isinstance(v, (int, float)) and "." in f"{v:g}" and "e" not in f"{v:g}"] or [0])
                 for k, v in enumerate(s["values"]):
                     if isinstance(v, (int, float)):
                         cat = (ex.get("categories") or [""] * (k + 1))[k] if k < len(ex.get("categories") or []) else ""
                         numbers.append({"where": f"exhibit[{e_i}].{s['name']}[{cat}]", "raw": f"{v:g}", "value": float(v), "kind": "data",
-                                        "context": f"{ex.get('title') or ''} {s['name']} {cat}".strip(), "core": _core(f"{v:g}"), "occ": 0})
+                                        "context": f"{ex.get('title') or ''} {s['name']} {cat}".strip(), "core": _core(f"{v:.{min(dec, 6)}f}"), "occ": 0})
             for r_i, row in enumerate(ex.get("rows") or []):
                 for c_i, cell in enumerate(row[1:], start=1):
                     qs = headline_quantities(cell)
