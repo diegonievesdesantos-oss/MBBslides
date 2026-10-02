@@ -578,6 +578,8 @@ def _open_words(text: str) -> set[str]:
 UNIT_SCALE_WORDS = {"miles", "millon", "millones", "million", "millions", "thousand", "thousands", "euros", "dolares", "dollars", "anual", "anuales"}
 
 
+BENCH_RE = re.compile(r"\b(competitive set|comp ?set|competidor\w*|competitor\w*|competencia|peers?|benchmark\w*|mediana del sector|"
+                      r"media del sector|sector median|industry (?:average|median)|cuartil|quartile|mercado de referencia|market average)\b", re.I)
 NAME_RE = re.compile(r"\b[A-ZÁÉÍÓÚÑ][A-Za-zÁÉÍÓÚÑáéíóúñü]{2,}\b")
 _COMMON: set = set()  # words seen in lower case somewhere in the deck or the sources: not names
 
@@ -638,6 +640,8 @@ def _match(q: dict, slide: dict, cands: list[dict]) -> tuple[str, list[dict], di
             continue  # the source says it is a known measure the number is not about
         if cum and not CUM_RE.search(c["text"]):
             continue  # v2.2: a year's flow is not the running total to that year
+        if BENCH_RE.search(c["text"]) and not BENCH_RE.search(_qtext(q) + " " + (q.get("text") or "")):
+            continue  # v2.3: the market's figure (a competitive set, the sector median), not this company's
         cn = c.get("names") or set()
         if qn and cn and not (qn & cn):
             continue  # v2.3: about another plant, site, hotel or fleet
