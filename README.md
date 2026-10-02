@@ -18,7 +18,12 @@ and contradictory opinions. The engine builds the deck as follows:
 It then renders the deck, measures its visual quality and corrects what it can. **Every number a
 reader sees must come from a cited fact.** The pass/fail verdicts are computed by code.
 
-> **v3.0.0** (current, final): validated on the owner's real material.
+> **v3.1.0** (current): Editorial Logic Layer — every substantive slide states an evidence-backed
+> takeaway (Action Title Engine), and sibling messages are written as siblings (Parallel Wording
+> Guarantee). Blind sealed holdout (111 cases, run once): agreement 92.8%; 3 of 26 unsupported claims
+> got through. Regression, examples and robustness unchanged. [docs/V31_STATUS.md](docs/V31_STATUS.md)
+>
+> **v3.0.0**: validated on the owner's real material.
 > - On 3 real update cases, blind (key sealed before one run):
 >   - outdated numbers found: 27%;
 >   - "outdated" flags right: 75%;
@@ -51,6 +56,8 @@ Independent signals, never combined into one number ([why](docs/EVALS.md)). A me
 |---|---|---|
 | **Holdout v2** | blind result of v1.4.0 (run once); development-known since v1.5, not re-run (26 decks, 157 authored / 158 measured slides) | overall 91.4 · macro 91.8 · P10 74.5 · weakest kpi_dashboard 71.6 |
 | **Robustness** | small content perturbations of development seeds (78 variants) | median drop 0.0 · P90 drop 0.0 · catastrophic 0 (0%) |
+| **Editorial (dev)** | v3.1 editorial fixtures, development set (used while building: in-sample), 210 cases | agreement 100% · valid accepted 100% · invalid caught 99% · unsupported claims passed 0/49 · parallel 100% |
+| **Editorial holdout** | sealed editorial fixtures, independent author, run once (v3.1.0), 111 cases | agreement 93% · valid accepted 98% · invalid caught 88% · unsupported claims passed 3/26 · parallel 92% |
 | **Human r1** | blind A/B votes (`cpe human`) | awaiting human votes — 40 blind pairs built, 0 votes |
 | **Human r2** | blind A/B votes (38 votes, 1 evaluator) — development data since v1.5; blind validation of v1.4 preserved | challenger preferred 0.97 (95% CI 0.86–0.99) · scorer agrees 0.97 |
 | **Human r3** | blind A/B votes (38 votes, 1 evaluator) | challenger preferred 0.90 (95% CI 0.60–0.98) · scorer agrees 0.83 |
@@ -65,9 +72,28 @@ Example decks are development material and regression fixtures, not evidence of 
 | `gallery` | PASSED · 0 errors · 0 warnings | 99.8 | 99.6 |
 | `alvora_on_kestrel` | PASSED · 0 errors · 0 warnings | 99.7 | 99.5 |
 
-<sub>engine 3.0.0 · evaluated source commit `d4c50b391d` · LibreOffice 24.2.7.2 420(Build:2) · fontconfig 2.15.0 · container `mbbslides-visual:1.3@sha256:bb5bbbdd55bcec5db567781c63574da1a4b2fc4504446d6fea23f5197f59d278` · render fingerprint `f98cee49d123ed5f`</sub>
+<sub>engine 3.1.0 · evaluated source commit `3b7824d665` · LibreOffice 24.2.7.2 420(Build:2) · fontconfig 2.15.0 · container `mbbslides-visual:1.3@sha256:bb5bbbdd55bcec5db567781c63574da1a4b2fc4504446d6fea23f5197f59d278` · render fingerprint `f98cee49d123ed5f`</sub>
 
 <!-- metrics:end -->
+
+## What's new in v3.1 — Editorial Logic Layer
+
+- **Proposition** per slide: what it asserts, separate from its purpose and its headline, with the
+  evidence ids that prove it ([docs/EDITORIAL_LAYER.md](docs/EDITORIAL_LAYER.md)).
+- **Action Title Engine:** the headline must state the proposition — no topic labels, no number beyond
+  the evidence's precision, no change of direction, entity, scope, period, confidence or causal
+  strength, a finding is not a recommendation and a recommendation is not a decision. It picks the best
+  of the candidate wordings the agent proposes and fails closed when none is acceptable
+  ([docs/ACTION_TITLE_ENGINE.md](docs/ACTION_TITLE_ENGINE.md), [docs/HEADLINE_STYLE.md](docs/HEADLINE_STYLE.md)).
+- **Parallel Wording Guarantee:** recommendations, steps, options, workstreams, principles, executive
+  summary and key line written as one family, in English and Spanish ([docs/PARALLEL_WORDING.md](docs/PARALLEL_WORDING.md)).
+- **Editorial QA** is its own verdict next to factual, visual, authoring and brand QA; new decks are
+  `mbb_strict`. Headline strip and editorial ghost deck in every run. `cpe editorial check | explain | ghost`.
+- **Updating a deck:** a headline that still holds is untouched; a broken one is re-checked by the
+  engine and waits for human approval; `--normalize-editorial` flags labels.
+- **Measured:** sealed holdout by an independent author, run once — agreement 92.8%, valid headlines
+  accepted 97.6%, failing ones caught 88.2%, 3 of 26 unsupported claims let through (diagnosed, not
+  tuned: [docs/V31_STATUS.md](docs/V31_STATUS.md)). Regression 95.1, examples 99.6, robustness 0 drop: unchanged.
 
 ## What's new in v3.0 — validated on real material (final)
 

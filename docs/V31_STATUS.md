@@ -59,12 +59,21 @@ These are listed for the next round; fixing them now would be tuning on the seal
 | the same, as detection on unseen material | **not met on the blind holdout: 3 of 26 unsupported claims passed** (see above) |
 | 100% mandatory parallel groups structurally compliant (examples) | met (alvora 3/3, gallery 4/4, alvora on Kestrel 3/3) |
 | 100% content slides with proposition lineage (examples) | met (11 + 21 + 11 explicit propositions, every one citing evidence ids) |
-| 0 regression in factual / visual hard QA | see "Existing guarantees" |
+| 0 regression in factual / visual hard QA | met: regression 95.1 with 0 QA errors, examples 99.6, robustness 0 drop (same as 3.0.0) |
 | 255+ existing tests pass; new editorial tests pass | met: 338 tests (255 existing, unchanged, + 83 new) |
 
 ## Existing guarantees
 
-RELEASE_EVALS_PLACEHOLDER
+Release evaluations, recorded on the frozen engine (Docker, pinned environment):
+
+| suite | 3.0.0 | **3.1.0** |
+|---|---|---|
+| regression (composition, archetype fitness) | 95.1, 0 QA errors | **95.1, 0 QA errors** (visual 0, authoring 0) |
+| examples | 99.6 | **99.6**, all three decks PASSED (the gate now includes strict editorial QA) |
+| robustness | 0 drop over 78 variants | **median drop 0.0, P90 0.0, 0 catastrophic over 78 variants** |
+
+No headline of the regression cases or the examples changed: the editorial layer added a verdict, not
+a rewrite. Composition and visual QA are unchanged.
 
 ## Definition of done (spec §114)
 
