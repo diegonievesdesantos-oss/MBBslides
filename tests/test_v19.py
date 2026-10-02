@@ -57,3 +57,31 @@ def test_u2_banner_line_and_repeated_two_level_header(tmp_path):
     assert by[("Líneas preparadas (miles)", "FY2027", "budget")]["value"] == 4723
     assert by[("Ventas netas (M€)", "FY2025", "actual")] == {**by[("Ventas netas (M€)", "FY2025", "actual")], "value": 94.5, "unit": "EUR_M"}
     assert by[("Mantenimiento", "FY2026", "actual")]["value"] == 33
+
+
+def test_u3_conflicts_read_each_number_with_its_own_words():
+    from cpe.reasoning.conflicts import detect_conflicts
+
+    def tx(i, file, claim, value, unit, period=None):
+        return {"id": i, "fact_type": "text_statement", "claim": claim, "source": {"file": file, "loc": "line 1"},
+                "values": [{"value": value, "unit": unit, "period": period}]}
+
+    def tv(i, file, label, col, value, unit, period=None):
+        return {"id": i, "fact_type": "table_value", "claim": f"{label} — {col}", "source": {"file": file, "loc": "sheet A"},
+                "values": [{"value": value, "unit": unit, "period": period, "label": label, "column": col}]}
+
+    real = [tx("F1", "informe.md", "La productividad de la zona automatizada ya es 2,1 veces la productividad manual.", 2.1, "X"),
+            tx("F2", "oferta.md", "Productividad de preparación en puestos GTP: 2,4 veces la productividad manual de referencia.", 2.4, "X"),
+            tx("F3", "ops.md", "El coste de cierre de Valencia (indemnizaciones, penalización del contrato de alquiler y desmantelamiento) asciende a 3,2 millones de euros.", 3.2, "EUR_M"),
+            tx("F4", "propuesta.md", "El coste de cierre estimado es de 1,5 M€.", 1.5, "EUR_M")]
+    assert len(detect_conflicts(real)) == 2
+    noise = [  # a comparison base is not the number's period; phases, zones and mixed manual/automated wording are not one quantity
+        tx("F1", "informe.md", "FY2026 cierra con 4,37 millones de líneas preparadas, un 0,5% menos que en FY2025.", 0.5, "PCT", "FY2026"),
+        tv("F2", "presupuesto.csv", "Líneas preparadas (miles)", "Comentario: +8% s/ real FY2026", 8.0, "PCT", "FY2026"),
+        tv("F3", "modelo.xlsx", "resultado · Ahorro neto anual · k€/año", "fase_2", 643, "EUR_K"),
+        tv("F4", "analisis.csv", "Ahorro neto anual de la fase 1 en el business case", "importe (k€)", 732, "EUR_K"),
+        tv("F5", "deck.pptx", "Tasa de error manual / automatizada", "Valor: 0,9% / 0,2%", 0.2, "PCT"),
+        tv("F6", "wms.csv", "Tasa de error de la zona frío manual (%)", "valor", 0.91, "PCT"),
+        tv("F7", "ventas.csv", "Líneas preparadas (miles) · FY2025 · Real", "valor", 4396, ""),
+        tv("F8", "wms.csv", "Líneas de la zona frío en FY2026 (miles)", "valor", 1927, "")]
+    assert detect_conflicts(noise) == []
