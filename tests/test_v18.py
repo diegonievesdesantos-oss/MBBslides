@@ -1,6 +1,4 @@
 """v1.8 — corporate & real-world generalisation (deterministic parts)."""
-import json
-import pathlib
 
 from cpe.reasoning.facts import build_fact_model, detect_period
 from cpe.reasoning.periods import compare, period_info
